@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,14 +46,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Data\easyposdb.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>easyposdb.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\SoftwareForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\Software\SoftwareForm.Designer.cs">
+      <DependentUpon>SoftwareForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\SysMenu\SysMenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\SysMenu\SysMenuForm.Designer.cs">
+      <DependentUpon>SysMenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IndexForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IndexForm.Designer.cs">
+      <DependentUpon>IndexForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Data\easyposdb.dbml.layout">
+      <DependentUpon>easyposdb.dbml</DependentUpon>
+    </None>
+    <EmbeddedResource Include="Forms\Software\SoftwareForm.resx">
+      <DependentUpon>SoftwareForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\SysMenu\SysMenuForm.resx">
+      <DependentUpon>SysMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IndexForm.resx">
+      <DependentUpon>IndexForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,6 +92,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="AppSettings.json" />
+    <None Include="Data\easyposdb.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>easyposdb.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -74,6 +110,46 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="EasyFISIntegration\Controllers\" />
+    <Folder Include="EasyFISIntegration\Entities\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Forms\Account\SysLogin\" />
+    <Folder Include="Forms\Software\SysCloudSettings\" />
+    <Folder Include="Forms\Software\TrnPOS\" />
+    <Folder Include="Modules\" />
+    <Folder Include="Reports\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Images\Backgrounds\coffee.jpeg" />
+    <Content Include="Resources\Images\Company\easycloud.jpg" />
+    <Content Include="Resources\Images\Customers\sonnets.png" />
+    <Content Include="Resources\Images\Icons\Customer.png" />
+    <Content Include="Resources\Images\Icons\Disbursement.png" />
+    <Content Include="Resources\Images\Icons\Discounting.png" />
+    <Content Include="Resources\Images\Icons\Inventory.png" />
+    <Content Include="Resources\Images\Icons\Item.png" />
+    <Content Include="Resources\Images\Icons\POS.png" />
+    <Content Include="Resources\Images\Icons\Reports.png" />
+    <Content Include="Resources\Images\Icons\Settings.png" />
+    <Content Include="Resources\Images\Icons\Stock Count.png" />
+    <Content Include="Resources\Images\Icons\Utilities.png" />
+    <Content Include="Resources\Images\Icons\Stock In.png" />
+    <Content Include="Resources\Images\Icons\Stock Out.png" />
+    <Content Include="Resources\Images\Icons\System Tables.png" />
+    <Content Include="Resources\Images\Icons\User.png" />
+    <Content Include="Resources\Images\Logo\easypos cropped.ico" />
+    <Content Include="Resources\Images\Logo\easypos cropped.jpg" />
+    <Content Include="Resources\Images\Others\color theme.jpg" />
+    <Content Include="Resources\Images\Products\easyapp.jpg" />
+    <Content Include="Resources\Images\Products\easyfis.jpg" />
+    <Content Include="Resources\Images\Products\easypay.jpg" />
+    <Content Include="Resources\Images\Products\easypos.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
