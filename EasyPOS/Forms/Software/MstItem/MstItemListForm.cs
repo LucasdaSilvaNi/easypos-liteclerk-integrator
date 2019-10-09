@@ -8,20 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EasyPOS.Forms.Software.SysMenu
+namespace EasyPOS.Forms.Software.MstItem
 {
-    public partial class SysMenuForm : Form
+    public partial class MstItemListForm : Form
     {
         SoftwareForm softwareForm;
-        public SysMenuForm(SoftwareForm form)
+        public MstItemListForm(SoftwareForm form)
         {
             InitializeComponent();
             softwareForm = form;
-        }
-
-        private void buttonItem_Click(object sender, EventArgs e)
-        {
-            softwareForm.AddTabPageItem();
         }
     }
 }

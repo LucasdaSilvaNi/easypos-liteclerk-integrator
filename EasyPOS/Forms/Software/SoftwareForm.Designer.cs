@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SoftwareForm));
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControlSoftware = new System.Windows.Forms.TabControl();
             this.tabPageSysMenu = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,29 +37,31 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.tabControl1.SuspendLayout();
+            this.tabControlSoftware.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tabControlSoftware
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tabControlSoftware.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPageSysMenu);
-            this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tabControl1.Location = new System.Drawing.Point(0, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1782, 818);
-            this.tabControl1.TabIndex = 0;
+            this.tabControlSoftware.Controls.Add(this.tabPageSysMenu);
+            this.tabControlSoftware.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tabControlSoftware.Location = new System.Drawing.Point(0, 12);
+            this.tabControlSoftware.Margin = new System.Windows.Forms.Padding(0);
+            this.tabControlSoftware.Name = "tabControlSoftware";
+            this.tabControlSoftware.Padding = new System.Drawing.Point(0, 0);
+            this.tabControlSoftware.SelectedIndex = 0;
+            this.tabControlSoftware.Size = new System.Drawing.Size(1782, 818);
+            this.tabControlSoftware.TabIndex = 0;
             // 
             // tabPageSysMenu
             // 
             this.tabPageSysMenu.Location = new System.Drawing.Point(4, 29);
+            this.tabPageSysMenu.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageSysMenu.Name = "tabPageSysMenu";
-            this.tabPageSysMenu.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageSysMenu.Size = new System.Drawing.Size(1774, 785);
             this.tabPageSysMenu.TabIndex = 0;
             this.tabPageSysMenu.Text = "Menu";
@@ -145,17 +147,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(81)))), ((int)(((byte)(112)))));
             this.ClientSize = new System.Drawing.Size(1782, 953);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControlSoftware);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SoftwareForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Easy POS";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.tabControl1.ResumeLayout(false);
+            this.tabControlSoftware.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -165,7 +167,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControlSoftware;
         private System.Windows.Forms.TabPage tabPageSysMenu;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;

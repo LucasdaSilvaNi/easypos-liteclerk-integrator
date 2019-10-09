@@ -18,9 +18,11 @@ namespace EasyPOS.Forms.Software
             InitializeDefaultForm();
         }
 
+        private TabPage tabPageItem;
+
         public void InitializeDefaultForm()
         {
-            SysMenu.SysMenuForm sysMenuForm = new SysMenu.SysMenuForm
+            SysMenu.SysMenuForm sysMenuForm = new SysMenu.SysMenuForm(this)
             {
                 TopLevel = false,
                 Visible = true,
@@ -28,6 +30,34 @@ namespace EasyPOS.Forms.Software
             };
 
             tabPageSysMenu.Controls.Add(sysMenuForm);
+        }
+
+        public void AddTabPageItem()
+        {
+            if (tabPageItem != null)
+            {
+                tabControlSoftware.SelectTab(tabPageItem);
+            }
+            else
+            {
+                tabPageItem = new TabPage
+                {
+                    Name = "tabPageItem",
+                    Text = "Item List"
+                };
+
+                MstItem.MstItemListForm mstItemListForm = new MstItem.MstItemListForm(this)
+                {
+                    TopLevel = false,
+                    Visible = true,
+                    Dock = DockStyle.Fill
+                };
+
+                tabPageItem.Controls.Add(mstItemListForm);
+
+                tabControlSoftware.TabPages.Add(tabPageItem);
+                tabControlSoftware.SelectTab(tabPageItem);
+            }
         }
     }
 }

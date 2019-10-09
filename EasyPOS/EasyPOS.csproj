@@ -51,6 +51,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>easyposdb.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\MstItem\MstItemListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\MstItem\MstItemListForm.Designer.cs">
+      <DependentUpon>MstItemListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\SoftwareForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <None Include="Data\easyposdb.dbml.layout">
       <DependentUpon>easyposdb.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="Forms\Software\MstItem\MstItemListForm.resx">
+      <DependentUpon>MstItemListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\SoftwareForm.resx">
       <DependentUpon>SoftwareForm.cs</DependentUpon>
     </EmbeddedResource>
