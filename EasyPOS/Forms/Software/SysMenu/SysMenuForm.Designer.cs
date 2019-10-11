@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SysMenuForm));
             this.buttonItem = new System.Windows.Forms.Button();
             this.imageListMenuIcons = new System.Windows.Forms.ImageList(this.components);
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonPOS = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -90,26 +90,27 @@
             this.imageListMenuIcons.Images.SetKeyName(12, "Stock Count.png");
             this.imageListMenuIcons.Images.SetKeyName(13, "System Tables.png");
             // 
-            // button2
+            // buttonPOS
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.ImageKey = "POS.png";
-            this.button2.ImageList = this.imageListMenuIcons;
-            this.button2.Location = new System.Drawing.Point(249, 12);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(10);
-            this.button2.Size = new System.Drawing.Size(231, 105);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "\r\nPOS";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button2.UseVisualStyleBackColor = false;
+            this.buttonPOS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonPOS.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonPOS.FlatAppearance.BorderSize = 0;
+            this.buttonPOS.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
+            this.buttonPOS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
+            this.buttonPOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPOS.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonPOS.ForeColor = System.Drawing.Color.White;
+            this.buttonPOS.ImageKey = "POS.png";
+            this.buttonPOS.ImageList = this.imageListMenuIcons;
+            this.buttonPOS.Location = new System.Drawing.Point(249, 12);
+            this.buttonPOS.Name = "buttonPOS";
+            this.buttonPOS.Padding = new System.Windows.Forms.Padding(10);
+            this.buttonPOS.Size = new System.Drawing.Size(231, 105);
+            this.buttonPOS.TabIndex = 4;
+            this.buttonPOS.Text = "\r\nPOS";
+            this.buttonPOS.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonPOS.UseVisualStyleBackColor = false;
+            this.buttonPOS.Click += new System.EventHandler(this.buttonPOS_Click);
             // 
             // button3
             // 
@@ -409,9 +410,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(81)))), ((int)(((byte)(112)))));
-            this.ClientSize = new System.Drawing.Size(1800, 1000);
-            this.ControlBox = false;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1400, 700);
             this.Controls.Add(this.button16);
             this.Controls.Add(this.button15);
             this.Controls.Add(this.button14);
@@ -426,7 +426,7 @@
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonPOS);
             this.Controls.Add(this.buttonItem);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -441,7 +441,7 @@
         #endregion
         private System.Windows.Forms.Button buttonItem;
         private System.Windows.Forms.ImageList imageListMenuIcons;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonPOS;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;

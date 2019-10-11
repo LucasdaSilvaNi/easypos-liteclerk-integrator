@@ -8,20 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EasyPOS.Forms.Software.MstItem
+namespace EasyPOS.Forms.Software.TrnPOS
 {
-    public partial class MstItemListForm : Form
+    public partial class TrnSalesListForm : Form
     {
         SoftwareForm softwareForm;
-        public MstItemListForm(SoftwareForm form)
+        public TrnSalesListForm(SoftwareForm form)
         {
             InitializeComponent();
             softwareForm = form;
-        }
-
-        private void buttonClose_Click(object sender, EventArgs e)
-        {
-            softwareForm.RemoveTabPage();
         }
     }
 }

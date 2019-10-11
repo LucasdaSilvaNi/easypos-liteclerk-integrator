@@ -69,6 +69,12 @@
     <Compile Include="Forms\Software\SysMenu\SysMenuForm.Designer.cs">
       <DependentUpon>SysMenuForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnSalesListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnSalesListForm.Designer.cs">
+      <DependentUpon>TrnSalesListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="IndexForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     <EmbeddedResource Include="Forms\Software\SysMenu\SysMenuForm.resx">
       <DependentUpon>SysMenuForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesListForm.resx">
+      <DependentUpon>TrnSalesListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IndexForm.resx">
       <DependentUpon>IndexForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +109,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="AppSettings.json" />
     <None Include="Data\easyposdb.dbml">
@@ -127,7 +137,6 @@
     <Folder Include="Entities\" />
     <Folder Include="Forms\Account\SysLogin\" />
     <Folder Include="Forms\Software\SysCloudSettings\" />
-    <Folder Include="Forms\Software\TrnPOS\" />
     <Folder Include="Modules\" />
     <Folder Include="Reports\" />
   </ItemGroup>
