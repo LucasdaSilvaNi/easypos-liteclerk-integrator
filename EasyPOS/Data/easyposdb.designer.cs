@@ -30,6 +30,9 @@ namespace EasyPOS.Data
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertIntCloudSetting(IntCloudSetting instance);
+    partial void UpdateIntCloudSetting(IntCloudSetting instance);
+    partial void DeleteIntCloudSetting(IntCloudSetting instance);
     partial void InsertTrnStockOutLine(TrnStockOutLine instance);
     partial void UpdateTrnStockOutLine(TrnStockOutLine instance);
     partial void DeleteTrnStockOutLine(TrnStockOutLine instance);
@@ -102,12 +105,6 @@ namespace EasyPOS.Data
     partial void InsertSysAuditTrail(SysAuditTrail instance);
     partial void UpdateSysAuditTrail(SysAuditTrail instance);
     partial void DeleteSysAuditTrail(SysAuditTrail instance);
-    partial void InsertSysCloudSetting(SysCloudSetting instance);
-    partial void UpdateSysCloudSetting(SysCloudSetting instance);
-    partial void DeleteSysCloudSetting(SysCloudSetting instance);
-    partial void InsertSysCurrent(SysCurrent instance);
-    partial void UpdateSysCurrent(SysCurrent instance);
-    partial void DeleteSysCurrent(SysCurrent instance);
     partial void InsertSysForm(SysForm instance);
     partial void UpdateSysForm(SysForm instance);
     partial void DeleteSysForm(SysForm instance);
@@ -192,6 +189,14 @@ namespace EasyPOS.Data
 				base(connection, mappingSource)
 		{
 			OnCreated();
+		}
+		
+		public System.Data.Linq.Table<IntCloudSetting> IntCloudSettings
+		{
+			get
+			{
+				return this.GetTable<IntCloudSetting>();
+			}
 		}
 		
 		public System.Data.Linq.Table<TrnStockOutLine> TrnStockOutLines
@@ -386,22 +391,6 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		public System.Data.Linq.Table<SysCloudSetting> SysCloudSettings
-		{
-			get
-			{
-				return this.GetTable<SysCloudSetting>();
-			}
-		}
-		
-		public System.Data.Linq.Table<SysCurrent> SysCurrents
-		{
-			get
-			{
-				return this.GetTable<SysCurrent>();
-			}
-		}
-		
 		public System.Data.Linq.Table<SysForm> SysForms
 		{
 			get
@@ -543,6 +532,270 @@ namespace EasyPOS.Data
 			get
 			{
 				return this.GetTable<TrnStockOut>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.IntCloudSettings")]
+	public partial class IntCloudSetting : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _BranchCode;
+		
+		private string _UserCode;
+		
+		private int _PostUserId;
+		
+		private int _PostSupplierId;
+		
+		private bool _UseItemPrice;
+		
+		private EntityRef<MstSupplier> _MstSupplier;
+		
+		private EntityRef<MstUser> _MstUser;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnBranchCodeChanging(string value);
+    partial void OnBranchCodeChanged();
+    partial void OnUserCodeChanging(string value);
+    partial void OnUserCodeChanged();
+    partial void OnPostUserIdChanging(int value);
+    partial void OnPostUserIdChanged();
+    partial void OnPostSupplierIdChanging(int value);
+    partial void OnPostSupplierIdChanged();
+    partial void OnUseItemPriceChanging(bool value);
+    partial void OnUseItemPriceChanged();
+    #endregion
+		
+		public IntCloudSetting()
+		{
+			this._MstSupplier = default(EntityRef<MstSupplier>);
+			this._MstUser = default(EntityRef<MstUser>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BranchCode", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string BranchCode
+		{
+			get
+			{
+				return this._BranchCode;
+			}
+			set
+			{
+				if ((this._BranchCode != value))
+				{
+					this.OnBranchCodeChanging(value);
+					this.SendPropertyChanging();
+					this._BranchCode = value;
+					this.SendPropertyChanged("BranchCode");
+					this.OnBranchCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserCode", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UserCode
+		{
+			get
+			{
+				return this._UserCode;
+			}
+			set
+			{
+				if ((this._UserCode != value))
+				{
+					this.OnUserCodeChanging(value);
+					this.SendPropertyChanging();
+					this._UserCode = value;
+					this.SendPropertyChanged("UserCode");
+					this.OnUserCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostUserId", DbType="Int NOT NULL")]
+		public int PostUserId
+		{
+			get
+			{
+				return this._PostUserId;
+			}
+			set
+			{
+				if ((this._PostUserId != value))
+				{
+					if (this._MstUser.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPostUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._PostUserId = value;
+					this.SendPropertyChanged("PostUserId");
+					this.OnPostUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostSupplierId", DbType="Int NOT NULL")]
+		public int PostSupplierId
+		{
+			get
+			{
+				return this._PostSupplierId;
+			}
+			set
+			{
+				if ((this._PostSupplierId != value))
+				{
+					if (this._MstSupplier.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPostSupplierIdChanging(value);
+					this.SendPropertyChanging();
+					this._PostSupplierId = value;
+					this.SendPropertyChanged("PostSupplierId");
+					this.OnPostSupplierIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UseItemPrice", DbType="Bit NOT NULL")]
+		public bool UseItemPrice
+		{
+			get
+			{
+				return this._UseItemPrice;
+			}
+			set
+			{
+				if ((this._UseItemPrice != value))
+				{
+					this.OnUseItemPriceChanging(value);
+					this.SendPropertyChanging();
+					this._UseItemPrice = value;
+					this.SendPropertyChanged("UseItemPrice");
+					this.OnUseItemPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstSupplier_IntCloudSetting", Storage="_MstSupplier", ThisKey="PostSupplierId", OtherKey="Id", IsForeignKey=true)]
+		public MstSupplier MstSupplier
+		{
+			get
+			{
+				return this._MstSupplier.Entity;
+			}
+			set
+			{
+				MstSupplier previousValue = this._MstSupplier.Entity;
+				if (((previousValue != value) 
+							|| (this._MstSupplier.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstSupplier.Entity = null;
+						previousValue.IntCloudSettings.Remove(this);
+					}
+					this._MstSupplier.Entity = value;
+					if ((value != null))
+					{
+						value.IntCloudSettings.Add(this);
+						this._PostSupplierId = value.Id;
+					}
+					else
+					{
+						this._PostSupplierId = default(int);
+					}
+					this.SendPropertyChanged("MstSupplier");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_IntCloudSetting", Storage="_MstUser", ThisKey="PostUserId", OtherKey="Id", IsForeignKey=true)]
+		public MstUser MstUser
+		{
+			get
+			{
+				return this._MstUser.Entity;
+			}
+			set
+			{
+				MstUser previousValue = this._MstUser.Entity;
+				if (((previousValue != value) 
+							|| (this._MstUser.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstUser.Entity = null;
+						previousValue.IntCloudSettings.Remove(this);
+					}
+					this._MstUser.Entity = value;
+					if ((value != null))
+					{
+						value.IntCloudSettings.Add(this);
+						this._PostUserId = value.Id;
+					}
+					else
+					{
+						this._PostUserId = default(int);
+					}
+					this.SendPropertyChanged("MstUser");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -1647,8 +1900,6 @@ namespace EasyPOS.Data
 		
 		private string _CustomerCode;
 		
-		private EntitySet<SysCurrent> _SysCurrents;
-		
 		private EntitySet<TrnCollection> _TrnCollections;
 		
 		private EntitySet<TrnSale> _TrnSales;
@@ -1707,7 +1958,6 @@ namespace EasyPOS.Data
 		
 		public MstCustomer()
 		{
-			this._SysCurrents = new EntitySet<SysCurrent>(new Action<SysCurrent>(this.attach_SysCurrents), new Action<SysCurrent>(this.detach_SysCurrents));
 			this._TrnCollections = new EntitySet<TrnCollection>(new Action<TrnCollection>(this.attach_TrnCollections), new Action<TrnCollection>(this.detach_TrnCollections));
 			this._TrnSales = new EntitySet<TrnSale>(new Action<TrnSale>(this.attach_TrnSales), new Action<TrnSale>(this.detach_TrnSales));
 			this._MstAccount = default(EntityRef<MstAccount>);
@@ -2113,19 +2363,6 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstCustomer_SysCurrent", Storage="_SysCurrents", ThisKey="Id", OtherKey="WalkinCustomerId")]
-		public EntitySet<SysCurrent> SysCurrents
-		{
-			get
-			{
-				return this._SysCurrents;
-			}
-			set
-			{
-				this._SysCurrents.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstCustomer_TrnCollection", Storage="_TrnCollections", ThisKey="Id", OtherKey="CustomerId")]
 		public EntitySet<TrnCollection> TrnCollections
 		{
@@ -2308,18 +2545,6 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		private void attach_SysCurrents(SysCurrent entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstCustomer = this;
-		}
-		
-		private void detach_SysCurrents(SysCurrent entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstCustomer = null;
-		}
-		
 		private void attach_TrnCollections(TrnCollection entity)
 		{
 			this.SendPropertyChanging();
@@ -2399,8 +2624,6 @@ namespace EasyPOS.Data
 		
 		private EntitySet<MstDiscountItem> _MstDiscountItems;
 		
-		private EntitySet<SysCurrent> _SysCurrents;
-		
 		private EntitySet<TrnSale> _TrnSales;
 		
 		private EntitySet<TrnSalesLine> _TrnSalesLines;
@@ -2464,7 +2687,6 @@ namespace EasyPOS.Data
 		public MstDiscount()
 		{
 			this._MstDiscountItems = new EntitySet<MstDiscountItem>(new Action<MstDiscountItem>(this.attach_MstDiscountItems), new Action<MstDiscountItem>(this.detach_MstDiscountItems));
-			this._SysCurrents = new EntitySet<SysCurrent>(new Action<SysCurrent>(this.attach_SysCurrents), new Action<SysCurrent>(this.detach_SysCurrents));
 			this._TrnSales = new EntitySet<TrnSale>(new Action<TrnSale>(this.attach_TrnSales), new Action<TrnSale>(this.detach_TrnSales));
 			this._TrnSalesLines = new EntitySet<TrnSalesLine>(new Action<TrnSalesLine>(this.attach_TrnSalesLines), new Action<TrnSalesLine>(this.detach_TrnSalesLines));
 			this._MstUser = default(EntityRef<MstUser>);
@@ -2953,19 +3175,6 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstDiscount_SysCurrent", Storage="_SysCurrents", ThisKey="Id", OtherKey="DefaultDiscountId")]
-		public EntitySet<SysCurrent> SysCurrents
-		{
-			get
-			{
-				return this._SysCurrents;
-			}
-			set
-			{
-				this._SysCurrents.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstDiscount_TrnSale", Storage="_TrnSales", ThisKey="Id", OtherKey="DiscountId")]
 		public EntitySet<TrnSale> TrnSales
 		{
@@ -3087,18 +3296,6 @@ namespace EasyPOS.Data
 		}
 		
 		private void detach_MstDiscountItems(MstDiscountItem entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstDiscount = null;
-		}
-		
-		private void attach_SysCurrents(SysCurrent entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstDiscount = this;
-		}
-		
-		private void detach_SysCurrents(SysCurrent entity)
 		{
 			this.SendPropertyChanging();
 			entity.MstDiscount = null;
@@ -6717,8 +6914,6 @@ namespace EasyPOS.Data
 		
 		private string _Period;
 		
-		private EntitySet<SysCurrent> _SysCurrents;
-		
 		private EntitySet<TrnCollection> _TrnCollections;
 		
 		private EntitySet<TrnDebitCreditMemo> _TrnDebitCreditMemos;
@@ -6747,7 +6942,6 @@ namespace EasyPOS.Data
 		
 		public MstPeriod()
 		{
-			this._SysCurrents = new EntitySet<SysCurrent>(new Action<SysCurrent>(this.attach_SysCurrents), new Action<SysCurrent>(this.detach_SysCurrents));
 			this._TrnCollections = new EntitySet<TrnCollection>(new Action<TrnCollection>(this.attach_TrnCollections), new Action<TrnCollection>(this.detach_TrnCollections));
 			this._TrnDebitCreditMemos = new EntitySet<TrnDebitCreditMemo>(new Action<TrnDebitCreditMemo>(this.attach_TrnDebitCreditMemos), new Action<TrnDebitCreditMemo>(this.detach_TrnDebitCreditMemos));
 			this._TrnDisbursements = new EntitySet<TrnDisbursement>(new Action<TrnDisbursement>(this.attach_TrnDisbursements), new Action<TrnDisbursement>(this.detach_TrnDisbursements));
@@ -6796,19 +6990,6 @@ namespace EasyPOS.Data
 					this.SendPropertyChanged("Period");
 					this.OnPeriodChanged();
 				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstPeriod_SysCurrent", Storage="_SysCurrents", ThisKey="Id", OtherKey="CurrentPeriodId")]
-		public EntitySet<SysCurrent> SysCurrents
-		{
-			get
-			{
-				return this._SysCurrents;
-			}
-			set
-			{
-				this._SysCurrents.Assign(value);
 			}
 		}
 		
@@ -6934,18 +7115,6 @@ namespace EasyPOS.Data
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_SysCurrents(SysCurrent entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstPeriod = this;
-		}
-		
-		private void detach_SysCurrents(SysCurrent entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstPeriod = null;
 		}
 		
 		private void attach_TrnCollections(TrnCollection entity)
@@ -7079,11 +7248,9 @@ namespace EasyPOS.Data
 		
 		private bool _IsLocked;
 		
+		private EntitySet<IntCloudSetting> _IntCloudSettings;
+		
 		private EntitySet<MstItem> _MstItems;
-		
-		private EntitySet<SysCloudSetting> _SysCloudSettings;
-		
-		private EntitySet<SysCurrent> _SysCurrents;
 		
 		private EntitySet<TrnPurchaseOrder> _TrnPurchaseOrders;
 		
@@ -7133,9 +7300,8 @@ namespace EasyPOS.Data
 		
 		public MstSupplier()
 		{
+			this._IntCloudSettings = new EntitySet<IntCloudSetting>(new Action<IntCloudSetting>(this.attach_IntCloudSettings), new Action<IntCloudSetting>(this.detach_IntCloudSettings));
 			this._MstItems = new EntitySet<MstItem>(new Action<MstItem>(this.attach_MstItems), new Action<MstItem>(this.detach_MstItems));
-			this._SysCloudSettings = new EntitySet<SysCloudSetting>(new Action<SysCloudSetting>(this.attach_SysCloudSettings), new Action<SysCloudSetting>(this.detach_SysCloudSettings));
-			this._SysCurrents = new EntitySet<SysCurrent>(new Action<SysCurrent>(this.attach_SysCurrents), new Action<SysCurrent>(this.detach_SysCurrents));
 			this._TrnPurchaseOrders = new EntitySet<TrnPurchaseOrder>(new Action<TrnPurchaseOrder>(this.attach_TrnPurchaseOrders), new Action<TrnPurchaseOrder>(this.detach_TrnPurchaseOrders));
 			this._TrnStockIns = new EntitySet<TrnStockIn>(new Action<TrnStockIn>(this.attach_TrnStockIns), new Action<TrnStockIn>(this.detach_TrnStockIns));
 			this._MstAccount = default(EntityRef<MstAccount>);
@@ -7441,6 +7607,19 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstSupplier_IntCloudSetting", Storage="_IntCloudSettings", ThisKey="Id", OtherKey="PostSupplierId")]
+		public EntitySet<IntCloudSetting> IntCloudSettings
+		{
+			get
+			{
+				return this._IntCloudSettings;
+			}
+			set
+			{
+				this._IntCloudSettings.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstSupplier_MstItem", Storage="_MstItems", ThisKey="Id", OtherKey="DefaultSupplierId")]
 		public EntitySet<MstItem> MstItems
 		{
@@ -7451,32 +7630,6 @@ namespace EasyPOS.Data
 			set
 			{
 				this._MstItems.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstSupplier_SysCloudSetting", Storage="_SysCloudSettings", ThisKey="Id", OtherKey="PostSupplierId")]
-		public EntitySet<SysCloudSetting> SysCloudSettings
-		{
-			get
-			{
-				return this._SysCloudSettings;
-			}
-			set
-			{
-				this._SysCloudSettings.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstSupplier_SysCurrent", Storage="_SysCurrents", ThisKey="Id", OtherKey="ReturnSupplierId")]
-		public EntitySet<SysCurrent> SysCurrents
-		{
-			get
-			{
-				return this._SysCurrents;
-			}
-			set
-			{
-				this._SysCurrents.Assign(value);
 			}
 		}
 		
@@ -7662,6 +7815,18 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		private void attach_IntCloudSettings(IntCloudSetting entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstSupplier = this;
+		}
+		
+		private void detach_IntCloudSettings(IntCloudSetting entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstSupplier = null;
+		}
+		
 		private void attach_MstItems(MstItem entity)
 		{
 			this.SendPropertyChanging();
@@ -7669,30 +7834,6 @@ namespace EasyPOS.Data
 		}
 		
 		private void detach_MstItems(MstItem entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstSupplier = null;
-		}
-		
-		private void attach_SysCloudSettings(SysCloudSetting entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstSupplier = this;
-		}
-		
-		private void detach_SysCloudSettings(SysCloudSetting entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstSupplier = null;
-		}
-		
-		private void attach_SysCurrents(SysCurrent entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstSupplier = this;
-		}
-		
-		private void detach_SysCurrents(SysCurrent entity)
 		{
 			this.SendPropertyChanging();
 			entity.MstSupplier = null;
@@ -8753,8 +8894,6 @@ namespace EasyPOS.Data
 		
 		private string _Terminal;
 		
-		private EntitySet<SysCurrent> _SysCurrents;
-		
 		private EntitySet<TrnCollection> _TrnCollections;
 		
 		private EntitySet<TrnDisbursement> _TrnDisbursements;
@@ -8773,7 +8912,6 @@ namespace EasyPOS.Data
 		
 		public MstTerminal()
 		{
-			this._SysCurrents = new EntitySet<SysCurrent>(new Action<SysCurrent>(this.attach_SysCurrents), new Action<SysCurrent>(this.detach_SysCurrents));
 			this._TrnCollections = new EntitySet<TrnCollection>(new Action<TrnCollection>(this.attach_TrnCollections), new Action<TrnCollection>(this.detach_TrnCollections));
 			this._TrnDisbursements = new EntitySet<TrnDisbursement>(new Action<TrnDisbursement>(this.attach_TrnDisbursements), new Action<TrnDisbursement>(this.detach_TrnDisbursements));
 			this._TrnSales = new EntitySet<TrnSale>(new Action<TrnSale>(this.attach_TrnSales), new Action<TrnSale>(this.detach_TrnSales));
@@ -8817,19 +8955,6 @@ namespace EasyPOS.Data
 					this.SendPropertyChanged("Terminal");
 					this.OnTerminalChanged();
 				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstTerminal_SysCurrent", Storage="_SysCurrents", ThisKey="Id", OtherKey="TerminalId")]
-		public EntitySet<SysCurrent> SysCurrents
-		{
-			get
-			{
-				return this._SysCurrents;
-			}
-			set
-			{
-				this._SysCurrents.Assign(value);
 			}
 		}
 		
@@ -8890,18 +9015,6 @@ namespace EasyPOS.Data
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_SysCurrents(SysCurrent entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstTerminal = this;
-		}
-		
-		private void detach_SysCurrents(SysCurrent entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstTerminal = null;
 		}
 		
 		private void attach_TrnCollections(TrnCollection entity)
@@ -9277,6 +9390,8 @@ namespace EasyPOS.Data
 		
 		private bool _IsLocked;
 		
+		private EntitySet<IntCloudSetting> _IntCloudSettings;
+		
 		private EntitySet<MstCustomer> _MstCustomers;
 		
 		private EntitySet<MstCustomer> _MstCustomers1;
@@ -9304,10 +9419,6 @@ namespace EasyPOS.Data
 		private EntitySet<MstUserForm> _MstUserForms;
 		
 		private EntitySet<SysAuditTrail> _SysAuditTrails;
-		
-		private EntitySet<SysCloudSetting> _SysCloudSettings;
-		
-		private EntitySet<SysCurrent> _SysCurrents;
 		
 		private EntitySet<SysSalesLocked> _SysSalesLockeds;
 		
@@ -9360,6 +9471,8 @@ namespace EasyPOS.Data
 		private EntitySet<TrnSale> _TrnSales3;
 		
 		private EntitySet<TrnSale> _TrnSales4;
+		
+		private EntitySet<TrnSale> _TrnSales5;
 		
 		private EntitySet<TrnSalesLine> _TrnSalesLines;
 		
@@ -9421,6 +9534,7 @@ namespace EasyPOS.Data
 		
 		public MstUser()
 		{
+			this._IntCloudSettings = new EntitySet<IntCloudSetting>(new Action<IntCloudSetting>(this.attach_IntCloudSettings), new Action<IntCloudSetting>(this.detach_IntCloudSettings));
 			this._MstCustomers = new EntitySet<MstCustomer>(new Action<MstCustomer>(this.attach_MstCustomers), new Action<MstCustomer>(this.detach_MstCustomers));
 			this._MstCustomers1 = new EntitySet<MstCustomer>(new Action<MstCustomer>(this.attach_MstCustomers1), new Action<MstCustomer>(this.detach_MstCustomers1));
 			this._MstDiscounts = new EntitySet<MstDiscount>(new Action<MstDiscount>(this.attach_MstDiscounts), new Action<MstDiscount>(this.detach_MstDiscounts));
@@ -9435,8 +9549,6 @@ namespace EasyPOS.Data
 			this._MstTableGroups1 = new EntitySet<MstTableGroup>(new Action<MstTableGroup>(this.attach_MstTableGroups1), new Action<MstTableGroup>(this.detach_MstTableGroups1));
 			this._MstUserForms = new EntitySet<MstUserForm>(new Action<MstUserForm>(this.attach_MstUserForms), new Action<MstUserForm>(this.detach_MstUserForms));
 			this._SysAuditTrails = new EntitySet<SysAuditTrail>(new Action<SysAuditTrail>(this.attach_SysAuditTrails), new Action<SysAuditTrail>(this.detach_SysAuditTrails));
-			this._SysCloudSettings = new EntitySet<SysCloudSetting>(new Action<SysCloudSetting>(this.attach_SysCloudSettings), new Action<SysCloudSetting>(this.detach_SysCloudSettings));
-			this._SysCurrents = new EntitySet<SysCurrent>(new Action<SysCurrent>(this.attach_SysCurrents), new Action<SysCurrent>(this.detach_SysCurrents));
 			this._SysSalesLockeds = new EntitySet<SysSalesLocked>(new Action<SysSalesLocked>(this.attach_SysSalesLockeds), new Action<SysSalesLocked>(this.detach_SysSalesLockeds));
 			this._TrnCollections = new EntitySet<TrnCollection>(new Action<TrnCollection>(this.attach_TrnCollections), new Action<TrnCollection>(this.detach_TrnCollections));
 			this._TrnCollections1 = new EntitySet<TrnCollection>(new Action<TrnCollection>(this.attach_TrnCollections1), new Action<TrnCollection>(this.detach_TrnCollections1));
@@ -9463,6 +9575,7 @@ namespace EasyPOS.Data
 			this._TrnSales2 = new EntitySet<TrnSale>(new Action<TrnSale>(this.attach_TrnSales2), new Action<TrnSale>(this.detach_TrnSales2));
 			this._TrnSales3 = new EntitySet<TrnSale>(new Action<TrnSale>(this.attach_TrnSales3), new Action<TrnSale>(this.detach_TrnSales3));
 			this._TrnSales4 = new EntitySet<TrnSale>(new Action<TrnSale>(this.attach_TrnSales4), new Action<TrnSale>(this.detach_TrnSales4));
+			this._TrnSales5 = new EntitySet<TrnSale>(new Action<TrnSale>(this.attach_TrnSales5), new Action<TrnSale>(this.detach_TrnSales5));
 			this._TrnSalesLines = new EntitySet<TrnSalesLine>(new Action<TrnSalesLine>(this.attach_TrnSalesLines), new Action<TrnSalesLine>(this.detach_TrnSalesLines));
 			this._TrnStockCounts = new EntitySet<TrnStockCount>(new Action<TrnStockCount>(this.attach_TrnStockCounts), new Action<TrnStockCount>(this.detach_TrnStockCounts));
 			this._TrnStockCounts1 = new EntitySet<TrnStockCount>(new Action<TrnStockCount>(this.attach_TrnStockCounts1), new Action<TrnStockCount>(this.detach_TrnStockCounts1));
@@ -9682,6 +9795,19 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_IntCloudSetting", Storage="_IntCloudSettings", ThisKey="Id", OtherKey="PostUserId")]
+		public EntitySet<IntCloudSetting> IntCloudSettings
+		{
+			get
+			{
+				return this._IntCloudSettings;
+			}
+			set
+			{
+				this._IntCloudSettings.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_MstCustomer", Storage="_MstCustomers", ThisKey="Id", OtherKey="EntryUserId")]
 		public EntitySet<MstCustomer> MstCustomers
 		{
@@ -9861,32 +9987,6 @@ namespace EasyPOS.Data
 			set
 			{
 				this._SysAuditTrails.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_SysCloudSetting", Storage="_SysCloudSettings", ThisKey="Id", OtherKey="PostUserId")]
-		public EntitySet<SysCloudSetting> SysCloudSettings
-		{
-			get
-			{
-				return this._SysCloudSettings;
-			}
-			set
-			{
-				this._SysCloudSettings.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_SysCurrent", Storage="_SysCurrents", ThisKey="Id", OtherKey="CurrentUserId")]
-		public EntitySet<SysCurrent> SysCurrents
-		{
-			get
-			{
-				return this._SysCurrents;
-			}
-			set
-			{
-				this._SysCurrents.Assign(value);
 			}
 		}
 		
@@ -10228,6 +10328,19 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnSale5", Storage="_TrnSales5", ThisKey="Id", OtherKey="SalesAgent")]
+		public EntitySet<TrnSale> TrnSales5
+		{
+			get
+			{
+				return this._TrnSales5;
+			}
+			set
+			{
+				this._TrnSales5.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnSalesLine", Storage="_TrnSalesLines", ThisKey="Id", OtherKey="UserId")]
 		public EntitySet<TrnSalesLine> TrnSalesLines
 		{
@@ -10456,6 +10569,18 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		private void attach_IntCloudSettings(IntCloudSetting entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser = this;
+		}
+		
+		private void detach_IntCloudSettings(IntCloudSetting entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser = null;
+		}
+		
 		private void attach_MstCustomers(MstCustomer entity)
 		{
 			this.SendPropertyChanging();
@@ -10619,30 +10744,6 @@ namespace EasyPOS.Data
 		}
 		
 		private void detach_SysAuditTrails(SysAuditTrail entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstUser = null;
-		}
-		
-		private void attach_SysCloudSettings(SysCloudSetting entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstUser = this;
-		}
-		
-		private void detach_SysCloudSettings(SysCloudSetting entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstUser = null;
-		}
-		
-		private void attach_SysCurrents(SysCurrent entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstUser = this;
-		}
-		
-		private void detach_SysCurrents(SysCurrent entity)
 		{
 			this.SendPropertyChanging();
 			entity.MstUser = null;
@@ -10958,6 +11059,18 @@ namespace EasyPOS.Data
 		{
 			this.SendPropertyChanging();
 			entity.MstUser4 = null;
+		}
+		
+		private void attach_TrnSales5(TrnSale entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser5 = this;
+		}
+		
+		private void detach_TrnSales5(TrnSale entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser5 = null;
 		}
 		
 		private void attach_TrnSalesLines(TrnSalesLine entity)
@@ -11877,3194 +11990,6 @@ namespace EasyPOS.Data
 					else
 					{
 						this._UserId = default(int);
-					}
-					this.SendPropertyChanged("MstUser");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SysCloudSettings")]
-	public partial class SysCloudSetting : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _BranchCode;
-		
-		private string _UserCode;
-		
-		private int _PostUserId;
-		
-		private int _PostSupplierId;
-		
-		private bool _UseItemPrice;
-		
-		private EntityRef<MstSupplier> _MstSupplier;
-		
-		private EntityRef<MstUser> _MstUser;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnBranchCodeChanging(string value);
-    partial void OnBranchCodeChanged();
-    partial void OnUserCodeChanging(string value);
-    partial void OnUserCodeChanged();
-    partial void OnPostUserIdChanging(int value);
-    partial void OnPostUserIdChanged();
-    partial void OnPostSupplierIdChanging(int value);
-    partial void OnPostSupplierIdChanged();
-    partial void OnUseItemPriceChanging(bool value);
-    partial void OnUseItemPriceChanged();
-    #endregion
-		
-		public SysCloudSetting()
-		{
-			this._MstSupplier = default(EntityRef<MstSupplier>);
-			this._MstUser = default(EntityRef<MstUser>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BranchCode", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string BranchCode
-		{
-			get
-			{
-				return this._BranchCode;
-			}
-			set
-			{
-				if ((this._BranchCode != value))
-				{
-					this.OnBranchCodeChanging(value);
-					this.SendPropertyChanging();
-					this._BranchCode = value;
-					this.SendPropertyChanged("BranchCode");
-					this.OnBranchCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserCode", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string UserCode
-		{
-			get
-			{
-				return this._UserCode;
-			}
-			set
-			{
-				if ((this._UserCode != value))
-				{
-					this.OnUserCodeChanging(value);
-					this.SendPropertyChanging();
-					this._UserCode = value;
-					this.SendPropertyChanged("UserCode");
-					this.OnUserCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostUserId", DbType="Int NOT NULL")]
-		public int PostUserId
-		{
-			get
-			{
-				return this._PostUserId;
-			}
-			set
-			{
-				if ((this._PostUserId != value))
-				{
-					if (this._MstUser.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPostUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._PostUserId = value;
-					this.SendPropertyChanged("PostUserId");
-					this.OnPostUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostSupplierId", DbType="Int NOT NULL")]
-		public int PostSupplierId
-		{
-			get
-			{
-				return this._PostSupplierId;
-			}
-			set
-			{
-				if ((this._PostSupplierId != value))
-				{
-					if (this._MstSupplier.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPostSupplierIdChanging(value);
-					this.SendPropertyChanging();
-					this._PostSupplierId = value;
-					this.SendPropertyChanged("PostSupplierId");
-					this.OnPostSupplierIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UseItemPrice", DbType="Bit NOT NULL")]
-		public bool UseItemPrice
-		{
-			get
-			{
-				return this._UseItemPrice;
-			}
-			set
-			{
-				if ((this._UseItemPrice != value))
-				{
-					this.OnUseItemPriceChanging(value);
-					this.SendPropertyChanging();
-					this._UseItemPrice = value;
-					this.SendPropertyChanged("UseItemPrice");
-					this.OnUseItemPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstSupplier_SysCloudSetting", Storage="_MstSupplier", ThisKey="PostSupplierId", OtherKey="Id", IsForeignKey=true)]
-		public MstSupplier MstSupplier
-		{
-			get
-			{
-				return this._MstSupplier.Entity;
-			}
-			set
-			{
-				MstSupplier previousValue = this._MstSupplier.Entity;
-				if (((previousValue != value) 
-							|| (this._MstSupplier.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._MstSupplier.Entity = null;
-						previousValue.SysCloudSettings.Remove(this);
-					}
-					this._MstSupplier.Entity = value;
-					if ((value != null))
-					{
-						value.SysCloudSettings.Add(this);
-						this._PostSupplierId = value.Id;
-					}
-					else
-					{
-						this._PostSupplierId = default(int);
-					}
-					this.SendPropertyChanged("MstSupplier");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_SysCloudSetting", Storage="_MstUser", ThisKey="PostUserId", OtherKey="Id", IsForeignKey=true)]
-		public MstUser MstUser
-		{
-			get
-			{
-				return this._MstUser.Entity;
-			}
-			set
-			{
-				MstUser previousValue = this._MstUser.Entity;
-				if (((previousValue != value) 
-							|| (this._MstUser.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._MstUser.Entity = null;
-						previousValue.SysCloudSettings.Remove(this);
-					}
-					this._MstUser.Entity = value;
-					if ((value != null))
-					{
-						value.SysCloudSettings.Add(this);
-						this._PostUserId = value.Id;
-					}
-					else
-					{
-						this._PostUserId = default(int);
-					}
-					this.SendPropertyChanged("MstUser");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SysCurrent")]
-	public partial class SysCurrent : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _CompanyName;
-		
-		private string _Address;
-		
-		private string _OperatedBy;
-		
-		private string _ContactNo;
-		
-		private string _FaxNo;
-		
-		private string _TIN;
-		
-		private string _EmailAddress;
-		
-		private string _AccreditationNo;
-		
-		private string _SerialNo;
-		
-		private string _PermitNo;
-		
-		private string _MachineNo;
-		
-		private decimal _DeclareRate;
-		
-		private string _ReceiptFooter;
-		
-		private string _InvoiceFooter;
-		
-		private string _LicenseCode;
-		
-		private string _TenantOf;
-		
-		private bool _IsAliasReport;
-		
-		private string _SalesReport;
-		
-		private string _CollectionReport;
-		
-		private string _ReturnReport;
-		
-		private decimal _SalesReportNoOfCopies;
-		
-		private decimal _CollectionReportNoOfCopies;
-		
-		private decimal _ReturnReportNoOfCopies;
-		
-		private bool _KitchenReportAutoPrint;
-		
-		private string _Kitchen1Report;
-		
-		private string _Kitchen2Report;
-		
-		private string _Kitchen3Report;
-		
-		private decimal _Kitchen1ReportNoOfCopies;
-		
-		private decimal _Kitchen2ReportNoOfCopies;
-		
-		private decimal _Kitchen3ReportNoOfCopies;
-		
-		private bool _PromptLoginInSales;
-		
-		private int _CurrentUserId;
-		
-		private string _CurrentVersion;
-		
-		private string _CurrentDeveloper;
-		
-		private string _CurrentSupport;
-		
-		private int _CurrentPeriodId;
-		
-		private int _TerminalId;
-		
-		private int _WalkinCustomerId;
-		
-		private int _DefaultDiscountId;
-		
-		private int _ReturnSupplierId;
-		
-		private bool _WithCustomerDisplay;
-		
-		private int _CustomerDisplayRight;
-		
-		private int _CustomerDisplayDown;
-		
-		private int _CustomerDisplayWidth;
-		
-		private int _CustomerDisplayHeight;
-		
-		private string _StorageNo;
-		
-		private bool _IsLocked;
-		
-		private string _MCIAA_Type;
-		
-		private string _MCIAA_CompanyId;
-		
-		private string _MCIAA_CompanyName;
-		
-		private bool _MCIAA_Activate;
-		
-		private string _RLC_TenantId;
-		
-		private string _ALI_TenantId;
-		
-		private bool _IsLedDispay;
-		
-		private decimal _LedDisplayPortNo;
-		
-		private string _LedDisplayPortSettings;
-		
-		private bool _ShowCollectedTab;
-		
-		private string _DefaultRestaurantView;
-		
-		private bool _SIWithVATAnalysis;
-		
-		private bool _ORWithVATAnalysis;
-		
-		private string _ORPrintTitle;
-		
-		private bool _AllowNegativeInventory;
-		
-		private bool _EjectOnPrint;
-		
-		private bool _CloudAutoCreateFile;
-		
-		private string _CloudBranchCode;
-		
-		private string _CloudPurchaseOrderFilePath;
-		
-		private string _CloudStockInFilePath;
-		
-		private string _CloudStockOutFilePath;
-		
-		private string _CloudStockCountFilePath;
-		
-		private string _CloudSalesInvoiceFilePath;
-		
-		private string _CloudDisbursementFilePath;
-		
-		private string _CloudCollectionFilePath;
-		
-		private bool _PartialPrint;
-		
-		private string _SMBranchCode;
-		
-		private string _SMtenantCode;
-		
-		private string _SMClassCode;
-		
-		private string _SMTradeCode;
-		
-		private string _SMStoreNumber;
-		
-		private string _SMSaleType;
-		
-		private string _SMPOSMachineNumber;
-		
-		private string _SMPOSSerialNumber;
-		
-		private string _SMCoinDirectory;
-		
-		private bool _DisableRealTimeInventory;
-		
-		private bool _EnableComponentEditing;
-		
-		private bool _IsLoginDate;
-		
-		private string _LoginDate;
-		
-		private bool _ExcludeZeroAmount;
-		
-		private bool _PrintTransferTable;
-		
-		private bool _QuickInventory;
-		
-		private string _StarStallCode;
-		
-		private string _StarFilePath;
-		
-		private string _StarSalesDepartment;
-		
-		private bool _PriceEdit;
-		
-		private string _ALI_LeaseNo;
-		
-		private string _Kitchen4Report;
-		
-		private decimal _Kitchen4ReportNoOfCopies;
-		
-		private string _Kitchen5Report;
-		
-		private decimal _Kitchen5ReportNoOfCopies;
-		
-		private string _Kitchen6Report;
-		
-		private decimal _Kitchen6ReportNoOfCopies;
-		
-		private string _Kitchen7Report;
-		
-		private decimal _Kitchen7ReportNoOfCopies;
-		
-		private string _Kitchen8Report;
-		
-		private decimal _Kitchen8ReportNoOfCopies;
-		
-		private string _Kitchen9Report;
-		
-		private decimal _Kitchen9ReportNoOfCopies;
-		
-		private bool _EnableTriggerQuantity;
-		
-		private string _RLC_ServerIp;
-		
-		private System.DateTime _TriggerTime;
-		
-		private EntityRef<MstCustomer> _MstCustomer;
-		
-		private EntityRef<MstDiscount> _MstDiscount;
-		
-		private EntityRef<MstPeriod> _MstPeriod;
-		
-		private EntityRef<MstSupplier> _MstSupplier;
-		
-		private EntityRef<MstTerminal> _MstTerminal;
-		
-		private EntityRef<MstUser> _MstUser;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnCompanyNameChanging(string value);
-    partial void OnCompanyNameChanged();
-    partial void OnAddressChanging(string value);
-    partial void OnAddressChanged();
-    partial void OnOperatedByChanging(string value);
-    partial void OnOperatedByChanged();
-    partial void OnContactNoChanging(string value);
-    partial void OnContactNoChanged();
-    partial void OnFaxNoChanging(string value);
-    partial void OnFaxNoChanged();
-    partial void OnTINChanging(string value);
-    partial void OnTINChanged();
-    partial void OnEmailAddressChanging(string value);
-    partial void OnEmailAddressChanged();
-    partial void OnAccreditationNoChanging(string value);
-    partial void OnAccreditationNoChanged();
-    partial void OnSerialNoChanging(string value);
-    partial void OnSerialNoChanged();
-    partial void OnPermitNoChanging(string value);
-    partial void OnPermitNoChanged();
-    partial void OnMachineNoChanging(string value);
-    partial void OnMachineNoChanged();
-    partial void OnDeclareRateChanging(decimal value);
-    partial void OnDeclareRateChanged();
-    partial void OnReceiptFooterChanging(string value);
-    partial void OnReceiptFooterChanged();
-    partial void OnInvoiceFooterChanging(string value);
-    partial void OnInvoiceFooterChanged();
-    partial void OnLicenseCodeChanging(string value);
-    partial void OnLicenseCodeChanged();
-    partial void OnTenantOfChanging(string value);
-    partial void OnTenantOfChanged();
-    partial void OnIsAliasReportChanging(bool value);
-    partial void OnIsAliasReportChanged();
-    partial void OnSalesReportChanging(string value);
-    partial void OnSalesReportChanged();
-    partial void OnCollectionReportChanging(string value);
-    partial void OnCollectionReportChanged();
-    partial void OnReturnReportChanging(string value);
-    partial void OnReturnReportChanged();
-    partial void OnSalesReportNoOfCopiesChanging(decimal value);
-    partial void OnSalesReportNoOfCopiesChanged();
-    partial void OnCollectionReportNoOfCopiesChanging(decimal value);
-    partial void OnCollectionReportNoOfCopiesChanged();
-    partial void OnReturnReportNoOfCopiesChanging(decimal value);
-    partial void OnReturnReportNoOfCopiesChanged();
-    partial void OnKitchenReportAutoPrintChanging(bool value);
-    partial void OnKitchenReportAutoPrintChanged();
-    partial void OnKitchen1ReportChanging(string value);
-    partial void OnKitchen1ReportChanged();
-    partial void OnKitchen2ReportChanging(string value);
-    partial void OnKitchen2ReportChanged();
-    partial void OnKitchen3ReportChanging(string value);
-    partial void OnKitchen3ReportChanged();
-    partial void OnKitchen1ReportNoOfCopiesChanging(decimal value);
-    partial void OnKitchen1ReportNoOfCopiesChanged();
-    partial void OnKitchen2ReportNoOfCopiesChanging(decimal value);
-    partial void OnKitchen2ReportNoOfCopiesChanged();
-    partial void OnKitchen3ReportNoOfCopiesChanging(decimal value);
-    partial void OnKitchen3ReportNoOfCopiesChanged();
-    partial void OnPromptLoginInSalesChanging(bool value);
-    partial void OnPromptLoginInSalesChanged();
-    partial void OnCurrentUserIdChanging(int value);
-    partial void OnCurrentUserIdChanged();
-    partial void OnCurrentVersionChanging(string value);
-    partial void OnCurrentVersionChanged();
-    partial void OnCurrentDeveloperChanging(string value);
-    partial void OnCurrentDeveloperChanged();
-    partial void OnCurrentSupportChanging(string value);
-    partial void OnCurrentSupportChanged();
-    partial void OnCurrentPeriodIdChanging(int value);
-    partial void OnCurrentPeriodIdChanged();
-    partial void OnTerminalIdChanging(int value);
-    partial void OnTerminalIdChanged();
-    partial void OnWalkinCustomerIdChanging(int value);
-    partial void OnWalkinCustomerIdChanged();
-    partial void OnDefaultDiscountIdChanging(int value);
-    partial void OnDefaultDiscountIdChanged();
-    partial void OnReturnSupplierIdChanging(int value);
-    partial void OnReturnSupplierIdChanged();
-    partial void OnWithCustomerDisplayChanging(bool value);
-    partial void OnWithCustomerDisplayChanged();
-    partial void OnCustomerDisplayRightChanging(int value);
-    partial void OnCustomerDisplayRightChanged();
-    partial void OnCustomerDisplayDownChanging(int value);
-    partial void OnCustomerDisplayDownChanged();
-    partial void OnCustomerDisplayWidthChanging(int value);
-    partial void OnCustomerDisplayWidthChanged();
-    partial void OnCustomerDisplayHeightChanging(int value);
-    partial void OnCustomerDisplayHeightChanged();
-    partial void OnStorageNoChanging(string value);
-    partial void OnStorageNoChanged();
-    partial void OnIsLockedChanging(bool value);
-    partial void OnIsLockedChanged();
-    partial void OnMCIAA_TypeChanging(string value);
-    partial void OnMCIAA_TypeChanged();
-    partial void OnMCIAA_CompanyIdChanging(string value);
-    partial void OnMCIAA_CompanyIdChanged();
-    partial void OnMCIAA_CompanyNameChanging(string value);
-    partial void OnMCIAA_CompanyNameChanged();
-    partial void OnMCIAA_ActivateChanging(bool value);
-    partial void OnMCIAA_ActivateChanged();
-    partial void OnRLC_TenantIdChanging(string value);
-    partial void OnRLC_TenantIdChanged();
-    partial void OnALI_TenantIdChanging(string value);
-    partial void OnALI_TenantIdChanged();
-    partial void OnIsLedDispayChanging(bool value);
-    partial void OnIsLedDispayChanged();
-    partial void OnLedDisplayPortNoChanging(decimal value);
-    partial void OnLedDisplayPortNoChanged();
-    partial void OnLedDisplayPortSettingsChanging(string value);
-    partial void OnLedDisplayPortSettingsChanged();
-    partial void OnShowCollectedTabChanging(bool value);
-    partial void OnShowCollectedTabChanged();
-    partial void OnDefaultRestaurantViewChanging(string value);
-    partial void OnDefaultRestaurantViewChanged();
-    partial void OnSIWithVATAnalysisChanging(bool value);
-    partial void OnSIWithVATAnalysisChanged();
-    partial void OnORWithVATAnalysisChanging(bool value);
-    partial void OnORWithVATAnalysisChanged();
-    partial void OnORPrintTitleChanging(string value);
-    partial void OnORPrintTitleChanged();
-    partial void OnAllowNegativeInventoryChanging(bool value);
-    partial void OnAllowNegativeInventoryChanged();
-    partial void OnEjectOnPrintChanging(bool value);
-    partial void OnEjectOnPrintChanged();
-    partial void OnCloudAutoCreateFileChanging(bool value);
-    partial void OnCloudAutoCreateFileChanged();
-    partial void OnCloudBranchCodeChanging(string value);
-    partial void OnCloudBranchCodeChanged();
-    partial void OnCloudPurchaseOrderFilePathChanging(string value);
-    partial void OnCloudPurchaseOrderFilePathChanged();
-    partial void OnCloudStockInFilePathChanging(string value);
-    partial void OnCloudStockInFilePathChanged();
-    partial void OnCloudStockOutFilePathChanging(string value);
-    partial void OnCloudStockOutFilePathChanged();
-    partial void OnCloudStockCountFilePathChanging(string value);
-    partial void OnCloudStockCountFilePathChanged();
-    partial void OnCloudSalesInvoiceFilePathChanging(string value);
-    partial void OnCloudSalesInvoiceFilePathChanged();
-    partial void OnCloudDisbursementFilePathChanging(string value);
-    partial void OnCloudDisbursementFilePathChanged();
-    partial void OnCloudCollectionFilePathChanging(string value);
-    partial void OnCloudCollectionFilePathChanged();
-    partial void OnPartialPrintChanging(bool value);
-    partial void OnPartialPrintChanged();
-    partial void OnSMBranchCodeChanging(string value);
-    partial void OnSMBranchCodeChanged();
-    partial void OnSMtenantCodeChanging(string value);
-    partial void OnSMtenantCodeChanged();
-    partial void OnSMClassCodeChanging(string value);
-    partial void OnSMClassCodeChanged();
-    partial void OnSMTradeCodeChanging(string value);
-    partial void OnSMTradeCodeChanged();
-    partial void OnSMStoreNumberChanging(string value);
-    partial void OnSMStoreNumberChanged();
-    partial void OnSMSaleTypeChanging(string value);
-    partial void OnSMSaleTypeChanged();
-    partial void OnSMPOSMachineNumberChanging(string value);
-    partial void OnSMPOSMachineNumberChanged();
-    partial void OnSMPOSSerialNumberChanging(string value);
-    partial void OnSMPOSSerialNumberChanged();
-    partial void OnSMCoinDirectoryChanging(string value);
-    partial void OnSMCoinDirectoryChanged();
-    partial void OnDisableRealTimeInventoryChanging(bool value);
-    partial void OnDisableRealTimeInventoryChanged();
-    partial void OnEnableComponentEditingChanging(bool value);
-    partial void OnEnableComponentEditingChanged();
-    partial void OnIsLoginDateChanging(bool value);
-    partial void OnIsLoginDateChanged();
-    partial void OnLoginDateChanging(string value);
-    partial void OnLoginDateChanged();
-    partial void OnExcludeZeroAmountChanging(bool value);
-    partial void OnExcludeZeroAmountChanged();
-    partial void OnPrintTransferTableChanging(bool value);
-    partial void OnPrintTransferTableChanged();
-    partial void OnQuickInventoryChanging(bool value);
-    partial void OnQuickInventoryChanged();
-    partial void OnStarStallCodeChanging(string value);
-    partial void OnStarStallCodeChanged();
-    partial void OnStarFilePathChanging(string value);
-    partial void OnStarFilePathChanged();
-    partial void OnStarSalesDepartmentChanging(string value);
-    partial void OnStarSalesDepartmentChanged();
-    partial void OnPriceEditChanging(bool value);
-    partial void OnPriceEditChanged();
-    partial void OnALI_LeaseNoChanging(string value);
-    partial void OnALI_LeaseNoChanged();
-    partial void OnKitchen4ReportChanging(string value);
-    partial void OnKitchen4ReportChanged();
-    partial void OnKitchen4ReportNoOfCopiesChanging(decimal value);
-    partial void OnKitchen4ReportNoOfCopiesChanged();
-    partial void OnKitchen5ReportChanging(string value);
-    partial void OnKitchen5ReportChanged();
-    partial void OnKitchen5ReportNoOfCopiesChanging(decimal value);
-    partial void OnKitchen5ReportNoOfCopiesChanged();
-    partial void OnKitchen6ReportChanging(string value);
-    partial void OnKitchen6ReportChanged();
-    partial void OnKitchen6ReportNoOfCopiesChanging(decimal value);
-    partial void OnKitchen6ReportNoOfCopiesChanged();
-    partial void OnKitchen7ReportChanging(string value);
-    partial void OnKitchen7ReportChanged();
-    partial void OnKitchen7ReportNoOfCopiesChanging(decimal value);
-    partial void OnKitchen7ReportNoOfCopiesChanged();
-    partial void OnKitchen8ReportChanging(string value);
-    partial void OnKitchen8ReportChanged();
-    partial void OnKitchen8ReportNoOfCopiesChanging(decimal value);
-    partial void OnKitchen8ReportNoOfCopiesChanged();
-    partial void OnKitchen9ReportChanging(string value);
-    partial void OnKitchen9ReportChanged();
-    partial void OnKitchen9ReportNoOfCopiesChanging(decimal value);
-    partial void OnKitchen9ReportNoOfCopiesChanged();
-    partial void OnEnableTriggerQuantityChanging(bool value);
-    partial void OnEnableTriggerQuantityChanged();
-    partial void OnRLC_ServerIpChanging(string value);
-    partial void OnRLC_ServerIpChanged();
-    partial void OnTriggerTimeChanging(System.DateTime value);
-    partial void OnTriggerTimeChanged();
-    #endregion
-		
-		public SysCurrent()
-		{
-			this._MstCustomer = default(EntityRef<MstCustomer>);
-			this._MstDiscount = default(EntityRef<MstDiscount>);
-			this._MstPeriod = default(EntityRef<MstPeriod>);
-			this._MstSupplier = default(EntityRef<MstSupplier>);
-			this._MstTerminal = default(EntityRef<MstTerminal>);
-			this._MstUser = default(EntityRef<MstUser>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string CompanyName
-		{
-			get
-			{
-				return this._CompanyName;
-			}
-			set
-			{
-				if ((this._CompanyName != value))
-				{
-					this.OnCompanyNameChanging(value);
-					this.SendPropertyChanging();
-					this._CompanyName = value;
-					this.SendPropertyChanged("CompanyName");
-					this.OnCompanyNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this.OnAddressChanging(value);
-					this.SendPropertyChanging();
-					this._Address = value;
-					this.SendPropertyChanged("Address");
-					this.OnAddressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OperatedBy", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string OperatedBy
-		{
-			get
-			{
-				return this._OperatedBy;
-			}
-			set
-			{
-				if ((this._OperatedBy != value))
-				{
-					this.OnOperatedByChanging(value);
-					this.SendPropertyChanging();
-					this._OperatedBy = value;
-					this.SendPropertyChanged("OperatedBy");
-					this.OnOperatedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactNo", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string ContactNo
-		{
-			get
-			{
-				return this._ContactNo;
-			}
-			set
-			{
-				if ((this._ContactNo != value))
-				{
-					this.OnContactNoChanging(value);
-					this.SendPropertyChanging();
-					this._ContactNo = value;
-					this.SendPropertyChanged("ContactNo");
-					this.OnContactNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FaxNo", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string FaxNo
-		{
-			get
-			{
-				return this._FaxNo;
-			}
-			set
-			{
-				if ((this._FaxNo != value))
-				{
-					this.OnFaxNoChanging(value);
-					this.SendPropertyChanging();
-					this._FaxNo = value;
-					this.SendPropertyChanged("FaxNo");
-					this.OnFaxNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TIN", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string TIN
-		{
-			get
-			{
-				return this._TIN;
-			}
-			set
-			{
-				if ((this._TIN != value))
-				{
-					this.OnTINChanging(value);
-					this.SendPropertyChanging();
-					this._TIN = value;
-					this.SendPropertyChanged("TIN");
-					this.OnTINChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailAddress", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string EmailAddress
-		{
-			get
-			{
-				return this._EmailAddress;
-			}
-			set
-			{
-				if ((this._EmailAddress != value))
-				{
-					this.OnEmailAddressChanging(value);
-					this.SendPropertyChanging();
-					this._EmailAddress = value;
-					this.SendPropertyChanged("EmailAddress");
-					this.OnEmailAddressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccreditationNo", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string AccreditationNo
-		{
-			get
-			{
-				return this._AccreditationNo;
-			}
-			set
-			{
-				if ((this._AccreditationNo != value))
-				{
-					this.OnAccreditationNoChanging(value);
-					this.SendPropertyChanging();
-					this._AccreditationNo = value;
-					this.SendPropertyChanged("AccreditationNo");
-					this.OnAccreditationNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SerialNo", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string SerialNo
-		{
-			get
-			{
-				return this._SerialNo;
-			}
-			set
-			{
-				if ((this._SerialNo != value))
-				{
-					this.OnSerialNoChanging(value);
-					this.SendPropertyChanging();
-					this._SerialNo = value;
-					this.SendPropertyChanged("SerialNo");
-					this.OnSerialNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermitNo", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string PermitNo
-		{
-			get
-			{
-				return this._PermitNo;
-			}
-			set
-			{
-				if ((this._PermitNo != value))
-				{
-					this.OnPermitNoChanging(value);
-					this.SendPropertyChanging();
-					this._PermitNo = value;
-					this.SendPropertyChanged("PermitNo");
-					this.OnPermitNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MachineNo", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string MachineNo
-		{
-			get
-			{
-				return this._MachineNo;
-			}
-			set
-			{
-				if ((this._MachineNo != value))
-				{
-					this.OnMachineNoChanging(value);
-					this.SendPropertyChanging();
-					this._MachineNo = value;
-					this.SendPropertyChanged("MachineNo");
-					this.OnMachineNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeclareRate", DbType="Decimal(18,5) NOT NULL")]
-		public decimal DeclareRate
-		{
-			get
-			{
-				return this._DeclareRate;
-			}
-			set
-			{
-				if ((this._DeclareRate != value))
-				{
-					this.OnDeclareRateChanging(value);
-					this.SendPropertyChanging();
-					this._DeclareRate = value;
-					this.SendPropertyChanged("DeclareRate");
-					this.OnDeclareRateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReceiptFooter", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
-		public string ReceiptFooter
-		{
-			get
-			{
-				return this._ReceiptFooter;
-			}
-			set
-			{
-				if ((this._ReceiptFooter != value))
-				{
-					this.OnReceiptFooterChanging(value);
-					this.SendPropertyChanging();
-					this._ReceiptFooter = value;
-					this.SendPropertyChanged("ReceiptFooter");
-					this.OnReceiptFooterChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceFooter", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
-		public string InvoiceFooter
-		{
-			get
-			{
-				return this._InvoiceFooter;
-			}
-			set
-			{
-				if ((this._InvoiceFooter != value))
-				{
-					this.OnInvoiceFooterChanging(value);
-					this.SendPropertyChanging();
-					this._InvoiceFooter = value;
-					this.SendPropertyChanged("InvoiceFooter");
-					this.OnInvoiceFooterChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LicenseCode", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string LicenseCode
-		{
-			get
-			{
-				return this._LicenseCode;
-			}
-			set
-			{
-				if ((this._LicenseCode != value))
-				{
-					this.OnLicenseCodeChanging(value);
-					this.SendPropertyChanging();
-					this._LicenseCode = value;
-					this.SendPropertyChanged("LicenseCode");
-					this.OnLicenseCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenantOf", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string TenantOf
-		{
-			get
-			{
-				return this._TenantOf;
-			}
-			set
-			{
-				if ((this._TenantOf != value))
-				{
-					this.OnTenantOfChanging(value);
-					this.SendPropertyChanging();
-					this._TenantOf = value;
-					this.SendPropertyChanged("TenantOf");
-					this.OnTenantOfChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsAliasReport", DbType="Bit NOT NULL")]
-		public bool IsAliasReport
-		{
-			get
-			{
-				return this._IsAliasReport;
-			}
-			set
-			{
-				if ((this._IsAliasReport != value))
-				{
-					this.OnIsAliasReportChanging(value);
-					this.SendPropertyChanging();
-					this._IsAliasReport = value;
-					this.SendPropertyChanged("IsAliasReport");
-					this.OnIsAliasReportChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalesReport", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string SalesReport
-		{
-			get
-			{
-				return this._SalesReport;
-			}
-			set
-			{
-				if ((this._SalesReport != value))
-				{
-					this.OnSalesReportChanging(value);
-					this.SendPropertyChanging();
-					this._SalesReport = value;
-					this.SendPropertyChanged("SalesReport");
-					this.OnSalesReportChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CollectionReport", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string CollectionReport
-		{
-			get
-			{
-				return this._CollectionReport;
-			}
-			set
-			{
-				if ((this._CollectionReport != value))
-				{
-					this.OnCollectionReportChanging(value);
-					this.SendPropertyChanging();
-					this._CollectionReport = value;
-					this.SendPropertyChanged("CollectionReport");
-					this.OnCollectionReportChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReturnReport", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string ReturnReport
-		{
-			get
-			{
-				return this._ReturnReport;
-			}
-			set
-			{
-				if ((this._ReturnReport != value))
-				{
-					this.OnReturnReportChanging(value);
-					this.SendPropertyChanging();
-					this._ReturnReport = value;
-					this.SendPropertyChanged("ReturnReport");
-					this.OnReturnReportChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalesReportNoOfCopies", DbType="Decimal(18,5) NOT NULL")]
-		public decimal SalesReportNoOfCopies
-		{
-			get
-			{
-				return this._SalesReportNoOfCopies;
-			}
-			set
-			{
-				if ((this._SalesReportNoOfCopies != value))
-				{
-					this.OnSalesReportNoOfCopiesChanging(value);
-					this.SendPropertyChanging();
-					this._SalesReportNoOfCopies = value;
-					this.SendPropertyChanged("SalesReportNoOfCopies");
-					this.OnSalesReportNoOfCopiesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CollectionReportNoOfCopies", DbType="Decimal(18,5) NOT NULL")]
-		public decimal CollectionReportNoOfCopies
-		{
-			get
-			{
-				return this._CollectionReportNoOfCopies;
-			}
-			set
-			{
-				if ((this._CollectionReportNoOfCopies != value))
-				{
-					this.OnCollectionReportNoOfCopiesChanging(value);
-					this.SendPropertyChanging();
-					this._CollectionReportNoOfCopies = value;
-					this.SendPropertyChanged("CollectionReportNoOfCopies");
-					this.OnCollectionReportNoOfCopiesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReturnReportNoOfCopies", DbType="Decimal(18,5) NOT NULL")]
-		public decimal ReturnReportNoOfCopies
-		{
-			get
-			{
-				return this._ReturnReportNoOfCopies;
-			}
-			set
-			{
-				if ((this._ReturnReportNoOfCopies != value))
-				{
-					this.OnReturnReportNoOfCopiesChanging(value);
-					this.SendPropertyChanging();
-					this._ReturnReportNoOfCopies = value;
-					this.SendPropertyChanged("ReturnReportNoOfCopies");
-					this.OnReturnReportNoOfCopiesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KitchenReportAutoPrint", DbType="Bit NOT NULL")]
-		public bool KitchenReportAutoPrint
-		{
-			get
-			{
-				return this._KitchenReportAutoPrint;
-			}
-			set
-			{
-				if ((this._KitchenReportAutoPrint != value))
-				{
-					this.OnKitchenReportAutoPrintChanging(value);
-					this.SendPropertyChanging();
-					this._KitchenReportAutoPrint = value;
-					this.SendPropertyChanged("KitchenReportAutoPrint");
-					this.OnKitchenReportAutoPrintChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kitchen1Report", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string Kitchen1Report
-		{
-			get
-			{
-				return this._Kitchen1Report;
-			}
-			set
-			{
-				if ((this._Kitchen1Report != value))
-				{
-					this.OnKitchen1ReportChanging(value);
-					this.SendPropertyChanging();
-					this._Kitchen1Report = value;
-					this.SendPropertyChanged("Kitchen1Report");
-					this.OnKitchen1ReportChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kitchen2Report", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string Kitchen2Report
-		{
-			get
-			{
-				return this._Kitchen2Report;
-			}
-			set
-			{
-				if ((this._Kitchen2Report != value))
-				{
-					this.OnKitchen2ReportChanging(value);
-					this.SendPropertyChanging();
-					this._Kitchen2Report = value;
-					this.SendPropertyChanged("Kitchen2Report");
-					this.OnKitchen2ReportChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kitchen3Report", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string Kitchen3Report
-		{
-			get
-			{
-				return this._Kitchen3Report;
-			}
-			set
-			{
-				if ((this._Kitchen3Report != value))
-				{
-					this.OnKitchen3ReportChanging(value);
-					this.SendPropertyChanging();
-					this._Kitchen3Report = value;
-					this.SendPropertyChanged("Kitchen3Report");
-					this.OnKitchen3ReportChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kitchen1ReportNoOfCopies", DbType="Decimal(18,5) NOT NULL")]
-		public decimal Kitchen1ReportNoOfCopies
-		{
-			get
-			{
-				return this._Kitchen1ReportNoOfCopies;
-			}
-			set
-			{
-				if ((this._Kitchen1ReportNoOfCopies != value))
-				{
-					this.OnKitchen1ReportNoOfCopiesChanging(value);
-					this.SendPropertyChanging();
-					this._Kitchen1ReportNoOfCopies = value;
-					this.SendPropertyChanged("Kitchen1ReportNoOfCopies");
-					this.OnKitchen1ReportNoOfCopiesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kitchen2ReportNoOfCopies", DbType="Decimal(18,5) NOT NULL")]
-		public decimal Kitchen2ReportNoOfCopies
-		{
-			get
-			{
-				return this._Kitchen2ReportNoOfCopies;
-			}
-			set
-			{
-				if ((this._Kitchen2ReportNoOfCopies != value))
-				{
-					this.OnKitchen2ReportNoOfCopiesChanging(value);
-					this.SendPropertyChanging();
-					this._Kitchen2ReportNoOfCopies = value;
-					this.SendPropertyChanged("Kitchen2ReportNoOfCopies");
-					this.OnKitchen2ReportNoOfCopiesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kitchen3ReportNoOfCopies", DbType="Decimal(18,5) NOT NULL")]
-		public decimal Kitchen3ReportNoOfCopies
-		{
-			get
-			{
-				return this._Kitchen3ReportNoOfCopies;
-			}
-			set
-			{
-				if ((this._Kitchen3ReportNoOfCopies != value))
-				{
-					this.OnKitchen3ReportNoOfCopiesChanging(value);
-					this.SendPropertyChanging();
-					this._Kitchen3ReportNoOfCopies = value;
-					this.SendPropertyChanged("Kitchen3ReportNoOfCopies");
-					this.OnKitchen3ReportNoOfCopiesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PromptLoginInSales", DbType="Bit NOT NULL")]
-		public bool PromptLoginInSales
-		{
-			get
-			{
-				return this._PromptLoginInSales;
-			}
-			set
-			{
-				if ((this._PromptLoginInSales != value))
-				{
-					this.OnPromptLoginInSalesChanging(value);
-					this.SendPropertyChanging();
-					this._PromptLoginInSales = value;
-					this.SendPropertyChanged("PromptLoginInSales");
-					this.OnPromptLoginInSalesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentUserId", DbType="Int NOT NULL")]
-		public int CurrentUserId
-		{
-			get
-			{
-				return this._CurrentUserId;
-			}
-			set
-			{
-				if ((this._CurrentUserId != value))
-				{
-					if (this._MstUser.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCurrentUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._CurrentUserId = value;
-					this.SendPropertyChanged("CurrentUserId");
-					this.OnCurrentUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentVersion", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
-		public string CurrentVersion
-		{
-			get
-			{
-				return this._CurrentVersion;
-			}
-			set
-			{
-				if ((this._CurrentVersion != value))
-				{
-					this.OnCurrentVersionChanging(value);
-					this.SendPropertyChanging();
-					this._CurrentVersion = value;
-					this.SendPropertyChanged("CurrentVersion");
-					this.OnCurrentVersionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentDeveloper", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
-		public string CurrentDeveloper
-		{
-			get
-			{
-				return this._CurrentDeveloper;
-			}
-			set
-			{
-				if ((this._CurrentDeveloper != value))
-				{
-					this.OnCurrentDeveloperChanging(value);
-					this.SendPropertyChanging();
-					this._CurrentDeveloper = value;
-					this.SendPropertyChanged("CurrentDeveloper");
-					this.OnCurrentDeveloperChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentSupport", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
-		public string CurrentSupport
-		{
-			get
-			{
-				return this._CurrentSupport;
-			}
-			set
-			{
-				if ((this._CurrentSupport != value))
-				{
-					this.OnCurrentSupportChanging(value);
-					this.SendPropertyChanging();
-					this._CurrentSupport = value;
-					this.SendPropertyChanged("CurrentSupport");
-					this.OnCurrentSupportChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentPeriodId", DbType="Int NOT NULL")]
-		public int CurrentPeriodId
-		{
-			get
-			{
-				return this._CurrentPeriodId;
-			}
-			set
-			{
-				if ((this._CurrentPeriodId != value))
-				{
-					if (this._MstPeriod.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCurrentPeriodIdChanging(value);
-					this.SendPropertyChanging();
-					this._CurrentPeriodId = value;
-					this.SendPropertyChanged("CurrentPeriodId");
-					this.OnCurrentPeriodIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TerminalId", DbType="Int NOT NULL")]
-		public int TerminalId
-		{
-			get
-			{
-				return this._TerminalId;
-			}
-			set
-			{
-				if ((this._TerminalId != value))
-				{
-					if (this._MstTerminal.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnTerminalIdChanging(value);
-					this.SendPropertyChanging();
-					this._TerminalId = value;
-					this.SendPropertyChanged("TerminalId");
-					this.OnTerminalIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WalkinCustomerId", DbType="Int NOT NULL")]
-		public int WalkinCustomerId
-		{
-			get
-			{
-				return this._WalkinCustomerId;
-			}
-			set
-			{
-				if ((this._WalkinCustomerId != value))
-				{
-					if (this._MstCustomer.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnWalkinCustomerIdChanging(value);
-					this.SendPropertyChanging();
-					this._WalkinCustomerId = value;
-					this.SendPropertyChanged("WalkinCustomerId");
-					this.OnWalkinCustomerIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DefaultDiscountId", DbType="Int NOT NULL")]
-		public int DefaultDiscountId
-		{
-			get
-			{
-				return this._DefaultDiscountId;
-			}
-			set
-			{
-				if ((this._DefaultDiscountId != value))
-				{
-					if (this._MstDiscount.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnDefaultDiscountIdChanging(value);
-					this.SendPropertyChanging();
-					this._DefaultDiscountId = value;
-					this.SendPropertyChanged("DefaultDiscountId");
-					this.OnDefaultDiscountIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReturnSupplierId", DbType="Int NOT NULL")]
-		public int ReturnSupplierId
-		{
-			get
-			{
-				return this._ReturnSupplierId;
-			}
-			set
-			{
-				if ((this._ReturnSupplierId != value))
-				{
-					if (this._MstSupplier.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnReturnSupplierIdChanging(value);
-					this.SendPropertyChanging();
-					this._ReturnSupplierId = value;
-					this.SendPropertyChanged("ReturnSupplierId");
-					this.OnReturnSupplierIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WithCustomerDisplay", DbType="Bit NOT NULL")]
-		public bool WithCustomerDisplay
-		{
-			get
-			{
-				return this._WithCustomerDisplay;
-			}
-			set
-			{
-				if ((this._WithCustomerDisplay != value))
-				{
-					this.OnWithCustomerDisplayChanging(value);
-					this.SendPropertyChanging();
-					this._WithCustomerDisplay = value;
-					this.SendPropertyChanged("WithCustomerDisplay");
-					this.OnWithCustomerDisplayChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerDisplayRight", DbType="Int NOT NULL")]
-		public int CustomerDisplayRight
-		{
-			get
-			{
-				return this._CustomerDisplayRight;
-			}
-			set
-			{
-				if ((this._CustomerDisplayRight != value))
-				{
-					this.OnCustomerDisplayRightChanging(value);
-					this.SendPropertyChanging();
-					this._CustomerDisplayRight = value;
-					this.SendPropertyChanged("CustomerDisplayRight");
-					this.OnCustomerDisplayRightChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerDisplayDown", DbType="Int NOT NULL")]
-		public int CustomerDisplayDown
-		{
-			get
-			{
-				return this._CustomerDisplayDown;
-			}
-			set
-			{
-				if ((this._CustomerDisplayDown != value))
-				{
-					this.OnCustomerDisplayDownChanging(value);
-					this.SendPropertyChanging();
-					this._CustomerDisplayDown = value;
-					this.SendPropertyChanged("CustomerDisplayDown");
-					this.OnCustomerDisplayDownChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerDisplayWidth", DbType="Int NOT NULL")]
-		public int CustomerDisplayWidth
-		{
-			get
-			{
-				return this._CustomerDisplayWidth;
-			}
-			set
-			{
-				if ((this._CustomerDisplayWidth != value))
-				{
-					this.OnCustomerDisplayWidthChanging(value);
-					this.SendPropertyChanging();
-					this._CustomerDisplayWidth = value;
-					this.SendPropertyChanged("CustomerDisplayWidth");
-					this.OnCustomerDisplayWidthChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerDisplayHeight", DbType="Int NOT NULL")]
-		public int CustomerDisplayHeight
-		{
-			get
-			{
-				return this._CustomerDisplayHeight;
-			}
-			set
-			{
-				if ((this._CustomerDisplayHeight != value))
-				{
-					this.OnCustomerDisplayHeightChanging(value);
-					this.SendPropertyChanging();
-					this._CustomerDisplayHeight = value;
-					this.SendPropertyChanged("CustomerDisplayHeight");
-					this.OnCustomerDisplayHeightChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StorageNo", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string StorageNo
-		{
-			get
-			{
-				return this._StorageNo;
-			}
-			set
-			{
-				if ((this._StorageNo != value))
-				{
-					this.OnStorageNoChanging(value);
-					this.SendPropertyChanging();
-					this._StorageNo = value;
-					this.SendPropertyChanged("StorageNo");
-					this.OnStorageNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsLocked", DbType="Bit NOT NULL")]
-		public bool IsLocked
-		{
-			get
-			{
-				return this._IsLocked;
-			}
-			set
-			{
-				if ((this._IsLocked != value))
-				{
-					this.OnIsLockedChanging(value);
-					this.SendPropertyChanging();
-					this._IsLocked = value;
-					this.SendPropertyChanged("IsLocked");
-					this.OnIsLockedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MCIAA_Type", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string MCIAA_Type
-		{
-			get
-			{
-				return this._MCIAA_Type;
-			}
-			set
-			{
-				if ((this._MCIAA_Type != value))
-				{
-					this.OnMCIAA_TypeChanging(value);
-					this.SendPropertyChanging();
-					this._MCIAA_Type = value;
-					this.SendPropertyChanged("MCIAA_Type");
-					this.OnMCIAA_TypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MCIAA_CompanyId", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string MCIAA_CompanyId
-		{
-			get
-			{
-				return this._MCIAA_CompanyId;
-			}
-			set
-			{
-				if ((this._MCIAA_CompanyId != value))
-				{
-					this.OnMCIAA_CompanyIdChanging(value);
-					this.SendPropertyChanging();
-					this._MCIAA_CompanyId = value;
-					this.SendPropertyChanged("MCIAA_CompanyId");
-					this.OnMCIAA_CompanyIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MCIAA_CompanyName", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string MCIAA_CompanyName
-		{
-			get
-			{
-				return this._MCIAA_CompanyName;
-			}
-			set
-			{
-				if ((this._MCIAA_CompanyName != value))
-				{
-					this.OnMCIAA_CompanyNameChanging(value);
-					this.SendPropertyChanging();
-					this._MCIAA_CompanyName = value;
-					this.SendPropertyChanged("MCIAA_CompanyName");
-					this.OnMCIAA_CompanyNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MCIAA_Activate", DbType="Bit NOT NULL")]
-		public bool MCIAA_Activate
-		{
-			get
-			{
-				return this._MCIAA_Activate;
-			}
-			set
-			{
-				if ((this._MCIAA_Activate != value))
-				{
-					this.OnMCIAA_ActivateChanging(value);
-					this.SendPropertyChanging();
-					this._MCIAA_Activate = value;
-					this.SendPropertyChanged("MCIAA_Activate");
-					this.OnMCIAA_ActivateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RLC_TenantId", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string RLC_TenantId
-		{
-			get
-			{
-				return this._RLC_TenantId;
-			}
-			set
-			{
-				if ((this._RLC_TenantId != value))
-				{
-					this.OnRLC_TenantIdChanging(value);
-					this.SendPropertyChanging();
-					this._RLC_TenantId = value;
-					this.SendPropertyChanged("RLC_TenantId");
-					this.OnRLC_TenantIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ALI_TenantId", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string ALI_TenantId
-		{
-			get
-			{
-				return this._ALI_TenantId;
-			}
-			set
-			{
-				if ((this._ALI_TenantId != value))
-				{
-					this.OnALI_TenantIdChanging(value);
-					this.SendPropertyChanging();
-					this._ALI_TenantId = value;
-					this.SendPropertyChanged("ALI_TenantId");
-					this.OnALI_TenantIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsLedDispay", DbType="Bit NOT NULL")]
-		public bool IsLedDispay
-		{
-			get
-			{
-				return this._IsLedDispay;
-			}
-			set
-			{
-				if ((this._IsLedDispay != value))
-				{
-					this.OnIsLedDispayChanging(value);
-					this.SendPropertyChanging();
-					this._IsLedDispay = value;
-					this.SendPropertyChanged("IsLedDispay");
-					this.OnIsLedDispayChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LedDisplayPortNo", DbType="Decimal(18,5) NOT NULL")]
-		public decimal LedDisplayPortNo
-		{
-			get
-			{
-				return this._LedDisplayPortNo;
-			}
-			set
-			{
-				if ((this._LedDisplayPortNo != value))
-				{
-					this.OnLedDisplayPortNoChanging(value);
-					this.SendPropertyChanging();
-					this._LedDisplayPortNo = value;
-					this.SendPropertyChanged("LedDisplayPortNo");
-					this.OnLedDisplayPortNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LedDisplayPortSettings", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string LedDisplayPortSettings
-		{
-			get
-			{
-				return this._LedDisplayPortSettings;
-			}
-			set
-			{
-				if ((this._LedDisplayPortSettings != value))
-				{
-					this.OnLedDisplayPortSettingsChanging(value);
-					this.SendPropertyChanging();
-					this._LedDisplayPortSettings = value;
-					this.SendPropertyChanged("LedDisplayPortSettings");
-					this.OnLedDisplayPortSettingsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShowCollectedTab", DbType="Bit NOT NULL")]
-		public bool ShowCollectedTab
-		{
-			get
-			{
-				return this._ShowCollectedTab;
-			}
-			set
-			{
-				if ((this._ShowCollectedTab != value))
-				{
-					this.OnShowCollectedTabChanging(value);
-					this.SendPropertyChanging();
-					this._ShowCollectedTab = value;
-					this.SendPropertyChanged("ShowCollectedTab");
-					this.OnShowCollectedTabChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DefaultRestaurantView", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string DefaultRestaurantView
-		{
-			get
-			{
-				return this._DefaultRestaurantView;
-			}
-			set
-			{
-				if ((this._DefaultRestaurantView != value))
-				{
-					this.OnDefaultRestaurantViewChanging(value);
-					this.SendPropertyChanging();
-					this._DefaultRestaurantView = value;
-					this.SendPropertyChanged("DefaultRestaurantView");
-					this.OnDefaultRestaurantViewChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SIWithVATAnalysis", DbType="Bit NOT NULL")]
-		public bool SIWithVATAnalysis
-		{
-			get
-			{
-				return this._SIWithVATAnalysis;
-			}
-			set
-			{
-				if ((this._SIWithVATAnalysis != value))
-				{
-					this.OnSIWithVATAnalysisChanging(value);
-					this.SendPropertyChanging();
-					this._SIWithVATAnalysis = value;
-					this.SendPropertyChanged("SIWithVATAnalysis");
-					this.OnSIWithVATAnalysisChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORWithVATAnalysis", DbType="Bit NOT NULL")]
-		public bool ORWithVATAnalysis
-		{
-			get
-			{
-				return this._ORWithVATAnalysis;
-			}
-			set
-			{
-				if ((this._ORWithVATAnalysis != value))
-				{
-					this.OnORWithVATAnalysisChanging(value);
-					this.SendPropertyChanging();
-					this._ORWithVATAnalysis = value;
-					this.SendPropertyChanged("ORWithVATAnalysis");
-					this.OnORWithVATAnalysisChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ORPrintTitle", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string ORPrintTitle
-		{
-			get
-			{
-				return this._ORPrintTitle;
-			}
-			set
-			{
-				if ((this._ORPrintTitle != value))
-				{
-					this.OnORPrintTitleChanging(value);
-					this.SendPropertyChanging();
-					this._ORPrintTitle = value;
-					this.SendPropertyChanged("ORPrintTitle");
-					this.OnORPrintTitleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AllowNegativeInventory", DbType="Bit NOT NULL")]
-		public bool AllowNegativeInventory
-		{
-			get
-			{
-				return this._AllowNegativeInventory;
-			}
-			set
-			{
-				if ((this._AllowNegativeInventory != value))
-				{
-					this.OnAllowNegativeInventoryChanging(value);
-					this.SendPropertyChanging();
-					this._AllowNegativeInventory = value;
-					this.SendPropertyChanged("AllowNegativeInventory");
-					this.OnAllowNegativeInventoryChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EjectOnPrint", DbType="Bit NOT NULL")]
-		public bool EjectOnPrint
-		{
-			get
-			{
-				return this._EjectOnPrint;
-			}
-			set
-			{
-				if ((this._EjectOnPrint != value))
-				{
-					this.OnEjectOnPrintChanging(value);
-					this.SendPropertyChanging();
-					this._EjectOnPrint = value;
-					this.SendPropertyChanged("EjectOnPrint");
-					this.OnEjectOnPrintChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CloudAutoCreateFile", DbType="Bit NOT NULL")]
-		public bool CloudAutoCreateFile
-		{
-			get
-			{
-				return this._CloudAutoCreateFile;
-			}
-			set
-			{
-				if ((this._CloudAutoCreateFile != value))
-				{
-					this.OnCloudAutoCreateFileChanging(value);
-					this.SendPropertyChanging();
-					this._CloudAutoCreateFile = value;
-					this.SendPropertyChanged("CloudAutoCreateFile");
-					this.OnCloudAutoCreateFileChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CloudBranchCode", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string CloudBranchCode
-		{
-			get
-			{
-				return this._CloudBranchCode;
-			}
-			set
-			{
-				if ((this._CloudBranchCode != value))
-				{
-					this.OnCloudBranchCodeChanging(value);
-					this.SendPropertyChanging();
-					this._CloudBranchCode = value;
-					this.SendPropertyChanged("CloudBranchCode");
-					this.OnCloudBranchCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CloudPurchaseOrderFilePath", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string CloudPurchaseOrderFilePath
-		{
-			get
-			{
-				return this._CloudPurchaseOrderFilePath;
-			}
-			set
-			{
-				if ((this._CloudPurchaseOrderFilePath != value))
-				{
-					this.OnCloudPurchaseOrderFilePathChanging(value);
-					this.SendPropertyChanging();
-					this._CloudPurchaseOrderFilePath = value;
-					this.SendPropertyChanged("CloudPurchaseOrderFilePath");
-					this.OnCloudPurchaseOrderFilePathChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CloudStockInFilePath", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string CloudStockInFilePath
-		{
-			get
-			{
-				return this._CloudStockInFilePath;
-			}
-			set
-			{
-				if ((this._CloudStockInFilePath != value))
-				{
-					this.OnCloudStockInFilePathChanging(value);
-					this.SendPropertyChanging();
-					this._CloudStockInFilePath = value;
-					this.SendPropertyChanged("CloudStockInFilePath");
-					this.OnCloudStockInFilePathChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CloudStockOutFilePath", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string CloudStockOutFilePath
-		{
-			get
-			{
-				return this._CloudStockOutFilePath;
-			}
-			set
-			{
-				if ((this._CloudStockOutFilePath != value))
-				{
-					this.OnCloudStockOutFilePathChanging(value);
-					this.SendPropertyChanging();
-					this._CloudStockOutFilePath = value;
-					this.SendPropertyChanged("CloudStockOutFilePath");
-					this.OnCloudStockOutFilePathChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CloudStockCountFilePath", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string CloudStockCountFilePath
-		{
-			get
-			{
-				return this._CloudStockCountFilePath;
-			}
-			set
-			{
-				if ((this._CloudStockCountFilePath != value))
-				{
-					this.OnCloudStockCountFilePathChanging(value);
-					this.SendPropertyChanging();
-					this._CloudStockCountFilePath = value;
-					this.SendPropertyChanged("CloudStockCountFilePath");
-					this.OnCloudStockCountFilePathChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CloudSalesInvoiceFilePath", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string CloudSalesInvoiceFilePath
-		{
-			get
-			{
-				return this._CloudSalesInvoiceFilePath;
-			}
-			set
-			{
-				if ((this._CloudSalesInvoiceFilePath != value))
-				{
-					this.OnCloudSalesInvoiceFilePathChanging(value);
-					this.SendPropertyChanging();
-					this._CloudSalesInvoiceFilePath = value;
-					this.SendPropertyChanged("CloudSalesInvoiceFilePath");
-					this.OnCloudSalesInvoiceFilePathChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CloudDisbursementFilePath", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string CloudDisbursementFilePath
-		{
-			get
-			{
-				return this._CloudDisbursementFilePath;
-			}
-			set
-			{
-				if ((this._CloudDisbursementFilePath != value))
-				{
-					this.OnCloudDisbursementFilePathChanging(value);
-					this.SendPropertyChanging();
-					this._CloudDisbursementFilePath = value;
-					this.SendPropertyChanged("CloudDisbursementFilePath");
-					this.OnCloudDisbursementFilePathChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CloudCollectionFilePath", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string CloudCollectionFilePath
-		{
-			get
-			{
-				return this._CloudCollectionFilePath;
-			}
-			set
-			{
-				if ((this._CloudCollectionFilePath != value))
-				{
-					this.OnCloudCollectionFilePathChanging(value);
-					this.SendPropertyChanging();
-					this._CloudCollectionFilePath = value;
-					this.SendPropertyChanged("CloudCollectionFilePath");
-					this.OnCloudCollectionFilePathChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PartialPrint", DbType="Bit NOT NULL")]
-		public bool PartialPrint
-		{
-			get
-			{
-				return this._PartialPrint;
-			}
-			set
-			{
-				if ((this._PartialPrint != value))
-				{
-					this.OnPartialPrintChanging(value);
-					this.SendPropertyChanging();
-					this._PartialPrint = value;
-					this.SendPropertyChanged("PartialPrint");
-					this.OnPartialPrintChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMBranchCode", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string SMBranchCode
-		{
-			get
-			{
-				return this._SMBranchCode;
-			}
-			set
-			{
-				if ((this._SMBranchCode != value))
-				{
-					this.OnSMBranchCodeChanging(value);
-					this.SendPropertyChanging();
-					this._SMBranchCode = value;
-					this.SendPropertyChanged("SMBranchCode");
-					this.OnSMBranchCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMtenantCode", DbType="NVarChar(225) NOT NULL", CanBeNull=false)]
-		public string SMtenantCode
-		{
-			get
-			{
-				return this._SMtenantCode;
-			}
-			set
-			{
-				if ((this._SMtenantCode != value))
-				{
-					this.OnSMtenantCodeChanging(value);
-					this.SendPropertyChanging();
-					this._SMtenantCode = value;
-					this.SendPropertyChanged("SMtenantCode");
-					this.OnSMtenantCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMClassCode", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string SMClassCode
-		{
-			get
-			{
-				return this._SMClassCode;
-			}
-			set
-			{
-				if ((this._SMClassCode != value))
-				{
-					this.OnSMClassCodeChanging(value);
-					this.SendPropertyChanging();
-					this._SMClassCode = value;
-					this.SendPropertyChanged("SMClassCode");
-					this.OnSMClassCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMTradeCode", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string SMTradeCode
-		{
-			get
-			{
-				return this._SMTradeCode;
-			}
-			set
-			{
-				if ((this._SMTradeCode != value))
-				{
-					this.OnSMTradeCodeChanging(value);
-					this.SendPropertyChanging();
-					this._SMTradeCode = value;
-					this.SendPropertyChanged("SMTradeCode");
-					this.OnSMTradeCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMStoreNumber", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string SMStoreNumber
-		{
-			get
-			{
-				return this._SMStoreNumber;
-			}
-			set
-			{
-				if ((this._SMStoreNumber != value))
-				{
-					this.OnSMStoreNumberChanging(value);
-					this.SendPropertyChanging();
-					this._SMStoreNumber = value;
-					this.SendPropertyChanged("SMStoreNumber");
-					this.OnSMStoreNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMSaleType", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string SMSaleType
-		{
-			get
-			{
-				return this._SMSaleType;
-			}
-			set
-			{
-				if ((this._SMSaleType != value))
-				{
-					this.OnSMSaleTypeChanging(value);
-					this.SendPropertyChanging();
-					this._SMSaleType = value;
-					this.SendPropertyChanged("SMSaleType");
-					this.OnSMSaleTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMPOSMachineNumber", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string SMPOSMachineNumber
-		{
-			get
-			{
-				return this._SMPOSMachineNumber;
-			}
-			set
-			{
-				if ((this._SMPOSMachineNumber != value))
-				{
-					this.OnSMPOSMachineNumberChanging(value);
-					this.SendPropertyChanging();
-					this._SMPOSMachineNumber = value;
-					this.SendPropertyChanged("SMPOSMachineNumber");
-					this.OnSMPOSMachineNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMPOSSerialNumber", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string SMPOSSerialNumber
-		{
-			get
-			{
-				return this._SMPOSSerialNumber;
-			}
-			set
-			{
-				if ((this._SMPOSSerialNumber != value))
-				{
-					this.OnSMPOSSerialNumberChanging(value);
-					this.SendPropertyChanging();
-					this._SMPOSSerialNumber = value;
-					this.SendPropertyChanged("SMPOSSerialNumber");
-					this.OnSMPOSSerialNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMCoinDirectory", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string SMCoinDirectory
-		{
-			get
-			{
-				return this._SMCoinDirectory;
-			}
-			set
-			{
-				if ((this._SMCoinDirectory != value))
-				{
-					this.OnSMCoinDirectoryChanging(value);
-					this.SendPropertyChanging();
-					this._SMCoinDirectory = value;
-					this.SendPropertyChanged("SMCoinDirectory");
-					this.OnSMCoinDirectoryChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DisableRealTimeInventory", DbType="Bit NOT NULL")]
-		public bool DisableRealTimeInventory
-		{
-			get
-			{
-				return this._DisableRealTimeInventory;
-			}
-			set
-			{
-				if ((this._DisableRealTimeInventory != value))
-				{
-					this.OnDisableRealTimeInventoryChanging(value);
-					this.SendPropertyChanging();
-					this._DisableRealTimeInventory = value;
-					this.SendPropertyChanged("DisableRealTimeInventory");
-					this.OnDisableRealTimeInventoryChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EnableComponentEditing", DbType="Bit NOT NULL")]
-		public bool EnableComponentEditing
-		{
-			get
-			{
-				return this._EnableComponentEditing;
-			}
-			set
-			{
-				if ((this._EnableComponentEditing != value))
-				{
-					this.OnEnableComponentEditingChanging(value);
-					this.SendPropertyChanging();
-					this._EnableComponentEditing = value;
-					this.SendPropertyChanged("EnableComponentEditing");
-					this.OnEnableComponentEditingChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsLoginDate", DbType="Bit NOT NULL")]
-		public bool IsLoginDate
-		{
-			get
-			{
-				return this._IsLoginDate;
-			}
-			set
-			{
-				if ((this._IsLoginDate != value))
-				{
-					this.OnIsLoginDateChanging(value);
-					this.SendPropertyChanging();
-					this._IsLoginDate = value;
-					this.SendPropertyChanged("IsLoginDate");
-					this.OnIsLoginDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoginDate", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string LoginDate
-		{
-			get
-			{
-				return this._LoginDate;
-			}
-			set
-			{
-				if ((this._LoginDate != value))
-				{
-					this.OnLoginDateChanging(value);
-					this.SendPropertyChanging();
-					this._LoginDate = value;
-					this.SendPropertyChanged("LoginDate");
-					this.OnLoginDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExcludeZeroAmount", DbType="Bit NOT NULL")]
-		public bool ExcludeZeroAmount
-		{
-			get
-			{
-				return this._ExcludeZeroAmount;
-			}
-			set
-			{
-				if ((this._ExcludeZeroAmount != value))
-				{
-					this.OnExcludeZeroAmountChanging(value);
-					this.SendPropertyChanging();
-					this._ExcludeZeroAmount = value;
-					this.SendPropertyChanged("ExcludeZeroAmount");
-					this.OnExcludeZeroAmountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PrintTransferTable", DbType="Bit NOT NULL")]
-		public bool PrintTransferTable
-		{
-			get
-			{
-				return this._PrintTransferTable;
-			}
-			set
-			{
-				if ((this._PrintTransferTable != value))
-				{
-					this.OnPrintTransferTableChanging(value);
-					this.SendPropertyChanging();
-					this._PrintTransferTable = value;
-					this.SendPropertyChanged("PrintTransferTable");
-					this.OnPrintTransferTableChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuickInventory", DbType="Bit NOT NULL")]
-		public bool QuickInventory
-		{
-			get
-			{
-				return this._QuickInventory;
-			}
-			set
-			{
-				if ((this._QuickInventory != value))
-				{
-					this.OnQuickInventoryChanging(value);
-					this.SendPropertyChanging();
-					this._QuickInventory = value;
-					this.SendPropertyChanged("QuickInventory");
-					this.OnQuickInventoryChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StarStallCode", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string StarStallCode
-		{
-			get
-			{
-				return this._StarStallCode;
-			}
-			set
-			{
-				if ((this._StarStallCode != value))
-				{
-					this.OnStarStallCodeChanging(value);
-					this.SendPropertyChanging();
-					this._StarStallCode = value;
-					this.SendPropertyChanged("StarStallCode");
-					this.OnStarStallCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StarFilePath", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string StarFilePath
-		{
-			get
-			{
-				return this._StarFilePath;
-			}
-			set
-			{
-				if ((this._StarFilePath != value))
-				{
-					this.OnStarFilePathChanging(value);
-					this.SendPropertyChanging();
-					this._StarFilePath = value;
-					this.SendPropertyChanged("StarFilePath");
-					this.OnStarFilePathChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StarSalesDepartment", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string StarSalesDepartment
-		{
-			get
-			{
-				return this._StarSalesDepartment;
-			}
-			set
-			{
-				if ((this._StarSalesDepartment != value))
-				{
-					this.OnStarSalesDepartmentChanging(value);
-					this.SendPropertyChanging();
-					this._StarSalesDepartment = value;
-					this.SendPropertyChanged("StarSalesDepartment");
-					this.OnStarSalesDepartmentChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriceEdit", DbType="Bit NOT NULL")]
-		public bool PriceEdit
-		{
-			get
-			{
-				return this._PriceEdit;
-			}
-			set
-			{
-				if ((this._PriceEdit != value))
-				{
-					this.OnPriceEditChanging(value);
-					this.SendPropertyChanging();
-					this._PriceEdit = value;
-					this.SendPropertyChanged("PriceEdit");
-					this.OnPriceEditChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ALI_LeaseNo", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string ALI_LeaseNo
-		{
-			get
-			{
-				return this._ALI_LeaseNo;
-			}
-			set
-			{
-				if ((this._ALI_LeaseNo != value))
-				{
-					this.OnALI_LeaseNoChanging(value);
-					this.SendPropertyChanging();
-					this._ALI_LeaseNo = value;
-					this.SendPropertyChanged("ALI_LeaseNo");
-					this.OnALI_LeaseNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kitchen4Report", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string Kitchen4Report
-		{
-			get
-			{
-				return this._Kitchen4Report;
-			}
-			set
-			{
-				if ((this._Kitchen4Report != value))
-				{
-					this.OnKitchen4ReportChanging(value);
-					this.SendPropertyChanging();
-					this._Kitchen4Report = value;
-					this.SendPropertyChanged("Kitchen4Report");
-					this.OnKitchen4ReportChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kitchen4ReportNoOfCopies", DbType="Decimal(18,5) NOT NULL")]
-		public decimal Kitchen4ReportNoOfCopies
-		{
-			get
-			{
-				return this._Kitchen4ReportNoOfCopies;
-			}
-			set
-			{
-				if ((this._Kitchen4ReportNoOfCopies != value))
-				{
-					this.OnKitchen4ReportNoOfCopiesChanging(value);
-					this.SendPropertyChanging();
-					this._Kitchen4ReportNoOfCopies = value;
-					this.SendPropertyChanged("Kitchen4ReportNoOfCopies");
-					this.OnKitchen4ReportNoOfCopiesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kitchen5Report", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string Kitchen5Report
-		{
-			get
-			{
-				return this._Kitchen5Report;
-			}
-			set
-			{
-				if ((this._Kitchen5Report != value))
-				{
-					this.OnKitchen5ReportChanging(value);
-					this.SendPropertyChanging();
-					this._Kitchen5Report = value;
-					this.SendPropertyChanged("Kitchen5Report");
-					this.OnKitchen5ReportChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kitchen5ReportNoOfCopies", DbType="Decimal(18,5) NOT NULL")]
-		public decimal Kitchen5ReportNoOfCopies
-		{
-			get
-			{
-				return this._Kitchen5ReportNoOfCopies;
-			}
-			set
-			{
-				if ((this._Kitchen5ReportNoOfCopies != value))
-				{
-					this.OnKitchen5ReportNoOfCopiesChanging(value);
-					this.SendPropertyChanging();
-					this._Kitchen5ReportNoOfCopies = value;
-					this.SendPropertyChanged("Kitchen5ReportNoOfCopies");
-					this.OnKitchen5ReportNoOfCopiesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kitchen6Report", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string Kitchen6Report
-		{
-			get
-			{
-				return this._Kitchen6Report;
-			}
-			set
-			{
-				if ((this._Kitchen6Report != value))
-				{
-					this.OnKitchen6ReportChanging(value);
-					this.SendPropertyChanging();
-					this._Kitchen6Report = value;
-					this.SendPropertyChanged("Kitchen6Report");
-					this.OnKitchen6ReportChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kitchen6ReportNoOfCopies", DbType="Decimal(18,5) NOT NULL")]
-		public decimal Kitchen6ReportNoOfCopies
-		{
-			get
-			{
-				return this._Kitchen6ReportNoOfCopies;
-			}
-			set
-			{
-				if ((this._Kitchen6ReportNoOfCopies != value))
-				{
-					this.OnKitchen6ReportNoOfCopiesChanging(value);
-					this.SendPropertyChanging();
-					this._Kitchen6ReportNoOfCopies = value;
-					this.SendPropertyChanged("Kitchen6ReportNoOfCopies");
-					this.OnKitchen6ReportNoOfCopiesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kitchen7Report", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string Kitchen7Report
-		{
-			get
-			{
-				return this._Kitchen7Report;
-			}
-			set
-			{
-				if ((this._Kitchen7Report != value))
-				{
-					this.OnKitchen7ReportChanging(value);
-					this.SendPropertyChanging();
-					this._Kitchen7Report = value;
-					this.SendPropertyChanged("Kitchen7Report");
-					this.OnKitchen7ReportChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kitchen7ReportNoOfCopies", DbType="Decimal(18,5) NOT NULL")]
-		public decimal Kitchen7ReportNoOfCopies
-		{
-			get
-			{
-				return this._Kitchen7ReportNoOfCopies;
-			}
-			set
-			{
-				if ((this._Kitchen7ReportNoOfCopies != value))
-				{
-					this.OnKitchen7ReportNoOfCopiesChanging(value);
-					this.SendPropertyChanging();
-					this._Kitchen7ReportNoOfCopies = value;
-					this.SendPropertyChanged("Kitchen7ReportNoOfCopies");
-					this.OnKitchen7ReportNoOfCopiesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kitchen8Report", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string Kitchen8Report
-		{
-			get
-			{
-				return this._Kitchen8Report;
-			}
-			set
-			{
-				if ((this._Kitchen8Report != value))
-				{
-					this.OnKitchen8ReportChanging(value);
-					this.SendPropertyChanging();
-					this._Kitchen8Report = value;
-					this.SendPropertyChanged("Kitchen8Report");
-					this.OnKitchen8ReportChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kitchen8ReportNoOfCopies", DbType="Decimal(18,5) NOT NULL")]
-		public decimal Kitchen8ReportNoOfCopies
-		{
-			get
-			{
-				return this._Kitchen8ReportNoOfCopies;
-			}
-			set
-			{
-				if ((this._Kitchen8ReportNoOfCopies != value))
-				{
-					this.OnKitchen8ReportNoOfCopiesChanging(value);
-					this.SendPropertyChanging();
-					this._Kitchen8ReportNoOfCopies = value;
-					this.SendPropertyChanged("Kitchen8ReportNoOfCopies");
-					this.OnKitchen8ReportNoOfCopiesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kitchen9Report", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string Kitchen9Report
-		{
-			get
-			{
-				return this._Kitchen9Report;
-			}
-			set
-			{
-				if ((this._Kitchen9Report != value))
-				{
-					this.OnKitchen9ReportChanging(value);
-					this.SendPropertyChanging();
-					this._Kitchen9Report = value;
-					this.SendPropertyChanged("Kitchen9Report");
-					this.OnKitchen9ReportChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kitchen9ReportNoOfCopies", DbType="Decimal(18,5) NOT NULL")]
-		public decimal Kitchen9ReportNoOfCopies
-		{
-			get
-			{
-				return this._Kitchen9ReportNoOfCopies;
-			}
-			set
-			{
-				if ((this._Kitchen9ReportNoOfCopies != value))
-				{
-					this.OnKitchen9ReportNoOfCopiesChanging(value);
-					this.SendPropertyChanging();
-					this._Kitchen9ReportNoOfCopies = value;
-					this.SendPropertyChanged("Kitchen9ReportNoOfCopies");
-					this.OnKitchen9ReportNoOfCopiesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EnableTriggerQuantity", DbType="Bit NOT NULL")]
-		public bool EnableTriggerQuantity
-		{
-			get
-			{
-				return this._EnableTriggerQuantity;
-			}
-			set
-			{
-				if ((this._EnableTriggerQuantity != value))
-				{
-					this.OnEnableTriggerQuantityChanging(value);
-					this.SendPropertyChanging();
-					this._EnableTriggerQuantity = value;
-					this.SendPropertyChanged("EnableTriggerQuantity");
-					this.OnEnableTriggerQuantityChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RLC_ServerIp", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string RLC_ServerIp
-		{
-			get
-			{
-				return this._RLC_ServerIp;
-			}
-			set
-			{
-				if ((this._RLC_ServerIp != value))
-				{
-					this.OnRLC_ServerIpChanging(value);
-					this.SendPropertyChanging();
-					this._RLC_ServerIp = value;
-					this.SendPropertyChanged("RLC_ServerIp");
-					this.OnRLC_ServerIpChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TriggerTime", DbType="DateTime NOT NULL")]
-		public System.DateTime TriggerTime
-		{
-			get
-			{
-				return this._TriggerTime;
-			}
-			set
-			{
-				if ((this._TriggerTime != value))
-				{
-					this.OnTriggerTimeChanging(value);
-					this.SendPropertyChanging();
-					this._TriggerTime = value;
-					this.SendPropertyChanged("TriggerTime");
-					this.OnTriggerTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstCustomer_SysCurrent", Storage="_MstCustomer", ThisKey="WalkinCustomerId", OtherKey="Id", IsForeignKey=true)]
-		public MstCustomer MstCustomer
-		{
-			get
-			{
-				return this._MstCustomer.Entity;
-			}
-			set
-			{
-				MstCustomer previousValue = this._MstCustomer.Entity;
-				if (((previousValue != value) 
-							|| (this._MstCustomer.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._MstCustomer.Entity = null;
-						previousValue.SysCurrents.Remove(this);
-					}
-					this._MstCustomer.Entity = value;
-					if ((value != null))
-					{
-						value.SysCurrents.Add(this);
-						this._WalkinCustomerId = value.Id;
-					}
-					else
-					{
-						this._WalkinCustomerId = default(int);
-					}
-					this.SendPropertyChanged("MstCustomer");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstDiscount_SysCurrent", Storage="_MstDiscount", ThisKey="DefaultDiscountId", OtherKey="Id", IsForeignKey=true)]
-		public MstDiscount MstDiscount
-		{
-			get
-			{
-				return this._MstDiscount.Entity;
-			}
-			set
-			{
-				MstDiscount previousValue = this._MstDiscount.Entity;
-				if (((previousValue != value) 
-							|| (this._MstDiscount.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._MstDiscount.Entity = null;
-						previousValue.SysCurrents.Remove(this);
-					}
-					this._MstDiscount.Entity = value;
-					if ((value != null))
-					{
-						value.SysCurrents.Add(this);
-						this._DefaultDiscountId = value.Id;
-					}
-					else
-					{
-						this._DefaultDiscountId = default(int);
-					}
-					this.SendPropertyChanged("MstDiscount");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstPeriod_SysCurrent", Storage="_MstPeriod", ThisKey="CurrentPeriodId", OtherKey="Id", IsForeignKey=true)]
-		public MstPeriod MstPeriod
-		{
-			get
-			{
-				return this._MstPeriod.Entity;
-			}
-			set
-			{
-				MstPeriod previousValue = this._MstPeriod.Entity;
-				if (((previousValue != value) 
-							|| (this._MstPeriod.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._MstPeriod.Entity = null;
-						previousValue.SysCurrents.Remove(this);
-					}
-					this._MstPeriod.Entity = value;
-					if ((value != null))
-					{
-						value.SysCurrents.Add(this);
-						this._CurrentPeriodId = value.Id;
-					}
-					else
-					{
-						this._CurrentPeriodId = default(int);
-					}
-					this.SendPropertyChanged("MstPeriod");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstSupplier_SysCurrent", Storage="_MstSupplier", ThisKey="ReturnSupplierId", OtherKey="Id", IsForeignKey=true)]
-		public MstSupplier MstSupplier
-		{
-			get
-			{
-				return this._MstSupplier.Entity;
-			}
-			set
-			{
-				MstSupplier previousValue = this._MstSupplier.Entity;
-				if (((previousValue != value) 
-							|| (this._MstSupplier.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._MstSupplier.Entity = null;
-						previousValue.SysCurrents.Remove(this);
-					}
-					this._MstSupplier.Entity = value;
-					if ((value != null))
-					{
-						value.SysCurrents.Add(this);
-						this._ReturnSupplierId = value.Id;
-					}
-					else
-					{
-						this._ReturnSupplierId = default(int);
-					}
-					this.SendPropertyChanged("MstSupplier");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstTerminal_SysCurrent", Storage="_MstTerminal", ThisKey="TerminalId", OtherKey="Id", IsForeignKey=true)]
-		public MstTerminal MstTerminal
-		{
-			get
-			{
-				return this._MstTerminal.Entity;
-			}
-			set
-			{
-				MstTerminal previousValue = this._MstTerminal.Entity;
-				if (((previousValue != value) 
-							|| (this._MstTerminal.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._MstTerminal.Entity = null;
-						previousValue.SysCurrents.Remove(this);
-					}
-					this._MstTerminal.Entity = value;
-					if ((value != null))
-					{
-						value.SysCurrents.Add(this);
-						this._TerminalId = value.Id;
-					}
-					else
-					{
-						this._TerminalId = default(int);
-					}
-					this.SendPropertyChanged("MstTerminal");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_SysCurrent", Storage="_MstUser", ThisKey="CurrentUserId", OtherKey="Id", IsForeignKey=true)]
-		public MstUser MstUser
-		{
-			get
-			{
-				return this._MstUser.Entity;
-			}
-			set
-			{
-				MstUser previousValue = this._MstUser.Entity;
-				if (((previousValue != value) 
-							|| (this._MstUser.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._MstUser.Entity = null;
-						previousValue.SysCurrents.Remove(this);
-					}
-					this._MstUser.Entity = value;
-					if ((value != null))
-					{
-						value.SysCurrents.Add(this);
-						this._CurrentUserId = value.Id;
-					}
-					else
-					{
-						this._CurrentUserId = default(int);
 					}
 					this.SendPropertyChanged("MstUser");
 				}
@@ -21181,6 +18106,8 @@ namespace EasyPOS.Data
 		
 		private EntityRef<MstUser> _MstUser4;
 		
+		private EntityRef<MstUser> _MstUser5;
+		
 		private EntityRef<MstDiscount> _MstDiscount;
 		
     #region Extensibility Method Definitions
@@ -21271,6 +18198,7 @@ namespace EasyPOS.Data
 			this._MstUser2 = default(EntityRef<MstUser>);
 			this._MstUser3 = default(EntityRef<MstUser>);
 			this._MstUser4 = default(EntityRef<MstUser>);
+			this._MstUser5 = default(EntityRef<MstUser>);
 			this._MstDiscount = default(EntityRef<MstDiscount>);
 			OnCreated();
 		}
@@ -21606,6 +18534,10 @@ namespace EasyPOS.Data
 			{
 				if ((this._SalesAgent != value))
 				{
+					if (this._MstUser5.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnSalesAgentChanging(value);
 					this.SendPropertyChanging();
 					this._SalesAgent = value;
@@ -22373,6 +19305,40 @@ namespace EasyPOS.Data
 						this._UpdateUserId = default(int);
 					}
 					this.SendPropertyChanged("MstUser4");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnSale5", Storage="_MstUser5", ThisKey="SalesAgent", OtherKey="Id", IsForeignKey=true)]
+		public MstUser MstUser5
+		{
+			get
+			{
+				return this._MstUser5.Entity;
+			}
+			set
+			{
+				MstUser previousValue = this._MstUser5.Entity;
+				if (((previousValue != value) 
+							|| (this._MstUser5.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstUser5.Entity = null;
+						previousValue.TrnSales5.Remove(this);
+					}
+					this._MstUser5.Entity = value;
+					if ((value != null))
+					{
+						value.TrnSales5.Add(this);
+						this._SalesAgent = value.Id;
+					}
+					else
+					{
+						this._SalesAgent = default(int);
+					}
+					this.SendPropertyChanged("MstUser5");
 				}
 			}
 		}

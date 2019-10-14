@@ -1,5 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="easypos" Class="easyposdbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=easypos;Persist Security Info=True;User ID=sa" SettingsObjectName="EasyPOS.Properties.Settings" SettingsPropertyName="easyposConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.IntCloudSettings" Member="IntCloudSettings">
+    <Type Name="IntCloudSetting">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BranchCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PostUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PostSupplierId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UseItemPrice" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="MstSupplier_IntCloudSetting" Member="MstSupplier" ThisKey="PostSupplierId" OtherKey="Id" Type="MstSupplier" IsForeignKey="true" />
+      <Association Name="MstUser_IntCloudSetting" Member="MstUser" ThisKey="PostUserId" OtherKey="Id" Type="MstUser" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.TrnStockOutLine" Member="TrnStockOutLines">
     <Type Name="TrnStockOutLine">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -64,7 +76,6 @@
       <Column Name="IsLocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="DefaultPriceDescription" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="CustomerCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="MstCustomer_SysCurrent" Member="SysCurrents" ThisKey="Id" OtherKey="WalkinCustomerId" Type="SysCurrent" />
       <Association Name="MstCustomer_TrnCollection" Member="TrnCollections" ThisKey="Id" OtherKey="CustomerId" Type="TrnCollection" />
       <Association Name="MstCustomer_TrnSale" Member="TrnSales" ThisKey="Id" OtherKey="CustomerId" Type="TrnSale" />
       <Association Name="MstAccount_MstCustomer" Member="MstAccount" ThisKey="AccountId" OtherKey="Id" Type="MstAccount" IsForeignKey="true" />
@@ -99,7 +110,6 @@
       <Column Name="UpdateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="IsLocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="MstDiscount_MstDiscountItem" Member="MstDiscountItems" ThisKey="Id" OtherKey="DiscountId" Type="MstDiscountItem" />
-      <Association Name="MstDiscount_SysCurrent" Member="SysCurrents" ThisKey="Id" OtherKey="DefaultDiscountId" Type="SysCurrent" />
       <Association Name="MstDiscount_TrnSale" Member="TrnSales" ThisKey="Id" OtherKey="DiscountId" Type="TrnSale" />
       <Association Name="MstDiscount_TrnSalesLine" Member="TrnSalesLines" ThisKey="Id" OtherKey="DiscountId" Type="TrnSalesLine" />
       <Association Name="MstUser_MstDiscount" Member="MstUser" ThisKey="EntryUserId" OtherKey="Id" Type="MstUser" IsForeignKey="true" />
@@ -261,7 +271,6 @@
     <Type Name="MstPeriod">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Period" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="MstPeriod_SysCurrent" Member="SysCurrents" ThisKey="Id" OtherKey="CurrentPeriodId" Type="SysCurrent" />
       <Association Name="MstPeriod_TrnCollection" Member="TrnCollections" ThisKey="Id" OtherKey="PeriodId" Type="TrnCollection" />
       <Association Name="MstPeriod_TrnDebitCreditMemo" Member="TrnDebitCreditMemos" ThisKey="Id" OtherKey="PeriodId" Type="TrnDebitCreditMemo" />
       <Association Name="MstPeriod_TrnDisbursement" Member="TrnDisbursements" ThisKey="Id" OtherKey="PeriodId" Type="TrnDisbursement" />
@@ -288,9 +297,8 @@
       <Column Name="UpdateUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="UpdateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="IsLocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="MstSupplier_IntCloudSetting" Member="IntCloudSettings" ThisKey="Id" OtherKey="PostSupplierId" Type="IntCloudSetting" />
       <Association Name="MstSupplier_MstItem" Member="MstItems" ThisKey="Id" OtherKey="DefaultSupplierId" Type="MstItem" />
-      <Association Name="MstSupplier_SysCloudSetting" Member="SysCloudSettings" ThisKey="Id" OtherKey="PostSupplierId" Type="SysCloudSetting" />
-      <Association Name="MstSupplier_SysCurrent" Member="SysCurrents" ThisKey="Id" OtherKey="ReturnSupplierId" Type="SysCurrent" />
       <Association Name="MstSupplier_TrnPurchaseOrder" Member="TrnPurchaseOrders" ThisKey="Id" OtherKey="SupplierId" Type="TrnPurchaseOrder" />
       <Association Name="MstSupplier_TrnStockIn" Member="TrnStockIns" ThisKey="Id" OtherKey="SupplierId" Type="TrnStockIn" />
       <Association Name="MstAccount_MstSupplier" Member="MstAccount" ThisKey="AccountId" OtherKey="Id" Type="MstAccount" IsForeignKey="true" />
@@ -351,7 +359,6 @@
     <Type Name="MstTerminal">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Terminal" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="MstTerminal_SysCurrent" Member="SysCurrents" ThisKey="Id" OtherKey="TerminalId" Type="SysCurrent" />
       <Association Name="MstTerminal_TrnCollection" Member="TrnCollections" ThisKey="Id" OtherKey="TerminalId" Type="TrnCollection" />
       <Association Name="MstTerminal_TrnDisbursement" Member="TrnDisbursements" ThisKey="Id" OtherKey="TerminalId" Type="TrnDisbursement" />
       <Association Name="MstTerminal_TrnSale" Member="TrnSales" ThisKey="Id" OtherKey="TerminalId" Type="TrnSale" />
@@ -383,6 +390,7 @@
       <Column Name="UpdateUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="UpdateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="IsLocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="MstUser_IntCloudSetting" Member="IntCloudSettings" ThisKey="Id" OtherKey="PostUserId" Type="IntCloudSetting" />
       <Association Name="MstUser_MstCustomer" Member="MstCustomers" ThisKey="Id" OtherKey="EntryUserId" Type="MstCustomer" />
       <Association Name="MstUser_MstCustomer1" Member="MstCustomers1" ThisKey="Id" OtherKey="UpdateUserId" Type="MstCustomer" />
       <Association Name="MstUser_MstDiscount" Member="MstDiscounts" ThisKey="Id" OtherKey="EntryUserId" Type="MstDiscount" />
@@ -397,8 +405,6 @@
       <Association Name="MstUser_MstTableGroup1" Member="MstTableGroups1" ThisKey="Id" OtherKey="UpdateUserId" Type="MstTableGroup" />
       <Association Name="MstUser_MstUserForm" Member="MstUserForms" ThisKey="Id" OtherKey="UserId" Type="MstUserForm" />
       <Association Name="MstUser_SysAuditTrail" Member="SysAuditTrails" ThisKey="Id" OtherKey="UserId" Type="SysAuditTrail" />
-      <Association Name="MstUser_SysCloudSetting" Member="SysCloudSettings" ThisKey="Id" OtherKey="PostUserId" Type="SysCloudSetting" />
-      <Association Name="MstUser_SysCurrent" Member="SysCurrents" ThisKey="Id" OtherKey="CurrentUserId" Type="SysCurrent" />
       <Association Name="MstUser_SysSalesLocked" Member="SysSalesLockeds" ThisKey="Id" OtherKey="UserId" Type="SysSalesLocked" />
       <Association Name="MstUser_TrnCollection" Member="TrnCollections" ThisKey="Id" OtherKey="PreparedBy" Type="TrnCollection" />
       <Association Name="MstUser_TrnCollection1" Member="TrnCollections1" ThisKey="Id" OtherKey="CheckedBy" Type="TrnCollection" />
@@ -425,6 +431,7 @@
       <Association Name="MstUser_TrnSale2" Member="TrnSales2" ThisKey="Id" OtherKey="ApprovedBy" Type="TrnSale" />
       <Association Name="MstUser_TrnSale3" Member="TrnSales3" ThisKey="Id" OtherKey="EntryUserId" Type="TrnSale" />
       <Association Name="MstUser_TrnSale4" Member="TrnSales4" ThisKey="Id" OtherKey="UpdateUserId" Type="TrnSale" />
+      <Association Name="MstUser_TrnSale5" Member="TrnSales5" ThisKey="Id" OtherKey="SalesAgent" Type="TrnSale" />
       <Association Name="MstUser_TrnSalesLine" Member="TrnSalesLines" ThisKey="Id" OtherKey="UserId" Type="TrnSalesLine" />
       <Association Name="MstUser_TrnStockCount" Member="TrnStockCounts" ThisKey="Id" OtherKey="PreparedBy" Type="TrnStockCount" />
       <Association Name="MstUser_TrnStockCount1" Member="TrnStockCounts1" ThisKey="Id" OtherKey="CheckedBy" Type="TrnStockCount" />
@@ -475,138 +482,6 @@
       <Column Name="FormInformation" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="ActionInformation" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
       <Association Name="MstUser_SysAuditTrail" Member="MstUser" ThisKey="UserId" OtherKey="Id" Type="MstUser" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.SysCloudSettings" Member="SysCloudSettings">
-    <Type Name="SysCloudSetting">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="BranchCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="UserCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="PostUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PostSupplierId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="UseItemPrice" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Association Name="MstSupplier_SysCloudSetting" Member="MstSupplier" ThisKey="PostSupplierId" OtherKey="Id" Type="MstSupplier" IsForeignKey="true" />
-      <Association Name="MstUser_SysCloudSetting" Member="MstUser" ThisKey="PostUserId" OtherKey="Id" Type="MstUser" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.SysCurrent" Member="SysCurrents">
-    <Type Name="SysCurrent">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
-      <Column Name="OperatedBy" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="ContactNo" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="FaxNo" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="TIN" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="AccreditationNo" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="SerialNo" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="PermitNo" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="MachineNo" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="DeclareRate" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
-      <Column Name="ReceiptFooter" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
-      <Column Name="InvoiceFooter" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
-      <Column Name="LicenseCode" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="TenantOf" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="IsAliasReport" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="SalesReport" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="CollectionReport" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="ReturnReport" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="SalesReportNoOfCopies" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
-      <Column Name="CollectionReportNoOfCopies" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
-      <Column Name="ReturnReportNoOfCopies" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
-      <Column Name="KitchenReportAutoPrint" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Kitchen1Report" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="Kitchen2Report" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="Kitchen3Report" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="Kitchen1ReportNoOfCopies" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
-      <Column Name="Kitchen2ReportNoOfCopies" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
-      <Column Name="Kitchen3ReportNoOfCopies" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
-      <Column Name="PromptLoginInSales" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="CurrentUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CurrentVersion" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
-      <Column Name="CurrentDeveloper" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
-      <Column Name="CurrentSupport" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
-      <Column Name="CurrentPeriodId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TerminalId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="WalkinCustomerId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="DefaultDiscountId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ReturnSupplierId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="WithCustomerDisplay" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="CustomerDisplayRight" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CustomerDisplayDown" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CustomerDisplayWidth" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CustomerDisplayHeight" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="StorageNo" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="IsLocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="MCIAA_Type" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="MCIAA_CompanyId" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="MCIAA_CompanyName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="MCIAA_Activate" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="RLC_TenantId" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="ALI_TenantId" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="IsLedDispay" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="LedDisplayPortNo" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
-      <Column Name="LedDisplayPortSettings" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="ShowCollectedTab" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="DefaultRestaurantView" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="SIWithVATAnalysis" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="ORWithVATAnalysis" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="ORPrintTitle" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="AllowNegativeInventory" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="EjectOnPrint" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="CloudAutoCreateFile" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="CloudBranchCode" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="CloudPurchaseOrderFilePath" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="CloudStockInFilePath" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="CloudStockOutFilePath" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="CloudStockCountFilePath" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="CloudSalesInvoiceFilePath" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="CloudDisbursementFilePath" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="CloudCollectionFilePath" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="PartialPrint" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="SMBranchCode" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="SMtenantCode" Type="System.String" DbType="NVarChar(225) NOT NULL" CanBeNull="false" />
-      <Column Name="SMClassCode" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="SMTradeCode" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="SMStoreNumber" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="SMSaleType" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="SMPOSMachineNumber" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="SMPOSSerialNumber" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="SMCoinDirectory" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="DisableRealTimeInventory" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="EnableComponentEditing" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="IsLoginDate" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="LoginDate" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="ExcludeZeroAmount" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="PrintTransferTable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="QuickInventory" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="StarStallCode" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="StarFilePath" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="StarSalesDepartment" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="PriceEdit" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="ALI_LeaseNo" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="Kitchen4Report" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="Kitchen4ReportNoOfCopies" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
-      <Column Name="Kitchen5Report" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="Kitchen5ReportNoOfCopies" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
-      <Column Name="Kitchen6Report" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="Kitchen6ReportNoOfCopies" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
-      <Column Name="Kitchen7Report" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="Kitchen7ReportNoOfCopies" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
-      <Column Name="Kitchen8Report" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="Kitchen8ReportNoOfCopies" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
-      <Column Name="Kitchen9Report" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="Kitchen9ReportNoOfCopies" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
-      <Column Name="EnableTriggerQuantity" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="RLC_ServerIp" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="TriggerTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="MstCustomer_SysCurrent" Member="MstCustomer" ThisKey="WalkinCustomerId" OtherKey="Id" Type="MstCustomer" IsForeignKey="true" />
-      <Association Name="MstDiscount_SysCurrent" Member="MstDiscount" ThisKey="DefaultDiscountId" OtherKey="Id" Type="MstDiscount" IsForeignKey="true" />
-      <Association Name="MstPeriod_SysCurrent" Member="MstPeriod" ThisKey="CurrentPeriodId" OtherKey="Id" Type="MstPeriod" IsForeignKey="true" />
-      <Association Name="MstSupplier_SysCurrent" Member="MstSupplier" ThisKey="ReturnSupplierId" OtherKey="Id" Type="MstSupplier" IsForeignKey="true" />
-      <Association Name="MstTerminal_SysCurrent" Member="MstTerminal" ThisKey="TerminalId" OtherKey="Id" Type="MstTerminal" IsForeignKey="true" />
-      <Association Name="MstUser_SysCurrent" Member="MstUser" ThisKey="CurrentUserId" OtherKey="Id" Type="MstUser" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.SysForm" Member="SysForms">
@@ -895,6 +770,7 @@
       <Association Name="MstUser_TrnSale2" Member="MstUser2" ThisKey="ApprovedBy" OtherKey="Id" Type="MstUser" IsForeignKey="true" />
       <Association Name="MstUser_TrnSale3" Member="MstUser3" ThisKey="EntryUserId" OtherKey="Id" Type="MstUser" IsForeignKey="true" />
       <Association Name="MstUser_TrnSale4" Member="MstUser4" ThisKey="UpdateUserId" OtherKey="Id" Type="MstUser" IsForeignKey="true" />
+      <Association Name="MstUser_TrnSale5" Member="MstUser5" ThisKey="SalesAgent" OtherKey="Id" Type="MstUser" IsForeignKey="true" />
       <Association Name="MstDiscount_TrnSale" Member="MstDiscount" ThisKey="DiscountId" OtherKey="Id" Type="MstDiscount" IsForeignKey="true" />
     </Type>
   </Table>
