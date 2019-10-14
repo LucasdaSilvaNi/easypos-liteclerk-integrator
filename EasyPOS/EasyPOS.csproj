@@ -51,11 +51,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>easyposdb.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\MstDiscounting\MstDiscountingListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\MstDiscounting\MstDiscountingListForm.Designer.cs">
+      <DependentUpon>MstDiscountingListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\MstItem\MstItemListForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Software\MstItem\MstItemListForm.Designer.cs">
       <DependentUpon>MstItemListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepPOSReport\RepPOSReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepPOSReport\RepPOSReportForm.Designer.cs">
+      <DependentUpon>RepPOSReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\SoftwareForm.cs">
       <SubType>Form</SubType>
@@ -68,6 +80,30 @@
     </Compile>
     <Compile Include="Forms\Software\SysMenu\SysMenuForm.Designer.cs">
       <DependentUpon>SysMenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailForm.Designer.cs">
+      <DependentUpon>TrnSalesDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailSalesItemDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailSalesItemDetailForm.Designer.cs">
+      <DependentUpon>TrnSalesDetailSalesItemDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailSearchItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailSearchItemForm.Designer.cs">
+      <DependentUpon>TrnSalesDetailSearchItemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderForm.Designer.cs">
+      <DependentUpon>TrnSalesDetailTenderForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnSalesListForm.cs">
       <SubType>Form</SubType>
@@ -86,14 +122,29 @@
     <None Include="Data\easyposdb.dbml.layout">
       <DependentUpon>easyposdb.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="Forms\Software\MstDiscounting\MstDiscountingListForm.resx">
+      <DependentUpon>MstDiscountingListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstItem\MstItemListForm.resx">
       <DependentUpon>MstItemListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepPOSReport\RepPOSReportForm.resx">
+      <DependentUpon>RepPOSReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\SoftwareForm.resx">
       <DependentUpon>SoftwareForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\SysMenu\SysMenuForm.resx">
       <DependentUpon>SysMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailForm.resx">
+      <DependentUpon>TrnSalesDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailSearchItemForm.resx">
+      <DependentUpon>TrnSalesDetailSearchItemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailTenderForm.resx">
+      <DependentUpon>TrnSalesDetailTenderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesListForm.resx">
       <DependentUpon>TrnSalesListForm.cs</DependentUpon>

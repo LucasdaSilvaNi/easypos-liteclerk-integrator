@@ -8,12 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EasyPOS.Forms.Software.TrnPOS
+namespace EasyPOS.Forms.Software.RepPOSReport
 {
-    public partial class TrnSalesListForm : Form
+    public partial class RepPOSReportForm : Form
     {
         SoftwareForm softwareForm;
-        public TrnSalesListForm(SoftwareForm form)
+        public RepPOSReportForm(SoftwareForm form)
         {
             InitializeComponent();
             softwareForm = form;
@@ -22,11 +22,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
         private void buttonClose_Click(object sender, EventArgs e)
         {
             softwareForm.RemoveTabPage();
-        }
-
-        private void buttonSales_Click(object sender, EventArgs e)
-        {
-            softwareForm.AddTabPagePOSSalesDetail();
         }
     }
 }

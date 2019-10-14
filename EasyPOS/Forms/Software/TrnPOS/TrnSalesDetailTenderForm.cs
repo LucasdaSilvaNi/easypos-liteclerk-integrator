@@ -10,23 +10,21 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.TrnPOS
 {
-    public partial class TrnSalesListForm : Form
+    public partial class TrnSalesDetailTenderForm : Form
     {
-        SoftwareForm softwareForm;
-        public TrnSalesListForm(SoftwareForm form)
+        public TrnSalesDetailTenderForm()
         {
             InitializeComponent();
-            softwareForm = form;
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            softwareForm.RemoveTabPage();
+            Close();
         }
 
-        private void buttonSales_Click(object sender, EventArgs e)
+        private void buttonTender_Click(object sender, EventArgs e)
         {
-            softwareForm.AddTabPagePOSSalesDetail();
+
         }
     }
 }
