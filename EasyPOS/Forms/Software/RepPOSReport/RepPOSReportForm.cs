@@ -12,16 +12,16 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 {
     public partial class RepPOSReportForm : Form
     {
-        SoftwareForm softwareForm;
-        public RepPOSReportForm(SoftwareForm form)
+        SysSoftwareForm sysSoftwareForm;
+        public RepPOSReportForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();
-            softwareForm = form;
+            sysSoftwareForm = softwareForm;
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            softwareForm.RemoveTabPage();
+            sysSoftwareForm.RemoveTabPage();
         }
     }
 }

@@ -196,7 +196,7 @@ namespace EasyPOS.Controllers
                 var user = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
                 if (user.Any() == false)
                 {
-                    return new String[] { "Some users are not found.", "0" };
+                    return new String[] { "User not found.", "0" };
                 }
 
                 String salesNumber = "0000000001";

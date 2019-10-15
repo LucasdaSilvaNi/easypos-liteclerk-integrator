@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software
 {
-    public partial class SoftwareForm : Form
+    public partial class SysSoftwareForm : Form
     {
-        public SoftwareForm()
+        public SysSoftwareForm()
         {
             InitializeComponent();
             InitializeDefaultForm();
@@ -23,6 +23,12 @@ namespace EasyPOS.Forms.Software
         TabPage tabPagePOSSalesDetail = new TabPage { Name = "tabPagePOSSalesDetail", Text = "Sales Detail" };
         TabPage tabPageDiscountingList = new TabPage { Name = "tabPageDiscountingList", Text = "Discounting List" };
         TabPage tabPagePOSReport = new TabPage { Name = "tabPagePOSReport", Text = "POS Report" };
+
+        MstItem.MstItemListForm mstItemListForm = null;
+        MstDiscounting.MstDiscountingListForm mstDiscountingListForm = null;
+        TrnPOS.TrnSalesListForm trnSalesListForm = null;
+        TrnPOS.TrnSalesDetailForm trnSalesDetailForm = null;
+        RepPOSReport.RepPOSReportForm repPOSReportForm = null;
 
         public void InitializeDefaultForm()
         {
@@ -38,109 +44,119 @@ namespace EasyPOS.Forms.Software
 
         public void AddTabPageItemList()
         {
+            tabPagePOSSalesDetail.Controls.Remove(mstItemListForm);
+
+            mstItemListForm = new MstItem.MstItemListForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageItemList.Controls.Add(mstItemListForm);
+
             if (tabControlSoftware.TabPages.Contains(tabPageItemList) == true)
             {
                 tabControlSoftware.SelectTab(tabPageItemList);
             }
             else
             {
-                MstItem.MstItemListForm mstItemListForm = new MstItem.MstItemListForm(this)
-                {
-                    TopLevel = false,
-                    Visible = true,
-                    Dock = DockStyle.Fill
-                };
-
-                tabPageItemList.Controls.Add(mstItemListForm);
-
                 tabControlSoftware.TabPages.Add(tabPageItemList);
                 tabControlSoftware.SelectTab(tabPageItemList);
             }
         }
 
-        public void AddTabPagePOSSalesList()
-        {
-            if (tabControlSoftware.TabPages.Contains(tabPagePOSSalesList) == true)
-            {
-                tabControlSoftware.SelectTab(tabPagePOSSalesList);
-            }
-            else
-            {
-                TrnPOS.TrnSalesListForm trnSalesListForm = new TrnPOS.TrnSalesListForm(this)
-                {
-                    TopLevel = false,
-                    Visible = true,
-                    Dock = DockStyle.Fill
-                };
-
-                tabPagePOSSalesList.Controls.Add(trnSalesListForm);
-
-                tabControlSoftware.TabPages.Add(tabPagePOSSalesList);
-                tabControlSoftware.SelectTab(tabPagePOSSalesList);
-            }
-        }
-
-        public void AddTabPagePOSSalesDetail()
-        {
-            if (tabControlSoftware.TabPages.Contains(tabPagePOSSalesDetail) == true)
-            {
-                tabControlSoftware.SelectTab(tabPagePOSSalesDetail);
-            }
-            else
-            {
-                TrnPOS.TrnSalesDetailForm trnSalesDetailForm = new TrnPOS.TrnSalesDetailForm(this)
-                {
-                    TopLevel = false,
-                    Visible = true,
-                    Dock = DockStyle.Fill
-                };
-
-                tabPagePOSSalesDetail.Controls.Add(trnSalesDetailForm);
-
-                tabControlSoftware.TabPages.Add(tabPagePOSSalesDetail);
-                tabControlSoftware.SelectTab(tabPagePOSSalesDetail);
-            }
-        }
-
         public void AddTabPageDiscountingList()
         {
+            tabPagePOSSalesDetail.Controls.Remove(mstDiscountingListForm);
+
+            mstDiscountingListForm = new MstDiscounting.MstDiscountingListForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageDiscountingList.Controls.Add(mstDiscountingListForm);
+
             if (tabControlSoftware.TabPages.Contains(tabPageDiscountingList) == true)
             {
                 tabControlSoftware.SelectTab(tabPageDiscountingList);
             }
             else
             {
-                MstDiscounting.MstDiscountingListForm trnDiscountingListForm = new MstDiscounting.MstDiscountingListForm(this)
-                {
-                    TopLevel = false,
-                    Visible = true,
-                    Dock = DockStyle.Fill
-                };
-
-                tabPageDiscountingList.Controls.Add(trnDiscountingListForm);
-
                 tabControlSoftware.TabPages.Add(tabPageDiscountingList);
                 tabControlSoftware.SelectTab(tabPageDiscountingList);
             }
         }
 
+        public void AddTabPagePOSSalesList()
+        {
+            tabPagePOSSalesDetail.Controls.Remove(trnSalesListForm);
+
+            trnSalesListForm = new TrnPOS.TrnSalesListForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPagePOSSalesList.Controls.Add(trnSalesListForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPagePOSSalesList) == true)
+            {
+                tabControlSoftware.SelectTab(tabPagePOSSalesList);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPagePOSSalesList);
+                tabControlSoftware.SelectTab(tabPagePOSSalesList);
+            }
+        }
+
+        public void AddTabPagePOSSalesDetail(TrnPOS.TrnSalesListForm salesListForm)
+        {
+            tabPagePOSSalesDetail.Controls.Remove(trnSalesDetailForm);
+
+            trnSalesDetailForm = new TrnPOS.TrnSalesDetailForm(this, salesListForm)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPagePOSSalesDetail.Controls.Add(trnSalesDetailForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPagePOSSalesDetail) == true)
+            {
+                tabControlSoftware.SelectTab(tabPagePOSSalesDetail);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPagePOSSalesDetail);
+                tabControlSoftware.SelectTab(tabPagePOSSalesDetail);
+            }
+        }
+
         public void AddTabPagePOSReport()
         {
+            tabPagePOSSalesDetail.Controls.Remove(repPOSReportForm);
+
+            repPOSReportForm = new RepPOSReport.RepPOSReportForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPagePOSReport.Controls.Add(repPOSReportForm);
+
             if (tabControlSoftware.TabPages.Contains(tabPagePOSReport) == true)
             {
                 tabControlSoftware.SelectTab(tabPagePOSReport);
             }
             else
             {
-                RepPOSReport.RepPOSReportForm repPOSReportForm = new RepPOSReport.RepPOSReportForm(this)
-                {
-                    TopLevel = false,
-                    Visible = true,
-                    Dock = DockStyle.Fill
-                };
-
-                tabPagePOSReport.Controls.Add(repPOSReportForm);
-
                 tabControlSoftware.TabPages.Add(tabPagePOSReport);
                 tabControlSoftware.SelectTab(tabPagePOSReport);
             }

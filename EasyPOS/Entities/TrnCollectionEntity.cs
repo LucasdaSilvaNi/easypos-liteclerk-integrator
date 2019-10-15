@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    class TrnCollectionEntity
+    public class TrnCollectionEntity
     {
         public Int32 Id { get; set; }
         public Int32 PeriodId { get; set; }

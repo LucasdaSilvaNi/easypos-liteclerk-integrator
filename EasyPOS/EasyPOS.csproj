@@ -54,6 +54,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>easyposdb.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Entities\MstDiscount.cs" />
+    <Compile Include="Entities\MstItem.cs" />
     <Compile Include="Entities\MstItemInventoryEntity.cs" />
     <Compile Include="Entities\MstPayType.cs" />
     <Compile Include="Entities\MstTerminal.cs" />
@@ -81,11 +83,11 @@
     <Compile Include="Forms\Software\RepPOSReport\RepPOSReportForm.Designer.cs">
       <DependentUpon>RepPOSReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\SoftwareForm.cs">
+    <Compile Include="Forms\Software\SysSoftwareForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\SoftwareForm.Designer.cs">
-      <DependentUpon>SoftwareForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\SysSoftwareForm.Designer.cs">
+      <DependentUpon>SysSoftwareForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\SysMenu\SysMenuForm.cs">
       <SubType>Form</SubType>
@@ -146,14 +148,17 @@
     <EmbeddedResource Include="Forms\Software\RepPOSReport\RepPOSReportForm.resx">
       <DependentUpon>RepPOSReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\SoftwareForm.resx">
-      <DependentUpon>SoftwareForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\SysSoftwareForm.resx">
+      <DependentUpon>SysSoftwareForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\SysMenu\SysMenuForm.resx">
       <DependentUpon>SysMenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailForm.resx">
       <DependentUpon>TrnSalesDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailSalesItemDetailForm.resx">
+      <DependentUpon>TrnSalesDetailSalesItemDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailSearchItemForm.resx">
       <DependentUpon>TrnSalesDetailSearchItemForm.cs</DependentUpon>

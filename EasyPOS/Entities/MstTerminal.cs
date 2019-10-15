@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    class MstTerminal
+    public class MstTerminal
     {
         public Int32 Id { get; set; }
         public String Terminal { get; set; }

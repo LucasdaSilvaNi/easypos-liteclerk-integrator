@@ -35,12 +35,20 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonTender = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.labelCustomer = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.labelInvoiceDate = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelInvoiceNumber = new System.Windows.Forms.Label();
+            this.textBoxTotalSalesAmount = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonSearchItem = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,10 +129,94 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.labelCustomer);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.labelInvoiceDate);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.labelInvoiceNumber);
+            this.panel2.Controls.Add(this.textBoxTotalSalesAmount);
             this.panel2.Location = new System.Drawing.Point(12, 69);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1376, 120);
+            this.panel2.Size = new System.Drawing.Size(1376, 102);
             this.panel2.TabIndex = 4;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            this.label6.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label6.Location = new System.Drawing.Point(14, 63);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(101, 25);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Customer:";
+            // 
+            // labelCustomer
+            // 
+            this.labelCustomer.AutoSize = true;
+            this.labelCustomer.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCustomer.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.labelCustomer.Location = new System.Drawing.Point(129, 63);
+            this.labelCustomer.Name = "labelCustomer";
+            this.labelCustomer.Size = new System.Drawing.Size(0, 25);
+            this.labelCustomer.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label4.Location = new System.Drawing.Point(14, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(125, 25);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Invoice Date:";
+            // 
+            // labelInvoiceDate
+            // 
+            this.labelInvoiceDate.AutoSize = true;
+            this.labelInvoiceDate.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInvoiceDate.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.labelInvoiceDate.Location = new System.Drawing.Point(129, 38);
+            this.labelInvoiceDate.Name = "labelInvoiceDate";
+            this.labelInvoiceDate.Size = new System.Drawing.Size(0, 25);
+            this.labelInvoiceDate.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label3.Location = new System.Drawing.Point(14, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(115, 25);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Invoice No.:";
+            // 
+            // labelInvoiceNumber
+            // 
+            this.labelInvoiceNumber.AutoSize = true;
+            this.labelInvoiceNumber.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInvoiceNumber.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.labelInvoiceNumber.Location = new System.Drawing.Point(129, 13);
+            this.labelInvoiceNumber.Name = "labelInvoiceNumber";
+            this.labelInvoiceNumber.Size = new System.Drawing.Size(0, 25);
+            this.labelInvoiceNumber.TabIndex = 6;
+            // 
+            // textBoxTotalSalesAmount
+            // 
+            this.textBoxTotalSalesAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxTotalSalesAmount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.textBoxTotalSalesAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxTotalSalesAmount.Font = new System.Drawing.Font("Segoe UI", 40F, System.Drawing.FontStyle.Bold);
+            this.textBoxTotalSalesAmount.ForeColor = System.Drawing.Color.White;
+            this.textBoxTotalSalesAmount.Location = new System.Drawing.Point(563, 12);
+            this.textBoxTotalSalesAmount.Name = "textBoxTotalSalesAmount";
+            this.textBoxTotalSalesAmount.ReadOnly = true;
+            this.textBoxTotalSalesAmount.Size = new System.Drawing.Size(796, 89);
+            this.textBoxTotalSalesAmount.TabIndex = 0;
+            this.textBoxTotalSalesAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // dataGridView1
             // 
@@ -133,10 +225,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 226);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 207);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1376, 462);
+            this.dataGridView1.Size = new System.Drawing.Size(1376, 481);
             this.dataGridView1.TabIndex = 0;
             // 
             // buttonSearchItem
@@ -150,7 +242,7 @@
             this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
-            this.buttonSearchItem.Location = new System.Drawing.Point(1206, 193);
+            this.buttonSearchItem.Location = new System.Drawing.Point(1206, 174);
             this.buttonSearchItem.Name = "buttonSearchItem";
             this.buttonSearchItem.Size = new System.Drawing.Size(182, 30);
             this.buttonSearchItem.TabIndex = 5;
@@ -162,7 +254,7 @@
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(69, 195);
+            this.textBox1.Location = new System.Drawing.Point(69, 176);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(1131, 30);
             this.textBox1.TabIndex = 6;
@@ -170,7 +262,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 198);
+            this.label2.Location = new System.Drawing.Point(8, 179);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 23);
             this.label2.TabIndex = 0;
@@ -196,6 +288,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -214,5 +308,12 @@
         private System.Windows.Forms.Button buttonSearchItem;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxTotalSalesAmount;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label labelCustomer;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelInvoiceDate;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelInvoiceNumber;
     }
 }

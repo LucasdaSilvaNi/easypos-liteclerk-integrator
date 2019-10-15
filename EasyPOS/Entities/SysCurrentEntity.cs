@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    class SysCurrentEntity
+    public class SysCurrentEntity
     {
         public String CompanyName { get; set; }
         public String Address { get; set; }

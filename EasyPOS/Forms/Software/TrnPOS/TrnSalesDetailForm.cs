@@ -12,16 +12,37 @@ namespace EasyPOS.Forms.Software.TrnPOS
 {
     public partial class TrnSalesDetailForm : Form
     {
-        SoftwareForm softwareForm;
-        public TrnSalesDetailForm(SoftwareForm form)
+        SysSoftwareForm sysSoftwareForm;
+        TrnSalesListForm trnSalesListForm;
+
+        public TrnSalesDetailForm(SysSoftwareForm softwareForm, TrnSalesListForm salesListForm)
         {
             InitializeComponent();
-            softwareForm = form;
+
+            sysSoftwareForm = softwareForm;
+            trnSalesListForm = salesListForm;
+
+            GetSalesDetail();
         }
+
+        public Entities.TrnSalesEntity trnSalesEntity;
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            softwareForm.RemoveTabPage();
+            Close();
+
+            trnSalesListForm.GetSalesList();
+            sysSoftwareForm.RemoveTabPage();
+        }
+
+        public void GetSalesDetail()
+        {
+            trnSalesEntity = trnSalesListForm.trnSalesEntity;
+
+            textBoxTotalSalesAmount.Text = trnSalesEntity.Amount.ToString("#,##0.00");
+            labelInvoiceNumber.Text = trnSalesEntity.SalesNumber;
+            labelInvoiceDate.Text = trnSalesEntity.SalesDate;
+            labelCustomer.Text = trnSalesEntity.Customer;
         }
 
         private void buttonTender_Click(object sender, EventArgs e)
@@ -32,7 +53,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonSearchItem_Click(object sender, EventArgs e)
         {
-            TrnSalesDetailSearchItemForm trnSalesDetailSearchItemForm = new TrnSalesDetailSearchItemForm();
+            TrnSalesDetailSearchItemForm trnSalesDetailSearchItemForm = new TrnSalesDetailSearchItemForm(this);
             trnSalesDetailSearchItemForm.ShowDialog();
         }
     }

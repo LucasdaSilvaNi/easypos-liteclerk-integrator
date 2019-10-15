@@ -12,31 +12,31 @@ namespace EasyPOS.Forms.Software.SysMenu
 {
     public partial class SysMenuForm : Form
     {
-        SoftwareForm softwareForm;
-        public SysMenuForm(SoftwareForm form)
+        SysSoftwareForm sysSoftwareForm;
+        public SysMenuForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();
-            softwareForm = form;
+            sysSoftwareForm = softwareForm;
         }
 
         private void buttonItem_Click(object sender, EventArgs e)
         {
-            softwareForm.AddTabPageItemList();
+            sysSoftwareForm.AddTabPageItemList();
         }
 
         private void buttonPOS_Click(object sender, EventArgs e)
         {
-            softwareForm.AddTabPagePOSSalesList();
+            sysSoftwareForm.AddTabPagePOSSalesList();
         }
 
         private void buttonDiscounting_Click(object sender, EventArgs e)
         {
-            softwareForm.AddTabPageDiscountingList();
+            sysSoftwareForm.AddTabPageDiscountingList();
         }
 
         private void buttonPOSReport_Click(object sender, EventArgs e)
         {
-            softwareForm.AddTabPagePOSReport();
+            sysSoftwareForm.AddTabPagePOSReport();
         }
     }
 }

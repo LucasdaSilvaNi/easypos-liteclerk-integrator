@@ -12,16 +12,16 @@ namespace EasyPOS.Forms.Software.MstDiscounting
 {
     public partial class MstDiscountingListForm : Form
     {
-        SoftwareForm softwareForm;
-        public MstDiscountingListForm(SoftwareForm form)
+        SysSoftwareForm sysSoftwareForm;
+        public MstDiscountingListForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();
-            softwareForm = form;
+            sysSoftwareForm = softwareForm;
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            softwareForm.RemoveTabPage();
+            sysSoftwareForm.RemoveTabPage();
         }
     }
 }

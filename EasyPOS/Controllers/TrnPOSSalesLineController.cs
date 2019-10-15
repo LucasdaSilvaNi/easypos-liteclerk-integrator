@@ -55,9 +55,94 @@ namespace EasyPOS.Controllers
             return salesLines.ToList();
         }
 
-        // =================
+        // ===================
+        // Detail - Sales Line
+        // ===================
+        public Entities.TrnSalesLineEntity DetailSalesLine(Entities.TrnSalesLineEntity objSalesLine)
+        {
+            var salesLines = from d in db.TrnSalesLines
+                             where d.Id == objSalesLine.Id
+                             select new Entities.TrnSalesLineEntity
+                             {
+                                 Id = d.Id,
+                                 SalesId = d.SalesId,
+                                 ItemId = d.ItemId,
+                                 ItemDescription = d.MstItem.ItemDescription,
+                                 UnitId = d.UnitId,
+                                 Unit = d.MstUnit.Unit,
+                                 Price = d.Price,
+                                 DiscountId = d.DiscountId,
+                                 DiscountRate = d.DiscountRate,
+                                 DiscountAmount = d.DiscountAmount,
+                                 NetPrice = d.NetPrice,
+                                 Quantity = d.Quantity,
+                                 Amount = d.Amount,
+                                 TaxId = d.TaxId,
+                                 Tax = d.MstTax.Tax,
+                                 TaxRate = d.TaxRate,
+                                 TaxAmount = d.TaxAmount,
+                                 SalesAccountId = d.SalesAccountId,
+                                 AssetAccountId = d.AssetAccountId,
+                                 CostAccountId = d.CostAccountId,
+                                 TaxAccountId = d.TaxAccountId,
+                                 SalesLineTimeStamp = d.SalesLineTimeStamp.ToShortDateString(),
+                                 UserId = d.UserId,
+                                 Preparation = d.Preparation,
+                                 Price1 = d.Price1,
+                                 Price2 = d.Price2,
+                                 Price2LessTax = d.Price2LessTax,
+                                 PriceSplitPercentage = d.PriceSplitPercentage,
+                             };
+
+            return salesLines.FirstOrDefault();
+        }
+
+        // ==================
+        // List - Search Item
+        // ==================
+        public List<Entities.MstItem> ListSearchItem(String filter)
+        {
+            var items = from d in db.MstItems
+                        where d.BarCode.Contains(filter)
+                        || d.ItemDescription.Contains(filter)
+                        || d.GenericName.Contains(filter)
+                        select new Entities.MstItem
+                        {
+                            Id = d.Id,
+                            BarCode = d.BarCode,
+                            ItemDescription = d.ItemDescription,
+                            GenericName = d.GenericName,
+                            OutTaxId = d.OutTaxId,
+                            OutTax = d.MstTax1.Tax,
+                            OutTaxRate = d.MstTax1.Rate,
+                            UnitId = d.UnitId,
+                            Unit = d.MstUnit.Unit,
+                            Price = d.Price,
+                            OnhandQuantity = d.OnhandQuantity
+                        };
+
+            return items.ToList();
+        }
+
+        // ========================
+        // Dropdown List - Discount
+        // ========================
+        public List<Entities.MstDiscount> DropdownListDiscount()
+        {
+            var discounts = from d in db.MstDiscounts
+                            select new Entities.MstDiscount
+                            {
+                                Id = d.Id,
+                                Discount = d.Discount,
+                                DiscountRate = d.DiscountRate
+                            };
+
+            return discounts.ToList();
+        }
+
+        // ================
         // Add - Sales Line
-        // =================
+        // ================
         public String[] AddSalesLine(Entities.TrnSalesLineEntity objSalesLine)
         {
             try
@@ -89,9 +174,11 @@ namespace EasyPOS.Controllers
                     return new String[] { "Tax not found.", "0" };
                 }
 
-
-
-                Decimal netPrice = objSalesLine.Price - objSalesLine.DiscountAmount;
+                var user = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (user.Any() == false)
+                {
+                    return new String[] { "User not found.", "0" };
+                }
 
                 Data.TrnSalesLine newSaleLine = new Data.TrnSalesLine
                 {
@@ -100,14 +187,14 @@ namespace EasyPOS.Controllers
                     UnitId = item.FirstOrDefault().UnitId,
                     Price = objSalesLine.Price,
                     DiscountId = objSalesLine.DiscountId,
-                    DiscountRate = discount.FirstOrDefault().DiscountRate,
+                    DiscountRate = objSalesLine.DiscountRate,
                     DiscountAmount = objSalesLine.DiscountAmount,
-                    NetPrice = netPrice,
+                    NetPrice = objSalesLine.NetPrice,
                     Quantity = objSalesLine.Quantity,
-                    Amount = 0,
+                    Amount = objSalesLine.Amount,
                     TaxId = objSalesLine.TaxId,
-                    TaxRate = tax.FirstOrDefault().Rate,
-                    TaxAmount = taxAmount,
+                    TaxRate = objSalesLine.TaxRate,
+                    TaxAmount = objSalesLine.TaxAmount,
                     SalesAccountId = 159,
                     AssetAccountId = 255,
                     CostAccountId = 238,
@@ -115,13 +202,17 @@ namespace EasyPOS.Controllers
                     SalesLineTimeStamp = DateTime.Now.Date,
                     UserId = user.FirstOrDefault().Id,
                     Preparation = "",
-                    Price1 = netPrice * quantity,
-                    Price2 = amount,
-                    Price2LessTax = amount,
-                    PriceSplitPercentage = amount,
+                    Price1 = 0,
+                    Price2 = 0,
+                    Price2LessTax = 0,
+                    PriceSplitPercentage = 0,
                 };
 
                 db.TrnSalesLines.InsertOnSubmit(newSaleLine);
+                db.SubmitChanges();
+
+                var updateSales = currentSales.FirstOrDefault();
+                updateSales.Amount = currentSales.FirstOrDefault().Amount + newSaleLine.Amount;
                 db.SubmitChanges();
 
                 return new String[] { "", newSaleLine.Id.ToString() };

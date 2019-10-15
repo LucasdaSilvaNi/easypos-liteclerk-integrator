@@ -16,7 +16,7 @@ namespace EasyPOS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.Software.SoftwareForm());
+            Application.Run(new Forms.Software.SysSoftwareForm());
         }
     }
 }

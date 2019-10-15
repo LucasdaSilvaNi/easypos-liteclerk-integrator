@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    class SysConnectionStringEntity
+    public class SysConnectionStringEntity
     {
         public String DataSource { get; set; }
         public String InitialCatalog { get; set; }

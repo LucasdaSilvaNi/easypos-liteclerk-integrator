@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    class TrnSalesLineEntity
+    public class TrnSalesLineEntity
     {
         public Int32 Id { get; set; }
         public Int32 SalesId { get; set; }

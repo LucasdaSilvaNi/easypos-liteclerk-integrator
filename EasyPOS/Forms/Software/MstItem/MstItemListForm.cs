@@ -12,16 +12,16 @@ namespace EasyPOS.Forms.Software.MstItem
 {
     public partial class MstItemListForm : Form
     {
-        SoftwareForm softwareForm;
-        public MstItemListForm(SoftwareForm form)
+        SysSoftwareForm sysSoftwareForm;
+        public MstItemListForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();
-            softwareForm = form;
+            sysSoftwareForm = softwareForm;
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            softwareForm.RemoveTabPage();
+            sysSoftwareForm.RemoveTabPage();
         }
     }
 }

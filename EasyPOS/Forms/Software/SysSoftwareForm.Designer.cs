@@ -1,6 +1,6 @@
 ﻿namespace EasyPOS.Forms.Software
 {
-    partial class SoftwareForm
+    partial class SysSoftwareForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SoftwareForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SysSoftwareForm));
             this.tabControlSoftware = new System.Windows.Forms.TabControl();
             this.tabPageSysMenu = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();

@@ -37,7 +37,7 @@
   "CurrentPeriodId": "1",
   "TerminalId": "1",
   "WalkinCustomerId": "5579",
-  "DefaultDiscountId": "",
+  "DefaultDiscountId": "2",
   "ReturnSupplierId": "",
   "WithCustomerDisplay": "",
   "CustomerDisplayRight": "",

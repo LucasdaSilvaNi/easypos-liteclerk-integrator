@@ -31,7 +31,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnSalesListForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -52,6 +56,7 @@
             this.ColumnIsTendered = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColumnIsCancelled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -62,11 +67,12 @@
             this.labelTerminal = new System.Windows.Forms.Label();
             this.labelInvoiceNumber = new System.Windows.Forms.Label();
             this.dataGridViewSalesLineItemDisplay = new System.Windows.Forms.DataGridView();
-            this.ColumnSalesLineItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesLlineAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateTimePickerSalesDate = new System.Windows.Forms.DateTimePicker();
             this.textBoxSalesListFilter = new System.Windows.Forms.TextBox();
             this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
+            this.ColumnSalesLineItemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLlineAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesList)).BeginInit();
@@ -177,7 +183,7 @@
             this.dataGridViewSalesList.RowHeadersVisible = false;
             this.dataGridViewSalesList.RowTemplate.Height = 24;
             this.dataGridViewSalesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSalesList.Size = new System.Drawing.Size(1042, 588);
+            this.dataGridViewSalesList.Size = new System.Drawing.Size(923, 588);
             this.dataGridViewSalesList.TabIndex = 4;
             this.dataGridViewSalesList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesList_CellClick);
             // 
@@ -288,12 +294,24 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoSize = true;
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.dataGridViewSalesLineItemDisplay);
-            this.panel2.Location = new System.Drawing.Point(1060, 69);
+            this.panel2.Location = new System.Drawing.Point(938, 69);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(328, 619);
+            this.panel2.Size = new System.Drawing.Size(450, 639);
             this.panel2.TabIndex = 5;
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel4.Location = new System.Drawing.Point(7, 509);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(434, 110);
+            this.panel4.TabIndex = 10;
             // 
             // panel3
             // 
@@ -309,14 +327,14 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(328, 102);
+            this.panel3.Size = new System.Drawing.Size(450, 102);
             this.panel3.TabIndex = 9;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 48);
+            this.label4.Location = new System.Drawing.Point(3, 51);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(97, 20);
             this.label4.TabIndex = 2;
@@ -326,7 +344,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 8);
+            this.label2.Location = new System.Drawing.Point(3, 11);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 20);
             this.label2.TabIndex = 0;
@@ -336,7 +354,7 @@
             // 
             this.labelTransactionDate.AutoSize = true;
             this.labelTransactionDate.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTransactionDate.Location = new System.Drawing.Point(140, 68);
+            this.labelTransactionDate.Location = new System.Drawing.Point(140, 71);
             this.labelTransactionDate.Name = "labelTransactionDate";
             this.labelTransactionDate.Size = new System.Drawing.Size(0, 20);
             this.labelTransactionDate.TabIndex = 7;
@@ -345,7 +363,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 28);
+            this.label3.Location = new System.Drawing.Point(3, 31);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 20);
             this.label3.TabIndex = 1;
@@ -355,7 +373,7 @@
             // 
             this.labelPreparedBy.AutoSize = true;
             this.labelPreparedBy.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPreparedBy.Location = new System.Drawing.Point(140, 48);
+            this.labelPreparedBy.Location = new System.Drawing.Point(140, 51);
             this.labelPreparedBy.Name = "labelPreparedBy";
             this.labelPreparedBy.Size = new System.Drawing.Size(0, 20);
             this.labelPreparedBy.TabIndex = 6;
@@ -364,7 +382,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(3, 68);
+            this.label5.Location = new System.Drawing.Point(3, 71);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(131, 20);
             this.label5.TabIndex = 3;
@@ -374,7 +392,7 @@
             // 
             this.labelTerminal.AutoSize = true;
             this.labelTerminal.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTerminal.Location = new System.Drawing.Point(140, 28);
+            this.labelTerminal.Location = new System.Drawing.Point(140, 31);
             this.labelTerminal.Name = "labelTerminal";
             this.labelTerminal.Size = new System.Drawing.Size(0, 20);
             this.labelTerminal.TabIndex = 5;
@@ -383,7 +401,7 @@
             // 
             this.labelInvoiceNumber.AutoSize = true;
             this.labelInvoiceNumber.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInvoiceNumber.Location = new System.Drawing.Point(140, 10);
+            this.labelInvoiceNumber.Location = new System.Drawing.Point(140, 13);
             this.labelInvoiceNumber.Name = "labelInvoiceNumber";
             this.labelInvoiceNumber.Size = new System.Drawing.Size(0, 20);
             this.labelInvoiceNumber.TabIndex = 4;
@@ -410,33 +428,32 @@
             this.dataGridViewSalesLineItemDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewSalesLineItemDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSalesLineItemDisplay.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnSalesLineItemQuantity,
             this.ColumnSalesLineItem,
             this.ColumnSalesLlineAmount});
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSalesLineItemDisplay.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewSalesLineItemDisplay.GridColor = System.Drawing.Color.White;
             this.dataGridViewSalesLineItemDisplay.Location = new System.Drawing.Point(7, 108);
             this.dataGridViewSalesLineItemDisplay.Name = "dataGridViewSalesLineItemDisplay";
             this.dataGridViewSalesLineItemDisplay.ReadOnly = true;
             this.dataGridViewSalesLineItemDisplay.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridViewSalesLineItemDisplay.RowHeadersVisible = false;
-            this.dataGridViewSalesLineItemDisplay.RowTemplate.Height = 24;
-            this.dataGridViewSalesLineItemDisplay.Size = new System.Drawing.Size(312, 345);
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            this.dataGridViewSalesLineItemDisplay.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridViewSalesLineItemDisplay.RowTemplate.Height = 45;
+            this.dataGridViewSalesLineItemDisplay.RowTemplate.ReadOnly = true;
+            this.dataGridViewSalesLineItemDisplay.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewSalesLineItemDisplay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewSalesLineItemDisplay.Size = new System.Drawing.Size(434, 395);
             this.dataGridViewSalesLineItemDisplay.TabIndex = 8;
-            // 
-            // ColumnSalesLineItem
-            // 
-            this.ColumnSalesLineItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnSalesLineItem.HeaderText = "Item";
-            this.ColumnSalesLineItem.Name = "ColumnSalesLineItem";
-            this.ColumnSalesLineItem.ReadOnly = true;
-            // 
-            // ColumnSalesLlineAmount
-            // 
-            this.ColumnSalesLlineAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLlineAmount.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ColumnSalesLlineAmount.HeaderText = "Amount";
-            this.ColumnSalesLlineAmount.Name = "ColumnSalesLlineAmount";
-            this.ColumnSalesLlineAmount.ReadOnly = true;
             // 
             // dateTimePickerSalesDate
             // 
@@ -453,7 +470,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSalesListFilter.Location = new System.Drawing.Point(348, 69);
             this.textBoxSalesListFilter.Name = "textBoxSalesListFilter";
-            this.textBoxSalesListFilter.Size = new System.Drawing.Size(706, 30);
+            this.textBoxSalesListFilter.Size = new System.Drawing.Size(587, 30);
             this.textBoxSalesListFilter.TabIndex = 7;
             this.textBoxSalesListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSalesListFilter_KeyDown);
             // 
@@ -466,6 +483,32 @@
             this.comboBoxTerminal.Size = new System.Drawing.Size(174, 29);
             this.comboBoxTerminal.TabIndex = 0;
             this.comboBoxTerminal.SelectedIndexChanged += new System.EventHandler(this.comboBoxTerminal_SelectedIndexChanged);
+            // 
+            // ColumnSalesLineItemQuantity
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.ColumnSalesLineItemQuantity.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColumnSalesLineItemQuantity.HeaderText = "Qty.";
+            this.ColumnSalesLineItemQuantity.Name = "ColumnSalesLineItemQuantity";
+            this.ColumnSalesLineItemQuantity.ReadOnly = true;
+            this.ColumnSalesLineItemQuantity.Width = 80;
+            // 
+            // ColumnSalesLineItem
+            // 
+            this.ColumnSalesLineItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.ColumnSalesLineItem.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ColumnSalesLineItem.HeaderText = "Item";
+            this.ColumnSalesLineItem.Name = "ColumnSalesLineItem";
+            this.ColumnSalesLineItem.ReadOnly = true;
+            // 
+            // ColumnSalesLlineAmount
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.ColumnSalesLlineAmount.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ColumnSalesLlineAmount.HeaderText = "Amount";
+            this.ColumnSalesLlineAmount.Name = "ColumnSalesLlineAmount";
+            this.ColumnSalesLlineAmount.ReadOnly = true;
             // 
             // TrnSalesListForm
             // 
@@ -530,8 +573,10 @@
         private System.Windows.Forms.Label labelTerminal;
         private System.Windows.Forms.Label labelInvoiceNumber;
         private System.Windows.Forms.DataGridView dataGridViewSalesLineItemDisplay;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineItemQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLlineAmount;
-        private System.Windows.Forms.Panel panel3;
     }
 }

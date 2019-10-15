@@ -12,17 +12,21 @@ namespace EasyPOS.Forms.Software.TrnPOS
 {
     public partial class TrnSalesListForm : Form
     {
-        SoftwareForm softwareForm;
-        public TrnSalesListForm(SoftwareForm form)
+        SysSoftwareForm sysSoftwareForm;
+
+        public TrnSalesListForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();
-            softwareForm = form;
+            sysSoftwareForm = softwareForm;
+
             GetTerminalList();
         }
 
+        public Entities.TrnSalesEntity trnSalesEntity;
+
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            softwareForm.RemoveTabPage();
+            sysSoftwareForm.RemoveTabPage();
         }
 
         private void buttonSales_Click(object sender, EventArgs e)
@@ -31,7 +35,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
             String[] addSales = trnPOSSalesController.AddSales();
             if (addSales[1].Equals("0") == false)
             {
-                softwareForm.AddTabPagePOSSalesDetail();
+                trnSalesEntity = trnPOSSalesController.DetailSales(Convert.ToInt32(addSales[1]));
+                sysSoftwareForm.AddTabPagePOSSalesDetail(this);
+
                 GetSalesList();
             }
             else
@@ -74,19 +80,19 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 foreach (var objSalesList in salesList)
                 {
                     dataGridViewSalesList.Rows.Add(
-                                    "Edit",
-                                    "Delete",
-                                    objSalesList.Id,
-                                    objSalesList.Terminal,
-                                    objSalesList.SalesDate,
-                                    objSalesList.SalesNumber,
-                                    objSalesList.Customer,
-                                    objSalesList.SalesAgentUserName,
-                                    objSalesList.Amount.ToString("#,##0.00"),
-                                    objSalesList.IsLocked,
-                                    objSalesList.IsTendered,
-                                    objSalesList.IsCancelled
-                                );
+                        "Edit",
+                        "Delete",
+                        objSalesList.Id,
+                        objSalesList.Terminal,
+                        objSalesList.SalesDate,
+                        objSalesList.SalesNumber,
+                        objSalesList.Customer,
+                        objSalesList.SalesAgentUserName,
+                        objSalesList.Amount.ToString("#,##0.00"),
+                        objSalesList.IsLocked,
+                        objSalesList.IsTendered,
+                        objSalesList.IsCancelled
+                    );
                 }
             }
         }
@@ -103,7 +109,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void dataGridViewSalesList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > 0)
+            if (e.RowIndex > -1)
             {
                 labelInvoiceNumber.Text = dataGridViewSalesList.Rows[e.RowIndex].Cells[5].Value.ToString();
                 labelTerminal.Text = dataGridViewSalesList.Rows[e.RowIndex].Cells[3].Value.ToString();
@@ -132,7 +138,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                                     g.Key.Tax,
                                                     Quantity = g.Sum(s => s.Quantity),
                                                     DiscountAmount = g.Sum(s => s.DiscountAmount),
-                                                    Amount = g.Select(s => s.Amount)
+                                                    Amount = g.Sum(s => s.Amount)
                                                 };
 
                     var salesLineItemList = groupedSalesLineItems.ToList();
@@ -141,9 +147,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         foreach (var salesLineItem in salesLineItemList)
                         {
                             dataGridViewSalesLineItemDisplay.Rows.Add(
-                                                salesLineItem.Quantity + " " + salesLineItem.ItemDescription + " " + salesLineItem.Unit + " @P" + salesLineItem.Price.ToString("#,##0.00") + " Less: " + salesLineItem.DiscountAmount + " - " + salesLineItem.Tax,
-                                                salesLineItem.Amount
-                                            );
+                                salesLineItem.Quantity.ToString("#,##0.00"),
+                                salesLineItem.ItemDescription + "   " + salesLineItem.Unit + Environment.NewLine + " @P" + salesLineItem.Price.ToString("#,##0.00") + " Less: " + salesLineItem.DiscountAmount.ToString("#,##0.00") + " - " + salesLineItem.Tax,
+                                salesLineItem.Amount.ToString("#,##0.00")
+                            );
                         }
                     }
                 }
@@ -151,7 +158,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             if (dataGridViewSalesList.CurrentCell.ColumnIndex == dataGridViewSalesList.Columns["ColumnEdit"].Index)
             {
-                softwareForm.AddTabPagePOSSalesDetail();
+                Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+                trnSalesEntity = trnPOSSalesController.DetailSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value));
+
+                sysSoftwareForm.AddTabPagePOSSalesDetail(this);
             }
 
             if (dataGridViewSalesList.CurrentCell.ColumnIndex == dataGridViewSalesList.Columns["ColumnDelete"].Index)
