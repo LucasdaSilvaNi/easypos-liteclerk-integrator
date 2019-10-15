@@ -10,6 +10,7 @@ namespace EasyPOS.Entities
     {
         public Int32 Id { get; set; }
         public Int32 PeriodId { get; set; }
+        public String Period { get; set; }
         public String SalesDate { get; set; }
         public String SalesNumber { get; set; }
         public String ManualInvoiceNumber { get; set; }
@@ -36,6 +37,7 @@ namespace EasyPOS.Entities
         public Int32 ApprovedBy { get; set; }
         public String ApprovedByUserName { get; set; }
         public Boolean IsLocked { get; set; }
+        public Boolean IsTendered { get; set; }
         public Boolean IsCancelled { get; set; }
         public Decimal PaidAmount { get; set; }
         public Decimal CreditAmount { get; set; }

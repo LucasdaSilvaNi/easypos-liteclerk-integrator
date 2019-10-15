@@ -18052,6 +18052,8 @@ namespace EasyPOS.Data
 		
 		private bool _IsLocked;
 		
+		private bool _IsTendered;
+		
 		private bool _IsCancelled;
 		
 		private decimal _PaidAmount;
@@ -18156,6 +18158,8 @@ namespace EasyPOS.Data
     partial void OnApprovedByChanged();
     partial void OnIsLockedChanging(bool value);
     partial void OnIsLockedChanged();
+    partial void OnIsTenderedChanging(bool value);
+    partial void OnIsTenderedChanged();
     partial void OnIsCancelledChanging(bool value);
     partial void OnIsCancelledChanged();
     partial void OnPaidAmountChanging(decimal value);
@@ -18659,6 +18663,26 @@ namespace EasyPOS.Data
 					this._IsLocked = value;
 					this.SendPropertyChanged("IsLocked");
 					this.OnIsLockedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsTendered", DbType="Bit NOT NULL")]
+		public bool IsTendered
+		{
+			get
+			{
+				return this._IsTendered;
+			}
+			set
+			{
+				if ((this._IsTendered != value))
+				{
+					this.OnIsTenderedChanging(value);
+					this.SendPropertyChanging();
+					this._IsTendered = value;
+					this.SendPropertyChanged("IsTendered");
+					this.OnIsTenderedChanged();
 				}
 			}
 		}

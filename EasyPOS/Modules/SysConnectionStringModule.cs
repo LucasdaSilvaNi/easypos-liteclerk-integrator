@@ -16,10 +16,10 @@ namespace EasyPOS.Modules
         // =====================
         public static String GetConnectionString()
         {
-            String connectionStringPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Settings/SysConnectionString.json");
+            String path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Settings/SysConnectionString.json");
 
             String json;
-            using (StreamReader trmRead = new StreamReader(connectionStringPath)) { json = trmRead.ReadToEnd(); }
+            using (StreamReader trmRead = new StreamReader(path)) { json = trmRead.ReadToEnd(); }
 
             JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
             Entities.SysConnectionStringEntity sysConnectionStringEntity = javaScriptSerializer.Deserialize<Entities.SysConnectionStringEntity>(json);

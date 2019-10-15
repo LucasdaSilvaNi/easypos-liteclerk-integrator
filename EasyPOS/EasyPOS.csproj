@@ -47,14 +47,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\TrnPOSController.cs" />
+    <Compile Include="Controllers\TrnPOSSalesController.cs" />
+    <Compile Include="Controllers\TrnPOSSalesLineController.cs" />
     <Compile Include="Data\easyposdb.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>easyposdb.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Entities\MstItemInventoryEntity.cs" />
+    <Compile Include="Entities\MstPayType.cs" />
+    <Compile Include="Entities\MstTerminal.cs" />
     <Compile Include="Entities\SysConnectionStringEntity.cs" />
+    <Compile Include="Entities\SysCurrentEntity.cs" />
+    <Compile Include="Entities\TrnCollectionEntity.cs" />
+    <Compile Include="Entities\TrnCollectionLineEntity.cs" />
     <Compile Include="Entities\TrnSalesEntity.cs" />
+    <Compile Include="Entities\TrnSalesLineEntity.cs" />
     <Compile Include="Forms\Software\MstDiscounting\MstDiscountingListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,7 +129,9 @@
     <Compile Include="IndexForm.Designer.cs">
       <DependentUpon>IndexForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\TrnInventoryModule.cs" />
     <Compile Include="Modules\SysConnectionStringModule.cs" />
+    <Compile Include="Modules\SysCurrentModule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Data\easyposdb.dbml.layout">
@@ -182,8 +192,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Settings\SysCurrent.json" />
-    <None Include="Settings\SysConnectionString.json" />
+    <None Include="Settings\SysCurrent.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Settings\SysConnectionString.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
