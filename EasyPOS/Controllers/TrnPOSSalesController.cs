@@ -102,7 +102,7 @@ namespace EasyPOS.Controllers
                             TableStatus = d.TableStatus,
                         };
 
-            return sales.ToList();
+            return sales.OrderByDescending(d => d.Id).ToList();
         }
 
         // ==============

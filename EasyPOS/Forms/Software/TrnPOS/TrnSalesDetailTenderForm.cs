@@ -12,9 +12,27 @@ namespace EasyPOS.Forms.Software.TrnPOS
 {
     public partial class TrnSalesDetailTenderForm : Form
     {
-        public TrnSalesDetailTenderForm()
+        public SysSoftwareForm sysSoftwareForm;
+        public TrnSalesDetailForm trnSalesDetailForm;
+        public Entities.TrnSalesEntity trnSalesEntity;
+
+        public TrnSalesDetailTenderForm(SysSoftwareForm softwareForm, TrnSalesDetailForm salesDetailForm, Entities.TrnSalesEntity salesEntity)
         {
             InitializeComponent();
+
+            sysSoftwareForm = softwareForm;
+            trnSalesDetailForm = salesDetailForm;
+            trnSalesEntity = salesEntity;
+
+            GetSalesDetail();
+        }
+
+        public void GetSalesDetail()
+        {
+            textBoxTotalSalesAmount.Text = trnSalesEntity.Amount.ToString("#,##0.00");
+            labelInvoiceNumber.Text = trnSalesEntity.SalesNumber;
+            labelInvoiceDate.Text = trnSalesEntity.SalesDate;
+            labelCustomer.Text = trnSalesEntity.Customer;
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -24,7 +42,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonTender_Click(object sender, EventArgs e)
         {
+            DialogResult tenderPrinterReadyDialogResult = MessageBox.Show("Is printer ready?", "Tender", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (tenderPrinterReadyDialogResult == DialogResult.Yes)
+            {
 
+            }
         }
     }
 }

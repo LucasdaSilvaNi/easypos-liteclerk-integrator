@@ -53,7 +53,7 @@ namespace EasyPOS.Controllers
                                  PriceSplitPercentage = d.PriceSplitPercentage,
                              };
 
-            return salesLines.ToList();
+            return salesLines.OrderByDescending(d => d.Id).ToList();
         }
 
         // ===================
@@ -123,7 +123,7 @@ namespace EasyPOS.Controllers
                             OnhandQuantity = d.OnhandQuantity
                         };
 
-            return items.ToList();
+            return items.OrderBy(d => d.ItemDescription).ToList();
         }
 
         // ========================
@@ -307,17 +307,32 @@ namespace EasyPOS.Controllers
         // ===================
         // Delete - Sales Line 
         // ===================
-        public String[] DeleteSalesLine(Int32 salesId)
+        public String[] DeleteSalesLine(Int32 id)
         {
             try
             {
                 var salesLine = from d in db.TrnSalesLines
-                                where d.Id == salesId
+                                where d.Id == id
                                 select d;
 
                 if (salesLine.Any())
                 {
+                    Int32 salesId = salesLine.FirstOrDefault().SalesId;
+
                     db.TrnSalesLines.DeleteOnSubmit(salesLine.FirstOrDefault());
+                    db.SubmitChanges();
+
+                    var sales = from d in db.TrnSales
+                                where d.Id == salesId
+                                select d;
+
+                    if (sales.Any() == false)
+                    {
+                        return new String[] { "Sales transaction not found.", "0" };
+                    }
+
+                    var updateSales = sales.FirstOrDefault();
+                    updateSales.Amount = sales.FirstOrDefault().TrnSalesLines.Any() ? sales.FirstOrDefault().TrnSalesLines.Sum(d => d.Amount) : 0;
                     db.SubmitChanges();
 
                     return new String[] { "", "1" };

@@ -47,8 +47,23 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonTender_Click(object sender, EventArgs e)
         {
-            TrnSalesDetailTenderForm trnSalesDetailTenderForm = new TrnSalesDetailTenderForm();
-            trnSalesDetailTenderForm.ShowDialog();
+            if (Convert.ToDecimal(textBoxTotalSalesAmount.Text) > 0)
+            {
+                Entities.TrnSalesEntity newSalesEntity = new Entities.TrnSalesEntity
+                {
+                    Amount = Convert.ToDecimal(textBoxTotalSalesAmount.Text),
+                    SalesNumber = trnSalesEntity.SalesNumber,
+                    SalesDate = trnSalesEntity.SalesDate,
+                    Customer = trnSalesEntity.Customer
+                };
+
+                TrnSalesDetailTenderForm trnSalesDetailTenderForm = new TrnSalesDetailTenderForm(sysSoftwareForm, this, newSalesEntity);
+                trnSalesDetailTenderForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Cannot tender zero amount.", "Invalid Tender.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void buttonSearchItem_Click(object sender, EventArgs e)
@@ -59,6 +74,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         public void GetSalesLineList()
         {
+            Decimal totalSalesAmount = 0;
+
             dataGridViewSalesLineList.Rows.Clear();
             dataGridViewSalesLineList.Refresh();
 
@@ -74,8 +91,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 dataGridViewSalesLineList.Columns[1].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#F34F1C");
                 dataGridViewSalesLineList.Columns[1].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#F34F1C");
                 dataGridViewSalesLineList.Columns[1].DefaultCellStyle.ForeColor = Color.White;
-
-                Decimal totalSalesAmount = 0;
 
                 foreach (var objSalesLineList in salesLineList)
                 {
@@ -115,9 +130,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         objSalesLineList.PriceSplitPercentage.ToString("#,##0.00")
                     );
                 }
-
-                textBoxTotalSalesAmount.Text = totalSalesAmount.ToString("#,##0.00");
             }
+
+            textBoxTotalSalesAmount.Text = totalSalesAmount.ToString("#,##0.00");
         }
 
         private void dataGridViewSalesLineList_CellClick(object sender, DataGridViewCellEventArgs e)
