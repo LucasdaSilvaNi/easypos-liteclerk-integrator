@@ -12,17 +12,18 @@ namespace EasyPOS.Forms.Software.TrnPOS
 {
     public partial class TrnSalesDetailSearchItemForm : Form
     {
-        TrnSalesDetailForm trnSalesDetailForm;
+        public TrnSalesDetailForm trnSalesDetailForm;
+        public Entities.TrnSalesEntity trnSalesEntity;
 
-        public TrnSalesDetailSearchItemForm(TrnSalesDetailForm salesDetailForm)
+        public TrnSalesDetailSearchItemForm(TrnSalesDetailForm salesDetailForm, Entities.TrnSalesEntity salesEntity)
         {
             InitializeComponent();
+
             trnSalesDetailForm = salesDetailForm;
+            trnSalesEntity = salesEntity;
 
             GetSearchItemList();
         }
-
-        public Entities.TrnSalesLineEntity trnSalesLineEntity;
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
@@ -74,39 +75,51 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             if (dataGridViewSearchItemList.CurrentCell.ColumnIndex == dataGridViewSearchItemList.Columns["ColumnSearchItemButtonPick"].Index)
             {
-                Int32 Id = Convert.ToInt32(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[0].Value);
-                String Barcode = dataGridViewSearchItemList.Rows[e.RowIndex].Cells[1].Value.ToString();
+                Int32 ItemId = Convert.ToInt32(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[0].Value);
+                Int32 SalesId = trnSalesEntity.Id;
                 String ItemDescription = dataGridViewSearchItemList.Rows[e.RowIndex].Cells[2].Value.ToString();
-                String GenericName = dataGridViewSearchItemList.Rows[e.RowIndex].Cells[3].Value.ToString();
-                Int32 OutTaxId = Convert.ToInt32(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[4].Value);
-                String OutTax = dataGridViewSearchItemList.Rows[e.RowIndex].Cells[5].Value.ToString();
                 Int32 UnitId = Convert.ToInt32(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[6].Value);
                 String Unit = dataGridViewSearchItemList.Rows[e.RowIndex].Cells[7].Value.ToString();
                 Decimal Price = Convert.ToDecimal(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[8].Value);
-                Decimal OnhandQuantity = Convert.ToDecimal(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[9].Value);
+                Int32 DiscountId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().DefaultDiscountId);
+                Int32 TaxId = Convert.ToInt32(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[4].Value);
+                String Tax = dataGridViewSearchItemList.Rows[e.RowIndex].Cells[5].Value.ToString();
+                Int32 UserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
 
-                trnSalesLineEntity = new Entities.TrnSalesLineEntity()
+                Entities.TrnSalesLineEntity trnSalesLineEntity = new Entities.TrnSalesLineEntity()
                 {
                     Id = 0,
-                    SalesId = trnSalesDetailForm.trnSalesEntity.Id,
-                    ItemId = Id,
+                    SalesId = SalesId,
+                    ItemId = ItemId,
                     ItemDescription = ItemDescription,
                     UnitId = UnitId,
                     Unit = Unit,
                     Price = Price,
-                    DiscountId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().DefaultDiscountId),
+                    DiscountId = DiscountId,
+                    Discount = "",
                     DiscountRate = 0,
                     DiscountAmount = 0,
-                    NetPrice = 0,
+                    NetPrice = Price,
                     Quantity = 1,
                     Amount = Price,
-                    TaxId = OutTaxId,
-                    Tax = OutTax,
+                    TaxId = TaxId,
+                    Tax = Tax,
                     TaxRate = 0,
-                    TaxAmount = 0
+                    TaxAmount = 0,
+                    SalesAccountId = 159,
+                    AssetAccountId = 255,
+                    CostAccountId = 238,
+                    TaxAccountId = 87,
+                    SalesLineTimeStamp = DateTime.Now.Date.ToShortDateString(),
+                    UserId = UserId,
+                    Preparation = "NA",
+                    Price1 = 0,
+                    Price2 = 0,
+                    Price2LessTax = 0,
+                    PriceSplitPercentage = 0
                 };
-                
-                TrnSalesDetailSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnSalesDetailSalesItemDetailForm(trnSalesDetailForm, this);
+
+                TrnSalesDetailSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnSalesDetailSalesItemDetailForm(trnSalesDetailForm, trnSalesLineEntity);
                 trnSalesDetailSalesItemDetailForm.ShowDialog();
             }
         }

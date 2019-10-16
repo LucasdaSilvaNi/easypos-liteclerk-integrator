@@ -28,6 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnSalesDetailForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -42,14 +51,45 @@
             this.label3 = new System.Windows.Forms.Label();
             this.labelInvoiceNumber = new System.Windows.Forms.Label();
             this.textBoxTotalSalesAmount = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewSalesLineList = new System.Windows.Forms.DataGridView();
+            this.ColumnSalesLineEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnSalesLineDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnSalesLineId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineSalesId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineUnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLinePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineDiscountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineDiscountRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineDiscountAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineNetPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineTaxId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineTaxRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineTaxAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineSalesAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineAssetAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineCostAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineTaxAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineTimeStamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLinePreparation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLinePrice1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLinePrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLinePrice2LessTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLinePriceSplitPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonSearchItem = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesLineList)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -99,7 +139,7 @@
             this.buttonClose.ForeColor = System.Drawing.Color.White;
             this.buttonClose.Location = new System.Drawing.Point(1300, 12);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(88, 40);
+            this.buttonClose.Size = new System.Drawing.Size(87, 40);
             this.buttonClose.TabIndex = 1;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
@@ -118,7 +158,7 @@
             this.buttonTender.ForeColor = System.Drawing.Color.White;
             this.buttonTender.Location = new System.Drawing.Point(1206, 12);
             this.buttonTender.Name = "buttonTender";
-            this.buttonTender.Size = new System.Drawing.Size(88, 40);
+            this.buttonTender.Size = new System.Drawing.Size(87, 40);
             this.buttonTender.TabIndex = 0;
             this.buttonTender.Text = "Tender";
             this.buttonTender.UseVisualStyleBackColor = false;
@@ -138,70 +178,70 @@
             this.panel2.Controls.Add(this.textBoxTotalSalesAmount);
             this.panel2.Location = new System.Drawing.Point(12, 69);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1376, 102);
+            this.panel2.Size = new System.Drawing.Size(1376, 103);
             this.panel2.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label6.Location = new System.Drawing.Point(14, 63);
+            this.label6.Location = new System.Drawing.Point(14, 59);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 25);
+            this.label6.Size = new System.Drawing.Size(93, 23);
             this.label6.TabIndex = 9;
             this.label6.Text = "Customer:";
             // 
             // labelCustomer
             // 
             this.labelCustomer.AutoSize = true;
-            this.labelCustomer.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCustomer.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCustomer.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelCustomer.Location = new System.Drawing.Point(129, 63);
+            this.labelCustomer.Location = new System.Drawing.Point(129, 59);
             this.labelCustomer.Name = "labelCustomer";
-            this.labelCustomer.Size = new System.Drawing.Size(0, 25);
+            this.labelCustomer.Size = new System.Drawing.Size(0, 23);
             this.labelCustomer.TabIndex = 10;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label4.Location = new System.Drawing.Point(14, 38);
+            this.label4.Location = new System.Drawing.Point(14, 41);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(125, 25);
+            this.label4.Size = new System.Drawing.Size(114, 23);
             this.label4.TabIndex = 7;
             this.label4.Text = "Invoice Date:";
             // 
             // labelInvoiceDate
             // 
             this.labelInvoiceDate.AutoSize = true;
-            this.labelInvoiceDate.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInvoiceDate.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInvoiceDate.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelInvoiceDate.Location = new System.Drawing.Point(129, 38);
+            this.labelInvoiceDate.Location = new System.Drawing.Point(129, 41);
             this.labelInvoiceDate.Name = "labelInvoiceDate";
-            this.labelInvoiceDate.Size = new System.Drawing.Size(0, 25);
+            this.labelInvoiceDate.Size = new System.Drawing.Size(0, 23);
             this.labelInvoiceDate.TabIndex = 8;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label3.Location = new System.Drawing.Point(14, 13);
+            this.label3.Location = new System.Drawing.Point(14, 23);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 25);
+            this.label3.Size = new System.Drawing.Size(104, 23);
             this.label3.TabIndex = 5;
             this.label3.Text = "Invoice No.:";
             // 
             // labelInvoiceNumber
             // 
             this.labelInvoiceNumber.AutoSize = true;
-            this.labelInvoiceNumber.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInvoiceNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInvoiceNumber.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelInvoiceNumber.Location = new System.Drawing.Point(129, 13);
+            this.labelInvoiceNumber.Location = new System.Drawing.Point(129, 23);
             this.labelInvoiceNumber.Name = "labelInvoiceNumber";
-            this.labelInvoiceNumber.Size = new System.Drawing.Size(0, 25);
+            this.labelInvoiceNumber.Size = new System.Drawing.Size(0, 23);
             this.labelInvoiceNumber.TabIndex = 6;
             // 
             // textBoxTotalSalesAmount
@@ -211,25 +251,312 @@
             this.textBoxTotalSalesAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxTotalSalesAmount.Font = new System.Drawing.Font("Segoe UI", 40F, System.Drawing.FontStyle.Bold);
             this.textBoxTotalSalesAmount.ForeColor = System.Drawing.Color.White;
-            this.textBoxTotalSalesAmount.Location = new System.Drawing.Point(563, 12);
+            this.textBoxTotalSalesAmount.Location = new System.Drawing.Point(563, 14);
             this.textBoxTotalSalesAmount.Name = "textBoxTotalSalesAmount";
             this.textBoxTotalSalesAmount.ReadOnly = true;
             this.textBoxTotalSalesAmount.Size = new System.Drawing.Size(796, 89);
             this.textBoxTotalSalesAmount.TabIndex = 0;
             this.textBoxTotalSalesAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // dataGridView1
+            // dataGridViewSalesLineList
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridViewSalesLineList.AllowUserToAddRows = false;
+            this.dataGridViewSalesLineList.AllowUserToDeleteRows = false;
+            this.dataGridViewSalesLineList.AllowUserToResizeRows = false;
+            this.dataGridViewSalesLineList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 207);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1376, 481);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridViewSalesLineList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSalesLineList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewSalesLineList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSalesLineList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnSalesLineEdit,
+            this.ColumnSalesLineDelete,
+            this.ColumnSalesLineId,
+            this.ColumnSalesLineSalesId,
+            this.ColumnSalesLineItemId,
+            this.ColumnSalesLineItemDescription,
+            this.ColumnSalesLineUnitId,
+            this.ColumnSalesLineUnit,
+            this.ColumnSalesLinePrice,
+            this.ColumnSalesLineDiscountId,
+            this.ColumnSalesLineDiscount,
+            this.ColumnSalesLineDiscountRate,
+            this.ColumnSalesLineDiscountAmount,
+            this.ColumnSalesLineNetPrice,
+            this.ColumnSalesLineQuantity,
+            this.ColumnSalesLineAmount,
+            this.ColumnSalesLineTaxId,
+            this.ColumnSalesLineTax,
+            this.ColumnSalesLineTaxRate,
+            this.ColumnSalesLineTaxAmount,
+            this.ColumnSalesLineSalesAccountId,
+            this.ColumnSalesLineAssetAccountId,
+            this.ColumnSalesLineCostAccountId,
+            this.ColumnSalesLineTaxAccountId,
+            this.ColumnSalesLineTimeStamp,
+            this.ColumnSalesLineUserId,
+            this.ColumnSalesLinePreparation,
+            this.ColumnSalesLinePrice1,
+            this.ColumnSalesLinePrice2,
+            this.ColumnSalesLinePrice2LessTax,
+            this.ColumnSalesLinePriceSplitPercentage});
+            this.dataGridViewSalesLineList.Location = new System.Drawing.Point(12, 215);
+            this.dataGridViewSalesLineList.MultiSelect = false;
+            this.dataGridViewSalesLineList.Name = "dataGridViewSalesLineList";
+            this.dataGridViewSalesLineList.ReadOnly = true;
+            this.dataGridViewSalesLineList.RowHeadersVisible = false;
+            this.dataGridViewSalesLineList.RowTemplate.Height = 24;
+            this.dataGridViewSalesLineList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewSalesLineList.Size = new System.Drawing.Size(1376, 474);
+            this.dataGridViewSalesLineList.TabIndex = 0;
+            this.dataGridViewSalesLineList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesLineList_CellClick);
+            // 
+            // ColumnSalesLineEdit
+            // 
+            this.ColumnSalesLineEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnSalesLineEdit.Frozen = true;
+            this.ColumnSalesLineEdit.HeaderText = "Edit";
+            this.ColumnSalesLineEdit.Name = "ColumnSalesLineEdit";
+            this.ColumnSalesLineEdit.ReadOnly = true;
+            this.ColumnSalesLineEdit.Width = 70;
+            // 
+            // ColumnSalesLineDelete
+            // 
+            this.ColumnSalesLineDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnSalesLineDelete.Frozen = true;
+            this.ColumnSalesLineDelete.HeaderText = "Delete";
+            this.ColumnSalesLineDelete.Name = "ColumnSalesLineDelete";
+            this.ColumnSalesLineDelete.ReadOnly = true;
+            this.ColumnSalesLineDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnSalesLineDelete.Width = 70;
+            // 
+            // ColumnSalesLineId
+            // 
+            this.ColumnSalesLineId.HeaderText = "Id";
+            this.ColumnSalesLineId.Name = "ColumnSalesLineId";
+            this.ColumnSalesLineId.ReadOnly = true;
+            this.ColumnSalesLineId.Visible = false;
+            // 
+            // ColumnSalesLineSalesId
+            // 
+            this.ColumnSalesLineSalesId.HeaderText = "SalesId";
+            this.ColumnSalesLineSalesId.Name = "ColumnSalesLineSalesId";
+            this.ColumnSalesLineSalesId.ReadOnly = true;
+            this.ColumnSalesLineSalesId.Visible = false;
+            // 
+            // ColumnSalesLineItemId
+            // 
+            this.ColumnSalesLineItemId.HeaderText = "ItemId";
+            this.ColumnSalesLineItemId.Name = "ColumnSalesLineItemId";
+            this.ColumnSalesLineItemId.ReadOnly = true;
+            this.ColumnSalesLineItemId.Visible = false;
+            // 
+            // ColumnSalesLineItemDescription
+            // 
+            this.ColumnSalesLineItemDescription.HeaderText = "Item Description";
+            this.ColumnSalesLineItemDescription.Name = "ColumnSalesLineItemDescription";
+            this.ColumnSalesLineItemDescription.ReadOnly = true;
+            this.ColumnSalesLineItemDescription.Width = 200;
+            // 
+            // ColumnSalesLineUnitId
+            // 
+            this.ColumnSalesLineUnitId.HeaderText = "UnitId";
+            this.ColumnSalesLineUnitId.Name = "ColumnSalesLineUnitId";
+            this.ColumnSalesLineUnitId.ReadOnly = true;
+            this.ColumnSalesLineUnitId.Visible = false;
+            // 
+            // ColumnSalesLineUnit
+            // 
+            this.ColumnSalesLineUnit.HeaderText = "Unit";
+            this.ColumnSalesLineUnit.Name = "ColumnSalesLineUnit";
+            this.ColumnSalesLineUnit.ReadOnly = true;
+            this.ColumnSalesLineUnit.Width = 70;
+            // 
+            // ColumnSalesLinePrice
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLinePrice.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnSalesLinePrice.HeaderText = "Price";
+            this.ColumnSalesLinePrice.Name = "ColumnSalesLinePrice";
+            this.ColumnSalesLinePrice.ReadOnly = true;
+            this.ColumnSalesLinePrice.Width = 130;
+            // 
+            // ColumnSalesLineDiscountId
+            // 
+            this.ColumnSalesLineDiscountId.HeaderText = "DiscountId";
+            this.ColumnSalesLineDiscountId.Name = "ColumnSalesLineDiscountId";
+            this.ColumnSalesLineDiscountId.ReadOnly = true;
+            this.ColumnSalesLineDiscountId.Visible = false;
+            // 
+            // ColumnSalesLineDiscount
+            // 
+            this.ColumnSalesLineDiscount.HeaderText = "Discount";
+            this.ColumnSalesLineDiscount.Name = "ColumnSalesLineDiscount";
+            this.ColumnSalesLineDiscount.ReadOnly = true;
+            this.ColumnSalesLineDiscount.Visible = false;
+            // 
+            // ColumnSalesLineDiscountRate
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineDiscountRate.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnSalesLineDiscountRate.HeaderText = "Discount Rate";
+            this.ColumnSalesLineDiscountRate.Name = "ColumnSalesLineDiscountRate";
+            this.ColumnSalesLineDiscountRate.ReadOnly = true;
+            this.ColumnSalesLineDiscountRate.Width = 130;
+            // 
+            // ColumnSalesLineDiscountAmount
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineDiscountAmount.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColumnSalesLineDiscountAmount.HeaderText = "Discount Amount";
+            this.ColumnSalesLineDiscountAmount.Name = "ColumnSalesLineDiscountAmount";
+            this.ColumnSalesLineDiscountAmount.ReadOnly = true;
+            this.ColumnSalesLineDiscountAmount.Width = 130;
+            // 
+            // ColumnSalesLineNetPrice
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineNetPrice.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ColumnSalesLineNetPrice.HeaderText = "Net Price";
+            this.ColumnSalesLineNetPrice.Name = "ColumnSalesLineNetPrice";
+            this.ColumnSalesLineNetPrice.ReadOnly = true;
+            this.ColumnSalesLineNetPrice.Width = 130;
+            // 
+            // ColumnSalesLineQuantity
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineQuantity.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ColumnSalesLineQuantity.HeaderText = "Quantity";
+            this.ColumnSalesLineQuantity.Name = "ColumnSalesLineQuantity";
+            this.ColumnSalesLineQuantity.ReadOnly = true;
+            this.ColumnSalesLineQuantity.Width = 130;
+            // 
+            // ColumnSalesLineAmount
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineAmount.DefaultCellStyle = dataGridViewCellStyle7;
+            this.ColumnSalesLineAmount.HeaderText = "Amount";
+            this.ColumnSalesLineAmount.Name = "ColumnSalesLineAmount";
+            this.ColumnSalesLineAmount.ReadOnly = true;
+            this.ColumnSalesLineAmount.Width = 130;
+            // 
+            // ColumnSalesLineTaxId
+            // 
+            this.ColumnSalesLineTaxId.HeaderText = "TaxId";
+            this.ColumnSalesLineTaxId.Name = "ColumnSalesLineTaxId";
+            this.ColumnSalesLineTaxId.ReadOnly = true;
+            this.ColumnSalesLineTaxId.Visible = false;
+            // 
+            // ColumnSalesLineTax
+            // 
+            this.ColumnSalesLineTax.HeaderText = "Tax";
+            this.ColumnSalesLineTax.Name = "ColumnSalesLineTax";
+            this.ColumnSalesLineTax.ReadOnly = true;
+            this.ColumnSalesLineTax.Visible = false;
+            this.ColumnSalesLineTax.Width = 56;
+            // 
+            // ColumnSalesLineTaxRate
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineTaxRate.DefaultCellStyle = dataGridViewCellStyle8;
+            this.ColumnSalesLineTaxRate.HeaderText = "Tax Rate";
+            this.ColumnSalesLineTaxRate.Name = "ColumnSalesLineTaxRate";
+            this.ColumnSalesLineTaxRate.ReadOnly = true;
+            this.ColumnSalesLineTaxRate.Width = 130;
+            // 
+            // ColumnSalesLineTaxAmount
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineTaxAmount.DefaultCellStyle = dataGridViewCellStyle9;
+            this.ColumnSalesLineTaxAmount.HeaderText = "Tax Amount";
+            this.ColumnSalesLineTaxAmount.Name = "ColumnSalesLineTaxAmount";
+            this.ColumnSalesLineTaxAmount.ReadOnly = true;
+            this.ColumnSalesLineTaxAmount.Width = 130;
+            // 
+            // ColumnSalesLineSalesAccountId
+            // 
+            this.ColumnSalesLineSalesAccountId.HeaderText = "SalesAccountId";
+            this.ColumnSalesLineSalesAccountId.Name = "ColumnSalesLineSalesAccountId";
+            this.ColumnSalesLineSalesAccountId.ReadOnly = true;
+            this.ColumnSalesLineSalesAccountId.Visible = false;
+            // 
+            // ColumnSalesLineAssetAccountId
+            // 
+            this.ColumnSalesLineAssetAccountId.HeaderText = "AssetAccountId";
+            this.ColumnSalesLineAssetAccountId.Name = "ColumnSalesLineAssetAccountId";
+            this.ColumnSalesLineAssetAccountId.ReadOnly = true;
+            this.ColumnSalesLineAssetAccountId.Visible = false;
+            // 
+            // ColumnSalesLineCostAccountId
+            // 
+            this.ColumnSalesLineCostAccountId.HeaderText = "CostAccountId";
+            this.ColumnSalesLineCostAccountId.Name = "ColumnSalesLineCostAccountId";
+            this.ColumnSalesLineCostAccountId.ReadOnly = true;
+            this.ColumnSalesLineCostAccountId.Visible = false;
+            // 
+            // ColumnSalesLineTaxAccountId
+            // 
+            this.ColumnSalesLineTaxAccountId.HeaderText = "TaxAccountId";
+            this.ColumnSalesLineTaxAccountId.Name = "ColumnSalesLineTaxAccountId";
+            this.ColumnSalesLineTaxAccountId.ReadOnly = true;
+            this.ColumnSalesLineTaxAccountId.Visible = false;
+            // 
+            // ColumnSalesLineTimeStamp
+            // 
+            this.ColumnSalesLineTimeStamp.HeaderText = "SalesLineTimeStamp";
+            this.ColumnSalesLineTimeStamp.Name = "ColumnSalesLineTimeStamp";
+            this.ColumnSalesLineTimeStamp.ReadOnly = true;
+            this.ColumnSalesLineTimeStamp.Visible = false;
+            // 
+            // ColumnSalesLineUserId
+            // 
+            this.ColumnSalesLineUserId.HeaderText = "UserId";
+            this.ColumnSalesLineUserId.Name = "ColumnSalesLineUserId";
+            this.ColumnSalesLineUserId.ReadOnly = true;
+            this.ColumnSalesLineUserId.Visible = false;
+            // 
+            // ColumnSalesLinePreparation
+            // 
+            this.ColumnSalesLinePreparation.HeaderText = "Preparation";
+            this.ColumnSalesLinePreparation.Name = "ColumnSalesLinePreparation";
+            this.ColumnSalesLinePreparation.ReadOnly = true;
+            this.ColumnSalesLinePreparation.Visible = false;
+            // 
+            // ColumnSalesLinePrice1
+            // 
+            this.ColumnSalesLinePrice1.HeaderText = "Price1";
+            this.ColumnSalesLinePrice1.Name = "ColumnSalesLinePrice1";
+            this.ColumnSalesLinePrice1.ReadOnly = true;
+            this.ColumnSalesLinePrice1.Visible = false;
+            // 
+            // ColumnSalesLinePrice2
+            // 
+            this.ColumnSalesLinePrice2.HeaderText = "Price2";
+            this.ColumnSalesLinePrice2.Name = "ColumnSalesLinePrice2";
+            this.ColumnSalesLinePrice2.ReadOnly = true;
+            this.ColumnSalesLinePrice2.Visible = false;
+            // 
+            // ColumnSalesLinePrice2LessTax
+            // 
+            this.ColumnSalesLinePrice2LessTax.HeaderText = "Price2LessTax";
+            this.ColumnSalesLinePrice2LessTax.Name = "ColumnSalesLinePrice2LessTax";
+            this.ColumnSalesLinePrice2LessTax.ReadOnly = true;
+            this.ColumnSalesLinePrice2LessTax.Visible = false;
+            // 
+            // ColumnSalesLinePriceSplitPercentage
+            // 
+            this.ColumnSalesLinePriceSplitPercentage.HeaderText = "PriceSplitPercentage";
+            this.ColumnSalesLinePriceSplitPercentage.Name = "ColumnSalesLinePriceSplitPercentage";
+            this.ColumnSalesLinePriceSplitPercentage.ReadOnly = true;
+            this.ColumnSalesLinePriceSplitPercentage.Visible = false;
             // 
             // buttonSearchItem
             // 
@@ -242,9 +569,9 @@
             this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
-            this.buttonSearchItem.Location = new System.Drawing.Point(1206, 174);
+            this.buttonSearchItem.Location = new System.Drawing.Point(1300, 178);
             this.buttonSearchItem.Name = "buttonSearchItem";
-            this.buttonSearchItem.Size = new System.Drawing.Size(182, 30);
+            this.buttonSearchItem.Size = new System.Drawing.Size(87, 31);
             this.buttonSearchItem.TabIndex = 5;
             this.buttonSearchItem.Text = "Search Item";
             this.buttonSearchItem.UseVisualStyleBackColor = false;
@@ -254,15 +581,15 @@
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(69, 176);
+            this.textBox1.Location = new System.Drawing.Point(69, 180);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1131, 30);
+            this.textBox1.Size = new System.Drawing.Size(1224, 30);
             this.textBox1.TabIndex = 6;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 179);
+            this.label2.Location = new System.Drawing.Point(8, 183);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 23);
             this.label2.TabIndex = 0;
@@ -272,17 +599,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1400, 700);
+            this.ClientSize = new System.Drawing.Size(1400, 701);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.buttonSearchItem);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewSalesLineList);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "TrnSalesDetailForm";
             this.Text = "Sales Detail";
             this.panel1.ResumeLayout(false);
@@ -290,7 +617,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesLineList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,7 +631,7 @@
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonTender;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewSalesLineList;
         private System.Windows.Forms.Button buttonSearchItem;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
@@ -315,5 +642,36 @@
         private System.Windows.Forms.Label labelInvoiceDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelInvoiceNumber;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnSalesLineEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnSalesLineDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineSalesId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineItemId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineItemDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineUnitId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineUnit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineDiscountId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineDiscount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineDiscountRate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineDiscountAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineNetPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineTaxId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineTax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineTaxRate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineTaxAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineSalesAccountId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineAssetAccountId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineCostAccountId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineTaxAccountId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineTimeStamp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineUserId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePreparation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2LessTax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePriceSplitPercentage;
     }
 }

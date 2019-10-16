@@ -167,13 +167,14 @@
             this.textBoxSalesLineQuantity.Size = new System.Drawing.Size(242, 34);
             this.textBoxSalesLineQuantity.TabIndex = 8;
             this.textBoxSalesLineQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxSalesLineQuantity.TextChanged += new System.EventHandler(this.textBoxSalesLineQuantity_TextChanged);
             // 
             // textBoxSalesLineUnit
             // 
-            this.textBoxSalesLineUnit.Enabled = false;
             this.textBoxSalesLineUnit.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSalesLineUnit.Location = new System.Drawing.Point(179, 174);
             this.textBoxSalesLineUnit.Name = "textBoxSalesLineUnit";
+            this.textBoxSalesLineUnit.ReadOnly = true;
             this.textBoxSalesLineUnit.Size = new System.Drawing.Size(242, 34);
             this.textBoxSalesLineUnit.TabIndex = 10;
             // 
@@ -189,10 +190,10 @@
             // 
             // textBoxSalesLinePrice
             // 
-            this.textBoxSalesLinePrice.Enabled = false;
             this.textBoxSalesLinePrice.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSalesLinePrice.Location = new System.Drawing.Point(179, 210);
             this.textBoxSalesLinePrice.Name = "textBoxSalesLinePrice";
+            this.textBoxSalesLinePrice.ReadOnly = true;
             this.textBoxSalesLinePrice.Size = new System.Drawing.Size(242, 34);
             this.textBoxSalesLinePrice.TabIndex = 12;
             this.textBoxSalesLinePrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -215,6 +216,7 @@
             this.comboBoxSalesLineDiscount.Name = "comboBoxSalesLineDiscount";
             this.comboBoxSalesLineDiscount.Size = new System.Drawing.Size(242, 36);
             this.comboBoxSalesLineDiscount.TabIndex = 13;
+            this.comboBoxSalesLineDiscount.SelectedIndexChanged += new System.EventHandler(this.comboBoxSalesLineDiscount_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -228,10 +230,10 @@
             // 
             // textBoxSalesLineDiscountRate
             // 
-            this.textBoxSalesLineDiscountRate.Enabled = false;
             this.textBoxSalesLineDiscountRate.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSalesLineDiscountRate.Location = new System.Drawing.Point(179, 283);
             this.textBoxSalesLineDiscountRate.Name = "textBoxSalesLineDiscountRate";
+            this.textBoxSalesLineDiscountRate.ReadOnly = true;
             this.textBoxSalesLineDiscountRate.Size = new System.Drawing.Size(242, 34);
             this.textBoxSalesLineDiscountRate.TabIndex = 16;
             this.textBoxSalesLineDiscountRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -248,10 +250,10 @@
             // 
             // textBoxSalesLineDiscountAmount
             // 
-            this.textBoxSalesLineDiscountAmount.Enabled = false;
             this.textBoxSalesLineDiscountAmount.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSalesLineDiscountAmount.Location = new System.Drawing.Point(179, 319);
             this.textBoxSalesLineDiscountAmount.Name = "textBoxSalesLineDiscountAmount";
+            this.textBoxSalesLineDiscountAmount.ReadOnly = true;
             this.textBoxSalesLineDiscountAmount.Size = new System.Drawing.Size(242, 34);
             this.textBoxSalesLineDiscountAmount.TabIndex = 18;
             this.textBoxSalesLineDiscountAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -268,10 +270,10 @@
             // 
             // textBoxSalesLineNetPrice
             // 
-            this.textBoxSalesLineNetPrice.Enabled = false;
             this.textBoxSalesLineNetPrice.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSalesLineNetPrice.Location = new System.Drawing.Point(179, 355);
             this.textBoxSalesLineNetPrice.Name = "textBoxSalesLineNetPrice";
+            this.textBoxSalesLineNetPrice.ReadOnly = true;
             this.textBoxSalesLineNetPrice.Size = new System.Drawing.Size(242, 34);
             this.textBoxSalesLineNetPrice.TabIndex = 20;
             this.textBoxSalesLineNetPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -288,10 +290,10 @@
             // 
             // textBoxSalesLineAmount
             // 
-            this.textBoxSalesLineAmount.Enabled = false;
             this.textBoxSalesLineAmount.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSalesLineAmount.Location = new System.Drawing.Point(179, 391);
             this.textBoxSalesLineAmount.Name = "textBoxSalesLineAmount";
+            this.textBoxSalesLineAmount.ReadOnly = true;
             this.textBoxSalesLineAmount.Size = new System.Drawing.Size(242, 34);
             this.textBoxSalesLineAmount.TabIndex = 22;
             this.textBoxSalesLineAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -308,10 +310,10 @@
             // 
             // textBoxSalesLineVAT
             // 
-            this.textBoxSalesLineVAT.Enabled = false;
             this.textBoxSalesLineVAT.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSalesLineVAT.Location = new System.Drawing.Point(179, 427);
             this.textBoxSalesLineVAT.Name = "textBoxSalesLineVAT";
+            this.textBoxSalesLineVAT.ReadOnly = true;
             this.textBoxSalesLineVAT.Size = new System.Drawing.Size(242, 34);
             this.textBoxSalesLineVAT.TabIndex = 24;
             // 
@@ -327,10 +329,10 @@
             // 
             // textBoxSalesLineVATRate
             // 
-            this.textBoxSalesLineVATRate.Enabled = false;
             this.textBoxSalesLineVATRate.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSalesLineVATRate.Location = new System.Drawing.Point(179, 463);
             this.textBoxSalesLineVATRate.Name = "textBoxSalesLineVATRate";
+            this.textBoxSalesLineVATRate.ReadOnly = true;
             this.textBoxSalesLineVATRate.Size = new System.Drawing.Size(242, 34);
             this.textBoxSalesLineVATRate.TabIndex = 26;
             this.textBoxSalesLineVATRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -347,10 +349,10 @@
             // 
             // textBoxSalesLineVATAmount
             // 
-            this.textBoxSalesLineVATAmount.Enabled = false;
             this.textBoxSalesLineVATAmount.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSalesLineVATAmount.Location = new System.Drawing.Point(179, 499);
             this.textBoxSalesLineVATAmount.Name = "textBoxSalesLineVATAmount";
+            this.textBoxSalesLineVATAmount.ReadOnly = true;
             this.textBoxSalesLineVATAmount.Size = new System.Drawing.Size(242, 34);
             this.textBoxSalesLineVATAmount.TabIndex = 28;
             this.textBoxSalesLineVATAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;

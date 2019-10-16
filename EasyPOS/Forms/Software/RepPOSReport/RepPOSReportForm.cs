@@ -12,7 +12,8 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 {
     public partial class RepPOSReportForm : Form
     {
-        SysSoftwareForm sysSoftwareForm;
+        public SysSoftwareForm sysSoftwareForm;
+
         public RepPOSReportForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();

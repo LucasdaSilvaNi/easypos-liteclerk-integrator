@@ -12,7 +12,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 {
     public partial class TrnSalesListForm : Form
     {
-        SysSoftwareForm sysSoftwareForm;
+        public SysSoftwareForm sysSoftwareForm;
 
         public TrnSalesListForm(SysSoftwareForm softwareForm)
         {
@@ -21,8 +21,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             GetTerminalList();
         }
-
-        public Entities.TrnSalesEntity trnSalesEntity;
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
@@ -35,9 +33,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             String[] addSales = trnPOSSalesController.AddSales();
             if (addSales[1].Equals("0") == false)
             {
-                trnSalesEntity = trnPOSSalesController.DetailSales(Convert.ToInt32(addSales[1]));
-                sysSoftwareForm.AddTabPagePOSSalesDetail(this);
-
+                sysSoftwareForm.AddTabPagePOSSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(addSales[1])));
                 GetSalesList();
             }
             else
@@ -159,9 +155,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             if (dataGridViewSalesList.CurrentCell.ColumnIndex == dataGridViewSalesList.Columns["ColumnEdit"].Index)
             {
                 Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
-                trnSalesEntity = trnPOSSalesController.DetailSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value));
-
-                sysSoftwareForm.AddTabPagePOSSalesDetail(this);
+                sysSoftwareForm.AddTabPagePOSSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value)));
             }
 
             if (dataGridViewSalesList.CurrentCell.ColumnIndex == dataGridViewSalesList.Columns["ColumnDelete"].Index)

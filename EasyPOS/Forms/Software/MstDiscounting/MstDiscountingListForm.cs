@@ -12,7 +12,8 @@ namespace EasyPOS.Forms.Software.MstDiscounting
 {
     public partial class MstDiscountingListForm : Form
     {
-        SysSoftwareForm sysSoftwareForm;
+        public SysSoftwareForm sysSoftwareForm;
+
         public MstDiscountingListForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();

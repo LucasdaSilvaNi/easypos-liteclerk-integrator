@@ -267,7 +267,7 @@ namespace EasyPOS.Controllers
 
                 if (currentSales.Any() == false)
                 {
-                    return new String[] { "Sales transaction not found.", "0" };
+                    return new String[] { "Sales not found.", "0" };
                 }
 
                 var users = from d in db.MstUsers
@@ -436,7 +436,7 @@ namespace EasyPOS.Controllers
                 }
                 else
                 {
-                    return new String[] { "", "0" };
+                    return new String[] { "Sales not found.", "0" };
                 }
             }
             catch (Exception e)

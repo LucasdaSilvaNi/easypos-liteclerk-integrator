@@ -30,6 +30,7 @@ namespace EasyPOS.Controllers
                                  Unit = d.MstUnit.Unit,
                                  Price = d.Price,
                                  DiscountId = d.DiscountId,
+                                 Discount = d.MstDiscount.Discount,
                                  DiscountRate = d.DiscountRate,
                                  DiscountAmount = d.DiscountAmount,
                                  NetPrice = d.NetPrice,
@@ -72,6 +73,7 @@ namespace EasyPOS.Controllers
                                  Unit = d.MstUnit.Unit,
                                  Price = d.Price,
                                  DiscountId = d.DiscountId,
+                                 Discount = d.MstDiscount.Discount,
                                  DiscountRate = d.DiscountRate,
                                  DiscountAmount = d.DiscountAmount,
                                  NetPrice = d.NetPrice,
@@ -147,11 +149,11 @@ namespace EasyPOS.Controllers
         {
             try
             {
-                var currentSales = from d in db.TrnSales
-                                   where d.Id == objSalesLine.SalesId
-                                   select d;
+                var sales = from d in db.TrnSales
+                            where d.Id == objSalesLine.SalesId
+                            select d;
 
-                if (currentSales.Any() == false)
+                if (sales.Any() == false)
                 {
                     return new String[] { "Sales transaction not found.", "0" };
                 }
@@ -211,11 +213,114 @@ namespace EasyPOS.Controllers
                 db.TrnSalesLines.InsertOnSubmit(newSaleLine);
                 db.SubmitChanges();
 
-                var updateSales = currentSales.FirstOrDefault();
-                updateSales.Amount = currentSales.FirstOrDefault().Amount + newSaleLine.Amount;
+                var updateSales = sales.FirstOrDefault();
+                updateSales.Amount = sales.FirstOrDefault().Amount + newSaleLine.Amount;
                 db.SubmitChanges();
 
-                return new String[] { "", newSaleLine.Id.ToString() };
+                return new String[] { "", "1" };
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
+        // ===================
+        // Update - Sales Line
+        // ===================
+        public String[] UpdatealesLine(Int32 id, Entities.TrnSalesLineEntity objSalesLine)
+        {
+            try
+            {
+                var salesLine = from d in db.TrnSalesLines
+                                where d.Id == id
+                                select d;
+
+                if (salesLine.Any())
+                {
+                    var sales = from d in db.TrnSales
+                                where d.Id == objSalesLine.SalesId
+                                select d;
+
+                    if (sales.Any() == false)
+                    {
+                        return new String[] { "Sales transaction not found.", "0" };
+                    }
+
+                    var item = from d in db.MstItems where d.Id == objSalesLine.ItemId select d;
+                    if (item.Any() == false)
+                    {
+                        return new String[] { "Item not found.", "0" };
+                    }
+
+                    var discount = from d in db.MstDiscounts where d.Id == objSalesLine.DiscountId select d;
+                    if (discount.Any() == false)
+                    {
+                        return new String[] { "Discount not found.", "0" };
+                    }
+
+                    var tax = from d in db.MstTaxes where d.Id == objSalesLine.TaxId select d;
+                    if (tax.Any() == false)
+                    {
+                        return new String[] { "Tax not found.", "0" };
+                    }
+
+                    var user = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                    if (user.Any() == false)
+                    {
+                        return new String[] { "User not found.", "0" };
+                    }
+
+                    var updateSalesLine = salesLine.FirstOrDefault();
+                    updateSalesLine.Quantity = objSalesLine.Quantity;
+                    updateSalesLine.Price = objSalesLine.Price;
+                    updateSalesLine.DiscountId = objSalesLine.DiscountId;
+                    updateSalesLine.DiscountRate = objSalesLine.DiscountRate;
+                    updateSalesLine.DiscountAmount = objSalesLine.DiscountAmount;
+                    updateSalesLine.NetPrice = objSalesLine.NetPrice;
+                    updateSalesLine.Amount = objSalesLine.Amount;
+                    updateSalesLine.TaxId = objSalesLine.TaxId;
+                    updateSalesLine.TaxRate = objSalesLine.TaxRate;
+                    updateSalesLine.TaxAmount = objSalesLine.TaxAmount;
+                    updateSalesLine.UserId = user.FirstOrDefault().Id;
+                    updateSalesLine.SalesLineTimeStamp = DateTime.Now.Date;
+                    db.SubmitChanges();
+
+                    return new String[] { "", "1" };
+                }
+                else
+                {
+                    return new String[] { "Sales line not found.", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
+        // ===================
+        // Delete - Sales Line 
+        // ===================
+        public String[] DeleteSalesLine(Int32 salesId)
+        {
+            try
+            {
+                var salesLine = from d in db.TrnSalesLines
+                                where d.Id == salesId
+                                select d;
+
+                if (salesLine.Any())
+                {
+                    db.TrnSalesLines.DeleteOnSubmit(salesLine.FirstOrDefault());
+                    db.SubmitChanges();
+
+                    return new String[] { "", "1" };
+                }
+                else
+                {
+                    return new String[] { "Sales line not found.", "0" };
+                }
             }
             catch (Exception e)
             {

@@ -12,7 +12,8 @@ namespace EasyPOS.Forms.Software.MstItem
 {
     public partial class MstItemListForm : Form
     {
-        SysSoftwareForm sysSoftwareForm;
+        public SysSoftwareForm sysSoftwareForm;
+
         public MstItemListForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();

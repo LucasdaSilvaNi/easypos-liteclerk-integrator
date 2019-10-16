@@ -12,7 +12,8 @@ namespace EasyPOS.Forms.Software.SysMenu
 {
     public partial class SysMenuForm : Form
     {
-        SysSoftwareForm sysSoftwareForm;
+        public SysSoftwareForm sysSoftwareForm;
+
         public SysMenuForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();

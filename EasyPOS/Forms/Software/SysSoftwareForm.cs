@@ -18,17 +18,17 @@ namespace EasyPOS.Forms.Software
             InitializeDefaultForm();
         }
 
-        TabPage tabPageItemList = new TabPage { Name = "tabPageItemList", Text = "Item List" };
-        TabPage tabPagePOSSalesList = new TabPage { Name = "tabPagePOSSalesList", Text = "Sales List" };
-        TabPage tabPagePOSSalesDetail = new TabPage { Name = "tabPagePOSSalesDetail", Text = "Sales Detail" };
-        TabPage tabPageDiscountingList = new TabPage { Name = "tabPageDiscountingList", Text = "Discounting List" };
-        TabPage tabPagePOSReport = new TabPage { Name = "tabPagePOSReport", Text = "POS Report" };
+        public TabPage tabPageItemList = new TabPage { Name = "tabPageItemList", Text = "Item List" };
+        public TabPage tabPagePOSSalesList = new TabPage { Name = "tabPagePOSSalesList", Text = "Sales List" };
+        public TabPage tabPagePOSSalesDetail = new TabPage { Name = "tabPagePOSSalesDetail", Text = "Sales Detail" };
+        public TabPage tabPageDiscountingList = new TabPage { Name = "tabPageDiscountingList", Text = "Discounting List" };
+        public TabPage tabPagePOSReport = new TabPage { Name = "tabPagePOSReport", Text = "POS Report" };
 
-        MstItem.MstItemListForm mstItemListForm = null;
-        MstDiscounting.MstDiscountingListForm mstDiscountingListForm = null;
-        TrnPOS.TrnSalesListForm trnSalesListForm = null;
-        TrnPOS.TrnSalesDetailForm trnSalesDetailForm = null;
-        RepPOSReport.RepPOSReportForm repPOSReportForm = null;
+        public MstItem.MstItemListForm mstItemListForm = null;
+        public MstDiscounting.MstDiscountingListForm mstDiscountingListForm = null;
+        public TrnPOS.TrnSalesListForm trnSalesListForm = null;
+        public TrnPOS.TrnSalesDetailForm trnSalesDetailForm = null;
+        public RepPOSReport.RepPOSReportForm repPOSReportForm = null;
 
         public void InitializeDefaultForm()
         {
@@ -114,11 +114,11 @@ namespace EasyPOS.Forms.Software
             }
         }
 
-        public void AddTabPagePOSSalesDetail(TrnPOS.TrnSalesListForm salesListForm)
+        public void AddTabPagePOSSalesDetail(TrnPOS.TrnSalesListForm salesListForm, Entities.TrnSalesEntity salesEntity)
         {
             tabPagePOSSalesDetail.Controls.Remove(trnSalesDetailForm);
 
-            trnSalesDetailForm = new TrnPOS.TrnSalesDetailForm(this, salesListForm)
+            trnSalesDetailForm = new TrnPOS.TrnSalesDetailForm(this, salesListForm, salesEntity)
             {
                 TopLevel = false,
                 Visible = true,
