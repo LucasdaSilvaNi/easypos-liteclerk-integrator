@@ -168,6 +168,8 @@
             this.textBoxSalesLineQuantity.TabIndex = 8;
             this.textBoxSalesLineQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxSalesLineQuantity.TextChanged += new System.EventHandler(this.textBoxSalesLineQuantity_TextChanged);
+            this.textBoxSalesLineQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSalesLineQuantity_KeyPress);
+            this.textBoxSalesLineQuantity.Leave += new System.EventHandler(this.textBoxSalesLineQuantity_Leave);
             // 
             // textBoxSalesLineUnit
             // 

@@ -50,14 +50,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
             textBoxSalesLineUnit.Text = trnSalesLineEntity.Unit;
             textBoxSalesLinePrice.Text = trnSalesLineEntity.Price.ToString("#,##0.00");
             comboBoxSalesLineDiscount.SelectedValue = trnSalesLineEntity.DiscountId;
-            textBoxSalesLineDiscountRate.Text = trnSalesLineEntity.DiscountRate.ToString("#,##0.00");
-            textBoxSalesLineDiscountAmount.Text = trnSalesLineEntity.DiscountAmount.ToString("#,##0.00");
             textBoxSalesLineNetPrice.Text = trnSalesLineEntity.NetPrice.ToString("#,##0.00");
             textBoxSalesLineAmount.Text = trnSalesLineEntity.Amount.ToString("#,##0.00");
             textBoxSalesLineVAT.Text = trnSalesLineEntity.Tax;
             textBoxSalesLineVATRate.Text = trnSalesLineEntity.TaxRate.ToString("#,##0.00");
-            textBoxSalesLineVATAmount.Text = trnSalesLineEntity.TaxAmount.ToString("#,##0.00");
-            textBoxSalesLineRemarks.Text = "NA";
+            textBoxSalesLineRemarks.Text = trnSalesLineEntity.Preparation;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -169,7 +166,30 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void textBoxSalesLineQuantity_TextChanged(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(textBoxSalesLineQuantity.Text))
+            {
+                textBoxSalesLineQuantity.Text = "0.00";
+            }
+
             ComputeAmount();
+        }
+
+        private void textBoxSalesLineQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxSalesLineQuantity_Leave(object sender, EventArgs e)
+        {
+            textBoxSalesLineQuantity.Text = Convert.ToDecimal(textBoxSalesLineQuantity.Text).ToString("#,##0.00");
         }
     }
 }

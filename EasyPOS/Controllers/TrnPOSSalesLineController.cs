@@ -203,7 +203,7 @@ namespace EasyPOS.Controllers
                     TaxAccountId = 87,
                     SalesLineTimeStamp = DateTime.Now.Date,
                     UserId = user.FirstOrDefault().Id,
-                    Preparation = "",
+                    Preparation = objSalesLine.Preparation,
                     Price1 = 0,
                     Price2 = 0,
                     Price2LessTax = 0,
@@ -282,8 +282,9 @@ namespace EasyPOS.Controllers
                     updateSalesLine.TaxId = objSalesLine.TaxId;
                     updateSalesLine.TaxRate = objSalesLine.TaxRate;
                     updateSalesLine.TaxAmount = objSalesLine.TaxAmount;
-                    updateSalesLine.UserId = user.FirstOrDefault().Id;
                     updateSalesLine.SalesLineTimeStamp = DateTime.Now.Date;
+                    updateSalesLine.UserId = user.FirstOrDefault().Id;
+                    updateSalesLine.Preparation = objSalesLine.Preparation;
                     db.SubmitChanges();
 
                     return new String[] { "", "1" };

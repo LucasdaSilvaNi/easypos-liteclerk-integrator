@@ -40,9 +40,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
             var itemList = trnPOSSalesLineController.ListSearchItem(textBoxFilter.Text);
             if (itemList.Any())
             {
-                dataGridViewSearchItemList.Columns[10].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
-                dataGridViewSearchItemList.Columns[10].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
-                dataGridViewSearchItemList.Columns[10].DefaultCellStyle.ForeColor = Color.White;
+                dataGridViewSearchItemList.Columns[11].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
+                dataGridViewSearchItemList.Columns[11].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
+                dataGridViewSearchItemList.Columns[11].DefaultCellStyle.ForeColor = Color.White;
 
                 foreach (var objItemList in itemList)
                 {
@@ -53,6 +53,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         objItemList.GenericName,
                         objItemList.OutTaxId,
                         objItemList.OutTax,
+                        objItemList.OutTaxRate,
                         objItemList.UnitId,
                         objItemList.Unit,
                         objItemList.Price.ToString("#,##0.00"),
@@ -78,12 +79,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Int32 ItemId = Convert.ToInt32(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[0].Value);
                 Int32 SalesId = trnSalesEntity.Id;
                 String ItemDescription = dataGridViewSearchItemList.Rows[e.RowIndex].Cells[2].Value.ToString();
-                Int32 UnitId = Convert.ToInt32(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[6].Value);
-                String Unit = dataGridViewSearchItemList.Rows[e.RowIndex].Cells[7].Value.ToString();
-                Decimal Price = Convert.ToDecimal(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[8].Value);
-                Int32 DiscountId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().DefaultDiscountId);
                 Int32 TaxId = Convert.ToInt32(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[4].Value);
                 String Tax = dataGridViewSearchItemList.Rows[e.RowIndex].Cells[5].Value.ToString();
+                Decimal TaxRate = Convert.ToDecimal(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[6].Value);
+                Int32 UnitId = Convert.ToInt32(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[7].Value);
+                String Unit = dataGridViewSearchItemList.Rows[e.RowIndex].Cells[8].Value.ToString();
+                Decimal Price = Convert.ToDecimal(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[9].Value);
+                Int32 DiscountId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().DefaultDiscountId);
                 Int32 UserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
 
                 Entities.TrnSalesLineEntity trnSalesLineEntity = new Entities.TrnSalesLineEntity()
@@ -104,7 +106,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     Amount = Price,
                     TaxId = TaxId,
                     Tax = Tax,
-                    TaxRate = 0,
+                    TaxRate = TaxRate,
                     TaxAmount = 0,
                     SalesAccountId = 159,
                     AssetAccountId = 255,
