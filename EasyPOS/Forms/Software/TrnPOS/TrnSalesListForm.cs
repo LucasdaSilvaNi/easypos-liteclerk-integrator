@@ -90,6 +90,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         objSalesList.IsCancelled
                     );
                 }
+
+                CurrentCelectedCell(0);
+            }
+            else
+            {
+                CurrentCelectedCell(-1);
             }
         }
 
@@ -103,22 +109,29 @@ namespace EasyPOS.Forms.Software.TrnPOS
             GetSalesList();
         }
 
-        private void dataGridViewSalesList_CellClick(object sender, DataGridViewCellEventArgs e)
+        public void CurrentCelectedCell(Int32 rowIndex)
         {
-            if (e.RowIndex > -1)
-            {
-                labelInvoiceNumber.Text = dataGridViewSalesList.Rows[e.RowIndex].Cells[5].Value.ToString();
-                labelTerminal.Text = dataGridViewSalesList.Rows[e.RowIndex].Cells[3].Value.ToString();
-                labelPreparedBy.Text = dataGridViewSalesList.Rows[e.RowIndex].Cells[7].Value.ToString();
-                labelTransactionDate.Text = dataGridViewSalesList.Rows[e.RowIndex].Cells[4].Value.ToString();
+            dataGridViewSalesLineItemDisplay.Rows.Clear();
+            dataGridViewSalesLineItemDisplay.Refresh();
 
-                dataGridViewSalesLineItemDisplay.Rows.Clear();
-                dataGridViewSalesLineItemDisplay.Refresh();
+            if (rowIndex == -1)
+            {
+                labelInvoiceNumber.Text = "";
+                labelTerminal.Text = "";
+                labelPreparedBy.Text = "";
+                labelTransactionDate.Text = "";
+            }
+            else
+            {
+                labelInvoiceNumber.Text = dataGridViewSalesList.Rows[rowIndex].Cells[5].Value.ToString();
+                labelTerminal.Text = dataGridViewSalesList.Rows[rowIndex].Cells[3].Value.ToString();
+                labelPreparedBy.Text = dataGridViewSalesList.Rows[rowIndex].Cells[7].Value.ToString();
+                labelTransactionDate.Text = dataGridViewSalesList.Rows[rowIndex].Cells[4].Value.ToString();
 
                 Controllers.TrnPOSSalesLineController trnPOSSalesLineController = new Controllers.TrnPOSSalesLineController();
-                if (trnPOSSalesLineController.ListSalesLine(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value)).Any())
+                if (trnPOSSalesLineController.ListSalesLine(Convert.ToInt32(dataGridViewSalesList.Rows[rowIndex].Cells[2].Value)).Any())
                 {
-                    var groupedSalesLineItems = from d in trnPOSSalesLineController.ListSalesLine(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value))
+                    var groupedSalesLineItems = from d in trnPOSSalesLineController.ListSalesLine(Convert.ToInt32(dataGridViewSalesList.Rows[rowIndex].Cells[2].Value))
                                                 group d by new
                                                 {
                                                     d.ItemDescription,
@@ -151,14 +164,22 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     }
                 }
             }
+        }
 
-            if (dataGridViewSalesList.CurrentCell.ColumnIndex == dataGridViewSalesList.Columns["ColumnEdit"].Index)
+        private void dataGridViewSalesList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                CurrentCelectedCell(e.RowIndex);
+            }
+
+            if (e.RowIndex > -1 && dataGridViewSalesList.CurrentCell.ColumnIndex == dataGridViewSalesList.Columns["ColumnEdit"].Index)
             {
                 Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
                 sysSoftwareForm.AddTabPagePOSSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value)));
             }
 
-            if (dataGridViewSalesList.CurrentCell.ColumnIndex == dataGridViewSalesList.Columns["ColumnDelete"].Index)
+            if (e.RowIndex > -1 && dataGridViewSalesList.CurrentCell.ColumnIndex == dataGridViewSalesList.Columns["ColumnDelete"].Index)
             {
                 DialogResult deleteDialogResult = MessageBox.Show("Delete Sales?", "Delete Sales", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (deleteDialogResult == DialogResult.Yes)

@@ -214,7 +214,7 @@ namespace EasyPOS.Controllers
                 db.SubmitChanges();
 
                 var updateSales = sales.FirstOrDefault();
-                updateSales.Amount = sales.FirstOrDefault().Amount + newSaleLine.Amount;
+                updateSales.Amount = sales.FirstOrDefault().TrnSalesLines.Any() ? sales.FirstOrDefault().TrnSalesLines.Sum(d => d.Amount) : 0;
                 db.SubmitChanges();
 
                 return new String[] { "", "1" };
@@ -287,6 +287,10 @@ namespace EasyPOS.Controllers
                     updateSalesLine.Preparation = objSalesLine.Preparation;
                     db.SubmitChanges();
 
+                    var updateSales = sales.FirstOrDefault();
+                    updateSales.Amount = sales.FirstOrDefault().TrnSalesLines.Any() ? sales.FirstOrDefault().TrnSalesLines.Sum(d => d.Amount) : 0;
+                    db.SubmitChanges();
+
                     return new String[] { "", "1" };
                 }
                 else
@@ -328,5 +332,88 @@ namespace EasyPOS.Controllers
                 return new String[] { e.Message, "0" };
             }
         }
+
+        // ====================
+        // Barcode - Sales Line
+        // ====================
+        public String[] BarcodeSalesLine(Int32 salesId, String barcode)
+        {
+            try
+            {
+                var sales = from d in db.TrnSales
+                            where d.Id == salesId
+                            select d;
+
+                if (sales.Any() == false)
+                {
+                    return new String[] { "Sales transaction not found.", "0" };
+                }
+
+                var item = from d in db.MstItems where d.BarCode.Equals(barcode) select d;
+                if (item.Any() == false)
+                {
+                    return new String[] { "Item not found.", "0" };
+                }
+
+                var discount = from d in db.MstDiscounts where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().DefaultDiscountId) select d;
+                if (discount.Any() == false)
+                {
+                    return new String[] { "Discount not found.", "0" };
+                }
+                
+                var user = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (user.Any() == false)
+                {
+                    return new String[] { "User not found.", "0" };
+                }
+
+                Decimal discountAmount = item.FirstOrDefault().Price * (discount.FirstOrDefault().DiscountRate / 100);
+                Decimal netPrice = item.FirstOrDefault().Price - discountAmount;
+                Decimal amount = netPrice * 1;
+                Decimal taxAmount = amount * (item.FirstOrDefault().MstTax1.Rate / 100);
+
+                Data.TrnSalesLine newSaleLine = new Data.TrnSalesLine
+                {
+                    SalesId = salesId,
+                    ItemId = item.FirstOrDefault().Id,
+                    UnitId = item.FirstOrDefault().UnitId,
+                    Price = item.FirstOrDefault().Price,
+                    DiscountId = discount.FirstOrDefault().Id,
+                    DiscountRate = discount.FirstOrDefault().DiscountRate,
+                    DiscountAmount = discountAmount,
+                    NetPrice = netPrice,
+                    Quantity = 1,
+                    Amount = amount,
+                    TaxId = item.FirstOrDefault().OutTaxId,
+                    TaxRate = item.FirstOrDefault().MstTax1.Rate,
+                    TaxAmount = taxAmount,
+                    SalesAccountId = 159,
+                    AssetAccountId = 255,
+                    CostAccountId = 238,
+                    TaxAccountId = 87,
+                    SalesLineTimeStamp = DateTime.Now.Date,
+                    UserId = user.FirstOrDefault().Id,
+                    Preparation = "NA",
+                    Price1 = 0,
+                    Price2 = 0,
+                    Price2LessTax = 0,
+                    PriceSplitPercentage = 0,
+                };
+
+                db.TrnSalesLines.InsertOnSubmit(newSaleLine);
+                db.SubmitChanges();
+
+                var updateSales = sales.FirstOrDefault();
+                updateSales.Amount = sales.FirstOrDefault().TrnSalesLines.Any() ? sales.FirstOrDefault().TrnSalesLines.Sum(d => d.Amount) : 0;
+                db.SubmitChanges();
+
+                return new String[] { "", "1" };
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
     }
 }

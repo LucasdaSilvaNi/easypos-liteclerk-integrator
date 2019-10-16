@@ -122,7 +122,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void dataGridViewSalesLineList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridViewSalesLineList.CurrentCell.ColumnIndex == dataGridViewSalesLineList.Columns["ColumnSalesLineEdit"].Index)
+            if (e.RowIndex > -1 && dataGridViewSalesLineList.CurrentCell.ColumnIndex == dataGridViewSalesLineList.Columns["ColumnSalesLineEdit"].Index)
             {
                 Int32 Id = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[2].Value);
                 Int32 SalesId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[3].Value);
@@ -191,23 +191,37 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 trnSalesDetailSalesItemDetailForm.ShowDialog();
             }
 
-            if (dataGridViewSalesLineList.CurrentCell.ColumnIndex == dataGridViewSalesLineList.Columns["ColumnSalesLineDelete"].Index)
+            if (e.RowIndex > -1 && dataGridViewSalesLineList.CurrentCell.ColumnIndex == dataGridViewSalesLineList.Columns["ColumnSalesLineDelete"].Index)
             {
                 DialogResult deleteDialogResult = MessageBox.Show("Delete Sales?", "Delete Sales", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (deleteDialogResult == DialogResult.Yes)
                 {
                     Controllers.TrnPOSSalesLineController trnPOSSalesLineController = new Controllers.TrnPOSSalesLineController();
 
-                    String[] deleteSales = trnPOSSalesLineController.DeleteSalesLine(Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[2].Value));
-                    if (deleteSales[1].Equals("0") == false)
+                    String[] deleteSalesLine = trnPOSSalesLineController.DeleteSalesLine(Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[2].Value));
+                    if (deleteSalesLine[1].Equals("0") == false)
                     {
                         GetSalesLineList();
                     }
                     else
                     {
-                        MessageBox.Show(deleteSales[0], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(deleteSalesLine[0], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+        }
+
+        private void textBoxBarcode_TextChanged(object sender, EventArgs e)
+        {
+            Controllers.TrnPOSSalesLineController trnPOSSalesLineController = new Controllers.TrnPOSSalesLineController();
+            String[] barCodeSalesLine = trnPOSSalesLineController.BarcodeSalesLine(trnSalesEntity.Id, textBoxBarcode.Text);
+            if (barCodeSalesLine[1].Equals("0") == false)
+            {
+                GetSalesLineList();
+            }
+            else
+            {
+                //MessageBox.Show(barCodeSalesLine[0], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
