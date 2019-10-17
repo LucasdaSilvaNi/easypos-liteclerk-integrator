@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\SysLoginController.cs" />
     <Compile Include="Controllers\TrnPOSSalesController.cs" />
     <Compile Include="Controllers\TrnPOSSalesLineController.cs" />
     <Compile Include="Data\easyposdb.designer.cs">
@@ -65,6 +66,12 @@
     <Compile Include="Entities\TrnCollectionLineEntity.cs" />
     <Compile Include="Entities\TrnSalesEntity.cs" />
     <Compile Include="Entities\TrnSalesLineEntity.cs" />
+    <Compile Include="Forms\Account\SysLogin\SysLoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Account\SysLogin\SysLoginForm.Designer.cs">
+      <DependentUpon>SysLoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\MstDiscounting\MstDiscountingListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +146,9 @@
     <None Include="Data\easyposdb.dbml.layout">
       <DependentUpon>easyposdb.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="Forms\Account\SysLogin\SysLoginForm.resx">
+      <DependentUpon>SysLoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstDiscounting\MstDiscountingListForm.resx">
       <DependentUpon>MstDiscountingListForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -210,7 +220,6 @@
   <ItemGroup>
     <Folder Include="EasyFISIntegration\Controllers\" />
     <Folder Include="EasyFISIntegration\Entities\" />
-    <Folder Include="Forms\Account\SysLogin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Images\Backgrounds\coffee.jpeg" />

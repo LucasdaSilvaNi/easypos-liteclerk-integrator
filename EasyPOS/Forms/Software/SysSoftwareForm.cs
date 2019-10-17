@@ -167,5 +167,11 @@ namespace EasyPOS.Forms.Software
             tabControlSoftware.TabPages.Remove(tabControlSoftware.SelectedTab);
             tabControlSoftware.SelectTab(tabControlSoftware.TabPages.Count - 1);
         }
+
+        private void SysSoftwareForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Account.SysLogin.SysLoginForm sysLogin = new Account.SysLogin.SysLoginForm();
+            sysLogin.Show();
+        }
     }
 }
