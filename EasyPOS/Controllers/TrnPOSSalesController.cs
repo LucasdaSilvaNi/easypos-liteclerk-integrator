@@ -417,7 +417,7 @@ namespace EasyPOS.Controllers
                 Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
                 trnInventoryModule.UpdateSalesInventory(currentSales.FirstOrDefault().Id);
 
-                return new String[] { "", "1" };
+                return new String[] { "", newCollection.Id.ToString() };
             }
             catch (Exception e)
             {
