@@ -44,17 +44,136 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonTender_Click(object sender, EventArgs e)
         {
-            if (Convert.ToDecimal(textBoxTenderAmount.Text) < Convert.ToDecimal(textBoxTotalSalesAmount.Text))
+            TenderSales();
+        }
+
+        public void TenderSales()
+        {
+            if (Convert.ToDecimal(textBoxChangeAmount.Text) < 0)
             {
-                MessageBox.Show("Cannot tender below sales amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid Tender", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                DialogResult tenderPrinterReadyDialogResult = MessageBox.Show("Is printer ready?", "Tender", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (tenderPrinterReadyDialogResult == DialogResult.Yes)
+                List<Entities.MstPayType> payTypes = new List<Entities.MstPayType>();
+                foreach (DataGridViewRow row in dataGridViewTenderPayType.Rows)
                 {
-                    CreateCollection();
+                    payTypes.Add(new Entities.MstPayType()
+                    {
+                        PayType = row.Cells[1].Value.ToString(),
+                        Amount = Convert.ToDecimal(row.Cells[2].Value)
+                    });
                 }
+
+                Decimal salesAmount = Convert.ToDecimal(textBoxTotalSalesAmount.Text);
+                Decimal cashAmount = 0;
+                Decimal nonCashAmount = 0;
+                Decimal changeAmount = Convert.ToDecimal(textBoxChangeAmount.Text);
+
+                var cashPayType = from d in payTypes where d.PayType.Equals("Cash") == true select d;
+                if (cashPayType.Any())
+                {
+                    cashAmount = cashPayType.FirstOrDefault().Amount;
+                }
+
+                var nonCashPayType = from d in payTypes where d.PayType.Equals("Cash") == false select d;
+                if (nonCashPayType.Any())
+                {
+                    nonCashAmount = nonCashPayType.Sum(d => d.Amount);
+                }
+
+                Boolean isValidTender = false;
+                if (cashAmount > 0)
+                {
+                    if (cashAmount >= changeAmount)
+                    {
+                        isValidTender = true;
+                    }
+                }
+                else
+                {
+                    if (cashAmount == 0)
+                    {
+                        if (nonCashAmount == salesAmount)
+                        {
+                            isValidTender = true;
+                        }
+                    }
+                }
+
+                if (isValidTender == true)
+                {
+                    DialogResult tenderPrinterReadyDialogResult = MessageBox.Show("Is printer ready?", "Tender", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (tenderPrinterReadyDialogResult == DialogResult.Yes)
+                    {
+                        CreateCollection();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Tender", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public void CreateCollection()
+        {
+            List<Entities.TrnCollectionLineEntity> listCollectionLine = new List<Entities.TrnCollectionLineEntity>();
+            if (dataGridViewTenderPayType.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dataGridViewTenderPayType.Rows)
+                {
+                    if (Convert.ToDecimal(row.Cells[2].Value) > 0)
+                    {
+                        listCollectionLine.Add(new Entities.TrnCollectionLineEntity()
+                        {
+                            Amount = Convert.ToDecimal(row.Cells[2].Value),
+                            PayTypeId = Convert.ToInt32(row.Cells[0].Value),
+                            CheckNumber = "NA",
+                            CheckDate = null,
+                            CheckBank = "NA",
+                            CreditCardVerificationCode = "NA",
+                            CreditCardNumber = "NA",
+                            CreditCardType = "NA",
+                            CreditCardBank = "NA",
+                            GiftCertificateNumber = "NA",
+                            OtherInformation = "NA",
+                            CreditCardReferenceNumber = "NA",
+                            CreditCardHolderName = "NA",
+                            CreditCardExpiry = "NA"
+                        });
+                    }
+                }
+            }
+
+            if (listCollectionLine.Any())
+            {
+                Entities.TrnCollectionEntity newCollection = new Entities.TrnCollectionEntity()
+                {
+                    TenderAmount = Convert.ToDecimal(textBoxTenderAmount.Text),
+                    ChangeAmount = Convert.ToDecimal(textBoxChangeAmount.Text),
+                    CollectionLines = listCollectionLine
+                };
+
+                Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+                String[] tenderSales = trnPOSSalesController.TenderSales(trnSalesEntity.Id, newCollection);
+                if (tenderSales[1].Equals("0") == false)
+                {
+                    Close();
+
+                    sysSoftwareForm.RemoveTabPage();
+                    trnSalesDetailForm.trnSalesListForm.newSales();
+
+                    new Reports.RepOfficialReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]));
+                }
+                else
+                {
+                    MessageBox.Show(tenderSales[0], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Cannot tender zero amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -104,7 +223,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             ComputeAmount();
         }
 
-        public Decimal GetTotalTenderAmount()
+        public void ComputeAmount()
         {
             Decimal totalTenderAmount = 0;
 
@@ -116,152 +235,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
             }
 
-            return totalTenderAmount;
-        }
+            textBoxTenderAmount.Text = totalTenderAmount.ToString("#,##0.00");
 
-        public void ComputeAmount()
-        {
-            textBoxTenderAmount.Text = GetTotalTenderAmount().ToString("#,##0.00");
-
-            Decimal changeAmount = GetTotalTenderAmount() - Convert.ToDecimal(textBoxTotalSalesAmount.Text);
+            Decimal changeAmount = totalTenderAmount - Convert.ToDecimal(textBoxTotalSalesAmount.Text);
             textBoxChangeAmount.Text = changeAmount.ToString("#,##0.00");
-        }
-
-        public void CreateCollection()
-        {
-            if (Convert.ToDecimal(textBoxChangeAmount.Text) < 0)
-            {
-                MessageBox.Show("Invalid Tender", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                String cash = dataGridViewTenderPayType.Rows[0].Cells[0].Value.ToString();
-
-                List<Entities.MstPayType> payTypes = new List<Entities.MstPayType>();
-                foreach (DataGridViewRow row in dataGridViewTenderPayType.Rows)
-                {
-                    payTypes.Add(new Entities.MstPayType()
-                    {
-                        PayType = row.Cells[1].Value.ToString(),
-                        Amount = Convert.ToDecimal(row.Cells[2].Value)
-                    });
-                }
-
-                Decimal salesAmount = Convert.ToDecimal(textBoxTotalSalesAmount.Text);
-                Decimal cashAmount = 0;
-                Decimal nonCashAmount = 0;
-                Decimal changeAmount = Convert.ToDecimal(textBoxChangeAmount.Text);
-
-                var cashPayType = from d in payTypes where d.PayType.Equals("Cash") == true select d;
-                if (cashPayType.Any())
-                {
-                    cashAmount = cashPayType.FirstOrDefault().Amount;
-                }
-
-                var nonCashPayType = from d in payTypes where d.PayType.Equals("Cash") == false select d;
-                if (nonCashPayType.Any())
-                {
-                    nonCashAmount = nonCashPayType.Sum(d => d.Amount);
-                }
-
-                Boolean isValidTender = false;
-                String invalidTenderMessage = "";
-
-                if (cashAmount > 0)
-                {
-                    if (cashAmount > changeAmount)
-                    {
-                        isValidTender = true;
-                    }
-                    else
-                    {
-                        invalidTenderMessage = "Change must be non-negative value.";
-                    }
-                }
-                else
-                {
-                    if (cashAmount == 0)
-                    {
-                        if (nonCashAmount == salesAmount)
-                        {
-                            isValidTender = true;
-                        }
-                        else
-                        {
-                            invalidTenderMessage = "Non cash amount must be equal to sales amount.";
-                        }
-                    }
-                    else
-                    {
-                        invalidTenderMessage = "Cash must be non-negative value.";
-                    }
-                }
-
-                if (isValidTender == true)
-                {
-                    List<Entities.TrnCollectionLineEntity> listCollectionLine = new List<Entities.TrnCollectionLineEntity>();
-                    if (dataGridViewTenderPayType.Rows.Count > 0)
-                    {
-                        foreach (DataGridViewRow row in dataGridViewTenderPayType.Rows)
-                        {
-                            if (Convert.ToDecimal(row.Cells[2].Value) > 0)
-                            {
-                                listCollectionLine.Add(new Entities.TrnCollectionLineEntity()
-                                {
-                                    Amount = Convert.ToDecimal(row.Cells[2].Value),
-                                    PayTypeId = Convert.ToInt32(row.Cells[0].Value),
-                                    CheckNumber = "NA",
-                                    CheckDate = null,
-                                    CheckBank = "NA",
-                                    CreditCardVerificationCode = "NA",
-                                    CreditCardNumber = "NA",
-                                    CreditCardType = "NA",
-                                    CreditCardBank = "NA",
-                                    GiftCertificateNumber = "NA",
-                                    OtherInformation = "NA",
-                                    CreditCardReferenceNumber = "NA",
-                                    CreditCardHolderName = "NA",
-                                    CreditCardExpiry = "NA"
-                                });
-                            }
-                        }
-                    }
-
-                    if (listCollectionLine.Any())
-                    {
-                        Entities.TrnCollectionEntity newCollection = new Entities.TrnCollectionEntity()
-                        {
-                            TenderAmount = Convert.ToDecimal(textBoxTenderAmount.Text),
-                            ChangeAmount = Convert.ToDecimal(textBoxChangeAmount.Text),
-                            CollectionLines = listCollectionLine
-                        };
-
-                        Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
-                        String[] tenderSales = trnPOSSalesController.TenderSales(trnSalesEntity.Id, newCollection);
-                        if (tenderSales[1].Equals("0") == false)
-                        {
-                            Close();
-
-                            sysSoftwareForm.RemoveTabPage();
-                            trnSalesDetailForm.trnSalesListForm.newSales();
-
-                            new Reports.RepOfficialReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]));
-                        }
-                        else
-                        {
-                            MessageBox.Show(tenderSales[0], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Cannot tender zero amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(invalidTenderMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
         }
     }
 }
