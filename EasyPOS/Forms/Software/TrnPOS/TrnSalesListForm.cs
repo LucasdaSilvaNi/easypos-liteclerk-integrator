@@ -29,6 +29,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonSales_Click(object sender, EventArgs e)
         {
+            newSales();
+        }
+
+        public void newSales()
+        {
             Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
             String[] addSales = trnPOSSalesController.AddSales();
             if (addSales[1].Equals("0") == false)
@@ -175,25 +180,53 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             if (e.RowIndex > -1 && dataGridViewSalesList.CurrentCell.ColumnIndex == dataGridViewSalesList.Columns["ColumnEdit"].Index)
             {
-                Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
-                sysSoftwareForm.AddTabPagePOSSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value)));
+                Boolean isLocked = Convert.ToBoolean(dataGridViewSalesList.Rows[e.RowIndex].Cells[9].Value);
+                Boolean isTendered = Convert.ToBoolean(dataGridViewSalesList.Rows[e.RowIndex].Cells[10].Value);
+
+                if (isLocked == true)
+                {
+                    MessageBox.Show("Already locked.", "Locked", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (isTendered == true)
+                {
+                    MessageBox.Show("Already tendered.", "Tendered", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+                    sysSoftwareForm.AddTabPagePOSSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value)));
+                }
             }
 
             if (e.RowIndex > -1 && dataGridViewSalesList.CurrentCell.ColumnIndex == dataGridViewSalesList.Columns["ColumnDelete"].Index)
             {
-                DialogResult deleteDialogResult = MessageBox.Show("Delete Sales?", "Delete Sales", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (deleteDialogResult == DialogResult.Yes)
-                {
-                    Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+                Boolean isLocked = Convert.ToBoolean(dataGridViewSalesList.Rows[e.RowIndex].Cells[9].Value);
+                Boolean isTendered = Convert.ToBoolean(dataGridViewSalesList.Rows[e.RowIndex].Cells[10].Value);
 
-                    String[] deleteSales = trnPOSSalesController.DeleteSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value));
-                    if (deleteSales[1].Equals("0") == false)
+                if (isLocked == true)
+                {
+                    MessageBox.Show("Already locked.", "Locked", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (isTendered == true)
+                {
+                    MessageBox.Show("Already tendered.", "Tendered", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    DialogResult deleteDialogResult = MessageBox.Show("Delete Sales?", "Delete Sales", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (deleteDialogResult == DialogResult.Yes)
                     {
-                        GetSalesList();
-                    }
-                    else
-                    {
-                        MessageBox.Show(deleteSales[0], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+
+                        String[] deleteSales = trnPOSSalesController.DeleteSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value));
+                        if (deleteSales[1].Equals("0") == false)
+                        {
+                            GetSalesList();
+                        }
+                        else
+                        {
+                            MessageBox.Show(deleteSales[0], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }

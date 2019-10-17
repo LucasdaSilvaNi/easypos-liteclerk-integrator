@@ -254,6 +254,23 @@ namespace EasyPOS.Controllers
             }
         }
 
+        // =======================
+        // Tender - List Pay Types 
+        // =======================
+        public List<Entities.MstPayType> TenderListPayType()
+        {
+            var payTypes = from d in db.MstPayTypes
+                           select new Entities.MstPayType
+                           {
+                               Id = d.Id,
+                               PayType = d.PayType,
+                               SortNumber = d.SortNumber,
+                               Amount = 0
+                           };
+
+            return payTypes.OrderBy(d => d.SortNumber).ToList();
+        }
+
         // ==============
         // Tender - Sales 
         // ==============
@@ -270,17 +287,15 @@ namespace EasyPOS.Controllers
                     return new String[] { "Sales not found.", "0" };
                 }
 
-                var users = from d in db.MstUsers
-                            where d.Id == objCollection.PreparedBy
-                            && d.Id == objCollection.CheckedBy
-                            && d.Id == objCollection.ApprovedBy
-                            && d.Id == objCollection.EntryUserId
-                            && d.Id == objCollection.UpdateUserId
-                            select d;
-
-                if (users.Any() == false)
+                var user = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (user.Any() == false)
                 {
-                    return new String[] { "Some users are not found.", "0" };
+                    return new String[] { "User not found.", "0" };
+                }
+
+                if (user.Any() == false)
+                {
+                    return new String[] { "User are not found.", "0" };
                 }
 
                 String collectionNumber = "0000000001";
@@ -305,15 +320,15 @@ namespace EasyPOS.Controllers
                     Amount = 0,
                     TenderAmount = objCollection.TenderAmount,
                     ChangeAmount = objCollection.ChangeAmount,
-                    PreparedBy = objCollection.PreparedBy,
-                    CheckedBy = objCollection.CheckedBy,
-                    ApprovedBy = objCollection.ApprovedBy,
+                    PreparedBy = user.FirstOrDefault().Id,
+                    CheckedBy = user.FirstOrDefault().Id,
+                    ApprovedBy = user.FirstOrDefault().Id,
                     IsCancelled = false,
                     PostCode = null,
                     IsLocked = false,
-                    EntryUserId = objCollection.EntryUserId,
+                    EntryUserId = user.FirstOrDefault().Id,
                     EntryDateTime = DateTime.Now.Date,
-                    UpdateUserId = objCollection.UpdateUserId,
+                    UpdateUserId = user.FirstOrDefault().Id,
                     UpdateDateTime = DateTime.Now.Date
                 };
 
@@ -375,9 +390,13 @@ namespace EasyPOS.Controllers
                 if (collection.Any())
                 {
                     Decimal totalCollectionLineAmount = 0;
-                    if (collection.FirstOrDefault().TrnCollectionLines.Any())
+                    var collectionLines = from d in db.TrnCollectionLines
+                                          where d.CollectionId == collection.FirstOrDefault().Id
+                                          select d;
+
+                    if (collectionLines.Any())
                     {
-                        totalCollectionLineAmount = collection.FirstOrDefault().TrnCollectionLines.Sum(d => d.Amount);
+                        totalCollectionLineAmount = collectionLines.Sum(d => d.Amount);
                     }
 
                     var lockCollection = collection.FirstOrDefault();
