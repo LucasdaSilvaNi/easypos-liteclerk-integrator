@@ -140,6 +140,7 @@
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(87, 40);
             this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -158,7 +159,8 @@
             this.buttonTender.Location = new System.Drawing.Point(1206, 12);
             this.buttonTender.Name = "buttonTender";
             this.buttonTender.Size = new System.Drawing.Size(87, 40);
-            this.buttonTender.TabIndex = 0;
+            this.buttonTender.TabIndex = 1;
+            this.buttonTender.TabStop = false;
             this.buttonTender.Text = "Tender";
             this.buttonTender.UseVisualStyleBackColor = false;
             this.buttonTender.Click += new System.EventHandler(this.buttonTender_Click);
@@ -253,7 +255,8 @@
             this.textBoxTotalSalesAmount.Name = "textBoxTotalSalesAmount";
             this.textBoxTotalSalesAmount.ReadOnly = true;
             this.textBoxTotalSalesAmount.Size = new System.Drawing.Size(824, 89);
-            this.textBoxTotalSalesAmount.TabIndex = 0;
+            this.textBoxTotalSalesAmount.TabIndex = 1;
+            this.textBoxTotalSalesAmount.TabStop = false;
             this.textBoxTotalSalesAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // dataGridViewSalesLineList
@@ -315,6 +318,7 @@
             this.dataGridViewSalesLineList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSalesLineList.Size = new System.Drawing.Size(1376, 486);
             this.dataGridViewSalesLineList.TabIndex = 0;
+            this.dataGridViewSalesLineList.TabStop = false;
             this.dataGridViewSalesLineList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesLineList_CellClick);
             // 
             // ColumnSalesLineEdit
@@ -571,6 +575,7 @@
             this.buttonSearchItem.Name = "buttonSearchItem";
             this.buttonSearchItem.Size = new System.Drawing.Size(88, 30);
             this.buttonSearchItem.TabIndex = 5;
+            this.buttonSearchItem.TabStop = false;
             this.buttonSearchItem.Text = "Search Item";
             this.buttonSearchItem.UseVisualStyleBackColor = false;
             this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
@@ -582,8 +587,8 @@
             this.textBoxBarcode.Location = new System.Drawing.Point(12, 171);
             this.textBoxBarcode.Name = "textBoxBarcode";
             this.textBoxBarcode.Size = new System.Drawing.Size(1281, 30);
-            this.textBoxBarcode.TabIndex = 6;
-            this.textBoxBarcode.TextChanged += new System.EventHandler(this.textBoxBarcode_TextChanged);
+            this.textBoxBarcode.TabIndex = 0;
+            this.textBoxBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarcode_KeyDown);
             // 
             // TrnSalesDetailForm
             // 

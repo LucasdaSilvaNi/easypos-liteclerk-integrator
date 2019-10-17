@@ -171,7 +171,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 {
                     Close();
 
-                    trnSalesDetailForm.Close();
+                    sysSoftwareForm.RemoveTabPage();
                     trnSalesDetailForm.trnSalesListForm.newSales();
 
                     new Reports.RepOfficialReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]));

@@ -91,6 +91,7 @@
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
             this.buttonSave.TabIndex = 4;
+            this.buttonSave.TabStop = false;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -131,6 +132,7 @@
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -147,6 +149,7 @@
             this.textBoxItemDescription.ReadOnly = true;
             this.textBoxItemDescription.Size = new System.Drawing.Size(845, 40);
             this.textBoxItemDescription.TabIndex = 6;
+            this.textBoxItemDescription.TabStop = false;
             this.textBoxItemDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
@@ -165,9 +168,10 @@
             this.textBoxSalesLineQuantity.Location = new System.Drawing.Point(155, 138);
             this.textBoxSalesLineQuantity.Name = "textBoxSalesLineQuantity";
             this.textBoxSalesLineQuantity.Size = new System.Drawing.Size(269, 34);
-            this.textBoxSalesLineQuantity.TabIndex = 8;
+            this.textBoxSalesLineQuantity.TabIndex = 0;
             this.textBoxSalesLineQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxSalesLineQuantity.TextChanged += new System.EventHandler(this.textBoxSalesLineQuantity_TextChanged);
+            this.textBoxSalesLineQuantity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSalesLineQuantity_KeyDown);
             this.textBoxSalesLineQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSalesLineQuantity_KeyPress);
             this.textBoxSalesLineQuantity.Leave += new System.EventHandler(this.textBoxSalesLineQuantity_Leave);
             // 
@@ -179,6 +183,7 @@
             this.textBoxSalesLineUnit.ReadOnly = true;
             this.textBoxSalesLineUnit.Size = new System.Drawing.Size(269, 34);
             this.textBoxSalesLineUnit.TabIndex = 10;
+            this.textBoxSalesLineUnit.TabStop = false;
             // 
             // label3
             // 
@@ -198,6 +203,7 @@
             this.textBoxSalesLinePrice.ReadOnly = true;
             this.textBoxSalesLinePrice.Size = new System.Drawing.Size(269, 34);
             this.textBoxSalesLinePrice.TabIndex = 12;
+            this.textBoxSalesLinePrice.TabStop = false;
             this.textBoxSalesLinePrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label4
@@ -218,6 +224,7 @@
             this.comboBoxSalesLineDiscount.Name = "comboBoxSalesLineDiscount";
             this.comboBoxSalesLineDiscount.Size = new System.Drawing.Size(269, 36);
             this.comboBoxSalesLineDiscount.TabIndex = 13;
+            this.comboBoxSalesLineDiscount.TabStop = false;
             this.comboBoxSalesLineDiscount.SelectedIndexChanged += new System.EventHandler(this.comboBoxSalesLineDiscount_SelectedIndexChanged);
             // 
             // label5
@@ -238,6 +245,7 @@
             this.textBoxSalesLineDiscountRate.ReadOnly = true;
             this.textBoxSalesLineDiscountRate.Size = new System.Drawing.Size(269, 34);
             this.textBoxSalesLineDiscountRate.TabIndex = 16;
+            this.textBoxSalesLineDiscountRate.TabStop = false;
             this.textBoxSalesLineDiscountRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label6
@@ -258,6 +266,7 @@
             this.textBoxSalesLineDiscountAmount.ReadOnly = true;
             this.textBoxSalesLineDiscountAmount.Size = new System.Drawing.Size(269, 34);
             this.textBoxSalesLineDiscountAmount.TabIndex = 18;
+            this.textBoxSalesLineDiscountAmount.TabStop = false;
             this.textBoxSalesLineDiscountAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label7
@@ -278,6 +287,7 @@
             this.textBoxSalesLineNetPrice.ReadOnly = true;
             this.textBoxSalesLineNetPrice.Size = new System.Drawing.Size(269, 34);
             this.textBoxSalesLineNetPrice.TabIndex = 20;
+            this.textBoxSalesLineNetPrice.TabStop = false;
             this.textBoxSalesLineNetPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label8
@@ -298,6 +308,7 @@
             this.textBoxSalesLineAmount.ReadOnly = true;
             this.textBoxSalesLineAmount.Size = new System.Drawing.Size(269, 34);
             this.textBoxSalesLineAmount.TabIndex = 22;
+            this.textBoxSalesLineAmount.TabStop = false;
             this.textBoxSalesLineAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label9
@@ -318,6 +329,7 @@
             this.textBoxSalesLineVAT.ReadOnly = true;
             this.textBoxSalesLineVAT.Size = new System.Drawing.Size(269, 34);
             this.textBoxSalesLineVAT.TabIndex = 24;
+            this.textBoxSalesLineVAT.TabStop = false;
             // 
             // label10
             // 
@@ -337,6 +349,7 @@
             this.textBoxSalesLineVATRate.ReadOnly = true;
             this.textBoxSalesLineVATRate.Size = new System.Drawing.Size(269, 34);
             this.textBoxSalesLineVATRate.TabIndex = 26;
+            this.textBoxSalesLineVATRate.TabStop = false;
             this.textBoxSalesLineVATRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label11
@@ -357,6 +370,7 @@
             this.textBoxSalesLineVATAmount.ReadOnly = true;
             this.textBoxSalesLineVATAmount.Size = new System.Drawing.Size(269, 34);
             this.textBoxSalesLineVATAmount.TabIndex = 28;
+            this.textBoxSalesLineVATAmount.TabStop = false;
             this.textBoxSalesLineVATAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label12
@@ -377,6 +391,7 @@
             this.textBoxSalesLineRemarks.Name = "textBoxSalesLineRemarks";
             this.textBoxSalesLineRemarks.Size = new System.Drawing.Size(388, 353);
             this.textBoxSalesLineRemarks.TabIndex = 30;
+            this.textBoxSalesLineRemarks.TabStop = false;
             // 
             // label13
             // 

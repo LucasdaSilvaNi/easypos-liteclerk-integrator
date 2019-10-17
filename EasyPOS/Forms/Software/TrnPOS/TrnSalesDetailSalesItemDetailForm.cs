@@ -23,6 +23,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
             trnSalesLineEntity = salesLineEntity;
 
             GetDiscountList();
+
+            textBoxSalesLineQuantity.Focus();
+            textBoxSalesLineQuantity.SelectAll();
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -57,7 +60,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             textBoxSalesLineRemarks.Text = trnSalesLineEntity.Preparation;
         }
 
-        private void buttonSave_Click(object sender, EventArgs e)
+        public void SaveTender()
         {
             Entities.TrnSalesLineEntity newSalesLineEntity = new Entities.TrnSalesLineEntity()
             {
@@ -119,6 +122,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     MessageBox.Show(addSales[0], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            SaveTender();
         }
 
         private void comboBoxSalesLineDiscount_SelectedIndexChanged(object sender, EventArgs e)
@@ -190,6 +198,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
         private void textBoxSalesLineQuantity_Leave(object sender, EventArgs e)
         {
             textBoxSalesLineQuantity.Text = Convert.ToDecimal(textBoxSalesLineQuantity.Text).ToString("#,##0.00");
+        }
+
+        private void textBoxSalesLineQuantity_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SaveTender();
+            }
         }
     }
 }

@@ -126,6 +126,31 @@ namespace EasyPOS.Controllers
             return items.OrderBy(d => d.ItemDescription).ToList();
         }
 
+        // =============
+        // Detail - Item
+        // =============
+        public Entities.MstItem DetailItem(String barcode)
+        {
+            var item = from d in db.MstItems
+                       where d.BarCode.Equals(barcode)
+                       select new Entities.MstItem
+                       {
+                           Id = d.Id,
+                           BarCode = d.BarCode,
+                           ItemDescription = d.ItemDescription,
+                           GenericName = d.GenericName,
+                           OutTaxId = d.OutTaxId,
+                           OutTax = d.MstTax1.Tax,
+                           OutTaxRate = d.MstTax1.Rate,
+                           UnitId = d.UnitId,
+                           Unit = d.MstUnit.Unit,
+                           Price = d.Price,
+                           OnhandQuantity = d.OnhandQuantity
+                       };
+
+            return item.FirstOrDefault();
+        }
+
         // ========================
         // Dropdown List - Discount
         // ========================
@@ -375,7 +400,7 @@ namespace EasyPOS.Controllers
                 {
                     return new String[] { "Discount not found.", "0" };
                 }
-                
+
                 var user = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
                 if (user.Any() == false)
                 {
