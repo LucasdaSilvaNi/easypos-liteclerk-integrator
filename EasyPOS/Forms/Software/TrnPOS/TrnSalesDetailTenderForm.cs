@@ -44,10 +44,17 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonTender_Click(object sender, EventArgs e)
         {
-            DialogResult tenderPrinterReadyDialogResult = MessageBox.Show("Is printer ready?", "Tender", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (tenderPrinterReadyDialogResult == DialogResult.Yes)
+            if (Convert.ToDecimal(textBoxTenderAmount.Text) < Convert.ToDecimal(textBoxTotalSalesAmount.Text))
             {
-                CreateCollection();
+                MessageBox.Show("Cannot tender below sales amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                DialogResult tenderPrinterReadyDialogResult = MessageBox.Show("Is printer ready?", "Tender", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (tenderPrinterReadyDialogResult == DialogResult.Yes)
+                {
+                    CreateCollection();
+                }
             }
         }
 
