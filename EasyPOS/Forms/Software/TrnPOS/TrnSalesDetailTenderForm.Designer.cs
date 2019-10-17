@@ -111,6 +111,7 @@
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -129,7 +130,8 @@
             this.buttonTender.Location = new System.Drawing.Point(544, 12);
             this.buttonTender.Name = "buttonTender";
             this.buttonTender.Size = new System.Drawing.Size(88, 40);
-            this.buttonTender.TabIndex = 0;
+            this.buttonTender.TabIndex = 1;
+            this.buttonTender.TabStop = false;
             this.buttonTender.Text = "Tender";
             this.buttonTender.UseVisualStyleBackColor = false;
             this.buttonTender.Click += new System.EventHandler(this.buttonTender_Click);
@@ -165,9 +167,9 @@
             this.dataGridViewTenderPayType.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewTenderPayType.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataGridViewTenderPayType.RowTemplate.Height = 50;
-            this.dataGridViewTenderPayType.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridViewTenderPayType.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTenderPayType.Size = new System.Drawing.Size(714, 445);
-            this.dataGridViewTenderPayType.TabIndex = 4;
+            this.dataGridViewTenderPayType.TabIndex = 0;
             this.dataGridViewTenderPayType.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTenderPayType_CellEndEdit);
             // 
             // ColumnTenderListPayTypeId
@@ -224,6 +226,7 @@
             this.textBoxChangeAmount.ReadOnly = true;
             this.textBoxChangeAmount.Size = new System.Drawing.Size(342, 38);
             this.textBoxChangeAmount.TabIndex = 12;
+            this.textBoxChangeAmount.TabStop = false;
             this.textBoxChangeAmount.Text = "0.00";
             this.textBoxChangeAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -240,6 +243,7 @@
             this.textBoxTenderAmount.ReadOnly = true;
             this.textBoxTenderAmount.Size = new System.Drawing.Size(342, 38);
             this.textBoxTenderAmount.TabIndex = 11;
+            this.textBoxTenderAmount.TabStop = false;
             this.textBoxTenderAmount.Text = "0.00";
             this.textBoxTenderAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -361,7 +365,8 @@
             this.textBoxTotalSalesAmount.Name = "textBoxTotalSalesAmount";
             this.textBoxTotalSalesAmount.ReadOnly = true;
             this.textBoxTotalSalesAmount.Size = new System.Drawing.Size(430, 67);
-            this.textBoxTotalSalesAmount.TabIndex = 0;
+            this.textBoxTotalSalesAmount.TabIndex = 1;
+            this.textBoxTotalSalesAmount.TabStop = false;
             this.textBoxTotalSalesAmount.Text = "0.00";
             this.textBoxTotalSalesAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
