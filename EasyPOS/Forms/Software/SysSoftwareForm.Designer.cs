@@ -160,9 +160,9 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(151, 85);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 20);
+            this.label4.Size = new System.Drawing.Size(183, 20);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Support: ";
+            this.label4.Text = "Support: (032) 234 0787";
             // 
             // label3
             // 

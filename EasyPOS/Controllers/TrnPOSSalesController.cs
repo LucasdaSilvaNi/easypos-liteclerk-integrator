@@ -94,10 +94,10 @@ namespace EasyPOS.Controllers
                             BalanceAmount = d.BalanceAmount,
                             EntryUserId = d.EntryUserId,
                             EntryUserName = d.MstUser3.FullName,
-                            EntryDateTime = d.EntryDateTime.ToString(),
+                            EntryDateTime = d.EntryDateTime.ToShortDateString(),
                             UpdateUserId = d.UpdateUserId,
                             UpdatedUserName = d.MstUser4.FullName,
-                            UpdateDateTime = d.UpdateDateTime.ToString(),
+                            UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
                             Pax = d.Pax,
                             TableStatus = d.TableStatus,
                         };
@@ -151,10 +151,10 @@ namespace EasyPOS.Controllers
                             BalanceAmount = d.BalanceAmount,
                             EntryUserId = d.EntryUserId,
                             EntryUserName = d.MstUser3.FullName,
-                            EntryDateTime = d.EntryDateTime.ToString(),
+                            EntryDateTime = d.EntryDateTime.ToShortDateString(),
                             UpdateUserId = d.UpdateUserId,
                             UpdatedUserName = d.MstUser4.FullName,
-                            UpdateDateTime = d.UpdateDateTime.ToString(),
+                            UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
                             Pax = d.Pax,
                             TableStatus = d.TableStatus,
                         };
@@ -210,7 +210,7 @@ namespace EasyPOS.Controllers
                 Data.TrnSale newSales = new Data.TrnSale()
                 {
                     PeriodId = period.FirstOrDefault().Id,
-                    SalesDate = DateTime.Today,
+                    SalesDate = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate),
                     SalesNumber = salesNumber,
                     ManualInvoiceNumber = terminal.FirstOrDefault().Terminal + "-" + salesNumber,
                     Amount = 0,
@@ -309,7 +309,7 @@ namespace EasyPOS.Controllers
                 Data.TrnCollection newCollection = new Data.TrnCollection
                 {
                     PeriodId = currentSales.FirstOrDefault().PeriodId,
-                    CollectionDate = DateTime.Today,
+                    CollectionDate = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate),
                     CollectionNumber = collectionNumber,
                     TerminalId = currentSales.FirstOrDefault().TerminalId,
                     ManualORNumber = currentSales.FirstOrDefault().MstTerminal.Terminal + "-" + collectionNumber,
@@ -327,9 +327,9 @@ namespace EasyPOS.Controllers
                     PostCode = null,
                     IsLocked = false,
                     EntryUserId = user.FirstOrDefault().Id,
-                    EntryDateTime = DateTime.Now.Date,
+                    EntryDateTime = DateTime.Now,
                     UpdateUserId = user.FirstOrDefault().Id,
-                    UpdateDateTime = DateTime.Now.Date
+                    UpdateDateTime = DateTime.Now
                 };
 
                 db.TrnCollections.InsertOnSubmit(newCollection);
@@ -412,6 +412,8 @@ namespace EasyPOS.Controllers
                 lockSales.BalanceAmount = salesAmount - paidAmount;
                 lockSales.IsLocked = true;
                 lockSales.IsTendered = true;
+                lockSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
+                lockSales.UpdateDateTime = DateTime.Now;
                 db.SubmitChanges();
 
                 Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
@@ -490,6 +492,8 @@ namespace EasyPOS.Controllers
                     updateSales.TermId = objSalesEntity.TermId;
                     updateSales.Remarks = objSalesEntity.Remarks;
                     updateSales.SalesAgent = objSalesEntity.SalesAgent;
+                    updateSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
+                    updateSales.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
 
                     return new String[] { "", "1" };
@@ -569,10 +573,14 @@ namespace EasyPOS.Controllers
                     {
                         var cancelSales = sales.FirstOrDefault();
                         cancelSales.IsCancelled = true;
+                        cancelSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
+                        cancelSales.UpdateDateTime = DateTime.Now;
                         db.SubmitChanges();
 
                         var cancelCollection = collection.FirstOrDefault();
                         cancelCollection.IsCancelled = true;
+                        cancelCollection.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
+                        cancelCollection.UpdateDateTime = DateTime.Now;
                         db.SubmitChanges();
 
                         return new String[] { "", "1" };

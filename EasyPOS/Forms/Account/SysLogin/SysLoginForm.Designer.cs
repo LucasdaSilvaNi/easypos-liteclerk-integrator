@@ -44,6 +44,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.dateTimePickerLoginDate = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -60,7 +62,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(498, 63);
+            this.panel1.Size = new System.Drawing.Size(515, 63);
             this.panel1.TabIndex = 4;
             // 
             // pictureBox1
@@ -95,7 +97,7 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(398, 12);
+            this.buttonClose.Location = new System.Drawing.Point(415, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
@@ -114,7 +116,7 @@
             this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogin.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogin.ForeColor = System.Drawing.Color.White;
-            this.buttonLogin.Location = new System.Drawing.Point(304, 12);
+            this.buttonLogin.Location = new System.Drawing.Point(321, 12);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(88, 40);
             this.buttonLogin.TabIndex = 0;
@@ -131,9 +133,9 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 209);
+            this.panel2.Location = new System.Drawing.Point(0, 252);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(498, 109);
+            this.panel2.Size = new System.Drawing.Size(515, 109);
             this.panel2.TabIndex = 10;
             // 
             // label2
@@ -181,9 +183,9 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(144, 76);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 23);
+            this.label4.Size = new System.Drawing.Size(208, 23);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Support: ";
+            this.label4.Text = "Support: (032) 234 0787";
             // 
             // label5
             // 
@@ -203,9 +205,9 @@
             this.textBoxUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxUsername.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxUsername.Location = new System.Drawing.Point(175, 101);
+            this.textBoxUsername.Location = new System.Drawing.Point(177, 139);
             this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(259, 34);
+            this.textBoxUsername.Size = new System.Drawing.Size(267, 34);
             this.textBoxUsername.TabIndex = 12;
             this.textBoxUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxUsername_KeyDown);
             // 
@@ -213,7 +215,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label6.Location = new System.Drawing.Point(60, 104);
+            this.label6.Location = new System.Drawing.Point(68, 142);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(103, 28);
             this.label6.TabIndex = 11;
@@ -224,10 +226,10 @@
             this.textBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPassword.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxPassword.Location = new System.Drawing.Point(175, 135);
+            this.textBoxPassword.Location = new System.Drawing.Point(177, 173);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '•';
-            this.textBoxPassword.Size = new System.Drawing.Size(259, 34);
+            this.textBoxPassword.Size = new System.Drawing.Size(267, 34);
             this.textBoxPassword.TabIndex = 13;
             this.textBoxPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyDown);
             // 
@@ -235,17 +237,41 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label7.Location = new System.Drawing.Point(66, 138);
+            this.label7.Location = new System.Drawing.Point(74, 176);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(97, 28);
             this.label7.TabIndex = 14;
             this.label7.Text = "Password:";
             // 
+            // dateTimePickerLoginDate
+            // 
+            this.dateTimePickerLoginDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePickerLoginDate.CalendarFont = new System.Drawing.Font("Segoe UI", 12F);
+            this.dateTimePickerLoginDate.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.dateTimePickerLoginDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerLoginDate.Location = new System.Drawing.Point(177, 104);
+            this.dateTimePickerLoginDate.Name = "dateTimePickerLoginDate";
+            this.dateTimePickerLoginDate.Size = new System.Drawing.Size(267, 34);
+            this.dateTimePickerLoginDate.TabIndex = 15;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label8.Location = new System.Drawing.Point(63, 109);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(111, 28);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Login Date:";
+            // 
             // SysLoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 318);
+            this.ClientSize = new System.Drawing.Size(515, 361);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.dateTimePickerLoginDate);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxUsername);
@@ -260,6 +286,7 @@
             this.Name = "SysLoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SysLoginForm_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -288,5 +315,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker dateTimePickerLoginDate;
+        private System.Windows.Forms.Label label8;
     }
 }

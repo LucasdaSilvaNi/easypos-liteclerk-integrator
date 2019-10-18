@@ -16,6 +16,8 @@ namespace EasyPOS.Forms.Software
         {
             InitializeComponent();
             InitializeDefaultForm();
+
+            Text = "Easy POS - " + Modules.SysCurrentModule.GetCurrentSettings().CurrentDate + " - " + Modules.SysCurrentModule.GetCurrentSettings().CurrentUserName;
         }
 
         public TabPage tabPageItemList = new TabPage { Name = "tabPageItemList", Text = "Item List" };

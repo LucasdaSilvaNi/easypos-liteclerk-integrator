@@ -31,7 +31,7 @@ namespace EasyPOS.Forms.Account.SysLogin
         {
             Controllers.SysLoginController sysLoginController = new Controllers.SysLoginController();
 
-            String[] login = sysLoginController.Login(textBoxUsername.Text, textBoxPassword.Text);
+            String[] login = sysLoginController.Login(textBoxUsername.Text, textBoxPassword.Text, dateTimePickerLoginDate.Value.ToShortDateString());
             if (login[1].Equals("0") == false)
             {
                 Hide();
@@ -59,6 +59,11 @@ namespace EasyPOS.Forms.Account.SysLogin
             {
                 Login();
             }
+        }
+
+        private void SysLoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
