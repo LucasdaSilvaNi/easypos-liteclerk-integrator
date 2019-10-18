@@ -12,6 +12,7 @@ namespace EasyPOS.Entities
         public Int32 CollectionId { get; set; }
         public Decimal Amount { get; set; }
         public Int32 PayTypeId { get; set; }
+        public String PayType { get; set; }
         public String CheckNumber { get; set; }
         public String CheckDate { get; set; }
         public String CheckBank { get; set; }

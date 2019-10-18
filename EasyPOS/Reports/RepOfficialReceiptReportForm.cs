@@ -74,40 +74,22 @@ namespace EasyPOS.Reports
             // Company Name
             // ============
             String companyName = systemCurrent.CompanyName;
-            RectangleF companyNameRectangle = new RectangleF
-            {
-                X = x,
-                Y = y,
-                Size = new Size(245, ((int)graphics.MeasureString(companyName, fontArial8Regular, 245, StringFormat.GenericTypographic).Height))
-            };
-            graphics.DrawString(companyName, fontArial8Regular, Brushes.Black, companyNameRectangle, drawFormatCenter);
-            y += companyNameRectangle.Size.Height;
+            graphics.DrawString(companyName, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            y += graphics.MeasureString(companyName, fontArial8Regular).Height;
 
             // ===============
             // Company Address
             // ===============
             String companyAddress = systemCurrent.Address;
-            RectangleF companyAddressRectangle = new RectangleF
-            {
-                X = x,
-                Y = y,
-                Size = new Size(245, ((int)graphics.MeasureString(companyAddress, fontArial8Regular, 245, StringFormat.GenericTypographic).Height))
-            };
-            graphics.DrawString(companyAddress, fontArial8Regular, Brushes.Black, companyAddressRectangle, drawFormatCenter);
-            y += companyAddressRectangle.Size.Height;
+            graphics.DrawString(companyAddress, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
 
             // ======================
             // Official Receipt Title
             // ======================
             String officialReceiptTitle = systemCurrent.ORPrintTitle;
-            RectangleF officialReceiptTitleRectangle = new RectangleF
-            {
-                X = x,
-                Y = y,
-                Size = new Size(245, ((int)graphics.MeasureString(officialReceiptTitle, fontArial8Regular, 245, StringFormat.GenericTypographic).Height))
-            };
-            graphics.DrawString(officialReceiptTitle, fontArial8Regular, Brushes.Black, officialReceiptTitleRectangle, drawFormatCenter);
-            y += officialReceiptTitleRectangle.Size.Height + 5.0F;
+            graphics.DrawString(officialReceiptTitle, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            y += graphics.MeasureString(officialReceiptTitle, fontArial8Regular).Height;
 
             // =================
             // Collection Header

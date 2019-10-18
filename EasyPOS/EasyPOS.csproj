@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\RepPOSReportController.cs" />
     <Compile Include="Controllers\SysLoginController.cs" />
     <Compile Include="Controllers\TrnPOSSalesController.cs" />
     <Compile Include="Controllers\TrnPOSSalesLineController.cs" />
@@ -60,6 +61,8 @@
     <Compile Include="Entities\MstItemInventoryEntity.cs" />
     <Compile Include="Entities\MstPayType.cs" />
     <Compile Include="Entities\MstTerminal.cs" />
+    <Compile Include="Entities\MstUser.cs" />
+    <Compile Include="Entities\RepZReadingReportEntity.cs" />
     <Compile Include="Entities\SysConnectionStringEntity.cs" />
     <Compile Include="Entities\SysCurrentEntity.cs" />
     <Compile Include="Entities\TrnCollectionEntity.cs" />
@@ -149,8 +152,17 @@
     <Compile Include="Reports\RepOfficialReceiptReportForm.Designer.cs">
       <DependentUpon>RepOfficialReceiptReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\RepZReadingReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\RepZReadingReportForm.Designer.cs">
+      <DependentUpon>RepZReadingReportForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Reports\RepOfficialReceiptReportForm.resx">
       <DependentUpon>RepOfficialReceiptReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RepZReadingReportForm.resx">
+      <DependentUpon>RepZReadingReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Data\easyposdb.dbml.layout">
       <DependentUpon>easyposdb.dbml</DependentUpon>

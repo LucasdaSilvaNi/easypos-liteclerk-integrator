@@ -272,7 +272,7 @@ namespace EasyPOS.Controllers
         }
 
         // ==============
-        // Tender - Sales 
+        // Tender - Sales
         // ==============
         public String[] TenderSales(Int32 salesId, Entities.TrnCollectionEntity objCollection)
         {

@@ -151,7 +151,6 @@
             this.ClientSize = new System.Drawing.Size(1482, 953);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControlSoftware);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SysSoftwareForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

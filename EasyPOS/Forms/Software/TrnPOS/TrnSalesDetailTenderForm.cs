@@ -51,7 +51,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             if (Convert.ToDecimal(textBoxChangeAmount.Text) < 0)
             {
-                MessageBox.Show("Invalid Tender", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Change amount must be non-negative value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -83,11 +83,17 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
 
                 Boolean isValidTender = false;
+                String invalidTenderMessage = "";
+
                 if (cashAmount > 0)
                 {
                     if (cashAmount >= changeAmount)
                     {
                         isValidTender = true;
+                    }
+                    else
+                    {
+                        invalidTenderMessage = "Cash amount must be greater than the change amount.";
                     }
                 }
                 else
@@ -98,6 +104,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         {
                             isValidTender = true;
                         }
+                        else
+                        {
+                            invalidTenderMessage = "Non-cash amount must be equal to the sales amount.";
+                        }
+                    }
+                    else
+                    {
+                        invalidTenderMessage = "Cash amount must not below zero.";
                     }
                 }
 
@@ -111,7 +125,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
                 else
                 {
-                    MessageBox.Show("Invalid Tender", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(invalidTenderMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -221,6 +235,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
 
             ComputeAmount();
+            TenderSales();
         }
 
         public void ComputeAmount()

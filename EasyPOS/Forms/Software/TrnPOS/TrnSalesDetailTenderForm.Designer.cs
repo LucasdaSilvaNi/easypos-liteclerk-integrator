@@ -39,9 +39,6 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonTender = new System.Windows.Forms.Button();
             this.dataGridViewTenderPayType = new System.Windows.Forms.DataGridView();
-            this.ColumnTenderListPayTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTenderListPayTypePayType = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnTenderListPayTypeAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBoxChangeAmount = new System.Windows.Forms.TextBox();
             this.textBoxTenderAmount = new System.Windows.Forms.TextBox();
@@ -55,6 +52,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.labelInvoiceNumber = new System.Windows.Forms.Label();
             this.textBoxTotalSalesAmount = new System.Windows.Forms.TextBox();
+            this.ColumnTenderListPayTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTenderListPayTypePayType = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnTenderListPayTypeAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTenderPayType)).BeginInit();
@@ -171,34 +171,6 @@
             this.dataGridViewTenderPayType.Size = new System.Drawing.Size(714, 445);
             this.dataGridViewTenderPayType.TabIndex = 0;
             this.dataGridViewTenderPayType.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTenderPayType_CellEndEdit);
-            // 
-            // ColumnTenderListPayTypeId
-            // 
-            this.ColumnTenderListPayTypeId.HeaderText = "Id";
-            this.ColumnTenderListPayTypeId.Name = "ColumnTenderListPayTypeId";
-            this.ColumnTenderListPayTypeId.Visible = false;
-            // 
-            // ColumnTenderListPayTypePayType
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ColumnTenderListPayTypePayType.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnTenderListPayTypePayType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnTenderListPayTypePayType.HeaderText = "PayType";
-            this.ColumnTenderListPayTypePayType.Name = "ColumnTenderListPayTypePayType";
-            this.ColumnTenderListPayTypePayType.ReadOnly = true;
-            this.ColumnTenderListPayTypePayType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnTenderListPayTypePayType.Width = 300;
-            // 
-            // ColumnTenderListPayTypeAmount
-            // 
-            this.ColumnTenderListPayTypeAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.ColumnTenderListPayTypeAmount.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnTenderListPayTypeAmount.HeaderText = "Amount";
-            this.ColumnTenderListPayTypeAmount.Name = "ColumnTenderListPayTypeAmount";
-            this.ColumnTenderListPayTypeAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // panel3
             // 
@@ -369,6 +341,35 @@
             this.textBoxTotalSalesAmount.TabStop = false;
             this.textBoxTotalSalesAmount.Text = "0.00";
             this.textBoxTotalSalesAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // ColumnTenderListPayTypeId
+            // 
+            this.ColumnTenderListPayTypeId.HeaderText = "Id";
+            this.ColumnTenderListPayTypeId.Name = "ColumnTenderListPayTypeId";
+            this.ColumnTenderListPayTypeId.Visible = false;
+            // 
+            // ColumnTenderListPayTypePayType
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ColumnTenderListPayTypePayType.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnTenderListPayTypePayType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnTenderListPayTypePayType.HeaderText = "PayType";
+            this.ColumnTenderListPayTypePayType.Name = "ColumnTenderListPayTypePayType";
+            this.ColumnTenderListPayTypePayType.ReadOnly = true;
+            this.ColumnTenderListPayTypePayType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnTenderListPayTypePayType.Width = 300;
+            // 
+            // ColumnTenderListPayTypeAmount
+            // 
+            this.ColumnTenderListPayTypeAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(186)))), ((int)(((byte)(1)))));
+            this.ColumnTenderListPayTypeAmount.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnTenderListPayTypeAmount.HeaderText = "Amount";
+            this.ColumnTenderListPayTypeAmount.Name = "ColumnTenderListPayTypeAmount";
+            this.ColumnTenderListPayTypeAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // TrnSalesDetailTenderForm
             // 

@@ -454,6 +454,5 @@ namespace EasyPOS.Controllers
                 return new String[] { e.Message, "0" };
             }
         }
-
     }
 }
