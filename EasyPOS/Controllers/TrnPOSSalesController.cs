@@ -611,5 +611,24 @@ namespace EasyPOS.Controllers
 
             return lastChange;
         }
+
+        // =================
+        // Get Collection Id
+        // =================
+        public Int32 GetCollectionId(Int32 salesId)
+        {
+            Int32 collectionId = 0;
+
+            var collection = from d in db.TrnCollections
+                             where d.SalesId == salesId
+                             select d;
+
+            if (collection.Any())
+            {
+                collectionId = collection.FirstOrDefault().Id;
+            }
+
+            return collectionId;
+        }
     }
 }

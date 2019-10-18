@@ -246,7 +246,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 if (dataGridViewSalesList.CurrentCell.RowIndex != -1)
                 {
-                    DialogResult cancelDialogResult = MessageBox.Show("Cancel Transaction? " + dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[9].Value.ToString(), "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult cancelDialogResult = MessageBox.Show("Cancel Transaction? ", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (cancelDialogResult == DialogResult.Yes)
                     {
                         Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
@@ -259,6 +259,83 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         else
                         {
                             MessageBox.Show(cancelSales[0], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select sales.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Sales empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonTender_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewSalesList.Rows.Count > 1)
+            {
+                if (dataGridViewSalesList.CurrentCell.RowIndex != -1)
+                {
+                    Entities.TrnSalesEntity newSalesEntity = new Entities.TrnSalesEntity
+                    {
+                        Id = Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value),
+                        Amount = Convert.ToDecimal(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[8].Value),
+                        SalesNumber = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[5].Value.ToString(),
+                        SalesDate = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[4].Value.ToString(),
+                        Customer = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[6].Value.ToString()
+                    };
+
+                    TrnSalesDetailTenderForm trnSalesDetailTenderForm = new TrnSalesDetailTenderForm(sysSoftwareForm, this, null, newSalesEntity);
+                    trnSalesDetailTenderForm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Please select sales.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Sales empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonReprint_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewSalesList.Rows.Count > 1)
+            {
+                if (dataGridViewSalesList.CurrentCell.RowIndex != -1)
+                {
+                    Boolean isLocked = Convert.ToBoolean(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[9].Value);
+                    Boolean isTendered = Convert.ToBoolean(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[10].Value);
+
+                    if (isTendered != true)
+                    {
+                        MessageBox.Show("Not tendered.", "Tendered", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (isLocked != true)
+                    {
+                        MessageBox.Show("Not locked.", "Locked", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        DialogResult cancelDialogResult = MessageBox.Show("Reprint Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (cancelDialogResult == DialogResult.Yes)
+                        {
+                            Int32 salesId = Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value);
+
+                            Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+                            Int32 collectionId = trnPOSSalesController.GetCollectionId(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value));
+                            if (collectionId != 0)
+                            {
+                                new Reports.RepOfficialReceiptReportForm(salesId, collectionId, true);
+                            }
+                            else
+                            {
+                                MessageBox.Show("No collection.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }

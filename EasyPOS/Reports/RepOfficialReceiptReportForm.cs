@@ -15,13 +15,15 @@ namespace EasyPOS.Reports
     {
         public Int32 trnSalesId = 0;
         public Int32 trnCollectionId = 0;
+        public Boolean trnIsReprinted = false;
 
-        public RepOfficialReceiptReportForm(Int32 salesId, Int32 collectionId)
+        public RepOfficialReceiptReportForm(Int32 salesId, Int32 collectionId, Boolean isReprinted)
         {
             InitializeComponent();
 
             trnSalesId = salesId;
             trnCollectionId = collectionId;
+            trnIsReprinted = isReprinted;
 
             printDocumentOfficialReceipt.Print();
         }
@@ -101,15 +103,21 @@ namespace EasyPOS.Reports
                 graphics.DrawString(collectionNumberText, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
                 y += graphics.MeasureString(collectionNumberText, fontArial8Regular).Height;
 
-                String collectionDateText = collections.FirstOrDefault().CollectionDate.ToString("MM-dd-yyyy h:mm:ss tt", CultureInfo.InvariantCulture) + "\n\n";
+                String collectionDateText = collections.FirstOrDefault().CollectionDate.ToString("MM-dd-yyyy h:mm:ss tt", CultureInfo.InvariantCulture);
                 graphics.DrawString(collectionDateText, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
                 y += graphics.MeasureString(collectionDateText, fontArial8Regular).Height;
+
+                if (trnIsReprinted)
+                {
+                    graphics.DrawString("REPRINTED", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString("REPRINTED", fontArial8Regular).Height;
+                }
 
                 // ========
                 // 1st Line
                 // ========
-                Point firstLineFirstPoint = new Point(0, Convert.ToInt32(y) - 9);
-                Point firstLineSecondPoint = new Point(500, Convert.ToInt32(y) - 9);
+                Point firstLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point firstLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
                 graphics.DrawLine(blackPen, firstLineFirstPoint, firstLineSecondPoint);
 
                 // ==========
@@ -126,8 +134,8 @@ namespace EasyPOS.Reports
                 Decimal totalVATZeroRated = 0;
                 Decimal totalNumberOfItems = 0;
 
-                String itemLabel = "ITEM";
-                String amountLabel = "AMOUNT";
+                String itemLabel = "\nITEM";
+                String amountLabel = "\nAMOUNT";
                 graphics.DrawString(itemLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(amountLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(itemLabel, fontArial8Regular).Height + 5.0F;

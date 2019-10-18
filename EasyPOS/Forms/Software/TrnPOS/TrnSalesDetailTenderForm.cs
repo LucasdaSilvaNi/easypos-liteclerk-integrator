@@ -13,15 +13,19 @@ namespace EasyPOS.Forms.Software.TrnPOS
     public partial class TrnSalesDetailTenderForm : Form
     {
         public SysSoftwareForm sysSoftwareForm;
+        public TrnSalesListForm trnSalesListForm;
         public TrnSalesDetailForm trnSalesDetailForm;
         public Entities.TrnSalesEntity trnSalesEntity;
 
-        public TrnSalesDetailTenderForm(SysSoftwareForm softwareForm, TrnSalesDetailForm salesDetailForm, Entities.TrnSalesEntity salesEntity)
+        public TrnSalesDetailTenderForm(SysSoftwareForm softwareForm, TrnSalesListForm salesListForm, TrnSalesDetailForm salesDetailForm, Entities.TrnSalesEntity salesEntity)
         {
             InitializeComponent();
 
             sysSoftwareForm = softwareForm;
+
+            trnSalesListForm = salesListForm;
             trnSalesDetailForm = salesDetailForm;
+
             trnSalesEntity = salesEntity;
 
             GetSalesDetail();
@@ -175,10 +179,17 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 {
                     Close();
 
-                    sysSoftwareForm.RemoveTabPage();
-                    trnSalesDetailForm.trnSalesListForm.newSales();
+                    if (trnSalesDetailForm != null)
+                    {
+                        sysSoftwareForm.RemoveTabPage();
+                        trnSalesDetailForm.trnSalesListForm.newSales();
+                    }
+                    else
+                    {
+                        trnSalesListForm.GetSalesList();
+                    }
 
-                    new Reports.RepOfficialReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]));
+                    new Reports.RepOfficialReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]), false);
                 }
                 else
                 {

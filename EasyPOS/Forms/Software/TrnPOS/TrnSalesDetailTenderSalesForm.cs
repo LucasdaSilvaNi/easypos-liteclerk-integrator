@@ -101,11 +101,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
             String[] updateSales = trnPOSSalesController.TenderUpdateSales(trnSalesEntity.Id, newSalesEntity);
             if (updateSales[1].Equals("0") == false)
             {
-                trnSalesDetailForm.trnSalesEntity.Customer = customerName;
-                trnSalesDetailForm.GetSalesDetail();
-
-                trnSalesDetailTenderForm.trnSalesEntity.Customer = customerName;
-                trnSalesDetailTenderForm.GetSalesDetail();
+                if (trnSalesDetailForm != null)
+                {
+                    trnSalesDetailForm.trnSalesEntity.Customer = customerName;
+                    trnSalesDetailForm.GetSalesDetail();
+                }
+                else
+                {
+                    trnSalesDetailTenderForm.trnSalesEntity.Customer = customerName;
+                    trnSalesDetailTenderForm.GetSalesDetail();
+                }
 
                 Close();
             }
