@@ -255,5 +255,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
             Decimal changeAmount = totalTenderAmount - Convert.ToDecimal(textBoxTotalSalesAmount.Text);
             textBoxChangeAmount.Text = changeAmount.ToString("#,##0.00");
         }
+
+        private void buttonSales_Click(object sender, EventArgs e)
+        {
+            TrnSalesDetailTenderSalesForm trnSalesDetailTenderSalesForm = new TrnSalesDetailTenderSalesForm(trnSalesDetailForm, this, trnSalesEntity);
+            trnSalesDetailTenderSalesForm.ShowDialog();
+        }
     }
 }

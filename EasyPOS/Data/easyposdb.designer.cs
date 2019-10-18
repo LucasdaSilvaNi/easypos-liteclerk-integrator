@@ -1884,6 +1884,8 @@ namespace EasyPOS.Data
 		
 		private decimal _RewardConversion;
 		
+		private decimal _AvailableReward;
+		
 		private int _AccountId;
 		
 		private int _EntryUserId;
@@ -1938,6 +1940,8 @@ namespace EasyPOS.Data
     partial void OnRewardNumberChanged();
     partial void OnRewardConversionChanging(decimal value);
     partial void OnRewardConversionChanged();
+    partial void OnAvailableRewardChanging(decimal value);
+    partial void OnAvailableRewardChanged();
     partial void OnAccountIdChanging(int value);
     partial void OnAccountIdChanged();
     partial void OnEntryUserIdChanging(int value);
@@ -2187,6 +2191,26 @@ namespace EasyPOS.Data
 					this._RewardConversion = value;
 					this.SendPropertyChanged("RewardConversion");
 					this.OnRewardConversionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AvailableReward", DbType="Decimal(18,5) NOT NULL")]
+		public decimal AvailableReward
+		{
+			get
+			{
+				return this._AvailableReward;
+			}
+			set
+			{
+				if ((this._AvailableReward != value))
+				{
+					this.OnAvailableRewardChanging(value);
+					this.SendPropertyChanging();
+					this._AvailableReward = value;
+					this.SendPropertyChanged("AvailableReward");
+					this.OnAvailableRewardChanged();
 				}
 			}
 		}
@@ -18040,7 +18064,7 @@ namespace EasyPOS.Data
 		
 		private string _Remarks;
 		
-		private int _SalesAgent;
+		private System.Nullable<int> _SalesAgent;
 		
 		private int _TerminalId;
 		
@@ -18146,7 +18170,7 @@ namespace EasyPOS.Data
     partial void OnSeniorCitizenAgeChanged();
     partial void OnRemarksChanging(string value);
     partial void OnRemarksChanged();
-    partial void OnSalesAgentChanging(int value);
+    partial void OnSalesAgentChanging(System.Nullable<int> value);
     partial void OnSalesAgentChanged();
     partial void OnTerminalIdChanging(int value);
     partial void OnTerminalIdChanged();
@@ -18527,8 +18551,8 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalesAgent", DbType="Int NOT NULL")]
-		public int SalesAgent
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalesAgent", DbType="Int")]
+		public System.Nullable<int> SalesAgent
 		{
 			get
 			{
@@ -19360,7 +19384,7 @@ namespace EasyPOS.Data
 					}
 					else
 					{
-						this._SalesAgent = default(int);
+						this._SalesAgent = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("MstUser5");
 				}

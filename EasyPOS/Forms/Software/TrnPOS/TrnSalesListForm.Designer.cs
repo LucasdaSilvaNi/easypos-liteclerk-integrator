@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnSalesListForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -43,6 +43,18 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonSales = new System.Windows.Forms.Button();
             this.dataGridViewSalesList = new System.Windows.Forms.DataGridView();
+            this.ColumnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnIsTendered = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnIsCancelled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -61,18 +73,9 @@
             this.dateTimePickerSalesDate = new System.Windows.Forms.DateTimePicker();
             this.textBoxSalesListFilter = new System.Windows.Forms.TextBox();
             this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
-            this.ColumnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnIsTendered = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnIsCancelled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonReprint = new System.Windows.Forms.Button();
+            this.buttonTender = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesList)).BeginInit();
@@ -84,6 +87,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.buttonTender);
+            this.panel1.Controls.Add(this.buttonReprint);
+            this.panel1.Controls.Add(this.buttonCancel);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.buttonClose);
@@ -186,6 +192,104 @@
             this.dataGridViewSalesList.Size = new System.Drawing.Size(923, 588);
             this.dataGridViewSalesList.TabIndex = 4;
             this.dataGridViewSalesList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesList_CellClick);
+            // 
+            // ColumnEdit
+            // 
+            this.ColumnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnEdit.Frozen = true;
+            this.ColumnEdit.HeaderText = "";
+            this.ColumnEdit.Name = "ColumnEdit";
+            this.ColumnEdit.ReadOnly = true;
+            this.ColumnEdit.Width = 70;
+            // 
+            // ColumnDelete
+            // 
+            this.ColumnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnDelete.Frozen = true;
+            this.ColumnDelete.HeaderText = "";
+            this.ColumnDelete.Name = "ColumnDelete";
+            this.ColumnDelete.ReadOnly = true;
+            this.ColumnDelete.Width = 70;
+            // 
+            // ColumnId
+            // 
+            this.ColumnId.HeaderText = "Id";
+            this.ColumnId.Name = "ColumnId";
+            this.ColumnId.ReadOnly = true;
+            this.ColumnId.Visible = false;
+            // 
+            // ColumnTerminal
+            // 
+            this.ColumnTerminal.HeaderText = "Terminal";
+            this.ColumnTerminal.Name = "ColumnTerminal";
+            this.ColumnTerminal.ReadOnly = true;
+            this.ColumnTerminal.Width = 70;
+            // 
+            // ColumnSalesDate
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesDate.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColumnSalesDate.HeaderText = "Sales Date";
+            this.ColumnSalesDate.Name = "ColumnSalesDate";
+            this.ColumnSalesDate.ReadOnly = true;
+            this.ColumnSalesDate.Width = 95;
+            // 
+            // ColumnSalesNumber
+            // 
+            this.ColumnSalesNumber.HeaderText = "Sales No.";
+            this.ColumnSalesNumber.Name = "ColumnSalesNumber";
+            this.ColumnSalesNumber.ReadOnly = true;
+            // 
+            // ColumnCustomer
+            // 
+            this.ColumnCustomer.HeaderText = "Customer";
+            this.ColumnCustomer.Name = "ColumnCustomer";
+            this.ColumnCustomer.ReadOnly = true;
+            this.ColumnCustomer.Width = 243;
+            // 
+            // ColumnSalesAgent
+            // 
+            this.ColumnSalesAgent.HeaderText = "Sales";
+            this.ColumnSalesAgent.Name = "ColumnSalesAgent";
+            this.ColumnSalesAgent.ReadOnly = true;
+            this.ColumnSalesAgent.Width = 195;
+            // 
+            // ColumnAmount
+            // 
+            this.ColumnAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnAmount.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnAmount.HeaderText = "Amount";
+            this.ColumnAmount.Name = "ColumnAmount";
+            this.ColumnAmount.ReadOnly = true;
+            this.ColumnAmount.Width = 101;
+            // 
+            // ColumnIsLocked
+            // 
+            this.ColumnIsLocked.HeaderText = "L";
+            this.ColumnIsLocked.Name = "ColumnIsLocked";
+            this.ColumnIsLocked.ReadOnly = true;
+            this.ColumnIsLocked.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnIsLocked.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnIsLocked.Width = 35;
+            // 
+            // ColumnIsTendered
+            // 
+            this.ColumnIsTendered.HeaderText = "T";
+            this.ColumnIsTendered.Name = "ColumnIsTendered";
+            this.ColumnIsTendered.ReadOnly = true;
+            this.ColumnIsTendered.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnIsTendered.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnIsTendered.Width = 35;
+            // 
+            // ColumnIsCancelled
+            // 
+            this.ColumnIsCancelled.HeaderText = "C";
+            this.ColumnIsCancelled.Name = "ColumnIsCancelled";
+            this.ColumnIsCancelled.ReadOnly = true;
+            this.ColumnIsCancelled.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnIsCancelled.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnIsCancelled.Width = 35;
             // 
             // panel2
             // 
@@ -406,103 +510,60 @@
             this.comboBoxTerminal.TabIndex = 0;
             this.comboBoxTerminal.SelectedIndexChanged += new System.EventHandler(this.comboBoxTerminal_SelectedIndexChanged);
             // 
-            // ColumnEdit
+            // buttonCancel
             // 
-            this.ColumnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnEdit.Frozen = true;
-            this.ColumnEdit.HeaderText = "";
-            this.ColumnEdit.Name = "ColumnEdit";
-            this.ColumnEdit.ReadOnly = true;
-            this.ColumnEdit.Width = 70;
+            this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonCancel.FlatAppearance.BorderSize = 0;
+            this.buttonCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
+            this.buttonCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
+            this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCancel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCancel.ForeColor = System.Drawing.Color.White;
+            this.buttonCancel.Location = new System.Drawing.Point(1112, 12);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(88, 40);
+            this.buttonCancel.TabIndex = 4;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = false;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
-            // ColumnDelete
+            // buttonReprint
             // 
-            this.ColumnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnDelete.Frozen = true;
-            this.ColumnDelete.HeaderText = "";
-            this.ColumnDelete.Name = "ColumnDelete";
-            this.ColumnDelete.ReadOnly = true;
-            this.ColumnDelete.Width = 70;
+            this.buttonReprint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonReprint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonReprint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonReprint.FlatAppearance.BorderSize = 0;
+            this.buttonReprint.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
+            this.buttonReprint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
+            this.buttonReprint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonReprint.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonReprint.ForeColor = System.Drawing.Color.White;
+            this.buttonReprint.Location = new System.Drawing.Point(1018, 12);
+            this.buttonReprint.Name = "buttonReprint";
+            this.buttonReprint.Size = new System.Drawing.Size(88, 40);
+            this.buttonReprint.TabIndex = 5;
+            this.buttonReprint.Text = "Reprint";
+            this.buttonReprint.UseVisualStyleBackColor = false;
             // 
-            // ColumnId
+            // buttonTender
             // 
-            this.ColumnId.HeaderText = "Id";
-            this.ColumnId.Name = "ColumnId";
-            this.ColumnId.ReadOnly = true;
-            this.ColumnId.Visible = false;
-            // 
-            // ColumnTerminal
-            // 
-            this.ColumnTerminal.HeaderText = "Terminal";
-            this.ColumnTerminal.Name = "ColumnTerminal";
-            this.ColumnTerminal.ReadOnly = true;
-            this.ColumnTerminal.Width = 70;
-            // 
-            // ColumnSalesDate
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesDate.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColumnSalesDate.HeaderText = "Sales Date";
-            this.ColumnSalesDate.Name = "ColumnSalesDate";
-            this.ColumnSalesDate.ReadOnly = true;
-            this.ColumnSalesDate.Width = 95;
-            // 
-            // ColumnSalesNumber
-            // 
-            this.ColumnSalesNumber.HeaderText = "Sales No.";
-            this.ColumnSalesNumber.Name = "ColumnSalesNumber";
-            this.ColumnSalesNumber.ReadOnly = true;
-            // 
-            // ColumnCustomer
-            // 
-            this.ColumnCustomer.HeaderText = "Customer";
-            this.ColumnCustomer.Name = "ColumnCustomer";
-            this.ColumnCustomer.ReadOnly = true;
-            this.ColumnCustomer.Width = 243;
-            // 
-            // ColumnSalesAgent
-            // 
-            this.ColumnSalesAgent.HeaderText = "Sales";
-            this.ColumnSalesAgent.Name = "ColumnSalesAgent";
-            this.ColumnSalesAgent.ReadOnly = true;
-            this.ColumnSalesAgent.Width = 195;
-            // 
-            // ColumnAmount
-            // 
-            this.ColumnAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnAmount.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnAmount.HeaderText = "Amount";
-            this.ColumnAmount.Name = "ColumnAmount";
-            this.ColumnAmount.ReadOnly = true;
-            this.ColumnAmount.Width = 101;
-            // 
-            // ColumnIsLocked
-            // 
-            this.ColumnIsLocked.HeaderText = "L";
-            this.ColumnIsLocked.Name = "ColumnIsLocked";
-            this.ColumnIsLocked.ReadOnly = true;
-            this.ColumnIsLocked.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnIsLocked.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColumnIsLocked.Width = 35;
-            // 
-            // ColumnIsTendered
-            // 
-            this.ColumnIsTendered.HeaderText = "T";
-            this.ColumnIsTendered.Name = "ColumnIsTendered";
-            this.ColumnIsTendered.ReadOnly = true;
-            this.ColumnIsTendered.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnIsTendered.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColumnIsTendered.Width = 35;
-            // 
-            // ColumnIsCancelled
-            // 
-            this.ColumnIsCancelled.HeaderText = "C";
-            this.ColumnIsCancelled.Name = "ColumnIsCancelled";
-            this.ColumnIsCancelled.ReadOnly = true;
-            this.ColumnIsCancelled.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnIsCancelled.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColumnIsCancelled.Width = 35;
+            this.buttonTender.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTender.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonTender.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonTender.FlatAppearance.BorderSize = 0;
+            this.buttonTender.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
+            this.buttonTender.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
+            this.buttonTender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTender.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTender.ForeColor = System.Drawing.Color.White;
+            this.buttonTender.Location = new System.Drawing.Point(924, 12);
+            this.buttonTender.Name = "buttonTender";
+            this.buttonTender.Size = new System.Drawing.Size(88, 40);
+            this.buttonTender.TabIndex = 6;
+            this.buttonTender.Text = "Tender";
+            this.buttonTender.UseVisualStyleBackColor = false;
             // 
             // TrnSalesListForm
             // 
@@ -572,5 +633,8 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnIsLocked;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnIsTendered;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnIsCancelled;
+        private System.Windows.Forms.Button buttonTender;
+        private System.Windows.Forms.Button buttonReprint;
+        private System.Windows.Forms.Button buttonCancel;
     }
 }

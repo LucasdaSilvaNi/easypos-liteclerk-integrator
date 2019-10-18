@@ -85,6 +85,7 @@
             this.ColumnSalesLinePriceSplitPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonSearchItem = new System.Windows.Forms.Button();
             this.textBoxBarcode = new System.Windows.Forms.TextBox();
+            this.buttonBarcode = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -584,17 +585,38 @@
             // 
             this.textBoxBarcode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxBarcode.Location = new System.Drawing.Point(12, 171);
+            this.textBoxBarcode.Font = new System.Drawing.Font("Segoe UI", 12.5F);
+            this.textBoxBarcode.Location = new System.Drawing.Point(106, 169);
             this.textBoxBarcode.Name = "textBoxBarcode";
-            this.textBoxBarcode.Size = new System.Drawing.Size(1281, 30);
+            this.textBoxBarcode.Size = new System.Drawing.Size(1188, 35);
             this.textBoxBarcode.TabIndex = 0;
             this.textBoxBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarcode_KeyDown);
+            // 
+            // buttonBarcode
+            // 
+            this.buttonBarcode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonBarcode.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonBarcode.FlatAppearance.BorderSize = 0;
+            this.buttonBarcode.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
+            this.buttonBarcode.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(125)))), ((int)(((byte)(0)))));
+            this.buttonBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBarcode.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.buttonBarcode.ForeColor = System.Drawing.Color.White;
+            this.buttonBarcode.Location = new System.Drawing.Point(12, 169);
+            this.buttonBarcode.Name = "buttonBarcode";
+            this.buttonBarcode.Size = new System.Drawing.Size(88, 30);
+            this.buttonBarcode.TabIndex = 6;
+            this.buttonBarcode.TabStop = false;
+            this.buttonBarcode.Text = "Barcode";
+            this.buttonBarcode.UseVisualStyleBackColor = false;
+            this.buttonBarcode.Click += new System.EventHandler(this.buttonBarcode_Click);
             // 
             // TrnSalesDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1400, 701);
+            this.Controls.Add(this.buttonBarcode);
             this.Controls.Add(this.textBoxBarcode);
             this.Controls.Add(this.buttonSearchItem);
             this.Controls.Add(this.dataGridViewSalesLineList);
@@ -666,5 +688,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2LessTax;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePriceSplitPercentage;
+        private System.Windows.Forms.Button buttonBarcode;
     }
 }

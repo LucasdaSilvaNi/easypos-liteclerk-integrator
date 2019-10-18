@@ -56,10 +56,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>easyposdb.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Entities\MstCustomer.cs" />
     <Compile Include="Entities\MstDiscount.cs" />
     <Compile Include="Entities\MstItem.cs" />
     <Compile Include="Entities\MstItemInventoryEntity.cs" />
     <Compile Include="Entities\MstPayType.cs" />
+    <Compile Include="Entities\MstTerm.cs" />
     <Compile Include="Entities\MstTerminal.cs" />
     <Compile Include="Entities\MstUser.cs" />
     <Compile Include="Entities\RepZReadingReportEntity.cs" />
@@ -129,6 +131,12 @@
     <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderForm.Designer.cs">
       <DependentUpon>TrnSalesDetailTenderForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderSalesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderSalesForm.Designer.cs">
+      <DependentUpon>TrnSalesDetailTenderSalesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnSalesListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +166,9 @@
     <Compile Include="Reports\RepZReadingReportForm.Designer.cs">
       <DependentUpon>RepZReadingReportForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailTenderSalesForm.resx">
+      <DependentUpon>TrnSalesDetailTenderSalesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepOfficialReceiptReportForm.resx">
       <DependentUpon>RepOfficialReceiptReportForm.cs</DependentUpon>
     </EmbeddedResource>

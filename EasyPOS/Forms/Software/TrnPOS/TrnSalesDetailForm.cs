@@ -292,5 +292,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 textBoxBarcode.SelectAll();
             }
         }
+
+        private void buttonBarcode_Click(object sender, EventArgs e)
+        {
+            textBoxBarcode.Focus();
+            textBoxBarcode.SelectAll();
+        }
     }
 }

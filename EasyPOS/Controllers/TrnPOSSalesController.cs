@@ -76,7 +76,7 @@ namespace EasyPOS.Controllers
                             SeniorCitizenAge = d.SeniorCitizenAge,
                             Remarks = d.Remarks,
                             SalesAgent = d.SalesAgent,
-                            SalesAgentUserName = d.MstUser5.UserName,
+                            SalesAgentUserName = d.SalesAgent != null ? d.MstUser5.UserName : "",
                             TerminalId = d.TerminalId,
                             Terminal = d.MstTerminal.Terminal,
                             PreparedBy = d.PreparedBy,
@@ -133,7 +133,7 @@ namespace EasyPOS.Controllers
                             SeniorCitizenAge = d.SeniorCitizenAge,
                             Remarks = d.Remarks,
                             SalesAgent = d.SalesAgent,
-                            SalesAgentUserName = d.MstUser5.UserName,
+                            SalesAgentUserName = d.SalesAgent != null ? d.MstUser5.UserName : "",
                             TerminalId = d.TerminalId,
                             Terminal = d.MstTerminal.Terminal,
                             PreparedBy = d.PreparedBy,
@@ -425,6 +425,86 @@ namespace EasyPOS.Controllers
             }
         }
 
+        // ======================================
+        // Tender Sales - Dropdown List Customers
+        // ======================================
+        public List<Entities.MstCustomer> TenderSalesDropdownListCustomer()
+        {
+            var customers = from d in db.MstCustomers
+                            select new Entities.MstCustomer
+                            {
+                                Id = d.Id,
+                                Customer = d.Customer,
+                                TermId = d.TermId,
+                                CustomerCode = d.CustomerCode
+                            };
+
+            return customers.OrderBy(d => d.Customer).ToList();
+        }
+
+        // ==================================
+        // Tender Sales - Dropdown List Terms
+        // ==================================
+        public List<Entities.MstTerm> TenderSalesDropdownListTerm()
+        {
+            var terms = from d in db.MstTerms
+                        select new Entities.MstTerm
+                        {
+                            Id = d.Id,
+                            Term = d.Term
+                        };
+
+            return terms.OrderBy(d => d.Term).ToList();
+        }
+
+        // ==================================
+        // Tender Sales - Dropdown List Users
+        // ==================================
+        public List<Entities.MstUser> TenderSalesDropdownListUser()
+        {
+            var users = from d in db.MstUsers
+                        select new Entities.MstUser
+                        {
+                            Id = d.Id,
+                            FullName = d.FullName
+                        };
+
+            return users.OrderBy(d => d.FullName).ToList();
+        }
+
+        // =====================
+        // Tender - Update Sales
+        // =====================
+        public String[] TenderUpdateSales(Int32 salesId, Entities.TrnSalesEntity objSalesEntity)
+        {
+            try
+            {
+                var sales = from d in db.TrnSales
+                            where d.Id == salesId
+                            select d;
+
+                if (sales.Any())
+                {
+                    var updateSales = sales.FirstOrDefault();
+                    updateSales.CustomerId = objSalesEntity.CustomerId;
+                    updateSales.TermId = objSalesEntity.TermId;
+                    updateSales.Remarks = objSalesEntity.Remarks;
+                    updateSales.SalesAgent = objSalesEntity.SalesAgent;
+                    db.SubmitChanges();
+
+                    return new String[] { "", "1" };
+                }
+                else
+                {
+                    return new String[] { "Sales not found.", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
         // ==============
         // Delete - Sales 
         // ==============
@@ -462,6 +542,74 @@ namespace EasyPOS.Controllers
             {
                 return new String[] { e.Message, "0" };
             }
+        }
+
+        // ==============
+        // Cancel - Sales
+        // ==============
+        public String[] CancelSales(Int32 salesId)
+        {
+            try
+            {
+                var sales = from d in db.TrnSales
+                            where d.Id == salesId
+                            && d.IsLocked == true
+                            && d.IsCancelled == false
+                            select d;
+
+                if (sales.Any())
+                {
+                    var collection = from d in db.TrnCollections
+                                     where d.SalesId == salesId
+                                     && d.IsLocked == true
+                                     && d.IsCancelled == false
+                                     select d;
+
+                    if (collection.Any())
+                    {
+                        var cancelSales = sales.FirstOrDefault();
+                        cancelSales.IsCancelled = true;
+                        db.SubmitChanges();
+
+                        var cancelCollection = collection.FirstOrDefault();
+                        cancelCollection.IsCancelled = true;
+                        db.SubmitChanges();
+
+                        return new String[] { "", "1" };
+                    }
+                    else
+                    {
+                        return new String[] { "Collection not found.", "0" };
+                    }
+                }
+                else
+                {
+                    return new String[] { "Sales not found.", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
+        // ===============
+        // Get Last Change
+        // ===============
+        public Decimal GetLastChange(Int32 terminalId)
+        {
+            Decimal lastChange = 0;
+
+            var lastCollection = from d in db.TrnCollections
+                                 where d.TerminalId == terminalId
+                                 select d;
+
+            if (lastCollection.Any())
+            {
+                lastChange = lastCollection.OrderByDescending(d => d.Id).FirstOrDefault().ChangeAmount;
+            }
+
+            return lastChange;
         }
     }
 }

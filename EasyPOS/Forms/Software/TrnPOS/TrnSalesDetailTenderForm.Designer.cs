@@ -39,6 +39,9 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonTender = new System.Windows.Forms.Button();
             this.dataGridViewTenderPayType = new System.Windows.Forms.DataGridView();
+            this.ColumnTenderListPayTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTenderListPayTypePayType = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnTenderListPayTypeAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBoxChangeAmount = new System.Windows.Forms.TextBox();
             this.textBoxTenderAmount = new System.Windows.Forms.TextBox();
@@ -52,9 +55,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.labelInvoiceNumber = new System.Windows.Forms.Label();
             this.textBoxTotalSalesAmount = new System.Windows.Forms.TextBox();
-            this.ColumnTenderListPayTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTenderListPayTypePayType = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnTenderListPayTypeAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonSales = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTenderPayType)).BeginInit();
@@ -65,6 +66,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.buttonSales);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.buttonClose);
@@ -171,6 +173,35 @@
             this.dataGridViewTenderPayType.Size = new System.Drawing.Size(714, 445);
             this.dataGridViewTenderPayType.TabIndex = 0;
             this.dataGridViewTenderPayType.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTenderPayType_CellEndEdit);
+            // 
+            // ColumnTenderListPayTypeId
+            // 
+            this.ColumnTenderListPayTypeId.HeaderText = "Id";
+            this.ColumnTenderListPayTypeId.Name = "ColumnTenderListPayTypeId";
+            this.ColumnTenderListPayTypeId.Visible = false;
+            // 
+            // ColumnTenderListPayTypePayType
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ColumnTenderListPayTypePayType.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnTenderListPayTypePayType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnTenderListPayTypePayType.HeaderText = "PayType";
+            this.ColumnTenderListPayTypePayType.Name = "ColumnTenderListPayTypePayType";
+            this.ColumnTenderListPayTypePayType.ReadOnly = true;
+            this.ColumnTenderListPayTypePayType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnTenderListPayTypePayType.Width = 300;
+            // 
+            // ColumnTenderListPayTypeAmount
+            // 
+            this.ColumnTenderListPayTypeAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(186)))), ((int)(((byte)(1)))));
+            this.ColumnTenderListPayTypeAmount.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnTenderListPayTypeAmount.HeaderText = "Amount";
+            this.ColumnTenderListPayTypeAmount.Name = "ColumnTenderListPayTypeAmount";
+            this.ColumnTenderListPayTypeAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // panel3
             // 
@@ -342,34 +373,25 @@
             this.textBoxTotalSalesAmount.Text = "0.00";
             this.textBoxTotalSalesAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // ColumnTenderListPayTypeId
+            // buttonSales
             // 
-            this.ColumnTenderListPayTypeId.HeaderText = "Id";
-            this.ColumnTenderListPayTypeId.Name = "ColumnTenderListPayTypeId";
-            this.ColumnTenderListPayTypeId.Visible = false;
-            // 
-            // ColumnTenderListPayTypePayType
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ColumnTenderListPayTypePayType.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnTenderListPayTypePayType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnTenderListPayTypePayType.HeaderText = "PayType";
-            this.ColumnTenderListPayTypePayType.Name = "ColumnTenderListPayTypePayType";
-            this.ColumnTenderListPayTypePayType.ReadOnly = true;
-            this.ColumnTenderListPayTypePayType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnTenderListPayTypePayType.Width = 300;
-            // 
-            // ColumnTenderListPayTypeAmount
-            // 
-            this.ColumnTenderListPayTypeAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(186)))), ((int)(((byte)(1)))));
-            this.ColumnTenderListPayTypeAmount.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnTenderListPayTypeAmount.HeaderText = "Amount";
-            this.ColumnTenderListPayTypeAmount.Name = "ColumnTenderListPayTypeAmount";
-            this.ColumnTenderListPayTypeAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.buttonSales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonSales.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonSales.FlatAppearance.BorderSize = 0;
+            this.buttonSales.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
+            this.buttonSales.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
+            this.buttonSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSales.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSales.ForeColor = System.Drawing.Color.White;
+            this.buttonSales.Location = new System.Drawing.Point(450, 12);
+            this.buttonSales.Name = "buttonSales";
+            this.buttonSales.Size = new System.Drawing.Size(88, 40);
+            this.buttonSales.TabIndex = 4;
+            this.buttonSales.TabStop = false;
+            this.buttonSales.Text = "Sales";
+            this.buttonSales.UseVisualStyleBackColor = false;
+            this.buttonSales.Click += new System.EventHandler(this.buttonSales_Click);
             // 
             // TrnSalesDetailTenderForm
             // 
@@ -424,5 +446,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeId;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnTenderListPayTypePayType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeAmount;
+        private System.Windows.Forms.Button buttonSales;
     }
 }

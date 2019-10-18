@@ -32,6 +32,8 @@
             this.tabControlSoftware = new System.Windows.Forms.TabControl();
             this.tabPageSysMenu = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBoxLastChange = new System.Windows.Forms.TextBox();
+            this.labelLastChange = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,6 +58,7 @@
             this.tabControlSoftware.SelectedIndex = 0;
             this.tabControlSoftware.Size = new System.Drawing.Size(1482, 827);
             this.tabControlSoftware.TabIndex = 0;
+            this.tabControlSoftware.SelectedIndexChanged += new System.EventHandler(this.tabControlSoftware_SelectedIndexChanged);
             // 
             // tabPageSysMenu
             // 
@@ -70,6 +73,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.panel1.Controls.Add(this.textBoxLastChange);
+            this.panel1.Controls.Add(this.labelLastChange);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label2);
@@ -80,6 +85,35 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1482, 121);
             this.panel1.TabIndex = 9;
+            // 
+            // textBoxLastChange
+            // 
+            this.textBoxLastChange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxLastChange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.textBoxLastChange.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxLastChange.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.textBoxLastChange.ForeColor = System.Drawing.Color.White;
+            this.textBoxLastChange.Location = new System.Drawing.Point(1032, 48);
+            this.textBoxLastChange.Name = "textBoxLastChange";
+            this.textBoxLastChange.ReadOnly = true;
+            this.textBoxLastChange.Size = new System.Drawing.Size(371, 34);
+            this.textBoxLastChange.TabIndex = 9;
+            this.textBoxLastChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxLastChange.Visible = false;
+            // 
+            // labelLastChange
+            // 
+            this.labelLastChange.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelLastChange.AutoSize = true;
+            this.labelLastChange.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.labelLastChange.ForeColor = System.Drawing.Color.White;
+            this.labelLastChange.Location = new System.Drawing.Point(1162, 13);
+            this.labelLastChange.Name = "labelLastChange";
+            this.labelLastChange.Size = new System.Drawing.Size(124, 25);
+            this.labelLastChange.TabIndex = 8;
+            this.labelLastChange.Text = "Last Change:";
+            this.labelLastChange.Visible = false;
             // 
             // label1
             // 
@@ -175,5 +209,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelLastChange;
+        private System.Windows.Forms.TextBox textBoxLastChange;
     }
 }

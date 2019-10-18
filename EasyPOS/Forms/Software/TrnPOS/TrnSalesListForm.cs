@@ -239,5 +239,38 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 GetSalesList();
             }
         }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewSalesList.Rows.Count > 1)
+            {
+                if (dataGridViewSalesList.CurrentCell.RowIndex != -1)
+                {
+                    DialogResult cancelDialogResult = MessageBox.Show("Cancel Transaction? " + dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[9].Value.ToString(), "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (cancelDialogResult == DialogResult.Yes)
+                    {
+                        Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+
+                        String[] cancelSales = trnPOSSalesController.CancelSales(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value));
+                        if (cancelSales[1].Equals("0") == false)
+                        {
+                            GetSalesList();
+                        }
+                        else
+                        {
+                            MessageBox.Show(cancelSales[0], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select sales.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Sales empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

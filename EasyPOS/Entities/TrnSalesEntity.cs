@@ -26,7 +26,7 @@ namespace EasyPOS.Entities
         public String SeniorCitizenName { get; set; }
         public Int32? SeniorCitizenAge { get; set; }
         public String Remarks { get; set; }
-        public Int32 SalesAgent { get; set; }
+        public Int32? SalesAgent { get; set; }
         public String SalesAgentUserName { get; set; }
         public Int32 TerminalId { get; set; }
         public String Terminal { get; set; }

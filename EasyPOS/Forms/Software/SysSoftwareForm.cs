@@ -92,7 +92,11 @@ namespace EasyPOS.Forms.Software
 
         public void AddTabPagePOSSalesList()
         {
-            tabPagePOSSalesDetail.Controls.Remove(trnSalesListForm);
+            labelLastChange.Visible = true;
+            textBoxLastChange.Visible = true;
+
+            Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+            textBoxLastChange.Text = trnPOSSalesController.GetLastChange(Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId)).ToString("#,##0.00");
 
             trnSalesListForm = new TrnPOS.TrnSalesListForm(this)
             {
@@ -116,6 +120,12 @@ namespace EasyPOS.Forms.Software
 
         public void AddTabPagePOSSalesDetail(TrnPOS.TrnSalesListForm salesListForm, Entities.TrnSalesEntity salesEntity)
         {
+            labelLastChange.Visible = true;
+            textBoxLastChange.Visible = true;
+
+            Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+            textBoxLastChange.Text = trnPOSSalesController.GetLastChange(Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId)).ToString("#,##0.00");
+
             tabPagePOSSalesDetail.Controls.Remove(trnSalesDetailForm);
 
             trnSalesDetailForm = new TrnPOS.TrnSalesDetailForm(this, salesListForm, salesEntity)
@@ -172,6 +182,20 @@ namespace EasyPOS.Forms.Software
         {
             Account.SysLogin.SysLoginForm sysLogin = new Account.SysLogin.SysLoginForm();
             sysLogin.Show();
+        }
+
+        private void tabControlSoftware_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControlSoftware.SelectedTab == tabPagePOSSalesList || tabControlSoftware.SelectedTab == tabPagePOSSalesDetail)
+            {
+                labelLastChange.Visible = true;
+                textBoxLastChange.Visible = true;
+            }
+            else
+            {
+                labelLastChange.Visible = false;
+                textBoxLastChange.Visible = false;
+            }
         }
     }
 }
