@@ -98,7 +98,8 @@ namespace EasyPOS.Reports
                                          select new
                                          {
                                              g.Key.PayType,
-                                             TotalAmount = g.Sum(s => s.Amount)
+                                             TotalAmount = g.Sum(s => s.Amount),
+                                             TotalChangeAmount = g.Sum(s => s.TrnCollection.ChangeAmount)
                                          };
 
             if (salesLines.Any() && currentCollectionLines.Any())
@@ -143,14 +144,20 @@ namespace EasyPOS.Reports
 
                 foreach (var collectionLine in currentCollectionLines)
                 {
+                    Decimal amount = collectionLine.TotalAmount;
+                    if (collectionLine.PayType.Equals("Cash"))
+                    {
+                        amount = collectionLine.TotalAmount - collectionLine.TotalChangeAmount;
+                    }
+
                     repZReadingReportEntity.CollectionLines.Add(new Entities.TrnCollectionLineEntity()
                     {
                         PayType = collectionLine.PayType,
-                        Amount = collectionLine.TotalAmount
+                        Amount = amount
                     });
                 }
 
-                repZReadingReportEntity.TotalCollection = currentCollectionLines.Sum(d => d.TotalAmount);
+                repZReadingReportEntity.TotalCollection = currentCollections.Sum(d => d.Amount);
 
                 var VATSales = salesLines.Where(d => d.MstTax.Code.Equals("VAT") == true);
                 if (VATSales.Any())

@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.printDocumentZReadingReport = new System.Drawing.Printing.PrintDocument();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -116,11 +117,24 @@
             // 
             this.printDocumentZReadingReport.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentZReadingReport_PrintPage);
             // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.AutoScroll = true;
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Location = new System.Drawing.Point(98, 69);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(460, 635);
+            this.panel2.TabIndex = 5;
+            // 
             // RepZReadingReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(664, 716);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -143,5 +157,6 @@
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonPrint;
         private System.Drawing.Printing.PrintDocument printDocumentZReadingReport;
+        private System.Windows.Forms.Panel panel2;
     }
 }

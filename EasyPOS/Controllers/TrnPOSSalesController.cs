@@ -400,7 +400,7 @@ namespace EasyPOS.Controllers
                     }
 
                     var lockCollection = collection.FirstOrDefault();
-                    lockCollection.Amount = totalCollectionLineAmount;
+                    lockCollection.Amount = totalCollectionLineAmount - collection.FirstOrDefault().ChangeAmount;
                     lockCollection.IsLocked = true;
                     db.SubmitChanges();
 
