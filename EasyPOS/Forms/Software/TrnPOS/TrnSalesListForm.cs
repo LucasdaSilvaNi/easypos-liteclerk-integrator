@@ -254,7 +254,24 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         String[] deleteSales = trnPOSSalesController.DeleteSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value));
                         if (deleteSales[1].Equals("0") == false)
                         {
+                            Int32 currentPageNumber = pageNumber;
+
+                            pageNumber = 1;
                             UpdateSalesListGridDataSource();
+
+                            if (pageList != null)
+                            {
+                                if (salesList.Count() % pageSize == 1)
+                                {
+                                    pageNumber = currentPageNumber - 1;
+                                }
+                                else
+                                {
+                                    pageNumber = currentPageNumber;
+                                }
+
+                                dataSalesListSource.DataSource = pageList;
+                            }
                         }
                         else
                         {

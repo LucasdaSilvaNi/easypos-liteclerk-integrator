@@ -187,7 +187,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label6.Location = new System.Drawing.Point(8, 61);
+            this.label6.Location = new System.Drawing.Point(8, 62);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(93, 23);
             this.label6.TabIndex = 9;
@@ -198,7 +198,7 @@
             this.labelCustomer.AutoSize = true;
             this.labelCustomer.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCustomer.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelCustomer.Location = new System.Drawing.Point(123, 61);
+            this.labelCustomer.Location = new System.Drawing.Point(123, 62);
             this.labelCustomer.Name = "labelCustomer";
             this.labelCustomer.Size = new System.Drawing.Size(0, 23);
             this.labelCustomer.TabIndex = 10;
@@ -208,7 +208,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label4.Location = new System.Drawing.Point(8, 38);
+            this.label4.Location = new System.Drawing.Point(8, 39);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(114, 23);
             this.label4.TabIndex = 7;
@@ -219,7 +219,7 @@
             this.labelInvoiceDate.AutoSize = true;
             this.labelInvoiceDate.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInvoiceDate.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelInvoiceDate.Location = new System.Drawing.Point(123, 38);
+            this.labelInvoiceDate.Location = new System.Drawing.Point(123, 39);
             this.labelInvoiceDate.Name = "labelInvoiceDate";
             this.labelInvoiceDate.Size = new System.Drawing.Size(0, 23);
             this.labelInvoiceDate.TabIndex = 8;
@@ -229,7 +229,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label3.Location = new System.Drawing.Point(8, 15);
+            this.label3.Location = new System.Drawing.Point(8, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 23);
             this.label3.TabIndex = 5;
@@ -240,7 +240,7 @@
             this.labelInvoiceNumber.AutoSize = true;
             this.labelInvoiceNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInvoiceNumber.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelInvoiceNumber.Location = new System.Drawing.Point(123, 15);
+            this.labelInvoiceNumber.Location = new System.Drawing.Point(123, 16);
             this.labelInvoiceNumber.Name = "labelInvoiceNumber";
             this.labelInvoiceNumber.Size = new System.Drawing.Size(0, 23);
             this.labelInvoiceNumber.TabIndex = 6;
@@ -250,12 +250,12 @@
             this.textBoxTotalSalesAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxTotalSalesAmount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.textBoxTotalSalesAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxTotalSalesAmount.Font = new System.Drawing.Font("Segoe UI", 40F, System.Drawing.FontStyle.Bold);
+            this.textBoxTotalSalesAmount.Font = new System.Drawing.Font("Segoe UI", 55F, System.Drawing.FontStyle.Bold);
             this.textBoxTotalSalesAmount.ForeColor = System.Drawing.Color.White;
-            this.textBoxTotalSalesAmount.Location = new System.Drawing.Point(563, 11);
+            this.textBoxTotalSalesAmount.Location = new System.Drawing.Point(563, -4);
             this.textBoxTotalSalesAmount.Name = "textBoxTotalSalesAmount";
             this.textBoxTotalSalesAmount.ReadOnly = true;
-            this.textBoxTotalSalesAmount.Size = new System.Drawing.Size(824, 89);
+            this.textBoxTotalSalesAmount.Size = new System.Drawing.Size(824, 122);
             this.textBoxTotalSalesAmount.TabIndex = 1;
             this.textBoxTotalSalesAmount.TabStop = false;
             this.textBoxTotalSalesAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;

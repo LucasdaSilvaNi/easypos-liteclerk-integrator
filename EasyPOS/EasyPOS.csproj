@@ -287,6 +287,7 @@
   <ItemGroup>
     <Folder Include="EasyFISIntegration\Controllers\" />
     <Folder Include="EasyFISIntegration\Entities\" />
+    <Folder Include="Forms\Software\MstUser\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Images\Backgrounds\coffee.jpeg" />
