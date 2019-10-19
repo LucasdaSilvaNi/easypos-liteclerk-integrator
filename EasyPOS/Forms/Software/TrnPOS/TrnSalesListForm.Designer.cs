@@ -570,15 +570,13 @@
             // buttonSalesListPageListFirst
             // 
             this.buttonSalesListPageListFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonSalesListPageListFirst.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
             this.buttonSalesListPageListFirst.Enabled = false;
             this.buttonSalesListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonSalesListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSalesListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.buttonSalesListPageListFirst.ForeColor = System.Drawing.Color.White;
+            this.buttonSalesListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.buttonSalesListPageListFirst.Location = new System.Drawing.Point(12, 660);
             this.buttonSalesListPageListFirst.Name = "buttonSalesListPageListFirst";
-            this.buttonSalesListPageListFirst.Size = new System.Drawing.Size(91, 32);
+            this.buttonSalesListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesListPageListFirst.TabIndex = 8;
             this.buttonSalesListPageListFirst.Text = "First";
             this.buttonSalesListPageListFirst.UseVisualStyleBackColor = false;
@@ -587,15 +585,13 @@
             // buttonSalesListPageListPrevious
             // 
             this.buttonSalesListPageListPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonSalesListPageListPrevious.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
             this.buttonSalesListPageListPrevious.Enabled = false;
             this.buttonSalesListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonSalesListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSalesListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.buttonSalesListPageListPrevious.ForeColor = System.Drawing.Color.White;
-            this.buttonSalesListPageListPrevious.Location = new System.Drawing.Point(104, 660);
+            this.buttonSalesListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonSalesListPageListPrevious.Location = new System.Drawing.Point(94, 660);
             this.buttonSalesListPageListPrevious.Name = "buttonSalesListPageListPrevious";
-            this.buttonSalesListPageListPrevious.Size = new System.Drawing.Size(91, 32);
+            this.buttonSalesListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesListPageListPrevious.TabIndex = 9;
             this.buttonSalesListPageListPrevious.Text = "Previous";
             this.buttonSalesListPageListPrevious.UseVisualStyleBackColor = false;
@@ -604,14 +600,12 @@
             // buttonSalesListPageListNext
             // 
             this.buttonSalesListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonSalesListPageListNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
             this.buttonSalesListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonSalesListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSalesListPageListNext.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.buttonSalesListPageListNext.ForeColor = System.Drawing.Color.White;
-            this.buttonSalesListPageListNext.Location = new System.Drawing.Point(282, 660);
+            this.buttonSalesListPageListNext.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonSalesListPageListNext.Location = new System.Drawing.Point(257, 660);
             this.buttonSalesListPageListNext.Name = "buttonSalesListPageListNext";
-            this.buttonSalesListPageListNext.Size = new System.Drawing.Size(91, 32);
+            this.buttonSalesListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesListPageListNext.TabIndex = 10;
             this.buttonSalesListPageListNext.Text = "Next";
             this.buttonSalesListPageListNext.UseVisualStyleBackColor = false;
@@ -620,14 +614,12 @@
             // buttonSalesListPageListLast
             // 
             this.buttonSalesListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonSalesListPageListLast.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
             this.buttonSalesListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonSalesListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSalesListPageListLast.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.buttonSalesListPageListLast.ForeColor = System.Drawing.Color.White;
-            this.buttonSalesListPageListLast.Location = new System.Drawing.Point(374, 660);
+            this.buttonSalesListPageListLast.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonSalesListPageListLast.Location = new System.Drawing.Point(339, 660);
             this.buttonSalesListPageListLast.Name = "buttonSalesListPageListLast";
-            this.buttonSalesListPageListLast.Size = new System.Drawing.Size(91, 32);
+            this.buttonSalesListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesListPageListLast.TabIndex = 11;
             this.buttonSalesListPageListLast.Text = "Last";
             this.buttonSalesListPageListLast.UseVisualStyleBackColor = false;
@@ -638,7 +630,7 @@
             this.textBoxPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxPageNumber.BackColor = System.Drawing.SystemColors.Control;
             this.textBoxPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxPageNumber.Location = new System.Drawing.Point(204, 666);
+            this.textBoxPageNumber.Location = new System.Drawing.Point(182, 666);
             this.textBoxPageNumber.Name = "textBoxPageNumber";
             this.textBoxPageNumber.ReadOnly = true;
             this.textBoxPageNumber.Size = new System.Drawing.Size(69, 23);
@@ -653,9 +645,9 @@
             this.buttonAutoRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAutoRefresh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.buttonAutoRefresh.ForeColor = System.Drawing.Color.White;
-            this.buttonAutoRefresh.Location = new System.Drawing.Point(845, 660);
+            this.buttonAutoRefresh.Location = new System.Drawing.Point(873, 660);
             this.buttonAutoRefresh.Name = "buttonAutoRefresh";
-            this.buttonAutoRefresh.Size = new System.Drawing.Size(90, 32);
+            this.buttonAutoRefresh.Size = new System.Drawing.Size(62, 32);
             this.buttonAutoRefresh.TabIndex = 13;
             this.buttonAutoRefresh.TabStop = false;
             this.buttonAutoRefresh.Text = "Stop";

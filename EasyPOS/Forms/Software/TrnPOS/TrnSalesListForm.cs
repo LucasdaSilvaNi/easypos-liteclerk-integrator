@@ -19,7 +19,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public BindingSource dataSalesListSource = new BindingSource();
         public PagedList<Entities.FormSalesList> pageList;
         public Int32 pageNumber = 1;
-        public Int32 pageSize = 5;
+        public Int32 pageSize = 50;
         public Boolean isAutoRefresh = true;
 
         public TrnSalesListForm(SysSoftwareForm softwareForm)

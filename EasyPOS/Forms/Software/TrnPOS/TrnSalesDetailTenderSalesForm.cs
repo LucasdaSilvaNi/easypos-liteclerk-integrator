@@ -103,6 +103,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 if (trnSalesDetailForm != null)
                 {
+                    trnSalesDetailTenderForm.trnSalesEntity.Customer = customerName;
+                    trnSalesDetailTenderForm.GetSalesDetail();
+
                     trnSalesDetailForm.trnSalesEntity.Customer = customerName;
                     trnSalesDetailForm.GetSalesDetail();
                 }

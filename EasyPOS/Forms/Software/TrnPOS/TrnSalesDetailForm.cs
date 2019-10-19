@@ -25,6 +25,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             trnSalesEntity = salesEntity;
 
             GetSalesDetail();
+            GetSalesLineList();
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -41,8 +42,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
             labelInvoiceNumber.Text = trnSalesEntity.SalesNumber;
             labelInvoiceDate.Text = trnSalesEntity.SalesDate;
             labelCustomer.Text = trnSalesEntity.Customer;
-
-            GetSalesLineList();
         }
 
         private void buttonTender_Click(object sender, EventArgs e)
