@@ -160,7 +160,7 @@
             // dateTimePickerDate
             // 
             this.dateTimePickerDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDate.Location = new System.Drawing.Point(102, 86);
+            this.dateTimePickerDate.Location = new System.Drawing.Point(102, 91);
             this.dateTimePickerDate.Name = "dateTimePickerDate";
             this.dateTimePickerDate.Size = new System.Drawing.Size(220, 30);
             this.dateTimePickerDate.TabIndex = 21;
@@ -170,7 +170,7 @@
             // 
             this.labelUser.AutoSize = true;
             this.labelUser.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelUser.Location = new System.Drawing.Point(9, 120);
+            this.labelUser.Location = new System.Drawing.Point(9, 130);
             this.labelUser.Name = "labelUser";
             this.labelUser.Size = new System.Drawing.Size(48, 23);
             this.labelUser.TabIndex = 20;
@@ -181,7 +181,7 @@
             // 
             this.comboBoxUser.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxUser.FormattingEnabled = true;
-            this.comboBoxUser.Location = new System.Drawing.Point(102, 117);
+            this.comboBoxUser.Location = new System.Drawing.Point(102, 127);
             this.comboBoxUser.Name = "comboBoxUser";
             this.comboBoxUser.Size = new System.Drawing.Size(220, 31);
             this.comboBoxUser.TabIndex = 19;
@@ -192,7 +192,7 @@
             // 
             this.labelDate.AutoSize = true;
             this.labelDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelDate.Location = new System.Drawing.Point(9, 88);
+            this.labelDate.Location = new System.Drawing.Point(9, 97);
             this.labelDate.Name = "labelDate";
             this.labelDate.Size = new System.Drawing.Size(50, 23);
             this.labelDate.TabIndex = 18;
@@ -203,7 +203,7 @@
             // 
             this.labelTerminal.AutoSize = true;
             this.labelTerminal.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelTerminal.Location = new System.Drawing.Point(9, 57);
+            this.labelTerminal.Location = new System.Drawing.Point(9, 62);
             this.labelTerminal.Name = "labelTerminal";
             this.labelTerminal.Size = new System.Drawing.Size(78, 23);
             this.labelTerminal.TabIndex = 16;
@@ -244,8 +244,8 @@
             // 
             // RepPOSReportForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1400, 700);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.listBoxPOSReport);

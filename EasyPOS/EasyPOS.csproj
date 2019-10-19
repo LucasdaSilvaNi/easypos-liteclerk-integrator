@@ -79,6 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\MstUserController.cs" />
     <Compile Include="Controllers\RepPOSReportController.cs" />
     <Compile Include="Controllers\SysLoginController.cs" />
     <Compile Include="Controllers\TrnPOSSalesController.cs" />
@@ -88,7 +89,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>easyposdb.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Entities\FormSalesList.cs" />
+    <Compile Include="Entities\DgvSalesListEntity.cs" />
+    <Compile Include="Entities\DgvUserListEntity.cs" />
     <Compile Include="Entities\MstCustomer.cs" />
     <Compile Include="Entities\MstDiscount.cs" />
     <Compile Include="Entities\MstItem.cs" />

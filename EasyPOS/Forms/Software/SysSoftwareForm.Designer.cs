@@ -56,7 +56,7 @@
             this.tabControlSoftware.Name = "tabControlSoftware";
             this.tabControlSoftware.Padding = new System.Drawing.Point(0, 0);
             this.tabControlSoftware.SelectedIndex = 0;
-            this.tabControlSoftware.Size = new System.Drawing.Size(1482, 827);
+            this.tabControlSoftware.Size = new System.Drawing.Size(1408, 733);
             this.tabControlSoftware.TabIndex = 0;
             this.tabControlSoftware.SelectedIndexChanged += new System.EventHandler(this.tabControlSoftware_SelectedIndexChanged);
             // 
@@ -66,7 +66,7 @@
             this.tabPageSysMenu.Location = new System.Drawing.Point(4, 29);
             this.tabPageSysMenu.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageSysMenu.Name = "tabPageSysMenu";
-            this.tabPageSysMenu.Size = new System.Drawing.Size(1474, 794);
+            this.tabPageSysMenu.Size = new System.Drawing.Size(1400, 700);
             this.tabPageSysMenu.TabIndex = 0;
             this.tabPageSysMenu.Text = "Menu";
             // 
@@ -81,9 +81,9 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 832);
+            this.panel1.Location = new System.Drawing.Point(0, 738);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1482, 121);
+            this.panel1.Size = new System.Drawing.Size(1408, 121);
             this.panel1.TabIndex = 9;
             // 
             // textBoxLastChange
@@ -93,7 +93,7 @@
             this.textBoxLastChange.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxLastChange.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.textBoxLastChange.ForeColor = System.Drawing.Color.White;
-            this.textBoxLastChange.Location = new System.Drawing.Point(1032, 48);
+            this.textBoxLastChange.Location = new System.Drawing.Point(958, 48);
             this.textBoxLastChange.Name = "textBoxLastChange";
             this.textBoxLastChange.ReadOnly = true;
             this.textBoxLastChange.Size = new System.Drawing.Size(371, 34);
@@ -108,7 +108,7 @@
             this.labelLastChange.AutoSize = true;
             this.labelLastChange.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.labelLastChange.ForeColor = System.Drawing.Color.White;
-            this.labelLastChange.Location = new System.Drawing.Point(1162, 13);
+            this.labelLastChange.Location = new System.Drawing.Point(1084, 13);
             this.labelLastChange.Name = "labelLastChange";
             this.labelLastChange.Size = new System.Drawing.Size(124, 25);
             this.labelLastChange.TabIndex = 8;
@@ -179,10 +179,10 @@
             // 
             // SysSoftwareForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1482, 953);
+            this.ClientSize = new System.Drawing.Size(1408, 859);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControlSoftware);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

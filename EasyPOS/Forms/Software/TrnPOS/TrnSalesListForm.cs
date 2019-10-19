@@ -14,10 +14,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
     public partial class TrnSalesListForm : Form
     {
         public SysSoftwareForm sysSoftwareForm;
-
-        List<Entities.FormSalesList> salesList;
+        public List<Entities.DgvSalesListEntity> salesList;
         public BindingSource dataSalesListSource = new BindingSource();
-        public PagedList<Entities.FormSalesList> pageList;
+        public PagedList<Entities.DgvSalesListEntity> pageList;
         public Int32 pageNumber = 1;
         public Int32 pageSize = 50;
         public Boolean isAutoRefresh = true;
@@ -106,7 +105,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 dataGridViewSalesList.BeginInvoke((MethodInvoker)delegate ()
                 {
-                    pageList = new PagedList<Entities.FormSalesList>(salesList, pageNumber, pageSize);
+                    pageList = new PagedList<Entities.DgvSalesListEntity>(salesList, pageNumber, pageSize);
 
                     if (pageList.PageCount == 1)
                     {
@@ -157,18 +156,18 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
         }
 
-        public async Task<List<Entities.FormSalesList>> GetSalesListDataTask(DateTime salesDate, Int32 terminalId, String filter)
+        public async Task<List<Entities.DgvSalesListEntity>> GetSalesListDataTask(DateTime salesDate, Int32 terminalId, String filter)
         {
             return await Task.Factory.StartNew(() =>
             {
-                List<Entities.FormSalesList> rowList = new List<Entities.FormSalesList>();
+                List<Entities.DgvSalesListEntity> rowList = new List<Entities.DgvSalesListEntity>();
 
                 Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
                 var salesList = trnPOSSalesController.ListSales(salesDate, terminalId, filter);
                 if (salesList.Any())
                 {
                     var row = from d in salesList
-                              select new Entities.FormSalesList
+                              select new Entities.DgvSalesListEntity
                               {
                                   ColumnEdit = "Edit",
                                   ColumnDelete = "Delete",
@@ -451,7 +450,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonSalesListPageListFirst_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.FormSalesList>(salesList, 1, pageSize);
+            pageList = new PagedList<Entities.DgvSalesListEntity>(salesList, 1, pageSize);
             dataSalesListSource.DataSource = pageList;
 
             buttonSalesListPageListFirst.Enabled = false;
@@ -467,7 +466,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             if (pageList.HasPreviousPage == true)
             {
-                pageList = new PagedList<Entities.FormSalesList>(salesList, --pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvSalesListEntity>(salesList, --pageNumber, pageSize);
                 dataSalesListSource.DataSource = pageList;
             }
 
@@ -487,7 +486,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             if (pageList.HasNextPage == true)
             {
-                pageList = new PagedList<Entities.FormSalesList>(salesList, ++pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvSalesListEntity>(salesList, ++pageNumber, pageSize);
                 dataSalesListSource.DataSource = pageList;
             }
 
@@ -505,7 +504,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonSalesListPageListLast_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.FormSalesList>(salesList, pageList.PageCount, pageSize);
+            pageList = new PagedList<Entities.DgvSalesListEntity>(salesList, pageList.PageCount, pageSize);
             dataSalesListSource.DataSource = pageList;
 
             buttonSalesListPageListFirst.Enabled = true;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +15,131 @@ namespace EasyPOS.Forms.Software.MstUser
     {
         public SysSoftwareForm sysSoftwareForm;
 
+        public static List<Entities.DgvUserListEntity> userListData = new List<Entities.DgvUserListEntity>();
+        public static Int32 pageNumber = 1;
+        public static Int32 pageSize = 50;
+        public PagedList<Entities.DgvUserListEntity> userListPageList = new PagedList<Entities.DgvUserListEntity>(userListData, pageNumber, pageSize);
+        public BindingSource userListDataSource = new BindingSource();
+
         public MstUserListForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();
             sysSoftwareForm = softwareForm;
+
+            CreateUserListDataGridView();
+        }
+
+        public void UpdateUserListDataSource()
+        {
+            SetUserListDataSourceAsync();
+        }
+
+        public async void SetUserListDataSourceAsync()
+        {
+            List<Entities.DgvUserListEntity> getUserListData = await GetUserListDataTask();
+            if (getUserListData.Any())
+            {
+                userListData = getUserListData;
+                userListPageList = new PagedList<Entities.DgvUserListEntity>(userListData, pageNumber, pageSize);
+
+                if (userListPageList.PageCount == 1)
+                {
+                    buttonUserListPageListFirst.Enabled = false;
+                    buttonUserListPageListPrevious.Enabled = false;
+                    buttonUserListPageListNext.Enabled = false;
+                    buttonUserListPageListLast.Enabled = false;
+                }
+                else if (pageNumber == 1)
+                {
+                    buttonUserListPageListFirst.Enabled = false;
+                    buttonUserListPageListPrevious.Enabled = false;
+                    buttonUserListPageListNext.Enabled = true;
+                    buttonUserListPageListLast.Enabled = true;
+                }
+                else if (pageNumber == userListPageList.PageCount)
+                {
+                    buttonUserListPageListFirst.Enabled = true;
+                    buttonUserListPageListPrevious.Enabled = true;
+                    buttonUserListPageListNext.Enabled = false;
+                    buttonUserListPageListLast.Enabled = false;
+                }
+                else
+                {
+                    buttonUserListPageListFirst.Enabled = true;
+                    buttonUserListPageListPrevious.Enabled = true;
+                    buttonUserListPageListNext.Enabled = true;
+                    buttonUserListPageListLast.Enabled = true;
+                }
+
+                textBoxUserListPageNumber.Text = pageNumber + " / " + userListPageList.PageCount;
+                userListDataSource.DataSource = userListPageList;
+            }
+            else
+            {
+                buttonUserListPageListFirst.Enabled = false;
+                buttonUserListPageListPrevious.Enabled = false;
+                buttonUserListPageListNext.Enabled = false;
+                buttonUserListPageListLast.Enabled = false;
+
+                pageNumber = 1;
+
+                userListDataSource.Clear();
+                textBoxUserListPageNumber.Text = "1 / 1";
+            }
+        }
+
+        public Task<List<Entities.DgvUserListEntity>> GetUserListDataTask()
+        {
+            String filter = textBoxUserListFilter.Text;
+            Controllers.MstUserController mstUserController = new Controllers.MstUserController();
+
+            List<Entities.MstUser> listUser = mstUserController.ListUser(filter);
+            if (listUser.Any())
+            {
+                var users = from d in listUser
+                            select new Entities.DgvUserListEntity
+                            {
+                                ColumnUserListButtonEdit = "Edit",
+                                ColumnUserListButtonDelete = "Delete",
+                                ColumnUserListId = d.Id,
+                                ColumnUserListUserName = d.UserName,
+                                ColumnUserListFullName = d.FullName
+                            };
+
+                return Task.FromResult(users.ToList());
+            }
+            else
+            {
+                return Task.FromResult(new List<Entities.DgvUserListEntity>());
+            }
+        }
+
+        public void CreateUserListDataGridView()
+        {
+            UpdateUserListDataSource();
+
+            dataGridViewUserList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewUserList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewUserList.Columns[0].DefaultCellStyle.ForeColor = Color.White;
+
+            dataGridViewUserList.Columns[1].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#F34F1C");
+            dataGridViewUserList.Columns[1].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#F34F1C");
+            dataGridViewUserList.Columns[1].DefaultCellStyle.ForeColor = Color.White;
+
+            dataGridViewUserList.DataSource = userListDataSource;
+        }
+
+        private void textBoxUserListFilter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                UpdateUserListDataSource();
+            }
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

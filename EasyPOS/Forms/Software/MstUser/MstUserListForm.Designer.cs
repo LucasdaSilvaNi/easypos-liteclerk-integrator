@@ -34,8 +34,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
+            this.textBoxUserListFilter = new System.Windows.Forms.TextBox();
+            this.dataGridViewUserList = new System.Windows.Forms.DataGridView();
+            this.ColumnUserListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnUserListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnUserListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUserListUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUserListFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBoxUserListPageNumber = new System.Windows.Forms.TextBox();
+            this.buttonUserListPageListLast = new System.Windows.Forms.Button();
+            this.buttonUserListPageListNext = new System.Windows.Forms.Button();
+            this.buttonUserListPageListPrevious = new System.Windows.Forms.Button();
+            this.buttonUserListPageListFirst = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserList)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -108,12 +121,164 @@
             this.buttonAdd.TabIndex = 0;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = false;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // textBoxUserListFilter
+            // 
+            this.textBoxUserListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxUserListFilter.Location = new System.Drawing.Point(12, 69);
+            this.textBoxUserListFilter.Name = "textBoxUserListFilter";
+            this.textBoxUserListFilter.Size = new System.Drawing.Size(1376, 30);
+            this.textBoxUserListFilter.TabIndex = 8;
+            this.textBoxUserListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxUserListFilter_KeyDown);
+            // 
+            // dataGridViewUserList
+            // 
+            this.dataGridViewUserList.AllowUserToAddRows = false;
+            this.dataGridViewUserList.AllowUserToDeleteRows = false;
+            this.dataGridViewUserList.AllowUserToResizeRows = false;
+            this.dataGridViewUserList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewUserList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewUserList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewUserList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnUserListButtonEdit,
+            this.ColumnUserListButtonDelete,
+            this.ColumnUserListId,
+            this.ColumnUserListUserName,
+            this.ColumnUserListFullName});
+            this.dataGridViewUserList.Location = new System.Drawing.Point(12, 105);
+            this.dataGridViewUserList.MultiSelect = false;
+            this.dataGridViewUserList.Name = "dataGridViewUserList";
+            this.dataGridViewUserList.ReadOnly = true;
+            this.dataGridViewUserList.RowHeadersVisible = false;
+            this.dataGridViewUserList.RowTemplate.Height = 24;
+            this.dataGridViewUserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewUserList.Size = new System.Drawing.Size(1376, 545);
+            this.dataGridViewUserList.TabIndex = 9;
+            // 
+            // ColumnUserListButtonEdit
+            // 
+            this.ColumnUserListButtonEdit.DataPropertyName = "ColumnUserListButtonEdit";
+            this.ColumnUserListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnUserListButtonEdit.HeaderText = "";
+            this.ColumnUserListButtonEdit.Name = "ColumnUserListButtonEdit";
+            this.ColumnUserListButtonEdit.ReadOnly = true;
+            this.ColumnUserListButtonEdit.Width = 70;
+            // 
+            // ColumnUserListButtonDelete
+            // 
+            this.ColumnUserListButtonDelete.DataPropertyName = "ColumnUserListButtonDelete";
+            this.ColumnUserListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnUserListButtonDelete.HeaderText = "";
+            this.ColumnUserListButtonDelete.Name = "ColumnUserListButtonDelete";
+            this.ColumnUserListButtonDelete.ReadOnly = true;
+            this.ColumnUserListButtonDelete.Width = 70;
+            // 
+            // ColumnUserListId
+            // 
+            this.ColumnUserListId.DataPropertyName = "ColumnUserListId";
+            this.ColumnUserListId.HeaderText = "Id";
+            this.ColumnUserListId.Name = "ColumnUserListId";
+            this.ColumnUserListId.ReadOnly = true;
+            this.ColumnUserListId.Visible = false;
+            // 
+            // ColumnUserListUserName
+            // 
+            this.ColumnUserListUserName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnUserListUserName.DataPropertyName = "ColumnUserListUserName";
+            this.ColumnUserListUserName.HeaderText = "Username";
+            this.ColumnUserListUserName.Name = "ColumnUserListUserName";
+            this.ColumnUserListUserName.ReadOnly = true;
+            // 
+            // ColumnUserListFullName
+            // 
+            this.ColumnUserListFullName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnUserListFullName.DataPropertyName = "ColumnUserListFullName";
+            this.ColumnUserListFullName.HeaderText = "Fullname";
+            this.ColumnUserListFullName.Name = "ColumnUserListFullName";
+            this.ColumnUserListFullName.ReadOnly = true;
+            // 
+            // textBoxUserListPageNumber
+            // 
+            this.textBoxUserListPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBoxUserListPageNumber.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxUserListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxUserListPageNumber.Location = new System.Drawing.Point(188, 665);
+            this.textBoxUserListPageNumber.Name = "textBoxUserListPageNumber";
+            this.textBoxUserListPageNumber.ReadOnly = true;
+            this.textBoxUserListPageNumber.Size = new System.Drawing.Size(69, 23);
+            this.textBoxUserListPageNumber.TabIndex = 17;
+            this.textBoxUserListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonUserListPageListLast
+            // 
+            this.buttonUserListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonUserListPageListLast.FlatAppearance.BorderSize = 0;
+            this.buttonUserListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUserListPageListLast.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonUserListPageListLast.Location = new System.Drawing.Point(348, 660);
+            this.buttonUserListPageListLast.Name = "buttonUserListPageListLast";
+            this.buttonUserListPageListLast.Size = new System.Drawing.Size(82, 32);
+            this.buttonUserListPageListLast.TabIndex = 16;
+            this.buttonUserListPageListLast.Text = "Last";
+            this.buttonUserListPageListLast.UseVisualStyleBackColor = false;
+            // 
+            // buttonUserListPageListNext
+            // 
+            this.buttonUserListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonUserListPageListNext.FlatAppearance.BorderSize = 0;
+            this.buttonUserListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUserListPageListNext.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonUserListPageListNext.Location = new System.Drawing.Point(263, 660);
+            this.buttonUserListPageListNext.Name = "buttonUserListPageListNext";
+            this.buttonUserListPageListNext.Size = new System.Drawing.Size(82, 32);
+            this.buttonUserListPageListNext.TabIndex = 15;
+            this.buttonUserListPageListNext.Text = "Next";
+            this.buttonUserListPageListNext.UseVisualStyleBackColor = false;
+            // 
+            // buttonUserListPageListPrevious
+            // 
+            this.buttonUserListPageListPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonUserListPageListPrevious.Enabled = false;
+            this.buttonUserListPageListPrevious.FlatAppearance.BorderSize = 0;
+            this.buttonUserListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUserListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonUserListPageListPrevious.Location = new System.Drawing.Point(100, 660);
+            this.buttonUserListPageListPrevious.Name = "buttonUserListPageListPrevious";
+            this.buttonUserListPageListPrevious.Size = new System.Drawing.Size(82, 32);
+            this.buttonUserListPageListPrevious.TabIndex = 14;
+            this.buttonUserListPageListPrevious.Text = "Previous";
+            this.buttonUserListPageListPrevious.UseVisualStyleBackColor = false;
+            // 
+            // buttonUserListPageListFirst
+            // 
+            this.buttonUserListPageListFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonUserListPageListFirst.Enabled = false;
+            this.buttonUserListPageListFirst.FlatAppearance.BorderSize = 0;
+            this.buttonUserListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUserListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonUserListPageListFirst.Location = new System.Drawing.Point(12, 660);
+            this.buttonUserListPageListFirst.Name = "buttonUserListPageListFirst";
+            this.buttonUserListPageListFirst.Size = new System.Drawing.Size(82, 32);
+            this.buttonUserListPageListFirst.TabIndex = 13;
+            this.buttonUserListPageListFirst.Text = "First";
+            this.buttonUserListPageListFirst.UseVisualStyleBackColor = false;
             // 
             // MstUserListForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1400, 700);
+            this.Controls.Add(this.textBoxUserListPageNumber);
+            this.Controls.Add(this.buttonUserListPageListLast);
+            this.Controls.Add(this.buttonUserListPageListNext);
+            this.Controls.Add(this.buttonUserListPageListPrevious);
+            this.Controls.Add(this.buttonUserListPageListFirst);
+            this.Controls.Add(this.dataGridViewUserList);
+            this.Controls.Add(this.textBoxUserListFilter);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -124,7 +289,9 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserList)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -135,5 +302,17 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.TextBox textBoxUserListFilter;
+        private System.Windows.Forms.DataGridView dataGridViewUserList;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnUserListButtonEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnUserListButtonDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUserListId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUserListUserName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUserListFullName;
+        private System.Windows.Forms.TextBox textBoxUserListPageNumber;
+        private System.Windows.Forms.Button buttonUserListPageListLast;
+        private System.Windows.Forms.Button buttonUserListPageListNext;
+        private System.Windows.Forms.Button buttonUserListPageListPrevious;
+        private System.Windows.Forms.Button buttonUserListPageListFirst;
     }
 }

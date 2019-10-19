@@ -138,14 +138,14 @@
             this.ColumnSearchItemPrice,
             this.ColumnSearchItemOnHandQuantity,
             this.ColumnSearchItemButtonPick});
-            this.dataGridViewSearchItemList.Location = new System.Drawing.Point(12, 100);
+            this.dataGridViewSearchItemList.Location = new System.Drawing.Point(12, 108);
             this.dataGridViewSearchItemList.MultiSelect = false;
             this.dataGridViewSearchItemList.Name = "dataGridViewSearchItemList";
             this.dataGridViewSearchItemList.ReadOnly = true;
             this.dataGridViewSearchItemList.RowHeadersVisible = false;
             this.dataGridViewSearchItemList.RowTemplate.Height = 24;
             this.dataGridViewSearchItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSearchItemList.Size = new System.Drawing.Size(958, 441);
+            this.dataGridViewSearchItemList.Size = new System.Drawing.Size(958, 433);
             this.dataGridViewSearchItemList.TabIndex = 6;
             this.dataGridViewSearchItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSearchItemList_CellClick);
             // 
@@ -241,8 +241,8 @@
             // 
             // TrnSalesDetailSearchItemForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(982, 553);
             this.Controls.Add(this.dataGridViewSearchItemList);
             this.Controls.Add(this.textBoxFilter);

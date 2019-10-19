@@ -1,0 +1,220 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EasyPOS.Controllers
+{
+    class MstUserController
+    {
+        // ============
+        // Data Context
+        // ============
+        public Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
+
+        // ==========
+        // List Users
+        // ==========
+        public List<Entities.MstUser> ListUser(String filter)
+        {
+            var users = from d in db.MstUsers
+                        where d.UserName.Contains(filter)
+                        || d.FullName.Contains(filter)
+                        select new Entities.MstUser
+                        {
+                            Id = d.Id,
+                            UserName = d.UserName,
+                            Password = d.Password,
+                            FullName = d.FullName,
+                            UserCardNumber = d.UserCardNumber,
+                            EntryUserId = d.EntryUserId,
+                            EntryUserName = d.UserName,
+                            EntryDateTime = d.EntryDateTime.ToShortDateString(),
+                            UpdateUserId = d.UpdateUserId,
+                            UpdatedUserName = d.UserName,
+                            UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
+                            IsLocked = d.IsLocked
+                        };
+
+            return users.OrderBy(d => d.Id).ToList();
+        }
+
+        // ===========
+        // Detail User
+        // ===========
+        public Entities.MstUser DetailUser(Int32 id)
+        {
+            var users = from d in db.MstUsers
+                        where d.Id == id
+                        select new Entities.MstUser
+                        {
+                            Id = d.Id,
+                            UserName = d.UserName,
+                            Password = d.Password,
+                            FullName = d.FullName,
+                            UserCardNumber = d.UserCardNumber,
+                            EntryUserId = d.EntryUserId,
+                            EntryUserName = d.UserName,
+                            EntryDateTime = d.EntryDateTime.ToShortDateString(),
+                            UpdateUserId = d.UpdateUserId,
+                            UpdatedUserName = d.UserName,
+                            UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
+                            IsLocked = d.IsLocked
+                        };
+
+            return users.FirstOrDefault();
+        }
+
+        // ========
+        // Add User
+        // ========
+        public String[] AddUser()
+        {
+            try
+            {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
+                Data.MstUser newUser = new Data.MstUser()
+                {
+                    UserName = "NA",
+                    Password = "NA",
+                    FullName = "NA",
+                    UserCardNumber = "NA",
+                    EntryUserId = currentUserLogin.FirstOrDefault().Id,
+                    EntryDateTime = DateTime.Today,
+                    UpdateUserId = currentUserLogin.FirstOrDefault().Id,
+                    UpdateDateTime = DateTime.Today,
+                    IsLocked = false
+                };
+
+                db.MstUsers.InsertOnSubmit(newUser);
+                db.SubmitChanges();
+
+                return new String[] { "", newUser.Id.ToString() };
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
+        // =========
+        // Lock User
+        // =========
+        public String[] LockUser(Int32 id, Entities.MstUser objUser)
+        {
+            try
+            {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
+                var user = from d in db.MstUsers
+                           where d.Id == id
+                           select d;
+
+                if (user.Any())
+                {
+                    var lockUser = user.FirstOrDefault();
+                    lockUser.UserName = objUser.UserName;
+                    lockUser.Password = objUser.Password;
+                    lockUser.FullName = objUser.FullName;
+                    lockUser.UserCardNumber = objUser.UserCardNumber;
+                    lockUser.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
+                    lockUser.UpdateDateTime = DateTime.Today;
+                    lockUser.IsLocked = true;
+                    db.SubmitChanges();
+
+                    return new String[] { "", "" };
+                }
+                else
+                {
+                    return new String[] { "User not found.", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+        
+        // ===========
+        // Unlock User
+        // ===========
+        public String[] UnlockUser(Int32 id)
+        {
+            try
+            {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
+                var user = from d in db.MstUsers
+                           where d.Id == id
+                           select d;
+
+                if (user.Any())
+                {
+                    var unlockUser = user.FirstOrDefault();
+                    unlockUser.IsLocked = false;
+                    db.SubmitChanges();
+
+                    return new String[] { "", "" };
+                }
+                else
+                {
+                    return new String[] { "User not found.", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
+        // ===========
+        // Delete User
+        // ===========
+        public String[] DeleteUser(Int32 id)
+        {
+            try
+            {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
+                var user = from d in db.MstUsers
+                           where d.Id == id
+                           select d;
+
+                if (user.Any())
+                {
+                    var deleteUser = user.FirstOrDefault();
+                    db.MstUsers.DeleteOnSubmit(deleteUser);
+                    db.SubmitChanges();
+
+                    return new String[] { "", "" };
+                }
+                else
+                {
+                    return new String[] { "User not found.", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+    }
+}

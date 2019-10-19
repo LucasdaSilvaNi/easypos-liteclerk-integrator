@@ -244,14 +244,14 @@
             this.ColumnIsLocked,
             this.ColumnIsTendered,
             this.ColumnIsCancelled});
-            this.dataGridViewSalesList.Location = new System.Drawing.Point(12, 100);
+            this.dataGridViewSalesList.Location = new System.Drawing.Point(12, 105);
             this.dataGridViewSalesList.MultiSelect = false;
             this.dataGridViewSalesList.Name = "dataGridViewSalesList";
             this.dataGridViewSalesList.ReadOnly = true;
             this.dataGridViewSalesList.RowHeadersVisible = false;
-            this.dataGridViewSalesList.RowTemplate.Height = 30;
+            this.dataGridViewSalesList.RowTemplate.Height = 24;
             this.dataGridViewSalesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSalesList.Size = new System.Drawing.Size(923, 550);
+            this.dataGridViewSalesList.Size = new System.Drawing.Size(901, 549);
             this.dataGridViewSalesList.TabIndex = 4;
             this.dataGridViewSalesList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesList_CellClick);
             // 
@@ -314,7 +314,7 @@
             this.ColumnCustomer.HeaderText = "Customer";
             this.ColumnCustomer.Name = "ColumnCustomer";
             this.ColumnCustomer.ReadOnly = true;
-            this.ColumnCustomer.Width = 243;
+            this.ColumnCustomer.Width = 305;
             // 
             // ColumnSalesAgent
             // 
@@ -367,22 +367,20 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoSize = true;
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.labelTransactionDate);
-            this.panel2.Controls.Add(this.dataGridViewSalesLineItemDisplay);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.labelInvoiceNumber);
             this.panel2.Controls.Add(this.labelPreparedBy);
             this.panel2.Controls.Add(this.labelTerminal);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Location = new System.Drawing.Point(946, 69);
+            this.panel2.Location = new System.Drawing.Point(924, 69);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(442, 619);
+            this.panel2.Size = new System.Drawing.Size(464, 110);
             this.panel2.TabIndex = 5;
             // 
             // label4
@@ -420,12 +418,12 @@
             this.dataGridViewSalesLineItemDisplay.AllowUserToDeleteRows = false;
             this.dataGridViewSalesLineItemDisplay.AllowUserToResizeColumns = false;
             this.dataGridViewSalesLineItemDisplay.AllowUserToResizeRows = false;
-            this.dataGridViewSalesLineItemDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridViewSalesLineItemDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewSalesLineItemDisplay.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewSalesLineItemDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewSalesLineItemDisplay.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataGridViewSalesLineItemDisplay.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridViewSalesLineItemDisplay.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -444,7 +442,7 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewSalesLineItemDisplay.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewSalesLineItemDisplay.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.dataGridViewSalesLineItemDisplay.Location = new System.Drawing.Point(7, 103);
+            this.dataGridViewSalesLineItemDisplay.Location = new System.Drawing.Point(924, 185);
             this.dataGridViewSalesLineItemDisplay.Name = "dataGridViewSalesLineItemDisplay";
             this.dataGridViewSalesLineItemDisplay.ReadOnly = true;
             this.dataGridViewSalesLineItemDisplay.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -457,7 +455,7 @@
             this.dataGridViewSalesLineItemDisplay.RowTemplate.ReadOnly = true;
             this.dataGridViewSalesLineItemDisplay.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewSalesLineItemDisplay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSalesLineItemDisplay.Size = new System.Drawing.Size(426, 508);
+            this.dataGridViewSalesLineItemDisplay.Size = new System.Drawing.Size(464, 507);
             this.dataGridViewSalesLineItemDisplay.TabIndex = 8;
             // 
             // ColumnSalesLineItemQuantity
@@ -548,7 +546,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSalesListFilter.Location = new System.Drawing.Point(348, 69);
             this.textBoxSalesListFilter.Name = "textBoxSalesListFilter";
-            this.textBoxSalesListFilter.Size = new System.Drawing.Size(587, 30);
+            this.textBoxSalesListFilter.Size = new System.Drawing.Size(565, 30);
             this.textBoxSalesListFilter.TabIndex = 7;
             this.textBoxSalesListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSalesListFilter_KeyDown);
             // 
@@ -589,7 +587,7 @@
             this.buttonSalesListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonSalesListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonSalesListPageListPrevious.Location = new System.Drawing.Point(94, 660);
+            this.buttonSalesListPageListPrevious.Location = new System.Drawing.Point(100, 660);
             this.buttonSalesListPageListPrevious.Name = "buttonSalesListPageListPrevious";
             this.buttonSalesListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesListPageListPrevious.TabIndex = 9;
@@ -603,7 +601,7 @@
             this.buttonSalesListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonSalesListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesListPageListNext.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonSalesListPageListNext.Location = new System.Drawing.Point(257, 660);
+            this.buttonSalesListPageListNext.Location = new System.Drawing.Point(263, 660);
             this.buttonSalesListPageListNext.Name = "buttonSalesListPageListNext";
             this.buttonSalesListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesListPageListNext.TabIndex = 10;
@@ -617,7 +615,7 @@
             this.buttonSalesListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonSalesListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesListPageListLast.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonSalesListPageListLast.Location = new System.Drawing.Point(339, 660);
+            this.buttonSalesListPageListLast.Location = new System.Drawing.Point(348, 660);
             this.buttonSalesListPageListLast.Name = "buttonSalesListPageListLast";
             this.buttonSalesListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesListPageListLast.TabIndex = 11;
@@ -630,7 +628,7 @@
             this.textBoxPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxPageNumber.BackColor = System.Drawing.SystemColors.Control;
             this.textBoxPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxPageNumber.Location = new System.Drawing.Point(182, 666);
+            this.textBoxPageNumber.Location = new System.Drawing.Point(188, 665);
             this.textBoxPageNumber.Name = "textBoxPageNumber";
             this.textBoxPageNumber.ReadOnly = true;
             this.textBoxPageNumber.Size = new System.Drawing.Size(69, 23);
@@ -645,7 +643,7 @@
             this.buttonAutoRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAutoRefresh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.buttonAutoRefresh.ForeColor = System.Drawing.Color.White;
-            this.buttonAutoRefresh.Location = new System.Drawing.Point(873, 660);
+            this.buttonAutoRefresh.Location = new System.Drawing.Point(851, 660);
             this.buttonAutoRefresh.Name = "buttonAutoRefresh";
             this.buttonAutoRefresh.Size = new System.Drawing.Size(62, 32);
             this.buttonAutoRefresh.TabIndex = 13;
@@ -656,12 +654,13 @@
             // 
             // TrnSalesListForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1400, 700);
             this.Controls.Add(this.buttonAutoRefresh);
             this.Controls.Add(this.textBoxPageNumber);
             this.Controls.Add(this.buttonSalesListPageListLast);
+            this.Controls.Add(this.dataGridViewSalesLineItemDisplay);
             this.Controls.Add(this.buttonSalesListPageListNext);
             this.Controls.Add(this.buttonSalesListPageListPrevious);
             this.Controls.Add(this.buttonSalesListPageListFirst);
@@ -716,6 +715,13 @@
         private System.Windows.Forms.Button buttonTender;
         private System.Windows.Forms.Button buttonReprint;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Timer timerRefreshSalesListGrid;
+        private System.Windows.Forms.Button buttonSalesListPageListFirst;
+        private System.Windows.Forms.Button buttonSalesListPageListPrevious;
+        private System.Windows.Forms.Button buttonSalesListPageListNext;
+        private System.Windows.Forms.Button buttonSalesListPageListLast;
+        private System.Windows.Forms.TextBox textBoxPageNumber;
+        private System.Windows.Forms.Button buttonAutoRefresh;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
@@ -728,12 +734,5 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnIsLocked;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnIsTendered;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnIsCancelled;
-        private System.Windows.Forms.Timer timerRefreshSalesListGrid;
-        private System.Windows.Forms.Button buttonSalesListPageListFirst;
-        private System.Windows.Forms.Button buttonSalesListPageListPrevious;
-        private System.Windows.Forms.Button buttonSalesListPageListNext;
-        private System.Windows.Forms.Button buttonSalesListPageListLast;
-        private System.Windows.Forms.TextBox textBoxPageNumber;
-        private System.Windows.Forms.Button buttonAutoRefresh;
     }
 }
