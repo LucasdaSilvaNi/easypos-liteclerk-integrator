@@ -122,6 +122,18 @@
     <Compile Include="Forms\Software\MstItem\MstItemListForm.Designer.cs">
       <DependentUpon>MstItemListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\MstUser\MstUserDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\MstUser\MstUserDetailForm.Designer.cs">
+      <DependentUpon>MstUserDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\MstUser\MstUserListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\MstUser\MstUserListForm.Designer.cs">
+      <DependentUpon>MstUserListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\RepPOSReport\RepPOSReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +211,12 @@
     <Compile Include="Reports\RepZReadingReportForm.Designer.cs">
       <DependentUpon>RepZReadingReportForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Software\MstUser\MstUserDetailForm.resx">
+      <DependentUpon>MstUserDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\MstUser\MstUserListForm.resx">
+      <DependentUpon>MstUserListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailTenderSalesForm.resx">
       <DependentUpon>TrnSalesDetailTenderSalesForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -287,7 +305,6 @@
   <ItemGroup>
     <Folder Include="EasyFISIntegration\Controllers\" />
     <Folder Include="EasyFISIntegration\Entities\" />
-    <Folder Include="Forms\Software\MstUser\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Images\Backgrounds\coffee.jpeg" />

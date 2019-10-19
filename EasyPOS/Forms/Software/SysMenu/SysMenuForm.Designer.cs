@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SysMenuForm));
             this.imageListMenuIcons = new System.Windows.Forms.ImageList(this.components);
-            this.button16 = new System.Windows.Forms.Button();
+            this.buttonUser = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.buttonPOSReport = new System.Windows.Forms.Button();
@@ -68,26 +68,27 @@
             this.imageListMenuIcons.Images.SetKeyName(12, "Stock Count.png");
             this.imageListMenuIcons.Images.SetKeyName(13, "System Tables.png");
             // 
-            // button16
+            // buttonUser
             // 
-            this.button16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button16.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button16.FlatAppearance.BorderSize = 0;
-            this.button16.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
-            this.button16.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
-            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button16.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.button16.ForeColor = System.Drawing.Color.White;
-            this.button16.ImageIndex = 8;
-            this.button16.ImageList = this.imageListMenuIcons;
-            this.button16.Location = new System.Drawing.Point(12, 345);
-            this.button16.Name = "button16";
-            this.button16.Padding = new System.Windows.Forms.Padding(10);
-            this.button16.Size = new System.Drawing.Size(231, 105);
-            this.button16.TabIndex = 18;
-            this.button16.Text = "\r\nUser";
-            this.button16.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button16.UseVisualStyleBackColor = false;
+            this.buttonUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonUser.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonUser.FlatAppearance.BorderSize = 0;
+            this.buttonUser.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
+            this.buttonUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
+            this.buttonUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUser.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonUser.ForeColor = System.Drawing.Color.White;
+            this.buttonUser.ImageIndex = 8;
+            this.buttonUser.ImageList = this.imageListMenuIcons;
+            this.buttonUser.Location = new System.Drawing.Point(12, 345);
+            this.buttonUser.Name = "buttonUser";
+            this.buttonUser.Padding = new System.Windows.Forms.Padding(10);
+            this.buttonUser.Size = new System.Drawing.Size(231, 105);
+            this.buttonUser.TabIndex = 18;
+            this.buttonUser.Text = "\r\nUser";
+            this.buttonUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonUser.UseVisualStyleBackColor = false;
+            this.buttonUser.Click += new System.EventHandler(this.buttonUser_Click);
             // 
             // button15
             // 
@@ -414,7 +415,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1400, 700);
-            this.Controls.Add(this.button16);
+            this.Controls.Add(this.buttonUser);
             this.Controls.Add(this.button15);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.buttonPOSReport);
@@ -457,6 +458,6 @@
         private System.Windows.Forms.Button buttonPOSReport;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button buttonUser;
     }
 }

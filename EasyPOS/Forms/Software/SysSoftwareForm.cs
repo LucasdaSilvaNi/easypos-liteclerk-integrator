@@ -21,12 +21,16 @@ namespace EasyPOS.Forms.Software
         }
 
         public TabPage tabPageItemList = new TabPage { Name = "tabPageItemList", Text = "Item List" };
+        public TabPage tabPageUserList = new TabPage { Name = "tabPageUserList", Text = "User List" };
+        public TabPage tabPageUserDetail = new TabPage { Name = "tabPageUserDetail", Text = "User Detail" };
         public TabPage tabPagePOSSalesList = new TabPage { Name = "tabPagePOSSalesList", Text = "Sales List" };
         public TabPage tabPagePOSSalesDetail = new TabPage { Name = "tabPagePOSSalesDetail", Text = "Sales Detail" };
         public TabPage tabPageDiscountingList = new TabPage { Name = "tabPageDiscountingList", Text = "Discounting List" };
         public TabPage tabPagePOSReport = new TabPage { Name = "tabPagePOSReport", Text = "POS Report" };
 
         public MstItem.MstItemListForm mstItemListForm = null;
+        public MstUser.MstUserListForm mstUserListForm = null;
+        public MstUser.MstUserDetailForm mstUserDetailForm = null;
         public MstDiscounting.MstDiscountingListForm mstDiscountingListForm = null;
         public TrnPOS.TrnSalesListForm trnSalesListForm = null;
         public TrnPOS.TrnSalesDetailForm trnSalesDetailForm = null;
@@ -65,6 +69,55 @@ namespace EasyPOS.Forms.Software
             {
                 tabControlSoftware.TabPages.Add(tabPageItemList);
                 tabControlSoftware.SelectTab(tabPageItemList);
+            }
+        }
+
+
+        public void AddTabPageUserList()
+        {
+            tabPagePOSSalesDetail.Controls.Remove(mstUserListForm);
+
+            mstUserListForm = new MstUser.MstUserListForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageUserList.Controls.Add(mstUserListForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageUserList) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageUserList);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageUserList);
+                tabControlSoftware.SelectTab(tabPageUserList);
+            }
+        }
+
+        public void AddTabPageUserDetail()
+        {
+            tabPagePOSSalesDetail.Controls.Remove(mstUserDetailForm);
+
+            mstUserDetailForm = new MstUser.MstUserDetailForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageUserDetail.Controls.Add(mstUserDetailForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageUserDetail) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageUserDetail);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageUserDetail);
+                tabControlSoftware.SelectTab(tabPageUserDetail);
             }
         }
 
