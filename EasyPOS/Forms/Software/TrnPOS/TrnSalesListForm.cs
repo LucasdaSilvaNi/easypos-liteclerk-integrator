@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PagedList;
 
 namespace EasyPOS.Forms.Software.TrnPOS
 {
@@ -14,12 +15,20 @@ namespace EasyPOS.Forms.Software.TrnPOS
     {
         public SysSoftwareForm sysSoftwareForm;
 
+        List<Entities.FormSalesList> salesList;
+        public BindingSource dataSalesListSource = new BindingSource();
+        public PagedList<Entities.FormSalesList> pageList;
+        public Int32 pageNumber = 1;
+        public Int32 pageSize = 5;
+        public Boolean isAutoRefresh = true;
+
         public TrnSalesListForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();
             sysSoftwareForm = softwareForm;
 
             GetTerminalList();
+            timerRefreshSalesListGrid.Start();
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -39,12 +48,18 @@ namespace EasyPOS.Forms.Software.TrnPOS
             if (addSales[1].Equals("0") == false)
             {
                 sysSoftwareForm.AddTabPagePOSSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(addSales[1])));
-                GetSalesList();
+                UpdateSalesListGridDataSource();
             }
             else
             {
                 MessageBox.Show(addSales[0], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dateTimePickerSalesDate_ValueChanged(object sender, EventArgs e)
+        {
+            pageNumber = 1;
+            UpdateSalesListGridDataSource();
         }
 
         public void GetTerminalList()
@@ -56,65 +71,201 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 comboBoxTerminal.ValueMember = "Id";
                 comboBoxTerminal.DisplayMember = "Terminal";
 
-                GetSalesList();
-            }
-        }
-
-        public void GetSalesList()
-        {
-            dataGridViewSalesList.Rows.Clear();
-            dataGridViewSalesList.Refresh();
-
-            Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
-
-            var salesList = trnPOSSalesController.ListSales(dateTimePickerSalesDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), textBoxSalesListFilter.Text);
-            if (salesList.Any())
-            {
-                dataGridViewSalesList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
-                dataGridViewSalesList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
-                dataGridViewSalesList.Columns[0].DefaultCellStyle.ForeColor = Color.White;
-
-                dataGridViewSalesList.Columns[1].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#F34F1C");
-                dataGridViewSalesList.Columns[1].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#F34F1C");
-                dataGridViewSalesList.Columns[1].DefaultCellStyle.ForeColor = Color.White;
-
-                foreach (var objSalesList in salesList)
-                {
-                    dataGridViewSalesList.Rows.Add(
-                        "Edit",
-                        "Delete",
-                        objSalesList.Id,
-                        objSalesList.Terminal,
-                        objSalesList.SalesDate,
-                        objSalesList.SalesNumber,
-                        objSalesList.Customer,
-                        objSalesList.SalesAgentUserName,
-                        objSalesList.Amount.ToString("#,##0.00"),
-                        objSalesList.IsLocked,
-                        objSalesList.IsTendered,
-                        objSalesList.IsCancelled
-                    );
-                }
-
-                CurrentCelectedCell(0);
-            }
-            else
-            {
-                CurrentCelectedCell(-1);
+                UpdateSalesListGridDataSource();
+                CreateSalesListDataGrid();
             }
         }
 
         private void comboBoxTerminal_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GetSalesList();
+            pageNumber = 1;
+            UpdateSalesListGridDataSource();
         }
 
-        private void dateTimePickerSalesDate_ValueChanged(object sender, EventArgs e)
+        private void textBoxSalesListFilter_KeyDown(object sender, KeyEventArgs e)
         {
-            GetSalesList();
+            if (e.KeyCode == Keys.Enter)
+            {
+                UpdateSalesListGridDataSource();
+            }
         }
 
-        public void CurrentCelectedCell(Int32 rowIndex)
+        public void UpdateSalesListGridDataSource()
+        {
+            DateTime salesDate = dateTimePickerSalesDate.Value.Date;
+            Int32 terminalId = Convert.ToInt32(comboBoxTerminal.SelectedValue);
+            String filter = textBoxSalesListFilter.Text;
+
+            GetSalesListDataAsync(salesDate, terminalId, filter);
+        }
+
+        public async void GetSalesListDataAsync(DateTime salesDate, Int32 terminalId, String filter)
+        {
+            salesList = await GetSalesListDataTask(salesDate, terminalId, filter);
+            if (salesList.Any())
+            {
+                dataGridViewSalesList.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    pageList = new PagedList<Entities.FormSalesList>(salesList, pageNumber, pageSize);
+
+                    if (pageList.PageCount == 1)
+                    {
+                        buttonSalesListPageListFirst.Enabled = false;
+                        buttonSalesListPageListPrevious.Enabled = false;
+                        buttonSalesListPageListNext.Enabled = false;
+                        buttonSalesListPageListLast.Enabled = false;
+                    }
+                    else if (pageNumber == 1)
+                    {
+                        buttonSalesListPageListFirst.Enabled = false;
+                        buttonSalesListPageListPrevious.Enabled = false;
+                        buttonSalesListPageListNext.Enabled = true;
+                        buttonSalesListPageListLast.Enabled = true;
+                    }
+                    else if (pageNumber == pageList.PageCount)
+                    {
+                        buttonSalesListPageListFirst.Enabled = true;
+                        buttonSalesListPageListPrevious.Enabled = true;
+                        buttonSalesListPageListNext.Enabled = false;
+                        buttonSalesListPageListLast.Enabled = false;
+                    }
+                    else
+                    {
+                        buttonSalesListPageListFirst.Enabled = true;
+                        buttonSalesListPageListPrevious.Enabled = true;
+                        buttonSalesListPageListNext.Enabled = true;
+                        buttonSalesListPageListLast.Enabled = true;
+                    }
+
+                    textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+                    dataSalesListSource.DataSource = pageList;
+
+                    CurrentSelectedCell(dataGridViewSalesList.CurrentCell.RowIndex);
+                });
+            }
+            else
+            {
+                buttonSalesListPageListFirst.Enabled = false;
+                buttonSalesListPageListPrevious.Enabled = false;
+                buttonSalesListPageListNext.Enabled = false;
+                buttonSalesListPageListLast.Enabled = false;
+
+                dataSalesListSource.Clear();
+                textBoxPageNumber.Text = "0 / 0";
+
+                CurrentSelectedCell(-1);
+            }
+        }
+
+        public async Task<List<Entities.FormSalesList>> GetSalesListDataTask(DateTime salesDate, Int32 terminalId, String filter)
+        {
+            return await Task.Factory.StartNew(() =>
+            {
+                List<Entities.FormSalesList> rowList = new List<Entities.FormSalesList>();
+
+                Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+                var salesList = trnPOSSalesController.ListSales(salesDate, terminalId, filter);
+                if (salesList.Any())
+                {
+                    var row = from d in salesList
+                              select new Entities.FormSalesList
+                              {
+                                  ColumnEdit = "Edit",
+                                  ColumnDelete = "Delete",
+                                  ColumnId = d.Id,
+                                  ColumnTerminal = d.Terminal,
+                                  ColumnSalesDate = d.SalesDate,
+                                  ColumnSalesNumber = d.SalesNumber,
+                                  ColumnCustomer = d.Customer,
+                                  ColumnSalesAgent = d.SalesAgentUserName,
+                                  ColumnAmount = d.Amount.ToString("#,##0.00"),
+                                  ColumnIsLocked = d.IsLocked,
+                                  ColumnIsTendered = d.IsTendered,
+                                  ColumnIsCancelled = d.IsCancelled
+                              };
+
+                    rowList = row.ToList();
+                }
+
+                return rowList;
+            });
+        }
+
+        public void CreateSalesListDataGrid()
+        {
+            dataGridViewSalesList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewSalesList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewSalesList.Columns[0].DefaultCellStyle.ForeColor = Color.White;
+
+            dataGridViewSalesList.Columns[1].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#F34F1C");
+            dataGridViewSalesList.Columns[1].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#F34F1C");
+            dataGridViewSalesList.Columns[1].DefaultCellStyle.ForeColor = Color.White;
+
+            dataGridViewSalesList.DataSource = dataSalesListSource;
+        }
+
+        private void dataGridViewSalesList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                CurrentSelectedCell(e.RowIndex);
+            }
+
+            if (e.RowIndex > -1 && dataGridViewSalesList.CurrentCell.ColumnIndex == dataGridViewSalesList.Columns["ColumnEdit"].Index)
+            {
+                Boolean isLocked = Convert.ToBoolean(dataGridViewSalesList.Rows[e.RowIndex].Cells[9].Value);
+                Boolean isTendered = Convert.ToBoolean(dataGridViewSalesList.Rows[e.RowIndex].Cells[10].Value);
+
+                if (isLocked == true)
+                {
+                    MessageBox.Show("Already locked.", "Locked", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (isTendered == true)
+                {
+                    MessageBox.Show("Already tendered.", "Tendered", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+                    sysSoftwareForm.AddTabPagePOSSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value)));
+                }
+            }
+
+            if (e.RowIndex > -1 && dataGridViewSalesList.CurrentCell.ColumnIndex == dataGridViewSalesList.Columns["ColumnDelete"].Index)
+            {
+                Boolean isLocked = Convert.ToBoolean(dataGridViewSalesList.Rows[e.RowIndex].Cells[9].Value);
+                Boolean isTendered = Convert.ToBoolean(dataGridViewSalesList.Rows[e.RowIndex].Cells[10].Value);
+
+                if (isLocked == true)
+                {
+                    MessageBox.Show("Already locked.", "Locked", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (isTendered == true)
+                {
+                    MessageBox.Show("Already tendered.", "Tendered", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    DialogResult deleteDialogResult = MessageBox.Show("Delete Sales?", "Delete Sales", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (deleteDialogResult == DialogResult.Yes)
+                    {
+                        Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+
+                        String[] deleteSales = trnPOSSalesController.DeleteSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value));
+                        if (deleteSales[1].Equals("0") == false)
+                        {
+                            UpdateSalesListGridDataSource();
+                        }
+                        else
+                        {
+                            MessageBox.Show(deleteSales[0], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void CurrentSelectedCell(Int32 rowIndex)
         {
             dataGridViewSalesLineItemDisplay.Rows.Clear();
             dataGridViewSalesLineItemDisplay.Refresh();
@@ -171,75 +322,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
         }
 
-        private void dataGridViewSalesList_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex > -1)
-            {
-                CurrentCelectedCell(e.RowIndex);
-            }
-
-            if (e.RowIndex > -1 && dataGridViewSalesList.CurrentCell.ColumnIndex == dataGridViewSalesList.Columns["ColumnEdit"].Index)
-            {
-                Boolean isLocked = Convert.ToBoolean(dataGridViewSalesList.Rows[e.RowIndex].Cells[9].Value);
-                Boolean isTendered = Convert.ToBoolean(dataGridViewSalesList.Rows[e.RowIndex].Cells[10].Value);
-
-                if (isLocked == true)
-                {
-                    MessageBox.Show("Already locked.", "Locked", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else if (isTendered == true)
-                {
-                    MessageBox.Show("Already tendered.", "Tendered", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
-                    sysSoftwareForm.AddTabPagePOSSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value)));
-                }
-            }
-
-            if (e.RowIndex > -1 && dataGridViewSalesList.CurrentCell.ColumnIndex == dataGridViewSalesList.Columns["ColumnDelete"].Index)
-            {
-                Boolean isLocked = Convert.ToBoolean(dataGridViewSalesList.Rows[e.RowIndex].Cells[9].Value);
-                Boolean isTendered = Convert.ToBoolean(dataGridViewSalesList.Rows[e.RowIndex].Cells[10].Value);
-
-                if (isLocked == true)
-                {
-                    MessageBox.Show("Already locked.", "Locked", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else if (isTendered == true)
-                {
-                    MessageBox.Show("Already tendered.", "Tendered", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    DialogResult deleteDialogResult = MessageBox.Show("Delete Sales?", "Delete Sales", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (deleteDialogResult == DialogResult.Yes)
-                    {
-                        Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
-
-                        String[] deleteSales = trnPOSSalesController.DeleteSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value));
-                        if (deleteSales[1].Equals("0") == false)
-                        {
-                            GetSalesList();
-                        }
-                        else
-                        {
-                            MessageBox.Show(deleteSales[0], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-            }
-        }
-
-        private void textBoxSalesListFilter_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                GetSalesList();
-            }
-        }
-
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             if (dataGridViewSalesList.Rows.Count > 1)
@@ -254,7 +336,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         String[] cancelSales = trnPOSSalesController.CancelSales(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value));
                         if (cancelSales[1].Equals("0") == false)
                         {
-                            GetSalesList();
+                            UpdateSalesListGridDataSource();
                         }
                         else
                         {
@@ -347,6 +429,102 @@ namespace EasyPOS.Forms.Software.TrnPOS
             else
             {
                 MessageBox.Show("Sales empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonSalesListPageListFirst_Click(object sender, EventArgs e)
+        {
+            pageList = new PagedList<Entities.FormSalesList>(salesList, 1, pageSize);
+            dataSalesListSource.DataSource = pageList;
+
+            buttonSalesListPageListFirst.Enabled = false;
+            buttonSalesListPageListPrevious.Enabled = false;
+            buttonSalesListPageListNext.Enabled = true;
+            buttonSalesListPageListLast.Enabled = true;
+
+            pageNumber = 1;
+            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+        }
+
+        private void buttonSalesListPageListPrevious_Click(object sender, EventArgs e)
+        {
+            if (pageList.HasPreviousPage == true)
+            {
+                pageList = new PagedList<Entities.FormSalesList>(salesList, --pageNumber, pageSize);
+                dataSalesListSource.DataSource = pageList;
+            }
+
+            buttonSalesListPageListNext.Enabled = true;
+            buttonSalesListPageListLast.Enabled = true;
+
+            if (pageNumber == 1)
+            {
+                buttonSalesListPageListFirst.Enabled = false;
+                buttonSalesListPageListPrevious.Enabled = false;
+            }
+
+            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+        }
+
+        private void buttonSalesListPageListNext_Click(object sender, EventArgs e)
+        {
+            if (pageList.HasNextPage == true)
+            {
+                pageList = new PagedList<Entities.FormSalesList>(salesList, ++pageNumber, pageSize);
+                dataSalesListSource.DataSource = pageList;
+            }
+
+            buttonSalesListPageListFirst.Enabled = true;
+            buttonSalesListPageListPrevious.Enabled = true;
+
+            if (pageNumber == pageList.PageCount)
+            {
+                buttonSalesListPageListNext.Enabled = false;
+                buttonSalesListPageListLast.Enabled = false;
+            }
+
+            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+        }
+
+        private void buttonSalesListPageListLast_Click(object sender, EventArgs e)
+        {
+            pageList = new PagedList<Entities.FormSalesList>(salesList, pageList.PageCount, pageSize);
+            dataSalesListSource.DataSource = pageList;
+
+            buttonSalesListPageListFirst.Enabled = true;
+            buttonSalesListPageListPrevious.Enabled = true;
+            buttonSalesListPageListNext.Enabled = false;
+            buttonSalesListPageListLast.Enabled = false;
+
+            pageNumber = pageList.PageCount;
+            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+        }
+
+        private void timerRefreshSalesListGrid_Tick(object sender, EventArgs e)
+        {
+            if (isAutoRefresh == true)
+            {
+                UpdateSalesListGridDataSource();
+            }
+        }
+
+        private void buttonAutoRefresh_Click(object sender, EventArgs e)
+        {
+            if (isAutoRefresh == true)
+            {
+                isAutoRefresh = false;
+
+                buttonAutoRefresh.Text = "Start";
+                buttonAutoRefresh.BackColor = ColorTranslator.FromHtml("#7FBC00");
+                buttonAutoRefresh.ForeColor = Color.White;
+            }
+            else
+            {
+                isAutoRefresh = true;
+
+                buttonAutoRefresh.Text = "Stop";
+                buttonAutoRefresh.BackColor = ColorTranslator.FromHtml("#F34F1C");
+                buttonAutoRefresh.ForeColor = Color.White;
             }
         }
     }

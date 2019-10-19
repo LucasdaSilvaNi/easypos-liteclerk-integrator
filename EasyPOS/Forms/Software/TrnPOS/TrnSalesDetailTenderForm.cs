@@ -186,7 +186,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     }
                     else
                     {
-                        trnSalesListForm.GetSalesList();
+                        trnSalesListForm.UpdateSalesListGridDataSource();
                     }
 
                     new Reports.RepOfficialReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]), false);

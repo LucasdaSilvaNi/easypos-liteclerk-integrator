@@ -32,33 +32,35 @@ namespace EasyPOS.Modules
         // ===============================
         public static void UpdateCurrentSettingsLogin(String currentUserId, String userName, String loginDate)
         {
+            var currentSettings = GetCurrentSettings();
+
             Entities.SysCurrentEntity newEntities = new Entities.SysCurrentEntity()
             {
-                CompanyName = "ACME Corporation",
-                Address = "Cebu City",
-                ContactNo = "",
-                TIN = "",
-                AccreditationNo = "",
-                SerialNo = "",
-                PermitNo = "",
-                MachineNo = "",
-                DeclareRate = "",
-                ReceiptFooter = "EASYFIS CORPORATION\nUnit 1023 City Soho Bldg. B. Rodriguez St. Guadalupe Cebu City Phil, 6000\nTIN= 010-045-930-000\n\nTHIS INVOICE/RECEIPT SHALL BE VALID FOR FIVE(5) YEARS FROM THE DATE OF PERMIT TO USE.",
-                InvoiceFooter = "",
-                LicenseCode = "",
-                TenantOf = "",
+                CompanyName = currentSettings.CompanyName,
+                Address = currentSettings.Address,
+                ContactNo = currentSettings.ContactNo,
+                TIN = currentSettings.TIN,
+                AccreditationNo = currentSettings.AccreditationNo,
+                SerialNo = currentSettings.SerialNo,
+                PermitNo = currentSettings.PermitNo,
+                MachineNo = currentSettings.MachineNo,
+                DeclareRate = currentSettings.DeclareRate,
+                ReceiptFooter = currentSettings.ReceiptFooter,
+                InvoiceFooter = currentSettings.InvoiceFooter,
+                LicenseCode = currentSettings.LicenseCode,
+                TenantOf = currentSettings.TenantOf,
                 CurrentUserId = currentUserId,
                 CurrentUserName = userName,
-                CurrentVersion = "",
-                CurrentDeveloper = "",
-                CurrentSupport = "",
-                CurrentPeriodId = "1",
+                CurrentVersion = currentSettings.CurrentDate,
+                CurrentDeveloper = currentSettings.CurrentDeveloper,
+                CurrentSupport = currentSettings.CurrentSupport,
+                CurrentPeriodId = currentSettings.CurrentPeriodId,
                 CurrentDate = loginDate,
-                TerminalId = "1",
-                WalkinCustomerId = "5579",
-                DefaultDiscountId = "2",
-                ReturnSupplierId = "",
-                ORPrintTitle = "O F F I C I A L  R E C E I P T"
+                TerminalId = currentSettings.TerminalId,
+                WalkinCustomerId = currentSettings.WalkinCustomerId,
+                DefaultDiscountId = currentSettings.DefaultDiscountId,
+                ReturnSupplierId = currentSettings.ReturnSupplierId,
+                ORPrintTitle = currentSettings.ORPrintTitle
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);

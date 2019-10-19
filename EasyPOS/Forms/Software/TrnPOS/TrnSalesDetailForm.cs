@@ -31,7 +31,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             Close();
 
-            trnSalesListForm.GetSalesList();
+            trnSalesListForm.UpdateSalesListGridDataSource();
             sysSoftwareForm.RemoveTabPage();
         }
 
