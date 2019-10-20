@@ -53,7 +53,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         objItemList.GenericName,
                         objItemList.OutTaxId,
                         objItemList.OutTax,
-                        objItemList.OutTaxRate,
+                        objItemList.OutTaxRate.ToString("#,##0.00"),
                         objItemList.UnitId,
                         objItemList.Unit,
                         objItemList.Price.ToString("#,##0.00"),

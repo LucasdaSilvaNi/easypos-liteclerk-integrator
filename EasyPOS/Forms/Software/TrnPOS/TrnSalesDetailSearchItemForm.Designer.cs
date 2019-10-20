@@ -48,9 +48,11 @@
             this.ColumnSearchItemPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSearchItemOnHandQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSearchItemButtonPick = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchItemList)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -92,8 +94,6 @@
             this.buttonClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(79)))), ((int)(((byte)(28)))));
             this.buttonClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(79)))), ((int)(((byte)(28)))));
             this.buttonClose.FlatAppearance.BorderSize = 0;
-            this.buttonClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(52)))), ((int)(((byte)(18)))));
-            this.buttonClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(52)))), ((int)(((byte)(18)))));
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
@@ -109,7 +109,7 @@
             // 
             this.textBoxFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxFilter.Location = new System.Drawing.Point(12, 69);
+            this.textBoxFilter.Location = new System.Drawing.Point(12, 6);
             this.textBoxFilter.Name = "textBoxFilter";
             this.textBoxFilter.Size = new System.Drawing.Size(958, 30);
             this.textBoxFilter.TabIndex = 5;
@@ -138,14 +138,14 @@
             this.ColumnSearchItemPrice,
             this.ColumnSearchItemOnHandQuantity,
             this.ColumnSearchItemButtonPick});
-            this.dataGridViewSearchItemList.Location = new System.Drawing.Point(12, 108);
+            this.dataGridViewSearchItemList.Location = new System.Drawing.Point(12, 42);
             this.dataGridViewSearchItemList.MultiSelect = false;
             this.dataGridViewSearchItemList.Name = "dataGridViewSearchItemList";
             this.dataGridViewSearchItemList.ReadOnly = true;
             this.dataGridViewSearchItemList.RowHeadersVisible = false;
             this.dataGridViewSearchItemList.RowTemplate.Height = 24;
             this.dataGridViewSearchItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSearchItemList.Size = new System.Drawing.Size(958, 433);
+            this.dataGridViewSearchItemList.Size = new System.Drawing.Size(958, 436);
             this.dataGridViewSearchItemList.TabIndex = 6;
             this.dataGridViewSearchItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSearchItemList_CellClick);
             // 
@@ -239,13 +239,22 @@
             this.ColumnSearchItemButtonPick.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.ColumnSearchItemButtonPick.Width = 70;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.textBoxFilter);
+            this.panel2.Controls.Add(this.dataGridViewSearchItemList);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 63);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(982, 490);
+            this.panel2.TabIndex = 7;
+            // 
             // TrnSalesDetailSearchItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(982, 553);
-            this.Controls.Add(this.dataGridViewSearchItemList);
-            this.Controls.Add(this.textBoxFilter);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -259,8 +268,9 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchItemList)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -284,5 +294,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSearchItemPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSearchItemOnHandQuantity;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnSearchItemButtonPick;
+        private System.Windows.Forms.Panel panel2;
     }
 }

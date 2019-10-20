@@ -45,8 +45,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxTenderSalesUsers = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -59,7 +61,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(583, 63);
+            this.panel1.Size = new System.Drawing.Size(562, 63);
             this.panel1.TabIndex = 4;
             // 
             // pictureBox1
@@ -89,12 +91,10 @@
             this.buttonClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(79)))), ((int)(((byte)(28)))));
             this.buttonClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(79)))), ((int)(((byte)(28)))));
             this.buttonClose.FlatAppearance.BorderSize = 0;
-            this.buttonClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(52)))), ((int)(((byte)(18)))));
-            this.buttonClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(52)))), ((int)(((byte)(18)))));
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(483, 12);
+            this.buttonClose.Location = new System.Drawing.Point(462, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
@@ -109,12 +109,10 @@
             this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
             this.buttonSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
             this.buttonSave.FlatAppearance.BorderSize = 0;
-            this.buttonSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
-            this.buttonSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(389, 12);
+            this.buttonSave.Location = new System.Drawing.Point(368, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
             this.buttonSave.TabIndex = 1;
@@ -127,7 +125,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label5.Location = new System.Drawing.Point(12, 168);
+            this.label5.Location = new System.Drawing.Point(12, 110);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(165, 28);
             this.label5.TabIndex = 18;
@@ -137,9 +135,9 @@
             // 
             this.comboBoxTenderSalesCustomer.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.comboBoxTenderSalesCustomer.FormattingEnabled = true;
-            this.comboBoxTenderSalesCustomer.Location = new System.Drawing.Point(209, 123);
+            this.comboBoxTenderSalesCustomer.Location = new System.Drawing.Point(209, 65);
             this.comboBoxTenderSalesCustomer.Name = "comboBoxTenderSalesCustomer";
-            this.comboBoxTenderSalesCustomer.Size = new System.Drawing.Size(362, 36);
+            this.comboBoxTenderSalesCustomer.Size = new System.Drawing.Size(341, 36);
             this.comboBoxTenderSalesCustomer.TabIndex = 17;
             this.comboBoxTenderSalesCustomer.TabStop = false;
             this.comboBoxTenderSalesCustomer.SelectedIndexChanged += new System.EventHandler(this.comboBoxTenderSalesCustomer_SelectedIndexChanged);
@@ -147,10 +145,10 @@
             // textBoxTenderSalesRewardAvailable
             // 
             this.textBoxTenderSalesRewardAvailable.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxTenderSalesRewardAvailable.Location = new System.Drawing.Point(209, 165);
+            this.textBoxTenderSalesRewardAvailable.Location = new System.Drawing.Point(209, 107);
             this.textBoxTenderSalesRewardAvailable.Name = "textBoxTenderSalesRewardAvailable";
             this.textBoxTenderSalesRewardAvailable.ReadOnly = true;
-            this.textBoxTenderSalesRewardAvailable.Size = new System.Drawing.Size(362, 34);
+            this.textBoxTenderSalesRewardAvailable.Size = new System.Drawing.Size(341, 34);
             this.textBoxTenderSalesRewardAvailable.TabIndex = 15;
             this.textBoxTenderSalesRewardAvailable.TabStop = false;
             this.textBoxTenderSalesRewardAvailable.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -159,7 +157,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label2.Location = new System.Drawing.Point(12, 126);
+            this.label2.Location = new System.Drawing.Point(12, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 28);
             this.label2.TabIndex = 16;
@@ -172,9 +170,9 @@
             this.textBoxCustomerCode.BackColor = System.Drawing.Color.White;
             this.textBoxCustomerCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxCustomerCode.Font = new System.Drawing.Font("Segoe UI Semibold", 13.2F, System.Drawing.FontStyle.Bold);
-            this.textBoxCustomerCode.Location = new System.Drawing.Point(12, 75);
+            this.textBoxCustomerCode.Location = new System.Drawing.Point(12, 14);
             this.textBoxCustomerCode.Name = "textBoxCustomerCode";
-            this.textBoxCustomerCode.Size = new System.Drawing.Size(559, 37);
+            this.textBoxCustomerCode.Size = new System.Drawing.Size(538, 37);
             this.textBoxCustomerCode.TabIndex = 0;
             this.textBoxCustomerCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxCustomerCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxCustomerCode_KeyDown);
@@ -183,9 +181,9 @@
             // 
             this.comboBoxTenderSalesTerms.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.comboBoxTenderSalesTerms.FormattingEnabled = true;
-            this.comboBoxTenderSalesTerms.Location = new System.Drawing.Point(209, 205);
+            this.comboBoxTenderSalesTerms.Location = new System.Drawing.Point(209, 147);
             this.comboBoxTenderSalesTerms.Name = "comboBoxTenderSalesTerms";
-            this.comboBoxTenderSalesTerms.Size = new System.Drawing.Size(362, 36);
+            this.comboBoxTenderSalesTerms.Size = new System.Drawing.Size(341, 36);
             this.comboBoxTenderSalesTerms.TabIndex = 21;
             this.comboBoxTenderSalesTerms.TabStop = false;
             // 
@@ -193,7 +191,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label3.Location = new System.Drawing.Point(12, 208);
+            this.label3.Location = new System.Drawing.Point(12, 150);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 28);
             this.label3.TabIndex = 20;
@@ -202,10 +200,10 @@
             // textBoxTenderSalesRemarks
             // 
             this.textBoxTenderSalesRemarks.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxTenderSalesRemarks.Location = new System.Drawing.Point(209, 249);
+            this.textBoxTenderSalesRemarks.Location = new System.Drawing.Point(209, 191);
             this.textBoxTenderSalesRemarks.Multiline = true;
             this.textBoxTenderSalesRemarks.Name = "textBoxTenderSalesRemarks";
-            this.textBoxTenderSalesRemarks.Size = new System.Drawing.Size(362, 121);
+            this.textBoxTenderSalesRemarks.Size = new System.Drawing.Size(341, 121);
             this.textBoxTenderSalesRemarks.TabIndex = 22;
             this.textBoxTenderSalesRemarks.TabStop = false;
             // 
@@ -213,7 +211,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label4.Location = new System.Drawing.Point(12, 252);
+            this.label4.Location = new System.Drawing.Point(12, 194);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 28);
             this.label4.TabIndex = 23;
@@ -223,9 +221,9 @@
             // 
             this.comboBoxTenderSalesUsers.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.comboBoxTenderSalesUsers.FormattingEnabled = true;
-            this.comboBoxTenderSalesUsers.Location = new System.Drawing.Point(209, 376);
+            this.comboBoxTenderSalesUsers.Location = new System.Drawing.Point(209, 318);
             this.comboBoxTenderSalesUsers.Name = "comboBoxTenderSalesUsers";
-            this.comboBoxTenderSalesUsers.Size = new System.Drawing.Size(362, 36);
+            this.comboBoxTenderSalesUsers.Size = new System.Drawing.Size(341, 36);
             this.comboBoxTenderSalesUsers.TabIndex = 25;
             this.comboBoxTenderSalesUsers.TabStop = false;
             // 
@@ -233,28 +231,37 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label6.Location = new System.Drawing.Point(7, 379);
+            this.label6.Location = new System.Drawing.Point(7, 321);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(118, 28);
             this.label6.TabIndex = 24;
             this.label6.Text = "Sales Agent:";
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.textBoxCustomerCode);
+            this.panel2.Controls.Add(this.comboBoxTenderSalesUsers);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.textBoxTenderSalesRemarks);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.comboBoxTenderSalesTerms);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.comboBoxTenderSalesCustomer);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.textBoxTenderSalesRewardAvailable);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 63);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(562, 364);
+            this.panel2.TabIndex = 26;
+            // 
             // TrnSalesDetailTenderSalesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(583, 427);
-            this.Controls.Add(this.comboBoxTenderSalesUsers);
-            this.Controls.Add(this.textBoxTenderSalesRemarks);
-            this.Controls.Add(this.comboBoxTenderSalesTerms);
-            this.Controls.Add(this.comboBoxTenderSalesCustomer);
-            this.Controls.Add(this.textBoxTenderSalesRewardAvailable);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBoxCustomerCode);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(562, 427);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -267,8 +274,9 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -290,5 +298,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBoxTenderSalesUsers;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel2;
     }
 }

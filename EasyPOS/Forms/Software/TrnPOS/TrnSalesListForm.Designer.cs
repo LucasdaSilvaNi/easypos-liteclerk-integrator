@@ -63,15 +63,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.labelTransactionDate = new System.Windows.Forms.Label();
-            this.dataGridViewSalesLineItemDisplay = new System.Windows.Forms.DataGridView();
-            this.ColumnSalesLineItemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesLineItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesLlineAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.labelInvoiceNumber = new System.Windows.Forms.Label();
             this.labelPreparedBy = new System.Windows.Forms.Label();
             this.labelTerminal = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.dataGridViewSalesLineItemDisplay = new System.Windows.Forms.DataGridView();
+            this.ColumnSalesLineItemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLlineAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateTimePickerSalesDate = new System.Windows.Forms.DateTimePicker();
             this.textBoxSalesListFilter = new System.Windows.Forms.TextBox();
             this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
@@ -82,11 +82,13 @@
             this.buttonSalesListPageListLast = new System.Windows.Forms.Button();
             this.textBoxPageNumber = new System.Windows.Forms.TextBox();
             this.buttonAutoRefresh = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesList)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesLineItemDisplay)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -111,8 +113,6 @@
             this.buttonTender.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
             this.buttonTender.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
             this.buttonTender.FlatAppearance.BorderSize = 0;
-            this.buttonTender.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
-            this.buttonTender.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
             this.buttonTender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTender.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTender.ForeColor = System.Drawing.Color.White;
@@ -130,8 +130,6 @@
             this.buttonReprint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
             this.buttonReprint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
             this.buttonReprint.FlatAppearance.BorderSize = 0;
-            this.buttonReprint.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
-            this.buttonReprint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
             this.buttonReprint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReprint.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonReprint.ForeColor = System.Drawing.Color.White;
@@ -149,8 +147,6 @@
             this.buttonCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
             this.buttonCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
             this.buttonCancel.FlatAppearance.BorderSize = 0;
-            this.buttonCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
-            this.buttonCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
             this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCancel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancel.ForeColor = System.Drawing.Color.White;
@@ -189,8 +185,6 @@
             this.buttonClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(79)))), ((int)(((byte)(28)))));
             this.buttonClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(79)))), ((int)(((byte)(28)))));
             this.buttonClose.FlatAppearance.BorderSize = 0;
-            this.buttonClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(52)))), ((int)(((byte)(18)))));
-            this.buttonClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(52)))), ((int)(((byte)(18)))));
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
@@ -208,8 +202,6 @@
             this.buttonSales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
             this.buttonSales.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
             this.buttonSales.FlatAppearance.BorderSize = 0;
-            this.buttonSales.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
-            this.buttonSales.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
             this.buttonSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSales.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSales.ForeColor = System.Drawing.Color.White;
@@ -244,14 +236,14 @@
             this.ColumnIsLocked,
             this.ColumnIsTendered,
             this.ColumnIsCancelled});
-            this.dataGridViewSalesList.Location = new System.Drawing.Point(12, 105);
+            this.dataGridViewSalesList.Location = new System.Drawing.Point(12, 42);
             this.dataGridViewSalesList.MultiSelect = false;
             this.dataGridViewSalesList.Name = "dataGridViewSalesList";
             this.dataGridViewSalesList.ReadOnly = true;
             this.dataGridViewSalesList.RowHeadersVisible = false;
             this.dataGridViewSalesList.RowTemplate.Height = 24;
             this.dataGridViewSalesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSalesList.Size = new System.Drawing.Size(901, 549);
+            this.dataGridViewSalesList.Size = new System.Drawing.Size(900, 545);
             this.dataGridViewSalesList.TabIndex = 4;
             this.dataGridViewSalesList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesList_CellClick);
             // 
@@ -378,9 +370,9 @@
             this.panel2.Controls.Add(this.labelPreparedBy);
             this.panel2.Controls.Add(this.labelTerminal);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Location = new System.Drawing.Point(924, 69);
+            this.panel2.Location = new System.Drawing.Point(924, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(464, 110);
+            this.panel2.Size = new System.Drawing.Size(464, 111);
             this.panel2.TabIndex = 5;
             // 
             // label4
@@ -411,78 +403,6 @@
             this.labelTransactionDate.Name = "labelTransactionDate";
             this.labelTransactionDate.Size = new System.Drawing.Size(0, 20);
             this.labelTransactionDate.TabIndex = 7;
-            // 
-            // dataGridViewSalesLineItemDisplay
-            // 
-            this.dataGridViewSalesLineItemDisplay.AllowUserToAddRows = false;
-            this.dataGridViewSalesLineItemDisplay.AllowUserToDeleteRows = false;
-            this.dataGridViewSalesLineItemDisplay.AllowUserToResizeColumns = false;
-            this.dataGridViewSalesLineItemDisplay.AllowUserToResizeRows = false;
-            this.dataGridViewSalesLineItemDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewSalesLineItemDisplay.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewSalesLineItemDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewSalesLineItemDisplay.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridViewSalesLineItemDisplay.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSalesLineItemDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewSalesLineItemDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSalesLineItemDisplay.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnSalesLineItemQuantity,
-            this.ColumnSalesLineItem,
-            this.ColumnSalesLlineAmount});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSalesLineItemDisplay.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridViewSalesLineItemDisplay.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.dataGridViewSalesLineItemDisplay.Location = new System.Drawing.Point(924, 185);
-            this.dataGridViewSalesLineItemDisplay.Name = "dataGridViewSalesLineItemDisplay";
-            this.dataGridViewSalesLineItemDisplay.ReadOnly = true;
-            this.dataGridViewSalesLineItemDisplay.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSalesLineItemDisplay.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewSalesLineItemDisplay.RowHeadersVisible = false;
-            this.dataGridViewSalesLineItemDisplay.RowTemplate.Height = 45;
-            this.dataGridViewSalesLineItemDisplay.RowTemplate.ReadOnly = true;
-            this.dataGridViewSalesLineItemDisplay.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewSalesLineItemDisplay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSalesLineItemDisplay.Size = new System.Drawing.Size(464, 507);
-            this.dataGridViewSalesLineItemDisplay.TabIndex = 8;
-            // 
-            // ColumnSalesLineItemQuantity
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.ColumnSalesLineItemQuantity.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ColumnSalesLineItemQuantity.HeaderText = "Qty.";
-            this.ColumnSalesLineItemQuantity.Name = "ColumnSalesLineItemQuantity";
-            this.ColumnSalesLineItemQuantity.ReadOnly = true;
-            this.ColumnSalesLineItemQuantity.Width = 90;
-            // 
-            // ColumnSalesLineItem
-            // 
-            this.ColumnSalesLineItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.ColumnSalesLineItem.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ColumnSalesLineItem.HeaderText = "Item";
-            this.ColumnSalesLineItem.Name = "ColumnSalesLineItem";
-            this.ColumnSalesLineItem.ReadOnly = true;
-            // 
-            // ColumnSalesLlineAmount
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.ColumnSalesLlineAmount.DefaultCellStyle = dataGridViewCellStyle6;
-            this.ColumnSalesLlineAmount.HeaderText = "Amount";
-            this.ColumnSalesLlineAmount.Name = "ColumnSalesLlineAmount";
-            this.ColumnSalesLlineAmount.ReadOnly = true;
             // 
             // label3
             // 
@@ -531,10 +451,82 @@
             this.label5.TabIndex = 3;
             this.label5.Text = "Transaction Date:";
             // 
+            // dataGridViewSalesLineItemDisplay
+            // 
+            this.dataGridViewSalesLineItemDisplay.AllowUserToAddRows = false;
+            this.dataGridViewSalesLineItemDisplay.AllowUserToDeleteRows = false;
+            this.dataGridViewSalesLineItemDisplay.AllowUserToResizeColumns = false;
+            this.dataGridViewSalesLineItemDisplay.AllowUserToResizeRows = false;
+            this.dataGridViewSalesLineItemDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewSalesLineItemDisplay.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewSalesLineItemDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewSalesLineItemDisplay.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridViewSalesLineItemDisplay.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSalesLineItemDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewSalesLineItemDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSalesLineItemDisplay.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnSalesLineItemQuantity,
+            this.ColumnSalesLineItem,
+            this.ColumnSalesLlineAmount});
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSalesLineItemDisplay.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridViewSalesLineItemDisplay.GridColor = System.Drawing.SystemColors.ControlLight;
+            this.dataGridViewSalesLineItemDisplay.Location = new System.Drawing.Point(924, 123);
+            this.dataGridViewSalesLineItemDisplay.Name = "dataGridViewSalesLineItemDisplay";
+            this.dataGridViewSalesLineItemDisplay.ReadOnly = true;
+            this.dataGridViewSalesLineItemDisplay.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSalesLineItemDisplay.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridViewSalesLineItemDisplay.RowHeadersVisible = false;
+            this.dataGridViewSalesLineItemDisplay.RowTemplate.Height = 45;
+            this.dataGridViewSalesLineItemDisplay.RowTemplate.ReadOnly = true;
+            this.dataGridViewSalesLineItemDisplay.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewSalesLineItemDisplay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewSalesLineItemDisplay.Size = new System.Drawing.Size(464, 502);
+            this.dataGridViewSalesLineItemDisplay.TabIndex = 8;
+            // 
+            // ColumnSalesLineItemQuantity
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.ColumnSalesLineItemQuantity.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColumnSalesLineItemQuantity.HeaderText = "Qty.";
+            this.ColumnSalesLineItemQuantity.Name = "ColumnSalesLineItemQuantity";
+            this.ColumnSalesLineItemQuantity.ReadOnly = true;
+            this.ColumnSalesLineItemQuantity.Width = 90;
+            // 
+            // ColumnSalesLineItem
+            // 
+            this.ColumnSalesLineItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.ColumnSalesLineItem.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ColumnSalesLineItem.HeaderText = "Item";
+            this.ColumnSalesLineItem.Name = "ColumnSalesLineItem";
+            this.ColumnSalesLineItem.ReadOnly = true;
+            // 
+            // ColumnSalesLlineAmount
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.ColumnSalesLlineAmount.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ColumnSalesLlineAmount.HeaderText = "Amount";
+            this.ColumnSalesLlineAmount.Name = "ColumnSalesLlineAmount";
+            this.ColumnSalesLlineAmount.ReadOnly = true;
+            // 
             // dateTimePickerSalesDate
             // 
             this.dateTimePickerSalesDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerSalesDate.Location = new System.Drawing.Point(12, 69);
+            this.dateTimePickerSalesDate.Location = new System.Drawing.Point(12, 6);
             this.dateTimePickerSalesDate.Name = "dateTimePickerSalesDate";
             this.dateTimePickerSalesDate.Size = new System.Drawing.Size(150, 30);
             this.dateTimePickerSalesDate.TabIndex = 6;
@@ -544,9 +536,9 @@
             // 
             this.textBoxSalesListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSalesListFilter.Location = new System.Drawing.Point(348, 69);
+            this.textBoxSalesListFilter.Location = new System.Drawing.Point(348, 6);
             this.textBoxSalesListFilter.Name = "textBoxSalesListFilter";
-            this.textBoxSalesListFilter.Size = new System.Drawing.Size(565, 30);
+            this.textBoxSalesListFilter.Size = new System.Drawing.Size(564, 30);
             this.textBoxSalesListFilter.TabIndex = 7;
             this.textBoxSalesListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSalesListFilter_KeyDown);
             // 
@@ -554,7 +546,7 @@
             // 
             this.comboBoxTerminal.Font = new System.Drawing.Font("Segoe UI", 9.8F);
             this.comboBoxTerminal.FormattingEnabled = true;
-            this.comboBoxTerminal.Location = new System.Drawing.Point(168, 69);
+            this.comboBoxTerminal.Location = new System.Drawing.Point(168, 6);
             this.comboBoxTerminal.Name = "comboBoxTerminal";
             this.comboBoxTerminal.Size = new System.Drawing.Size(174, 29);
             this.comboBoxTerminal.TabIndex = 0;
@@ -572,7 +564,7 @@
             this.buttonSalesListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonSalesListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonSalesListPageListFirst.Location = new System.Drawing.Point(12, 660);
+            this.buttonSalesListPageListFirst.Location = new System.Drawing.Point(12, 593);
             this.buttonSalesListPageListFirst.Name = "buttonSalesListPageListFirst";
             this.buttonSalesListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesListPageListFirst.TabIndex = 8;
@@ -587,7 +579,7 @@
             this.buttonSalesListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonSalesListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonSalesListPageListPrevious.Location = new System.Drawing.Point(100, 660);
+            this.buttonSalesListPageListPrevious.Location = new System.Drawing.Point(100, 593);
             this.buttonSalesListPageListPrevious.Name = "buttonSalesListPageListPrevious";
             this.buttonSalesListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesListPageListPrevious.TabIndex = 9;
@@ -601,7 +593,7 @@
             this.buttonSalesListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonSalesListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesListPageListNext.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonSalesListPageListNext.Location = new System.Drawing.Point(263, 660);
+            this.buttonSalesListPageListNext.Location = new System.Drawing.Point(263, 593);
             this.buttonSalesListPageListNext.Name = "buttonSalesListPageListNext";
             this.buttonSalesListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesListPageListNext.TabIndex = 10;
@@ -615,7 +607,7 @@
             this.buttonSalesListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonSalesListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesListPageListLast.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonSalesListPageListLast.Location = new System.Drawing.Point(348, 660);
+            this.buttonSalesListPageListLast.Location = new System.Drawing.Point(348, 593);
             this.buttonSalesListPageListLast.Name = "buttonSalesListPageListLast";
             this.buttonSalesListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesListPageListLast.TabIndex = 11;
@@ -628,7 +620,7 @@
             this.textBoxPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxPageNumber.BackColor = System.Drawing.SystemColors.Control;
             this.textBoxPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxPageNumber.Location = new System.Drawing.Point(188, 665);
+            this.textBoxPageNumber.Location = new System.Drawing.Point(188, 598);
             this.textBoxPageNumber.Name = "textBoxPageNumber";
             this.textBoxPageNumber.ReadOnly = true;
             this.textBoxPageNumber.Size = new System.Drawing.Size(69, 23);
@@ -643,32 +635,41 @@
             this.buttonAutoRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAutoRefresh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.buttonAutoRefresh.ForeColor = System.Drawing.Color.White;
-            this.buttonAutoRefresh.Location = new System.Drawing.Point(851, 660);
+            this.buttonAutoRefresh.Location = new System.Drawing.Point(840, 593);
             this.buttonAutoRefresh.Name = "buttonAutoRefresh";
-            this.buttonAutoRefresh.Size = new System.Drawing.Size(62, 32);
+            this.buttonAutoRefresh.Size = new System.Drawing.Size(72, 32);
             this.buttonAutoRefresh.TabIndex = 13;
             this.buttonAutoRefresh.TabStop = false;
             this.buttonAutoRefresh.Text = "Stop";
             this.buttonAutoRefresh.UseVisualStyleBackColor = false;
             this.buttonAutoRefresh.Click += new System.EventHandler(this.buttonAutoRefresh_Click);
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.buttonSalesListPageListNext);
+            this.panel3.Controls.Add(this.dataGridViewSalesLineItemDisplay);
+            this.panel3.Controls.Add(this.buttonAutoRefresh);
+            this.panel3.Controls.Add(this.panel2);
+            this.panel3.Controls.Add(this.buttonSalesListPageListFirst);
+            this.panel3.Controls.Add(this.textBoxPageNumber);
+            this.panel3.Controls.Add(this.comboBoxTerminal);
+            this.panel3.Controls.Add(this.dataGridViewSalesList);
+            this.panel3.Controls.Add(this.textBoxSalesListFilter);
+            this.panel3.Controls.Add(this.buttonSalesListPageListPrevious);
+            this.panel3.Controls.Add(this.dateTimePickerSalesDate);
+            this.panel3.Controls.Add(this.buttonSalesListPageListLast);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 63);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1400, 637);
+            this.panel3.TabIndex = 14;
+            // 
             // TrnSalesListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1400, 700);
-            this.Controls.Add(this.buttonAutoRefresh);
-            this.Controls.Add(this.textBoxPageNumber);
-            this.Controls.Add(this.buttonSalesListPageListLast);
-            this.Controls.Add(this.dataGridViewSalesLineItemDisplay);
-            this.Controls.Add(this.buttonSalesListPageListNext);
-            this.Controls.Add(this.buttonSalesListPageListPrevious);
-            this.Controls.Add(this.buttonSalesListPageListFirst);
-            this.Controls.Add(this.comboBoxTerminal);
-            this.Controls.Add(this.textBoxSalesListFilter);
-            this.Controls.Add(this.dateTimePickerSalesDate);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.dataGridViewSalesList);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -683,8 +684,9 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesLineItemDisplay)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -734,5 +736,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnIsLocked;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnIsTendered;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnIsCancelled;
+        private System.Windows.Forms.Panel panel3;
     }
 }
