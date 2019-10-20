@@ -121,11 +121,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 if (isValidTender == true)
                 {
-                    DialogResult tenderPrinterReadyDialogResult = MessageBox.Show("Is printer ready?", "Tender", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (tenderPrinterReadyDialogResult == DialogResult.Yes)
-                    {
-                        CreateCollection();
-                    }
+                    CreateCollection();
                 }
                 else
                 {
@@ -177,6 +173,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 String[] tenderSales = trnPOSSalesController.TenderSales(trnSalesEntity.Id, newCollection);
                 if (tenderSales[1].Equals("0") == false)
                 {
+                    DialogResult tenderPrinterReadyDialogResult = MessageBox.Show("Is printer ready?", "Tender", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (tenderPrinterReadyDialogResult == DialogResult.Yes)
+                    {
+                        new Reports.RepOfficialReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]), false);
+                    }
+
                     Close();
 
                     if (trnSalesDetailForm != null)
@@ -188,8 +190,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     {
                         trnSalesListForm.UpdateSalesListGridDataSource();
                     }
-
-                    new Reports.RepOfficialReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]), false);
                 }
                 else
                 {
