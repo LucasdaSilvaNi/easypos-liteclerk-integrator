@@ -60,6 +60,9 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>easypos cropped.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
@@ -89,8 +92,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>easyposdb.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Entities\DgvSalesListEntity.cs" />
-    <Compile Include="Entities\DgvUserListEntity.cs" />
+    <Compile Include="Entities\DgvItemListItemEntity.cs" />
+    <Compile Include="Entities\DgvSalesDetailSalesLineEntity.cs" />
+    <Compile Include="Entities\DgvSalesDetailSearchItemEntity.cs" />
+    <Compile Include="Entities\DgvSalesDetailTenderPayTypeEntity.cs" />
+    <Compile Include="Entities\DgvSalesListSalesEntity.cs" />
+    <Compile Include="Entities\DgvUserDetailUserRightsEntity.cs" />
+    <Compile Include="Entities\DgvUserListUserEntity.cs" />
     <Compile Include="Entities\MstCustomer.cs" />
     <Compile Include="Entities\MstDiscount.cs" />
     <Compile Include="Entities\MstItem.cs" />
@@ -99,6 +107,7 @@
     <Compile Include="Entities\MstTerm.cs" />
     <Compile Include="Entities\MstTerminal.cs" />
     <Compile Include="Entities\MstUser.cs" />
+    <Compile Include="Entities\RepXReadingReportEntity.cs" />
     <Compile Include="Entities\RepZReadingReportEntity.cs" />
     <Compile Include="Entities\SysConnectionStringEntity.cs" />
     <Compile Include="Entities\SysCurrentEntity.cs" />
@@ -178,6 +187,12 @@
     <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderForm.Designer.cs">
       <DependentUpon>TrnSalesDetailTenderForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderMoreInformationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderMoreInformationForm.Designer.cs">
+      <DependentUpon>TrnSalesDetailTenderMoreInformationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderSalesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +222,12 @@
     <Compile Include="Reports\RepOfficialReceiptReportForm.Designer.cs">
       <DependentUpon>RepOfficialReceiptReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\RepXReadingReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\RepXReadingReportForm.Designer.cs">
+      <DependentUpon>RepXReadingReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\RepZReadingReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,11 +240,17 @@
     <EmbeddedResource Include="Forms\Software\MstUser\MstUserListForm.resx">
       <DependentUpon>MstUserListForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailTenderMoreInformationForm.resx">
+      <DependentUpon>TrnSalesDetailTenderMoreInformationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailTenderSalesForm.resx">
       <DependentUpon>TrnSalesDetailTenderSalesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepOfficialReceiptReportForm.resx">
       <DependentUpon>RepOfficialReceiptReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RepXReadingReportForm.resx">
+      <DependentUpon>RepXReadingReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepZReadingReportForm.resx">
       <DependentUpon>RepZReadingReportForm.cs</DependentUpon>
@@ -309,6 +336,7 @@
     <Folder Include="EasyFISIntegration\Entities\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="easypos cropped.ico" />
     <Content Include="Resources\Images\Backgrounds\coffee.jpeg" />
     <Content Include="Resources\Images\Company\easycloud.jpg" />
     <Content Include="Resources\Images\Customers\sonnets.png" />

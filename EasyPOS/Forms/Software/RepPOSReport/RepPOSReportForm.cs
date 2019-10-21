@@ -92,6 +92,8 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                         break;
                     case "X Reading Report":
+                        Reports.RepXReadingReportForm repXReadingReportForm = new Reports.RepXReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()), Convert.ToInt32(comboBoxUser.SelectedValue));
+                        repXReadingReportForm.ShowDialog();
 
                         break;
                     default:

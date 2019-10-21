@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    public class MstPayType
+    class DgvSalesDetailTenderPayTypeEntity
     {
         public Int32 Id { get; set; }
         public String PayType { get; set; }
-        public Int32 AccountId { get; set; }
-        public String Account { get; set; }
-        public Int32? SortNumber { get; set; }
+        public Decimal Amount { get; set; }
+        public String OtherInformation { get; set; }
     }
 }

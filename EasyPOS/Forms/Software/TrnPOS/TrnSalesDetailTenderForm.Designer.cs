@@ -43,6 +43,7 @@
             this.ColumnTenderListPayTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTenderListPayTypePayType = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnTenderListPayTypeAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTenderListPayTypeOtherInformation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBoxChangeAmount = new System.Windows.Forms.TextBox();
             this.textBoxTenderAmount = new System.Windows.Forms.TextBox();
@@ -176,7 +177,8 @@
             this.dataGridViewTenderPayType.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnTenderListPayTypeId,
             this.ColumnTenderListPayTypePayType,
-            this.ColumnTenderListPayTypeAmount});
+            this.ColumnTenderListPayTypeAmount,
+            this.ColumnTenderListPayTypeOtherInformation});
             this.dataGridViewTenderPayType.Location = new System.Drawing.Point(12, 6);
             this.dataGridViewTenderPayType.MultiSelect = false;
             this.dataGridViewTenderPayType.Name = "dataGridViewTenderPayType";
@@ -188,6 +190,7 @@
             this.dataGridViewTenderPayType.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTenderPayType.Size = new System.Drawing.Size(796, 432);
             this.dataGridViewTenderPayType.TabIndex = 0;
+            this.dataGridViewTenderPayType.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTenderPayType_CellClick);
             this.dataGridViewTenderPayType.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTenderPayType_CellEndEdit);
             // 
             // ColumnTenderListPayTypeId
@@ -220,6 +223,12 @@
             this.ColumnTenderListPayTypeAmount.Name = "ColumnTenderListPayTypeAmount";
             this.ColumnTenderListPayTypeAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ColumnTenderListPayTypeAmount.Width = 300;
+            // 
+            // ColumnTenderListPayTypeOtherInformation
+            // 
+            this.ColumnTenderListPayTypeOtherInformation.HeaderText = "Other Information";
+            this.ColumnTenderListPayTypeOtherInformation.Name = "ColumnTenderListPayTypeOtherInformation";
+            this.ColumnTenderListPayTypeOtherInformation.Visible = false;
             // 
             // panel3
             // 
@@ -452,9 +461,10 @@
         private System.Windows.Forms.TextBox textBoxChangeAmount;
         private System.Windows.Forms.TextBox textBoxTenderAmount;
         private System.Windows.Forms.Button buttonSales;
+        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeId;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnTenderListPayTypePayType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeAmount;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeOtherInformation;
     }
 }

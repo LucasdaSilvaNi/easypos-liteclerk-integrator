@@ -15,10 +15,10 @@ namespace EasyPOS.Forms.Software.MstUser
     {
         public SysSoftwareForm sysSoftwareForm;
 
-        public static List<Entities.DgvUserListEntity> userListData = new List<Entities.DgvUserListEntity>();
+        public static List<Entities.DgvUserListUserEntity> userListData = new List<Entities.DgvUserListUserEntity>();
         public static Int32 pageNumber = 1;
         public static Int32 pageSize = 50;
-        public PagedList<Entities.DgvUserListEntity> userListPageList = new PagedList<Entities.DgvUserListEntity>(userListData, pageNumber, pageSize);
+        public PagedList<Entities.DgvUserListUserEntity> userListPageList = new PagedList<Entities.DgvUserListUserEntity>(userListData, pageNumber, pageSize);
         public BindingSource userListDataSource = new BindingSource();
 
         public MstUserListForm(SysSoftwareForm softwareForm)
@@ -36,11 +36,11 @@ namespace EasyPOS.Forms.Software.MstUser
 
         public async void SetUserListDataSourceAsync()
         {
-            List<Entities.DgvUserListEntity> getUserListData = await GetUserListDataTask();
+            List<Entities.DgvUserListUserEntity> getUserListData = await GetUserListDataTask();
             if (getUserListData.Any())
             {
                 userListData = getUserListData;
-                userListPageList = new PagedList<Entities.DgvUserListEntity>(userListData, pageNumber, pageSize);
+                userListPageList = new PagedList<Entities.DgvUserListUserEntity>(userListData, pageNumber, pageSize);
 
                 if (userListPageList.PageCount == 1)
                 {
@@ -88,7 +88,7 @@ namespace EasyPOS.Forms.Software.MstUser
             }
         }
 
-        public Task<List<Entities.DgvUserListEntity>> GetUserListDataTask()
+        public Task<List<Entities.DgvUserListUserEntity>> GetUserListDataTask()
         {
             String filter = textBoxUserListFilter.Text;
             Controllers.MstUserController mstUserController = new Controllers.MstUserController();
@@ -97,7 +97,7 @@ namespace EasyPOS.Forms.Software.MstUser
             if (listUser.Any())
             {
                 var users = from d in listUser
-                            select new Entities.DgvUserListEntity
+                            select new Entities.DgvUserListUserEntity
                             {
                                 ColumnUserListButtonEdit = "Edit",
                                 ColumnUserListButtonDelete = "Delete",
@@ -110,7 +110,7 @@ namespace EasyPOS.Forms.Software.MstUser
             }
             else
             {
-                return Task.FromResult(new List<Entities.DgvUserListEntity>());
+                return Task.FromResult(new List<Entities.DgvUserListUserEntity>());
             }
         }
 

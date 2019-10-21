@@ -33,5 +33,7 @@ namespace EasyPOS.Entities
         public String DefaultDiscountId { get; set; }
         public String ReturnSupplierId { get; set; }
         public String ORPrintTitle { get; set; }
+        public String IsTenderPrint { get; set; }
+        public String IsBarcodeQuantityAlwaysOne { get; set; }
     }
 }

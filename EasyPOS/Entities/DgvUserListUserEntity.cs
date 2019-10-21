@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    public class DgvUserListEntity
+    public class DgvUserListUserEntity
     {
         public String ColumnUserListButtonEdit { get; set; }
         public String ColumnUserListButtonDelete { get; set; }

@@ -59,13 +59,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
             else
             {
-                List<Entities.MstPayType> payTypes = new List<Entities.MstPayType>();
+                List<Entities.DgvSalesDetailTenderPayTypeEntity> payTypes = new List<Entities.DgvSalesDetailTenderPayTypeEntity>();
                 foreach (DataGridViewRow row in dataGridViewTenderPayType.Rows)
                 {
-                    payTypes.Add(new Entities.MstPayType()
+                    payTypes.Add(new Entities.DgvSalesDetailTenderPayTypeEntity()
                     {
                         PayType = row.Cells[1].Value.ToString(),
-                        Amount = Convert.ToDecimal(row.Cells[2].Value)
+                        Amount = Convert.ToDecimal(row.Cells[2].Value),
+                        OtherInformation = row.Cells[3].Value.ToString()
                     });
                 }
 
@@ -151,7 +152,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             CreditCardType = "NA",
                             CreditCardBank = "NA",
                             GiftCertificateNumber = "NA",
-                            OtherInformation = "NA",
+                            OtherInformation = row.Cells[3].Value.ToString(),
                             CreditCardReferenceNumber = "NA",
                             CreditCardHolderName = "NA",
                             CreditCardExpiry = "NA"
@@ -173,10 +174,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 String[] tenderSales = trnPOSSalesController.TenderSales(trnSalesEntity.Id, newCollection);
                 if (tenderSales[1].Equals("0") == false)
                 {
-                    DialogResult tenderPrinterReadyDialogResult = MessageBox.Show("Is printer ready?", "Tender", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (tenderPrinterReadyDialogResult == DialogResult.Yes)
+                    if (Modules.SysCurrentModule.GetCurrentSettings().IsTenderPrint == "true")
                     {
-                        new Reports.RepOfficialReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]), false);
+                        DialogResult tenderPrinterReadyDialogResult = MessageBox.Show("Is printer ready?", "Tender", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (tenderPrinterReadyDialogResult == DialogResult.Yes)
+                        {
+                            new Reports.RepOfficialReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]), false);
+                        }
                     }
 
                     Close();
@@ -221,7 +225,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     dataGridViewTenderPayType.Rows.Add(
                         objPayTypeList.Id,
                         objPayTypeList.PayType,
-                        "0.00"
+                        "0.00",
+                        ""
                     );
                 }
             }
@@ -234,19 +239,19 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             try
             {
-                if (e.RowIndex > -1 && dataGridViewTenderPayType.CurrentCell.ColumnIndex == dataGridViewTenderPayType.Columns["ColumnTenderListPayTypeAmount"].Index)
+                if (e.RowIndex > -1 && dataGridViewTenderPayType.CurrentCell.ColumnIndex == dataGridViewTenderPayType.Columns["ColumnTenderListPayTypeOtherInformation"].Index)
                 {
                     dataGridViewTenderPayType.CurrentCell.Value = Convert.ToDecimal(dataGridViewTenderPayType.CurrentCell.Value).ToString("#,##0.00");
                 }
+
+                ComputeAmount();
+                TenderSales();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                dataGridViewTenderPayType.CurrentCell.Value = Convert.ToDecimal(0).ToString("#,##0.00");
+                dataGridViewTenderPayType.CurrentCell.Value = "0.00";
             }
-
-            ComputeAmount();
-            TenderSales();
         }
 
         public void ComputeAmount()
@@ -271,6 +276,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             TrnSalesDetailTenderSalesForm trnSalesDetailTenderSalesForm = new TrnSalesDetailTenderSalesForm(trnSalesDetailForm, this, trnSalesEntity);
             trnSalesDetailTenderSalesForm.ShowDialog();
+        }
+
+        private void dataGridViewTenderPayType_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && dataGridViewTenderPayType.CurrentCell.ColumnIndex == dataGridViewTenderPayType.Columns["ColumnTenderListPayTypePayType"].Index)
+            {
+                TrnSalesDetailTenderMoreInformationForm trnSalesDetailTenderMoreInfoForm = new TrnSalesDetailTenderMoreInformationForm(this, dataGridViewTenderPayType);
+                trnSalesDetailTenderMoreInfoForm.ShowDialog();
+            }
         }
     }
 }

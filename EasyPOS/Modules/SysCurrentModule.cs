@@ -60,7 +60,9 @@ namespace EasyPOS.Modules
                 WalkinCustomerId = currentSettings.WalkinCustomerId,
                 DefaultDiscountId = currentSettings.DefaultDiscountId,
                 ReturnSupplierId = currentSettings.ReturnSupplierId,
-                ORPrintTitle = currentSettings.ORPrintTitle
+                ORPrintTitle = currentSettings.ORPrintTitle,
+                IsTenderPrint = currentSettings.IsTenderPrint,
+                IsBarcodeQuantityAlwaysOne = currentSettings.IsBarcodeQuantityAlwaysOne
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);

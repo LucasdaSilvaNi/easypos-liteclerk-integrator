@@ -264,8 +264,7 @@ namespace EasyPOS.Controllers
                            {
                                Id = d.Id,
                                PayType = d.PayType,
-                               SortNumber = d.SortNumber,
-                               Amount = 0
+                               SortNumber = d.SortNumber
                            };
 
             return payTypes.OrderBy(d => d.SortNumber).ToList();
