@@ -56,6 +56,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 comboBoxTenderSalesCustomer.ValueMember = "Id";
                 comboBoxTenderSalesCustomer.DisplayMember = "Customer";
 
+                comboBoxTenderSalesCustomer.SelectedValue = trnSalesEntity.CustomerId;
+
                 GetUserList();
             }
         }
@@ -129,7 +131,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 List<Entities.MstCustomer> customers = (List<Entities.MstCustomer>)comboBoxTenderSalesCustomer.DataSource;
                 var customer = from d in customers
-                               where d.CustomerCode.Equals(textBoxCustomerCode.Text)
+                               where d.CustomerCode == textBoxCustomerCode.Text
                                select d;
 
                 if (customer.Any())

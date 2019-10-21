@@ -129,6 +129,11 @@ namespace EasyPOS.Forms.Software.MstUser
             dataGridViewUserList.DataSource = userListDataSource;
         }
 
+        public void GetUserListCurrentSelectedCell(Int32 rowIndex)
+        {
+
+        }
+
         private void textBoxUserListFilter_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -139,12 +144,30 @@ namespace EasyPOS.Forms.Software.MstUser
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-
+            sysSoftwareForm.AddTabPageUserDetail();
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
             sysSoftwareForm.RemoveTabPage();
+        }
+
+        private void dataGridViewUserList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                GetUserListCurrentSelectedCell(e.RowIndex);
+            }
+
+            if (e.RowIndex > -1 && dataGridViewUserList.CurrentCell.ColumnIndex == dataGridViewUserList.Columns["ColumnUserListButtonEdit"].Index)
+            {
+                sysSoftwareForm.AddTabPageUserDetail();
+            }
+
+            if (e.RowIndex > -1 && dataGridViewUserList.CurrentCell.ColumnIndex == dataGridViewUserList.Columns["ColumnUserListButtonDelete"].Index)
+            {
+
+            }
         }
     }
 }

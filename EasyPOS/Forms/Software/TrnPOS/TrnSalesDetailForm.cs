@@ -54,6 +54,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     Amount = Convert.ToDecimal(textBoxTotalSalesAmount.Text),
                     SalesNumber = trnSalesEntity.SalesNumber,
                     SalesDate = trnSalesEntity.SalesDate,
+                    CustomerId = trnSalesEntity.CustomerId,
                     Customer = trnSalesEntity.Customer
                 };
 

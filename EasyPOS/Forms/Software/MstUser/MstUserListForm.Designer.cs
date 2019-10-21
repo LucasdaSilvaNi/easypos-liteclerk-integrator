@@ -47,10 +47,12 @@
             this.buttonUserListPageListPrevious = new System.Windows.Forms.Button();
             this.buttonUserListPageListFirst = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserList)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -154,8 +156,9 @@
             this.dataGridViewUserList.RowHeadersVisible = false;
             this.dataGridViewUserList.RowTemplate.Height = 24;
             this.dataGridViewUserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewUserList.Size = new System.Drawing.Size(1376, 545);
+            this.dataGridViewUserList.Size = new System.Drawing.Size(1376, 536);
             this.dataGridViewUserList.TabIndex = 9;
+            this.dataGridViewUserList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUserList_CellClick);
             // 
             // ColumnUserListButtonEdit
             // 
@@ -202,9 +205,9 @@
             // textBoxUserListPageNumber
             // 
             this.textBoxUserListPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxUserListPageNumber.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxUserListPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxUserListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxUserListPageNumber.Location = new System.Drawing.Point(188, 598);
+            this.textBoxUserListPageNumber.Location = new System.Drawing.Point(188, 14);
             this.textBoxUserListPageNumber.Name = "textBoxUserListPageNumber";
             this.textBoxUserListPageNumber.ReadOnly = true;
             this.textBoxUserListPageNumber.Size = new System.Drawing.Size(69, 23);
@@ -217,7 +220,7 @@
             this.buttonUserListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonUserListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUserListPageListLast.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonUserListPageListLast.Location = new System.Drawing.Point(348, 593);
+            this.buttonUserListPageListLast.Location = new System.Drawing.Point(348, 9);
             this.buttonUserListPageListLast.Name = "buttonUserListPageListLast";
             this.buttonUserListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonUserListPageListLast.TabIndex = 16;
@@ -230,7 +233,7 @@
             this.buttonUserListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonUserListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUserListPageListNext.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonUserListPageListNext.Location = new System.Drawing.Point(263, 593);
+            this.buttonUserListPageListNext.Location = new System.Drawing.Point(263, 9);
             this.buttonUserListPageListNext.Name = "buttonUserListPageListNext";
             this.buttonUserListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonUserListPageListNext.TabIndex = 15;
@@ -244,7 +247,7 @@
             this.buttonUserListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonUserListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUserListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonUserListPageListPrevious.Location = new System.Drawing.Point(100, 593);
+            this.buttonUserListPageListPrevious.Location = new System.Drawing.Point(100, 9);
             this.buttonUserListPageListPrevious.Name = "buttonUserListPageListPrevious";
             this.buttonUserListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonUserListPageListPrevious.TabIndex = 14;
@@ -258,7 +261,7 @@
             this.buttonUserListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonUserListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUserListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonUserListPageListFirst.Location = new System.Drawing.Point(12, 593);
+            this.buttonUserListPageListFirst.Location = new System.Drawing.Point(12, 9);
             this.buttonUserListPageListFirst.Name = "buttonUserListPageListFirst";
             this.buttonUserListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonUserListPageListFirst.TabIndex = 13;
@@ -267,18 +270,28 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.buttonUserListPageListPrevious);
+            this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.dataGridViewUserList);
-            this.panel2.Controls.Add(this.textBoxUserListPageNumber);
             this.panel2.Controls.Add(this.textBoxUserListFilter);
-            this.panel2.Controls.Add(this.buttonUserListPageListFirst);
-            this.panel2.Controls.Add(this.buttonUserListPageListLast);
-            this.panel2.Controls.Add(this.buttonUserListPageListNext);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 63);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1400, 637);
             this.panel2.TabIndex = 18;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.buttonUserListPageListFirst);
+            this.panel3.Controls.Add(this.buttonUserListPageListPrevious);
+            this.panel3.Controls.Add(this.buttonUserListPageListNext);
+            this.panel3.Controls.Add(this.buttonUserListPageListLast);
+            this.panel3.Controls.Add(this.textBoxUserListPageNumber);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 584);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1400, 53);
+            this.panel3.TabIndex = 18;
             // 
             // MstUserListForm
             // 
@@ -299,6 +312,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserList)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -323,5 +338,6 @@
         private System.Windows.Forms.Button buttonUserListPageListPrevious;
         private System.Windows.Forms.Button buttonUserListPageListFirst;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
     }
 }

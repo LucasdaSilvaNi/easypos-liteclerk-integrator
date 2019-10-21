@@ -212,8 +212,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             var payTypeList = trnPOSSalesController.TenderListPayType();
             if (payTypeList.Any())
             {
-                dataGridViewTenderPayType.Columns[1].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#742274");
-                dataGridViewTenderPayType.Columns[1].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#742274");
+                dataGridViewTenderPayType.Columns[1].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#7FBC00");
+                dataGridViewTenderPayType.Columns[1].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#7FBC00");
                 dataGridViewTenderPayType.Columns[1].DefaultCellStyle.ForeColor = Color.White;
 
                 foreach (var objPayTypeList in payTypeList)
