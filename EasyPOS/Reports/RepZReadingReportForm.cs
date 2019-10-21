@@ -17,6 +17,7 @@ namespace EasyPOS.Reports
         public Forms.Software.RepPOSReport.RepPOSReportForm repPOSReportForm;
         public Int32 filterTerminalId;
         public DateTime filterDate;
+        public Entities.RepZReadingReportEntity zReadingReportEntity;
 
         public RepZReadingReportForm(Forms.Software.RepPOSReport.RepPOSReportForm POSReportForm, Int32 terminalId, DateTime date)
         {
@@ -26,7 +27,7 @@ namespace EasyPOS.Reports
             filterTerminalId = terminalId;
             filterDate = date;
 
-            printDocumentZReadingReport.DefaultPageSettings.PaperSize =  new PaperSize("Z Reading Report", 255, 1000);
+            printDocumentZReadingReport.DefaultPageSettings.PaperSize = new PaperSize("Z Reading Report", 255, 1000);
         }
 
         private void buttonPrint_Click(object sender, EventArgs e)
@@ -43,6 +44,87 @@ namespace EasyPOS.Reports
         public void PrintReport()
         {
             printDocumentZReadingReport.Print();
+            SaveTextFile();
+        }
+
+        public void SaveTextFile()
+        {
+            // ==============
+            // System Current
+            // ==============
+            var systemCurrent = Modules.SysCurrentModule.GetCurrentSettings();
+
+            String companyName = systemCurrent.CompanyName;
+            String companyAddress = systemCurrent.Address;
+            String zReadingReportTitle = "Z Reading Report";
+            String collectionDateText = DateTime.Today.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
+
+            Decimal totalGrossSales = zReadingReportEntity.TotalGrossSales;
+            Decimal totalRegularDiscount = zReadingReportEntity.TotalRegularDiscount;
+            Decimal totalSeniorDiscount = zReadingReportEntity.TotalSeniorDiscount;
+            Decimal totalPWDDiscount = zReadingReportEntity.TotalPWDDiscount;
+            Decimal totalSalesReturn = zReadingReportEntity.TotalSalesReturn;
+            Decimal totalNetSales = zReadingReportEntity.TotalNetSales;
+
+            Decimal totalCollection = zReadingReportEntity.TotalCollection;
+
+            Decimal totalVATSales = zReadingReportEntity.TotalVATSales;
+            Decimal totalVATAmount = zReadingReportEntity.TotalVATAmount;
+            Decimal totalNonVAT = zReadingReportEntity.TotalNonVAT;
+            Decimal totalVATExclusive = zReadingReportEntity.TotalVATExclusive;
+            Decimal totalVATExempt = zReadingReportEntity.TotalVATExempt;
+            Decimal totalVATZeroRated = zReadingReportEntity.TotalVATZeroRated;
+
+            String counterIdStart = zReadingReportEntity.CounterIdStart;
+            String counterIdEnd = zReadingReportEntity.CounterIdEnd;
+
+            Decimal totalCancelledTrnsactionCount = zReadingReportEntity.TotalCancelledTrnsactionCount;
+            Decimal totalCancelledAmount = zReadingReportEntity.TotalCancelledAmount;
+
+            Decimal totalNumberOfTransactions = zReadingReportEntity.TotalNumberOfTransactions;
+            Decimal totalNumberOfSKU = zReadingReportEntity.TotalNumberOfSKU;
+            Decimal totalQuantity = zReadingReportEntity.TotalQuantity;
+
+            Decimal totalPreviousReading = zReadingReportEntity.TotalPreviousReading;
+            Decimal runningTotal = zReadingReportEntity.RunningTotal;
+
+            String stringFile = companyName + "\r\n\n" +
+                companyAddress + "\r\n\n" +
+                zReadingReportTitle + "\r\n\n" +
+                collectionDateText + "\r\n\n" +
+                "-----------------------------------------------------" + "\r\n\n" +
+                "Gross Sales: \t\t" + totalGrossSales.ToString("#,##0.00") + "\r\n\n" +
+                "Regular Discount: \t\t" + totalRegularDiscount.ToString("#,##0.00") + "\r\n\n" +
+                "Senior Discount: \t\t" + totalSeniorDiscount.ToString("#,##0.00") + "\r\n\n" +
+                "PWD Discount: \t\t" + totalPWDDiscount.ToString("#,##0.00") + "\r\n\n" +
+                "Sales Return: \t\t" + totalSalesReturn.ToString("#,##0.00") + "\r\n\n" +
+                "Net Sales: \t\t" + totalNetSales.ToString("#,##0.00") + "\r\n\n" +
+                "-----------------------------------------------------" + "\r\n\n" +
+                "Total Collection: \t\t" + totalCollection.ToString("#,##0.00") + "\r\n\n" +
+                "-----------------------------------------------------" + "\r\n\n" +
+                "VAT Sales: \t\t" + totalVATSales.ToString("#,##0.00") + "\r\n\n" +
+                "VAT Amount: \t\t" + totalVATAmount.ToString("#,##0.00") + "\r\n\n" +
+                "Non VAT: \t\t" + totalNonVAT.ToString("#,##0.00") + "\r\n\n" +
+                "VAT Exclusive: \t\t" + totalVATExclusive.ToString("#,##0.00") + "\r\n\n" +
+                "VAT Exempt: \t\t" + totalVATExempt.ToString("#,##0.00") + "\r\n\n" +
+                "VAT Zero Rated: \t\t" + totalVATZeroRated.ToString("#,##0.00") + "\r\n\n" +
+                "-----------------------------------------------------" + "\r\n\n" +
+                "Counter ID Start: \t\t" + counterIdStart + "\r\n\n" +
+                "Counter ID End: \t\t" + counterIdEnd + "\r\n\n" +
+                "-----------------------------------------------------" + "\r\n\n" +
+                "Cancelled Tx.: \t\t" + totalCancelledTrnsactionCount.ToString("#,##0.00") + "\r\n\n" +
+                "Cancelled Amount.: \t" + totalCancelledAmount.ToString("#,##0.00") + "\r\n\n" +
+                "-----------------------------------------------------" + "\r\n\n" +
+                "No. of Transactions: \t" + totalNumberOfTransactions.ToString("#,##0.00") + "\r\n\n" +
+                "No. of SKU: \t\t" + totalNumberOfSKU.ToString("#,##0.00") + "\r\n\n" +
+                "Total Quantity: \t\t" + totalNumberOfSKU.ToString("#,##0.00") + "\r\n\n" +
+                "-----------------------------------------------------" + "\r\n\n" +
+                "Previous Reading: \t\t" + totalPreviousReading.ToString("#,##0.00") + "\r\n\n" +
+                "Running Total: \t\t" + runningTotal.ToString("#,##0.00") + "\r\n\n" +
+                "-----------------------------------------------------" + "\r\n\n" +
+                "Z Reading End" + "\r\n\n";
+
+            System.IO.File.WriteAllText(@"D:\Z Reading Report " + DateTime.Now.ToString("yyyyMMddhhmm") + ".txt", stringFile);
         }
 
         public Entities.RepZReadingReportEntity ZReadingDataSource()
@@ -229,6 +311,8 @@ namespace EasyPOS.Reports
                 repZReadingReportEntity.RunningTotal = repZReadingReportEntity.TotalNetSales + repZReadingReportEntity.TotalPreviousReading;
             }
 
+            zReadingReportEntity = repZReadingReportEntity;
+
             return repZReadingReportEntity;
         }
 
@@ -388,7 +472,6 @@ namespace EasyPOS.Reports
                     graphics.DrawString(collectionLineLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                     graphics.DrawString(collectionLineData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                     y += graphics.MeasureString(collectionLineData, fontArial8Regular).Height;
-
                 }
 
                 // ========
