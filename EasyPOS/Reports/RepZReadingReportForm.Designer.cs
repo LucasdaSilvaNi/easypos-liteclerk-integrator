@@ -31,13 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepZReadingReportForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonPrint = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.printDocumentZReadingReport = new System.Drawing.Printing.PrintDocument();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.printPreviewControlZReadingReport = new System.Windows.Forms.PrintPreviewControl();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -73,6 +75,16 @@
             this.buttonPrint.UseVisualStyleBackColor = false;
             this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Reports;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -105,25 +117,28 @@
             // 
             // printDocumentZReadingReport
             // 
+            this.printDocumentZReadingReport.DocumentName = "ZReadingReport";
             this.printDocumentZReadingReport.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentZReadingReport_PrintPage);
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.printPreviewControlZReadingReport);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 63);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(664, 653);
             this.panel2.TabIndex = 5;
             // 
-            // pictureBox1
+            // printPreviewControlZReadingReport
             // 
-            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Reports;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.printPreviewControlZReadingReport.AutoZoom = false;
+            this.printPreviewControlZReadingReport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.printPreviewControlZReadingReport.Document = this.printDocumentZReadingReport;
+            this.printPreviewControlZReadingReport.Location = new System.Drawing.Point(0, 0);
+            this.printPreviewControlZReadingReport.Name = "printPreviewControlZReadingReport";
+            this.printPreviewControlZReadingReport.Size = new System.Drawing.Size(664, 653);
+            this.printPreviewControlZReadingReport.TabIndex = 0;
+            this.printPreviewControlZReadingReport.Zoom = 1.5D;
             // 
             // RepZReadingReportForm
             // 
@@ -141,6 +156,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -154,5 +170,6 @@
         private System.Windows.Forms.Button buttonPrint;
         private System.Drawing.Printing.PrintDocument printDocumentZReadingReport;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PrintPreviewControl printPreviewControlZReadingReport;
     }
 }

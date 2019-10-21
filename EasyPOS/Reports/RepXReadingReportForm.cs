@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -26,11 +27,14 @@ namespace EasyPOS.Reports
             filterTerminalId = terminalId;
             filterDate = date;
             filterSalesAgentId = salesAgentId;
+
+            printDocumentXReadingReport.DefaultPageSettings.PaperSize = new PaperSize("X Reading Report", 255, 1000);
         }
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
             PrintReport();
+            Close();
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
