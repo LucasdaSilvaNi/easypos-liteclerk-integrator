@@ -70,6 +70,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 comboBoxTerminal.ValueMember = "Id";
                 comboBoxTerminal.DisplayMember = "Terminal";
 
+                comboBoxTerminal.SelectedValue = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId);
+
                 UpdateSalesListGridDataSource();
                 CreateSalesListDataGrid();
             }
