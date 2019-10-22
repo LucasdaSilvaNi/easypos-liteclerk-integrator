@@ -120,7 +120,6 @@
     <Compile Include="Entities\DgvUserListUserEntity.cs" />
     <Compile Include="Entities\MstCustomerEntity.cs" />
     <Compile Include="Entities\IntCloudSettings.cs" />
-    <Compile Include="Entities\MstCustomer.cs" />
     <Compile Include="Entities\MstDiscount.cs" />
     <Compile Include="Entities\MstItemEntity.cs" />
     <Compile Include="Entities\MstItemInventoryEntity.cs" />
