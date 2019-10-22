@@ -16,10 +16,10 @@ namespace EasyPOS.Controllers
         // =====================
         // Detail Cloud Settings
         // =====================
-        public Entities.IntCloudSettings DetailCloudSettings()
+        public Entities.IntCloudSettingsEntity DetailCloudSettings()
         {
             var cloudSettings = from d in db.IntCloudSettings
-                                select new Entities.IntCloudSettings
+                                select new Entities.IntCloudSettingsEntity
                                 {
                                     Id = d.Id,
                                     BranchCode = d.BranchCode,

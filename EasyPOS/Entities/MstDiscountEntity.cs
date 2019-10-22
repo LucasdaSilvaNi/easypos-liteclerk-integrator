@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    public class MstDiscount
+    public class MstDiscountEntity
     {
         public Int32 Id { get; set; }
         public String Discount { get; set; }

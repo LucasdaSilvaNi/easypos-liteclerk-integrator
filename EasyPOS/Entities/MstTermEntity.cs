@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    public class MstTerminal
+    public class MstTermEntity
     {
         public Int32 Id { get; set; }
-        public String Terminal { get; set; }
+        public String Term { get; set; }
+        public Decimal NumberOfDays { get; set; }
     }
 }

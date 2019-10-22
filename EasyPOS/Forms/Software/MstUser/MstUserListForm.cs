@@ -93,7 +93,7 @@ namespace EasyPOS.Forms.Software.MstUser
             String filter = textBoxUserListFilter.Text;
             Controllers.MstUserController mstUserController = new Controllers.MstUserController();
 
-            List<Entities.MstUser> listUser = mstUserController.ListUser(filter);
+            List<Entities.MstUserEntity> listUser = mstUserController.ListUser(filter);
             if (listUser.Any())
             {
                 var users = from d in listUser
@@ -103,7 +103,8 @@ namespace EasyPOS.Forms.Software.MstUser
                                 ColumnUserListButtonDelete = "Delete",
                                 ColumnUserListId = d.Id,
                                 ColumnUserListUserName = d.UserName,
-                                ColumnUserListFullName = d.FullName
+                                ColumnUserListFullName = d.FullName,
+                                ColumnUserListIsLocked = d.IsLocked
                             };
 
                 return Task.FromResult(users.ToList());
@@ -144,7 +145,17 @@ namespace EasyPOS.Forms.Software.MstUser
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            sysSoftwareForm.AddTabPageUserDetail();
+            Controllers.MstUserController mstUserController = new Controllers.MstUserController();
+            String[] addUser = mstUserController.AddUser();
+            if (addUser[1].Equals("0") == false)
+            {
+                sysSoftwareForm.AddTabPageUserDetail(this, mstUserController.DetailUser(Convert.ToInt32(addUser[1])));
+                UpdateUserListDataSource();
+            }
+            else
+            {
+                MessageBox.Show(addUser[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -161,13 +172,122 @@ namespace EasyPOS.Forms.Software.MstUser
 
             if (e.RowIndex > -1 && dataGridViewUserList.CurrentCell.ColumnIndex == dataGridViewUserList.Columns["ColumnUserListButtonEdit"].Index)
             {
-                sysSoftwareForm.AddTabPageUserDetail();
+                Controllers.MstUserController mstUserController = new Controllers.MstUserController();
+                sysSoftwareForm.AddTabPageUserDetail(this, mstUserController.DetailUser(Convert.ToInt32(dataGridViewUserList.Rows[e.RowIndex].Cells[2].Value)));
             }
 
             if (e.RowIndex > -1 && dataGridViewUserList.CurrentCell.ColumnIndex == dataGridViewUserList.Columns["ColumnUserListButtonDelete"].Index)
             {
+                Boolean isLocked = Convert.ToBoolean(dataGridViewUserList.Rows[e.RowIndex].Cells[5].Value);
 
+                if (isLocked == true)
+                {
+                    MessageBox.Show("Already locked.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    DialogResult deleteDialogResult = MessageBox.Show("Delete User?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (deleteDialogResult == DialogResult.Yes)
+                    {
+                        Controllers.MstUserController mstUserController = new Controllers.MstUserController();
+
+                        String[] deleteUser = mstUserController.DeleteUser(Convert.ToInt32(dataGridViewUserList.Rows[e.RowIndex].Cells[2].Value));
+                        if (deleteUser[1].Equals("0") == false)
+                        {
+                            Int32 currentPageNumber = pageNumber;
+
+                            pageNumber = 1;
+                            UpdateUserListDataSource();
+
+                            if (userListPageList != null)
+                            {
+                                if (userListData.Count() % pageSize == 1)
+                                {
+                                    pageNumber = currentPageNumber - 1;
+                                }
+                                else
+                                {
+                                    pageNumber = currentPageNumber;
+                                }
+
+                                userListDataSource.DataSource = userListPageList;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(deleteUser[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
             }
+        }
+
+        private void buttonUserListPageListFirst_Click(object sender, EventArgs e)
+        {
+            userListPageList = new PagedList<Entities.DgvUserListUserEntity>(userListData, 1, pageSize);
+            userListDataSource.DataSource = userListPageList;
+
+            buttonUserListPageListFirst.Enabled = false;
+            buttonUserListPageListPrevious.Enabled = false;
+            buttonUserListPageListNext.Enabled = true;
+            buttonUserListPageListLast.Enabled = true;
+
+            pageNumber = 1;
+            textBoxUserListPageNumber.Text = pageNumber + " / " + userListPageList.PageCount;
+        }
+
+        private void buttonUserListPageListPrevious_Click(object sender, EventArgs e)
+        {
+            if (userListPageList.HasPreviousPage == true)
+            {
+                userListPageList = new PagedList<Entities.DgvUserListUserEntity>(userListData, --pageNumber, pageSize);
+                userListDataSource.DataSource = userListPageList;
+            }
+
+            buttonUserListPageListNext.Enabled = true;
+            buttonUserListPageListLast.Enabled = true;
+
+            if (pageNumber == 1)
+            {
+                buttonUserListPageListFirst.Enabled = false;
+                buttonUserListPageListPrevious.Enabled = false;
+            }
+
+            textBoxUserListPageNumber.Text = pageNumber + " / " + userListPageList.PageCount;
+        }
+
+        private void buttonUserListPageListNext_Click(object sender, EventArgs e)
+        {
+            if (userListPageList.HasNextPage == true)
+            {
+                userListPageList = new PagedList<Entities.DgvUserListUserEntity>(userListData, ++pageNumber, pageSize);
+                userListDataSource.DataSource = userListPageList;
+            }
+
+            buttonUserListPageListFirst.Enabled = true;
+            buttonUserListPageListPrevious.Enabled = true;
+
+            if (pageNumber == userListPageList.PageCount)
+            {
+                buttonUserListPageListNext.Enabled = false;
+                buttonUserListPageListLast.Enabled = false;
+            }
+
+            textBoxUserListPageNumber.Text = pageNumber + " / " + userListPageList.PageCount;
+        }
+
+        private void buttonUserListPageListLast_Click(object sender, EventArgs e)
+        {
+            userListPageList = new PagedList<Entities.DgvUserListUserEntity>(userListData, userListPageList.PageCount, pageSize);
+            userListDataSource.DataSource = userListPageList;
+
+            buttonUserListPageListFirst.Enabled = true;
+            buttonUserListPageListPrevious.Enabled = true;
+            buttonUserListPageListNext.Enabled = false;
+            buttonUserListPageListLast.Enabled = false;
+
+            pageNumber = userListPageList.PageCount;
+            textBoxUserListPageNumber.Text = pageNumber + " / " + userListPageList.PageCount;
         }
     }
 }

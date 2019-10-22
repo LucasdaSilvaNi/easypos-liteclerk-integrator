@@ -120,14 +120,17 @@
     <Compile Include="Entities\DgvUserDetailUserRightsEntity.cs" />
     <Compile Include="Entities\DgvUserListUserEntity.cs" />
     <Compile Include="Entities\MstCustomerEntity.cs" />
-    <Compile Include="Entities\IntCloudSettings.cs" />
-    <Compile Include="Entities\MstDiscount.cs" />
+    <Compile Include="Entities\IntCloudSettingsEntity.cs" />
+    <Compile Include="Entities\MstDiscountEntity.cs" />
     <Compile Include="Entities\MstItemEntity.cs" />
     <Compile Include="Entities\MstItemInventoryEntity.cs" />
-    <Compile Include="Entities\MstPayType.cs" />
-    <Compile Include="Entities\MstTerm.cs" />
-    <Compile Include="Entities\MstTerminal.cs" />
-    <Compile Include="Entities\MstUser.cs" />
+    <Compile Include="Entities\MstPayTypeEntity.cs" />
+    <Compile Include="Entities\MstSupplierEntity.cs" />
+    <Compile Include="Entities\MstTaxEntity.cs" />
+    <Compile Include="Entities\MstTermEntity.cs" />
+    <Compile Include="Entities\MstTerminalEntity.cs" />
+    <Compile Include="Entities\MstUnitEntity.cs" />
+    <Compile Include="Entities\MstUserEntity.cs" />
     <Compile Include="Entities\RepXReadingReportEntity.cs" />
     <Compile Include="Entities\RepZReadingReportEntity.cs" />
     <Compile Include="Entities\SysConnectionStringEntity.cs" />
@@ -289,6 +292,9 @@
     <Compile Include="Reports\RepZReadingReportForm.Designer.cs">
       <DependentUpon>RepZReadingReportForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Software\MstItem\MstItemDetailForm.resx">
+      <DependentUpon>MstItemDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstUser\MstUserDetailForm.resx">
       <DependentUpon>MstUserDetailForm.cs</DependentUpon>
     </EmbeddedResource>

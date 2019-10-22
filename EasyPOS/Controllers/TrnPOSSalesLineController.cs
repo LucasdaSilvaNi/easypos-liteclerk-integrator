@@ -154,10 +154,10 @@ namespace EasyPOS.Controllers
         // ========================
         // Dropdown List - Discount
         // ========================
-        public List<Entities.MstDiscount> DropdownListDiscount()
+        public List<Entities.MstDiscountEntity> DropdownListDiscount()
         {
             var discounts = from d in db.MstDiscounts
-                            select new Entities.MstDiscount
+                            select new Entities.MstDiscountEntity
                             {
                                 Id = d.Id,
                                 Discount = d.Discount,

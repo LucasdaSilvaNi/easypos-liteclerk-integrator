@@ -32,6 +32,7 @@ namespace EasyPOS.Forms.Software
         }
 
         public TabPage tabPageItemList = new TabPage { Name = "tabPageItemList", Text = "Item List" };
+        public TabPage tabPageItemDetail = new TabPage { Name = "tabPageItemDetail", Text = "Item Detail" };
         public TabPage tabPageUserList = new TabPage { Name = "tabPageUserList", Text = "User List" };
         public TabPage tabPageUserDetail = new TabPage { Name = "tabPageUserDetail", Text = "User Detail" };
         public TabPage tabPagePOSSalesList = new TabPage { Name = "tabPagePOSSalesList", Text = "Sales List" };
@@ -41,6 +42,7 @@ namespace EasyPOS.Forms.Software
         public TabPage tabPageSettings = new TabPage { Name = "tabPageSettings", Text = "Settings" };
 
         public MstItem.MstItemListForm mstItemListForm = null;
+        public MstItem.MstItemDetailForm mstItemDetailForm = null;
         public MstUser.MstUserListForm mstUserListForm = null;
         public MstUser.MstUserDetailForm mstUserDetailForm = null;
         public MstDiscounting.MstDiscountingListForm mstDiscountingListForm = null;
@@ -85,6 +87,30 @@ namespace EasyPOS.Forms.Software
             }
         }
 
+        public void AddTabPageItemDetail(MstItem.MstItemListForm itemListForm, Entities.MstItemEntity itemEntity)
+        {
+            tabPageItemDetail.Controls.Remove(mstItemDetailForm);
+
+            mstItemDetailForm = new MstItem.MstItemDetailForm(this, itemListForm, itemEntity)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageItemDetail.Controls.Add(mstItemDetailForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageItemDetail) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageItemDetail);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageItemDetail);
+                tabControlSoftware.SelectTab(tabPageItemDetail);
+            }
+        }
+
         public void AddTabPageUserList()
         {
             tabPagePOSSalesDetail.Controls.Remove(mstUserListForm);
@@ -109,11 +135,11 @@ namespace EasyPOS.Forms.Software
             }
         }
 
-        public void AddTabPageUserDetail()
+        public void AddTabPageUserDetail(MstUser.MstUserListForm userListForm, Entities.MstUserEntity userEntity)
         {
-            tabPagePOSSalesDetail.Controls.Remove(mstUserDetailForm);
+            tabPageUserDetail.Controls.Remove(mstUserDetailForm);
 
-            mstUserDetailForm = new MstUser.MstUserDetailForm(this)
+            mstUserDetailForm = new MstUser.MstUserDetailForm(this, userListForm, userEntity)
             {
                 TopLevel = false,
                 Visible = true,

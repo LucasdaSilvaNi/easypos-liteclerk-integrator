@@ -36,9 +36,10 @@ namespace EasyPOS.Controllers
         {
             var items = from d in db.MstItems
                         where d.ItemCode.Contains(filter)
-                        || d.BarCode.Contains(filter)
                         || d.ItemDescription.Contains(filter)
-                        || d.GenericName.Contains(filter)
+                        || d.BarCode.Contains(filter)
+                        || d.Category.Contains(filter)
+                        || d.MstUnit.Unit.Contains(filter)
                         select new Entities.MstItemEntity
                         {
                             Id = d.Id,
@@ -54,6 +55,7 @@ namespace EasyPOS.Controllers
                             InTaxId = d.InTaxId,
                             OutTaxId = d.OutTaxId,
                             UnitId = d.UnitId,
+                            Unit = d.MstUnit.Unit,
                             DefaultSupplierId = d.DefaultSupplierId,
                             Cost = d.Cost,
                             MarkUp = d.MarkUp,
@@ -62,7 +64,7 @@ namespace EasyPOS.Controllers
                             ReorderQuantity = d.ReorderQuantity,
                             OnhandQuantity = d.OnhandQuantity,
                             IsInventory = d.IsInventory,
-                            ExpiryDate = d.ExpiryDate.ToString(),
+                            ExpiryDate = d.ExpiryDate != null ? Convert.ToDateTime(d.ExpiryDate).ToShortDateString() : "",
                             LotNumber = d.LotNumber,
                             Remarks = d.Remarks,
                             EntryUserId = d.EntryUserId,
@@ -99,6 +101,7 @@ namespace EasyPOS.Controllers
                            InTaxId = d.InTaxId,
                            OutTaxId = d.OutTaxId,
                            UnitId = d.UnitId,
+                           Unit = d.MstUnit.Unit,
                            DefaultSupplierId = d.DefaultSupplierId,
                            Cost = d.Cost,
                            MarkUp = d.MarkUp,
@@ -107,7 +110,7 @@ namespace EasyPOS.Controllers
                            ReorderQuantity = d.ReorderQuantity,
                            OnhandQuantity = d.OnhandQuantity,
                            IsInventory = d.IsInventory,
-                           ExpiryDate = d.ExpiryDate.ToString(),
+                           ExpiryDate = d.ExpiryDate != null ? Convert.ToDateTime(d.ExpiryDate).ToShortDateString() : "",
                            LotNumber = d.LotNumber,
                            Remarks = d.Remarks,
                            EntryUserId = d.EntryUserId,
@@ -120,6 +123,51 @@ namespace EasyPOS.Controllers
                        };
 
             return item.FirstOrDefault();
+        }
+
+        // ====================
+        // Dropdown List - Unit
+        // ====================
+        public List<Entities.MstUnitEntity> DropdownListItemUnit()
+        {
+            var units = from d in db.MstUnits
+                        select new Entities.MstUnitEntity
+                        {
+                            Id = d.Id,
+                            Unit = d.Unit
+                        };
+
+            return units.ToList();
+        }
+
+        // ========================
+        // Dropdown List - Supplier
+        // ========================
+        public List<Entities.MstSupplierEntity> DropdownListItemSupplier()
+        {
+            var suppliers = from d in db.MstSuppliers
+                            select new Entities.MstSupplierEntity
+                            {
+                                Id = d.Id,
+                                Supplier = d.Supplier
+                            };
+
+            return suppliers.ToList();
+        }
+
+        // ===================
+        // Dropdown List - Tax
+        // ===================
+        public List<Entities.MstTaxEntity> DropdownListItemTax()
+        {
+            var taxes = from d in db.MstTaxes
+                        select new Entities.MstTaxEntity
+                        {
+                            Id = d.Id,
+                            Tax = d.Tax
+                        };
+
+            return taxes.ToList();
         }
 
         // ========
@@ -161,7 +209,7 @@ namespace EasyPOS.Controllers
                     return new String[] { "Cost account not found.", "0" };
                 }
 
-                var tax = from d in db.MstTaxes where d.Tax == "VAT Output" select d;
+                var tax = from d in db.MstTaxes where d.Code == "VAT" select d;
                 if (tax.Any() == false)
                 {
                     return new String[] { "Tax not found.", "0" };
@@ -173,12 +221,11 @@ namespace EasyPOS.Controllers
                     return new String[] { "Unit not found.", "0" };
                 }
 
-                var supplier = from d in db.MstSuppliers select d;
+                var supplier = from d in db.MstSuppliers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().ReturnSupplierId) select d;
                 if (supplier.Any() == false)
                 {
                     return new String[] { "Supplier not found.", "0" };
                 }
-
 
                 Data.MstItem newItem = new Data.MstItem()
                 {
@@ -203,8 +250,8 @@ namespace EasyPOS.Controllers
                     OnhandQuantity = 0,
                     IsInventory = true,
                     ExpiryDate = null,
-                    LotNumber = null,
-                    Remarks = null,
+                    LotNumber = "NA",
+                    Remarks = "NA",
                     EntryUserId = currentUserLogin.FirstOrDefault().Id,
                     EntryDateTime = DateTime.Today,
                     UpdateUserId = currentUserLogin.FirstOrDefault().Id,
@@ -217,7 +264,7 @@ namespace EasyPOS.Controllers
                 db.MstItems.InsertOnSubmit(newItem);
                 db.SubmitChanges();
 
-                return new String[] { "", "1" };
+                return new String[] { "", newItem.Id.ToString() };
             }
             catch (Exception e)
             {
@@ -251,28 +298,22 @@ namespace EasyPOS.Controllers
                     lockItem.Alias = objItem.Alias;
                     lockItem.GenericName = objItem.GenericName;
                     lockItem.Category = objItem.Category;
-                    lockItem.SalesAccountId = objItem.SalesAccountId;
-                    lockItem.AssetAccountId = objItem.AssetAccountId;
-                    lockItem.CostAccountId = objItem.CostAccountId;
-                    lockItem.InTaxId = objItem.InTaxId;
                     lockItem.OutTaxId = objItem.OutTaxId;
                     lockItem.UnitId = objItem.UnitId;
                     lockItem.DefaultSupplierId = objItem.DefaultSupplierId;
                     lockItem.Cost = objItem.Cost;
                     lockItem.MarkUp = objItem.MarkUp;
                     lockItem.Price = objItem.Price;
-                    lockItem.ImagePath = objItem.ImagePath;
                     lockItem.ReorderQuantity = objItem.ReorderQuantity;
                     lockItem.OnhandQuantity = objItem.OnhandQuantity;
                     lockItem.IsInventory = objItem.IsInventory;
+                    lockItem.IsPackage = objItem.IsPackage;
                     lockItem.ExpiryDate = Convert.ToDateTime(objItem.ExpiryDate);
                     lockItem.LotNumber = objItem.LotNumber;
                     lockItem.Remarks = objItem.Remarks;
                     lockItem.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
                     lockItem.UpdateDateTime = DateTime.Today;
                     lockItem.IsLocked = true;
-                    lockItem.DefaultKitchenReport = objItem.DefaultKitchenReport;
-                    lockItem.IsPackage = objItem.IsPackage;
                     db.SubmitChanges();
 
                     return new String[] { "", "" };

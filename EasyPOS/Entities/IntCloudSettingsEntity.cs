@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    public class IntCloudSettings
+    public class IntCloudSettingsEntity
     {
         public Int32 Id { get; set; }
         public String BranchCode { get; set; }
