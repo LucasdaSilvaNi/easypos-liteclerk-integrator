@@ -136,7 +136,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 return;
             }
 
-            var selectedItemDiscount = (Entities.MstDiscount)comboBoxSalesLineDiscount.SelectedItem;
+            var selectedItemDiscount = (Entities.MstDiscountEntity)comboBoxSalesLineDiscount.SelectedItem;
             if (selectedItemDiscount != null)
             {
                 textBoxSalesLineDiscountRate.Text = selectedItemDiscount.DiscountRate.ToString("#,##0.00");

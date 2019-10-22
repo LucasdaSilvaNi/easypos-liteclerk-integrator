@@ -13,5 +13,6 @@ namespace EasyPOS.Entities
         public Int32 ColumnUserListId { get; set; }
         public String ColumnUserListUserName { get; set; }
         public String ColumnUserListFullName { get; set; }
+        public Boolean ColumnUserListIsLocked { get; set; }
     }
 }

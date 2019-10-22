@@ -16,12 +16,12 @@ namespace EasyPOS.Controllers
         // ==========
         // List Users
         // ==========
-        public List<Entities.MstUser> ListUser(String filter)
+        public List<Entities.MstUserEntity> ListUser(String filter)
         {
             var users = from d in db.MstUsers
                         where d.UserName.Contains(filter)
                         || d.FullName.Contains(filter)
-                        select new Entities.MstUser
+                        select new Entities.MstUserEntity
                         {
                             Id = d.Id,
                             UserName = d.UserName,
@@ -43,11 +43,11 @@ namespace EasyPOS.Controllers
         // ===========
         // Detail User
         // ===========
-        public Entities.MstUser DetailUser(Int32 id)
+        public Entities.MstUserEntity DetailUser(Int32 id)
         {
             var users = from d in db.MstUsers
                         where d.Id == id
-                        select new Entities.MstUser
+                        select new Entities.MstUserEntity
                         {
                             Id = d.Id,
                             UserName = d.UserName,
@@ -106,7 +106,7 @@ namespace EasyPOS.Controllers
         // =========
         // Lock User
         // =========
-        public String[] LockUser(Int32 id, Entities.MstUser objUser)
+        public String[] LockUser(Int32 id, Entities.MstUserEntity objUser)
         {
             try
             {
@@ -114,6 +114,16 @@ namespace EasyPOS.Controllers
                 if (currentUserLogin.Any() == false)
                 {
                     return new String[] { "Current login user not found.", "0" };
+                }
+
+                var existingUser = from d in db.MstUsers
+                                   where d.UserName == objUser.UserName
+                                   && d.IsLocked == true
+                                   select d;
+
+                if (existingUser.Any())
+                {
+                    return new String[] { "Username is already taken.", "0" };
                 }
 
                 var user = from d in db.MstUsers
@@ -144,7 +154,7 @@ namespace EasyPOS.Controllers
                 return new String[] { e.Message, "0" };
             }
         }
-        
+
         // ===========
         // Unlock User
         // ===========

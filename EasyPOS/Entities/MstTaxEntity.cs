@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    public class MstTerm
+    public class MstTaxEntity
     {
         public Int32 Id { get; set; }
-        public String Term { get; set; }
-        public Decimal NumberOfDays { get; set; }
+        public String Tax { get; set; }
     }
 }

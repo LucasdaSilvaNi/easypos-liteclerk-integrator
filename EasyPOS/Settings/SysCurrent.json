@@ -22,7 +22,7 @@
   "TerminalId": "7",
   "WalkinCustomerId": "5451",
   "DefaultDiscountId": "2",
-  "ReturnSupplierId": "",
+  "ReturnSupplierId": "23",
   "ORPrintTitle": "O F F I C I A L  R E C E I P T",
   "IsTenderPrint": "false",
   "IsBarcodeQuantityAlwaysOne":  "true"

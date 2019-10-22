@@ -32,10 +32,10 @@ namespace EasyPOS.Controllers
         // ========================
         // Dropdown List - Terminal
         // ========================
-        public List<Entities.MstTerminal> DropdownListTerminal()
+        public List<Entities.MstTerminalEntity> DropdownListTerminal()
         {
             var terminals = from d in db.MstTerminals
-                            select new Entities.MstTerminal
+                            select new Entities.MstTerminalEntity
                             {
                                 Id = d.Id,
                                 Terminal = "Terminal: " + d.Terminal
@@ -257,10 +257,10 @@ namespace EasyPOS.Controllers
         // =======================
         // Tender - List Pay Types 
         // =======================
-        public List<Entities.MstPayType> TenderListPayType()
+        public List<Entities.MstPayTypeEntity> TenderListPayType()
         {
             var payTypes = from d in db.MstPayTypes
-                           select new Entities.MstPayType
+                           select new Entities.MstPayTypeEntity
                            {
                                Id = d.Id,
                                PayType = d.PayType,
@@ -446,10 +446,10 @@ namespace EasyPOS.Controllers
         // ==================================
         // Tender Sales - Dropdown List Terms
         // ==================================
-        public List<Entities.MstTerm> TenderSalesDropdownListTerm()
+        public List<Entities.MstTermEntity> TenderSalesDropdownListTerm()
         {
             var terms = from d in db.MstTerms
-                        select new Entities.MstTerm
+                        select new Entities.MstTermEntity
                         {
                             Id = d.Id,
                             Term = d.Term
@@ -461,10 +461,10 @@ namespace EasyPOS.Controllers
         // ==================================
         // Tender Sales - Dropdown List Users
         // ==================================
-        public List<Entities.MstUser> TenderSalesDropdownListUser()
+        public List<Entities.MstUserEntity> TenderSalesDropdownListUser()
         {
             var users = from d in db.MstUsers
-                        select new Entities.MstUser
+                        select new Entities.MstUserEntity
                         {
                             Id = d.Id,
                             FullName = d.FullName

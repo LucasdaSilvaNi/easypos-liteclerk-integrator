@@ -16,10 +16,10 @@ namespace EasyPOS.Controllers
         // ========================
         // Dropdown List - Terminal
         // ========================
-        public List<Entities.MstTerminal> DropdownListTerminal()
+        public List<Entities.MstTerminalEntity> DropdownListTerminal()
         {
             var terminals = from d in db.MstTerminals
-                            select new Entities.MstTerminal
+                            select new Entities.MstTerminalEntity
                             {
                                 Id = d.Id,
                                 Terminal = d.Terminal
@@ -31,10 +31,10 @@ namespace EasyPOS.Controllers
         // ====================
         // Dropdown List - User
         // ====================
-        public List<Entities.MstUser> DropdownListUser()
+        public List<Entities.MstUserEntity> DropdownListUser()
         {
             var users = from d in db.MstUsers
-                        select new Entities.MstUser
+                        select new Entities.MstUserEntity
                         {
                             Id = d.Id,
                             FullName = d.FullName
