@@ -82,8 +82,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\MstCustomer.cs" />
-    <Compile Include="Controllers\MstItem.cs" />
+    <Compile Include="Controllers\MstCustomerController.cs" />
+    <Compile Include="Controllers\MstItemController.cs" />
     <Compile Include="Controllers\MstUserController.cs" />
     <Compile Include="Controllers\RepPOSReportController.cs" />
     <Compile Include="Controllers\SysLoginController.cs" />

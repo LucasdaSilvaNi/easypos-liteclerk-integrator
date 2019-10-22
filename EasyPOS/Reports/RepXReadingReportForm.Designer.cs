@@ -37,6 +37,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.printPreviewControlXReadingReport = new System.Windows.Forms.PrintPreviewControl();
+            this.printDialogXReadingReport = new System.Windows.Forms.PrintDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -139,6 +140,11 @@
             this.printPreviewControlXReadingReport.TabIndex = 1;
             this.printPreviewControlXReadingReport.Zoom = 1.5D;
             // 
+            // printDialogXReadingReport
+            // 
+            this.printDialogXReadingReport.Document = this.printDocumentXReadingReport;
+            this.printDialogXReadingReport.UseEXDialog = true;
+            // 
             // RepXReadingReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -169,5 +175,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PrintPreviewControl printPreviewControlXReadingReport;
+        private System.Windows.Forms.PrintDialog printDialogXReadingReport;
     }
 }

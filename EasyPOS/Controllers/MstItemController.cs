@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Controllers
 {
-    class MstItem
+    class MstItemController
     {
         // ============
         // Data Context
@@ -18,6 +18,8 @@ namespace EasyPOS.Controllers
         // ==========
         public List<Entities.MstItem> ListItem(String filter)
         {
+
+
             return new List<Entities.MstItem>();
         }
 

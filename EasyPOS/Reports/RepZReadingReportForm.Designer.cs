@@ -37,6 +37,7 @@
             this.printDocumentZReadingReport = new System.Drawing.Printing.PrintDocument();
             this.panel2 = new System.Windows.Forms.Panel();
             this.printPreviewControlZReadingReport = new System.Windows.Forms.PrintPreviewControl();
+            this.printDialogZReadingReport = new System.Windows.Forms.PrintDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -140,6 +141,11 @@
             this.printPreviewControlZReadingReport.TabIndex = 0;
             this.printPreviewControlZReadingReport.Zoom = 1.5D;
             // 
+            // printDialogZReadingReport
+            // 
+            this.printDialogZReadingReport.Document = this.printDocumentZReadingReport;
+            this.printDialogZReadingReport.UseEXDialog = true;
+            // 
             // RepZReadingReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -171,5 +177,6 @@
         private System.Drawing.Printing.PrintDocument printDocumentZReadingReport;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PrintPreviewControl printPreviewControlZReadingReport;
+        private System.Windows.Forms.PrintDialog printDialogZReadingReport;
     }
 }

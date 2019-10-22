@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Controllers
 {
-    class MstCustomer
+    class MstCustomerController
     {
         // ============
         // Data Context
