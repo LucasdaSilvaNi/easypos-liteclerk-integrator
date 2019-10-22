@@ -51,7 +51,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
             else
             {
-                MessageBox.Show(addSales[0], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(addSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -217,11 +217,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 if (isLocked == true)
                 {
-                    MessageBox.Show("Already locked.", "Locked", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Already locked.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (isTendered == true)
                 {
-                    MessageBox.Show("Already tendered.", "Tendered", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Already tendered.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -237,15 +237,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 if (isLocked == true)
                 {
-                    MessageBox.Show("Already locked.", "Locked", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Already locked.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (isTendered == true)
                 {
-                    MessageBox.Show("Already tendered.", "Tendered", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Already tendered.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    DialogResult deleteDialogResult = MessageBox.Show("Delete Sales?", "Delete Sales", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult deleteDialogResult = MessageBox.Show("Delete Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (deleteDialogResult == DialogResult.Yes)
                     {
                         Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
@@ -274,7 +274,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         }
                         else
                         {
-                            MessageBox.Show(deleteSales[0], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(deleteSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -356,18 +356,18 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         }
                         else
                         {
-                            MessageBox.Show(cancelSales[0], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(cancelSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Please select sales.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please select sales.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Sales empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Sales empty.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -391,12 +391,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
                 else
                 {
-                    MessageBox.Show("Please select sales.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please select sales.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Sales empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Sales empty.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -411,11 +411,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                     if (isTendered != true)
                     {
-                        MessageBox.Show("Not tendered.", "Tendered", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Not tendered.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else if (isLocked != true)
                     {
-                        MessageBox.Show("Not locked.", "Locked", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Not locked.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -432,19 +432,19 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             }
                             else
                             {
-                                MessageBox.Show("No collection.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("No collection.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Please select sales.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please select sales.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Sales empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Sales empty.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

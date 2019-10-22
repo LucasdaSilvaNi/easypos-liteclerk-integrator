@@ -205,7 +205,7 @@ namespace EasyPOS.Forms.Software.SysSettings
 
         private void btnStopIntegration_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to stop integration?", "Stop Integration", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to stop integration?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
                 isIntegrationStarted = false;

@@ -55,7 +55,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             if (Convert.ToDecimal(textBoxChangeAmount.Text) < 0)
             {
-                MessageBox.Show("Change amount must be non-negative value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Change amount must be non-negative value.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -126,7 +126,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
                 else
                 {
-                    MessageBox.Show(invalidTenderMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(invalidTenderMessage, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -176,7 +176,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 {
                     if (Modules.SysCurrentModule.GetCurrentSettings().IsTenderPrint == "true")
                     {
-                        DialogResult tenderPrinterReadyDialogResult = MessageBox.Show("Is printer ready?", "Tender", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult tenderPrinterReadyDialogResult = MessageBox.Show("Is printer ready?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (tenderPrinterReadyDialogResult == DialogResult.Yes)
                         {
                             new Reports.RepOfficialReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]), false);
@@ -197,12 +197,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
                 else
                 {
-                    MessageBox.Show(tenderSales[0], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(tenderSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Cannot tender zero amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cannot tender zero amount.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -249,7 +249,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dataGridViewTenderPayType.CurrentCell.Value = "0.00";
             }
         }
