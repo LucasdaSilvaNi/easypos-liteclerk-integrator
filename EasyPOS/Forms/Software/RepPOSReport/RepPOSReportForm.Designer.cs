@@ -43,8 +43,8 @@
             this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
@@ -227,6 +227,17 @@
             this.panel2.Size = new System.Drawing.Size(380, 619);
             this.panel2.TabIndex = 22;
             // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Location = new System.Drawing.Point(398, 6);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(990, 38);
+            this.panel3.TabIndex = 0;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -237,17 +248,6 @@
             this.label2.Size = new System.Drawing.Size(59, 23);
             this.label2.TabIndex = 0;
             this.label2.Text = "Filters";
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Location = new System.Drawing.Point(398, 6);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(990, 38);
-            this.panel3.TabIndex = 0;
             // 
             // RepPOSReportForm
             // 

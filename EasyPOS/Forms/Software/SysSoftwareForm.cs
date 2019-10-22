@@ -27,6 +27,7 @@ namespace EasyPOS.Forms.Software
         public TabPage tabPagePOSSalesDetail = new TabPage { Name = "tabPagePOSSalesDetail", Text = "Sales Detail" };
         public TabPage tabPageDiscountingList = new TabPage { Name = "tabPageDiscountingList", Text = "Discounting List" };
         public TabPage tabPagePOSReport = new TabPage { Name = "tabPagePOSReport", Text = "POS Report" };
+        public TabPage tabPageSettings = new TabPage { Name = "tabPageSettings", Text = "Settings" };
 
         public MstItem.MstItemListForm mstItemListForm = null;
         public MstUser.MstUserListForm mstUserListForm = null;
@@ -35,6 +36,7 @@ namespace EasyPOS.Forms.Software
         public TrnPOS.TrnSalesListForm trnSalesListForm = null;
         public TrnPOS.TrnSalesDetailForm trnSalesDetailForm = null;
         public RepPOSReport.RepPOSReportForm repPOSReportForm = null;
+        public SysSettings.SysSettingsForm sysSettingsForm = null;
 
         public void InitializeDefaultForm()
         {
@@ -71,7 +73,6 @@ namespace EasyPOS.Forms.Software
                 tabControlSoftware.SelectTab(tabPageItemList);
             }
         }
-
 
         public void AddTabPageUserList()
         {
@@ -205,7 +206,7 @@ namespace EasyPOS.Forms.Software
 
         public void AddTabPagePOSReport()
         {
-            tabPagePOSSalesDetail.Controls.Remove(repPOSReportForm);
+            tabPagePOSReport.Controls.Remove(repPOSReportForm);
 
             repPOSReportForm = new RepPOSReport.RepPOSReportForm(this)
             {
@@ -224,6 +225,30 @@ namespace EasyPOS.Forms.Software
             {
                 tabControlSoftware.TabPages.Add(tabPagePOSReport);
                 tabControlSoftware.SelectTab(tabPagePOSReport);
+            }
+        }
+
+        public void AddTabPageSettings()
+        {
+            tabPageSettings.Controls.Remove(sysSettingsForm);
+
+            sysSettingsForm = new SysSettings.SysSettingsForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageSettings.Controls.Add(sysSettingsForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageSettings) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageSettings);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageSettings);
+                tabControlSoftware.SelectTab(tabPageSettings);
             }
         }
 

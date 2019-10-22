@@ -87,6 +87,7 @@
     <Compile Include="Controllers\MstUserController.cs" />
     <Compile Include="Controllers\RepPOSReportController.cs" />
     <Compile Include="Controllers\SysLoginController.cs" />
+    <Compile Include="Controllers\IntCloudSettingsController.cs" />
     <Compile Include="Controllers\TrnPOSSalesController.cs" />
     <Compile Include="Controllers\TrnPOSSalesLineController.cs" />
     <Compile Include="Data\easyposdb.designer.cs">
@@ -94,6 +95,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>easyposdb.dbml</DependentUpon>
     </Compile>
+    <Compile Include="EasyFISIntegration\Controllers\ISPOSMstCustomerController.cs" />
+    <Compile Include="EasyFISIntegration\Controllers\ISPOSMstItemController.cs" />
+    <Compile Include="EasyFISIntegration\Controllers\ISPOSMstSupplierController.cs" />
+    <Compile Include="EasyFISIntegration\Controllers\ISPOSTrnCollectionController.cs" />
+    <Compile Include="EasyFISIntegration\Controllers\ISPOSTrnItemPriceController.cs" />
+    <Compile Include="EasyFISIntegration\Controllers\ISPOSTrnReceivingReceiptController.cs" />
+    <Compile Include="EasyFISIntegration\Controllers\ISPOSTrnSalesReturnController.cs" />
+    <Compile Include="EasyFISIntegration\Controllers\ISPOSTrnStockInController.cs" />
+    <Compile Include="EasyFISIntegration\Controllers\ISPOSTrnStockOutController.cs" />
+    <Compile Include="EasyFISIntegration\Controllers\ISPOSTrnStockTransferInController.cs" />
+    <Compile Include="EasyFISIntegration\Controllers\ISPOSTrnStockTransferOutController.cs" />
+    <Compile Include="EasyFISIntegration\Entities\ISPOSMstCustomer.cs" />
+    <Compile Include="EasyFISIntegration\Entities\ISPOSMstItem.cs" />
+    <Compile Include="EasyFISIntegration\Entities\ISPOSMstItemPrice.cs" />
+    <Compile Include="EasyFISIntegration\Entities\ISPOSMstSupplier.cs" />
+    <Compile Include="EasyFISIntegration\Entities\ISPOSTrnArticlePrice.cs" />
+    <Compile Include="EasyFISIntegration\Entities\ISPOSTrnCollection.cs" />
+    <Compile Include="EasyFISIntegration\Entities\ISPOSTrnCollectionLines.cs" />
+    <Compile Include="EasyFISIntegration\Entities\ISPOSTrnReceivingReceipt.cs" />
+    <Compile Include="EasyFISIntegration\Entities\ISPOSTrnReceivingReceiptItem.cs" />
+    <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockIn.cs" />
+    <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockInItem.cs" />
+    <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockOut.cs" />
+    <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockOutItem.cs" />
+    <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransfer.cs" />
+    <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransferItem.cs" />
     <Compile Include="Entities\DgvItemListItemEntity.cs" />
     <Compile Include="Entities\DgvSalesDetailSalesLineEntity.cs" />
     <Compile Include="Entities\DgvSalesDetailSearchItemEntity.cs" />
@@ -101,6 +128,7 @@
     <Compile Include="Entities\DgvSalesListSalesEntity.cs" />
     <Compile Include="Entities\DgvUserDetailUserRightsEntity.cs" />
     <Compile Include="Entities\DgvUserListUserEntity.cs" />
+    <Compile Include="Entities\IntCloudSettings.cs" />
     <Compile Include="Entities\MstCustomer.cs" />
     <Compile Include="Entities\MstDiscount.cs" />
     <Compile Include="Entities\MstItem.cs" />
@@ -152,6 +180,12 @@
     </Compile>
     <Compile Include="Forms\Software\RepPOSReport\RepPOSReportForm.Designer.cs">
       <DependentUpon>RepPOSReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\SysSettings\SysSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\SysSettings\SysSettingsForm.Designer.cs">
+      <DependentUpon>SysSettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\SysSoftwareForm.cs">
       <SubType>Form</SubType>
@@ -241,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstUser\MstUserListForm.resx">
       <DependentUpon>MstUserListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\SysSettings\SysSettingsForm.resx">
+      <DependentUpon>SysSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailTenderMoreInformationForm.resx">
       <DependentUpon>TrnSalesDetailTenderMoreInformationForm.cs</DependentUpon>
@@ -333,10 +370,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EasyFISIntegration\Controllers\" />
-    <Folder Include="EasyFISIntegration\Entities\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="easypos cropped.ico" />
     <Content Include="Resources\Images\Backgrounds\coffee.jpeg" />
@@ -361,6 +395,7 @@
     <Content Include="Resources\Images\Others\color theme.jpg" />
     <Content Include="Resources\Images\Products\easyapp.jpg" />
     <Content Include="Resources\Images\Products\easyfis.jpg" />
+    <None Include="Resources\Images\Products\easyfis_logo.jpg" />
     <Content Include="Resources\Images\Products\easypay.jpg" />
     <Content Include="Resources\Images\Products\easypos.jpg" />
   </ItemGroup>
