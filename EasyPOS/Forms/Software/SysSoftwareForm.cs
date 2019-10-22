@@ -17,7 +17,18 @@ namespace EasyPOS.Forms.Software
             InitializeComponent();
             InitializeDefaultForm();
 
-            Text = "Easy POS - " + Modules.SysCurrentModule.GetCurrentSettings().CurrentDate + " - " + Modules.SysCurrentModule.GetCurrentSettings().CurrentUserName;
+            String terminal = "";
+            Controllers.SysSoftwareController sysSoftwareController = new Controllers.SysSoftwareController();
+            if (String.IsNullOrEmpty(sysSoftwareController.GetCurrentTerminal(Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId))) == false)
+            {
+                terminal = sysSoftwareController.GetCurrentTerminal(Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId));
+            }
+
+            String currentDate = Modules.SysCurrentModule.GetCurrentSettings().CurrentDate + "\t\t";
+            String currentUserName = Modules.SysCurrentModule.GetCurrentSettings().CurrentUserName + "\t\t";
+            String currentTerminal = terminal;
+
+            labelCurrentUser.Text = "Date: " + currentDate + "     User: " + currentUserName + "     Terminal: " + currentTerminal;
         }
 
         public TabPage tabPageItemList = new TabPage { Name = "tabPageItemList", Text = "Item List" };

@@ -39,9 +39,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.labelCurrentUser = new System.Windows.Forms.Label();
             this.tabControlSoftware.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlSoftware
@@ -51,7 +54,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlSoftware.Controls.Add(this.tabPageSysMenu);
             this.tabControlSoftware.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tabControlSoftware.Location = new System.Drawing.Point(0, 2);
+            this.tabControlSoftware.Location = new System.Drawing.Point(0, 40);
             this.tabControlSoftware.Margin = new System.Windows.Forms.Padding(0);
             this.tabControlSoftware.Name = "tabControlSoftware";
             this.tabControlSoftware.Padding = new System.Drawing.Point(0, 0);
@@ -81,7 +84,7 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 738);
+            this.panel1.Location = new System.Drawing.Point(0, 776);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1408, 121);
             this.panel1.TabIndex = 9;
@@ -177,12 +180,32 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Developer: Easyfis Corporation";
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.labelCurrentUser);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1408, 37);
+            this.panel2.TabIndex = 10;
+            // 
+            // labelCurrentUser
+            // 
+            this.labelCurrentUser.AutoSize = true;
+            this.labelCurrentUser.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.labelCurrentUser.Location = new System.Drawing.Point(12, 10);
+            this.labelCurrentUser.Name = "labelCurrentUser";
+            this.labelCurrentUser.Size = new System.Drawing.Size(0, 20);
+            this.labelCurrentUser.TabIndex = 0;
+            // 
             // SysSoftwareForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1408, 859);
+            this.ClientSize = new System.Drawing.Size(1408, 897);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControlSoftware);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -195,6 +218,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -211,5 +236,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelLastChange;
         private System.Windows.Forms.TextBox textBoxLastChange;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label labelCurrentUser;
     }
 }
