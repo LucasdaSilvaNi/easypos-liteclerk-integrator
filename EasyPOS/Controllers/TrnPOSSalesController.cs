@@ -429,10 +429,10 @@ namespace EasyPOS.Controllers
         // ======================================
         // Tender Sales - Dropdown List Customers
         // ======================================
-        public List<Entities.MstCustomer> TenderSalesDropdownListCustomer()
+        public List<Entities.MstCustomerEntity> TenderSalesDropdownListCustomer()
         {
             var customers = from d in db.MstCustomers
-                            select new Entities.MstCustomer
+                            select new Entities.MstCustomerEntity
                             {
                                 Id = d.Id,
                                 Customer = d.Customer,

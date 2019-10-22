@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    public class MstCustomer
+    public class MstCustomerEntity
     {
         public Int32 Id { get; set; }
         public String Customer { get; set; }

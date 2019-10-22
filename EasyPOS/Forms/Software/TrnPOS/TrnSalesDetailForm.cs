@@ -240,7 +240,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
                 else
                 {
-                    Entities.MstItem detailItem = trnPOSSalesLineController.DetailItem(textBoxBarcode.Text);
+                    Entities.MstItemEntity detailItem = trnPOSSalesLineController.DetailItem(textBoxBarcode.Text);
                     if (detailItem != null)
                     {
                         Int32 ItemId = detailItem.Id;

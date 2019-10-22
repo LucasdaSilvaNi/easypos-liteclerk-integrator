@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    public class MstItem
+    public class MstItemEntity
     {
         public Int32 Id { get; set; }
         public String ItemCode { get; set; }
@@ -25,6 +25,7 @@ namespace EasyPOS.Entities
         public Int32 UnitId { get; set; }
         public String Unit { get; set; }
         public Int32 DefaultSupplierId { get; set; }
+        public Decimal Cost { get; set; }
         public Decimal MarkUp { get; set; }
         public Decimal Price { get; set; }
         public String ImagePath { get; set; }
