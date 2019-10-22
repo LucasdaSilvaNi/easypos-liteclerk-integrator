@@ -76,6 +76,7 @@
     <Compile Include="Controllers\RepPOSReportController.cs" />
     <Compile Include="Controllers\SysLoginController.cs" />
     <Compile Include="Controllers\IntCloudSettingsController.cs" />
+    <Compile Include="Controllers\SysSoftwareController.cs" />
     <Compile Include="Controllers\TrnPOSSalesController.cs" />
     <Compile Include="Controllers\TrnPOSSalesLineController.cs" />
     <Compile Include="Controllers\TrnStockInController.cs" />
@@ -145,11 +146,29 @@
     <Compile Include="Forms\Account\SysLogin\SysLoginForm.Designer.cs">
       <DependentUpon>SysLoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\MstCustomer\MstCustomerDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\MstCustomer\MstCustomerDetailForm.Designer.cs">
+      <DependentUpon>MstCustomerDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\MstCustomer\MstCustomerListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\MstCustomer\MstCustomerListForm.Designer.cs">
+      <DependentUpon>MstCustomerListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\MstDiscounting\MstDiscountingListForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Software\MstDiscounting\MstDiscountingListForm.Designer.cs">
       <DependentUpon>MstDiscountingListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\MstItem\MstItemDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\MstItem\MstItemDetailForm.Designer.cs">
+      <DependentUpon>MstItemDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\MstItem\MstItemListForm.cs">
       <SubType>Form</SubType>
@@ -174,6 +193,12 @@
     </Compile>
     <Compile Include="Forms\Software\RepPOSReport\RepPOSReportForm.Designer.cs">
       <DependentUpon>RepPOSReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\SalesReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\SalesReportForm.Designer.cs">
+      <DependentUpon>SalesReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\SysSettings\SysSettingsForm.cs">
       <SubType>Form</SubType>
