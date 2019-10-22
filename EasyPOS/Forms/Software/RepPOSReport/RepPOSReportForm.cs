@@ -102,7 +102,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             }
             else
             {
-                MessageBox.Show("Please select a report.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select a report.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

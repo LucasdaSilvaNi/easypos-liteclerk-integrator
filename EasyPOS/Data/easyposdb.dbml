@@ -8,6 +8,8 @@
       <Column Name="PostUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="PostSupplierId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="UseItemPrice" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Domain" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="LogFileLocation" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Association Name="MstSupplier_IntCloudSetting" Member="MstSupplier" ThisKey="PostSupplierId" OtherKey="Id" Type="MstSupplier" IsForeignKey="true" />
       <Association Name="MstUser_IntCloudSetting" Member="MstUser" ThisKey="PostUserId" OtherKey="Id" Type="MstUser" IsForeignKey="true" />
     </Type>

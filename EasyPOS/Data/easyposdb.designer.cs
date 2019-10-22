@@ -554,6 +554,10 @@ namespace EasyPOS.Data
 		
 		private bool _UseItemPrice;
 		
+		private string _Domain;
+		
+		private string _LogFileLocation;
+		
 		private EntityRef<MstSupplier> _MstSupplier;
 		
 		private EntityRef<MstUser> _MstUser;
@@ -574,6 +578,10 @@ namespace EasyPOS.Data
     partial void OnPostSupplierIdChanged();
     partial void OnUseItemPriceChanging(bool value);
     partial void OnUseItemPriceChanged();
+    partial void OnDomainChanging(string value);
+    partial void OnDomainChanged();
+    partial void OnLogFileLocationChanging(string value);
+    partial void OnLogFileLocationChanged();
     #endregion
 		
 		public IntCloudSetting()
@@ -707,6 +715,46 @@ namespace EasyPOS.Data
 					this._UseItemPrice = value;
 					this.SendPropertyChanged("UseItemPrice");
 					this.OnUseItemPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Domain", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string Domain
+		{
+			get
+			{
+				return this._Domain;
+			}
+			set
+			{
+				if ((this._Domain != value))
+				{
+					this.OnDomainChanging(value);
+					this.SendPropertyChanging();
+					this._Domain = value;
+					this.SendPropertyChanged("Domain");
+					this.OnDomainChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogFileLocation", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string LogFileLocation
+		{
+			get
+			{
+				return this._LogFileLocation;
+			}
+			set
+			{
+				if ((this._LogFileLocation != value))
+				{
+					this.OnLogFileLocationChanging(value);
+					this.SendPropertyChanging();
+					this._LogFileLocation = value;
+					this.SendPropertyChanged("LogFileLocation");
+					this.OnLogFileLocationChanged();
 				}
 			}
 		}

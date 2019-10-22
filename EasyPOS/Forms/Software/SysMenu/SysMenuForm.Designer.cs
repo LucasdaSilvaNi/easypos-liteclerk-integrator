@@ -33,7 +33,7 @@
             this.imageListMenuIcons = new System.Windows.Forms.ImageList(this.components);
             this.buttonUser = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.buttonSettings = new System.Windows.Forms.Button();
             this.buttonPOSReport = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
@@ -109,24 +109,25 @@
             this.button15.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button15.UseVisualStyleBackColor = false;
             // 
-            // button14
+            // buttonSettings
             // 
-            this.button14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button14.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button14.FlatAppearance.BorderSize = 0;
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.button14.ForeColor = System.Drawing.Color.White;
-            this.button14.ImageKey = "Settings.png";
-            this.button14.ImageList = this.imageListMenuIcons;
-            this.button14.Location = new System.Drawing.Point(711, 139);
-            this.button14.Name = "button14";
-            this.button14.Padding = new System.Windows.Forms.Padding(10);
-            this.button14.Size = new System.Drawing.Size(227, 121);
-            this.button14.TabIndex = 16;
-            this.button14.Text = "\r\nSettings";
-            this.button14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button14.UseVisualStyleBackColor = false;
+            this.buttonSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonSettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonSettings.FlatAppearance.BorderSize = 0;
+            this.buttonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSettings.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonSettings.ForeColor = System.Drawing.Color.White;
+            this.buttonSettings.ImageKey = "Settings.png";
+            this.buttonSettings.ImageList = this.imageListMenuIcons;
+            this.buttonSettings.Location = new System.Drawing.Point(711, 139);
+            this.buttonSettings.Name = "buttonSettings";
+            this.buttonSettings.Padding = new System.Windows.Forms.Padding(10);
+            this.buttonSettings.Size = new System.Drawing.Size(227, 121);
+            this.buttonSettings.TabIndex = 16;
+            this.buttonSettings.Text = "\r\nSettings";
+            this.buttonSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonSettings.UseVisualStyleBackColor = false;
+            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
             // 
             // buttonPOSReport
             // 
@@ -386,7 +387,7 @@
             this.panel1.Controls.Add(this.buttonPOS);
             this.panel1.Controls.Add(this.button15);
             this.panel1.Controls.Add(this.buttonDiscounting);
-            this.panel1.Controls.Add(this.button14);
+            this.panel1.Controls.Add(this.buttonSettings);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.buttonPOSReport);
             this.panel1.Controls.Add(this.button5);
@@ -436,7 +437,7 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button buttonPOSReport;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button buttonSettings;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button buttonUser;
         private System.Windows.Forms.Panel panel1;

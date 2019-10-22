@@ -41,7 +41,7 @@ namespace EasyPOS.Forms.Account.SysLogin
             }
             else
             {
-                MessageBox.Show(login[0], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(login[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
