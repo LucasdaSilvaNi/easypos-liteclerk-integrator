@@ -80,7 +80,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 return;
             }
 
-            var selectedItemCustomer = (Entities.MstCustomer)comboBoxTenderSalesCustomer.SelectedItem;
+            var selectedItemCustomer = (Entities.MstCustomerEntity)comboBoxTenderSalesCustomer.SelectedItem;
             if (selectedItemCustomer != null)
             {
                 customerName = selectedItemCustomer.Customer;
@@ -129,7 +129,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             if (e.KeyCode == Keys.Enter)
             {
-                List<Entities.MstCustomer> customers = (List<Entities.MstCustomer>)comboBoxTenderSalesCustomer.DataSource;
+                List<Entities.MstCustomerEntity> customers = (List<Entities.MstCustomerEntity>)comboBoxTenderSalesCustomer.DataSource;
                 var customer = from d in customers
                                where d.CustomerCode == textBoxCustomerCode.Text
                                select d;

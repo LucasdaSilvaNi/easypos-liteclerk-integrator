@@ -102,13 +102,13 @@ namespace EasyPOS.Controllers
         // ==================
         // List - Search Item
         // ==================
-        public List<Entities.MstItem> ListSearchItem(String filter)
+        public List<Entities.MstItemEntity> ListSearchItem(String filter)
         {
             var items = from d in db.MstItems
                         where d.BarCode.Contains(filter)
                         || d.ItemDescription.Contains(filter)
                         || d.GenericName.Contains(filter)
-                        select new Entities.MstItem
+                        select new Entities.MstItemEntity
                         {
                             Id = d.Id,
                             BarCode = d.BarCode,
@@ -129,11 +129,11 @@ namespace EasyPOS.Controllers
         // =============
         // Detail - Item
         // =============
-        public Entities.MstItem DetailItem(String barcode)
+        public Entities.MstItemEntity DetailItem(String barcode)
         {
             var item = from d in db.MstItems
                        where d.BarCode.Equals(barcode)
-                       select new Entities.MstItem
+                       select new Entities.MstItemEntity
                        {
                            Id = d.Id,
                            BarCode = d.BarCode,

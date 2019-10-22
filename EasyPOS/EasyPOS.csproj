@@ -49,18 +49,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>582261A40F5B49105862369D365F68F04291A076</ManifestCertificateThumbprint>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestKeyFile>EasyPOS_TemporaryKey.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignManifests>true</SignManifests>
-  </PropertyGroup>
-  <PropertyGroup>
     <ApplicationIcon>easypos cropped.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
@@ -91,6 +79,8 @@
     <Compile Include="Controllers\SysSoftwareController.cs" />
     <Compile Include="Controllers\TrnPOSSalesController.cs" />
     <Compile Include="Controllers\TrnPOSSalesLineController.cs" />
+    <Compile Include="Controllers\TrnStockInController.cs" />
+    <Compile Include="Controllers\TrnStockOutController.cs" />
     <Compile Include="Data\easyposdb.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -129,10 +119,11 @@
     <Compile Include="Entities\DgvSalesListSalesEntity.cs" />
     <Compile Include="Entities\DgvUserDetailUserRightsEntity.cs" />
     <Compile Include="Entities\DgvUserListUserEntity.cs" />
+    <Compile Include="Entities\MstCustomerEntity.cs" />
     <Compile Include="Entities\IntCloudSettings.cs" />
     <Compile Include="Entities\MstCustomer.cs" />
     <Compile Include="Entities\MstDiscount.cs" />
-    <Compile Include="Entities\MstItem.cs" />
+    <Compile Include="Entities\MstItemEntity.cs" />
     <Compile Include="Entities\MstItemInventoryEntity.cs" />
     <Compile Include="Entities\MstPayType.cs" />
     <Compile Include="Entities\MstTerm.cs" />
@@ -146,6 +137,10 @@
     <Compile Include="Entities\TrnCollectionLineEntity.cs" />
     <Compile Include="Entities\TrnSalesEntity.cs" />
     <Compile Include="Entities\TrnSalesLineEntity.cs" />
+    <Compile Include="Entities\TrnStockInEntity.cs" />
+    <Compile Include="Entities\TrnStockInLineEntity.cs" />
+    <Compile Include="Entities\TrnStockOutEntity.cs" />
+    <Compile Include="Entities\TrnStockOutLineEntity.cs" />
     <Compile Include="Forms\Account\SysLogin\SysLoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -374,7 +369,6 @@
       <LastGenOutput>easyposdb.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="EasyPOS_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
