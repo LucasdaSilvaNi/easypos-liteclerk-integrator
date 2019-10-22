@@ -30,6 +30,7 @@ namespace EasyPOS.Reports
             filterSalesAgentId = salesAgentId;
 
             printDocumentXReadingReport.DefaultPageSettings.PaperSize = new PaperSize("X Reading Report", 255, 1000);
+            XReadingDataSource();
         }
 
         private void buttonPrint_Click(object sender, EventArgs e)
@@ -51,6 +52,8 @@ namespace EasyPOS.Reports
 
         public void SaveTextFile()
         {
+            var dataSource = xReadingReportEntity;
+
             // ==============
             // System Current
             // ==============
@@ -61,75 +64,87 @@ namespace EasyPOS.Reports
             String zReadingReportTitle = "X Reading Report";
             String collectionDateText = DateTime.Today.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
 
-            Decimal totalGrossSales = xReadingReportEntity.TotalGrossSales;
-            Decimal totalRegularDiscount = xReadingReportEntity.TotalRegularDiscount;
-            Decimal totalSeniorDiscount = xReadingReportEntity.TotalSeniorDiscount;
-            Decimal totalPWDDiscount = xReadingReportEntity.TotalPWDDiscount;
-            Decimal totalSalesReturn = xReadingReportEntity.TotalSalesReturn;
-            Decimal totalNetSales = xReadingReportEntity.TotalNetSales;
+            Decimal totalGrossSales = dataSource.TotalGrossSales;
+            Decimal totalRegularDiscount = dataSource.TotalRegularDiscount;
+            Decimal totalSeniorDiscount = dataSource.TotalSeniorDiscount;
+            Decimal totalPWDDiscount = dataSource.TotalPWDDiscount;
+            Decimal totalSalesReturn = dataSource.TotalSalesReturn;
+            Decimal totalNetSales = dataSource.TotalNetSales;
 
-            Decimal totalCollection = xReadingReportEntity.TotalCollection;
+            Decimal totalCollection = dataSource.TotalCollection;
 
-            Decimal totalVATSales = xReadingReportEntity.TotalVATSales;
-            Decimal totalVATAmount = xReadingReportEntity.TotalVATAmount;
-            Decimal totalNonVAT = xReadingReportEntity.TotalNonVAT;
-            Decimal totalVATExclusive = xReadingReportEntity.TotalVATExclusive;
-            Decimal totalVATExempt = xReadingReportEntity.TotalVATExempt;
-            Decimal totalVATZeroRated = xReadingReportEntity.TotalVATZeroRated;
+            Decimal totalVATSales = dataSource.TotalVATSales;
+            Decimal totalVATAmount = dataSource.TotalVATAmount;
+            Decimal totalNonVAT = dataSource.TotalNonVAT;
+            Decimal totalVATExclusive = dataSource.TotalVATExclusive;
+            Decimal totalVATExempt = dataSource.TotalVATExempt;
+            Decimal totalVATZeroRated = dataSource.TotalVATZeroRated;
 
-            String counterIdStart = xReadingReportEntity.CounterIdStart;
-            String counterIdEnd = xReadingReportEntity.CounterIdEnd;
+            String counterIdStart = dataSource.CounterIdStart;
+            String counterIdEnd = dataSource.CounterIdEnd;
 
-            Decimal totalCancelledTrnsactionCount = xReadingReportEntity.TotalCancelledTrnsactionCount;
-            Decimal totalCancelledAmount = xReadingReportEntity.TotalCancelledAmount;
+            Decimal totalCancelledTrnsactionCount = dataSource.TotalCancelledTrnsactionCount;
+            Decimal totalCancelledAmount = dataSource.TotalCancelledAmount;
 
-            Decimal totalNumberOfTransactions = xReadingReportEntity.TotalNumberOfTransactions;
-            Decimal totalNumberOfSKU = xReadingReportEntity.TotalNumberOfSKU;
-            Decimal totalQuantity = xReadingReportEntity.TotalQuantity;
+            Decimal totalNumberOfTransactions = dataSource.TotalNumberOfTransactions;
+            Decimal totalNumberOfSKU = dataSource.TotalNumberOfSKU;
+            Decimal totalQuantity = dataSource.TotalQuantity;
 
-            Decimal totalPreviousReading = xReadingReportEntity.TotalPreviousReading;
-            Decimal runningTotal = xReadingReportEntity.RunningTotal;
+            Decimal totalPreviousReading = dataSource.TotalPreviousReading;
+            Decimal runningTotal = dataSource.RunningTotal;
+
+            String collectionLineStringFile = "";
+            var collectionLines = dataSource.CollectionLines;
+            if (collectionLines.Any())
+            {
+                collectionLineStringFile = "-----------------------------------------------------\r\n\n";
+                foreach (var collectionLine in collectionLines)
+                {
+                    collectionLineStringFile += String.Format("{0,-20} {1, -5}", collectionLine.PayType, "\t\t" + collectionLine.Amount.ToString("#,##0.00")) + "\r\n\n";
+                }
+            }
 
             String stringFile = companyName + "\r\n\n" +
                 companyAddress + "\r\n\n" +
                 zReadingReportTitle + "\r\n\n" +
                 collectionDateText + "\r\n\n" +
-                "-----------------------------------------------------" + "\r\n\n" +
+                "-----------------------------------------------------\r\n\n" +
                 "Gross Sales: \t\t" + totalGrossSales.ToString("#,##0.00") + "\r\n\n" +
                 "Regular Discount: \t\t" + totalRegularDiscount.ToString("#,##0.00") + "\r\n\n" +
                 "Senior Discount: \t\t" + totalSeniorDiscount.ToString("#,##0.00") + "\r\n\n" +
                 "PWD Discount: \t\t" + totalPWDDiscount.ToString("#,##0.00") + "\r\n\n" +
                 "Sales Return: \t\t" + totalSalesReturn.ToString("#,##0.00") + "\r\n\n" +
                 "Net Sales: \t\t" + totalNetSales.ToString("#,##0.00") + "\r\n\n" +
-                "-----------------------------------------------------" + "\r\n\n" +
+                collectionLineStringFile +
+                "-----------------------------------------------------\r\n\n" +
                 "Total Collection: \t\t" + totalCollection.ToString("#,##0.00") + "\r\n\n" +
-                "-----------------------------------------------------" + "\r\n\n" +
+                "-----------------------------------------------------\r\n\n" +
                 "VAT Sales: \t\t" + totalVATSales.ToString("#,##0.00") + "\r\n\n" +
                 "VAT Amount: \t\t" + totalVATAmount.ToString("#,##0.00") + "\r\n\n" +
                 "Non VAT: \t\t" + totalNonVAT.ToString("#,##0.00") + "\r\n\n" +
                 "VAT Exclusive: \t\t" + totalVATExclusive.ToString("#,##0.00") + "\r\n\n" +
                 "VAT Exempt: \t\t" + totalVATExempt.ToString("#,##0.00") + "\r\n\n" +
                 "VAT Zero Rated: \t\t" + totalVATZeroRated.ToString("#,##0.00") + "\r\n\n" +
-                "-----------------------------------------------------" + "\r\n\n" +
+                "-----------------------------------------------------\r\n\n" +
                 "Counter ID Start: \t\t" + counterIdStart + "\r\n\n" +
                 "Counter ID End: \t\t" + counterIdEnd + "\r\n\n" +
-                "-----------------------------------------------------" + "\r\n\n" +
+                "-----------------------------------------------------\r\n\n" +
                 "Cancelled Tx.: \t\t" + totalCancelledTrnsactionCount.ToString("#,##0.00") + "\r\n\n" +
                 "Cancelled Amount.: \t" + totalCancelledAmount.ToString("#,##0.00") + "\r\n\n" +
-                "-----------------------------------------------------" + "\r\n\n" +
+                "-----------------------------------------------------\r\n\n" +
                 "No. of Transactions: \t" + totalNumberOfTransactions.ToString("#,##0.00") + "\r\n\n" +
                 "No. of SKU: \t\t" + totalNumberOfSKU.ToString("#,##0.00") + "\r\n\n" +
                 "Total Quantity: \t\t" + totalNumberOfSKU.ToString("#,##0.00") + "\r\n\n" +
-                "-----------------------------------------------------" + "\r\n\n" +
+                "-----------------------------------------------------\r\n\n" +
                 "Previous Reading: \t\t" + totalPreviousReading.ToString("#,##0.00") + "\r\n\n" +
                 "Running Total: \t\t" + runningTotal.ToString("#,##0.00") + "\r\n\n" +
-                "-----------------------------------------------------" + "\r\n\n" +
+                "-----------------------------------------------------\r\n\n" +
                 "X Reading End" + "\r\n\n";
 
             System.IO.File.WriteAllText(@"D:\X Reading Report " + DateTime.Now.ToString("yyyyMMddhhmm") + ".txt", stringFile);
         }
 
-        public Entities.RepXReadingReportEntity XReadingDataSource()
+        public void XReadingDataSource()
         {
             Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
 
@@ -318,13 +333,11 @@ namespace EasyPOS.Reports
             }
 
             xReadingReportEntity = repXReadingReportEntity;
-
-            return repXReadingReportEntity;
         }
 
         private void printDocumentXReadingReport_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            var dataSource = XReadingDataSource();
+            var dataSource = xReadingReportEntity;
 
             // =============
             // Font Settings
