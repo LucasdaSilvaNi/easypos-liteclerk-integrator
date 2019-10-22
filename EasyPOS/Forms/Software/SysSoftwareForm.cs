@@ -39,6 +39,7 @@ namespace EasyPOS.Forms.Software
         public TabPage tabPageDiscountingList = new TabPage { Name = "tabPageDiscountingList", Text = "Discounting List" };
         public TabPage tabPagePOSReport = new TabPage { Name = "tabPagePOSReport", Text = "POS Report" };
         public TabPage tabPageSettings = new TabPage { Name = "tabPageSettings", Text = "Settings" };
+        public TabPage tabPageSalesReports = new TabPage { Name = "tabPageSalesReports ", Text = "Sales Report" };
 
         public MstItem.MstItemListForm mstItemListForm = null;
         public MstUser.MstUserListForm mstUserListForm = null;
@@ -48,6 +49,7 @@ namespace EasyPOS.Forms.Software
         public TrnPOS.TrnSalesDetailForm trnSalesDetailForm = null;
         public RepPOSReport.RepPOSReportForm repPOSReportForm = null;
         public SysSettings.SysSettingsForm sysSettingsForm = null;
+        public RepSalesReport.RepSalesReportForm repSalesReportForm = null;
 
         public void InitializeDefaultForm()
         {
@@ -60,6 +62,8 @@ namespace EasyPOS.Forms.Software
 
             tabPageSysMenu.Controls.Add(sysMenuForm);
         }
+
+        
 
         public void AddTabPageItemList()
         {
@@ -286,6 +290,30 @@ namespace EasyPOS.Forms.Software
             {
                 labelLastChange.Visible = false;
                 textBoxLastChange.Visible = false;
+            }
+        }
+
+        public void AddTabPageSalesReport()
+        {
+            tabPageSalesReports.Controls.Remove(repSalesReportForm);
+
+            repSalesReportForm = new RepSalesReport.RepSalesReportForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageSalesReports.Controls.Add(repSalesReportForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageSalesReports) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageSalesReports);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageSalesReports);
+                tabControlSoftware.SelectTab(tabPageSalesReports);
             }
         }
     }

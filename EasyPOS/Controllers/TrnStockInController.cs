@@ -26,9 +26,9 @@ namespace EasyPOS.Controllers
             return result;
         }
 
-        // ==========
-        // List Items
-        // ==========
+        // ============
+        // StockIn List
+        // ============
         public List<Entities.TrnStockInEntity> ListStockIn(String filter)
         {
             var stockIns = from d in db.TrnStockIns

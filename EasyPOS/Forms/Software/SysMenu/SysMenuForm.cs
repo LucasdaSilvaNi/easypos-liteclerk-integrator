@@ -49,5 +49,10 @@ namespace EasyPOS.Forms.Software.SysMenu
         {
             sysSoftwareForm.AddTabPageSettings();
         }
+
+        private void buttonSalesReport_OnClick(object sender, EventArgs e)
+        {
+            sysSoftwareForm.AddTabPageSalesReport();
+        }
     }
 }

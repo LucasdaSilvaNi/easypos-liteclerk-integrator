@@ -38,7 +38,7 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.buttonSalesReport = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -206,24 +206,25 @@
             this.button10.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button10.UseVisualStyleBackColor = false;
             // 
-            // button9
+            // buttonSalesReport
             // 
-            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button9.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.ImageKey = "Reports.png";
-            this.button9.ImageList = this.imageListMenuIcons;
-            this.button9.Location = new System.Drawing.Point(478, 12);
-            this.button9.Name = "button9";
-            this.button9.Padding = new System.Windows.Forms.Padding(10);
-            this.button9.Size = new System.Drawing.Size(227, 121);
-            this.button9.TabIndex = 11;
-            this.button9.Text = "\r\nSales Report";
-            this.button9.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button9.UseVisualStyleBackColor = false;
+            this.buttonSalesReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonSalesReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonSalesReport.FlatAppearance.BorderSize = 0;
+            this.buttonSalesReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSalesReport.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonSalesReport.ForeColor = System.Drawing.Color.White;
+            this.buttonSalesReport.ImageKey = "Reports.png";
+            this.buttonSalesReport.ImageList = this.imageListMenuIcons;
+            this.buttonSalesReport.Location = new System.Drawing.Point(478, 12);
+            this.buttonSalesReport.Name = "buttonSalesReport";
+            this.buttonSalesReport.Padding = new System.Windows.Forms.Padding(10);
+            this.buttonSalesReport.Size = new System.Drawing.Size(227, 121);
+            this.buttonSalesReport.TabIndex = 11;
+            this.buttonSalesReport.Text = "\r\nSales Report";
+            this.buttonSalesReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonSalesReport.UseVisualStyleBackColor = false;
+            this.buttonSalesReport.Click += new System.EventHandler(this.buttonSalesReport_OnClick);
             // 
             // button8
             // 
@@ -397,7 +398,7 @@
             this.panel1.Controls.Add(this.button7);
             this.panel1.Controls.Add(this.button10);
             this.panel1.Controls.Add(this.button8);
-            this.panel1.Controls.Add(this.button9);
+            this.panel1.Controls.Add(this.buttonSalesReport);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -432,7 +433,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button buttonSalesReport;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
