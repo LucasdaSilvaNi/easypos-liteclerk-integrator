@@ -21,6 +21,8 @@ namespace EasyPOS.Controllers
             var customers = from d in db.MstCustomers
                             where d.Customer.Contains(filter)
                             || d.CustomerCode.Contains(filter)
+                            || d.ContactNumber.Contains(filter)
+                            || d.Address.Contains(filter)
                             select new Entities.MstCustomerEntity
                             {
                                 Id = d.Id,
