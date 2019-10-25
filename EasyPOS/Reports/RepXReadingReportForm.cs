@@ -88,7 +88,11 @@ namespace EasyPOS.Reports
             repXReadingReportEntity.Date = filterDate.ToShortDateString();
 
             var salesLines = from d in db.TrnSalesLines
-                             where d.TrnSale.TrnCollections.Where(s => s.TerminalId == filterTerminalId && s.CollectionDate == filterDate && s.IsLocked == true && s.IsCancelled == false).Count() > 0
+                             where d.TrnSale.TrnCollections.Where(s => s.TerminalId == filterTerminalId 
+                             && s.CollectionDate == filterDate
+                             && s.PreparedBy == filterSalesAgentId
+                             && s.IsLocked == true 
+                             && s.IsCancelled == false).Count() > 0
                              select d;
 
             var currentCollections = from d in db.TrnCollections
