@@ -150,9 +150,9 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(151, 41);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(227, 20);
+            this.label2.Size = new System.Drawing.Size(154, 20);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Version: 1.201910091506.NOR";
+            this.label2.Text = "Version: 1.20191025";
             // 
             // label4
             // 

@@ -163,7 +163,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             Decimal taxAmount = 0;
             if (taxRate > 0)
             {
-                taxAmount = amount * (taxRate / 100);
+                taxAmount = (amount / (1 + (taxRate / 100))) * (taxRate / 100);
             }
 
             textBoxSalesLineDiscountAmount.Text = discountAmount.ToString("#,##0.00");

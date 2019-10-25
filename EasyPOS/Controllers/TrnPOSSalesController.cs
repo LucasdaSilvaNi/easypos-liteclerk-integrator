@@ -298,11 +298,14 @@ namespace EasyPOS.Controllers
                 }
 
                 String collectionNumber = "0000000001";
-                var lastSales = from d in db.TrnSales.OrderByDescending(d => d.Id) select d;
-                if (lastSales.Any())
+                var lastCollection = from d in db.TrnCollections.OrderByDescending(d => d.Id)
+                                     where d.TerminalId == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId)
+                                     select d;
+
+                if (lastCollection.Any())
                 {
-                    Int32 newSalesNumber = Convert.ToInt32(lastSales.FirstOrDefault().SalesNumber) + 1;
-                    collectionNumber = FillLeadingZeroes(newSalesNumber, 10);
+                    Int32 newCollectionNumber = Convert.ToInt32(lastCollection.FirstOrDefault().CollectionNumber) + 1;
+                    collectionNumber = FillLeadingZeroes(newCollectionNumber, 10);
                 }
 
                 Data.TrnCollection newCollection = new Data.TrnCollection
