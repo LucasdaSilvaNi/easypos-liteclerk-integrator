@@ -39,10 +39,14 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.comboBoxSalesVAT = new System.Windows.Forms.ComboBox();
             this.dateTimePickerExpiryDate = new System.Windows.Forms.DateTimePicker();
             this.comboBoxDefaultSupplier = new System.Windows.Forms.ComboBox();
+            this.textBoxGenericName = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.comboBoxUnit = new System.Windows.Forms.ComboBox();
             this.textBoxLotNumber = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.textBoxRemarks = new System.Windows.Forms.TextBox();
             this.checkBoxIsPackage = new System.Windows.Forms.CheckBox();
             this.checkBoxIsInventory = new System.Windows.Forms.CheckBox();
@@ -67,10 +71,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBoxSalesVAT = new System.Windows.Forms.ComboBox();
-            this.textBoxGenericName = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.buttonLock = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
@@ -211,8 +211,16 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1368, 583);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Generail Information";
+            this.tabPage1.Text = "General Information";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxSalesVAT
+            // 
+            this.comboBoxSalesVAT.FormattingEnabled = true;
+            this.comboBoxSalesVAT.Location = new System.Drawing.Point(873, 101);
+            this.comboBoxSalesVAT.Name = "comboBoxSalesVAT";
+            this.comboBoxSalesVAT.Size = new System.Drawing.Size(451, 31);
+            this.comboBoxSalesVAT.TabIndex = 37;
             // 
             // dateTimePickerExpiryDate
             // 
@@ -230,6 +238,23 @@
             this.comboBoxDefaultSupplier.Size = new System.Drawing.Size(454, 31);
             this.comboBoxDefaultSupplier.TabIndex = 36;
             // 
+            // textBoxGenericName
+            // 
+            this.textBoxGenericName.Location = new System.Drawing.Point(873, 65);
+            this.textBoxGenericName.Name = "textBoxGenericName";
+            this.textBoxGenericName.Size = new System.Drawing.Size(214, 30);
+            this.textBoxGenericName.TabIndex = 7;
+            this.textBoxGenericName.TabStop = false;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(727, 104);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(90, 23);
+            this.label19.TabIndex = 4;
+            this.label19.Text = "Salels VAT:";
+            // 
             // comboBoxUnit
             // 
             this.comboBoxUnit.FormattingEnabled = true;
@@ -245,6 +270,15 @@
             this.textBoxLotNumber.Size = new System.Drawing.Size(214, 30);
             this.textBoxLotNumber.TabIndex = 34;
             this.textBoxLotNumber.TabStop = false;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(727, 68);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(123, 23);
+            this.label20.TabIndex = 6;
+            this.label20.Text = "Generic Name:";
             // 
             // textBoxRemarks
             // 
@@ -465,40 +499,6 @@
             this.label2.Size = new System.Drawing.Size(49, 23);
             this.label2.TabIndex = 6;
             this.label2.Text = "Alias:";
-            // 
-            // comboBoxSalesVAT
-            // 
-            this.comboBoxSalesVAT.FormattingEnabled = true;
-            this.comboBoxSalesVAT.Location = new System.Drawing.Point(873, 101);
-            this.comboBoxSalesVAT.Name = "comboBoxSalesVAT";
-            this.comboBoxSalesVAT.Size = new System.Drawing.Size(451, 31);
-            this.comboBoxSalesVAT.TabIndex = 37;
-            // 
-            // textBoxGenericName
-            // 
-            this.textBoxGenericName.Location = new System.Drawing.Point(873, 65);
-            this.textBoxGenericName.Name = "textBoxGenericName";
-            this.textBoxGenericName.Size = new System.Drawing.Size(214, 30);
-            this.textBoxGenericName.TabIndex = 7;
-            this.textBoxGenericName.TabStop = false;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(727, 104);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(90, 23);
-            this.label19.TabIndex = 4;
-            this.label19.Text = "Salels VAT:";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(727, 68);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(123, 23);
-            this.label20.TabIndex = 6;
-            this.label20.Text = "Generic Name:";
             // 
             // buttonLock
             // 

@@ -13,7 +13,7 @@ namespace EasyPOS.Entities
         public String Address { get; set; }
         public String ContactPerson { get; set; }
         public String ContactNumber { get; set; }
-        public String CreditLimit { get; set; }
+        public Decimal CreditLimit { get; set; }
         public Int32 TermId { get; set; }
         public String Term { get; set; }
         public String TIN { get; set; }

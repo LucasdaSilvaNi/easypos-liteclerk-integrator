@@ -28,7 +28,7 @@ namespace EasyPOS.Controllers
                                 Address = d.Address,
                                 ContactPerson = d.ContactPerson,
                                 ContactNumber = d.ContactNumber,
-                                CreditLimit = d.CreditLimit.ToString(),
+                                CreditLimit = d.CreditLimit,
                                 TermId = d.TermId,
                                 TIN = d.TIN,
                                 WithReward = d.WithReward,
@@ -62,7 +62,7 @@ namespace EasyPOS.Controllers
                                Address = d.Address,
                                ContactPerson = d.ContactPerson,
                                ContactNumber = d.ContactNumber,
-                               CreditLimit = d.CreditLimit.ToString(),
+                               CreditLimit = d.CreditLimit,
                                TermId = d.TermId,
                                TIN = d.TIN,
                                WithReward = d.WithReward,
@@ -80,6 +80,21 @@ namespace EasyPOS.Controllers
                            };
 
             return customer.FirstOrDefault();
+        }
+
+        // ====================
+        // Dropdown List - Term
+        // ====================
+        public List<Entities.MstTermEntity> DropdownListCustomerTerm()
+        {
+            var units = from d in db.MstTerms
+                        select new Entities.MstTermEntity
+                        {
+                            Id = d.Id,
+                            Term = d.Term
+                        };
+
+            return units.ToList();
         }
 
         // ============
@@ -172,9 +187,9 @@ namespace EasyPOS.Controllers
                     lockCustomer.RewardNumber = objCustomer.RewardNumber;
                     lockCustomer.RewardConversion = objCustomer.RewardConversion;
                     lockCustomer.AvailableReward = objCustomer.AvailableReward;
-                    lockCustomer.AccountId = objCustomer.AccountId;
-                    lockCustomer.UpdateUserId = objCustomer.UpdateUserId;
-                    lockCustomer.UpdateDateTime = DateTime.Today;
+                    lockCustomer.AccountId = 64;
+                    lockCustomer.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
+                    lockCustomer.UpdateDateTime = DateTime.Now;
                     lockCustomer.IsLocked = true;
                     lockCustomer.DefaultPriceDescription = objCustomer.DefaultPriceDescription;
                     lockCustomer.CustomerCode = objCustomer.CustomerCode;
@@ -214,7 +229,7 @@ namespace EasyPOS.Controllers
                 {
                     var unLockCustomer = customer.FirstOrDefault();
                     unLockCustomer.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
-                    unLockCustomer.UpdateDateTime = DateTime.Today;
+                    unLockCustomer.UpdateDateTime = DateTime.Now;
                     unLockCustomer.IsLocked = false;
                     db.SubmitChanges();
                 }
@@ -271,6 +286,5 @@ namespace EasyPOS.Controllers
                 return new String[] { e.Message, "0" };
             }
         }
-
     }
 }

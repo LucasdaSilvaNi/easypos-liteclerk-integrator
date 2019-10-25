@@ -72,7 +72,7 @@ namespace EasyPOS.Modules
                                     }
 
                                     var updateItem = item.FirstOrDefault();
-                                    updateItem.OnhandQuantity = totalSalesLineQuantity - totalStockInLineQuantity;
+                                    updateItem.OnhandQuantity = totalStockInLineQuantity - totalSalesLineQuantity;
                                     db.SubmitChanges();
                                 }
                             }

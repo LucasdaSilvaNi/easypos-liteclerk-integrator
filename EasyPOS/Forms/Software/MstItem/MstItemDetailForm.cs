@@ -105,7 +105,6 @@ namespace EasyPOS.Forms.Software.MstItem
                 buttonLock.Enabled = false;
                 buttonUnlock.Enabled = true;
 
-                textBoxBarcode.ReadOnly = true;
                 textBoxDescription.ReadOnly = true;
                 textBoxAlias.ReadOnly = true;
                 textBoxCategory.ReadOnly = true;
@@ -115,7 +114,6 @@ namespace EasyPOS.Forms.Software.MstItem
                 textBoxMarkUp.ReadOnly = true;
                 textBoxPrice.ReadOnly = true;
                 textBoxStockLevelQuantity.ReadOnly = true;
-                textBoxOnHandQuantity.ReadOnly = true;
                 checkBoxIsInventory.Enabled = false;
                 checkBoxIsPackage.Enabled = false;
                 dateTimePickerExpiryDate.Enabled = false;
@@ -129,7 +127,6 @@ namespace EasyPOS.Forms.Software.MstItem
                 buttonLock.Enabled = true;
                 buttonUnlock.Enabled = false;
 
-                textBoxBarcode.ReadOnly = false;
                 textBoxDescription.ReadOnly = false;
                 textBoxAlias.ReadOnly = false;
                 textBoxCategory.ReadOnly = false;
@@ -139,7 +136,6 @@ namespace EasyPOS.Forms.Software.MstItem
                 textBoxMarkUp.ReadOnly = false;
                 textBoxPrice.ReadOnly = false;
                 textBoxStockLevelQuantity.ReadOnly = false;
-                textBoxOnHandQuantity.ReadOnly = false;
                 checkBoxIsInventory.Enabled = true;
                 checkBoxIsPackage.Enabled = true;
                 dateTimePickerExpiryDate.Enabled = true;

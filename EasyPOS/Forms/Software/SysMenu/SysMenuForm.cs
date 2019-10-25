@@ -54,5 +54,10 @@ namespace EasyPOS.Forms.Software.SysMenu
         {
             sysSoftwareForm.AddTabPageSalesReport();
         }
+
+        private void buttonCustomer_Click(object sender, EventArgs e)
+        {
+            sysSoftwareForm.AddTabPageCustomerList();
+        }
     }
 }

@@ -113,6 +113,7 @@
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockOutItem.cs" />
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransfer.cs" />
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransferItem.cs" />
+    <Compile Include="Entities\DgvCustomerListCustomerEntity.cs" />
     <Compile Include="Entities\DgvItemListItemEntity.cs" />
     <Compile Include="Entities\DgvSalesDetailSalesLineEntity.cs" />
     <Compile Include="Entities\DgvSalesDetailSearchItemEntity.cs" />
@@ -300,6 +301,12 @@
     <Compile Include="Reports\RepZReadingReportForm.Designer.cs">
       <DependentUpon>RepZReadingReportForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Software\MstCustomer\MstCustomerDetailForm.resx">
+      <DependentUpon>MstCustomerDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\MstCustomer\MstCustomerListForm.resx">
+      <DependentUpon>MstCustomerListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstItem\MstItemDetailForm.resx">
       <DependentUpon>MstItemDetailForm.cs</DependentUpon>
     </EmbeddedResource>

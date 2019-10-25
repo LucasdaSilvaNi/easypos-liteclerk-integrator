@@ -83,6 +83,7 @@ namespace EasyPOS.Forms.Software.MstItem
 
                 pageNumber = 1;
 
+                itemListData = new List<Entities.DgvItemListItemEntity>();
                 itemListDataSource.Clear();
                 textBoxItemListPageNumber.Text = "1 / 1";
             }
@@ -143,6 +144,7 @@ namespace EasyPOS.Forms.Software.MstItem
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
+            Close();
             sysSoftwareForm.RemoveTabPage();
         }
 
@@ -202,6 +204,10 @@ namespace EasyPOS.Forms.Software.MstItem
                                 if (itemListData.Count() % pageSize == 1)
                                 {
                                     pageNumber = currentPageNumber - 1;
+                                }
+                                else if (itemListData.Count() < 1)
+                                {
+                                    pageNumber = 1;
                                 }
                                 else
                                 {

@@ -94,7 +94,7 @@ namespace EasyPOS.Reports
             var currentCollections = from d in db.TrnCollections
                                      where d.TerminalId == filterTerminalId
                                      && d.CollectionDate == filterDate
-                                     && d.TrnSale.SalesAgent == filterSalesAgentId
+                                     && d.PreparedBy == filterSalesAgentId
                                      && d.IsLocked == true
                                      && d.IsCancelled == false
                                      select d;
@@ -102,7 +102,7 @@ namespace EasyPOS.Reports
             var currentCollectionLines = from d in db.TrnCollectionLines
                                          where d.TrnCollection.TerminalId == filterTerminalId
                                          && d.TrnCollection.CollectionDate == filterDate
-                                         && d.TrnCollection.TrnSale.SalesAgent == filterSalesAgentId
+                                         && d.TrnCollection.PreparedBy == filterSalesAgentId
                                          && d.TrnCollection.IsLocked == true
                                          && d.TrnCollection.IsCancelled == false
                                          group d by new
@@ -216,7 +216,7 @@ namespace EasyPOS.Reports
             var currentCancelledCollections = from d in db.TrnCollections
                                               where d.TerminalId == filterTerminalId
                                               && d.CollectionDate == filterDate
-                                              && d.TrnSale.SalesAgent == filterSalesAgentId
+                                              && d.PreparedBy == filterSalesAgentId
                                               && d.IsLocked == true
                                               && d.IsCancelled == true
                                               select d;
@@ -230,7 +230,7 @@ namespace EasyPOS.Reports
             var previousCollections = from d in db.TrnCollections
                                       where d.TerminalId == filterTerminalId
                                       && d.CollectionDate < filterDate
-                                      && d.TrnSale.SalesAgent == filterSalesAgentId
+                                      && d.PreparedBy == filterSalesAgentId
                                       && d.IsLocked == true
                                       && d.IsCancelled == false
                                       select d;
