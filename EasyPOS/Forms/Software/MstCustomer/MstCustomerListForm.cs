@@ -144,7 +144,7 @@ namespace EasyPOS.Forms.Software.MstCustomer
             String[] addCustomer = mstCustomerController.AddCustomer();
             if (addCustomer[1].Equals("0") == false)
             {
-                //sysSoftwareForm.AddTabPageCustomerDetail(this, mstCustomerController.DetailCustomer(Convert.ToInt32(addCustomer[1])));
+                sysSoftwareForm.AddTabPageCustomerDetail(this, mstCustomerController.DetailCustomer(Convert.ToInt32(addCustomer[1])));
                 UpdateCustomerListDataSource();
             }
             else

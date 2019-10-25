@@ -125,12 +125,12 @@ namespace EasyPOS.Controllers
                 Data.MstCustomer newCustomer = new Data.MstCustomer()
                 {
                     Customer = "",
-                    Address = "NA",
-                    ContactPerson = "NA",
-                    ContactNumber = "NA",
+                    Address = "",
+                    ContactPerson = "",
+                    ContactNumber = "",
                     CreditLimit = 0,
                     TermId = term.FirstOrDefault().Id,
-                    TIN = "NA",
+                    TIN = "",
                     WithReward = false,
                     RewardNumber = null,
                     RewardConversion = 0,

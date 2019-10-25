@@ -61,40 +61,21 @@ namespace EasyPOS.Forms.Software.MstCustomer
 
         public void UpdateComponents(Boolean isLocked)
         {
-            if (isLocked == true)
-            {
-                buttonLock.Enabled = false;
-                buttonUnlock.Enabled = true;
+            buttonLock.Enabled = !isLocked;
+            buttonUnlock.Enabled = isLocked;
 
-                textBoxCustomer.ReadOnly = true;
-                textBoxAddress.ReadOnly = true;
-                textBoxContactPerson.ReadOnly = true;
-                textBoxContactNumber.ReadOnly = true;
-                textBoxCreditLimit.Enabled = false;
-                comboBoxTerm.Enabled = false;
-                textBoxTIN.ReadOnly = true;
-                checkBoxWithReward.Enabled = false;
-                textBoxRewardNumber.ReadOnly = true;
-                textBoxRewardConversion.ReadOnly = true;
-                textBoxDefaultPrice.ReadOnly = true;
-            }
-            else
-            {
-                buttonLock.Enabled = true;
-                buttonUnlock.Enabled = false;
-
-                textBoxCustomer.ReadOnly = false;
-                textBoxAddress.ReadOnly = false;
-                textBoxContactPerson.ReadOnly = false;
-                textBoxContactNumber.ReadOnly = false;
-                textBoxCreditLimit.Enabled = true;
-                comboBoxTerm.Enabled = true;
-                textBoxTIN.ReadOnly = false;
-                checkBoxWithReward.Enabled = true;
-                textBoxRewardNumber.ReadOnly = false;
-                textBoxRewardConversion.ReadOnly = false;
-                textBoxDefaultPrice.ReadOnly = false;
-            }
+            textBoxCustomerCode.ReadOnly = isLocked;
+            textBoxCustomer.ReadOnly = isLocked;
+            textBoxAddress.ReadOnly = isLocked;
+            textBoxContactPerson.ReadOnly = isLocked;
+            textBoxContactNumber.ReadOnly = isLocked;
+            textBoxCreditLimit.ReadOnly = isLocked;
+            comboBoxTerm.Enabled = !isLocked;
+            textBoxTIN.ReadOnly = isLocked;
+            checkBoxWithReward.Enabled = !isLocked;
+            textBoxRewardNumber.ReadOnly = isLocked;
+            textBoxRewardConversion.ReadOnly = isLocked;
+            textBoxDefaultPrice.ReadOnly = isLocked;
         }
 
         private void buttonLock_Click(object sender, EventArgs e)

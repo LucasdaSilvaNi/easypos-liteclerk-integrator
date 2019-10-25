@@ -94,6 +94,7 @@
             this.buttonLock.Name = "buttonLock";
             this.buttonLock.Size = new System.Drawing.Size(88, 40);
             this.buttonLock.TabIndex = 6;
+            this.buttonLock.TabStop = false;
             this.buttonLock.Text = "Lock";
             this.buttonLock.UseVisualStyleBackColor = false;
             this.buttonLock.Click += new System.EventHandler(this.buttonLock_Click);
@@ -111,6 +112,7 @@
             this.buttonUnlock.Name = "buttonUnlock";
             this.buttonUnlock.Size = new System.Drawing.Size(88, 40);
             this.buttonUnlock.TabIndex = 5;
+            this.buttonUnlock.TabStop = false;
             this.buttonUnlock.Text = "Unlock";
             this.buttonUnlock.UseVisualStyleBackColor = false;
             this.buttonUnlock.Click += new System.EventHandler(this.buttonUnlock_Click);
@@ -149,6 +151,7 @@
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -195,8 +198,7 @@
             this.textBoxDefaultPrice.Location = new System.Drawing.Point(222, 438);
             this.textBoxDefaultPrice.Name = "textBoxDefaultPrice";
             this.textBoxDefaultPrice.Size = new System.Drawing.Size(214, 30);
-            this.textBoxDefaultPrice.TabIndex = 50;
-            this.textBoxDefaultPrice.TabStop = false;
+            this.textBoxDefaultPrice.TabIndex = 12;
             // 
             // label13
             // 
@@ -213,8 +215,7 @@
             this.textBoxAvailableReward.Name = "textBoxAvailableReward";
             this.textBoxAvailableReward.ReadOnly = true;
             this.textBoxAvailableReward.Size = new System.Drawing.Size(214, 30);
-            this.textBoxAvailableReward.TabIndex = 49;
-            this.textBoxAvailableReward.TabStop = false;
+            this.textBoxAvailableReward.TabIndex = 11;
             this.textBoxAvailableReward.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxAvailableReward.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAvailableReward_KeyPress);
             // 
@@ -241,8 +242,7 @@
             this.textBoxRewardConversion.Location = new System.Drawing.Point(222, 366);
             this.textBoxRewardConversion.Name = "textBoxRewardConversion";
             this.textBoxRewardConversion.Size = new System.Drawing.Size(214, 30);
-            this.textBoxRewardConversion.TabIndex = 45;
-            this.textBoxRewardConversion.TabStop = false;
+            this.textBoxRewardConversion.TabIndex = 10;
             this.textBoxRewardConversion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxRewardConversion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxRewardConversion_KeyPress);
             // 
@@ -260,8 +260,7 @@
             this.textBoxRewardNumber.Location = new System.Drawing.Point(222, 330);
             this.textBoxRewardNumber.Name = "textBoxRewardNumber";
             this.textBoxRewardNumber.Size = new System.Drawing.Size(214, 30);
-            this.textBoxRewardNumber.TabIndex = 43;
-            this.textBoxRewardNumber.TabStop = false;
+            this.textBoxRewardNumber.TabIndex = 9;
             // 
             // checkBoxWithReward
             // 
@@ -269,7 +268,7 @@
             this.checkBoxWithReward.Location = new System.Drawing.Point(222, 307);
             this.checkBoxWithReward.Name = "checkBoxWithReward";
             this.checkBoxWithReward.Size = new System.Drawing.Size(18, 17);
-            this.checkBoxWithReward.TabIndex = 41;
+            this.checkBoxWithReward.TabIndex = 8;
             this.checkBoxWithReward.UseVisualStyleBackColor = true;
             // 
             // label14
@@ -295,8 +294,7 @@
             this.textBoxTIN.Location = new System.Drawing.Point(222, 271);
             this.textBoxTIN.Name = "textBoxTIN";
             this.textBoxTIN.Size = new System.Drawing.Size(214, 30);
-            this.textBoxTIN.TabIndex = 39;
-            this.textBoxTIN.TabStop = false;
+            this.textBoxTIN.TabIndex = 7;
             // 
             // comboBoxTerm
             // 
@@ -304,7 +302,7 @@
             this.comboBoxTerm.Location = new System.Drawing.Point(222, 234);
             this.comboBoxTerm.Name = "comboBoxTerm";
             this.comboBoxTerm.Size = new System.Drawing.Size(214, 31);
-            this.comboBoxTerm.TabIndex = 37;
+            this.comboBoxTerm.TabIndex = 6;
             // 
             // label8
             // 
@@ -329,8 +327,7 @@
             this.textBoxCreditLimit.Location = new System.Drawing.Point(222, 198);
             this.textBoxCreditLimit.Name = "textBoxCreditLimit";
             this.textBoxCreditLimit.Size = new System.Drawing.Size(214, 30);
-            this.textBoxCreditLimit.TabIndex = 15;
-            this.textBoxCreditLimit.TabStop = false;
+            this.textBoxCreditLimit.TabIndex = 5;
             this.textBoxCreditLimit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxCreditLimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCreditLimit_KeyPress);
             // 
@@ -347,9 +344,8 @@
             // 
             this.textBoxContactNumber.Location = new System.Drawing.Point(222, 162);
             this.textBoxContactNumber.Name = "textBoxContactNumber";
-            this.textBoxContactNumber.Size = new System.Drawing.Size(385, 30);
-            this.textBoxContactNumber.TabIndex = 13;
-            this.textBoxContactNumber.TabStop = false;
+            this.textBoxContactNumber.Size = new System.Drawing.Size(214, 30);
+            this.textBoxContactNumber.TabIndex = 4;
             // 
             // label5
             // 
@@ -365,8 +361,7 @@
             this.textBoxContactPerson.Location = new System.Drawing.Point(222, 126);
             this.textBoxContactPerson.Name = "textBoxContactPerson";
             this.textBoxContactPerson.Size = new System.Drawing.Size(385, 30);
-            this.textBoxContactPerson.TabIndex = 11;
-            this.textBoxContactPerson.TabStop = false;
+            this.textBoxContactPerson.TabIndex = 3;
             // 
             // label2
             // 
@@ -382,8 +377,7 @@
             this.textBoxAddress.Location = new System.Drawing.Point(222, 90);
             this.textBoxAddress.Name = "textBoxAddress";
             this.textBoxAddress.Size = new System.Drawing.Size(655, 30);
-            this.textBoxAddress.TabIndex = 9;
-            this.textBoxAddress.TabStop = false;
+            this.textBoxAddress.TabIndex = 2;
             // 
             // label3
             // 
@@ -399,17 +393,14 @@
             this.textBoxCustomer.Location = new System.Drawing.Point(222, 54);
             this.textBoxCustomer.Name = "textBoxCustomer";
             this.textBoxCustomer.Size = new System.Drawing.Size(385, 30);
-            this.textBoxCustomer.TabIndex = 7;
-            this.textBoxCustomer.TabStop = false;
+            this.textBoxCustomer.TabIndex = 1;
             // 
             // textBoxCustomerCode
             // 
             this.textBoxCustomerCode.Location = new System.Drawing.Point(222, 18);
             this.textBoxCustomerCode.Name = "textBoxCustomerCode";
-            this.textBoxCustomerCode.ReadOnly = true;
             this.textBoxCustomerCode.Size = new System.Drawing.Size(214, 30);
-            this.textBoxCustomerCode.TabIndex = 5;
-            this.textBoxCustomerCode.TabStop = false;
+            this.textBoxCustomerCode.TabIndex = 0;
             // 
             // label4
             // 
