@@ -228,7 +228,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 else
                 {
                     Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
-                    sysSoftwareForm.AddTabPagePOSSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value)));
+                    if (trnPOSSalesController.IsSalesTendered(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value)) == true)
+                    {
+                        MessageBox.Show("Already tendered.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        sysSoftwareForm.AddTabPagePOSSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value)));
+                    }
                 }
             }
 
@@ -247,36 +254,26 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
                 else
                 {
-                    DialogResult deleteDialogResult = MessageBox.Show("Delete Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (deleteDialogResult == DialogResult.Yes)
+                    Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+                    if (trnPOSSalesController.IsSalesTendered(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value)) == true)
                     {
-                        Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
-
-                        String[] deleteSales = trnPOSSalesController.DeleteSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value));
-                        if (deleteSales[1].Equals("0") == false)
+                        MessageBox.Show("Already tendered.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        DialogResult deleteDialogResult = MessageBox.Show("Delete Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (deleteDialogResult == DialogResult.Yes)
                         {
-                            Int32 currentPageNumber = pageNumber;
-
-                            pageNumber = 1;
-                            UpdateSalesListGridDataSource();
-
-                            if (pageList != null)
+                            String[] deleteSales = trnPOSSalesController.DeleteSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value));
+                            if (deleteSales[1].Equals("0") == false)
                             {
-                                if (salesList.Count() % pageSize == 1)
-                                {
-                                    pageNumber = currentPageNumber - 1;
-                                }
-                                else
-                                {
-                                    pageNumber = currentPageNumber;
-                                }
-
-                                dataSalesListSource.DataSource = pageList;
+                                pageNumber = 1;
+                                UpdateSalesListGridDataSource();
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show(deleteSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            else
+                            {
+                                MessageBox.Show(deleteSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }

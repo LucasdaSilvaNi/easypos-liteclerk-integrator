@@ -640,5 +640,26 @@ namespace EasyPOS.Controllers
 
             return collectionId;
         }
+
+        // ====================
+        // Check Tendered Sales
+        // ====================
+        public Boolean IsSalesTendered(Int32 salesId)
+        {
+            Boolean isTendered = false;
+
+            var collection = from d in db.TrnCollections
+                             where d.SalesId == salesId
+                             && d.IsLocked == true
+                             && d.IsCancelled == false
+                             select d;
+
+            if (collection.Any())
+            {
+                isTendered = true;
+            }
+
+            return isTendered;
+        }
     }
 }
