@@ -12,9 +12,17 @@ namespace EasyPOS.Forms.Software.TrnStockOut
 {
     public partial class TrnStockOutDetailForm : Form
     {
-        public TrnStockOutDetailForm()
+        public SysSoftwareForm sysSoftwareForm;
+        public TrnStockOutListForm trnStockOutListForm;
+        public Entities.TrnStockOutEntity trnStockOutEntity;
+
+        public TrnStockOutDetailForm(SysSoftwareForm softwareForm, TrnStockOutListForm stockOutListForm, Entities.TrnStockOutEntity stockOutEntity)
         {
             InitializeComponent();
+
+            sysSoftwareForm = softwareForm;
+            trnStockOutListForm = stockOutListForm;
+            trnStockOutEntity = stockOutEntity;
         }
     }
 }

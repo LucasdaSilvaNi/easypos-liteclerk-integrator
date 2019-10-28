@@ -12,9 +12,17 @@ namespace EasyPOS.Forms.Software.TrnStockIn
 {
     public partial class TrnStockInDetailForm : Form
     {
-        public TrnStockInDetailForm()
+        public SysSoftwareForm sysSoftwareForm;
+        public TrnStockInListForm trnStockInListForm;
+        public Entities.TrnStockInEntity trnStockInEntity;
+
+        public TrnStockInDetailForm(SysSoftwareForm softwareForm, TrnStockInListForm stockInListForm, Entities.TrnStockInEntity stockInEntity)
         {
             InitializeComponent();
+
+            sysSoftwareForm = softwareForm;
+            trnStockInListForm = stockInListForm;
+            trnStockInEntity = stockInEntity;
         }
     }
 }

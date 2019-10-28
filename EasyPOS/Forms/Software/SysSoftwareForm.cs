@@ -31,31 +31,55 @@ namespace EasyPOS.Forms.Software
             labelCurrentUser.Text = "Date: " + currentDate + "     User: " + currentUserName + "     Terminal: " + currentTerminal;
         }
 
+        // =========
+        // Tab Pages
+        // =========
         public TabPage tabPageItemList = new TabPage { Name = "tabPageItemList", Text = "Item List" };
         public TabPage tabPageItemDetail = new TabPage { Name = "tabPageItemDetail", Text = "Item Detail" };
         public TabPage tabPageCustomerList = new TabPage { Name = "tabPageCustomerList", Text = "Customer List" };
         public TabPage tabPageCustomerDetail = new TabPage { Name = "tabPageCustomerDetail", Text = "Customer Detail" };
+        public TabPage tabPageDiscountingList = new TabPage { Name = "tabPageDiscountingList", Text = "Discounting List" };
         public TabPage tabPageUserList = new TabPage { Name = "tabPageUserList", Text = "User List" };
         public TabPage tabPageUserDetail = new TabPage { Name = "tabPageUserDetail", Text = "User Detail" };
+
         public TabPage tabPagePOSSalesList = new TabPage { Name = "tabPagePOSSalesList", Text = "Sales List" };
         public TabPage tabPagePOSSalesDetail = new TabPage { Name = "tabPagePOSSalesDetail", Text = "Sales Detail" };
-        public TabPage tabPageDiscountingList = new TabPage { Name = "tabPageDiscountingList", Text = "Discounting List" };
+        public TabPage tabPageStockInList = new TabPage { Name = "tabPageStockInList", Text = "Stock-In List" };
+        public TabPage tabPageStockInDetail = new TabPage { Name = "tabPageStockInDetail", Text = "Stock-In Detail" };
+        public TabPage tabPageStockOutList = new TabPage { Name = "tabPageStockOutList", Text = "Stock-Out List" };
+        public TabPage tabPageStockOutDetail = new TabPage { Name = "tabPageStockOutDetail", Text = "Stock-Out Detail" };
+        public TabPage tabPageDisbursementList = new TabPage { Name = "tabPageDisbursementList", Text = "Remittance List" };
+        public TabPage tabPageDisbursementDetail = new TabPage { Name = "tabPageDisbursementDetail", Text = "Remittance Detail" };
+
         public TabPage tabPagePOSReport = new TabPage { Name = "tabPagePOSReport", Text = "POS Report" };
-        public TabPage tabPageSettings = new TabPage { Name = "tabPageSettings", Text = "Settings" };
         public TabPage tabPageSalesReports = new TabPage { Name = "tabPageSalesReports ", Text = "Sales Report" };
 
+        public TabPage tabPageSettings = new TabPage { Name = "tabPageSettings", Text = "Settings" };
+
+        // =====
+        // Forms
+        // =====
         public MstItem.MstItemListForm mstItemListForm = null;
         public MstItem.MstItemDetailForm mstItemDetailForm = null;
         public MstCustomer.MstCustomerListForm mstCustomerListForm = null;
         public MstCustomer.MstCustomerDetailForm mstCustomerDetailForm = null;
+        public MstDiscounting.MstDiscountingListForm mstDiscountingListForm = null;
         public MstUser.MstUserListForm mstUserListForm = null;
         public MstUser.MstUserDetailForm mstUserDetailForm = null;
-        public MstDiscounting.MstDiscountingListForm mstDiscountingListForm = null;
+
         public TrnPOS.TrnSalesListForm trnSalesListForm = null;
         public TrnPOS.TrnSalesDetailForm trnSalesDetailForm = null;
+        public TrnStockIn.TrnStockInListForm trnStockInListForm = null;
+        public TrnStockIn.TrnStockInDetailForm trnStockInDetailForm = null;
+        public TrnStockOut.TrnStockOutListForm trnStockOutListForm = null;
+        public TrnStockOut.TrnStockOutDetailForm trnStockOutDetailForm = null;
+        public TrnDisbursement.TrnDisbursementListForm trnDisbursementListForm = null;
+        public TrnDisbursement.TrnDisbursementDetailForm trnDisbursementDetailForm = null;
+
         public RepPOSReport.RepPOSReportForm repPOSReportForm = null;
-        public SysSettings.SysSettingsForm sysSettingsForm = null;
         public RepSalesReport.RepSalesReportForm repSalesReportForm = null;
+
+        public SysSettings.SysSettingsForm sysSettingsForm = null;
 
         public void InitializeDefaultForm()
         {
@@ -165,6 +189,30 @@ namespace EasyPOS.Forms.Software
             }
         }
 
+        public void AddTabPageDiscountingList()
+        {
+            tabPagePOSSalesDetail.Controls.Remove(mstDiscountingListForm);
+
+            mstDiscountingListForm = new MstDiscounting.MstDiscountingListForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageDiscountingList.Controls.Add(mstDiscountingListForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageDiscountingList) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageDiscountingList);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageDiscountingList);
+                tabControlSoftware.SelectTab(tabPageDiscountingList);
+            }
+        }
+
         public void AddTabPageUserList()
         {
             tabPagePOSSalesDetail.Controls.Remove(mstUserListForm);
@@ -210,30 +258,6 @@ namespace EasyPOS.Forms.Software
             {
                 tabControlSoftware.TabPages.Add(tabPageUserDetail);
                 tabControlSoftware.SelectTab(tabPageUserDetail);
-            }
-        }
-
-        public void AddTabPageDiscountingList()
-        {
-            tabPagePOSSalesDetail.Controls.Remove(mstDiscountingListForm);
-
-            mstDiscountingListForm = new MstDiscounting.MstDiscountingListForm(this)
-            {
-                TopLevel = false,
-                Visible = true,
-                Dock = DockStyle.Fill
-            };
-
-            tabPageDiscountingList.Controls.Add(mstDiscountingListForm);
-
-            if (tabControlSoftware.TabPages.Contains(tabPageDiscountingList) == true)
-            {
-                tabControlSoftware.SelectTab(tabPageDiscountingList);
-            }
-            else
-            {
-                tabControlSoftware.TabPages.Add(tabPageDiscountingList);
-                tabControlSoftware.SelectTab(tabPageDiscountingList);
             }
         }
 
@@ -292,6 +316,150 @@ namespace EasyPOS.Forms.Software
             {
                 tabControlSoftware.TabPages.Add(tabPagePOSSalesDetail);
                 tabControlSoftware.SelectTab(tabPagePOSSalesDetail);
+            }
+        }
+
+        public void AddTabPageStockInList()
+        {
+            tabPagePOSSalesDetail.Controls.Remove(trnStockInListForm);
+
+            trnStockInListForm = new TrnStockIn.TrnStockInListForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageStockInList.Controls.Add(trnStockInListForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageStockInList) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageStockInList);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageStockInList);
+                tabControlSoftware.SelectTab(tabPageStockInList);
+            }
+        }
+
+        public void AddTabPageStockInDetail(TrnStockIn.TrnStockInListForm stockInListForm, Entities.TrnStockInEntity stockInEntity)
+        {
+            tabPageStockInDetail.Controls.Remove(trnStockInDetailForm);
+
+            trnStockInDetailForm = new TrnStockIn.TrnStockInDetailForm(this, stockInListForm, stockInEntity)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageStockInDetail.Controls.Add(trnStockInDetailForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageStockInDetail) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageStockInDetail);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageStockInDetail);
+                tabControlSoftware.SelectTab(tabPageStockInDetail);
+            }
+        }
+
+        public void AddTabPageStockOutList()
+        {
+            tabPagePOSSalesDetail.Controls.Remove(trnStockOutListForm);
+
+            trnStockOutListForm = new TrnStockOut.TrnStockOutListForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageStockOutList.Controls.Add(trnStockOutListForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageStockOutList) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageStockOutList);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageStockOutList);
+                tabControlSoftware.SelectTab(tabPageStockOutList);
+            }
+        }
+
+        public void AddTabPageStockOutDetail(TrnStockOut.TrnStockOutListForm stockOutListForm, Entities.TrnStockOutEntity stockOutEntity)
+        {
+            tabPageStockOutDetail.Controls.Remove(trnStockOutDetailForm);
+
+            trnStockOutDetailForm = new TrnStockOut.TrnStockOutDetailForm(this, stockOutListForm, stockOutEntity)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageStockOutDetail.Controls.Add(trnStockOutDetailForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageStockOutDetail) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageStockOutDetail);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageStockOutDetail);
+                tabControlSoftware.SelectTab(tabPageStockOutDetail);
+            }
+        }
+
+        public void AddTabPageDisbursementList()
+        {
+            tabPagePOSSalesDetail.Controls.Remove(trnDisbursementListForm);
+
+            trnDisbursementListForm = new TrnDisbursement.TrnDisbursementListForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageDisbursementList.Controls.Add(trnDisbursementListForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageDisbursementList) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageDisbursementList);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageDisbursementList);
+                tabControlSoftware.SelectTab(tabPageDisbursementList);
+            }
+        }
+
+        public void AddTabPageDisbursementDetail(TrnDisbursement.TrnDisbursementListForm disbursementListForm, Entities.TrnDisbursementEntity disbursementEntity)
+        {
+            tabPageDisbursementDetail.Controls.Remove(trnDisbursementDetailForm);
+
+            trnDisbursementDetailForm = new TrnDisbursement.TrnDisbursementDetailForm(this, disbursementListForm, disbursementEntity)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageDisbursementDetail.Controls.Add(trnDisbursementDetailForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageDisbursementDetail) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageDisbursementDetail);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageDisbursementDetail);
+                tabControlSoftware.SelectTab(tabPageDisbursementDetail);
             }
         }
 

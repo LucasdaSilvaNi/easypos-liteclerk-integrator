@@ -13,6 +13,7 @@ namespace EasyPOS.Entities
         public String StockOutDate { get; set; }
         public String StockOutNumber { get; set; }
         public Int32 AccountId { get; set; }
+        public String Account { get; set; }
         public String Remarks { get; set; }
         public Int32 PreparedBy { get; set; }
         public Int32 CheckedBy { get; set; }

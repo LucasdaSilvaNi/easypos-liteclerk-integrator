@@ -12,9 +12,17 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
 {
     public partial class TrnDisbursementDetailForm : Form
     {
-        public TrnDisbursementDetailForm()
+        public SysSoftwareForm sysSoftwareForm;
+        public TrnDisbursementListForm trnDisbursementListForm;
+        public Entities.TrnDisbursementEntity trnDisbursementEntity;
+
+        public TrnDisbursementDetailForm(SysSoftwareForm softwareForm, TrnDisbursementListForm disbursementListForm, Entities.TrnDisbursementEntity disbursementEntity)
         {
             InitializeComponent();
+
+            sysSoftwareForm = softwareForm;
+            trnDisbursementListForm = disbursementListForm;
+            trnDisbursementEntity = disbursementEntity;
         }
     }
 }

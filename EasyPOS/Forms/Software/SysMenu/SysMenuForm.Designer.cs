@@ -39,9 +39,9 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.buttonSalesReport = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.buttonStockIn = new System.Windows.Forms.Button();
+            this.buttonStockOut = new System.Windows.Forms.Button();
+            this.buttonDisbursement = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.buttonCustomer = new System.Windows.Forms.Button();
             this.buttonDiscounting = new System.Windows.Forms.Button();
@@ -226,62 +226,65 @@
             this.buttonSalesReport.UseVisualStyleBackColor = false;
             this.buttonSalesReport.Click += new System.EventHandler(this.buttonSalesReport_OnClick);
             // 
-            // button8
+            // buttonStockIn
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.ImageIndex = 9;
-            this.button8.ImageList = this.imageListMenuIcons;
-            this.button8.Location = new System.Drawing.Point(245, 266);
-            this.button8.Name = "button8";
-            this.button8.Padding = new System.Windows.Forms.Padding(10);
-            this.button8.Size = new System.Drawing.Size(227, 121);
-            this.button8.TabIndex = 10;
-            this.button8.Text = "\r\nStock In";
-            this.button8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button8.UseVisualStyleBackColor = false;
+            this.buttonStockIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonStockIn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonStockIn.FlatAppearance.BorderSize = 0;
+            this.buttonStockIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStockIn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonStockIn.ForeColor = System.Drawing.Color.White;
+            this.buttonStockIn.ImageIndex = 9;
+            this.buttonStockIn.ImageList = this.imageListMenuIcons;
+            this.buttonStockIn.Location = new System.Drawing.Point(245, 266);
+            this.buttonStockIn.Name = "buttonStockIn";
+            this.buttonStockIn.Padding = new System.Windows.Forms.Padding(10);
+            this.buttonStockIn.Size = new System.Drawing.Size(227, 121);
+            this.buttonStockIn.TabIndex = 10;
+            this.buttonStockIn.Text = "\r\nStock In";
+            this.buttonStockIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonStockIn.UseVisualStyleBackColor = false;
+            this.buttonStockIn.Click += new System.EventHandler(this.buttonStockIn_Click);
             // 
-            // button7
+            // buttonStockOut
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.ImageIndex = 10;
-            this.button7.ImageList = this.imageListMenuIcons;
-            this.button7.Location = new System.Drawing.Point(245, 393);
-            this.button7.Name = "button7";
-            this.button7.Padding = new System.Windows.Forms.Padding(10);
-            this.button7.Size = new System.Drawing.Size(227, 121);
-            this.button7.TabIndex = 9;
-            this.button7.Text = "\r\nStock Out";
-            this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button7.UseVisualStyleBackColor = false;
+            this.buttonStockOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonStockOut.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonStockOut.FlatAppearance.BorderSize = 0;
+            this.buttonStockOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStockOut.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonStockOut.ForeColor = System.Drawing.Color.White;
+            this.buttonStockOut.ImageIndex = 10;
+            this.buttonStockOut.ImageList = this.imageListMenuIcons;
+            this.buttonStockOut.Location = new System.Drawing.Point(245, 393);
+            this.buttonStockOut.Name = "buttonStockOut";
+            this.buttonStockOut.Padding = new System.Windows.Forms.Padding(10);
+            this.buttonStockOut.Size = new System.Drawing.Size(227, 121);
+            this.buttonStockOut.TabIndex = 9;
+            this.buttonStockOut.Text = "\r\nStock Out";
+            this.buttonStockOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonStockOut.UseVisualStyleBackColor = false;
+            this.buttonStockOut.Click += new System.EventHandler(this.buttonStockOut_Click);
             // 
-            // button6
+            // buttonDisbursement
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.ImageIndex = 1;
-            this.button6.ImageList = this.imageListMenuIcons;
-            this.button6.Location = new System.Drawing.Point(245, 139);
-            this.button6.Name = "button6";
-            this.button6.Padding = new System.Windows.Forms.Padding(10);
-            this.button6.Size = new System.Drawing.Size(227, 121);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "\r\nRemittance";
-            this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button6.UseVisualStyleBackColor = false;
+            this.buttonDisbursement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonDisbursement.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonDisbursement.FlatAppearance.BorderSize = 0;
+            this.buttonDisbursement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDisbursement.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonDisbursement.ForeColor = System.Drawing.Color.White;
+            this.buttonDisbursement.ImageIndex = 1;
+            this.buttonDisbursement.ImageList = this.imageListMenuIcons;
+            this.buttonDisbursement.Location = new System.Drawing.Point(245, 139);
+            this.buttonDisbursement.Name = "buttonDisbursement";
+            this.buttonDisbursement.Padding = new System.Windows.Forms.Padding(10);
+            this.buttonDisbursement.Size = new System.Drawing.Size(227, 121);
+            this.buttonDisbursement.TabIndex = 8;
+            this.buttonDisbursement.Text = "\r\nRemittance";
+            this.buttonDisbursement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonDisbursement.UseVisualStyleBackColor = false;
+            this.buttonDisbursement.Click += new System.EventHandler(this.buttonDisbursement_Click);
             // 
             // button5
             // 
@@ -394,11 +397,11 @@
             this.panel1.Controls.Add(this.buttonPOSReport);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button12);
-            this.panel1.Controls.Add(this.button6);
+            this.panel1.Controls.Add(this.buttonDisbursement);
             this.panel1.Controls.Add(this.button11);
-            this.panel1.Controls.Add(this.button7);
+            this.panel1.Controls.Add(this.buttonStockOut);
             this.panel1.Controls.Add(this.button10);
-            this.panel1.Controls.Add(this.button8);
+            this.panel1.Controls.Add(this.buttonStockIn);
             this.panel1.Controls.Add(this.buttonSalesReport);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -431,9 +434,9 @@
         private System.Windows.Forms.Button buttonDiscounting;
         private System.Windows.Forms.Button buttonCustomer;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button buttonDisbursement;
+        private System.Windows.Forms.Button buttonStockOut;
+        private System.Windows.Forms.Button buttonStockIn;
         private System.Windows.Forms.Button buttonSalesReport;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
