@@ -51,5 +51,7 @@ namespace EasyPOS.Entities
         public String UpdateDateTime { get; set; }
         public Int32? Pax { get; set; }
         public Int32 TableStatus { get; set; }
+        public String Table { get; set; }
+
     }
 }

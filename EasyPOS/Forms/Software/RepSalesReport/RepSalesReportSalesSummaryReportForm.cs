@@ -39,58 +39,42 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
             Controllers.RepSalesReportController repSalesSummaryReportController = new Controllers.RepSalesReportController();
 
-            var salesList = repSalesSummaryReportController.ListSales(startDate, endDate);
+            var salesList = repSalesSummaryReportController.SalesSummaryList(startDate, endDate);
             if (salesList.Any())
             {
+                Decimal totalAmount = 0;
                 var row = from d in salesList
                           select new Entities.DgvSalesReportSalesSummaryReportEntity
                           {
-                              ColumnId = d.ColumnId,
-                              ColumnPeriodId = d.ColumnPeriodId,
-                              ColumnPeriod = d.ColumnPeriod,
-                              ColumnSalesDate = d.ColumnSalesDate,
-                              ColumnSalesNumber = d.ColumnSalesNumber,
-                              ColumnManualInvoiceNumber = d.ColumnManualInvoiceNumber,
-                              ColumnAmount = d.ColumnAmount,
-                              ColumnTableId = d.ColumnTableId,
-                              ColumnCustomerId = d.ColumnCustomerId,
-                              ColumnCustomer = d.ColumnCustomer,
-                              ColumnAccountId = d.ColumnAccountId,
-                              ColumnTermId = d.ColumnTermId,
-                              ColumnTerm = d.ColumnTerm,
-                              ColumnDiscountId = d.ColumnDiscountId,
-                              ColumnSeniorCitizenId = d.ColumnSeniorCitizenId,
-                              ColumnSeniorCitizenName = d.ColumnSeniorCitizenName,
-                              ColumnSeniorCitizenAge = d.ColumnSeniorCitizenAge,
-                              ColumnRemarks = d.ColumnRemarks,
-                              ColumnSalesAgent = d.ColumnSalesAgent,
-                              ColumnSalesAgentUserName = d.ColumnSalesAgentUserName,
-                              ColumnTerminalId = d.ColumnTerminalId,
-                              ColumnTerminal = d.ColumnTerminal,
-                              ColumnPreparedBy = d.ColumnPreparedBy,
-                              ColumnPreparedByUserName = d.ColumnPreparedByUserName,
-                              ColumnCheckedBy = d.ColumnCheckedBy,
-                              ColumnCheckedByUserName = d.ColumnCheckedByUserName,
-                              ColumnApprovedBy = d.ColumnApprovedBy,
-                              ColumnApprovedByUserName = d.ColumnApprovedByUserName,
-                              ColumnIsLocked = d.ColumnIsLocked,
-                              ColumnIsTendered = d.ColumnIsTendered,
-                              ColumnIsCancelled = d.ColumnIsCancelled,
-                              ColumnPaidAmount = d.ColumnPaidAmount,
-                              ColumnCreditAmount = d.ColumnCreditAmount,
-                              ColumnDebitAmount = d.ColumnDebitAmount,
-                              ColumnBalanceAmount = d.ColumnBalanceAmount,
-                              ColumnEntryUserId = d.ColumnEntryUserId,
-                              ColumnEntryUserName = d.ColumnEntryUserName,
-                              ColumnEntryDateTime = d.ColumnEntryDateTime,
-                              ColumnUpdateUserId = d.ColumnUpdateUserId,
-                              ColumnUpdatedUserName = d.ColumnUpdatedUserName,
-                              ColumnUpdateDateTime = d.ColumnUpdateDateTime,
-                              ColumnPax = d.ColumnPax,
-                              ColumnTableStatus = d.ColumnTableStatus
+                              ColumnId = d.Id,
+                              ColumnPeriodId = d.Id,
+                              ColumnPeriod = d.Period,
+                              ColumnTerminal = d.Terminal,
+                              ColumnSalesDate = d.SalesDate,
+                              ColumnSalesNumber = d.SalesNumber,
+                              ColumnManualInvoiceNumber = d.ManualInvoiceNumber,
+                              ColumnAmount = d.Amount.ToString("#,##0.00"),
+                              ColumnTableId = d.TableId,
+                              ColumnCustomerId = d.CustomerId,
+                              ColumnCustomer = d.Customer,
+                              ColumnAccountId = d.AccountId,
+                              ColumnTermId = d.TermId,
+                              ColumnTerm = d.Term,
+                              ColumnDiscountId = d.DiscountId,
+                              ColumnRemarks = d.Remarks,
+                              ColumnTerminalId = d.TerminalId,
+                              ColumnPreparedBy = d.PreparedBy,
+                              ColumnPreparedByUserName = d.PreparedByUserName,
+                              ColumnPax = d.Pax,
+                              ColumnTable = d.Table,
                           };
 
+                totalAmount = salesList.Sum(d => d.Amount);
+
+                textBoxTotalAmount.Text = totalAmount.ToString("#,##0.00");
+
                 rowList = row.ToList();
+
             }
             return rowList;
         }
