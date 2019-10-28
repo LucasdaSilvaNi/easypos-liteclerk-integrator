@@ -230,6 +230,24 @@
     <Compile Include="Forms\Software\SysMenu\SysMenuForm.Designer.cs">
       <DependentUpon>SysMenuForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\SysTables\SysTablesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\SysTables\SysTablesForm.Designer.cs">
+      <DependentUpon>SysTablesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnDisbursement\TrnDisbursementDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnDisbursement\TrnDisbursementDetailForm.Designer.cs">
+      <DependentUpon>TrnDisbursementDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnDisbursement\TrnDisbursementListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnDisbursement\TrnDisbursementListForm.Designer.cs">
+      <DependentUpon>TrnDisbursementListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -271,6 +289,30 @@
     </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnSalesListForm.Designer.cs">
       <DependentUpon>TrnSalesListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnStockIn\TrnStockInDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnStockIn\TrnStockInDetailForm.Designer.cs">
+      <DependentUpon>TrnStockInDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnStockIn\TrnStockInListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnStockIn\TrnStockInListForm.Designer.cs">
+      <DependentUpon>TrnStockInListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnStockOut\TrnStockOutDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnStockOut\TrnStockOutDetailForm.Designer.cs">
+      <DependentUpon>TrnStockOutDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnStockOut\TrnStockOutListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnStockOut\TrnStockOutListForm.Designer.cs">
+      <DependentUpon>TrnStockOutListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="IndexForm.cs">
       <SubType>Form</SubType>
