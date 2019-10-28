@@ -82,6 +82,8 @@
     <Compile Include="Controllers\TrnPOSSalesLineController.cs" />
     <Compile Include="Controllers\TrnStockInController.cs" />
     <Compile Include="Controllers\TrnStockOutController.cs" />
+    <Compile Include="Controllers\TrnStockInLineController.cs" />
+    <Compile Include="Controllers\TrnStockOutLineController.cs" />
     <Compile Include="Data\easyposdb.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
