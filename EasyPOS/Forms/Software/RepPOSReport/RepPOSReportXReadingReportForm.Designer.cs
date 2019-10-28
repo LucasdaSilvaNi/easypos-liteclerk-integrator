@@ -1,6 +1,6 @@
 ﻿namespace EasyPOS.Reports
 {
-    partial class RepXReadingReportForm
+    partial class RepPOSReportXReadingReportForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepXReadingReportForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepPOSReportXReadingReportForm));
             this.printDocumentXReadingReport = new System.Drawing.Printing.PrintDocument();
             this.buttonClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();

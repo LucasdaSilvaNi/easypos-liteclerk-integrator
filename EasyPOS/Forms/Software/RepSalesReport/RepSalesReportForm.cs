@@ -63,7 +63,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 switch (selectedItem)
                 {
                     case "Sales Summary Report":
-                        RepSalesSummaryReportForm repSalesSummaryReport = new RepSalesSummaryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                        RepSalesReportSalesSummaryReportForm repSalesSummaryReport = new RepSalesReportSalesSummaryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
                         repSalesSummaryReport.ShowDialog();
                         break;
                     case "Sales Detail Report":

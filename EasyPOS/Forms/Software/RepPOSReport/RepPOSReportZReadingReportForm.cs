@@ -12,30 +12,28 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Reports
 {
-    public partial class RepXReadingReportForm : Form
+    public partial class RepPOSReportZReadingReportForm : Form
     {
         public Forms.Software.RepPOSReport.RepPOSReportForm repPOSReportForm;
         public Int32 filterTerminalId;
         public DateTime filterDate;
-        public Int32 filterSalesAgentId;
-        public Entities.RepXReadingReportEntity xReadingReportEntity;
+        public Entities.RepZReadingReportEntity zReadingReportEntity;
 
-        public RepXReadingReportForm(Forms.Software.RepPOSReport.RepPOSReportForm POSReportForm, Int32 terminalId, DateTime date, Int32 salesAgentId)
+        public RepPOSReportZReadingReportForm(Forms.Software.RepPOSReport.RepPOSReportForm POSReportForm, Int32 terminalId, DateTime date)
         {
             InitializeComponent();
 
             repPOSReportForm = POSReportForm;
             filterTerminalId = terminalId;
             filterDate = date;
-            filterSalesAgentId = salesAgentId;
 
-            printDocumentXReadingReport.DefaultPageSettings.PaperSize = new PaperSize("X Reading Report", 255, 1000);
-            XReadingDataSource();
+            printDocumentZReadingReport.DefaultPageSettings.PaperSize = new PaperSize("Z Reading Report", 255, 1000);
+            ZReadingDataSource();
         }
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
-            DialogResult printerDialogResult =  printDialogXReadingReport.ShowDialog();
+            DialogResult printerDialogResult = printDialogZReadingReport.ShowDialog();
             if (printerDialogResult == DialogResult.OK)
             {
                 PrintReport();
@@ -50,14 +48,14 @@ namespace EasyPOS.Reports
 
         public void PrintReport()
         {
-            printDocumentXReadingReport.Print();
+            printDocumentZReadingReport.Print();
         }
 
-        public void XReadingDataSource()
+        public void ZReadingDataSource()
         {
             Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
 
-            Entities.RepXReadingReportEntity repXReadingReportEntity = new Entities.RepXReadingReportEntity()
+            Entities.RepZReadingReportEntity repZReadingReportEntity = new Entities.RepZReadingReportEntity()
             {
                 Date = "",
                 TotalGrossSales = 0,
@@ -85,20 +83,15 @@ namespace EasyPOS.Reports
                 RunningTotal = 0
             };
 
-            repXReadingReportEntity.Date = filterDate.ToShortDateString();
+            repZReadingReportEntity.Date = filterDate.ToShortDateString();
 
             var salesLines = from d in db.TrnSalesLines
-                             where d.TrnSale.TrnCollections.Where(s => s.TerminalId == filterTerminalId 
-                             && s.CollectionDate == filterDate
-                             && s.PreparedBy == filterSalesAgentId
-                             && s.IsLocked == true 
-                             && s.IsCancelled == false).Count() > 0
+                             where d.TrnSale.TrnCollections.Where(s => s.TerminalId == filterTerminalId && s.CollectionDate == filterDate && s.IsLocked == true && s.IsCancelled == false).Count() > 0
                              select d;
 
             var currentCollections = from d in db.TrnCollections
                                      where d.TerminalId == filterTerminalId
                                      && d.CollectionDate == filterDate
-                                     && d.PreparedBy == filterSalesAgentId
                                      && d.IsLocked == true
                                      && d.IsCancelled == false
                                      select d;
@@ -106,7 +99,6 @@ namespace EasyPOS.Reports
             var currentCollectionLines = from d in db.TrnCollectionLines
                                          where d.TrnCollection.TerminalId == filterTerminalId
                                          && d.TrnCollection.CollectionDate == filterDate
-                                         && d.TrnCollection.PreparedBy == filterSalesAgentId
                                          && d.TrnCollection.IsLocked == true
                                          && d.TrnCollection.IsCancelled == false
                                          group d by new
@@ -125,7 +117,7 @@ namespace EasyPOS.Reports
                 var grossSales = salesLines.Where(d => d.Quantity > 0);
                 if (grossSales.Any())
                 {
-                    repXReadingReportEntity.TotalGrossSales = grossSales.Sum(d => d.Quantity * d.Price);
+                    repZReadingReportEntity.TotalGrossSales = grossSales.Sum(d => d.Quantity * d.Price);
                 }
 
                 var regularDiscounts = salesLines.Where(d => d.Quantity > 0
@@ -133,31 +125,31 @@ namespace EasyPOS.Reports
                                                              && d.MstDiscount.Discount.Equals("PWD") == false);
                 if (regularDiscounts.Any())
                 {
-                    repXReadingReportEntity.TotalRegularDiscount = regularDiscounts.Sum(d => d.DiscountAmount * d.Quantity);
+                    repZReadingReportEntity.TotalRegularDiscount = regularDiscounts.Sum(d => d.DiscountAmount * d.Quantity);
                 }
 
                 var seniorDiscounts = salesLines.Where(d => d.Quantity > 0 && d.MstDiscount.Discount.Equals("Senior Citizen Discount") == true);
                 if (seniorDiscounts.Any())
                 {
-                    repXReadingReportEntity.TotalSeniorDiscount = seniorDiscounts.Sum(d => d.DiscountAmount * d.Quantity);
+                    repZReadingReportEntity.TotalSeniorDiscount = seniorDiscounts.Sum(d => d.DiscountAmount * d.Quantity);
                 }
 
                 var PWDDiscounts = salesLines.Where(d => d.Quantity > 0 && d.MstDiscount.Discount.Equals("PWD") == true);
                 if (PWDDiscounts.Any())
                 {
-                    repXReadingReportEntity.TotalPWDDiscount = PWDDiscounts.Sum(d => d.DiscountAmount * d.Quantity);
+                    repZReadingReportEntity.TotalPWDDiscount = PWDDiscounts.Sum(d => d.DiscountAmount * d.Quantity);
                 }
 
                 var salesReturns = salesLines.Where(d => d.Quantity < 0);
                 if (salesReturns.Any())
                 {
-                    repXReadingReportEntity.TotalSalesReturn = salesReturns.Sum(d => d.Amount);
+                    repZReadingReportEntity.TotalSalesReturn = salesReturns.Sum(d => d.Amount);
                 }
 
                 var netSales = salesLines.Where(d => d.Quantity > 0);
                 if (netSales.Any())
                 {
-                    repXReadingReportEntity.TotalNetSales = netSales.Sum(d => d.Amount);
+                    repZReadingReportEntity.TotalNetSales = netSales.Sum(d => d.Amount);
                 }
 
                 foreach (var collectionLine in currentCollectionLines)
@@ -168,89 +160,87 @@ namespace EasyPOS.Reports
                         amount = collectionLine.TotalAmount - collectionLine.TotalChangeAmount;
                     }
 
-                    repXReadingReportEntity.CollectionLines.Add(new Entities.TrnCollectionLineEntity()
+                    repZReadingReportEntity.CollectionLines.Add(new Entities.TrnCollectionLineEntity()
                     {
                         PayType = collectionLine.PayType,
                         Amount = amount
                     });
                 }
 
-                repXReadingReportEntity.TotalCollection = currentCollections.Sum(d => d.Amount);
+                repZReadingReportEntity.TotalCollection = currentCollections.Sum(d => d.Amount);
 
                 var VATSales = salesLines.Where(d => d.MstTax.Code.Equals("VAT") == true);
                 if (VATSales.Any())
                 {
-                    repXReadingReportEntity.TotalVATSales = VATSales.Sum(d => d.Amount - d.TaxAmount);
+                    repZReadingReportEntity.TotalVATSales = VATSales.Sum(d => d.Amount - d.TaxAmount);
                 }
 
-                repXReadingReportEntity.TotalVATAmount = salesLines.Sum(d => d.TaxAmount);
+                repZReadingReportEntity.TotalVATAmount = salesLines.Sum(d => d.TaxAmount);
 
                 var nonVATSales = salesLines.Where(d => d.MstTax.Code.Equals("NONVAT") == true);
                 if (nonVATSales.Any())
                 {
-                    repXReadingReportEntity.TotalNonVAT = nonVATSales.Sum(d => d.Amount);
+                    repZReadingReportEntity.TotalNonVAT = nonVATSales.Sum(d => d.Amount);
                 }
 
                 var VATExclusives = salesLines.Where(d => d.MstTax.Code.Equals("VATEXCLUSIVE") == true);
                 if (VATExclusives.Any())
                 {
-                    repXReadingReportEntity.TotalVATExclusive = VATExclusives.Sum(d => d.Amount);
+                    repZReadingReportEntity.TotalVATExclusive = VATExclusives.Sum(d => d.Amount);
                 }
 
                 var VATExempts = salesLines.Where(d => d.MstTax.Code.Equals("VATEXEMPT") == true);
                 if (VATExempts.Any())
                 {
-                    repXReadingReportEntity.TotalVATExempt = VATExempts.Sum(d => d.Amount);
+                    repZReadingReportEntity.TotalVATExempt = VATExempts.Sum(d => d.Amount);
                 }
 
                 var VATZeroRateds = salesLines.Where(d => d.MstTax.Code.Equals("VATZERORATED") == true);
                 if (VATZeroRateds.Any())
                 {
-                    repXReadingReportEntity.TotalVATZeroRated = VATZeroRateds.Sum(d => d.Amount);
+                    repZReadingReportEntity.TotalVATZeroRated = VATZeroRateds.Sum(d => d.Amount);
                 }
 
-                repXReadingReportEntity.CounterIdStart = currentCollections.OrderBy(d => d.Id).FirstOrDefault().CollectionNumber;
-                repXReadingReportEntity.CounterIdEnd = currentCollections.OrderByDescending(d => d.Id).FirstOrDefault().CollectionNumber;
+                repZReadingReportEntity.CounterIdStart = currentCollections.OrderBy(d => d.Id).FirstOrDefault().CollectionNumber;
+                repZReadingReportEntity.CounterIdEnd = currentCollections.OrderByDescending(d => d.Id).FirstOrDefault().CollectionNumber;
 
-                repXReadingReportEntity.TotalNumberOfTransactions = currentCollections.Count();
-                repXReadingReportEntity.TotalNumberOfSKU = salesLines.Count();
-                repXReadingReportEntity.TotalQuantity = salesLines.Sum(d => d.Quantity);
+                repZReadingReportEntity.TotalNumberOfTransactions = currentCollections.Count();
+                repZReadingReportEntity.TotalNumberOfSKU = salesLines.Count();
+                repZReadingReportEntity.TotalQuantity = salesLines.Sum(d => d.Quantity);
             }
 
             var currentCancelledCollections = from d in db.TrnCollections
                                               where d.TerminalId == filterTerminalId
                                               && d.CollectionDate == filterDate
-                                              && d.PreparedBy == filterSalesAgentId
                                               && d.IsLocked == true
                                               && d.IsCancelled == true
                                               select d;
 
             if (currentCancelledCollections.Any())
             {
-                repXReadingReportEntity.TotalCancelledTrnsactionCount = currentCancelledCollections.Count();
-                repXReadingReportEntity.TotalCancelledAmount = currentCancelledCollections.Sum(d => d.Amount);
+                repZReadingReportEntity.TotalCancelledTrnsactionCount = currentCancelledCollections.Count();
+                repZReadingReportEntity.TotalCancelledAmount = currentCancelledCollections.Sum(d => d.Amount);
             }
 
             var previousCollections = from d in db.TrnCollections
                                       where d.TerminalId == filterTerminalId
                                       && d.CollectionDate < filterDate
-                                      && d.PreparedBy == filterSalesAgentId
                                       && d.IsLocked == true
                                       && d.IsCancelled == false
                                       select d;
 
             if (previousCollections.Any())
             {
-                repXReadingReportEntity.TotalPreviousReading = previousCollections.Sum(d => d.Amount);
-                repXReadingReportEntity.RunningTotal = repXReadingReportEntity.TotalNetSales + repXReadingReportEntity.TotalPreviousReading;
+                repZReadingReportEntity.TotalPreviousReading = previousCollections.Sum(d => d.Amount);
+                repZReadingReportEntity.RunningTotal = repZReadingReportEntity.TotalNetSales + repZReadingReportEntity.TotalPreviousReading;
             }
 
-            xReadingReportEntity = repXReadingReportEntity;
+            zReadingReportEntity = repZReadingReportEntity;
         }
 
-        private void printDocumentXReadingReport_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        private void printDocumentZReadingReport_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            var dataSource = xReadingReportEntity;
+            var dataSource = zReadingReportEntity;
 
             // =============
             // Font Settings
@@ -306,7 +296,7 @@ namespace EasyPOS.Reports
             // ======================
             // Z Reading Report Title
             // ======================
-            String zReadingReportTitle = "X Reading Report";
+            String zReadingReportTitle = "Z Reading Report";
             graphics.DrawString(zReadingReportTitle, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             y += graphics.MeasureString(zReadingReportTitle, fontArial8Regular).Height;
 
@@ -404,7 +394,6 @@ namespace EasyPOS.Reports
                     graphics.DrawString(collectionLineLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                     graphics.DrawString(collectionLineData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                     y += graphics.MeasureString(collectionLineData, fontArial8Regular).Height;
-
                 }
 
                 // ========
@@ -593,7 +582,7 @@ namespace EasyPOS.Reports
             Point ninethLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
             graphics.DrawLine(blackPen, ninethLineFirstPoint, ninethLineSecondPoint);
 
-            String zReadingEndLabel = "\nX Reading End\n\n\n\n\n\n\n\n\n\n.";
+            String zReadingEndLabel = "\nZ Reading End\n\n\n\n\n\n\n\n\n\n.";
             graphics.DrawString(zReadingEndLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             y += graphics.MeasureString(zReadingEndLabel, fontArial8Regular).Height;
         }

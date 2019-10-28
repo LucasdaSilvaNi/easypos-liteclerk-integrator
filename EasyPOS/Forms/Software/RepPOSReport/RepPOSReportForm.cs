@@ -87,12 +87,12 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 switch (selectedItem)
                 {
                     case "Z Reading Report":
-                        Reports.RepZReadingReportForm repZReadingReportForm = new Reports.RepZReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()));
+                        Reports.RepPOSReportZReadingReportForm repZReadingReportForm = new Reports.RepPOSReportZReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()));
                         repZReadingReportForm.ShowDialog();
 
                         break;
                     case "X Reading Report":
-                        Reports.RepXReadingReportForm repXReadingReportForm = new Reports.RepXReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()), Convert.ToInt32(comboBoxUser.SelectedValue));
+                        Reports.RepPOSReportXReadingReportForm repXReadingReportForm = new Reports.RepPOSReportXReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()), Convert.ToInt32(comboBoxUser.SelectedValue));
                         repXReadingReportForm.ShowDialog();
 
                         break;

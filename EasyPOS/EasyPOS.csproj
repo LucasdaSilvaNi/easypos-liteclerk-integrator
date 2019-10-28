@@ -74,7 +74,7 @@
     <Compile Include="Controllers\MstItemController.cs" />
     <Compile Include="Controllers\MstUserController.cs" />
     <Compile Include="Controllers\RepPOSReportController.cs" />
-    <Compile Include="Controllers\RepSalesSummaryReportController.cs" />
+    <Compile Include="Controllers\RepSalesReportController.cs" />
     <Compile Include="Controllers\SysLoginController.cs" />
     <Compile Include="Controllers\IntCloudSettingsController.cs" />
     <Compile Include="Controllers\SysSoftwareController.cs" />
@@ -121,7 +121,7 @@
     <Compile Include="Entities\DgvSalesDetailSearchItemEntity.cs" />
     <Compile Include="Entities\DgvSalesDetailTenderPayTypeEntity.cs" />
     <Compile Include="Entities\DgvSalesListSalesEntity.cs" />
-    <Compile Include="Entities\DgvSalesSummaryReportEntity.cs" />
+    <Compile Include="Entities\DgvSalesReportSalesSummaryReportEntity.cs" />
     <Compile Include="Entities\DgvUserDetailUserRightsEntity.cs" />
     <Compile Include="Entities\DgvUserListUserEntity.cs" />
     <Compile Include="Entities\MstCustomerEntity.cs" />
@@ -208,11 +208,11 @@
     <Compile Include="Forms\Software\RepSalesReport\RepSalesReportForm.Designer.cs">
       <DependentUpon>RepSalesReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepSalesSummaryReportForm.cs">
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportSalesSummaryReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepSalesSummaryReportForm.Designer.cs">
-      <DependentUpon>RepSalesSummaryReportForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportSalesSummaryReportForm.Designer.cs">
+      <DependentUpon>RepSalesReportSalesSummaryReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\SysSettings\SysSettingsForm.cs">
       <SubType>Form</SubType>
@@ -333,17 +333,17 @@
     <Compile Include="Reports\RepOfficialReceiptReportForm.Designer.cs">
       <DependentUpon>RepOfficialReceiptReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\RepXReadingReportForm.cs">
+    <Compile Include="Forms\Software\RepPOSReport\RepPOSReportXReadingReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\RepXReadingReportForm.Designer.cs">
-      <DependentUpon>RepXReadingReportForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\RepPOSReport\RepPOSReportXReadingReportForm.Designer.cs">
+      <DependentUpon>RepPOSReportXReadingReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\RepZReadingReportForm.cs">
+    <Compile Include="Forms\Software\RepPOSReport\RepPOSReportZReadingReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\RepZReadingReportForm.Designer.cs">
-      <DependentUpon>RepZReadingReportForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\RepPOSReport\RepPOSReportZReadingReportForm.Designer.cs">
+      <DependentUpon>RepPOSReportZReadingReportForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\Software\MstCustomer\MstCustomerDetailForm.resx">
       <DependentUpon>MstCustomerDetailForm.cs</DependentUpon>
@@ -363,8 +363,8 @@
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportForm.resx">
       <DependentUpon>RepSalesReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesSummaryReportForm.resx">
-      <DependentUpon>RepSalesSummaryReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportSalesSummaryReportForm.resx">
+      <DependentUpon>RepSalesReportSalesSummaryReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\SysSettings\SysSettingsForm.resx">
       <DependentUpon>SysSettingsForm.cs</DependentUpon>
@@ -378,11 +378,11 @@
     <EmbeddedResource Include="Reports\RepOfficialReceiptReportForm.resx">
       <DependentUpon>RepOfficialReceiptReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\RepXReadingReportForm.resx">
-      <DependentUpon>RepXReadingReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\RepPOSReport\RepPOSReportXReadingReportForm.resx">
+      <DependentUpon>RepPOSReportXReadingReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\RepZReadingReportForm.resx">
-      <DependentUpon>RepZReadingReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\RepPOSReport\RepPOSReportZReadingReportForm.resx">
+      <DependentUpon>RepPOSReportZReadingReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Data\easyposdb.dbml.layout">
       <DependentUpon>easyposdb.dbml</DependentUpon>

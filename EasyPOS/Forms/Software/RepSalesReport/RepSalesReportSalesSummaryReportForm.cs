@@ -11,18 +11,18 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.RepSalesReport
 {
-    public partial class RepSalesSummaryReportForm : Form
+    public partial class RepSalesReportSalesSummaryReportForm : Form
     {
-        public List<Entities.DgvSalesSummaryReportEntity> salesList;
+        public List<Entities.DgvSalesReportSalesSummaryReportEntity> salesList;
         public BindingSource dataSalesListSource = new BindingSource();
-        public PagedList<Entities.DgvSalesSummaryReportEntity> pageList;
+        public PagedList<Entities.DgvSalesReportSalesSummaryReportEntity> pageList;
         public Int32 pageNumber = 1;
         public Int32 pageSize = 50;
 
         public DateTime dateStart;
         public DateTime dateEnd;
 
-        public RepSalesSummaryReportForm(DateTime startDate, DateTime endDate)
+        public RepSalesReportSalesSummaryReportForm(DateTime startDate, DateTime endDate)
         {
             InitializeComponent();
             dateStart = startDate;
@@ -33,17 +33,17 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         }
 
 
-        public List<Entities.DgvSalesSummaryReportEntity> GetSalesSummaryListData(DateTime startDate, DateTime endDate)
+        public List<Entities.DgvSalesReportSalesSummaryReportEntity> GetSalesSummaryListData(DateTime startDate, DateTime endDate)
         {
-            List<Entities.DgvSalesSummaryReportEntity> rowList = new List<Entities.DgvSalesSummaryReportEntity>();
+            List<Entities.DgvSalesReportSalesSummaryReportEntity> rowList = new List<Entities.DgvSalesReportSalesSummaryReportEntity>();
 
-            Controllers.RepSalesSummaryReportController repSalesSummaryReportController = new Controllers.RepSalesSummaryReportController();
+            Controllers.RepSalesReportController repSalesSummaryReportController = new Controllers.RepSalesReportController();
 
             var salesList = repSalesSummaryReportController.ListSales(startDate, endDate);
             if (salesList.Any())
             {
                 var row = from d in salesList
-                          select new Entities.DgvSalesSummaryReportEntity
+                          select new Entities.DgvSalesReportSalesSummaryReportEntity
                           {
                               ColumnId = d.ColumnId,
                               ColumnPeriodId = d.ColumnPeriodId,
@@ -101,7 +101,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             if (salesList.Any())
             {
 
-                pageList = new PagedList<Entities.DgvSalesSummaryReportEntity>(salesList, pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvSalesReportSalesSummaryReportEntity>(salesList, pageNumber, pageSize);
 
                 if (pageList.PageCount == 1)
                 {
@@ -154,7 +154,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
         private void buttonSalesListPageListFirst_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvSalesSummaryReportEntity>(salesList, 1, pageSize);
+            pageList = new PagedList<Entities.DgvSalesReportSalesSummaryReportEntity>(salesList, 1, pageSize);
             dataSalesListSource.DataSource = pageList;
 
             buttonSalesListPageListFirst.Enabled = false;
@@ -170,7 +170,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         {
             if (pageList.HasPreviousPage == true)
             {
-                pageList = new PagedList<Entities.DgvSalesSummaryReportEntity>(salesList, --pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvSalesReportSalesSummaryReportEntity>(salesList, --pageNumber, pageSize);
                 dataSalesListSource.DataSource = pageList;
             }
 
@@ -190,7 +190,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         {
             if (pageList.HasNextPage == true)
             {
-                pageList = new PagedList<Entities.DgvSalesSummaryReportEntity>(salesList, ++pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvSalesReportSalesSummaryReportEntity>(salesList, ++pageNumber, pageSize);
                 dataSalesListSource.DataSource = pageList;
             }
 
@@ -208,7 +208,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
         private void buttonSalesListPageListLast_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvSalesSummaryReportEntity>(salesList, pageList.PageCount, pageSize);
+            pageList = new PagedList<Entities.DgvSalesReportSalesSummaryReportEntity>(salesList, pageList.PageCount, pageSize);
             dataSalesListSource.DataSource = pageList;
 
             buttonSalesListPageListFirst.Enabled = true;

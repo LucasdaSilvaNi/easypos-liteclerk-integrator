@@ -1,6 +1,6 @@
 ﻿namespace EasyPOS.Forms.Software.RepSalesReport
 {
-    partial class RepSalesSummaryReportForm
+    partial class RepSalesReportSalesSummaryReportForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepSalesSummaryReportForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepSalesReportSalesSummaryReportForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonView = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();

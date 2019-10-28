@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Controllers
 {
-    class RepSalesSummaryReportController
+    class RepSalesReportController
     {
         public Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
 
         // ============
         // List - Sales 
         // ============
-        public List<Entities.DgvSalesSummaryReportEntity> ListSales(DateTime startDate, DateTime endDate)
+        public List<Entities.DgvSalesReportSalesSummaryReportEntity> ListSales(DateTime startDate, DateTime endDate)
         {
             var sales = from d in db.TrnSales
                         where d.SalesDate >= startDate && d.SalesDate <= endDate
-                        select new Entities.DgvSalesSummaryReportEntity
+                        select new Entities.DgvSalesReportSalesSummaryReportEntity
                         {
                             ColumnId = d.Id,
                             ColumnPeriodId = d.PeriodId,
