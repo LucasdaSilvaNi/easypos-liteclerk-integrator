@@ -42,7 +42,7 @@
             this.buttonStockIn = new System.Windows.Forms.Button();
             this.buttonStockOut = new System.Windows.Forms.Button();
             this.buttonDisbursement = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.buttonSystemTables = new System.Windows.Forms.Button();
             this.buttonCustomer = new System.Windows.Forms.Button();
             this.buttonDiscounting = new System.Windows.Forms.Button();
             this.buttonPOS = new System.Windows.Forms.Button();
@@ -286,24 +286,25 @@
             this.buttonDisbursement.UseVisualStyleBackColor = false;
             this.buttonDisbursement.Click += new System.EventHandler(this.buttonDisbursement_Click);
             // 
-            // button5
+            // buttonSystemTables
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.ImageIndex = 13;
-            this.button5.ImageList = this.imageListMenuIcons;
-            this.button5.Location = new System.Drawing.Point(711, 393);
-            this.button5.Name = "button5";
-            this.button5.Padding = new System.Windows.Forms.Padding(10);
-            this.button5.Size = new System.Drawing.Size(227, 121);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "\r\nSystem Tables";
-            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button5.UseVisualStyleBackColor = false;
+            this.buttonSystemTables.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonSystemTables.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonSystemTables.FlatAppearance.BorderSize = 0;
+            this.buttonSystemTables.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSystemTables.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonSystemTables.ForeColor = System.Drawing.Color.White;
+            this.buttonSystemTables.ImageIndex = 13;
+            this.buttonSystemTables.ImageList = this.imageListMenuIcons;
+            this.buttonSystemTables.Location = new System.Drawing.Point(711, 393);
+            this.buttonSystemTables.Name = "buttonSystemTables";
+            this.buttonSystemTables.Padding = new System.Windows.Forms.Padding(10);
+            this.buttonSystemTables.Size = new System.Drawing.Size(227, 121);
+            this.buttonSystemTables.TabIndex = 7;
+            this.buttonSystemTables.Text = "\r\nSystem Tables";
+            this.buttonSystemTables.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonSystemTables.UseVisualStyleBackColor = false;
+            this.buttonSystemTables.Click += new System.EventHandler(this.buttonSystemTables_Click);
             // 
             // buttonCustomer
             // 
@@ -395,7 +396,7 @@
             this.panel1.Controls.Add(this.buttonSettings);
             this.panel1.Controls.Add(this.buttonCustomer);
             this.panel1.Controls.Add(this.buttonPOSReport);
-            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.buttonSystemTables);
             this.panel1.Controls.Add(this.button12);
             this.panel1.Controls.Add(this.buttonDisbursement);
             this.panel1.Controls.Add(this.button11);
@@ -433,7 +434,7 @@
         private System.Windows.Forms.Button buttonPOS;
         private System.Windows.Forms.Button buttonDiscounting;
         private System.Windows.Forms.Button buttonCustomer;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button buttonSystemTables;
         private System.Windows.Forms.Button buttonDisbursement;
         private System.Windows.Forms.Button buttonStockOut;
         private System.Windows.Forms.Button buttonStockIn;

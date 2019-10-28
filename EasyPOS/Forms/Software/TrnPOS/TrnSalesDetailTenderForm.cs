@@ -170,7 +170,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     CollectionLines = listCollectionLine
                 };
 
-                Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+                Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
                 String[] tenderSales = trnPOSSalesController.TenderSales(trnSalesEntity.Id, newCollection);
                 if (tenderSales[1].Equals("0") == false)
                 {
@@ -211,7 +211,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             dataGridViewTenderPayType.Rows.Clear();
             dataGridViewTenderPayType.Refresh();
 
-            Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
 
             var payTypeList = trnPOSSalesController.TenderListPayType();
             if (payTypeList.Any())

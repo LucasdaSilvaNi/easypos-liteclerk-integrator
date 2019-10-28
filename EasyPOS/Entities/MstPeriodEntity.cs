@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    public class DgvUserDetailUserRightsEntity
+    public class MstPeriodEntity
     {
+        public Int32 Id { get; set; }
+        public String Period { get; set; }
     }
 }

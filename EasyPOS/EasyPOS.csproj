@@ -70,8 +70,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\MstAccountController.cs" />
     <Compile Include="Controllers\MstCustomerController.cs" />
     <Compile Include="Controllers\MstItemController.cs" />
+    <Compile Include="Controllers\MstPayTypeController.cs" />
+    <Compile Include="Controllers\MstPeriodController.cs" />
+    <Compile Include="Controllers\MstSupplierController.cs" />
+    <Compile Include="Controllers\MstTaxController.cs" />
+    <Compile Include="Controllers\MstTerminalController.cs" />
+    <Compile Include="Controllers\MstUnitController.cs" />
     <Compile Include="Controllers\MstUserController.cs" />
     <Compile Include="Controllers\RepPOSReportController.cs" />
     <Compile Include="Controllers\RepSalesReportController.cs" />
@@ -79,8 +86,8 @@
     <Compile Include="Controllers\IntCloudSettingsController.cs" />
     <Compile Include="Controllers\SysSoftwareController.cs" />
     <Compile Include="Controllers\TrnDisbursementController.cs" />
-    <Compile Include="Controllers\TrnPOSSalesController.cs" />
-    <Compile Include="Controllers\TrnPOSSalesLineController.cs" />
+    <Compile Include="Controllers\TrnSalesController.cs" />
+    <Compile Include="Controllers\TrnSalesLineController.cs" />
     <Compile Include="Controllers\TrnStockInController.cs" />
     <Compile Include="Controllers\TrnStockOutController.cs" />
     <Compile Include="Controllers\TrnStockInLineController.cs" />
@@ -126,14 +133,23 @@
     <Compile Include="Entities\DgvSalesReportSalesSummaryReportEntity.cs" />
     <Compile Include="Entities\DgvStockOutListStockInEntity.cs" />
     <Compile Include="Entities\DgvStockInListStockInEntity.cs" />
+    <Compile Include="Entities\DgvSystemTablesAccountListEntity.cs" />
+    <Compile Include="Entities\DgvSystemTablesPayTypeListEntity.cs" />
+    <Compile Include="Entities\DgvSystemTablesPeriodListEntity.cs" />
+    <Compile Include="Entities\DgvSystemTablesSupplierListEntity.cs" />
+    <Compile Include="Entities\DgvSystemTablesTaxListEntity.cs" />
+    <Compile Include="Entities\DgvSystemTablesTerminalListEntity.cs" />
+    <Compile Include="Entities\DgvSystemTablesUnitListEntity.cs" />
     <Compile Include="Entities\DgvUserDetailUserRightsEntity.cs" />
     <Compile Include="Entities\DgvUserListUserEntity.cs" />
+    <Compile Include="Entities\MstAccountEntity.cs" />
     <Compile Include="Entities\MstCustomerEntity.cs" />
     <Compile Include="Entities\IntCloudSettingsEntity.cs" />
     <Compile Include="Entities\MstDiscountEntity.cs" />
     <Compile Include="Entities\MstItemEntity.cs" />
     <Compile Include="Entities\MstItemInventoryEntity.cs" />
     <Compile Include="Entities\MstPayTypeEntity.cs" />
+    <Compile Include="Entities\MstPeriodEntity.cs" />
     <Compile Include="Entities\MstSupplierEntity.cs" />
     <Compile Include="Entities\MstTaxEntity.cs" />
     <Compile Include="Entities\MstTermEntity.cs" />
@@ -237,11 +253,11 @@
     <Compile Include="Forms\Software\SysMenu\SysMenuForm.Designer.cs">
       <DependentUpon>SysMenuForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\SysTables\SysTablesForm.cs">
+    <Compile Include="Forms\Software\SysSystemTables\SysSystemTablesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\SysTables\SysTablesForm.Designer.cs">
-      <DependentUpon>SysTablesForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\SysSystemTables\SysSystemTablesForm.Designer.cs">
+      <DependentUpon>SysSystemTablesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\TrnDisbursement\TrnDisbursementDetailForm.cs">
       <SubType>Form</SubType>
@@ -373,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\SysSettings\SysSettingsForm.resx">
       <DependentUpon>SysSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\SysSystemTables\SysSystemTablesForm.resx">
+      <DependentUpon>SysSystemTablesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnDisbursement\TrnDisbursementListForm.resx">
       <DependentUpon>TrnDisbursementListForm.cs</DependentUpon>

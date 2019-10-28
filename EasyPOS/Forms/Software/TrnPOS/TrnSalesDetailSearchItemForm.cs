@@ -35,7 +35,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             dataGridViewSearchItemList.Rows.Clear();
             dataGridViewSearchItemList.Refresh();
 
-            Controllers.TrnPOSSalesLineController trnPOSSalesLineController = new Controllers.TrnPOSSalesLineController();
+            Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
 
             var itemList = trnPOSSalesLineController.ListSearchItem(textBoxFilter.Text);
             if (itemList.Any())

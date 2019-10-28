@@ -42,7 +42,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         public void newSales()
         {
-            Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
             String[] addSales = trnPOSSalesController.AddSales();
             if (addSales[1].Equals("0") == false)
             {
@@ -63,7 +63,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         public void GetTerminalList()
         {
-            Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
             if (trnPOSSalesController.DropdownListTerminal().Any())
             {
                 comboBoxTerminal.DataSource = trnPOSSalesController.DropdownListTerminal();
@@ -164,7 +164,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 List<Entities.DgvSalesListSalesEntity> rowList = new List<Entities.DgvSalesListSalesEntity>();
 
-                Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+                Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
                 var salesList = trnPOSSalesController.ListSales(salesDate, terminalId, filter);
                 if (salesList.Any())
                 {
@@ -227,7 +227,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
                 else
                 {
-                    Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+                    Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
                     if (trnPOSSalesController.IsSalesTendered(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value)) == true)
                     {
                         MessageBox.Show("Already tendered.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -254,7 +254,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
                 else
                 {
-                    Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+                    Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
                     if (trnPOSSalesController.IsSalesTendered(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value)) == true)
                     {
                         MessageBox.Show("Already tendered.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -299,7 +299,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 labelPreparedBy.Text = dataGridViewSalesList.Rows[rowIndex].Cells[7].Value.ToString();
                 labelTransactionDate.Text = dataGridViewSalesList.Rows[rowIndex].Cells[4].Value.ToString();
 
-                Controllers.TrnPOSSalesLineController trnPOSSalesLineController = new Controllers.TrnPOSSalesLineController();
+                Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
                 if (trnPOSSalesLineController.ListSalesLine(Convert.ToInt32(dataGridViewSalesList.Rows[rowIndex].Cells[2].Value)).Any())
                 {
                     var groupedSalesLineItems = from d in trnPOSSalesLineController.ListSalesLine(Convert.ToInt32(dataGridViewSalesList.Rows[rowIndex].Cells[2].Value))
@@ -346,7 +346,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     DialogResult cancelDialogResult = MessageBox.Show("Cancel Transaction? ", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (cancelDialogResult == DialogResult.Yes)
                     {
-                        Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+                        Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
 
                         String[] cancelSales = trnPOSSalesController.CancelSales(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value));
                         if (cancelSales[1].Equals("0") == false)
@@ -423,7 +423,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         {
                             Int32 salesId = Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value);
 
-                            Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+                            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
                             Int32 collectionId = trnPOSSalesController.GetCollectionId(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value));
                             if (collectionId != 0)
                             {

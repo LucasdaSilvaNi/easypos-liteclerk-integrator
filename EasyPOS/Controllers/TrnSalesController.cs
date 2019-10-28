@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Controllers
 {
-    class TrnPOSSalesController
+    class TrnSalesController
     {
         // ============
         // Data Context
@@ -29,9 +29,9 @@ namespace EasyPOS.Controllers
             return result;
         }
 
-        // ========================
-        // Dropdown List - Terminal
-        // ========================
+        // ======================
+        // Dropdown List Terminal
+        // ======================
         public List<Entities.MstTerminalEntity> DropdownListTerminal()
         {
             var terminals = from d in db.MstTerminals
@@ -44,9 +44,9 @@ namespace EasyPOS.Controllers
             return terminals.ToList();
         }
 
-        // ============
-        // List - Sales 
-        // ============
+        // ==========
+        // List Sales 
+        // ==========
         public List<Entities.TrnSalesEntity> ListSales(DateTime dateTime, Int32 terminalId, String filter)
         {
             var sales = from d in db.TrnSales
@@ -105,9 +105,9 @@ namespace EasyPOS.Controllers
             return sales.OrderByDescending(d => d.Id).ToList();
         }
 
-        // ==============
-        // Detail - Sales 
-        // ==============
+        // ============
+        // Detail Sales 
+        // ============
         public Entities.TrnSalesEntity DetailSales(Int32 id)
         {
             var sales = from d in db.TrnSales
@@ -162,9 +162,9 @@ namespace EasyPOS.Controllers
             return sales.FirstOrDefault();
         }
 
-        // ===========
-        // Add - Sales 
-        // ===========
+        // =========
+        // Add Sales 
+        // =========
         public String[] AddSales()
         {
             try
@@ -254,9 +254,9 @@ namespace EasyPOS.Controllers
             }
         }
 
-        // =======================
-        // Tender - List Pay Types 
-        // =======================
+        // =====================
+        // Tender List Pay Types 
+        // =====================
         public List<Entities.MstPayTypeEntity> TenderListPayType()
         {
             var payTypes = from d in db.MstPayTypes
@@ -270,9 +270,9 @@ namespace EasyPOS.Controllers
             return payTypes.OrderBy(d => d.SortNumber).ToList();
         }
 
-        // ==============
-        // Tender - Sales
-        // ==============
+        // ============
+        // Tender Sales
+        // ============
         public String[] TenderSales(Int32 salesId, Entities.TrnCollectionEntity objCollection)
         {
             try
@@ -476,9 +476,9 @@ namespace EasyPOS.Controllers
             return users.OrderBy(d => d.FullName).ToList();
         }
 
-        // =====================
-        // Tender - Update Sales
-        // =====================
+        // ===========================
+        // Tender Sales - Update Sales
+        // ===========================
         public String[] TenderUpdateSales(Int32 salesId, Entities.TrnSalesEntity objSalesEntity)
         {
             try
@@ -511,9 +511,9 @@ namespace EasyPOS.Controllers
             }
         }
 
-        // ==============
-        // Delete - Sales 
-        // ==============
+        // ============
+        // Delete Sales 
+        // ============
         public String[] DeleteSales(Int32 salesId)
         {
             try
@@ -550,9 +550,9 @@ namespace EasyPOS.Controllers
             }
         }
 
-        // ==============
-        // Cancel - Sales
-        // ==============
+        // ============
+        // Cancel Sales
+        // ============
         public String[] CancelSales(Int32 salesId)
         {
             try

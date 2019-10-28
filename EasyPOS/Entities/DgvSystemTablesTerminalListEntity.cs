@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    public class DgvUserDetailUserRightsEntity
+    public class DgvSystemTablesTerminalListEntity
     {
     }
 }

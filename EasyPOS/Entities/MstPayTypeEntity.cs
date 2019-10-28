@@ -10,7 +10,7 @@ namespace EasyPOS.Entities
     {
         public Int32 Id { get; set; }
         public String PayType { get; set; }
-        public Int32 AccountId { get; set; }
+        public Int32? AccountId { get; set; }
         public String Account { get; set; }
         public Int32? SortNumber { get; set; }
     }

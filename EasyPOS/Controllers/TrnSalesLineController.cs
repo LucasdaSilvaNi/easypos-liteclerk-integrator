@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Controllers
 {
-    class TrnPOSSalesLineController
+    class TrnSalesLineController
     {
         // ============
         // Data Context
         // ============
         public Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
 
-        // =================
-        // List - Sales Line
-        // =================
+        // ===============
+        // List Sales Line
+        // ===============
         public List<Entities.TrnSalesLineEntity> ListSalesLine(Int32 salesId)
         {
             var salesLines = from d in db.TrnSalesLines
@@ -56,9 +56,9 @@ namespace EasyPOS.Controllers
             return salesLines.OrderByDescending(d => d.Id).ToList();
         }
 
-        // ===================
-        // Detail - Sales Line
-        // ===================
+        // =================
+        // Detail Sales Line
+        // =================
         public Entities.TrnSalesLineEntity DetailSalesLine(Entities.TrnSalesLineEntity objSalesLine)
         {
             var salesLines = from d in db.TrnSalesLines
@@ -99,9 +99,9 @@ namespace EasyPOS.Controllers
             return salesLines.FirstOrDefault();
         }
 
-        // ==================
-        // List - Search Item
-        // ==================
+        // ================
+        // List Search Item
+        // ================
         public List<Entities.MstItemEntity> ListSearchItem(String filter)
         {
             var items = from d in db.MstItems
@@ -126,9 +126,9 @@ namespace EasyPOS.Controllers
             return items.OrderBy(d => d.ItemDescription).ToList();
         }
 
-        // =============
-        // Detail - Item
-        // =============
+        // ===========
+        // Detail Item
+        // ===========
         public Entities.MstItemEntity DetailItem(String barcode)
         {
             var item = from d in db.MstItems
@@ -151,9 +151,9 @@ namespace EasyPOS.Controllers
             return item.FirstOrDefault();
         }
 
-        // ========================
-        // Dropdown List - Discount
-        // ========================
+        // ======================
+        // Dropdown List Discount
+        // ======================
         public List<Entities.MstDiscountEntity> DropdownListDiscount()
         {
             var discounts = from d in db.MstDiscounts
@@ -167,9 +167,9 @@ namespace EasyPOS.Controllers
             return discounts.ToList();
         }
 
-        // ================
-        // Add - Sales Line
-        // ================
+        // ==============
+        // Add Sales Line
+        // ==============
         public String[] AddSalesLine(Entities.TrnSalesLineEntity objSalesLine)
         {
             try
@@ -250,9 +250,9 @@ namespace EasyPOS.Controllers
             }
         }
 
-        // ===================
-        // Update - Sales Line
-        // ===================
+        // =================
+        // Update Sales Line
+        // =================
         public String[] UpdatealesLine(Int32 id, Entities.TrnSalesLineEntity objSalesLine)
         {
             try
@@ -329,9 +329,9 @@ namespace EasyPOS.Controllers
             }
         }
 
-        // ===================
-        // Delete - Sales Line 
-        // ===================
+        // =================
+        // Delete Sales Line 
+        // =================
         public String[] DeleteSalesLine(Int32 id)
         {
             try
@@ -373,9 +373,9 @@ namespace EasyPOS.Controllers
             }
         }
 
-        // ====================
-        // Barcode - Sales Line
-        // ====================
+        // ==================
+        // Barcode Sales Line
+        // ==================
         public String[] BarcodeSalesLine(Int32 salesId, String barcode)
         {
             try

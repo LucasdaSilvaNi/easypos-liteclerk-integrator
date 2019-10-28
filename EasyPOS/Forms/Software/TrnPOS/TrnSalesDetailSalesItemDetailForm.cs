@@ -35,7 +35,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         public void GetDiscountList()
         {
-            Controllers.TrnPOSSalesLineController trnPOSSalesLineController = new Controllers.TrnPOSSalesLineController();
+            Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
             if (trnPOSSalesLineController.DropdownListDiscount().Any())
             {
                 comboBoxSalesLineDiscount.DataSource = trnPOSSalesLineController.DropdownListDiscount();
@@ -95,7 +95,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 PriceSplitPercentage = 0,
             };
 
-            Controllers.TrnPOSSalesLineController trnPOSSalesLineController = new Controllers.TrnPOSSalesLineController();
+            Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
             if (newSalesLineEntity.Id == 0)
             {
                 String[] addSales = trnPOSSalesLineController.AddSalesLine(newSalesLineEntity);

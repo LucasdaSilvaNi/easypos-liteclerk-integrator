@@ -80,7 +80,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             dataGridViewSalesLineList.Rows.Clear();
             dataGridViewSalesLineList.Refresh();
 
-            Controllers.TrnPOSSalesLineController trnPOSSalesLineController = new Controllers.TrnPOSSalesLineController();
+            Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
 
             var salesLineList = trnPOSSalesLineController.ListSalesLine(trnSalesEntity.Id);
             if (salesLineList.Any())
@@ -212,7 +212,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 DialogResult deleteDialogResult = MessageBox.Show("Delete Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (deleteDialogResult == DialogResult.Yes)
                 {
-                    Controllers.TrnPOSSalesLineController trnPOSSalesLineController = new Controllers.TrnPOSSalesLineController();
+                    Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
 
                     String[] deleteSalesLine = trnPOSSalesLineController.DeleteSalesLine(Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[2].Value));
                     if (deleteSalesLine[1].Equals("0") == false)
@@ -231,7 +231,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             if (e.KeyCode == Keys.Enter)
             {
-                Controllers.TrnPOSSalesLineController trnPOSSalesLineController = new Controllers.TrnPOSSalesLineController();
+                Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
 
                 if (Modules.SysCurrentModule.GetCurrentSettings().IsBarcodeQuantityAlwaysOne == "true")
                 {

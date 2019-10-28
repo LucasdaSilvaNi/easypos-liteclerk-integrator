@@ -54,6 +54,8 @@ namespace EasyPOS.Forms.Software
         public TabPage tabPagePOSReport = new TabPage { Name = "tabPagePOSReport", Text = "POS Report" };
         public TabPage tabPageSalesReports = new TabPage { Name = "tabPageSalesReports ", Text = "Sales Report" };
 
+        public TabPage tabPageSystemTables = new TabPage { Name = "tabPageSystemTables", Text = "System Tables" };
+
         public TabPage tabPageSettings = new TabPage { Name = "tabPageSettings", Text = "Settings" };
 
         // =====
@@ -79,6 +81,8 @@ namespace EasyPOS.Forms.Software
         public RepPOSReport.RepPOSReportForm repPOSReportForm = null;
         public RepSalesReport.RepSalesReportForm repSalesReportForm = null;
 
+        public SysSystemTables.SysSystemTablesForm sysSystemTablesForm = null;
+
         public SysSettings.SysSettingsForm sysSettingsForm = null;
 
         public void InitializeDefaultForm()
@@ -93,9 +97,12 @@ namespace EasyPOS.Forms.Software
             tabPageSysMenu.Controls.Add(sysMenuForm);
         }
 
+        // =============
+        // Tab Functions
+        // =============
         public void AddTabPageItemList()
         {
-            tabPagePOSSalesDetail.Controls.Remove(mstItemListForm);
+            tabPageItemList.Controls.Remove(mstItemListForm);
 
             mstItemListForm = new MstItem.MstItemListForm(this)
             {
@@ -143,7 +150,7 @@ namespace EasyPOS.Forms.Software
 
         public void AddTabPageCustomerList()
         {
-            tabPagePOSSalesDetail.Controls.Remove(mstCustomerListForm);
+            tabPageCustomerList.Controls.Remove(mstCustomerListForm);
 
             mstCustomerListForm = new MstCustomer.MstCustomerListForm(this)
             {
@@ -191,7 +198,7 @@ namespace EasyPOS.Forms.Software
 
         public void AddTabPageDiscountingList()
         {
-            tabPagePOSSalesDetail.Controls.Remove(mstDiscountingListForm);
+            tabPageDiscountingList.Controls.Remove(mstDiscountingListForm);
 
             mstDiscountingListForm = new MstDiscounting.MstDiscountingListForm(this)
             {
@@ -215,7 +222,7 @@ namespace EasyPOS.Forms.Software
 
         public void AddTabPageUserList()
         {
-            tabPagePOSSalesDetail.Controls.Remove(mstUserListForm);
+            tabPageUserList.Controls.Remove(mstUserListForm);
 
             mstUserListForm = new MstUser.MstUserListForm(this)
             {
@@ -266,8 +273,10 @@ namespace EasyPOS.Forms.Software
             labelLastChange.Visible = true;
             textBoxLastChange.Visible = true;
 
-            Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
             textBoxLastChange.Text = trnPOSSalesController.GetLastChange(Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId)).ToString("#,##0.00");
+
+            tabPagePOSSalesList.Controls.Remove(trnSalesListForm);
 
             trnSalesListForm = new TrnPOS.TrnSalesListForm(this)
             {
@@ -294,7 +303,7 @@ namespace EasyPOS.Forms.Software
             labelLastChange.Visible = true;
             textBoxLastChange.Visible = true;
 
-            Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
             textBoxLastChange.Text = trnPOSSalesController.GetLastChange(Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId)).ToString("#,##0.00");
 
             tabPagePOSSalesDetail.Controls.Remove(trnSalesDetailForm);
@@ -321,7 +330,7 @@ namespace EasyPOS.Forms.Software
 
         public void AddTabPageStockInList()
         {
-            tabPagePOSSalesDetail.Controls.Remove(trnStockInListForm);
+            tabPageStockInList.Controls.Remove(trnStockInListForm);
 
             trnStockInListForm = new TrnStockIn.TrnStockInListForm(this)
             {
@@ -369,7 +378,7 @@ namespace EasyPOS.Forms.Software
 
         public void AddTabPageStockOutList()
         {
-            tabPagePOSSalesDetail.Controls.Remove(trnStockOutListForm);
+            tabPageStockOutList.Controls.Remove(trnStockOutListForm);
 
             trnStockOutListForm = new TrnStockOut.TrnStockOutListForm(this)
             {
@@ -417,7 +426,7 @@ namespace EasyPOS.Forms.Software
 
         public void AddTabPageDisbursementList()
         {
-            tabPagePOSSalesDetail.Controls.Remove(trnDisbursementListForm);
+            tabPageDisbursementList.Controls.Remove(trnDisbursementListForm);
 
             trnDisbursementListForm = new TrnDisbursement.TrnDisbursementListForm(this)
             {
@@ -487,6 +496,30 @@ namespace EasyPOS.Forms.Software
             }
         }
 
+        public void AddTabPageSystemTables()
+        {
+            tabPageSystemTables.Controls.Remove(sysSystemTablesForm);
+
+            sysSystemTablesForm = new SysSystemTables.SysSystemTablesForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageSystemTables.Controls.Add(sysSystemTablesForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageSystemTables) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageSystemTables);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageSystemTables);
+                tabControlSoftware.SelectTab(tabPageSystemTables);
+            }
+        }
+
         public void AddTabPageSettings()
         {
             tabPageSettings.Controls.Remove(sysSettingsForm);
@@ -508,6 +541,30 @@ namespace EasyPOS.Forms.Software
             {
                 tabControlSoftware.TabPages.Add(tabPageSettings);
                 tabControlSoftware.SelectTab(tabPageSettings);
+            }
+        }
+
+        public void AddTabPageSalesReport()
+        {
+            tabPageSalesReports.Controls.Remove(repSalesReportForm);
+
+            repSalesReportForm = new RepSalesReport.RepSalesReportForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageSalesReports.Controls.Add(repSalesReportForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageSalesReports) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageSalesReports);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageSalesReports);
+                tabControlSoftware.SelectTab(tabPageSalesReports);
             }
         }
 
@@ -534,30 +591,6 @@ namespace EasyPOS.Forms.Software
             {
                 labelLastChange.Visible = false;
                 textBoxLastChange.Visible = false;
-            }
-        }
-
-        public void AddTabPageSalesReport()
-        {
-            tabPageSalesReports.Controls.Remove(repSalesReportForm);
-
-            repSalesReportForm = new RepSalesReport.RepSalesReportForm(this)
-            {
-                TopLevel = false,
-                Visible = true,
-                Dock = DockStyle.Fill
-            };
-
-            tabPageSalesReports.Controls.Add(repSalesReportForm);
-
-            if (tabControlSoftware.TabPages.Contains(tabPageSalesReports) == true)
-            {
-                tabControlSoftware.SelectTab(tabPageSalesReports);
-            }
-            else
-            {
-                tabControlSoftware.TabPages.Add(tabPageSalesReports);
-                tabControlSoftware.SelectTab(tabPageSalesReports);
             }
         }
     }

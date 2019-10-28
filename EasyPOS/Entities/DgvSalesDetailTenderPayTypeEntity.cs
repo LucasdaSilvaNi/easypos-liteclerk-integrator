@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    class DgvSalesDetailTenderPayTypeEntity
+    public class DgvSalesDetailTenderPayTypeEntity
     {
         public Int32 Id { get; set; }
         public String PayType { get; set; }

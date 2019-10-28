@@ -36,7 +36,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         public void GetTermList()
         {
-            Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
             if (trnPOSSalesController.TenderSalesDropdownListTerm().Any())
             {
                 comboBoxTenderSalesTerms.DataSource = trnPOSSalesController.TenderSalesDropdownListTerm();
@@ -49,7 +49,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         public void GetCustomerList()
         {
-            Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
             if (trnPOSSalesController.TenderSalesDropdownListCustomer().Any())
             {
                 comboBoxTenderSalesCustomer.DataSource = trnPOSSalesController.TenderSalesDropdownListCustomer();
@@ -64,7 +64,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         public void GetUserList()
         {
-            Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
             if (trnPOSSalesController.TenderSalesDropdownListUser().Any())
             {
                 comboBoxTenderSalesUsers.DataSource = trnPOSSalesController.TenderSalesDropdownListUser();
@@ -99,7 +99,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 SalesAgent = Convert.ToInt32(comboBoxTenderSalesUsers.SelectedValue)
             };
 
-            Controllers.TrnPOSSalesController trnPOSSalesController = new Controllers.TrnPOSSalesController();
+            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
             String[] updateSales = trnPOSSalesController.TenderUpdateSales(trnSalesEntity.Id, newSalesEntity);
             if (updateSales[1].Equals("0") == false)
             {
