@@ -105,6 +105,7 @@ namespace EasyPOS.Forms.Software.MstItem
                 buttonLock.Enabled = false;
                 buttonUnlock.Enabled = true;
 
+                textBoxBarcode.ReadOnly = true;
                 textBoxDescription.ReadOnly = true;
                 textBoxAlias.ReadOnly = true;
                 textBoxCategory.ReadOnly = true;
@@ -127,6 +128,7 @@ namespace EasyPOS.Forms.Software.MstItem
                 buttonLock.Enabled = true;
                 buttonUnlock.Enabled = false;
 
+                textBoxBarcode.ReadOnly = false;
                 textBoxDescription.ReadOnly = false;
                 textBoxAlias.ReadOnly = false;
                 textBoxCategory.ReadOnly = false;
