@@ -156,14 +156,12 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(12, 6);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1376, 619);
+            this.tabControl1.Size = new System.Drawing.Size(1400, 637);
             this.tabControl1.TabIndex = 6;
             // 
             // tabPage1
@@ -209,7 +207,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 32);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1368, 583);
+            this.tabPage1.Size = new System.Drawing.Size(1392, 601);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General Information";
             this.tabPage1.UseVisualStyleBackColor = true;

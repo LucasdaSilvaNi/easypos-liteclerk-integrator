@@ -8,5 +8,12 @@ namespace EasyPOS.Entities
 {
     public class DgvSystemTablesTaxListEntity
     {
+        public String ColumnTaxListButtonEdit { get; set; }
+        public String ColumnTaxListButtonDelete { get; set; }
+        public Int32 ColumnTaxListId { get; set; }
+        public String ColumnTaxListCode { get; set; }
+        public String ColumnTaxListTax { get; set; }
+        public String ColumnTaxListRate { get; set; }
+        public String ColumnTaxListAccount { get; set; }
     }
 }

@@ -8,5 +8,9 @@ namespace EasyPOS.Entities
 {
     public class DgvSystemTablesUnitListEntity
     {
+        public String ColumnUnitListButtonEdit { get; set; }
+        public String ColumnUnitListButtonDelete { get; set; }
+        public Int32 ColumnUnitListId { get; set; }
+        public String ColumnUnitListUnit { get; set; }
     }
 }

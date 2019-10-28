@@ -34,6 +34,12 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
             this.dataGridViewAccountList = new System.Windows.Forms.DataGridView();
+            this.ColumnAccountListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnAccountListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnAccountListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAccountListCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAccountListAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAccountListAccountType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxAccountListFilter = new System.Windows.Forms.TextBox();
             this.panel15 = new System.Windows.Forms.Panel();
             this.buttonAccountListPageListFirst = new System.Windows.Forms.Button();
@@ -44,9 +50,6 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel10 = new System.Windows.Forms.Panel();
             this.dataGridViewPayTypeList = new System.Windows.Forms.DataGridView();
-            this.ColumnPayTypeListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnPayTypeListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnPayTypeListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxPayTypeListFilter = new System.Windows.Forms.TextBox();
             this.panel16 = new System.Windows.Forms.Panel();
             this.buttonPayTypeListPageListFirst = new System.Windows.Forms.Button();
@@ -57,9 +60,6 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel11 = new System.Windows.Forms.Panel();
             this.dataGridViewTaxList = new System.Windows.Forms.DataGridView();
-            this.ColumnTaxListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnTaxListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnTaxListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxTaxListFilter = new System.Windows.Forms.TextBox();
             this.panel17 = new System.Windows.Forms.Panel();
             this.buttonTaxListPageListFirst = new System.Windows.Forms.Button();
@@ -70,9 +70,6 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel12 = new System.Windows.Forms.Panel();
             this.dataGridViewUnitList = new System.Windows.Forms.DataGridView();
-            this.ColumnUnitListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnUnitListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnUnitListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxUnitListFilter = new System.Windows.Forms.TextBox();
             this.panel18 = new System.Windows.Forms.Panel();
             this.buttonUnitListPageListFirst = new System.Windows.Forms.Button();
@@ -83,9 +80,6 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.panel13 = new System.Windows.Forms.Panel();
             this.dataGridViewPeriodList = new System.Windows.Forms.DataGridView();
-            this.ColumnPeriodListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnPeriodListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnPeriodListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxPeriodListFilter = new System.Windows.Forms.TextBox();
             this.panel19 = new System.Windows.Forms.Panel();
             this.buttonPeriodListPageListFirst = new System.Windows.Forms.Button();
@@ -96,9 +90,6 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.panel14 = new System.Windows.Forms.Panel();
             this.dataGridViewTerminalList = new System.Windows.Forms.DataGridView();
-            this.ColumnTerminalListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnTerminalListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnTerminalListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxTerminalListFilter = new System.Windows.Forms.TextBox();
             this.panel20 = new System.Windows.Forms.Panel();
             this.buttonTerminalListPageListFirst = new System.Windows.Forms.Button();
@@ -109,9 +100,6 @@
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridViewSupplierList = new System.Windows.Forms.DataGridView();
-            this.ColumnSupplierListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnSupplierListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnSupplierListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxSupplierListFilter = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.buttonSupplierListPageListFirst = new System.Windows.Forms.Button();
@@ -124,12 +112,38 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.ColumnAccountListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnAccountListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnAccountListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAccountListCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAccountListAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAccountListAccountType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPayTypeListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnPayTypeListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnPayTypeListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPayTypeListPayType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPayTypeListAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTaxListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnTaxListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnTaxListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTaxListCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTaxListTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTaxListRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTaxListAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUnitListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnUnitListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnUnitListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUnitListUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPeriodListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnPeriodListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnPeriodListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPeriodListPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTerminalListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnTerminalListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnTerminalListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTerminalListTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSupplierListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnSupplierListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnSupplierListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSupplierListSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSupplierListAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSupplierListTelephoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSupplierListCellphoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSupplierListTIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -238,6 +252,56 @@
             this.dataGridViewAccountList.Size = new System.Drawing.Size(1376, 497);
             this.dataGridViewAccountList.TabIndex = 24;
             this.dataGridViewAccountList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAccountList_CellClick);
+            // 
+            // ColumnAccountListButtonEdit
+            // 
+            this.ColumnAccountListButtonEdit.DataPropertyName = "ColumnAccountListButtonEdit";
+            this.ColumnAccountListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnAccountListButtonEdit.HeaderText = "";
+            this.ColumnAccountListButtonEdit.Name = "ColumnAccountListButtonEdit";
+            this.ColumnAccountListButtonEdit.ReadOnly = true;
+            this.ColumnAccountListButtonEdit.Width = 70;
+            // 
+            // ColumnAccountListButtonDelete
+            // 
+            this.ColumnAccountListButtonDelete.DataPropertyName = "ColumnAccountListButtonDelete";
+            this.ColumnAccountListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnAccountListButtonDelete.HeaderText = "";
+            this.ColumnAccountListButtonDelete.Name = "ColumnAccountListButtonDelete";
+            this.ColumnAccountListButtonDelete.ReadOnly = true;
+            this.ColumnAccountListButtonDelete.Width = 70;
+            // 
+            // ColumnAccountListId
+            // 
+            this.ColumnAccountListId.DataPropertyName = "ColumnAccountListId";
+            this.ColumnAccountListId.HeaderText = "Id";
+            this.ColumnAccountListId.Name = "ColumnAccountListId";
+            this.ColumnAccountListId.ReadOnly = true;
+            this.ColumnAccountListId.Visible = false;
+            // 
+            // ColumnAccountListCode
+            // 
+            this.ColumnAccountListCode.DataPropertyName = "ColumnAccountListCode";
+            this.ColumnAccountListCode.HeaderText = "Code";
+            this.ColumnAccountListCode.Name = "ColumnAccountListCode";
+            this.ColumnAccountListCode.ReadOnly = true;
+            this.ColumnAccountListCode.Width = 150;
+            // 
+            // ColumnAccountListAccount
+            // 
+            this.ColumnAccountListAccount.DataPropertyName = "ColumnAccountListAccount";
+            this.ColumnAccountListAccount.HeaderText = "Account";
+            this.ColumnAccountListAccount.Name = "ColumnAccountListAccount";
+            this.ColumnAccountListAccount.ReadOnly = true;
+            this.ColumnAccountListAccount.Width = 250;
+            // 
+            // ColumnAccountListAccountType
+            // 
+            this.ColumnAccountListAccountType.DataPropertyName = "ColumnAccountListAccountType";
+            this.ColumnAccountListAccountType.HeaderText = "Type";
+            this.ColumnAccountListAccountType.Name = "ColumnAccountListAccountType";
+            this.ColumnAccountListAccountType.ReadOnly = true;
+            this.ColumnAccountListAccountType.Width = 200;
             // 
             // textBoxAccountListFilter
             // 
@@ -369,7 +433,9 @@
             this.dataGridViewPayTypeList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnPayTypeListButtonEdit,
             this.ColumnPayTypeListButtonDelete,
-            this.ColumnPayTypeListId});
+            this.ColumnPayTypeListId,
+            this.ColumnPayTypeListPayType,
+            this.ColumnPayTypeListAccount});
             this.dataGridViewPayTypeList.Location = new System.Drawing.Point(5, 39);
             this.dataGridViewPayTypeList.MultiSelect = false;
             this.dataGridViewPayTypeList.Name = "dataGridViewPayTypeList";
@@ -380,32 +446,6 @@
             this.dataGridViewPayTypeList.Size = new System.Drawing.Size(1376, 497);
             this.dataGridViewPayTypeList.TabIndex = 26;
             this.dataGridViewPayTypeList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPayTypeList_CellClick);
-            // 
-            // ColumnPayTypeListButtonEdit
-            // 
-            this.ColumnPayTypeListButtonEdit.DataPropertyName = "ColumnPayTypeListButtonEdit";
-            this.ColumnPayTypeListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnPayTypeListButtonEdit.HeaderText = "";
-            this.ColumnPayTypeListButtonEdit.Name = "ColumnPayTypeListButtonEdit";
-            this.ColumnPayTypeListButtonEdit.ReadOnly = true;
-            this.ColumnPayTypeListButtonEdit.Width = 70;
-            // 
-            // ColumnPayTypeListButtonDelete
-            // 
-            this.ColumnPayTypeListButtonDelete.DataPropertyName = "ColumnPayTypeListButtonDelete";
-            this.ColumnPayTypeListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnPayTypeListButtonDelete.HeaderText = "";
-            this.ColumnPayTypeListButtonDelete.Name = "ColumnPayTypeListButtonDelete";
-            this.ColumnPayTypeListButtonDelete.ReadOnly = true;
-            this.ColumnPayTypeListButtonDelete.Width = 70;
-            // 
-            // ColumnPayTypeListId
-            // 
-            this.ColumnPayTypeListId.DataPropertyName = "ColumnPayTypeListId";
-            this.ColumnPayTypeListId.HeaderText = "Id";
-            this.ColumnPayTypeListId.Name = "ColumnPayTypeListId";
-            this.ColumnPayTypeListId.ReadOnly = true;
-            this.ColumnPayTypeListId.Visible = false;
             // 
             // textBoxPayTypeListFilter
             // 
@@ -537,7 +577,11 @@
             this.dataGridViewTaxList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnTaxListButtonEdit,
             this.ColumnTaxListButtonDelete,
-            this.ColumnTaxListId});
+            this.ColumnTaxListId,
+            this.ColumnTaxListCode,
+            this.ColumnTaxListTax,
+            this.ColumnTaxListRate,
+            this.ColumnTaxListAccount});
             this.dataGridViewTaxList.Location = new System.Drawing.Point(5, 39);
             this.dataGridViewTaxList.MultiSelect = false;
             this.dataGridViewTaxList.Name = "dataGridViewTaxList";
@@ -548,32 +592,6 @@
             this.dataGridViewTaxList.Size = new System.Drawing.Size(1376, 497);
             this.dataGridViewTaxList.TabIndex = 28;
             this.dataGridViewTaxList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTaxList_CellClick);
-            // 
-            // ColumnTaxListButtonEdit
-            // 
-            this.ColumnTaxListButtonEdit.DataPropertyName = "ColumnTaxListButtonEdit";
-            this.ColumnTaxListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnTaxListButtonEdit.HeaderText = "";
-            this.ColumnTaxListButtonEdit.Name = "ColumnTaxListButtonEdit";
-            this.ColumnTaxListButtonEdit.ReadOnly = true;
-            this.ColumnTaxListButtonEdit.Width = 70;
-            // 
-            // ColumnTaxListButtonDelete
-            // 
-            this.ColumnTaxListButtonDelete.DataPropertyName = "ColumnTaxListButtonDelete";
-            this.ColumnTaxListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnTaxListButtonDelete.HeaderText = "";
-            this.ColumnTaxListButtonDelete.Name = "ColumnTaxListButtonDelete";
-            this.ColumnTaxListButtonDelete.ReadOnly = true;
-            this.ColumnTaxListButtonDelete.Width = 70;
-            // 
-            // ColumnTaxListId
-            // 
-            this.ColumnTaxListId.DataPropertyName = "ColumnTaxListId";
-            this.ColumnTaxListId.HeaderText = "Id";
-            this.ColumnTaxListId.Name = "ColumnTaxListId";
-            this.ColumnTaxListId.ReadOnly = true;
-            this.ColumnTaxListId.Visible = false;
             // 
             // textBoxTaxListFilter
             // 
@@ -705,7 +723,8 @@
             this.dataGridViewUnitList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnUnitListButtonEdit,
             this.ColumnUnitListButtonDelete,
-            this.ColumnUnitListId});
+            this.ColumnUnitListId,
+            this.ColumnUnitListUnit});
             this.dataGridViewUnitList.Location = new System.Drawing.Point(5, 39);
             this.dataGridViewUnitList.MultiSelect = false;
             this.dataGridViewUnitList.Name = "dataGridViewUnitList";
@@ -716,32 +735,6 @@
             this.dataGridViewUnitList.Size = new System.Drawing.Size(1376, 497);
             this.dataGridViewUnitList.TabIndex = 30;
             this.dataGridViewUnitList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUnitList_CellClick);
-            // 
-            // ColumnUnitListButtonEdit
-            // 
-            this.ColumnUnitListButtonEdit.DataPropertyName = "ColumnUnitListButtonEdit";
-            this.ColumnUnitListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnUnitListButtonEdit.HeaderText = "";
-            this.ColumnUnitListButtonEdit.Name = "ColumnUnitListButtonEdit";
-            this.ColumnUnitListButtonEdit.ReadOnly = true;
-            this.ColumnUnitListButtonEdit.Width = 70;
-            // 
-            // ColumnUnitListButtonDelete
-            // 
-            this.ColumnUnitListButtonDelete.DataPropertyName = "ColumnUnitListButtonDelete";
-            this.ColumnUnitListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnUnitListButtonDelete.HeaderText = "";
-            this.ColumnUnitListButtonDelete.Name = "ColumnUnitListButtonDelete";
-            this.ColumnUnitListButtonDelete.ReadOnly = true;
-            this.ColumnUnitListButtonDelete.Width = 70;
-            // 
-            // ColumnUnitListId
-            // 
-            this.ColumnUnitListId.DataPropertyName = "ColumnUnitListId";
-            this.ColumnUnitListId.HeaderText = "Id";
-            this.ColumnUnitListId.Name = "ColumnUnitListId";
-            this.ColumnUnitListId.ReadOnly = true;
-            this.ColumnUnitListId.Visible = false;
             // 
             // textBoxUnitListFilter
             // 
@@ -873,7 +866,8 @@
             this.dataGridViewPeriodList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnPeriodListButtonEdit,
             this.ColumnPeriodListButtonDelete,
-            this.ColumnPeriodListId});
+            this.ColumnPeriodListId,
+            this.ColumnPeriodListPeriod});
             this.dataGridViewPeriodList.Location = new System.Drawing.Point(5, 39);
             this.dataGridViewPeriodList.MultiSelect = false;
             this.dataGridViewPeriodList.Name = "dataGridViewPeriodList";
@@ -884,32 +878,6 @@
             this.dataGridViewPeriodList.Size = new System.Drawing.Size(1376, 497);
             this.dataGridViewPeriodList.TabIndex = 32;
             this.dataGridViewPeriodList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPeriodList_CellClick);
-            // 
-            // ColumnPeriodListButtonEdit
-            // 
-            this.ColumnPeriodListButtonEdit.DataPropertyName = "ColumnPeriodListButtonEdit";
-            this.ColumnPeriodListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnPeriodListButtonEdit.HeaderText = "";
-            this.ColumnPeriodListButtonEdit.Name = "ColumnPeriodListButtonEdit";
-            this.ColumnPeriodListButtonEdit.ReadOnly = true;
-            this.ColumnPeriodListButtonEdit.Width = 70;
-            // 
-            // ColumnPeriodListButtonDelete
-            // 
-            this.ColumnPeriodListButtonDelete.DataPropertyName = "ColumnPeriodListButtonDelete";
-            this.ColumnPeriodListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnPeriodListButtonDelete.HeaderText = "";
-            this.ColumnPeriodListButtonDelete.Name = "ColumnPeriodListButtonDelete";
-            this.ColumnPeriodListButtonDelete.ReadOnly = true;
-            this.ColumnPeriodListButtonDelete.Width = 70;
-            // 
-            // ColumnPeriodListId
-            // 
-            this.ColumnPeriodListId.DataPropertyName = "ColumnPeriodListId";
-            this.ColumnPeriodListId.HeaderText = "Id";
-            this.ColumnPeriodListId.Name = "ColumnPeriodListId";
-            this.ColumnPeriodListId.ReadOnly = true;
-            this.ColumnPeriodListId.Visible = false;
             // 
             // textBoxPeriodListFilter
             // 
@@ -1041,7 +1009,8 @@
             this.dataGridViewTerminalList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnTerminalListButtonEdit,
             this.ColumnTerminalListButtonDelete,
-            this.ColumnTerminalListId});
+            this.ColumnTerminalListId,
+            this.ColumnTerminalListTerminal});
             this.dataGridViewTerminalList.Location = new System.Drawing.Point(5, 39);
             this.dataGridViewTerminalList.MultiSelect = false;
             this.dataGridViewTerminalList.Name = "dataGridViewTerminalList";
@@ -1052,32 +1021,6 @@
             this.dataGridViewTerminalList.Size = new System.Drawing.Size(1376, 497);
             this.dataGridViewTerminalList.TabIndex = 32;
             this.dataGridViewTerminalList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTerminalList_CellClick);
-            // 
-            // ColumnTerminalListButtonEdit
-            // 
-            this.ColumnTerminalListButtonEdit.DataPropertyName = "ColumnTerminalListButtonEdit";
-            this.ColumnTerminalListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnTerminalListButtonEdit.HeaderText = "";
-            this.ColumnTerminalListButtonEdit.Name = "ColumnTerminalListButtonEdit";
-            this.ColumnTerminalListButtonEdit.ReadOnly = true;
-            this.ColumnTerminalListButtonEdit.Width = 70;
-            // 
-            // ColumnTerminalListButtonDelete
-            // 
-            this.ColumnTerminalListButtonDelete.DataPropertyName = "ColumnTerminalListButtonDelete";
-            this.ColumnTerminalListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnTerminalListButtonDelete.HeaderText = "";
-            this.ColumnTerminalListButtonDelete.Name = "ColumnTerminalListButtonDelete";
-            this.ColumnTerminalListButtonDelete.ReadOnly = true;
-            this.ColumnTerminalListButtonDelete.Width = 70;
-            // 
-            // ColumnTerminalListId
-            // 
-            this.ColumnTerminalListId.DataPropertyName = "ColumnTerminalListId";
-            this.ColumnTerminalListId.HeaderText = "Id";
-            this.ColumnTerminalListId.Name = "ColumnTerminalListId";
-            this.ColumnTerminalListId.ReadOnly = true;
-            this.ColumnTerminalListId.Visible = false;
             // 
             // textBoxTerminalListFilter
             // 
@@ -1209,7 +1152,12 @@
             this.dataGridViewSupplierList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnSupplierListButtonEdit,
             this.ColumnSupplierListButtonDelete,
-            this.ColumnSupplierListId});
+            this.ColumnSupplierListId,
+            this.ColumnSupplierListSupplier,
+            this.ColumnSupplierListAddress,
+            this.ColumnSupplierListTelephoneNumber,
+            this.ColumnSupplierListCellphoneNumber,
+            this.ColumnSupplierListTIN});
             this.dataGridViewSupplierList.Location = new System.Drawing.Point(5, 39);
             this.dataGridViewSupplierList.MultiSelect = false;
             this.dataGridViewSupplierList.Name = "dataGridViewSupplierList";
@@ -1220,32 +1168,6 @@
             this.dataGridViewSupplierList.Size = new System.Drawing.Size(1376, 497);
             this.dataGridViewSupplierList.TabIndex = 32;
             this.dataGridViewSupplierList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSupplierList_CellClick);
-            // 
-            // ColumnSupplierListButtonEdit
-            // 
-            this.ColumnSupplierListButtonEdit.DataPropertyName = "ColumnSupplierListButtonEdit";
-            this.ColumnSupplierListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnSupplierListButtonEdit.HeaderText = "";
-            this.ColumnSupplierListButtonEdit.Name = "ColumnSupplierListButtonEdit";
-            this.ColumnSupplierListButtonEdit.ReadOnly = true;
-            this.ColumnSupplierListButtonEdit.Width = 70;
-            // 
-            // ColumnSupplierListButtonDelete
-            // 
-            this.ColumnSupplierListButtonDelete.DataPropertyName = "ColumnSupplierListButtonDelete";
-            this.ColumnSupplierListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnSupplierListButtonDelete.HeaderText = "";
-            this.ColumnSupplierListButtonDelete.Name = "ColumnSupplierListButtonDelete";
-            this.ColumnSupplierListButtonDelete.ReadOnly = true;
-            this.ColumnSupplierListButtonDelete.Width = 70;
-            // 
-            // ColumnSupplierListId
-            // 
-            this.ColumnSupplierListId.DataPropertyName = "ColumnSupplierListId";
-            this.ColumnSupplierListId.HeaderText = "Id";
-            this.ColumnSupplierListId.Name = "ColumnSupplierListId";
-            this.ColumnSupplierListId.ReadOnly = true;
-            this.ColumnSupplierListId.Visible = false;
             // 
             // textBoxSupplierListFilter
             // 
@@ -1410,55 +1332,272 @@
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
-            // ColumnAccountListButtonEdit
+            // ColumnPayTypeListButtonEdit
             // 
-            this.ColumnAccountListButtonEdit.DataPropertyName = "ColumnAccountListButtonEdit";
-            this.ColumnAccountListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnAccountListButtonEdit.HeaderText = "";
-            this.ColumnAccountListButtonEdit.Name = "ColumnAccountListButtonEdit";
-            this.ColumnAccountListButtonEdit.ReadOnly = true;
-            this.ColumnAccountListButtonEdit.Width = 70;
+            this.ColumnPayTypeListButtonEdit.DataPropertyName = "ColumnPayTypeListButtonEdit";
+            this.ColumnPayTypeListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnPayTypeListButtonEdit.HeaderText = "";
+            this.ColumnPayTypeListButtonEdit.Name = "ColumnPayTypeListButtonEdit";
+            this.ColumnPayTypeListButtonEdit.ReadOnly = true;
+            this.ColumnPayTypeListButtonEdit.Width = 70;
             // 
-            // ColumnAccountListButtonDelete
+            // ColumnPayTypeListButtonDelete
             // 
-            this.ColumnAccountListButtonDelete.DataPropertyName = "ColumnAccountListButtonDelete";
-            this.ColumnAccountListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnAccountListButtonDelete.HeaderText = "";
-            this.ColumnAccountListButtonDelete.Name = "ColumnAccountListButtonDelete";
-            this.ColumnAccountListButtonDelete.ReadOnly = true;
-            this.ColumnAccountListButtonDelete.Width = 70;
+            this.ColumnPayTypeListButtonDelete.DataPropertyName = "ColumnPayTypeListButtonDelete";
+            this.ColumnPayTypeListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnPayTypeListButtonDelete.HeaderText = "";
+            this.ColumnPayTypeListButtonDelete.Name = "ColumnPayTypeListButtonDelete";
+            this.ColumnPayTypeListButtonDelete.ReadOnly = true;
+            this.ColumnPayTypeListButtonDelete.Width = 70;
             // 
-            // ColumnAccountListId
+            // ColumnPayTypeListId
             // 
-            this.ColumnAccountListId.DataPropertyName = "ColumnAccountListId";
-            this.ColumnAccountListId.HeaderText = "Id";
-            this.ColumnAccountListId.Name = "ColumnAccountListId";
-            this.ColumnAccountListId.ReadOnly = true;
-            this.ColumnAccountListId.Visible = false;
+            this.ColumnPayTypeListId.DataPropertyName = "ColumnPayTypeListId";
+            this.ColumnPayTypeListId.HeaderText = "Id";
+            this.ColumnPayTypeListId.Name = "ColumnPayTypeListId";
+            this.ColumnPayTypeListId.ReadOnly = true;
+            this.ColumnPayTypeListId.Visible = false;
             // 
-            // ColumnAccountListCode
+            // ColumnPayTypeListPayType
             // 
-            this.ColumnAccountListCode.DataPropertyName = "ColumnAccountListCode";
-            this.ColumnAccountListCode.HeaderText = "Code";
-            this.ColumnAccountListCode.Name = "ColumnAccountListCode";
-            this.ColumnAccountListCode.ReadOnly = true;
-            this.ColumnAccountListCode.Width = 150;
+            this.ColumnPayTypeListPayType.DataPropertyName = "ColumnPayTypeListPayType";
+            this.ColumnPayTypeListPayType.HeaderText = "Pay Type";
+            this.ColumnPayTypeListPayType.Name = "ColumnPayTypeListPayType";
+            this.ColumnPayTypeListPayType.ReadOnly = true;
+            this.ColumnPayTypeListPayType.Width = 250;
             // 
-            // ColumnAccountListAccount
+            // ColumnPayTypeListAccount
             // 
-            this.ColumnAccountListAccount.DataPropertyName = "ColumnAccountListAccount";
-            this.ColumnAccountListAccount.HeaderText = "Account";
-            this.ColumnAccountListAccount.Name = "ColumnAccountListAccount";
-            this.ColumnAccountListAccount.ReadOnly = true;
-            this.ColumnAccountListAccount.Width = 250;
+            this.ColumnPayTypeListAccount.DataPropertyName = "ColumnPayTypeListAccount";
+            this.ColumnPayTypeListAccount.HeaderText = "Account";
+            this.ColumnPayTypeListAccount.Name = "ColumnPayTypeListAccount";
+            this.ColumnPayTypeListAccount.ReadOnly = true;
+            this.ColumnPayTypeListAccount.Width = 200;
             // 
-            // ColumnAccountListAccountType
+            // ColumnTaxListButtonEdit
             // 
-            this.ColumnAccountListAccountType.DataPropertyName = "ColumnAccountListAccountType";
-            this.ColumnAccountListAccountType.HeaderText = "Type";
-            this.ColumnAccountListAccountType.Name = "ColumnAccountListAccountType";
-            this.ColumnAccountListAccountType.ReadOnly = true;
-            this.ColumnAccountListAccountType.Width = 200;
+            this.ColumnTaxListButtonEdit.DataPropertyName = "ColumnTaxListButtonEdit";
+            this.ColumnTaxListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnTaxListButtonEdit.HeaderText = "";
+            this.ColumnTaxListButtonEdit.Name = "ColumnTaxListButtonEdit";
+            this.ColumnTaxListButtonEdit.ReadOnly = true;
+            this.ColumnTaxListButtonEdit.Width = 70;
+            // 
+            // ColumnTaxListButtonDelete
+            // 
+            this.ColumnTaxListButtonDelete.DataPropertyName = "ColumnTaxListButtonDelete";
+            this.ColumnTaxListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnTaxListButtonDelete.HeaderText = "";
+            this.ColumnTaxListButtonDelete.Name = "ColumnTaxListButtonDelete";
+            this.ColumnTaxListButtonDelete.ReadOnly = true;
+            this.ColumnTaxListButtonDelete.Width = 70;
+            // 
+            // ColumnTaxListId
+            // 
+            this.ColumnTaxListId.DataPropertyName = "ColumnTaxListId";
+            this.ColumnTaxListId.HeaderText = "Id";
+            this.ColumnTaxListId.Name = "ColumnTaxListId";
+            this.ColumnTaxListId.ReadOnly = true;
+            this.ColumnTaxListId.Visible = false;
+            // 
+            // ColumnTaxListCode
+            // 
+            this.ColumnTaxListCode.DataPropertyName = "ColumnTaxListCode";
+            this.ColumnTaxListCode.HeaderText = "Code";
+            this.ColumnTaxListCode.Name = "ColumnTaxListCode";
+            this.ColumnTaxListCode.ReadOnly = true;
+            this.ColumnTaxListCode.Width = 150;
+            // 
+            // ColumnTaxListTax
+            // 
+            this.ColumnTaxListTax.DataPropertyName = "ColumnTaxListTax";
+            this.ColumnTaxListTax.HeaderText = "Tax";
+            this.ColumnTaxListTax.Name = "ColumnTaxListTax";
+            this.ColumnTaxListTax.ReadOnly = true;
+            this.ColumnTaxListTax.Width = 250;
+            // 
+            // ColumnTaxListRate
+            // 
+            this.ColumnTaxListRate.DataPropertyName = "ColumnTaxListRate";
+            this.ColumnTaxListRate.HeaderText = "Rate";
+            this.ColumnTaxListRate.Name = "ColumnTaxListRate";
+            this.ColumnTaxListRate.ReadOnly = true;
+            // 
+            // ColumnTaxListAccount
+            // 
+            this.ColumnTaxListAccount.DataPropertyName = "ColumnTaxListAccount";
+            this.ColumnTaxListAccount.HeaderText = "Account";
+            this.ColumnTaxListAccount.Name = "ColumnTaxListAccount";
+            this.ColumnTaxListAccount.ReadOnly = true;
+            this.ColumnTaxListAccount.Width = 200;
+            // 
+            // ColumnUnitListButtonEdit
+            // 
+            this.ColumnUnitListButtonEdit.DataPropertyName = "ColumnUnitListButtonEdit";
+            this.ColumnUnitListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnUnitListButtonEdit.HeaderText = "";
+            this.ColumnUnitListButtonEdit.Name = "ColumnUnitListButtonEdit";
+            this.ColumnUnitListButtonEdit.ReadOnly = true;
+            this.ColumnUnitListButtonEdit.Width = 70;
+            // 
+            // ColumnUnitListButtonDelete
+            // 
+            this.ColumnUnitListButtonDelete.DataPropertyName = "ColumnUnitListButtonDelete";
+            this.ColumnUnitListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnUnitListButtonDelete.HeaderText = "";
+            this.ColumnUnitListButtonDelete.Name = "ColumnUnitListButtonDelete";
+            this.ColumnUnitListButtonDelete.ReadOnly = true;
+            this.ColumnUnitListButtonDelete.Width = 70;
+            // 
+            // ColumnUnitListId
+            // 
+            this.ColumnUnitListId.DataPropertyName = "ColumnUnitListId";
+            this.ColumnUnitListId.HeaderText = "Id";
+            this.ColumnUnitListId.Name = "ColumnUnitListId";
+            this.ColumnUnitListId.ReadOnly = true;
+            this.ColumnUnitListId.Visible = false;
+            // 
+            // ColumnUnitListUnit
+            // 
+            this.ColumnUnitListUnit.DataPropertyName = "ColumnUnitListUnit";
+            this.ColumnUnitListUnit.HeaderText = "Unit";
+            this.ColumnUnitListUnit.Name = "ColumnUnitListUnit";
+            this.ColumnUnitListUnit.ReadOnly = true;
+            this.ColumnUnitListUnit.Width = 150;
+            // 
+            // ColumnPeriodListButtonEdit
+            // 
+            this.ColumnPeriodListButtonEdit.DataPropertyName = "ColumnPeriodListButtonEdit";
+            this.ColumnPeriodListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnPeriodListButtonEdit.HeaderText = "";
+            this.ColumnPeriodListButtonEdit.Name = "ColumnPeriodListButtonEdit";
+            this.ColumnPeriodListButtonEdit.ReadOnly = true;
+            this.ColumnPeriodListButtonEdit.Width = 70;
+            // 
+            // ColumnPeriodListButtonDelete
+            // 
+            this.ColumnPeriodListButtonDelete.DataPropertyName = "ColumnPeriodListButtonDelete";
+            this.ColumnPeriodListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnPeriodListButtonDelete.HeaderText = "";
+            this.ColumnPeriodListButtonDelete.Name = "ColumnPeriodListButtonDelete";
+            this.ColumnPeriodListButtonDelete.ReadOnly = true;
+            this.ColumnPeriodListButtonDelete.Width = 70;
+            // 
+            // ColumnPeriodListId
+            // 
+            this.ColumnPeriodListId.DataPropertyName = "ColumnPeriodListId";
+            this.ColumnPeriodListId.HeaderText = "Id";
+            this.ColumnPeriodListId.Name = "ColumnPeriodListId";
+            this.ColumnPeriodListId.ReadOnly = true;
+            this.ColumnPeriodListId.Visible = false;
+            // 
+            // ColumnPeriodListPeriod
+            // 
+            this.ColumnPeriodListPeriod.DataPropertyName = "ColumnPeriodListPeriod";
+            this.ColumnPeriodListPeriod.HeaderText = "Period";
+            this.ColumnPeriodListPeriod.Name = "ColumnPeriodListPeriod";
+            this.ColumnPeriodListPeriod.ReadOnly = true;
+            this.ColumnPeriodListPeriod.Width = 150;
+            // 
+            // ColumnTerminalListButtonEdit
+            // 
+            this.ColumnTerminalListButtonEdit.DataPropertyName = "ColumnTerminalListButtonEdit";
+            this.ColumnTerminalListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnTerminalListButtonEdit.HeaderText = "";
+            this.ColumnTerminalListButtonEdit.Name = "ColumnTerminalListButtonEdit";
+            this.ColumnTerminalListButtonEdit.ReadOnly = true;
+            this.ColumnTerminalListButtonEdit.Width = 70;
+            // 
+            // ColumnTerminalListButtonDelete
+            // 
+            this.ColumnTerminalListButtonDelete.DataPropertyName = "ColumnTerminalListButtonDelete";
+            this.ColumnTerminalListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnTerminalListButtonDelete.HeaderText = "";
+            this.ColumnTerminalListButtonDelete.Name = "ColumnTerminalListButtonDelete";
+            this.ColumnTerminalListButtonDelete.ReadOnly = true;
+            this.ColumnTerminalListButtonDelete.Width = 70;
+            // 
+            // ColumnTerminalListId
+            // 
+            this.ColumnTerminalListId.DataPropertyName = "ColumnTerminalListId";
+            this.ColumnTerminalListId.HeaderText = "Id";
+            this.ColumnTerminalListId.Name = "ColumnTerminalListId";
+            this.ColumnTerminalListId.ReadOnly = true;
+            this.ColumnTerminalListId.Visible = false;
+            // 
+            // ColumnTerminalListTerminal
+            // 
+            this.ColumnTerminalListTerminal.DataPropertyName = "ColumnTerminalListTerminal";
+            this.ColumnTerminalListTerminal.HeaderText = "Terminal";
+            this.ColumnTerminalListTerminal.Name = "ColumnTerminalListTerminal";
+            this.ColumnTerminalListTerminal.ReadOnly = true;
+            this.ColumnTerminalListTerminal.Width = 150;
+            // 
+            // ColumnSupplierListButtonEdit
+            // 
+            this.ColumnSupplierListButtonEdit.DataPropertyName = "ColumnSupplierListButtonEdit";
+            this.ColumnSupplierListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnSupplierListButtonEdit.HeaderText = "";
+            this.ColumnSupplierListButtonEdit.Name = "ColumnSupplierListButtonEdit";
+            this.ColumnSupplierListButtonEdit.ReadOnly = true;
+            this.ColumnSupplierListButtonEdit.Width = 70;
+            // 
+            // ColumnSupplierListButtonDelete
+            // 
+            this.ColumnSupplierListButtonDelete.DataPropertyName = "ColumnSupplierListButtonDelete";
+            this.ColumnSupplierListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnSupplierListButtonDelete.HeaderText = "";
+            this.ColumnSupplierListButtonDelete.Name = "ColumnSupplierListButtonDelete";
+            this.ColumnSupplierListButtonDelete.ReadOnly = true;
+            this.ColumnSupplierListButtonDelete.Width = 70;
+            // 
+            // ColumnSupplierListId
+            // 
+            this.ColumnSupplierListId.DataPropertyName = "ColumnSupplierListId";
+            this.ColumnSupplierListId.HeaderText = "Id";
+            this.ColumnSupplierListId.Name = "ColumnSupplierListId";
+            this.ColumnSupplierListId.ReadOnly = true;
+            this.ColumnSupplierListId.Visible = false;
+            // 
+            // ColumnSupplierListSupplier
+            // 
+            this.ColumnSupplierListSupplier.DataPropertyName = "ColumnSupplierListSupplier";
+            this.ColumnSupplierListSupplier.HeaderText = "Supplier";
+            this.ColumnSupplierListSupplier.Name = "ColumnSupplierListSupplier";
+            this.ColumnSupplierListSupplier.ReadOnly = true;
+            this.ColumnSupplierListSupplier.Width = 200;
+            // 
+            // ColumnSupplierListAddress
+            // 
+            this.ColumnSupplierListAddress.DataPropertyName = "ColumnSupplierListAddress";
+            this.ColumnSupplierListAddress.HeaderText = "Address";
+            this.ColumnSupplierListAddress.Name = "ColumnSupplierListAddress";
+            this.ColumnSupplierListAddress.ReadOnly = true;
+            this.ColumnSupplierListAddress.Width = 250;
+            // 
+            // ColumnSupplierListTelephoneNumber
+            // 
+            this.ColumnSupplierListTelephoneNumber.DataPropertyName = "ColumnSupplierListTelephoneNumber";
+            this.ColumnSupplierListTelephoneNumber.HeaderText = "Tel. No.";
+            this.ColumnSupplierListTelephoneNumber.Name = "ColumnSupplierListTelephoneNumber";
+            this.ColumnSupplierListTelephoneNumber.ReadOnly = true;
+            this.ColumnSupplierListTelephoneNumber.Width = 150;
+            // 
+            // ColumnSupplierListCellphoneNumber
+            // 
+            this.ColumnSupplierListCellphoneNumber.DataPropertyName = "ColumnSupplierListCellphoneNumber";
+            this.ColumnSupplierListCellphoneNumber.HeaderText = "Cell. No.";
+            this.ColumnSupplierListCellphoneNumber.Name = "ColumnSupplierListCellphoneNumber";
+            this.ColumnSupplierListCellphoneNumber.ReadOnly = true;
+            this.ColumnSupplierListCellphoneNumber.Width = 150;
+            // 
+            // ColumnSupplierListTIN
+            // 
+            this.ColumnSupplierListTIN.DataPropertyName = "ColumnSupplierListTIN";
+            this.ColumnSupplierListTIN.HeaderText = "TIN";
+            this.ColumnSupplierListTIN.Name = "ColumnSupplierListTIN";
+            this.ColumnSupplierListTIN.ReadOnly = true;
+            this.ColumnSupplierListTIN.Width = 150;
             // 
             // SysSystemTablesForm
             // 
@@ -1603,29 +1742,43 @@
         private System.Windows.Forms.Button buttonSupplierListPageListNext;
         private System.Windows.Forms.Button buttonSupplierListPageListLast;
         private System.Windows.Forms.TextBox textBoxSupplierListPageNumber;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnPayTypeListButtonEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnPayTypeListButtonDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPayTypeListId;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnTaxListButtonEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnTaxListButtonDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListId;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnUnitListButtonEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnUnitListButtonDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnitListId;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnPeriodListButtonEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnPeriodListButtonDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPeriodListId;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnTerminalListButtonEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnTerminalListButtonDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTerminalListId;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnSupplierListButtonEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnSupplierListButtonDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSupplierListId;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnAccountListButtonEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnAccountListButtonDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccountListId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccountListCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccountListAccount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccountListAccountType;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnPayTypeListButtonEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnPayTypeListButtonDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPayTypeListId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPayTypeListPayType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPayTypeListAccount;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnTaxListButtonEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnTaxListButtonDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListTax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListRate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListAccount;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnUnitListButtonEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnUnitListButtonDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnitListId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnitListUnit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnPeriodListButtonEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnPeriodListButtonDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPeriodListId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPeriodListPeriod;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnTerminalListButtonEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnTerminalListButtonDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTerminalListId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTerminalListTerminal;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnSupplierListButtonEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnSupplierListButtonDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSupplierListId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSupplierListSupplier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSupplierListAddress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSupplierListTelephoneNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSupplierListCellphoneNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSupplierListTIN;
     }
 }

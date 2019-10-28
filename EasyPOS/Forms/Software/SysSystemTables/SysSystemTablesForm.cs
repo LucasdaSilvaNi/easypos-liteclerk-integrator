@@ -380,7 +380,11 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                 var payTypes = from d in listPayType
                                select new Entities.DgvSystemTablesPayTypeListEntity
                                {
-
+                                   ColumnPayTypeListButtonEdit = "Edit",
+                                   ColumnPayTypeListButtonDelete = "Delete",
+                                   ColumnPayTypeListId = d.Id,
+                                   ColumnPayTypeListPayType = d.PayType,
+                                   ColumnPayTypeListAccount = d.Account
                                };
 
                 return Task.FromResult(payTypes.ToList());
@@ -429,50 +433,42 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
             if (e.RowIndex > -1 && dataGridViewPayTypeList.CurrentCell.ColumnIndex == dataGridViewPayTypeList.Columns["ColumnPayTypeListButtonDelete"].Index)
             {
-                Boolean isLocked = Convert.ToBoolean(dataGridViewPayTypeList.Rows[e.RowIndex].Cells[11].Value);
 
-                if (isLocked == true)
+                DialogResult deleteDialogResult = MessageBox.Show("Delete PayType?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (deleteDialogResult == DialogResult.Yes)
                 {
-                    MessageBox.Show("Already locked.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    DialogResult deleteDialogResult = MessageBox.Show("Delete PayType?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (deleteDialogResult == DialogResult.Yes)
-                    {
-                        Controllers.MstPayTypeController mstPayTypeController = new Controllers.MstPayTypeController();
+                    //Controllers.MstPayTypeController mstPayTypeController = new Controllers.MstPayTypeController();
 
-                        //String[] deletePayType = mstPayTypeController.DeletePayType(Convert.ToInt32(dataGridViewPayTypeList.Rows[e.RowIndex].Cells[2].Value));
-                        //if (deletePayType[1].Equals("0") == false)
-                        //{
-                        //    Int32 currentPageNumber = payTypeListPageNumber;
+                    //String[] deletePayType = mstPayTypeController.DeletePayType(Convert.ToInt32(dataGridViewPayTypeList.Rows[e.RowIndex].Cells[2].Value));
+                    //if (deletePayType[1].Equals("0") == false)
+                    //{
+                    //    Int32 currentPageNumber = payTypeListPageNumber;
 
-                        //    payTypeListPageNumber = 1;
-                        //    UpdatePayTypeListDataSource();
+                    //    payTypeListPageNumber = 1;
+                    //    UpdatePayTypeListDataSource();
 
-                        //    if (payTypeListPageList != null)
-                        //    {
-                        //        if (payTypeListData.Count() % pageSize == 1)
-                        //        {
-                        //            payTypeListPageNumber = currentPageNumber - 1;
-                        //        }
-                        //        else if (payTypeListData.Count() < 1)
-                        //        {
-                        //            payTypeListPageNumber = 1;
-                        //        }
-                        //        else
-                        //        {
-                        //            payTypeListPageNumber = currentPageNumber;
-                        //        }
+                    //    if (payTypeListPageList != null)
+                    //    {
+                    //        if (payTypeListData.Count() % pageSize == 1)
+                    //        {
+                    //            payTypeListPageNumber = currentPageNumber - 1;
+                    //        }
+                    //        else if (payTypeListData.Count() < 1)
+                    //        {
+                    //            payTypeListPageNumber = 1;
+                    //        }
+                    //        else
+                    //        {
+                    //            payTypeListPageNumber = currentPageNumber;
+                    //        }
 
-                        //        payTypeListDataSource.DataSource = payTypeListPageList;
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    MessageBox.Show(deletePayType[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //}
-                    }
+                    //        payTypeListDataSource.DataSource = payTypeListPageList;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show(deletePayType[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
                 }
             }
         }
@@ -624,7 +620,13 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                 var taxs = from d in listTax
                            select new Entities.DgvSystemTablesTaxListEntity
                            {
-
+                               ColumnTaxListButtonEdit = "Edit",
+                               ColumnTaxListButtonDelete = "Delete",
+                               ColumnTaxListId = d.Id,
+                               ColumnTaxListCode = d.Code,
+                               ColumnTaxListTax = d.Tax,
+                               ColumnTaxListRate = d.Rate.ToString("#,##0.00"),
+                               ColumnTaxListAccount = d.Account
                            };
 
                 return Task.FromResult(taxs.ToList());
@@ -673,50 +675,41 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
             if (e.RowIndex > -1 && dataGridViewTaxList.CurrentCell.ColumnIndex == dataGridViewTaxList.Columns["ColumnTaxListButtonDelete"].Index)
             {
-                Boolean isLocked = Convert.ToBoolean(dataGridViewTaxList.Rows[e.RowIndex].Cells[11].Value);
-
-                if (isLocked == true)
+                DialogResult deleteDialogResult = MessageBox.Show("Delete Tax?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (deleteDialogResult == DialogResult.Yes)
                 {
-                    MessageBox.Show("Already locked.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    DialogResult deleteDialogResult = MessageBox.Show("Delete Tax?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (deleteDialogResult == DialogResult.Yes)
-                    {
-                        Controllers.MstTaxController mstTaxController = new Controllers.MstTaxController();
+                    //Controllers.MstTaxController mstTaxController = new Controllers.MstTaxController();
 
-                        //String[] deleteTax = mstTaxController.DeleteTax(Convert.ToInt32(dataGridViewTaxList.Rows[e.RowIndex].Cells[2].Value));
-                        //if (deleteTax[1].Equals("0") == false)
-                        //{
-                        //    Int32 currentPageNumber = taxListPageNumber;
+                    //String[] deleteTax = mstTaxController.DeleteTax(Convert.ToInt32(dataGridViewTaxList.Rows[e.RowIndex].Cells[2].Value));
+                    //if (deleteTax[1].Equals("0") == false)
+                    //{
+                    //    Int32 currentPageNumber = taxListPageNumber;
 
-                        //    taxListPageNumber = 1;
-                        //    UpdateTaxListDataSource();
+                    //    taxListPageNumber = 1;
+                    //    UpdateTaxListDataSource();
 
-                        //    if (taxListPageList != null)
-                        //    {
-                        //        if (taxListData.Count() % pageSize == 1)
-                        //        {
-                        //            taxListPageNumber = currentPageNumber - 1;
-                        //        }
-                        //        else if (taxListData.Count() < 1)
-                        //        {
-                        //            taxListPageNumber = 1;
-                        //        }
-                        //        else
-                        //        {
-                        //            taxListPageNumber = currentPageNumber;
-                        //        }
+                    //    if (taxListPageList != null)
+                    //    {
+                    //        if (taxListData.Count() % pageSize == 1)
+                    //        {
+                    //            taxListPageNumber = currentPageNumber - 1;
+                    //        }
+                    //        else if (taxListData.Count() < 1)
+                    //        {
+                    //            taxListPageNumber = 1;
+                    //        }
+                    //        else
+                    //        {
+                    //            taxListPageNumber = currentPageNumber;
+                    //        }
 
-                        //        taxListDataSource.DataSource = taxListPageList;
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    MessageBox.Show(deleteTax[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //}
-                    }
+                    //        taxListDataSource.DataSource = taxListPageList;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show(deleteTax[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
                 }
             }
         }
@@ -868,7 +861,10 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                 var units = from d in listUnit
                             select new Entities.DgvSystemTablesUnitListEntity
                             {
-
+                                ColumnUnitListButtonEdit = "Edit",
+                                ColumnUnitListButtonDelete = "Delete",
+                                ColumnUnitListId = d.Id,
+                                ColumnUnitListUnit = d.Unit
                             };
 
                 return Task.FromResult(units.ToList());
@@ -917,50 +913,41 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
             if (e.RowIndex > -1 && dataGridViewUnitList.CurrentCell.ColumnIndex == dataGridViewUnitList.Columns["ColumnUnitListButtonDelete"].Index)
             {
-                Boolean isLocked = Convert.ToBoolean(dataGridViewUnitList.Rows[e.RowIndex].Cells[11].Value);
-
-                if (isLocked == true)
+                DialogResult deleteDialogResult = MessageBox.Show("Delete Unit?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (deleteDialogResult == DialogResult.Yes)
                 {
-                    MessageBox.Show("Already locked.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    DialogResult deleteDialogResult = MessageBox.Show("Delete Unit?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (deleteDialogResult == DialogResult.Yes)
-                    {
-                        Controllers.MstUnitController mstUnitController = new Controllers.MstUnitController();
+                    //Controllers.MstUnitController mstUnitController = new Controllers.MstUnitController();
 
-                        //String[] deleteUnit = mstUnitController.DeleteUnit(Convert.ToInt32(dataGridViewUnitList.Rows[e.RowIndex].Cells[2].Value));
-                        //if (deleteUnit[1].Equals("0") == false)
-                        //{
-                        //    Int32 currentPageNumber = unitListPageNumber;
+                    //String[] deleteUnit = mstUnitController.DeleteUnit(Convert.ToInt32(dataGridViewUnitList.Rows[e.RowIndex].Cells[2].Value));
+                    //if (deleteUnit[1].Equals("0") == false)
+                    //{
+                    //    Int32 currentPageNumber = unitListPageNumber;
 
-                        //    unitListPageNumber = 1;
-                        //    UpdateUnitListDataSource();
+                    //    unitListPageNumber = 1;
+                    //    UpdateUnitListDataSource();
 
-                        //    if (unitListPageList != null)
-                        //    {
-                        //        if (unitListData.Count() % pageSize == 1)
-                        //        {
-                        //            unitListPageNumber = currentPageNumber - 1;
-                        //        }
-                        //        else if (unitListData.Count() < 1)
-                        //        {
-                        //            unitListPageNumber = 1;
-                        //        }
-                        //        else
-                        //        {
-                        //            unitListPageNumber = currentPageNumber;
-                        //        }
+                    //    if (unitListPageList != null)
+                    //    {
+                    //        if (unitListData.Count() % pageSize == 1)
+                    //        {
+                    //            unitListPageNumber = currentPageNumber - 1;
+                    //        }
+                    //        else if (unitListData.Count() < 1)
+                    //        {
+                    //            unitListPageNumber = 1;
+                    //        }
+                    //        else
+                    //        {
+                    //            unitListPageNumber = currentPageNumber;
+                    //        }
 
-                        //        unitListDataSource.DataSource = unitListPageList;
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    MessageBox.Show(deleteUnit[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //}
-                    }
+                    //        unitListDataSource.DataSource = unitListPageList;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show(deleteUnit[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
                 }
             }
         }
@@ -1112,7 +1099,10 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                 var periods = from d in listPeriod
                               select new Entities.DgvSystemTablesPeriodListEntity
                               {
-
+                                  ColumnPeriodListButtonEdit = "Edit",
+                                  ColumnPeriodListButtonDelete = "Delete",
+                                  ColumnPeriodListId = d.Id,
+                                  ColumnPeriodListPeriod = d.Period
                               };
 
                 return Task.FromResult(periods.ToList());
@@ -1161,50 +1151,41 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
             if (e.RowIndex > -1 && dataGridViewPeriodList.CurrentCell.ColumnIndex == dataGridViewPeriodList.Columns["ColumnPeriodListButtonDelete"].Index)
             {
-                Boolean isLocked = Convert.ToBoolean(dataGridViewPeriodList.Rows[e.RowIndex].Cells[11].Value);
-
-                if (isLocked == true)
+                DialogResult deleteDialogResult = MessageBox.Show("Delete Period?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (deleteDialogResult == DialogResult.Yes)
                 {
-                    MessageBox.Show("Already locked.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    DialogResult deleteDialogResult = MessageBox.Show("Delete Period?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (deleteDialogResult == DialogResult.Yes)
-                    {
-                        Controllers.MstPeriodController mstPeriodController = new Controllers.MstPeriodController();
+                    //Controllers.MstPeriodController mstPeriodController = new Controllers.MstPeriodController();
 
-                        //String[] deletePeriod = mstPeriodController.DeletePeriod(Convert.ToInt32(dataGridViewPeriodList.Rows[e.RowIndex].Cells[2].Value));
-                        //if (deletePeriod[1].Equals("0") == false)
-                        //{
-                        //    Int32 currentPageNumber = periodListPageNumber;
+                    //String[] deletePeriod = mstPeriodController.DeletePeriod(Convert.ToInt32(dataGridViewPeriodList.Rows[e.RowIndex].Cells[2].Value));
+                    //if (deletePeriod[1].Equals("0") == false)
+                    //{
+                    //    Int32 currentPageNumber = periodListPageNumber;
 
-                        //    periodListPageNumber = 1;
-                        //    UpdatePeriodListDataSource();
+                    //    periodListPageNumber = 1;
+                    //    UpdatePeriodListDataSource();
 
-                        //    if (periodListPageList != null)
-                        //    {
-                        //        if (periodListData.Count() % pageSize == 1)
-                        //        {
-                        //            periodListPageNumber = currentPageNumber - 1;
-                        //        }
-                        //        else if (periodListData.Count() < 1)
-                        //        {
-                        //            periodListPageNumber = 1;
-                        //        }
-                        //        else
-                        //        {
-                        //            periodListPageNumber = currentPageNumber;
-                        //        }
+                    //    if (periodListPageList != null)
+                    //    {
+                    //        if (periodListData.Count() % pageSize == 1)
+                    //        {
+                    //            periodListPageNumber = currentPageNumber - 1;
+                    //        }
+                    //        else if (periodListData.Count() < 1)
+                    //        {
+                    //            periodListPageNumber = 1;
+                    //        }
+                    //        else
+                    //        {
+                    //            periodListPageNumber = currentPageNumber;
+                    //        }
 
-                        //        periodListDataSource.DataSource = periodListPageList;
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    MessageBox.Show(deletePeriod[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //}
-                    }
+                    //        periodListDataSource.DataSource = periodListPageList;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show(deletePeriod[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
                 }
             }
         }
@@ -1356,7 +1337,10 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                 var terminals = from d in listTerminal
                                 select new Entities.DgvSystemTablesTerminalListEntity
                                 {
-
+                                    ColumnTerminalListButtonEdit = "Edit",
+                                    ColumnTerminalListButtonDelete = "Delete",
+                                    ColumnTerminalListId = d.Id,
+                                    ColumnTerminalListTerminal = d.Terminal
                                 };
 
                 return Task.FromResult(terminals.ToList());
@@ -1405,50 +1389,41 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
             if (e.RowIndex > -1 && dataGridViewTerminalList.CurrentCell.ColumnIndex == dataGridViewTerminalList.Columns["ColumnTerminalListButtonDelete"].Index)
             {
-                Boolean isLocked = Convert.ToBoolean(dataGridViewTerminalList.Rows[e.RowIndex].Cells[11].Value);
-
-                if (isLocked == true)
+                DialogResult deleteDialogResult = MessageBox.Show("Delete Terminal?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (deleteDialogResult == DialogResult.Yes)
                 {
-                    MessageBox.Show("Already locked.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    DialogResult deleteDialogResult = MessageBox.Show("Delete Terminal?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (deleteDialogResult == DialogResult.Yes)
-                    {
-                        Controllers.MstTerminalController mstTerminalController = new Controllers.MstTerminalController();
+                    //Controllers.MstTerminalController mstTerminalController = new Controllers.MstTerminalController();
 
-                        //String[] deleteTerminal = mstTerminalController.DeleteTerminal(Convert.ToInt32(dataGridViewTerminalList.Rows[e.RowIndex].Cells[2].Value));
-                        //if (deleteTerminal[1].Equals("0") == false)
-                        //{
-                        //    Int32 currentPageNumber = terminalListPageNumber;
+                    //String[] deleteTerminal = mstTerminalController.DeleteTerminal(Convert.ToInt32(dataGridViewTerminalList.Rows[e.RowIndex].Cells[2].Value));
+                    //if (deleteTerminal[1].Equals("0") == false)
+                    //{
+                    //    Int32 currentPageNumber = terminalListPageNumber;
 
-                        //    terminalListPageNumber = 1;
-                        //    UpdateTerminalListDataSource();
+                    //    terminalListPageNumber = 1;
+                    //    UpdateTerminalListDataSource();
 
-                        //    if (terminalListPageList != null)
-                        //    {
-                        //        if (terminalListData.Count() % pageSize == 1)
-                        //        {
-                        //            terminalListPageNumber = currentPageNumber - 1;
-                        //        }
-                        //        else if (terminalListData.Count() < 1)
-                        //        {
-                        //            terminalListPageNumber = 1;
-                        //        }
-                        //        else
-                        //        {
-                        //            terminalListPageNumber = currentPageNumber;
-                        //        }
+                    //    if (terminalListPageList != null)
+                    //    {
+                    //        if (terminalListData.Count() % pageSize == 1)
+                    //        {
+                    //            terminalListPageNumber = currentPageNumber - 1;
+                    //        }
+                    //        else if (terminalListData.Count() < 1)
+                    //        {
+                    //            terminalListPageNumber = 1;
+                    //        }
+                    //        else
+                    //        {
+                    //            terminalListPageNumber = currentPageNumber;
+                    //        }
 
-                        //        terminalListDataSource.DataSource = terminalListPageList;
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    MessageBox.Show(deleteTerminal[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //}
-                    }
+                    //        terminalListDataSource.DataSource = terminalListPageList;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show(deleteTerminal[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
                 }
             }
         }
@@ -1600,7 +1575,14 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                 var suppliers = from d in listSupplier
                                 select new Entities.DgvSystemTablesSupplierListEntity
                                 {
-
+                                    ColumnSupplierListButtonEdit = "Edit",
+                                    ColumnSupplierListButtonDelete = "Delete",
+                                    ColumnSupplierListId = d.Id,
+                                    ColumnSupplierListSupplier = d.Supplier,
+                                    ColumnSupplierListAddress = d.Address,
+                                    ColumnSupplierListTelephoneNumber = d.TelephoneNumber,
+                                    ColumnSupplierListCellphoneNumber = d.CellphoneNumber,
+                                    ColumnSupplierListTIN = d.TIN
                                 };
 
                 return Task.FromResult(suppliers.ToList());
@@ -1649,50 +1631,41 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
             if (e.RowIndex > -1 && dataGridViewSupplierList.CurrentCell.ColumnIndex == dataGridViewSupplierList.Columns["ColumnSupplierListButtonDelete"].Index)
             {
-                Boolean isLocked = Convert.ToBoolean(dataGridViewSupplierList.Rows[e.RowIndex].Cells[11].Value);
-
-                if (isLocked == true)
+                DialogResult deleteDialogResult = MessageBox.Show("Delete Supplier?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (deleteDialogResult == DialogResult.Yes)
                 {
-                    MessageBox.Show("Already locked.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    DialogResult deleteDialogResult = MessageBox.Show("Delete Supplier?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (deleteDialogResult == DialogResult.Yes)
-                    {
-                        Controllers.MstSupplierController mstSupplierController = new Controllers.MstSupplierController();
+                    //Controllers.MstSupplierController mstSupplierController = new Controllers.MstSupplierController();
 
-                        //String[] deleteSupplier = mstSupplierController.DeleteSupplier(Convert.ToInt32(dataGridViewSupplierList.Rows[e.RowIndex].Cells[2].Value));
-                        //if (deleteSupplier[1].Equals("0") == false)
-                        //{
-                        //    Int32 currentPageNumber = supplierListPageNumber;
+                    //String[] deleteSupplier = mstSupplierController.DeleteSupplier(Convert.ToInt32(dataGridViewSupplierList.Rows[e.RowIndex].Cells[2].Value));
+                    //if (deleteSupplier[1].Equals("0") == false)
+                    //{
+                    //    Int32 currentPageNumber = supplierListPageNumber;
 
-                        //    supplierListPageNumber = 1;
-                        //    UpdateSupplierListDataSource();
+                    //    supplierListPageNumber = 1;
+                    //    UpdateSupplierListDataSource();
 
-                        //    if (supplierListPageList != null)
-                        //    {
-                        //        if (supplierListData.Count() % pageSize == 1)
-                        //        {
-                        //            supplierListPageNumber = currentPageNumber - 1;
-                        //        }
-                        //        else if (supplierListData.Count() < 1)
-                        //        {
-                        //            supplierListPageNumber = 1;
-                        //        }
-                        //        else
-                        //        {
-                        //            supplierListPageNumber = currentPageNumber;
-                        //        }
+                    //    if (supplierListPageList != null)
+                    //    {
+                    //        if (supplierListData.Count() % pageSize == 1)
+                    //        {
+                    //            supplierListPageNumber = currentPageNumber - 1;
+                    //        }
+                    //        else if (supplierListData.Count() < 1)
+                    //        {
+                    //            supplierListPageNumber = 1;
+                    //        }
+                    //        else
+                    //        {
+                    //            supplierListPageNumber = currentPageNumber;
+                    //        }
 
-                        //        supplierListDataSource.DataSource = supplierListPageList;
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    MessageBox.Show(deleteSupplier[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //}
-                    }
+                    //        supplierListDataSource.DataSource = supplierListPageList;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show(deleteSupplier[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
                 }
             }
         }
