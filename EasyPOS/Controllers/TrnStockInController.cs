@@ -92,7 +92,7 @@ namespace EasyPOS.Controllers
             return stockIns.FirstOrDefault();
         }
 
-        // ===========
+        // =========== 
         // Add Stockin
         // ===========
         public String[] AddStockIn()
@@ -106,21 +106,21 @@ namespace EasyPOS.Controllers
                 }
 
                 var period = from d in db.MstPeriods select d;
-                if (period.Any())
+                if (period.Any() == false)
                 {
                     return new String[] { "Perios not found.", "0" };
                 }
 
                 String stockInNumber = "0000000001";
                 var lastStockInNumber = from d in db.TrnStockIns.OrderByDescending(d => d.Id) select d;
-                if (lastStockInNumber.Any())
+                if (lastStockInNumber.Any() == false)
                 {
-                    Int32 newItemCode = Convert.ToInt32(lastStockInNumber.FirstOrDefault().StockInNumber) + 1;
-                    stockInNumber = FillLeadingZeroes(newItemCode, 10);
+                    Int32 newStockInCode = Convert.ToInt32(lastStockInNumber.FirstOrDefault().StockInNumber) + 1;
+                    stockInNumber = FillLeadingZeroes(newStockInCode, 10);
                 }
 
                 var supplier = from d in db.MstSuppliers select d;
-                if (supplier.Any())
+                if (supplier.Any() == false)
                 {
                     return new String[] { "Supplier not found.", "0" };
                 }
@@ -178,18 +178,14 @@ namespace EasyPOS.Controllers
                 if (stockIn.Any())
                 {
                     var lockStockIn = stockIn.FirstOrDefault();
-                    lockStockIn.Id = objStockInd.Id;
                     lockStockIn.PeriodId = objStockInd.PeriodId;
-                    lockStockIn.StockInDate = Convert.ToDateTime(objStockInd.StockInDate);
-                    lockStockIn.StockInNumber = objStockInd.StockInNumber;
                     lockStockIn.SupplierId = objStockInd.SupplierId;
                     lockStockIn.Remarks = objStockInd.Remarks;
                     lockStockIn.IsReturn = objStockInd.IsReturn;
                     lockStockIn.CollectionId = objStockInd.CollectionId;
                     lockStockIn.PurchaseOrderId = objStockInd.PurchaseOrderId;
-                    lockStockIn.PreparedBy = objStockInd.PreparedBy;
-                    lockStockIn.CheckedBy = objStockInd.CheckedBy;
-                    lockStockIn.ApprovedBy = objStockInd.ApprovedBy;
+                    lockStockIn.CheckedBy = currentUserLogin.FirstOrDefault().Id;
+                    lockStockIn.ApprovedBy = currentUserLogin.FirstOrDefault().Id;
                     lockStockIn.IsLocked = objStockInd.IsLocked;
                     lockStockIn.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
                     lockStockIn.UpdateDateTime = Convert.ToDateTime(objStockInd.UpdateDateTime);
@@ -197,7 +193,7 @@ namespace EasyPOS.Controllers
                     lockStockIn.PostCode = objStockInd.PostCode;
                     db.SubmitChanges();
 
-                    return new String[] { "", "" };
+                    return new String[] { "", "1" };
                 }
                 else
                 {
@@ -246,9 +242,9 @@ namespace EasyPOS.Controllers
             }
         }
 
-        // ===========
-        // Delete Item
-        // ===========
+        // ==============
+        // Delete StockIn
+        // ==============
         public String[] DeleteStockIn(Int32 id)
         {
             try
