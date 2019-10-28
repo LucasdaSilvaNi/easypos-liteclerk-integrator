@@ -80,6 +80,7 @@
     <Compile Include="Controllers\SysLoginController.cs" />
     <Compile Include="Controllers\IntCloudSettingsController.cs" />
     <Compile Include="Controllers\SysSoftwareController.cs" />
+    <Compile Include="Controllers\TrnDisbursementController.cs" />
     <Compile Include="Controllers\TrnPOSSalesController.cs" />
     <Compile Include="Controllers\TrnPOSSalesLineController.cs" />
     <Compile Include="Controllers\TrnStockInController.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransferItem.cs" />
     <Compile Include="Entities\DgvSalesReportCancelSalesSummaryReportEntity.cs" />
     <Compile Include="Entities\DgvCustomerListCustomerEntity.cs" />
+    <Compile Include="Entities\DgvDisbursementListDisbursementEntity.cs" />
     <Compile Include="Entities\DgvItemListItemEntity.cs" />
     <Compile Include="Entities\DgvSalesDetailReportEntity.cs" />
     <Compile Include="Entities\DgvSalesDetailSalesLineEntity.cs" />
@@ -126,6 +128,8 @@
     <Compile Include="Entities\DgvSalesDetailTenderPayTypeEntity.cs" />
     <Compile Include="Entities\DgvSalesListSalesEntity.cs" />
     <Compile Include="Entities\DgvSalesReportSalesSummaryReportEntity.cs" />
+    <Compile Include="Entities\DgvStockOutListStockInEntity.cs" />
+    <Compile Include="Entities\DgvStockInListStockInEntity.cs" />
     <Compile Include="Entities\DgvUserDetailUserRightsEntity.cs" />
     <Compile Include="Entities\DgvUserListUserEntity.cs" />
     <Compile Include="Entities\MstCustomerEntity.cs" />
@@ -147,6 +151,7 @@
     <Compile Include="Entities\SysCurrentEntity.cs" />
     <Compile Include="Entities\TrnCollectionEntity.cs" />
     <Compile Include="Entities\TrnCollectionLineEntity.cs" />
+    <Compile Include="Entities\TrnDisbursementEntity.cs" />
     <Compile Include="Entities\TrnSalesEntity.cs" />
     <Compile Include="Entities\TrnSalesLineEntity.cs" />
     <Compile Include="Entities\TrnStockInEntity.cs" />
@@ -392,11 +397,20 @@
     <EmbeddedResource Include="Forms\Software\SysSettings\SysSettingsForm.resx">
       <DependentUpon>SysSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnDisbursement\TrnDisbursementListForm.resx">
+      <DependentUpon>TrnDisbursementListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailTenderMoreInformationForm.resx">
       <DependentUpon>TrnSalesDetailTenderMoreInformationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailTenderSalesForm.resx">
       <DependentUpon>TrnSalesDetailTenderSalesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnStockIn\TrnStockInListForm.resx">
+      <DependentUpon>TrnStockInListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnStockOut\TrnStockOutListForm.resx">
+      <DependentUpon>TrnStockOutListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepOfficialReceiptReportForm.resx">
       <DependentUpon>RepOfficialReceiptReportForm.cs</DependentUpon>

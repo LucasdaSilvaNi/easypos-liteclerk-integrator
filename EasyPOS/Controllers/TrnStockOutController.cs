@@ -8,6 +8,9 @@ namespace EasyPOS.Controllers
 {
     class TrnStockOutController
     {
+        // ============
+        // Data Context
+        // ============
         public Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
 
         // ===================
@@ -26,10 +29,14 @@ namespace EasyPOS.Controllers
             return result;
         }
 
-        public List<Entities.TrnStockOutEntity> ListStockOut(string filter)
+        // ==============
+        // Stock-Out List
+        // ==============
+        public List<Entities.TrnStockOutEntity> ListStockOut(DateTime dateFilter, String filter)
         {
             var stockOuts = from d in db.TrnStockOuts
-                            where d.StockOutNumber.Contains(filter)
+                            where d.StockOutDate == dateFilter
+                            && d.StockOutNumber.Contains(filter)
                             select new Entities.TrnStockOutEntity
                             {
                                 Id = d.Id,
@@ -37,6 +44,7 @@ namespace EasyPOS.Controllers
                                 StockOutDate = d.StockOutDate.ToShortDateString(),
                                 StockOutNumber = d.StockOutNumber,
                                 AccountId = d.AccountId,
+                                Account = d.MstAccount.Account,
                                 Remarks = d.Remarks,
                                 PreparedBy = d.PreparedBy,
                                 CheckedBy = d.CheckedBy,
@@ -51,13 +59,12 @@ namespace EasyPOS.Controllers
             return stockOuts.OrderByDescending(d => d.Id).ToList();
         }
 
-        // ==============
-        // StockOut Detail
-        // ==============
+        // ================
+        // Stock-Out Detail
+        // ================
         public Entities.TrnStockOutEntity DetailStockOut(Int32 id)
         {
             var stockOut = from d in db.TrnStockOuts
-                           where d.Id == id
                            where d.Id == id
                            select new Entities.TrnStockOutEntity
                            {
@@ -66,6 +73,7 @@ namespace EasyPOS.Controllers
                                StockOutDate = d.StockOutDate.ToShortDateString(),
                                StockOutNumber = d.StockOutNumber,
                                AccountId = d.AccountId,
+                               Account = d.MstAccount.Account,
                                Remarks = d.Remarks,
                                PreparedBy = d.PreparedBy,
                                CheckedBy = d.CheckedBy,
@@ -80,9 +88,9 @@ namespace EasyPOS.Controllers
             return stockOut.FirstOrDefault();
         }
 
-        // ============
-        // Add StockOut
-        // ============
+        // =============
+        // Add Stock-Out
+        // =============
         public String[] AddStockOut()
         {
             try
@@ -96,22 +104,21 @@ namespace EasyPOS.Controllers
                 var period = from d in db.MstPeriods select d;
                 if (period.Any() == false)
                 {
-                    return new String[] { "Perios not found.", "0" };
+                    return new String[] { "Periods not found.", "0" };
                 }
 
-                String stockOutNumber = "0000000001";
-                var lastStockOutNumber = from d in db.TrnStockOuts.OrderByDescending(d => d.Id) select d;
-                if (lastStockOutNumber.Any())
-                {
-                    Int32 newStockOutCode = Convert.ToInt32(lastStockOutNumber.FirstOrDefault().StockOutNumber) + 1;
-                    stockOutNumber = FillLeadingZeroes(newStockOutCode, 10);
-                }
-
-                var account = from d in db.MstAccounts
-                              select d;
+                var account = from d in db.MstAccounts select d;
                 if (account.Any() == false)
                 {
                     return new String[] { "Account not found.", "0" };
+                }
+
+                String stockOutNumber = "0000000001";
+                var lastStockOut = from d in db.TrnStockOuts.OrderByDescending(d => d.Id) select d;
+                if (lastStockOut.Any())
+                {
+                    Int32 newStockOutNumber = Convert.ToInt32(lastStockOut.FirstOrDefault().StockOutNumber) + 1;
+                    stockOutNumber = FillLeadingZeroes(newStockOutNumber, 10);
                 }
 
                 Data.TrnStockOut newStockOut = new Data.TrnStockOut()
@@ -120,21 +127,21 @@ namespace EasyPOS.Controllers
                     StockOutDate = DateTime.Today,
                     StockOutNumber = stockOutNumber,
                     AccountId = account.FirstOrDefault().Id,
-                    Remarks = "NA",
+                    Remarks = "",
                     PreparedBy = currentUserLogin.FirstOrDefault().Id,
                     CheckedBy = currentUserLogin.FirstOrDefault().Id,
                     ApprovedBy = currentUserLogin.FirstOrDefault().Id,
                     IsLocked = false,
                     EntryUserId = currentUserLogin.FirstOrDefault().Id,
-                    EntryDateTime = DateTime.Today,
+                    EntryDateTime = DateTime.Now,
                     UpdateUserId = currentUserLogin.FirstOrDefault().Id,
-                    UpdateDateTime = DateTime.Today
+                    UpdateDateTime = DateTime.Now
                 };
 
                 db.TrnStockOuts.InsertOnSubmit(newStockOut);
                 db.SubmitChanges();
 
-                return new String[] { "", "1" };
+                return new String[] { "", newStockOut.ToString() };
             }
             catch (Exception e)
             {
@@ -142,10 +149,67 @@ namespace EasyPOS.Controllers
             }
         }
 
-        // =============
-        // Lock StockOut
-        // =============
+        // ==============
+        // Lock Stock-Out
+        // ==============
         public String[] LockStockOut(Int32 id, Entities.TrnStockOutEntity objStockOut)
+        {
+            try
+            {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
+                var users = from d in db.MstUsers
+                            where d.Id == objStockOut.CheckedBy
+                            && d.Id == objStockOut.ApprovedBy
+                            && d.IsLocked == true
+                            select d;
+
+                if (users.Any() == false)
+                {
+                    return new String[] { "Some users are not found.", "0" };
+                }
+
+                var stockOut = from d in db.TrnStockOuts
+                               where d.Id == id
+                               select d;
+
+                if (stockOut.Any())
+                {
+                    if (stockOut.FirstOrDefault().IsLocked == false)
+                    {
+                        return new String[] { "Already unlocked.", "0" };
+                    }
+
+                    var updateStockOut = stockOut.FirstOrDefault();
+                    updateStockOut.Remarks = objStockOut.Remarks;
+                    updateStockOut.CheckedBy = objStockOut.CheckedBy;
+                    updateStockOut.ApprovedBy = objStockOut.ApprovedBy;
+                    updateStockOut.IsLocked = true;
+                    updateStockOut.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
+                    updateStockOut.UpdateDateTime = DateTime.Today;
+                    db.SubmitChanges();
+
+                    return new String[] { "", "1" };
+                }
+                else
+                {
+                    return new String[] { "Stock-Out not found.", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
+        // ================
+        // Unlock Stock-Out
+        // ================
+        public String[] UnlockStockOut(Int32 id)
         {
             try
             {
@@ -161,23 +225,23 @@ namespace EasyPOS.Controllers
 
                 if (stockOut.Any())
                 {
-                    var updateStockOut = stockOut.FirstOrDefault();
-                    updateStockOut.PeriodId = objStockOut.PeriodId;
-                    updateStockOut.Remarks = objStockOut.Remarks;
-                    updateStockOut.CheckedBy = currentUserLogin.FirstOrDefault().Id;
-                    updateStockOut.ApprovedBy = currentUserLogin.FirstOrDefault().Id;
-                    updateStockOut.IsLocked = true;
-                    updateStockOut.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
-                    updateStockOut.UpdateDateTime = DateTime.Today;
+                    if (stockOut.FirstOrDefault().IsLocked == false)
+                    {
+                        return new String[] { "Already unlocked.", "0" };
+                    }
+
+                    var unLockStockOut = stockOut.FirstOrDefault();
+                    unLockStockOut.IsLocked = false;
+                    unLockStockOut.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
+                    unLockStockOut.UpdateDateTime = DateTime.Today;
                     db.SubmitChanges();
 
                     return new String[] { "", "1" };
                 }
                 else
                 {
-                    return new String[] { "Item not found.", "0" };
+                    return new String[] { "Stock-Out not found.", "0" };
                 }
-
             }
             catch (Exception e)
             {
@@ -185,10 +249,10 @@ namespace EasyPOS.Controllers
             }
         }
 
-        // ===============
-        // Unlock StockOut
-        // ===============
-        public String[] UnlockStockOut(Int32 id)
+        // ================
+        // Delete Stock-Out
+        // ================
+        public String[] DeleteStockOut(Int32 id)
         {
             try
             {
@@ -199,58 +263,21 @@ namespace EasyPOS.Controllers
                 }
 
                 var stockOut = from d in db.TrnStockOuts
-                              where d.Id == id
-                              select d;
+                               where d.Id == id
+                               select d;
 
                 if (stockOut.Any())
                 {
-                    var unLockStockOut = stockOut.FirstOrDefault();
-                    unLockStockOut.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
-                    unLockStockOut.UpdateDateTime = DateTime.Today;
-                    unLockStockOut.IsLocked = false;
+                    if (stockOut.FirstOrDefault().IsLocked)
+                    {
+                        return new String[] { "Stock-Out is locked", "0" };
+                    }
+
+                    var deleteStockOut = stockOut.FirstOrDefault();
+                    db.TrnStockOuts.DeleteOnSubmit(deleteStockOut);
                     db.SubmitChanges();
-                }
 
-                return new String[] { "", "" };
-
-            }
-            catch (Exception e)
-            {
-                return new String[] { e.Message, "0" };
-            }
-        }
-
-        // ===============
-        // Delete StockOut
-        // ===============
-        public String[] DeleteStockIn(Int32 id)
-        {
-            try
-            {
-                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
-                if (currentUserLogin.Any() == false)
-                {
-                    return new String[] { "Current login user not found.", "0" };
-                }
-
-                var stockOut = from d in db.TrnStockOuts
-                              where d.Id == id
-                              select d;
-
-                if (stockOut.Any())
-                {
-                    if (stockOut.FirstOrDefault().IsLocked == false)
-                    {
-                        var deleteStockOut = stockOut.FirstOrDefault();
-                        db.TrnStockOuts.DeleteOnSubmit(deleteStockOut);
-                        db.SubmitChanges();
-
-                        return new String[] { "", "" };
-                    }
-                    else
-                    {
-                        return new String[] { "StockOut is Locked", "0" };
-                    }
+                    return new String[] { "", "" };
                 }
                 else
                 {

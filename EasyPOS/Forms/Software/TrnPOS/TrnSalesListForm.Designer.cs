@@ -565,7 +565,7 @@
             this.buttonSalesListPageListFirst.Enabled = false;
             this.buttonSalesListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonSalesListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSalesListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonSalesListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonSalesListPageListFirst.Location = new System.Drawing.Point(12, 9);
             this.buttonSalesListPageListFirst.Name = "buttonSalesListPageListFirst";
             this.buttonSalesListPageListFirst.Size = new System.Drawing.Size(82, 32);
@@ -580,7 +580,7 @@
             this.buttonSalesListPageListPrevious.Enabled = false;
             this.buttonSalesListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonSalesListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSalesListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonSalesListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonSalesListPageListPrevious.Location = new System.Drawing.Point(100, 9);
             this.buttonSalesListPageListPrevious.Name = "buttonSalesListPageListPrevious";
             this.buttonSalesListPageListPrevious.Size = new System.Drawing.Size(82, 32);
@@ -594,7 +594,7 @@
             this.buttonSalesListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonSalesListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonSalesListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSalesListPageListNext.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonSalesListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonSalesListPageListNext.Location = new System.Drawing.Point(263, 9);
             this.buttonSalesListPageListNext.Name = "buttonSalesListPageListNext";
             this.buttonSalesListPageListNext.Size = new System.Drawing.Size(82, 32);
@@ -608,7 +608,7 @@
             this.buttonSalesListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonSalesListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonSalesListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSalesListPageListLast.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonSalesListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonSalesListPageListLast.Location = new System.Drawing.Point(348, 9);
             this.buttonSalesListPageListLast.Name = "buttonSalesListPageListLast";
             this.buttonSalesListPageListLast.Size = new System.Drawing.Size(82, 32);
@@ -622,10 +622,11 @@
             this.textBoxPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.textBoxPageNumber.Location = new System.Drawing.Point(188, 14);
             this.textBoxPageNumber.Name = "textBoxPageNumber";
             this.textBoxPageNumber.ReadOnly = true;
-            this.textBoxPageNumber.Size = new System.Drawing.Size(69, 23);
+            this.textBoxPageNumber.Size = new System.Drawing.Size(69, 20);
             this.textBoxPageNumber.TabIndex = 12;
             this.textBoxPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 

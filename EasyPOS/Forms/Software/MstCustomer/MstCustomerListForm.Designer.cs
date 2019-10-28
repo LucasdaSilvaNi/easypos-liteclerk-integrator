@@ -157,7 +157,7 @@
             this.buttonCustomerListPageListFirst.Enabled = false;
             this.buttonCustomerListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonCustomerListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCustomerListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonCustomerListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonCustomerListPageListFirst.Location = new System.Drawing.Point(12, 9);
             this.buttonCustomerListPageListFirst.Name = "buttonCustomerListPageListFirst";
             this.buttonCustomerListPageListFirst.Size = new System.Drawing.Size(82, 32);
@@ -172,7 +172,7 @@
             this.buttonCustomerListPageListPrevious.Enabled = false;
             this.buttonCustomerListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonCustomerListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCustomerListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonCustomerListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonCustomerListPageListPrevious.Location = new System.Drawing.Point(100, 9);
             this.buttonCustomerListPageListPrevious.Name = "buttonCustomerListPageListPrevious";
             this.buttonCustomerListPageListPrevious.Size = new System.Drawing.Size(82, 32);
@@ -186,7 +186,7 @@
             this.buttonCustomerListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonCustomerListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonCustomerListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCustomerListPageListNext.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonCustomerListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonCustomerListPageListNext.Location = new System.Drawing.Point(263, 9);
             this.buttonCustomerListPageListNext.Name = "buttonCustomerListPageListNext";
             this.buttonCustomerListPageListNext.Size = new System.Drawing.Size(82, 32);
@@ -200,7 +200,7 @@
             this.buttonCustomerListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonCustomerListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonCustomerListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCustomerListPageListLast.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonCustomerListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonCustomerListPageListLast.Location = new System.Drawing.Point(348, 9);
             this.buttonCustomerListPageListLast.Name = "buttonCustomerListPageListLast";
             this.buttonCustomerListPageListLast.Size = new System.Drawing.Size(82, 32);
@@ -214,10 +214,11 @@
             this.textBoxCustomerListPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxCustomerListPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxCustomerListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxCustomerListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.textBoxCustomerListPageNumber.Location = new System.Drawing.Point(188, 14);
             this.textBoxCustomerListPageNumber.Name = "textBoxCustomerListPageNumber";
             this.textBoxCustomerListPageNumber.ReadOnly = true;
-            this.textBoxCustomerListPageNumber.Size = new System.Drawing.Size(69, 23);
+            this.textBoxCustomerListPageNumber.Size = new System.Drawing.Size(69, 20);
             this.textBoxCustomerListPageNumber.TabIndex = 17;
             this.textBoxCustomerListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 

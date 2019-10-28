@@ -44,7 +44,6 @@
             this.buttonItemListPageListLast = new System.Windows.Forms.Button();
             this.textBoxItemListPageNumber = new System.Windows.Forms.TextBox();
             this.dataGridViewItemList = new System.Windows.Forms.DataGridView();
-            this.textBoxItemListFilter = new System.Windows.Forms.TextBox();
             this.ColumnItemListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnItemListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnItemListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +56,7 @@
             this.ColumnItemListOnHandQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemListIsInventory = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColumnItemListIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.textBoxItemListFilter = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -163,7 +163,7 @@
             this.buttonItemListPageListFirst.Enabled = false;
             this.buttonItemListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonItemListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonItemListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonItemListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonItemListPageListFirst.Location = new System.Drawing.Point(12, 9);
             this.buttonItemListPageListFirst.Name = "buttonItemListPageListFirst";
             this.buttonItemListPageListFirst.Size = new System.Drawing.Size(82, 32);
@@ -178,7 +178,7 @@
             this.buttonItemListPageListPrevious.Enabled = false;
             this.buttonItemListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonItemListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonItemListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonItemListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonItemListPageListPrevious.Location = new System.Drawing.Point(100, 9);
             this.buttonItemListPageListPrevious.Name = "buttonItemListPageListPrevious";
             this.buttonItemListPageListPrevious.Size = new System.Drawing.Size(82, 32);
@@ -192,7 +192,7 @@
             this.buttonItemListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonItemListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonItemListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonItemListPageListNext.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonItemListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonItemListPageListNext.Location = new System.Drawing.Point(263, 9);
             this.buttonItemListPageListNext.Name = "buttonItemListPageListNext";
             this.buttonItemListPageListNext.Size = new System.Drawing.Size(82, 32);
@@ -206,7 +206,7 @@
             this.buttonItemListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonItemListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonItemListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonItemListPageListLast.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonItemListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonItemListPageListLast.Location = new System.Drawing.Point(348, 9);
             this.buttonItemListPageListLast.Name = "buttonItemListPageListLast";
             this.buttonItemListPageListLast.Size = new System.Drawing.Size(82, 32);
@@ -220,10 +220,11 @@
             this.textBoxItemListPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxItemListPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxItemListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxItemListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.textBoxItemListPageNumber.Location = new System.Drawing.Point(188, 14);
             this.textBoxItemListPageNumber.Name = "textBoxItemListPageNumber";
             this.textBoxItemListPageNumber.ReadOnly = true;
-            this.textBoxItemListPageNumber.Size = new System.Drawing.Size(69, 23);
+            this.textBoxItemListPageNumber.Size = new System.Drawing.Size(69, 20);
             this.textBoxItemListPageNumber.TabIndex = 17;
             this.textBoxItemListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -260,16 +261,6 @@
             this.dataGridViewItemList.Size = new System.Drawing.Size(1376, 536);
             this.dataGridViewItemList.TabIndex = 9;
             this.dataGridViewItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItemList_CellClick);
-            // 
-            // textBoxItemListFilter
-            // 
-            this.textBoxItemListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxItemListFilter.Location = new System.Drawing.Point(12, 6);
-            this.textBoxItemListFilter.Name = "textBoxItemListFilter";
-            this.textBoxItemListFilter.Size = new System.Drawing.Size(1376, 30);
-            this.textBoxItemListFilter.TabIndex = 8;
-            this.textBoxItemListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxItemListFilter_KeyDown);
             // 
             // ColumnItemListButtonEdit
             // 
@@ -370,6 +361,16 @@
             this.ColumnItemListIsLocked.Name = "ColumnItemListIsLocked";
             this.ColumnItemListIsLocked.ReadOnly = true;
             this.ColumnItemListIsLocked.Width = 35;
+            // 
+            // textBoxItemListFilter
+            // 
+            this.textBoxItemListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxItemListFilter.Location = new System.Drawing.Point(12, 6);
+            this.textBoxItemListFilter.Name = "textBoxItemListFilter";
+            this.textBoxItemListFilter.Size = new System.Drawing.Size(1376, 30);
+            this.textBoxItemListFilter.TabIndex = 8;
+            this.textBoxItemListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxItemListFilter_KeyDown);
             // 
             // MstItemListForm
             // 

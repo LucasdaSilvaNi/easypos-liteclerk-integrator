@@ -59,5 +59,20 @@ namespace EasyPOS.Forms.Software.SysMenu
         {
             sysSoftwareForm.AddTabPageCustomerList();
         }
+
+        private void buttonStockIn_Click(object sender, EventArgs e)
+        {
+            sysSoftwareForm.AddTabPageStockInList();
+        }
+
+        private void buttonStockOut_Click(object sender, EventArgs e)
+        {
+            sysSoftwareForm.AddTabPageStockOutList();
+        }
+
+        private void buttonDisbursement_Click(object sender, EventArgs e)
+        {
+            sysSoftwareForm.AddTabPageDisbursementList();
+        }
     }
 }
