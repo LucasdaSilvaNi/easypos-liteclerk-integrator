@@ -73,7 +73,9 @@
     <Compile Include="Controllers\MstCustomerController.cs" />
     <Compile Include="Controllers\MstItemController.cs" />
     <Compile Include="Controllers\MstUserController.cs" />
+    <Compile Include="Controllers\RepCancelledSalesReport.cs" />
     <Compile Include="Controllers\RepPOSReportController.cs" />
+    <Compile Include="Controllers\RepSalesDetailReportController.cs" />
     <Compile Include="Controllers\RepSalesReportController.cs" />
     <Compile Include="Controllers\SysLoginController.cs" />
     <Compile Include="Controllers\IntCloudSettingsController.cs" />
@@ -115,8 +117,10 @@
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockOutItem.cs" />
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransfer.cs" />
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransferItem.cs" />
+    <Compile Include="Entities\DgvSalesReportCancelSalesSummaryReportEntity.cs" />
     <Compile Include="Entities\DgvCustomerListCustomerEntity.cs" />
     <Compile Include="Entities\DgvItemListItemEntity.cs" />
+    <Compile Include="Entities\DgvSalesDetailReportEntity.cs" />
     <Compile Include="Entities\DgvSalesDetailSalesLineEntity.cs" />
     <Compile Include="Entities\DgvSalesDetailSearchItemEntity.cs" />
     <Compile Include="Entities\DgvSalesDetailTenderPayTypeEntity.cs" />
@@ -136,6 +140,7 @@
     <Compile Include="Entities\MstTerminalEntity.cs" />
     <Compile Include="Entities\MstUnitEntity.cs" />
     <Compile Include="Entities\MstUserEntity.cs" />
+    <Compile Include="Entities\RepSalesDetailReportEntity.cs" />
     <Compile Include="Entities\RepXReadingReportEntity.cs" />
     <Compile Include="Entities\RepZReadingReportEntity.cs" />
     <Compile Include="Entities\SysConnectionStringEntity.cs" />
@@ -208,11 +213,23 @@
     <Compile Include="Forms\Software\RepSalesReport\RepSalesReportForm.Designer.cs">
       <DependentUpon>RepSalesReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportSalesDetailReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportSalesDetailReportForm.Designer.cs">
+      <DependentUpon>RepSalesReportSalesDetailReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepSalesReportSalesSummaryReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepSalesReportSalesSummaryReportForm.Designer.cs">
       <DependentUpon>RepSalesReportSalesSummaryReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepCancelSalesSummaryReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepCancelSalesSummaryReportForm.Designer.cs">
+      <DependentUpon>RepCancelSalesSummaryReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\SysSettings\SysSettingsForm.cs">
       <SubType>Form</SubType>
@@ -363,8 +380,14 @@
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportForm.resx">
       <DependentUpon>RepSalesReportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportSalesDetailReportForm.resx">
+      <DependentUpon>RepSalesReportSalesDetailReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportSalesSummaryReportForm.resx">
       <DependentUpon>RepSalesReportSalesSummaryReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepCancelSalesSummaryReportForm.resx">
+      <DependentUpon>RepCancelSalesSummaryReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\SysSettings\SysSettingsForm.resx">
       <DependentUpon>SysSettingsForm.cs</DependentUpon>

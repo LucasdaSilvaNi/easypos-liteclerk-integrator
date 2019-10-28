@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    public class DgvSalesReportSalesSummaryReportEntity
+    public class DgvSalesReportCancelSalesSummaryReportEntity
     {
         public Int32 ColumnId { get; set; }
         public Int32 ColumnPeriodId { get; set; }

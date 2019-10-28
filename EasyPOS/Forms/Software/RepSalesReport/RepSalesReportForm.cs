@@ -67,8 +67,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         repSalesSummaryReport.ShowDialog();
                         break;
                     case "Sales Detail Report":
-
-
+                        RepSalesReportSalesDetailReportForm repSalesReportSalesDetail = new RepSalesReportSalesDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                        repSalesReportSalesDetail.ShowDialog();
                         break;
                     default:
                         break;
