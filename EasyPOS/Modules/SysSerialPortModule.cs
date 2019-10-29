@@ -20,11 +20,15 @@ namespace EasyPOS.Modules
             {
                 if (SysCurrentModule.GetCurrentSettings().WithCustomerDisplay == "true")
                 {
-                    String port = Modules.SysCurrentModule.GetCurrentSettings().CustomerDisplayPort;
-                    String baudRate = Modules.SysCurrentModule.GetCurrentSettings().CustomerDisplayBaudRate;
+                    String port = SysCurrentModule.GetCurrentSettings().CustomerDisplayPort;
+                    String baudRate = SysCurrentModule.GetCurrentSettings().CustomerDisplayBaudRate;
 
-                    serialPort = new SerialPort(port, Convert.ToInt32(baudRate), Parity.None, 8, StopBits.One);
-                    serialPort.Open();
+                    var portExists = SerialPort.GetPortNames().Any(x => x == port);
+                    if (portExists)
+                    {
+                        serialPort = new SerialPort(port, Convert.ToInt32(baudRate), Parity.None, 8, StopBits.One);
+                        serialPort.Open();
+                    }
                 }
             }
         }
@@ -50,15 +54,18 @@ namespace EasyPOS.Modules
         // ========================
         public static void WriteSeralPortMessage(String line1, String line2)
         {
-            string buf1 = "                    ";
-            if (line1.Length > buf1.Length) line1 = line1.Substring(1, buf1.Length);
-            else line1 = line1 + buf1.Substring(1, buf1.Length - line1.Length);
+            if (serialPort != null)
+            {
+                string buf1 = "                    ";
+                if (line1.Length > buf1.Length) line1 = line1.Substring(1, buf1.Length);
+                else line1 = line1 + buf1.Substring(1, buf1.Length - line1.Length);
 
-            string buf2 = "                    ";
-            if (line2.Length > buf2.Length) line2 = line2.Substring(1, buf2.Length);
-            else line2 = line2 + buf2.Substring(1, buf2.Length - line2.Length);
+                string buf2 = "                    ";
+                if (line2.Length > buf2.Length) line2 = line2.Substring(1, buf2.Length);
+                else line2 = line2 + buf2.Substring(1, buf2.Length - line2.Length);
 
-            serialPort.Write(line1 + line2);
+                serialPort.Write(line1 + line2);
+            }
         }
     }
 }
