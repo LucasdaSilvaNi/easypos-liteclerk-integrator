@@ -20,6 +20,17 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             sysSoftwareForm = softwareForm;
         }
 
+        public void GetTerminalList()
+        {
+            Controllers.RepSalesReportController repSalesReportController = new Controllers.RepSalesReportController();
+            if (repSalesReportController.DropdownListTerminal().Any())
+            {
+                comboBoxTerminal.DataSource = repSalesReportController.DropdownListTerminal();
+                comboBoxTerminal.ValueMember = "Id";
+                comboBoxTerminal.DisplayMember = "Terminal";
+            }
+        }
+
         private void listBoxSalesReport_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxSalesReport.SelectedItem != null)
@@ -32,18 +43,42 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         dateTimePickerStartDate.Visible = true;
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
+                        comboBoxTerminal.Visible = false;
+                        labelTerminal.Visible = false;
                         break;
                     case "Sales Detail Report":
                         labelStartDate.Visible = true;
                         dateTimePickerStartDate.Visible = true;
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
+                        comboBoxTerminal.Visible = false;
+                        labelTerminal.Visible = false;
                         break;
                     case "Cancel Sales Summary Report":
                         labelStartDate.Visible = true;
                         dateTimePickerStartDate.Visible = true;
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
+                        comboBoxTerminal.Visible = false;
+                        labelTerminal.Visible = false;
+                        break;
+                    case "Collection Report":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+                        GetTerminalList();
+                        comboBoxTerminal.Visible = true;
+                        labelTerminal.Visible = true;
+                        break;
+                    case "Collection Detail Report":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+                        GetTerminalList();
+                        comboBoxTerminal.Visible = true;
+                        labelTerminal.Visible = true;
                         break;
                     default:
                         break;
@@ -77,9 +112,18 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         repSalesReportSalesDetail.ShowDialog();
                         break;
                     case "Cancel Sales Summary Report":
-                        RepCancelSalesSummaryReportForm repCancelSalesSummaryReport = new RepCancelSalesSummaryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                        RepSalesReportCancelSalesSummaryReportForm repCancelSalesSummaryReport = new RepSalesReportCancelSalesSummaryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
                         repCancelSalesSummaryReport.ShowDialog();
                         break;
+                    case "Collection Summary Report":
+                        RepSalesReportCollectionReport reportCollectionReport = new RepSalesReportCollectionReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
+                        reportCollectionReport.ShowDialog();
+                        break;
+                    case "Collection Detail Report":
+                        RepSalesReportCollectionDetailReportForm reportCollectionDetailReportForm = new RepSalesReportCollectionDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
+                        reportCollectionDetailReportForm.ShowDialog();
+                        break;
+
                     default:
                         break;
                 }

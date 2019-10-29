@@ -11,80 +11,69 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.RepSalesReport
 {
-    public partial class RepCancelSalesSummaryReportForm : Form
+    public partial class RepSalesReportCollectionReport : Form
     {
-        public List<Entities.DgvSalesReportCancelSalesSummaryReportEntity> canCelSalesList;
-        public BindingSource dataCancelSalesListSource = new BindingSource();
-        public PagedList<Entities.DgvSalesReportCancelSalesSummaryReportEntity> pageList;
+        public List<Entities.DgvCollectionReportEntity> collectionList;
+        public BindingSource dataCollectionListSource = new BindingSource();
+        public PagedList<Entities.DgvCollectionReportEntity> pageList;
         public Int32 pageNumber = 1;
         public Int32 pageSize = 50;
 
         public DateTime dateStart;
         public DateTime dateEnd;
+        public Int32 idTerminal;
 
-        public RepCancelSalesSummaryReportForm(DateTime startDate, DateTime endDate)
+        public RepSalesReportCollectionReport(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
             InitializeComponent();
             dateStart = startDate;
             dateEnd = endDate;
+            idTerminal = terminalId;
 
-            GetCancelSalesListDataSource();
-            GetCancelSalesSummaryReportSource();
+            GetCollectionListDataSource();
+            GetDgvCollectionSource();
         }
 
-        public List<Entities.DgvSalesReportCancelSalesSummaryReportEntity> GetCancelSalesSummaryListData(DateTime startDate, DateTime endDate)
+        public List<Entities.DgvCollectionReportEntity> GetCollectionListData(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
-            List<Entities.DgvSalesReportCancelSalesSummaryReportEntity> rowList = new List<Entities.DgvSalesReportCancelSalesSummaryReportEntity>();
+            List<Entities.DgvCollectionReportEntity> rowList = new List<Entities.DgvCollectionReportEntity>();
 
-            Controllers.RepSalesReportController repSalesReportController = new Controllers.RepSalesReportController();
+            Controllers.RepSalesReportController repCollectionReportController = new Controllers.RepSalesReportController();
 
-            var cancelSalesList = repSalesReportController.CancelSalesSummaryList(startDate, endDate);
-            if (cancelSalesList.Any())
+            var collectionList = repCollectionReportController.CollectionList(startDate, endDate, terminalId);
+            if (collectionList.Any())
             {
                 Decimal totalAmount = 0;
-                var row = from d in cancelSalesList
-                          select new Entities.DgvSalesReportCancelSalesSummaryReportEntity
+                var row = from d in collectionList
+                          select new Entities.DgvCollectionReportEntity
                           {
-                              ColumnId = d.Id,
-                              ColumnPeriodId = d.Id,
-                              ColumnPeriod = d.Period,
+                              ColumnCollectionDate = d.CollectionDate,
+                              ColumnCollectionNumber = d.CollectionNumber,
                               ColumnTerminal = d.Terminal,
-                              ColumnSalesDate = d.SalesDate,
-                              ColumnSalesNumber = d.SalesNumber,
-                              ColumnManualInvoiceNumber = d.ManualInvoiceNumber,
-                              ColumnAmount = d.Amount.ToString("#,##0.00"),
-                              ColumnTableId = d.TableId,
-                              ColumnCustomerId = d.CustomerId,
+                              ColumnManualORNumber = d.ManualORNumber,
                               ColumnCustomer = d.Customer,
-                              ColumnAccountId = d.AccountId,
-                              ColumnTermId = d.TermId,
-                              ColumnTerm = d.Term,
-                              ColumnDiscountId = d.DiscountId,
                               ColumnRemarks = d.Remarks,
-                              ColumnTerminalId = d.TerminalId,
-                              ColumnPreparedBy = d.PreparedBy,
-                              ColumnPreparedByUserName = d.PreparedByUserName,
-                              ColumnPax = d.Pax,
-                              ColumnTable = d.Table,
+                              ColumnSalesNumber = d.SalesNumber,
+                              ColumnAmount = d.Amount.ToString("#,##0.00"),
+                              ColumnPreparedBy = d.PreparedByUserName,
                           };
 
-                totalAmount = cancelSalesList.Sum(d => d.Amount);
+                totalAmount = collectionList.Sum(d => d.Amount);
 
                 textBoxTotalAmount.Text = totalAmount.ToString("#,##0.00");
 
                 rowList = row.ToList();
-
             }
             return rowList;
         }
 
-        public void GetCancelSalesListDataSource()
+        public void GetCollectionListDataSource()
         {
-            canCelSalesList = GetCancelSalesSummaryListData(dateStart, dateEnd);
-            if (canCelSalesList.Any())
+            collectionList = GetCollectionListData(dateStart, dateEnd, idTerminal);
+            if (collectionList.Any())
             {
 
-                pageList = new PagedList<Entities.DgvSalesReportCancelSalesSummaryReportEntity>(canCelSalesList, pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvCollectionReportEntity>(collectionList, pageNumber, pageSize);
 
                 if (pageList.PageCount == 1)
                 {
@@ -116,7 +105,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 }
 
                 textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
-                dataCancelSalesListSource.DataSource = pageList;
+                dataCollectionListSource.DataSource = pageList;
             }
             else
             {
@@ -125,20 +114,19 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 buttonPageListNext.Enabled = false;
                 buttonPageListLast.Enabled = false;
 
-                dataCancelSalesListSource.Clear();
+                dataCollectionListSource.Clear();
                 textBoxPageNumber.Text = "0 / 0";
             }
         }
 
-        public void GetCancelSalesSummaryReportSource() {
-            dataGridCancelSalesSummaryReport.DataSource = dataCancelSalesListSource;
+        public void GetDgvCollectionSource() {
+            dataGridViewCollectionReport.DataSource = dataCollectionListSource;
         }
-      
 
-        private void buttonSalesListPageListFirst_Click(object sender, EventArgs e)
+        private void buttoncollectionListPageListFirst_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvSalesReportCancelSalesSummaryReportEntity>(canCelSalesList, 1, pageSize);
-            dataCancelSalesListSource.DataSource = pageList;
+            pageList = new PagedList<Entities.DgvCollectionReportEntity>(collectionList, 1, pageSize);
+            dataCollectionListSource.DataSource = pageList;
 
             buttonPageListFirst.Enabled = false;
             buttonPageListPrevious.Enabled = false;
@@ -149,12 +137,12 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
         }
 
-        private void buttonSalesListPageListPrevious_Click(object sender, EventArgs e)
+        private void buttoncollectionListPageListPrevious_Click(object sender, EventArgs e)
         {
             if (pageList.HasPreviousPage == true)
             {
-                pageList = new PagedList<Entities.DgvSalesReportCancelSalesSummaryReportEntity>(canCelSalesList, --pageNumber, pageSize);
-                dataCancelSalesListSource.DataSource = pageList;
+                pageList = new PagedList<Entities.DgvCollectionReportEntity>(collectionList, --pageNumber, pageSize);
+                dataCollectionListSource.DataSource = pageList;
             }
 
             buttonPageListNext.Enabled = true;
@@ -169,12 +157,12 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
         }
 
-        private void buttonSalesListPageListNext_Click(object sender, EventArgs e)
+        private void buttoncollectionListPageListNext_Click(object sender, EventArgs e)
         {
             if (pageList.HasNextPage == true)
             {
-                pageList = new PagedList<Entities.DgvSalesReportCancelSalesSummaryReportEntity>(canCelSalesList, ++pageNumber, pageSize);
-                dataCancelSalesListSource.DataSource = pageList;
+                pageList = new PagedList<Entities.DgvCollectionReportEntity>(collectionList, ++pageNumber, pageSize);
+                dataCollectionListSource.DataSource = pageList;
             }
 
             buttonPageListFirst.Enabled = true;
@@ -189,10 +177,10 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
         }
 
-        private void buttonSalesListPageListLast_Click(object sender, EventArgs e)
+        private void buttoncollectionListPageListLast_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvSalesReportCancelSalesSummaryReportEntity>(canCelSalesList, pageList.PageCount, pageSize);
-            dataCancelSalesListSource.DataSource = pageList;
+            pageList = new PagedList<Entities.DgvCollectionReportEntity>(collectionList, pageList.PageCount, pageSize);
+            dataCollectionListSource.DataSource = pageList;
 
             buttonPageListFirst.Enabled = true;
             buttonPageListPrevious.Enabled = true;
@@ -208,4 +196,6 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             Close();
         }
     }
+
+
 }

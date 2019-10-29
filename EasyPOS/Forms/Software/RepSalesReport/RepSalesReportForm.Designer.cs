@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel4 = new System.Windows.Forms.Panel();
+            this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
+            this.labelTerminal = new System.Windows.Forms.Label();
             this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
             this.labelStartDate = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -51,6 +53,8 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.comboBoxTerminal);
+            this.panel4.Controls.Add(this.labelTerminal);
             this.panel4.Controls.Add(this.dateTimePickerStartDate);
             this.panel4.Controls.Add(this.labelStartDate);
             this.panel4.Controls.Add(this.panel2);
@@ -62,6 +66,26 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1400, 637);
             this.panel4.TabIndex = 8;
+            // 
+            // comboBoxTerminal
+            // 
+            this.comboBoxTerminal.FormattingEnabled = true;
+            this.comboBoxTerminal.Location = new System.Drawing.Point(502, 136);
+            this.comboBoxTerminal.Name = "comboBoxTerminal";
+            this.comboBoxTerminal.Size = new System.Drawing.Size(220, 31);
+            this.comboBoxTerminal.TabIndex = 26;
+            this.comboBoxTerminal.Visible = false;
+            // 
+            // labelTerminal
+            // 
+            this.labelTerminal.AutoSize = true;
+            this.labelTerminal.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.labelTerminal.Location = new System.Drawing.Point(409, 137);
+            this.labelTerminal.Name = "labelTerminal";
+            this.labelTerminal.Size = new System.Drawing.Size(74, 23);
+            this.labelTerminal.TabIndex = 25;
+            this.labelTerminal.Text = "Terminal";
+            this.labelTerminal.Visible = false;
             // 
             // dateTimePickerStartDate
             // 
@@ -103,7 +127,9 @@
             this.listBoxSalesReport.Items.AddRange(new object[] {
             "Sales Summary Report",
             "Sales Detail Report",
-            "Cancel Sales Summary Report"});
+            "Cancel Sales Summary Report",
+            "Collection Summary Report",
+            "Collection Detail Report"});
             this.listBoxSalesReport.Location = new System.Drawing.Point(0, 0);
             this.listBoxSalesReport.Name = "listBoxSalesReport";
             this.listBoxSalesReport.Size = new System.Drawing.Size(380, 619);
@@ -145,7 +171,7 @@
             // 
             this.labelEndDate.AutoSize = true;
             this.labelEndDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelEndDate.Location = new System.Drawing.Point(409, 100);
+            this.labelEndDate.Location = new System.Drawing.Point(409, 101);
             this.labelEndDate.Name = "labelEndDate";
             this.labelEndDate.Size = new System.Drawing.Size(80, 23);
             this.labelEndDate.TabIndex = 18;
@@ -262,5 +288,7 @@
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.DateTimePicker dateTimePickerStartDate;
         private System.Windows.Forms.Label labelStartDate;
+        private System.Windows.Forms.ComboBox comboBoxTerminal;
+        private System.Windows.Forms.Label labelTerminal;
     }
 }

@@ -83,7 +83,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1482, 63);
+            this.panel1.Size = new System.Drawing.Size(1382, 63);
             this.panel1.TabIndex = 8;
             // 
             // buttonView
@@ -95,7 +95,7 @@
             this.buttonView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonView.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonView.ForeColor = System.Drawing.Color.White;
-            this.buttonView.Location = new System.Drawing.Point(1287, 11);
+            this.buttonView.Location = new System.Drawing.Point(1187, 11);
             this.buttonView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonView.Name = "buttonView";
             this.buttonView.Size = new System.Drawing.Size(88, 40);
@@ -135,7 +135,7 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(1381, 11);
+            this.buttonClose.Location = new System.Drawing.Point(1281, 11);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
@@ -151,7 +151,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 63);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1482, 640);
+            this.panel2.Size = new System.Drawing.Size(1382, 590);
             this.panel2.TabIndex = 9;
             // 
             // panel4
@@ -165,9 +165,9 @@
             this.panel4.Controls.Add(this.buttonSalesListPageListPrevious);
             this.panel4.Controls.Add(this.textBoxPageNumber);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 587);
+            this.panel4.Location = new System.Drawing.Point(0, 537);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1482, 53);
+            this.panel4.Size = new System.Drawing.Size(1382, 53);
             this.panel4.TabIndex = 20;
             // 
             // textBoxTotalAmount
@@ -175,7 +175,7 @@
             this.textBoxTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxTotalAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxTotalAmount.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTotalAmount.Location = new System.Drawing.Point(1112, 14);
+            this.textBoxTotalAmount.Location = new System.Drawing.Point(1012, 14);
             this.textBoxTotalAmount.Name = "textBoxTotalAmount";
             this.textBoxTotalAmount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBoxTotalAmount.Size = new System.Drawing.Size(308, 23);
@@ -186,7 +186,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(973, 14);
+            this.label2.Location = new System.Drawing.Point(873, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(124, 23);
             this.label2.TabIndex = 13;
@@ -299,7 +299,7 @@
             this.dataGridViewSalesSummaryReport.RowHeadersVisible = false;
             this.dataGridViewSalesSummaryReport.RowTemplate.Height = 24;
             this.dataGridViewSalesSummaryReport.ShowEditingIcon = false;
-            this.dataGridViewSalesSummaryReport.Size = new System.Drawing.Size(1482, 640);
+            this.dataGridViewSalesSummaryReport.Size = new System.Drawing.Size(1382, 590);
             this.dataGridViewSalesSummaryReport.TabIndex = 0;
             // 
             // ColumnId
@@ -478,7 +478,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1482, 703);
+            this.ClientSize = new System.Drawing.Size(1382, 653);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
