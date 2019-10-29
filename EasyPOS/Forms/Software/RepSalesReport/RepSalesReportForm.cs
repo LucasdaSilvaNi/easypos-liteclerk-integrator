@@ -77,7 +77,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         repSalesReportSalesDetail.ShowDialog();
                         break;
                     case "Cancel Sales Summary Report":
-                        RepCancelSalesSummaryReportForm repCancelSalesSummaryReport = new RepCancelSalesSummaryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                        RepSalesReportCancelSalesSummaryReportForm repCancelSalesSummaryReport = new RepSalesReportCancelSalesSummaryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
                         repCancelSalesSummaryReport.ShowDialog();
                         break;
                     default:

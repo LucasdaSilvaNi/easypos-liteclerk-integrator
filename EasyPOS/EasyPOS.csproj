@@ -246,11 +246,11 @@
     <Compile Include="Forms\Software\RepSalesReport\RepSalesReportSalesSummaryReportForm.Designer.cs">
       <DependentUpon>RepSalesReportSalesSummaryReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepCancelSalesSummaryReportForm.cs">
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportCancelSalesSummaryReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepCancelSalesSummaryReportForm.Designer.cs">
-      <DependentUpon>RepCancelSalesSummaryReportForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportCancelSalesSummaryReportForm.Designer.cs">
+      <DependentUpon>RepSalesReportCancelSalesSummaryReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\SysSettings\SysSettingsForm.cs">
       <SubType>Form</SubType>
@@ -408,8 +408,8 @@
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportSalesSummaryReportForm.resx">
       <DependentUpon>RepSalesReportSalesSummaryReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepCancelSalesSummaryReportForm.resx">
-      <DependentUpon>RepCancelSalesSummaryReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportCancelSalesSummaryReportForm.resx">
+      <DependentUpon>RepSalesReportCancelSalesSummaryReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\SysSettings\SysSettingsForm.resx">
       <DependentUpon>SysSettingsForm.cs</DependentUpon>

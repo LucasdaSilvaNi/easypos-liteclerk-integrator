@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.RepSalesReport
 {
-    public partial class RepCancelSalesSummaryReportForm : Form
+    public partial class RepSalesReportCancelSalesSummaryReportForm : Form
     {
         public List<Entities.DgvSalesReportCancelSalesSummaryReportEntity> canCelSalesList;
         public BindingSource dataCancelSalesListSource = new BindingSource();
@@ -22,7 +22,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         public DateTime dateStart;
         public DateTime dateEnd;
 
-        public RepCancelSalesSummaryReportForm(DateTime startDate, DateTime endDate)
+        public RepSalesReportCancelSalesSummaryReportForm(DateTime startDate, DateTime endDate)
         {
             InitializeComponent();
             dateStart = startDate;
