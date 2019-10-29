@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             sysSoftwareForm = softwareForm;
             trnSalesListForm = salesListForm;
             trnSalesEntity = salesEntity;
+
+            Modules.SysSerialPortModule.OpenSerialPort();
 
             GetSalesDetail();
             GetSalesLineList();
@@ -134,6 +137,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
 
             textBoxTotalSalesAmount.Text = totalSalesAmount.ToString("#,##0.00");
+
+            String line1 = Modules.SysCurrentModule.GetCurrentSettings().CustomerDisplayFirstLineMessage;
+            String line2 = "P " + textBoxTotalSalesAmount.Text;
+
+            if (totalSalesAmount > 0)
+            {
+                line1 = "TOTAL:";
+            }
+
+            Modules.SysSerialPortModule.WriteSeralPortMessage(line1, line2);
         }
 
         private void dataGridViewSalesLineList_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -305,6 +318,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             textBoxBarcode.Focus();
             textBoxBarcode.SelectAll();
+        }
+
+        private void TrnSalesDetailForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Modules.SysSerialPortModule.CloseSerialPort();
         }
     }
 }

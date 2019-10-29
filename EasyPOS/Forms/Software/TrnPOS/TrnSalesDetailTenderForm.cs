@@ -55,7 +55,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             if (Convert.ToDecimal(textBoxChangeAmount.Text) < 0)
             {
-                MessageBox.Show("Change amount must be non-negative value.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                buttonTender.Enabled = false;
+                //MessageBox.Show("Change amount must be non-negative value.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -122,11 +123,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 if (isValidTender == true)
                 {
+                    buttonTender.Enabled = true;
                     CreateCollection();
                 }
                 else
                 {
-                    MessageBox.Show(invalidTenderMessage, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    buttonTender.Enabled = false;
+                    //MessageBox.Show(invalidTenderMessage, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -187,7 +190,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                     if (trnSalesDetailForm != null)
                     {
+                        trnSalesDetailForm.Close();
                         sysSoftwareForm.RemoveTabPage();
+
                         trnSalesDetailForm.trnSalesListForm.newSales();
                     }
                     else
@@ -285,6 +290,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 TrnSalesDetailTenderMoreInformationForm trnSalesDetailTenderMoreInfoForm = new TrnSalesDetailTenderMoreInformationForm(this, dataGridViewTenderPayType);
                 trnSalesDetailTenderMoreInfoForm.ShowDialog();
             }
+        }
+
+        private void TrnSalesDetailTenderForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Modules.SysSerialPortModule.CloseSerialPort();
         }
     }
 }

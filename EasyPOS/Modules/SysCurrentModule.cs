@@ -62,7 +62,12 @@ namespace EasyPOS.Modules
                 ReturnSupplierId = currentSettings.ReturnSupplierId,
                 ORPrintTitle = currentSettings.ORPrintTitle,
                 IsTenderPrint = currentSettings.IsTenderPrint,
-                IsBarcodeQuantityAlwaysOne = currentSettings.IsBarcodeQuantityAlwaysOne
+                IsBarcodeQuantityAlwaysOne = currentSettings.IsBarcodeQuantityAlwaysOne,
+                WithCustomerDisplay = currentSettings.WithCustomerDisplay,
+                CustomerDisplayPort = currentSettings.CustomerDisplayPort,
+                CustomerDisplayBaudRate = currentSettings.CustomerDisplayBaudRate,
+                CustomerDisplayFirstLineMessage = currentSettings.CustomerDisplayFirstLineMessage,
+                CustomerDisplayIfCounterClosedMessage = currentSettings.CustomerDisplayIfCounterClosedMessage
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);

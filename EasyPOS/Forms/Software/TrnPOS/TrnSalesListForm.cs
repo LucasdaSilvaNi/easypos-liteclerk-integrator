@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public Int32 pageSize = 50;
         public Boolean isAutoRefresh = true;
 
+        public SerialPort serialPort = null;
+
         public TrnSalesListForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();
@@ -29,7 +32,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             GetTerminalList();
             timerRefreshSalesListGrid.Start();
         }
-
+        
         private void buttonClose_Click(object sender, EventArgs e)
         {
             sysSoftwareForm.RemoveTabPage();
@@ -376,17 +379,51 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 if (dataGridViewSalesList.CurrentCell.RowIndex != -1)
                 {
-                    Entities.TrnSalesEntity newSalesEntity = new Entities.TrnSalesEntity
-                    {
-                        Id = Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value),
-                        Amount = Convert.ToDecimal(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[8].Value),
-                        SalesNumber = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[5].Value.ToString(),
-                        SalesDate = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[4].Value.ToString(),
-                        Customer = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[6].Value.ToString()
-                    };
+                    Boolean isLocked = Convert.ToBoolean(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[9].Value);
+                    Boolean isTendered = Convert.ToBoolean(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[10].Value);
 
-                    TrnSalesDetailTenderForm trnSalesDetailTenderForm = new TrnSalesDetailTenderForm(sysSoftwareForm, this, null, newSalesEntity);
-                    trnSalesDetailTenderForm.ShowDialog();
+                    if (isTendered == true)
+                    {
+                        MessageBox.Show("Already tendered.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (isLocked == true)
+                    {
+                        MessageBox.Show("Already locked.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
+                        if (trnPOSSalesController.IsSalesTendered(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value)) == true)
+                        {
+                            MessageBox.Show("Already tendered.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            Modules.SysSerialPortModule.OpenSerialPort();
+
+                            Entities.TrnSalesEntity newSalesEntity = new Entities.TrnSalesEntity
+                            {
+                                Id = Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value),
+                                Amount = Convert.ToDecimal(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[8].Value),
+                                SalesNumber = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[5].Value.ToString(),
+                                SalesDate = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[4].Value.ToString(),
+                                Customer = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[6].Value.ToString()
+                            };
+
+                            String line1 = Modules.SysCurrentModule.GetCurrentSettings().CustomerDisplayFirstLineMessage;
+                            String line2 = "P " + newSalesEntity.Amount.ToString("#,##0.00");
+
+                            if (newSalesEntity.Amount > 0)
+                            {
+                                line1 = "TOTAL:";
+                            }
+
+                            Modules.SysSerialPortModule.WriteSeralPortMessage(line1, line2);
+
+                            TrnSalesDetailTenderForm trnSalesDetailTenderForm = new TrnSalesDetailTenderForm(sysSoftwareForm, this, null, newSalesEntity);
+                            trnSalesDetailTenderForm.ShowDialog();
+                        }
+                    }
                 }
                 else
                 {

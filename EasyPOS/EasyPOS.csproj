@@ -360,6 +360,7 @@
     <Compile Include="IndexForm.Designer.cs">
       <DependentUpon>IndexForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\SysSerialPortModule.cs" />
     <Compile Include="Modules\TrnInventoryModule.cs" />
     <Compile Include="Modules\SysConnectionStringModule.cs" />
     <Compile Include="Modules\SysCurrentModule.cs" />

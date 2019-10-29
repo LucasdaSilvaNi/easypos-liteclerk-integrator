@@ -35,5 +35,10 @@ namespace EasyPOS.Entities
         public String ORPrintTitle { get; set; }
         public String IsTenderPrint { get; set; }
         public String IsBarcodeQuantityAlwaysOne { get; set; }
+        public String WithCustomerDisplay { get; set; }
+        public String CustomerDisplayPort { get; set; }
+        public String CustomerDisplayBaudRate { get; set; }
+        public String CustomerDisplayFirstLineMessage { get; set; }
+        public String CustomerDisplayIfCounterClosedMessage { get; set; }
     }
 }
