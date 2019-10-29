@@ -102,7 +102,8 @@
             this.listBoxSalesReport.ItemHeight = 23;
             this.listBoxSalesReport.Items.AddRange(new object[] {
             "Sales Summary Report",
-            "Sales Detail Report"});
+            "Sales Detail Report",
+            "Cancel Sales Summary Report"});
             this.listBoxSalesReport.Location = new System.Drawing.Point(0, 0);
             this.listBoxSalesReport.Name = "listBoxSalesReport";
             this.listBoxSalesReport.Size = new System.Drawing.Size(380, 619);

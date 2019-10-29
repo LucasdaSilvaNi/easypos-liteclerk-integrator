@@ -31,6 +31,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepSalesReportSalesDetailReportForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridViewSalesDetailReport = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonView = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonClose = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.textBoxTotalAmount = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.buttonPageListFirst = new System.Windows.Forms.Button();
+            this.buttonPageListNext = new System.Windows.Forms.Button();
+            this.buttonPageListLast = new System.Windows.Forms.Button();
+            this.buttonPageListPrevious = new System.Windows.Forms.Button();
+            this.textBoxPageNumber = new System.Windows.Forms.TextBox();
             this.ColumnTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,19 +64,6 @@
             this.ColumnTaxAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTimeStamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonView = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonClose = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.textBoxTotalAmount = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.buttonPageListFirst = new System.Windows.Forms.Button();
-            this.buttonPageListNext = new System.Windows.Forms.Button();
-            this.buttonPageListLast = new System.Windows.Forms.Button();
-            this.buttonPageListPrevious = new System.Windows.Forms.Button();
-            this.textBoxPageNumber = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesDetailReport)).BeginInit();
             this.panel1.SuspendLayout();
@@ -118,148 +118,8 @@
             this.dataGridViewSalesDetailReport.RowHeadersVisible = false;
             this.dataGridViewSalesDetailReport.RowTemplate.Height = 24;
             this.dataGridViewSalesDetailReport.ShowEditingIcon = false;
-            this.dataGridViewSalesDetailReport.Size = new System.Drawing.Size(1479, 610);
+            this.dataGridViewSalesDetailReport.Size = new System.Drawing.Size(1479, 581);
             this.dataGridViewSalesDetailReport.TabIndex = 0;
-            // 
-            // ColumnTerminal
-            // 
-            this.ColumnTerminal.DataPropertyName = "ColumnTerminal";
-            this.ColumnTerminal.HeaderText = "Terminal";
-            this.ColumnTerminal.Name = "ColumnTerminal";
-            this.ColumnTerminal.ReadOnly = true;
-            // 
-            // ColumnDate
-            // 
-            this.ColumnDate.DataPropertyName = "ColumnDate";
-            this.ColumnDate.HeaderText = "Date";
-            this.ColumnDate.Name = "ColumnDate";
-            this.ColumnDate.ReadOnly = true;
-            // 
-            // ColumnSalesNumber
-            // 
-            this.ColumnSalesNumber.DataPropertyName = "ColumnSalesNumber";
-            this.ColumnSalesNumber.HeaderText = "SalesNumber";
-            this.ColumnSalesNumber.Name = "ColumnSalesNumber";
-            this.ColumnSalesNumber.ReadOnly = true;
-            // 
-            // ColumnCustomer
-            // 
-            this.ColumnCustomer.DataPropertyName = "ColumnCustomer";
-            this.ColumnCustomer.HeaderText = "Customer";
-            this.ColumnCustomer.Name = "ColumnCustomer";
-            this.ColumnCustomer.ReadOnly = true;
-            // 
-            // ColumnItemDescription
-            // 
-            this.ColumnItemDescription.DataPropertyName = "ColumnItemDescription";
-            this.ColumnItemDescription.HeaderText = "ItemDescription";
-            this.ColumnItemDescription.Name = "ColumnItemDescription";
-            this.ColumnItemDescription.ReadOnly = true;
-            // 
-            // ColumnItemCode
-            // 
-            this.ColumnItemCode.DataPropertyName = "ColumnItemCode";
-            this.ColumnItemCode.HeaderText = "ItemCode";
-            this.ColumnItemCode.Name = "ColumnItemCode";
-            this.ColumnItemCode.ReadOnly = true;
-            // 
-            // ColumnItemCategory
-            // 
-            this.ColumnItemCategory.DataPropertyName = "ColumnItemCategory";
-            this.ColumnItemCategory.HeaderText = "ItemCategory";
-            this.ColumnItemCategory.Name = "ColumnItemCategory";
-            this.ColumnItemCategory.ReadOnly = true;
-            // 
-            // ColumnUnit
-            // 
-            this.ColumnUnit.DataPropertyName = "ColumnUnit";
-            this.ColumnUnit.HeaderText = "Unit";
-            this.ColumnUnit.Name = "ColumnUnit";
-            this.ColumnUnit.ReadOnly = true;
-            // 
-            // ColumnPrice
-            // 
-            this.ColumnPrice.DataPropertyName = "ColumnPrice";
-            this.ColumnPrice.HeaderText = "Price";
-            this.ColumnPrice.Name = "ColumnPrice";
-            this.ColumnPrice.ReadOnly = true;
-            // 
-            // ColumnDiscount
-            // 
-            this.ColumnDiscount.DataPropertyName = "ColumnDiscount";
-            this.ColumnDiscount.HeaderText = "Discount";
-            this.ColumnDiscount.Name = "ColumnDiscount";
-            this.ColumnDiscount.ReadOnly = true;
-            // 
-            // ColumnDiscountRate
-            // 
-            this.ColumnDiscountRate.DataPropertyName = "ColumnDiscountRate";
-            this.ColumnDiscountRate.HeaderText = "DiscountRate";
-            this.ColumnDiscountRate.Name = "ColumnDiscountRate";
-            this.ColumnDiscountRate.ReadOnly = true;
-            // 
-            // ColumnDiscountAmount
-            // 
-            this.ColumnDiscountAmount.DataPropertyName = "ColumnDiscountAmount";
-            this.ColumnDiscountAmount.HeaderText = "DiscountAmount";
-            this.ColumnDiscountAmount.Name = "ColumnDiscountAmount";
-            this.ColumnDiscountAmount.ReadOnly = true;
-            // 
-            // ColumnNetPrice
-            // 
-            this.ColumnNetPrice.DataPropertyName = "ColumnNetPrice";
-            this.ColumnNetPrice.HeaderText = "NetPrice";
-            this.ColumnNetPrice.Name = "ColumnNetPrice";
-            this.ColumnNetPrice.ReadOnly = true;
-            // 
-            // ColumnQuantity
-            // 
-            this.ColumnQuantity.DataPropertyName = "ColumnQuantity";
-            this.ColumnQuantity.HeaderText = "Quantity";
-            this.ColumnQuantity.Name = "ColumnQuantity";
-            this.ColumnQuantity.ReadOnly = true;
-            // 
-            // ColumnAmount
-            // 
-            this.ColumnAmount.DataPropertyName = "ColumnAmount";
-            this.ColumnAmount.HeaderText = "Amount";
-            this.ColumnAmount.Name = "ColumnAmount";
-            this.ColumnAmount.ReadOnly = true;
-            // 
-            // ColumnTax
-            // 
-            this.ColumnTax.DataPropertyName = "ColumnTax";
-            this.ColumnTax.HeaderText = "Tax";
-            this.ColumnTax.Name = "ColumnTax";
-            this.ColumnTax.ReadOnly = true;
-            // 
-            // ColumnTaxRate
-            // 
-            this.ColumnTaxRate.DataPropertyName = "ColumnTaxRate";
-            this.ColumnTaxRate.HeaderText = "TaxRate";
-            this.ColumnTaxRate.Name = "ColumnTaxRate";
-            this.ColumnTaxRate.ReadOnly = true;
-            // 
-            // ColumnTaxAmount
-            // 
-            this.ColumnTaxAmount.DataPropertyName = "ColumnTaxAmount";
-            this.ColumnTaxAmount.HeaderText = "TaxAmount";
-            this.ColumnTaxAmount.Name = "ColumnTaxAmount";
-            this.ColumnTaxAmount.ReadOnly = true;
-            // 
-            // ColumnUser
-            // 
-            this.ColumnUser.DataPropertyName = "ColumnUser";
-            this.ColumnUser.HeaderText = "User";
-            this.ColumnUser.Name = "ColumnUser";
-            this.ColumnUser.ReadOnly = true;
-            // 
-            // ColumnTimeStamp
-            // 
-            this.ColumnTimeStamp.DataPropertyName = "ColumnTimeStamp";
-            this.ColumnTimeStamp.HeaderText = "TimeStamp";
-            this.ColumnTimeStamp.Name = "ColumnTimeStamp";
-            this.ColumnTimeStamp.ReadOnly = true;
             // 
             // panel1
             // 
@@ -329,7 +189,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1482, 732);
+            this.panel2.Size = new System.Drawing.Size(1482, 703);
             this.panel2.TabIndex = 11;
             // 
             // panel4
@@ -343,7 +203,7 @@
             this.panel4.Controls.Add(this.buttonPageListPrevious);
             this.panel4.Controls.Add(this.textBoxPageNumber);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 679);
+            this.panel4.Location = new System.Drawing.Point(0, 650);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1482, 53);
             this.panel4.TabIndex = 20;
@@ -391,7 +251,7 @@
             this.buttonPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPageListNext.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonPageListNext.Location = new System.Drawing.Point(263, 9);
+            this.buttonPageListNext.Location = new System.Drawing.Point(337, 9);
             this.buttonPageListNext.Name = "buttonPageListNext";
             this.buttonPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonPageListNext.TabIndex = 10;
@@ -405,7 +265,7 @@
             this.buttonPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPageListLast.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonPageListLast.Location = new System.Drawing.Point(422, 9);
             this.buttonPageListLast.Name = "buttonPageListLast";
             this.buttonPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonPageListLast.TabIndex = 11;
@@ -433,12 +293,152 @@
             this.textBoxPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxPageNumber.Location = new System.Drawing.Point(231, 14);
             this.textBoxPageNumber.Name = "textBoxPageNumber";
             this.textBoxPageNumber.ReadOnly = true;
             this.textBoxPageNumber.Size = new System.Drawing.Size(69, 23);
             this.textBoxPageNumber.TabIndex = 12;
             this.textBoxPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // ColumnTerminal
+            // 
+            this.ColumnTerminal.DataPropertyName = "ColumnTerminal";
+            this.ColumnTerminal.HeaderText = "Terminal";
+            this.ColumnTerminal.Name = "ColumnTerminal";
+            this.ColumnTerminal.ReadOnly = true;
+            // 
+            // ColumnDate
+            // 
+            this.ColumnDate.DataPropertyName = "ColumnDate";
+            this.ColumnDate.HeaderText = "Date";
+            this.ColumnDate.Name = "ColumnDate";
+            this.ColumnDate.ReadOnly = true;
+            // 
+            // ColumnSalesNumber
+            // 
+            this.ColumnSalesNumber.DataPropertyName = "ColumnSalesNumber";
+            this.ColumnSalesNumber.HeaderText = "Sales Number";
+            this.ColumnSalesNumber.Name = "ColumnSalesNumber";
+            this.ColumnSalesNumber.ReadOnly = true;
+            // 
+            // ColumnCustomer
+            // 
+            this.ColumnCustomer.DataPropertyName = "ColumnCustomer";
+            this.ColumnCustomer.HeaderText = "Customer";
+            this.ColumnCustomer.Name = "ColumnCustomer";
+            this.ColumnCustomer.ReadOnly = true;
+            // 
+            // ColumnItemDescription
+            // 
+            this.ColumnItemDescription.DataPropertyName = "ColumnItemDescription";
+            this.ColumnItemDescription.HeaderText = "Item Description";
+            this.ColumnItemDescription.Name = "ColumnItemDescription";
+            this.ColumnItemDescription.ReadOnly = true;
+            // 
+            // ColumnItemCode
+            // 
+            this.ColumnItemCode.DataPropertyName = "ColumnItemCode";
+            this.ColumnItemCode.HeaderText = "Item Code";
+            this.ColumnItemCode.Name = "ColumnItemCode";
+            this.ColumnItemCode.ReadOnly = true;
+            // 
+            // ColumnItemCategory
+            // 
+            this.ColumnItemCategory.DataPropertyName = "ColumnItemCategory";
+            this.ColumnItemCategory.HeaderText = "Item Category";
+            this.ColumnItemCategory.Name = "ColumnItemCategory";
+            this.ColumnItemCategory.ReadOnly = true;
+            // 
+            // ColumnUnit
+            // 
+            this.ColumnUnit.DataPropertyName = "ColumnUnit";
+            this.ColumnUnit.HeaderText = "Unit";
+            this.ColumnUnit.Name = "ColumnUnit";
+            this.ColumnUnit.ReadOnly = true;
+            // 
+            // ColumnPrice
+            // 
+            this.ColumnPrice.DataPropertyName = "ColumnPrice";
+            this.ColumnPrice.HeaderText = "Price";
+            this.ColumnPrice.Name = "ColumnPrice";
+            this.ColumnPrice.ReadOnly = true;
+            // 
+            // ColumnDiscount
+            // 
+            this.ColumnDiscount.DataPropertyName = "ColumnDiscount";
+            this.ColumnDiscount.HeaderText = "Discount";
+            this.ColumnDiscount.Name = "ColumnDiscount";
+            this.ColumnDiscount.ReadOnly = true;
+            // 
+            // ColumnDiscountRate
+            // 
+            this.ColumnDiscountRate.DataPropertyName = "ColumnDiscountRate";
+            this.ColumnDiscountRate.HeaderText = "Discount Rate";
+            this.ColumnDiscountRate.Name = "ColumnDiscountRate";
+            this.ColumnDiscountRate.ReadOnly = true;
+            // 
+            // ColumnDiscountAmount
+            // 
+            this.ColumnDiscountAmount.DataPropertyName = "ColumnDiscountAmount";
+            this.ColumnDiscountAmount.HeaderText = "Discount Amount";
+            this.ColumnDiscountAmount.Name = "ColumnDiscountAmount";
+            this.ColumnDiscountAmount.ReadOnly = true;
+            // 
+            // ColumnNetPrice
+            // 
+            this.ColumnNetPrice.DataPropertyName = "ColumnNetPrice";
+            this.ColumnNetPrice.HeaderText = "NetPrice";
+            this.ColumnNetPrice.Name = "ColumnNetPrice";
+            this.ColumnNetPrice.ReadOnly = true;
+            // 
+            // ColumnQuantity
+            // 
+            this.ColumnQuantity.DataPropertyName = "ColumnQuantity";
+            this.ColumnQuantity.HeaderText = "Quantity";
+            this.ColumnQuantity.Name = "ColumnQuantity";
+            this.ColumnQuantity.ReadOnly = true;
+            // 
+            // ColumnAmount
+            // 
+            this.ColumnAmount.DataPropertyName = "ColumnAmount";
+            this.ColumnAmount.HeaderText = "Amount";
+            this.ColumnAmount.Name = "ColumnAmount";
+            this.ColumnAmount.ReadOnly = true;
+            // 
+            // ColumnTax
+            // 
+            this.ColumnTax.DataPropertyName = "ColumnTax";
+            this.ColumnTax.HeaderText = "Tax";
+            this.ColumnTax.Name = "ColumnTax";
+            this.ColumnTax.ReadOnly = true;
+            // 
+            // ColumnTaxRate
+            // 
+            this.ColumnTaxRate.DataPropertyName = "ColumnTaxRate";
+            this.ColumnTaxRate.HeaderText = "TaxRate";
+            this.ColumnTaxRate.Name = "ColumnTaxRate";
+            this.ColumnTaxRate.ReadOnly = true;
+            // 
+            // ColumnTaxAmount
+            // 
+            this.ColumnTaxAmount.DataPropertyName = "ColumnTaxAmount";
+            this.ColumnTaxAmount.HeaderText = "Tax Amount";
+            this.ColumnTaxAmount.Name = "ColumnTaxAmount";
+            this.ColumnTaxAmount.ReadOnly = true;
+            // 
+            // ColumnUser
+            // 
+            this.ColumnUser.DataPropertyName = "ColumnUser";
+            this.ColumnUser.HeaderText = "User";
+            this.ColumnUser.Name = "ColumnUser";
+            this.ColumnUser.ReadOnly = true;
+            // 
+            // ColumnTimeStamp
+            // 
+            this.ColumnTimeStamp.DataPropertyName = "ColumnTimeStamp";
+            this.ColumnTimeStamp.HeaderText = "Time Stamp";
+            this.ColumnTimeStamp.Name = "ColumnTimeStamp";
+            this.ColumnTimeStamp.ReadOnly = true;
             // 
             // RepSalesReportSalesDetailReportForm
             // 
@@ -446,7 +446,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1482, 732);
+            this.ClientSize = new System.Drawing.Size(1482, 703);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
@@ -480,6 +480,7 @@
         private System.Windows.Forms.Button buttonPageListLast;
         private System.Windows.Forms.Button buttonPageListPrevious;
         private System.Windows.Forms.TextBox textBoxPageNumber;
+        private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTerminal;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesNumber;
@@ -500,6 +501,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTimeStamp;
-        private System.Windows.Forms.Button buttonClose;
     }
 }

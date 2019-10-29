@@ -39,6 +39,12 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
                         break;
+                    case "Cancel Sales Summary Report":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+                        break;
                     default:
                         break;
                 }
@@ -69,6 +75,10 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     case "Sales Detail Report":
                         RepSalesReportSalesDetailReportForm repSalesReportSalesDetail = new RepSalesReportSalesDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
                         repSalesReportSalesDetail.ShowDialog();
+                        break;
+                    case "Cancel Sales Summary Report":
+                        RepCancelSalesSummaryReportForm repCancelSalesSummaryReport = new RepCancelSalesSummaryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                        repCancelSalesSummaryReport.ShowDialog();
                         break;
                     default:
                         break;
