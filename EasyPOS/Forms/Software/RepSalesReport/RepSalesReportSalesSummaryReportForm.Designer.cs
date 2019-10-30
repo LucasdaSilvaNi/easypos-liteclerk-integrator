@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepSalesReportSalesSummaryReportForm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonView = new System.Windows.Forms.Button();
+            this.buttonGenerateCSV = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
@@ -43,9 +43,9 @@
             this.buttonSalesListPageListLast = new System.Windows.Forms.Button();
             this.buttonSalesListPageListPrevious = new System.Windows.Forms.Button();
             this.textBoxPageNumber = new System.Windows.Forms.TextBox();
+            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
             this.dataGridViewSalesSummaryReport = new System.Windows.Forms.DataGridView();
             this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPeriodId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,12 +57,9 @@
             this.ColumnAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTermId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTerm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDiscountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPreparedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPreparedByUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTerminalId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
@@ -75,7 +72,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.buttonView);
+            this.panel1.Controls.Add(this.buttonGenerateCSV);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.buttonClose);
@@ -86,23 +83,24 @@
             this.panel1.Size = new System.Drawing.Size(1382, 63);
             this.panel1.TabIndex = 8;
             // 
-            // buttonView
+            // buttonGenerateCSV
             // 
-            this.buttonView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonView.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonView.FlatAppearance.BorderSize = 0;
-            this.buttonView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonView.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonView.ForeColor = System.Drawing.Color.White;
-            this.buttonView.Location = new System.Drawing.Point(1187, 11);
-            this.buttonView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonView.Name = "buttonView";
-            this.buttonView.Size = new System.Drawing.Size(88, 40);
-            this.buttonView.TabIndex = 5;
-            this.buttonView.TabStop = false;
-            this.buttonView.Text = "CSV";
-            this.buttonView.UseVisualStyleBackColor = false;
+            this.buttonGenerateCSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonGenerateCSV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonGenerateCSV.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonGenerateCSV.FlatAppearance.BorderSize = 0;
+            this.buttonGenerateCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGenerateCSV.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonGenerateCSV.ForeColor = System.Drawing.Color.White;
+            this.buttonGenerateCSV.Location = new System.Drawing.Point(1187, 11);
+            this.buttonGenerateCSV.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonGenerateCSV.Name = "buttonGenerateCSV";
+            this.buttonGenerateCSV.Size = new System.Drawing.Size(88, 40);
+            this.buttonGenerateCSV.TabIndex = 5;
+            this.buttonGenerateCSV.TabStop = false;
+            this.buttonGenerateCSV.Text = "CSV";
+            this.buttonGenerateCSV.UseVisualStyleBackColor = false;
+            this.buttonGenerateCSV.Click += new System.EventHandler(this.buttonGenerateCSV_Click);
             // 
             // pictureBox1
             // 
@@ -146,8 +144,8 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.dataGridViewSalesSummaryReport);
+            this.panel2.Controls.Add(this.panel4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 63);
             this.panel2.Name = "panel2";
@@ -273,7 +271,6 @@
             this.dataGridViewSalesSummaryReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSalesSummaryReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnId,
-            this.ColumnPeriodId,
             this.ColumnPeriod,
             this.ColumnTerminal,
             this.ColumnSalesDate,
@@ -285,12 +282,9 @@
             this.ColumnAccountId,
             this.ColumnTermId,
             this.ColumnTerm,
-            this.ColumnDiscountId,
             this.ColumnRemarks,
-            this.ColumnPreparedBy,
             this.ColumnPreparedByUserName,
             this.ColumnAmount,
-            this.ColumnTerminalId,
             this.ColumnPax,
             this.ColumnTable});
             this.dataGridViewSalesSummaryReport.Location = new System.Drawing.Point(0, 0);
@@ -299,8 +293,8 @@
             this.dataGridViewSalesSummaryReport.RowHeadersVisible = false;
             this.dataGridViewSalesSummaryReport.RowTemplate.Height = 24;
             this.dataGridViewSalesSummaryReport.ShowEditingIcon = false;
-            this.dataGridViewSalesSummaryReport.Size = new System.Drawing.Size(1382, 590);
-            this.dataGridViewSalesSummaryReport.TabIndex = 0;
+            this.dataGridViewSalesSummaryReport.Size = new System.Drawing.Size(1382, 539);
+            this.dataGridViewSalesSummaryReport.TabIndex = 22;
             // 
             // ColumnId
             // 
@@ -309,14 +303,6 @@
             this.ColumnId.Name = "ColumnId";
             this.ColumnId.ReadOnly = true;
             this.ColumnId.Visible = false;
-            // 
-            // ColumnPeriodId
-            // 
-            this.ColumnPeriodId.DataPropertyName = "ColumnPeriodId";
-            this.ColumnPeriodId.HeaderText = "PeriodId";
-            this.ColumnPeriodId.Name = "ColumnPeriodId";
-            this.ColumnPeriodId.ReadOnly = true;
-            this.ColumnPeriodId.Visible = false;
             // 
             // ColumnPeriod
             // 
@@ -408,28 +394,12 @@
             this.ColumnTerm.ReadOnly = true;
             this.ColumnTerm.Width = 75;
             // 
-            // ColumnDiscountId
-            // 
-            this.ColumnDiscountId.DataPropertyName = "ColumnDiscountId";
-            this.ColumnDiscountId.HeaderText = "DiscountId";
-            this.ColumnDiscountId.Name = "ColumnDiscountId";
-            this.ColumnDiscountId.ReadOnly = true;
-            this.ColumnDiscountId.Visible = false;
-            // 
             // ColumnRemarks
             // 
             this.ColumnRemarks.DataPropertyName = "ColumnRemarks";
             this.ColumnRemarks.HeaderText = "Remarks";
             this.ColumnRemarks.Name = "ColumnRemarks";
             this.ColumnRemarks.ReadOnly = true;
-            // 
-            // ColumnPreparedBy
-            // 
-            this.ColumnPreparedBy.DataPropertyName = "ColumnPreparedBy";
-            this.ColumnPreparedBy.HeaderText = "ColumnPreparedBy";
-            this.ColumnPreparedBy.Name = "ColumnPreparedBy";
-            this.ColumnPreparedBy.ReadOnly = true;
-            this.ColumnPreparedBy.Visible = false;
             // 
             // ColumnPreparedByUserName
             // 
@@ -438,7 +408,7 @@
             this.ColumnPreparedByUserName.HeaderText = "Prepared By";
             this.ColumnPreparedByUserName.Name = "ColumnPreparedByUserName";
             this.ColumnPreparedByUserName.ReadOnly = true;
-            this.ColumnPreparedByUserName.Width = 120;
+            this.ColumnPreparedByUserName.Width = 150;
             // 
             // ColumnAmount
             // 
@@ -446,14 +416,6 @@
             this.ColumnAmount.HeaderText = "Amount";
             this.ColumnAmount.Name = "ColumnAmount";
             this.ColumnAmount.ReadOnly = true;
-            // 
-            // ColumnTerminalId
-            // 
-            this.ColumnTerminalId.DataPropertyName = "ColumnTerminalId";
-            this.ColumnTerminalId.HeaderText = "TerminalId";
-            this.ColumnTerminalId.Name = "ColumnTerminalId";
-            this.ColumnTerminalId.ReadOnly = true;
-            this.ColumnTerminalId.Visible = false;
             // 
             // ColumnPax
             // 
@@ -501,12 +463,11 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button buttonView;
+        private System.Windows.Forms.Button buttonGenerateCSV;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dataGridViewSalesSummaryReport;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button buttonSalesListPageListFirst;
         private System.Windows.Forms.Button buttonSalesListPageListNext;
@@ -515,8 +476,9 @@
         private System.Windows.Forms.TextBox textBoxPageNumber;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxTotalAmount;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
+        private System.Windows.Forms.DataGridView dataGridViewSalesSummaryReport;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPeriodId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPeriod;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTerminal;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesDate;
@@ -528,12 +490,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccountId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTermId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTerm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDiscountId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRemarks;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPreparedBy;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPreparedByUserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAmount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTerminalId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPax;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTable;
     }

@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -47,22 +50,15 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                           select new Entities.DgvSalesReportSalesSummaryReportEntity
                           {
                               ColumnId = d.Id,
-                              ColumnPeriodId = d.Id,
                               ColumnPeriod = d.Period,
                               ColumnTerminal = d.Terminal,
                               ColumnSalesDate = d.SalesDate,
                               ColumnSalesNumber = d.SalesNumber,
                               ColumnManualInvoiceNumber = d.ManualInvoiceNumber,
                               ColumnAmount = d.Amount.ToString("#,##0.00"),
-                              ColumnTableId = d.TableId,
-                              ColumnCustomerId = d.CustomerId,
                               ColumnCustomer = d.Customer,
-                              ColumnAccountId = d.AccountId,
-                              ColumnTermId = d.TermId,
                               ColumnTerm = d.Term,
-                              ColumnDiscountId = d.DiscountId,
                               ColumnRemarks = d.Remarks,
-                              ColumnTerminalId = d.TerminalId,
                               ColumnPreparedBy = d.PreparedBy,
                               ColumnPreparedByUserName = d.PreparedByUserName,
                               ColumnPax = d.Pax,
@@ -207,6 +203,60 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         private void buttonClose_OnClick(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void buttonGenerateCSV_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = folderBrowserDialogGenerateCSV.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    DateTime startDate = dateStart;
+                    DateTime endDate = dateEnd;
+
+                    StringBuilder csv = new StringBuilder();
+                    String[] header = { "Terminal", "Date", "Sales Number", "Manual Invoice No.", "Customer", "Term", "Remarks", "Prepared By", "Amount", "Pax", "Table" };
+                    csv.AppendLine(String.Join(",", header));
+
+                    if (salesList.Any())
+                    {
+                        foreach (var sales in salesList)
+                        {
+                            String[] data = {sales.ColumnTerminal,
+                                sales.ColumnSalesDate,
+                                sales.ColumnSalesNumber,
+                                sales.ColumnManualInvoiceNumber,
+                                sales.ColumnCustomer.Replace("," , " "),
+                                sales.ColumnTerm,
+                                sales.ColumnRemarks,
+                                sales.ColumnPreparedByUserName,
+                                sales.ColumnAmount,
+                                sales.ColumnPax.ToString(),
+                                sales.ColumnTable
+                            };
+
+                            csv.AppendLine(String.Join(",", data));
+                        }
+                    }
+
+                    String executingUser = WindowsIdentity.GetCurrent().Name;
+
+                    DirectorySecurity securityRules = new DirectorySecurity();
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.Read, AccessControlType.Allow));
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
+
+                    DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\SalesSummaryReport_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+
+                    MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

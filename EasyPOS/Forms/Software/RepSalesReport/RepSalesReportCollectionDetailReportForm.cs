@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -208,6 +211,73 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         private void buttonClose_OnClick(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void buttonGenerateCSV_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = folderBrowserDialogGenerateCSV.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    DateTime startDate = dateStart;
+                    DateTime endDate = dateEnd;
+
+                    StringBuilder csv = new StringBuilder();
+                    String[] header = { "Collection Date", "Collection Number", "Terminal", "Manual OR Number", "Customer",
+                        "Sales Number", "Amount", "PayType", "CheckNumber", "CheckDate", "CheckBank", "CreditCardVerificationCode",
+                        "CreditCardNumber", "CreditCardType", "CreditCardBank", "CreditCardReferenceNumber", "CreditCardHolderName",
+                        "CreditCardExpiry", "GiftCertificateNumber", "OtherInformation"
+                    };
+                    csv.AppendLine(String.Join(",", header));
+
+                    if (collectionDetailList.Any())
+                    {
+                        foreach (var collectionDetail in collectionDetailList)
+                        {
+                            String[] data = {collectionDetail.ColumnCollectionDate,
+                                        collectionDetail.ColumnCollectionNumber,
+                                        collectionDetail.ColumnTerminal,
+                                        collectionDetail.ColumnManualORNumber,
+                                        collectionDetail.ColumnCustomer.Replace("," , " "),
+                                        collectionDetail.ColumnSalesNumber,
+                                        collectionDetail.ColumnAmount.Replace("," , " "),
+                                        collectionDetail.ColumnPayType,
+                                        collectionDetail.ColumnCheckNumber,
+                                        collectionDetail.ColumnCheckDate,
+                                        collectionDetail.ColumnCheckBank,
+                                        collectionDetail.ColumnCreditCardVerificationCode,
+                                        collectionDetail.ColumnCreditCardNumber,
+                                        collectionDetail.ColumnCreditCardType,
+                                        collectionDetail.ColumnCreditCardBank,
+                                        collectionDetail.ColumnCreditCardReferenceNumber,
+                                        collectionDetail.ColumnCreditCardHolderName,
+                                        collectionDetail.ColumnCreditCardExpiry,
+                                        collectionDetail.ColumnGiftCertificateNumber,
+                                        collectionDetail.ColumnOtherInformation,
+                            };
+
+                            csv.AppendLine(String.Join(",", data));
+                        }
+                    }
+
+                    String executingUser = WindowsIdentity.GetCurrent().Name;
+
+                    DirectorySecurity securityRules = new DirectorySecurity();
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.Read, AccessControlType.Allow));
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
+
+                    DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\CollectionDetailReport_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+
+                    MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

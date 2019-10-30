@@ -53,6 +53,8 @@ namespace EasyPOS.Forms.Software
 
         public TabPage tabPagePOSReport = new TabPage { Name = "tabPagePOSReport", Text = "POS Report" };
         public TabPage tabPageSalesReports = new TabPage { Name = "tabPageSalesReports ", Text = "Sales Report" };
+        public TabPage tabPageInventoryReports = new TabPage { Name = "tabPageInventoryReports ", Text = "Inventory Report" };
+
 
         public TabPage tabPageSystemTables = new TabPage { Name = "tabPageSystemTables", Text = "System Tables" };
 
@@ -80,6 +82,8 @@ namespace EasyPOS.Forms.Software
 
         public RepPOSReport.RepPOSReportForm repPOSReportForm = null;
         public RepSalesReport.RepSalesReportForm repSalesReportForm = null;
+        public RepInventory.RepInventoryReportForm repInventoryReportForm = null;
+
 
         public SysSystemTables.SysSystemTablesForm sysSystemTablesForm = null;
 
@@ -95,6 +99,30 @@ namespace EasyPOS.Forms.Software
             };
 
             tabPageSysMenu.Controls.Add(sysMenuForm);
+        }
+
+        public void AddTabPageInventoryReports()
+        {
+            tabPageInventoryReports.Controls.Remove(repInventoryReportForm);
+
+            repInventoryReportForm = new RepInventory.RepInventoryReportForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageInventoryReports.Controls.Add(repInventoryReportForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageInventoryReports) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageInventoryReports);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageInventoryReports);
+                tabControlSoftware.SelectTab(tabPageInventoryReports);
+            }
         }
 
         // =============

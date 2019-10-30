@@ -4,14 +4,17 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.RepSalesReport
 {
-    public partial class RepSalesReportCollectionReport : Form
+    public partial class RepSalesReportCollectionSummaryReport : Form
     {
         public List<Entities.DgvCollectionReportEntity> collectionList;
         public BindingSource dataCollectionListSource = new BindingSource();
@@ -23,7 +26,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         public DateTime dateEnd;
         public Int32 idTerminal;
 
-        public RepSalesReportCollectionReport(DateTime startDate, DateTime endDate, Int32 terminalId)
+        public RepSalesReportCollectionSummaryReport(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
             InitializeComponent();
             dateStart = startDate;
@@ -119,7 +122,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             }
         }
 
-        public void GetDgvCollectionSource() {
+        public void GetDgvCollectionSource()
+        {
             dataGridViewCollectionReport.DataSource = dataCollectionListSource;
         }
 
@@ -195,7 +199,57 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         {
             Close();
         }
+
+        private void buttonGenerateCSV_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = folderBrowserDialogGenerateCSV.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    DateTime startDate = dateStart;
+                    DateTime endDate = dateEnd;
+
+                    StringBuilder csv = new StringBuilder();
+                    String[] header = { "Collection Date", "Collection Number", "Terminal", "Manual OR Number", "Customer", "Remarks", "Sales Number", "Amount", "PreparedBy"};
+                    csv.AppendLine(String.Join(",", header));
+
+                    if (collectionList.Any())
+                    {
+                        foreach (var collection in collectionList)
+                        {
+                            String[] data = {collection.ColumnCollectionDate,
+                                        collection.ColumnCollectionNumber,
+                                        collection.ColumnTerminal,
+                                        collection.ColumnManualORNumber,
+                                        collection.ColumnCustomer.Replace("," , " "),
+                                        collection.ColumnRemarks,
+                                        collection.ColumnSalesNumber,
+                                        collection.ColumnAmount.Replace("," , " "),
+                                        collection.ColumnPreparedBy,
+                            };
+
+                            csv.AppendLine(String.Join(",", data));
+                        }
+                    }
+
+                    String executingUser = WindowsIdentity.GetCurrent().Name;
+
+                    DirectorySecurity securityRules = new DirectorySecurity();
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.Read, AccessControlType.Allow));
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
+
+                    DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\CollectionSummaryReport_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+
+                    MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
-
-
 }

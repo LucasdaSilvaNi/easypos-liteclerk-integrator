@@ -62,7 +62,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         comboBoxTerminal.Visible = false;
                         labelTerminal.Visible = false;
                         break;
-                    case "Collection Report":
+                    case "Collection Summary Report":
                         labelStartDate.Visible = true;
                         dateTimePickerStartDate.Visible = true;
                         labelEndDate.Visible = true;
@@ -88,7 +88,6 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             {
                 MessageBox.Show("Please select a report.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void buttonClose_OnClick(object sender, EventArgs e)
@@ -116,7 +115,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         repCancelSalesSummaryReport.ShowDialog();
                         break;
                     case "Collection Summary Report":
-                        RepSalesReportCollectionReport reportCollectionReport = new RepSalesReportCollectionReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
+                        RepSalesReportCollectionSummaryReport reportCollectionReport = new RepSalesReportCollectionSummaryReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
                         reportCollectionReport.ShowDialog();
                         break;
                     case "Collection Detail Report":
@@ -132,7 +131,6 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             {
                 MessageBox.Show("Please select a report.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace EasyPOS.Forms.Software.RepSalesReport
 {
-    partial class RepSalesReportCollectionReport
+    partial class RepSalesReportCollectionSummaryReport
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepSalesReportCollectionReport));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepSalesReportCollectionSummaryReport));
             this.textBoxPageNumber = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonView = new System.Windows.Forms.Button();
@@ -53,6 +53,7 @@
             this.ColumnSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPreparedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -103,6 +104,7 @@
             this.buttonView.TabStop = false;
             this.buttonView.Text = "CSV";
             this.buttonView.UseVisualStyleBackColor = false;
+            this.buttonView.Click += new System.EventHandler(this.buttonGenerateCSV_Click);
             // 
             // pictureBox1
             // 
@@ -122,9 +124,9 @@
             this.label1.Location = new System.Drawing.Point(71, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(221, 35);
+            this.label1.Size = new System.Drawing.Size(340, 35);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Collection Report";
+            this.label1.Text = "Collection Summary Report";
             // 
             // buttonClose
             // 
@@ -345,7 +347,7 @@
             this.ColumnPreparedBy.ReadOnly = true;
             this.ColumnPreparedBy.Width = 150;
             // 
-            // RepSalesReportCollectionReport
+            // RepSalesReportCollectionSummaryReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -356,7 +358,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "RepSalesReportCollectionReport";
+            this.Name = "RepSalesReportCollectionSummaryReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Collection Summary Report";
             this.panel1.ResumeLayout(false);
@@ -396,5 +398,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPreparedBy;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
     }
 }

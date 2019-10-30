@@ -137,7 +137,7 @@ namespace EasyPOS.Controllers
         // ===================
         public List<Entities.RepSalesDetailReportEntity> SalesDetailList(DateTime startDate, DateTime endDate)
         {
-            var salesDetails = from d in db.TrnSalesLines.OrderByDescending(d => d.Id)
+            var salesDetails = from d in db.TrnSalesLines
                                where d.TrnSale.SalesDate >= startDate
                                && d.TrnSale.SalesDate <= endDate
                                && d.TrnSale.IsLocked == true

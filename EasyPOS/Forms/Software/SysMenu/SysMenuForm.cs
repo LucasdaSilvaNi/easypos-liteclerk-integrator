@@ -79,5 +79,10 @@ namespace EasyPOS.Forms.Software.SysMenu
         {
             sysSoftwareForm.AddTabPageSystemTables();
         }
+
+        private void buttonInventory_Click(object sender, EventArgs e)
+        {
+            sysSoftwareForm.AddTabPageInventoryReports();
+        }
     }
 }
