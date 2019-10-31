@@ -8,12 +8,12 @@ namespace EasyPOS.Entities
 {
     public class DgvInventoryReportEntity
     {
-        public String ItemDescription { get; set; }
-        public String Unit { get; set; }
-        public String BegQuantity { get; set; }
-        public String InQuantity { get; set; }
-        public String OutQuantity { get; set; }
-        public String EndingQuantity { get; set; }
+        public String ColumnItemDescription { get; set; }
+        public String ColumnUnit { get; set; }
+        public String ColumnBegQuantity { get; set; }
+        public String ColumnInQuantity { get; set; }
+        public String ColumnOutQuantity { get; set; }
+        public String ColumnEndingQuantity { get; set; }
         public String ColumnStockCount { get; set; }
         public String ColumnVariance { get; set; }
         public String ColumnCost { get; set; }

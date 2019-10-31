@@ -1,4 +1,4 @@
-﻿namespace EasyPOS.Forms.Software.RepInventory
+﻿namespace EasyPOS.Forms.Software.RepInventoryReport
 {
     partial class RepInventoryReportInventoryReport
     {
@@ -45,6 +45,16 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ColumnItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnBegQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnInQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnOutQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnEndingQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnVariance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInventoryReport)).BeginInit();
@@ -107,6 +117,8 @@
             this.textBoxTotalAmount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBoxTotalAmount.Size = new System.Drawing.Size(308, 23);
             this.textBoxTotalAmount.TabIndex = 15;
+            this.textBoxTotalAmount.Visible = false;
+            this.textBoxTotalAmount.WordWrap = false;
             // 
             // label2
             // 
@@ -118,6 +130,7 @@
             this.label2.Size = new System.Drawing.Size(124, 23);
             this.label2.TabIndex = 13;
             this.label2.Text = "Total Amount:";
+            this.label2.Visible = false;
             // 
             // buttonPageListFirst
             // 
@@ -179,6 +192,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewInventoryReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewInventoryReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewInventoryReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnItemDescription,
+            this.ColumnUnit,
+            this.ColumnBegQuantity,
+            this.ColumnInQuantity,
+            this.ColumnOutQuantity,
+            this.ColumnEndingQuantity,
+            this.ColumnStockCount,
+            this.ColumnVariance,
+            this.ColumnCost,
+            this.ColumnAmount});
             this.dataGridViewInventoryReport.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewInventoryReport.Name = "dataGridViewInventoryReport";
             this.dataGridViewInventoryReport.ReadOnly = true;
@@ -260,6 +284,85 @@
             this.panel1.Size = new System.Drawing.Size(1382, 63);
             this.panel1.TabIndex = 16;
             // 
+            // ColumnItemDescription
+            // 
+            this.ColumnItemDescription.DataPropertyName = "ColumnItemDescription";
+            this.ColumnItemDescription.HeaderText = "Item Description";
+            this.ColumnItemDescription.Name = "ColumnItemDescription";
+            this.ColumnItemDescription.ReadOnly = true;
+            this.ColumnItemDescription.Width = 300;
+            // 
+            // ColumnUnit
+            // 
+            this.ColumnUnit.DataPropertyName = "ColumnUnit";
+            this.ColumnUnit.HeaderText = "Unit";
+            this.ColumnUnit.Name = "ColumnUnit";
+            this.ColumnUnit.ReadOnly = true;
+            // 
+            // ColumnBegQuantity
+            // 
+            this.ColumnBegQuantity.DataPropertyName = "ColumnBegQuantity";
+            this.ColumnBegQuantity.HeaderText = "Beg. Qty.";
+            this.ColumnBegQuantity.Name = "ColumnBegQuantity";
+            this.ColumnBegQuantity.ReadOnly = true;
+            this.ColumnBegQuantity.Width = 150;
+            // 
+            // ColumnInQuantity
+            // 
+            this.ColumnInQuantity.DataPropertyName = "ColumnInQuantity";
+            this.ColumnInQuantity.HeaderText = "In Qty.";
+            this.ColumnInQuantity.Name = "ColumnInQuantity";
+            this.ColumnInQuantity.ReadOnly = true;
+            this.ColumnInQuantity.Width = 150;
+            // 
+            // ColumnOutQuantity
+            // 
+            this.ColumnOutQuantity.DataPropertyName = "ColumnOutQuantity";
+            this.ColumnOutQuantity.HeaderText = "Out Qty.";
+            this.ColumnOutQuantity.Name = "ColumnOutQuantity";
+            this.ColumnOutQuantity.ReadOnly = true;
+            this.ColumnOutQuantity.Width = 150;
+            // 
+            // ColumnEndingQuantity
+            // 
+            this.ColumnEndingQuantity.DataPropertyName = "ColumnEndingQuantity";
+            this.ColumnEndingQuantity.HeaderText = "Ending Qty.";
+            this.ColumnEndingQuantity.Name = "ColumnEndingQuantity";
+            this.ColumnEndingQuantity.ReadOnly = true;
+            this.ColumnEndingQuantity.Width = 150;
+            // 
+            // ColumnStockCount
+            // 
+            this.ColumnStockCount.DataPropertyName = "ColumnStockCount";
+            this.ColumnStockCount.HeaderText = "Stock Count";
+            this.ColumnStockCount.Name = "ColumnStockCount";
+            this.ColumnStockCount.ReadOnly = true;
+            this.ColumnStockCount.Width = 150;
+            // 
+            // ColumnVariance
+            // 
+            this.ColumnVariance.DataPropertyName = "ColumnVariance";
+            this.ColumnVariance.HeaderText = "Variance";
+            this.ColumnVariance.Name = "ColumnVariance";
+            this.ColumnVariance.ReadOnly = true;
+            this.ColumnVariance.Width = 150;
+            // 
+            // ColumnCost
+            // 
+            this.ColumnCost.DataPropertyName = "ColumnCost";
+            this.ColumnCost.HeaderText = "Cost";
+            this.ColumnCost.Name = "ColumnCost";
+            this.ColumnCost.ReadOnly = true;
+            this.ColumnCost.Width = 150;
+            // 
+            // ColumnAmount
+            // 
+            this.ColumnAmount.DataPropertyName = "ColumnAmount";
+            this.ColumnAmount.HeaderText = "Amount";
+            this.ColumnAmount.Name = "ColumnAmount";
+            this.ColumnAmount.ReadOnly = true;
+            this.ColumnAmount.Width = 150;
+            // 
             // RepInventoryReportInventoryReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -303,5 +406,15 @@
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBegQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnInQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnOutQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnEndingQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockCount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnVariance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAmount;
     }
 }

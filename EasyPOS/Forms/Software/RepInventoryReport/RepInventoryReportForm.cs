@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EasyPOS.Forms.Software.RepInventory
+namespace EasyPOS.Forms.Software.RepInventoryReport
 {
     public partial class RepInventoryReportForm : Form
     {
@@ -53,7 +53,7 @@ namespace EasyPOS.Forms.Software.RepInventory
                 switch (selectedItem)
                 {
                     case "Inventory Report":
-                        RepInventoryReportInventoryReport repInventoryReportInventoryReport = new RepInventoryReportInventoryReport();
+                        RepInventoryReportInventoryReport repInventoryReportInventoryReport = new RepInventoryReportInventoryReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
                         repInventoryReportInventoryReport.ShowDialog();
                         break;
                     default:

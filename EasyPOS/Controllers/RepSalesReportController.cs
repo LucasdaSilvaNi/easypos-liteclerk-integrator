@@ -243,7 +243,7 @@ namespace EasyPOS.Controllers
         public List<Entities.RepCollectionDetailReportEntity> CollectionDetailList(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
 
-            var collectionDetail = from d in db.TrnCollectionLines.OrderByDescending(d => d.Id)
+            var collectionDetail = from d in db.TrnCollectionLines
                                    where d.TrnCollection.CollectionDate >= startDate
                                    && d.TrnCollection.CollectionDate <= endDate
                                    && d.TrnCollection.TerminalId == terminalId

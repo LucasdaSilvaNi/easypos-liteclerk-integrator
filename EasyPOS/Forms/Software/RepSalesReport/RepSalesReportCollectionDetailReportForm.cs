@@ -45,7 +45,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             Controllers.RepSalesReportController repSalesReportController = new Controllers.RepSalesReportController();
 
             var collectionDetailList = repSalesReportController.CollectionDetailList(startDate, endDate, terminalId);
-            if (collectionDetailList.Any())
+            if (collectionDetailList.OrderByDescending(d => d.Id).Any())
             {
                 Decimal totalAmount = 0;
                 var row = from d in collectionDetailList

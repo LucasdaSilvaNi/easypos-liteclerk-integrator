@@ -54,7 +54,7 @@ namespace EasyPOS.Forms.Software
         public TabPage tabPagePOSReport = new TabPage { Name = "tabPagePOSReport", Text = "POS Report" };
         public TabPage tabPageSalesReports = new TabPage { Name = "tabPageSalesReports ", Text = "Sales Report" };
         public TabPage tabPageInventoryReports = new TabPage { Name = "tabPageInventoryReports ", Text = "Inventory Report" };
-
+        public TabPage tabPageRemittanceReports = new TabPage { Name = "tabPageRemittanceReports ", Text = "Remittance Report" };
 
         public TabPage tabPageSystemTables = new TabPage { Name = "tabPageSystemTables", Text = "System Tables" };
 
@@ -82,8 +82,8 @@ namespace EasyPOS.Forms.Software
 
         public RepPOSReport.RepPOSReportForm repPOSReportForm = null;
         public RepSalesReport.RepSalesReportForm repSalesReportForm = null;
-        public RepInventory.RepInventoryReportForm repInventoryReportForm = null;
-
+        public RepInventoryReport.RepInventoryReportForm repInventoryReportForm = null;
+        public RepRemittanceReport.RepRemittanceReportForm repRemittanceReportForm = null;
 
         public SysSystemTables.SysSystemTablesForm sysSystemTablesForm = null;
 
@@ -101,27 +101,27 @@ namespace EasyPOS.Forms.Software
             tabPageSysMenu.Controls.Add(sysMenuForm);
         }
 
-        public void AddTabPageInventoryReports()
+        public void AddTabPageRemittanceReports()
         {
-            tabPageInventoryReports.Controls.Remove(repInventoryReportForm);
+            tabPageRemittanceReports.Controls.Remove(repRemittanceReportForm);
 
-            repInventoryReportForm = new RepInventory.RepInventoryReportForm(this)
+            repRemittanceReportForm = new RepRemittanceReport.RepRemittanceReportForm(this)
             {
                 TopLevel = false,
                 Visible = true,
                 Dock = DockStyle.Fill
             };
 
-            tabPageInventoryReports.Controls.Add(repInventoryReportForm);
+            tabPageRemittanceReports.Controls.Add(repRemittanceReportForm);
 
-            if (tabControlSoftware.TabPages.Contains(tabPageInventoryReports) == true)
+            if (tabControlSoftware.TabPages.Contains(tabPageRemittanceReports) == true)
             {
-                tabControlSoftware.SelectTab(tabPageInventoryReports);
+                tabControlSoftware.SelectTab(tabPageRemittanceReports);
             }
             else
             {
-                tabControlSoftware.TabPages.Add(tabPageInventoryReports);
-                tabControlSoftware.SelectTab(tabPageInventoryReports);
+                tabControlSoftware.TabPages.Add(tabPageRemittanceReports);
+                tabControlSoftware.SelectTab(tabPageRemittanceReports);
             }
         }
 
@@ -521,6 +521,30 @@ namespace EasyPOS.Forms.Software
             {
                 tabControlSoftware.TabPages.Add(tabPagePOSReport);
                 tabControlSoftware.SelectTab(tabPagePOSReport);
+            }
+        }
+
+        public void AddTabPageInventoryReports()
+        {
+            tabPageInventoryReports.Controls.Remove(repInventoryReportForm);
+
+            repInventoryReportForm = new RepInventoryReport.RepInventoryReportForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageInventoryReports.Controls.Add(repInventoryReportForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageInventoryReports) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageInventoryReports);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageInventoryReports);
+                tabControlSoftware.SelectTab(tabPageInventoryReports);
             }
         }
 

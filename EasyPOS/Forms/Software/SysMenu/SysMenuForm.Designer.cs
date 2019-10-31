@@ -45,7 +45,7 @@
             this.buttonDisbursement = new System.Windows.Forms.Button();
             this.buttonInventory = new System.Windows.Forms.Button();
             this.buttonStockOut = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.buttonRemittanceReport = new System.Windows.Forms.Button();
             this.buttonStockIn = new System.Windows.Forms.Button();
             this.buttonSalesReport = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -85,7 +85,7 @@
             this.panel1.Controls.Add(this.buttonDisbursement);
             this.panel1.Controls.Add(this.buttonInventory);
             this.panel1.Controls.Add(this.buttonStockOut);
-            this.panel1.Controls.Add(this.button10);
+            this.panel1.Controls.Add(this.buttonRemittanceReport);
             this.panel1.Controls.Add(this.buttonStockIn);
             this.panel1.Controls.Add(this.buttonSalesReport);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -352,24 +352,25 @@
             this.buttonStockOut.UseVisualStyleBackColor = false;
             this.buttonStockOut.Click += new System.EventHandler(this.buttonStockOut_Click);
             // 
-            // button10
+            // buttonRemittanceReport
             // 
-            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button10.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button10.FlatAppearance.BorderSize = 0;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.button10.ForeColor = System.Drawing.Color.White;
-            this.button10.ImageKey = "Reports.png";
-            this.button10.ImageList = this.imageListMenuIcons;
-            this.button10.Location = new System.Drawing.Point(478, 139);
-            this.button10.Name = "button10";
-            this.button10.Padding = new System.Windows.Forms.Padding(10);
-            this.button10.Size = new System.Drawing.Size(227, 121);
-            this.button10.TabIndex = 12;
-            this.button10.Text = "\r\nRemittance Report";
-            this.button10.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button10.UseVisualStyleBackColor = false;
+            this.buttonRemittanceReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonRemittanceReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonRemittanceReport.FlatAppearance.BorderSize = 0;
+            this.buttonRemittanceReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRemittanceReport.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonRemittanceReport.ForeColor = System.Drawing.Color.White;
+            this.buttonRemittanceReport.ImageKey = "Reports.png";
+            this.buttonRemittanceReport.ImageList = this.imageListMenuIcons;
+            this.buttonRemittanceReport.Location = new System.Drawing.Point(478, 139);
+            this.buttonRemittanceReport.Name = "buttonRemittanceReport";
+            this.buttonRemittanceReport.Padding = new System.Windows.Forms.Padding(10);
+            this.buttonRemittanceReport.Size = new System.Drawing.Size(227, 121);
+            this.buttonRemittanceReport.TabIndex = 12;
+            this.buttonRemittanceReport.Text = "\r\nRemittance Report";
+            this.buttonRemittanceReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonRemittanceReport.UseVisualStyleBackColor = false;
+            this.buttonRemittanceReport.Click += new System.EventHandler(this.buttonRemittanceReport_Click);
             // 
             // buttonStockIn
             // 
@@ -440,7 +441,7 @@
         private System.Windows.Forms.Button buttonStockOut;
         private System.Windows.Forms.Button buttonStockIn;
         private System.Windows.Forms.Button buttonSalesReport;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button buttonRemittanceReport;
         private System.Windows.Forms.Button buttonInventory;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button buttonPOSReport;

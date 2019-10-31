@@ -1,4 +1,4 @@
-﻿namespace EasyPOS.Forms.Software.RepInventory
+﻿namespace EasyPOS.Forms.Software.RepInventoryReport
 {
     partial class RepInventoryReportForm
     {
