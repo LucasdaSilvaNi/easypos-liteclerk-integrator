@@ -141,5 +141,72 @@ namespace EasyPOS.Controllers
                 return new List<Entities.RepInventoryReportEntity>();
             }
         }
+
+        public List<Entities.RepInventoryReportStockInDetailReportEntity> GetListStockInDetail(DateTime startDate, DateTime endDate)
+        {
+            var stockInDetails = from d in db.TrnStockInLines
+                                 where d.TrnStockIn.IsLocked == true
+                                       && d.TrnStockIn.StockInDate >= startDate
+                                       && d.TrnStockIn.StockInDate <= endDate
+                                 select new Entities.RepInventoryReportStockInDetailReportEntity
+                                 {
+                                     Id = d.Id,
+                                     StockInDate = d.TrnStockIn.StockInDate.ToShortDateString(),
+                                     StockInNumber = d.TrnStockIn.StockInNumber,
+                                     Remarks = d.TrnStockIn.Remarks,
+                                     IsReturn = d.TrnStockIn.IsReturn,
+                                     Item = d.MstItem.ItemDescription,
+                                     Unit = d.MstUnit.Unit,
+                                     Quantity = d.Quantity,
+                                     Cost = d.Cost,
+                                     Amount = d.Amount,
+                                     ExpiryDate = d.ExpiryDate.ToString(),
+                                     LotNumber = d.LotNumber,
+                                     SellingPrice = d.Price != null ? d.Price : 0
+                                 };
+
+            return stockInDetails.ToList();
+        }
+
+        public List<Entities.RepInventoryReportStockOutDetailEntity> GetListStockOutDetail(DateTime startDate, DateTime endDate)
+        {
+            var stockOutDetails = from d in db.TrnStockOutLines
+                                  where d.TrnStockOut.IsLocked == true
+                                        && d.TrnStockOut.StockOutDate >= startDate
+                                        && d.TrnStockOut.StockOutDate <= endDate
+                                  select new Entities.RepInventoryReportStockOutDetailEntity
+                                  {
+                                      Id = d.Id,
+                                      StockOutDate = d.TrnStockOut.StockOutDate.ToShortDateString(),
+                                      StockOutNumber = d.TrnStockOut.StockOutNumber,
+                                      Remarks = d.TrnStockOut.Remarks,
+                                      Item = d.MstItem.ItemDescription,
+                                      Unit = d.MstUnit.Unit,
+                                      Quantity = d.Quantity,
+                                      Cost = d.Cost,
+                                      Amount = d.Amount,
+                                  };
+            return stockOutDetails.OrderByDescending(d => d.Id).ToList();
+        }
+
+        public List<Entities.RepInventoryReportStockCountEntity> GetListStockCountDetail(DateTime startDate, DateTime endDate)
+        {
+            var stockCountDetails = from d in db.TrnStockCountLines
+                                  where d.TrnStockCount.StockCountDate >= startDate
+                                        && d.TrnStockCount.StockCountDate <= endDate
+                                  select new Entities.RepInventoryReportStockCountEntity
+                                  {
+                                      Id = d.Id,
+                                        StockCountDate = d.TrnStockCount.StockCountDate.ToShortDateString(),
+                                        StockCountNumber = d.TrnStockCount.StockCountNumber,
+                                        Remarks = d.TrnStockCount.Remarks,
+                                        Item = d.MstItem.ItemDescription,
+                                        Unit = d.MstUnit.Unit,
+                                        Quantity = d.Quantity,
+                                        Cost = d.Cost,
+                                        Amount = d.Amount
+                                  };
+            return stockCountDetails.OrderByDescending(d => d.Id).ToList();
+        }
     }
 }

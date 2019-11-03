@@ -12,56 +12,53 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EasyPOS.Forms.Software.RepSalesReport
+namespace EasyPOS.Forms.Software.RepInventoryReport
 {
-    public partial class RepSalesReportCollectionSummaryReport : Form
+    public partial class RepInventoryReportStockCountDetailReportForm : Form
     {
-        public List<Entities.DgvCollectionReportEntity> collectionList;
-        public BindingSource dataCollectionListSource = new BindingSource();
-        public PagedList<Entities.DgvCollectionReportEntity> pageList;
+        public List<Entities.DgvRepInventoryReportStockCountReportEntity> stockCountDetailReportList;
+        public BindingSource dataStockCountDetailReportListSource = new BindingSource();
+        public PagedList<Entities.DgvRepInventoryReportStockCountReportEntity> pageList;
         public Int32 pageNumber = 1;
         public Int32 pageSize = 50;
 
-        public DateTime dateStart;
-        public DateTime dateEnd;
-        public Int32 idTerminal;
-
-        public RepSalesReportCollectionSummaryReport(DateTime startDate, DateTime endDate, Int32 terminalId)
+        public DateTime startDate;
+        public DateTime endDate;
+        public RepInventoryReportStockCountDetailReportForm(DateTime dateStart, DateTime dateEnd)
         {
             InitializeComponent();
-            dateStart = startDate;
-            dateEnd = endDate;
-            idTerminal = terminalId;
 
-            GetCollectionSummaryListDataSource();
-            GetDgvCollectionSource();
+            startDate = dateStart;
+            endDate = dateEnd;
+
+            GetStockCountDetailDataSource();
+            GetDataGridViewStockCountDetailSource();
+
         }
 
-        public List<Entities.DgvCollectionReportEntity> GetCollectionListData(DateTime startDate, DateTime endDate, Int32 terminalId)
+        public List<Entities.DgvRepInventoryReportStockCountReportEntity> GetStockCountDetailReportListData(DateTime startDate, DateTime endDate)
         {
-            List<Entities.DgvCollectionReportEntity> rowList = new List<Entities.DgvCollectionReportEntity>();
+            List<Entities.DgvRepInventoryReportStockCountReportEntity> rowList = new List<Entities.DgvRepInventoryReportStockCountReportEntity>();
 
-            Controllers.RepSalesReportController repCollectionReportController = new Controllers.RepSalesReportController();
+            Controllers.RepInventoryReportController repInvetoryReportController = new Controllers.RepInventoryReportController();
 
-            var collectionList = repCollectionReportController.CollectionList(startDate, endDate, terminalId);
-            if (collectionList.Any())
+            var stockCountDetailReportList = repInvetoryReportController.GetListStockOutDetail(startDate, endDate);
+            if (stockCountDetailReportList.OrderByDescending(d => d.Id).Any())
             {
                 Decimal totalAmount = 0;
-                var row = from d in collectionList
-                          select new Entities.DgvCollectionReportEntity
+                var row = from d in stockCountDetailReportList
+                          select new Entities.DgvRepInventoryReportStockCountReportEntity
                           {
-                              ColumnCollectionDate = d.CollectionDate,
-                              ColumnCollectionNumber = d.CollectionNumber,
-                              ColumnTerminal = d.Terminal,
-                              ColumnManualORNumber = d.ManualORNumber,
-                              ColumnCustomer = d.Customer,
+                              ColumnStockCountDate = d.StockOutDate,
+                              ColumnStockCountNumber = d.StockOutNumber,
                               ColumnRemarks = d.Remarks,
-                              ColumnSalesNumber = d.SalesNumber,
-                              ColumnAmount = d.Amount.ToString("#,##0.00"),
-                              ColumnPreparedBy = d.PreparedByUserName,
+                              ColumnItem = d.Item,
+                              ColumnUnit = d.Unit,
+                              ColumnQuantity = d.Quantity.ToString("#,##0.00"),
+                              ColumnCost = d.Cost.ToString("#,##0.00"),
+                              ColumnAmount = d.Amount.ToString("#,##0.00")
                           };
-
-                totalAmount = collectionList.Sum(d => d.Amount);
+                totalAmount = stockCountDetailReportList.Sum(d => d.Amount);
 
                 textBoxTotalAmount.Text = totalAmount.ToString("#,##0.00");
 
@@ -70,13 +67,12 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             return rowList;
         }
 
-        public void GetCollectionSummaryListDataSource()
+        public void GetStockCountDetailDataSource()
         {
-            collectionList = GetCollectionListData(dateStart, dateEnd, idTerminal);
-            if (collectionList.Any())
+            stockCountDetailReportList = GetStockCountDetailReportListData(startDate, endDate);
+            if (stockCountDetailReportList.Any())
             {
-
-                pageList = new PagedList<Entities.DgvCollectionReportEntity>(collectionList, pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvRepInventoryReportStockCountReportEntity>(stockCountDetailReportList, pageNumber, pageSize);
 
                 if (pageList.PageCount == 1)
                 {
@@ -108,7 +104,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 }
 
                 textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
-                dataCollectionListSource.DataSource = pageList;
+                dataStockCountDetailReportListSource.DataSource = pageList;
             }
             else
             {
@@ -117,20 +113,20 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 buttonPageListNext.Enabled = false;
                 buttonPageListLast.Enabled = false;
 
-                dataCollectionListSource.Clear();
+                dataStockCountDetailReportListSource.Clear();
                 textBoxPageNumber.Text = "0 / 0";
             }
         }
 
-        public void GetDgvCollectionSource()
+        private void GetDataGridViewStockCountDetailSource()
         {
-            dataGridViewCollectionReport.DataSource = dataCollectionListSource;
+            dataGridViewStockCountDetailReport.DataSource = dataStockCountDetailReportListSource;
         }
 
-        private void buttoncollectionListPageListFirst_Click(object sender, EventArgs e)
+        private void buttonPageListFirst_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvCollectionReportEntity>(collectionList, 1, pageSize);
-            dataCollectionListSource.DataSource = pageList;
+            pageList = new PagedList<Entities.DgvRepInventoryReportStockCountReportEntity>(stockCountDetailReportList, 1, pageSize);
+            dataStockCountDetailReportListSource.DataSource = pageList;
 
             buttonPageListFirst.Enabled = false;
             buttonPageListPrevious.Enabled = false;
@@ -141,12 +137,12 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
         }
 
-        private void buttoncollectionListPageListPrevious_Click(object sender, EventArgs e)
+        private void buttonPageListPrevious_Click(object sender, EventArgs e)
         {
             if (pageList.HasPreviousPage == true)
             {
-                pageList = new PagedList<Entities.DgvCollectionReportEntity>(collectionList, --pageNumber, pageSize);
-                dataCollectionListSource.DataSource = pageList;
+                pageList = new PagedList<Entities.DgvRepInventoryReportStockCountReportEntity>(stockCountDetailReportList, --pageNumber, pageSize);
+                dataStockCountDetailReportListSource.DataSource = pageList;
             }
 
             buttonPageListNext.Enabled = true;
@@ -161,12 +157,12 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
         }
 
-        private void buttoncollectionListPageListNext_Click(object sender, EventArgs e)
+        private void buttonPageListNext_Click(object sender, EventArgs e)
         {
             if (pageList.HasNextPage == true)
             {
-                pageList = new PagedList<Entities.DgvCollectionReportEntity>(collectionList, ++pageNumber, pageSize);
-                dataCollectionListSource.DataSource = pageList;
+                pageList = new PagedList<Entities.DgvRepInventoryReportStockCountReportEntity>(stockCountDetailReportList, ++pageNumber, pageSize);
+                dataStockCountDetailReportListSource.DataSource = pageList;
             }
 
             buttonPageListFirst.Enabled = true;
@@ -181,10 +177,10 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
         }
 
-        private void buttoncollectionListPageListLast_Click(object sender, EventArgs e)
+        private void buttonPageListLast_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvCollectionReportEntity>(collectionList, pageList.PageCount, pageSize);
-            dataCollectionListSource.DataSource = pageList;
+            pageList = new PagedList<Entities.DgvRepInventoryReportStockCountReportEntity>(stockCountDetailReportList, pageList.PageCount, pageSize);
+            dataStockCountDetailReportListSource.DataSource = pageList;
 
             buttonPageListFirst.Enabled = true;
             buttonPageListPrevious.Enabled = true;
@@ -207,26 +203,22 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 DialogResult dialogResult = folderBrowserDialogGenerateCSV.ShowDialog();
                 if (dialogResult == DialogResult.OK)
                 {
-                    DateTime startDate = dateStart;
-                    DateTime endDate = dateEnd;
-
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Collection Date", "Collection Number", "Terminal", "Manual OR Number", "Customer", "Remarks", "Sales Number", "Amount", "PreparedBy"};
+                    String[] header = { "StockCountDate", "StockCountNumber", "Remarks", "Item", "Unit", "Quantity", "Cost", "Amount" };
                     csv.AppendLine(String.Join(",", header));
 
-                    if (collectionList.Any())
+                    if (stockCountDetailReportList.Any())
                     {
-                        foreach (var collection in collectionList)
+                        foreach (var stockCountDetail in stockCountDetailReportList)
                         {
-                            String[] data = {collection.ColumnCollectionDate,
-                                        collection.ColumnCollectionNumber,
-                                        collection.ColumnTerminal,
-                                        collection.ColumnManualORNumber,
-                                        collection.ColumnCustomer.Replace("," , " "),
-                                        collection.ColumnRemarks,
-                                        collection.ColumnSalesNumber,
-                                        collection.ColumnAmount.Replace("," , " "),
-                                        collection.ColumnPreparedBy,
+                            String[] data = {stockCountDetail.ColumnStockCountDate,
+                              stockCountDetail.ColumnStockCountNumber,
+                              stockCountDetail.ColumnRemarks,
+                              stockCountDetail.ColumnItem,
+                              stockCountDetail.ColumnUnit,
+                              stockCountDetail.ColumnQuantity,
+                              stockCountDetail.ColumnCost,
+                              stockCountDetail.ColumnAmount
                             };
 
                             csv.AppendLine(String.Join(",", data));
@@ -240,7 +232,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
 
                     DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
-                    File.WriteAllText(createDirectorySTCSV.FullName + "\\CollectionSummaryReport_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\StockCountDetailReport_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
 
                     MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();

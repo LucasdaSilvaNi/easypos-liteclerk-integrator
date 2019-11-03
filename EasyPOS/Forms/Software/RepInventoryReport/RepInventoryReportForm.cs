@@ -32,8 +32,24 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         dateTimePickerStartDate.Visible = true;
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
-                        comboBoxTerminal.Visible = false;
-                        labelTerminal.Visible = false;
+                        break;
+                    case "Stock In Detail Report":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+                        break;
+                    case "Stock Out Detail Report":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+                        break;
+                    case "Stock Count Detail Report":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
                         break;
                     default:
                         break;
@@ -53,9 +69,22 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 switch (selectedItem)
                 {
                     case "Inventory Report":
-                        RepInventoryReportInventoryReport repInventoryReportInventoryReport = new RepInventoryReportInventoryReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                        RepInventoryReportInventoryReportForm repInventoryReportInventoryReport = new RepInventoryReportInventoryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
                         repInventoryReportInventoryReport.ShowDialog();
                         break;
+                    case "Stock In Detail Report":
+                        RepInventoryReportStockInDetailReportForm reportStockInDetailReport = new RepInventoryReportStockInDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                        reportStockInDetailReport.ShowDialog();
+                        break;
+                    case "Stock Out Detail Report":
+                        RepInventoryReportStockOutDetailReportForm repInventoryReportStockOut = new RepInventoryReportStockOutDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                        repInventoryReportStockOut.ShowDialog();
+                        break;
+                    case "Stock Count Detail Report":
+                        RepInventoryReportStockCountDetailReportForm repInventoryReportStockCount = new RepInventoryReportStockCountDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                        repInventoryReportStockCount.ShowDialog();
+                        break;
+                        
                     default:
                         break;
                 }

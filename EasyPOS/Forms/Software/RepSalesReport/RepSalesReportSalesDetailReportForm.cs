@@ -33,7 +33,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             dateStart = startDate;
             dateEnd = endDate;
 
-            CreateDgvSalesDetailReport();
+            GetSalesDetailListDataSource();
+            GetSalesDetailListDataGridSource();
         }
 
         public List<Entities.DgvSalesReportSalesDetailReportEntity> GetSalesDetailListData(DateTime startDate, DateTime endDate)
@@ -82,13 +83,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             return rowList;
         }
 
-        public void CreateDgvSalesDetailReport()
-        {
-            GetSalesListDataSource();
-            GetSalesDetailListDataGridSource();
-        }
-
-        public void GetSalesListDataSource()
+        public void GetSalesDetailListDataSource()
         {
             salesDetailList = GetSalesDetailListData(dateStart, dateEnd);
             if (salesDetailList.Any())

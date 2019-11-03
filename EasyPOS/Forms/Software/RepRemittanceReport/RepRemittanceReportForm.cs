@@ -19,11 +19,77 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             InitializeComponent();
 
             sysSoftwareForm = softwareForm;
+
+            GetTerminalList();
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        public void GetTerminalList()
+        {
+            Controllers.RepPOSReportController repPOSReportController = new Controllers.RepPOSReportController();
+            if (repPOSReportController.DropdownListTerminal().Any())
+            {
+                comboBoxTerminal.DataSource = repPOSReportController.DropdownListTerminal();
+                comboBoxTerminal.ValueMember = "Id";
+                comboBoxTerminal.DisplayMember = "Terminal";
+
+                GetUserList();
+            }
+        }
+
+        public void GetUserList()
+        {
+            Controllers.RepPOSReportController repPOSReportController = new Controllers.RepPOSReportController();
+            if (repPOSReportController.DropdownListUser().Any())
+            {
+                comboBoxUser.DataSource = repPOSReportController.DropdownListUser();
+                comboBoxUser.ValueMember = "Id";
+                comboBoxUser.DisplayMember = "FullName";
+            }
+        }
+
+        private void listBoxRemittanceReport_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String selectedItem = listBoxRemittanceReport.SelectedItem.ToString();
+            switch (selectedItem)
+            {
+                case "Remittance Report":
+                    labelTerminal.Visible = true;
+                    comboBoxTerminal.Visible = true;
+                    dateTimePickerDate.Visible = true;
+                    labelDate.Visible = true;
+                    comboBoxUser.Visible = false;
+                    labelUser.Visible = false;
+                    textBoxRemittanceNumber.Visible = false;
+                    labelRemittanceNumber.Visible = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void buttonView_Click(object sender, EventArgs e)
+        {
+            if (listBoxRemittanceReport.SelectedItem != null)
+            {
+                String selectedItem = listBoxRemittanceReport.SelectedItem.ToString();
+                switch (selectedItem)
+                {
+                    case "Remittance Report":
+                        //RepRemittanceReportRemittanceReportForm repRemittanceReportRemittanceReport = new RepRemittanceReportRemittanceReportForm();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a report.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

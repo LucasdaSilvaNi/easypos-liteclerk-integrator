@@ -31,7 +31,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             dateStart = startDate;
             dateEnd = endDate;
 
-            GetSalesListDataSource();
+            GetSalesSummaryListDataSource();
             CreateSalesSummaryListDataGrid();
         }
 
@@ -75,7 +75,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             return rowList;
         }
 
-        public void GetSalesListDataSource()
+        public void GetSalesSummaryListDataSource()
         {
             salesList = GetSalesSummaryListData(dateStart, dateEnd);
             if (salesList.Any())
@@ -212,9 +212,6 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 DialogResult dialogResult = folderBrowserDialogGenerateCSV.ShowDialog();
                 if (dialogResult == DialogResult.OK)
                 {
-                    DateTime startDate = dateStart;
-                    DateTime endDate = dateEnd;
-
                     StringBuilder csv = new StringBuilder();
                     String[] header = { "Terminal", "Date", "Sales Number", "Manual Invoice No.", "Customer", "Term", "Remarks", "Prepared By", "Amount", "Pax", "Table" };
                     csv.AppendLine(String.Join(",", header));

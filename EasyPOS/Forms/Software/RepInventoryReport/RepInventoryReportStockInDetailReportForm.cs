@@ -12,56 +12,58 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EasyPOS.Forms.Software.RepSalesReport
+namespace EasyPOS.Forms.Software.RepInventoryReport
 {
-    public partial class RepSalesReportCollectionSummaryReport : Form
+    public partial class RepInventoryReportStockInDetailReportForm : Form
     {
-        public List<Entities.DgvCollectionReportEntity> collectionList;
-        public BindingSource dataCollectionListSource = new BindingSource();
-        public PagedList<Entities.DgvCollectionReportEntity> pageList;
+        public List<Entities.DgvRepInventoryReportStockInDetailReportEntity> stockInDetailReportList;
+        public BindingSource dataStockInDetailReportListSource = new BindingSource();
+        public PagedList<Entities.DgvRepInventoryReportStockInDetailReportEntity> pageList;
         public Int32 pageNumber = 1;
         public Int32 pageSize = 50;
 
-        public DateTime dateStart;
-        public DateTime dateEnd;
-        public Int32 idTerminal;
+        public DateTime startDate;
+        public DateTime endDate;
 
-        public RepSalesReportCollectionSummaryReport(DateTime startDate, DateTime endDate, Int32 terminalId)
+        public RepInventoryReportStockInDetailReportForm(DateTime dateStart, DateTime dateEnd)
         {
             InitializeComponent();
-            dateStart = startDate;
-            dateEnd = endDate;
-            idTerminal = terminalId;
 
-            GetCollectionSummaryListDataSource();
-            GetDgvCollectionSource();
+            startDate = dateStart;
+            endDate = dateEnd;
+
+            GetStockInDetailDataSource();
+            GetDataGridViewStockInDetailSource();
         }
 
-        public List<Entities.DgvCollectionReportEntity> GetCollectionListData(DateTime startDate, DateTime endDate, Int32 terminalId)
+        public List<Entities.DgvRepInventoryReportStockInDetailReportEntity> GetStockInDetailReportListData(DateTime startDate, DateTime endDate)
         {
-            List<Entities.DgvCollectionReportEntity> rowList = new List<Entities.DgvCollectionReportEntity>();
+            List<Entities.DgvRepInventoryReportStockInDetailReportEntity> rowList = new List<Entities.DgvRepInventoryReportStockInDetailReportEntity>();
 
-            Controllers.RepSalesReportController repCollectionReportController = new Controllers.RepSalesReportController();
+            Controllers.RepInventoryReportController repInvetoryReportController = new Controllers.RepInventoryReportController();
 
-            var collectionList = repCollectionReportController.CollectionList(startDate, endDate, terminalId);
-            if (collectionList.Any())
+            var stockInDetailReportList = repInvetoryReportController.GetListStockInDetail(startDate, endDate);
+            if (stockInDetailReportList.OrderByDescending(d => d.Id).Any())
             {
                 Decimal totalAmount = 0;
-                var row = from d in collectionList
-                          select new Entities.DgvCollectionReportEntity
+                var row = from d in stockInDetailReportList
+                          select new Entities.DgvRepInventoryReportStockInDetailReportEntity
                           {
-                              ColumnCollectionDate = d.CollectionDate,
-                              ColumnCollectionNumber = d.CollectionNumber,
-                              ColumnTerminal = d.Terminal,
-                              ColumnManualORNumber = d.ManualORNumber,
-                              ColumnCustomer = d.Customer,
+                              ColumnStockInDate = d.StockInDate,
+                              ColumnStockInNumber = d.StockInNumber,
                               ColumnRemarks = d.Remarks,
-                              ColumnSalesNumber = d.SalesNumber,
+                              ColumnIsReturn = d.IsReturn,
+                              ColumnItem = d.Item,
+                              ColumnUnit = d.Unit,
+                              ColumnQuantity = d.Quantity.ToString("#,##0.00"),
+                              ColumnCost = d.Cost.ToString("#,##0.00"),
                               ColumnAmount = d.Amount.ToString("#,##0.00"),
-                              ColumnPreparedBy = d.PreparedByUserName,
+                              ColumnExpiryDate = d.ExpiryDate,
+                              ColumnLotNumber = d.LotNumber,
+                              ColumnSellingPrice = d.SellingPrice.ToString()
                           };
 
-                totalAmount = collectionList.Sum(d => d.Amount);
+                totalAmount = stockInDetailReportList.Sum(d => d.Amount);
 
                 textBoxTotalAmount.Text = totalAmount.ToString("#,##0.00");
 
@@ -70,13 +72,12 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             return rowList;
         }
 
-        public void GetCollectionSummaryListDataSource()
+        public void GetStockInDetailDataSource()
         {
-            collectionList = GetCollectionListData(dateStart, dateEnd, idTerminal);
-            if (collectionList.Any())
+            stockInDetailReportList = GetStockInDetailReportListData(startDate, endDate);
+            if (stockInDetailReportList.Any())
             {
-
-                pageList = new PagedList<Entities.DgvCollectionReportEntity>(collectionList, pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvRepInventoryReportStockInDetailReportEntity>(stockInDetailReportList, pageNumber, pageSize);
 
                 if (pageList.PageCount == 1)
                 {
@@ -108,7 +109,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 }
 
                 textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
-                dataCollectionListSource.DataSource = pageList;
+                dataStockInDetailReportListSource.DataSource = pageList;
             }
             else
             {
@@ -117,20 +118,20 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 buttonPageListNext.Enabled = false;
                 buttonPageListLast.Enabled = false;
 
-                dataCollectionListSource.Clear();
+                dataStockInDetailReportListSource.Clear();
                 textBoxPageNumber.Text = "0 / 0";
             }
         }
 
-        public void GetDgvCollectionSource()
+        private void GetDataGridViewStockInDetailSource()
         {
-            dataGridViewCollectionReport.DataSource = dataCollectionListSource;
+            dataGridViewStockInDetailReport.DataSource = dataStockInDetailReportListSource;
         }
 
-        private void buttoncollectionListPageListFirst_Click(object sender, EventArgs e)
+        private void buttonPageListFirst_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvCollectionReportEntity>(collectionList, 1, pageSize);
-            dataCollectionListSource.DataSource = pageList;
+            pageList = new PagedList<Entities.DgvRepInventoryReportStockInDetailReportEntity>(stockInDetailReportList, 1, pageSize);
+            dataStockInDetailReportListSource.DataSource = pageList;
 
             buttonPageListFirst.Enabled = false;
             buttonPageListPrevious.Enabled = false;
@@ -141,12 +142,12 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
         }
 
-        private void buttoncollectionListPageListPrevious_Click(object sender, EventArgs e)
+        private void buttonPageListPrevious_Click(object sender, EventArgs e)
         {
             if (pageList.HasPreviousPage == true)
             {
-                pageList = new PagedList<Entities.DgvCollectionReportEntity>(collectionList, --pageNumber, pageSize);
-                dataCollectionListSource.DataSource = pageList;
+                pageList = new PagedList<Entities.DgvRepInventoryReportStockInDetailReportEntity>(stockInDetailReportList, --pageNumber, pageSize);
+                dataStockInDetailReportListSource.DataSource = pageList;
             }
 
             buttonPageListNext.Enabled = true;
@@ -161,12 +162,12 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
         }
 
-        private void buttoncollectionListPageListNext_Click(object sender, EventArgs e)
+        private void buttonPageListNext_Click(object sender, EventArgs e)
         {
             if (pageList.HasNextPage == true)
             {
-                pageList = new PagedList<Entities.DgvCollectionReportEntity>(collectionList, ++pageNumber, pageSize);
-                dataCollectionListSource.DataSource = pageList;
+                pageList = new PagedList<Entities.DgvRepInventoryReportStockInDetailReportEntity>(stockInDetailReportList, ++pageNumber, pageSize);
+                dataStockInDetailReportListSource.DataSource = pageList;
             }
 
             buttonPageListFirst.Enabled = true;
@@ -181,10 +182,10 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
         }
 
-        private void buttoncollectionListPageListLast_Click(object sender, EventArgs e)
+        private void buttonPageListLast_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvCollectionReportEntity>(collectionList, pageList.PageCount, pageSize);
-            dataCollectionListSource.DataSource = pageList;
+            pageList = new PagedList<Entities.DgvRepInventoryReportStockInDetailReportEntity>(stockInDetailReportList, pageList.PageCount, pageSize);
+            dataStockInDetailReportListSource.DataSource = pageList;
 
             buttonPageListFirst.Enabled = true;
             buttonPageListPrevious.Enabled = true;
@@ -207,26 +208,26 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 DialogResult dialogResult = folderBrowserDialogGenerateCSV.ShowDialog();
                 if (dialogResult == DialogResult.OK)
                 {
-                    DateTime startDate = dateStart;
-                    DateTime endDate = dateEnd;
-
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Collection Date", "Collection Number", "Terminal", "Manual OR Number", "Customer", "Remarks", "Sales Number", "Amount", "PreparedBy"};
+                    String[] header = { "StockInDate", "StockInNumber", "Remarks", "IsReturn", "Item", "Unit", "Quantity", "Cost", "Amount", "ExpiryDate", "LotNumber", "SellingPrice" };
                     csv.AppendLine(String.Join(",", header));
 
-                    if (collectionList.Any())
+                    if (stockInDetailReportList.Any())
                     {
-                        foreach (var collection in collectionList)
+                        foreach (var stockInDetail in stockInDetailReportList)
                         {
-                            String[] data = {collection.ColumnCollectionDate,
-                                        collection.ColumnCollectionNumber,
-                                        collection.ColumnTerminal,
-                                        collection.ColumnManualORNumber,
-                                        collection.ColumnCustomer.Replace("," , " "),
-                                        collection.ColumnRemarks,
-                                        collection.ColumnSalesNumber,
-                                        collection.ColumnAmount.Replace("," , " "),
-                                        collection.ColumnPreparedBy,
+                            String[] data = {stockInDetail.ColumnStockInDate,
+                              stockInDetail.ColumnStockInNumber,
+                              stockInDetail.ColumnRemarks,
+                              stockInDetail.ColumnIsReturn.ToString(),
+                              stockInDetail.ColumnItem.Replace("," , " "),
+                              stockInDetail.ColumnUnit,
+                              stockInDetail.ColumnQuantity.Replace("," , ""),
+                              stockInDetail.ColumnCost.Replace("," , ""),
+                              stockInDetail.ColumnAmount.Replace("," , ""),
+                              stockInDetail.ColumnExpiryDate,
+                              stockInDetail.ColumnLotNumber,
+                              stockInDetail.ColumnSellingPrice.Replace("," , "")
                             };
 
                             csv.AppendLine(String.Join(",", data));
@@ -240,7 +241,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
 
                     DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
-                    File.WriteAllText(createDirectorySTCSV.FullName + "\\CollectionSummaryReport_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\StockInDetailReport_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
 
                     MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();

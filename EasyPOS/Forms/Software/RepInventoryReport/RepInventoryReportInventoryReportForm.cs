@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.RepInventoryReport
 {
-    public partial class RepInventoryReportInventoryReport : Form
+    public partial class RepInventoryReportInventoryReportForm : Form
     {
         public List<Entities.DgvInventoryReportEntity> inventoryReportList;
         public BindingSource dataInventoryReportListSource = new BindingSource();
@@ -22,14 +22,14 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
         public DateTime startDate;
         public DateTime endDate;
 
-        public RepInventoryReportInventoryReport(DateTime dateStart, DateTime dateEnd)
+        public RepInventoryReportInventoryReportForm(DateTime dateStart, DateTime dateEnd)
         {
             InitializeComponent();
 
             startDate = dateStart;
             endDate = dateEnd;
 
-            GetCancelSalesListDataSource();
+            GetInventoryReportDataSource();
             GetDataGridViewCollectionDetailReportSource();
         }
 
@@ -69,7 +69,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             return rowList;
         }
 
-        public void GetCancelSalesListDataSource()
+        public void GetInventoryReportDataSource()
         {
             inventoryReportList = GetInventoryReportListData(startDate, endDate);
             if (inventoryReportList.Any())

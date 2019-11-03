@@ -58,7 +58,10 @@
             this.listBoxInventoryReport.FormattingEnabled = true;
             this.listBoxInventoryReport.ItemHeight = 23;
             this.listBoxInventoryReport.Items.AddRange(new object[] {
-            "Inventory Report"});
+            "Inventory Report",
+            "Stock In Detail Report",
+            "Stock Out Detail Report",
+            "Stock Count Detail Report"});
             this.listBoxInventoryReport.Location = new System.Drawing.Point(0, 0);
             this.listBoxInventoryReport.Name = "listBoxInventoryReport";
             this.listBoxInventoryReport.Size = new System.Drawing.Size(380, 619);

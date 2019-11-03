@@ -127,6 +127,9 @@
     <Compile Include="Entities\DgvCollectionDetailReportEntity.cs" />
     <Compile Include="Entities\DgvCollectionReportEntity.cs" />
     <Compile Include="Entities\DgvInventoryReportEntity.cs" />
+    <Compile Include="Entities\DgvRepInventoryReportStockCountReportEntity.cs" />
+    <Compile Include="Entities\DgvRepInventoryReportStockInDetailReportEntity.cs" />
+    <Compile Include="Entities\DgvRepInventoryReportStockOutDetailReportEntity.cs" />
     <Compile Include="Entities\DgvSalesReportCancelSalesReportEntity.cs" />
     <Compile Include="Entities\DgvCustomerListCustomerEntity.cs" />
     <Compile Include="Entities\DgvDisbursementListDisbursementEntity.cs" />
@@ -164,7 +167,11 @@
     <Compile Include="Entities\MstUserEntity.cs" />
     <Compile Include="Entities\RepCollectionDetailReportEntity.cs" />
     <Compile Include="Entities\RepInventoryReportEntity.cs" />
+    <Compile Include="Entities\RepInventoryReportStockCountEntity.cs" />
+    <Compile Include="Entities\RepInventoryReportStockInDetailReportEntity.cs" />
+    <Compile Include="Entities\RepInventoryReportStockOutDetailEntity.cs" />
     <Compile Include="Entities\RepInventoryReportUnionEntity.cs" />
+    <Compile Include="Entities\RepRemitanceReportEntity.cs" />
     <Compile Include="Entities\RepSalesDetailReportEntity.cs" />
     <Compile Include="Entities\RepXReadingReportEntity.cs" />
     <Compile Include="Entities\RepZReadingReportEntity.cs" />
@@ -233,11 +240,29 @@
     <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportForm.Designer.cs">
       <DependentUpon>RepInventoryReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportInventoryReport.cs">
+    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportInventoryReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportInventoryReport.Designer.cs">
-      <DependentUpon>RepInventoryReportInventoryReport.cs</DependentUpon>
+    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportInventoryReportForm.Designer.cs">
+      <DependentUpon>RepInventoryReportInventoryReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportStockCountDetailReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportStockCountDetailReportForm.Designer.cs">
+      <DependentUpon>RepInventoryReportStockCountDetailReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportStockInDetailReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportStockInDetailReportForm.Designer.cs">
+      <DependentUpon>RepInventoryReportStockInDetailReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportStockOutDetailReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportStockOutDetailReportForm.Designer.cs">
+      <DependentUpon>RepInventoryReportStockOutDetailReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\RepPOSReport\RepPOSReportForm.cs">
       <SubType>Form</SubType>
@@ -250,6 +275,12 @@
     </Compile>
     <Compile Include="Forms\Software\RepRemittanceReport\RepRemittanceReportForm.Designer.cs">
       <DependentUpon>RepRemittanceReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepRemittanceReport\RepRemittanceReportRemittanceReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepRemittanceReport\RepRemittanceReportRemittanceReportForm.Designer.cs">
+      <DependentUpon>RepRemittanceReportRemittanceReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepSalesReportCollectionDetailReportForm.cs">
       <SubType>Form</SubType>
@@ -437,11 +468,23 @@
     <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepInventoryReportForm.resx">
       <DependentUpon>RepInventoryReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepInventoryReportInventoryReport.resx">
-      <DependentUpon>RepInventoryReportInventoryReport.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepInventoryReportInventoryReportForm.resx">
+      <DependentUpon>RepInventoryReportInventoryReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepInventoryReportStockCountDetailReportForm.resx">
+      <DependentUpon>RepInventoryReportStockCountDetailReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepInventoryReportStockInDetailReportForm.resx">
+      <DependentUpon>RepInventoryReportStockInDetailReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepInventoryReportStockOutDetailReportForm.resx">
+      <DependentUpon>RepInventoryReportStockOutDetailReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepRemittanceReport\RepRemittanceReportForm.resx">
       <DependentUpon>RepRemittanceReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepRemittanceReport\RepRemittanceReportRemittanceReportForm.resx">
+      <DependentUpon>RepRemittanceReportRemittanceReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportCollectionDetailReportForm.resx">
       <DependentUpon>RepSalesReportCollectionDetailReportForm.cs</DependentUpon>

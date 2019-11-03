@@ -1,6 +1,6 @@
 ﻿namespace EasyPOS.Forms.Software.RepInventoryReport
 {
-    partial class RepInventoryReportInventoryReport
+    partial class RepInventoryReportInventoryReportForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepInventoryReportInventoryReport));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepInventoryReportInventoryReportForm));
             this.buttonPageListNext = new System.Windows.Forms.Button();
             this.buttonPageListPrevious = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
