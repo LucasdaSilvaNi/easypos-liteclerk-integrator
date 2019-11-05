@@ -17,6 +17,8 @@ namespace EasyPOS.Entities
         public String Remarks { get; set; }
         public Boolean IsReturn { get; set; }
         public Int32? CollectionId { get; set; }
+        public String CollectionNumber { get; set; }
+        public String SalesNumber { get; set; }
         public Int32? PurchaseOrderId { get; set; }
         public Int32 PreparedBy { get; set; }
         public Int32 CheckedBy { get; set; }

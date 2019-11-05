@@ -39,50 +39,50 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.comboBoxSalesVAT = new System.Windows.Forms.ComboBox();
-            this.dateTimePickerExpiryDate = new System.Windows.Forms.DateTimePicker();
-            this.comboBoxDefaultSupplier = new System.Windows.Forms.ComboBox();
             this.textBoxGenericName = new System.Windows.Forms.TextBox();
+            this.dateTimePickerExpiryDate = new System.Windows.Forms.DateTimePicker();
             this.label19 = new System.Windows.Forms.Label();
-            this.comboBoxUnit = new System.Windows.Forms.ComboBox();
             this.textBoxLotNumber = new System.Windows.Forms.TextBox();
+            this.comboBoxDefaultSupplier = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.textBoxRemarks = new System.Windows.Forms.TextBox();
-            this.checkBoxIsPackage = new System.Windows.Forms.CheckBox();
-            this.checkBoxIsInventory = new System.Windows.Forms.CheckBox();
-            this.textBoxOnHandQuantity = new System.Windows.Forms.TextBox();
-            this.textBoxStockLevelQuantity = new System.Windows.Forms.TextBox();
-            this.textBoxPrice = new System.Windows.Forms.TextBox();
-            this.textBoxMarkUp = new System.Windows.Forms.TextBox();
-            this.textBoxCost = new System.Windows.Forms.TextBox();
-            this.textBoxCategory = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBoxAlias = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.comboBoxUnit = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.checkBoxIsPackage = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.checkBoxIsInventory = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBoxOnHandQuantity = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBoxStockLevelQuantity = new System.Windows.Forms.TextBox();
+            this.textBoxAlias = new System.Windows.Forms.TextBox();
+            this.textBoxPrice = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBoxMarkUp = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBoxCost = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBoxCategory = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.buttonLock = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonUnlock = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -97,16 +97,19 @@
             // 
             // textBoxDescription
             // 
-            this.textBoxDescription.Location = new System.Drawing.Point(218, 77);
+            this.textBoxDescription.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxDescription.Location = new System.Drawing.Point(187, 77);
+            this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.Size = new System.Drawing.Size(454, 30);
+            this.textBoxDescription.Size = new System.Drawing.Size(312, 104);
             this.textBoxDescription.TabIndex = 5;
             this.textBoxDescription.TabStop = false;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 80);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label5.Location = new System.Drawing.Point(47, 83);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(134, 23);
             this.label5.TabIndex = 4;
@@ -114,9 +117,10 @@
             // 
             // textBoxItemCode
             // 
-            this.textBoxItemCode.Location = new System.Drawing.Point(218, 5);
+            this.textBoxItemCode.Enabled = false;
+            this.textBoxItemCode.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxItemCode.Location = new System.Drawing.Point(187, 5);
             this.textBoxItemCode.Name = "textBoxItemCode";
-            this.textBoxItemCode.ReadOnly = true;
             this.textBoxItemCode.Size = new System.Drawing.Size(214, 30);
             this.textBoxItemCode.TabIndex = 3;
             this.textBoxItemCode.TabStop = false;
@@ -124,7 +128,8 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 8);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label4.Location = new System.Drawing.Point(87, 8);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(94, 23);
             this.label4.TabIndex = 2;
@@ -132,7 +137,8 @@
             // 
             // textBoxBarcode
             // 
-            this.textBoxBarcode.Location = new System.Drawing.Point(218, 41);
+            this.textBoxBarcode.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxBarcode.Location = new System.Drawing.Point(187, 41);
             this.textBoxBarcode.Name = "textBoxBarcode";
             this.textBoxBarcode.Size = new System.Drawing.Size(214, 30);
             this.textBoxBarcode.TabIndex = 1;
@@ -141,7 +147,8 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 44);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label3.Location = new System.Drawing.Point(51, 44);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(130, 23);
             this.label3.TabIndex = 0;
@@ -160,6 +167,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -169,6 +177,7 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.panel3);
+            this.tabPage1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.tabPage1.Location = new System.Drawing.Point(4, 32);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -177,67 +186,115 @@
             this.tabPage1.Text = "General Information";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // panel3
+            // 
+            this.panel3.AutoScroll = true;
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.comboBoxSalesVAT);
+            this.panel3.Controls.Add(this.textBoxBarcode);
+            this.panel3.Controls.Add(this.textBoxGenericName);
+            this.panel3.Controls.Add(this.dateTimePickerExpiryDate);
+            this.panel3.Controls.Add(this.label19);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.textBoxLotNumber);
+            this.panel3.Controls.Add(this.comboBoxDefaultSupplier);
+            this.panel3.Controls.Add(this.label20);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.textBoxRemarks);
+            this.panel3.Controls.Add(this.textBoxDescription);
+            this.panel3.Controls.Add(this.label18);
+            this.panel3.Controls.Add(this.textBoxItemCode);
+            this.panel3.Controls.Add(this.label17);
+            this.panel3.Controls.Add(this.comboBoxUnit);
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.label7);
+            this.panel3.Controls.Add(this.label8);
+            this.panel3.Controls.Add(this.checkBoxIsPackage);
+            this.panel3.Controls.Add(this.label9);
+            this.panel3.Controls.Add(this.checkBoxIsInventory);
+            this.panel3.Controls.Add(this.label10);
+            this.panel3.Controls.Add(this.textBoxOnHandQuantity);
+            this.panel3.Controls.Add(this.label11);
+            this.panel3.Controls.Add(this.textBoxStockLevelQuantity);
+            this.panel3.Controls.Add(this.textBoxAlias);
+            this.panel3.Controls.Add(this.textBoxPrice);
+            this.panel3.Controls.Add(this.label12);
+            this.panel3.Controls.Add(this.textBoxMarkUp);
+            this.panel3.Controls.Add(this.label13);
+            this.panel3.Controls.Add(this.textBoxCost);
+            this.panel3.Controls.Add(this.label14);
+            this.panel3.Controls.Add(this.textBoxCategory);
+            this.panel3.Controls.Add(this.label15);
+            this.panel3.Controls.Add(this.label16);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(10);
+            this.panel3.Size = new System.Drawing.Size(1386, 595);
+            this.panel3.TabIndex = 38;
+            // 
             // comboBoxSalesVAT
             // 
+            this.comboBoxSalesVAT.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxSalesVAT.FormattingEnabled = true;
-            this.comboBoxSalesVAT.Location = new System.Drawing.Point(841, 41);
+            this.comboBoxSalesVAT.Location = new System.Drawing.Point(634, 41);
             this.comboBoxSalesVAT.Name = "comboBoxSalesVAT";
-            this.comboBoxSalesVAT.Size = new System.Drawing.Size(451, 31);
+            this.comboBoxSalesVAT.Size = new System.Drawing.Size(214, 31);
             this.comboBoxSalesVAT.TabIndex = 37;
-            // 
-            // dateTimePickerExpiryDate
-            // 
-            this.dateTimePickerExpiryDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerExpiryDate.Location = new System.Drawing.Point(218, 502);
-            this.dateTimePickerExpiryDate.Name = "dateTimePickerExpiryDate";
-            this.dateTimePickerExpiryDate.Size = new System.Drawing.Size(214, 30);
-            this.dateTimePickerExpiryDate.TabIndex = 37;
-            // 
-            // comboBoxDefaultSupplier
-            // 
-            this.comboBoxDefaultSupplier.FormattingEnabled = true;
-            this.comboBoxDefaultSupplier.Location = new System.Drawing.Point(218, 223);
-            this.comboBoxDefaultSupplier.Name = "comboBoxDefaultSupplier";
-            this.comboBoxDefaultSupplier.Size = new System.Drawing.Size(454, 31);
-            this.comboBoxDefaultSupplier.TabIndex = 36;
             // 
             // textBoxGenericName
             // 
-            this.textBoxGenericName.Location = new System.Drawing.Point(841, 5);
+            this.textBoxGenericName.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxGenericName.Location = new System.Drawing.Point(634, 5);
             this.textBoxGenericName.Name = "textBoxGenericName";
             this.textBoxGenericName.Size = new System.Drawing.Size(214, 30);
             this.textBoxGenericName.TabIndex = 7;
             this.textBoxGenericName.TabStop = false;
             // 
+            // dateTimePickerExpiryDate
+            // 
+            this.dateTimePickerExpiryDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.dateTimePickerExpiryDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerExpiryDate.Location = new System.Drawing.Point(187, 580);
+            this.dateTimePickerExpiryDate.Name = "dateTimePickerExpiryDate";
+            this.dateTimePickerExpiryDate.Size = new System.Drawing.Size(214, 30);
+            this.dateTimePickerExpiryDate.TabIndex = 37;
+            // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(695, 44);
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label19.Location = new System.Drawing.Point(538, 44);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(90, 23);
             this.label19.TabIndex = 4;
             this.label19.Text = "Salels VAT:";
             // 
-            // comboBoxUnit
-            // 
-            this.comboBoxUnit.FormattingEnabled = true;
-            this.comboBoxUnit.Location = new System.Drawing.Point(218, 187);
-            this.comboBoxUnit.Name = "comboBoxUnit";
-            this.comboBoxUnit.Size = new System.Drawing.Size(214, 31);
-            this.comboBoxUnit.TabIndex = 35;
-            // 
             // textBoxLotNumber
             // 
-            this.textBoxLotNumber.Location = new System.Drawing.Point(218, 538);
+            this.textBoxLotNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxLotNumber.Location = new System.Drawing.Point(187, 616);
             this.textBoxLotNumber.Name = "textBoxLotNumber";
-            this.textBoxLotNumber.Size = new System.Drawing.Size(214, 30);
+            this.textBoxLotNumber.Size = new System.Drawing.Size(312, 30);
             this.textBoxLotNumber.TabIndex = 34;
             this.textBoxLotNumber.TabStop = false;
+            // 
+            // comboBoxDefaultSupplier
+            // 
+            this.comboBoxDefaultSupplier.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxDefaultSupplier.FormattingEnabled = true;
+            this.comboBoxDefaultSupplier.Location = new System.Drawing.Point(187, 297);
+            this.comboBoxDefaultSupplier.Name = "comboBoxDefaultSupplier";
+            this.comboBoxDefaultSupplier.Size = new System.Drawing.Size(312, 31);
+            this.comboBoxDefaultSupplier.TabIndex = 36;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(695, 8);
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label20.Location = new System.Drawing.Point(505, 8);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(123, 23);
             this.label20.TabIndex = 6;
@@ -245,94 +302,19 @@
             // 
             // textBoxRemarks
             // 
-            this.textBoxRemarks.Location = new System.Drawing.Point(841, 80);
+            this.textBoxRemarks.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxRemarks.Location = new System.Drawing.Point(634, 80);
             this.textBoxRemarks.Multiline = true;
             this.textBoxRemarks.Name = "textBoxRemarks";
-            this.textBoxRemarks.Size = new System.Drawing.Size(451, 209);
+            this.textBoxRemarks.Size = new System.Drawing.Size(353, 248);
             this.textBoxRemarks.TabIndex = 33;
             this.textBoxRemarks.TabStop = false;
-            // 
-            // checkBoxIsPackage
-            // 
-            this.checkBoxIsPackage.AutoSize = true;
-            this.checkBoxIsPackage.Location = new System.Drawing.Point(218, 475);
-            this.checkBoxIsPackage.Name = "checkBoxIsPackage";
-            this.checkBoxIsPackage.Size = new System.Drawing.Size(18, 17);
-            this.checkBoxIsPackage.TabIndex = 30;
-            this.checkBoxIsPackage.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxIsInventory
-            // 
-            this.checkBoxIsInventory.AutoSize = true;
-            this.checkBoxIsInventory.Location = new System.Drawing.Point(218, 446);
-            this.checkBoxIsInventory.Name = "checkBoxIsInventory";
-            this.checkBoxIsInventory.Size = new System.Drawing.Size(18, 17);
-            this.checkBoxIsInventory.TabIndex = 29;
-            this.checkBoxIsInventory.UseVisualStyleBackColor = true;
-            // 
-            // textBoxOnHandQuantity
-            // 
-            this.textBoxOnHandQuantity.Location = new System.Drawing.Point(218, 403);
-            this.textBoxOnHandQuantity.Name = "textBoxOnHandQuantity";
-            this.textBoxOnHandQuantity.ReadOnly = true;
-            this.textBoxOnHandQuantity.Size = new System.Drawing.Size(214, 30);
-            this.textBoxOnHandQuantity.TabIndex = 28;
-            this.textBoxOnHandQuantity.TabStop = false;
-            this.textBoxOnHandQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxOnHandQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxOnHandQuantity_KeyPress);
-            // 
-            // textBoxStockLevelQuantity
-            // 
-            this.textBoxStockLevelQuantity.Location = new System.Drawing.Point(218, 367);
-            this.textBoxStockLevelQuantity.Name = "textBoxStockLevelQuantity";
-            this.textBoxStockLevelQuantity.Size = new System.Drawing.Size(214, 30);
-            this.textBoxStockLevelQuantity.TabIndex = 27;
-            this.textBoxStockLevelQuantity.TabStop = false;
-            this.textBoxStockLevelQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxStockLevelQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStockLevelQuantity_KeyPress);
-            // 
-            // textBoxPrice
-            // 
-            this.textBoxPrice.Location = new System.Drawing.Point(218, 331);
-            this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(214, 30);
-            this.textBoxPrice.TabIndex = 26;
-            this.textBoxPrice.TabStop = false;
-            this.textBoxPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPrice_KeyPress);
-            // 
-            // textBoxMarkUp
-            // 
-            this.textBoxMarkUp.Location = new System.Drawing.Point(218, 295);
-            this.textBoxMarkUp.Name = "textBoxMarkUp";
-            this.textBoxMarkUp.Size = new System.Drawing.Size(214, 30);
-            this.textBoxMarkUp.TabIndex = 25;
-            this.textBoxMarkUp.TabStop = false;
-            this.textBoxMarkUp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxMarkUp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMarkUp_KeyPress);
-            // 
-            // textBoxCost
-            // 
-            this.textBoxCost.Location = new System.Drawing.Point(218, 259);
-            this.textBoxCost.Name = "textBoxCost";
-            this.textBoxCost.Size = new System.Drawing.Size(214, 30);
-            this.textBoxCost.TabIndex = 24;
-            this.textBoxCost.TabStop = false;
-            this.textBoxCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCost_KeyPress);
-            // 
-            // textBoxCategory
-            // 
-            this.textBoxCategory.Location = new System.Drawing.Point(218, 151);
-            this.textBoxCategory.Name = "textBoxCategory";
-            this.textBoxCategory.Size = new System.Drawing.Size(454, 30);
-            this.textBoxCategory.TabIndex = 21;
-            this.textBoxCategory.TabStop = false;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(695, 83);
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label18.Location = new System.Drawing.Point(550, 83);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(78, 23);
             this.label18.TabIndex = 20;
@@ -341,127 +323,237 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(14, 538);
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label17.Location = new System.Drawing.Point(75, 619);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(106, 23);
             this.label17.TabIndex = 19;
             this.label17.Text = "Lot Number:";
             // 
-            // label16
+            // comboBoxUnit
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(14, 508);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(100, 23);
-            this.label16.TabIndex = 18;
-            this.label16.Text = "Expiry Date:";
+            this.comboBoxUnit.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxUnit.FormattingEnabled = true;
+            this.comboBoxUnit.Location = new System.Drawing.Point(187, 261);
+            this.comboBoxUnit.Name = "comboBoxUnit";
+            this.comboBoxUnit.Size = new System.Drawing.Size(119, 31);
+            this.comboBoxUnit.TabIndex = 35;
             // 
-            // label15
+            // label2
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(14, 474);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(76, 23);
-            this.label15.TabIndex = 17;
-            this.label15.Text = "Package:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(14, 442);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(86, 23);
-            this.label14.TabIndex = 16;
-            this.label14.Text = "Inventory:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(14, 406);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(156, 23);
-            this.label13.TabIndex = 15;
-            this.label13.Text = "On-Hand Quantity:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(14, 370);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(168, 23);
-            this.label12.TabIndex = 14;
-            this.label12.Text = "Stock Level Quantity:";
-            // 
-            // textBoxAlias
-            // 
-            this.textBoxAlias.Location = new System.Drawing.Point(218, 113);
-            this.textBoxAlias.Name = "textBoxAlias";
-            this.textBoxAlias.Size = new System.Drawing.Size(214, 30);
-            this.textBoxAlias.TabIndex = 13;
-            this.textBoxAlias.TabStop = false;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(14, 334);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(51, 23);
-            this.label11.TabIndex = 12;
-            this.label11.Text = "Price:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(14, 298);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(108, 23);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "Mark Up (%):";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(14, 262);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(48, 23);
-            this.label9.TabIndex = 10;
-            this.label9.Text = "Cost:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(14, 226);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(136, 23);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Default Supplier:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 190);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 23);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Unit:";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label2.Location = new System.Drawing.Point(132, 190);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 23);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Alias:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 154);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label6.Location = new System.Drawing.Point(98, 228);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(83, 23);
             this.label6.TabIndex = 7;
             this.label6.Text = "Category:";
             // 
-            // label2
+            // label7
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 116);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 23);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Alias:";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label7.Location = new System.Drawing.Point(135, 264);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(46, 23);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Unit:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label8.Location = new System.Drawing.Point(45, 300);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(136, 23);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Default Supplier:";
+            // 
+            // checkBoxIsPackage
+            // 
+            this.checkBoxIsPackage.AutoSize = true;
+            this.checkBoxIsPackage.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.checkBoxIsPackage.Location = new System.Drawing.Point(187, 547);
+            this.checkBoxIsPackage.Name = "checkBoxIsPackage";
+            this.checkBoxIsPackage.Size = new System.Drawing.Size(37, 27);
+            this.checkBoxIsPackage.TabIndex = 30;
+            this.checkBoxIsPackage.Text = " ";
+            this.checkBoxIsPackage.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label9.Location = new System.Drawing.Point(133, 337);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(48, 23);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "Cost:";
+            // 
+            // checkBoxIsInventory
+            // 
+            this.checkBoxIsInventory.AutoSize = true;
+            this.checkBoxIsInventory.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.checkBoxIsInventory.Location = new System.Drawing.Point(187, 514);
+            this.checkBoxIsInventory.Name = "checkBoxIsInventory";
+            this.checkBoxIsInventory.Size = new System.Drawing.Size(37, 27);
+            this.checkBoxIsInventory.TabIndex = 29;
+            this.checkBoxIsInventory.Text = " ";
+            this.checkBoxIsInventory.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label10.Location = new System.Drawing.Point(73, 373);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(108, 23);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Mark Up (%):";
+            // 
+            // textBoxOnHandQuantity
+            // 
+            this.textBoxOnHandQuantity.Enabled = false;
+            this.textBoxOnHandQuantity.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxOnHandQuantity.Location = new System.Drawing.Point(187, 478);
+            this.textBoxOnHandQuantity.Name = "textBoxOnHandQuantity";
+            this.textBoxOnHandQuantity.Size = new System.Drawing.Size(214, 30);
+            this.textBoxOnHandQuantity.TabIndex = 28;
+            this.textBoxOnHandQuantity.TabStop = false;
+            this.textBoxOnHandQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxOnHandQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxOnHandQuantity_KeyPress);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label11.Location = new System.Drawing.Point(130, 409);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(51, 23);
+            this.label11.TabIndex = 12;
+            this.label11.Text = "Price:";
+            // 
+            // textBoxStockLevelQuantity
+            // 
+            this.textBoxStockLevelQuantity.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxStockLevelQuantity.Location = new System.Drawing.Point(187, 442);
+            this.textBoxStockLevelQuantity.Name = "textBoxStockLevelQuantity";
+            this.textBoxStockLevelQuantity.Size = new System.Drawing.Size(214, 30);
+            this.textBoxStockLevelQuantity.TabIndex = 27;
+            this.textBoxStockLevelQuantity.TabStop = false;
+            this.textBoxStockLevelQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxStockLevelQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStockLevelQuantity_KeyPress);
+            // 
+            // textBoxAlias
+            // 
+            this.textBoxAlias.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxAlias.Location = new System.Drawing.Point(187, 187);
+            this.textBoxAlias.Name = "textBoxAlias";
+            this.textBoxAlias.Size = new System.Drawing.Size(214, 30);
+            this.textBoxAlias.TabIndex = 13;
+            this.textBoxAlias.TabStop = false;
+            // 
+            // textBoxPrice
+            // 
+            this.textBoxPrice.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxPrice.Location = new System.Drawing.Point(187, 406);
+            this.textBoxPrice.Name = "textBoxPrice";
+            this.textBoxPrice.Size = new System.Drawing.Size(214, 30);
+            this.textBoxPrice.TabIndex = 26;
+            this.textBoxPrice.TabStop = false;
+            this.textBoxPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPrice_KeyPress);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label12.Location = new System.Drawing.Point(13, 445);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(168, 23);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "Stock Level Quantity:";
+            // 
+            // textBoxMarkUp
+            // 
+            this.textBoxMarkUp.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxMarkUp.Location = new System.Drawing.Point(187, 370);
+            this.textBoxMarkUp.Name = "textBoxMarkUp";
+            this.textBoxMarkUp.Size = new System.Drawing.Size(214, 30);
+            this.textBoxMarkUp.TabIndex = 25;
+            this.textBoxMarkUp.TabStop = false;
+            this.textBoxMarkUp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxMarkUp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMarkUp_KeyPress);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label13.Location = new System.Drawing.Point(25, 481);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(156, 23);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "On-Hand Quantity:";
+            // 
+            // textBoxCost
+            // 
+            this.textBoxCost.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxCost.Location = new System.Drawing.Point(187, 334);
+            this.textBoxCost.Name = "textBoxCost";
+            this.textBoxCost.Size = new System.Drawing.Size(214, 30);
+            this.textBoxCost.TabIndex = 24;
+            this.textBoxCost.TabStop = false;
+            this.textBoxCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCost_KeyPress);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label14.Location = new System.Drawing.Point(95, 515);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(86, 23);
+            this.label14.TabIndex = 16;
+            this.label14.Text = "Inventory:";
+            // 
+            // textBoxCategory
+            // 
+            this.textBoxCategory.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxCategory.Location = new System.Drawing.Point(187, 225);
+            this.textBoxCategory.Name = "textBoxCategory";
+            this.textBoxCategory.Size = new System.Drawing.Size(312, 30);
+            this.textBoxCategory.TabIndex = 21;
+            this.textBoxCategory.TabStop = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label15.Location = new System.Drawing.Point(105, 548);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(76, 23);
+            this.label15.TabIndex = 17;
+            this.label15.Text = "Package:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label16.Location = new System.Drawing.Point(81, 586);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(100, 23);
+            this.label16.TabIndex = 18;
+            this.label16.Text = "Expiry Date:";
             // 
             // buttonLock
             // 
@@ -539,53 +631,6 @@
             this.panel1.Size = new System.Drawing.Size(1400, 63);
             this.panel1.TabIndex = 7;
             // 
-            // panel3
-            // 
-            this.panel3.AutoScroll = true;
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.comboBoxSalesVAT);
-            this.panel3.Controls.Add(this.textBoxBarcode);
-            this.panel3.Controls.Add(this.textBoxGenericName);
-            this.panel3.Controls.Add(this.dateTimePickerExpiryDate);
-            this.panel3.Controls.Add(this.label19);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.textBoxLotNumber);
-            this.panel3.Controls.Add(this.comboBoxDefaultSupplier);
-            this.panel3.Controls.Add(this.label20);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.textBoxRemarks);
-            this.panel3.Controls.Add(this.textBoxDescription);
-            this.panel3.Controls.Add(this.label18);
-            this.panel3.Controls.Add(this.textBoxItemCode);
-            this.panel3.Controls.Add(this.label17);
-            this.panel3.Controls.Add(this.comboBoxUnit);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.label7);
-            this.panel3.Controls.Add(this.label8);
-            this.panel3.Controls.Add(this.checkBoxIsPackage);
-            this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.checkBoxIsInventory);
-            this.panel3.Controls.Add(this.label10);
-            this.panel3.Controls.Add(this.textBoxOnHandQuantity);
-            this.panel3.Controls.Add(this.label11);
-            this.panel3.Controls.Add(this.textBoxStockLevelQuantity);
-            this.panel3.Controls.Add(this.textBoxAlias);
-            this.panel3.Controls.Add(this.textBoxPrice);
-            this.panel3.Controls.Add(this.label12);
-            this.panel3.Controls.Add(this.textBoxMarkUp);
-            this.panel3.Controls.Add(this.label13);
-            this.panel3.Controls.Add(this.textBoxCost);
-            this.panel3.Controls.Add(this.label14);
-            this.panel3.Controls.Add(this.textBoxCategory);
-            this.panel3.Controls.Add(this.label15);
-            this.panel3.Controls.Add(this.label16);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1386, 595);
-            this.panel3.TabIndex = 38;
-            // 
             // MstItemDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -593,7 +638,6 @@
             this.ClientSize = new System.Drawing.Size(1400, 700);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -603,10 +647,10 @@
             this.panel2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

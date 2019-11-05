@@ -100,52 +100,26 @@ namespace EasyPOS.Forms.Software.MstItem
 
         public void UpdateComponents(Boolean isLocked)
         {
-            if (isLocked == true)
-            {
-                buttonLock.Enabled = false;
-                buttonUnlock.Enabled = true;
+            buttonLock.Enabled = !isLocked;
+            buttonUnlock.Enabled = isLocked;
 
-                textBoxBarcode.ReadOnly = true;
-                textBoxDescription.ReadOnly = true;
-                textBoxAlias.ReadOnly = true;
-                textBoxCategory.ReadOnly = true;
-                comboBoxUnit.Enabled = false;
-                comboBoxDefaultSupplier.Enabled = false;
-                textBoxCost.ReadOnly = true;
-                textBoxMarkUp.ReadOnly = true;
-                textBoxPrice.ReadOnly = true;
-                textBoxStockLevelQuantity.ReadOnly = true;
-                checkBoxIsInventory.Enabled = false;
-                checkBoxIsPackage.Enabled = false;
-                dateTimePickerExpiryDate.Enabled = false;
-                textBoxLotNumber.ReadOnly = true;
-                textBoxRemarks.ReadOnly = true;
-                textBoxGenericName.ReadOnly = true;
-                comboBoxSalesVAT.Enabled = false;
-            }
-            else
-            {
-                buttonLock.Enabled = true;
-                buttonUnlock.Enabled = false;
-
-                textBoxBarcode.ReadOnly = false;
-                textBoxDescription.ReadOnly = false;
-                textBoxAlias.ReadOnly = false;
-                textBoxCategory.ReadOnly = false;
-                comboBoxUnit.Enabled = true;
-                comboBoxDefaultSupplier.Enabled = true;
-                textBoxCost.ReadOnly = false;
-                textBoxMarkUp.ReadOnly = false;
-                textBoxPrice.ReadOnly = false;
-                textBoxStockLevelQuantity.ReadOnly = false;
-                checkBoxIsInventory.Enabled = true;
-                checkBoxIsPackage.Enabled = true;
-                dateTimePickerExpiryDate.Enabled = true;
-                textBoxLotNumber.ReadOnly = false;
-                textBoxRemarks.ReadOnly = false;
-                textBoxGenericName.ReadOnly = false;
-                comboBoxSalesVAT.Enabled = true;
-            }
+            textBoxBarcode.Enabled = !isLocked;
+            textBoxDescription.Enabled = !isLocked;
+            textBoxAlias.Enabled = !isLocked;
+            textBoxCategory.Enabled = !isLocked;
+            comboBoxUnit.Enabled = !isLocked;
+            comboBoxDefaultSupplier.Enabled = !isLocked;
+            textBoxCost.Enabled = !isLocked;
+            textBoxMarkUp.Enabled = !isLocked;
+            textBoxPrice.Enabled = !isLocked;
+            textBoxStockLevelQuantity.Enabled = !isLocked;
+            checkBoxIsInventory.Enabled = !isLocked;
+            checkBoxIsPackage.Enabled = !isLocked;
+            dateTimePickerExpiryDate.Enabled = !isLocked;
+            textBoxLotNumber.Enabled = !isLocked;
+            textBoxRemarks.Enabled = !isLocked;
+            textBoxGenericName.Enabled = !isLocked;
+            comboBoxSalesVAT.Enabled = !isLocked;
         }
 
         private void buttonLock_Click(object sender, EventArgs e)

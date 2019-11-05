@@ -64,18 +64,18 @@ namespace EasyPOS.Forms.Software.MstCustomer
             buttonLock.Enabled = !isLocked;
             buttonUnlock.Enabled = isLocked;
 
-            textBoxCustomerCode.ReadOnly = isLocked;
-            textBoxCustomer.ReadOnly = isLocked;
-            textBoxAddress.ReadOnly = isLocked;
-            textBoxContactPerson.ReadOnly = isLocked;
-            textBoxContactNumber.ReadOnly = isLocked;
-            textBoxCreditLimit.ReadOnly = isLocked;
+            textBoxCustomerCode.Enabled = !isLocked;
+            textBoxCustomer.Enabled = !isLocked;
+            textBoxAddress.Enabled = !isLocked;
+            textBoxContactPerson.Enabled = !isLocked;
+            textBoxContactNumber.Enabled = !isLocked;
+            textBoxCreditLimit.Enabled = !isLocked;
             comboBoxTerm.Enabled = !isLocked;
-            textBoxTIN.ReadOnly = isLocked;
+            textBoxTIN.Enabled = !isLocked;
             checkBoxWithReward.Enabled = !isLocked;
-            textBoxRewardNumber.ReadOnly = isLocked;
-            textBoxRewardConversion.ReadOnly = isLocked;
-            textBoxDefaultPrice.ReadOnly = isLocked;
+            textBoxRewardNumber.Enabled = !isLocked;
+            textBoxRewardConversion.Enabled = !isLocked;
+            textBoxDefaultPrice.Enabled = !isLocked;
         }
 
         private void buttonLock_Click(object sender, EventArgs e)
