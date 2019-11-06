@@ -39,7 +39,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
 
             Controllers.RepInventoryReportController repInvetoryReportController = new Controllers.RepInventoryReportController();
 
-            var inventoryReportList = repInvetoryReportController.GetInventoryReport(startDate, endDate);
+            var inventoryReportList = repInvetoryReportController.InventoryReport(startDate, endDate);
             if (inventoryReportList.Any())
             {
                 Decimal totalAmount = 0;

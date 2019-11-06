@@ -8,9 +8,15 @@ namespace EasyPOS.Controllers
 {
     class RepInventoryReportController
     {
+        // ============
+        // Data Context
+        // ============
         public Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
 
-        public List<Entities.RepInventoryReportEntity> GetInventoryReport(DateTime startDate, DateTime endDate)
+        // ================
+        // Inventory Report
+        // ================
+        public List<Entities.RepInventoryReportEntity> InventoryReport(DateTime startDate, DateTime endDate)
         {
             List<Entities.RepInventoryReportEntity> newRepInventoryReportEntity = new List<Entities.RepInventoryReportEntity>();
 
@@ -142,7 +148,10 @@ namespace EasyPOS.Controllers
             }
         }
 
-        public List<Entities.RepInventoryReportStockInDetailReportEntity> GetListStockInDetail(DateTime startDate, DateTime endDate)
+        // ======================
+        // Stock-In Detail Report
+        // ======================
+        public List<Entities.RepInventoryReportStockInDetailReportEntity> StockInDetailReport(DateTime startDate, DateTime endDate)
         {
             var stockInDetails = from d in db.TrnStockInLines
                                  where d.TrnStockIn.IsLocked == true
@@ -168,7 +177,10 @@ namespace EasyPOS.Controllers
             return stockInDetails.ToList();
         }
 
-        public List<Entities.RepInventoryReportStockOutDetailEntity> GetListStockOutDetail(DateTime startDate, DateTime endDate)
+        // =======================
+        // Stock-Out Detail Report
+        // =======================
+        public List<Entities.RepInventoryReportStockOutDetailEntity> StockOutDetailReport(DateTime startDate, DateTime endDate)
         {
             var stockOutDetails = from d in db.TrnStockOutLines
                                   where d.TrnStockOut.IsLocked == true
@@ -189,12 +201,15 @@ namespace EasyPOS.Controllers
             return stockOutDetails.OrderByDescending(d => d.Id).ToList();
         }
 
-        public List<Entities.RepInventoryReportStockCountEntity> GetListStockCountDetail(DateTime startDate, DateTime endDate)
+        // =========================
+        // Stock Count Detail Report
+        // =========================
+        public List<Entities.RepInventoryReportStockCountDetailReportEntity> StockCountDetailReport(DateTime startDate, DateTime endDate)
         {
             var stockCountDetails = from d in db.TrnStockCountLines
                                     where d.TrnStockCount.StockCountDate >= startDate
                                           && d.TrnStockCount.StockCountDate <= endDate
-                                    select new Entities.RepInventoryReportStockCountEntity
+                                    select new Entities.RepInventoryReportStockCountDetailReportEntity
                                     {
                                         Id = d.Id,
                                         StockCountDate = d.TrnStockCount.StockCountDate.ToShortDateString(),

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    public class DgvRepInventoryReportStockInDetailReportEntity
+    public class DgvInventoryReportStockInDetailReportEntity
     {
         public String ColumnStockInDate { get; set; }
         public String ColumnStockInNumber { get; set; }

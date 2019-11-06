@@ -42,7 +42,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
             Controllers.RepSalesReportController repSalesSummaryReportController = new Controllers.RepSalesReportController();
 
-            var salesList = repSalesSummaryReportController.SalesSummaryList(startDate, endDate);
+            var salesList = repSalesSummaryReportController.SalesSummaryReport(startDate, endDate);
             if (salesList.Any())
             {
                 Decimal totalAmount = 0;

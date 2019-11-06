@@ -8,12 +8,30 @@ namespace EasyPOS.Controllers
 {
     class RepSalesReportController
     {
+        // ============
+        // Data Context
+        // ============
         public Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
+
+        // ======================
+        // Dropdown List Terminal
+        // ======================
+        public List<Entities.MstTerminalEntity> DropdownListTerminal()
+        {
+            var terminals = from d in db.MstTerminals
+                            select new Entities.MstTerminalEntity
+                            {
+                                Id = d.Id,
+                                Terminal = "Terminal: " + d.Terminal
+                            };
+
+            return terminals.ToList();
+        }
 
         // ====================
         // Sales Summary Report
         // ====================
-        public List<Entities.TrnSalesEntity> SalesSummaryList(DateTime startDate, DateTime endDate)
+        public List<Entities.TrnSalesEntity> SalesSummaryReport(DateTime startDate, DateTime endDate)
         {
             var sales = from d in db.TrnSales.OrderByDescending(d => d.Id)
                         where d.SalesDate >= startDate
@@ -71,10 +89,54 @@ namespace EasyPOS.Controllers
             return sales.OrderByDescending(d => d.Id).ToList();
         }
 
-        // =====================
-        // Cancel Summary Report
-        // =====================
-        public List<Entities.TrnSalesEntity> CancelSalesSummaryList(DateTime startDate, DateTime endDate)
+        // ===================
+        // Sales Detail Report
+        // ===================
+        public List<Entities.RepSalesReportSalesDetailReportEntity> SalesDetailReport(DateTime startDate, DateTime endDate)
+        {
+            var salesDetails = from d in db.TrnSalesLines
+                               where d.TrnSale.SalesDate >= startDate
+                               && d.TrnSale.SalesDate <= endDate
+                               && d.TrnSale.IsLocked == true
+                               && d.TrnSale.IsCancelled == false
+                               select new Entities.RepSalesReportSalesDetailReportEntity
+                               {
+                                   Id = d.Id,
+                                   SalesId = d.SalesId,
+                                   Terminal = d.TrnSale.MstTerminal.Terminal,
+                                   Date = d.TrnSale.SalesDate.ToShortDateString(),
+                                   SalesNumber = d.TrnSale.SalesNumber,
+                                   Customer = d.TrnSale.MstCustomer.Customer,
+                                   ItemId = d.ItemId,
+                                   ItemDescription = d.MstItem.ItemDescription,
+                                   ItemCode = d.MstItem.ItemCode,
+                                   ItemCategory = d.MstItem.Category,
+                                   UnitId = d.UnitId,
+                                   Unit = d.MstUnit.Unit,
+                                   Price = d.Price,
+                                   DiscountId = d.DiscountId,
+                                   Discount = d.MstDiscount.Discount,
+                                   DiscountRate = d.DiscountRate,
+                                   DiscountAmount = d.DiscountAmount,
+                                   NetPrice = d.NetPrice,
+                                   Quantity = d.Quantity,
+                                   Amount = d.Amount,
+                                   TaxId = d.TaxId,
+                                   Tax = d.MstTax.Tax,
+                                   TaxRate = d.TaxRate,
+                                   TaxAmount = d.TaxAmount,
+                                   SalesLineTimeStamp = d.SalesLineTimeStamp.ToShortDateString(),
+                                   UserId = d.UserId,
+                                   User = d.MstUser.FullName
+                               };
+
+            return salesDetails.ToList();
+        }
+
+        // ==============================
+        // Cancelled Sales Summary Report
+        // ==============================
+        public List<Entities.TrnSalesEntity> CancelledSalesSummaryReport(DateTime startDate, DateTime endDate)
         {
             var sales = from d in db.TrnSales.OrderByDescending(d => d.Id)
                         where d.SalesDate >= startDate
@@ -132,69 +194,10 @@ namespace EasyPOS.Controllers
             return sales.ToList();
         }
 
-        // ===================
-        // Sales Detail Report
-        // ===================
-        public List<Entities.RepSalesDetailReportEntity> SalesDetailList(DateTime startDate, DateTime endDate)
-        {
-            var salesDetails = from d in db.TrnSalesLines
-                               where d.TrnSale.SalesDate >= startDate
-                               && d.TrnSale.SalesDate <= endDate
-                               && d.TrnSale.IsLocked == true
-                               && d.TrnSale.IsCancelled == false
-                               select new Entities.RepSalesDetailReportEntity
-                               {
-                                   Id = d.Id,
-                                   SalesId = d.SalesId,
-                                   Terminal = d.TrnSale.MstTerminal.Terminal,
-                                   Date = d.TrnSale.SalesDate.ToShortDateString(),
-                                   SalesNumber = d.TrnSale.SalesNumber,
-                                   Customer = d.TrnSale.MstCustomer.Customer,
-                                   ItemId = d.ItemId,
-                                   ItemDescription = d.MstItem.ItemDescription,
-                                   ItemCode = d.MstItem.ItemCode,
-                                   ItemCategory = d.MstItem.Category,
-                                   UnitId = d.UnitId,
-                                   Unit = d.MstUnit.Unit,
-                                   Price = d.Price,
-                                   DiscountId = d.DiscountId,
-                                   Discount = d.MstDiscount.Discount,
-                                   DiscountRate = d.DiscountRate,
-                                   DiscountAmount = d.DiscountAmount,
-                                   NetPrice = d.NetPrice,
-                                   Quantity = d.Quantity,
-                                   Amount = d.Amount,
-                                   TaxId = d.TaxId,
-                                   Tax = d.MstTax.Tax,
-                                   TaxRate = d.TaxRate,
-                                   TaxAmount = d.TaxAmount,
-                                   SalesLineTimeStamp = d.SalesLineTimeStamp.ToShortDateString(),
-                                   UserId = d.UserId,
-                                   User = d.MstUser.FullName
-                               };
-
-            return salesDetails.ToList();
-        }
-
-        // ======================
-        // Dropdown List Terminal
-        // ======================
-        public List<Entities.MstTerminalEntity> DropdownListTerminal()
-        {
-            var terminals = from d in db.MstTerminals
-                            select new Entities.MstTerminalEntity
-                            {
-                                Id = d.Id,
-                                Terminal = "Terminal: " + d.Terminal
-                            };
-
-            return terminals.ToList();
-        }
-
-        // =================
-        // Collection Report
-        // =================
-        public List<Entities.TrnCollectionEntity> CollectionList(DateTime startDate, DateTime endDate, Int32 terminalId)
+        // =========================
+        // Collection Summary Report
+        // =========================
+        public List<Entities.TrnCollectionEntity> CollectionSummaryReport(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
 
             var collections = from d in db.TrnCollections.OrderByDescending(d => d.Id)
@@ -237,10 +240,10 @@ namespace EasyPOS.Controllers
             return collections.ToList();
         }
 
-        // =================
-        // Collection Report
-        // =================
-        public List<Entities.RepCollectionDetailReportEntity> CollectionDetail(DateTime startDate, DateTime endDate, Int32 terminalId)
+        // ========================
+        // Collection Detail Report
+        // ========================
+        public List<Entities.RepSalesReportCollectionDetailReportEntity> CollectionDetailReport(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
             var collectionDetail = from d in db.TrnCollectionLines
                                    where d.TrnCollection.CollectionDate >= startDate
@@ -248,7 +251,7 @@ namespace EasyPOS.Controllers
                                    && d.TrnCollection.TerminalId == terminalId
                                    && d.TrnCollection.IsLocked == true
                                    && d.TrnCollection.IsCancelled == false
-                                   select new Entities.RepCollectionDetailReportEntity
+                                   select new Entities.RepSalesReportCollectionDetailReportEntity
                                    {
                                        Id = d.Id,
                                        CollectionId = d.CollectionId,
@@ -278,6 +281,5 @@ namespace EasyPOS.Controllers
 
             return collectionDetail.ToList();
         }
-
     }
 }

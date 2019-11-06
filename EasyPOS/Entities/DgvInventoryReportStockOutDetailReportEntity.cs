@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    public class DgvRepInventoryReportStockCountReportEntity
+    public class DgvInventoryReportStockOutDetailReportEntity
     {
-        public String ColumnStockCountDate { get; set; }
-        public String ColumnStockCountNumber { get; set; }
+        public String ColumnStockOutDate { get; set; }
+        public String ColumnStockOutNumber { get; set; }
         public String ColumnRemarks { get; set; }
         public String ColumnItem { get; set; }
         public String ColumnUnit { get; set; }

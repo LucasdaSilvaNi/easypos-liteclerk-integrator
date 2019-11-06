@@ -16,9 +16,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 {
     public partial class RepSalesReportCancelSalesSummaryReportForm : Form
     {
-        public List<Entities.DgvSalesReportCancelSalesReportEntity> cancelledSalesList;
+        public List<Entities.DgvSalesReportCancelledSalesSummaryReportEntity> cancelledSalesList;
         public BindingSource dataCancelSalesListSource = new BindingSource();
-        public PagedList<Entities.DgvSalesReportCancelSalesReportEntity> pageList;
+        public PagedList<Entities.DgvSalesReportCancelledSalesSummaryReportEntity> pageList;
         public Int32 pageNumber = 1;
         public Int32 pageSize = 50;
 
@@ -35,18 +35,18 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             GetCancelSalesSummaryReportSource();
         }
 
-        public List<Entities.DgvSalesReportCancelSalesReportEntity> GetCancelSalesSummaryListData(DateTime startDate, DateTime endDate)
+        public List<Entities.DgvSalesReportCancelledSalesSummaryReportEntity> GetCancelSalesSummaryListData(DateTime startDate, DateTime endDate)
         {
-            List<Entities.DgvSalesReportCancelSalesReportEntity> rowList = new List<Entities.DgvSalesReportCancelSalesReportEntity>();
+            List<Entities.DgvSalesReportCancelledSalesSummaryReportEntity> rowList = new List<Entities.DgvSalesReportCancelledSalesSummaryReportEntity>();
 
             Controllers.RepSalesReportController repSalesReportController = new Controllers.RepSalesReportController();
 
-            var cancelSalesList = repSalesReportController.CancelSalesSummaryList(startDate, endDate);
+            var cancelSalesList = repSalesReportController.CancelledSalesSummaryReport(startDate, endDate);
             if (cancelSalesList.Any())
             {
                 Decimal totalAmount = 0;
                 var row = from d in cancelSalesList
-                          select new Entities.DgvSalesReportCancelSalesReportEntity
+                          select new Entities.DgvSalesReportCancelledSalesSummaryReportEntity
                           {
                               ColumnId = d.Id,
                               ColumnPeriodId = d.Id,
@@ -87,7 +87,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             if (cancelledSalesList.Any())
             {
 
-                pageList = new PagedList<Entities.DgvSalesReportCancelSalesReportEntity>(cancelledSalesList, pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvSalesReportCancelledSalesSummaryReportEntity>(cancelledSalesList, pageNumber, pageSize);
 
                 if (pageList.PageCount == 1)
                 {
@@ -140,7 +140,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
         private void buttonSalesListPageListFirst_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvSalesReportCancelSalesReportEntity>(cancelledSalesList, 1, pageSize);
+            pageList = new PagedList<Entities.DgvSalesReportCancelledSalesSummaryReportEntity>(cancelledSalesList, 1, pageSize);
             dataCancelSalesListSource.DataSource = pageList;
 
             buttonPageListFirst.Enabled = false;
@@ -156,7 +156,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         {
             if (pageList.HasPreviousPage == true)
             {
-                pageList = new PagedList<Entities.DgvSalesReportCancelSalesReportEntity>(cancelledSalesList, --pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvSalesReportCancelledSalesSummaryReportEntity>(cancelledSalesList, --pageNumber, pageSize);
                 dataCancelSalesListSource.DataSource = pageList;
             }
 
@@ -176,7 +176,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         {
             if (pageList.HasNextPage == true)
             {
-                pageList = new PagedList<Entities.DgvSalesReportCancelSalesReportEntity>(cancelledSalesList, ++pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvSalesReportCancelledSalesSummaryReportEntity>(cancelledSalesList, ++pageNumber, pageSize);
                 dataCancelSalesListSource.DataSource = pageList;
             }
 
@@ -194,7 +194,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
         private void buttonSalesListPageListLast_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvSalesReportCancelSalesReportEntity>(cancelledSalesList, pageList.PageCount, pageSize);
+            pageList = new PagedList<Entities.DgvSalesReportCancelledSalesSummaryReportEntity>(cancelledSalesList, pageList.PageCount, pageSize);
             dataCancelSalesListSource.DataSource = pageList;
 
             buttonPageListFirst.Enabled = true;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    class RepInventoryReportStockCountEntity
+    class RepInventoryReportStockCountDetailReportEntity
     {
         public Int32 Id { get; set; }
         public String StockCountDate { get; set; }

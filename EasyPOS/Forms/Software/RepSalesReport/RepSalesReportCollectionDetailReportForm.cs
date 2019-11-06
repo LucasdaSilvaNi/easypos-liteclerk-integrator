@@ -16,9 +16,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 {
     public partial class RepSalesReportCollectionDetailReportForm : Form
     {
-        public List<Entities.DgvCollectionDetailReportEntity> collectionDetailList;
+        public List<Entities.DgvSalesReportCollectionDetailReportEntity> collectionDetailList;
         public BindingSource dataCollectionDetailListSource = new BindingSource();
-        public PagedList<Entities.DgvCollectionDetailReportEntity> pageList;
+        public PagedList<Entities.DgvSalesReportCollectionDetailReportEntity> pageList;
         public Int32 pageNumber = 1;
         public Int32 pageSize = 50;
 
@@ -38,18 +38,18 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             GetDataGridViewCollectionDetailReportSource();
         }
 
-        public List<Entities.DgvCollectionDetailReportEntity> GetCollectionDetailListData(DateTime startDate, DateTime endDate, Int32 terminalId)
+        public List<Entities.DgvSalesReportCollectionDetailReportEntity> GetCollectionDetailListData(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
-            List<Entities.DgvCollectionDetailReportEntity> rowList = new List<Entities.DgvCollectionDetailReportEntity>();
+            List<Entities.DgvSalesReportCollectionDetailReportEntity> rowList = new List<Entities.DgvSalesReportCollectionDetailReportEntity>();
 
             Controllers.RepSalesReportController repSalesReportController = new Controllers.RepSalesReportController();
 
-            var collectionDetailList = repSalesReportController.CollectionDetail(startDate, endDate, terminalId);
+            var collectionDetailList = repSalesReportController.CollectionDetailReport(startDate, endDate, terminalId);
             if (collectionDetailList.OrderByDescending(d => d.Id).Any())
             {
                 Decimal totalAmount = 0;
                 var row = from d in collectionDetailList
-                          select new Entities.DgvCollectionDetailReportEntity
+                          select new Entities.DgvSalesReportCollectionDetailReportEntity
                           {
                               ColumnCollectionDate = d.CollectionDate,
                               ColumnCollectionNumber = d.CollectionNumber,
@@ -88,7 +88,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             if (collectionDetailList.Any())
             {
 
-                pageList = new PagedList<Entities.DgvCollectionDetailReportEntity>(collectionDetailList, pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvSalesReportCollectionDetailReportEntity>(collectionDetailList, pageNumber, pageSize);
 
                 if (pageList.PageCount == 1)
                 {
@@ -142,7 +142,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
         private void buttonCollectionListPageListFirst_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvCollectionDetailReportEntity>(collectionDetailList, 1, pageSize);
+            pageList = new PagedList<Entities.DgvSalesReportCollectionDetailReportEntity>(collectionDetailList, 1, pageSize);
             dataCollectionDetailListSource.DataSource = pageList;
 
             buttonPageListFirst.Enabled = false;
@@ -158,7 +158,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         {
             if (pageList.HasPreviousPage == true)
             {
-                pageList = new PagedList<Entities.DgvCollectionDetailReportEntity>(collectionDetailList, --pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvSalesReportCollectionDetailReportEntity>(collectionDetailList, --pageNumber, pageSize);
                 dataCollectionDetailListSource.DataSource = pageList;
             }
 
@@ -178,7 +178,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         {
             if (pageList.HasNextPage == true)
             {
-                pageList = new PagedList<Entities.DgvCollectionDetailReportEntity>(collectionDetailList, ++pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvSalesReportCollectionDetailReportEntity>(collectionDetailList, ++pageNumber, pageSize);
                 dataCollectionDetailListSource.DataSource = pageList;
             }
 
@@ -196,7 +196,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
         private void buttonCollectionListPageListLast_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvCollectionDetailReportEntity>(collectionDetailList, pageList.PageCount, pageSize);
+            pageList = new PagedList<Entities.DgvSalesReportCollectionDetailReportEntity>(collectionDetailList, pageList.PageCount, pageSize);
             dataCollectionDetailListSource.DataSource = pageList;
 
             buttonPageListFirst.Enabled = true;

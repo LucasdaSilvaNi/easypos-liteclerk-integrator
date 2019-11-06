@@ -16,9 +16,9 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
 {
     public partial class RepInventoryReportStockInDetailReportForm : Form
     {
-        public List<Entities.DgvRepInventoryReportStockInDetailReportEntity> stockInDetailReportList;
+        public List<Entities.DgvInventoryReportStockInDetailReportEntity> stockInDetailReportList;
         public BindingSource dataStockInDetailReportListSource = new BindingSource();
-        public PagedList<Entities.DgvRepInventoryReportStockInDetailReportEntity> pageList;
+        public PagedList<Entities.DgvInventoryReportStockInDetailReportEntity> pageList;
         public Int32 pageNumber = 1;
         public Int32 pageSize = 50;
 
@@ -36,18 +36,18 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             GetDataGridViewStockInDetailSource();
         }
 
-        public List<Entities.DgvRepInventoryReportStockInDetailReportEntity> GetStockInDetailReportListData(DateTime startDate, DateTime endDate)
+        public List<Entities.DgvInventoryReportStockInDetailReportEntity> GetStockInDetailReportListData(DateTime startDate, DateTime endDate)
         {
-            List<Entities.DgvRepInventoryReportStockInDetailReportEntity> rowList = new List<Entities.DgvRepInventoryReportStockInDetailReportEntity>();
+            List<Entities.DgvInventoryReportStockInDetailReportEntity> rowList = new List<Entities.DgvInventoryReportStockInDetailReportEntity>();
 
             Controllers.RepInventoryReportController repInvetoryReportController = new Controllers.RepInventoryReportController();
 
-            var stockInDetailReportList = repInvetoryReportController.GetListStockInDetail(startDate, endDate);
+            var stockInDetailReportList = repInvetoryReportController.StockInDetailReport(startDate, endDate);
             if (stockInDetailReportList.OrderByDescending(d => d.Id).Any())
             {
                 Decimal totalAmount = 0;
                 var row = from d in stockInDetailReportList
-                          select new Entities.DgvRepInventoryReportStockInDetailReportEntity
+                          select new Entities.DgvInventoryReportStockInDetailReportEntity
                           {
                               ColumnStockInDate = d.StockInDate,
                               ColumnStockInNumber = d.StockInNumber,
@@ -77,7 +77,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             stockInDetailReportList = GetStockInDetailReportListData(startDate, endDate);
             if (stockInDetailReportList.Any())
             {
-                pageList = new PagedList<Entities.DgvRepInventoryReportStockInDetailReportEntity>(stockInDetailReportList, pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvInventoryReportStockInDetailReportEntity>(stockInDetailReportList, pageNumber, pageSize);
 
                 if (pageList.PageCount == 1)
                 {
@@ -130,7 +130,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
 
         private void buttonPageListFirst_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvRepInventoryReportStockInDetailReportEntity>(stockInDetailReportList, 1, pageSize);
+            pageList = new PagedList<Entities.DgvInventoryReportStockInDetailReportEntity>(stockInDetailReportList, 1, pageSize);
             dataStockInDetailReportListSource.DataSource = pageList;
 
             buttonPageListFirst.Enabled = false;
@@ -146,7 +146,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
         {
             if (pageList.HasPreviousPage == true)
             {
-                pageList = new PagedList<Entities.DgvRepInventoryReportStockInDetailReportEntity>(stockInDetailReportList, --pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvInventoryReportStockInDetailReportEntity>(stockInDetailReportList, --pageNumber, pageSize);
                 dataStockInDetailReportListSource.DataSource = pageList;
             }
 
@@ -166,7 +166,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
         {
             if (pageList.HasNextPage == true)
             {
-                pageList = new PagedList<Entities.DgvRepInventoryReportStockInDetailReportEntity>(stockInDetailReportList, ++pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvInventoryReportStockInDetailReportEntity>(stockInDetailReportList, ++pageNumber, pageSize);
                 dataStockInDetailReportListSource.DataSource = pageList;
             }
 
@@ -184,7 +184,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
 
         private void buttonPageListLast_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvRepInventoryReportStockInDetailReportEntity>(stockInDetailReportList, pageList.PageCount, pageSize);
+            pageList = new PagedList<Entities.DgvInventoryReportStockInDetailReportEntity>(stockInDetailReportList, pageList.PageCount, pageSize);
             dataStockInDetailReportListSource.DataSource = pageList;
 
             buttonPageListFirst.Enabled = true;

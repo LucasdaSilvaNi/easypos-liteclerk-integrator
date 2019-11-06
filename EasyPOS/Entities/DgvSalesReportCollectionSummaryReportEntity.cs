@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    public class DgvCollectionReportEntity
+    public class DgvSalesReportCollectionSummaryReportEntity
     {
         public String ColumnCollectionDate { get; set; }
         public String ColumnCollectionNumber { get; set; }
