@@ -192,11 +192,11 @@ namespace EasyPOS.Controllers
         public List<Entities.RepInventoryReportStockCountEntity> GetListStockCountDetail(DateTime startDate, DateTime endDate)
         {
             var stockCountDetails = from d in db.TrnStockCountLines
-                                  where d.TrnStockCount.StockCountDate >= startDate
-                                        && d.TrnStockCount.StockCountDate <= endDate
-                                  select new Entities.RepInventoryReportStockCountEntity
-                                  {
-                                      Id = d.Id,
+                                    where d.TrnStockCount.StockCountDate >= startDate
+                                          && d.TrnStockCount.StockCountDate <= endDate
+                                    select new Entities.RepInventoryReportStockCountEntity
+                                    {
+                                        Id = d.Id,
                                         StockCountDate = d.TrnStockCount.StockCountDate.ToShortDateString(),
                                         StockCountNumber = d.TrnStockCount.StockCountNumber,
                                         Remarks = d.TrnStockCount.Remarks,
@@ -205,7 +205,7 @@ namespace EasyPOS.Controllers
                                         Quantity = d.Quantity,
                                         Cost = d.Cost,
                                         Amount = d.Amount
-                                  };
+                                    };
             return stockCountDetails.OrderByDescending(d => d.Id).ToList();
         }
     }

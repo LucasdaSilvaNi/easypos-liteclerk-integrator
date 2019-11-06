@@ -18,6 +18,7 @@ namespace EasyPOS.Entities
         public String Customer { get; set; }
         public String SalesNumber { get; set; }
         public Decimal Amount { get; set; }
+        public Decimal ChangeAmount { get; set; }
         public Int32 PayTypeId { get; set; }
         public String PayType { get; set; }
         public String CheckNumber { get; set; }

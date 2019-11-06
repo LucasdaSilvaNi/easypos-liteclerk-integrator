@@ -62,10 +62,10 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                     comboBoxTerminal.Visible = true;
                     dateTimePickerDate.Visible = true;
                     labelDate.Visible = true;
-                    comboBoxUser.Visible = false;
-                    labelUser.Visible = false;
-                    textBoxRemittanceNumber.Visible = false;
-                    labelRemittanceNumber.Visible = false;
+                    comboBoxUser.Visible = true;
+                    labelUser.Visible = true;
+                    textBoxRemittanceNumber.Visible = true;
+                    labelRemittanceNumber.Visible = true;
                     break;
                 default:
                     break;
@@ -80,7 +80,8 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                 switch (selectedItem)
                 {
                     case "Remittance Report":
-                        //RepRemittanceReportRemittanceReportForm repRemittanceReportRemittanceReport = new RepRemittanceReportRemittanceReportForm();
+                        RepRemittanceReportRemittanceReportForm repRemittanceReportRemittanceReport = new RepRemittanceReportRemittanceReportForm(this, dateTimePickerDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxUser.SelectedValue), textBoxRemittanceNumber.Text);
+                        repRemittanceReportRemittanceReport.ShowDialog();
                         break;
                     default:
                         break;

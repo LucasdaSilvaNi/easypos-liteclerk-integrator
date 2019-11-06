@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,9 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             filterTerminalId = terminalId;
             filterUserId = userId;
             filterRemittanceNumber = remittanceNumber;
+
+            printDocumentRemittanceReport.DefaultPageSettings.PaperSize = new PaperSize("Z Reading Report", 255, 1000);
+            RemittanceReportDataSource();
         }
 
         private void buttonPrint_Click(object sender, EventArgs e)
@@ -53,7 +57,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             printDocumentRemittanceReport.Print();
         }
 
-        public void GetRemittanceReportDataSource()
+        public void RemittanceReportDataSource()
         {
             Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
 
@@ -81,7 +85,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                 CollectionLines = new List<Entities.TrnCollectionLineEntity>()
             };
 
-            repRemitanceReportEntity.RemittanceDate = filterDate.ToShortDateString();
+            
 
             var remittance = from d in db.TrnDisbursements
                              where d.DisbursementDate == filterDate
@@ -119,6 +123,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             {
                 repRemitanceReportEntity.RemittanceNumber = remittance.FirstOrDefault().DisbursementNumber;
                 repRemitanceReportEntity.RemittanceDate = remittance.FirstOrDefault().DisbursementDate.ToShortDateString();
+
                 var terminal = from d in db.MstTerminals
                                where d.Id == filterTerminalId
                                select d;
@@ -134,7 +139,6 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                 {
                     repRemitanceReportEntity.PreparedBy = preparedBy.FirstOrDefault().UserName;
                 }
-
                 repRemitanceReportEntity.Remarks = remittance.FirstOrDefault().Remarks;
                 repRemitanceReportEntity.Amount1000 = remittance.FirstOrDefault().Amount1000 != null ? remittance.FirstOrDefault().Amount1000 : 0;
                 repRemitanceReportEntity.Amount500 = remittance.FirstOrDefault().Amount500 != null ? remittance.FirstOrDefault().Amount500 : 0;
@@ -149,8 +153,6 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                 repRemitanceReportEntity.Amount010 = remittance.FirstOrDefault().Amount010 != null ? remittance.FirstOrDefault().Amount010 : 0;
                 repRemitanceReportEntity.Amount005 = remittance.FirstOrDefault().Amount005 != null ? remittance.FirstOrDefault().Amount005 : 0;
                 repRemitanceReportEntity.Amount001 = remittance.FirstOrDefault().Amount001 != null ? remittance.FirstOrDefault().Amount001 : 0;
-
-
 
                 IEnumerable remittanceObject = repRemitanceReportEntity as IEnumerable;
                 Decimal totalRemittanceAmount = 0;
@@ -327,63 +329,63 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             graphics.DrawString(remarksData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(remarksData, fontArial8Regular).Height;
 
-            // =======
-            // 
-            // =======
+            // ==========
+            // Amount1000
+            // ==========
             String amount1000Label = "\nAmount 1000";
             String amount1000Data = "\n" + amount1000;
             graphics.DrawString(amount1000Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount1000Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount1000Data, fontArial8Regular).Height;
 
-            // =======
-            // 
-            // =======
+            // =========
+            // Amount500
+            // =========
             String amount500Label = "\nAmount 500";
             String amount500Data = "\n" + amount500;
             graphics.DrawString(amount500Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount500Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount500Data, fontArial8Regular).Height;
 
-            // =======
-            // 
-            // =======
+            // =========
+            // Amount200
+            // =========
             String amount200Label = "\nAmount 200";
             String amount200Data = "\n" + amount200;
             graphics.DrawString(amount200Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount200Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount200Data, fontArial8Regular).Height;
 
-            // =======
-            // 
-            // =======
+            // =========
+            // Amount100
+            // =========
             String amount100Label = "\nAmount 100";
             String amount100Data = "\n" + amount100;
             graphics.DrawString(amount100Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount100Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount100Data, fontArial8Regular).Height;
 
-            // =======
-            // 
-            // =======
+            // ========
+            // Amount50
+            // ========
             String amount50Label = "\nAmount 50";
             String amount50Data = "\n" + amount50;
             graphics.DrawString(amount50Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount50Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount50Data, fontArial8Regular).Height;
 
-            // =======
-            // 
-            // =======
+            // ========
+            // Amount20
+            // ========
             String amount20Label = "\nAmount 20";
             String amount20Data = "\n" + amount20;
             graphics.DrawString(amount20Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount20Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount20Data, fontArial8Regular).Height;
 
-            // =======
-            // 
-            // =======
+            // ========
+            // Amount10
+            // ========
             String amount10Label = "\nAmount 10";
             String amount10Data = "\n" + amount10;
             graphics.DrawString(amount10Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
@@ -391,7 +393,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             y += graphics.MeasureString(amount10Data, fontArial8Regular).Height;
 
             // =======
-            // 
+            // Amount1
             // =======
             String amount1Label = "\nAmount 1";
             String amount1Data = "\n" + amount1;
@@ -399,46 +401,46 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             graphics.DrawString(amount1Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount1Data, fontArial8Regular).Height;
 
-            // =======
-            // 
-            // =======
-            String amount025Label = "\nAmount 1";
-            String amount025Data = "\n" + amount1;
+            // ==========
+            // Amount 025
+            // ==========
+            String amount025Label = "\nAmount 025";
+            String amount025Data = "\n" + amount025;
             graphics.DrawString(amount025Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount025Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount025Data, fontArial8Regular).Height;
 
-            // =======
-            // 
-            // =======
+            // ==========
+            // Amount 010
+            // ==========
             String amount010Label = "\nAmount 010";
             String amount010Data = "\n" + amount010;
             graphics.DrawString(amount010Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount010Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount010Data, fontArial8Regular).Height;
 
-            // =======
-            // 
-            // =======
+            // ==========
+            // Amount 005
+            // ==========
             String amount005Label = "\nAmount 005";
             String amount005Data = "\n" + amount005;
             graphics.DrawString(amount005Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount005Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount005Data, fontArial8Regular).Height;
 
-            // =======
-            // 
-            // =======
+            // ==========
+            // Amount 001
+            // ==========
             String amount001Label = "\nAmount 001";
             String amount001Data = "\n" + amount001;
             graphics.DrawString(amount001Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount001Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount001Data, fontArial8Regular).Height;
 
-            // =======
-            // 
-            // =======
-            String totalAmountLabel = "\nAmount 001";
+            // ============
+            // Total Amount
+            // ============
+            String totalAmountLabel = "\nTotal Amount 001";
             String totalAmountData = "\n" + totalAmount;
             graphics.DrawString(totalAmountLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(totalAmountData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
