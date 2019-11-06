@@ -43,24 +43,12 @@ namespace EasyPOS.Forms.Software.MstUser
 
         public void UpdateComponents(Boolean isLocked)
         {
-            if (isLocked == true)
-            {
-                buttonLock.Enabled = false;
-                buttonUnlock.Enabled = true;
+            buttonLock.Enabled = !isLocked;
+            buttonUnlock.Enabled = isLocked;
 
-                textBoxFullName.ReadOnly = true;
-                textBoxUserName.ReadOnly = true;
-                textBoxPassword.ReadOnly = true;
-            }
-            else
-            {
-                buttonLock.Enabled = true;
-                buttonUnlock.Enabled = false;
-
-                textBoxFullName.ReadOnly = false;
-                textBoxUserName.ReadOnly = false;
-                textBoxPassword.ReadOnly = false;
-            }
+            textBoxFullName.Enabled = !isLocked;
+            textBoxUserName.Enabled = !isLocked; ;
+            textBoxPassword.Enabled = !isLocked; ;
         }
 
         private void buttonLock_Click(object sender, EventArgs e)

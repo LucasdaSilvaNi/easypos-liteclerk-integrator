@@ -88,6 +88,36 @@ namespace EasyPOS.Controllers
             return stockOut.FirstOrDefault();
         }
 
+        // ========================
+        // Dropdown List - Account
+        // ========================
+        public List<Entities.MstAccountEntity> DropdownListStockOutAccount()
+        {
+            var accounts = from d in db.MstAccounts
+                           select new Entities.MstAccountEntity
+                           {
+                               Id = d.Id,
+                               Account = d.Account
+                           };
+
+            return accounts.ToList();
+        }
+
+        // ====================
+        // Dropdown List - User
+        // ====================
+        public List<Entities.MstUserEntity> DropdownListStockOutUser()
+        {
+            var users = from d in db.MstUsers
+                        select new Entities.MstUserEntity
+                        {
+                            Id = d.Id,
+                            FullName = d.FullName
+                        };
+
+            return users.ToList();
+        }
+
         // =============
         // Add Stock-Out
         // =============
@@ -141,7 +171,7 @@ namespace EasyPOS.Controllers
                 db.TrnStockOuts.InsertOnSubmit(newStockOut);
                 db.SubmitChanges();
 
-                return new String[] { "", newStockOut.ToString() };
+                return new String[] { "", newStockOut.Id.ToString() };
             }
             catch (Exception e)
             {
@@ -162,15 +192,34 @@ namespace EasyPOS.Controllers
                     return new String[] { "Current login user not found.", "0" };
                 }
 
-                var users = from d in db.MstUsers
-                            where d.Id == objStockOut.CheckedBy
-                            && d.Id == objStockOut.ApprovedBy
-                            && d.IsLocked == true
-                            select d;
+                var account = from d in db.MstAccounts
+                              where d.Id == objStockOut.AccountId
+                              && d.IsLocked == true
+                              select d;
 
-                if (users.Any() == false)
+                if (account.Any() == false)
                 {
-                    return new String[] { "Some users are not found.", "0" };
+                    return new String[] { "Account not found.", "0" };
+                }
+
+                var checkedByUser = from d in db.MstUsers
+                                    where d.Id == objStockOut.CheckedBy
+                                    && d.IsLocked == true
+                                    select d;
+
+                if (checkedByUser.Any() == false)
+                {
+                    return new String[] { "Checked by user not found.", "0" };
+                }
+
+                var approvedByUser = from d in db.MstUsers
+                                     where d.Id == objStockOut.ApprovedBy
+                                     && d.IsLocked == true
+                                     select d;
+
+                if (approvedByUser.Any() == false)
+                {
+                    return new String[] { "Approved by user not found.", "0" };
                 }
 
                 var stockOut = from d in db.TrnStockOuts
@@ -179,18 +228,19 @@ namespace EasyPOS.Controllers
 
                 if (stockOut.Any())
                 {
-                    if (stockOut.FirstOrDefault().IsLocked == false)
+                    if (stockOut.FirstOrDefault().IsLocked == true)
                     {
-                        return new String[] { "Already unlocked.", "0" };
+                        return new String[] { "Already locked.", "0" };
                     }
 
-                    var updateStockOut = stockOut.FirstOrDefault();
-                    updateStockOut.Remarks = objStockOut.Remarks;
-                    updateStockOut.CheckedBy = objStockOut.CheckedBy;
-                    updateStockOut.ApprovedBy = objStockOut.ApprovedBy;
-                    updateStockOut.IsLocked = true;
-                    updateStockOut.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
-                    updateStockOut.UpdateDateTime = DateTime.Today;
+                    var lockStockOut = stockOut.FirstOrDefault();
+                    lockStockOut.AccountId = objStockOut.AccountId;
+                    lockStockOut.Remarks = objStockOut.Remarks;
+                    lockStockOut.CheckedBy = objStockOut.CheckedBy;
+                    lockStockOut.ApprovedBy = objStockOut.ApprovedBy;
+                    lockStockOut.IsLocked = true;
+                    lockStockOut.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
+                    lockStockOut.UpdateDateTime = DateTime.Today;
                     db.SubmitChanges();
 
                     return new String[] { "", "1" };

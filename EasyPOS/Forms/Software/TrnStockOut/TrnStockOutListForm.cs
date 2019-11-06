@@ -144,7 +144,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
             String[] addStockOut = trnStockOutController.AddStockOut();
             if (addStockOut[1].Equals("0") == false)
             {
-                //sysSoftwareForm.AddTabPageStockOutDetail(this, trnStockOutController.DetailStockOut(Convert.ToInt32(addStockOut[1])));
+                sysSoftwareForm.AddTabPageStockOutDetail(this, trnStockOutController.DetailStockOut(Convert.ToInt32(addStockOut[1])));
                 UpdateStockOutListDataSource();
             }
             else

@@ -48,6 +48,8 @@ namespace EasyPOS.Controllers
                                Remarks = d.Remarks,
                                IsReturn = d.IsReturn,
                                CollectionId = d.CollectionId,
+                               CollectionNumber = d.CollectionId != null ? d.TrnCollection.CollectionNumber : "",
+                               SalesNumber = d.CollectionId != null ? d.TrnCollection.TrnSale.SalesNumber : "",
                                PurchaseOrderId = d.PurchaseOrderId,
                                PreparedBy = d.PreparedBy,
                                CheckedBy = d.CheckedBy,
@@ -82,6 +84,8 @@ namespace EasyPOS.Controllers
                               Remarks = d.Remarks,
                               IsReturn = d.IsReturn,
                               CollectionId = d.CollectionId,
+                              CollectionNumber = d.CollectionId != null ? d.TrnCollection.CollectionNumber : "",
+                              SalesNumber = d.CollectionId != null ? d.TrnCollection.TrnSale.SalesNumber : "",
                               PurchaseOrderId = d.PurchaseOrderId,
                               PreparedBy = d.PreparedBy,
                               CheckedBy = d.CheckedBy,
@@ -96,6 +100,36 @@ namespace EasyPOS.Controllers
                           };
 
             return stockIn.FirstOrDefault();
+        }
+
+        // ========================
+        // Dropdown List - Supplier
+        // ========================
+        public List<Entities.MstSupplierEntity> DropdownListStockInSupplier()
+        {
+            var suppliers = from d in db.MstSuppliers
+                            select new Entities.MstSupplierEntity
+                            {
+                                Id = d.Id,
+                                Supplier = d.Supplier
+                            };
+
+            return suppliers.ToList();
+        }
+
+        // ====================
+        // Dropdown List - User
+        // ====================
+        public List<Entities.MstUserEntity> DropdownListStockInUser()
+        {
+            var users = from d in db.MstUsers
+                        select new Entities.MstUserEntity
+                        {
+                            Id = d.Id,
+                            FullName = d.FullName
+                        };
+
+            return users.ToList();
         }
 
         // ============ 
@@ -177,35 +211,34 @@ namespace EasyPOS.Controllers
                     return new String[] { "Current login user not found.", "0" };
                 }
 
-                Int32? collectionId = null;
-                Int32? salesId = null;
+                var supplier = from d in db.MstSuppliers
+                               where d.Id == objStockIn.SupplierId
+                               && d.IsLocked == true
+                               select d;
 
-                if (objStockIn.CollectionId != null)
+                if (supplier.Any() == false)
                 {
-                    var collection = from d in db.TrnCollections
-                                     where d.Id == objStockIn.CollectionId
-                                     select d;
-
-                    if (collection.Any())
-                    {
-                        collectionId = collection.FirstOrDefault().Id;
-                        salesId = collection.FirstOrDefault().TrnSale.Id;
-                    }
-                    else
-                    {
-                        return new String[] { "Collection not found.", "0" };
-                    }
+                    return new String[] { "Supplier not found.", "0" };
                 }
 
-                var users = from d in db.MstUsers
-                            where d.Id == objStockIn.CheckedBy
-                            && d.Id == objStockIn.ApprovedBy
-                            && d.IsLocked == true
-                            select d;
+                var checkedByUser = from d in db.MstUsers
+                                    where d.Id == objStockIn.CheckedBy
+                                    && d.IsLocked == true
+                                    select d;
 
-                if (users.Any() == false)
+                if (checkedByUser.Any() == false)
                 {
-                    return new String[] { "Some users are not found.", "0" };
+                    return new String[] { "Checked by user not found.", "0" };
+                }
+
+                var approvedByUser = from d in db.MstUsers
+                                     where d.Id == objStockIn.ApprovedBy
+                                     && d.IsLocked == true
+                                     select d;
+
+                if (approvedByUser.Any() == false)
+                {
+                    return new String[] { "Approved by user not found.", "0" };
                 }
 
                 var stockIn = from d in db.TrnStockIns
@@ -220,12 +253,12 @@ namespace EasyPOS.Controllers
                     }
 
                     var lockStockIn = stockIn.FirstOrDefault();
+                    lockStockIn.StockInDate = Convert.ToDateTime(objStockIn.StockInDate);
+                    lockStockIn.SupplierId = objStockIn.SupplierId;
                     lockStockIn.Remarks = objStockIn.Remarks;
                     lockStockIn.IsReturn = objStockIn.IsReturn;
-                    lockStockIn.CollectionId = collectionId;
                     lockStockIn.CheckedBy = objStockIn.CheckedBy;
                     lockStockIn.ApprovedBy = objStockIn.ApprovedBy;
-                    lockStockIn.SalesId = salesId;
                     lockStockIn.IsLocked = true;
                     lockStockIn.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
                     lockStockIn.UpdateDateTime = DateTime.Now;

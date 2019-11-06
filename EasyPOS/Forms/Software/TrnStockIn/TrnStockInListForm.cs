@@ -145,7 +145,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             String[] addStockIn = trnStockInController.AddStockIn();
             if (addStockIn[1].Equals("0") == false)
             {
-                //sysSoftwareForm.AddTabPageStockInDetail(this, trnStockInController.DetailStockIn(Convert.ToInt32(addStockIn[1])));
+                sysSoftwareForm.AddTabPageStockInDetail(this, trnStockInController.DetailStockIn(Convert.ToInt32(addStockIn[1])));
                 UpdateStockInListDataSource();
             }
             else
