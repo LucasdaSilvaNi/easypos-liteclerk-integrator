@@ -8,8 +8,14 @@ namespace EasyPOS.Controllers
 {
     class TrnStockInLineController
     {
+        // ============
+        // Data Context
+        // ============
         public Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
 
+        // ==================
+        // List Stock-In Line
+        // ==================
         public List<Entities.TrnStockInLineEntity> ListStockInLine(Int32 stockInId)
         {
             var stockInLines = from d in db.TrnStockInLines
@@ -19,37 +25,41 @@ namespace EasyPOS.Controllers
                                    Id = d.Id,
                                    StockInId = d.StockInId,
                                    ItemId = d.ItemId,
+                                   ItemDescription = d.MstItem.ItemDescription,
                                    UnitId = d.UnitId,
+                                   Unit = d.MstUnit.Unit,
                                    Quantity = d.Quantity,
                                    Cost = d.Cost,
                                    Amount = d.Amount,
-                                   ExpiryDate = d.ExpiryDate.ToString(),
+                                   ExpiryDate = d.ExpiryDate != null ? Convert.ToDateTime(d.ExpiryDate).ToShortDateString() : " ",
                                    LotNumber = d.LotNumber,
                                    AssetAccountId = d.AssetAccountId,
+                                   AssetAccount = d.MstAccount.Account,
                                    Price = d.Price
                                };
+
             return stockInLines.OrderByDescending(d => d.Id).ToList();
         }
 
         // ====================
-        // Detail - StockInLine
+        // Detail Stock-In Line
         // ====================
-        public Entities.TrnStockInLineEntity DetailStockInLine(Entities.TrnStockInLineEntity objStockInLine)
+        public Entities.TrnStockInLineEntity DetailStockInLine(Int32 id)
         {
             var stockInLine = from d in db.TrnStockInLines
-                              where d.Id == objStockInLine.Id
+                              where d.Id == id
                               select new Entities.TrnStockInLineEntity
                               {
                                   Id = d.Id,
                                   StockInId = d.StockInId,
                                   ItemId = d.ItemId,
-                                  ItemItemDescription = d.MstItem.ItemDescription,
+                                  ItemDescription = d.MstItem.ItemDescription,
                                   UnitId = d.UnitId,
                                   Unit = d.MstUnit.Unit,
                                   Quantity = d.Quantity,
                                   Cost = d.Cost,
                                   Amount = d.Amount,
-                                  ExpiryDate = d.ExpiryDate.ToString(),
+                                  ExpiryDate = d.ExpiryDate != null ? Convert.ToDateTime(d.ExpiryDate).ToShortDateString() : " ",
                                   LotNumber = d.LotNumber,
                                   AssetAccountId = d.AssetAccountId,
                                   AssetAccount = d.MstAccount.Account,
@@ -59,24 +69,73 @@ namespace EasyPOS.Controllers
             return stockInLine.FirstOrDefault();
         }
 
+
+        // ====================
+        // Dropdown List - Item
+        // ====================
+        public List<Entities.MstItemEntity> DropdownListStockInLineItem()
+        {
+            var items = from d in db.MstItems
+                        select new Entities.MstItemEntity
+                        {
+                            Id = d.Id,
+                            ItemDescription = d.ItemDescription,
+                            UnitId = d.UnitId,
+                            Unit = d.MstUnit.Unit
+                        };
+
+            return items.ToList();
+        }
+
+        // ====================
+        // Dropdown List - Unit
+        // ====================
+        public List<Entities.MstUnitEntity> DropdownListStockInLineUnit()
+        {
+            var units = from d in db.MstUnits
+                        select new Entities.MstUnitEntity
+                        {
+                            Id = d.Id,
+                            Unit = d.Unit
+                        };
+
+            return units.ToList();
+        }
+
+        // =======================
+        // Dropdown List - Account
+        // =======================
+        public List<Entities.MstAccountEntity> DropdownListStockInLineAccount()
+        {
+            var accounts = from d in db.MstAccounts
+                           select new Entities.MstAccountEntity
+                           {
+                               Id = d.Id,
+                               Account = d.Account
+                           };
+
+            return accounts.ToList();
+        }
+
         // =================
-        // Add - StockInLine
+        // Add Stock-In Line
         // =================
-        public String[] AddStockInLine(int stockInId, string barCode)
+        public String[] AddStockInLine(Entities.TrnStockInLineEntity objStockInLine)
         {
             try
             {
                 var stockIn = from d in db.TrnStockIns
-                              where d.Id == stockInId
+                              where d.Id == objStockInLine.StockInId
                               select d;
 
                 if (stockIn.Any() == false)
                 {
-                    return new String[] { "StockIn transaction not found.", "0" };
+                    return new String[] { "Stock-In transaction not found.", "0" };
                 }
 
                 var item = from d in db.MstItems
-                           where d.BarCode == barCode
+                           where d.Id == objStockInLine.ItemId
+                           && d.IsLocked == true
                            select d;
 
                 if (item.Any())
@@ -84,8 +143,18 @@ namespace EasyPOS.Controllers
                     return new String[] { "Item not found.", "0" };
                 }
 
+                var unit = from d in db.MstUnits
+                           where d.Id == objStockInLine.UnitId
+                           select d;
+
+                if (unit.Any())
+                {
+                    return new String[] { "Unit not found.", "0" };
+                }
+
                 var account = from d in db.MstAccounts
-                              where d.Account.Equals("Inventory")
+                              where d.Id == objStockInLine.AssetAccountId
+                              && d.IsLocked == true
                               select d;
 
                 if (account.Any())
@@ -93,20 +162,18 @@ namespace EasyPOS.Controllers
                     return new String[] { "Account not found.", "0" };
                 }
 
-
                 Data.TrnStockInLine newStockInLine = new Data.TrnStockInLine
                 {
-                    StockInId = stockIn.FirstOrDefault().Id,
-                    ItemId = item.FirstOrDefault().Id,
-                    UnitId = item.FirstOrDefault().UnitId,
-                    Quantity = 1,
-                    Cost = item.FirstOrDefault().Cost,
-                    Amount = item.FirstOrDefault().Cost,
-                    ExpiryDate = null,
-                    LotNumber = null,
-                    AssetAccountId = account.FirstOrDefault().Id,
-                    Price = item.FirstOrDefault().Cost
-
+                    StockInId = objStockInLine.StockInId,
+                    ItemId = objStockInLine.ItemId,
+                    UnitId = objStockInLine.UnitId,
+                    Quantity = objStockInLine.Quantity,
+                    Cost = objStockInLine.Cost,
+                    Amount = objStockInLine.Amount,
+                    ExpiryDate = Convert.ToDateTime(objStockInLine.ExpiryDate),
+                    LotNumber = objStockInLine.LotNumber,
+                    AssetAccountId = objStockInLine.AssetAccountId,
+                    Price = objStockInLine.Price
                 };
 
                 db.TrnStockInLines.InsertOnSubmit(newStockInLine);
@@ -120,21 +187,31 @@ namespace EasyPOS.Controllers
             }
         }
 
-        // =================
-        // Update - StockInLine
-        // =================
-        public String[] UpdateStockInLine(Entities.TrnStockInLineEntity objStockInLine)
+        // ====================
+        // Update Stock-In Line
+        // ====================
+        public String[] UpdateStockInLine(Int32 id, Entities.TrnStockInLineEntity objStockInLine)
         {
             try
             {
                 var stockInLine = from d in db.TrnStockInLines
-                                  where d.Id == objStockInLine.Id
+                                  where d.Id == id
                                   select d;
 
                 if (stockInLine.Any())
                 {
+                    var stockIn = from d in db.TrnStockIns
+                                  where d.Id == objStockInLine.StockInId
+                                  select d;
+
+                    if (stockIn.Any() == false)
+                    {
+                        return new String[] { "Stock-In transaction not found.", "0" };
+                    }
+
                     var item = from d in db.MstItems
-                               where d.Id == objStockInLine.Id
+                               where d.Id == objStockInLine.ItemId
+                               && d.IsLocked == true
                                select d;
 
                     if (item.Any())
@@ -142,8 +219,18 @@ namespace EasyPOS.Controllers
                         return new String[] { "Item not found.", "0" };
                     }
 
+                    var unit = from d in db.MstUnits
+                               where d.Id == objStockInLine.UnitId
+                               select d;
+
+                    if (unit.Any())
+                    {
+                        return new String[] { "Unit not found.", "0" };
+                    }
+
                     var account = from d in db.MstAccounts
                                   where d.Id == objStockInLine.AssetAccountId
+                                  && d.IsLocked == true
                                   select d;
 
                     if (account.Any())
@@ -151,22 +238,15 @@ namespace EasyPOS.Controllers
                         return new String[] { "Account not found.", "0" };
                     }
 
-                    var unit = from d in db.MstUnits
-                               where d.Id == objStockInLine.UnitId
-                               select d;
-                    if (unit.Any())
-                    {
-                        return new String[] { "Unit not found.", "0" };
-                    }
-
                     var updateStockInLine = stockInLine.FirstOrDefault();
-                    updateStockInLine.UnitId = unit.FirstOrDefault().Id;
+                    updateStockInLine.ItemId = objStockInLine.ItemId;
+                    updateStockInLine.UnitId = objStockInLine.UnitId;
                     updateStockInLine.Quantity = objStockInLine.Quantity;
                     updateStockInLine.Cost = objStockInLine.Cost;
                     updateStockInLine.Amount = objStockInLine.Amount;
                     updateStockInLine.ExpiryDate = Convert.ToDateTime(objStockInLine.ExpiryDate);
                     updateStockInLine.LotNumber = objStockInLine.LotNumber;
-                    updateStockInLine.AssetAccountId = account.FirstOrDefault().Id;
+                    updateStockInLine.AssetAccountId = objStockInLine.AssetAccountId;
                     updateStockInLine.Price = objStockInLine.Price;
                     db.SubmitChanges();
 
@@ -174,9 +254,8 @@ namespace EasyPOS.Controllers
                 }
                 else
                 {
-                    return new String[] { "StockIn transaction not found.", "0" };
+                    return new String[] { "Stock-In line not found.", "0" };
                 }
-
             }
             catch (Exception e)
             {
@@ -185,26 +264,27 @@ namespace EasyPOS.Controllers
         }
 
         // ====================
-        // Delete - StockInLine
+        // Delete Stock-In Line
         // ====================
         public String[] DeleteStockInLine(Int32 id)
         {
             try
             {
                 var stockInLine = from d in db.TrnStockInLines
-                                where d.Id == id
-                                select d;
+                                  where d.Id == id
+                                  select d;
 
                 if (stockInLine.Any())
                 {
-                    db.TrnStockInLines.DeleteOnSubmit(stockInLine.FirstOrDefault());
+                    var deleteStockInLine = stockInLine.FirstOrDefault();
+                    db.TrnStockInLines.DeleteOnSubmit(deleteStockInLine);
                     db.SubmitChanges();
 
                     return new String[] { "", "1" };
                 }
                 else
                 {
-                    return new String[] { "StockInLine not found.", "0" };
+                    return new String[] { "Stock-In line not found.", "0" };
                 }
             }
             catch (Exception e)

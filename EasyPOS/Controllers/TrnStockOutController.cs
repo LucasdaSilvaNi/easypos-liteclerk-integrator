@@ -30,7 +30,7 @@ namespace EasyPOS.Controllers
         }
 
         // ==============
-        // Stock-Out List
+        // List Stock-Out
         // ==============
         public List<Entities.TrnStockOutEntity> ListStockOut(DateTime dateFilter, String filter)
         {
@@ -60,7 +60,7 @@ namespace EasyPOS.Controllers
         }
 
         // ================
-        // Stock-Out Detail
+        // Detail Stock-Out
         // ================
         public Entities.TrnStockOutEntity DetailStockOut(Int32 id)
         {

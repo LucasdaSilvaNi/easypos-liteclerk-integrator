@@ -30,7 +30,7 @@ namespace EasyPOS.Controllers
         }
 
         // =============
-        // Stock-In List
+        // List Stock-In 
         // =============
         public List<Entities.TrnStockInEntity> ListStockIn(DateTime dateFilter, String filter)
         {
@@ -67,7 +67,7 @@ namespace EasyPOS.Controllers
         }
 
         // ===============
-        // Stock-In Detail
+        // Detail Stock-In
         // ===============
         public Entities.TrnStockInEntity DetailStockIn(Int32 id)
         {
