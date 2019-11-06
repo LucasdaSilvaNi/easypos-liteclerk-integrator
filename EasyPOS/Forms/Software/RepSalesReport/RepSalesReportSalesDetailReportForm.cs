@@ -209,11 +209,6 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
         }
 
-        private void buttonClose_OnClick(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void buttonGenerateCSV_Click(object sender, EventArgs e)
         {
             try
@@ -274,6 +269,11 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

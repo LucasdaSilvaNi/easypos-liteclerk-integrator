@@ -240,7 +240,7 @@ namespace EasyPOS.Controllers
         // =================
         // Collection Report
         // =================
-        public List<Entities.RepCollectionDetailReportEntity> CollectionDetailList(DateTime startDate, DateTime endDate, Int32 terminalId)
+        public List<Entities.RepCollectionDetailReportEntity> CollectionDetail(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
             var collectionDetail = from d in db.TrnCollectionLines
                                    where d.TrnCollection.CollectionDate >= startDate
@@ -259,8 +259,7 @@ namespace EasyPOS.Controllers
                                        ManualORNumber = d.TrnCollection.ManualORNumber,
                                        Customer = d.TrnCollection.MstCustomer.Customer,
                                        SalesNumber = d.TrnCollection.TrnSale.SalesNumber,
-                                       Amount = d.Amount,
-                                       ChangeAmount = d.TrnCollection.Amount,
+                                       Amount = d.MstPayType.PayType.Equals("Cash") ? d.Amount - d.TrnCollection.ChangeAmount : d.Amount,
                                        PayTypeId = d.PayTypeId,
                                        PayType = d.MstPayType.PayType,
                                        CheckNumber = d.CheckNumber,

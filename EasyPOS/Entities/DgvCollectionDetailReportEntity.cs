@@ -15,7 +15,6 @@ namespace EasyPOS.Entities
         public String ColumnCustomer { get; set; }
         public String ColumnSalesNumber { get; set; }
         public String ColumnAmount { get; set; }
-        public String ChangeAmount { get; set; }
         public String ColumnPayType { get; set; }
         public String ColumnCheckNumber { get; set; }
         public String ColumnCheckDate { get; set; }
