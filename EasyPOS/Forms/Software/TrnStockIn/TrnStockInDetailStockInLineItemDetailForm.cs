@@ -22,23 +22,10 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             trnStockInDetailForm = stockInDetailForm;
             trnStockInLineEntity = stockInLineEntity;
 
-            GetAssetAccountList();
+            GetStockInLineItemDetail();
 
             textBoxStockInLineQuantity.Focus();
             textBoxStockInLineQuantity.SelectAll();
-        }
-
-        public void GetAssetAccountList()
-        {
-            Controllers.TrnStockInLineController trnPOSStockInLineController = new Controllers.TrnStockInLineController();
-            if (trnPOSStockInLineController.DropdownListStockInLineAccount().Any())
-            {
-                comboBoxStockInLineAssetAccount.DataSource = trnPOSStockInLineController.DropdownListStockInLineAccount();
-                comboBoxStockInLineAssetAccount.ValueMember = "Id";
-                comboBoxStockInLineAssetAccount.DisplayMember = "Account";
-
-                GetStockInLineItemDetail();
-            }
         }
 
         public void GetStockInLineItemDetail()
@@ -51,8 +38,8 @@ namespace EasyPOS.Forms.Software.TrnStockIn
 
             if (String.IsNullOrEmpty(trnStockInLineEntity.ExpiryDate) == true)
             {
-                dateTimePickerStockInLineExpiryDate.Format = DateTimePickerFormat.Custom;
-                dateTimePickerStockInLineExpiryDate.CustomFormat = " ";
+                dateTimePickerStockInLineExpiryDate.Value = DateTime.Today;
+                dateTimePickerStockInLineExpiryDate.Text = "";
             }
             else
             {
@@ -60,7 +47,6 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             }
 
             textBoxStockInLineLotNumber.Text = trnStockInLineEntity.LotNumber;
-            comboBoxStockInLineAssetAccount.SelectedValue = trnStockInLineEntity.AssetAccountId;
             textBoxStockInLinePrice.Text = trnStockInLineEntity.Price != null ? Convert.ToDecimal(trnStockInLineEntity.Price).ToString("#,##0.00") : "0.00";
         }
 
@@ -99,7 +85,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             var quantity = Convert.ToDecimal(textBoxStockInLineQuantity.Text);
             var cost = Convert.ToDecimal(textBoxStockInLineCost.Text);
             var amount = Convert.ToDecimal(textBoxStockInLineAmount.Text);
-            var expiryDate = dateTimePickerStockInLineExpiryDate.Text == "" ? null : dateTimePickerStockInLineExpiryDate.Value.ToShortDateString();
+            var expiryDate = dateTimePickerStockInLineExpiryDate.Value.ToShortDateString();
             var lotNumber = textBoxStockInLineLotNumber.Text;
             var assetAccountId = trnStockInLineEntity.AssetAccountId;
             var assetAccount = trnStockInLineEntity.AssetAccount;
@@ -193,6 +179,24 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             }
         }
 
+        private void textBoxStockInLinePrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '-') && ((sender as TextBox).Text.IndexOf('-') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
         private void textBoxStockInLineQuantity_TextChanged(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(textBoxStockInLineQuantity.Text))
@@ -213,6 +217,14 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             ComputeAmount();
         }
 
+        private void textBoxStockInLinePrice_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBoxStockInLinePrice.Text))
+            {
+                textBoxStockInLinePrice.Text = "0.00";
+            }
+        }
+
         private void textBoxStockInLineQuantity_Leave(object sender, EventArgs e)
         {
             textBoxStockInLineQuantity.Text = Convert.ToDecimal(textBoxStockInLineQuantity.Text).ToString("#,##0.00");
@@ -223,13 +235,9 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             textBoxStockInLineCost.Text = Convert.ToDecimal(textBoxStockInLineCost.Text).ToString("#,##0.00");
         }
 
-        private void dateTimePickerStockInLineExpiryDate_ValueChanged(object sender, EventArgs e)
+        private void textBoxStockInLinePrice_Leave(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(trnStockInLineEntity.ExpiryDate) == true)
-            {
-                dateTimePickerStockInLineExpiryDate.Format = DateTimePickerFormat.Custom;
-                dateTimePickerStockInLineExpiryDate.CustomFormat = "M/d/yyyy";
-            }
+            textBoxStockInLinePrice.Text = Convert.ToDecimal(textBoxStockInLineCost.Text).ToString("#,##0.00");
         }
     }
 }

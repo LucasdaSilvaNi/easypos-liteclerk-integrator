@@ -32,7 +32,7 @@ namespace EasyPOS.Controllers
                                    Cost = d.Cost,
                                    Amount = d.Amount,
                                    ExpiryDate = d.ExpiryDate != null ? Convert.ToDateTime(d.ExpiryDate).ToShortDateString() : "",
-                                   LotNumber = d.LotNumber != null ? d.LotNumber : "",
+                                   LotNumber = d.LotNumber ?? "",
                                    AssetAccountId = d.AssetAccountId,
                                    AssetAccount = d.MstAccount.Account,
                                    Price = d.Price
@@ -73,19 +73,56 @@ namespace EasyPOS.Controllers
             return units.ToList();
         }
 
-        // =======================
-        // Dropdown List - Account
-        // =======================
-        public List<Entities.MstAccountEntity> DropdownListStockInLineAccount()
+        // ================
+        // List Search Item
+        // ================
+        public List<Entities.MstItemEntity> ListSearchItem(String filter)
         {
-            var accounts = from d in db.MstAccounts
-                           select new Entities.MstAccountEntity
-                           {
-                               Id = d.Id,
-                               Account = d.Account
-                           };
+            var items = from d in db.MstItems
+                        where d.BarCode.Contains(filter)
+                        || d.ItemDescription.Contains(filter)
+                        || d.GenericName.Contains(filter)
+                        select new Entities.MstItemEntity
+                        {
+                            Id = d.Id,
+                            BarCode = d.BarCode,
+                            ItemDescription = d.ItemDescription,
+                            GenericName = d.GenericName,
+                            OutTaxId = d.OutTaxId,
+                            OutTax = d.MstTax1.Tax,
+                            OutTaxRate = d.MstTax1.Rate,
+                            UnitId = d.UnitId,
+                            Unit = d.MstUnit.Unit,
+                            Price = d.Price,
+                            OnhandQuantity = d.OnhandQuantity
+                        };
 
-            return accounts.ToList();
+            return items.OrderBy(d => d.ItemDescription).ToList();
+        }
+
+        // ===========
+        // Detail Item
+        // ===========
+        public Entities.MstItemEntity DetailItem(String barcode)
+        {
+            var item = from d in db.MstItems
+                       where d.BarCode.Equals(barcode)
+                       select new Entities.MstItemEntity
+                       {
+                           Id = d.Id,
+                           BarCode = d.BarCode,
+                           ItemDescription = d.ItemDescription,
+                           GenericName = d.GenericName,
+                           OutTaxId = d.OutTaxId,
+                           OutTax = d.MstTax1.Tax,
+                           OutTaxRate = d.MstTax1.Rate,
+                           UnitId = d.UnitId,
+                           Unit = d.MstUnit.Unit,
+                           Price = d.Price,
+                           OnhandQuantity = d.OnhandQuantity
+                       };
+
+            return item.FirstOrDefault();
         }
 
         // =================

@@ -41,8 +41,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxStockInLineLotNumber = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBoxStockInLineAssetAccount = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.textBoxStockInLineAmount = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -133,8 +131,6 @@
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.textBoxStockInLineLotNumber);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.comboBoxStockInLineAssetAccount);
-            this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.textBoxStockInLineAmount);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label4);
@@ -147,7 +143,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 63);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(936, 396);
+            this.panel2.Size = new System.Drawing.Size(936, 286);
             this.panel2.TabIndex = 9;
             // 
             // dateTimePickerStockInLineExpiryDate
@@ -155,17 +151,16 @@
             this.dateTimePickerStockInLineExpiryDate.CustomFormat = "";
             this.dateTimePickerStockInLineExpiryDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.dateTimePickerStockInLineExpiryDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerStockInLineExpiryDate.Location = new System.Drawing.Point(182, 229);
+            this.dateTimePickerStockInLineExpiryDate.Location = new System.Drawing.Point(569, 85);
             this.dateTimePickerStockInLineExpiryDate.Name = "dateTimePickerStockInLineExpiryDate";
             this.dateTimePickerStockInLineExpiryDate.Size = new System.Drawing.Size(164, 30);
             this.dateTimePickerStockInLineExpiryDate.TabIndex = 33;
-            this.dateTimePickerStockInLineExpiryDate.ValueChanged += new System.EventHandler(this.dateTimePickerStockInLineExpiryDate_ValueChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label8.Location = new System.Drawing.Point(125, 304);
+            this.label8.Location = new System.Drawing.Point(125, 232);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(51, 23);
             this.label8.TabIndex = 32;
@@ -174,17 +169,20 @@
             // textBoxStockInLinePrice
             // 
             this.textBoxStockInLinePrice.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxStockInLinePrice.Location = new System.Drawing.Point(182, 301);
+            this.textBoxStockInLinePrice.Location = new System.Drawing.Point(182, 229);
             this.textBoxStockInLinePrice.Name = "textBoxStockInLinePrice";
             this.textBoxStockInLinePrice.Size = new System.Drawing.Size(269, 30);
             this.textBoxStockInLinePrice.TabIndex = 31;
             this.textBoxStockInLinePrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxStockInLinePrice.TextChanged += new System.EventHandler(this.textBoxStockInLinePrice_TextChanged);
+            this.textBoxStockInLinePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStockInLinePrice_KeyPress);
+            this.textBoxStockInLinePrice.Leave += new System.EventHandler(this.textBoxStockInLinePrice_Leave);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label7.Location = new System.Drawing.Point(70, 268);
+            this.label7.Location = new System.Drawing.Point(457, 124);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(106, 23);
             this.label7.TabIndex = 30;
@@ -193,7 +191,7 @@
             // textBoxStockInLineLotNumber
             // 
             this.textBoxStockInLineLotNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxStockInLineLotNumber.Location = new System.Drawing.Point(182, 265);
+            this.textBoxStockInLineLotNumber.Location = new System.Drawing.Point(569, 121);
             this.textBoxStockInLineLotNumber.Name = "textBoxStockInLineLotNumber";
             this.textBoxStockInLineLotNumber.Size = new System.Drawing.Size(269, 30);
             this.textBoxStockInLineLotNumber.TabIndex = 29;
@@ -202,31 +200,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label6.Location = new System.Drawing.Point(76, 231);
+            this.label6.Location = new System.Drawing.Point(463, 87);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 23);
             this.label6.TabIndex = 28;
             this.label6.Text = "Expiry Date:";
-            // 
-            // comboBoxStockInLineAssetAccount
-            // 
-            this.comboBoxStockInLineAssetAccount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBoxStockInLineAssetAccount.FormattingEnabled = true;
-            this.comboBoxStockInLineAssetAccount.Location = new System.Drawing.Point(182, 337);
-            this.comboBoxStockInLineAssetAccount.Name = "comboBoxStockInLineAssetAccount";
-            this.comboBoxStockInLineAssetAccount.Size = new System.Drawing.Size(404, 31);
-            this.comboBoxStockInLineAssetAccount.TabIndex = 25;
-            this.comboBoxStockInLineAssetAccount.TabStop = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label5.Location = new System.Drawing.Point(54, 340);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 23);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "Asset Account:";
             // 
             // textBoxStockInLineAmount
             // 
@@ -332,7 +310,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(936, 459);
+            this.ClientSize = new System.Drawing.Size(936, 349);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -372,7 +350,5 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxStockInLineLotNumber;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBoxStockInLineAssetAccount;
-        private System.Windows.Forms.Label label5;
     }
 }
