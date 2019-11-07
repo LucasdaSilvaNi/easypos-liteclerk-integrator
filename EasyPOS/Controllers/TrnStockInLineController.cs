@@ -161,6 +161,12 @@ namespace EasyPOS.Controllers
                     return new String[] { "Account not found.", "0" };
                 }
 
+                DateTime? expiryDate = null;
+                if (String.IsNullOrEmpty(objStockInLine.ExpiryDate) == false)
+                {
+                    expiryDate = Convert.ToDateTime(objStockInLine.ExpiryDate);
+                }
+
                 Data.TrnStockInLine newStockInLine = new Data.TrnStockInLine
                 {
                     StockInId = objStockInLine.StockInId,
@@ -169,7 +175,7 @@ namespace EasyPOS.Controllers
                     Quantity = objStockInLine.Quantity,
                     Cost = objStockInLine.Cost,
                     Amount = objStockInLine.Amount,
-                    ExpiryDate = Convert.ToDateTime(objStockInLine.ExpiryDate),
+                    ExpiryDate = expiryDate,
                     LotNumber = objStockInLine.LotNumber,
                     AssetAccountId = account.FirstOrDefault().Id,
                     Price = objStockInLine.Price
@@ -218,11 +224,17 @@ namespace EasyPOS.Controllers
                         return new String[] { "Item not found.", "0" };
                     }
 
+                    DateTime? expiryDate = null;
+                    if (String.IsNullOrEmpty(objStockInLine.ExpiryDate) == false)
+                    {
+                        expiryDate = Convert.ToDateTime(objStockInLine.ExpiryDate);
+                    }
+
                     var updateStockInLine = stockInLine.FirstOrDefault();
                     updateStockInLine.Quantity = objStockInLine.Quantity;
                     updateStockInLine.Cost = objStockInLine.Cost;
                     updateStockInLine.Amount = objStockInLine.Amount;
-                    updateStockInLine.ExpiryDate = Convert.ToDateTime(objStockInLine.ExpiryDate);
+                    updateStockInLine.ExpiryDate = expiryDate;
                     updateStockInLine.LotNumber = objStockInLine.LotNumber;
                     updateStockInLine.Price = objStockInLine.Price;
                     db.SubmitChanges();

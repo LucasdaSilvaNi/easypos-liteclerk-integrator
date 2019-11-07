@@ -50,6 +50,7 @@
             this.textBoxStockInLineQuantity = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxStockInLineUnit = new System.Windows.Forms.TextBox();
+            this.checkBoxIncludeExpiry = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -125,6 +126,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.checkBoxIncludeExpiry);
             this.panel2.Controls.Add(this.dateTimePickerStockInLineExpiryDate);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.textBoxStockInLinePrice);
@@ -153,7 +155,7 @@
             this.dateTimePickerStockInLineExpiryDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerStockInLineExpiryDate.Location = new System.Drawing.Point(569, 85);
             this.dateTimePickerStockInLineExpiryDate.Name = "dateTimePickerStockInLineExpiryDate";
-            this.dateTimePickerStockInLineExpiryDate.Size = new System.Drawing.Size(164, 30);
+            this.dateTimePickerStockInLineExpiryDate.Size = new System.Drawing.Size(245, 30);
             this.dateTimePickerStockInLineExpiryDate.TabIndex = 33;
             // 
             // label8
@@ -306,6 +308,17 @@
             this.textBoxStockInLineUnit.TabIndex = 15;
             this.textBoxStockInLineUnit.TabStop = false;
             // 
+            // checkBoxIncludeExpiry
+            // 
+            this.checkBoxIncludeExpiry.AutoSize = true;
+            this.checkBoxIncludeExpiry.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.checkBoxIncludeExpiry.Location = new System.Drawing.Point(820, 92);
+            this.checkBoxIncludeExpiry.Name = "checkBoxIncludeExpiry";
+            this.checkBoxIncludeExpiry.Size = new System.Drawing.Size(18, 17);
+            this.checkBoxIncludeExpiry.TabIndex = 34;
+            this.checkBoxIncludeExpiry.UseVisualStyleBackColor = true;
+            this.checkBoxIncludeExpiry.CheckedChanged += new System.EventHandler(this.checkBoxIncludeExpiry_CheckedChanged);
+            // 
             // TrnStockInDetailStockInLineItemDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -350,5 +363,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxStockInLineLotNumber;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox checkBoxIncludeExpiry;
     }
 }

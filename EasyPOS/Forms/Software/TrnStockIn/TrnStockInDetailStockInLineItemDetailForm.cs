@@ -38,11 +38,16 @@ namespace EasyPOS.Forms.Software.TrnStockIn
 
             if (String.IsNullOrEmpty(trnStockInLineEntity.ExpiryDate) == true)
             {
+                checkBoxIncludeExpiry.Checked = false;
+                dateTimePickerStockInLineExpiryDate.Enabled = false;
+
                 dateTimePickerStockInLineExpiryDate.Value = DateTime.Today;
-                dateTimePickerStockInLineExpiryDate.Text = "";
             }
             else
             {
+                checkBoxIncludeExpiry.Checked = true;
+                dateTimePickerStockInLineExpiryDate.Enabled = true;
+
                 dateTimePickerStockInLineExpiryDate.Value = Convert.ToDateTime(trnStockInLineEntity.ExpiryDate);
             }
 
@@ -85,7 +90,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             var quantity = Convert.ToDecimal(textBoxStockInLineQuantity.Text);
             var cost = Convert.ToDecimal(textBoxStockInLineCost.Text);
             var amount = Convert.ToDecimal(textBoxStockInLineAmount.Text);
-            var expiryDate = dateTimePickerStockInLineExpiryDate.Value.ToShortDateString();
+            var expiryDate = checkBoxIncludeExpiry.Checked == true ? dateTimePickerStockInLineExpiryDate.Value.ToShortDateString() : String.Empty;
             var lotNumber = textBoxStockInLineLotNumber.Text;
             var assetAccountId = trnStockInLineEntity.AssetAccountId;
             var assetAccount = trnStockInLineEntity.AssetAccount;
@@ -238,6 +243,18 @@ namespace EasyPOS.Forms.Software.TrnStockIn
         private void textBoxStockInLinePrice_Leave(object sender, EventArgs e)
         {
             textBoxStockInLinePrice.Text = Convert.ToDecimal(textBoxStockInLineCost.Text).ToString("#,##0.00");
+        }
+
+        private void checkBoxIncludeExpiry_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxIncludeExpiry.Checked == true)
+            {
+                dateTimePickerStockInLineExpiryDate.Enabled = true;
+            }
+            else
+            {
+                dateTimePickerStockInLineExpiryDate.Enabled = false;
+            }
         }
     }
 }
