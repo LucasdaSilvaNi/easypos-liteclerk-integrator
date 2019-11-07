@@ -166,6 +166,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -189,6 +190,7 @@
             // panel3
             // 
             this.panel3.AutoScroll = true;
+            this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.comboBoxSalesVAT);
             this.panel3.Controls.Add(this.textBoxBarcode);

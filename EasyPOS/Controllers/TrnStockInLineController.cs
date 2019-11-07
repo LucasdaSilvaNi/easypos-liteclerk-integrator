@@ -19,7 +19,7 @@ namespace EasyPOS.Controllers
         public List<Entities.TrnStockInLineEntity> ListStockInLine(Int32 stockInId)
         {
             var stockInLines = from d in db.TrnStockInLines
-                               where d.Id == stockInId
+                               where d.StockInId == stockInId
                                select new Entities.TrnStockInLineEntity
                                {
                                    Id = d.Id,
@@ -31,8 +31,8 @@ namespace EasyPOS.Controllers
                                    Quantity = d.Quantity,
                                    Cost = d.Cost,
                                    Amount = d.Amount,
-                                   ExpiryDate = d.ExpiryDate != null ? Convert.ToDateTime(d.ExpiryDate).ToShortDateString() : " ",
-                                   LotNumber = d.LotNumber,
+                                   ExpiryDate = d.ExpiryDate != null ? Convert.ToDateTime(d.ExpiryDate).ToShortDateString() : "",
+                                   LotNumber = d.LotNumber != null ? d.LotNumber : "",
                                    AssetAccountId = d.AssetAccountId,
                                    AssetAccount = d.MstAccount.Account,
                                    Price = d.Price
@@ -40,35 +40,6 @@ namespace EasyPOS.Controllers
 
             return stockInLines.OrderByDescending(d => d.Id).ToList();
         }
-
-        // ====================
-        // Detail Stock-In Line
-        // ====================
-        public Entities.TrnStockInLineEntity DetailStockInLine(Int32 id)
-        {
-            var stockInLine = from d in db.TrnStockInLines
-                              where d.Id == id
-                              select new Entities.TrnStockInLineEntity
-                              {
-                                  Id = d.Id,
-                                  StockInId = d.StockInId,
-                                  ItemId = d.ItemId,
-                                  ItemDescription = d.MstItem.ItemDescription,
-                                  UnitId = d.UnitId,
-                                  Unit = d.MstUnit.Unit,
-                                  Quantity = d.Quantity,
-                                  Cost = d.Cost,
-                                  Amount = d.Amount,
-                                  ExpiryDate = d.ExpiryDate != null ? Convert.ToDateTime(d.ExpiryDate).ToShortDateString() : " ",
-                                  LotNumber = d.LotNumber,
-                                  AssetAccountId = d.AssetAccountId,
-                                  AssetAccount = d.MstAccount.Account,
-                                  Price = d.Price
-                              };
-
-            return stockInLine.FirstOrDefault();
-        }
-
 
         // ====================
         // Dropdown List - Item
@@ -143,21 +114,12 @@ namespace EasyPOS.Controllers
                     return new String[] { "Item not found.", "0" };
                 }
 
-                var unit = from d in db.MstUnits
-                           where d.Id == objStockInLine.UnitId
-                           select d;
-
-                if (unit.Any())
-                {
-                    return new String[] { "Unit not found.", "0" };
-                }
-
                 var account = from d in db.MstAccounts
-                              where d.Id == objStockInLine.AssetAccountId
+                              where d.Account.Equals("Inventory")
                               && d.IsLocked == true
                               select d;
 
-                if (account.Any())
+                if (account.Any() == false)
                 {
                     return new String[] { "Account not found.", "0" };
                 }
@@ -166,13 +128,13 @@ namespace EasyPOS.Controllers
                 {
                     StockInId = objStockInLine.StockInId,
                     ItemId = objStockInLine.ItemId,
-                    UnitId = objStockInLine.UnitId,
+                    UnitId = item.FirstOrDefault().UnitId,
                     Quantity = objStockInLine.Quantity,
                     Cost = objStockInLine.Cost,
                     Amount = objStockInLine.Amount,
                     ExpiryDate = Convert.ToDateTime(objStockInLine.ExpiryDate),
                     LotNumber = objStockInLine.LotNumber,
-                    AssetAccountId = objStockInLine.AssetAccountId,
+                    AssetAccountId = account.FirstOrDefault().Id,
                     Price = objStockInLine.Price
                 };
 
@@ -214,39 +176,17 @@ namespace EasyPOS.Controllers
                                && d.IsLocked == true
                                select d;
 
-                    if (item.Any())
+                    if (item.Any() == false)
                     {
                         return new String[] { "Item not found.", "0" };
                     }
 
-                    var unit = from d in db.MstUnits
-                               where d.Id == objStockInLine.UnitId
-                               select d;
-
-                    if (unit.Any())
-                    {
-                        return new String[] { "Unit not found.", "0" };
-                    }
-
-                    var account = from d in db.MstAccounts
-                                  where d.Id == objStockInLine.AssetAccountId
-                                  && d.IsLocked == true
-                                  select d;
-
-                    if (account.Any())
-                    {
-                        return new String[] { "Account not found.", "0" };
-                    }
-
                     var updateStockInLine = stockInLine.FirstOrDefault();
-                    updateStockInLine.ItemId = objStockInLine.ItemId;
-                    updateStockInLine.UnitId = objStockInLine.UnitId;
                     updateStockInLine.Quantity = objStockInLine.Quantity;
                     updateStockInLine.Cost = objStockInLine.Cost;
                     updateStockInLine.Amount = objStockInLine.Amount;
                     updateStockInLine.ExpiryDate = Convert.ToDateTime(objStockInLine.ExpiryDate);
                     updateStockInLine.LotNumber = objStockInLine.LotNumber;
-                    updateStockInLine.AssetAccountId = objStockInLine.AssetAccountId;
                     updateStockInLine.Price = objStockInLine.Price;
                     db.SubmitChanges();
 
@@ -254,7 +194,7 @@ namespace EasyPOS.Controllers
                 }
                 else
                 {
-                    return new String[] { "Stock-In line not found.", "0" };
+                    return new String[] { "Stock-In line not found.  " + id, "0" };
                 }
             }
             catch (Exception e)

@@ -158,10 +158,7 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel2.Controls.Add(this.textBoxDefaultPrice);
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.textBoxAvailableReward);
@@ -188,10 +185,11 @@
             this.panel2.Controls.Add(this.textBoxCustomer);
             this.panel2.Controls.Add(this.textBoxCustomerCode);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Location = new System.Drawing.Point(0, 69);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 63);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(10);
-            this.panel2.Size = new System.Drawing.Size(1400, 619);
+            this.panel2.Size = new System.Drawing.Size(1400, 637);
             this.panel2.TabIndex = 6;
             // 
             // textBoxDefaultPrice

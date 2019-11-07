@@ -140,6 +140,7 @@
     <Compile Include="Entities\DgvSalesDetailTenderPayTypeEntity.cs" />
     <Compile Include="Entities\DgvSalesListSalesEntity.cs" />
     <Compile Include="Entities\DgvSalesReportSalesSummaryReportEntity.cs" />
+    <Compile Include="Entities\DgvStockInDetailStockInLineEntity.cs" />
     <Compile Include="Entities\DgvStockOutListStockInEntity.cs" />
     <Compile Include="Entities\DgvStockInListStockInEntity.cs" />
     <Compile Include="Entities\DgvSystemTablesAccountListEntity.cs" />
@@ -402,6 +403,18 @@
     <Compile Include="Forms\Software\TrnStockIn\TrnStockInDetailForm.Designer.cs">
       <DependentUpon>TrnStockInDetailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnStockIn\TrnStockInDetailSearchItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnStockIn\TrnStockInDetailSearchItemForm.Designer.cs">
+      <DependentUpon>TrnStockInDetailSearchItemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnStockIn\TrnStockInDetailStockInLineItemDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnStockIn\TrnStockInDetailStockInLineItemDetailForm.Designer.cs">
+      <DependentUpon>TrnStockInDetailStockInLineItemDetailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnStockIn\TrnStockInListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -524,6 +537,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnStockIn\TrnStockInDetailForm.resx">
       <DependentUpon>TrnStockInDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnStockIn\TrnStockInDetailSearchItemForm.resx">
+      <DependentUpon>TrnStockInDetailSearchItemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnStockIn\TrnStockInDetailStockInLineItemDetailForm.resx">
+      <DependentUpon>TrnStockInDetailStockInLineItemDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnStockIn\TrnStockInListForm.resx">
       <DependentUpon>TrnStockInListForm.cs</DependentUpon>

@@ -146,16 +146,15 @@
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel3.Controls.Add(this.textBoxPassword);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.textBoxFullName);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.textBoxUserName);
             this.panel3.Controls.Add(this.label3);
-            this.panel3.Location = new System.Drawing.Point(0, 6);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(10);
             this.panel3.Size = new System.Drawing.Size(1400, 119);
