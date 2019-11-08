@@ -420,12 +420,62 @@ namespace EasyPOS.Forms.Software.TrnStockIn
 
         private void buttonBarcode_Click(object sender, EventArgs e)
         {
-
+            textBoxBarcode.Focus();
+            textBoxBarcode.SelectAll();
         }
 
         private void textBoxBarcode_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Controllers.TrnStockInLineController trnPOSStockInLineController = new Controllers.TrnStockInLineController();
 
+                if (Modules.SysCurrentModule.GetCurrentSettings().IsBarcodeQuantityAlwaysOne == "true")
+                {
+                    trnPOSStockInLineController.BarcodeStockInLine(trnStockInEntity.Id, textBoxBarcode.Text);
+                    UpdateStockInLineListDataSource();
+                }
+                else
+                {
+                    Entities.MstItemEntity detailItem = trnPOSStockInLineController.DetailSearchItem(textBoxBarcode.Text);
+                    if (detailItem != null)
+                    {
+                        var stockInId = trnStockInEntity.Id;
+                        var itemId = detailItem.Id;
+                        var itemDescription = detailItem.ItemDescription;
+                        var unitId = detailItem.UnitId;
+                        var unit = detailItem.Unit;
+                        var price = detailItem.Price;
+
+                        Entities.TrnStockInLineEntity trnStockInLineEntity = new Entities.TrnStockInLineEntity()
+                        {
+                            Id = 0,
+                            StockInId = stockInId,
+                            ItemId = itemId,
+                            ItemDescription = itemDescription,
+                            UnitId = unitId,
+                            Unit = unit,
+                            Quantity = 1,
+                            Cost = 0,
+                            Amount = 0,
+                            ExpiryDate = "",
+                            LotNumber = "",
+                            AssetAccountId = 0,
+                            AssetAccount = "",
+                            Price = price
+                        };
+
+                        TrnStockInDetailStockInLineItemDetailForm trnStockInDetailStockInLineItemDetailForm = new TrnStockInDetailStockInLineItemDetailForm(this, trnStockInLineEntity);
+                        trnStockInDetailStockInLineItemDetailForm.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Item not found.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                textBoxBarcode.SelectAll();
+            }
         }
     }
 }

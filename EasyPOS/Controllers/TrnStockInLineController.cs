@@ -103,7 +103,7 @@ namespace EasyPOS.Controllers
         // ===========
         // Detail Item
         // ===========
-        public Entities.MstItemEntity DetailItem(String barcode)
+        public Entities.MstItemEntity DetailSearchItem(String barcode)
         {
             var item = from d in db.MstItems
                        where d.BarCode.Equals(barcode)
@@ -275,6 +275,67 @@ namespace EasyPOS.Controllers
                 {
                     return new String[] { "Stock-In line not found.", "0" };
                 }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
+        // =====================
+        // Barcode Stock-In Line
+        // =====================
+        public String[] BarcodeStockInLine(Int32 stockInId, String barcode)
+        {
+            try
+            {
+                var stockIn = from d in db.TrnStockIns
+                              where d.Id == stockInId
+                              select d;
+
+                if (stockIn.Any() == false)
+                {
+                    return new String[] { "Stock-In transaction not found.", "0" };
+                }
+
+                var item = from d in db.MstItems
+                           where d.BarCode.Equals(barcode)
+                           && d.IsLocked == true
+                           select d;
+
+                if (item.Any() == false)
+                {
+                    return new String[] { "Item not found.", "0" };
+                }
+
+                var account = from d in db.MstAccounts
+                              where d.Account.Equals("Inventory")
+                              && d.IsLocked == true
+                              select d;
+
+                if (account.Any() == false)
+                {
+                    return new String[] { "Account not found.", "0" };
+                }
+
+                Data.TrnStockInLine newStockInLine = new Data.TrnStockInLine
+                {
+                    StockInId = stockInId,
+                    ItemId = item.FirstOrDefault().Id,
+                    UnitId = item.FirstOrDefault().UnitId,
+                    Quantity = 1,
+                    Cost = 0,
+                    Amount = 0,
+                    ExpiryDate = null,
+                    LotNumber = null,
+                    AssetAccountId = account.FirstOrDefault().Id,
+                    Price = item.FirstOrDefault().Price
+                };
+
+                db.TrnStockInLines.InsertOnSubmit(newStockInLine);
+                db.SubmitChanges();
+
+                return new String[] { "", "1" };
             }
             catch (Exception e)
             {
