@@ -141,6 +141,7 @@
     <Compile Include="Entities\DgvSalesListSalesEntity.cs" />
     <Compile Include="Entities\DgvSalesReportSalesSummaryReportEntity.cs" />
     <Compile Include="Entities\DgvStockInDetailStockInLineEntity.cs" />
+    <Compile Include="Entities\DgvStockInSearchItemListEntity.cs" />
     <Compile Include="Entities\DgvStockOutListStockInEntity.cs" />
     <Compile Include="Entities\DgvStockInListStockInEntity.cs" />
     <Compile Include="Entities\DgvSystemTablesAccountListEntity.cs" />
@@ -637,9 +638,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\Software\SysItemQuery\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="easypos cropped.ico" />
     <Content Include="Resources\Images\Backgrounds\coffee.jpeg" />

@@ -146,7 +146,7 @@ namespace EasyPOS.Controllers
                            && d.IsLocked == true
                            select d;
 
-                if (item.Any())
+                if (item.Any() == false)
                 {
                     return new String[] { "Item not found.", "0" };
                 }
