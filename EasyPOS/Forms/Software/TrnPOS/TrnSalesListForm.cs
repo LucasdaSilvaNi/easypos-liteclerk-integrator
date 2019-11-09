@@ -20,7 +20,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public PagedList<Entities.DgvSalesListSalesEntity> pageList;
         public Int32 pageNumber = 1;
         public Int32 pageSize = 50;
-        public Boolean isAutoRefresh = true;
+        public Boolean isAutoRefresh = false;
 
         public SerialPort serialPort = null;
 

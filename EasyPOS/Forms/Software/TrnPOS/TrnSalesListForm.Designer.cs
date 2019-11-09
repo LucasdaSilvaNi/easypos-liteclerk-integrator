@@ -633,7 +633,7 @@
             // buttonAutoRefresh
             // 
             this.buttonAutoRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAutoRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(79)))), ((int)(((byte)(28)))));
+            this.buttonAutoRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
             this.buttonAutoRefresh.FlatAppearance.BorderSize = 0;
             this.buttonAutoRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAutoRefresh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
@@ -643,7 +643,7 @@
             this.buttonAutoRefresh.Size = new System.Drawing.Size(72, 32);
             this.buttonAutoRefresh.TabIndex = 13;
             this.buttonAutoRefresh.TabStop = false;
-            this.buttonAutoRefresh.Text = "Stop";
+            this.buttonAutoRefresh.Text = "Start";
             this.buttonAutoRefresh.UseVisualStyleBackColor = false;
             this.buttonAutoRefresh.Click += new System.EventHandler(this.buttonAutoRefresh_Click);
             // 

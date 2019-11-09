@@ -16,20 +16,27 @@ namespace EasyPOS.Modules
         // ================
         public static void OpenSerialPort()
         {
-            if (serialPort == null)
+            try
             {
-                if (SysCurrentModule.GetCurrentSettings().WithCustomerDisplay == "true")
+                if (serialPort == null)
                 {
-                    String port = SysCurrentModule.GetCurrentSettings().CustomerDisplayPort;
-                    String baudRate = SysCurrentModule.GetCurrentSettings().CustomerDisplayBaudRate;
-
-                    var portExists = SerialPort.GetPortNames().Any(x => x == port);
-                    if (portExists)
+                    if (SysCurrentModule.GetCurrentSettings().WithCustomerDisplay == "true")
                     {
-                        serialPort = new SerialPort(port, Convert.ToInt32(baudRate), Parity.None, 8, StopBits.One);
-                        serialPort.Open();
+                        String port = SysCurrentModule.GetCurrentSettings().CustomerDisplayPort;
+                        String baudRate = SysCurrentModule.GetCurrentSettings().CustomerDisplayBaudRate;
+
+                        var portExists = SerialPort.GetPortNames().Any(x => x == port);
+                        if (portExists)
+                        {
+                            serialPort = new SerialPort(port, Convert.ToInt32(baudRate), Parity.None, 8, StopBits.One);
+                            serialPort.Open();
+                        }
                     }
                 }
+            }
+            catch (Exception e)
+            {
+                serialPort = null;
             }
         }
 
@@ -38,13 +45,20 @@ namespace EasyPOS.Modules
         // =================
         public static void CloseSerialPort()
         {
-            if (serialPort != null)
+            try
             {
-                String line1 = SysCurrentModule.GetCurrentSettings().CustomerDisplayIfCounterClosedMessage;
+                if (serialPort != null)
+                {
+                    String line1 = SysCurrentModule.GetCurrentSettings().CustomerDisplayIfCounterClosedMessage;
 
-                WriteSeralPortMessage(line1, " ");
+                    WriteSeralPortMessage(line1, " ");
 
-                serialPort.Close();
+                    serialPort.Close();
+                    serialPort = null;
+                }
+            }
+            catch (Exception e)
+            {
                 serialPort = null;
             }
         }
@@ -54,17 +68,24 @@ namespace EasyPOS.Modules
         // ========================
         public static void WriteSeralPortMessage(String line1, String line2)
         {
-            if (serialPort != null)
+            try
             {
-                string buf1 = "                    ";
-                if (line1.Length > buf1.Length) line1 = line1.Substring(1, buf1.Length);
-                else line1 = line1 + buf1.Substring(1, buf1.Length - line1.Length);
+                if (serialPort != null)
+                {
+                    String buf1 = "                    ";
+                    if (line1.Length > buf1.Length) line1 = line1.Substring(1, buf1.Length);
+                    else line1 = line1 + buf1.Substring(1, buf1.Length - line1.Length);
 
-                string buf2 = "                    ";
-                if (line2.Length > buf2.Length) line2 = line2.Substring(1, buf2.Length);
-                else line2 = line2 + buf2.Substring(1, buf2.Length - line2.Length);
+                    String buf2 = "                    ";
+                    if (line2.Length > buf2.Length) line2 = line2.Substring(1, buf2.Length);
+                    else line2 = line2 + buf2.Substring(1, buf2.Length - line2.Length);
 
-                serialPort.Write(line1 + line2);
+                    serialPort.Write(line1 + line2);
+                }
+            }
+            catch (Exception e)
+            {
+                serialPort = null;
             }
         }
     }
