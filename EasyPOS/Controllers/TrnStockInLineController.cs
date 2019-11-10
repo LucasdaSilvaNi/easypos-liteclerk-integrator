@@ -41,38 +41,6 @@ namespace EasyPOS.Controllers
             return stockInLines.OrderByDescending(d => d.Id).ToList();
         }
 
-        // ====================
-        // Dropdown List - Item
-        // ====================
-        public List<Entities.MstItemEntity> DropdownListStockInLineItem()
-        {
-            var items = from d in db.MstItems
-                        select new Entities.MstItemEntity
-                        {
-                            Id = d.Id,
-                            ItemDescription = d.ItemDescription,
-                            UnitId = d.UnitId,
-                            Unit = d.MstUnit.Unit
-                        };
-
-            return items.ToList();
-        }
-
-        // ====================
-        // Dropdown List - Unit
-        // ====================
-        public List<Entities.MstUnitEntity> DropdownListStockInLineUnit()
-        {
-            var units = from d in db.MstUnits
-                        select new Entities.MstUnitEntity
-                        {
-                            Id = d.Id,
-                            Unit = d.Unit
-                        };
-
-            return units.ToList();
-        }
-
         // ================
         // List Search Item
         // ================
@@ -212,16 +180,6 @@ namespace EasyPOS.Controllers
                     if (stockIn.Any() == false)
                     {
                         return new String[] { "Stock-In transaction not found.", "0" };
-                    }
-
-                    var item = from d in db.MstItems
-                               where d.Id == objStockInLine.ItemId
-                               && d.IsLocked == true
-                               select d;
-
-                    if (item.Any() == false)
-                    {
-                        return new String[] { "Item not found.", "0" };
                     }
 
                     DateTime? expiryDate = null;

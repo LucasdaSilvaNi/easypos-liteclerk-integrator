@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,12 @@ namespace EasyPOS.Forms.Software.TrnStockOut
         public SysSoftwareForm sysSoftwareForm;
         public TrnStockOutListForm trnStockOutListForm;
         public Entities.TrnStockOutEntity trnStockOutEntity;
+
+        public static List<Entities.DgvStockOutDetailStockOutLineEntity> stockOutLineData = new List<Entities.DgvStockOutDetailStockOutLineEntity>();
+        public static Int32 stockOutLinePageNumber = 1;
+        public static Int32 stockOutLinePageSize = 50;
+        public PagedList<Entities.DgvStockOutDetailStockOutLineEntity> stockOutLinePageList = new PagedList<Entities.DgvStockOutDetailStockOutLineEntity>(stockOutLineData, stockOutLinePageNumber, stockOutLinePageSize);
+        public BindingSource stockOutLineDataSource = new BindingSource();
 
         public TrnStockOutDetailForm(SysSoftwareForm softwareForm, TrnStockOutListForm stockOutListForm, Entities.TrnStockOutEntity stockOutEntity)
         {
@@ -72,6 +79,8 @@ namespace EasyPOS.Forms.Software.TrnStockOut
             comboBoxPreparedBy.SelectedValue = trnStockOutEntity.PreparedBy;
             comboBoxCheckedBy.SelectedValue = trnStockOutEntity.CheckedBy;
             comboBoxApprovedBy.SelectedValue = trnStockOutEntity.ApprovedBy;
+
+            CreateStockOutLineListDataGridView();
         }
 
         public void UpdateComponents(Boolean isLocked)
@@ -85,6 +94,13 @@ namespace EasyPOS.Forms.Software.TrnStockOut
             textBoxRemarks.Enabled = !isLocked;
             comboBoxCheckedBy.Enabled = !isLocked;
             comboBoxApprovedBy.Enabled = !isLocked;
+
+            buttonBarcode.Enabled = !isLocked;
+            buttonSearchItem.Enabled = !isLocked;
+            textBoxBarcode.Enabled = !isLocked;
+
+            dataGridViewStockOutLineList.Columns[0].Visible = !isLocked;
+            dataGridViewStockOutLineList.Columns[1].Visible = !isLocked;
         }
 
         private void buttonLock_Click(object sender, EventArgs e)
@@ -136,6 +152,312 @@ namespace EasyPOS.Forms.Software.TrnStockOut
         private void buttonClose_Click(object sender, EventArgs e)
         {
             sysSoftwareForm.RemoveTabPage();
+        }
+
+        public void UpdateStockOutLineListDataSource()
+        {
+            SetStockOutLineListDataSourceAsync();
+        }
+
+        public async void SetStockOutLineListDataSourceAsync()
+        {
+            List<Entities.DgvStockOutDetailStockOutLineEntity> getStockOutLineListData = await GetStockOutLineListDataTask();
+            if (getStockOutLineListData.Any())
+            {
+                stockOutLineData = getStockOutLineListData;
+                stockOutLinePageList = new PagedList<Entities.DgvStockOutDetailStockOutLineEntity>(stockOutLineData, stockOutLinePageNumber, stockOutLinePageSize);
+
+                if (stockOutLinePageList.PageCount == 1)
+                {
+                    buttonStockOutLineListPageListFirst.Enabled = false;
+                    buttonStockOutLineListPageListPrevious.Enabled = false;
+                    buttonStockOutLineListPageListNext.Enabled = false;
+                    buttonStockOutLineListPageListLast.Enabled = false;
+                }
+                else if (stockOutLinePageNumber == 1)
+                {
+                    buttonStockOutLineListPageListFirst.Enabled = false;
+                    buttonStockOutLineListPageListPrevious.Enabled = false;
+                    buttonStockOutLineListPageListNext.Enabled = true;
+                    buttonStockOutLineListPageListLast.Enabled = true;
+                }
+                else if (stockOutLinePageNumber == stockOutLinePageList.PageCount)
+                {
+                    buttonStockOutLineListPageListFirst.Enabled = true;
+                    buttonStockOutLineListPageListPrevious.Enabled = true;
+                    buttonStockOutLineListPageListNext.Enabled = false;
+                    buttonStockOutLineListPageListLast.Enabled = false;
+                }
+                else
+                {
+                    buttonStockOutLineListPageListFirst.Enabled = true;
+                    buttonStockOutLineListPageListPrevious.Enabled = true;
+                    buttonStockOutLineListPageListNext.Enabled = true;
+                    buttonStockOutLineListPageListLast.Enabled = true;
+                }
+
+                textBoxStockOutLineListPageNumber.Text = stockOutLinePageNumber + " / " + stockOutLinePageList.PageCount;
+                stockOutLineDataSource.DataSource = stockOutLinePageList;
+            }
+            else
+            {
+                buttonStockOutLineListPageListFirst.Enabled = false;
+                buttonStockOutLineListPageListPrevious.Enabled = false;
+                buttonStockOutLineListPageListNext.Enabled = false;
+                buttonStockOutLineListPageListLast.Enabled = false;
+
+                stockOutLinePageNumber = 1;
+
+                stockOutLineData = new List<Entities.DgvStockOutDetailStockOutLineEntity>();
+                stockOutLineDataSource.Clear();
+                textBoxStockOutLineListPageNumber.Text = "1 / 1";
+            }
+        }
+
+        public Task<List<Entities.DgvStockOutDetailStockOutLineEntity>> GetStockOutLineListDataTask()
+        {
+            Controllers.TrnStockOutLineController trnStockOutLineController = new Controllers.TrnStockOutLineController();
+
+            List<Entities.TrnStockOutLineEntity> listStockOutLine = trnStockOutLineController.ListStockOutLine(trnStockOutEntity.Id);
+            if (listStockOutLine.Any())
+            {
+                var items = from d in listStockOutLine
+                            select new Entities.DgvStockOutDetailStockOutLineEntity
+                            {
+                                ColumnStockOutLineListButtonEdit = "Edit",
+                                ColumnStockOutLineListButtonDelete = "Delete",
+                                ColumnStockOutLineListId = d.Id,
+                                ColumnStockOutLineListStockOutId = d.StockOutId,
+                                ColumnStockOutLineListItemId = d.ItemId,
+                                ColumnStockOutLineListItemDescription = d.ItemDescription,
+                                ColumnStockOutLineListUnitId = d.UnitId,
+                                ColumnStockOutLineListUnit = d.Unit,
+                                ColumnStockOutLineListQuantity = d.Quantity.ToString("#,##0.00"),
+                                ColumnStockOutLineListCost = d.Cost.ToString("#,##0.00"),
+                                ColumnStockOutLineListAmount = d.Amount.ToString("#,##0.00"),
+                                ColumnStockOutLineListAssetAccountId = d.AssetAccountId,
+                                ColumnStockOutLineListAssetAccount = d.AssetAccount
+                            };
+
+                return Task.FromResult(items.ToList());
+            }
+            else
+            {
+                return Task.FromResult(new List<Entities.DgvStockOutDetailStockOutLineEntity>());
+            }
+        }
+
+        public void CreateStockOutLineListDataGridView()
+        {
+            UpdateStockOutLineListDataSource();
+
+            dataGridViewStockOutLineList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewStockOutLineList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewStockOutLineList.Columns[0].DefaultCellStyle.ForeColor = Color.White;
+
+            dataGridViewStockOutLineList.Columns[1].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#F34F1C");
+            dataGridViewStockOutLineList.Columns[1].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#F34F1C");
+            dataGridViewStockOutLineList.Columns[1].DefaultCellStyle.ForeColor = Color.White;
+
+            dataGridViewStockOutLineList.DataSource = stockOutLineDataSource;
+        }
+
+        public void GetStockOutLineListCurrentSelectedCell(Int32 rowIndex)
+        {
+
+        }
+
+        private void dataGridViewStockOutLineList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                GetStockOutLineListCurrentSelectedCell(e.RowIndex);
+            }
+
+            if (e.RowIndex > -1 && dataGridViewStockOutLineList.CurrentCell.ColumnIndex == dataGridViewStockOutLineList.Columns["ColumnStockOutLineListButtonEdit"].Index)
+            {
+                var id = Convert.ToInt32(dataGridViewStockOutLineList.Rows[e.RowIndex].Cells[dataGridViewStockOutLineList.Columns["ColumnStockOutLineListId"].Index].Value);
+                var stockOutId = Convert.ToInt32(dataGridViewStockOutLineList.Rows[e.RowIndex].Cells[dataGridViewStockOutLineList.Columns["ColumnStockOutLineListStockOutId"].Index].Value);
+                var itemId = Convert.ToInt32(dataGridViewStockOutLineList.Rows[e.RowIndex].Cells[dataGridViewStockOutLineList.Columns["ColumnStockOutLineListItemId"].Index].Value);
+                var itemDescription = dataGridViewStockOutLineList.Rows[e.RowIndex].Cells[dataGridViewStockOutLineList.Columns["ColumnStockOutLineListItemDescription"].Index].Value.ToString();
+                var unitId = Convert.ToInt32(dataGridViewStockOutLineList.Rows[e.RowIndex].Cells[dataGridViewStockOutLineList.Columns["ColumnStockOutLineListUnitId"].Index].Value);
+                var unit = dataGridViewStockOutLineList.Rows[e.RowIndex].Cells[dataGridViewStockOutLineList.Columns["ColumnStockOutLineListUnit"].Index].Value.ToString();
+                var quantity = Convert.ToDecimal(dataGridViewStockOutLineList.Rows[e.RowIndex].Cells[dataGridViewStockOutLineList.Columns["ColumnStockOutLineListQuantity"].Index].Value);
+                var cost = Convert.ToDecimal(dataGridViewStockOutLineList.Rows[e.RowIndex].Cells[dataGridViewStockOutLineList.Columns["ColumnStockOutLineListCost"].Index].Value);
+                var amount = Convert.ToDecimal(dataGridViewStockOutLineList.Rows[e.RowIndex].Cells[dataGridViewStockOutLineList.Columns["ColumnStockOutLineListAmount"].Index].Value);
+                var assetAccountId = Convert.ToInt32(dataGridViewStockOutLineList.Rows[e.RowIndex].Cells[dataGridViewStockOutLineList.Columns["ColumnStockOutLineListAssetAccountId"].Index].Value);
+                var assetAccount = dataGridViewStockOutLineList.Rows[e.RowIndex].Cells[dataGridViewStockOutLineList.Columns["ColumnStockOutLineListAssetAccount"].Index].Value.ToString();
+
+                Entities.TrnStockOutLineEntity trnStockOutLineEntity = new Entities.TrnStockOutLineEntity()
+                {
+                    Id = id,
+                    StockOutId = stockOutId,
+                    ItemId = itemId,
+                    ItemDescription = itemDescription,
+                    UnitId = unitId,
+                    Unit = unit,
+                    Quantity = quantity,
+                    Cost = cost,
+                    Amount = amount,
+                    AssetAccountId = assetAccountId,
+                    AssetAccount = assetAccount
+                };
+
+                TrnStockOutDetailStockOutLineItemDetailForm trnStockOutDetailStockOutLineItemDetailForm = new TrnStockOutDetailStockOutLineItemDetailForm(this, trnStockOutLineEntity);
+                trnStockOutDetailStockOutLineItemDetailForm.ShowDialog();
+            }
+
+            if (e.RowIndex > -1 && dataGridViewStockOutLineList.CurrentCell.ColumnIndex == dataGridViewStockOutLineList.Columns["ColumnStockOutLineListButtonDelete"].Index)
+            {
+                DialogResult deleteDialogResult = MessageBox.Show("Delete Stock-In?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (deleteDialogResult == DialogResult.Yes)
+                {
+                    var id = Convert.ToInt32(dataGridViewStockOutLineList.Rows[e.RowIndex].Cells[dataGridViewStockOutLineList.Columns["ColumnStockOutLineListId"].Index].Value);
+
+                    Controllers.TrnStockOutLineController trnStockOutLineController = new Controllers.TrnStockOutLineController();
+                    String[] deleteStockOutLine = trnStockOutLineController.DeleteStockOutLine(id);
+                    if (deleteStockOutLine[1].Equals("0") == false)
+                    {
+                        stockOutLinePageNumber = 1;
+                        UpdateStockOutLineListDataSource();
+                    }
+                    else
+                    {
+                        MessageBox.Show(deleteStockOutLine[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void buttonStockOutLineListPageListFirst_Click(object sender, EventArgs e)
+        {
+            stockOutLinePageList = new PagedList<Entities.DgvStockOutDetailStockOutLineEntity>(stockOutLineData, 1, stockOutLinePageSize);
+            stockOutLineDataSource.DataSource = stockOutLinePageList;
+
+            buttonStockOutLineListPageListFirst.Enabled = false;
+            buttonStockOutLineListPageListPrevious.Enabled = false;
+            buttonStockOutLineListPageListNext.Enabled = true;
+            buttonStockOutLineListPageListLast.Enabled = true;
+
+            stockOutLinePageNumber = 1;
+            textBoxStockOutLineListPageNumber.Text = stockOutLinePageNumber + " / " + stockOutLinePageList.PageCount;
+        }
+
+        private void buttonStockOutLineListPageListPrevious_Click(object sender, EventArgs e)
+        {
+            if (stockOutLinePageList.HasPreviousPage == true)
+            {
+                stockOutLinePageList = new PagedList<Entities.DgvStockOutDetailStockOutLineEntity>(stockOutLineData, --stockOutLinePageNumber, stockOutLinePageSize);
+                stockOutLineDataSource.DataSource = stockOutLinePageList;
+            }
+
+            buttonStockOutLineListPageListNext.Enabled = true;
+            buttonStockOutLineListPageListLast.Enabled = true;
+
+            if (stockOutLinePageNumber == 1)
+            {
+                buttonStockOutLineListPageListFirst.Enabled = false;
+                buttonStockOutLineListPageListPrevious.Enabled = false;
+            }
+
+            textBoxStockOutLineListPageNumber.Text = stockOutLinePageNumber + " / " + stockOutLinePageList.PageCount;
+        }
+
+        private void buttonStockOutLineListPageListNext_Click(object sender, EventArgs e)
+        {
+            if (stockOutLinePageList.HasNextPage == true)
+            {
+                stockOutLinePageList = new PagedList<Entities.DgvStockOutDetailStockOutLineEntity>(stockOutLineData, ++stockOutLinePageNumber, stockOutLinePageSize);
+                stockOutLineDataSource.DataSource = stockOutLinePageList;
+            }
+
+            buttonStockOutLineListPageListFirst.Enabled = true;
+            buttonStockOutLineListPageListPrevious.Enabled = true;
+
+            if (stockOutLinePageNumber == stockOutLinePageList.PageCount)
+            {
+                buttonStockOutLineListPageListNext.Enabled = false;
+                buttonStockOutLineListPageListLast.Enabled = false;
+            }
+
+            textBoxStockOutLineListPageNumber.Text = stockOutLinePageNumber + " / " + stockOutLinePageList.PageCount;
+        }
+
+        private void buttonStockOutLineListPageListLast_Click(object sender, EventArgs e)
+        {
+            stockOutLinePageList = new PagedList<Entities.DgvStockOutDetailStockOutLineEntity>(stockOutLineData, stockOutLinePageList.PageCount, stockOutLinePageSize);
+            stockOutLineDataSource.DataSource = stockOutLinePageList;
+
+            buttonStockOutLineListPageListFirst.Enabled = true;
+            buttonStockOutLineListPageListPrevious.Enabled = true;
+            buttonStockOutLineListPageListNext.Enabled = false;
+            buttonStockOutLineListPageListLast.Enabled = false;
+
+            stockOutLinePageNumber = stockOutLinePageList.PageCount;
+            textBoxStockOutLineListPageNumber.Text = stockOutLinePageNumber + " / " + stockOutLinePageList.PageCount;
+        }
+
+        private void buttonSearchItem_Click(object sender, EventArgs e)
+        {
+            TrnStockOutDetailSearchItemForm trnStockOutDetailSearchItemForm = new TrnStockOutDetailSearchItemForm(this, trnStockOutEntity);
+            trnStockOutDetailSearchItemForm.ShowDialog();
+        }
+
+        private void buttonBarcode_Click(object sender, EventArgs e)
+        {
+            textBoxBarcode.Focus();
+            textBoxBarcode.SelectAll();
+        }
+
+        private void textBoxBarcode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Controllers.TrnStockOutLineController trnPOSStockOutLineController = new Controllers.TrnStockOutLineController();
+
+                if (Modules.SysCurrentModule.GetCurrentSettings().IsBarcodeQuantityAlwaysOne == "true")
+                {
+                    trnPOSStockOutLineController.BarcodeStockOutLine(trnStockOutEntity.Id, textBoxBarcode.Text);
+                    UpdateStockOutLineListDataSource();
+                }
+                else
+                {
+                    Entities.MstItemEntity detailItem = trnPOSStockOutLineController.DetailSearchItem(textBoxBarcode.Text);
+                    if (detailItem != null)
+                    {
+                        var stockOutId = trnStockOutEntity.Id;
+                        var itemId = detailItem.Id;
+                        var itemDescription = detailItem.ItemDescription;
+                        var unitId = detailItem.UnitId;
+                        var unit = detailItem.Unit;
+                        var price = detailItem.Price;
+
+                        Entities.TrnStockOutLineEntity trnStockOutLineEntity = new Entities.TrnStockOutLineEntity()
+                        {
+                            Id = 0,
+                            StockOutId = stockOutId,
+                            ItemId = itemId,
+                            ItemDescription = itemDescription,
+                            UnitId = unitId,
+                            Unit = unit,
+                            Quantity = 1,
+                            Cost = 0,
+                            Amount = 0,
+                            AssetAccountId = 0,
+                            AssetAccount = ""
+                        };
+
+                        TrnStockOutDetailStockOutLineItemDetailForm trnStockOutDetailStockOutLineItemDetailForm = new TrnStockOutDetailStockOutLineItemDetailForm(this, trnStockOutLineEntity);
+                        trnStockOutDetailStockOutLineItemDetailForm.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Item not found.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                textBoxBarcode.SelectAll();
+            }
         }
     }
 }

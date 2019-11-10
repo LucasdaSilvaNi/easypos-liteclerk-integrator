@@ -19,7 +19,7 @@ namespace EasyPOS.Controllers
         public List<Entities.TrnStockOutLineEntity> ListStockOutLine(Int32 stockOutId)
         {
             var stockOutLines = from d in db.TrnStockOutLines
-                                where d.Id == stockOutId
+                                where d.StockOutId == stockOutId
                                 select new Entities.TrnStockOutLineEntity
                                 {
                                     Id = d.Id,
@@ -38,29 +38,56 @@ namespace EasyPOS.Controllers
             return stockOutLines.OrderByDescending(d => d.Id).ToList();
         }
 
-        // =====================
-        // Detail Stock-Out Line
-        // =====================
-        public Entities.TrnStockOutLineEntity DetailStockOutLine(Int32 id)
+        // ================
+        // List Search Item
+        // ================
+        public List<Entities.MstItemEntity> ListSearchItem(String filter)
         {
-            var stockOutLine = from d in db.TrnStockOutLines
-                               where d.Id == id
-                               select new Entities.TrnStockOutLineEntity
-                               {
-                                   Id = d.Id,
-                                   StockOutId = d.StockOutId,
-                                   ItemId = d.ItemId,
-                                   ItemDescription = d.MstItem.ItemDescription,
-                                   UnitId = d.UnitId,
-                                   Unit = d.MstUnit.Unit,
-                                   Quantity = d.Quantity,
-                                   Cost = d.Cost,
-                                   Amount = d.Amount,
-                                   AssetAccountId = d.AssetAccountId,
-                                   AssetAccount = d.MstAccount.Account
-                               };
+            var items = from d in db.MstItems
+                        where d.BarCode.Contains(filter)
+                        || d.ItemDescription.Contains(filter)
+                        || d.GenericName.Contains(filter)
+                        select new Entities.MstItemEntity
+                        {
+                            Id = d.Id,
+                            BarCode = d.BarCode,
+                            ItemDescription = d.ItemDescription,
+                            GenericName = d.GenericName,
+                            OutTaxId = d.OutTaxId,
+                            OutTax = d.MstTax1.Tax,
+                            OutTaxRate = d.MstTax1.Rate,
+                            UnitId = d.UnitId,
+                            Unit = d.MstUnit.Unit,
+                            Price = d.Price,
+                            OnhandQuantity = d.OnhandQuantity
+                        };
 
-            return stockOutLine.FirstOrDefault();
+            return items.OrderBy(d => d.ItemDescription).ToList();
+        }
+
+        // ===========
+        // Detail Item
+        // ===========
+        public Entities.MstItemEntity DetailSearchItem(String barcode)
+        {
+            var item = from d in db.MstItems
+                       where d.BarCode.Equals(barcode)
+                       select new Entities.MstItemEntity
+                       {
+                           Id = d.Id,
+                           BarCode = d.BarCode,
+                           ItemDescription = d.ItemDescription,
+                           GenericName = d.GenericName,
+                           OutTaxId = d.OutTaxId,
+                           OutTax = d.MstTax1.Tax,
+                           OutTaxRate = d.MstTax1.Rate,
+                           UnitId = d.UnitId,
+                           Unit = d.MstUnit.Unit,
+                           Price = d.Price,
+                           OnhandQuantity = d.OnhandQuantity
+                       };
+
+            return item.FirstOrDefault();
         }
 
         // =================
@@ -84,39 +111,20 @@ namespace EasyPOS.Controllers
                            && d.IsLocked == true
                            select d;
 
-                if (item.Any())
+                if (item.Any() == false)
                 {
                     return new String[] { "Item not found.", "0" };
-                }
-
-                var unit = from d in db.MstUnits
-                           where d.Id == objStockOutLine.UnitId
-                           select d;
-
-                if (unit.Any())
-                {
-                    return new String[] { "Unit not found.", "0" };
-                }
-
-                var account = from d in db.MstAccounts
-                              where d.Id == objStockOutLine.AssetAccountId
-                              && d.IsLocked == true
-                              select d;
-
-                if (account.Any())
-                {
-                    return new String[] { "Account not found.", "0" };
                 }
 
                 Data.TrnStockOutLine newStockOutLine = new Data.TrnStockOutLine
                 {
                     StockOutId = objStockOutLine.StockOutId,
                     ItemId = objStockOutLine.ItemId,
-                    UnitId = objStockOutLine.UnitId,
+                    UnitId = item.FirstOrDefault().UnitId,
                     Quantity = objStockOutLine.Quantity,
                     Cost = objStockOutLine.Cost,
                     Amount = objStockOutLine.Amount,
-                    AssetAccountId = objStockOutLine.AssetAccountId
+                    AssetAccountId = item.FirstOrDefault().AssetAccountId
                 };
 
                 db.TrnStockOutLines.InsertOnSubmit(newStockOutLine);
@@ -152,42 +160,10 @@ namespace EasyPOS.Controllers
                         return new String[] { "Stock-Out transaction not found.", "0" };
                     }
 
-                    var item = from d in db.MstItems
-                               where d.Id == objStockOutLine.ItemId
-                               && d.IsLocked == true
-                               select d;
-
-                    if (item.Any())
-                    {
-                        return new String[] { "Item not found.", "0" };
-                    }
-
-                    var unit = from d in db.MstUnits
-                               where d.Id == objStockOutLine.UnitId
-                               select d;
-
-                    if (unit.Any())
-                    {
-                        return new String[] { "Unit not found.", "0" };
-                    }
-
-                    var account = from d in db.MstAccounts
-                                  where d.Id == objStockOutLine.AssetAccountId
-                                  && d.IsLocked == true
-                                  select d;
-
-                    if (account.Any())
-                    {
-                        return new String[] { "Account not found.", "0" };
-                    }
-
                     var updateStockOutLine = stockOutLine.FirstOrDefault();
-                    updateStockOutLine.ItemId = objStockOutLine.ItemId;
-                    updateStockOutLine.UnitId = objStockOutLine.UnitId;
                     updateStockOutLine.Quantity = objStockOutLine.Quantity;
                     updateStockOutLine.Cost = objStockOutLine.Cost;
                     updateStockOutLine.Amount = objStockOutLine.Amount;
-                    updateStockOutLine.AssetAccountId = objStockOutLine.AssetAccountId;
                     db.SubmitChanges();
 
                     return new String[] { "", "1" };
@@ -226,6 +202,54 @@ namespace EasyPOS.Controllers
                 {
                     return new String[] { "Stock-Out line not found.", "0" };
                 }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
+        // =====================
+        // Barcode Stock-In Line
+        // =====================
+        public String[] BarcodeStockOutLine(Int32 stockOutId, String barcode)
+        {
+            try
+            {
+                var stockOut = from d in db.TrnStockOuts
+                               where d.Id == stockOutId
+                               select d;
+
+                if (stockOut.Any() == false)
+                {
+                    return new String[] { "Stock-Out transaction not found.", "0" };
+                }
+
+                var item = from d in db.MstItems
+                           where d.BarCode.Equals(barcode)
+                           && d.IsLocked == true
+                           select d;
+
+                if (item.Any() == false)
+                {
+                    return new String[] { "Item not found.", "0" };
+                }
+
+                Data.TrnStockOutLine newStockOutLine = new Data.TrnStockOutLine
+                {
+                    StockOutId = stockOutId,
+                    ItemId = item.FirstOrDefault().Id,
+                    UnitId = item.FirstOrDefault().UnitId,
+                    Quantity = 1,
+                    Cost = 0,
+                    Amount = 0,
+                    AssetAccountId = item.FirstOrDefault().AssetAccountId
+                };
+
+                db.TrnStockOutLines.InsertOnSubmit(newStockOutLine);
+                db.SubmitChanges();
+
+                return new String[] { "", "1" };
             }
             catch (Exception e)
             {
