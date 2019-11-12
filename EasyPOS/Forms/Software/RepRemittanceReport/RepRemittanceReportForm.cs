@@ -92,5 +92,10 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                 MessageBox.Show("Please select a report.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void buttonClose_OnClick(object sender, EventArgs e)
+        {
+            sysSoftwareForm.RemoveTabPage();
+        }
     }
 }
