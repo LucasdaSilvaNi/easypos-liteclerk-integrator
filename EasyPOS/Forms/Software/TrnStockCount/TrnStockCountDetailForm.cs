@@ -84,8 +84,8 @@ namespace EasyPOS.Forms.Software.TrnStockCount
             buttonSearchItem.Enabled = !isLocked;
             textBoxBarcode.Enabled = !isLocked;
 
-            dataGridViewStockCountLineList.Columns[0].Visible = !isLocked;
-            dataGridViewStockCountLineList.Columns[1].Visible = !isLocked;
+            dataGridViewStockCountLineList.Columns[dataGridViewStockCountLineList.Columns["ColumnStockCountLineListButtonEdit"].Index].Visible = !isLocked;
+            dataGridViewStockCountLineList.Columns[dataGridViewStockCountLineList.Columns["ColumnStockCountLineListButtonDelete"].Index].Visible = !isLocked;
         }
 
         private void buttonLock_Click(object sender, EventArgs e)
@@ -233,13 +233,13 @@ namespace EasyPOS.Forms.Software.TrnStockCount
         {
             UpdateStockCountLineListDataSource();
 
-            dataGridViewStockCountLineList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
-            dataGridViewStockCountLineList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
-            dataGridViewStockCountLineList.Columns[0].DefaultCellStyle.ForeColor = Color.White;
+            dataGridViewStockCountLineList.Columns[dataGridViewStockCountLineList.Columns["ColumnStockCountLineListButtonEdit"].Index].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewStockCountLineList.Columns[dataGridViewStockCountLineList.Columns["ColumnStockCountLineListButtonEdit"].Index].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewStockCountLineList.Columns[dataGridViewStockCountLineList.Columns["ColumnStockCountLineListButtonEdit"].Index].DefaultCellStyle.ForeColor = Color.White;
 
-            dataGridViewStockCountLineList.Columns[1].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#F34F1C");
-            dataGridViewStockCountLineList.Columns[1].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#F34F1C");
-            dataGridViewStockCountLineList.Columns[1].DefaultCellStyle.ForeColor = Color.White;
+            dataGridViewStockCountLineList.Columns[dataGridViewStockCountLineList.Columns["ColumnStockCountLineListButtonDelete"].Index].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#F34F1C");
+            dataGridViewStockCountLineList.Columns[dataGridViewStockCountLineList.Columns["ColumnStockCountLineListButtonDelete"].Index].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#F34F1C");
+            dataGridViewStockCountLineList.Columns[dataGridViewStockCountLineList.Columns["ColumnStockCountLineListButtonDelete"].Index].DefaultCellStyle.ForeColor = Color.White;
 
             dataGridViewStockCountLineList.DataSource = stockOutLineDataSource;
         }
