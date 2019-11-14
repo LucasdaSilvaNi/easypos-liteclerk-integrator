@@ -89,6 +89,8 @@
     <Compile Include="Controllers\TrnDisbursementController.cs" />
     <Compile Include="Controllers\TrnSalesController.cs" />
     <Compile Include="Controllers\TrnSalesLineController.cs" />
+    <Compile Include="Controllers\TrnStockCountController.cs" />
+    <Compile Include="Controllers\TrnStockCountLineController.cs" />
     <Compile Include="Controllers\TrnStockInController.cs" />
     <Compile Include="Controllers\TrnStockOutController.cs" />
     <Compile Include="Controllers\TrnStockInLineController.cs" />
@@ -140,6 +142,9 @@
     <Compile Include="Entities\DgvSalesDetailTenderPayTypeEntity.cs" />
     <Compile Include="Entities\DgvSalesListSalesEntity.cs" />
     <Compile Include="Entities\DgvSalesReportSalesSummaryReportEntity.cs" />
+    <Compile Include="Entities\DgvStockCountDetailStockCountLineEntity.cs" />
+    <Compile Include="Entities\DgvStockCountListStockCountEntity.cs" />
+    <Compile Include="Entities\DgvStockCountSearchItemListEntity.cs" />
     <Compile Include="Entities\DgvStockInDetailStockInLineEntity.cs" />
     <Compile Include="Entities\DgvStockInSearchItemListEntity.cs" />
     <Compile Include="Entities\DgvStockOutDetailStockOutLineEntity.cs" />
@@ -186,6 +191,8 @@
     <Compile Include="Entities\TrnDisbursementEntity.cs" />
     <Compile Include="Entities\TrnSalesEntity.cs" />
     <Compile Include="Entities\TrnSalesLineEntity.cs" />
+    <Compile Include="Entities\TrnStockCountEntity.cs" />
+    <Compile Include="Entities\TrnStockCountLineEntity.cs" />
     <Compile Include="Entities\TrnStockInEntity.cs" />
     <Compile Include="Entities\TrnStockInLineEntity.cs" />
     <Compile Include="Entities\TrnStockOutEntity.cs" />
@@ -424,6 +431,30 @@
     <Compile Include="Forms\Software\TrnStockIn\TrnStockInListForm.Designer.cs">
       <DependentUpon>TrnStockInListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnStockCount\TrnStockCountDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnStockCount\TrnStockCountDetailForm.Designer.cs">
+      <DependentUpon>TrnStockCountDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnStockCount\TrnStockCountDetailSearchItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnStockCount\TrnStockCountDetailSearchItemForm.Designer.cs">
+      <DependentUpon>TrnStockCountDetailSearchItemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnStockCount\TrnStockCountDetailStockOutLineItemDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnStockCount\TrnStockCountDetailStockOutLineItemDetailForm.Designer.cs">
+      <DependentUpon>TrnStockCountDetailStockOutLineItemDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnStockCount\TrnStockCountListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnStockCount\TrnStockCountListForm.Designer.cs">
+      <DependentUpon>TrnStockCountListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnStockOut\TrnStockOutDetailStockOutLineItemDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -562,6 +593,18 @@
     <EmbeddedResource Include="Forms\Software\TrnStockIn\TrnStockInListForm.resx">
       <DependentUpon>TrnStockInListForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnStockCount\TrnStockCountDetailForm.resx">
+      <DependentUpon>TrnStockCountDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnStockCount\TrnStockCountDetailSearchItemForm.resx">
+      <DependentUpon>TrnStockCountDetailSearchItemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnStockCount\TrnStockCountDetailStockOutLineItemDetailForm.resx">
+      <DependentUpon>TrnStockCountDetailStockOutLineItemDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnStockCount\TrnStockCountListForm.resx">
+      <DependentUpon>TrnStockCountListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnStockOut\TrnStockOutDetailStockOutLineItemDetailForm.resx">
       <DependentUpon>TrnStockOutDetailStockOutLineItemDetailForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -583,6 +626,7 @@
     <EmbeddedResource Include="Forms\Software\RepPOSReport\RepPOSReportZReadingReportForm.resx">
       <DependentUpon>RepPOSReportZReadingReportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Data\easyposdb.dbml.layout">
       <DependentUpon>easyposdb.dbml</DependentUpon>
     </None>

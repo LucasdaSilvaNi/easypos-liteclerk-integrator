@@ -41,7 +41,7 @@
             this.buttonCustomer = new System.Windows.Forms.Button();
             this.buttonPOSReport = new System.Windows.Forms.Button();
             this.buttonSystemTables = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.buttonStockCount = new System.Windows.Forms.Button();
             this.buttonDisbursement = new System.Windows.Forms.Button();
             this.buttonInventory = new System.Windows.Forms.Button();
             this.buttonStockOut = new System.Windows.Forms.Button();
@@ -81,7 +81,7 @@
             this.panel1.Controls.Add(this.buttonCustomer);
             this.panel1.Controls.Add(this.buttonPOSReport);
             this.panel1.Controls.Add(this.buttonSystemTables);
-            this.panel1.Controls.Add(this.button12);
+            this.panel1.Controls.Add(this.buttonStockCount);
             this.panel1.Controls.Add(this.buttonDisbursement);
             this.panel1.Controls.Add(this.buttonInventory);
             this.panel1.Controls.Add(this.buttonStockOut);
@@ -273,24 +273,25 @@
             this.buttonSystemTables.UseVisualStyleBackColor = false;
             this.buttonSystemTables.Click += new System.EventHandler(this.buttonSystemTables_Click);
             // 
-            // button12
+            // buttonStockCount
             // 
-            this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button12.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.button12.ForeColor = System.Drawing.Color.White;
-            this.button12.ImageIndex = 12;
-            this.button12.ImageList = this.imageListMenuIcons;
-            this.button12.Location = new System.Drawing.Point(478, 393);
-            this.button12.Name = "button12";
-            this.button12.Padding = new System.Windows.Forms.Padding(10);
-            this.button12.Size = new System.Drawing.Size(227, 121);
-            this.button12.TabIndex = 14;
-            this.button12.Text = "\r\nStock Count";
-            this.button12.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button12.UseVisualStyleBackColor = false;
+            this.buttonStockCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonStockCount.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonStockCount.FlatAppearance.BorderSize = 0;
+            this.buttonStockCount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStockCount.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonStockCount.ForeColor = System.Drawing.Color.White;
+            this.buttonStockCount.ImageIndex = 12;
+            this.buttonStockCount.ImageList = this.imageListMenuIcons;
+            this.buttonStockCount.Location = new System.Drawing.Point(478, 393);
+            this.buttonStockCount.Name = "buttonStockCount";
+            this.buttonStockCount.Padding = new System.Windows.Forms.Padding(10);
+            this.buttonStockCount.Size = new System.Drawing.Size(227, 121);
+            this.buttonStockCount.TabIndex = 14;
+            this.buttonStockCount.Text = "\r\nStock Count";
+            this.buttonStockCount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonStockCount.UseVisualStyleBackColor = false;
+            this.buttonStockCount.Click += new System.EventHandler(this.buttonStockCount_Click);
             // 
             // buttonDisbursement
             // 
@@ -443,7 +444,7 @@
         private System.Windows.Forms.Button buttonSalesReport;
         private System.Windows.Forms.Button buttonRemittanceReport;
         private System.Windows.Forms.Button buttonInventory;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button buttonStockCount;
         private System.Windows.Forms.Button buttonPOSReport;
         private System.Windows.Forms.Button buttonSettings;
         private System.Windows.Forms.Button button15;

@@ -89,5 +89,10 @@ namespace EasyPOS.Forms.Software.SysMenu
         {
             sysSoftwareForm.AddTabPageRemittanceReports();
         }
+
+        private void buttonStockCount_Click(object sender, EventArgs e)
+        {
+            sysSoftwareForm.AddTabPageStockCountList();
+        }
     }
 }

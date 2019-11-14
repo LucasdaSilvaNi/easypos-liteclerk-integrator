@@ -6,36 +6,34 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Controllers
 {
-    class TrnStockOutLineController
+    class TrnStockCountLineController
     {
         // ============
         // Data Context
         // ============
         public Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
 
-        // ===================
-        // List Stock-Out Line
-        // ===================
-        public List<Entities.TrnStockOutLineEntity> ListStockOutLine(Int32 stockOutId)
+        // =====================
+        // List Stock-Count Line
+        // =====================
+        public List<Entities.TrnStockCountLineEntity> ListStockCountLine(Int32 stockCountId)
         {
-            var stockOutLines = from d in db.TrnStockOutLines
-                                where d.StockOutId == stockOutId
-                                select new Entities.TrnStockOutLineEntity
-                                {
-                                    Id = d.Id,
-                                    StockOutId = d.StockOutId,
-                                    ItemId = d.ItemId,
-                                    ItemDescription = d.MstItem.ItemDescription,
-                                    UnitId = d.UnitId,
-                                    Unit = d.MstUnit.Unit,
-                                    Quantity = d.Quantity,
-                                    Cost = d.Cost,
-                                    Amount = d.Amount,
-                                    AssetAccountId = d.AssetAccountId,
-                                    AssetAccount = d.MstAccount.Account
-                                };
+            var stockCountLines = from d in db.TrnStockCountLines
+                                  where d.StockCountId == stockCountId
+                                  select new Entities.TrnStockCountLineEntity
+                                  {
+                                      Id = d.Id,
+                                      StockCountId = d.StockCountId,
+                                      ItemId = d.ItemId,
+                                      ItemDescription = d.MstItem.ItemDescription,
+                                      UnitId = d.UnitId,
+                                      Unit = d.MstUnit.Unit,
+                                      Quantity = d.Quantity,
+                                      Cost = d.Cost,
+                                      Amount = d.Amount
+                                  };
 
-            return stockOutLines.OrderByDescending(d => d.Id).ToList();
+            return stockCountLines.OrderByDescending(d => d.Id).ToList();
         }
 
         // ================
@@ -90,24 +88,24 @@ namespace EasyPOS.Controllers
             return item.FirstOrDefault();
         }
 
-        // ==================
-        // Add Stock-Out Line
-        // ==================
-        public String[] AddStockOutLine(Entities.TrnStockOutLineEntity objStockOutLine)
+        // ====================
+        // Add Stock-Count Line
+        // ====================
+        public String[] AddStockCountLine(Entities.TrnStockCountLineEntity objStockCountLine)
         {
             try
             {
-                var stockOut = from d in db.TrnStockOuts
-                               where d.Id == objStockOutLine.StockOutId
-                               select d;
+                var stockCount = from d in db.TrnStockCounts
+                                 where d.Id == objStockCountLine.StockCountId
+                                 select d;
 
-                if (stockOut.Any() == false)
+                if (stockCount.Any() == false)
                 {
-                    return new String[] { "Stock-Out transaction not found.", "0" };
+                    return new String[] { "Stock-Count transaction not found.", "0" };
                 }
 
                 var item = from d in db.MstItems
-                           where d.Id == objStockOutLine.ItemId
+                           where d.Id == objStockCountLine.ItemId
                            && d.IsLocked == true
                            select d;
 
@@ -116,18 +114,17 @@ namespace EasyPOS.Controllers
                     return new String[] { "Item not found.", "0" };
                 }
 
-                Data.TrnStockOutLine newStockOutLine = new Data.TrnStockOutLine
+                Data.TrnStockCountLine newStockCountLine = new Data.TrnStockCountLine
                 {
-                    StockOutId = objStockOutLine.StockOutId,
-                    ItemId = objStockOutLine.ItemId,
+                    StockCountId = objStockCountLine.StockCountId,
+                    ItemId = objStockCountLine.ItemId,
                     UnitId = item.FirstOrDefault().UnitId,
-                    Quantity = objStockOutLine.Quantity,
-                    Cost = objStockOutLine.Cost,
-                    Amount = objStockOutLine.Amount,
-                    AssetAccountId = item.FirstOrDefault().AssetAccountId
+                    Quantity = objStockCountLine.Quantity,
+                    Cost = objStockCountLine.Cost,
+                    Amount = objStockCountLine.Amount
                 };
 
-                db.TrnStockOutLines.InsertOnSubmit(newStockOutLine);
+                db.TrnStockCountLines.InsertOnSubmit(newStockCountLine);
                 db.SubmitChanges();
 
                 return new String[] { "", "1" };
@@ -138,39 +135,39 @@ namespace EasyPOS.Controllers
             }
         }
 
-        // =====================
-        // Update Stock-Out Line
-        // =====================
-        public String[] UpdateStockOutLine(Int32 id, Entities.TrnStockOutLineEntity objStockOutLine)
+        // =======================
+        // Update Stock-Count Line
+        // =======================
+        public String[] UpdateStockCountLine(Int32 id, Entities.TrnStockCountLineEntity objStockCountLine)
         {
             try
             {
-                var stockOutLine = from d in db.TrnStockOutLines
-                                   where d.Id == id
-                                   select d;
+                var stockCountLine = from d in db.TrnStockCountLines
+                                     where d.Id == id
+                                     select d;
 
-                if (stockOutLine.Any())
+                if (stockCountLine.Any())
                 {
-                    var stockOut = from d in db.TrnStockOuts
-                                   where d.Id == objStockOutLine.StockOutId
-                                   select d;
+                    var stockCount = from d in db.TrnStockCounts
+                                     where d.Id == objStockCountLine.StockCountId
+                                     select d;
 
-                    if (stockOut.Any() == false)
+                    if (stockCount.Any() == false)
                     {
-                        return new String[] { "Stock-Out transaction not found.", "0" };
+                        return new String[] { "Stock-Count transaction not found.", "0" };
                     }
 
-                    var updateStockOutLine = stockOutLine.FirstOrDefault();
-                    updateStockOutLine.Quantity = objStockOutLine.Quantity;
-                    updateStockOutLine.Cost = objStockOutLine.Cost;
-                    updateStockOutLine.Amount = objStockOutLine.Amount;
+                    var updateStockCountLine = stockCountLine.FirstOrDefault();
+                    updateStockCountLine.Quantity = objStockCountLine.Quantity;
+                    updateStockCountLine.Cost = objStockCountLine.Cost;
+                    updateStockCountLine.Amount = objStockCountLine.Amount;
                     db.SubmitChanges();
 
                     return new String[] { "", "1" };
                 }
                 else
                 {
-                    return new String[] { "Stock-Out line not found.", "0" };
+                    return new String[] { "Stock-Count line not found.", "0" };
                 }
             }
             catch (Exception e)
@@ -179,28 +176,28 @@ namespace EasyPOS.Controllers
             }
         }
 
-        // =====================
-        // Delete Stock-Out Line
-        // =====================
-        public String[] DeleteStockOutLine(Int32 id)
+        // =======================
+        // Delete Stock-Count Line
+        // =======================
+        public String[] DeleteStockCountLine(Int32 id)
         {
             try
             {
-                var stockOutLine = from d in db.TrnStockOutLines
-                                   where d.Id == id
-                                   select d;
+                var stockCountLine = from d in db.TrnStockCountLines
+                                     where d.Id == id
+                                     select d;
 
-                if (stockOutLine.Any())
+                if (stockCountLine.Any())
                 {
-                    var deleteStockOutLine = stockOutLine.FirstOrDefault();
-                    db.TrnStockOutLines.DeleteOnSubmit(deleteStockOutLine);
+                    var deleteStockCountLine = stockCountLine.FirstOrDefault();
+                    db.TrnStockCountLines.DeleteOnSubmit(deleteStockCountLine);
                     db.SubmitChanges();
 
                     return new String[] { "", "1" };
                 }
                 else
                 {
-                    return new String[] { "Stock-Out line not found.", "0" };
+                    return new String[] { "Stock-Count line not found.", "0" };
                 }
             }
             catch (Exception e)
@@ -209,20 +206,20 @@ namespace EasyPOS.Controllers
             }
         }
 
-        // ======================
-        // Barcode Stock-Out Line
-        // ======================
-        public String[] BarcodeStockOutLine(Int32 stockOutId, String barcode)
+        // ========================
+        // Barcode Stock-Count Line
+        // ========================
+        public String[] BarcodeStockCountLine(Int32 stockCountId, String barcode)
         {
             try
             {
-                var stockOut = from d in db.TrnStockOuts
-                               where d.Id == stockOutId
-                               select d;
+                var stockCount = from d in db.TrnStockCounts
+                                 where d.Id == stockCountId
+                                 select d;
 
-                if (stockOut.Any() == false)
+                if (stockCount.Any() == false)
                 {
-                    return new String[] { "Stock-Out transaction not found.", "0" };
+                    return new String[] { "Stock-Count transaction not found.", "0" };
                 }
 
                 var item = from d in db.MstItems
@@ -235,18 +232,17 @@ namespace EasyPOS.Controllers
                     return new String[] { "Item not found.", "0" };
                 }
 
-                Data.TrnStockOutLine newStockOutLine = new Data.TrnStockOutLine
+                Data.TrnStockCountLine newStockCountLine = new Data.TrnStockCountLine
                 {
-                    StockOutId = stockOutId,
+                    StockCountId = stockCountId,
                     ItemId = item.FirstOrDefault().Id,
                     UnitId = item.FirstOrDefault().UnitId,
                     Quantity = 1,
                     Cost = 0,
-                    Amount = 0,
-                    AssetAccountId = item.FirstOrDefault().AssetAccountId
+                    Amount = 0
                 };
 
-                db.TrnStockOutLines.InsertOnSubmit(newStockOutLine);
+                db.TrnStockCountLines.InsertOnSubmit(newStockCountLine);
                 db.SubmitChanges();
 
                 return new String[] { "", "1" };

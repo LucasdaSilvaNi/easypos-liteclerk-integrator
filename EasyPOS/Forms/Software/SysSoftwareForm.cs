@@ -48,6 +48,8 @@ namespace EasyPOS.Forms.Software
         public TabPage tabPageStockInDetail = new TabPage { Name = "tabPageStockInDetail", Text = "Stock-In Detail" };
         public TabPage tabPageStockOutList = new TabPage { Name = "tabPageStockOutList", Text = "Stock-Out List" };
         public TabPage tabPageStockOutDetail = new TabPage { Name = "tabPageStockOutDetail", Text = "Stock-Out Detail" };
+        public TabPage tabPageStockCountList = new TabPage { Name = "tabPageStockCountList", Text = "Stock-Count List" };
+        public TabPage tabPageStockCountDetail = new TabPage { Name = "tabPageStockCountDetail", Text = "Stock-Count Detail" };
         public TabPage tabPageDisbursementList = new TabPage { Name = "tabPageDisbursementList", Text = "Remittance List" };
         public TabPage tabPageDisbursementDetail = new TabPage { Name = "tabPageDisbursementDetail", Text = "Remittance Detail" };
 
@@ -77,6 +79,8 @@ namespace EasyPOS.Forms.Software
         public TrnStockIn.TrnStockInDetailForm trnStockInDetailForm = null;
         public TrnStockOut.TrnStockOutListForm trnStockOutListForm = null;
         public TrnStockOut.TrnStockOutDetailForm trnStockOutDetailForm = null;
+        public TrnStockCount.TrnStockCountListForm trnStockCountListForm = null;
+        public TrnStockCount.TrnStockCountDetailForm trnStockCountDetailForm = null;
         public TrnDisbursement.TrnDisbursementListForm trnDisbursementListForm = null;
         public TrnDisbursement.TrnDisbursementDetailForm trnDisbursementDetailForm = null;
 
@@ -449,6 +453,54 @@ namespace EasyPOS.Forms.Software
             {
                 tabControlSoftware.TabPages.Add(tabPageStockOutDetail);
                 tabControlSoftware.SelectTab(tabPageStockOutDetail);
+            }
+        }
+
+        public void AddTabPageStockCountList()
+        {
+            tabPageStockCountList.Controls.Remove(trnStockCountListForm);
+
+            trnStockCountListForm = new TrnStockCount.TrnStockCountListForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageStockCountList.Controls.Add(trnStockCountListForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageStockCountList) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageStockCountList);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageStockCountList);
+                tabControlSoftware.SelectTab(tabPageStockCountList);
+            }
+        }
+
+        public void AddTabPageStockCountDetail(TrnStockCount.TrnStockCountListForm stockCountListForm, Entities.TrnStockCountEntity stockCountEntity)
+        {
+            tabPageStockCountDetail.Controls.Remove(trnStockCountDetailForm);
+
+            trnStockCountDetailForm = new TrnStockCount.TrnStockCountDetailForm(this, stockCountListForm, stockCountEntity)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageStockCountDetail.Controls.Add(trnStockCountDetailForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageStockCountDetail) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageStockCountDetail);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageStockCountDetail);
+                tabControlSoftware.SelectTab(tabPageStockCountDetail);
             }
         }
 
