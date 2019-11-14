@@ -31,14 +31,14 @@ namespace EasyPOS.Controllers
         // ====================
         // Sales Summary Report
         // ====================
-        public List<Entities.TrnSalesEntity> SalesSummaryReport(DateTime startDate, DateTime endDate)
+        public List<Entities.RepSalesReportTrnSalesEntity> SalesSummaryReport(DateTime startDate, DateTime endDate)
         {
             var sales = from d in db.TrnSales.OrderByDescending(d => d.Id)
                         where d.SalesDate >= startDate
                         && d.SalesDate <= endDate
                         && d.IsLocked == true
                         && d.IsCancelled == false
-                        select new Entities.TrnSalesEntity
+                        select new Entities.RepSalesReportTrnSalesEntity
                         {
                             Id = d.Id,
                             PeriodId = d.PeriodId,
@@ -136,14 +136,14 @@ namespace EasyPOS.Controllers
         // ==============================
         // Cancelled Sales Summary Report
         // ==============================
-        public List<Entities.TrnSalesEntity> CancelledSalesSummaryReport(DateTime startDate, DateTime endDate)
+        public List<Entities.RepSalesReportTrnSalesEntity> CancelledSalesSummaryReport(DateTime startDate, DateTime endDate)
         {
             var sales = from d in db.TrnSales.OrderByDescending(d => d.Id)
                         where d.SalesDate >= startDate
                         && d.SalesDate <= endDate
                         && d.IsLocked == true
                         && d.IsCancelled == true
-                        select new Entities.TrnSalesEntity
+                        select new Entities.RepSalesReportTrnSalesEntity
                         {
                             Id = d.Id,
                             PeriodId = d.PeriodId,
@@ -197,7 +197,7 @@ namespace EasyPOS.Controllers
         // =========================
         // Collection Summary Report
         // =========================
-        public List<Entities.TrnCollectionEntity> CollectionSummaryReport(DateTime startDate, DateTime endDate, Int32 terminalId)
+        public List<Entities.RepSalesReportTrnCollectionEntity> CollectionSummaryReport(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
 
             var collections = from d in db.TrnCollections.OrderByDescending(d => d.Id)
@@ -206,7 +206,7 @@ namespace EasyPOS.Controllers
                               && d.TerminalId == terminalId
                               && d.IsLocked == true
                               && d.IsCancelled == false
-                              select new Entities.TrnCollectionEntity
+                              select new Entities.RepSalesReportTrnCollectionEntity
                               {
                                   Id = d.Id,
                                   PeriodId = d.PeriodId,
