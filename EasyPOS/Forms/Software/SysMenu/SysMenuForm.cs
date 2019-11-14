@@ -13,16 +13,31 @@ namespace EasyPOS.Forms.Software.SysMenu
     public partial class SysMenuForm : Form
     {
         public SysSoftwareForm sysSoftwareForm;
+        private Modules.SysUserRightsModule sysUserRights;
 
         public SysMenuForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();
             sysSoftwareForm = softwareForm;
+
+            sysUserRights = new Modules.SysUserRightsModule("SysMenu");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void buttonItem_Click(object sender, EventArgs e)
         {
-            sysSoftwareForm.AddTabPageItemList();
+            sysUserRights = new Modules.SysUserRightsModule("MstItem");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                sysSoftwareForm.AddTabPageItemList();
+            }
         }
 
         private void buttonPOS_Click(object sender, EventArgs e)
