@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MstUserDetailForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonLock = new System.Windows.Forms.Button();
@@ -43,10 +45,43 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.buttonAddUserForm = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.buttonUserFormListPageListFirst = new System.Windows.Forms.Button();
+            this.buttonUserFormListPageListPrevious = new System.Windows.Forms.Button();
+            this.buttonUserFormListPageListNext = new System.Windows.Forms.Button();
+            this.buttonUserFormListPageListLast = new System.Windows.Forms.Button();
+            this.textBoxUserFormListPageNumber = new System.Windows.Forms.TextBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.dataGridViewUserFormList = new System.Windows.Forms.DataGridView();
+            this.ColumnUserFormListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnUserFormListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnUserFormListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUserFormListFormId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUserFormListForm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUserFormListUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUserFormListCanDelete = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnUserFormListCanAdd = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnUserFormListCanLock = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnUserFormListCanUnlock = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnUserFormListCanPrint = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnUserFormListCanPreview = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnUserFormListCanEdit = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnUserFormListCanTender = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnUserFormListCanDiscount = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnUserFormListCanView = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnUserFormListCanSplit = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnUserFormListCanCancel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnUserFormListCanReturn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserFormList)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -137,6 +172,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel6);
+            this.panel2.Controls.Add(this.panel5);
+            this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 63);
@@ -218,6 +256,360 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Username:";
             // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Controls.Add(this.buttonAddUserForm);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 119);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1400, 54);
+            this.panel5.TabIndex = 28;
+            // 
+            // buttonAddUserForm
+            // 
+            this.buttonAddUserForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAddUserForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonAddUserForm.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
+            this.buttonAddUserForm.FlatAppearance.BorderSize = 0;
+            this.buttonAddUserForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddUserForm.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.buttonAddUserForm.ForeColor = System.Drawing.Color.White;
+            this.buttonAddUserForm.Location = new System.Drawing.Point(1300, 6);
+            this.buttonAddUserForm.Name = "buttonAddUserForm";
+            this.buttonAddUserForm.Size = new System.Drawing.Size(88, 40);
+            this.buttonAddUserForm.TabIndex = 8;
+            this.buttonAddUserForm.TabStop = false;
+            this.buttonAddUserForm.Text = "Add";
+            this.buttonAddUserForm.UseVisualStyleBackColor = false;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.buttonUserFormListPageListFirst);
+            this.panel4.Controls.Add(this.buttonUserFormListPageListPrevious);
+            this.panel4.Controls.Add(this.buttonUserFormListPageListNext);
+            this.panel4.Controls.Add(this.buttonUserFormListPageListLast);
+            this.panel4.Controls.Add(this.textBoxUserFormListPageNumber);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 584);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1400, 53);
+            this.panel4.TabIndex = 27;
+            // 
+            // buttonUserFormListPageListFirst
+            // 
+            this.buttonUserFormListPageListFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonUserFormListPageListFirst.Enabled = false;
+            this.buttonUserFormListPageListFirst.FlatAppearance.BorderSize = 0;
+            this.buttonUserFormListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUserFormListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonUserFormListPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonUserFormListPageListFirst.Name = "buttonUserFormListPageListFirst";
+            this.buttonUserFormListPageListFirst.Size = new System.Drawing.Size(82, 32);
+            this.buttonUserFormListPageListFirst.TabIndex = 13;
+            this.buttonUserFormListPageListFirst.Text = "First";
+            this.buttonUserFormListPageListFirst.UseVisualStyleBackColor = false;
+            this.buttonUserFormListPageListFirst.Click += new System.EventHandler(this.buttonUserFormListPageListFirst_Click);
+            // 
+            // buttonUserFormListPageListPrevious
+            // 
+            this.buttonUserFormListPageListPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonUserFormListPageListPrevious.Enabled = false;
+            this.buttonUserFormListPageListPrevious.FlatAppearance.BorderSize = 0;
+            this.buttonUserFormListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUserFormListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonUserFormListPageListPrevious.Location = new System.Drawing.Point(100, 9);
+            this.buttonUserFormListPageListPrevious.Name = "buttonUserFormListPageListPrevious";
+            this.buttonUserFormListPageListPrevious.Size = new System.Drawing.Size(82, 32);
+            this.buttonUserFormListPageListPrevious.TabIndex = 14;
+            this.buttonUserFormListPageListPrevious.Text = "Previous";
+            this.buttonUserFormListPageListPrevious.UseVisualStyleBackColor = false;
+            this.buttonUserFormListPageListPrevious.Click += new System.EventHandler(this.buttonUserFormListPageListPrevious_Click);
+            // 
+            // buttonUserFormListPageListNext
+            // 
+            this.buttonUserFormListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonUserFormListPageListNext.FlatAppearance.BorderSize = 0;
+            this.buttonUserFormListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUserFormListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonUserFormListPageListNext.Location = new System.Drawing.Point(263, 9);
+            this.buttonUserFormListPageListNext.Name = "buttonUserFormListPageListNext";
+            this.buttonUserFormListPageListNext.Size = new System.Drawing.Size(82, 32);
+            this.buttonUserFormListPageListNext.TabIndex = 15;
+            this.buttonUserFormListPageListNext.Text = "Next";
+            this.buttonUserFormListPageListNext.UseVisualStyleBackColor = false;
+            this.buttonUserFormListPageListNext.Click += new System.EventHandler(this.buttonUserFormListPageListNext_Click);
+            // 
+            // buttonUserFormListPageListLast
+            // 
+            this.buttonUserFormListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonUserFormListPageListLast.FlatAppearance.BorderSize = 0;
+            this.buttonUserFormListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUserFormListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonUserFormListPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonUserFormListPageListLast.Name = "buttonUserFormListPageListLast";
+            this.buttonUserFormListPageListLast.Size = new System.Drawing.Size(82, 32);
+            this.buttonUserFormListPageListLast.TabIndex = 16;
+            this.buttonUserFormListPageListLast.Text = "Last";
+            this.buttonUserFormListPageListLast.UseVisualStyleBackColor = false;
+            this.buttonUserFormListPageListLast.Click += new System.EventHandler(this.buttonUserFormListPageListLast_Click);
+            // 
+            // textBoxUserFormListPageNumber
+            // 
+            this.textBoxUserFormListPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBoxUserFormListPageNumber.BackColor = System.Drawing.Color.White;
+            this.textBoxUserFormListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxUserFormListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textBoxUserFormListPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxUserFormListPageNumber.Name = "textBoxUserFormListPageNumber";
+            this.textBoxUserFormListPageNumber.ReadOnly = true;
+            this.textBoxUserFormListPageNumber.Size = new System.Drawing.Size(69, 20);
+            this.textBoxUserFormListPageNumber.TabIndex = 17;
+            this.textBoxUserFormListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.dataGridViewUserFormList);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(0, 173);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1400, 411);
+            this.panel6.TabIndex = 29;
+            // 
+            // dataGridViewUserFormList
+            // 
+            this.dataGridViewUserFormList.AllowUserToAddRows = false;
+            this.dataGridViewUserFormList.AllowUserToDeleteRows = false;
+            this.dataGridViewUserFormList.AllowUserToResizeRows = false;
+            this.dataGridViewUserFormList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewUserFormList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewUserFormList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewUserFormList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewUserFormList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnUserFormListButtonEdit,
+            this.ColumnUserFormListButtonDelete,
+            this.ColumnUserFormListId,
+            this.ColumnUserFormListFormId,
+            this.ColumnUserFormListForm,
+            this.ColumnUserFormListUserId,
+            this.ColumnUserFormListCanDelete,
+            this.ColumnUserFormListCanAdd,
+            this.ColumnUserFormListCanLock,
+            this.ColumnUserFormListCanUnlock,
+            this.ColumnUserFormListCanPrint,
+            this.ColumnUserFormListCanPreview,
+            this.ColumnUserFormListCanEdit,
+            this.ColumnUserFormListCanTender,
+            this.ColumnUserFormListCanDiscount,
+            this.ColumnUserFormListCanView,
+            this.ColumnUserFormListCanSplit,
+            this.ColumnUserFormListCanCancel,
+            this.ColumnUserFormListCanReturn});
+            this.dataGridViewUserFormList.Location = new System.Drawing.Point(12, 6);
+            this.dataGridViewUserFormList.MultiSelect = false;
+            this.dataGridViewUserFormList.Name = "dataGridViewUserFormList";
+            this.dataGridViewUserFormList.ReadOnly = true;
+            this.dataGridViewUserFormList.RowHeadersVisible = false;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.dataGridViewUserFormList.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewUserFormList.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.dataGridViewUserFormList.RowTemplate.Height = 24;
+            this.dataGridViewUserFormList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewUserFormList.Size = new System.Drawing.Size(1376, 399);
+            this.dataGridViewUserFormList.TabIndex = 1;
+            this.dataGridViewUserFormList.TabStop = false;
+            this.dataGridViewUserFormList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUserFormList_CellClick);
+            // 
+            // ColumnUserFormListButtonEdit
+            // 
+            this.ColumnUserFormListButtonEdit.DataPropertyName = "ColumnUserFormListButtonEdit";
+            this.ColumnUserFormListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnUserFormListButtonEdit.HeaderText = "";
+            this.ColumnUserFormListButtonEdit.Name = "ColumnUserFormListButtonEdit";
+            this.ColumnUserFormListButtonEdit.ReadOnly = true;
+            this.ColumnUserFormListButtonEdit.Width = 70;
+            // 
+            // ColumnUserFormListButtonDelete
+            // 
+            this.ColumnUserFormListButtonDelete.DataPropertyName = "ColumnUserFormListButtonDelete";
+            this.ColumnUserFormListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnUserFormListButtonDelete.HeaderText = "";
+            this.ColumnUserFormListButtonDelete.Name = "ColumnUserFormListButtonDelete";
+            this.ColumnUserFormListButtonDelete.ReadOnly = true;
+            this.ColumnUserFormListButtonDelete.Width = 70;
+            // 
+            // ColumnUserFormListId
+            // 
+            this.ColumnUserFormListId.DataPropertyName = "ColumnUserFormListId";
+            this.ColumnUserFormListId.HeaderText = "Id";
+            this.ColumnUserFormListId.Name = "ColumnUserFormListId";
+            this.ColumnUserFormListId.ReadOnly = true;
+            this.ColumnUserFormListId.Visible = false;
+            // 
+            // ColumnUserFormListFormId
+            // 
+            this.ColumnUserFormListFormId.DataPropertyName = "ColumnUserFormListFormId";
+            this.ColumnUserFormListFormId.HeaderText = "Form Id";
+            this.ColumnUserFormListFormId.Name = "ColumnUserFormListFormId";
+            this.ColumnUserFormListFormId.ReadOnly = true;
+            this.ColumnUserFormListFormId.Visible = false;
+            // 
+            // ColumnUserFormListForm
+            // 
+            this.ColumnUserFormListForm.DataPropertyName = "ColumnUserFormListForm";
+            this.ColumnUserFormListForm.HeaderText = "Form";
+            this.ColumnUserFormListForm.Name = "ColumnUserFormListForm";
+            this.ColumnUserFormListForm.ReadOnly = true;
+            this.ColumnUserFormListForm.Width = 300;
+            // 
+            // ColumnUserFormListUserId
+            // 
+            this.ColumnUserFormListUserId.DataPropertyName = "ColumnUserFormListUserId";
+            this.ColumnUserFormListUserId.HeaderText = "User Id";
+            this.ColumnUserFormListUserId.Name = "ColumnUserFormListUserId";
+            this.ColumnUserFormListUserId.ReadOnly = true;
+            this.ColumnUserFormListUserId.Visible = false;
+            // 
+            // ColumnUserFormListCanDelete
+            // 
+            this.ColumnUserFormListCanDelete.DataPropertyName = "ColumnUserFormListCanDelete";
+            this.ColumnUserFormListCanDelete.HeaderText = "Delete";
+            this.ColumnUserFormListCanDelete.Name = "ColumnUserFormListCanDelete";
+            this.ColumnUserFormListCanDelete.ReadOnly = true;
+            this.ColumnUserFormListCanDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnUserFormListCanDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnUserFormListCanDelete.Width = 80;
+            // 
+            // ColumnUserFormListCanAdd
+            // 
+            this.ColumnUserFormListCanAdd.DataPropertyName = "ColumnUserFormListCanAdd";
+            this.ColumnUserFormListCanAdd.HeaderText = "Add";
+            this.ColumnUserFormListCanAdd.Name = "ColumnUserFormListCanAdd";
+            this.ColumnUserFormListCanAdd.ReadOnly = true;
+            this.ColumnUserFormListCanAdd.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnUserFormListCanAdd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnUserFormListCanAdd.Width = 80;
+            // 
+            // ColumnUserFormListCanLock
+            // 
+            this.ColumnUserFormListCanLock.DataPropertyName = "ColumnUserFormListCanLock";
+            this.ColumnUserFormListCanLock.HeaderText = "Lock";
+            this.ColumnUserFormListCanLock.Name = "ColumnUserFormListCanLock";
+            this.ColumnUserFormListCanLock.ReadOnly = true;
+            this.ColumnUserFormListCanLock.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnUserFormListCanLock.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnUserFormListCanLock.Width = 80;
+            // 
+            // ColumnUserFormListCanUnlock
+            // 
+            this.ColumnUserFormListCanUnlock.DataPropertyName = "ColumnUserFormListCanUnlock";
+            this.ColumnUserFormListCanUnlock.HeaderText = "Unlock";
+            this.ColumnUserFormListCanUnlock.Name = "ColumnUserFormListCanUnlock";
+            this.ColumnUserFormListCanUnlock.ReadOnly = true;
+            this.ColumnUserFormListCanUnlock.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnUserFormListCanUnlock.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnUserFormListCanUnlock.Width = 80;
+            // 
+            // ColumnUserFormListCanPrint
+            // 
+            this.ColumnUserFormListCanPrint.DataPropertyName = "ColumnUserFormListCanPrint";
+            this.ColumnUserFormListCanPrint.HeaderText = "Print";
+            this.ColumnUserFormListCanPrint.Name = "ColumnUserFormListCanPrint";
+            this.ColumnUserFormListCanPrint.ReadOnly = true;
+            this.ColumnUserFormListCanPrint.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnUserFormListCanPrint.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnUserFormListCanPrint.Width = 80;
+            // 
+            // ColumnUserFormListCanPreview
+            // 
+            this.ColumnUserFormListCanPreview.DataPropertyName = "ColumnUserFormListCanPreview";
+            this.ColumnUserFormListCanPreview.HeaderText = "Preview";
+            this.ColumnUserFormListCanPreview.Name = "ColumnUserFormListCanPreview";
+            this.ColumnUserFormListCanPreview.ReadOnly = true;
+            this.ColumnUserFormListCanPreview.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnUserFormListCanPreview.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnUserFormListCanPreview.Width = 80;
+            // 
+            // ColumnUserFormListCanEdit
+            // 
+            this.ColumnUserFormListCanEdit.DataPropertyName = "ColumnUserFormListCanEdit";
+            this.ColumnUserFormListCanEdit.HeaderText = "Edit";
+            this.ColumnUserFormListCanEdit.Name = "ColumnUserFormListCanEdit";
+            this.ColumnUserFormListCanEdit.ReadOnly = true;
+            this.ColumnUserFormListCanEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnUserFormListCanEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnUserFormListCanEdit.Width = 80;
+            // 
+            // ColumnUserFormListCanTender
+            // 
+            this.ColumnUserFormListCanTender.DataPropertyName = "ColumnUserFormListCanTender";
+            this.ColumnUserFormListCanTender.HeaderText = "Tender";
+            this.ColumnUserFormListCanTender.Name = "ColumnUserFormListCanTender";
+            this.ColumnUserFormListCanTender.ReadOnly = true;
+            this.ColumnUserFormListCanTender.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnUserFormListCanTender.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnUserFormListCanTender.Width = 80;
+            // 
+            // ColumnUserFormListCanDiscount
+            // 
+            this.ColumnUserFormListCanDiscount.DataPropertyName = "ColumnUserFormListCanDiscount";
+            this.ColumnUserFormListCanDiscount.HeaderText = "Discount";
+            this.ColumnUserFormListCanDiscount.Name = "ColumnUserFormListCanDiscount";
+            this.ColumnUserFormListCanDiscount.ReadOnly = true;
+            this.ColumnUserFormListCanDiscount.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnUserFormListCanDiscount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnUserFormListCanDiscount.Width = 80;
+            // 
+            // ColumnUserFormListCanView
+            // 
+            this.ColumnUserFormListCanView.DataPropertyName = "ColumnUserFormListCanView";
+            this.ColumnUserFormListCanView.HeaderText = "View";
+            this.ColumnUserFormListCanView.Name = "ColumnUserFormListCanView";
+            this.ColumnUserFormListCanView.ReadOnly = true;
+            this.ColumnUserFormListCanView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnUserFormListCanView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnUserFormListCanView.Width = 80;
+            // 
+            // ColumnUserFormListCanSplit
+            // 
+            this.ColumnUserFormListCanSplit.DataPropertyName = "ColumnUserFormListCanSplit";
+            this.ColumnUserFormListCanSplit.HeaderText = "Split";
+            this.ColumnUserFormListCanSplit.Name = "ColumnUserFormListCanSplit";
+            this.ColumnUserFormListCanSplit.ReadOnly = true;
+            this.ColumnUserFormListCanSplit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnUserFormListCanSplit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnUserFormListCanSplit.Width = 80;
+            // 
+            // ColumnUserFormListCanCancel
+            // 
+            this.ColumnUserFormListCanCancel.DataPropertyName = "ColumnUserFormListCanCancel";
+            this.ColumnUserFormListCanCancel.HeaderText = "Cancel";
+            this.ColumnUserFormListCanCancel.Name = "ColumnUserFormListCanCancel";
+            this.ColumnUserFormListCanCancel.ReadOnly = true;
+            this.ColumnUserFormListCanCancel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnUserFormListCanCancel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnUserFormListCanCancel.Width = 80;
+            // 
+            // ColumnUserFormListCanReturn
+            // 
+            this.ColumnUserFormListCanReturn.DataPropertyName = "ColumnUserFormListCanReturn";
+            this.ColumnUserFormListCanReturn.HeaderText = "Return";
+            this.ColumnUserFormListCanReturn.Name = "ColumnUserFormListCanReturn";
+            this.ColumnUserFormListCanReturn.ReadOnly = true;
+            this.ColumnUserFormListCanReturn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnUserFormListCanReturn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnUserFormListCanReturn.Width = 80;
+            // 
             // MstUserDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -225,6 +617,7 @@
             this.ClientSize = new System.Drawing.Size(1400, 700);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -236,6 +629,11 @@
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserFormList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -256,5 +654,34 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxUserName;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button buttonAddUserForm;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button buttonUserFormListPageListFirst;
+        private System.Windows.Forms.Button buttonUserFormListPageListPrevious;
+        private System.Windows.Forms.Button buttonUserFormListPageListNext;
+        private System.Windows.Forms.Button buttonUserFormListPageListLast;
+        private System.Windows.Forms.TextBox textBoxUserFormListPageNumber;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.DataGridView dataGridViewUserFormList;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnUserFormListButtonEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnUserFormListButtonDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUserFormListId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUserFormListFormId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUserFormListForm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUserFormListUserId;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnUserFormListCanDelete;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnUserFormListCanAdd;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnUserFormListCanLock;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnUserFormListCanUnlock;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnUserFormListCanPrint;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnUserFormListCanPreview;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnUserFormListCanEdit;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnUserFormListCanTender;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnUserFormListCanDiscount;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnUserFormListCanView;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnUserFormListCanSplit;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnUserFormListCanCancel;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnUserFormListCanReturn;
     }
 }

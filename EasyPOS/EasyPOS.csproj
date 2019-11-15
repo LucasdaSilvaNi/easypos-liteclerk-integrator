@@ -80,6 +80,7 @@
     <Compile Include="Controllers\MstTerminalController.cs" />
     <Compile Include="Controllers\MstUnitController.cs" />
     <Compile Include="Controllers\MstUserController.cs" />
+    <Compile Include="Controllers\MstUserFormController.cs" />
     <Compile Include="Controllers\RepInventoryReportController.cs" />
     <Compile Include="Controllers\RepPOSReportController.cs" />
     <Compile Include="Controllers\RepSalesReportController.cs" />
@@ -158,6 +159,7 @@
     <Compile Include="Entities\DgvSystemTablesTaxListEntity.cs" />
     <Compile Include="Entities\DgvSystemTablesTerminalListEntity.cs" />
     <Compile Include="Entities\DgvSystemTablesUnitListEntity.cs" />
+    <Compile Include="Entities\DgvUserDetailUserFormEntity.cs" />
     <Compile Include="Entities\DgvUserDetailUserRightsEntity.cs" />
     <Compile Include="Entities\DgvUserListUserEntity.cs" />
     <Compile Include="Entities\MstAccountEntity.cs" />
@@ -188,6 +190,7 @@
     <Compile Include="Entities\RepZReadingReportEntity.cs" />
     <Compile Include="Entities\SysConnectionStringEntity.cs" />
     <Compile Include="Entities\SysCurrentEntity.cs" />
+    <Compile Include="Entities\SysFormEntity.cs" />
     <Compile Include="Entities\SysUserRightsEntity.cs" />
     <Compile Include="Entities\TrnCollectionEntity.cs" />
     <Compile Include="Entities\TrnCollectionLineEntity.cs" />
@@ -200,6 +203,7 @@
     <Compile Include="Entities\TrnStockInLineEntity.cs" />
     <Compile Include="Entities\TrnStockOutEntity.cs" />
     <Compile Include="Entities\TrnStockOutLineEntity.cs" />
+    <Compile Include="Entities\MstUserFormEntity.cs" />
     <Compile Include="Forms\Account\SysLogin\SysLoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
