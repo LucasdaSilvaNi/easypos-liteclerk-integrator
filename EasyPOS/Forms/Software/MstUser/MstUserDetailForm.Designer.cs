@@ -282,6 +282,7 @@
             this.buttonAddUserForm.TabStop = false;
             this.buttonAddUserForm.Text = "Add";
             this.buttonAddUserForm.UseVisualStyleBackColor = false;
+            this.buttonAddUserForm.Click += new System.EventHandler(this.buttonAddUserForm_Click);
             // 
             // panel4
             // 

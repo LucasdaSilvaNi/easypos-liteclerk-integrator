@@ -56,8 +56,13 @@ namespace EasyPOS.Forms.Software.MstUser
             buttonUnlock.Enabled = isLocked;
 
             textBoxFullName.Enabled = !isLocked;
-            textBoxUserName.Enabled = !isLocked; ;
-            textBoxPassword.Enabled = !isLocked; ;
+            textBoxUserName.Enabled = !isLocked;
+            textBoxPassword.Enabled = !isLocked;
+
+            buttonAddUserForm.Enabled = !isLocked;
+
+            dataGridViewUserFormList.Columns[0].Visible = !isLocked;
+            dataGridViewUserFormList.Columns[1].Visible = !isLocked;
         }
 
         private void buttonLock_Click(object sender, EventArgs e)
@@ -253,7 +258,7 @@ namespace EasyPOS.Forms.Software.MstUser
                     Id = id,
                     FormId = formId,
                     Form = formDescription,
-                    UserId = userId,
+                    UserId = mstUserEntity.Id,
                     CanDelete = canDelete,
                     CanAdd = canAdd,
                     CanLock = canLock,
@@ -269,8 +274,8 @@ namespace EasyPOS.Forms.Software.MstUser
                     CanReturn = canReturn
                 };
 
-                //MstStockInDetailUserFormItemDetailForm trnStockInDetailUserFormItemDetailForm = new MstStockInDetailUserFormItemDetailForm(this, mstUserFormEntity);
-                //trnStockInDetailUserFormItemDetailForm.ShowDialog();
+                MstUserDetailUserFormDetailForm mstUserDetailUserFormDetailForm = new MstUserDetailUserFormDetailForm(this, mstUserFormEntity);
+                mstUserDetailUserFormDetailForm.ShowDialog();
             }
 
             if (e.RowIndex > -1 && dataGridViewUserFormList.CurrentCell.ColumnIndex == dataGridViewUserFormList.Columns["ColumnUserFormListButtonDelete"].Index)
@@ -361,6 +366,33 @@ namespace EasyPOS.Forms.Software.MstUser
 
             userFormPageNumber = userFormPageList.PageCount;
             textBoxUserFormListPageNumber.Text = userFormPageNumber + " / " + userFormPageList.PageCount;
+        }
+
+        private void buttonAddUserForm_Click(object sender, EventArgs e)
+        {
+            Entities.MstUserFormEntity mstUserFormEntity = new Entities.MstUserFormEntity()
+            {
+                Id = 0,
+                FormId = 0,
+                Form = "",
+                UserId = mstUserEntity.Id,
+                CanDelete = false,
+                CanAdd = false,
+                CanLock = false,
+                CanUnlock = false,
+                CanPrint = false,
+                CanPreview = false,
+                CanEdit = false,
+                CanTender = false,
+                CanDiscount = false,
+                CanView = false,
+                CanSplit = false,
+                CanCancel = false,
+                CanReturn = false
+            };
+
+            MstUserDetailUserFormDetailForm mstUserDetailUserFormDetailForm = new MstUserDetailUserFormDetailForm(this, mstUserFormEntity);
+            mstUserDetailUserFormDetailForm.ShowDialog();
         }
     }
 }

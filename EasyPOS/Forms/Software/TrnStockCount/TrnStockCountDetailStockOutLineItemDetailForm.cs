@@ -89,28 +89,28 @@ namespace EasyPOS.Forms.Software.TrnStockCount
             Controllers.TrnStockCountLineController trnPOSStockCountLineController = new Controllers.TrnStockCountLineController();
             if (newStockCountLineEntity.Id == 0)
             {
-                String[] addStockCount = trnPOSStockCountLineController.AddStockCountLine(newStockCountLineEntity);
-                if (addStockCount[1].Equals("0") == false)
+                String[] addStockCountLine = trnPOSStockCountLineController.AddStockCountLine(newStockCountLineEntity);
+                if (addStockCountLine[1].Equals("0") == false)
                 {
                     trnStockCountDetailForm.UpdateStockCountLineListDataSource();
                     Close();
                 }
                 else
                 {
-                    MessageBox.Show(addStockCount[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(addStockCountLine[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                String[] addStockCount = trnPOSStockCountLineController.UpdateStockCountLine(trnStockCountLineEntity.Id, newStockCountLineEntity);
-                if (addStockCount[1].Equals("0") == false)
+                String[] updateStockCountLine = trnPOSStockCountLineController.UpdateStockCountLine(trnStockCountLineEntity.Id, newStockCountLineEntity);
+                if (updateStockCountLine[1].Equals("0") == false)
                 {
                     trnStockCountDetailForm.UpdateStockCountLineListDataSource();
                     Close();
                 }
                 else
                 {
-                    MessageBox.Show(addStockCount[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(updateStockCountLine[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

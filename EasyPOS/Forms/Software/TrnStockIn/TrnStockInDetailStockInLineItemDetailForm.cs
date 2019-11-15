@@ -117,28 +117,28 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             Controllers.TrnStockInLineController trnPOSStockInLineController = new Controllers.TrnStockInLineController();
             if (newStockInLineEntity.Id == 0)
             {
-                String[] addStockIn = trnPOSStockInLineController.AddStockInLine(newStockInLineEntity);
-                if (addStockIn[1].Equals("0") == false)
+                String[] addStockInLine = trnPOSStockInLineController.AddStockInLine(newStockInLineEntity);
+                if (addStockInLine[1].Equals("0") == false)
                 {
                     trnStockInDetailForm.UpdateStockInLineListDataSource();
                     Close();
                 }
                 else
                 {
-                    MessageBox.Show(addStockIn[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(addStockInLine[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                String[] addStockIn = trnPOSStockInLineController.UpdateStockInLine(trnStockInLineEntity.Id, newStockInLineEntity);
-                if (addStockIn[1].Equals("0") == false)
+                String[] updateStockInLine = trnPOSStockInLineController.UpdateStockInLine(trnStockInLineEntity.Id, newStockInLineEntity);
+                if (updateStockInLine[1].Equals("0") == false)
                 {
                     trnStockInDetailForm.UpdateStockInLineListDataSource();
                     Close();
                 }
                 else
                 {
-                    MessageBox.Show(addStockIn[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(updateStockInLine[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

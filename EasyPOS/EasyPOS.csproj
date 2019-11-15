@@ -246,6 +246,12 @@
     <Compile Include="Forms\Software\MstUser\MstUserDetailForm.Designer.cs">
       <DependentUpon>MstUserDetailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\MstUser\MstUserDetailUserFormDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\MstUser\MstUserDetailUserFormDetailForm.Designer.cs">
+      <DependentUpon>MstUserDetailUserFormDetailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\MstUser\MstUserListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -570,6 +576,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstUser\MstUserDetailForm.resx">
       <DependentUpon>MstUserDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\MstUser\MstUserDetailUserFormDetailForm.resx">
+      <DependentUpon>MstUserDetailUserFormDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstUser\MstUserListForm.resx">
       <DependentUpon>MstUserListForm.cs</DependentUpon>
