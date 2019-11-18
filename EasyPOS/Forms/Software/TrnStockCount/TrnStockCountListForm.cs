@@ -14,6 +14,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
     public partial class TrnStockCountListForm : Form
     {
         public SysSoftwareForm sysSoftwareForm;
+        private Modules.SysUserRightsModule sysUserRights;
 
         public static List<Entities.DgvStockCountListStockCountEntity> itemListData = new List<Entities.DgvStockCountListStockCountEntity>();
         public static Int32 pageNumber = 1;
@@ -26,7 +27,30 @@ namespace EasyPOS.Forms.Software.TrnStockCount
             InitializeComponent();
             sysSoftwareForm = softwareForm;
 
-            CreateStockCountListDataGridView();
+            sysUserRights = new Modules.SysUserRightsModule("TrnStockCount");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (sysUserRights.GetUserRights().CanAdd == false)
+                {
+                    buttonAdd.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanEdit == false)
+                {
+                    dataGridViewStockCountList.Columns[0].Visible = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanDelete == false)
+                {
+                    dataGridViewStockCountList.Columns[1].Visible = false;
+                }
+
+                CreateStockCountListDataGridView();
+            }
         }
 
         public void UpdateStockCountListDataSource()

@@ -14,6 +14,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
     public partial class TrnStockCountDetailForm : Form
     {
         public SysSoftwareForm sysSoftwareForm;
+        private Modules.SysUserRightsModule sysUserRights;
         public TrnStockCountListForm trnStockCountListForm;
         public Entities.TrnStockCountEntity trnStockCountEntity;
 
@@ -28,10 +29,20 @@ namespace EasyPOS.Forms.Software.TrnStockCount
             InitializeComponent();
 
             sysSoftwareForm = softwareForm;
-            trnStockCountListForm = stockOutListForm;
-            trnStockCountEntity = stockOutEntity;
 
-            GetUserList();
+            sysUserRights = new Modules.SysUserRightsModule("TrnStockCountDetail");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                trnStockCountListForm = stockOutListForm;
+                trnStockCountEntity = stockOutEntity;
+
+                GetUserList();
+            }
+
         }
 
         public void GetUserList()
@@ -71,18 +82,50 @@ namespace EasyPOS.Forms.Software.TrnStockCount
 
         public void UpdateComponents(Boolean isLocked)
         {
-            buttonLock.Enabled = !isLocked;
-            buttonUnlock.Enabled = isLocked;
-            buttonPrint.Enabled = isLocked;
+            if (sysUserRights.GetUserRights().CanLock == false)
+            {
+                buttonLock.Enabled = false;
+            }
+            else
+            {
+                buttonLock.Enabled = !isLocked;
+            }
+
+            if (sysUserRights.GetUserRights().CanUnlock == false)
+            {
+                buttonUnlock.Enabled = false;
+            }
+            else
+            {
+                buttonUnlock.Enabled = isLocked;
+            }
+
+            if (sysUserRights.GetUserRights().CanPrint == false)
+            {
+                buttonPrint.Enabled = false;
+            }
+            else
+            {
+                buttonPrint.Enabled = isLocked;
+            }
+
+            if (sysUserRights.GetUserRights().CanAdd == false)
+            {
+                textBoxBarcode.Enabled = false;
+                buttonBarcode.Enabled = false;
+                buttonSearchItem.Enabled = false;
+            }
+            else
+            {
+                buttonBarcode.Enabled = !isLocked;
+                buttonSearchItem.Enabled = !isLocked;
+                textBoxBarcode.Enabled = !isLocked;
+            }
 
             dateTimePickerStockCountDate.Enabled = !isLocked;
             textBoxRemarks.Enabled = !isLocked;
             comboBoxCheckedBy.Enabled = !isLocked;
             comboBoxApprovedBy.Enabled = !isLocked;
-
-            buttonBarcode.Enabled = !isLocked;
-            buttonSearchItem.Enabled = !isLocked;
-            textBoxBarcode.Enabled = !isLocked;
 
             dataGridViewStockCountLineList.Columns[dataGridViewStockCountLineList.Columns["ColumnStockCountLineListButtonEdit"].Index].Visible = !isLocked;
             dataGridViewStockCountLineList.Columns[dataGridViewStockCountLineList.Columns["ColumnStockCountLineListButtonDelete"].Index].Visible = !isLocked;

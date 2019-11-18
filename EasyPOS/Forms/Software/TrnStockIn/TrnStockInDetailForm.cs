@@ -14,6 +14,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
     public partial class TrnStockInDetailForm : Form
     {
         public SysSoftwareForm sysSoftwareForm;
+        private Modules.SysUserRightsModule sysUserRights;
         public TrnStockInListForm trnStockInListForm;
         public Entities.TrnStockInEntity trnStockInEntity;
 
@@ -26,12 +27,20 @@ namespace EasyPOS.Forms.Software.TrnStockIn
         public TrnStockInDetailForm(SysSoftwareForm softwareForm, TrnStockInListForm stockInListForm, Entities.TrnStockInEntity stockInEntity)
         {
             InitializeComponent();
-
             sysSoftwareForm = softwareForm;
-            trnStockInListForm = stockInListForm;
-            trnStockInEntity = stockInEntity;
 
-            GetSupplierList();
+            sysUserRights = new Modules.SysUserRightsModule("TrnStockInDetail");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                trnStockInListForm = stockInListForm;
+                trnStockInEntity = stockInEntity;
+
+                GetSupplierList();
+            }
         }
 
         public void GetSupplierList()
@@ -88,9 +97,45 @@ namespace EasyPOS.Forms.Software.TrnStockIn
 
         public void UpdateComponents(Boolean isLocked)
         {
-            buttonLock.Enabled = !isLocked;
-            buttonUnlock.Enabled = isLocked;
-            buttonPrint.Enabled = isLocked;
+            if (sysUserRights.GetUserRights().CanLock == false)
+            {
+                buttonLock.Enabled = false;
+            }
+            else
+            {
+                buttonLock.Enabled = !isLocked;
+            }
+
+            if (sysUserRights.GetUserRights().CanUnlock == false)
+            {
+                buttonUnlock.Enabled = false;
+            }
+            else
+            {
+                buttonUnlock.Enabled = isLocked;
+            }
+
+            if (sysUserRights.GetUserRights().CanPrint == false)
+            {
+                buttonPrint.Enabled = false;
+            }
+            else
+            {
+                buttonPrint.Enabled = isLocked;
+            }
+
+            if (sysUserRights.GetUserRights().CanAdd == false)
+            {
+                textBoxBarcode.Enabled = false;
+                buttonBarcode.Enabled = false;
+                buttonSearchItem.Enabled = false;
+            }
+            else
+            {
+                buttonBarcode.Enabled = !isLocked;
+                buttonSearchItem.Enabled = !isLocked;
+                textBoxBarcode.Enabled = !isLocked;
+            }
 
             dateTimePickerStockInDate.Enabled = !isLocked;
             comboBoxSupplier.Enabled = !isLocked;
@@ -98,10 +143,6 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             checkBoxReturn.Enabled = !isLocked;
             comboBoxCheckedBy.Enabled = !isLocked;
             comboBoxApprovedBy.Enabled = !isLocked;
-
-            buttonBarcode.Enabled = !isLocked;
-            buttonSearchItem.Enabled = !isLocked;
-            textBoxBarcode.Enabled = !isLocked;
 
             dataGridViewStockInLineList.Columns[0].Visible = !isLocked;
             dataGridViewStockInLineList.Columns[1].Visible = !isLocked;

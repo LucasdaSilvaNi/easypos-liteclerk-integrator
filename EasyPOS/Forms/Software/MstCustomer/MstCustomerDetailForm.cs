@@ -13,18 +13,28 @@ namespace EasyPOS.Forms.Software.MstCustomer
     public partial class MstCustomerDetailForm : Form
     {
         public SysSoftwareForm sysSoftwareForm;
+        private Modules.SysUserRightsModule sysUserRights;
+
         public MstCustomerListForm mstCustomerListForm;
         public Entities.MstCustomerEntity mstCustomerEntity;
 
         public MstCustomerDetailForm(SysSoftwareForm softwareForm, MstCustomerListForm itemListForm, Entities.MstCustomerEntity itemEntity)
         {
             InitializeComponent();
-
             sysSoftwareForm = softwareForm;
-            mstCustomerListForm = itemListForm;
-            mstCustomerEntity = itemEntity;
 
-            GetTermList();
+            sysUserRights = new Modules.SysUserRightsModule("MstCustomerDetail");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                mstCustomerListForm = itemListForm;
+                mstCustomerEntity = itemEntity;
+
+                GetTermList();
+            }
         }
 
         public void GetTermList()
@@ -61,8 +71,23 @@ namespace EasyPOS.Forms.Software.MstCustomer
 
         public void UpdateComponents(Boolean isLocked)
         {
-            buttonLock.Enabled = !isLocked;
-            buttonUnlock.Enabled = isLocked;
+            if (sysUserRights.GetUserRights().CanLock == false)
+            {
+                buttonLock.Enabled = false;
+            }
+            else
+            {
+                buttonLock.Enabled = !isLocked;
+            }
+
+            if (sysUserRights.GetUserRights().CanUnlock == false)
+            {
+                buttonUnlock.Enabled = false;
+            }
+            else
+            {
+                buttonUnlock.Enabled = isLocked;
+            }
 
             textBoxCustomerCode.Enabled = !isLocked;
             textBoxCustomer.Enabled = !isLocked;
