@@ -13,6 +13,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
     public partial class RepInventoryReportForm : Form
     {
         public SysSoftwareForm sysSoftwareForm;
+        private Modules.SysUserRightsModule sysUserRights;
 
         public RepInventoryReportForm(SysSoftwareForm softwareForm)
         {
@@ -69,22 +70,66 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 switch (selectedItem)
                 {
                     case "Inventory Report":
-                        RepInventoryReportInventoryReportForm repInventoryReportInventoryReport = new RepInventoryReportInventoryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
-                        repInventoryReportInventoryReport.ShowDialog();
+                        sysUserRights = new Modules.SysUserRightsModule("RepInventory");
+                        if (sysUserRights.GetUserRights() == null)
+                        {
+                            MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            if (sysUserRights.GetUserRights().CanView == true)
+                            {
+                                RepInventoryReportInventoryReportForm repInventoryReportInventoryReport = new RepInventoryReportInventoryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                                repInventoryReportInventoryReport.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
                         break;
                     case "Stock In Detail Report":
-                        RepInventoryReportStockInDetailReportForm reportStockInDetailReport = new RepInventoryReportStockInDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
-                        reportStockInDetailReport.ShowDialog();
+                        sysUserRights = new Modules.SysUserRightsModule("RepInventoryStockInDetail");
+                        if (sysUserRights.GetUserRights() == null)
+                        {
+                            MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            if (sysUserRights.GetUserRights().CanView == true)
+                            {
+                                RepInventoryReportStockInDetailReportForm reportStockInDetailReport = new RepInventoryReportStockInDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                                reportStockInDetailReport.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
                         break;
                     case "Stock Out Detail Report":
-                        RepInventoryReportStockOutDetailReportForm repInventoryReportStockOut = new RepInventoryReportStockOutDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
-                        repInventoryReportStockOut.ShowDialog();
+                        sysUserRights = new Modules.SysUserRightsModule("RepInventoryStockInDetail");
+                        if (sysUserRights.GetUserRights() == null)
+                        {
+                            MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            if (sysUserRights.GetUserRights().CanView == true)
+                            {
+                                RepInventoryReportStockOutDetailReportForm repInventoryReportStockOut = new RepInventoryReportStockOutDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                                repInventoryReportStockOut.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
                         break;
                     case "Stock Count Detail Report":
                         RepInventoryReportStockCountDetailReportForm repInventoryReportStockCount = new RepInventoryReportStockCountDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
                         repInventoryReportStockCount.ShowDialog();
                         break;
-                        
                     default:
                         break;
                 }

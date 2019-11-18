@@ -33,7 +33,6 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
 
             GetStockCountDetailDataSource();
             GetDataGridViewStockCountDetailSource();
-
         }
 
         public List<Entities.DgvInventoryReportStockCountDetailReportEntity> GetStockCountDetailReportListData(DateTime startDate, DateTime endDate)
