@@ -13,11 +13,11 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
     public partial class RepRemittanceReportForm : Form
     {
         public SysSoftwareForm sysSoftwareForm;
+        private Modules.SysUserRightsModule sysUserRights;
 
         public RepRemittanceReportForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();
-
             sysSoftwareForm = softwareForm;
 
             GetTerminalList();
@@ -80,8 +80,23 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                 switch (selectedItem)
                 {
                     case "Remittance Report":
-                        RepRemittanceReportRemittanceReportForm repRemittanceReportRemittanceReport = new RepRemittanceReportRemittanceReportForm(this, dateTimePickerDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxUser.SelectedValue), textBoxRemittanceNumber.Text);
-                        repRemittanceReportRemittanceReport.ShowDialog();
+                        sysUserRights = new Modules.SysUserRightsModule("RepDisbursementRemittance");
+                        if (sysUserRights.GetUserRights() == null)
+                        {
+                            MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            if (sysUserRights.GetUserRights().CanView == true)
+                            {
+                                RepRemittanceReportRemittanceReportForm repRemittanceReportRemittanceReport = new RepRemittanceReportRemittanceReportForm(this, dateTimePickerDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxUser.SelectedValue), textBoxRemittanceNumber.Text);
+                                repRemittanceReportRemittanceReport.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
                         break;
                     default:
                         break;

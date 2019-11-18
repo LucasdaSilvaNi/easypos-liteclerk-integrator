@@ -15,6 +15,8 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
 {
     public partial class RepRemittanceReportRemittanceReportForm : Form
     {
+        private Modules.SysUserRightsModule sysUserRights;
+
         public RepRemittanceReportForm repRemittanceReportForm;
         public Int32 filterTerminalId;
         public DateTime filterDate;
@@ -26,6 +28,20 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
         {
             InitializeComponent();
 
+            sysUserRights = new Modules.SysUserRightsModule("RepDisbursementRemittance");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (sysUserRights.GetUserRights().CanPrint == false)
+                {
+                    buttonPrint.Enabled = false;
+                }
+
+            }
+
             repRemittanceReportForm = remittanceReportForm;
 
             filterDate = date;
@@ -33,8 +49,10 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             filterUserId = userId;
             filterRemittanceNumber = remittanceNumber;
 
-            printDocumentRemittanceReport.DefaultPageSettings.PaperSize = new PaperSize("Z Reading Report", 255, 1000);
+            printDocumentRemittanceReport.DefaultPageSettings.PaperSize = new PaperSize("Remittance Report", 255, 1000);
             RemittanceReportDataSource();
+
+
         }
 
         private void buttonPrint_Click(object sender, EventArgs e)
