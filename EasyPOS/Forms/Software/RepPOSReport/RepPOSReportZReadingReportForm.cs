@@ -14,6 +14,8 @@ namespace EasyPOS.Reports
 {
     public partial class RepPOSReportZReadingReportForm : Form
     {
+        private Modules.SysUserRightsModule sysUserRights;
+
         public Forms.Software.RepPOSReport.RepPOSReportForm repPOSReportForm;
         public Int32 filterTerminalId;
         public DateTime filterDate;
@@ -23,12 +25,27 @@ namespace EasyPOS.Reports
         {
             InitializeComponent();
 
+            sysUserRights = new Modules.SysUserRightsModule("RepPOS (Z Reading)");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (sysUserRights.GetUserRights().CanPrint == false)
+                {
+                    buttonPrint.Enabled = false;
+                }
+
+            }
+
             repPOSReportForm = POSReportForm;
             filterTerminalId = terminalId;
             filterDate = date;
 
             printDocumentZReadingReport.DefaultPageSettings.PaperSize = new PaperSize("Z Reading Report", 255, 1000);
             ZReadingDataSource();
+
         }
 
         private void buttonPrint_Click(object sender, EventArgs e)

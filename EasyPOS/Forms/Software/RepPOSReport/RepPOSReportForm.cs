@@ -13,6 +13,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
     public partial class RepPOSReportForm : Form
     {
         public SysSoftwareForm sysSoftwareForm;
+        private Modules.SysUserRightsModule sysUserRights;
 
         public RepPOSReportForm(SysSoftwareForm softwareForm)
         {
@@ -87,14 +88,42 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 switch (selectedItem)
                 {
                     case "Z Reading Report":
-                        Reports.RepPOSReportZReadingReportForm repZReadingReportForm = new Reports.RepPOSReportZReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()));
-                        repZReadingReportForm.ShowDialog();
-
+                        sysUserRights = new Modules.SysUserRightsModule("RepPOS (Z Reading)");
+                        if (sysUserRights.GetUserRights() == null)
+                        {
+                            MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            if (sysUserRights.GetUserRights().CanView == true)
+                            {
+                                Reports.RepPOSReportZReadingReportForm repZReadingReportForm = new Reports.RepPOSReportZReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()));
+                                repZReadingReportForm.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
                         break;
                     case "X Reading Report":
-                        Reports.RepPOSReportXReadingReportForm repXReadingReportForm = new Reports.RepPOSReportXReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()), Convert.ToInt32(comboBoxUser.SelectedValue));
-                        repXReadingReportForm.ShowDialog();
-
+                        sysUserRights = new Modules.SysUserRightsModule("RepPOS (X Reading)");
+                        if (sysUserRights.GetUserRights() == null)
+                        {
+                            MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            if (sysUserRights.GetUserRights().CanView == true)
+                            {
+                                Reports.RepPOSReportXReadingReportForm repXReadingReportForm = new Reports.RepPOSReportXReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()), Convert.ToInt32(comboBoxUser.SelectedValue));
+                                repXReadingReportForm.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
                         break;
                     default:
                         break;
