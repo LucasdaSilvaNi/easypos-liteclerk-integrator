@@ -14,6 +14,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
     public partial class TrnSalesDetailForm : Form
     {
         public SysSoftwareForm sysSoftwareForm;
+        private Modules.SysUserRightsModule sysUserRights;
+
         public TrnSalesListForm trnSalesListForm;
         public Entities.TrnSalesEntity trnSalesEntity;
 
@@ -27,8 +29,29 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             Modules.SysSerialPortModule.OpenSerialPort();
 
-            GetSalesDetail();
-            GetSalesLineList();
+
+            sysUserRights = new Modules.SysUserRightsModule("TrnSalesDetail");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (sysUserRights.GetUserRights().CanTender == false)
+                {
+                    buttonTender.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanTender == false)
+                {
+                    buttonBarcode.Enabled = false;
+                    buttonSearchItem.Enabled = false;
+                }
+
+                GetSalesDetail();
+                GetSalesLineList();
+            }
+            
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -88,6 +111,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
             var salesLineList = trnPOSSalesLineController.ListSalesLine(trnSalesEntity.Id);
             if (salesLineList.Any())
             {
+                if (sysUserRights.GetUserRights().CanEdit == false)
+                {
+                    dataGridViewSalesLineList.Columns[0].Visible = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanDelete == false)
+                {
+                    dataGridViewSalesLineList.Columns[1].Visible = false;
+                }
+
                 dataGridViewSalesLineList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
                 dataGridViewSalesLineList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
                 dataGridViewSalesLineList.Columns[0].DefaultCellStyle.ForeColor = Color.White;

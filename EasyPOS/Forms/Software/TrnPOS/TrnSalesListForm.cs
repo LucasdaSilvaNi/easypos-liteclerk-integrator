@@ -15,6 +15,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
     public partial class TrnSalesListForm : Form
     {
         public SysSoftwareForm sysSoftwareForm;
+        private Modules.SysUserRightsModule sysUserRights;
+
         public List<Entities.DgvSalesListSalesEntity> salesList;
         public BindingSource dataSalesListSource = new BindingSource();
         public PagedList<Entities.DgvSalesListSalesEntity> pageList;
@@ -29,10 +31,38 @@ namespace EasyPOS.Forms.Software.TrnPOS
             InitializeComponent();
             sysSoftwareForm = softwareForm;
 
-            GetTerminalList();
-            timerRefreshSalesListGrid.Start();
+            sysUserRights = new Modules.SysUserRightsModule("TrnSales");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (sysUserRights.GetUserRights().CanAdd == false)
+                {
+                    buttonSales.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanTender == false)
+                {
+                    buttonTender.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanPrint == false)
+                {
+                    buttonReprint.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanCancel == false)
+                {
+                    buttonCancel.Enabled = false;
+                }
+
+                GetTerminalList();
+                timerRefreshSalesListGrid.Start();
+            }
         }
-        
+
         private void buttonClose_Click(object sender, EventArgs e)
         {
             sysSoftwareForm.RemoveTabPage();
@@ -197,6 +227,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         public void CreateSalesListDataGrid()
         {
+            if (sysUserRights.GetUserRights().CanEdit == false)
+            {
+                dataGridViewSalesList.Columns[0].Visible = false;
+            }
+
+            if (sysUserRights.GetUserRights().CanDelete == false)
+            {
+                dataGridViewSalesList.Columns[1].Visible = false;
+            }
+
             dataGridViewSalesList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewSalesList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewSalesList.Columns[0].DefaultCellStyle.ForeColor = Color.White;
