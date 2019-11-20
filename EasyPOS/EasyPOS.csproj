@@ -13,7 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>D:\Work\Easypos\Setup Installer\</PublishUrl>
+    <PublishUrl>C:\Users\Developer\Desktop\Easypos\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -51,6 +51,9 @@
   <PropertyGroup>
     <ApplicationIcon>easypos cropped.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
@@ -72,6 +75,7 @@
   <ItemGroup>
     <Compile Include="Controllers\MstAccountController.cs" />
     <Compile Include="Controllers\MstCustomerController.cs" />
+    <Compile Include="Controllers\MstDiscountController.cs" />
     <Compile Include="Controllers\MstItemController.cs" />
     <Compile Include="Controllers\MstPayTypeController.cs" />
     <Compile Include="Controllers\MstPeriodController.cs" />
@@ -127,6 +131,7 @@
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockOutItem.cs" />
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransfer.cs" />
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransferItem.cs" />
+    <Compile Include="Entities\DgvDiscountListDiscountEntity.cs" />
     <Compile Include="Entities\DgvSalesReportCollectionDetailReportEntity.cs" />
     <Compile Include="Entities\DgvSalesReportCollectionSummaryReportEntity.cs" />
     <Compile Include="Entities\DgvInventoryReportEntity.cs" />
@@ -227,6 +232,12 @@
     </Compile>
     <Compile Include="Forms\Software\MstDiscounting\MstDiscountingListForm.Designer.cs">
       <DependentUpon>MstDiscountingListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\MstDiscounting\MstDiscountingDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\MstDiscounting\MstDiscountingDetailForm.Designer.cs">
+      <DependentUpon>MstDiscountingDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\MstItem\MstItemDetailForm.cs">
       <SubType>Form</SubType>
@@ -570,6 +581,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstCustomer\MstCustomerListForm.resx">
       <DependentUpon>MstCustomerListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\MstDiscounting\MstDiscountingDetailForm.resx">
+      <DependentUpon>MstDiscountingDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstItem\MstItemDetailForm.resx">
       <DependentUpon>MstItemDetailForm.cs</DependentUpon>
