@@ -14,6 +14,7 @@ namespace EasyPOS.Forms.Software.MstUser
     public partial class MstUserListForm : Form
     {
         public SysSoftwareForm sysSoftwareForm;
+        private Modules.SysUserRightsModule sysUserRights;
 
         public static List<Entities.DgvUserListUserEntity> userListData = new List<Entities.DgvUserListUserEntity>();
         public static Int32 pageNumber = 1;
@@ -26,7 +27,30 @@ namespace EasyPOS.Forms.Software.MstUser
             InitializeComponent();
             sysSoftwareForm = softwareForm;
 
-            CreateUserListDataGridView();
+            sysUserRights = new Modules.SysUserRightsModule("MstUser");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (sysUserRights.GetUserRights().CanAdd == false)
+                {
+                    buttonAdd.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanEdit == false)
+                {
+                    dataGridViewUserList.Columns[0].Visible = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanDelete == false)
+                {
+                    dataGridViewUserList.Columns[1].Visible = false;
+                }
+
+                CreateUserListDataGridView();
+            }
         }
 
         public void UpdateUserListDataSource()
