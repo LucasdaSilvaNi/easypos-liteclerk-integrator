@@ -58,6 +58,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     buttonCancel.Enabled = false;
                 }
 
+                if (sysUserRights.GetUserRights().CanEdit == false)
+                {
+                    dataGridViewSalesList.Columns[0].Visible = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanDelete == false)
+                {
+                    dataGridViewSalesList.Columns[1].Visible = false;
+                }
+
                 GetTerminalList();
                 timerRefreshSalesListGrid.Start();
             }
@@ -227,16 +237,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         public void CreateSalesListDataGrid()
         {
-            if (sysUserRights.GetUserRights().CanEdit == false)
-            {
-                dataGridViewSalesList.Columns[0].Visible = false;
-            }
-
-            if (sysUserRights.GetUserRights().CanDelete == false)
-            {
-                dataGridViewSalesList.Columns[1].Visible = false;
-            }
-
             dataGridViewSalesList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewSalesList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewSalesList.Columns[0].DefaultCellStyle.ForeColor = Color.White;
