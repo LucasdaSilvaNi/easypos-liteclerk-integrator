@@ -172,7 +172,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
             String[] addDiscount = mstDiscountController.AddDiscount();
             if (addDiscount[1].Equals("0") == false)
             {
-                //sysSoftwareForm.AddTabPageDiscountDetail(this, mstDiscountController.DetailDiscount(Convert.ToInt32(addDiscount[1])));
+                sysSoftwareForm.AddTabPageDiscountingDetail(this, mstDiscountController.DetailDiscount(Convert.ToInt32(addDiscount[1])));
                 UpdateDiscountListDataSource();
             }
             else
@@ -191,7 +191,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
             if (e.RowIndex > -1 && dataGridViewDiscountList.CurrentCell.ColumnIndex == dataGridViewDiscountList.Columns["ColumnDiscountListButtonEdit"].Index)
             {
                 Controllers.MstDiscountController mstDiscountController = new Controllers.MstDiscountController();
-                //sysSoftwareForm.AddTabPageDiscountDetail(this, mstDiscountController.DetailDiscount(Convert.ToInt32(dataGridViewDiscountList.Rows[e.RowIndex].Cells[2].Value)));
+                sysSoftwareForm.AddTabPageDiscountingDetail(this, mstDiscountController.DetailDiscount(Convert.ToInt32(dataGridViewDiscountList.Rows[e.RowIndex].Cells[2].Value)));
             }
 
             if (e.RowIndex > -1 && dataGridViewDiscountList.CurrentCell.ColumnIndex == dataGridViewDiscountList.Columns["ColumnDiscountListButtonDelete"].Index)

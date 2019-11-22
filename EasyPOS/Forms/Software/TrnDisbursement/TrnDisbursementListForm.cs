@@ -145,7 +145,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             String[] addDisbursement = trnDisbursementController.AddDisbursement();
             if (addDisbursement[1].Equals("0") == false)
             {
-                //sysSoftwareForm.AddTabPageDisbursementDetail(this, trnDisbursementController.DetailDisbursement(Convert.ToInt32(addDisbursement[1])));
+                sysSoftwareForm.AddTabPageDisbursementDetail(this, trnDisbursementController.DetailDisbursement(Convert.ToInt32(addDisbursement[1])));
                 UpdateDisbursementListDataSource();
             }
             else

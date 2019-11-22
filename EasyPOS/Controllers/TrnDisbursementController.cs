@@ -132,6 +132,94 @@ namespace EasyPOS.Controllers
             return disbursement.FirstOrDefault();
         }
 
+        // ========================
+        // Dropdown List - Terminal
+        // ========================
+        public List<Entities.MstTerminalEntity> DropdownListDisbursementTerminal()
+        {
+            var terminals = from d in db.MstTerminals
+                            select new Entities.MstTerminalEntity
+                            {
+                                Id = d.Id,
+                                Terminal = d.Terminal
+                            };
+
+            return terminals.ToList();
+        }
+
+        // ================================
+        // Dropdown List - Remmittance Type
+        // ================================
+        public List<String> DropdownListDisbursementRemittanceType()
+        {
+            return new List<String>()
+            {
+                "DEBIT", "CREDIT"
+            };
+        }
+
+        // =======================
+        // Dropdown List - PayType
+        // =======================
+        public List<Entities.MstPayTypeEntity> DropdownListDisbursementPayType()
+        {
+            var payTypes = from d in db.MstPayTypes
+                           select new Entities.MstPayTypeEntity
+                           {
+                               Id = d.Id,
+                               PayType = d.PayType
+                           };
+
+            return payTypes.ToList();
+        }
+
+        // =======================
+        // Dropdown List - Account
+        // =======================
+        public List<Entities.MstAccountEntity> DropdownListDisbursementAccount()
+        {
+            var accounts = from d in db.MstAccounts
+                           select new Entities.MstAccountEntity
+                           {
+                               Id = d.Id,
+                               Account = d.Account
+                           };
+
+            return accounts.ToList();
+        }
+
+        // ===============================
+        // Dropdown List - Return Stock-In
+        // ===============================
+        public List<Entities.TrnStockInEntity> DropdownListDisbursementReturnStockIn()
+        {
+            var stockIns = from d in db.TrnStockIns
+                           where d.IsReturn == true
+                           && d.IsLocked == true
+                           select new Entities.TrnStockInEntity
+                           {
+                               Id = d.Id,
+                               StockInNumber = d.StockInNumber
+                           };
+
+            return stockIns.ToList();
+        }
+
+        // ====================
+        // Dropdown List - User
+        // ====================
+        public List<Entities.MstUserEntity> DropdownListDisbursementUser()
+        {
+            var users = from d in db.MstUsers
+                        select new Entities.MstUserEntity
+                        {
+                            Id = d.Id,
+                            FullName = d.FullName
+                        };
+
+            return users.ToList();
+        }
+
         // ================
         // Add Disbursement
         // ================
@@ -258,15 +346,24 @@ namespace EasyPOS.Controllers
                     }
                 }
 
-                var users = from d in db.MstUsers
-                            where d.Id == objDisbursement.CheckedBy
-                            && d.Id == objDisbursement.ApprovedBy
-                            && d.IsLocked == true
-                            select d;
+                var checkedByUser = from d in db.MstUsers
+                                    where d.Id == objDisbursement.CheckedBy
+                                    && d.IsLocked == true
+                                    select d;
 
-                if (users.Any() == false)
+                if (checkedByUser.Any() == false)
                 {
-                    return new String[] { "Some users are not found.", "0" };
+                    return new String[] { "Checked by user not found.", "0" };
+                }
+
+                var approvedByUser = from d in db.MstUsers
+                                     where d.Id == objDisbursement.ApprovedBy
+                                     && d.IsLocked == true
+                                     select d;
+
+                if (approvedByUser.Any() == false)
+                {
+                    return new String[] { "Approved by user not found.", "0" };
                 }
 
                 var disbursement = from d in db.TrnDisbursements
@@ -284,6 +381,7 @@ namespace EasyPOS.Controllers
                     lockDisbursement.DisbursementType = objDisbursement.DisbursementType;
                     lockDisbursement.PayTypeId = payType.FirstOrDefault().Id;
                     lockDisbursement.Remarks = objDisbursement.Remarks;
+                    lockDisbursement.Amount = objDisbursement.Amount;
                     lockDisbursement.IsReturn = objDisbursement.IsReturn;
                     lockDisbursement.StockInId = stockInId;
                     lockDisbursement.CheckedBy = objDisbursement.CheckedBy;
