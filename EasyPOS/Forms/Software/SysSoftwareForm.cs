@@ -39,6 +39,7 @@ namespace EasyPOS.Forms.Software
         public TabPage tabPageCustomerList = new TabPage { Name = "tabPageCustomerList", Text = "Customer List" };
         public TabPage tabPageCustomerDetail = new TabPage { Name = "tabPageCustomerDetail", Text = "Customer Detail" };
         public TabPage tabPageDiscountingList = new TabPage { Name = "tabPageDiscountingList", Text = "Discounting List" };
+        public TabPage tabPageDiscountingDetail = new TabPage { Name = "tabPageDiscountingDetail", Text = "Discounting Detail" };
         public TabPage tabPageUserList = new TabPage { Name = "tabPageUserList", Text = "User List" };
         public TabPage tabPageUserDetail = new TabPage { Name = "tabPageUserDetail", Text = "User Detail" };
 
@@ -70,6 +71,7 @@ namespace EasyPOS.Forms.Software
         public MstCustomer.MstCustomerListForm mstCustomerListForm = null;
         public MstCustomer.MstCustomerDetailForm mstCustomerDetailForm = null;
         public MstDiscounting.MstDiscountingListForm mstDiscountingListForm = null;
+        public MstDiscounting.MstDiscountingDetailForm mstDiscountingDetailForm = null;
         public MstUser.MstUserListForm mstUserListForm = null;
         public MstUser.MstUserDetailForm mstUserDetailForm = null;
 
@@ -249,6 +251,30 @@ namespace EasyPOS.Forms.Software
             {
                 tabControlSoftware.TabPages.Add(tabPageDiscountingList);
                 tabControlSoftware.SelectTab(tabPageDiscountingList);
+            }
+        }
+
+        public void AddTabPageDiscountingDetail(MstDiscounting.MstDiscountingListForm discountingListForm, Entities.MstDiscountEntity discountingEntity)
+        {
+            tabPageDiscountingDetail.Controls.Remove(mstDiscountingDetailForm);
+
+            mstDiscountingDetailForm = new MstDiscounting.MstDiscountingDetailForm(this, discountingListForm, discountingEntity)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageDiscountingDetail.Controls.Add(mstDiscountingDetailForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageDiscountingDetail) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageDiscountingDetail);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageDiscountingDetail);
+                tabControlSoftware.SelectTab(tabPageDiscountingDetail);
             }
         }
 

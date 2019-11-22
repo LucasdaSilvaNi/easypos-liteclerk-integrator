@@ -39,46 +39,46 @@
             this.buttonStockInLineListPageListLast = new System.Windows.Forms.Button();
             this.textBoxStockInLineListPageNumber = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.checkBoxMon = new System.Windows.Forms.CheckBox();
+            this.checkBoxWed = new System.Windows.Forms.CheckBox();
+            this.checkBoxTue = new System.Windows.Forms.CheckBox();
+            this.checkBoxThu = new System.Windows.Forms.CheckBox();
+            this.checkBoxFri = new System.Windows.Forms.CheckBox();
+            this.checkBoxSat = new System.Windows.Forms.CheckBox();
+            this.checkBoxSun = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.checkBox10 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.checkBoxTimeScheduled = new System.Windows.Forms.CheckBox();
+            this.textBoxDiscountRate = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkBoxDaySchedule = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerDateEnd = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerDateStart = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxDateScheduled = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.checkBoxReturn = new System.Windows.Forms.CheckBox();
+            this.checkBoxVATExempt = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBoxStockInNumber = new System.Windows.Forms.TextBox();
+            this.textBoxDiscount = new System.Windows.Forms.TextBox();
             this.buttonLock = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonUnlock = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.dateTimePickerTimeStart = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerTimeEnd = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -194,27 +194,27 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel7.Controls.Add(this.dateTimePickerTimeEnd);
+            this.panel7.Controls.Add(this.dateTimePickerTimeStart);
             this.panel7.Controls.Add(this.panel5);
-            this.panel7.Controls.Add(this.textBox3);
             this.panel7.Controls.Add(this.label11);
-            this.panel7.Controls.Add(this.textBox2);
             this.panel7.Controls.Add(this.label10);
             this.panel7.Controls.Add(this.label9);
-            this.panel7.Controls.Add(this.checkBox10);
-            this.panel7.Controls.Add(this.textBox1);
+            this.panel7.Controls.Add(this.checkBoxTimeScheduled);
+            this.panel7.Controls.Add(this.textBoxDiscountRate);
             this.panel7.Controls.Add(this.label7);
-            this.panel7.Controls.Add(this.checkBox2);
+            this.panel7.Controls.Add(this.checkBoxDaySchedule);
             this.panel7.Controls.Add(this.label6);
-            this.panel7.Controls.Add(this.dateTimePicker2);
+            this.panel7.Controls.Add(this.dateTimePickerDateEnd);
             this.panel7.Controls.Add(this.label5);
-            this.panel7.Controls.Add(this.dateTimePicker1);
+            this.panel7.Controls.Add(this.dateTimePickerDateStart);
             this.panel7.Controls.Add(this.label3);
-            this.panel7.Controls.Add(this.checkBox1);
+            this.panel7.Controls.Add(this.checkBoxDateScheduled);
             this.panel7.Controls.Add(this.label8);
-            this.panel7.Controls.Add(this.checkBoxReturn);
+            this.panel7.Controls.Add(this.checkBoxVATExempt);
             this.panel7.Controls.Add(this.label4);
             this.panel7.Controls.Add(this.label2);
-            this.panel7.Controls.Add(this.textBoxStockInNumber);
+            this.panel7.Controls.Add(this.textBoxDiscount);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
@@ -222,39 +222,113 @@
             this.panel7.Size = new System.Drawing.Size(1400, 222);
             this.panel7.TabIndex = 0;
             // 
-            // textBox3
+            // panel5
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBox3.Location = new System.Drawing.Point(890, 183);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(102, 30);
-            this.textBox3.TabIndex = 45;
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Controls.Add(this.checkBoxMon);
+            this.panel5.Controls.Add(this.checkBoxWed);
+            this.panel5.Controls.Add(this.checkBoxTue);
+            this.panel5.Controls.Add(this.checkBoxThu);
+            this.panel5.Controls.Add(this.checkBoxFri);
+            this.panel5.Controls.Add(this.checkBoxSat);
+            this.panel5.Controls.Add(this.checkBoxSun);
+            this.panel5.Location = new System.Drawing.Point(288, 144);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(499, 67);
+            this.panel5.TabIndex = 46;
+            // 
+            // checkBoxMon
+            // 
+            this.checkBoxMon.AutoSize = true;
+            this.checkBoxMon.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.checkBoxMon.Location = new System.Drawing.Point(21, 19);
+            this.checkBoxMon.Name = "checkBoxMon";
+            this.checkBoxMon.Size = new System.Drawing.Size(67, 27);
+            this.checkBoxMon.TabIndex = 32;
+            this.checkBoxMon.Text = "Mon";
+            this.checkBoxMon.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxWed
+            // 
+            this.checkBoxWed.AutoSize = true;
+            this.checkBoxWed.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.checkBoxWed.Location = new System.Drawing.Point(160, 19);
+            this.checkBoxWed.Name = "checkBoxWed";
+            this.checkBoxWed.Size = new System.Drawing.Size(66, 27);
+            this.checkBoxWed.TabIndex = 34;
+            this.checkBoxWed.Text = "Wed";
+            this.checkBoxWed.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxTue
+            // 
+            this.checkBoxTue.AutoSize = true;
+            this.checkBoxTue.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.checkBoxTue.Location = new System.Drawing.Point(94, 19);
+            this.checkBoxTue.Name = "checkBoxTue";
+            this.checkBoxTue.Size = new System.Drawing.Size(60, 27);
+            this.checkBoxTue.TabIndex = 33;
+            this.checkBoxTue.Text = "Tue";
+            this.checkBoxTue.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxThu
+            // 
+            this.checkBoxThu.AutoSize = true;
+            this.checkBoxThu.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.checkBoxThu.Location = new System.Drawing.Point(232, 19);
+            this.checkBoxThu.Name = "checkBoxThu";
+            this.checkBoxThu.Size = new System.Drawing.Size(61, 27);
+            this.checkBoxThu.TabIndex = 35;
+            this.checkBoxThu.Text = "Thu";
+            this.checkBoxThu.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxFri
+            // 
+            this.checkBoxFri.AutoSize = true;
+            this.checkBoxFri.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.checkBoxFri.Location = new System.Drawing.Point(299, 19);
+            this.checkBoxFri.Name = "checkBoxFri";
+            this.checkBoxFri.Size = new System.Drawing.Size(50, 27);
+            this.checkBoxFri.TabIndex = 36;
+            this.checkBoxFri.Text = "Fri";
+            this.checkBoxFri.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxSat
+            // 
+            this.checkBoxSat.AutoSize = true;
+            this.checkBoxSat.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.checkBoxSat.Location = new System.Drawing.Point(355, 19);
+            this.checkBoxSat.Name = "checkBoxSat";
+            this.checkBoxSat.Size = new System.Drawing.Size(56, 27);
+            this.checkBoxSat.TabIndex = 37;
+            this.checkBoxSat.Text = "Sat";
+            this.checkBoxSat.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxSun
+            // 
+            this.checkBoxSun.AutoSize = true;
+            this.checkBoxSun.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.checkBoxSun.Location = new System.Drawing.Point(417, 19);
+            this.checkBoxSun.Name = "checkBoxSun";
+            this.checkBoxSun.Size = new System.Drawing.Size(61, 27);
+            this.checkBoxSun.TabIndex = 38;
+            this.checkBoxSun.Text = "Sun";
+            this.checkBoxSun.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label11.Location = new System.Drawing.Point(799, 186);
+            this.label11.Location = new System.Drawing.Point(799, 183);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(85, 23);
             this.label11.TabIndex = 44;
             this.label11.Text = "Time End:";
             // 
-            // textBox2
-            // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBox2.Location = new System.Drawing.Point(890, 147);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(102, 30);
-            this.textBox2.TabIndex = 43;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label10.Location = new System.Drawing.Point(793, 150);
+            this.label10.Location = new System.Drawing.Point(793, 147);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(91, 23);
             this.label10.TabIndex = 42;
@@ -270,36 +344,28 @@
             this.label9.TabIndex = 41;
             this.label9.Text = "Time Scheduled:";
             // 
-            // checkBox10
+            // checkBoxTimeScheduled
             // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBox10.Location = new System.Drawing.Point(933, 111);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(37, 27);
-            this.checkBox10.TabIndex = 40;
-            this.checkBox10.Text = " ";
-            this.checkBox10.UseVisualStyleBackColor = true;
+            this.checkBoxTimeScheduled.AutoSize = true;
+            this.checkBoxTimeScheduled.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.checkBoxTimeScheduled.Location = new System.Drawing.Point(933, 111);
+            this.checkBoxTimeScheduled.Name = "checkBoxTimeScheduled";
+            this.checkBoxTimeScheduled.Size = new System.Drawing.Size(37, 27);
+            this.checkBoxTimeScheduled.TabIndex = 40;
+            this.checkBoxTimeScheduled.Text = " ";
+            this.checkBoxTimeScheduled.UseVisualStyleBackColor = true;
+            this.checkBoxTimeScheduled.CheckedChanged += new System.EventHandler(this.checkBoxTimeScheduled_CheckedChanged);
             // 
-            // textBox1
+            // textBoxDiscountRate
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBox1.Location = new System.Drawing.Point(153, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(196, 30);
-            this.textBox1.TabIndex = 39;
-            // 
-            // checkBox9
-            // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBox9.Location = new System.Drawing.Point(417, 19);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(61, 27);
-            this.checkBox9.TabIndex = 38;
-            this.checkBox9.Text = "Sun";
-            this.checkBox9.UseVisualStyleBackColor = true;
+            this.textBoxDiscountRate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxDiscountRate.Location = new System.Drawing.Point(153, 42);
+            this.textBoxDiscountRate.Name = "textBoxDiscountRate";
+            this.textBoxDiscountRate.Size = new System.Drawing.Size(196, 30);
+            this.textBoxDiscountRate.TabIndex = 39;
+            this.textBoxDiscountRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxDiscountRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDiscountRate_KeyPress);
+            this.textBoxDiscountRate.Leave += new System.EventHandler(this.textBoxDiscountRate_Leave);
             // 
             // label7
             // 
@@ -311,120 +377,55 @@
             this.label7.TabIndex = 31;
             this.label7.Text = "Day Scheduled:";
             // 
-            // checkBox2
+            // checkBoxDaySchedule
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBox2.Location = new System.Drawing.Point(417, 111);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(37, 27);
-            this.checkBox2.TabIndex = 30;
-            this.checkBox2.Text = " ";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBox6.Location = new System.Drawing.Point(355, 19);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(56, 27);
-            this.checkBox6.TabIndex = 37;
-            this.checkBox6.Text = "Sat";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBoxDaySchedule.AutoSize = true;
+            this.checkBoxDaySchedule.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.checkBoxDaySchedule.Location = new System.Drawing.Point(417, 111);
+            this.checkBoxDaySchedule.Name = "checkBoxDaySchedule";
+            this.checkBoxDaySchedule.Size = new System.Drawing.Size(37, 27);
+            this.checkBoxDaySchedule.TabIndex = 30;
+            this.checkBoxDaySchedule.Text = " ";
+            this.checkBoxDaySchedule.UseVisualStyleBackColor = true;
+            this.checkBoxDaySchedule.CheckedChanged += new System.EventHandler(this.checkBoxDaySchedule_CheckedChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label6.Location = new System.Drawing.Point(63, 187);
+            this.label6.Location = new System.Drawing.Point(63, 183);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 23);
             this.label6.TabIndex = 29;
             this.label6.Text = "Date End:";
             // 
-            // checkBox7
+            // dateTimePickerDateEnd
             // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBox7.Location = new System.Drawing.Point(299, 19);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(50, 27);
-            this.checkBox7.TabIndex = 36;
-            this.checkBox7.Text = "Fri";
-            this.checkBox7.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBox3.Location = new System.Drawing.Point(21, 19);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(67, 27);
-            this.checkBox3.TabIndex = 32;
-            this.checkBox3.Text = "Mon";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox8
-            // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBox8.Location = new System.Drawing.Point(232, 19);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(61, 27);
-            this.checkBox8.TabIndex = 35;
-            this.checkBox8.Text = "Thu";
-            this.checkBox8.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBox4.Location = new System.Drawing.Point(94, 19);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(60, 27);
-            this.checkBox4.TabIndex = 33;
-            this.checkBox4.Text = "Tue";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBox5.Location = new System.Drawing.Point(160, 19);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(66, 27);
-            this.checkBox5.TabIndex = 34;
-            this.checkBox5.Text = "Wed";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(153, 181);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(129, 30);
-            this.dateTimePicker2.TabIndex = 28;
+            this.dateTimePickerDateEnd.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.dateTimePickerDateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerDateEnd.Location = new System.Drawing.Point(153, 181);
+            this.dateTimePickerDateEnd.Name = "dateTimePickerDateEnd";
+            this.dateTimePickerDateEnd.Size = new System.Drawing.Size(129, 30);
+            this.dateTimePickerDateEnd.TabIndex = 28;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label5.Location = new System.Drawing.Point(57, 150);
+            this.label5.Location = new System.Drawing.Point(57, 147);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 23);
             this.label5.TabIndex = 27;
             this.label5.Text = "Date Start:";
             // 
-            // dateTimePicker1
+            // dateTimePickerDateStart
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(153, 144);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(129, 30);
-            this.dateTimePicker1.TabIndex = 26;
+            this.dateTimePickerDateStart.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.dateTimePickerDateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerDateStart.Location = new System.Drawing.Point(153, 144);
+            this.dateTimePickerDateStart.Name = "dateTimePickerDateStart";
+            this.dateTimePickerDateStart.Size = new System.Drawing.Size(129, 30);
+            this.dateTimePickerDateStart.TabIndex = 26;
             // 
             // label3
             // 
@@ -436,16 +437,17 @@
             this.label3.TabIndex = 25;
             this.label3.Text = "Date Scheduled:";
             // 
-            // checkBox1
+            // checkBoxDateScheduled
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBox1.Location = new System.Drawing.Point(153, 111);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(37, 27);
-            this.checkBox1.TabIndex = 24;
-            this.checkBox1.Text = " ";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxDateScheduled.AutoSize = true;
+            this.checkBoxDateScheduled.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.checkBoxDateScheduled.Location = new System.Drawing.Point(153, 111);
+            this.checkBoxDateScheduled.Name = "checkBoxDateScheduled";
+            this.checkBoxDateScheduled.Size = new System.Drawing.Size(37, 27);
+            this.checkBoxDateScheduled.TabIndex = 24;
+            this.checkBoxDateScheduled.Text = " ";
+            this.checkBoxDateScheduled.UseVisualStyleBackColor = true;
+            this.checkBoxDateScheduled.CheckedChanged += new System.EventHandler(this.checkBoxDateScheduled_CheckedChanged);
             // 
             // label8
             // 
@@ -457,16 +459,16 @@
             this.label8.TabIndex = 18;
             this.label8.Text = "VAT Exempt:";
             // 
-            // checkBoxReturn
+            // checkBoxVATExempt
             // 
-            this.checkBoxReturn.AutoSize = true;
-            this.checkBoxReturn.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxReturn.Location = new System.Drawing.Point(153, 78);
-            this.checkBoxReturn.Name = "checkBoxReturn";
-            this.checkBoxReturn.Size = new System.Drawing.Size(37, 27);
-            this.checkBoxReturn.TabIndex = 12;
-            this.checkBoxReturn.Text = " ";
-            this.checkBoxReturn.UseVisualStyleBackColor = true;
+            this.checkBoxVATExempt.AutoSize = true;
+            this.checkBoxVATExempt.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.checkBoxVATExempt.Location = new System.Drawing.Point(153, 78);
+            this.checkBoxVATExempt.Name = "checkBoxVATExempt";
+            this.checkBoxVATExempt.Size = new System.Drawing.Size(37, 27);
+            this.checkBoxVATExempt.TabIndex = 12;
+            this.checkBoxVATExempt.Text = " ";
+            this.checkBoxVATExempt.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -488,14 +490,13 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Discount:";
             // 
-            // textBoxStockInNumber
+            // textBoxDiscount
             // 
-            this.textBoxStockInNumber.Enabled = false;
-            this.textBoxStockInNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxStockInNumber.Location = new System.Drawing.Point(153, 6);
-            this.textBoxStockInNumber.Name = "textBoxStockInNumber";
-            this.textBoxStockInNumber.Size = new System.Drawing.Size(277, 30);
-            this.textBoxStockInNumber.TabIndex = 0;
+            this.textBoxDiscount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxDiscount.Location = new System.Drawing.Point(153, 6);
+            this.textBoxDiscount.Name = "textBoxDiscount";
+            this.textBoxDiscount.Size = new System.Drawing.Size(277, 30);
+            this.textBoxDiscount.TabIndex = 0;
             // 
             // buttonLock
             // 
@@ -573,20 +574,25 @@
             this.panel1.Size = new System.Drawing.Size(1400, 63);
             this.panel1.TabIndex = 7;
             // 
-            // panel5
+            // dateTimePickerTimeStart
             // 
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Controls.Add(this.checkBox3);
-            this.panel5.Controls.Add(this.checkBox5);
-            this.panel5.Controls.Add(this.checkBox4);
-            this.panel5.Controls.Add(this.checkBox8);
-            this.panel5.Controls.Add(this.checkBox7);
-            this.panel5.Controls.Add(this.checkBox6);
-            this.panel5.Controls.Add(this.checkBox9);
-            this.panel5.Location = new System.Drawing.Point(288, 144);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(499, 67);
-            this.panel5.TabIndex = 46;
+            this.dateTimePickerTimeStart.CustomFormat = "hh:mm tt";
+            this.dateTimePickerTimeStart.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.dateTimePickerTimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerTimeStart.Location = new System.Drawing.Point(890, 144);
+            this.dateTimePickerTimeStart.Name = "dateTimePickerTimeStart";
+            this.dateTimePickerTimeStart.Size = new System.Drawing.Size(129, 30);
+            this.dateTimePickerTimeStart.TabIndex = 47;
+            // 
+            // dateTimePickerTimeEnd
+            // 
+            this.dateTimePickerTimeEnd.CustomFormat = "hh:mm tt";
+            this.dateTimePickerTimeEnd.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.dateTimePickerTimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerTimeEnd.Location = new System.Drawing.Point(890, 181);
+            this.dateTimePickerTimeEnd.Name = "dateTimePickerTimeEnd";
+            this.dateTimePickerTimeEnd.Size = new System.Drawing.Size(129, 30);
+            this.dateTimePickerTimeEnd.TabIndex = 48;
             // 
             // MstDiscountingDetailForm
             // 
@@ -607,10 +613,10 @@
             this.panel4.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -633,32 +639,32 @@
         private System.Windows.Forms.TextBox textBoxStockInLineListPageNumber;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox checkBoxReturn;
+        private System.Windows.Forms.CheckBox checkBoxVATExempt;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBoxStockInNumber;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxDiscount;
+        private System.Windows.Forms.TextBox textBoxDiscountRate;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBoxDaySchedule;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDateEnd;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDateStart;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.CheckBox checkBoxDateScheduled;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.CheckBox checkBox10;
-        private System.Windows.Forms.CheckBox checkBox9;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox8;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox checkBoxTimeScheduled;
+        private System.Windows.Forms.CheckBox checkBoxSun;
+        private System.Windows.Forms.CheckBox checkBoxSat;
+        private System.Windows.Forms.CheckBox checkBoxFri;
+        private System.Windows.Forms.CheckBox checkBoxMon;
+        private System.Windows.Forms.CheckBox checkBoxThu;
+        private System.Windows.Forms.CheckBox checkBoxTue;
+        private System.Windows.Forms.CheckBox checkBoxWed;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.DateTimePicker dateTimePickerTimeEnd;
+        private System.Windows.Forms.DateTimePicker dateTimePickerTimeStart;
     }
 }
