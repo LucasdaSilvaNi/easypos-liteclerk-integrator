@@ -253,8 +253,16 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
             if (e.RowIndex > -1 && dataGridViewAccountList.CurrentCell.ColumnIndex == dataGridViewAccountList.Columns["ColumnAccountListButtonEdit"].Index)
             {
-                //Controllers.MstAccountController mstAccountController = new Controllers.MstAccountController();
-                //sysSoftwareForm.AddTabPageAccountDetail(this, mstAccountController.DetailAccount(Convert.ToInt32(dataGridViewAccountList.Rows[e.RowIndex].Cells[2].Value)));
+                Entities.MstAccountEntity account = new Entities.MstAccountEntity
+                {
+                    Id = Convert.ToInt32(dataGridViewAccountList.Rows[e.RowIndex].Cells[2].Value),
+                    Code = dataGridViewAccountList.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                    Account = dataGridViewAccountList.Rows[e.RowIndex].Cells[4].Value.ToString(),
+                    AccountType = dataGridViewAccountList.Rows[e.RowIndex].Cells[5].Value.ToString()
+                };
+
+                SysSystemTablesAccountDetailForm sysSystemTablesAccountDetailForm = new SysSystemTablesAccountDetailForm(this, account);
+                sysSystemTablesAccountDetailForm.ShowDialog();
             }
 
             if (e.RowIndex > -1 && dataGridViewAccountList.CurrentCell.ColumnIndex == dataGridViewAccountList.Columns["ColumnAccountListButtonDelete"].Index)
@@ -262,38 +270,39 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                 DialogResult deleteDialogResult = MessageBox.Show("Delete Account?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (deleteDialogResult == DialogResult.Yes)
                 {
-                    //Controllers.MstAccountController mstAccountController = new Controllers.MstAccountController();
+                    Controllers.MstAccountController mstAccountController = new Controllers.MstAccountController();
 
-                    //String[] deleteAccount = mstAccountController.DeleteAccount(Convert.ToInt32(dataGridViewAccountList.Rows[e.RowIndex].Cells[2].Value));
-                    //if (deleteAccount[1].Equals("0") == false)
-                    //{
-                    //    Int32 currentPageNumber = accountListPageNumber;
+                    String[] deleteAccount = mstAccountController.DeleteAccount(Convert.ToInt32(dataGridViewAccountList.Rows[e.RowIndex].Cells[2].Value));
+                    if (deleteAccount[1].Equals("0") == true)
+                    {
+                        MessageBox.Show(deleteAccount[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        Int32 currentPageNumber = accountListPageNumber;
 
-                    //    accountListPageNumber = 1;
-                    //    UpdateAccountListDataSource();
+                        accountListPageNumber = 1;
+                        UpdateAccountListDataSource();
 
-                    //    if (accountListPageList != null)
-                    //    {
-                    //        if (accountListData.Count() % pageSize == 1)
-                    //        {
-                    //            accountListPageNumber = currentPageNumber - 1;
-                    //        }
-                    //        else if (accountListData.Count() < 1)
-                    //        {
-                    //            accountListPageNumber = 1;
-                    //        }
-                    //        else
-                    //        {
-                    //            accountListPageNumber = currentPageNumber;
-                    //        }
+                        if (accountListPageList != null)
+                        {
+                            if (accountListData.Count() % pageSize == 1)
+                            {
+                                accountListPageNumber = currentPageNumber - 1;
+                            }
+                            else if (accountListData.Count() < 1)
+                            {
+                                accountListPageNumber = 1;
+                            }
+                            else
+                            {
+                                accountListPageNumber = currentPageNumber;
+                            }
 
-                    //        accountListDataSource.DataSource = accountListPageList;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show(deleteAccount[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //}
+                            accountListDataSource.DataSource = accountListPageList;
+                        }
+
+                    }
                 }
             }
         }
@@ -384,6 +393,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                                    ColumnPayTypeListButtonDelete = "Delete",
                                    ColumnPayTypeListId = d.Id,
                                    ColumnPayTypeListPayType = d.PayType,
+                                   ColumnAccountId = Convert.ToInt32(d.AccountId),
                                    ColumnPayTypeListAccount = d.Account
                                };
 
@@ -427,8 +437,13 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
             if (e.RowIndex > -1 && dataGridViewPayTypeList.CurrentCell.ColumnIndex == dataGridViewPayTypeList.Columns["ColumnPayTypeListButtonEdit"].Index)
             {
-                //Controllers.MstPayTypeController mstPayTypeController = new Controllers.MstPayTypeController();
-                //sysSoftwareForm.AddTabPagePayTypeDetail(this, mstPayTypeController.DetailPayType(Convert.ToInt32(dataGridViewPayTypeList.Rows[e.RowIndex].Cells[2].Value)));
+                Entities.MstPayTypeEntity selectePaytype = new Entities.MstPayTypeEntity() {
+                    Id = Convert.ToInt32(dataGridViewPayTypeList.Rows[e.RowIndex].Cells[2].Value),
+                    PayType = dataGridViewPayTypeList.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                    AccountId = Convert.ToInt32(dataGridViewPayTypeList.Rows[e.RowIndex].Cells[4].Value)
+                };
+                SysSystemTablesPayTypeDetailForm sysSystemTablesPayTypeDetailForm = new SysSystemTablesPayTypeDetailForm(this, selectePaytype);
+                sysSystemTablesPayTypeDetailForm.ShowDialog();
             }
 
             if (e.RowIndex > -1 && dataGridViewPayTypeList.CurrentCell.ColumnIndex == dataGridViewPayTypeList.Columns["ColumnPayTypeListButtonDelete"].Index)
@@ -437,38 +452,38 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                 DialogResult deleteDialogResult = MessageBox.Show("Delete PayType?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (deleteDialogResult == DialogResult.Yes)
                 {
-                    //Controllers.MstPayTypeController mstPayTypeController = new Controllers.MstPayTypeController();
+                    Controllers.MstPayTypeController mstPayTypeController = new Controllers.MstPayTypeController();
 
-                    //String[] deletePayType = mstPayTypeController.DeletePayType(Convert.ToInt32(dataGridViewPayTypeList.Rows[e.RowIndex].Cells[2].Value));
-                    //if (deletePayType[1].Equals("0") == false)
-                    //{
-                    //    Int32 currentPageNumber = payTypeListPageNumber;
+                    String[] deletePayType = mstPayTypeController.DeletePayType(Convert.ToInt32(dataGridViewPayTypeList.Rows[e.RowIndex].Cells[2].Value));
+                    if (deletePayType[1].Equals("0") == false)
+                    {
+                        Int32 currentPageNumber = payTypeListPageNumber;
 
-                    //    payTypeListPageNumber = 1;
-                    //    UpdatePayTypeListDataSource();
+                        payTypeListPageNumber = 1;
+                        UpdatePayTypeListDataSource();
 
-                    //    if (payTypeListPageList != null)
-                    //    {
-                    //        if (payTypeListData.Count() % pageSize == 1)
-                    //        {
-                    //            payTypeListPageNumber = currentPageNumber - 1;
-                    //        }
-                    //        else if (payTypeListData.Count() < 1)
-                    //        {
-                    //            payTypeListPageNumber = 1;
-                    //        }
-                    //        else
-                    //        {
-                    //            payTypeListPageNumber = currentPageNumber;
-                    //        }
+                        if (payTypeListPageList != null)
+                        {
+                            if (payTypeListData.Count() % pageSize == 1)
+                            {
+                                payTypeListPageNumber = currentPageNumber - 1;
+                            }
+                            else if (payTypeListData.Count() < 1)
+                            {
+                                payTypeListPageNumber = 1;
+                            }
+                            else
+                            {
+                                payTypeListPageNumber = currentPageNumber;
+                            }
 
-                    //        payTypeListDataSource.DataSource = payTypeListPageList;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show(deletePayType[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //}
+                            payTypeListDataSource.DataSource = payTypeListPageList;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(deletePayType[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -1744,12 +1759,6 @@ namespace EasyPOS.Forms.Software.SysSystemTables
         }
 
 
-
-
-
-
-
-
         // ===========
         // Add / Close
         // ===========
@@ -1760,7 +1769,18 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-
+            String selectedTab = tabControlSystemTable.SelectedTab.Text.ToString();
+            switch (selectedTab)
+            {
+                case "Account":
+                    SysSystemTablesAccountDetailForm sysSystemTablesAccountDetailForm = new SysSystemTablesAccountDetailForm(this, null);
+                    sysSystemTablesAccountDetailForm.ShowDialog();
+                    break;
+                case "Pay Type":
+                    SysSystemTablesPayTypeDetailForm sysSystemTablesPayTypeDetailForm = new SysSystemTablesPayTypeDetailForm(this, null);
+                    sysSystemTablesPayTypeDetailForm.ShowDialog();
+                    break;
+            }
         }
     }
 }
