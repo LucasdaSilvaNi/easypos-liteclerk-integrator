@@ -34,5 +34,100 @@ namespace EasyPOS.Controllers
 
             return taxes.OrderByDescending(d => d.Id).ToList();
         }
+
+        public String[] DropDownListCode()
+        {
+            return new String[] { "INCLUSIVE", "EXCLUSIVE" };
+        }
+
+        public List<Entities.MstAccountEntity> DropDownListAccount()
+        {
+            var accounts = from d in db.MstAccounts
+                           where d.AccountType.Equals("LIABILITY")
+                           select new Entities.MstAccountEntity
+                           {
+                               Id = d.Id,
+                               Account = d.Account
+                           };
+            return accounts.ToList();
+        }
+
+        public String[] AddTax(Entities.MstTaxEntity objTax)
+        {
+            try
+            {
+                Data.MstTax addTax = new Data.MstTax()
+                {
+                    Code = objTax.Code,
+                    Tax = objTax.Tax,
+                    Rate = objTax.Rate,
+                    AccountId = objTax.AccountId
+                };
+
+                db.MstTaxes.InsertOnSubmit(addTax);
+                db.SubmitChanges();
+
+                return new String[] { "", "" };
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
+        public String[] UpdateTax(Entities.MstTaxEntity objTax)
+        {
+            try
+            {
+                var currentTax = from d in db.MstTaxes
+                                 where d.Id == objTax.Id
+                                 select d;
+                if (currentTax.Any())
+                {
+                    var updateTax = currentTax.FirstOrDefault();
+                    updateTax.Code = objTax.Code;
+                    updateTax.Tax = objTax.Tax;
+                    updateTax.Rate = objTax.Rate;
+                    updateTax.AccountId = objTax.AccountId;
+                    db.SubmitChanges();
+
+                    return new string[] { "", "" };
+                }
+                else
+                {
+                    return new String[] { "Tax not found!", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
+        public String[] DeleteTax(Int32 id)
+        {
+            try
+            {
+                var tax = from d in db.MstTaxes
+                          where d.Id == id
+                          select d;
+                if (tax.Any())
+                {
+                    var deleteTax = tax.FirstOrDefault();
+                    db.MstTaxes.DeleteOnSubmit(deleteTax);
+                    db.SubmitChanges();
+
+                    return new String[] { "", "" };
+                }
+                else
+                {
+                    return new String[] { "Tax not found!", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
     }
 }

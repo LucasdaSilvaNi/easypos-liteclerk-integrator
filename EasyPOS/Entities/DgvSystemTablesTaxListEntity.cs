@@ -14,6 +14,7 @@ namespace EasyPOS.Entities
         public String ColumnTaxListCode { get; set; }
         public String ColumnTaxListTax { get; set; }
         public String ColumnTaxListRate { get; set; }
+        public Int32 ColumnTaxListAccountId { get; set; }
         public String ColumnTaxListAccount { get; set; }
     }
 }

@@ -273,11 +273,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                     Controllers.MstAccountController mstAccountController = new Controllers.MstAccountController();
 
                     String[] deleteAccount = mstAccountController.DeleteAccount(Convert.ToInt32(dataGridViewAccountList.Rows[e.RowIndex].Cells[2].Value));
-                    if (deleteAccount[1].Equals("0") == true)
-                    {
-                        MessageBox.Show(deleteAccount[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
+                    if (deleteAccount[1].Equals("0") == false)
                     {
                         Int32 currentPageNumber = accountListPageNumber;
 
@@ -301,7 +297,10 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
                             accountListDataSource.DataSource = accountListPageList;
                         }
-
+                    }
+                    else
+                    {
+                        MessageBox.Show(deleteAccount[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -437,7 +436,8 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
             if (e.RowIndex > -1 && dataGridViewPayTypeList.CurrentCell.ColumnIndex == dataGridViewPayTypeList.Columns["ColumnPayTypeListButtonEdit"].Index)
             {
-                Entities.MstPayTypeEntity selectePaytype = new Entities.MstPayTypeEntity() {
+                Entities.MstPayTypeEntity selectePaytype = new Entities.MstPayTypeEntity()
+                {
                     Id = Convert.ToInt32(dataGridViewPayTypeList.Rows[e.RowIndex].Cells[2].Value),
                     PayType = dataGridViewPayTypeList.Rows[e.RowIndex].Cells[3].Value.ToString(),
                     AccountId = Convert.ToInt32(dataGridViewPayTypeList.Rows[e.RowIndex].Cells[4].Value)
@@ -641,6 +641,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                                ColumnTaxListCode = d.Code,
                                ColumnTaxListTax = d.Tax,
                                ColumnTaxListRate = d.Rate.ToString("#,##0.00"),
+                               ColumnTaxListAccountId = d.AccountId,
                                ColumnTaxListAccount = d.Account
                            };
 
@@ -684,8 +685,17 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
             if (e.RowIndex > -1 && dataGridViewTaxList.CurrentCell.ColumnIndex == dataGridViewTaxList.Columns["ColumnTaxListButtonEdit"].Index)
             {
-                //Controllers.MstTaxController mstTaxController = new Controllers.MstTaxController();
-                //sysSoftwareForm.AddTabPageTaxDetail(this, mstTaxController.DetailTax(Convert.ToInt32(dataGridViewTaxList.Rows[e.RowIndex].Cells[2].Value)));
+                Entities.MstTaxEntity selectedTax = new Entities.MstTaxEntity()
+                {
+                    Id = Convert.ToInt32(dataGridViewTaxList.Rows[e.RowIndex].Cells[2].Value),
+                    Code = dataGridViewTaxList.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                    Tax = dataGridViewTaxList.Rows[e.RowIndex].Cells[4].Value.ToString(),
+                    Rate = Convert.ToDecimal(dataGridViewTaxList.Rows[e.RowIndex].Cells[5].Value),
+                    AccountId = Convert.ToInt32(dataGridViewTaxList.Rows[e.RowIndex].Cells[6].Value)
+                };
+
+                SysSystemTablesTaxDetailForm sysSystemTablesTaxDetailForm = new SysSystemTablesTaxDetailForm(this, selectedTax);
+                sysSystemTablesTaxDetailForm.ShowDialog();
             }
 
             if (e.RowIndex > -1 && dataGridViewTaxList.CurrentCell.ColumnIndex == dataGridViewTaxList.Columns["ColumnTaxListButtonDelete"].Index)
@@ -693,38 +703,38 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                 DialogResult deleteDialogResult = MessageBox.Show("Delete Tax?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (deleteDialogResult == DialogResult.Yes)
                 {
-                    //Controllers.MstTaxController mstTaxController = new Controllers.MstTaxController();
+                    Controllers.MstTaxController mstTaxController = new Controllers.MstTaxController();
 
-                    //String[] deleteTax = mstTaxController.DeleteTax(Convert.ToInt32(dataGridViewTaxList.Rows[e.RowIndex].Cells[2].Value));
-                    //if (deleteTax[1].Equals("0") == false)
-                    //{
-                    //    Int32 currentPageNumber = taxListPageNumber;
+                    String[] deleteTax = mstTaxController.DeleteTax(Convert.ToInt32(dataGridViewTaxList.Rows[e.RowIndex].Cells[2].Value));
+                    if (deleteTax[1].Equals("0") == false)
+                    {
+                        Int32 currentPageNumber = taxListPageNumber;
 
-                    //    taxListPageNumber = 1;
-                    //    UpdateTaxListDataSource();
+                        taxListPageNumber = 1;
+                        UpdateTaxListDataSource();
 
-                    //    if (taxListPageList != null)
-                    //    {
-                    //        if (taxListData.Count() % pageSize == 1)
-                    //        {
-                    //            taxListPageNumber = currentPageNumber - 1;
-                    //        }
-                    //        else if (taxListData.Count() < 1)
-                    //        {
-                    //            taxListPageNumber = 1;
-                    //        }
-                    //        else
-                    //        {
-                    //            taxListPageNumber = currentPageNumber;
-                    //        }
+                        if (taxListPageList != null)
+                        {
+                            if (taxListData.Count() % pageSize == 1)
+                            {
+                                taxListPageNumber = currentPageNumber - 1;
+                            }
+                            else if (taxListData.Count() < 1)
+                            {
+                                taxListPageNumber = 1;
+                            }
+                            else
+                            {
+                                taxListPageNumber = currentPageNumber;
+                            }
 
-                    //        taxListDataSource.DataSource = taxListPageList;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show(deleteTax[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //}
+                            taxListDataSource.DataSource = taxListPageList;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(deleteTax[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -922,8 +932,13 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
             if (e.RowIndex > -1 && dataGridViewUnitList.CurrentCell.ColumnIndex == dataGridViewUnitList.Columns["ColumnUnitListButtonEdit"].Index)
             {
-                //Controllers.MstUnitController mstUnitController = new Controllers.MstUnitController();
-                //sysSoftwareForm.AddTabPageUnitDetail(this, mstUnitController.DetailUnit(Convert.ToInt32(dataGridViewUnitList.Rows[e.RowIndex].Cells[2].Value)));
+                //Entities.MstUnitEntity selectedUnit = new Entities.MstUnitEntity()
+                //{
+                //    Id = Convert.ToInt32(dataGridViewUnitList.Rows[e.RowIndex].Cells[2].Value),
+                //    Unit = dataGridViewUnitList.Rows[e.RowIndex].Cells[3].Value.ToString()
+                //};
+                //SysSystemTablesUnitDetailForm sysSystemTablesUnitDetailForm = new SysSystemTablesUnitDetailForm(this, selectedUnit);
+                //sysSystemTablesUnitDetailForm.ShowDialog();
             }
 
             if (e.RowIndex > -1 && dataGridViewUnitList.CurrentCell.ColumnIndex == dataGridViewUnitList.Columns["ColumnUnitListButtonDelete"].Index)
@@ -1780,6 +1795,15 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                     SysSystemTablesPayTypeDetailForm sysSystemTablesPayTypeDetailForm = new SysSystemTablesPayTypeDetailForm(this, null);
                     sysSystemTablesPayTypeDetailForm.ShowDialog();
                     break;
+                case "Tax":
+                    SysSystemTablesTaxDetailForm sysSystemTablesTaxDetailForm = new SysSystemTablesTaxDetailForm(this, null);
+                    sysSystemTablesTaxDetailForm.ShowDialog();
+                    break;
+                //case "Unit":
+                //    SysSystemTablesUnitDetailForm sysSystemTablesUnitDetailForm = new SysSystemTablesUnitDetailForm(this, null);
+                //    sysSystemTablesUnitDetailForm.ShowDialog();
+                //    break;
+
             }
         }
     }

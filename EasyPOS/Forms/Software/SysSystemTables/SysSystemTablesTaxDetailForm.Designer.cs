@@ -34,6 +34,14 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxTax = new System.Windows.Forms.TextBox();
+            this.comboBoxAccount = new System.Windows.Forms.ComboBox();
+            this.textBoxRate = new System.Windows.Forms.TextBox();
+            this.textBoxCode = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -66,6 +74,7 @@
             this.buttonSave.TabIndex = 4;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // pictureBox1
             // 
@@ -103,12 +112,86 @@
             this.buttonClose.TabIndex = 1;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(35, 123);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(31, 17);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Tax";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(35, 85);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 17);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Code";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(35, 160);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 17);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Rate";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(35, 195);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(59, 17);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Account";
+            // 
+            // textBoxTax
+            // 
+            this.textBoxTax.Location = new System.Drawing.Point(168, 123);
+            this.textBoxTax.Name = "textBoxTax";
+            this.textBoxTax.Size = new System.Drawing.Size(285, 22);
+            this.textBoxTax.TabIndex = 17;
+            // 
+            // comboBoxAccount
+            // 
+            this.comboBoxAccount.FormattingEnabled = true;
+            this.comboBoxAccount.Location = new System.Drawing.Point(168, 194);
+            this.comboBoxAccount.Name = "comboBoxAccount";
+            this.comboBoxAccount.Size = new System.Drawing.Size(285, 24);
+            this.comboBoxAccount.TabIndex = 20;
+            // 
+            // textBoxRate
+            // 
+            this.textBoxRate.Location = new System.Drawing.Point(168, 160);
+            this.textBoxRate.Name = "textBoxRate";
+            this.textBoxRate.Size = new System.Drawing.Size(285, 22);
+            this.textBoxRate.TabIndex = 19;
+            // 
+            // textBoxCode
+            // 
+            this.textBoxCode.Location = new System.Drawing.Point(168, 85);
+            this.textBoxCode.Name = "textBoxCode";
+            this.textBoxCode.Size = new System.Drawing.Size(285, 22);
+            this.textBoxCode.TabIndex = 21;
             // 
             // SysSystemTablesTaxDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(721, 299);
+            this.Controls.Add(this.textBoxCode);
+            this.Controls.Add(this.comboBoxAccount);
+            this.Controls.Add(this.textBoxRate);
+            this.Controls.Add(this.textBoxTax);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -120,6 +203,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -130,5 +214,13 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonClose;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBoxTax;
+        private System.Windows.Forms.ComboBox comboBoxAccount;
+        private System.Windows.Forms.TextBox textBoxRate;
+        private System.Windows.Forms.TextBox textBoxCode;
     }
 }
