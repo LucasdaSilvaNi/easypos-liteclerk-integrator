@@ -14,6 +14,8 @@ namespace EasyPOS.Forms.Software.MstUser
     public partial class MstUserDetailForm : Form
     {
         public SysSoftwareForm sysSoftwareForm;
+        private Modules.SysUserRightsModule sysUserRights;
+
         public MstUserListForm mstUserListForm;
         public Entities.MstUserEntity mstUserEntity;
 
@@ -31,7 +33,30 @@ namespace EasyPOS.Forms.Software.MstUser
             mstUserListForm = userListForm;
             mstUserEntity = userEntity;
 
-            GetUserDetail();
+            sysUserRights = new Modules.SysUserRightsModule("MstUserDetail");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (sysUserRights.GetUserRights().CanAdd == false)
+                {
+                    buttonAddUserForm.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanEdit == false)
+                {
+                    dataGridViewUserFormList.Columns[0].Visible = false;
+                }
+                if (sysUserRights.GetUserRights().CanDelete)
+                {
+                    dataGridViewUserFormList.Columns[1].Visible = false;
+                }
+
+                GetUserDetail();
+            }
+
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -52,8 +77,23 @@ namespace EasyPOS.Forms.Software.MstUser
 
         public void UpdateComponents(Boolean isLocked)
         {
-            buttonLock.Enabled = !isLocked;
-            buttonUnlock.Enabled = isLocked;
+            if (sysUserRights.GetUserRights().CanLock == false)
+            {
+                buttonLock.Enabled = false;
+            }
+            else
+            {
+                buttonLock.Enabled = !isLocked;
+            }
+
+            if (sysUserRights.GetUserRights().CanUnlock == false)
+            {
+                buttonUnlock.Enabled = false;
+            }
+            else
+            {
+                buttonUnlock.Enabled = isLocked;
+            }
 
             textBoxFullName.Enabled = !isLocked;
             textBoxUserName.Enabled = !isLocked;
