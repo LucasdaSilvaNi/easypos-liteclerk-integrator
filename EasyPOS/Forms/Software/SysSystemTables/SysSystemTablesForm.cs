@@ -932,13 +932,13 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
             if (e.RowIndex > -1 && dataGridViewUnitList.CurrentCell.ColumnIndex == dataGridViewUnitList.Columns["ColumnUnitListButtonEdit"].Index)
             {
-                //Entities.MstUnitEntity selectedUnit = new Entities.MstUnitEntity()
-                //{
-                //    Id = Convert.ToInt32(dataGridViewUnitList.Rows[e.RowIndex].Cells[2].Value),
-                //    Unit = dataGridViewUnitList.Rows[e.RowIndex].Cells[3].Value.ToString()
-                //};
-                //SysSystemTablesUnitDetailForm sysSystemTablesUnitDetailForm = new SysSystemTablesUnitDetailForm(this, selectedUnit);
-                //sysSystemTablesUnitDetailForm.ShowDialog();
+                Entities.MstUnitEntity selectedUnit = new Entities.MstUnitEntity()
+                {
+                    Id = Convert.ToInt32(dataGridViewUnitList.Rows[e.RowIndex].Cells[2].Value),
+                    Unit = dataGridViewUnitList.Rows[e.RowIndex].Cells[3].Value.ToString()
+                };
+                SysSystemTablesUnitDetailForm sysSystemTablesUnitDetailForm = new SysSystemTablesUnitDetailForm(this, selectedUnit);
+                sysSystemTablesUnitDetailForm.ShowDialog();
             }
 
             if (e.RowIndex > -1 && dataGridViewUnitList.CurrentCell.ColumnIndex == dataGridViewUnitList.Columns["ColumnUnitListButtonDelete"].Index)
@@ -946,38 +946,38 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                 DialogResult deleteDialogResult = MessageBox.Show("Delete Unit?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (deleteDialogResult == DialogResult.Yes)
                 {
-                    //Controllers.MstUnitController mstUnitController = new Controllers.MstUnitController();
+                    Controllers.MstUnitController mstUnitController = new Controllers.MstUnitController();
 
-                    //String[] deleteUnit = mstUnitController.DeleteUnit(Convert.ToInt32(dataGridViewUnitList.Rows[e.RowIndex].Cells[2].Value));
-                    //if (deleteUnit[1].Equals("0") == false)
-                    //{
-                    //    Int32 currentPageNumber = unitListPageNumber;
+                    String[] deleteUnit = mstUnitController.DeleteUnit(Convert.ToInt32(dataGridViewUnitList.Rows[e.RowIndex].Cells[2].Value));
+                    if (deleteUnit[1].Equals("0") == false)
+                    {
+                        Int32 currentPageNumber = unitListPageNumber;
 
-                    //    unitListPageNumber = 1;
-                    //    UpdateUnitListDataSource();
+                        unitListPageNumber = 1;
+                        UpdateUnitListDataSource();
 
-                    //    if (unitListPageList != null)
-                    //    {
-                    //        if (unitListData.Count() % pageSize == 1)
-                    //        {
-                    //            unitListPageNumber = currentPageNumber - 1;
-                    //        }
-                    //        else if (unitListData.Count() < 1)
-                    //        {
-                    //            unitListPageNumber = 1;
-                    //        }
-                    //        else
-                    //        {
-                    //            unitListPageNumber = currentPageNumber;
-                    //        }
+                        if (unitListPageList != null)
+                        {
+                            if (unitListData.Count() % pageSize == 1)
+                            {
+                                unitListPageNumber = currentPageNumber - 1;
+                            }
+                            else if (unitListData.Count() < 1)
+                            {
+                                unitListPageNumber = 1;
+                            }
+                            else
+                            {
+                                unitListPageNumber = currentPageNumber;
+                            }
 
-                    //        unitListDataSource.DataSource = unitListPageList;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show(deleteUnit[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //}
+                            unitListDataSource.DataSource = unitListPageList;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(deleteUnit[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -1799,10 +1799,10 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                     SysSystemTablesTaxDetailForm sysSystemTablesTaxDetailForm = new SysSystemTablesTaxDetailForm(this, null);
                     sysSystemTablesTaxDetailForm.ShowDialog();
                     break;
-                //case "Unit":
-                //    SysSystemTablesUnitDetailForm sysSystemTablesUnitDetailForm = new SysSystemTablesUnitDetailForm(this, null);
-                //    sysSystemTablesUnitDetailForm.ShowDialog();
-                //    break;
+                case "Unit":
+                    SysSystemTablesUnitDetailForm sysSystemTablesUnitDetailForm = new SysSystemTablesUnitDetailForm(this, null);
+                    sysSystemTablesUnitDetailForm.ShowDialog();
+                    break;
 
             }
         }
