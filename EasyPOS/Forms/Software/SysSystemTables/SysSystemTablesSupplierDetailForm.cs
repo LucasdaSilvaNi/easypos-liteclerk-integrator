@@ -12,9 +12,14 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 {
     public partial class SysSystemTablesSupplierDetailForm : Form
     {
-        public SysSystemTablesSupplierDetailForm()
+        SysSystemTablesForm sysSystemTablesForm;
+        Entities.MstSupplierEntity mstSupplierEntity;
+        public SysSystemTablesSupplierDetailForm(SysSystemTablesForm systemTablesForm, Entities.MstSupplierEntity supplierEntity)
         {
             InitializeComponent();
+            sysSystemTablesForm = systemTablesForm;
+            mstSupplierEntity = supplierEntity;
         }
+
     }
 }
