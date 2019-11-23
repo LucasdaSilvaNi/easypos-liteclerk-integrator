@@ -1175,8 +1175,13 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
             if (e.RowIndex > -1 && dataGridViewPeriodList.CurrentCell.ColumnIndex == dataGridViewPeriodList.Columns["ColumnPeriodListButtonEdit"].Index)
             {
-                //Controllers.MstPeriodController mstPeriodController = new Controllers.MstPeriodController();
-                //sysSoftwareForm.AddTabPagePeriodDetail(this, mstPeriodController.DetailPeriod(Convert.ToInt32(dataGridViewPeriodList.Rows[e.RowIndex].Cells[2].Value)));
+                Entities.MstPeriodEntity selectedPeriod = new Entities.MstPeriodEntity()
+                {
+                    Id = Convert.ToInt32(dataGridViewPeriodList.Rows[e.RowIndex].Cells[2].Value),
+                    Period = dataGridViewPeriodList.Rows[e.RowIndex].Cells[3].Value.ToString()
+                };
+                SysSystemTablesPeriodDetailForm sysSystemTablesPeriodDetailForm = new SysSystemTablesPeriodDetailForm(this, selectedPeriod);
+                sysSystemTablesPeriodDetailForm.ShowDialog();
             }
 
             if (e.RowIndex > -1 && dataGridViewPeriodList.CurrentCell.ColumnIndex == dataGridViewPeriodList.Columns["ColumnPeriodListButtonDelete"].Index)
@@ -1184,38 +1189,38 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                 DialogResult deleteDialogResult = MessageBox.Show("Delete Period?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (deleteDialogResult == DialogResult.Yes)
                 {
-                    //Controllers.MstPeriodController mstPeriodController = new Controllers.MstPeriodController();
+                    Controllers.MstPeriodController mstPeriodController = new Controllers.MstPeriodController();
 
-                    //String[] deletePeriod = mstPeriodController.DeletePeriod(Convert.ToInt32(dataGridViewPeriodList.Rows[e.RowIndex].Cells[2].Value));
-                    //if (deletePeriod[1].Equals("0") == false)
-                    //{
-                    //    Int32 currentPageNumber = periodListPageNumber;
+                    String[] deletePeriod = mstPeriodController.DeletePeriod(Convert.ToInt32(dataGridViewPeriodList.Rows[e.RowIndex].Cells[2].Value));
+                    if (deletePeriod[1].Equals("0") == false)
+                    {
+                        Int32 currentPageNumber = periodListPageNumber;
 
-                    //    periodListPageNumber = 1;
-                    //    UpdatePeriodListDataSource();
+                        periodListPageNumber = 1;
+                        UpdatePeriodListDataSource();
 
-                    //    if (periodListPageList != null)
-                    //    {
-                    //        if (periodListData.Count() % pageSize == 1)
-                    //        {
-                    //            periodListPageNumber = currentPageNumber - 1;
-                    //        }
-                    //        else if (periodListData.Count() < 1)
-                    //        {
-                    //            periodListPageNumber = 1;
-                    //        }
-                    //        else
-                    //        {
-                    //            periodListPageNumber = currentPageNumber;
-                    //        }
+                        if (periodListPageList != null)
+                        {
+                            if (periodListData.Count() % pageSize == 1)
+                            {
+                                periodListPageNumber = currentPageNumber - 1;
+                            }
+                            else if (periodListData.Count() < 1)
+                            {
+                                periodListPageNumber = 1;
+                            }
+                            else
+                            {
+                                periodListPageNumber = currentPageNumber;
+                            }
 
-                    //        periodListDataSource.DataSource = periodListPageList;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show(deletePeriod[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //}
+                            periodListDataSource.DataSource = periodListPageList;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(deletePeriod[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -1413,8 +1418,13 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
             if (e.RowIndex > -1 && dataGridViewTerminalList.CurrentCell.ColumnIndex == dataGridViewTerminalList.Columns["ColumnTerminalListButtonEdit"].Index)
             {
-                //Controllers.MstTerminalController mstTerminalController = new Controllers.MstTerminalController();
-                //sysSoftwareForm.AddTabPageTerminalDetail(this, mstTerminalController.DetailTerminal(Convert.ToInt32(dataGridViewTerminalList.Rows[e.RowIndex].Cells[2].Value)));
+                //Entities.MstTerminalEntity selectedTerminal = new Entities.MstTerminalEntity()
+                //{
+                //    Id = Convert.ToInt32(dataGridViewTerminalList.Rows[e.RowIndex].Cells[2].Value),
+                //    Terminal = dataGridViewTerminalList.Rows[e.RowIndex].Cells[2].Value.ToString()
+                //};
+                //SysSystemTablesTerminalDetailForm sysSystemTablesTerminalDetailForm = new SysSystemTablesTerminalDetailForm(this, selectedTerminal);
+                //sysSystemTablesTerminalDetailForm.ShowDialog();
             }
 
             if (e.RowIndex > -1 && dataGridViewTerminalList.CurrentCell.ColumnIndex == dataGridViewTerminalList.Columns["ColumnTerminalListButtonDelete"].Index)
@@ -1803,7 +1813,10 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                     SysSystemTablesUnitDetailForm sysSystemTablesUnitDetailForm = new SysSystemTablesUnitDetailForm(this, null);
                     sysSystemTablesUnitDetailForm.ShowDialog();
                     break;
-
+                case "Period":
+                    SysSystemTablesPeriodDetailForm sysSystemTablesPeriodDetailForm = new SysSystemTablesPeriodDetailForm(this, null);
+                    sysSystemTablesPeriodDetailForm.ShowDialog();
+                    break;
             }
         }
     }

@@ -28,5 +28,76 @@ namespace EasyPOS.Controllers
 
             return periods.OrderByDescending(d => d.Id).ToList();
         }
+
+        public String[] AddPeriod(Entities.MstPeriodEntity objPeriod)
+        {
+            try
+            {
+                Data.MstPeriod addPeriod = new Data.MstPeriod()
+                {
+                    Period = objPeriod.Period
+                };
+
+                db.MstPeriods.InsertOnSubmit(addPeriod);
+                db.SubmitChanges();
+                return new String[] { "", "" };
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
+        public String[] UpdatePeriod(Entities.MstPeriodEntity objPeriod)
+        {
+            try
+            {
+                var currentPeriod = from d in db.MstPeriods
+                                  where d.Id == objPeriod.Id
+                                  select d;
+                if (currentPeriod.Any())
+                {
+                    var updatePeriod = currentPeriod.FirstOrDefault();
+                    updatePeriod.Period = objPeriod.Period;
+                    db.SubmitChanges();
+
+                    return new String[] { "", "" };
+                }
+                else
+                {
+                    return new String[] { "Period not found!", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
+        public String[] DeletePeriod(Int32 id)
+        {
+            try
+            {
+                var currentPeriod = from d in db.MstPeriods
+                                  where d.Id == id
+                                  select d;
+                if (currentPeriod.Any())
+                {
+                    var deletePeriod = currentPeriod.FirstOrDefault();
+                    db.MstPeriods.DeleteOnSubmit(deletePeriod);
+                    db.SubmitChanges();
+
+                    return new String[] { "", "" };
+                }
+                else
+                {
+                    return new String[] { "Period not found!", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
     }
 }
