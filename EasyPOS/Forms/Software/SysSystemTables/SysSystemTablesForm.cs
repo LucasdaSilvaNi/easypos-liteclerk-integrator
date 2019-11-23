@@ -1418,13 +1418,13 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
             if (e.RowIndex > -1 && dataGridViewTerminalList.CurrentCell.ColumnIndex == dataGridViewTerminalList.Columns["ColumnTerminalListButtonEdit"].Index)
             {
-                //Entities.MstTerminalEntity selectedTerminal = new Entities.MstTerminalEntity()
-                //{
-                //    Id = Convert.ToInt32(dataGridViewTerminalList.Rows[e.RowIndex].Cells[2].Value),
-                //    Terminal = dataGridViewTerminalList.Rows[e.RowIndex].Cells[2].Value.ToString()
-                //};
-                //SysSystemTablesTerminalDetailForm sysSystemTablesTerminalDetailForm = new SysSystemTablesTerminalDetailForm(this, selectedTerminal);
-                //sysSystemTablesTerminalDetailForm.ShowDialog();
+                Entities.MstTerminalEntity selectedTerminal = new Entities.MstTerminalEntity()
+                {
+                    Id = Convert.ToInt32(dataGridViewTerminalList.Rows[e.RowIndex].Cells[2].Value),
+                    Terminal = dataGridViewTerminalList.Rows[e.RowIndex].Cells[3].Value.ToString()
+                };
+                SysSystemTablesTerminalDetailForm sysSystemTablesTerminalDetailForm = new SysSystemTablesTerminalDetailForm(this, selectedTerminal);
+                sysSystemTablesTerminalDetailForm.ShowDialog();
             }
 
             if (e.RowIndex > -1 && dataGridViewTerminalList.CurrentCell.ColumnIndex == dataGridViewTerminalList.Columns["ColumnTerminalListButtonDelete"].Index)
@@ -1432,38 +1432,38 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                 DialogResult deleteDialogResult = MessageBox.Show("Delete Terminal?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (deleteDialogResult == DialogResult.Yes)
                 {
-                    //Controllers.MstTerminalController mstTerminalController = new Controllers.MstTerminalController();
+                    Controllers.MstTerminalController mstTerminalController = new Controllers.MstTerminalController();
 
-                    //String[] deleteTerminal = mstTerminalController.DeleteTerminal(Convert.ToInt32(dataGridViewTerminalList.Rows[e.RowIndex].Cells[2].Value));
-                    //if (deleteTerminal[1].Equals("0") == false)
-                    //{
-                    //    Int32 currentPageNumber = terminalListPageNumber;
+                    String[] deleteTerminal = mstTerminalController.DeleteTerminal(Convert.ToInt32(dataGridViewTerminalList.Rows[e.RowIndex].Cells[2].Value));
+                    if (deleteTerminal[1].Equals("0") == false)
+                    {
+                        Int32 currentPageNumber = terminalListPageNumber;
 
-                    //    terminalListPageNumber = 1;
-                    //    UpdateTerminalListDataSource();
+                        terminalListPageNumber = 1;
+                        UpdateTerminalListDataSource();
 
-                    //    if (terminalListPageList != null)
-                    //    {
-                    //        if (terminalListData.Count() % pageSize == 1)
-                    //        {
-                    //            terminalListPageNumber = currentPageNumber - 1;
-                    //        }
-                    //        else if (terminalListData.Count() < 1)
-                    //        {
-                    //            terminalListPageNumber = 1;
-                    //        }
-                    //        else
-                    //        {
-                    //            terminalListPageNumber = currentPageNumber;
-                    //        }
+                        if (terminalListPageList != null)
+                        {
+                            if (terminalListData.Count() % pageSize == 1)
+                            {
+                                terminalListPageNumber = currentPageNumber - 1;
+                            }
+                            else if (terminalListData.Count() < 1)
+                            {
+                                terminalListPageNumber = 1;
+                            }
+                            else
+                            {
+                                terminalListPageNumber = currentPageNumber;
+                            }
 
-                    //        terminalListDataSource.DataSource = terminalListPageList;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show(deleteTerminal[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //}
+                            terminalListDataSource.DataSource = terminalListPageList;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(deleteTerminal[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -1817,6 +1817,11 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                     SysSystemTablesPeriodDetailForm sysSystemTablesPeriodDetailForm = new SysSystemTablesPeriodDetailForm(this, null);
                     sysSystemTablesPeriodDetailForm.ShowDialog();
                     break;
+                case "Terminal":
+                    SysSystemTablesTerminalDetailForm sysSystemTablesTerminalDetailForm = new SysSystemTablesTerminalDetailForm(this, null);
+                    sysSystemTablesTerminalDetailForm.ShowDialog();
+                    break;
+
             }
         }
     }

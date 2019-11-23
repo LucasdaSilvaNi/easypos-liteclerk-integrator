@@ -12,9 +12,66 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 {
     public partial class SysSystemTablesTerminalDetailForm : Form
     {
-        public SysSystemTablesTerminalDetailForm()
+        SysSystemTablesForm sysSystemTablesForm;
+        Entities.MstTerminalEntity mstTerminalEntity;
+        public SysSystemTablesTerminalDetailForm(SysSystemTablesForm systemTablesForm, Entities.MstTerminalEntity terminalEntity)
         {
             InitializeComponent();
+            sysSystemTablesForm = systemTablesForm;
+            mstTerminalEntity = terminalEntity;
+            LoadTerminal();
+        }
+
+        public void LoadTerminal()
+        {
+            if (mstTerminalEntity != null)
+            {
+                textBoxTerminal.Text = mstTerminalEntity.Terminal;
+            }
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            if (mstTerminalEntity == null)
+            {
+                Entities.MstTerminalEntity newTerminal = new Entities.MstTerminalEntity()
+                {
+                    Terminal = textBoxTerminal.Text
+                };
+
+                Controllers.MstTerminalController mstTerminalController = new Controllers.MstTerminalController();
+                String[] addTerminal = mstTerminalController.AddTerminal(newTerminal);
+                if (addTerminal[1].Equals("0") == true)
+                {
+                    MessageBox.Show(addTerminal[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    sysSystemTablesForm.UpdateTerminalListDataSource();
+                    Close();
+                }
+            }
+            else
+            {
+                mstTerminalEntity.Terminal = textBoxTerminal.Text;
+                Controllers.MstTerminalController mstTerminalController = new Controllers.MstTerminalController();
+                String[] updateTerminal = mstTerminalController.UpdateTerminal(mstTerminalEntity);
+                if (updateTerminal[1].Equals("0") == true)
+                {
+                    MessageBox.Show(updateTerminal[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    sysSystemTablesForm.UpdateTerminalListDataSource();
+                    Close();
+                }
+
+            }
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
