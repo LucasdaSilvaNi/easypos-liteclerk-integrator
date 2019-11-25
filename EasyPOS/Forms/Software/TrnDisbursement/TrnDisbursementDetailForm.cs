@@ -13,6 +13,8 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
     public partial class TrnDisbursementDetailForm : Form
     {
         public SysSoftwareForm sysSoftwareForm;
+        private Modules.SysUserRightsModule sysUserRights;
+
         public TrnDisbursementListForm trnDisbursementListForm;
         public Entities.TrnDisbursementEntity trnDisbursementEntity;
 
@@ -24,7 +26,16 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             trnDisbursementListForm = disbursementListForm;
             trnDisbursementEntity = disbursementEntity;
 
-            GetTerminals();
+            sysUserRights = new Modules.SysUserRightsModule("TrnDisbursementDetail");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                GetTerminals();
+            }
+
         }
 
         public void GetTerminals()
@@ -146,9 +157,32 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
 
         public void EnableDisableControls(Boolean isLocked)
         {
-            buttonLock.Enabled = !isLocked;
-            buttonUnlock.Enabled = isLocked;
-            buttonPrint.Enabled = isLocked;
+            if (sysUserRights.GetUserRights().CanLock == false)
+            {
+                buttonLock.Enabled = false;
+            }
+            else
+            {
+                buttonLock.Enabled = !isLocked;
+            }
+
+            if (sysUserRights.GetUserRights().CanLock == false)
+            {
+                buttonUnlock.Enabled = false;
+            }
+            else
+            {
+                buttonUnlock.Enabled = !isLocked;
+            }
+
+            if (sysUserRights.GetUserRights().CanLock == false)
+            {
+                buttonPrint.Enabled = false;
+            }
+            else
+            {
+                buttonPrint.Enabled = isLocked;
+            }
 
             comboBoxTerminal.Enabled = !isLocked;
             dateTimePickerRemittanceDate.Enabled = !isLocked;
