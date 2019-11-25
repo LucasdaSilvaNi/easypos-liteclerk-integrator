@@ -42,22 +42,54 @@ namespace EasyPOS.Forms.Software.SysMenu
 
         private void buttonPOS_Click(object sender, EventArgs e)
         {
-            sysSoftwareForm.AddTabPagePOSSalesList();
+            sysUserRights = new Modules.SysUserRightsModule("TrnSales");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                sysSoftwareForm.AddTabPagePOSSalesList();
+            }
         }
 
         private void buttonDiscounting_Click(object sender, EventArgs e)
         {
-            sysSoftwareForm.AddTabPageDiscountingList();
+            sysUserRights = new Modules.SysUserRightsModule("MstDiscount");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                sysSoftwareForm.AddTabPageDiscountingList();
+            }
         }
 
         private void buttonPOSReport_Click(object sender, EventArgs e)
         {
-            sysSoftwareForm.AddTabPagePOSReport();
+            sysUserRights = new Modules.SysUserRightsModule("RepPOS");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                sysSoftwareForm.AddTabPagePOSReport();
+            }
         }
 
         private void buttonUser_Click(object sender, EventArgs e)
         {
-            sysSoftwareForm.AddTabPageUserList();
+            sysUserRights = new Modules.SysUserRightsModule("MstUser");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                sysSoftwareForm.AddTabPageUserList();
+            }
         }
 
         private void buttonSettings_Click(object sender, EventArgs e)
@@ -72,27 +104,67 @@ namespace EasyPOS.Forms.Software.SysMenu
 
         private void buttonCustomer_Click(object sender, EventArgs e)
         {
-            sysSoftwareForm.AddTabPageCustomerList();
+            sysUserRights = new Modules.SysUserRightsModule("MstCustomer");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                sysSoftwareForm.AddTabPageCustomerList();
+            }
         }
 
         private void buttonStockIn_Click(object sender, EventArgs e)
         {
-            sysSoftwareForm.AddTabPageStockInList();
+            sysUserRights = new Modules.SysUserRightsModule("TrnStockIn");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                sysSoftwareForm.AddTabPageStockInList();
+            }
         }
 
         private void buttonStockOut_Click(object sender, EventArgs e)
         {
-            sysSoftwareForm.AddTabPageStockOutList();
+            sysUserRights = new Modules.SysUserRightsModule("TrnStockOut");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                sysSoftwareForm.AddTabPageStockOutList();
+            }
         }
 
         private void buttonDisbursement_Click(object sender, EventArgs e)
         {
-            sysSoftwareForm.AddTabPageDisbursementList();
+            sysUserRights = new Modules.SysUserRightsModule("TrnDisbursement");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                sysSoftwareForm.AddTabPageDisbursementList();
+            }
         }
 
         private void buttonSystemTables_Click(object sender, EventArgs e)
         {
-            sysSoftwareForm.AddTabPageSystemTables();
+            sysUserRights = new Modules.SysUserRightsModule("SysTables");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                sysSoftwareForm.AddTabPageSystemTables();
+            }
         }
 
         private void buttonInventory_Click(object sender, EventArgs e)
@@ -107,7 +179,15 @@ namespace EasyPOS.Forms.Software.SysMenu
 
         private void buttonStockCount_Click(object sender, EventArgs e)
         {
-            sysSoftwareForm.AddTabPageStockCountList();
+            sysUserRights = new Modules.SysUserRightsModule("TrnStockCount");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                sysSoftwareForm.AddTabPageStockCountList();
+            }
         }
     }
 }
