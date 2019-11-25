@@ -110,7 +110,7 @@
             // 
             // textBoxTerminal
             // 
-            this.textBoxTerminal.Location = new System.Drawing.Point(136, 90);
+            this.textBoxTerminal.Location = new System.Drawing.Point(167, 88);
             this.textBoxTerminal.Name = "textBoxTerminal";
             this.textBoxTerminal.Size = new System.Drawing.Size(274, 22);
             this.textBoxTerminal.TabIndex = 12;
@@ -118,7 +118,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 91);
+            this.label2.Location = new System.Drawing.Point(29, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 17);
             this.label2.TabIndex = 11;

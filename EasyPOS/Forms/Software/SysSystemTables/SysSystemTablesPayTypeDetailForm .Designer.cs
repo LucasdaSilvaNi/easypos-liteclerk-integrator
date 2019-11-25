@@ -113,14 +113,14 @@
             // comboBoxAccount
             // 
             this.comboBoxAccount.FormattingEnabled = true;
-            this.comboBoxAccount.Location = new System.Drawing.Point(195, 130);
+            this.comboBoxAccount.Location = new System.Drawing.Point(192, 110);
             this.comboBoxAccount.Name = "comboBoxAccount";
             this.comboBoxAccount.Size = new System.Drawing.Size(285, 24);
             this.comboBoxAccount.TabIndex = 16;
             // 
             // textBoxPayType
             // 
-            this.textBoxPayType.Location = new System.Drawing.Point(195, 96);
+            this.textBoxPayType.Location = new System.Drawing.Point(192, 88);
             this.textBoxPayType.Name = "textBoxPayType";
             this.textBoxPayType.Size = new System.Drawing.Size(285, 22);
             this.textBoxPayType.TabIndex = 15;
@@ -128,7 +128,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 132);
+            this.label4.Location = new System.Drawing.Point(29, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 17);
             this.label4.TabIndex = 14;
@@ -137,7 +137,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 96);
+            this.label3.Location = new System.Drawing.Point(29, 88);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 13;

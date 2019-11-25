@@ -114,7 +114,7 @@
             // 
             // textBoxCode
             // 
-            this.textBoxCode.Location = new System.Drawing.Point(198, 95);
+            this.textBoxCode.Location = new System.Drawing.Point(191, 87);
             this.textBoxCode.Name = "textBoxCode";
             this.textBoxCode.Size = new System.Drawing.Size(285, 22);
             this.textBoxCode.TabIndex = 7;
@@ -122,7 +122,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(34, 95);
+            this.label2.Location = new System.Drawing.Point(27, 87);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 17);
             this.label2.TabIndex = 8;
@@ -131,7 +131,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 126);
+            this.label3.Location = new System.Drawing.Point(27, 109);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 17);
             this.label3.TabIndex = 9;
@@ -140,7 +140,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(34, 160);
+            this.label4.Location = new System.Drawing.Point(27, 131);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 17);
             this.label4.TabIndex = 10;
@@ -148,7 +148,7 @@
             // 
             // textBoxAccount
             // 
-            this.textBoxAccount.Location = new System.Drawing.Point(198, 126);
+            this.textBoxAccount.Location = new System.Drawing.Point(191, 109);
             this.textBoxAccount.Name = "textBoxAccount";
             this.textBoxAccount.Size = new System.Drawing.Size(285, 22);
             this.textBoxAccount.TabIndex = 11;
@@ -156,7 +156,7 @@
             // comboBoxType
             // 
             this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.Location = new System.Drawing.Point(198, 160);
+            this.comboBoxType.Location = new System.Drawing.Point(191, 131);
             this.comboBoxType.Name = "comboBoxType";
             this.comboBoxType.Size = new System.Drawing.Size(121, 24);
             this.comboBoxType.TabIndex = 12;

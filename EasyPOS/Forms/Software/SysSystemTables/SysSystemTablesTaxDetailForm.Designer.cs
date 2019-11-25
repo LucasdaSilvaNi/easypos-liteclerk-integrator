@@ -117,7 +117,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 123);
+            this.label2.Location = new System.Drawing.Point(35, 107);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 17);
             this.label2.TabIndex = 7;
@@ -135,7 +135,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(35, 160);
+            this.label4.Location = new System.Drawing.Point(35, 129);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 17);
             this.label4.TabIndex = 9;
@@ -144,7 +144,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(35, 195);
+            this.label5.Location = new System.Drawing.Point(35, 152);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 17);
             this.label5.TabIndex = 10;
@@ -152,7 +152,7 @@
             // 
             // textBoxTax
             // 
-            this.textBoxTax.Location = new System.Drawing.Point(168, 123);
+            this.textBoxTax.Location = new System.Drawing.Point(168, 107);
             this.textBoxTax.Name = "textBoxTax";
             this.textBoxTax.Size = new System.Drawing.Size(285, 22);
             this.textBoxTax.TabIndex = 17;
@@ -160,14 +160,14 @@
             // comboBoxAccount
             // 
             this.comboBoxAccount.FormattingEnabled = true;
-            this.comboBoxAccount.Location = new System.Drawing.Point(168, 194);
+            this.comboBoxAccount.Location = new System.Drawing.Point(168, 151);
             this.comboBoxAccount.Name = "comboBoxAccount";
             this.comboBoxAccount.Size = new System.Drawing.Size(285, 24);
             this.comboBoxAccount.TabIndex = 20;
             // 
             // textBoxRate
             // 
-            this.textBoxRate.Location = new System.Drawing.Point(168, 160);
+            this.textBoxRate.Location = new System.Drawing.Point(168, 129);
             this.textBoxRate.Name = "textBoxRate";
             this.textBoxRate.Size = new System.Drawing.Size(285, 22);
             this.textBoxRate.TabIndex = 19;

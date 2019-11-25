@@ -110,7 +110,7 @@
             // 
             // textBoxPeriod
             // 
-            this.textBoxPeriod.Location = new System.Drawing.Point(112, 90);
+            this.textBoxPeriod.Location = new System.Drawing.Point(193, 90);
             this.textBoxPeriod.Name = "textBoxPeriod";
             this.textBoxPeriod.Size = new System.Drawing.Size(274, 22);
             this.textBoxPeriod.TabIndex = 10;
