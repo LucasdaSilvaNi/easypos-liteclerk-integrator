@@ -13,6 +13,8 @@ namespace EasyPOS.Forms.Software.MstUser
     public partial class MstUserDetailUserFormDetailForm : Form
     {
         public MstUserDetailForm mstUserDetailForm;
+        private Modules.SysUserRightsModule sysUserRights;
+
         public Entities.MstUserFormEntity mtUserFormEntity;
 
         public MstUserDetailUserFormDetailForm(MstUserDetailForm userDetailForm, Entities.MstUserFormEntity userFormEntity)
@@ -22,7 +24,22 @@ namespace EasyPOS.Forms.Software.MstUser
             mstUserDetailForm = userDetailForm;
             mtUserFormEntity = userFormEntity;
 
-            GetFormList();
+            sysUserRights = new Modules.SysUserRightsModule("MstUserDetail");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (sysUserRights.GetUserRights().CanEdit == false)
+                {
+                    buttonSave.Enabled = false;
+                }
+
+                GetFormList();
+            }
+
+            
         }
 
         public void GetFormList()
