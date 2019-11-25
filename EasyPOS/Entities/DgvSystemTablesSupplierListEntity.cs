@@ -15,6 +15,10 @@ namespace EasyPOS.Entities
         public String ColumnSupplierListAddress { get; set; }
         public String ColumnSupplierListTelephoneNumber { get; set; }
         public String ColumnSupplierListCellphoneNumber { get; set; }
+        public String ColumnSupplierListFaxNumber { get; set; }
+        public Int32 ColumnSupplierListTermId { get; set; }
         public String ColumnSupplierListTIN { get; set; }
+        public Int32 ColumnSupplierListAccountId { get; set; }
+        public Boolean ColumnSupplierListIsLocked { get; set; }
     }
 }

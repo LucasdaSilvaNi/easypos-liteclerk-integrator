@@ -1622,7 +1622,11 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                                     ColumnSupplierListAddress = d.Address,
                                     ColumnSupplierListTelephoneNumber = d.TelephoneNumber,
                                     ColumnSupplierListCellphoneNumber = d.CellphoneNumber,
-                                    ColumnSupplierListTIN = d.TIN
+                                    ColumnSupplierListFaxNumber = d.FaxNumber,
+                                    ColumnSupplierListTermId = d.TermId,
+                                    ColumnSupplierListTIN = d.TIN,
+                                    ColumnSupplierListAccountId = d.AccountId,
+                                    ColumnSupplierListIsLocked = d.IsLocked
                                 };
 
                 return Task.FromResult(suppliers.ToList());
@@ -1665,8 +1669,22 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
             if (e.RowIndex > -1 && dataGridViewSupplierList.CurrentCell.ColumnIndex == dataGridViewSupplierList.Columns["ColumnSupplierListButtonEdit"].Index)
             {
-                //Controllers.MstSupplierController mstSupplierController = new Controllers.MstSupplierController();
-                //sysSoftwareForm.AddTabPageSupplierDetail(this, mstSupplierController.DetailSupplier(Convert.ToInt32(dataGridViewSupplierList.Rows[e.RowIndex].Cells[2].Value)));
+                Entities.MstSupplierEntity selectedSupplier = new Entities.MstSupplierEntity()
+                {
+                    Id = Convert.ToInt32(dataGridViewSupplierList.Rows[e.RowIndex].Cells[2].Value),
+                    Supplier = dataGridViewSupplierList.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                    Address = dataGridViewSupplierList.Rows[e.RowIndex].Cells[4].Value.ToString(),
+                    TelephoneNumber = dataGridViewSupplierList.Rows[e.RowIndex].Cells[5].Value.ToString(),
+                    CellphoneNumber = dataGridViewSupplierList.Rows[e.RowIndex].Cells[6].Value.ToString(),
+                    FaxNumber = dataGridViewSupplierList.Rows[e.RowIndex].Cells[7].Value.ToString(),
+                    TermId = Convert.ToInt32(dataGridViewSupplierList.Rows[e.RowIndex].Cells[8].Value),
+                    TIN = dataGridViewSupplierList.Rows[e.RowIndex].Cells[9].Value.ToString(),
+                    AccountId = Convert.ToInt32(dataGridViewSupplierList.Rows[e.RowIndex].Cells[10].Value),
+                    IsLocked = Convert.ToBoolean(dataGridViewSupplierList.Rows[e.RowIndex].Cells[11].Value)
+                };
+
+                SysSystemTablesSupplierDetailForm systemTablesSupplierDetailForm = new SysSystemTablesSupplierDetailForm(this, selectedSupplier);
+                systemTablesSupplierDetailForm.ShowDialog();
             }
 
             if (e.RowIndex > -1 && dataGridViewSupplierList.CurrentCell.ColumnIndex == dataGridViewSupplierList.Columns["ColumnSupplierListButtonDelete"].Index)
@@ -1674,38 +1692,38 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                 DialogResult deleteDialogResult = MessageBox.Show("Delete Supplier?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (deleteDialogResult == DialogResult.Yes)
                 {
-                    //Controllers.MstSupplierController mstSupplierController = new Controllers.MstSupplierController();
+                    Controllers.MstSupplierController mstSupplierController = new Controllers.MstSupplierController();
 
-                    //String[] deleteSupplier = mstSupplierController.DeleteSupplier(Convert.ToInt32(dataGridViewSupplierList.Rows[e.RowIndex].Cells[2].Value));
-                    //if (deleteSupplier[1].Equals("0") == false)
-                    //{
-                    //    Int32 currentPageNumber = supplierListPageNumber;
+                    String[] deleteSupplier = mstSupplierController.DeleteSupplier(Convert.ToInt32(dataGridViewSupplierList.Rows[e.RowIndex].Cells[2].Value));
+                    if (deleteSupplier[1].Equals("0") == false)
+                    {
+                        Int32 currentPageNumber = supplierListPageNumber;
 
-                    //    supplierListPageNumber = 1;
-                    //    UpdateSupplierListDataSource();
+                        supplierListPageNumber = 1;
+                        UpdateSupplierListDataSource();
 
-                    //    if (supplierListPageList != null)
-                    //    {
-                    //        if (supplierListData.Count() % pageSize == 1)
-                    //        {
-                    //            supplierListPageNumber = currentPageNumber - 1;
-                    //        }
-                    //        else if (supplierListData.Count() < 1)
-                    //        {
-                    //            supplierListPageNumber = 1;
-                    //        }
-                    //        else
-                    //        {
-                    //            supplierListPageNumber = currentPageNumber;
-                    //        }
+                        if (supplierListPageList != null)
+                        {
+                            if (supplierListData.Count() % pageSize == 1)
+                            {
+                                supplierListPageNumber = currentPageNumber - 1;
+                            }
+                            else if (supplierListData.Count() < 1)
+                            {
+                                supplierListPageNumber = 1;
+                            }
+                            else
+                            {
+                                supplierListPageNumber = currentPageNumber;
+                            }
 
-                    //        supplierListDataSource.DataSource = supplierListPageList;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show(deleteSupplier[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //}
+                            supplierListDataSource.DataSource = supplierListPageList;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(deleteSupplier[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -1820,6 +1838,21 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                 case "Terminal":
                     SysSystemTablesTerminalDetailForm sysSystemTablesTerminalDetailForm = new SysSystemTablesTerminalDetailForm(this, null);
                     sysSystemTablesTerminalDetailForm.ShowDialog();
+                    break;
+                case "Supplier":
+                    Controllers.MstSupplierController mstSupplierController = new Controllers.MstSupplierController();
+                    String[] newSupplier = mstSupplierController.AddSupplier();
+                    if (newSupplier[1].Equals("0") == false)
+                    {
+                        var newSupplierDetail = mstSupplierController.DetailSupplier(Convert.ToInt32(newSupplier[0]));
+                        SysSystemTablesSupplierDetailForm systemTablesSupplierDetailForm = new SysSystemTablesSupplierDetailForm(this, newSupplierDetail);
+                        systemTablesSupplierDetailForm.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show(newSupplier[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                     break;
 
             }

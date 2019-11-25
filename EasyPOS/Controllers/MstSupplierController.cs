@@ -49,11 +49,38 @@ namespace EasyPOS.Controllers
             return suppliers.OrderBy(d => d.Id).ToList();
         }
 
+        public Entities.MstSupplierEntity DetailSupplier(Int32 id)
+        {
+            var supplier = from d in db.MstSuppliers
+                            where d.Id == id
+                            select new Entities.MstSupplierEntity
+                            {
+                                Id = d.Id,
+                                Supplier = d.Supplier,
+                                Address = d.Address,
+                                TelephoneNumber = d.TelephoneNumber,
+                                CellphoneNumber = d.CellphoneNumber,
+                                FaxNumber = d.FaxNumber,
+                                TermId = d.TermId,
+                                Term = d.MstTerm.Term,
+                                TIN = d.TIN,
+                                AccountId = d.AccountId,
+                                Account = d.MstAccount.Account,
+                                EntryUserId = d.EntryUserId,
+                                EntryUserName = d.MstUser.UserName,
+                                EntryDateTime = d.EntryDateTime.ToShortDateString(),
+                                UpdateUserId = d.UpdateUserId,
+                                UpdatedUserName = d.MstUser1.UserName,
+                                UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
+                                IsLocked = d.IsLocked
+                            };
+            return supplier.FirstOrDefault();
+        }
+
         public String[] AddSupplier()
         {
             try
             {
-
                 var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
                 if (currentUserLogin.Any() == false)
                 {
@@ -92,7 +119,7 @@ namespace EasyPOS.Controllers
                 db.MstSuppliers.InsertOnSubmit(addSupplier);
                 db.SubmitChanges();
 
-                return new String[] { "", "" };
+                return new String[] { addSupplier.Id.ToString(), "" };
             }
             catch (Exception e)
             {
@@ -218,6 +245,29 @@ namespace EasyPOS.Controllers
             {
                 return new String[] { e.Message, "0" };
             }
+        }
+
+        public List<Entities.MstAccountEntity> DropDownListAccount() {
+            var accounts = from d in db.MstAccounts
+                          where d.AccountType == "LIABILITY"
+                           select new Entities.MstAccountEntity {
+                              Id = d.Id,
+                              Code = d.Code,
+                              Account = d.Account,
+                              IsLocked = d.IsLocked,
+                              AccountType = d.AccountType
+                          };
+            return accounts.ToList();
+        }
+
+        public List<Entities.MstTermEntity> DropDownListTerms() {
+            var terms = from d in db.MstTerms
+                        select new Entities.MstTermEntity
+                        {
+                            Id = d.Id,
+                            Term = d.Term
+                        };
+            return terms.ToList();
         }
     }
 }

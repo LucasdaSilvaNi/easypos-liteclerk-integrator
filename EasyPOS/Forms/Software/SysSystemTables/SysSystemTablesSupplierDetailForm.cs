@@ -19,7 +19,95 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             InitializeComponent();
             sysSystemTablesForm = systemTablesForm;
             mstSupplierEntity = supplierEntity;
+
+            GetTermList();
         }
 
+        public void GetTermList()
+        {
+            Controllers.MstSupplierController mstSupplierController = new Controllers.MstSupplierController();
+            var terms = mstSupplierController.DropDownListTerms();
+            if (terms.Any())
+            {
+                comboBoxTerm.DataSource = terms;
+                comboBoxTerm.ValueMember = "Id";
+                comboBoxTerm.DisplayMember = "Term";
+
+                GetAccountList();
+            }
+        }
+
+        public void GetAccountList()
+        {
+            Controllers.MstSupplierController mstSupplierController = new Controllers.MstSupplierController();
+            var accounts = mstSupplierController.DropDownListAccount();
+            if (accounts.Any())
+            {
+                comboBoxAccount.DataSource = accounts;
+                comboBoxAccount.ValueMember = "Id";
+                comboBoxAccount.DisplayMember = "Account";
+                LoadComponent(mstSupplierEntity.IsLocked);
+            }
+        }
+
+        public void LoadComponent(Boolean isLocked)
+        {
+            textBoxSupplier.Text = mstSupplierEntity.Supplier;
+            textBoxAddress.Text = mstSupplierEntity.Address;
+            textBoxTelephoneNumber.Text = mstSupplierEntity.TelephoneNumber;
+            textBoxCellphoneNumber.Text = mstSupplierEntity.CellphoneNumber;
+            textBoxFaxNumber.Text = mstSupplierEntity.FaxNumber;
+            comboBoxTerm.SelectedValue = mstSupplierEntity.TermId;
+            textBoxTIN.Text = mstSupplierEntity.TIN;
+            comboBoxAccount.SelectedValue = mstSupplierEntity.AccountId;
+
+            buttonLock.Enabled = !isLocked;
+            buttonUnlock.Enabled = isLocked;
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void buttonLock_Click(object sender, EventArgs e)
+        {
+            mstSupplierEntity.Supplier = textBoxSupplier.Text;
+            mstSupplierEntity.Address = textBoxAddress.Text;
+            mstSupplierEntity.TelephoneNumber = textBoxTelephoneNumber.Text;
+            mstSupplierEntity.CellphoneNumber = textBoxCellphoneNumber.Text;
+            mstSupplierEntity.FaxNumber = textBoxFaxNumber.Text;
+            mstSupplierEntity.TermId = Convert.ToInt32(comboBoxTerm.SelectedValue);
+            mstSupplierEntity.TIN = textBoxTIN.Text;
+            mstSupplierEntity.AccountId = Convert.ToInt32(comboBoxAccount.SelectedValue);
+
+            Controllers.MstSupplierController mstSupplierController = new Controllers.MstSupplierController();
+            String[] updateSupplier = mstSupplierController.LockSupplier(mstSupplierEntity);
+            if (updateSupplier[1].Equals("0") == false)
+            {
+                LoadComponent(true);
+                sysSystemTablesForm.UpdateSupplierListDataSource();
+            }
+            else
+            {
+                MessageBox.Show(updateSupplier[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonUnlock_Click(object sender, EventArgs e)
+        {
+            Controllers.MstSupplierController mstSupplierController = new Controllers.MstSupplierController();
+            String[] updateSupplier = mstSupplierController.UnlockSupplier(mstSupplierEntity);
+            if (updateSupplier[1].Equals("0") == false)
+            {
+                LoadComponent(false);
+                sysSystemTablesForm.UpdateSupplierListDataSource();
+            }
+            else
+            {
+                MessageBox.Show(updateSupplier[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 }
