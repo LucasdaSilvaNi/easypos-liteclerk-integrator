@@ -67,10 +67,27 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             if (sysUserRights.GetUserRights().CanLock == false)
             {
                 buttonLock.Enabled = false;
+                buttonLock.Enabled = false;
+                textBoxSupplier.Enabled = false;
+                textBoxAddress.Enabled = false;
+                textBoxTelephoneNumber.Enabled = false;
+                textBoxCellphoneNumber.Enabled = false;
+                textBoxFaxNumber.Enabled = false;
+                comboBoxTerm.Enabled = false;
+                textBoxTIN.Enabled = false;
+                comboBoxAccount.Enabled = false;
             }
             else
             {
                 buttonLock.Enabled = !isLocked;
+                textBoxSupplier.Enabled = !isLocked;
+                textBoxAddress.Enabled = !isLocked;
+                textBoxTelephoneNumber.Enabled = !isLocked;
+                textBoxCellphoneNumber.Enabled = !isLocked;
+                textBoxFaxNumber.Enabled = !isLocked;
+                comboBoxTerm.Enabled = !isLocked;
+                textBoxTIN.Enabled = !isLocked;
+                comboBoxAccount.Enabled = !isLocked;
             }
 
             if (sysUserRights.GetUserRights().CanUnlock == false)
