@@ -135,7 +135,6 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             {
                 MessageBox.Show(updateSupplier[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
     }
 }

@@ -119,7 +119,5 @@ namespace EasyPOS.Forms.Software.SysSystemTables
         {
             Close();
         }
-
-
     }
 }

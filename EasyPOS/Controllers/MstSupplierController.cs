@@ -49,34 +49,75 @@ namespace EasyPOS.Controllers
             return suppliers.OrderBy(d => d.Id).ToList();
         }
 
+        // ===============
+        // Detail Supplier
+        // ===============
         public Entities.MstSupplierEntity DetailSupplier(Int32 id)
         {
             var supplier = from d in db.MstSuppliers
-                            where d.Id == id
-                            select new Entities.MstSupplierEntity
-                            {
-                                Id = d.Id,
-                                Supplier = d.Supplier,
-                                Address = d.Address,
-                                TelephoneNumber = d.TelephoneNumber,
-                                CellphoneNumber = d.CellphoneNumber,
-                                FaxNumber = d.FaxNumber,
-                                TermId = d.TermId,
-                                Term = d.MstTerm.Term,
-                                TIN = d.TIN,
-                                AccountId = d.AccountId,
-                                Account = d.MstAccount.Account,
-                                EntryUserId = d.EntryUserId,
-                                EntryUserName = d.MstUser.UserName,
-                                EntryDateTime = d.EntryDateTime.ToShortDateString(),
-                                UpdateUserId = d.UpdateUserId,
-                                UpdatedUserName = d.MstUser1.UserName,
-                                UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
-                                IsLocked = d.IsLocked
-                            };
+                           where d.Id == id
+                           select new Entities.MstSupplierEntity
+                           {
+                               Id = d.Id,
+                               Supplier = d.Supplier,
+                               Address = d.Address,
+                               TelephoneNumber = d.TelephoneNumber,
+                               CellphoneNumber = d.CellphoneNumber,
+                               FaxNumber = d.FaxNumber,
+                               TermId = d.TermId,
+                               Term = d.MstTerm.Term,
+                               TIN = d.TIN,
+                               AccountId = d.AccountId,
+                               Account = d.MstAccount.Account,
+                               EntryUserId = d.EntryUserId,
+                               EntryUserName = d.MstUser.UserName,
+                               EntryDateTime = d.EntryDateTime.ToShortDateString(),
+                               UpdateUserId = d.UpdateUserId,
+                               UpdatedUserName = d.MstUser1.UserName,
+                               UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
+                               IsLocked = d.IsLocked
+                           };
+
             return supplier.FirstOrDefault();
         }
 
+        // =====================
+        // Dropdown List Account
+        // =====================
+        public List<Entities.MstAccountEntity> DropDownListAccount()
+        {
+            var accounts = from d in db.MstAccounts
+                           where d.AccountType == "LIABILITY"
+                           select new Entities.MstAccountEntity
+                           {
+                               Id = d.Id,
+                               Code = d.Code,
+                               Account = d.Account,
+                               IsLocked = d.IsLocked,
+                               AccountType = d.AccountType
+                           };
+
+            return accounts.ToList();
+        }
+
+        // ===================
+        // Dropdown List Terms
+        // ===================
+        public List<Entities.MstTermEntity> DropDownListTerms()
+        {
+            var terms = from d in db.MstTerms
+                        select new Entities.MstTermEntity
+                        {
+                            Id = d.Id,
+                            Term = d.Term
+                        };
+
+            return terms.ToList();
+        }
+
+        // ============
+        // Add Supplier
+        // ============
         public String[] AddSupplier()
         {
             try
@@ -127,6 +168,9 @@ namespace EasyPOS.Controllers
             }
         }
 
+        // =============
+        // Lock Supplier
+        // =============
         public String[] LockSupplier(Entities.MstSupplierEntity objSupplier)
         {
             try
@@ -137,13 +181,13 @@ namespace EasyPOS.Controllers
                     return new String[] { "Current login user not found.", "0" };
                 }
 
-                var currentSupplier = from d in db.MstSuppliers
-                                      where d.Id == objSupplier.Id
-                                      select d;
+                var supplier = from d in db.MstSuppliers
+                               where d.Id == objSupplier.Id
+                               select d;
 
-                if (currentSupplier.Any())
+                if (supplier.Any())
                 {
-                    var lockSupplier = currentSupplier.FirstOrDefault();
+                    var lockSupplier = supplier.FirstOrDefault();
                     lockSupplier.Supplier = objSupplier.Supplier;
                     lockSupplier.Address = objSupplier.Address;
                     lockSupplier.TelephoneNumber = objSupplier.TelephoneNumber;
@@ -170,6 +214,9 @@ namespace EasyPOS.Controllers
             }
         }
 
+        // ===============
+        // Unlock Supplier
+        // ===============
         public String[] UnlockSupplier(Entities.MstSupplierEntity objSupplier)
         {
             try
@@ -180,13 +227,13 @@ namespace EasyPOS.Controllers
                     return new String[] { "Current login user not found.", "0" };
                 }
 
-                var currentSupplier = from d in db.MstSuppliers
-                                      where d.Id == objSupplier.Id
-                                      select d;
+                var supplier = from d in db.MstSuppliers
+                               where d.Id == objSupplier.Id
+                               select d;
 
-                if (currentSupplier.Any())
+                if (supplier.Any())
                 {
-                    var unlockSupplier = currentSupplier.FirstOrDefault();
+                    var unlockSupplier = supplier.FirstOrDefault();
                     unlockSupplier.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
                     unlockSupplier.UpdateDateTime = DateTime.Today;
                     unlockSupplier.IsLocked = false;
@@ -206,6 +253,9 @@ namespace EasyPOS.Controllers
             }
         }
 
+        // ===============
+        // Delete Supplier
+        // ===============
         public String[] DeleteSupplier(Int32 id)
         {
             try
@@ -216,14 +266,15 @@ namespace EasyPOS.Controllers
                     return new String[] { "Current login user not found.", "0" };
                 }
 
-                var currentSupplier = from d in db.MstSuppliers
-                                      where d.Id == id
-                                      select d;
+                var supplier = from d in db.MstSuppliers
+                               where d.Id == id
+                               select d;
 
-                if (currentSupplier.Any())
+                if (supplier.Any())
                 {
-                    if (currentSupplier.FirstOrDefault().IsLocked == false) {
-                        var deleteSupplier = currentSupplier.FirstOrDefault();
+                    if (supplier.FirstOrDefault().IsLocked == false)
+                    {
+                        var deleteSupplier = supplier.FirstOrDefault();
                         db.MstSuppliers.DeleteOnSubmit(deleteSupplier);
                         db.SubmitChanges();
 
@@ -233,41 +284,16 @@ namespace EasyPOS.Controllers
                     {
                         return new String[] { "Supplier is locked!", "0" };
                     }
-
                 }
                 else
                 {
                     return new String[] { "Supplier not found!", "0" };
                 }
-
             }
             catch (Exception e)
             {
                 return new String[] { e.Message, "0" };
             }
-        }
-
-        public List<Entities.MstAccountEntity> DropDownListAccount() {
-            var accounts = from d in db.MstAccounts
-                          where d.AccountType == "LIABILITY"
-                           select new Entities.MstAccountEntity {
-                              Id = d.Id,
-                              Code = d.Code,
-                              Account = d.Account,
-                              IsLocked = d.IsLocked,
-                              AccountType = d.AccountType
-                          };
-            return accounts.ToList();
-        }
-
-        public List<Entities.MstTermEntity> DropDownListTerms() {
-            var terms = from d in db.MstTerms
-                        select new Entities.MstTermEntity
-                        {
-                            Id = d.Id,
-                            Term = d.Term
-                        };
-            return terms.ToList();
         }
     }
 }

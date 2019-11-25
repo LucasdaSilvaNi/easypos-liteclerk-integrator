@@ -56,7 +56,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(721, 63);
+            this.panel1.Size = new System.Drawing.Size(612, 63);
             this.panel1.TabIndex = 6;
             // 
             // buttonSave
@@ -68,7 +68,7 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(527, 12);
+            this.buttonSave.Location = new System.Drawing.Point(418, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
             this.buttonSave.TabIndex = 4;
@@ -106,7 +106,7 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(621, 12);
+            this.buttonClose.Location = new System.Drawing.Point(512, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
@@ -117,73 +117,81 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 107);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label2.Location = new System.Drawing.Point(124, 121);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 17);
+            this.label2.Size = new System.Drawing.Size(38, 23);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Tax";
+            this.label2.Text = "Tax:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(35, 85);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label3.Location = new System.Drawing.Point(108, 85);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 17);
+            this.label3.Size = new System.Drawing.Size(54, 23);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Code";
+            this.label3.Text = "Code:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(35, 129);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label4.Location = new System.Drawing.Point(114, 157);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 17);
+            this.label4.Size = new System.Drawing.Size(48, 23);
             this.label4.TabIndex = 9;
-            this.label4.Text = "Rate";
+            this.label4.Text = "Rate:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(35, 152);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label5.Location = new System.Drawing.Point(85, 193);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 17);
+            this.label5.Size = new System.Drawing.Size(77, 23);
             this.label5.TabIndex = 10;
-            this.label5.Text = "Account";
+            this.label5.Text = "Account:";
             // 
             // textBoxTax
             // 
-            this.textBoxTax.Location = new System.Drawing.Point(168, 107);
+            this.textBoxTax.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxTax.Location = new System.Drawing.Point(168, 118);
             this.textBoxTax.Name = "textBoxTax";
-            this.textBoxTax.Size = new System.Drawing.Size(285, 22);
+            this.textBoxTax.Size = new System.Drawing.Size(338, 30);
             this.textBoxTax.TabIndex = 17;
             // 
             // comboBoxAccount
             // 
+            this.comboBoxAccount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxAccount.FormattingEnabled = true;
-            this.comboBoxAccount.Location = new System.Drawing.Point(168, 151);
+            this.comboBoxAccount.Location = new System.Drawing.Point(168, 190);
             this.comboBoxAccount.Name = "comboBoxAccount";
-            this.comboBoxAccount.Size = new System.Drawing.Size(285, 24);
+            this.comboBoxAccount.Size = new System.Drawing.Size(285, 31);
             this.comboBoxAccount.TabIndex = 20;
             // 
             // textBoxRate
             // 
-            this.textBoxRate.Location = new System.Drawing.Point(168, 129);
+            this.textBoxRate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxRate.Location = new System.Drawing.Point(168, 154);
             this.textBoxRate.Name = "textBoxRate";
-            this.textBoxRate.Size = new System.Drawing.Size(285, 22);
+            this.textBoxRate.Size = new System.Drawing.Size(144, 30);
             this.textBoxRate.TabIndex = 19;
             // 
             // textBoxCode
             // 
-            this.textBoxCode.Location = new System.Drawing.Point(168, 85);
+            this.textBoxCode.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxCode.Location = new System.Drawing.Point(168, 82);
             this.textBoxCode.Name = "textBoxCode";
-            this.textBoxCode.Size = new System.Drawing.Size(285, 22);
+            this.textBoxCode.Size = new System.Drawing.Size(226, 30);
             this.textBoxCode.TabIndex = 21;
             // 
             // SysSystemTablesTaxDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(721, 299);
+            this.ClientSize = new System.Drawing.Size(612, 244);
             this.Controls.Add(this.textBoxCode);
             this.Controls.Add(this.comboBoxAccount);
             this.Controls.Add(this.textBoxRate);

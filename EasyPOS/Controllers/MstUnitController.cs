@@ -29,6 +29,9 @@ namespace EasyPOS.Controllers
             return units.OrderByDescending(d => d.Id).ToList();
         }
 
+        // ========
+        // Add Unit
+        // ========
         public String[] AddUnit(Entities.MstUnitEntity objUnit)
         {
             try
@@ -40,6 +43,7 @@ namespace EasyPOS.Controllers
 
                 db.MstUnits.InsertOnSubmit(addUnit);
                 db.SubmitChanges();
+
                 return new String[] { "", "" };
             }
             catch (Exception e)
@@ -48,16 +52,20 @@ namespace EasyPOS.Controllers
             }
         }
 
+        // ===========
+        // Update Unit
+        // ===========
         public String[] UpdateUnit(Entities.MstUnitEntity objUnit)
         {
             try
             {
-                var currentUnit = from d in db.MstUnits
-                                  where d.Id == objUnit.Id
-                                  select d;
-                if (currentUnit.Any())
+                var unit = from d in db.MstUnits
+                           where d.Id == objUnit.Id
+                           select d;
+
+                if (unit.Any())
                 {
-                    var updateUnit = currentUnit.FirstOrDefault();
+                    var updateUnit = unit.FirstOrDefault();
                     updateUnit.Unit = objUnit.Unit;
                     db.SubmitChanges();
 
@@ -74,16 +82,20 @@ namespace EasyPOS.Controllers
             }
         }
 
+        // ===========
+        // Delete Unit
+        // ===========
         public String[] DeleteUnit(Int32 id)
         {
             try
             {
-                var currentUnit = from d in db.MstUnits
-                                  where d.Id == id
-                                  select d;
-                if (currentUnit.Any())
+                var unit = from d in db.MstUnits
+                           where d.Id == id
+                           select d;
+
+                if (unit.Any())
                 {
-                    var deleteUnit = currentUnit.FirstOrDefault();
+                    var deleteUnit = unit.FirstOrDefault();
                     db.MstUnits.DeleteOnSubmit(deleteUnit);
                     db.SubmitChanges();
 

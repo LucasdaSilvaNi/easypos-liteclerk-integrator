@@ -29,6 +29,9 @@ namespace EasyPOS.Controllers
             return terminals.OrderByDescending(d => d.Id).ToList();
         }
 
+        // ============
+        // Add Terminal
+        // ============
         public String[] AddTerminal(Entities.MstTerminalEntity objTerminal)
         {
             try
@@ -37,6 +40,7 @@ namespace EasyPOS.Controllers
                 {
                     Terminal = objTerminal.Terminal
                 };
+
                 db.MstTerminals.InsertOnSubmit(addTerminal);
                 db.SubmitChanges();
 
@@ -48,16 +52,20 @@ namespace EasyPOS.Controllers
             }
         }
 
+        // ===============
+        // Update Terminal
+        // ===============
         public String[] UpdateTerminal(Entities.MstTerminalEntity objTerminal)
         {
             try
             {
-                var currentTerminal = from d in db.MstTerminals
-                                      where d.Id == objTerminal.Id
-                                      select d;
-                if (currentTerminal.Any())
+                var terminal = from d in db.MstTerminals
+                               where d.Id == objTerminal.Id
+                               select d;
+
+                if (terminal.Any())
                 {
-                    var updateTerminal = currentTerminal.FirstOrDefault();
+                    var updateTerminal = terminal.FirstOrDefault();
                     updateTerminal.Terminal = objTerminal.Terminal;
                     db.SubmitChanges();
 
@@ -75,16 +83,20 @@ namespace EasyPOS.Controllers
             }
         }
 
+        // ===============
+        // Delete Terminal
+        // ===============
         public String[] DeleteTerminal(Int32 id)
         {
             try
             {
-                var currentTerminal = from d in db.MstTerminals
-                                      where d.Id == id
-                                      select d;
-                if (currentTerminal.Any())
+                var terminal = from d in db.MstTerminals
+                               where d.Id == id
+                               select d;
+
+                if (terminal.Any())
                 {
-                    var deleteTerminal = currentTerminal.FirstOrDefault();
+                    var deleteTerminal = terminal.FirstOrDefault();
                     db.MstTerminals.DeleteOnSubmit(deleteTerminal);
                     db.SubmitChanges();
 

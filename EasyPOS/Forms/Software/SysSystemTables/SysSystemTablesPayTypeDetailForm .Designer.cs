@@ -52,7 +52,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(721, 63);
+            this.panel1.Size = new System.Drawing.Size(562, 63);
             this.panel1.TabIndex = 6;
             // 
             // buttonSave
@@ -64,7 +64,7 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(527, 12);
+            this.buttonSave.Location = new System.Drawing.Point(368, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
             this.buttonSave.TabIndex = 4;
@@ -102,7 +102,7 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(621, 12);
+            this.buttonClose.Location = new System.Drawing.Point(462, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
@@ -112,42 +112,46 @@
             // 
             // comboBoxAccount
             // 
+            this.comboBoxAccount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxAccount.FormattingEnabled = true;
-            this.comboBoxAccount.Location = new System.Drawing.Point(192, 110);
+            this.comboBoxAccount.Location = new System.Drawing.Point(155, 126);
             this.comboBoxAccount.Name = "comboBoxAccount";
-            this.comboBoxAccount.Size = new System.Drawing.Size(285, 24);
+            this.comboBoxAccount.Size = new System.Drawing.Size(301, 31);
             this.comboBoxAccount.TabIndex = 16;
             // 
             // textBoxPayType
             // 
-            this.textBoxPayType.Location = new System.Drawing.Point(192, 88);
+            this.textBoxPayType.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxPayType.Location = new System.Drawing.Point(155, 90);
             this.textBoxPayType.Name = "textBoxPayType";
-            this.textBoxPayType.Size = new System.Drawing.Size(285, 22);
+            this.textBoxPayType.Size = new System.Drawing.Size(301, 30);
             this.textBoxPayType.TabIndex = 15;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 111);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label4.Location = new System.Drawing.Point(72, 129);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 17);
+            this.label4.Size = new System.Drawing.Size(77, 23);
             this.label4.TabIndex = 14;
-            this.label4.Text = "Account";
+            this.label4.Text = "Account:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(29, 88);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label3.Location = new System.Drawing.Point(69, 93);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 17);
+            this.label3.Size = new System.Drawing.Size(80, 23);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Pay Type";
+            this.label3.Text = "Pay Type:";
             // 
             // SysSystemTablesPayTypeDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(721, 299);
+            this.ClientSize = new System.Drawing.Size(562, 189);
             this.Controls.Add(this.comboBoxAccount);
             this.Controls.Add(this.textBoxPayType);
             this.Controls.Add(this.label4);

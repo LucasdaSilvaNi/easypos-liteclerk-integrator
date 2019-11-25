@@ -1837,10 +1837,6 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             textBoxSupplierListPageNumber.Text = supplierListPageNumber + " / " + supplierListPageList.PageCount;
         }
 
-
-        // ===========
-        // Add / Close
-        // ===========
         private void buttonClose_Click(object sender, EventArgs e)
         {
             sysSoftwareForm.RemoveTabPage();
@@ -1890,7 +1886,6 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                     }
 
                     break;
-
             }
         }
     }

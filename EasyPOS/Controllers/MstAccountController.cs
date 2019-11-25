@@ -34,6 +34,9 @@ namespace EasyPOS.Controllers
             return accounts.OrderByDescending(d => d.Id).ToList();
         }
 
+        // =================
+        // List Account Type
+        // =================
         public List<String> ListType()
         {
             return new List<String>
@@ -42,6 +45,9 @@ namespace EasyPOS.Controllers
             };
         }
 
+        // ===========
+        // Add Account
+        // ===========
         public String[] AddAccount(Entities.MstAccountEntity objAccount)
         {
             try
@@ -56,6 +62,7 @@ namespace EasyPOS.Controllers
 
                 db.MstAccounts.InsertOnSubmit(addAccount);
                 db.SubmitChanges();
+
                 return new String[] { "", "" };
             }
             catch (Exception e)
@@ -64,16 +71,20 @@ namespace EasyPOS.Controllers
             }
         }
 
+        // ==============
+        // Update Account
+        // ==============
         public String[] UpdateAccount(Entities.MstAccountEntity objAccount)
         {
             try
             {
-                var currentAccount = from d in db.MstAccounts
-                                     where d.Id == objAccount.Id
-                                     select d;
-                if (currentAccount.Any())
+                var account = from d in db.MstAccounts
+                              where d.Id == objAccount.Id
+                              select d;
+
+                if (account.Any())
                 {
-                    var updateAccount = currentAccount.FirstOrDefault();
+                    var updateAccount = account.FirstOrDefault();
                     updateAccount.Code = objAccount.Code;
                     updateAccount.Account = objAccount.Account;
                     updateAccount.AccountType = objAccount.AccountType;
@@ -92,6 +103,9 @@ namespace EasyPOS.Controllers
             }
         }
 
+        // ==============
+        // Delete Account
+        // ==============
         public String[] DeleteAccount(int id)
         {
             try
@@ -99,6 +113,7 @@ namespace EasyPOS.Controllers
                 var account = from d in db.MstAccounts
                               where d.Id == id
                               select d;
+
                 if (account.Any())
                 {
                     var deleteAccount = account.FirstOrDefault();
@@ -117,6 +132,5 @@ namespace EasyPOS.Controllers
                 return new String[] { e.Message, "0" };
             }
         }
-
     }
 }

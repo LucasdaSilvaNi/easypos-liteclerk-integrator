@@ -47,7 +47,6 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             }
         }
 
-
         private void buttonSave_Click(object sender, EventArgs e)
         {
             if (mstPeriodEntity == null)

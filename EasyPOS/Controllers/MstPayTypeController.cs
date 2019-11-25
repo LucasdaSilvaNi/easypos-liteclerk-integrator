@@ -32,6 +32,9 @@ namespace EasyPOS.Controllers
             return payTypes.OrderBy(d => d.Id).ToList();
         }
 
+        // ============
+        // List Account
+        // ============
         public List<Entities.MstAccountEntity> DropDownListAccount()
         {
             var accounts = from d in db.MstAccounts
@@ -40,9 +43,13 @@ namespace EasyPOS.Controllers
                                Id = d.Id,
                                Account = d.Account
                            };
+
             return accounts.ToList();
         }
 
+        // ============
+        // Add Pay Type
+        // ============
         public String[] AddPayType(Entities.MstPayTypeEntity objPayType)
         {
             try
@@ -52,6 +59,7 @@ namespace EasyPOS.Controllers
                     PayType = objPayType.PayType,
                     AccountId = objPayType.AccountId
                 };
+
                 db.MstPayTypes.InsertOnSubmit(addPayType);
                 db.SubmitChanges();
 
@@ -63,16 +71,20 @@ namespace EasyPOS.Controllers
             }
         }
 
+        // ===============
+        // Update Pay Type
+        // ===============
         public String[] UpdatePayType(Entities.MstPayTypeEntity objPayType)
         {
             try
             {
-                var currentPaytype = from d in db.MstPayTypes
-                                     where d.Id == objPayType.Id
-                                     select d;
-                if (currentPaytype.Any())
+                var payType = from d in db.MstPayTypes
+                              where d.Id == objPayType.Id
+                              select d;
+
+                if (payType.Any())
                 {
-                    var updatePayType = currentPaytype.FirstOrDefault();
+                    var updatePayType = payType.FirstOrDefault();
                     updatePayType.PayType = objPayType.PayType;
                     updatePayType.AccountId = objPayType.AccountId;
                     db.SubmitChanges();
@@ -81,7 +93,7 @@ namespace EasyPOS.Controllers
                 }
                 else
                 {
-                    return new String[] { "Pay Type not found!", "0" };
+                    return new String[] { "Pay type not found!", "0" };
                 }
             }
             catch (Exception e)
@@ -90,6 +102,9 @@ namespace EasyPOS.Controllers
             }
         }
 
+        // ===============
+        // Delete Pay Type
+        // ===============
         public String[] DeletePayType(Int32 id)
         {
             try
@@ -97,6 +112,7 @@ namespace EasyPOS.Controllers
                 var payType = from d in db.MstPayTypes
                               where d.Id == id
                               select d;
+
                 if (payType.Any())
                 {
                     var deletePayType = payType.FirstOrDefault();
@@ -107,7 +123,7 @@ namespace EasyPOS.Controllers
                 }
                 else
                 {
-                    return new String[] { "Pay Type not found", "0" };
+                    return new String[] { "Pay type not found", "0" };
                 }
             }
             catch (Exception e)

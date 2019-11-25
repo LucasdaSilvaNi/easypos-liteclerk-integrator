@@ -35,11 +35,17 @@ namespace EasyPOS.Controllers
             return taxes.OrderByDescending(d => d.Id).ToList();
         }
 
+        // =============
+        // List Tax Code
+        // =============
         public String[] DropDownListCode()
         {
             return new String[] { "INCLUSIVE", "EXCLUSIVE" };
         }
 
+        // =======================
+        // Dropdown List - Account
+        // =======================
         public List<Entities.MstAccountEntity> DropDownListAccount()
         {
             var accounts = from d in db.MstAccounts
@@ -49,9 +55,13 @@ namespace EasyPOS.Controllers
                                Id = d.Id,
                                Account = d.Account
                            };
+
             return accounts.ToList();
         }
 
+        // =======
+        // Add Tax
+        // =======
         public String[] AddTax(Entities.MstTaxEntity objTax)
         {
             try
@@ -75,16 +85,20 @@ namespace EasyPOS.Controllers
             }
         }
 
+        // ==========
+        // Update Tax
+        // ==========
         public String[] UpdateTax(Entities.MstTaxEntity objTax)
         {
             try
             {
-                var currentTax = from d in db.MstTaxes
-                                 where d.Id == objTax.Id
-                                 select d;
-                if (currentTax.Any())
+                var tax = from d in db.MstTaxes
+                          where d.Id == objTax.Id
+                          select d;
+
+                if (tax.Any())
                 {
-                    var updateTax = currentTax.FirstOrDefault();
+                    var updateTax = tax.FirstOrDefault();
                     updateTax.Code = objTax.Code;
                     updateTax.Tax = objTax.Tax;
                     updateTax.Rate = objTax.Rate;
@@ -104,6 +118,9 @@ namespace EasyPOS.Controllers
             }
         }
 
+        // ==========
+        // Delete Tax
+        // ==========
         public String[] DeleteTax(Int32 id)
         {
             try
@@ -111,6 +128,7 @@ namespace EasyPOS.Controllers
                 var tax = from d in db.MstTaxes
                           where d.Id == id
                           select d;
+
                 if (tax.Any())
                 {
                     var deleteTax = tax.FirstOrDefault();

@@ -29,6 +29,9 @@ namespace EasyPOS.Controllers
             return periods.OrderByDescending(d => d.Id).ToList();
         }
 
+        // ==========
+        // Add Period
+        // ==========
         public String[] AddPeriod(Entities.MstPeriodEntity objPeriod)
         {
             try
@@ -40,6 +43,7 @@ namespace EasyPOS.Controllers
 
                 db.MstPeriods.InsertOnSubmit(addPeriod);
                 db.SubmitChanges();
+
                 return new String[] { "", "" };
             }
             catch (Exception e)
@@ -48,16 +52,20 @@ namespace EasyPOS.Controllers
             }
         }
 
+        // =============
+        // Update Period
+        // =============
         public String[] UpdatePeriod(Entities.MstPeriodEntity objPeriod)
         {
             try
             {
-                var currentPeriod = from d in db.MstPeriods
-                                  where d.Id == objPeriod.Id
-                                  select d;
-                if (currentPeriod.Any())
+                var period = from d in db.MstPeriods
+                             where d.Id == objPeriod.Id
+                             select d;
+
+                if (period.Any())
                 {
-                    var updatePeriod = currentPeriod.FirstOrDefault();
+                    var updatePeriod = period.FirstOrDefault();
                     updatePeriod.Period = objPeriod.Period;
                     db.SubmitChanges();
 
@@ -74,16 +82,20 @@ namespace EasyPOS.Controllers
             }
         }
 
+        // =============
+        // Delete Period
+        // =============
         public String[] DeletePeriod(Int32 id)
         {
             try
             {
-                var currentPeriod = from d in db.MstPeriods
-                                  where d.Id == id
-                                  select d;
-                if (currentPeriod.Any())
+                var period = from d in db.MstPeriods
+                             where d.Id == id
+                             select d;
+
+                if (period.Any())
                 {
-                    var deletePeriod = currentPeriod.FirstOrDefault();
+                    var deletePeriod = period.FirstOrDefault();
                     db.MstPeriods.DeleteOnSubmit(deletePeriod);
                     db.SubmitChanges();
 
