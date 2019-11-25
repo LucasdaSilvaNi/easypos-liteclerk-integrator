@@ -14,6 +14,8 @@ namespace EasyPOS.Forms.Software.SysSystemTables
     public partial class SysSystemTablesPayTypeDetailForm : Form
     {
         SysSystemTablesForm sysSystemTablesForm;
+        private Modules.SysUserRightsModule sysUserRights;
+
         MstPayTypeEntity mstPayTypeEntity;
 
         public SysSystemTablesPayTypeDetailForm(SysSystemTablesForm systemTablesForm, MstPayTypeEntity payTypeEntity)
@@ -21,7 +23,21 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             InitializeComponent();
             sysSystemTablesForm = systemTablesForm;
             mstPayTypeEntity = payTypeEntity;
-            GetAccountList();
+
+            sysUserRights = new Modules.SysUserRightsModule("SysTables");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (sysUserRights.GetUserRights().CanAdd == false)
+                {
+                    buttonSave.Enabled = false;
+                }
+
+                GetAccountList();
+            }
         }
 
         public void LoadPayType()

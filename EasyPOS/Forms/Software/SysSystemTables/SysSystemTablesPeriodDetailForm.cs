@@ -13,6 +13,8 @@ namespace EasyPOS.Forms.Software.SysSystemTables
     public partial class SysSystemTablesPeriodDetailForm : Form
     {
         SysSystemTablesForm sysSystemTablesForm;
+        private Modules.SysUserRightsModule sysUserRights;
+
         Entities.MstPeriodEntity mstPeriodEntity;
 
         public SysSystemTablesPeriodDetailForm(SysSystemTablesForm systemTablesForm, Entities.MstPeriodEntity periodEntity)
@@ -20,7 +22,21 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             InitializeComponent();
             sysSystemTablesForm = systemTablesForm;
             mstPeriodEntity = periodEntity;
-            LoadPeriod();
+
+            sysUserRights = new Modules.SysUserRightsModule("SysTables");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (sysUserRights.GetUserRights().CanAdd == false)
+                {
+                    buttonSave.Enabled = false;
+                }
+
+                LoadPeriod();
+            }
         }
 
         public void LoadPeriod()

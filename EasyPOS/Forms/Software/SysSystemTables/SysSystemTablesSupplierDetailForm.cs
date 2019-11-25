@@ -13,14 +13,26 @@ namespace EasyPOS.Forms.Software.SysSystemTables
     public partial class SysSystemTablesSupplierDetailForm : Form
     {
         SysSystemTablesForm sysSystemTablesForm;
+        private Modules.SysUserRightsModule sysUserRights;
+
         Entities.MstSupplierEntity mstSupplierEntity;
+
         public SysSystemTablesSupplierDetailForm(SysSystemTablesForm systemTablesForm, Entities.MstSupplierEntity supplierEntity)
         {
             InitializeComponent();
             sysSystemTablesForm = systemTablesForm;
             mstSupplierEntity = supplierEntity;
 
-            GetTermList();
+            sysUserRights = new Modules.SysUserRightsModule("SysTables");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                GetTermList();
+            }
+
         }
 
         public void GetTermList()
@@ -52,6 +64,24 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         public void LoadComponent(Boolean isLocked)
         {
+            if (sysUserRights.GetUserRights().CanLock == false)
+            {
+                buttonLock.Enabled = false;
+            }
+            else
+            {
+                buttonLock.Enabled = !isLocked;
+            }
+
+            if (sysUserRights.GetUserRights().CanUnlock == false)
+            {
+                buttonUnlock.Enabled = false;
+            }
+            else
+            {
+                buttonUnlock.Enabled = isLocked;
+            }
+
             textBoxSupplier.Text = mstSupplierEntity.Supplier;
             textBoxAddress.Text = mstSupplierEntity.Address;
             textBoxTelephoneNumber.Text = mstSupplierEntity.TelephoneNumber;
@@ -61,8 +91,6 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             textBoxTIN.Text = mstSupplierEntity.TIN;
             comboBoxAccount.SelectedValue = mstSupplierEntity.AccountId;
 
-            buttonLock.Enabled = !isLocked;
-            buttonUnlock.Enabled = isLocked;
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

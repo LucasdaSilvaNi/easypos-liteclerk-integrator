@@ -14,6 +14,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
     public partial class SysSystemTablesForm : Form
     {
         public SysSoftwareForm sysSoftwareForm;
+        private Modules.SysUserRightsModule sysUserRights;
 
         public static Int32 pageSize = 50;
 
@@ -57,13 +58,48 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             InitializeComponent();
             sysSoftwareForm = softwareForm;
 
-            CreateAccountListDataGridView();
-            CreatePayTypeListDataGridView();
-            CreateTaxListDataGridView();
-            CreateUnitListDataGridView();
-            CreatePeriodListDataGridView();
-            CreateTerminalListDataGridView();
-            CreateSupplierListDataGridView();
+            sysUserRights = new Modules.SysUserRightsModule("SysTables");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (sysUserRights.GetUserRights().CanAdd == false)
+                {
+                    buttonAdd.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanEdit == false)
+                {
+                    dataGridViewAccountList.Columns[0].Visible = false;
+                    dataGridViewPayTypeList.Columns[0].Visible = false;
+                    dataGridViewTaxList.Columns[0].Visible = false;
+                    dataGridViewUnitList.Columns[0].Visible = false;
+                    dataGridViewPeriodList.Columns[0].Visible = false;
+                    dataGridViewTerminalList.Columns[0].Visible = false;
+                    dataGridViewSupplierList.Columns[0].Visible = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanDelete == false)
+                {
+                    dataGridViewAccountList.Columns[1].Visible = false;
+                    dataGridViewPayTypeList.Columns[1].Visible = false;
+                    dataGridViewTaxList.Columns[1].Visible = false;
+                    dataGridViewUnitList.Columns[1].Visible = false;
+                    dataGridViewPeriodList.Columns[1].Visible = false;
+                    dataGridViewTerminalList.Columns[1].Visible = false;
+                    dataGridViewSupplierList.Columns[1].Visible = false;
+                }
+
+                CreateAccountListDataGridView();
+                CreatePayTypeListDataGridView();
+                CreateTaxListDataGridView();
+                CreateUnitListDataGridView();
+                CreatePeriodListDataGridView();
+                CreateTerminalListDataGridView();
+                CreateSupplierListDataGridView();
+            }
         }
 
         // =======

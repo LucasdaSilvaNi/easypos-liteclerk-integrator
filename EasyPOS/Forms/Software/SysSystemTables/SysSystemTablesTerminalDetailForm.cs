@@ -13,13 +13,30 @@ namespace EasyPOS.Forms.Software.SysSystemTables
     public partial class SysSystemTablesTerminalDetailForm : Form
     {
         SysSystemTablesForm sysSystemTablesForm;
+        private Modules.SysUserRightsModule sysUserRights;
+
         Entities.MstTerminalEntity mstTerminalEntity;
+
         public SysSystemTablesTerminalDetailForm(SysSystemTablesForm systemTablesForm, Entities.MstTerminalEntity terminalEntity)
         {
             InitializeComponent();
             sysSystemTablesForm = systemTablesForm;
             mstTerminalEntity = terminalEntity;
-            LoadTerminal();
+
+            sysUserRights = new Modules.SysUserRightsModule("SysTables");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (sysUserRights.GetUserRights().CanAdd == false)
+                {
+                    buttonSave.Enabled = false;
+                }
+
+                LoadTerminal();
+            }
         }
 
         public void LoadTerminal()

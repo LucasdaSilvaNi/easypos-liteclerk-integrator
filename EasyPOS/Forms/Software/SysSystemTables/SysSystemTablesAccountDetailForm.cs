@@ -14,6 +14,8 @@ namespace EasyPOS.Forms.Software.SysSystemTables
     public partial class SysSystemTablesAccountDetailForm : Form
     {
         SysSystemTablesForm SysSystemTablesForm;
+        private Modules.SysUserRightsModule sysUserRights;
+
         MstAccountEntity mstAccountEntity;
 
         public SysSystemTablesAccountDetailForm(SysSystemTablesForm sysSystemTablesForm, MstAccountEntity accountEntity)
@@ -21,7 +23,21 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             InitializeComponent();
             SysSystemTablesForm = sysSystemTablesForm;
             mstAccountEntity = accountEntity;
-            GetTypeList();
+
+            sysUserRights = new Modules.SysUserRightsModule("SysTables");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (sysUserRights.GetUserRights().CanAdd == false)
+                {
+                    buttonSave.Enabled = false;
+                }
+
+                GetTypeList();
+            }
         }
 
         public void LoadAccount()
