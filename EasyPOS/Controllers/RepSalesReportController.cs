@@ -260,6 +260,7 @@ namespace EasyPOS.Controllers
                                        TerminalId = d.TrnCollection.MstTerminal.Id,
                                        Terminal = d.TrnCollection.MstTerminal.Terminal,
                                        ManualORNumber = d.TrnCollection.ManualORNumber,
+                                       CustomerCode = d.TrnCollection.MstCustomer.CustomerCode,
                                        Customer = d.TrnCollection.MstCustomer.Customer,
                                        SalesNumber = d.TrnCollection.TrnSale.SalesNumber,
                                        Amount = d.MstPayType.PayType.Equals("Cash") ? d.Amount - d.TrnCollection.ChangeAmount : d.Amount,

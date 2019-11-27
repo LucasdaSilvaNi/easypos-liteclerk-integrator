@@ -15,6 +15,7 @@ namespace EasyPOS.Entities
         public Int32 TerminalId { get; set; }
         public String Terminal { get; set; }
         public String ManualORNumber { get; set; }
+        public String CustomerCode { get; set; }
         public String Customer { get; set; }
         public String SalesNumber { get; set; }
         public Decimal Amount { get; set; }

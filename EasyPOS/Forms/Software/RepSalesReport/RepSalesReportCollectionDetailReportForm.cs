@@ -55,6 +55,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                               ColumnCollectionNumber = d.CollectionNumber,
                               ColumnTerminal = d.Terminal,
                               ColumnManualORNumber = d.ManualORNumber,
+                              ColumnCustomerCode = d.CustomerCode,
                               ColumnCustomer = d.Customer,
                               ColumnSalesNumber = d.SalesNumber,
                               ColumnAmount = d.Amount.ToString("#,##0.00"),
@@ -224,7 +225,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     DateTime endDate = dateEnd;
 
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Collection Date", "Collection Number", "Terminal", "Manual OR Number", "Customer",
+                    String[] header = { "Collection Date", "Collection Number", "Terminal", "Manual OR Number", "Customer Code", "Customer",
                         "Sales Number", "Amount", "PayType", "CheckNumber", "CheckDate", "CheckBank", "CreditCardVerificationCode",
                         "CreditCardNumber", "CreditCardType", "CreditCardBank", "CreditCardReferenceNumber", "CreditCardHolderName",
                         "CreditCardExpiry", "GiftCertificateNumber", "OtherInformation"
@@ -239,6 +240,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                         collectionDetail.ColumnCollectionNumber,
                                         collectionDetail.ColumnTerminal,
                                         collectionDetail.ColumnManualORNumber,
+                                        collectionDetail.ColumnCustomerCode.Replace("," , " "),
                                         collectionDetail.ColumnCustomer.Replace("," , " "),
                                         collectionDetail.ColumnSalesNumber,
                                         collectionDetail.ColumnAmount.Replace("," , " "),
@@ -278,6 +280,11 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

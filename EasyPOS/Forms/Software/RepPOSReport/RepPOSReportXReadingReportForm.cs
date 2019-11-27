@@ -329,7 +329,7 @@ namespace EasyPOS.Reports
             // ====
             // Date 
             // ====
-            String collectionDateText = DateTime.Today.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
+            String collectionDateText = filterDate.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
             graphics.DrawString(collectionDateText, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             y += graphics.MeasureString(collectionDateText, fontArial8Regular).Height;
 

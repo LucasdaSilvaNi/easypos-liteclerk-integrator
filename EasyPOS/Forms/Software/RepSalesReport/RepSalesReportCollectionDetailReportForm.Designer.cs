@@ -33,10 +33,23 @@
             this.label2 = new System.Windows.Forms.Label();
             this.buttonPageListFirst = new System.Windows.Forms.Button();
             this.dataGridViewCollectionDetailReport = new System.Windows.Forms.DataGridView();
+            this.buttonPageListNext = new System.Windows.Forms.Button();
+            this.buttonPageListPrevious = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.buttonPageListLast = new System.Windows.Forms.Button();
+            this.textBoxPageNumber = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonGenerateCSV = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonClose = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
             this.ColumnCollectionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCollectionNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnManualORNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCustomerCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,18 +66,6 @@
             this.ColumnCreditCardExpiry = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnGiftCertificateNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnOtherInformation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonPageListNext = new System.Windows.Forms.Button();
-            this.buttonPageListPrevious = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.buttonPageListLast = new System.Windows.Forms.Button();
-            this.textBoxPageNumber = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.buttonGenerateCSV = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonClose = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCollectionDetailReport)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -123,6 +124,7 @@
             this.ColumnCollectionNumber,
             this.ColumnTerminal,
             this.ColumnManualORNumber,
+            this.ColumnCustomerCode,
             this.ColumnCustomer,
             this.ColumnSalesNumber,
             this.ColumnAmount,
@@ -147,161 +149,6 @@
             this.dataGridViewCollectionDetailReport.ShowEditingIcon = false;
             this.dataGridViewCollectionDetailReport.Size = new System.Drawing.Size(1379, 531);
             this.dataGridViewCollectionDetailReport.TabIndex = 0;
-            // 
-            // ColumnCollectionDate
-            // 
-            this.ColumnCollectionDate.DataPropertyName = "ColumnCollectionDate";
-            this.ColumnCollectionDate.HeaderText = "Date";
-            this.ColumnCollectionDate.Name = "ColumnCollectionDate";
-            this.ColumnCollectionDate.ReadOnly = true;
-            // 
-            // ColumnCollectionNumber
-            // 
-            this.ColumnCollectionNumber.DataPropertyName = "ColumnCollectionNumber";
-            this.ColumnCollectionNumber.HeaderText = "Collection No.";
-            this.ColumnCollectionNumber.Name = "ColumnCollectionNumber";
-            this.ColumnCollectionNumber.ReadOnly = true;
-            this.ColumnCollectionNumber.Width = 150;
-            // 
-            // ColumnTerminal
-            // 
-            this.ColumnTerminal.DataPropertyName = "ColumnTerminal";
-            this.ColumnTerminal.HeaderText = "Terminal";
-            this.ColumnTerminal.Name = "ColumnTerminal";
-            this.ColumnTerminal.ReadOnly = true;
-            // 
-            // ColumnManualORNumber
-            // 
-            this.ColumnManualORNumber.DataPropertyName = "ColumnManualORNumber";
-            this.ColumnManualORNumber.HeaderText = "Manual OR No.";
-            this.ColumnManualORNumber.Name = "ColumnManualORNumber";
-            this.ColumnManualORNumber.ReadOnly = true;
-            this.ColumnManualORNumber.Width = 160;
-            // 
-            // ColumnCustomer
-            // 
-            this.ColumnCustomer.DataPropertyName = "ColumnCustomer";
-            this.ColumnCustomer.HeaderText = "Customer";
-            this.ColumnCustomer.Name = "ColumnCustomer";
-            this.ColumnCustomer.ReadOnly = true;
-            // 
-            // ColumnSalesNumber
-            // 
-            this.ColumnSalesNumber.DataPropertyName = "ColumnSalesNumber";
-            this.ColumnSalesNumber.HeaderText = "Sales No.";
-            this.ColumnSalesNumber.Name = "ColumnSalesNumber";
-            this.ColumnSalesNumber.ReadOnly = true;
-            this.ColumnSalesNumber.Width = 150;
-            // 
-            // ColumnAmount
-            // 
-            this.ColumnAmount.DataPropertyName = "ColumnAmount";
-            this.ColumnAmount.HeaderText = "Amount";
-            this.ColumnAmount.Name = "ColumnAmount";
-            this.ColumnAmount.ReadOnly = true;
-            // 
-            // ColumnPayType
-            // 
-            this.ColumnPayType.DataPropertyName = "ColumnPayType";
-            this.ColumnPayType.HeaderText = "PayType";
-            this.ColumnPayType.Name = "ColumnPayType";
-            this.ColumnPayType.ReadOnly = true;
-            // 
-            // ColumnCheckNumber
-            // 
-            this.ColumnCheckNumber.DataPropertyName = "ColumnCheckNumber";
-            this.ColumnCheckNumber.HeaderText = "Check No.";
-            this.ColumnCheckNumber.Name = "ColumnCheckNumber";
-            this.ColumnCheckNumber.ReadOnly = true;
-            this.ColumnCheckNumber.Width = 150;
-            // 
-            // ColumnCheckDate
-            // 
-            this.ColumnCheckDate.DataPropertyName = "ColumnCheckDate";
-            this.ColumnCheckDate.HeaderText = "Check Date";
-            this.ColumnCheckDate.Name = "ColumnCheckDate";
-            this.ColumnCheckDate.ReadOnly = true;
-            this.ColumnCheckDate.Width = 150;
-            // 
-            // ColumnCheckBank
-            // 
-            this.ColumnCheckBank.DataPropertyName = "ColumnCheckBank";
-            this.ColumnCheckBank.HeaderText = "Check Bank";
-            this.ColumnCheckBank.Name = "ColumnCheckBank";
-            this.ColumnCheckBank.ReadOnly = true;
-            this.ColumnCheckBank.Width = 150;
-            // 
-            // ColumnCreditCardVerificationCode
-            // 
-            this.ColumnCreditCardVerificationCode.DataPropertyName = "ColumnCreditCardVerificationCode";
-            this.ColumnCreditCardVerificationCode.HeaderText = "Credit Card Verification Code";
-            this.ColumnCreditCardVerificationCode.Name = "ColumnCreditCardVerificationCode";
-            this.ColumnCreditCardVerificationCode.ReadOnly = true;
-            this.ColumnCreditCardVerificationCode.Width = 300;
-            // 
-            // ColumnCreditCardNumber
-            // 
-            this.ColumnCreditCardNumber.DataPropertyName = "ColumnCreditCardNumber";
-            this.ColumnCreditCardNumber.HeaderText = "Credit Card No.";
-            this.ColumnCreditCardNumber.Name = "ColumnCreditCardNumber";
-            this.ColumnCreditCardNumber.ReadOnly = true;
-            this.ColumnCreditCardNumber.Width = 200;
-            // 
-            // ColumnCreditCardType
-            // 
-            this.ColumnCreditCardType.DataPropertyName = "ColumnCreditCardType";
-            this.ColumnCreditCardType.HeaderText = "Credit Card Type";
-            this.ColumnCreditCardType.Name = "ColumnCreditCardType";
-            this.ColumnCreditCardType.ReadOnly = true;
-            this.ColumnCreditCardType.Width = 200;
-            // 
-            // ColumnCreditCardBank
-            // 
-            this.ColumnCreditCardBank.DataPropertyName = "ColumnCreditCardBank";
-            this.ColumnCreditCardBank.HeaderText = "CreditCard Bank";
-            this.ColumnCreditCardBank.Name = "ColumnCreditCardBank";
-            this.ColumnCreditCardBank.ReadOnly = true;
-            this.ColumnCreditCardBank.Width = 150;
-            // 
-            // ColumnCreditCardReferenceNumber
-            // 
-            this.ColumnCreditCardReferenceNumber.DataPropertyName = "ColumnCreditCardReferenceNumber";
-            this.ColumnCreditCardReferenceNumber.HeaderText = "Credit Card Reference No.";
-            this.ColumnCreditCardReferenceNumber.Name = "ColumnCreditCardReferenceNumber";
-            this.ColumnCreditCardReferenceNumber.ReadOnly = true;
-            this.ColumnCreditCardReferenceNumber.Width = 300;
-            // 
-            // ColumnCreditCardHolderName
-            // 
-            this.ColumnCreditCardHolderName.DataPropertyName = "ColumnCreditCardHolderName";
-            this.ColumnCreditCardHolderName.HeaderText = "Credit Card Holder Name";
-            this.ColumnCreditCardHolderName.Name = "ColumnCreditCardHolderName";
-            this.ColumnCreditCardHolderName.ReadOnly = true;
-            this.ColumnCreditCardHolderName.Width = 300;
-            // 
-            // ColumnCreditCardExpiry
-            // 
-            this.ColumnCreditCardExpiry.DataPropertyName = "ColumnCreditCardExpiry";
-            this.ColumnCreditCardExpiry.HeaderText = "Credit Card Expiry";
-            this.ColumnCreditCardExpiry.Name = "ColumnCreditCardExpiry";
-            this.ColumnCreditCardExpiry.ReadOnly = true;
-            this.ColumnCreditCardExpiry.Width = 200;
-            // 
-            // ColumnGiftCertificateNumber
-            // 
-            this.ColumnGiftCertificateNumber.DataPropertyName = "ColumnGiftCertificateNumber";
-            this.ColumnGiftCertificateNumber.HeaderText = "Gift Certificate No.";
-            this.ColumnGiftCertificateNumber.Name = "ColumnGiftCertificateNumber";
-            this.ColumnGiftCertificateNumber.ReadOnly = true;
-            this.ColumnGiftCertificateNumber.Width = 200;
-            // 
-            // ColumnOtherInformation
-            // 
-            this.ColumnOtherInformation.DataPropertyName = "ColumnOtherInformation";
-            this.ColumnOtherInformation.HeaderText = "Other Information";
-            this.ColumnOtherInformation.Name = "ColumnOtherInformation";
-            this.ColumnOtherInformation.ReadOnly = true;
-            this.ColumnOtherInformation.Width = 200;
             // 
             // buttonPageListNext
             // 
@@ -441,6 +288,7 @@
             this.buttonClose.TabIndex = 1;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // panel1
             // 
@@ -455,6 +303,168 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1382, 63);
             this.panel1.TabIndex = 14;
+            // 
+            // ColumnCollectionDate
+            // 
+            this.ColumnCollectionDate.DataPropertyName = "ColumnCollectionDate";
+            this.ColumnCollectionDate.HeaderText = "Date";
+            this.ColumnCollectionDate.Name = "ColumnCollectionDate";
+            this.ColumnCollectionDate.ReadOnly = true;
+            // 
+            // ColumnCollectionNumber
+            // 
+            this.ColumnCollectionNumber.DataPropertyName = "ColumnCollectionNumber";
+            this.ColumnCollectionNumber.HeaderText = "Collection No.";
+            this.ColumnCollectionNumber.Name = "ColumnCollectionNumber";
+            this.ColumnCollectionNumber.ReadOnly = true;
+            this.ColumnCollectionNumber.Width = 150;
+            // 
+            // ColumnTerminal
+            // 
+            this.ColumnTerminal.DataPropertyName = "ColumnTerminal";
+            this.ColumnTerminal.HeaderText = "Terminal";
+            this.ColumnTerminal.Name = "ColumnTerminal";
+            this.ColumnTerminal.ReadOnly = true;
+            // 
+            // ColumnManualORNumber
+            // 
+            this.ColumnManualORNumber.DataPropertyName = "ColumnManualORNumber";
+            this.ColumnManualORNumber.HeaderText = "Manual OR No.";
+            this.ColumnManualORNumber.Name = "ColumnManualORNumber";
+            this.ColumnManualORNumber.ReadOnly = true;
+            this.ColumnManualORNumber.Width = 160;
+            // 
+            // ColumnCustomerCode
+            // 
+            this.ColumnCustomerCode.DataPropertyName = "ColumnCustomerCode";
+            this.ColumnCustomerCode.HeaderText = "Customer Code";
+            this.ColumnCustomerCode.Name = "ColumnCustomerCode";
+            this.ColumnCustomerCode.ReadOnly = true;
+            // 
+            // ColumnCustomer
+            // 
+            this.ColumnCustomer.DataPropertyName = "ColumnCustomer";
+            this.ColumnCustomer.HeaderText = "Customer";
+            this.ColumnCustomer.Name = "ColumnCustomer";
+            this.ColumnCustomer.ReadOnly = true;
+            // 
+            // ColumnSalesNumber
+            // 
+            this.ColumnSalesNumber.DataPropertyName = "ColumnSalesNumber";
+            this.ColumnSalesNumber.HeaderText = "Sales No.";
+            this.ColumnSalesNumber.Name = "ColumnSalesNumber";
+            this.ColumnSalesNumber.ReadOnly = true;
+            this.ColumnSalesNumber.Width = 150;
+            // 
+            // ColumnAmount
+            // 
+            this.ColumnAmount.DataPropertyName = "ColumnAmount";
+            this.ColumnAmount.HeaderText = "Amount";
+            this.ColumnAmount.Name = "ColumnAmount";
+            this.ColumnAmount.ReadOnly = true;
+            // 
+            // ColumnPayType
+            // 
+            this.ColumnPayType.DataPropertyName = "ColumnPayType";
+            this.ColumnPayType.HeaderText = "PayType";
+            this.ColumnPayType.Name = "ColumnPayType";
+            this.ColumnPayType.ReadOnly = true;
+            // 
+            // ColumnCheckNumber
+            // 
+            this.ColumnCheckNumber.DataPropertyName = "ColumnCheckNumber";
+            this.ColumnCheckNumber.HeaderText = "Check No.";
+            this.ColumnCheckNumber.Name = "ColumnCheckNumber";
+            this.ColumnCheckNumber.ReadOnly = true;
+            this.ColumnCheckNumber.Width = 150;
+            // 
+            // ColumnCheckDate
+            // 
+            this.ColumnCheckDate.DataPropertyName = "ColumnCheckDate";
+            this.ColumnCheckDate.HeaderText = "Check Date";
+            this.ColumnCheckDate.Name = "ColumnCheckDate";
+            this.ColumnCheckDate.ReadOnly = true;
+            this.ColumnCheckDate.Width = 150;
+            // 
+            // ColumnCheckBank
+            // 
+            this.ColumnCheckBank.DataPropertyName = "ColumnCheckBank";
+            this.ColumnCheckBank.HeaderText = "Check Bank";
+            this.ColumnCheckBank.Name = "ColumnCheckBank";
+            this.ColumnCheckBank.ReadOnly = true;
+            this.ColumnCheckBank.Width = 150;
+            // 
+            // ColumnCreditCardVerificationCode
+            // 
+            this.ColumnCreditCardVerificationCode.DataPropertyName = "ColumnCreditCardVerificationCode";
+            this.ColumnCreditCardVerificationCode.HeaderText = "Credit Card Verification Code";
+            this.ColumnCreditCardVerificationCode.Name = "ColumnCreditCardVerificationCode";
+            this.ColumnCreditCardVerificationCode.ReadOnly = true;
+            this.ColumnCreditCardVerificationCode.Width = 300;
+            // 
+            // ColumnCreditCardNumber
+            // 
+            this.ColumnCreditCardNumber.DataPropertyName = "ColumnCreditCardNumber";
+            this.ColumnCreditCardNumber.HeaderText = "Credit Card No.";
+            this.ColumnCreditCardNumber.Name = "ColumnCreditCardNumber";
+            this.ColumnCreditCardNumber.ReadOnly = true;
+            this.ColumnCreditCardNumber.Width = 200;
+            // 
+            // ColumnCreditCardType
+            // 
+            this.ColumnCreditCardType.DataPropertyName = "ColumnCreditCardType";
+            this.ColumnCreditCardType.HeaderText = "Credit Card Type";
+            this.ColumnCreditCardType.Name = "ColumnCreditCardType";
+            this.ColumnCreditCardType.ReadOnly = true;
+            this.ColumnCreditCardType.Width = 200;
+            // 
+            // ColumnCreditCardBank
+            // 
+            this.ColumnCreditCardBank.DataPropertyName = "ColumnCreditCardBank";
+            this.ColumnCreditCardBank.HeaderText = "CreditCard Bank";
+            this.ColumnCreditCardBank.Name = "ColumnCreditCardBank";
+            this.ColumnCreditCardBank.ReadOnly = true;
+            this.ColumnCreditCardBank.Width = 150;
+            // 
+            // ColumnCreditCardReferenceNumber
+            // 
+            this.ColumnCreditCardReferenceNumber.DataPropertyName = "ColumnCreditCardReferenceNumber";
+            this.ColumnCreditCardReferenceNumber.HeaderText = "Credit Card Reference No.";
+            this.ColumnCreditCardReferenceNumber.Name = "ColumnCreditCardReferenceNumber";
+            this.ColumnCreditCardReferenceNumber.ReadOnly = true;
+            this.ColumnCreditCardReferenceNumber.Width = 300;
+            // 
+            // ColumnCreditCardHolderName
+            // 
+            this.ColumnCreditCardHolderName.DataPropertyName = "ColumnCreditCardHolderName";
+            this.ColumnCreditCardHolderName.HeaderText = "Credit Card Holder Name";
+            this.ColumnCreditCardHolderName.Name = "ColumnCreditCardHolderName";
+            this.ColumnCreditCardHolderName.ReadOnly = true;
+            this.ColumnCreditCardHolderName.Width = 300;
+            // 
+            // ColumnCreditCardExpiry
+            // 
+            this.ColumnCreditCardExpiry.DataPropertyName = "ColumnCreditCardExpiry";
+            this.ColumnCreditCardExpiry.HeaderText = "Credit Card Expiry";
+            this.ColumnCreditCardExpiry.Name = "ColumnCreditCardExpiry";
+            this.ColumnCreditCardExpiry.ReadOnly = true;
+            this.ColumnCreditCardExpiry.Width = 200;
+            // 
+            // ColumnGiftCertificateNumber
+            // 
+            this.ColumnGiftCertificateNumber.DataPropertyName = "ColumnGiftCertificateNumber";
+            this.ColumnGiftCertificateNumber.HeaderText = "Gift Certificate No.";
+            this.ColumnGiftCertificateNumber.Name = "ColumnGiftCertificateNumber";
+            this.ColumnGiftCertificateNumber.ReadOnly = true;
+            this.ColumnGiftCertificateNumber.Width = 200;
+            // 
+            // ColumnOtherInformation
+            // 
+            this.ColumnOtherInformation.DataPropertyName = "ColumnOtherInformation";
+            this.ColumnOtherInformation.HeaderText = "Other Information";
+            this.ColumnOtherInformation.Name = "ColumnOtherInformation";
+            this.ColumnOtherInformation.ReadOnly = true;
+            this.ColumnOtherInformation.Width = 200;
             // 
             // RepSalesReportCollectionDetailReportForm
             // 
@@ -496,10 +506,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTerminal;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnManualORNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCustomerCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCustomer;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAmount;
@@ -516,6 +528,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCreditCardExpiry;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGiftCertificateNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnOtherInformation;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
     }
 }
