@@ -40,5 +40,6 @@ namespace EasyPOS.Entities
         public String CustomerDisplayBaudRate { get; set; }
         public String CustomerDisplayFirstLineMessage { get; set; }
         public String CustomerDisplayIfCounterClosedMessage { get; set; }
+        public String CollectionReport { get; set; }
     }
 }

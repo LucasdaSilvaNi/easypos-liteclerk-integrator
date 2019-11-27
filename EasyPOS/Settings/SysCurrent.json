@@ -31,5 +31,5 @@
   "CustomerDisplayBaudRate": "9600",
   "CustomerDisplayFirstLineMessage": "WELCOME!",
   "CustomerDisplayIfCounterClosedMessage": "NEXT COUNTER PLS.",
-  "CollectionReport": "Official Receipt"
+  "CollectionReport": "Delivery Receipt"
 }

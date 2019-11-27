@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepDeliveryReceiptReportForm));
             this.printDocumentDeliveryReceipt = new System.Drawing.Printing.PrintDocument();
-            this.printPreviewControlDeliveryReceipt = new System.Windows.Forms.PrintPreviewControl();
             this.SuspendLayout();
             // 
             // printDocumentDeliveryReceipt
@@ -38,24 +37,15 @@
             this.printDocumentDeliveryReceipt.OriginAtMargins = true;
             this.printDocumentDeliveryReceipt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentDeliveryReceipt_PrintPage);
             // 
-            // printPreviewControlDeliveryReceipt
-            // 
-            this.printPreviewControlDeliveryReceipt.AutoZoom = false;
-            this.printPreviewControlDeliveryReceipt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.printPreviewControlDeliveryReceipt.Document = this.printDocumentDeliveryReceipt;
-            this.printPreviewControlDeliveryReceipt.Location = new System.Drawing.Point(0, 0);
-            this.printPreviewControlDeliveryReceipt.Name = "printPreviewControlDeliveryReceipt";
-            this.printPreviewControlDeliveryReceipt.Size = new System.Drawing.Size(996, 637);
-            this.printPreviewControlDeliveryReceipt.TabIndex = 0;
-            this.printPreviewControlDeliveryReceipt.Zoom = 1D;
-            // 
             // RepDeliveryReceiptReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(996, 637);
-            this.Controls.Add(this.printPreviewControlDeliveryReceipt);
+            this.ClientSize = new System.Drawing.Size(482, 53);
+            this.ControlBox = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(500, 100);
+            this.MinimumSize = new System.Drawing.Size(500, 100);
             this.Name = "RepDeliveryReceiptReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Delivery Receipt";
@@ -66,6 +56,5 @@
         #endregion
 
         private System.Drawing.Printing.PrintDocument printDocumentDeliveryReceipt;
-        private System.Windows.Forms.PrintPreviewControl printPreviewControlDeliveryReceipt;
     }
 }

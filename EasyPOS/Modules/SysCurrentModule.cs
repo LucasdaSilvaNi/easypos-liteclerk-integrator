@@ -67,7 +67,8 @@ namespace EasyPOS.Modules
                 CustomerDisplayPort = currentSettings.CustomerDisplayPort,
                 CustomerDisplayBaudRate = currentSettings.CustomerDisplayBaudRate,
                 CustomerDisplayFirstLineMessage = currentSettings.CustomerDisplayFirstLineMessage,
-                CustomerDisplayIfCounterClosedMessage = currentSettings.CustomerDisplayIfCounterClosedMessage
+                CustomerDisplayIfCounterClosedMessage = currentSettings.CustomerDisplayIfCounterClosedMessage,
+                CollectionReport = currentSettings.CollectionReport
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);

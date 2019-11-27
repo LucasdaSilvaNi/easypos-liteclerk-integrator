@@ -182,10 +182,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         DialogResult tenderPrinterReadyDialogResult = MessageBox.Show("Is printer ready?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (tenderPrinterReadyDialogResult == DialogResult.Yes)
                         {
-                            //new Reports.RepOfficialReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]), false);
-
-                            Reports.RepDeliveryReceiptReportForm deliveryReceiptForm = new Reports.RepDeliveryReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]), false);
-                            deliveryReceiptForm.Show();
+                            if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Official Receipt")
+                            {
+                                new Reports.RepOfficialReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]), false);
+                            }
+                            else if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Delivery Receipt")
+                            {
+                                new Reports.RepDeliveryReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]), false);
+                            }
                         }
                     }
 
