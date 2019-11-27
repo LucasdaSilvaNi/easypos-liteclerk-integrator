@@ -190,6 +190,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             {
                                 new Reports.RepDeliveryReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]), false);
                             }
+                            else
+                            {
+
+                            }
                         }
                     }
 

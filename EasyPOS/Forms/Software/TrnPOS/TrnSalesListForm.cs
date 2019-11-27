@@ -504,7 +504,18 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             Int32 collectionId = trnPOSSalesController.GetCollectionId(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value));
                             if (collectionId != 0)
                             {
-                                new Reports.RepOfficialReceiptReportForm(salesId, collectionId, true);
+                                if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Official Receipt")
+                                {
+                                    new Reports.RepOfficialReceiptReportForm(salesId, collectionId, false);
+                                }
+                                else if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Delivery Receipt")
+                                {
+                                    new Reports.RepDeliveryReceiptReportForm(salesId, collectionId, false);
+                                }
+                                else
+                                {
+
+                                }
                             }
                             else
                             {

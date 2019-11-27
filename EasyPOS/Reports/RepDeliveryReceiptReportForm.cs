@@ -28,7 +28,7 @@ namespace EasyPOS.Reports
             printDocumentDeliveryReceipt.DefaultPageSettings.PaperSize = new PaperSize("Letter", 850, 1100);
             printDocumentDeliveryReceipt.DefaultPageSettings.Landscape = true;
 
-            Margins margins = new Margins(50, 50, 20, 20);
+            Margins margins = new Margins(50, 50, 50, 50);
             printDocumentDeliveryReceipt.DefaultPageSettings.Margins = margins;
 
             printDocumentDeliveryReceipt.Print();
@@ -230,13 +230,13 @@ namespace EasyPOS.Reports
                 // Received By / Date Received, Payment / Deductions
                 // =================================================
                 graphics.DrawString("Received by / Date Received:", fontArial8Italic, drawBrush, new RectangleF(x, y + 5, 245.0F, height), drawFormatLeft);
-                graphics.DrawString("Sub Total: ", fontArial9Bold, drawBrush, new RectangleF(x + 100, y + 5, 245.0F, height), drawFormatRight);
+                graphics.DrawString("Total: ", fontArial9Bold, drawBrush, new RectangleF(x + 100, y + 5, 245.0F, height), drawFormatRight);
                 graphics.DrawString(subTotalAmount.ToString("#,##0.00"), fontArial9Bold, drawBrush, new RectangleF(x + 240, y + 5, 245.0F, height), drawFormatRight);
-                y += graphics.MeasureString("Sub Total: ", fontArial9Bold).Height + 5;
+                y += graphics.MeasureString("Total: ", fontArial9Bold).Height + 50;
 
-                graphics.DrawString("Payment / Deductions: ", fontArial9Bold, drawBrush, new RectangleF(x + 100, y + 5, 245.0F, height), drawFormatRight);
-                graphics.DrawString("0.00", fontArial9Bold, drawBrush, new RectangleF(x + 240, y + 5, 245.0F, height), drawFormatRight);
-                y += graphics.MeasureString("Payment / Deductions: ", fontArial9Bold).Height + 10;
+                //graphics.DrawString("Payment / Deductions: ", fontArial9Bold, drawBrush, new RectangleF(x + 100, y + 5, 245.0F, height), drawFormatRight);
+                //graphics.DrawString("0.00", fontArial9Bold, drawBrush, new RectangleF(x + 240, y + 5, 245.0F, height), drawFormatRight);
+                //y += graphics.MeasureString("Payment / Deductions: ", fontArial9Bold).Height + 10;
 
                 // ========
                 // 6th Line
@@ -245,19 +245,19 @@ namespace EasyPOS.Reports
                 Point sixthFirstLineSecondPoint = new Point(205, Convert.ToInt32(y));
                 graphics.DrawLine(blackDashPen, sixthFirstLineFirstPoint, sixthFirstLineSecondPoint);
 
-                Point sixthSecondLineFirstPoint = new Point(210, Convert.ToInt32(y));
-                Point sixthSecondLineSecondPoint = new Point(490, Convert.ToInt32(y));
-                graphics.DrawLine(blackPen, sixthSecondLineFirstPoint, sixthSecondLineSecondPoint);
+                //Point sixthSecondLineFirstPoint = new Point(210, Convert.ToInt32(y));
+                //Point sixthSecondLineSecondPoint = new Point(490, Convert.ToInt32(y));
+                //graphics.DrawLine(blackPen, sixthSecondLineFirstPoint, sixthSecondLineSecondPoint);
 
-                y += 5;
+                //y += 5;
 
                 // =====
                 // Total
                 // =====
-                graphics.DrawString("DA " + collection.FirstOrDefault().CollectionNumber, fontArial9Bold, drawBrush, new RectangleF(x, y + 5, 245.0F, height), drawFormatLeft);
-                graphics.DrawString("Total: ", fontArial9Bold, drawBrush, new RectangleF(x + 100, y + 5, 245.0F, height), drawFormatRight);
-                graphics.DrawString(subTotalAmount.ToString("#,##0.00"), fontArial9Bold, drawBrush, new RectangleF(x + 240, y + 5, 245.0F, height), drawFormatRight);
-                y += graphics.MeasureString("Total: ", fontArial9Bold).Height + 5;
+                graphics.DrawString("DR No.: " + collection.FirstOrDefault().CollectionNumber, fontArial9Bold, drawBrush, new RectangleF(x, y + 5, 245.0F, height), drawFormatLeft);
+                //graphics.DrawString("Total: ", fontArial9Bold, drawBrush, new RectangleF(x + 100, y + 5, 245.0F, height), drawFormatRight);
+                //graphics.DrawString(subTotalAmount.ToString("#,##0.00"), fontArial9Bold, drawBrush, new RectangleF(x + 240, y + 5, 245.0F, height), drawFormatRight);
+                //y += graphics.MeasureString("Total: ", fontArial9Bold).Height + 5;
             }
         }
     }
