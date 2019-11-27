@@ -13,7 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\Users\Developer\Desktop\Easypos\</PublishUrl>
+    <PublishUrl>F:\RS Jade Utilities\Easypos\Installer\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -558,6 +558,12 @@
     <Compile Include="Modules\SysCurrentModule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\RepDeliveryReceiptReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\RepDeliveryReceiptReportForm.Designer.cs">
+      <DependentUpon>RepDeliveryReceiptReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\RepOfficialReceiptReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -710,6 +716,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnStockOut\TrnStockOutListForm.resx">
       <DependentUpon>TrnStockOutListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RepDeliveryReceiptReportForm.resx">
+      <DependentUpon>RepDeliveryReceiptReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepOfficialReceiptReportForm.resx">
       <DependentUpon>RepOfficialReceiptReportForm.cs</DependentUpon>
