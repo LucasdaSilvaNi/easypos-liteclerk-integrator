@@ -315,24 +315,6 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
                         accountListPageNumber = 1;
                         UpdateAccountListDataSource();
-
-                        if (accountListPageList != null)
-                        {
-                            if (accountListData.Count() % pageSize == 1)
-                            {
-                                accountListPageNumber = currentPageNumber - 1;
-                            }
-                            else if (accountListData.Count() < 1)
-                            {
-                                accountListPageNumber = 1;
-                            }
-                            else
-                            {
-                                accountListPageNumber = currentPageNumber;
-                            }
-
-                            accountListDataSource.DataSource = accountListPageList;
-                        }
                     }
                     else
                     {
@@ -497,24 +479,6 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
                         payTypeListPageNumber = 1;
                         UpdatePayTypeListDataSource();
-
-                        if (payTypeListPageList != null)
-                        {
-                            if (payTypeListData.Count() % pageSize == 1)
-                            {
-                                payTypeListPageNumber = currentPageNumber - 1;
-                            }
-                            else if (payTypeListData.Count() < 1)
-                            {
-                                payTypeListPageNumber = 1;
-                            }
-                            else
-                            {
-                                payTypeListPageNumber = currentPageNumber;
-                            }
-
-                            payTypeListDataSource.DataSource = payTypeListPageList;
-                        }
                     }
                     else
                     {
@@ -748,24 +712,6 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
                         taxListPageNumber = 1;
                         UpdateTaxListDataSource();
-
-                        if (taxListPageList != null)
-                        {
-                            if (taxListData.Count() % pageSize == 1)
-                            {
-                                taxListPageNumber = currentPageNumber - 1;
-                            }
-                            else if (taxListData.Count() < 1)
-                            {
-                                taxListPageNumber = 1;
-                            }
-                            else
-                            {
-                                taxListPageNumber = currentPageNumber;
-                            }
-
-                            taxListDataSource.DataSource = taxListPageList;
-                        }
                     }
                     else
                     {
@@ -991,24 +937,6 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
                         unitListPageNumber = 1;
                         UpdateUnitListDataSource();
-
-                        if (unitListPageList != null)
-                        {
-                            if (unitListData.Count() % pageSize == 1)
-                            {
-                                unitListPageNumber = currentPageNumber - 1;
-                            }
-                            else if (unitListData.Count() < 1)
-                            {
-                                unitListPageNumber = 1;
-                            }
-                            else
-                            {
-                                unitListPageNumber = currentPageNumber;
-                            }
-
-                            unitListDataSource.DataSource = unitListPageList;
-                        }
                     }
                     else
                     {
@@ -1234,24 +1162,6 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
                         periodListPageNumber = 1;
                         UpdatePeriodListDataSource();
-
-                        if (periodListPageList != null)
-                        {
-                            if (periodListData.Count() % pageSize == 1)
-                            {
-                                periodListPageNumber = currentPageNumber - 1;
-                            }
-                            else if (periodListData.Count() < 1)
-                            {
-                                periodListPageNumber = 1;
-                            }
-                            else
-                            {
-                                periodListPageNumber = currentPageNumber;
-                            }
-
-                            periodListDataSource.DataSource = periodListPageList;
-                        }
                     }
                     else
                     {
@@ -1477,24 +1387,6 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
                         terminalListPageNumber = 1;
                         UpdateTerminalListDataSource();
-
-                        if (terminalListPageList != null)
-                        {
-                            if (terminalListData.Count() % pageSize == 1)
-                            {
-                                terminalListPageNumber = currentPageNumber - 1;
-                            }
-                            else if (terminalListData.Count() < 1)
-                            {
-                                terminalListPageNumber = 1;
-                            }
-                            else
-                            {
-                                terminalListPageNumber = currentPageNumber;
-                            }
-
-                            terminalListDataSource.DataSource = terminalListPageList;
-                        }
                     }
                     else
                     {
@@ -1737,24 +1629,6 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
                         supplierListPageNumber = 1;
                         UpdateSupplierListDataSource();
-
-                        if (supplierListPageList != null)
-                        {
-                            if (supplierListData.Count() % pageSize == 1)
-                            {
-                                supplierListPageNumber = currentPageNumber - 1;
-                            }
-                            else if (supplierListData.Count() < 1)
-                            {
-                                supplierListPageNumber = 1;
-                            }
-                            else
-                            {
-                                supplierListPageNumber = currentPageNumber;
-                            }
-
-                            supplierListDataSource.DataSource = supplierListPageList;
-                        }
                     }
                     else
                     {
@@ -1877,14 +1751,16 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                     if (newSupplier[1].Equals("0") == false)
                     {
                         var newSupplierDetail = mstSupplierController.DetailSupplier(Convert.ToInt32(newSupplier[0]));
+
                         SysSystemTablesSupplierDetailForm systemTablesSupplierDetailForm = new SysSystemTablesSupplierDetailForm(this, newSupplierDetail);
                         systemTablesSupplierDetailForm.ShowDialog();
+
+                        UpdateSupplierListDataSource();
                     }
                     else
                     {
                         MessageBox.Show(newSupplier[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
                     break;
             }
         }

@@ -1654,12 +1654,11 @@
             // ColumnSupplierListIsLocked
             // 
             this.ColumnSupplierListIsLocked.DataPropertyName = "ColumnSupplierListIsLocked";
-            this.ColumnSupplierListIsLocked.HeaderText = "IsLocked";
+            this.ColumnSupplierListIsLocked.HeaderText = "Lock";
             this.ColumnSupplierListIsLocked.Name = "ColumnSupplierListIsLocked";
             this.ColumnSupplierListIsLocked.ReadOnly = true;
             this.ColumnSupplierListIsLocked.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ColumnSupplierListIsLocked.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColumnSupplierListIsLocked.Visible = false;
             // 
             // SysSystemTablesForm
             // 
