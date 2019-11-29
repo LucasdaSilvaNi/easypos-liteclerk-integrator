@@ -37,44 +37,97 @@ namespace EasyPOS.Modules
                                              select new
                                              {
                                                  g.Key.ItemId,
-                                                 TotalQuantity = g.Sum(s => s.Quantity)
                                              };
 
                         if (salesLineItems.Any())
                         {
                             foreach (var salesLineItem in salesLineItems)
                             {
-                                var item = from d in db.MstItems where d.Id == salesLineItem.ItemId select d;
-                                if (item.Any())
-                                {
-                                    Decimal totalSalesLineQuantity = 0;
-                                    var allSalesLineItems = from d in db.TrnSalesLines
-                                                            where d.ItemId == salesLineItem.ItemId
-                                                            && d.TrnSale.IsLocked == true
-                                                            && d.TrnSale.IsCancelled == false
-                                                            select d;
+                                UpdateItemInventory(salesLineItem.ItemId);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
 
-                                    if (allSalesLineItems.Any())
-                                    {
-                                        totalSalesLineQuantity = allSalesLineItems.Sum(d => d.Quantity);
-                                    }
+        // =========================
+        // Update Stock-In Inventory
+        // =========================
+        public void UpdateStockInInventory(Int32 stockInId)
+        {
+            try
+            {
+                var stockIn = from d in db.TrnStockIns
+                              where d.Id == stockInId
+                              select d;
 
-                                    Decimal totalStockInLineQuantity = 0;
-                                    var allStockInLineItems = from d in db.TrnStockInLines
-                                                              where d.ItemId == salesLineItem.ItemId
-                                                              && d.TrnStockIn.IsLocked == true
-                                                              select d;
+                if (stockIn.Any())
+                {
+                    var stockInLines = stockIn.FirstOrDefault().TrnStockInLines;
+                    if (stockInLines.Any())
+                    {
+                        var stockInLineItems = from d in stockInLines
+                                               group d by new
+                                               {
+                                                   d.ItemId
+                                               } into g
+                                               select new
+                                               {
+                                                   g.Key.ItemId
+                                               };
 
+                        if (stockInLineItems.Any())
+                        {
+                            foreach (var stockInLineItem in stockInLineItems)
+                            {
+                                UpdateItemInventory(stockInLineItem.ItemId);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
 
-                                    if (allStockInLineItems.Any())
-                                    {
-                                        totalStockInLineQuantity = allStockInLineItems.Sum(d => d.Quantity);
-                                    }
+        // ==========================
+        // Update Stock-Out Inventory
+        // ==========================
+        public void UpdateStockOutInventory(Int32 stockOutId)
+        {
+            try
+            {
+                var stockOut = from d in db.TrnStockOuts
+                               where d.Id == stockOutId
+                               select d;
 
-                                    var updateItem = item.FirstOrDefault();
-                                    updateItem.OnhandQuantity = totalStockInLineQuantity - totalSalesLineQuantity;
-                                    db.SubmitChanges();
-                                }
+                if (stockOut.Any())
+                {
+                    var stockOutLines = stockOut.FirstOrDefault().TrnStockOutLines;
+                    if (stockOutLines.Any())
+                    {
+                        var stockOutLineItems = from d in stockOutLines
+                                                group d by new
+                                                {
+                                                    d.ItemId
+                                                } into g
+                                                select new
+                                                {
+                                                    g.Key.ItemId
+                                                };
+
+                        if (stockOutLineItems.Any())
+                        {
+                            foreach (var stockOutLineItem in stockOutLineItems)
+                            {
+                                UpdateItemInventory(stockOutLineItem.ItemId);
                             }
                         }
                     }
@@ -91,13 +144,49 @@ namespace EasyPOS.Modules
         // =====================
         public void UpdateItemInventory(Int32 itemId)
         {
-            try
+            var item = from d in db.MstItems where d.Id == itemId select d;
+            if (item.Any())
             {
+                // Get total IN quantity
+                Decimal totalStockInLineQuantity = 0;
+                var allStockInLineItems = from d in db.TrnStockInLines
+                                          where d.ItemId == itemId
+                                          && d.TrnStockIn.IsLocked == true
+                                          select d;
 
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
+                if (allStockInLineItems.Any())
+                {
+                    totalStockInLineQuantity = allStockInLineItems.Sum(d => d.Quantity);
+                }
+
+                // Get total SOLD quantity
+                Decimal totalSalesLineQuantity = 0;
+                var allSalesLineItems = from d in db.TrnSalesLines
+                                        where d.ItemId == itemId
+                                        && d.TrnSale.IsLocked == true
+                                        && d.TrnSale.IsCancelled == false
+                                        select d;
+
+                if (allSalesLineItems.Any())
+                {
+                    totalSalesLineQuantity = allSalesLineItems.Sum(d => d.Quantity);
+                }
+
+                // Get total OUT quantity
+                Decimal totalStockOutLineQuantity = 0;
+                var allStockOutLineItems = from d in db.TrnStockOutLines
+                                           where d.ItemId == itemId
+                                           && d.TrnStockOut.IsLocked == true
+                                           select d;
+
+                if (allStockOutLineItems.Any())
+                {
+                    totalStockOutLineQuantity = allStockOutLineItems.Sum(d => d.Quantity);
+                }
+
+                var updateItem = item.FirstOrDefault();
+                updateItem.OnhandQuantity = totalStockInLineQuantity - (totalSalesLineQuantity + totalStockOutLineQuantity);
+                db.SubmitChanges();
             }
         }
     }

@@ -264,6 +264,9 @@ namespace EasyPOS.Controllers
                     lockStockIn.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
 
+                    Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
+                    trnInventoryModule.UpdateStockInInventory(stockIn.FirstOrDefault().Id);
+
                     return new String[] { "", "1" };
                 }
                 else
@@ -306,6 +309,9 @@ namespace EasyPOS.Controllers
                     unlockStockIn.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
                     unlockStockIn.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
+
+                    Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
+                    trnInventoryModule.UpdateStockInInventory(stockIn.FirstOrDefault().Id);
 
                     return new String[] { "", "1" };
                 }
