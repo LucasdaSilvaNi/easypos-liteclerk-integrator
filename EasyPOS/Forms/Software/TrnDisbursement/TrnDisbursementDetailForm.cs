@@ -166,16 +166,16 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
                 buttonLock.Enabled = !isLocked;
             }
 
-            if (sysUserRights.GetUserRights().CanLock == false)
+            if (sysUserRights.GetUserRights().CanUnlock == false)
             {
                 buttonUnlock.Enabled = false;
             }
             else
             {
-                buttonUnlock.Enabled = !isLocked;
+                buttonUnlock.Enabled = isLocked;
             }
 
-            if (sysUserRights.GetUserRights().CanLock == false)
+            if (sysUserRights.GetUserRights().CanPrint == false)
             {
                 buttonPrint.Enabled = false;
             }
