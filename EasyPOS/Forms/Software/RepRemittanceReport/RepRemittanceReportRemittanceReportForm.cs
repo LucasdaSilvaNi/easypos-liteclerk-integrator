@@ -112,6 +112,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                              && d.DisbursementNumber == filterRemittanceNumber
                              && d.MstPayType.PayType.Equals("Cash")
                              select d;
+
             decimal collectionChange = 0;
             var currentCollections = from d in db.TrnCollections
                                      where d.TerminalId == filterTerminalId
@@ -161,10 +162,10 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                              select d;
             if (preparedBy.Any())
             {
-                repRemitanceReportEntity.PreparedBy = preparedBy.FirstOrDefault().UserName;
+                repRemitanceReportEntity.PreparedBy = preparedBy.FirstOrDefault().FullName;
             }
 
-            if (remittance.Any() && currentCollectionLines.Any())
+            if (remittance.Any())
             {
 
                 repRemitanceReportEntity.Remarks = remittance.FirstOrDefault().Remarks;
@@ -200,6 +201,10 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
 
                 repRemitanceReportEntity.Total = totalRemittanceAmount - collectionChange;
 
+
+            }
+            if (currentCollectionLines.Any())
+            {
                 foreach (var collectionLine in currentCollectionLines)
                 {
                     Decimal amount = collectionLine.TotalAmount;
