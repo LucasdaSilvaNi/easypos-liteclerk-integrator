@@ -84,6 +84,8 @@
             this.buttonAutoRefresh = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.labelLastChange = new System.Windows.Forms.Label();
+            this.textBoxLastChange = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesList)).BeginInit();
@@ -638,7 +640,7 @@
             this.buttonAutoRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAutoRefresh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.buttonAutoRefresh.ForeColor = System.Drawing.Color.White;
-            this.buttonAutoRefresh.Location = new System.Drawing.Point(840, 9);
+            this.buttonAutoRefresh.Location = new System.Drawing.Point(840, 11);
             this.buttonAutoRefresh.Name = "buttonAutoRefresh";
             this.buttonAutoRefresh.Size = new System.Drawing.Size(72, 32);
             this.buttonAutoRefresh.TabIndex = 13;
@@ -665,6 +667,8 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.textBoxLastChange);
+            this.panel4.Controls.Add(this.labelLastChange);
             this.panel4.Controls.Add(this.buttonSalesListPageListFirst);
             this.panel4.Controls.Add(this.buttonSalesListPageListNext);
             this.panel4.Controls.Add(this.buttonAutoRefresh);
@@ -676,6 +680,34 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1400, 53);
             this.panel4.TabIndex = 19;
+            // 
+            // labelLastChange
+            // 
+            this.labelLastChange.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelLastChange.AutoSize = true;
+            this.labelLastChange.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.labelLastChange.ForeColor = System.Drawing.Color.Black;
+            this.labelLastChange.Location = new System.Drawing.Point(919, 13);
+            this.labelLastChange.Name = "labelLastChange";
+            this.labelLastChange.Size = new System.Drawing.Size(124, 25);
+            this.labelLastChange.TabIndex = 14;
+            this.labelLastChange.Text = "Last Change:";
+            // 
+            // textBoxLastChange
+            // 
+            this.textBoxLastChange.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.textBoxLastChange.BackColor = System.Drawing.Color.White;
+            this.textBoxLastChange.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxLastChange.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.textBoxLastChange.ForeColor = System.Drawing.Color.Black;
+            this.textBoxLastChange.Location = new System.Drawing.Point(1049, 7);
+            this.textBoxLastChange.Name = "textBoxLastChange";
+            this.textBoxLastChange.ReadOnly = true;
+            this.textBoxLastChange.Size = new System.Drawing.Size(339, 34);
+            this.textBoxLastChange.TabIndex = 15;
+            this.textBoxLastChange.Text = "0.00";
+            this.textBoxLastChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TrnSalesListForm
             // 
@@ -753,5 +785,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnIsTendered;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnIsCancelled;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label labelLastChange;
+        private System.Windows.Forms.TextBox textBoxLastChange;
     }
 }

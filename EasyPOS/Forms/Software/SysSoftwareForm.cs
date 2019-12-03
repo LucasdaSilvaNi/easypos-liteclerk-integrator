@@ -29,37 +29,38 @@ namespace EasyPOS.Forms.Software
             String currentTerminal = terminal;
 
             labelCurrentUser.Text = "Date: " + currentDate + "     User: " + currentUserName + "     Terminal: " + currentTerminal;
+            panelSidebarMenu.Visible = false;
         }
 
         // =========
         // Tab Pages
         // =========
-        public TabPage tabPageItemList = new TabPage { Name = "tabPageItemList", Text = "Item List" };
-        public TabPage tabPageItemDetail = new TabPage { Name = "tabPageItemDetail", Text = "Item Detail" };
-        public TabPage tabPageCustomerList = new TabPage { Name = "tabPageCustomerList", Text = "Customer List" };
-        public TabPage tabPageCustomerDetail = new TabPage { Name = "tabPageCustomerDetail", Text = "Customer Detail" };
-        public TabPage tabPageDiscountingList = new TabPage { Name = "tabPageDiscountingList", Text = "Discounting List" };
-        public TabPage tabPageDiscountingDetail = new TabPage { Name = "tabPageDiscountingDetail", Text = "Discounting Detail" };
-        public TabPage tabPageUserList = new TabPage { Name = "tabPageUserList", Text = "User List" };
-        public TabPage tabPageUserDetail = new TabPage { Name = "tabPageUserDetail", Text = "User Detail" };
+        public TabPage tabPageItemList = new TabPage { Name = "tabPageItemList", Text = "Setup - Item List" };
+        public TabPage tabPageItemDetail = new TabPage { Name = "tabPageItemDetail", Text = "Setup - Item Detail" };
+        public TabPage tabPageCustomerList = new TabPage { Name = "tabPageCustomerList", Text = "Setup - Customer List" };
+        public TabPage tabPageCustomerDetail = new TabPage { Name = "tabPageCustomerDetail", Text = "Setup - Customer Detail" };
+        public TabPage tabPageDiscountingList = new TabPage { Name = "tabPageDiscountingList", Text = "Setup - Discounting List" };
+        public TabPage tabPageDiscountingDetail = new TabPage { Name = "tabPageDiscountingDetail", Text = "Setup - Discounting Detail" };
+        public TabPage tabPageUserList = new TabPage { Name = "tabPageUserList", Text = "Setup - User List" };
+        public TabPage tabPageUserDetail = new TabPage { Name = "tabPageUserDetail", Text = "Setup - User Detail" };
 
-        public TabPage tabPagePOSSalesList = new TabPage { Name = "tabPagePOSSalesList", Text = "Sales List" };
-        public TabPage tabPagePOSSalesDetail = new TabPage { Name = "tabPagePOSSalesDetail", Text = "Sales Detail" };
-        public TabPage tabPageStockInList = new TabPage { Name = "tabPageStockInList", Text = "Stock-In List" };
-        public TabPage tabPageStockInDetail = new TabPage { Name = "tabPageStockInDetail", Text = "Stock-In Detail" };
-        public TabPage tabPageStockOutList = new TabPage { Name = "tabPageStockOutList", Text = "Stock-Out List" };
-        public TabPage tabPageStockOutDetail = new TabPage { Name = "tabPageStockOutDetail", Text = "Stock-Out Detail" };
-        public TabPage tabPageStockCountList = new TabPage { Name = "tabPageStockCountList", Text = "Stock-Count List" };
-        public TabPage tabPageStockCountDetail = new TabPage { Name = "tabPageStockCountDetail", Text = "Stock-Count Detail" };
-        public TabPage tabPageDisbursementList = new TabPage { Name = "tabPageDisbursementList", Text = "Remittance List" };
-        public TabPage tabPageDisbursementDetail = new TabPage { Name = "tabPageDisbursementDetail", Text = "Remittance Detail" };
+        public TabPage tabPagePOSSalesList = new TabPage { Name = "tabPagePOSSalesList", Text = "Activity - POS Barcode - Sales List" };
+        public TabPage tabPagePOSSalesDetail = new TabPage { Name = "tabPagePOSSalesDetail", Text = "Activity - POS Barcode - Sales Detail" };
+        public TabPage tabPageStockInList = new TabPage { Name = "tabPageStockInList", Text = "Activity - Stock-In List" };
+        public TabPage tabPageStockInDetail = new TabPage { Name = "tabPageStockInDetail", Text = "Activity - Stock-In Detail" };
+        public TabPage tabPageStockOutList = new TabPage { Name = "tabPageStockOutList", Text = "Activity - Stock-Out List" };
+        public TabPage tabPageStockOutDetail = new TabPage { Name = "tabPageStockOutDetail", Text = "Activity - Stock-Out Detail" };
+        public TabPage tabPageStockCountList = new TabPage { Name = "tabPageStockCountList", Text = "Activity - Stock-Count List" };
+        public TabPage tabPageStockCountDetail = new TabPage { Name = "tabPageStockCountDetail", Text = "Activity - Stock-Count Detail" };
+        public TabPage tabPageDisbursementList = new TabPage { Name = "tabPageDisbursementList", Text = "Activity - Remittance List" };
+        public TabPage tabPageDisbursementDetail = new TabPage { Name = "tabPageDisbursementDetail", Text = "Activity - Remittance Detail" };
 
-        public TabPage tabPagePOSReport = new TabPage { Name = "tabPagePOSReport", Text = "POS Report" };
-        public TabPage tabPageSalesReports = new TabPage { Name = "tabPageSalesReports ", Text = "Sales Report" };
-        public TabPage tabPageInventoryReports = new TabPage { Name = "tabPageInventoryReports ", Text = "Inventory Report" };
-        public TabPage tabPageRemittanceReports = new TabPage { Name = "tabPageRemittanceReports ", Text = "Remittance Report" };
+        public TabPage tabPagePOSReport = new TabPage { Name = "tabPagePOSReport", Text = "Report - POS Report" };
+        public TabPage tabPageSalesReports = new TabPage { Name = "tabPageSalesReports ", Text = "Report - Sales Report" };
+        public TabPage tabPageInventoryReports = new TabPage { Name = "tabPageInventoryReports ", Text = "Report - Inventory Report" };
+        public TabPage tabPageRemittanceReports = new TabPage { Name = "tabPageRemittanceReports ", Text = "Report - Remittance Report" };
 
-        public TabPage tabPageSystemTables = new TabPage { Name = "tabPageSystemTables", Text = "System Tables" };
+        public TabPage tabPageSystemTables = new TabPage { Name = "tabPageSystemTables", Text = "System - System Tables" };
 
         public TabPage tabPageSettings = new TabPage { Name = "tabPageSettings", Text = "Settings" };
 
@@ -328,12 +329,6 @@ namespace EasyPOS.Forms.Software
 
         public void AddTabPagePOSSalesList()
         {
-            labelLastChange.Visible = true;
-            textBoxLastChange.Visible = true;
-
-            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-            textBoxLastChange.Text = trnPOSSalesController.GetLastChange(Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId)).ToString("#,##0.00");
-
             tabPagePOSSalesList.Controls.Remove(trnSalesListForm);
 
             trnSalesListForm = new TrnPOS.TrnSalesListForm(this)
@@ -358,12 +353,6 @@ namespace EasyPOS.Forms.Software
 
         public void AddTabPagePOSSalesDetail(TrnPOS.TrnSalesListForm salesListForm, Entities.TrnSalesEntity salesEntity)
         {
-            labelLastChange.Visible = true;
-            textBoxLastChange.Visible = true;
-
-            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-            textBoxLastChange.Text = trnPOSSalesController.GetLastChange(Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId)).ToString("#,##0.00");
-
             tabPagePOSSalesDetail.Controls.Remove(trnSalesDetailForm);
 
             trnSalesDetailForm = new TrnPOS.TrnSalesDetailForm(this, salesListForm, salesEntity)
@@ -712,16 +701,118 @@ namespace EasyPOS.Forms.Software
 
         private void tabControlSoftware_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControlSoftware.SelectedTab == tabPagePOSSalesList || tabControlSoftware.SelectedTab == tabPagePOSSalesDetail)
+            //if (tabControlSoftware.SelectedTab == tabPagePOSSalesList || tabControlSoftware.SelectedTab == tabPagePOSSalesDetail)
+            //{
+            //    labelLastChange.Visible = true;
+            //    textBoxLastChange.Visible = true;
+            //}
+            //else
+            //{
+            //    labelLastChange.Visible = false;
+            //    textBoxLastChange.Visible = false;
+            //}
+        }
+
+        private void buttonOpenSidebarMenu_Click(object sender, EventArgs e)
+        {
+            if (panelSidebarMenu.Visible == false)
             {
-                labelLastChange.Visible = true;
-                textBoxLastChange.Visible = true;
+                panelSidebarMenu.Visible = true;
             }
             else
             {
-                labelLastChange.Visible = false;
-                textBoxLastChange.Visible = false;
+                panelSidebarMenu.Visible = false;
             }
+        }
+
+        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControlSoftware.SelectTab(tabPageSysMenu);
+        }
+
+        private void itemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTabPageItemList();
+        }
+
+        private void customerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTabPageCustomerList();
+        }
+
+        private void discountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTabPageDiscountingList();
+        }
+
+        private void userToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTabPageUserList();
+        }
+
+        private void pOSToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AddTabPagePOSSalesList();
+        }
+
+        private void pOSTouchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void remittanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTabPageDisbursementList();
+        }
+
+        private void stockInToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTabPageStockInList();
+        }
+
+        private void stockOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTabPageStockOutList();
+        }
+
+        private void stockCountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTabPageStockCountList();
+        }
+
+        private void systemTablesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTabPageSystemTables();
+        }
+
+        private void utilitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pOSReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTabPagePOSReport();
+        }
+
+        private void salesReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTabPageSalesReport();
+        }
+
+        private void remittanceReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTabPageRemittanceReports();
+        }
+
+        private void inventoryReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTabPageInventoryReports();
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTabPageSettings();
         }
     }
 }

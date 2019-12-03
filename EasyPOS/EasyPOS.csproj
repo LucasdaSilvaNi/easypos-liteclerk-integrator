@@ -805,7 +805,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Forms\Software\TrnPOSTouch\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="easypos cropped.ico" />
     <Content Include="Resources\Images\Backgrounds\coffee.jpeg" />
@@ -814,8 +816,10 @@
     <Content Include="Resources\Images\Icons\Customer.png" />
     <Content Include="Resources\Images\Icons\Disbursement.png" />
     <Content Include="Resources\Images\Icons\Discounting.png" />
+    <None Include="Resources\Images\Icons\easypos.jpg" />
     <Content Include="Resources\Images\Icons\Inventory.png" />
     <Content Include="Resources\Images\Icons\Item.png" />
+    <Content Include="Resources\Images\Icons\POS Touch.png" />
     <Content Include="Resources\Images\Icons\POS.png" />
     <Content Include="Resources\Images\Icons\Reports.png" />
     <Content Include="Resources\Images\Icons\Settings.png" />

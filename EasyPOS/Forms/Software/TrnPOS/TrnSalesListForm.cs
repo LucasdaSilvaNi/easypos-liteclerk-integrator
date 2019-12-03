@@ -71,6 +71,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 GetTerminalList();
                 timerRefreshSalesListGrid.Start();
             }
+
+            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
+            textBoxLastChange.Text = trnPOSSalesController.GetLastChange(Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId)).ToString("#,##0.00");
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -141,6 +144,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
             String filter = textBoxSalesListFilter.Text;
 
             GetSalesListDataAsync(salesDate, terminalId, filter);
+
+            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
+            textBoxLastChange.Text = trnPOSSalesController.GetLastChange(Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId)).ToString("#,##0.00");
         }
 
         public async void GetSalesListDataAsync(DateTime salesDate, Int32 terminalId, String filter)
