@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,13 @@ namespace EasyPOS.Forms.Software.MstItem
 
         public MstItemListForm mstItemListForm;
         public Entities.MstItemEntity mstItemEntity;
+
+        public static Int32 pageSize = 50;
+        public static Int32 pageNumber = 1;
+
+        public static List<Entities.DgvSystemTablesItemPriceListEntity> itemPriceListData = new List<Entities.DgvSystemTablesItemPriceListEntity>();
+        public PagedList<Entities.DgvSystemTablesItemPriceListEntity> itemPriceListPageList = new PagedList<Entities.DgvSystemTablesItemPriceListEntity>(itemPriceListData, pageNumber, pageSize);
+        public BindingSource itemPriceListDataSource = new BindingSource();
 
         public MstItemDetailForm(SysSoftwareForm softwareForm, MstItemListForm itemListForm, Entities.MstItemEntity itemEntity)
         {
@@ -106,6 +114,8 @@ namespace EasyPOS.Forms.Software.MstItem
             textBoxRemarks.Text = mstItemEntity.Remarks;
             textBoxGenericName.Text = mstItemEntity.GenericName;
             comboBoxSalesVAT.SelectedValue = mstItemEntity.OutTaxId;
+
+            CreateItemPriceListDataGridView();
         }
 
         public void UpdateComponents(Boolean isLocked)
@@ -145,6 +155,33 @@ namespace EasyPOS.Forms.Software.MstItem
             textBoxRemarks.Enabled = !isLocked;
             textBoxGenericName.Enabled = !isLocked;
             comboBoxSalesVAT.Enabled = !isLocked;
+
+            if (sysUserRights.GetUserRights().CanAdd == false)
+            {
+                buttonAddItemPrice.Enabled = false;
+            }
+            else
+            {
+                buttonAddItemPrice.Enabled = !isLocked;
+            }
+
+            if (sysUserRights.GetUserRights().CanEdit == false)
+            {
+                dataGridViewItemPriceList.Columns[0].Visible = false;
+            }
+            else
+            {
+                dataGridViewItemPriceList.Columns[0].Visible = !isLocked;
+            }
+
+            if (sysUserRights.GetUserRights().CanDelete == false)
+            {
+                dataGridViewItemPriceList.Columns[1].Visible = false;
+            }
+            else
+            {
+                dataGridViewItemPriceList.Columns[1].Visible = !isLocked;
+            }
         }
 
         private void buttonLock_Click(object sender, EventArgs e)
@@ -272,6 +309,247 @@ namespace EasyPOS.Forms.Software.MstItem
             {
                 e.Handled = true;
             }
+        }
+
+        public void UpdateItemPriceListDataSource()
+        {
+            SetItemPriceListDataSourceAsync();
+        }
+
+        public async void SetItemPriceListDataSourceAsync()
+        {
+            List<Entities.DgvSystemTablesItemPriceListEntity> getItemPriceListData = await GetItemPriceListDataTask();
+            if (getItemPriceListData.Any())
+            {
+                itemPriceListData = getItemPriceListData;
+                itemPriceListPageList = new PagedList<Entities.DgvSystemTablesItemPriceListEntity>(itemPriceListData, pageNumber, pageSize);
+
+                if (itemPriceListPageList.PageCount == 1)
+                {
+                    buttonItemPriceListPageListFirst.Enabled = false;
+                    buttonItemPriceListPageListPrevious.Enabled = false;
+                    buttonItemPriceListPageListNext.Enabled = false;
+                    buttonItemPriceListPageListLast.Enabled = false;
+                }
+                else if (pageNumber == 1)
+                {
+                    buttonItemPriceListPageListFirst.Enabled = false;
+                    buttonItemPriceListPageListPrevious.Enabled = false;
+                    buttonItemPriceListPageListNext.Enabled = true;
+                    buttonItemPriceListPageListLast.Enabled = true;
+                }
+                else if (pageNumber == itemPriceListPageList.PageCount)
+                {
+                    buttonItemPriceListPageListFirst.Enabled = true;
+                    buttonItemPriceListPageListPrevious.Enabled = true;
+                    buttonItemPriceListPageListNext.Enabled = false;
+                    buttonItemPriceListPageListLast.Enabled = false;
+                }
+                else
+                {
+                    buttonItemPriceListPageListFirst.Enabled = true;
+                    buttonItemPriceListPageListPrevious.Enabled = true;
+                    buttonItemPriceListPageListNext.Enabled = true;
+                    buttonItemPriceListPageListLast.Enabled = true;
+                }
+
+                textBoxItemPriceListPageNumber.Text = pageNumber + " / " + itemPriceListPageList.PageCount;
+                itemPriceListDataSource.DataSource = itemPriceListPageList;
+            }
+            else
+            {
+                buttonItemPriceListPageListFirst.Enabled = false;
+                buttonItemPriceListPageListPrevious.Enabled = false;
+                buttonItemPriceListPageListNext.Enabled = false;
+                buttonItemPriceListPageListLast.Enabled = false;
+
+                pageNumber = 1;
+
+                itemPriceListData = new List<Entities.DgvSystemTablesItemPriceListEntity>();
+                itemPriceListDataSource.Clear();
+                textBoxItemPriceListPageNumber.Text = "1 / 1";
+            }
+        }
+
+        public Task<List<Entities.DgvSystemTablesItemPriceListEntity>> GetItemPriceListDataTask()
+        {
+            Controllers.MstItemPriceController mstItemPriceController = new Controllers.MstItemPriceController();
+            List<Entities.MstItemPriceEntity> listItemPrice = mstItemPriceController.ListItemPrice(mstItemEntity.Id);
+            if (listItemPrice.Any())
+            {
+                var itemPrices = from d in listItemPrice
+                                 select new Entities.DgvSystemTablesItemPriceListEntity
+                                 {
+                                     ColumnItemPriceListButtonEdit = "Edit",
+                                     ColumnItemPriceListButtonDelete = "Delete",
+                                     ColumnItemPriceListId = d.Id,
+                                     ColumnItemPriceListPriceDescription = d.PriceDescription,
+                                     ColumnItemPriceListPrice = d.Price.ToString("#,##0.00"),
+                                     ColumnItemPriceListTriggerQuantity = d.TriggerQuantity.ToString("#,##0.00")
+                                 };
+
+                return Task.FromResult(itemPrices.ToList());
+            }
+            else
+            {
+                return Task.FromResult(new List<Entities.DgvSystemTablesItemPriceListEntity>());
+            }
+        }
+
+        public void CreateItemPriceListDataGridView()
+        {
+            UpdateItemPriceListDataSource();
+
+            dataGridViewItemPriceList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewItemPriceList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewItemPriceList.Columns[0].DefaultCellStyle.ForeColor = Color.White;
+
+            dataGridViewItemPriceList.Columns[1].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#F34F1C");
+            dataGridViewItemPriceList.Columns[1].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#F34F1C");
+            dataGridViewItemPriceList.Columns[1].DefaultCellStyle.ForeColor = Color.White;
+
+            dataGridViewItemPriceList.DataSource = itemPriceListDataSource;
+        }
+
+        private void textBoxItemPriceListFilter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                UpdateItemPriceListDataSource();
+            }
+        }
+
+        private void dataGridViewItemPriceList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                GetItemPriceListCurrentSelectedCell(e.RowIndex);
+            }
+
+            if (e.RowIndex > -1 && dataGridViewItemPriceList.CurrentCell.ColumnIndex == dataGridViewItemPriceList.Columns["ColumnItemPriceListButtonEdit"].Index)
+            {
+                Entities.MstItemPriceEntity selectedItemPrice = new Entities.MstItemPriceEntity()
+                {
+                    Id = Convert.ToInt32(dataGridViewItemPriceList.Rows[e.RowIndex].Cells[dataGridViewItemPriceList.Columns["ColumnItemPriceListId"].Index].Value),
+                    ItemId = mstItemEntity.Id,
+                    PriceDescription = dataGridViewItemPriceList.Rows[e.RowIndex].Cells[dataGridViewItemPriceList.Columns["ColumnItemPriceListPriceDescription"].Index].Value.ToString(),
+                    Price = Convert.ToDecimal(dataGridViewItemPriceList.Rows[e.RowIndex].Cells[dataGridViewItemPriceList.Columns["ColumnItemPriceListPrice"].Index].Value),
+                    TriggerQuantity = Convert.ToDecimal(dataGridViewItemPriceList.Rows[e.RowIndex].Cells[dataGridViewItemPriceList.Columns["ColumnItemPriceListTriggerQuantity"].Index].Value)
+                };
+
+                MstItemDetailItemPriceDetailForm sysSystemTablesItemPriceDetailForm = new MstItemDetailItemPriceDetailForm(this, selectedItemPrice);
+                sysSystemTablesItemPriceDetailForm.ShowDialog();
+            }
+
+            if (e.RowIndex > -1 && dataGridViewItemPriceList.CurrentCell.ColumnIndex == dataGridViewItemPriceList.Columns["ColumnItemPriceListButtonDelete"].Index)
+            {
+                DialogResult deleteDialogResult = MessageBox.Show("Delete ItemPrice?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (deleteDialogResult == DialogResult.Yes)
+                {
+                    Controllers.MstItemPriceController mstItemPriceController = new Controllers.MstItemPriceController();
+
+                    String[] deleteItemPrice = mstItemPriceController.DeleteItemPrice(Convert.ToInt32(dataGridViewItemPriceList.Rows[e.RowIndex].Cells[2].Value));
+                    if (deleteItemPrice[1].Equals("0") == false)
+                    {
+                        Int32 currentPageNumber = pageNumber;
+
+                        pageNumber = 1;
+                        UpdateItemPriceListDataSource();
+                    }
+                    else
+                    {
+                        MessageBox.Show(deleteItemPrice[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        public void GetItemPriceListCurrentSelectedCell(Int32 rowIndex)
+        {
+
+        }
+
+        private void buttonItemPriceListPageListFirst_Click(object sender, EventArgs e)
+        {
+            itemPriceListPageList = new PagedList<Entities.DgvSystemTablesItemPriceListEntity>(itemPriceListData, 1, pageSize);
+            itemPriceListDataSource.DataSource = itemPriceListPageList;
+
+            buttonItemPriceListPageListFirst.Enabled = false;
+            buttonItemPriceListPageListPrevious.Enabled = false;
+            buttonItemPriceListPageListNext.Enabled = true;
+            buttonItemPriceListPageListLast.Enabled = true;
+
+            pageNumber = 1;
+            textBoxItemPriceListPageNumber.Text = pageNumber + " / " + itemPriceListPageList.PageCount;
+        }
+
+        private void buttonItemPriceListPageListPrevious_Click(object sender, EventArgs e)
+        {
+            if (itemPriceListPageList.HasPreviousPage == true)
+            {
+                itemPriceListPageList = new PagedList<Entities.DgvSystemTablesItemPriceListEntity>(itemPriceListData, --pageNumber, pageSize);
+                itemPriceListDataSource.DataSource = itemPriceListPageList;
+            }
+
+            buttonItemPriceListPageListNext.Enabled = true;
+            buttonItemPriceListPageListLast.Enabled = true;
+
+            if (pageNumber == 1)
+            {
+                buttonItemPriceListPageListFirst.Enabled = false;
+                buttonItemPriceListPageListPrevious.Enabled = false;
+            }
+
+            textBoxItemPriceListPageNumber.Text = pageNumber + " / " + itemPriceListPageList.PageCount;
+        }
+
+        private void buttonItemPriceListPageListNext_Click(object sender, EventArgs e)
+        {
+            if (itemPriceListPageList.HasNextPage == true)
+            {
+                itemPriceListPageList = new PagedList<Entities.DgvSystemTablesItemPriceListEntity>(itemPriceListData, ++pageNumber, pageSize);
+                itemPriceListDataSource.DataSource = itemPriceListPageList;
+            }
+
+            buttonItemPriceListPageListFirst.Enabled = true;
+            buttonItemPriceListPageListPrevious.Enabled = true;
+
+            if (pageNumber == itemPriceListPageList.PageCount)
+            {
+                buttonItemPriceListPageListNext.Enabled = false;
+                buttonItemPriceListPageListLast.Enabled = false;
+            }
+
+            textBoxItemPriceListPageNumber.Text = pageNumber + " / " + itemPriceListPageList.PageCount;
+        }
+
+        private void buttonItemPriceListPageListLast_Click(object sender, EventArgs e)
+        {
+            itemPriceListPageList = new PagedList<Entities.DgvSystemTablesItemPriceListEntity>(itemPriceListData, itemPriceListPageList.PageCount, pageSize);
+            itemPriceListDataSource.DataSource = itemPriceListPageList;
+
+            buttonItemPriceListPageListFirst.Enabled = true;
+            buttonItemPriceListPageListPrevious.Enabled = true;
+            buttonItemPriceListPageListNext.Enabled = false;
+            buttonItemPriceListPageListLast.Enabled = false;
+
+            pageNumber = itemPriceListPageList.PageCount;
+            textBoxItemPriceListPageNumber.Text = pageNumber + " / " + itemPriceListPageList.PageCount;
+        }
+
+        private void buttonAddItemPrice_Click(object sender, EventArgs e)
+        {
+            Entities.MstItemPriceEntity newItemPrice = new Entities.MstItemPriceEntity()
+            {
+                Id = 0,
+                ItemId = mstItemEntity.Id,
+                PriceDescription = "",
+                Price = 0,
+                TriggerQuantity = 0,
+            };
+
+            MstItemDetailItemPriceDetailForm sysSystemTablesItemPriceDetailForm = new MstItemDetailItemPriceDetailForm(this, newItemPrice);
+            sysSystemTablesItemPriceDetailForm.ShowDialog();
         }
     }
 }

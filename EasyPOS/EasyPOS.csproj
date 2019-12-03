@@ -77,6 +77,7 @@
     <Compile Include="Controllers\MstCustomerController.cs" />
     <Compile Include="Controllers\MstDiscountController.cs" />
     <Compile Include="Controllers\MstItemController.cs" />
+    <Compile Include="Controllers\MstItemPriceController.cs" />
     <Compile Include="Controllers\MstPayTypeController.cs" />
     <Compile Include="Controllers\MstPeriodController.cs" />
     <Compile Include="Controllers\MstSupplierController.cs" />
@@ -158,6 +159,7 @@
     <Compile Include="Entities\DgvStockInListStockInEntity.cs" />
     <Compile Include="Entities\DgvStockOutSearchItemListEntity.cs" />
     <Compile Include="Entities\DgvSystemTablesAccountListEntity.cs" />
+    <Compile Include="Entities\DgvSystemTablesItemPriceListEntity.cs" />
     <Compile Include="Entities\DgvSystemTablesPayTypeListEntity.cs" />
     <Compile Include="Entities\DgvSystemTablesPeriodListEntity.cs" />
     <Compile Include="Entities\DgvSystemTablesSupplierListEntity.cs" />
@@ -173,6 +175,7 @@
     <Compile Include="Entities\MstDiscountEntity.cs" />
     <Compile Include="Entities\MstItemEntity.cs" />
     <Compile Include="Entities\MstItemInventoryEntity.cs" />
+    <Compile Include="Entities\MstItemPriceEntity.cs" />
     <Compile Include="Entities\MstPayTypeEntity.cs" />
     <Compile Include="Entities\MstPeriodEntity.cs" />
     <Compile Include="Entities\MstSupplierEntity.cs" />
@@ -244,6 +247,12 @@
     </Compile>
     <Compile Include="Forms\Software\MstItem\MstItemDetailForm.Designer.cs">
       <DependentUpon>MstItemDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\MstItem\MstItemDetailItemPriceDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\MstItem\MstItemDetailItemPriceDetailForm.Designer.cs">
+      <DependentUpon>MstItemDetailItemPriceDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\MstItem\MstItemListForm.cs">
       <SubType>Form</SubType>
@@ -431,6 +440,18 @@
     <Compile Include="Forms\Software\TrnDisbursement\TrnDisbursementListForm.Designer.cs">
       <DependentUpon>TrnDisbursementListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchDetail.Designer.cs">
+      <DependentUpon>TrnPOSTouchDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchForm.Designer.cs">
+      <DependentUpon>TrnPOSTouchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -594,6 +615,9 @@
     <EmbeddedResource Include="Forms\Software\MstItem\MstItemDetailForm.resx">
       <DependentUpon>MstItemDetailForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\MstItem\MstItemDetailItemPriceDetailForm.resx">
+      <DependentUpon>MstItemDetailItemPriceDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstUser\MstUserDetailForm.resx">
       <DependentUpon>MstUserDetailForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -674,6 +698,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnDisbursement\TrnDisbursementListForm.resx">
       <DependentUpon>TrnDisbursementListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTouchForm.resx">
+      <DependentUpon>TrnPOSTouchForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailTenderMoreInformationForm.resx">
       <DependentUpon>TrnSalesDetailTenderMoreInformationForm.cs</DependentUpon>
@@ -805,9 +832,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\Software\TrnPOSTouch\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="easypos cropped.ico" />
     <Content Include="Resources\Images\Backgrounds\coffee.jpeg" />

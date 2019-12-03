@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MstItemDetailForm));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxItemCode = new System.Windows.Forms.TextBox();
@@ -72,28 +73,37 @@
             this.textBoxCategory = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.buttonAddItemPrice = new System.Windows.Forms.Button();
+            this.dataGridViewItemPriceList = new System.Windows.Forms.DataGridView();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.buttonItemPriceListPageListFirst = new System.Windows.Forms.Button();
+            this.buttonItemPriceListPageListPrevious = new System.Windows.Forms.Button();
+            this.buttonItemPriceListPageListNext = new System.Windows.Forms.Button();
+            this.buttonItemPriceListPageListLast = new System.Windows.Forms.Button();
+            this.textBoxItemPriceListPageNumber = new System.Windows.Forms.TextBox();
             this.buttonLock = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonUnlock = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ColumnItemPriceListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnItemPriceListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnItemPriceListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemPriceListPriceDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemPriceListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemPriceListTriggerQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItemPriceList)).BeginInit();
+            this.panel19.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Item;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
             // 
             // textBoxDescription
             // 
@@ -166,6 +176,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
@@ -259,7 +270,7 @@
             // 
             this.dateTimePickerExpiryDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.dateTimePickerExpiryDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerExpiryDate.Location = new System.Drawing.Point(187, 580);
+            this.dateTimePickerExpiryDate.Location = new System.Drawing.Point(634, 222);
             this.dateTimePickerExpiryDate.Name = "dateTimePickerExpiryDate";
             this.dateTimePickerExpiryDate.Size = new System.Drawing.Size(214, 30);
             this.dateTimePickerExpiryDate.TabIndex = 37;
@@ -277,7 +288,7 @@
             // textBoxLotNumber
             // 
             this.textBoxLotNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxLotNumber.Location = new System.Drawing.Point(187, 616);
+            this.textBoxLotNumber.Location = new System.Drawing.Point(634, 258);
             this.textBoxLotNumber.Name = "textBoxLotNumber";
             this.textBoxLotNumber.Size = new System.Drawing.Size(312, 30);
             this.textBoxLotNumber.TabIndex = 34;
@@ -308,7 +319,7 @@
             this.textBoxRemarks.Location = new System.Drawing.Point(634, 80);
             this.textBoxRemarks.Multiline = true;
             this.textBoxRemarks.Name = "textBoxRemarks";
-            this.textBoxRemarks.Size = new System.Drawing.Size(353, 248);
+            this.textBoxRemarks.Size = new System.Drawing.Size(353, 101);
             this.textBoxRemarks.TabIndex = 33;
             this.textBoxRemarks.TabStop = false;
             // 
@@ -326,7 +337,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label17.Location = new System.Drawing.Point(75, 619);
+            this.label17.Location = new System.Drawing.Point(522, 261);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(106, 23);
             this.label17.TabIndex = 19;
@@ -385,7 +396,7 @@
             // 
             this.checkBoxIsPackage.AutoSize = true;
             this.checkBoxIsPackage.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxIsPackage.Location = new System.Drawing.Point(187, 547);
+            this.checkBoxIsPackage.Location = new System.Drawing.Point(634, 189);
             this.checkBoxIsPackage.Name = "checkBoxIsPackage";
             this.checkBoxIsPackage.Size = new System.Drawing.Size(37, 27);
             this.checkBoxIsPackage.TabIndex = 30;
@@ -541,7 +552,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label15.Location = new System.Drawing.Point(105, 548);
+            this.label15.Location = new System.Drawing.Point(552, 190);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(76, 23);
             this.label15.TabIndex = 17;
@@ -551,11 +562,154 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label16.Location = new System.Drawing.Point(81, 586);
+            this.label16.Location = new System.Drawing.Point(528, 228);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(100, 23);
             this.label16.TabIndex = 18;
             this.label16.Text = "Expiry Date:";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.buttonAddItemPrice);
+            this.tabPage2.Controls.Add(this.dataGridViewItemPriceList);
+            this.tabPage2.Controls.Add(this.panel19);
+            this.tabPage2.Location = new System.Drawing.Point(4, 32);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1392, 601);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Item Price List";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddItemPrice
+            // 
+            this.buttonAddItemPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAddItemPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonAddItemPrice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonAddItemPrice.FlatAppearance.BorderSize = 0;
+            this.buttonAddItemPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddItemPrice.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddItemPrice.ForeColor = System.Drawing.Color.White;
+            this.buttonAddItemPrice.Location = new System.Drawing.Point(1293, 6);
+            this.buttonAddItemPrice.Name = "buttonAddItemPrice";
+            this.buttonAddItemPrice.Size = new System.Drawing.Size(88, 40);
+            this.buttonAddItemPrice.TabIndex = 36;
+            this.buttonAddItemPrice.Text = "Add";
+            this.buttonAddItemPrice.UseVisualStyleBackColor = false;
+            this.buttonAddItemPrice.Click += new System.EventHandler(this.buttonAddItemPrice_Click);
+            // 
+            // dataGridViewItemPriceList
+            // 
+            this.dataGridViewItemPriceList.AllowUserToAddRows = false;
+            this.dataGridViewItemPriceList.AllowUserToDeleteRows = false;
+            this.dataGridViewItemPriceList.AllowUserToResizeRows = false;
+            this.dataGridViewItemPriceList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewItemPriceList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewItemPriceList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewItemPriceList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnItemPriceListButtonEdit,
+            this.ColumnItemPriceListButtonDelete,
+            this.ColumnItemPriceListId,
+            this.ColumnItemPriceListPriceDescription,
+            this.ColumnItemPriceListPrice,
+            this.ColumnItemPriceListTriggerQuantity});
+            this.dataGridViewItemPriceList.Location = new System.Drawing.Point(5, 52);
+            this.dataGridViewItemPriceList.MultiSelect = false;
+            this.dataGridViewItemPriceList.Name = "dataGridViewItemPriceList";
+            this.dataGridViewItemPriceList.ReadOnly = true;
+            this.dataGridViewItemPriceList.RowHeadersVisible = false;
+            this.dataGridViewItemPriceList.RowTemplate.Height = 24;
+            this.dataGridViewItemPriceList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewItemPriceList.Size = new System.Drawing.Size(1376, 487);
+            this.dataGridViewItemPriceList.TabIndex = 35;
+            this.dataGridViewItemPriceList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItemPriceList_CellClick);
+            // 
+            // panel19
+            // 
+            this.panel19.BackColor = System.Drawing.Color.White;
+            this.panel19.Controls.Add(this.buttonItemPriceListPageListFirst);
+            this.panel19.Controls.Add(this.buttonItemPriceListPageListPrevious);
+            this.panel19.Controls.Add(this.buttonItemPriceListPageListNext);
+            this.panel19.Controls.Add(this.buttonItemPriceListPageListLast);
+            this.panel19.Controls.Add(this.textBoxItemPriceListPageNumber);
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel19.Location = new System.Drawing.Point(3, 545);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(1386, 53);
+            this.panel19.TabIndex = 33;
+            // 
+            // buttonItemPriceListPageListFirst
+            // 
+            this.buttonItemPriceListPageListFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonItemPriceListPageListFirst.Enabled = false;
+            this.buttonItemPriceListPageListFirst.FlatAppearance.BorderSize = 0;
+            this.buttonItemPriceListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemPriceListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonItemPriceListPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonItemPriceListPageListFirst.Name = "buttonItemPriceListPageListFirst";
+            this.buttonItemPriceListPageListFirst.Size = new System.Drawing.Size(82, 32);
+            this.buttonItemPriceListPageListFirst.TabIndex = 13;
+            this.buttonItemPriceListPageListFirst.Text = "First";
+            this.buttonItemPriceListPageListFirst.UseVisualStyleBackColor = false;
+            this.buttonItemPriceListPageListFirst.Click += new System.EventHandler(this.buttonItemPriceListPageListFirst_Click);
+            // 
+            // buttonItemPriceListPageListPrevious
+            // 
+            this.buttonItemPriceListPageListPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonItemPriceListPageListPrevious.Enabled = false;
+            this.buttonItemPriceListPageListPrevious.FlatAppearance.BorderSize = 0;
+            this.buttonItemPriceListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemPriceListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonItemPriceListPageListPrevious.Location = new System.Drawing.Point(100, 9);
+            this.buttonItemPriceListPageListPrevious.Name = "buttonItemPriceListPageListPrevious";
+            this.buttonItemPriceListPageListPrevious.Size = new System.Drawing.Size(82, 32);
+            this.buttonItemPriceListPageListPrevious.TabIndex = 14;
+            this.buttonItemPriceListPageListPrevious.Text = "Previous";
+            this.buttonItemPriceListPageListPrevious.UseVisualStyleBackColor = false;
+            this.buttonItemPriceListPageListPrevious.Click += new System.EventHandler(this.buttonItemPriceListPageListPrevious_Click);
+            // 
+            // buttonItemPriceListPageListNext
+            // 
+            this.buttonItemPriceListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonItemPriceListPageListNext.FlatAppearance.BorderSize = 0;
+            this.buttonItemPriceListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemPriceListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonItemPriceListPageListNext.Location = new System.Drawing.Point(263, 9);
+            this.buttonItemPriceListPageListNext.Name = "buttonItemPriceListPageListNext";
+            this.buttonItemPriceListPageListNext.Size = new System.Drawing.Size(82, 32);
+            this.buttonItemPriceListPageListNext.TabIndex = 15;
+            this.buttonItemPriceListPageListNext.Text = "Next";
+            this.buttonItemPriceListPageListNext.UseVisualStyleBackColor = false;
+            this.buttonItemPriceListPageListNext.Click += new System.EventHandler(this.buttonItemPriceListPageListNext_Click);
+            // 
+            // buttonItemPriceListPageListLast
+            // 
+            this.buttonItemPriceListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonItemPriceListPageListLast.FlatAppearance.BorderSize = 0;
+            this.buttonItemPriceListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemPriceListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonItemPriceListPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonItemPriceListPageListLast.Name = "buttonItemPriceListPageListLast";
+            this.buttonItemPriceListPageListLast.Size = new System.Drawing.Size(82, 32);
+            this.buttonItemPriceListPageListLast.TabIndex = 16;
+            this.buttonItemPriceListPageListLast.Text = "Last";
+            this.buttonItemPriceListPageListLast.UseVisualStyleBackColor = false;
+            this.buttonItemPriceListPageListLast.Click += new System.EventHandler(this.buttonItemPriceListPageListLast_Click);
+            // 
+            // textBoxItemPriceListPageNumber
+            // 
+            this.textBoxItemPriceListPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBoxItemPriceListPageNumber.BackColor = System.Drawing.Color.White;
+            this.textBoxItemPriceListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxItemPriceListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textBoxItemPriceListPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxItemPriceListPageNumber.Name = "textBoxItemPriceListPageNumber";
+            this.textBoxItemPriceListPageNumber.ReadOnly = true;
+            this.textBoxItemPriceListPageNumber.Size = new System.Drawing.Size(69, 20);
+            this.textBoxItemPriceListPageNumber.TabIndex = 17;
+            this.textBoxItemPriceListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonLock
             // 
@@ -633,6 +787,70 @@
             this.panel1.Size = new System.Drawing.Size(1400, 63);
             this.panel1.TabIndex = 7;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Item;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // ColumnItemPriceListButtonEdit
+            // 
+            this.ColumnItemPriceListButtonEdit.DataPropertyName = "ColumnItemPriceListButtonEdit";
+            this.ColumnItemPriceListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnItemPriceListButtonEdit.HeaderText = "";
+            this.ColumnItemPriceListButtonEdit.Name = "ColumnItemPriceListButtonEdit";
+            this.ColumnItemPriceListButtonEdit.ReadOnly = true;
+            this.ColumnItemPriceListButtonEdit.Width = 70;
+            // 
+            // ColumnItemPriceListButtonDelete
+            // 
+            this.ColumnItemPriceListButtonDelete.DataPropertyName = "ColumnItemPriceListButtonDelete";
+            this.ColumnItemPriceListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnItemPriceListButtonDelete.HeaderText = "";
+            this.ColumnItemPriceListButtonDelete.Name = "ColumnItemPriceListButtonDelete";
+            this.ColumnItemPriceListButtonDelete.ReadOnly = true;
+            this.ColumnItemPriceListButtonDelete.Width = 70;
+            // 
+            // ColumnItemPriceListId
+            // 
+            this.ColumnItemPriceListId.DataPropertyName = "ColumnItemPriceListId";
+            this.ColumnItemPriceListId.HeaderText = "Id";
+            this.ColumnItemPriceListId.Name = "ColumnItemPriceListId";
+            this.ColumnItemPriceListId.ReadOnly = true;
+            this.ColumnItemPriceListId.Visible = false;
+            // 
+            // ColumnItemPriceListPriceDescription
+            // 
+            this.ColumnItemPriceListPriceDescription.DataPropertyName = "ColumnItemPriceListPriceDescription";
+            this.ColumnItemPriceListPriceDescription.HeaderText = "Price Description";
+            this.ColumnItemPriceListPriceDescription.Name = "ColumnItemPriceListPriceDescription";
+            this.ColumnItemPriceListPriceDescription.ReadOnly = true;
+            this.ColumnItemPriceListPriceDescription.Width = 350;
+            // 
+            // ColumnItemPriceListPrice
+            // 
+            this.ColumnItemPriceListPrice.DataPropertyName = "ColumnItemPriceListPrice";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnItemPriceListPrice.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColumnItemPriceListPrice.HeaderText = "Price";
+            this.ColumnItemPriceListPrice.Name = "ColumnItemPriceListPrice";
+            this.ColumnItemPriceListPrice.ReadOnly = true;
+            this.ColumnItemPriceListPrice.Width = 150;
+            // 
+            // ColumnItemPriceListTriggerQuantity
+            // 
+            this.ColumnItemPriceListTriggerQuantity.DataPropertyName = "ColumnItemPriceListTriggerQuantity";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnItemPriceListTriggerQuantity.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnItemPriceListTriggerQuantity.HeaderText = "Trigger Qty.";
+            this.ColumnItemPriceListTriggerQuantity.Name = "ColumnItemPriceListTriggerQuantity";
+            this.ColumnItemPriceListTriggerQuantity.ReadOnly = true;
+            this.ColumnItemPriceListTriggerQuantity.Width = 150;
+            // 
             // MstItemDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -645,14 +863,18 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MstItemDetailForm";
             this.Text = "MstItemDetailForm";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItemPriceList)).EndInit();
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -707,5 +929,20 @@
         private System.Windows.Forms.ComboBox comboBoxSalesVAT;
         private System.Windows.Forms.DateTimePicker dateTimePickerExpiryDate;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridView dataGridViewItemPriceList;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Button buttonItemPriceListPageListFirst;
+        private System.Windows.Forms.Button buttonItemPriceListPageListPrevious;
+        private System.Windows.Forms.Button buttonItemPriceListPageListNext;
+        private System.Windows.Forms.Button buttonItemPriceListPageListLast;
+        private System.Windows.Forms.TextBox textBoxItemPriceListPageNumber;
+        private System.Windows.Forms.Button buttonAddItemPrice;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnItemPriceListButtonEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnItemPriceListButtonDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemPriceListId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemPriceListPriceDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemPriceListPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemPriceListTriggerQuantity;
     }
 }
