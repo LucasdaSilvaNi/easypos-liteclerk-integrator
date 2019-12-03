@@ -310,8 +310,6 @@ namespace EasyPOS.Forms.Software.TrnStockCount
                 var quantity = Convert.ToDecimal(dataGridViewStockCountLineList.Rows[e.RowIndex].Cells[dataGridViewStockCountLineList.Columns["ColumnStockCountLineListQuantity"].Index].Value);
                 var cost = Convert.ToDecimal(dataGridViewStockCountLineList.Rows[e.RowIndex].Cells[dataGridViewStockCountLineList.Columns["ColumnStockCountLineListCost"].Index].Value);
                 var amount = Convert.ToDecimal(dataGridViewStockCountLineList.Rows[e.RowIndex].Cells[dataGridViewStockCountLineList.Columns["ColumnStockCountLineListAmount"].Index].Value);
-                var assetAccountId = Convert.ToInt32(dataGridViewStockCountLineList.Rows[e.RowIndex].Cells[dataGridViewStockCountLineList.Columns["ColumnStockCountLineListAssetAccountId"].Index].Value);
-                var assetAccount = dataGridViewStockCountLineList.Rows[e.RowIndex].Cells[dataGridViewStockCountLineList.Columns["ColumnStockCountLineListAssetAccount"].Index].Value.ToString();
 
                 Entities.TrnStockCountLineEntity trnStockCountLineEntity = new Entities.TrnStockCountLineEntity()
                 {
