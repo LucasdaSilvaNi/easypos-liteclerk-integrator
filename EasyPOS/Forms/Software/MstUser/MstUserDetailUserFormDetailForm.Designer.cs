@@ -65,7 +65,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(710, 63);
+            this.panel1.Size = new System.Drawing.Size(516, 63);
             this.panel1.TabIndex = 6;
             // 
             // pictureBox1
@@ -98,7 +98,7 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(610, 12);
+            this.buttonClose.Location = new System.Drawing.Point(416, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
@@ -115,7 +115,7 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(516, 12);
+            this.buttonSave.Location = new System.Drawing.Point(322, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
             this.buttonSave.TabIndex = 0;
@@ -143,14 +143,14 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 63);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(710, 400);
+            this.panel2.Size = new System.Drawing.Size(516, 322);
             this.panel2.TabIndex = 7;
             // 
             // checkBoxCanReturn
             // 
             this.checkBoxCanReturn.AutoSize = true;
             this.checkBoxCanReturn.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxCanReturn.Location = new System.Drawing.Point(354, 215);
+            this.checkBoxCanReturn.Location = new System.Drawing.Point(260, 185);
             this.checkBoxCanReturn.Name = "checkBoxCanReturn";
             this.checkBoxCanReturn.Size = new System.Drawing.Size(118, 27);
             this.checkBoxCanReturn.TabIndex = 29;
@@ -161,7 +161,7 @@
             // 
             this.checkBoxCanCancel.AutoSize = true;
             this.checkBoxCanCancel.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxCanCancel.Location = new System.Drawing.Point(354, 182);
+            this.checkBoxCanCancel.Location = new System.Drawing.Point(260, 152);
             this.checkBoxCanCancel.Name = "checkBoxCanCancel";
             this.checkBoxCanCancel.Size = new System.Drawing.Size(118, 27);
             this.checkBoxCanCancel.TabIndex = 28;
@@ -172,7 +172,7 @@
             // 
             this.checkBoxCanSplit.AutoSize = true;
             this.checkBoxCanSplit.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxCanSplit.Location = new System.Drawing.Point(354, 149);
+            this.checkBoxCanSplit.Location = new System.Drawing.Point(260, 119);
             this.checkBoxCanSplit.Name = "checkBoxCanSplit";
             this.checkBoxCanSplit.Size = new System.Drawing.Size(100, 27);
             this.checkBoxCanSplit.TabIndex = 27;
@@ -183,7 +183,7 @@
             // 
             this.checkBoxCanView.AutoSize = true;
             this.checkBoxCanView.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxCanView.Location = new System.Drawing.Point(354, 116);
+            this.checkBoxCanView.Location = new System.Drawing.Point(260, 86);
             this.checkBoxCanView.Name = "checkBoxCanView";
             this.checkBoxCanView.Size = new System.Drawing.Size(103, 27);
             this.checkBoxCanView.TabIndex = 26;
@@ -194,7 +194,7 @@
             // 
             this.checkBoxCanDiscount.AutoSize = true;
             this.checkBoxCanDiscount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxCanDiscount.Location = new System.Drawing.Point(354, 83);
+            this.checkBoxCanDiscount.Location = new System.Drawing.Point(260, 53);
             this.checkBoxCanDiscount.Name = "checkBoxCanDiscount";
             this.checkBoxCanDiscount.Size = new System.Drawing.Size(134, 27);
             this.checkBoxCanDiscount.TabIndex = 25;
@@ -205,7 +205,7 @@
             // 
             this.checkBoxCanTender.AutoSize = true;
             this.checkBoxCanTender.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxCanTender.Location = new System.Drawing.Point(165, 314);
+            this.checkBoxCanTender.Location = new System.Drawing.Point(71, 284);
             this.checkBoxCanTender.Name = "checkBoxCanTender";
             this.checkBoxCanTender.Size = new System.Drawing.Size(118, 27);
             this.checkBoxCanTender.TabIndex = 24;
@@ -216,7 +216,7 @@
             // 
             this.checkBoxCanEdit.AutoSize = true;
             this.checkBoxCanEdit.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxCanEdit.Location = new System.Drawing.Point(165, 281);
+            this.checkBoxCanEdit.Location = new System.Drawing.Point(71, 251);
             this.checkBoxCanEdit.Name = "checkBoxCanEdit";
             this.checkBoxCanEdit.Size = new System.Drawing.Size(96, 27);
             this.checkBoxCanEdit.TabIndex = 23;
@@ -227,7 +227,7 @@
             // 
             this.checkBoxCanPreview.AutoSize = true;
             this.checkBoxCanPreview.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxCanPreview.Location = new System.Drawing.Point(165, 248);
+            this.checkBoxCanPreview.Location = new System.Drawing.Point(71, 218);
             this.checkBoxCanPreview.Name = "checkBoxCanPreview";
             this.checkBoxCanPreview.Size = new System.Drawing.Size(125, 27);
             this.checkBoxCanPreview.TabIndex = 22;
@@ -238,7 +238,7 @@
             // 
             this.checkBoxCanPrint.AutoSize = true;
             this.checkBoxCanPrint.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxCanPrint.Location = new System.Drawing.Point(165, 215);
+            this.checkBoxCanPrint.Location = new System.Drawing.Point(71, 185);
             this.checkBoxCanPrint.Name = "checkBoxCanPrint";
             this.checkBoxCanPrint.Size = new System.Drawing.Size(103, 27);
             this.checkBoxCanPrint.TabIndex = 21;
@@ -249,7 +249,7 @@
             // 
             this.checkBoxCanUnlock.AutoSize = true;
             this.checkBoxCanUnlock.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxCanUnlock.Location = new System.Drawing.Point(165, 182);
+            this.checkBoxCanUnlock.Location = new System.Drawing.Point(71, 152);
             this.checkBoxCanUnlock.Name = "checkBoxCanUnlock";
             this.checkBoxCanUnlock.Size = new System.Drawing.Size(119, 27);
             this.checkBoxCanUnlock.TabIndex = 20;
@@ -260,7 +260,7 @@
             // 
             this.checkBoxCanLock.AutoSize = true;
             this.checkBoxCanLock.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxCanLock.Location = new System.Drawing.Point(165, 149);
+            this.checkBoxCanLock.Location = new System.Drawing.Point(71, 119);
             this.checkBoxCanLock.Name = "checkBoxCanLock";
             this.checkBoxCanLock.Size = new System.Drawing.Size(101, 27);
             this.checkBoxCanLock.TabIndex = 19;
@@ -271,7 +271,7 @@
             // 
             this.checkBoxCanAdd.AutoSize = true;
             this.checkBoxCanAdd.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxCanAdd.Location = new System.Drawing.Point(165, 116);
+            this.checkBoxCanAdd.Location = new System.Drawing.Point(71, 86);
             this.checkBoxCanAdd.Name = "checkBoxCanAdd";
             this.checkBoxCanAdd.Size = new System.Drawing.Size(98, 27);
             this.checkBoxCanAdd.TabIndex = 18;
@@ -282,7 +282,7 @@
             // 
             this.checkBoxCanDelete.AutoSize = true;
             this.checkBoxCanDelete.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxCanDelete.Location = new System.Drawing.Point(165, 83);
+            this.checkBoxCanDelete.Location = new System.Drawing.Point(71, 53);
             this.checkBoxCanDelete.Name = "checkBoxCanDelete";
             this.checkBoxCanDelete.Size = new System.Drawing.Size(116, 27);
             this.checkBoxCanDelete.TabIndex = 17;
@@ -293,16 +293,16 @@
             // 
             this.comboBoxForm.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxForm.FormattingEnabled = true;
-            this.comboBoxForm.Location = new System.Drawing.Point(165, 36);
+            this.comboBoxForm.Location = new System.Drawing.Point(71, 6);
             this.comboBoxForm.Name = "comboBoxForm";
-            this.comboBoxForm.Size = new System.Drawing.Size(422, 31);
+            this.comboBoxForm.Size = new System.Drawing.Size(433, 31);
             this.comboBoxForm.TabIndex = 16;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label2.Location = new System.Drawing.Point(106, 39);
+            this.label2.Location = new System.Drawing.Point(12, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 23);
             this.label2.TabIndex = 15;
@@ -312,7 +312,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(710, 463);
+            this.ClientSize = new System.Drawing.Size(516, 385);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

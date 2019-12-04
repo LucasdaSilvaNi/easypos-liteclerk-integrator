@@ -207,5 +207,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 SaveTender();
             }
         }
+
+        private void textBoxSalesLinePrice_Click(object sender, EventArgs e)
+        {
+            TrnSalesDetailSalesItemDetailItemPriceForm trnSalesDetailSalesItemDetailItemPriceForm = new TrnSalesDetailSalesItemDetailItemPriceForm();
+            trnSalesDetailSalesItemDetailItemPriceForm.ShowDialog();
+        }
     }
 }

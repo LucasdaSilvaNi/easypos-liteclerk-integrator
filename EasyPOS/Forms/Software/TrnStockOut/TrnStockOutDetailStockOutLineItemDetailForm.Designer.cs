@@ -131,13 +131,13 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 63);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(936, 286);
+            this.panel2.Size = new System.Drawing.Size(936, 197);
             this.panel2.TabIndex = 9;
             // 
             // textBoxStockOutLineAmount
             // 
             this.textBoxStockOutLineAmount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxStockOutLineAmount.Location = new System.Drawing.Point(182, 193);
+            this.textBoxStockOutLineAmount.Location = new System.Drawing.Point(182, 158);
             this.textBoxStockOutLineAmount.Name = "textBoxStockOutLineAmount";
             this.textBoxStockOutLineAmount.ReadOnly = true;
             this.textBoxStockOutLineAmount.Size = new System.Drawing.Size(269, 30);
@@ -149,7 +149,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label9.Location = new System.Drawing.Point(100, 196);
+            this.label9.Location = new System.Drawing.Point(100, 161);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(76, 23);
             this.label9.TabIndex = 23;
@@ -159,7 +159,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label4.Location = new System.Drawing.Point(128, 160);
+            this.label4.Location = new System.Drawing.Point(128, 125);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 23);
             this.label4.TabIndex = 17;
@@ -168,7 +168,7 @@
             // textBoxStockOutLineCost
             // 
             this.textBoxStockOutLineCost.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxStockOutLineCost.Location = new System.Drawing.Point(182, 157);
+            this.textBoxStockOutLineCost.Location = new System.Drawing.Point(182, 122);
             this.textBoxStockOutLineCost.Name = "textBoxStockOutLineCost";
             this.textBoxStockOutLineCost.Size = new System.Drawing.Size(269, 30);
             this.textBoxStockOutLineCost.TabIndex = 16;
@@ -181,7 +181,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label2.Location = new System.Drawing.Point(96, 88);
+            this.label2.Location = new System.Drawing.Point(96, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 23);
             this.label2.TabIndex = 13;
@@ -194,10 +194,10 @@
             this.textBoxStockOutLineItemDescription.BackColor = System.Drawing.Color.White;
             this.textBoxStockOutLineItemDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxStockOutLineItemDescription.Font = new System.Drawing.Font("Segoe UI", 17F, System.Drawing.FontStyle.Bold);
-            this.textBoxStockOutLineItemDescription.Location = new System.Drawing.Point(0, 22);
+            this.textBoxStockOutLineItemDescription.Location = new System.Drawing.Point(12, 6);
             this.textBoxStockOutLineItemDescription.Name = "textBoxStockOutLineItemDescription";
             this.textBoxStockOutLineItemDescription.ReadOnly = true;
-            this.textBoxStockOutLineItemDescription.Size = new System.Drawing.Size(933, 38);
+            this.textBoxStockOutLineItemDescription.Size = new System.Drawing.Size(912, 38);
             this.textBoxStockOutLineItemDescription.TabIndex = 12;
             this.textBoxStockOutLineItemDescription.TabStop = false;
             this.textBoxStockOutLineItemDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -205,7 +205,7 @@
             // textBoxStockOutLineQuantity
             // 
             this.textBoxStockOutLineQuantity.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxStockOutLineQuantity.Location = new System.Drawing.Point(182, 85);
+            this.textBoxStockOutLineQuantity.Location = new System.Drawing.Point(182, 50);
             this.textBoxStockOutLineQuantity.Name = "textBoxStockOutLineQuantity";
             this.textBoxStockOutLineQuantity.Size = new System.Drawing.Size(269, 30);
             this.textBoxStockOutLineQuantity.TabIndex = 11;
@@ -218,7 +218,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label3.Location = new System.Drawing.Point(130, 124);
+            this.label3.Location = new System.Drawing.Point(130, 89);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 23);
             this.label3.TabIndex = 14;
@@ -227,7 +227,7 @@
             // textBoxStockOutLineUnit
             // 
             this.textBoxStockOutLineUnit.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxStockOutLineUnit.Location = new System.Drawing.Point(182, 121);
+            this.textBoxStockOutLineUnit.Location = new System.Drawing.Point(182, 86);
             this.textBoxStockOutLineUnit.Name = "textBoxStockOutLineUnit";
             this.textBoxStockOutLineUnit.ReadOnly = true;
             this.textBoxStockOutLineUnit.Size = new System.Drawing.Size(116, 30);
@@ -238,7 +238,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(936, 349);
+            this.ClientSize = new System.Drawing.Size(936, 260);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

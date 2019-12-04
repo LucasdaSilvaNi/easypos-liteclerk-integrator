@@ -54,7 +54,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(612, 63);
+            this.panel1.Size = new System.Drawing.Size(497, 63);
             this.panel1.TabIndex = 6;
             // 
             // buttonSave
@@ -66,7 +66,7 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(418, 12);
+            this.buttonSave.Location = new System.Drawing.Point(303, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
             this.buttonSave.TabIndex = 4;
@@ -104,7 +104,7 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(512, 12);
+            this.buttonClose.Location = new System.Drawing.Point(397, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
@@ -115,16 +115,16 @@
             // textBoxCode
             // 
             this.textBoxCode.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxCode.Location = new System.Drawing.Point(151, 89);
+            this.textBoxCode.Location = new System.Drawing.Point(95, 69);
             this.textBoxCode.Name = "textBoxCode";
-            this.textBoxCode.Size = new System.Drawing.Size(233, 30);
+            this.textBoxCode.Size = new System.Drawing.Size(156, 30);
             this.textBoxCode.TabIndex = 7;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label2.Location = new System.Drawing.Point(91, 92);
+            this.label2.Location = new System.Drawing.Point(35, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 23);
             this.label2.TabIndex = 8;
@@ -134,7 +134,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label3.Location = new System.Drawing.Point(68, 128);
+            this.label3.Location = new System.Drawing.Point(12, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 23);
             this.label3.TabIndex = 9;
@@ -144,7 +144,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label4.Location = new System.Drawing.Point(96, 164);
+            this.label4.Location = new System.Drawing.Point(40, 144);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 23);
             this.label4.TabIndex = 10;
@@ -153,25 +153,25 @@
             // textBoxAccount
             // 
             this.textBoxAccount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxAccount.Location = new System.Drawing.Point(151, 125);
+            this.textBoxAccount.Location = new System.Drawing.Point(95, 105);
             this.textBoxAccount.Name = "textBoxAccount";
-            this.textBoxAccount.Size = new System.Drawing.Size(355, 30);
+            this.textBoxAccount.Size = new System.Drawing.Size(390, 30);
             this.textBoxAccount.TabIndex = 11;
             // 
             // comboBoxType
             // 
             this.comboBoxType.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.Location = new System.Drawing.Point(151, 161);
+            this.comboBoxType.Location = new System.Drawing.Point(95, 141);
             this.comboBoxType.Name = "comboBoxType";
-            this.comboBoxType.Size = new System.Drawing.Size(307, 31);
+            this.comboBoxType.Size = new System.Drawing.Size(296, 31);
             this.comboBoxType.TabIndex = 12;
             // 
             // SysSystemTablesAccountDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(612, 226);
+            this.ClientSize = new System.Drawing.Size(497, 181);
             this.Controls.Add(this.comboBoxType);
             this.Controls.Add(this.textBoxAccount);
             this.Controls.Add(this.label4);

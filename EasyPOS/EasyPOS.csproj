@@ -464,6 +464,12 @@
     <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailSalesItemDetailForm.Designer.cs">
       <DependentUpon>TrnSalesDetailSalesItemDetailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailSalesItemDetailItemPriceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailSalesItemDetailItemPriceForm.Designer.cs">
+      <DependentUpon>TrnSalesDetailSalesItemDetailItemPriceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailSearchItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -702,6 +708,9 @@
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTouchForm.resx">
       <DependentUpon>TrnPOSTouchForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailSalesItemDetailItemPriceForm.resx">
+      <DependentUpon>TrnSalesDetailSalesItemDetailItemPriceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailTenderMoreInformationForm.resx">
       <DependentUpon>TrnSalesDetailTenderMoreInformationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -756,7 +765,6 @@
     <EmbeddedResource Include="Forms\Software\RepPOSReport\RepPOSReportZReadingReportForm.resx">
       <DependentUpon>RepPOSReportZReadingReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Data\easyposdb.dbml.layout">
       <DependentUpon>easyposdb.dbml</DependentUpon>
     </None>

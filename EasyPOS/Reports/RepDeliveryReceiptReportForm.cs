@@ -25,8 +25,7 @@ namespace EasyPOS.Reports
             trnCollectionId = collectionId;
             trnIsReprinted = isReprinted;
 
-            printDocumentDeliveryReceipt.DefaultPageSettings.PaperSize = new PaperSize("Letter", 850, 1100);
-            printDocumentDeliveryReceipt.DefaultPageSettings.Landscape = true;
+            printDocumentDeliveryReceipt.DefaultPageSettings.PaperSize = new PaperSize("Delivery Receipt", 1100, 850);
 
             Margins margins = new Margins(50, 50, 50, 50);
             printDocumentDeliveryReceipt.DefaultPageSettings.Margins = margins;

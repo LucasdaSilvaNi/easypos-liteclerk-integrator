@@ -54,7 +54,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(581, 63);
+            this.panel1.Size = new System.Drawing.Size(518, 63);
             this.panel1.TabIndex = 7;
             // 
             // buttonSave
@@ -66,7 +66,7 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(387, 12);
+            this.buttonSave.Location = new System.Drawing.Point(324, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
             this.buttonSave.TabIndex = 4;
@@ -104,7 +104,7 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(481, 12);
+            this.buttonClose.Location = new System.Drawing.Point(418, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
@@ -115,16 +115,16 @@
             // textBoxPriceDescription
             // 
             this.textBoxPriceDescription.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxPriceDescription.Location = new System.Drawing.Point(180, 80);
+            this.textBoxPriceDescription.Location = new System.Drawing.Point(160, 69);
             this.textBoxPriceDescription.Name = "textBoxPriceDescription";
-            this.textBoxPriceDescription.Size = new System.Drawing.Size(337, 30);
+            this.textBoxPriceDescription.Size = new System.Drawing.Size(346, 30);
             this.textBoxPriceDescription.TabIndex = 12;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label2.Location = new System.Drawing.Point(32, 83);
+            this.label2.Location = new System.Drawing.Point(12, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(142, 23);
             this.label2.TabIndex = 11;
@@ -133,9 +133,9 @@
             // textBoxPrice
             // 
             this.textBoxPrice.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxPrice.Location = new System.Drawing.Point(180, 116);
+            this.textBoxPrice.Location = new System.Drawing.Point(160, 105);
             this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(202, 30);
+            this.textBoxPrice.Size = new System.Drawing.Size(252, 30);
             this.textBoxPrice.TabIndex = 14;
             this.textBoxPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPrice_KeyPress);
@@ -145,7 +145,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label3.Location = new System.Drawing.Point(123, 119);
+            this.label3.Location = new System.Drawing.Point(103, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 23);
             this.label3.TabIndex = 13;
@@ -154,9 +154,9 @@
             // textBoxTriggerQuantity
             // 
             this.textBoxTriggerQuantity.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxTriggerQuantity.Location = new System.Drawing.Point(180, 152);
+            this.textBoxTriggerQuantity.Location = new System.Drawing.Point(160, 141);
             this.textBoxTriggerQuantity.Name = "textBoxTriggerQuantity";
-            this.textBoxTriggerQuantity.Size = new System.Drawing.Size(202, 30);
+            this.textBoxTriggerQuantity.Size = new System.Drawing.Size(252, 30);
             this.textBoxTriggerQuantity.TabIndex = 16;
             this.textBoxTriggerQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxTriggerQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTriggerQuantity_KeyPress);
@@ -166,7 +166,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label4.Location = new System.Drawing.Point(36, 155);
+            this.label4.Location = new System.Drawing.Point(16, 144);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(138, 23);
             this.label4.TabIndex = 15;
@@ -176,7 +176,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(581, 202);
+            this.ClientSize = new System.Drawing.Size(518, 179);
             this.Controls.Add(this.textBoxTriggerQuantity);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBoxPrice);
@@ -184,6 +184,8 @@
             this.Controls.Add(this.textBoxPriceDescription);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MstItemDetailItemPriceDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -50,7 +50,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(529, 63);
+            this.panel1.Size = new System.Drawing.Size(457, 63);
             this.panel1.TabIndex = 6;
             // 
             // buttonSave
@@ -62,7 +62,7 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(335, 12);
+            this.buttonSave.Location = new System.Drawing.Point(263, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
             this.buttonSave.TabIndex = 4;
@@ -100,7 +100,7 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(429, 12);
+            this.buttonClose.Location = new System.Drawing.Point(357, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
@@ -111,16 +111,16 @@
             // textBoxPeriod
             // 
             this.textBoxPeriod.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxPeriod.Location = new System.Drawing.Point(144, 90);
+            this.textBoxPeriod.Location = new System.Drawing.Point(80, 69);
             this.textBoxPeriod.Name = "textBoxPeriod";
-            this.textBoxPeriod.Size = new System.Drawing.Size(279, 30);
+            this.textBoxPeriod.Size = new System.Drawing.Size(365, 30);
             this.textBoxPeriod.TabIndex = 10;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label2.Location = new System.Drawing.Point(76, 93);
+            this.label2.Location = new System.Drawing.Point(12, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 23);
             this.label2.TabIndex = 9;
@@ -130,7 +130,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(529, 146);
+            this.ClientSize = new System.Drawing.Size(457, 109);
             this.Controls.Add(this.textBoxPeriod);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
