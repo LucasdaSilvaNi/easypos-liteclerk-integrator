@@ -59,7 +59,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(936, 63);
+            this.panel1.Size = new System.Drawing.Size(686, 63);
             this.panel1.TabIndex = 8;
             // 
             // pictureBox1
@@ -92,7 +92,7 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(836, 12);
+            this.buttonClose.Location = new System.Drawing.Point(586, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
@@ -109,7 +109,7 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(742, 12);
+            this.buttonSave.Location = new System.Drawing.Point(492, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
             this.buttonSave.TabIndex = 0;
@@ -131,13 +131,13 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 63);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(936, 197);
+            this.panel2.Size = new System.Drawing.Size(686, 191);
             this.panel2.TabIndex = 9;
             // 
             // textBoxStockCountLineAmount
             // 
             this.textBoxStockCountLineAmount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxStockCountLineAmount.Location = new System.Drawing.Point(182, 158);
+            this.textBoxStockCountLineAmount.Location = new System.Drawing.Point(98, 152);
             this.textBoxStockCountLineAmount.Name = "textBoxStockCountLineAmount";
             this.textBoxStockCountLineAmount.ReadOnly = true;
             this.textBoxStockCountLineAmount.Size = new System.Drawing.Size(269, 30);
@@ -149,7 +149,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label9.Location = new System.Drawing.Point(100, 161);
+            this.label9.Location = new System.Drawing.Point(16, 155);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(76, 23);
             this.label9.TabIndex = 23;
@@ -159,7 +159,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label4.Location = new System.Drawing.Point(128, 125);
+            this.label4.Location = new System.Drawing.Point(44, 119);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 23);
             this.label4.TabIndex = 17;
@@ -168,7 +168,7 @@
             // textBoxStockCountLineCost
             // 
             this.textBoxStockCountLineCost.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxStockCountLineCost.Location = new System.Drawing.Point(182, 122);
+            this.textBoxStockCountLineCost.Location = new System.Drawing.Point(98, 116);
             this.textBoxStockCountLineCost.Name = "textBoxStockCountLineCost";
             this.textBoxStockCountLineCost.Size = new System.Drawing.Size(269, 30);
             this.textBoxStockCountLineCost.TabIndex = 16;
@@ -181,7 +181,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label2.Location = new System.Drawing.Point(96, 53);
+            this.label2.Location = new System.Drawing.Point(12, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 23);
             this.label2.TabIndex = 13;
@@ -193,11 +193,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxStockCountLineItemDescription.BackColor = System.Drawing.Color.White;
             this.textBoxStockCountLineItemDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxStockCountLineItemDescription.Font = new System.Drawing.Font("Segoe UI", 17F, System.Drawing.FontStyle.Bold);
+            this.textBoxStockCountLineItemDescription.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.textBoxStockCountLineItemDescription.Location = new System.Drawing.Point(12, 6);
             this.textBoxStockCountLineItemDescription.Name = "textBoxStockCountLineItemDescription";
             this.textBoxStockCountLineItemDescription.ReadOnly = true;
-            this.textBoxStockCountLineItemDescription.Size = new System.Drawing.Size(912, 38);
+            this.textBoxStockCountLineItemDescription.Size = new System.Drawing.Size(662, 32);
             this.textBoxStockCountLineItemDescription.TabIndex = 12;
             this.textBoxStockCountLineItemDescription.TabStop = false;
             this.textBoxStockCountLineItemDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -205,7 +205,7 @@
             // textBoxStockCountLineQuantity
             // 
             this.textBoxStockCountLineQuantity.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxStockCountLineQuantity.Location = new System.Drawing.Point(182, 50);
+            this.textBoxStockCountLineQuantity.Location = new System.Drawing.Point(98, 44);
             this.textBoxStockCountLineQuantity.Name = "textBoxStockCountLineQuantity";
             this.textBoxStockCountLineQuantity.Size = new System.Drawing.Size(269, 30);
             this.textBoxStockCountLineQuantity.TabIndex = 11;
@@ -218,7 +218,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label3.Location = new System.Drawing.Point(130, 89);
+            this.label3.Location = new System.Drawing.Point(46, 83);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 23);
             this.label3.TabIndex = 14;
@@ -227,7 +227,7 @@
             // textBoxStockCountLineUnit
             // 
             this.textBoxStockCountLineUnit.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxStockCountLineUnit.Location = new System.Drawing.Point(182, 86);
+            this.textBoxStockCountLineUnit.Location = new System.Drawing.Point(98, 80);
             this.textBoxStockCountLineUnit.Name = "textBoxStockCountLineUnit";
             this.textBoxStockCountLineUnit.ReadOnly = true;
             this.textBoxStockCountLineUnit.Size = new System.Drawing.Size(116, 30);
@@ -238,7 +238,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(936, 260);
+            this.ClientSize = new System.Drawing.Size(686, 254);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

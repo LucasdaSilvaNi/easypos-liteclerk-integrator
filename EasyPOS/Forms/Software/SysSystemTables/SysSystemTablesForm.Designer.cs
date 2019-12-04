@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SysSystemTablesForm));
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControlSystemTable = new System.Windows.Forms.TabControl();
@@ -66,14 +67,6 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel11 = new System.Windows.Forms.Panel();
             this.dataGridViewTaxList = new System.Windows.Forms.DataGridView();
-            this.ColumnTaxListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnTaxListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnTaxListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTaxListCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTaxListTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTaxListRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTaxListAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTaxListAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxTaxListFilter = new System.Windows.Forms.TextBox();
             this.panel17 = new System.Windows.Forms.Panel();
             this.buttonTaxListPageListFirst = new System.Windows.Forms.Button();
@@ -126,18 +119,6 @@
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridViewSupplierList = new System.Windows.Forms.DataGridView();
-            this.textBoxSupplierListFilter = new System.Windows.Forms.TextBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.buttonSupplierListPageListFirst = new System.Windows.Forms.Button();
-            this.buttonSupplierListPageListPrevious = new System.Windows.Forms.Button();
-            this.buttonSupplierListPageListNext = new System.Windows.Forms.Button();
-            this.buttonSupplierListPageListLast = new System.Windows.Forms.Button();
-            this.textBoxSupplierListPageNumber = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonAdd = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonClose = new System.Windows.Forms.Button();
             this.ColumnSupplierListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnSupplierListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnSupplierListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -150,6 +131,26 @@
             this.ColumnSupplierListTIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSupplierListAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSupplierListIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.textBoxSupplierListFilter = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.buttonSupplierListPageListFirst = new System.Windows.Forms.Button();
+            this.buttonSupplierListPageListPrevious = new System.Windows.Forms.Button();
+            this.buttonSupplierListPageListNext = new System.Windows.Forms.Button();
+            this.buttonSupplierListPageListLast = new System.Windows.Forms.Button();
+            this.textBoxSupplierListPageNumber = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonClose = new System.Windows.Forms.Button();
+            this.ColumnTaxListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnTaxListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnTaxListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTaxListCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTaxListTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTaxListRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTaxListAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTaxListAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.tabControlSystemTable.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -650,71 +651,6 @@
             this.dataGridViewTaxList.Size = new System.Drawing.Size(1376, 497);
             this.dataGridViewTaxList.TabIndex = 28;
             this.dataGridViewTaxList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTaxList_CellClick);
-            // 
-            // ColumnTaxListButtonEdit
-            // 
-            this.ColumnTaxListButtonEdit.DataPropertyName = "ColumnTaxListButtonEdit";
-            this.ColumnTaxListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnTaxListButtonEdit.HeaderText = "";
-            this.ColumnTaxListButtonEdit.Name = "ColumnTaxListButtonEdit";
-            this.ColumnTaxListButtonEdit.ReadOnly = true;
-            this.ColumnTaxListButtonEdit.Width = 70;
-            // 
-            // ColumnTaxListButtonDelete
-            // 
-            this.ColumnTaxListButtonDelete.DataPropertyName = "ColumnTaxListButtonDelete";
-            this.ColumnTaxListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnTaxListButtonDelete.HeaderText = "";
-            this.ColumnTaxListButtonDelete.Name = "ColumnTaxListButtonDelete";
-            this.ColumnTaxListButtonDelete.ReadOnly = true;
-            this.ColumnTaxListButtonDelete.Width = 70;
-            // 
-            // ColumnTaxListId
-            // 
-            this.ColumnTaxListId.DataPropertyName = "ColumnTaxListId";
-            this.ColumnTaxListId.HeaderText = "Id";
-            this.ColumnTaxListId.Name = "ColumnTaxListId";
-            this.ColumnTaxListId.ReadOnly = true;
-            this.ColumnTaxListId.Visible = false;
-            // 
-            // ColumnTaxListCode
-            // 
-            this.ColumnTaxListCode.DataPropertyName = "ColumnTaxListCode";
-            this.ColumnTaxListCode.HeaderText = "Code";
-            this.ColumnTaxListCode.Name = "ColumnTaxListCode";
-            this.ColumnTaxListCode.ReadOnly = true;
-            this.ColumnTaxListCode.Width = 150;
-            // 
-            // ColumnTaxListTax
-            // 
-            this.ColumnTaxListTax.DataPropertyName = "ColumnTaxListTax";
-            this.ColumnTaxListTax.HeaderText = "Tax";
-            this.ColumnTaxListTax.Name = "ColumnTaxListTax";
-            this.ColumnTaxListTax.ReadOnly = true;
-            this.ColumnTaxListTax.Width = 250;
-            // 
-            // ColumnTaxListRate
-            // 
-            this.ColumnTaxListRate.DataPropertyName = "ColumnTaxListRate";
-            this.ColumnTaxListRate.HeaderText = "Rate";
-            this.ColumnTaxListRate.Name = "ColumnTaxListRate";
-            this.ColumnTaxListRate.ReadOnly = true;
-            // 
-            // ColumnTaxListAccountId
-            // 
-            this.ColumnTaxListAccountId.DataPropertyName = "ColumnTaxListAccountId";
-            this.ColumnTaxListAccountId.HeaderText = "AccountId";
-            this.ColumnTaxListAccountId.Name = "ColumnTaxListAccountId";
-            this.ColumnTaxListAccountId.ReadOnly = true;
-            this.ColumnTaxListAccountId.Visible = false;
-            // 
-            // ColumnTaxListAccount
-            // 
-            this.ColumnTaxListAccount.DataPropertyName = "ColumnTaxListAccount";
-            this.ColumnTaxListAccount.HeaderText = "Account";
-            this.ColumnTaxListAccount.Name = "ColumnTaxListAccount";
-            this.ColumnTaxListAccount.ReadOnly = true;
-            this.ColumnTaxListAccount.Width = 200;
             // 
             // textBoxTaxListFilter
             // 
@@ -1398,6 +1334,105 @@
             this.dataGridViewSupplierList.TabIndex = 32;
             this.dataGridViewSupplierList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSupplierList_CellClick);
             // 
+            // ColumnSupplierListButtonEdit
+            // 
+            this.ColumnSupplierListButtonEdit.DataPropertyName = "ColumnSupplierListButtonEdit";
+            this.ColumnSupplierListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnSupplierListButtonEdit.HeaderText = "";
+            this.ColumnSupplierListButtonEdit.Name = "ColumnSupplierListButtonEdit";
+            this.ColumnSupplierListButtonEdit.ReadOnly = true;
+            this.ColumnSupplierListButtonEdit.Width = 70;
+            // 
+            // ColumnSupplierListButtonDelete
+            // 
+            this.ColumnSupplierListButtonDelete.DataPropertyName = "ColumnSupplierListButtonDelete";
+            this.ColumnSupplierListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnSupplierListButtonDelete.HeaderText = "";
+            this.ColumnSupplierListButtonDelete.Name = "ColumnSupplierListButtonDelete";
+            this.ColumnSupplierListButtonDelete.ReadOnly = true;
+            this.ColumnSupplierListButtonDelete.Width = 70;
+            // 
+            // ColumnSupplierListId
+            // 
+            this.ColumnSupplierListId.DataPropertyName = "ColumnSupplierListId";
+            this.ColumnSupplierListId.HeaderText = "Id";
+            this.ColumnSupplierListId.Name = "ColumnSupplierListId";
+            this.ColumnSupplierListId.ReadOnly = true;
+            this.ColumnSupplierListId.Visible = false;
+            // 
+            // ColumnSupplierListSupplier
+            // 
+            this.ColumnSupplierListSupplier.DataPropertyName = "ColumnSupplierListSupplier";
+            this.ColumnSupplierListSupplier.HeaderText = "Supplier";
+            this.ColumnSupplierListSupplier.Name = "ColumnSupplierListSupplier";
+            this.ColumnSupplierListSupplier.ReadOnly = true;
+            this.ColumnSupplierListSupplier.Width = 200;
+            // 
+            // ColumnSupplierListAddress
+            // 
+            this.ColumnSupplierListAddress.DataPropertyName = "ColumnSupplierListAddress";
+            this.ColumnSupplierListAddress.HeaderText = "Address";
+            this.ColumnSupplierListAddress.Name = "ColumnSupplierListAddress";
+            this.ColumnSupplierListAddress.ReadOnly = true;
+            this.ColumnSupplierListAddress.Width = 250;
+            // 
+            // ColumnSupplierListTelephoneNumber
+            // 
+            this.ColumnSupplierListTelephoneNumber.DataPropertyName = "ColumnSupplierListTelephoneNumber";
+            this.ColumnSupplierListTelephoneNumber.HeaderText = "Tel. No.";
+            this.ColumnSupplierListTelephoneNumber.Name = "ColumnSupplierListTelephoneNumber";
+            this.ColumnSupplierListTelephoneNumber.ReadOnly = true;
+            this.ColumnSupplierListTelephoneNumber.Width = 150;
+            // 
+            // ColumnSupplierListCellphoneNumber
+            // 
+            this.ColumnSupplierListCellphoneNumber.DataPropertyName = "ColumnSupplierListCellphoneNumber";
+            this.ColumnSupplierListCellphoneNumber.HeaderText = "Cell. No.";
+            this.ColumnSupplierListCellphoneNumber.Name = "ColumnSupplierListCellphoneNumber";
+            this.ColumnSupplierListCellphoneNumber.ReadOnly = true;
+            this.ColumnSupplierListCellphoneNumber.Width = 150;
+            // 
+            // ColumnSupplierListFaxNumber
+            // 
+            this.ColumnSupplierListFaxNumber.DataPropertyName = "ColumnSupplierListFaxNumber";
+            this.ColumnSupplierListFaxNumber.HeaderText = "FaxNumber";
+            this.ColumnSupplierListFaxNumber.Name = "ColumnSupplierListFaxNumber";
+            this.ColumnSupplierListFaxNumber.ReadOnly = true;
+            this.ColumnSupplierListFaxNumber.Visible = false;
+            // 
+            // ColumnSupplierListTermId
+            // 
+            this.ColumnSupplierListTermId.DataPropertyName = "ColumnSupplierListTermId";
+            this.ColumnSupplierListTermId.HeaderText = "TermId";
+            this.ColumnSupplierListTermId.Name = "ColumnSupplierListTermId";
+            this.ColumnSupplierListTermId.ReadOnly = true;
+            this.ColumnSupplierListTermId.Visible = false;
+            // 
+            // ColumnSupplierListTIN
+            // 
+            this.ColumnSupplierListTIN.DataPropertyName = "ColumnSupplierListTIN";
+            this.ColumnSupplierListTIN.HeaderText = "TIN";
+            this.ColumnSupplierListTIN.Name = "ColumnSupplierListTIN";
+            this.ColumnSupplierListTIN.ReadOnly = true;
+            this.ColumnSupplierListTIN.Width = 150;
+            // 
+            // ColumnSupplierListAccountId
+            // 
+            this.ColumnSupplierListAccountId.DataPropertyName = "ColumnSupplierListAccountId";
+            this.ColumnSupplierListAccountId.HeaderText = "AccountId";
+            this.ColumnSupplierListAccountId.Name = "ColumnSupplierListAccountId";
+            this.ColumnSupplierListAccountId.ReadOnly = true;
+            this.ColumnSupplierListAccountId.Visible = false;
+            // 
+            // ColumnSupplierListIsLocked
+            // 
+            this.ColumnSupplierListIsLocked.DataPropertyName = "ColumnSupplierListIsLocked";
+            this.ColumnSupplierListIsLocked.HeaderText = "Lock";
+            this.ColumnSupplierListIsLocked.Name = "ColumnSupplierListIsLocked";
+            this.ColumnSupplierListIsLocked.ReadOnly = true;
+            this.ColumnSupplierListIsLocked.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnSupplierListIsLocked.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // textBoxSupplierListFilter
             // 
             this.textBoxSupplierListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1561,104 +1596,72 @@
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
-            // ColumnSupplierListButtonEdit
+            // ColumnTaxListButtonEdit
             // 
-            this.ColumnSupplierListButtonEdit.DataPropertyName = "ColumnSupplierListButtonEdit";
-            this.ColumnSupplierListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnSupplierListButtonEdit.HeaderText = "";
-            this.ColumnSupplierListButtonEdit.Name = "ColumnSupplierListButtonEdit";
-            this.ColumnSupplierListButtonEdit.ReadOnly = true;
-            this.ColumnSupplierListButtonEdit.Width = 70;
+            this.ColumnTaxListButtonEdit.DataPropertyName = "ColumnTaxListButtonEdit";
+            this.ColumnTaxListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnTaxListButtonEdit.HeaderText = "";
+            this.ColumnTaxListButtonEdit.Name = "ColumnTaxListButtonEdit";
+            this.ColumnTaxListButtonEdit.ReadOnly = true;
+            this.ColumnTaxListButtonEdit.Width = 70;
             // 
-            // ColumnSupplierListButtonDelete
+            // ColumnTaxListButtonDelete
             // 
-            this.ColumnSupplierListButtonDelete.DataPropertyName = "ColumnSupplierListButtonDelete";
-            this.ColumnSupplierListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnSupplierListButtonDelete.HeaderText = "";
-            this.ColumnSupplierListButtonDelete.Name = "ColumnSupplierListButtonDelete";
-            this.ColumnSupplierListButtonDelete.ReadOnly = true;
-            this.ColumnSupplierListButtonDelete.Width = 70;
+            this.ColumnTaxListButtonDelete.DataPropertyName = "ColumnTaxListButtonDelete";
+            this.ColumnTaxListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnTaxListButtonDelete.HeaderText = "";
+            this.ColumnTaxListButtonDelete.Name = "ColumnTaxListButtonDelete";
+            this.ColumnTaxListButtonDelete.ReadOnly = true;
+            this.ColumnTaxListButtonDelete.Width = 70;
             // 
-            // ColumnSupplierListId
+            // ColumnTaxListId
             // 
-            this.ColumnSupplierListId.DataPropertyName = "ColumnSupplierListId";
-            this.ColumnSupplierListId.HeaderText = "Id";
-            this.ColumnSupplierListId.Name = "ColumnSupplierListId";
-            this.ColumnSupplierListId.ReadOnly = true;
-            this.ColumnSupplierListId.Visible = false;
+            this.ColumnTaxListId.DataPropertyName = "ColumnTaxListId";
+            this.ColumnTaxListId.HeaderText = "Id";
+            this.ColumnTaxListId.Name = "ColumnTaxListId";
+            this.ColumnTaxListId.ReadOnly = true;
+            this.ColumnTaxListId.Visible = false;
             // 
-            // ColumnSupplierListSupplier
+            // ColumnTaxListCode
             // 
-            this.ColumnSupplierListSupplier.DataPropertyName = "ColumnSupplierListSupplier";
-            this.ColumnSupplierListSupplier.HeaderText = "Supplier";
-            this.ColumnSupplierListSupplier.Name = "ColumnSupplierListSupplier";
-            this.ColumnSupplierListSupplier.ReadOnly = true;
-            this.ColumnSupplierListSupplier.Width = 200;
+            this.ColumnTaxListCode.DataPropertyName = "ColumnTaxListCode";
+            this.ColumnTaxListCode.HeaderText = "Code";
+            this.ColumnTaxListCode.Name = "ColumnTaxListCode";
+            this.ColumnTaxListCode.ReadOnly = true;
+            this.ColumnTaxListCode.Width = 150;
             // 
-            // ColumnSupplierListAddress
+            // ColumnTaxListTax
             // 
-            this.ColumnSupplierListAddress.DataPropertyName = "ColumnSupplierListAddress";
-            this.ColumnSupplierListAddress.HeaderText = "Address";
-            this.ColumnSupplierListAddress.Name = "ColumnSupplierListAddress";
-            this.ColumnSupplierListAddress.ReadOnly = true;
-            this.ColumnSupplierListAddress.Width = 250;
+            this.ColumnTaxListTax.DataPropertyName = "ColumnTaxListTax";
+            this.ColumnTaxListTax.HeaderText = "Tax";
+            this.ColumnTaxListTax.Name = "ColumnTaxListTax";
+            this.ColumnTaxListTax.ReadOnly = true;
+            this.ColumnTaxListTax.Width = 250;
             // 
-            // ColumnSupplierListTelephoneNumber
+            // ColumnTaxListRate
             // 
-            this.ColumnSupplierListTelephoneNumber.DataPropertyName = "ColumnSupplierListTelephoneNumber";
-            this.ColumnSupplierListTelephoneNumber.HeaderText = "Tel. No.";
-            this.ColumnSupplierListTelephoneNumber.Name = "ColumnSupplierListTelephoneNumber";
-            this.ColumnSupplierListTelephoneNumber.ReadOnly = true;
-            this.ColumnSupplierListTelephoneNumber.Width = 150;
+            this.ColumnTaxListRate.DataPropertyName = "ColumnTaxListRate";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnTaxListRate.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColumnTaxListRate.HeaderText = "Rate";
+            this.ColumnTaxListRate.Name = "ColumnTaxListRate";
+            this.ColumnTaxListRate.ReadOnly = true;
             // 
-            // ColumnSupplierListCellphoneNumber
+            // ColumnTaxListAccountId
             // 
-            this.ColumnSupplierListCellphoneNumber.DataPropertyName = "ColumnSupplierListCellphoneNumber";
-            this.ColumnSupplierListCellphoneNumber.HeaderText = "Cell. No.";
-            this.ColumnSupplierListCellphoneNumber.Name = "ColumnSupplierListCellphoneNumber";
-            this.ColumnSupplierListCellphoneNumber.ReadOnly = true;
-            this.ColumnSupplierListCellphoneNumber.Width = 150;
+            this.ColumnTaxListAccountId.DataPropertyName = "ColumnTaxListAccountId";
+            this.ColumnTaxListAccountId.HeaderText = "AccountId";
+            this.ColumnTaxListAccountId.Name = "ColumnTaxListAccountId";
+            this.ColumnTaxListAccountId.ReadOnly = true;
+            this.ColumnTaxListAccountId.Visible = false;
             // 
-            // ColumnSupplierListFaxNumber
+            // ColumnTaxListAccount
             // 
-            this.ColumnSupplierListFaxNumber.DataPropertyName = "ColumnSupplierListFaxNumber";
-            this.ColumnSupplierListFaxNumber.HeaderText = "FaxNumber";
-            this.ColumnSupplierListFaxNumber.Name = "ColumnSupplierListFaxNumber";
-            this.ColumnSupplierListFaxNumber.ReadOnly = true;
-            this.ColumnSupplierListFaxNumber.Visible = false;
-            // 
-            // ColumnSupplierListTermId
-            // 
-            this.ColumnSupplierListTermId.DataPropertyName = "ColumnSupplierListTermId";
-            this.ColumnSupplierListTermId.HeaderText = "TermId";
-            this.ColumnSupplierListTermId.Name = "ColumnSupplierListTermId";
-            this.ColumnSupplierListTermId.ReadOnly = true;
-            this.ColumnSupplierListTermId.Visible = false;
-            // 
-            // ColumnSupplierListTIN
-            // 
-            this.ColumnSupplierListTIN.DataPropertyName = "ColumnSupplierListTIN";
-            this.ColumnSupplierListTIN.HeaderText = "TIN";
-            this.ColumnSupplierListTIN.Name = "ColumnSupplierListTIN";
-            this.ColumnSupplierListTIN.ReadOnly = true;
-            this.ColumnSupplierListTIN.Width = 150;
-            // 
-            // ColumnSupplierListAccountId
-            // 
-            this.ColumnSupplierListAccountId.DataPropertyName = "ColumnSupplierListAccountId";
-            this.ColumnSupplierListAccountId.HeaderText = "AccountId";
-            this.ColumnSupplierListAccountId.Name = "ColumnSupplierListAccountId";
-            this.ColumnSupplierListAccountId.ReadOnly = true;
-            this.ColumnSupplierListAccountId.Visible = false;
-            // 
-            // ColumnSupplierListIsLocked
-            // 
-            this.ColumnSupplierListIsLocked.DataPropertyName = "ColumnSupplierListIsLocked";
-            this.ColumnSupplierListIsLocked.HeaderText = "Lock";
-            this.ColumnSupplierListIsLocked.Name = "ColumnSupplierListIsLocked";
-            this.ColumnSupplierListIsLocked.ReadOnly = true;
-            this.ColumnSupplierListIsLocked.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnSupplierListIsLocked.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnTaxListAccount.DataPropertyName = "ColumnTaxListAccount";
+            this.ColumnTaxListAccount.HeaderText = "Account";
+            this.ColumnTaxListAccount.Name = "ColumnTaxListAccount";
+            this.ColumnTaxListAccount.ReadOnly = true;
+            this.ColumnTaxListAccount.Width = 200;
             // 
             // SysSystemTablesForm
             // 
@@ -1827,14 +1830,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPayTypeListPayType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccountId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPayTypeListAccount;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnTaxListButtonEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnTaxListButtonDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListTax;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListRate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListAccountId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListAccount;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnSupplierListButtonEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnSupplierListButtonDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSupplierListId;
@@ -1847,5 +1842,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSupplierListTIN;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSupplierListAccountId;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnSupplierListIsLocked;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnTaxListButtonEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnTaxListButtonDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListTax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListRate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListAccountId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListAccount;
     }
 }

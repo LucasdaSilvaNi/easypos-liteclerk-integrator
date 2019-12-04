@@ -133,6 +133,7 @@
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransfer.cs" />
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransferItem.cs" />
     <Compile Include="Entities\DgvDiscountListDiscountEntity.cs" />
+    <Compile Include="Entities\DgvSalesDetailItemPriceListEntity.cs" />
     <Compile Include="Entities\DgvSalesReportCollectionDetailReportEntity.cs" />
     <Compile Include="Entities\DgvSalesReportCollectionSummaryReportEntity.cs" />
     <Compile Include="Entities\DgvInventoryReportEntity.cs" />
@@ -159,7 +160,7 @@
     <Compile Include="Entities\DgvStockInListStockInEntity.cs" />
     <Compile Include="Entities\DgvStockOutSearchItemListEntity.cs" />
     <Compile Include="Entities\DgvSystemTablesAccountListEntity.cs" />
-    <Compile Include="Entities\DgvSystemTablesItemPriceListEntity.cs" />
+    <Compile Include="Entities\DgvItemDetailItemPriceListEntity.cs" />
     <Compile Include="Entities\DgvSystemTablesPayTypeListEntity.cs" />
     <Compile Include="Entities\DgvSystemTablesPeriodListEntity.cs" />
     <Compile Include="Entities\DgvSystemTablesSupplierListEntity.cs" />

@@ -151,6 +151,24 @@ namespace EasyPOS.Controllers
             return item.FirstOrDefault();
         }
 
+        // ===============
+        // List Item Price
+        // ===============
+        public List<Entities.MstItemPriceEntity> ListItemPrice(Int32 itemId)
+        {
+            var itemPrices = from d in db.MstItemPrices
+                             where d.ItemId == itemId
+                             select new Entities.MstItemPriceEntity
+                             {
+                                 Id = d.Id,
+                                 PriceDescription = d.PriceDescription,
+                                 Price = d.Price,
+                                 TriggerQuantity = d.TriggerQuantity
+                             };
+
+            return itemPrices.OrderByDescending(d => d.Id).ToList();
+        }
+
         // ======================
         // Dropdown List Discount
         // ======================

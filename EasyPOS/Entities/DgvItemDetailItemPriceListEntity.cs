@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    public class DgvSystemTablesItemPriceListEntity
+    public class DgvItemDetailItemPriceListEntity
     {
         public String ColumnItemPriceListButtonEdit { get; set; }
         public String ColumnItemPriceListButtonDelete { get; set; }

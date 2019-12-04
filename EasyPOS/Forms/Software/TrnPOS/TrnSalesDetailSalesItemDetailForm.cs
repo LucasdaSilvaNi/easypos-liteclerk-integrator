@@ -146,30 +146,33 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         public void ComputeAmount()
         {
-            Decimal quantity = Convert.ToDecimal(textBoxSalesLineQuantity.Text);
-            Decimal price = trnSalesLineEntity.Price;
-            Decimal discountRate = Convert.ToDecimal(textBoxSalesLineDiscountRate.Text);
-            Decimal taxRate = trnSalesLineEntity.TaxRate;
-
-            Decimal discountAmount = 0;
-            if (discountRate > 0)
+            if (String.IsNullOrEmpty(textBoxSalesLinePrice.Text) == false)
             {
-                discountAmount = price * (discountRate / 100);
+                Decimal quantity = Convert.ToDecimal(textBoxSalesLineQuantity.Text);
+                Decimal price = Convert.ToDecimal(textBoxSalesLinePrice.Text);
+                Decimal discountRate = Convert.ToDecimal(textBoxSalesLineDiscountRate.Text);
+                Decimal taxRate = trnSalesLineEntity.TaxRate;
+
+                Decimal discountAmount = 0;
+                if (discountRate > 0)
+                {
+                    discountAmount = price * (discountRate / 100);
+                }
+
+                Decimal netPrice = price - discountAmount;
+                Decimal amount = netPrice * quantity;
+
+                Decimal taxAmount = 0;
+                if (taxRate > 0)
+                {
+                    taxAmount = (amount / (1 + (taxRate / 100))) * (taxRate / 100);
+                }
+
+                textBoxSalesLineDiscountAmount.Text = discountAmount.ToString("#,##0.00");
+                textBoxSalesLineNetPrice.Text = netPrice.ToString("#,##0.00");
+                textBoxSalesLineAmount.Text = amount.ToString("#,##0.00");
+                textBoxSalesLineVATAmount.Text = taxAmount.ToString("#,##0.00");
             }
-
-            Decimal netPrice = price - discountAmount;
-            Decimal amount = netPrice * quantity;
-
-            Decimal taxAmount = 0;
-            if (taxRate > 0)
-            {
-                taxAmount = (amount / (1 + (taxRate / 100))) * (taxRate / 100);
-            }
-
-            textBoxSalesLineDiscountAmount.Text = discountAmount.ToString("#,##0.00");
-            textBoxSalesLineNetPrice.Text = netPrice.ToString("#,##0.00");
-            textBoxSalesLineAmount.Text = amount.ToString("#,##0.00");
-            textBoxSalesLineVATAmount.Text = taxAmount.ToString("#,##0.00");
         }
 
         private void textBoxSalesLineQuantity_TextChanged(object sender, EventArgs e)
@@ -210,8 +213,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void textBoxSalesLinePrice_Click(object sender, EventArgs e)
         {
-            TrnSalesDetailSalesItemDetailItemPriceForm trnSalesDetailSalesItemDetailItemPriceForm = new TrnSalesDetailSalesItemDetailItemPriceForm();
+            TrnSalesDetailSalesItemDetailItemPriceForm trnSalesDetailSalesItemDetailItemPriceForm = new TrnSalesDetailSalesItemDetailItemPriceForm(this, trnSalesLineEntity);
             trnSalesDetailSalesItemDetailItemPriceForm.ShowDialog();
+        }
+
+        public void UpdatePrice(Decimal price)
+        {
+            textBoxSalesLinePrice.Text = price.ToString("#,##0.00");
+            ComputeAmount();
         }
     }
 }
