@@ -88,12 +88,35 @@
             this.buttonItemPriceListPageListNext = new System.Windows.Forms.Button();
             this.buttonItemPriceListPageListLast = new System.Windows.Forms.Button();
             this.textBoxItemPriceListPageNumber = new System.Windows.Forms.TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.buttonItemComponentAdd = new System.Windows.Forms.Button();
+            this.dataGridViewItemComponentList = new System.Windows.Forms.DataGridView();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.buttonItemComponentListPageListFirst = new System.Windows.Forms.Button();
+            this.buttonItemComponentListPageListPrevious = new System.Windows.Forms.Button();
+            this.buttonItemComponentListPageListNext = new System.Windows.Forms.Button();
+            this.buttonItemComponentListPageListLast = new System.Windows.Forms.Button();
+            this.textBoxItemComponentListPageNumber = new System.Windows.Forms.TextBox();
             this.buttonLock = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonUnlock = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ColumnItemComponentButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnItemComponentButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnItemComponentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemComponentItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemComponenItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemComponentComponentItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemComponentComponentItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemComponenUnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemComponenUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemComponenQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemComponenCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemComponenAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemComponenIsPrinted = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnItemComponenOnHandQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -101,6 +124,9 @@
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItemPriceList)).BeginInit();
             this.panel19.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItemComponentList)).BeginInit();
+            this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -177,6 +203,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
@@ -765,6 +792,153 @@
             this.textBoxItemPriceListPageNumber.TabIndex = 17;
             this.textBoxItemPriceListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.buttonItemComponentAdd);
+            this.tabPage3.Controls.Add(this.dataGridViewItemComponentList);
+            this.tabPage3.Controls.Add(this.panel4);
+            this.tabPage3.Location = new System.Drawing.Point(4, 32);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1392, 601);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Item Component List";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // buttonItemComponentAdd
+            // 
+            this.buttonItemComponentAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonItemComponentAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonItemComponentAdd.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonItemComponentAdd.FlatAppearance.BorderSize = 0;
+            this.buttonItemComponentAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemComponentAdd.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonItemComponentAdd.ForeColor = System.Drawing.Color.White;
+            this.buttonItemComponentAdd.Location = new System.Drawing.Point(1293, 3);
+            this.buttonItemComponentAdd.Name = "buttonItemComponentAdd";
+            this.buttonItemComponentAdd.Size = new System.Drawing.Size(88, 40);
+            this.buttonItemComponentAdd.TabIndex = 39;
+            this.buttonItemComponentAdd.Text = "Add";
+            this.buttonItemComponentAdd.UseVisualStyleBackColor = false;
+            this.buttonItemComponentAdd.Click += new System.EventHandler(this.buttonItemComponentAdd_Click);
+            // 
+            // dataGridViewItemComponentList
+            // 
+            this.dataGridViewItemComponentList.AllowUserToAddRows = false;
+            this.dataGridViewItemComponentList.AllowUserToDeleteRows = false;
+            this.dataGridViewItemComponentList.AllowUserToResizeRows = false;
+            this.dataGridViewItemComponentList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewItemComponentList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewItemComponentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewItemComponentList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnItemComponentButtonEdit,
+            this.ColumnItemComponentButtonDelete,
+            this.ColumnItemComponentId,
+            this.ColumnItemComponentItemId,
+            this.ColumnItemComponenItemDescription,
+            this.ColumnItemComponentComponentItemId,
+            this.ColumnItemComponentComponentItemDescription,
+            this.ColumnItemComponenUnitId,
+            this.ColumnItemComponenUnit,
+            this.ColumnItemComponenQuantity,
+            this.ColumnItemComponenCost,
+            this.ColumnItemComponenAmount,
+            this.ColumnItemComponenIsPrinted,
+            this.ColumnItemComponenOnHandQty});
+            this.dataGridViewItemComponentList.Location = new System.Drawing.Point(5, 49);
+            this.dataGridViewItemComponentList.MultiSelect = false;
+            this.dataGridViewItemComponentList.Name = "dataGridViewItemComponentList";
+            this.dataGridViewItemComponentList.ReadOnly = true;
+            this.dataGridViewItemComponentList.RowHeadersVisible = false;
+            this.dataGridViewItemComponentList.RowTemplate.Height = 24;
+            this.dataGridViewItemComponentList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewItemComponentList.Size = new System.Drawing.Size(1376, 487);
+            this.dataGridViewItemComponentList.TabIndex = 38;
+            this.dataGridViewItemComponentList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItemComponentList_CellClick);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.buttonItemComponentListPageListFirst);
+            this.panel4.Controls.Add(this.buttonItemComponentListPageListPrevious);
+            this.panel4.Controls.Add(this.buttonItemComponentListPageListNext);
+            this.panel4.Controls.Add(this.buttonItemComponentListPageListLast);
+            this.panel4.Controls.Add(this.textBoxItemComponentListPageNumber);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 548);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1392, 53);
+            this.panel4.TabIndex = 37;
+            // 
+            // buttonItemComponentListPageListFirst
+            // 
+            this.buttonItemComponentListPageListFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonItemComponentListPageListFirst.Enabled = false;
+            this.buttonItemComponentListPageListFirst.FlatAppearance.BorderSize = 0;
+            this.buttonItemComponentListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemComponentListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonItemComponentListPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonItemComponentListPageListFirst.Name = "buttonItemComponentListPageListFirst";
+            this.buttonItemComponentListPageListFirst.Size = new System.Drawing.Size(82, 32);
+            this.buttonItemComponentListPageListFirst.TabIndex = 13;
+            this.buttonItemComponentListPageListFirst.Text = "First";
+            this.buttonItemComponentListPageListFirst.UseVisualStyleBackColor = false;
+            this.buttonItemComponentListPageListFirst.Click += new System.EventHandler(this.buttonItemComponentListPageListFirst_Click);
+            // 
+            // buttonItemComponentListPageListPrevious
+            // 
+            this.buttonItemComponentListPageListPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonItemComponentListPageListPrevious.Enabled = false;
+            this.buttonItemComponentListPageListPrevious.FlatAppearance.BorderSize = 0;
+            this.buttonItemComponentListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemComponentListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonItemComponentListPageListPrevious.Location = new System.Drawing.Point(100, 9);
+            this.buttonItemComponentListPageListPrevious.Name = "buttonItemComponentListPageListPrevious";
+            this.buttonItemComponentListPageListPrevious.Size = new System.Drawing.Size(82, 32);
+            this.buttonItemComponentListPageListPrevious.TabIndex = 14;
+            this.buttonItemComponentListPageListPrevious.Text = "Previous";
+            this.buttonItemComponentListPageListPrevious.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemComponentListPageListNext
+            // 
+            this.buttonItemComponentListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonItemComponentListPageListNext.FlatAppearance.BorderSize = 0;
+            this.buttonItemComponentListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemComponentListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonItemComponentListPageListNext.Location = new System.Drawing.Point(263, 9);
+            this.buttonItemComponentListPageListNext.Name = "buttonItemComponentListPageListNext";
+            this.buttonItemComponentListPageListNext.Size = new System.Drawing.Size(82, 32);
+            this.buttonItemComponentListPageListNext.TabIndex = 15;
+            this.buttonItemComponentListPageListNext.Text = "Next";
+            this.buttonItemComponentListPageListNext.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemComponentListPageListLast
+            // 
+            this.buttonItemComponentListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonItemComponentListPageListLast.FlatAppearance.BorderSize = 0;
+            this.buttonItemComponentListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemComponentListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonItemComponentListPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonItemComponentListPageListLast.Name = "buttonItemComponentListPageListLast";
+            this.buttonItemComponentListPageListLast.Size = new System.Drawing.Size(82, 32);
+            this.buttonItemComponentListPageListLast.TabIndex = 16;
+            this.buttonItemComponentListPageListLast.Text = "Last";
+            this.buttonItemComponentListPageListLast.UseVisualStyleBackColor = false;
+            // 
+            // textBoxItemComponentListPageNumber
+            // 
+            this.textBoxItemComponentListPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBoxItemComponentListPageNumber.BackColor = System.Drawing.Color.White;
+            this.textBoxItemComponentListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxItemComponentListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textBoxItemComponentListPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxItemComponentListPageNumber.Name = "textBoxItemComponentListPageNumber";
+            this.textBoxItemComponentListPageNumber.ReadOnly = true;
+            this.textBoxItemComponentListPageNumber.Size = new System.Drawing.Size(69, 20);
+            this.textBoxItemComponentListPageNumber.TabIndex = 17;
+            this.textBoxItemComponentListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // buttonLock
             // 
             this.buttonLock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -851,6 +1025,121 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // ColumnItemComponentButtonEdit
+            // 
+            this.ColumnItemComponentButtonEdit.DataPropertyName = "ColumnItemComponentButtonEdit";
+            this.ColumnItemComponentButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnItemComponentButtonEdit.HeaderText = "";
+            this.ColumnItemComponentButtonEdit.Name = "ColumnItemComponentButtonEdit";
+            this.ColumnItemComponentButtonEdit.ReadOnly = true;
+            this.ColumnItemComponentButtonEdit.Width = 70;
+            // 
+            // ColumnItemComponentButtonDelete
+            // 
+            this.ColumnItemComponentButtonDelete.DataPropertyName = "ColumnItemComponentButtonDelete";
+            this.ColumnItemComponentButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnItemComponentButtonDelete.HeaderText = "";
+            this.ColumnItemComponentButtonDelete.Name = "ColumnItemComponentButtonDelete";
+            this.ColumnItemComponentButtonDelete.ReadOnly = true;
+            this.ColumnItemComponentButtonDelete.Width = 70;
+            // 
+            // ColumnItemComponentId
+            // 
+            this.ColumnItemComponentId.DataPropertyName = "ColumnItemComponentId";
+            this.ColumnItemComponentId.HeaderText = "Id";
+            this.ColumnItemComponentId.Name = "ColumnItemComponentId";
+            this.ColumnItemComponentId.ReadOnly = true;
+            this.ColumnItemComponentId.Visible = false;
+            // 
+            // ColumnItemComponentItemId
+            // 
+            this.ColumnItemComponentItemId.DataPropertyName = "ColumnItemComponentItemId";
+            this.ColumnItemComponentItemId.HeaderText = "ItemId";
+            this.ColumnItemComponentItemId.Name = "ColumnItemComponentItemId";
+            this.ColumnItemComponentItemId.ReadOnly = true;
+            this.ColumnItemComponentItemId.Visible = false;
+            // 
+            // ColumnItemComponenItemDescription
+            // 
+            this.ColumnItemComponenItemDescription.DataPropertyName = "ColumnItemComponenItemDescription";
+            this.ColumnItemComponenItemDescription.HeaderText = "Item Description";
+            this.ColumnItemComponenItemDescription.Name = "ColumnItemComponenItemDescription";
+            this.ColumnItemComponenItemDescription.ReadOnly = true;
+            this.ColumnItemComponenItemDescription.Visible = false;
+            this.ColumnItemComponenItemDescription.Width = 250;
+            // 
+            // ColumnItemComponentComponentItemId
+            // 
+            this.ColumnItemComponentComponentItemId.DataPropertyName = "ColumnItemComponentComponentItemId";
+            this.ColumnItemComponentComponentItemId.HeaderText = "ComponentItemId";
+            this.ColumnItemComponentComponentItemId.Name = "ColumnItemComponentComponentItemId";
+            this.ColumnItemComponentComponentItemId.ReadOnly = true;
+            this.ColumnItemComponentComponentItemId.Visible = false;
+            // 
+            // ColumnItemComponentComponentItemDescription
+            // 
+            this.ColumnItemComponentComponentItemDescription.DataPropertyName = "ColumnItemComponentComponentItemDescription";
+            this.ColumnItemComponentComponentItemDescription.HeaderText = "Item Description";
+            this.ColumnItemComponentComponentItemDescription.Name = "ColumnItemComponentComponentItemDescription";
+            this.ColumnItemComponentComponentItemDescription.ReadOnly = true;
+            this.ColumnItemComponentComponentItemDescription.Width = 250;
+            // 
+            // ColumnItemComponenUnitId
+            // 
+            this.ColumnItemComponenUnitId.DataPropertyName = "ColumnItemComponenUnitId";
+            this.ColumnItemComponenUnitId.HeaderText = "UnitId";
+            this.ColumnItemComponenUnitId.Name = "ColumnItemComponenUnitId";
+            this.ColumnItemComponenUnitId.ReadOnly = true;
+            this.ColumnItemComponenUnitId.Visible = false;
+            // 
+            // ColumnItemComponenUnit
+            // 
+            this.ColumnItemComponenUnit.DataPropertyName = "ColumnItemComponenUnit";
+            this.ColumnItemComponenUnit.HeaderText = "Unit";
+            this.ColumnItemComponenUnit.Name = "ColumnItemComponenUnit";
+            this.ColumnItemComponenUnit.ReadOnly = true;
+            this.ColumnItemComponenUnit.Width = 150;
+            // 
+            // ColumnItemComponenQuantity
+            // 
+            this.ColumnItemComponenQuantity.DataPropertyName = "ColumnItemComponenQuantity";
+            this.ColumnItemComponenQuantity.HeaderText = "Quantity";
+            this.ColumnItemComponenQuantity.Name = "ColumnItemComponenQuantity";
+            this.ColumnItemComponenQuantity.ReadOnly = true;
+            this.ColumnItemComponenQuantity.Width = 150;
+            // 
+            // ColumnItemComponenCost
+            // 
+            this.ColumnItemComponenCost.DataPropertyName = "ColumnItemComponenCost";
+            this.ColumnItemComponenCost.HeaderText = "Cost";
+            this.ColumnItemComponenCost.Name = "ColumnItemComponenCost";
+            this.ColumnItemComponenCost.ReadOnly = true;
+            this.ColumnItemComponenCost.Width = 150;
+            // 
+            // ColumnItemComponenAmount
+            // 
+            this.ColumnItemComponenAmount.DataPropertyName = "ColumnItemComponenAmount";
+            this.ColumnItemComponenAmount.HeaderText = "Amount";
+            this.ColumnItemComponenAmount.Name = "ColumnItemComponenAmount";
+            this.ColumnItemComponenAmount.ReadOnly = true;
+            this.ColumnItemComponenAmount.Width = 150;
+            // 
+            // ColumnItemComponenIsPrinted
+            // 
+            this.ColumnItemComponenIsPrinted.DataPropertyName = "ColumnItemComponenIsPrinted";
+            this.ColumnItemComponenIsPrinted.HeaderText = "IsPrinted";
+            this.ColumnItemComponenIsPrinted.Name = "ColumnItemComponenIsPrinted";
+            this.ColumnItemComponenIsPrinted.ReadOnly = true;
+            this.ColumnItemComponenIsPrinted.Visible = false;
+            // 
+            // ColumnItemComponenOnHandQty
+            // 
+            this.ColumnItemComponenOnHandQty.DataPropertyName = "ColumnItemComponenOnHandQty";
+            this.ColumnItemComponenOnHandQty.HeaderText = "On Hand Qty";
+            this.ColumnItemComponenOnHandQty.Name = "ColumnItemComponenOnHandQty";
+            this.ColumnItemComponenOnHandQty.ReadOnly = true;
+            this.ColumnItemComponenOnHandQty.Width = 150;
+            // 
             // MstItemDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -872,6 +1161,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItemPriceList)).EndInit();
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItemComponentList)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -944,5 +1237,28 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemPriceListPriceDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemPriceListPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemPriceListTriggerQuantity;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button buttonItemComponentAdd;
+        private System.Windows.Forms.DataGridView dataGridViewItemComponentList;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button buttonItemComponentListPageListFirst;
+        private System.Windows.Forms.Button buttonItemComponentListPageListPrevious;
+        private System.Windows.Forms.Button buttonItemComponentListPageListNext;
+        private System.Windows.Forms.Button buttonItemComponentListPageListLast;
+        private System.Windows.Forms.TextBox textBoxItemComponentListPageNumber;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnItemComponentButtonEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnItemComponentButtonDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemComponentId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemComponentItemId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemComponenItemDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemComponentComponentItemId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemComponentComponentItemDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemComponenUnitId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemComponenUnit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemComponenQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemComponenCost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemComponenAmount;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnItemComponenIsPrinted;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemComponenOnHandQty;
     }
 }
