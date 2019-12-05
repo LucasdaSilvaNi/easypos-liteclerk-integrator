@@ -26,6 +26,10 @@ namespace EasyPOS.Forms.Software.MstItem
         public PagedList<Entities.DgvItemDetailItemPriceListEntity> itemPriceListPageList = new PagedList<Entities.DgvItemDetailItemPriceListEntity>(itemPriceListData, pageNumber, pageSize);
         public BindingSource itemPriceListDataSource = new BindingSource();
 
+        public static List<Entities.DgvMstItemComponentEntity> itemComponentListData = new List<Entities.DgvMstItemComponentEntity>();
+        public PagedList<Entities.DgvMstItemComponentEntity> itemComponentListPageList = new PagedList<Entities.DgvMstItemComponentEntity>(itemComponentListData, pageNumber, pageSize);
+        public BindingSource itemComponentListDataSource = new BindingSource();
+
         public MstItemDetailForm(SysSoftwareForm softwareForm, MstItemListForm itemListForm, Entities.MstItemEntity itemEntity)
         {
             InitializeComponent();
@@ -116,6 +120,8 @@ namespace EasyPOS.Forms.Software.MstItem
             comboBoxSalesVAT.SelectedValue = mstItemEntity.OutTaxId;
 
             CreateItemPriceListDataGridView();
+
+            CreateItemComponentListDataGridView();
         }
 
         public void UpdateComponents(Boolean isLocked)
@@ -159,28 +165,36 @@ namespace EasyPOS.Forms.Software.MstItem
             if (sysUserRights.GetUserRights().CanAdd == false)
             {
                 buttonAddItemPrice.Enabled = false;
+                buttonItemComponentAdd.Enabled = false;
             }
             else
             {
                 buttonAddItemPrice.Enabled = !isLocked;
+                buttonItemComponentAdd.Enabled = !isLocked;
             }
 
             if (sysUserRights.GetUserRights().CanEdit == false)
             {
                 dataGridViewItemPriceList.Columns[0].Visible = false;
+                dataGridViewItemComponentList.Columns[0].Visible = false;
             }
             else
             {
                 dataGridViewItemPriceList.Columns[0].Visible = !isLocked;
+                dataGridViewItemComponentList.Columns[0].Visible = !isLocked;
+
             }
 
             if (sysUserRights.GetUserRights().CanDelete == false)
             {
                 dataGridViewItemPriceList.Columns[1].Visible = false;
+                dataGridViewItemComponentList.Columns[1].Visible = false;
             }
             else
             {
                 dataGridViewItemPriceList.Columns[1].Visible = !isLocked;
+                dataGridViewItemComponentList.Columns[1].Visible = !isLocked;
+
             }
         }
 
@@ -550,6 +564,237 @@ namespace EasyPOS.Forms.Software.MstItem
 
             MstItemDetailItemPriceDetailForm sysSystemTablesItemPriceDetailForm = new MstItemDetailItemPriceDetailForm(this, newItemPrice);
             sysSystemTablesItemPriceDetailForm.ShowDialog();
+        }
+
+        private void buttonItemComponentAdd_Click(object sender, EventArgs e)
+        {
+            MstItemDetailItemComponentDetailForm mstItemDetailItemComponentDetailForm = new MstItemDetailItemComponentDetailForm(this, mstItemEntity.Id, null);
+            mstItemDetailItemComponentDetailForm.ShowDialog();
+        }
+
+        public Task<List<Entities.DgvMstItemComponentEntity>> GetItemComponentListDataTask()
+        {
+            Controllers.MstItemComponentController mstItemComponentController = new Controllers.MstItemComponentController();
+            List<Entities.MstItemComponentEntity> listItemComponent = mstItemComponentController.ItemComponentList(mstItemEntity.Id);
+            if (listItemComponent.Any())
+            {
+                var itemComponent = from d in listItemComponent
+                                    select new Entities.DgvMstItemComponentEntity
+                                    {
+                                        ColumnItemComponentButtonEdit = "Edit",
+                                        ColumnItemComponentButtonDelete = "Delete",
+                                        ColumnItemComponentId = d.Id,
+                                        ColumnItemComponentItemId = d.ItemId,
+                                        ColumnItemComponenItemDescription = d.ItemDescription,
+                                        ColumnItemComponentComponentItemId = d.ComponentItemId,
+                                        ColumnItemComponentComponentItemDescription = d.ComponentItemDescription,
+                                        ColumnItemComponenUnitId = d.UnitId,
+                                        ColumnItemComponenUnit = d.Unit,
+                                        ColumnItemComponenQuantity = d.Quantity.ToString("#,##0.00"),
+                                        ColumnItemComponenCost = d.Cost.ToString("#,##0.00"),
+                                        ColumnItemComponenAmount = d.Amount.ToString("#,##0.00"),
+                                        ColumnItemComponenIsPrinted = d.IsPrinted,
+                                        ColumnItemComponenOnHandQty = d.OnHandQuantity.ToString("#,##0.00"),
+                                    };
+
+                return Task.FromResult(itemComponent.ToList());
+            }
+            else
+            {
+                return Task.FromResult(new List<Entities.DgvMstItemComponentEntity>());
+            }
+        }
+
+        public async void SetItemComponentListDataSourceAsync()
+        {
+            List<Entities.DgvMstItemComponentEntity> getItemComponentListData = await GetItemComponentListDataTask();
+            if (getItemComponentListData.Any())
+            {
+                itemComponentListData = getItemComponentListData;
+                itemComponentListPageList = new PagedList<Entities.DgvMstItemComponentEntity>(itemComponentListData, pageNumber, pageSize);
+
+                if (itemComponentListPageList.PageCount == 1)
+                {
+                    buttonItemComponentListPageListFirst.Enabled = false;
+                    buttonItemComponentListPageListPrevious.Enabled = false;
+                    buttonItemComponentListPageListNext.Enabled = false;
+                    buttonItemComponentListPageListLast.Enabled = false;
+                }
+                else if (pageNumber == 1)
+                {
+                    buttonItemComponentListPageListFirst.Enabled = false;
+                    buttonItemComponentListPageListPrevious.Enabled = false;
+                    buttonItemComponentListPageListNext.Enabled = true;
+                    buttonItemComponentListPageListLast.Enabled = true;
+                }
+                else if (pageNumber == itemComponentListPageList.PageCount)
+                {
+                    buttonItemComponentListPageListFirst.Enabled = true;
+                    buttonItemComponentListPageListPrevious.Enabled = true;
+                    buttonItemComponentListPageListNext.Enabled = false;
+                    buttonItemComponentListPageListLast.Enabled = false;
+                }
+                else
+                {
+                    buttonItemComponentListPageListFirst.Enabled = true;
+                    buttonItemComponentListPageListPrevious.Enabled = true;
+                    buttonItemComponentListPageListNext.Enabled = true;
+                    buttonItemComponentListPageListLast.Enabled = true;
+                }
+
+                textBoxItemComponentListPageNumber.Text = pageNumber + " / " + itemComponentListPageList.PageCount;
+                itemComponentListDataSource.DataSource = itemComponentListPageList;
+            }
+            else
+            {
+                buttonItemComponentListPageListFirst.Enabled = false;
+                buttonItemComponentListPageListPrevious.Enabled = false;
+                buttonItemComponentListPageListNext.Enabled = false;
+                buttonItemComponentListPageListLast.Enabled = false;
+
+                pageNumber = 1;
+
+                itemComponentListData = new List<Entities.DgvMstItemComponentEntity>();
+                itemComponentListDataSource.Clear();
+                textBoxItemComponentListPageNumber.Text = "1 / 1";
+            }
+        }
+
+        public void CreateItemComponentListDataGridView()
+        {
+            UpdateItemComponentListDataSource();
+
+            dataGridViewItemComponentList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewItemComponentList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewItemComponentList.Columns[0].DefaultCellStyle.ForeColor = Color.White;
+
+            dataGridViewItemComponentList.Columns[1].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#F34F1C");
+            dataGridViewItemComponentList.Columns[1].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#F34F1C");
+            dataGridViewItemComponentList.Columns[1].DefaultCellStyle.ForeColor = Color.White;
+
+            dataGridViewItemComponentList.DataSource = itemComponentListDataSource;
+        }
+
+        public void UpdateItemComponentListDataSource() {
+            SetItemComponentListDataSourceAsync();
+        }
+
+        private void dataGridViewItemComponentList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                GetItemComponentListCurrentSelectedCell(e.RowIndex);
+            }
+
+            if (e.RowIndex > -1 && dataGridViewItemComponentList.CurrentCell.ColumnIndex == dataGridViewItemComponentList.Columns["ColumnItemComponentButtonEdit"].Index)
+            {
+                Entities.MstItemComponentEntity selectedItemComponent = new Entities.MstItemComponentEntity() {
+                    Id = Convert.ToInt32(dataGridViewItemComponentList.Rows[e.RowIndex].Cells[dataGridViewItemComponentList.Columns["ColumnItemComponentId"].Index].Value),
+                    ItemId = Convert.ToInt32(dataGridViewItemComponentList.Rows[e.RowIndex].Cells[dataGridViewItemComponentList.Columns["ColumnItemComponentItemId"].Index].Value),
+                    ComponentItemId = Convert.ToInt32(dataGridViewItemComponentList.Rows[e.RowIndex].Cells[dataGridViewItemComponentList.Columns["ColumnItemComponentComponentItemId"].Index].Value),
+                    UnitId = Convert.ToInt32(dataGridViewItemComponentList.Rows[e.RowIndex].Cells[dataGridViewItemComponentList.Columns["ColumnItemComponenUnitId"].Index].Value),
+                    Quantity = Convert.ToDecimal(dataGridViewItemComponentList.Rows[e.RowIndex].Cells[dataGridViewItemComponentList.Columns["ColumnItemComponenQuantity"].Index].Value),
+                    Cost = Convert.ToDecimal(dataGridViewItemComponentList.Rows[e.RowIndex].Cells[dataGridViewItemComponentList.Columns["ColumnItemComponenCost"].Index].Value),
+                    Amount = Convert.ToDecimal(dataGridViewItemComponentList.Rows[e.RowIndex].Cells[dataGridViewItemComponentList.Columns["ColumnItemComponenAmount"].Index].Value),
+                    IsPrinted = Convert.ToBoolean(dataGridViewItemComponentList.Rows[e.RowIndex].Cells[dataGridViewItemComponentList.Columns["ColumnItemComponenIsPrinted"].Index].Value),
+                    OnHandQuantity = Convert.ToDecimal(dataGridViewItemComponentList.Rows[e.RowIndex].Cells[dataGridViewItemComponentList.Columns["ColumnItemComponenOnHandQty"].Index].Value),
+                };
+
+                MstItemDetailItemComponentDetailForm mstItemDetailItemComponentDetailForm = new MstItemDetailItemComponentDetailForm(this, mstItemEntity.Id, selectedItemComponent);
+                mstItemDetailItemComponentDetailForm.ShowDialog();
+            }
+
+            if (e.RowIndex > -1 && dataGridViewItemComponentList.CurrentCell.ColumnIndex == dataGridViewItemComponentList.Columns["ColumnItemComponentButtonDelete"].Index)
+            {
+                DialogResult deleteDialogResult = MessageBox.Show("Delete Item Component?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (deleteDialogResult == DialogResult.Yes)
+                {
+                    Controllers.MstItemComponentController mstItemComponentController = new Controllers.MstItemComponentController();
+
+                    String[] deleteItemComponent = mstItemComponentController.DeleteItemComponent(Convert.ToInt32(dataGridViewItemComponentList.Rows[e.RowIndex].Cells[2].Value));
+                    if (deleteItemComponent[1].Equals("0") == false)
+                    {
+                        Int32 currentPageNumber = pageNumber;
+
+                        pageNumber = 1;
+                        UpdateItemComponentListDataSource();
+                    }
+                    else
+                    {
+                        MessageBox.Show(deleteItemComponent[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        public void GetItemComponentListCurrentSelectedCell(Int32 id) { }
+
+        private void buttonItemComponentListPageListFirst_Click(object sender, EventArgs e)
+        {
+            itemComponentListPageList = new PagedList<Entities.DgvMstItemComponentEntity>(itemComponentListData, 1, pageSize);
+            itemComponentListDataSource.DataSource = itemComponentListPageList;
+
+            buttonItemComponentListPageListFirst.Enabled = false;
+            buttonItemComponentListPageListPrevious.Enabled = false;
+            buttonItemComponentListPageListNext.Enabled = true;
+            buttonItemComponentListPageListLast.Enabled = true;
+
+            pageNumber = 1;
+            textBoxItemComponentListPageNumber.Text = pageNumber + " / " + itemComponentListPageList.PageCount;
+        }
+
+        private void buttonItemComponentListPageListPrevious_Click(object sender, EventArgs e)
+        {
+            if (itemComponentListPageList.HasPreviousPage == true)
+            {
+                itemComponentListPageList = new PagedList<Entities.DgvMstItemComponentEntity>(itemComponentListData, --pageNumber, pageSize);
+                itemComponentListDataSource.DataSource = itemComponentListPageList;
+            }
+
+            buttonItemComponentListPageListNext.Enabled = true;
+            buttonItemComponentListPageListLast.Enabled = true;
+
+            if (pageNumber == 1)
+            {
+                buttonItemComponentListPageListFirst.Enabled = false;
+                buttonItemComponentListPageListPrevious.Enabled = false;
+            }
+
+            textBoxItemComponentListPageNumber.Text = pageNumber + " / " + itemComponentListPageList.PageCount;
+        }
+
+        private void buttonItemComponentListPageListNext_Click(object sender, EventArgs e)
+        {
+            if (itemComponentListPageList.HasNextPage == true)
+            {
+                itemComponentListPageList = new PagedList<Entities.DgvMstItemComponentEntity>(itemComponentListData, ++pageNumber, pageSize);
+                itemComponentListDataSource.DataSource = itemComponentListPageList;
+            }
+
+            buttonItemComponentListPageListFirst.Enabled = true;
+            buttonItemComponentListPageListPrevious.Enabled = true;
+
+            if (pageNumber == itemComponentListPageList.PageCount)
+            {
+                buttonItemComponentListPageListNext.Enabled = false;
+                buttonItemComponentListPageListLast.Enabled = false;
+            }
+
+            textBoxItemComponentListPageNumber.Text = pageNumber + " / " + itemComponentListPageList.PageCount;
+        }
+
+        private void buttonItemComponentListPageListLast_Click(object sender, EventArgs e)
+        {
+            itemComponentListPageList = new PagedList<Entities.DgvMstItemComponentEntity>(itemComponentListData, itemComponentListPageList.PageCount, pageSize);
+            itemComponentListDataSource.DataSource = itemComponentListPageList;
+
+            buttonItemComponentListPageListFirst.Enabled = true;
+            buttonItemComponentListPageListPrevious.Enabled = true;
+            buttonItemComponentListPageListNext.Enabled = false;
+            buttonItemComponentListPageListLast.Enabled = false;
+
+            pageNumber = itemComponentListPageList.PageCount;
+            textBoxItemComponentListPageNumber.Text = pageNumber + " / " + itemComponentListPageList.PageCount;
         }
     }
 }

@@ -293,6 +293,10 @@ namespace EasyPOS.Reports
                 //graphics.DrawString("Total: ", fontArial9Bold, drawBrush, new RectangleF(x + 100, y + 5, 245.0F, height), drawFormatRight);
                 //graphics.DrawString(subTotalAmount.ToString("#,##0.00"), fontArial9Bold, drawBrush, new RectangleF(x + 240, y + 5, 245.0F, height), drawFormatRight);
                 //y += graphics.MeasureString("Total: ", fontArial9Bold).Height + 5;
+
+                y += 50;
+
+                graphics.DrawString("Received in above-stated stocks and the undersigned hereby agrees to pay the value of the stocks on or before ____________________. " , fontArial10Regular, drawBrush, new RectangleF(x, y + 5, 490, height), drawFormatCenter);
             }
         }
     }
