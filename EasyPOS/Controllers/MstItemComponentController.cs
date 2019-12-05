@@ -32,11 +32,10 @@ namespace EasyPOS.Controllers
         // ===================
         // Item Component List
         // ===================
-
-        public List<Entities.MstItemComponentEntity> ItemComponentList(Int32 Id)
+        public List<Entities.MstItemComponentEntity> ItemComponentList(Int32 itemId)
         {
             var itemComponent = from d in db.MstItemComponents
-                                where d.ItemId == Id
+                                where d.ItemId == itemId
                                 select new Entities.MstItemComponentEntity
                                 {
                                     Id = d.Id,
@@ -52,52 +51,29 @@ namespace EasyPOS.Controllers
                                     OnHandQuantity = d.MstItem1.OnhandQuantity,
                                     IsPrinted = d.IsPrinted
                                 };
+
             return itemComponent.OrderByDescending(d => d.Id).ToList();
         }
 
-        // =========
-        // Item List
-        // =========
-        public List<Entities.MstItemEntity> ListItem()
+        // ====================
+        // Dropdown - Item List
+        // ====================
+        public List<Entities.MstItemEntity> DropdownListItem(Int32 itemId)
         {
             var items = from d in db.MstItems
                         where d.IsInventory == true
+                        && d.Id != itemId
                         select new Entities.MstItemEntity
                         {
                             Id = d.Id,
                             ItemDescription = d.ItemDescription,
-                        };
-            return items.ToList();
-        }
-
-        // ===========
-        // Item Detail
-        // ===========
-        public Entities.MstItemEntity DetailItem(String id)
-        {
-            var items = from d in db.MstItems
-                        where d.Id == Convert.ToInt32(id)
-                        select new Entities.MstItemEntity
-                        {
-                            Id = d.Id,
-                            UnitId = d.UnitId,
+                            Unit = d.MstUnit.Unit,
                             Cost = d.Cost,
                             OnhandQuantity = d.OnhandQuantity,
+
                         };
 
-            return items.FirstOrDefault();
-        }
-
-        public List<Entities.MstUnitEntity> ListUnit()
-        {
-            var units = from d in db.MstUnits
-                        select new Entities.MstUnitEntity
-                        {
-                            Id = d.Id,
-                            Unit = d.Unit
-                        };
-
-            return units.ToList();
+            return items.ToList();
         }
 
         // ==================
@@ -107,16 +83,26 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var componentItem = from d in db.MstItems
+                                    where d.Id == objItemComponent.ComponentItemId
+                                    select d;
+
+                if (componentItem.Any() == false)
+                {
+                    return new String[] { "Item component not found.", "0" };
+                }
+
                 Data.MstItemComponent addComponent = new Data.MstItemComponent()
                 {
                     ItemId = objItemComponent.ItemId,
                     ComponentItemId = objItemComponent.ComponentItemId,
-                    UnitId = objItemComponent.UnitId,
+                    UnitId = componentItem.First().UnitId,
                     Quantity = objItemComponent.Quantity,
                     Cost = objItemComponent.Cost,
                     Amount = objItemComponent.Amount,
                     IsPrinted = false
                 };
+
                 db.MstItemComponents.InsertOnSubmit(addComponent);
                 db.SubmitChanges();
 
@@ -128,9 +114,9 @@ namespace EasyPOS.Controllers
             }
         }
 
-        // ==================
-        // Add Item Component
-        // ==================
+        // =====================
+        // Update Item Component
+        // =====================
         public String[] UpdateItemComponent(Entities.MstItemComponentEntity objItemComponent)
         {
             try
@@ -141,9 +127,18 @@ namespace EasyPOS.Controllers
 
                 if (itemComponent.Any())
                 {
+                    var componentItem = from d in db.MstItems
+                                        where d.Id == objItemComponent.ComponentItemId
+                                        select d;
+
+                    if (componentItem.Any() == false)
+                    {
+                        return new String[] { "Component item not found.", "0" };
+                    }
+
                     var updateItemComponent = itemComponent.FirstOrDefault();
-                    updateItemComponent.ItemId = objItemComponent.ItemId;
                     updateItemComponent.ComponentItemId = objItemComponent.ComponentItemId;
+                    updateItemComponent.UnitId = componentItem.FirstOrDefault().UnitId;
                     updateItemComponent.Quantity = objItemComponent.Quantity;
                     updateItemComponent.Cost = objItemComponent.Cost;
                     updateItemComponent.Amount = objItemComponent.Amount;
@@ -191,6 +186,5 @@ namespace EasyPOS.Controllers
                 return new String[] { e.Message, "0" };
             }
         }
-
     }
 }

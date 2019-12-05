@@ -568,7 +568,20 @@ namespace EasyPOS.Forms.Software.MstItem
 
         private void buttonItemComponentAdd_Click(object sender, EventArgs e)
         {
-            MstItemDetailItemComponentDetailForm mstItemDetailItemComponentDetailForm = new MstItemDetailItemComponentDetailForm(this, mstItemEntity.Id, null);
+            Entities.MstItemComponentEntity newItemComponent = new Entities.MstItemComponentEntity()
+            {
+                Id = 0,
+                ItemId = mstItemEntity.Id,
+                ComponentItemId = 0,
+                Unit = "",
+                Quantity = 0,
+                Cost = 0,
+                Amount = 0,
+                IsPrinted = false,
+                OnHandQuantity = 0
+            };
+
+            MstItemDetailItemComponentDetailForm mstItemDetailItemComponentDetailForm = new MstItemDetailItemComponentDetailForm(this, newItemComponent);
             mstItemDetailItemComponentDetailForm.ShowDialog();
         }
 
@@ -675,7 +688,8 @@ namespace EasyPOS.Forms.Software.MstItem
             dataGridViewItemComponentList.DataSource = itemComponentListDataSource;
         }
 
-        public void UpdateItemComponentListDataSource() {
+        public void UpdateItemComponentListDataSource()
+        {
             SetItemComponentListDataSourceAsync();
         }
 
@@ -688,11 +702,13 @@ namespace EasyPOS.Forms.Software.MstItem
 
             if (e.RowIndex > -1 && dataGridViewItemComponentList.CurrentCell.ColumnIndex == dataGridViewItemComponentList.Columns["ColumnItemComponentButtonEdit"].Index)
             {
-                Entities.MstItemComponentEntity selectedItemComponent = new Entities.MstItemComponentEntity() {
+                Entities.MstItemComponentEntity selectedItemComponent = new Entities.MstItemComponentEntity()
+                {
                     Id = Convert.ToInt32(dataGridViewItemComponentList.Rows[e.RowIndex].Cells[dataGridViewItemComponentList.Columns["ColumnItemComponentId"].Index].Value),
                     ItemId = Convert.ToInt32(dataGridViewItemComponentList.Rows[e.RowIndex].Cells[dataGridViewItemComponentList.Columns["ColumnItemComponentItemId"].Index].Value),
                     ComponentItemId = Convert.ToInt32(dataGridViewItemComponentList.Rows[e.RowIndex].Cells[dataGridViewItemComponentList.Columns["ColumnItemComponentComponentItemId"].Index].Value),
                     UnitId = Convert.ToInt32(dataGridViewItemComponentList.Rows[e.RowIndex].Cells[dataGridViewItemComponentList.Columns["ColumnItemComponenUnitId"].Index].Value),
+                    Unit = dataGridViewItemComponentList.Rows[e.RowIndex].Cells[dataGridViewItemComponentList.Columns["ColumnItemComponenUnit"].Index].Value.ToString(),
                     Quantity = Convert.ToDecimal(dataGridViewItemComponentList.Rows[e.RowIndex].Cells[dataGridViewItemComponentList.Columns["ColumnItemComponenQuantity"].Index].Value),
                     Cost = Convert.ToDecimal(dataGridViewItemComponentList.Rows[e.RowIndex].Cells[dataGridViewItemComponentList.Columns["ColumnItemComponenCost"].Index].Value),
                     Amount = Convert.ToDecimal(dataGridViewItemComponentList.Rows[e.RowIndex].Cells[dataGridViewItemComponentList.Columns["ColumnItemComponenAmount"].Index].Value),
@@ -700,7 +716,7 @@ namespace EasyPOS.Forms.Software.MstItem
                     OnHandQuantity = Convert.ToDecimal(dataGridViewItemComponentList.Rows[e.RowIndex].Cells[dataGridViewItemComponentList.Columns["ColumnItemComponenOnHandQty"].Index].Value),
                 };
 
-                MstItemDetailItemComponentDetailForm mstItemDetailItemComponentDetailForm = new MstItemDetailItemComponentDetailForm(this, mstItemEntity.Id, selectedItemComponent);
+                MstItemDetailItemComponentDetailForm mstItemDetailItemComponentDetailForm = new MstItemDetailItemComponentDetailForm(this, selectedItemComponent);
                 mstItemDetailItemComponentDetailForm.ShowDialog();
             }
 
