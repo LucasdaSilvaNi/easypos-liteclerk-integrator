@@ -76,6 +76,7 @@
     <Compile Include="Controllers\MstAccountController.cs" />
     <Compile Include="Controllers\MstCustomerController.cs" />
     <Compile Include="Controllers\MstDiscountController.cs" />
+    <Compile Include="Controllers\MstItemComponentController.cs" />
     <Compile Include="Controllers\MstItemController.cs" />
     <Compile Include="Controllers\MstItemPriceController.cs" />
     <Compile Include="Controllers\MstPayTypeController.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransfer.cs" />
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransferItem.cs" />
     <Compile Include="Entities\DgvDiscountListDiscountEntity.cs" />
+    <Compile Include="Entities\DgvMstItemComponentEntity.cs" />
     <Compile Include="Entities\DgvSalesDetailItemPriceListEntity.cs" />
     <Compile Include="Entities\DgvSalesReportCollectionDetailReportEntity.cs" />
     <Compile Include="Entities\DgvSalesReportCollectionSummaryReportEntity.cs" />
@@ -174,6 +176,7 @@
     <Compile Include="Entities\MstCustomerEntity.cs" />
     <Compile Include="Entities\IntCloudSettingsEntity.cs" />
     <Compile Include="Entities\MstDiscountEntity.cs" />
+    <Compile Include="Entities\MstItemComponentEntity.cs" />
     <Compile Include="Entities\MstItemEntity.cs" />
     <Compile Include="Entities\MstItemInventoryEntity.cs" />
     <Compile Include="Entities\MstItemPriceEntity.cs" />
@@ -248,6 +251,12 @@
     </Compile>
     <Compile Include="Forms\Software\MstItem\MstItemDetailForm.Designer.cs">
       <DependentUpon>MstItemDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\MstItem\MstItemDetailItemComponentDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\MstItem\MstItemDetailItemComponentDetailForm.Designer.cs">
+      <DependentUpon>MstItemDetailItemComponentDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\MstItem\MstItemDetailItemPriceDetailForm.cs">
       <SubType>Form</SubType>
@@ -621,6 +630,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstItem\MstItemDetailForm.resx">
       <DependentUpon>MstItemDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\MstItem\MstItemDetailItemComponentDetailForm.resx">
+      <DependentUpon>MstItemDetailItemComponentDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstItem\MstItemDetailItemPriceDetailForm.resx">
       <DependentUpon>MstItemDetailItemPriceDetailForm.cs</DependentUpon>
