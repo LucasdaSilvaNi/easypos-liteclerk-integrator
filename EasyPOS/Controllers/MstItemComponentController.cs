@@ -61,6 +61,7 @@ namespace EasyPOS.Controllers
         public List<Entities.MstItemEntity> ListItem()
         {
             var items = from d in db.MstItems
+                        where d.IsInventory == true
                         select new Entities.MstItemEntity
                         {
                             Id = d.Id,

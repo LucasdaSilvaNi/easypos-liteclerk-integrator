@@ -165,6 +165,7 @@
             this.buttonClose.TabIndex = 1;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // comboBoxItem
             // 
@@ -271,6 +272,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MstItemDetailItemComponentDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
