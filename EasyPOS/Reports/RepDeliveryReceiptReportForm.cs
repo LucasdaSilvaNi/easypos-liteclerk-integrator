@@ -27,7 +27,7 @@ namespace EasyPOS.Reports
 
             printDocumentDeliveryReceipt.DefaultPageSettings.PaperSize = new PaperSize("Delivery Receipt", 1200, 850);
 
-            Margins margins = new Margins(0, 0, 0, 0);
+            Margins margins = new Margins(15, 0, 20, 0);
             printDocumentDeliveryReceipt.DefaultPageSettings.Margins = margins;
 
             printDocumentDeliveryReceipt.Print();
@@ -56,9 +56,7 @@ namespace EasyPOS.Reports
             Font fontArial11Italic = new Font("Arial", 11, FontStyle.Italic);
             Font fontArial10Bold = new Font("Arial", 10, FontStyle.Bold);
             Font fontArial10Regular = new Font("Arial", 10, FontStyle.Regular);
-            Font fontArial9Bold = new Font("Arial", 9, FontStyle.Bold);
-            Font fontArial9Regular = new Font("Arial", 9, FontStyle.Regular);
-            Font fontArial9Italic = new Font("Arial", 9, FontStyle.Italic);
+            Font fontArial10Italic = new Font("Arial", 10, FontStyle.Italic);
 
             // ==================
             // Alignment Settings
@@ -171,12 +169,12 @@ namespace EasyPOS.Reports
                 // =================
                 // Item Column Label
                 // =================
-                graphics.DrawString("Description", fontArial11Bold, drawBrush, new RectangleF(-150, y + 5, width, height), drawFormatCenter);
-                graphics.DrawString("Qty.", fontArial11Bold, drawBrush, new RectangleF(-15, y + 5, width, height), drawFormatCenter);
-                graphics.DrawString("U/M", fontArial11Bold, drawBrush, new RectangleF(x + 40, y + 5, width, height), drawFormatCenter);
-                graphics.DrawString("Price", fontArial11Bold, drawBrush, new RectangleF(x + 110, y + 5, width, height), drawFormatCenter);
-                graphics.DrawString("Amount", fontArial11Bold, drawBrush, new RectangleF(x + 195, y + 5, width, height), drawFormatCenter);
-                y += graphics.MeasureString("Description", fontArial11Bold).Height + 10;
+                graphics.DrawString("Description", fontArial10Bold, drawBrush, new RectangleF(-150, y + 5, width, height), drawFormatCenter);
+                graphics.DrawString("Qty.", fontArial10Bold, drawBrush, new RectangleF(-40, y + 5, width, height), drawFormatCenter);
+                graphics.DrawString("U/M", fontArial10Bold, drawBrush, new RectangleF(x + 35, y + 5, width, height), drawFormatCenter);
+                graphics.DrawString("Price", fontArial10Bold, drawBrush, new RectangleF(x + 120, y + 5, width, height), drawFormatCenter);
+                graphics.DrawString("Amount", fontArial10Bold, drawBrush, new RectangleF(x + 200, y + 5, width, height), drawFormatCenter);
+                y += graphics.MeasureString("Description", fontArial10Bold).Height + 10;
 
                 // =========
                 // 4rth Line
@@ -202,14 +200,51 @@ namespace EasyPOS.Reports
                         {
                             X = x,
                             Y = y + 5,
-                            Size = new Size(150, ((int)graphics.MeasureString(item, fontArial11Regular, 150, StringFormat.GenericTypographic).Height))
+                            Size = new Size(160, ((int)graphics.MeasureString(item, fontArial11Regular, 160, StringFormat.GenericTypographic).Height))
                         };
-                        graphics.DrawString(item, fontArial11Regular, Brushes.Black, itemRectangle, drawFormatLeft);
-                        graphics.DrawString(quantity, fontArial11Regular, drawBrush, new RectangleF(x, y + 5, 245.0F, height), drawFormatRight);
-                        graphics.DrawString(unit, fontArial11Regular, drawBrush, new RectangleF(x + 270, y + 5, 245.0F, height), drawFormatLeft);
-                        graphics.DrawString(price, fontArial11Regular, drawBrush, new RectangleF(x + 140, y + 5, 245.0F, height), drawFormatRight);
-                        graphics.DrawString(amount, fontArial11Regular, drawBrush, new RectangleF(x + 240, y + 5, 245.0F, height), drawFormatRight);
-                        y += itemRectangle.Size.Height + 5.0F;
+                        graphics.DrawString(item, fontArial10Regular, Brushes.Black, itemRectangle, drawFormatLeft);
+
+                        RectangleF quantityRectangle = new RectangleF
+                        {
+                            X = itemRectangle.Width + 10,
+                            Y = y + 5,
+                            Size = new Size(70, ((int)graphics.MeasureString(quantity, fontArial11Regular, 70, StringFormat.GenericTypographic).Height))
+                        };
+                        graphics.DrawString(quantity, fontArial10Regular, Brushes.Black, quantityRectangle, drawFormatRight);
+
+                        RectangleF unitRectangle = new RectangleF
+                        {
+                            X = itemRectangle.Width + quantityRectangle.Width + 15,
+                            Y = y + 5,
+                            Size = new Size(90, ((int)graphics.MeasureString(unit, fontArial11Regular, 100, StringFormat.GenericTypographic).Height))
+                        };
+                        graphics.DrawString(unit, fontArial10Regular, Brushes.Black, unitRectangle, drawFormatLeft);
+
+                        RectangleF priceRectangle = new RectangleF
+                        {
+                            X = itemRectangle.Width + quantityRectangle.Width + unitRectangle.Width + 10,
+                            Y = y + 5,
+                            Size = new Size(80, ((int)graphics.MeasureString(price, fontArial11Regular, 80, StringFormat.GenericTypographic).Height))
+                        };
+                        graphics.DrawString(price, fontArial10Regular, Brushes.Black, priceRectangle, drawFormatRight);
+
+                        RectangleF amountRectangle = new RectangleF
+                        {
+                            X = itemRectangle.Width + quantityRectangle.Width + unitRectangle.Width + priceRectangle.Width + 10,
+                            Y = y + 5,
+                            Size = new Size(80, ((int)graphics.MeasureString(amount, fontArial11Regular, 80, StringFormat.GenericTypographic).Height))
+                        };
+                        graphics.DrawString(amount, fontArial10Regular, Brushes.Black, amountRectangle, drawFormatRight);
+
+                        float[] rectangleHeights = new float[5] {
+                            itemRectangle.Size.Height,
+                            quantityRectangle.Size.Height,
+                            unitRectangle.Size.Height,
+                            priceRectangle.Size.Height,
+                            amountRectangle.Size.Height
+                        };
+
+                        y += rectangleHeights.Max() + 3.0F;
 
                         subTotalAmount += salesLine.Amount;
                     }
@@ -229,10 +264,10 @@ namespace EasyPOS.Reports
                 // =================================================
                 // Received By / Date Received, Payment / Deductions
                 // =================================================
-                graphics.DrawString("Received by / Date Received:", fontArial11Italic, drawBrush, new RectangleF(x, y + 5, 245.0F, height), drawFormatLeft);
-                graphics.DrawString("Total: ", fontArial11Bold, drawBrush, new RectangleF(x + 100, y + 5, 245.0F, height), drawFormatRight);
-                graphics.DrawString(subTotalAmount.ToString("#,##0.00"), fontArial11Bold, drawBrush, new RectangleF(x + 240, y + 5, 245.0F, height), drawFormatRight);
-                y += graphics.MeasureString("Total: ", fontArial11Bold).Height + 70;
+                graphics.DrawString("Received by / Date Received:", fontArial10Italic, drawBrush, new RectangleF(x, y + 5, 245.0F, height), drawFormatLeft);
+                graphics.DrawString("Total: ", fontArial10Bold, drawBrush, new RectangleF(x + 100, y + 5, 245.0F, height), drawFormatRight);
+                graphics.DrawString(subTotalAmount.ToString("#,##0.00"), fontArial10Bold, drawBrush, new RectangleF(x + 240, y + 5, 245.0F, height), drawFormatRight);
+                y += graphics.MeasureString("Total: ", fontArial10Bold).Height + 70;
 
                 //graphics.DrawString("Payment / Deductions: ", fontArial9Bold, drawBrush, new RectangleF(x + 100, y + 5, 245.0F, height), drawFormatRight);
                 //graphics.DrawString("0.00", fontArial9Bold, drawBrush, new RectangleF(x + 240, y + 5, 245.0F, height), drawFormatRight);
