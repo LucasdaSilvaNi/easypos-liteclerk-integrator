@@ -54,6 +54,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                               ColumnCollectionNumber = d.CollectionNumber,
                               ColumnTerminal = d.Terminal,
                               ColumnManualORNumber = d.ManualORNumber,
+                              ColumnCustomerCode = d.CustomerCode,
                               ColumnCustomer = d.Customer,
                               ColumnRemarks = d.Remarks,
                               ColumnSalesNumber = d.SalesNumber,
@@ -211,21 +212,28 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     DateTime endDate = dateEnd;
 
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Collection Date", "Collection Number", "Terminal", "Manual OR Number", "Customer", "Remarks", "Sales Number", "Amount", "PreparedBy"};
+                    String[] header = { "Collection Date", "Collection Number", "Terminal", "Manual OR Number", "Customer Code", "Customer", "Remarks", "Sales Number", "Amount", "PreparedBy"};
                     csv.AppendLine(String.Join(",", header));
 
                     if (collectionList.Any())
                     {
                         foreach (var collection in collectionList)
                         {
+                            String customerCode = "";
+                            if (collection.ColumnCustomerCode != null)
+                            {
+                                customerCode = collection.ColumnCustomerCode.Replace(",", " ");
+                            }
+
                             String[] data = {collection.ColumnCollectionDate,
                                         collection.ColumnCollectionNumber,
                                         collection.ColumnTerminal,
                                         collection.ColumnManualORNumber,
+                                        customerCode,
                                         collection.ColumnCustomer.Replace("," , " "),
                                         collection.ColumnRemarks,
                                         collection.ColumnSalesNumber,
-                                        collection.ColumnAmount.Replace("," , " "),
+                                        collection.ColumnAmount.Replace("," , ""),
                                         collection.ColumnPreparedBy,
                             };
 

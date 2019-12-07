@@ -44,16 +44,17 @@
             this.buttonPageListLast = new System.Windows.Forms.Button();
             this.buttonPageListPrevious = new System.Windows.Forms.Button();
             this.dataGridViewCollectionReport = new System.Windows.Forms.DataGridView();
+            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
             this.ColumnCollectionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCollectionNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnManualORNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCustomerCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPreparedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -266,6 +267,7 @@
             this.ColumnCollectionNumber,
             this.ColumnTerminal,
             this.ColumnManualORNumber,
+            this.ColumnCustomerCode,
             this.ColumnCustomer,
             this.ColumnRemarks,
             this.ColumnSalesNumber,
@@ -309,6 +311,14 @@
             this.ColumnManualORNumber.Name = "ColumnManualORNumber";
             this.ColumnManualORNumber.ReadOnly = true;
             this.ColumnManualORNumber.Width = 180;
+            // 
+            // ColumnCustomerCode
+            // 
+            this.ColumnCustomerCode.DataPropertyName = "ColumnCustomerCode";
+            this.ColumnCustomerCode.HeaderText = "Customer Code";
+            this.ColumnCustomerCode.Name = "ColumnCustomerCode";
+            this.ColumnCustomerCode.ReadOnly = true;
+            this.ColumnCustomerCode.Width = 120;
             // 
             // ColumnCustomer
             // 
@@ -389,15 +399,16 @@
         private System.Windows.Forms.Button buttonPageListLast;
         private System.Windows.Forms.Button buttonPageListPrevious;
         private System.Windows.Forms.DataGridView dataGridViewCollectionReport;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTerminal;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnManualORNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCustomerCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCustomer;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRemarks;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPreparedBy;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
     }
 }

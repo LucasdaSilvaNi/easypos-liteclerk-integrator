@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dataGridViewSalesSummaryReport = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBoxTotalAmount = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,7 +45,6 @@
             this.buttonSalesListPageListPrevious = new System.Windows.Forms.Button();
             this.textBoxPageNumber = new System.Windows.Forms.TextBox();
             this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
-            this.dataGridViewSalesSummaryReport = new System.Windows.Forms.DataGridView();
             this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +53,7 @@
             this.ColumnManualInvoiceNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTableId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCustomerCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTermId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,8 +66,8 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesSummaryReport)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -151,6 +152,43 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1382, 590);
             this.panel2.TabIndex = 9;
+            // 
+            // dataGridViewSalesSummaryReport
+            // 
+            this.dataGridViewSalesSummaryReport.AllowUserToAddRows = false;
+            this.dataGridViewSalesSummaryReport.AllowUserToDeleteRows = false;
+            this.dataGridViewSalesSummaryReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewSalesSummaryReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewSalesSummaryReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSalesSummaryReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnId,
+            this.ColumnPeriod,
+            this.ColumnTerminal,
+            this.ColumnSalesDate,
+            this.ColumnSalesNumber,
+            this.ColumnManualInvoiceNumber,
+            this.ColumnTableId,
+            this.ColumnCustomerId,
+            this.ColumnCustomerCode,
+            this.ColumnCustomer,
+            this.ColumnAccountId,
+            this.ColumnTermId,
+            this.ColumnTerm,
+            this.ColumnRemarks,
+            this.ColumnPreparedByUserName,
+            this.ColumnAmount,
+            this.ColumnPax,
+            this.ColumnTable});
+            this.dataGridViewSalesSummaryReport.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewSalesSummaryReport.Name = "dataGridViewSalesSummaryReport";
+            this.dataGridViewSalesSummaryReport.ReadOnly = true;
+            this.dataGridViewSalesSummaryReport.RowHeadersVisible = false;
+            this.dataGridViewSalesSummaryReport.RowTemplate.Height = 24;
+            this.dataGridViewSalesSummaryReport.ShowEditingIcon = false;
+            this.dataGridViewSalesSummaryReport.Size = new System.Drawing.Size(1382, 539);
+            this.dataGridViewSalesSummaryReport.TabIndex = 22;
             // 
             // panel4
             // 
@@ -260,42 +298,6 @@
             this.textBoxPageNumber.TabIndex = 12;
             this.textBoxPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // dataGridViewSalesSummaryReport
-            // 
-            this.dataGridViewSalesSummaryReport.AllowUserToAddRows = false;
-            this.dataGridViewSalesSummaryReport.AllowUserToDeleteRows = false;
-            this.dataGridViewSalesSummaryReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewSalesSummaryReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewSalesSummaryReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSalesSummaryReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnId,
-            this.ColumnPeriod,
-            this.ColumnTerminal,
-            this.ColumnSalesDate,
-            this.ColumnSalesNumber,
-            this.ColumnManualInvoiceNumber,
-            this.ColumnTableId,
-            this.ColumnCustomerId,
-            this.ColumnCustomer,
-            this.ColumnAccountId,
-            this.ColumnTermId,
-            this.ColumnTerm,
-            this.ColumnRemarks,
-            this.ColumnPreparedByUserName,
-            this.ColumnAmount,
-            this.ColumnPax,
-            this.ColumnTable});
-            this.dataGridViewSalesSummaryReport.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewSalesSummaryReport.Name = "dataGridViewSalesSummaryReport";
-            this.dataGridViewSalesSummaryReport.ReadOnly = true;
-            this.dataGridViewSalesSummaryReport.RowHeadersVisible = false;
-            this.dataGridViewSalesSummaryReport.RowTemplate.Height = 24;
-            this.dataGridViewSalesSummaryReport.ShowEditingIcon = false;
-            this.dataGridViewSalesSummaryReport.Size = new System.Drawing.Size(1382, 539);
-            this.dataGridViewSalesSummaryReport.TabIndex = 22;
-            // 
             // ColumnId
             // 
             this.ColumnId.DataPropertyName = "ColumnId";
@@ -359,6 +361,14 @@
             this.ColumnCustomerId.Name = "ColumnCustomerId";
             this.ColumnCustomerId.ReadOnly = true;
             this.ColumnCustomerId.Visible = false;
+            // 
+            // ColumnCustomerCode
+            // 
+            this.ColumnCustomerCode.DataPropertyName = "ColumnCustomerCode";
+            this.ColumnCustomerCode.HeaderText = "Customer Code";
+            this.ColumnCustomerCode.Name = "ColumnCustomerCode";
+            this.ColumnCustomerCode.ReadOnly = true;
+            this.ColumnCustomerCode.Width = 120;
             // 
             // ColumnCustomer
             // 
@@ -453,9 +463,9 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesSummaryReport)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesSummaryReport)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -486,6 +496,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnManualInvoiceNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTableId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCustomerId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCustomerCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCustomer;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccountId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTermId;

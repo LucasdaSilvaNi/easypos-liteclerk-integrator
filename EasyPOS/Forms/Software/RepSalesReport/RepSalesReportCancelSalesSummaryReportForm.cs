@@ -58,6 +58,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                               ColumnAmount = d.Amount.ToString("#,##0.00"),
                               ColumnTableId = d.TableId,
                               ColumnCustomerId = d.CustomerId,
+                              ColumnCustomerCode = d.CustomerCode,
                               ColumnCustomer = d.Customer,
                               ColumnAccountId = d.AccountId,
                               ColumnTermId = d.TermId,
@@ -222,22 +223,29 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     DateTime endDate = dateEnd;
 
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Terminal", "Date", "Cancelled Sales Number", "Manual Invoice No.", "Customer", "Term", "Remarks", "Prepared By", "Amount", "Pax", "Table" };
+                    String[] header = { "Terminal", "Date", "Cancelled Sales Number", "Manual Invoice No.", "Customer Code", "Customer", "Term", "Remarks", "Prepared By", "Amount", "Pax", "Table" };
                     csv.AppendLine(String.Join(",", header));
 
                     if (cancelledSalesList.Any())
                     {
                         foreach (var sales in cancelledSalesList)
                         {
+                            String customerCode = "";
+                            if (sales.ColumnCustomerCode != null)
+                            {
+                                customerCode = sales.ColumnCustomerCode.Replace(",", " ");
+                            }
+
                             String[] data = {sales.ColumnTerminal,
                                 sales.ColumnSalesDate,
                                 sales.ColumnSalesNumber,
                                 sales.ColumnManualInvoiceNumber,
+                                customerCode,
                                 sales.ColumnCustomer.Replace("," , " "),
                                 sales.ColumnTerm,
                                 sales.ColumnRemarks,
                                 sales.ColumnPreparedByUserName,
-                                sales.ColumnAmount,
+                                sales.ColumnAmount.Replace("," , ""),
                                 sales.ColumnPax.ToString(),
                                 sales.ColumnTable
                             };

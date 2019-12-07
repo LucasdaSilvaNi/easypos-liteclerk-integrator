@@ -56,6 +56,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                               ColumnSalesNumber = d.SalesNumber,
                               ColumnManualInvoiceNumber = d.ManualInvoiceNumber,
                               ColumnAmount = d.Amount.ToString("#,##0.00"),
+                              ColumnCustomerCode = d.CustomerCode,
                               ColumnCustomer = d.Customer,
                               ColumnTerm = d.Term,
                               ColumnRemarks = d.Remarks,
@@ -213,17 +214,24 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 if (dialogResult == DialogResult.OK)
                 {
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Terminal", "Date", "Sales Number", "Manual Invoice No.", "Customer", "Term", "Remarks", "Prepared By", "Amount", "Pax", "Table" };
+                    String[] header = { "Terminal", "Date", "Sales Number", "Manual Invoice No.", "Customer Code", "Customer", "Term", "Remarks", "Prepared By", "Amount", "Pax", "Table" };
                     csv.AppendLine(String.Join(",", header));
 
                     if (salesList.Any())
                     {
                         foreach (var sales in salesList)
                         {
+                            String customerCode = "";
+                            if (sales.ColumnCustomerCode != null)
+                            {
+                                customerCode = sales.ColumnCustomerCode.Replace(",", " ");
+                            }
+
                             String[] data = {sales.ColumnTerminal,
                                 sales.ColumnSalesDate,
                                 sales.ColumnSalesNumber,
                                 sales.ColumnManualInvoiceNumber,
+                                customerCode,
                                 sales.ColumnCustomer.Replace("," , " "),
                                 sales.ColumnTerm,
                                 sales.ColumnRemarks,

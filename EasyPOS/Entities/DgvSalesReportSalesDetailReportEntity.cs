@@ -11,6 +11,7 @@ namespace EasyPOS.Entities
         public String ColumnTerminal { get; set; }
         public String ColumnDate { get; set; }
         public String ColumnSalesNumber { get; set; }
+        public String ColumnCustomerCode { get; set; }
         public String ColumnCustomer { get; set; }
         public String ColumnItemDescription { get; set; }
         public String ColumnItemCode { get; set; }

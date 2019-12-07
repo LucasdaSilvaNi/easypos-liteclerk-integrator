@@ -17,6 +17,7 @@ namespace EasyPOS.Entities
         public String ColumnManualInvoiceNumber { get; set; }
         public Int32? ColumnTableId { get; set; }
         public Int32 ColumnCustomerId { get; set; }
+        public String ColumnCustomerCode { get; set; }
         public String ColumnCustomer { get; set; }
         public Int32 ColumnAccountId { get; set; }
         public Int32 ColumnTermId { get; set; }

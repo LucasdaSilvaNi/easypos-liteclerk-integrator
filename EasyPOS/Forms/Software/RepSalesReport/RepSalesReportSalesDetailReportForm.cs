@@ -54,6 +54,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                               ColumnTerminal = d.Terminal,
                               ColumnDate = d.Date,
                               ColumnSalesNumber = d.SalesNumber,
+                              ColumnCustomerCode = d.CustomerCode,
                               ColumnCustomer = d.Customer,
                               ColumnItemDescription = d.ItemDescription,
                               ColumnItemCode = d.ItemCode,
@@ -220,16 +221,23 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     DateTime endDate = dateEnd;
 
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Terminal", "Date", "Sales Number", "Manual Invoice No.", "Item Description", "Item Code", "Item Category", "Unit","Price", "Discount", "Discount Rate", "Discount Amount", "Net Price", "Quantity", "Amount", "Tax", "Tax Amount", "User", "Time Stamp" };
+                    String[] header = { "Terminal", "Date", "Sales Number", "Customer Code", "Customer", "Item Description", "Item Code", "Item Category", "Unit","Price", "Discount", "Discount Rate", "Discount Amount", "Net Price", "Quantity", "Amount", "Tax", "Tax Amount", "User", "Time Stamp" };
                     csv.AppendLine(String.Join(",", header));
 
                     if (salesDetailList.Any())
                     {
                         foreach (var salesDetail in salesDetailList)
                         {
+                            String customerCode = "";
+                            if (salesDetail.ColumnCustomerCode != null)
+                            {
+                                customerCode = salesDetail.ColumnCustomerCode.Replace(",", " ");
+                            }
+
                             String[] data = {salesDetail.ColumnTerminal,
                                             salesDetail.ColumnDate,
                                             salesDetail.ColumnSalesNumber,
+                                            customerCode,
                                             salesDetail.ColumnCustomer.Replace("," , " "),
                                             salesDetail.ColumnItemDescription.Replace("," , " "),
                                             salesDetail.ColumnItemCode,

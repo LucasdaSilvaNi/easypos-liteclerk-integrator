@@ -13,6 +13,7 @@ namespace EasyPOS.Entities
         public String Terminal { get; set; }
         public String Date { get; set; }
         public String SalesNumber { get; set; }
+        public String CustomerCode { get; set; }
         public String Customer { get; set; }
         public Int32 ItemId { get; set; }
         public String ItemDescription { get; set; }

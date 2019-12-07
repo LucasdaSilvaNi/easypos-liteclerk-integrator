@@ -92,7 +92,7 @@ namespace EasyPOS.Reports
             // ==============
             // Document Title
             // ==============
-            String documentTitle = "DELIVERY RECIEPT";
+            String documentTitle = systemCurrent.ORPrintTitle;
             String documentDate = DateTime.Today.ToShortDateString();
             graphics.DrawString(documentTitle, fontArial15Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString("Date: " + documentDate, fontArial11Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
@@ -169,12 +169,47 @@ namespace EasyPOS.Reports
                 // =================
                 // Item Column Label
                 // =================
-                graphics.DrawString("Description", fontArial10Bold, drawBrush, new RectangleF(-150, y + 5, width, height), drawFormatCenter);
-                graphics.DrawString("Qty.", fontArial10Bold, drawBrush, new RectangleF(-40, y + 5, width, height), drawFormatCenter);
-                graphics.DrawString("U/M", fontArial10Bold, drawBrush, new RectangleF(x + 35, y + 5, width, height), drawFormatCenter);
-                graphics.DrawString("Price", fontArial10Bold, drawBrush, new RectangleF(x + 120, y + 5, width, height), drawFormatCenter);
-                graphics.DrawString("Amount", fontArial10Bold, drawBrush, new RectangleF(x + 200, y + 5, width, height), drawFormatCenter);
-                y += graphics.MeasureString("Description", fontArial10Bold).Height + 10;
+                RectangleF itemHeaderRectangle = new RectangleF
+                {
+                    X = x,
+                    Y = y + 5,
+                    Size = new Size(150, ((int)graphics.MeasureString("Description", fontArial11Bold, 150, StringFormat.GenericTypographic).Height))
+                };
+                graphics.DrawString("Description", fontArial11Bold, Brushes.Black, itemHeaderRectangle, drawFormatCenter);
+
+                RectangleF quantityHeaderRectangle = new RectangleF
+                {
+                    X = itemHeaderRectangle.Width + 10,
+                    Y = y + 5,
+                    Size = new Size(63, ((int)graphics.MeasureString("Qty.", fontArial11Bold, 63, StringFormat.GenericTypographic).Height))
+                };
+                graphics.DrawString("Qty.", fontArial11Bold, Brushes.Black, quantityHeaderRectangle, drawFormatCenter);
+
+                RectangleF unitHeaderRectangle = new RectangleF
+                {
+                    X = itemHeaderRectangle.Width + quantityHeaderRectangle.Width + 15,
+                    Y = y + 5,
+                    Size = new Size(80, ((int)graphics.MeasureString("U/M", fontArial11Bold, 80, StringFormat.GenericTypographic).Height))
+                };
+                graphics.DrawString("U/M", fontArial11Bold, Brushes.Black, unitHeaderRectangle, drawFormatCenter);
+
+                RectangleF priceHeaderRectangle = new RectangleF
+                {
+                    X = itemHeaderRectangle.Width + quantityHeaderRectangle.Width + unitHeaderRectangle.Width + 10,
+                    Y = y + 5,
+                    Size = new Size(70, ((int)graphics.MeasureString("Price", fontArial11Bold, 70, StringFormat.GenericTypographic).Height))
+                };
+                graphics.DrawString("Price", fontArial11Bold, Brushes.Black, priceHeaderRectangle, drawFormatCenter);
+
+                RectangleF amountHeaderRectangle = new RectangleF
+                {
+                    X = itemHeaderRectangle.Width + quantityHeaderRectangle.Width + unitHeaderRectangle.Width + priceHeaderRectangle.Width + 10,
+                    Y = y + 5,
+                    Size = new Size(116, ((int)graphics.MeasureString("Amount", fontArial11Bold, 116, StringFormat.GenericTypographic).Height))
+                };
+                graphics.DrawString("Amount", fontArial11Bold, Brushes.Black, amountHeaderRectangle, drawFormatCenter);
+
+                y += itemHeaderRectangle.Height + 10.0F;
 
                 // =========
                 // 4rth Line
@@ -200,7 +235,7 @@ namespace EasyPOS.Reports
                         {
                             X = x,
                             Y = y + 5,
-                            Size = new Size(160, ((int)graphics.MeasureString(item, fontArial11Regular, 160, StringFormat.GenericTypographic).Height))
+                            Size = new Size(150, ((int)graphics.MeasureString(item, fontArial10Regular, 150, StringFormat.GenericTypographic).Height))
                         };
                         graphics.DrawString(item, fontArial10Regular, Brushes.Black, itemRectangle, drawFormatLeft);
 
@@ -208,7 +243,7 @@ namespace EasyPOS.Reports
                         {
                             X = itemRectangle.Width + 10,
                             Y = y + 5,
-                            Size = new Size(70, ((int)graphics.MeasureString(quantity, fontArial11Regular, 70, StringFormat.GenericTypographic).Height))
+                            Size = new Size(63, ((int)graphics.MeasureString(quantity, fontArial10Regular, 63, StringFormat.GenericTypographic).Height))
                         };
                         graphics.DrawString(quantity, fontArial10Regular, Brushes.Black, quantityRectangle, drawFormatRight);
 
@@ -216,7 +251,7 @@ namespace EasyPOS.Reports
                         {
                             X = itemRectangle.Width + quantityRectangle.Width + 15,
                             Y = y + 5,
-                            Size = new Size(90, ((int)graphics.MeasureString(unit, fontArial11Regular, 100, StringFormat.GenericTypographic).Height))
+                            Size = new Size(80, ((int)graphics.MeasureString(unit, fontArial10Regular, 80, StringFormat.GenericTypographic).Height))
                         };
                         graphics.DrawString(unit, fontArial10Regular, Brushes.Black, unitRectangle, drawFormatLeft);
 
@@ -224,7 +259,7 @@ namespace EasyPOS.Reports
                         {
                             X = itemRectangle.Width + quantityRectangle.Width + unitRectangle.Width + 10,
                             Y = y + 5,
-                            Size = new Size(80, ((int)graphics.MeasureString(price, fontArial11Regular, 80, StringFormat.GenericTypographic).Height))
+                            Size = new Size(70, ((int)graphics.MeasureString(price, fontArial10Regular, 70, StringFormat.GenericTypographic).Height))
                         };
                         graphics.DrawString(price, fontArial10Regular, Brushes.Black, priceRectangle, drawFormatRight);
 
@@ -232,7 +267,7 @@ namespace EasyPOS.Reports
                         {
                             X = itemRectangle.Width + quantityRectangle.Width + unitRectangle.Width + priceRectangle.Width + 10,
                             Y = y + 5,
-                            Size = new Size(80, ((int)graphics.MeasureString(amount, fontArial11Regular, 80, StringFormat.GenericTypographic).Height))
+                            Size = new Size(116, ((int)graphics.MeasureString(amount, fontArial10Regular, 116, StringFormat.GenericTypographic).Height))
                         };
                         graphics.DrawString(amount, fontArial10Regular, Brushes.Black, amountRectangle, drawFormatRight);
 
@@ -296,7 +331,8 @@ namespace EasyPOS.Reports
 
                 y += 50;
 
-                graphics.DrawString("Received in above-stated stocks and the undersigned hereby agrees to pay the value of the stocks on or before ____________________. " , fontArial10Regular, drawBrush, new RectangleF(x, y + 5, 490, height), drawFormatCenter);
+                String ORFooter = systemCurrent.ReceiptFooter;
+                graphics.DrawString(ORFooter, fontArial10Regular, drawBrush, new RectangleF(x, y + 5, 490, height), drawFormatCenter);
             }
         }
     }
