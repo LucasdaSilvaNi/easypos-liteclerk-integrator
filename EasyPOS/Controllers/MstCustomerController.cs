@@ -171,6 +171,23 @@ namespace EasyPOS.Controllers
                     return new String[] { "Current login user not found.", "0" };
                 }
 
+                var customerCode = from d in db.MstCustomers
+                                   where d.CustomerCode == objCustomer.CustomerCode
+                                   select d;
+                if (customerCode.Any())
+                {
+                    return new String[] { "Customer Code already exist.", "0" };
+                }
+
+                var customerName = from d in db.MstCustomers
+                                   where d.Customer == objCustomer.Customer
+                                   select d;
+                if (customerName.Any())
+                {
+                    return new String[] { "Customer already exist.", "0" };
+                }
+
+
                 var customer = from d in db.MstCustomers
                                where d.Id == id
                                select d;
