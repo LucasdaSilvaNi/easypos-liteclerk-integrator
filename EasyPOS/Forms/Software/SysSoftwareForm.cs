@@ -643,12 +643,15 @@ namespace EasyPOS.Forms.Software
         {
             tabPageSettings.Controls.Remove(sysSettingsForm);
 
-            sysSettingsForm = new SysSettings.SysSettingsForm(this)
+            if (sysSettingsForm == null)
             {
-                TopLevel = false,
-                Visible = true,
-                Dock = DockStyle.Fill
-            };
+                sysSettingsForm = new SysSettings.SysSettingsForm(this)
+                {
+                    TopLevel = false,
+                    Visible = true,
+                    Dock = DockStyle.Fill
+                };
+            }
 
             tabPageSettings.Controls.Add(sysSettingsForm);
 
