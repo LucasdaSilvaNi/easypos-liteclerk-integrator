@@ -41,5 +41,6 @@ namespace EasyPOS.Entities
         public String CustomerDisplayFirstLineMessage { get; set; }
         public String CustomerDisplayIfCounterClosedMessage { get; set; }
         public String CollectionReport { get; set; }
+        public String ZReadingFooter { get; set; }
     }
 }

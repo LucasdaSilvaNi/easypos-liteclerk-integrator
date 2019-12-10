@@ -88,6 +88,27 @@ namespace EasyPOS.Reports
             graphics.DrawString(companyAddress, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
 
+            // ==========
+            // TIN Number
+            // ==========
+            String TINNumber = systemCurrent.TIN;
+            graphics.DrawString("TIN: " + TINNumber, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
+
+            // =============
+            // Serial Number
+            // =============
+            String serialNo = systemCurrent.SerialNo;
+            graphics.DrawString("SN: " + serialNo, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
+
+            // ==============
+            // Machine Number
+            // ==============
+            String machineNo = systemCurrent.MachineNo;
+            graphics.DrawString("MIN: " + machineNo, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
+
             // ======================
             // Official Receipt Title
             // ======================

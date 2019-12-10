@@ -68,7 +68,8 @@ namespace EasyPOS.Modules
                 CustomerDisplayBaudRate = currentSettings.CustomerDisplayBaudRate,
                 CustomerDisplayFirstLineMessage = currentSettings.CustomerDisplayFirstLineMessage,
                 CustomerDisplayIfCounterClosedMessage = currentSettings.CustomerDisplayIfCounterClosedMessage,
-                CollectionReport = currentSettings.CollectionReport
+                CollectionReport = currentSettings.CollectionReport,
+                ZReadingFooter = currentSettings.ZReadingFooter
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);

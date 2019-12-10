@@ -298,8 +298,17 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             if (e.RowIndex > -1 && dataGridViewTenderPayType.CurrentCell.ColumnIndex == dataGridViewTenderPayType.Columns["ColumnTenderListPayTypePayType"].Index)
             {
-                TrnSalesDetailTenderMoreInformationForm trnSalesDetailTenderMoreInfoForm = new TrnSalesDetailTenderMoreInformationForm(this, dataGridViewTenderPayType);
-                trnSalesDetailTenderMoreInfoForm.ShowDialog();
+                String payType = dataGridViewTenderPayType.Rows[dataGridViewTenderPayType.CurrentCell.RowIndex].Cells[dataGridViewTenderPayType.Columns["ColumnTenderListPayTypePayType"].Index].Value.ToString();
+                if (payType == "Easypay")
+                {
+                    TrnSalesDetailTenderEasypayInformationForm trnSalesDetailTenderEasypayInformationForm = new TrnSalesDetailTenderEasypayInformationForm(this, dataGridViewTenderPayType, trnSalesEntity.Amount);
+                    trnSalesDetailTenderEasypayInformationForm.ShowDialog();
+                }
+                else
+                {
+                    TrnSalesDetailTenderMoreInformationForm trnSalesDetailTenderMoreInfoForm = new TrnSalesDetailTenderMoreInformationForm(this, dataGridViewTenderPayType);
+                    trnSalesDetailTenderMoreInfoForm.ShowDialog();
+                }
             }
         }
 

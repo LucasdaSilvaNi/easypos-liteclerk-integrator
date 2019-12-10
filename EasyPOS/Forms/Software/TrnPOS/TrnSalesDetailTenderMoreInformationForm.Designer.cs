@@ -125,23 +125,23 @@
             // textBoxCollectionLineOtherInformation
             // 
             this.textBoxCollectionLineOtherInformation.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxCollectionLineOtherInformation.Location = new System.Drawing.Point(12, 51);
+            this.textBoxCollectionLineOtherInformation.Location = new System.Drawing.Point(12, 34);
             this.textBoxCollectionLineOtherInformation.Multiline = true;
             this.textBoxCollectionLineOtherInformation.Name = "textBoxCollectionLineOtherInformation";
-            this.textBoxCollectionLineOtherInformation.Size = new System.Drawing.Size(656, 169);
+            this.textBoxCollectionLineOtherInformation.Size = new System.Drawing.Size(656, 186);
             this.textBoxCollectionLineOtherInformation.TabIndex = 0;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label13.Location = new System.Drawing.Point(7, 20);
+            this.label13.Location = new System.Drawing.Point(7, 3);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(174, 28);
             this.label13.TabIndex = 31;
             this.label13.Text = "Other Information:";
             // 
-            // TrnSalesDetailTenderMoreInfoForm
+            // TrnSalesDetailTenderMoreInformationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -152,7 +152,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "TrnSalesDetailTenderMoreInfoForm";
+            this.Name = "TrnSalesDetailTenderMoreInformationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "More Info";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TrnSalesDetailTenderMoreInfoForm_FormClosing);

@@ -2,13 +2,13 @@
   "CompanyName": "ACME Corporation",
   "Address": "Cebu City",
   "ContactNo": "",
-  "TIN": "",
-  "AccreditationNo": "",
-  "SerialNo": "",
-  "PermitNo": "",
-  "MachineNo": "",
+  "TIN": "NA",
+  "AccreditationNo": "NA",
+  "SerialNo": "NA",
+  "PermitNo": "NA",
+  "MachineNo": "NA",
   "DeclareRate": "",
-  "ReceiptFooter": "EASYFIS CORPORATION\nUnit 1023 City Soho Bldg. B. Rodriguez St. Guadalupe Cebu City Phil, 6000\nTIN: 010-045-930-000\n\nTHIS INVOICE/RECEIPT SHALL BE VALID FOR FIVE(5) YEARS FROM THE DATE OF PERMIT TO USE.",
+  "ReceiptFooter": "EASY CLOUD SYSTEM INC.\nUnit 1023 City Soho Bldg. B. Rodriguez St. Guadalupe Cebu City Phil, 6000\nTIN: 010-045-930-000\nPTU: NA\nPermit Validity: MM/dd/yyyy-MM/dd/yyy\n\nTHIS INVOICE/RECEIPT SHALL BE VALID FOR FIVE(5) YEARS FROM THE DATE OF PERMIT TO USE.",
   "InvoiceFooter": "",
   "LicenseCode": "",
   "TenantOf": "",
@@ -31,5 +31,6 @@
   "CustomerDisplayBaudRate": "9600",
   "CustomerDisplayFirstLineMessage": "WELCOME!",
   "CustomerDisplayIfCounterClosedMessage": "NEXT COUNTER PLS.",
-  "CollectionReport": "Official Receipt"
+  "CollectionReport": "Official Receipt",
+  "ZReadingFooter": "EASY CLOUD SYSTEM INC.\nUnit 1023 City Soho Bldg. B. Rodriguez St. Guadalupe Cebu City Phil, 6000\nTIN: 010-045-930-000\nPTU: NA\nPermit Validity: MM/dd/yyyy-MM/dd/yyy"
 }

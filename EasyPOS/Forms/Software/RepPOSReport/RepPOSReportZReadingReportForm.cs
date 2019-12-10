@@ -18,6 +18,7 @@ namespace EasyPOS.Reports
 
         public Forms.Software.RepPOSReport.RepPOSReportForm repPOSReportForm;
         public Int32 filterTerminalId;
+        public String filterTerminal = "";
         public DateTime filterDate;
         public Entities.RepZReadingReportEntity zReadingReportEntity;
 
@@ -36,7 +37,6 @@ namespace EasyPOS.Reports
                 {
                     buttonPrint.Enabled = false;
                 }
-
             }
 
             repPOSReportForm = POSReportForm;
@@ -45,7 +45,6 @@ namespace EasyPOS.Reports
 
             printDocumentZReadingReport.DefaultPageSettings.PaperSize = new PaperSize("Z Reading Report", 255, 1000);
             ZReadingDataSource();
-
         }
 
         private void buttonPrint_Click(object sender, EventArgs e)
@@ -101,6 +100,15 @@ namespace EasyPOS.Reports
             };
 
             repZReadingReportEntity.Date = filterDate.ToShortDateString();
+
+            var terminal = from d in db.MstTerminals
+                           where d.Id == filterTerminalId
+                           select d;
+
+            if (terminal.Any())
+            {
+                filterTerminal = terminal.FirstOrDefault().Terminal;
+            }
 
             var salesLines = from d in db.TrnSalesLines
                              where d.TrnSale.TrnCollections.Where(s => s.TerminalId == filterTerminalId && s.CollectionDate == filterDate && s.IsLocked == true && s.IsCancelled == false).Count() > 0
@@ -308,6 +316,34 @@ namespace EasyPOS.Reports
             // ===============
             String companyAddress = systemCurrent.Address;
             graphics.DrawString(companyAddress, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
+
+            // ==========
+            // TIN Number
+            // ==========
+            String TINNumber = systemCurrent.TIN;
+            graphics.DrawString("TIN: " + TINNumber, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
+
+            // =============
+            // Serial Number
+            // =============
+            String serialNo = systemCurrent.SerialNo;
+            graphics.DrawString("SN: " + serialNo, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
+
+            // ==============
+            // Machine Number
+            // ==============
+            String machineNo = systemCurrent.MachineNo;
+            graphics.DrawString("MIN: " + machineNo, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
+
+            // ===============
+            // Terminal Number
+            // ===============
+            String terminal = filterTerminal;
+            graphics.DrawString("Terminal: " + terminal, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
 
             // ======================
@@ -599,7 +635,9 @@ namespace EasyPOS.Reports
             Point ninethLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
             graphics.DrawLine(blackPen, ninethLineFirstPoint, ninethLineSecondPoint);
 
-            String zReadingEndLabel = "\nZ Reading End\n\n\n\n\n\n\n\n\n\n.";
+            String zReadingFooter = systemCurrent.ZReadingFooter;
+
+            String zReadingEndLabel = "\n" + zReadingFooter + "\n\nZ Reading End\n\n\n\n\n\n\n\n\n\n.";
             graphics.DrawString(zReadingEndLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             y += graphics.MeasureString(zReadingEndLabel, fontArial8Regular).Height;
         }

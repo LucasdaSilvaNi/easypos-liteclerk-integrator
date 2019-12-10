@@ -488,6 +488,12 @@
     <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailSearchItemForm.Designer.cs">
       <DependentUpon>TrnSalesDetailSearchItemForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderEasypayInformationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderEasypayInformationForm.Designer.cs">
+      <DependentUpon>TrnSalesDetailTenderEasypayInformationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -726,6 +732,9 @@
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailSalesItemDetailItemPriceForm.resx">
       <DependentUpon>TrnSalesDetailSalesItemDetailItemPriceForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailTenderEasypayInformationForm.resx">
+      <DependentUpon>TrnSalesDetailTenderEasypayInformationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailTenderMoreInformationForm.resx">
       <DependentUpon>TrnSalesDetailTenderMoreInformationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -884,6 +893,7 @@
     <Content Include="Resources\Images\Products\easyfis.jpg" />
     <None Include="Resources\Images\Products\easyfis_logo.jpg" />
     <Content Include="Resources\Images\Products\easypay.jpg" />
+    <Content Include="Resources\Images\Products\easypay.png" />
     <Content Include="Resources\Images\Products\easypos.jpg" />
   </ItemGroup>
   <ItemGroup>
