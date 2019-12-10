@@ -49,7 +49,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
             catch (Exception ex)
             {
-                labelConnectionStatus.Text = "Failed";
+                labelConnectionStatus.Text = "Not Connected";
                 labelConnectionStatus.ForeColor = Color.OrangeRed;
 
                 buttonPay.Enabled = false;
@@ -79,7 +79,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     {
                         Int32 id = Convert.ToInt32(mstDataGridViewTenderPayType.CurrentRow.Cells[0].Value);
                         String payType = mstDataGridViewTenderPayType.CurrentRow.Cells[1].Value.ToString();
-                        Decimal amount = Convert.ToDecimal(mstDataGridViewTenderPayType.CurrentRow.Cells[2].Value);
+                        Decimal amount = Convert.ToDecimal(textBoxAmountCharge.Text);
                         String otherInformation = "";
 
                         mstDataGridViewTenderPayType.CurrentRow.Cells[0].Value = id;
@@ -93,6 +93,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                     mstDataGridViewTenderPayType.Focus();
                     mstDataGridViewTenderPayType.CurrentRow.Cells[2].Selected = true;
+
+                    trnSalesDetailTenderForm.TenderSales();
                 }
                 else
                 {
@@ -102,6 +104,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void textBoxTappedCardAmount_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Pay();
             }
         }
     }
