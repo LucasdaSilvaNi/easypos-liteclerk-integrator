@@ -36,7 +36,7 @@
             this.buttonPay = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.textBoxTappedCardAmount = new System.Windows.Forms.TextBox();
+            this.textBoxTappedCardNumber = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -152,24 +152,24 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Controls.Add(this.textBoxTappedCardAmount);
+            this.panel5.Controls.Add(this.textBoxTappedCardNumber);
             this.panel5.Location = new System.Drawing.Point(0, 89);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(630, 48);
             this.panel5.TabIndex = 41;
             // 
-            // textBoxTappedCardAmount
+            // textBoxTappedCardNumber
             // 
-            this.textBoxTappedCardAmount.BackColor = System.Drawing.Color.White;
-            this.textBoxTappedCardAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxTappedCardAmount.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxTappedCardAmount.Location = new System.Drawing.Point(12, 10);
-            this.textBoxTappedCardAmount.Name = "textBoxTappedCardAmount";
-            this.textBoxTappedCardAmount.PasswordChar = '•';
-            this.textBoxTappedCardAmount.Size = new System.Drawing.Size(606, 27);
-            this.textBoxTappedCardAmount.TabIndex = 0;
-            this.textBoxTappedCardAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxTappedCardAmount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxTappedCardAmount_KeyDown);
+            this.textBoxTappedCardNumber.BackColor = System.Drawing.Color.White;
+            this.textBoxTappedCardNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxTappedCardNumber.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.textBoxTappedCardNumber.Location = new System.Drawing.Point(12, 10);
+            this.textBoxTappedCardNumber.Name = "textBoxTappedCardNumber";
+            this.textBoxTappedCardNumber.PasswordChar = '•';
+            this.textBoxTappedCardNumber.Size = new System.Drawing.Size(606, 27);
+            this.textBoxTappedCardNumber.TabIndex = 0;
+            this.textBoxTappedCardNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTappedCardNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxTappedCardAmount_KeyDown);
             // 
             // panel4
             // 
@@ -287,7 +287,6 @@
             this.textBoxCustomer.Size = new System.Drawing.Size(430, 34);
             this.textBoxCustomer.TabIndex = 33;
             this.textBoxCustomer.TabStop = false;
-            this.textBoxCustomer.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label13
             // 
@@ -376,7 +375,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label labelConnectionStatus;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.TextBox textBoxTappedCardAmount;
+        private System.Windows.Forms.TextBox textBoxTappedCardNumber;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label5;
     }

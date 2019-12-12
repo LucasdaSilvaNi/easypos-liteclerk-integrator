@@ -69,7 +69,11 @@ namespace EasyPOS.Modules
                 CustomerDisplayFirstLineMessage = currentSettings.CustomerDisplayFirstLineMessage,
                 CustomerDisplayIfCounterClosedMessage = currentSettings.CustomerDisplayIfCounterClosedMessage,
                 CollectionReport = currentSettings.CollectionReport,
-                ZReadingFooter = currentSettings.ZReadingFooter
+                ZReadingFooter = currentSettings.ZReadingFooter,
+                EasypayAPIURL = currentSettings.EasypayAPIURL,
+                EasypayDefaultUsername = currentSettings.EasypayDefaultUsername,
+                EasypayDefaultPassword = currentSettings.EasypayDefaultPassword,
+                EasypayMotherCardNumber = currentSettings.EasypayMotherCardNumber
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);

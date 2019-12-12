@@ -32,5 +32,9 @@
   "CustomerDisplayFirstLineMessage": "WELCOME!",
   "CustomerDisplayIfCounterClosedMessage": "NEXT COUNTER PLS.",
   "CollectionReport": "Official Receipt",
-  "ZReadingFooter": "EASY CLOUD SYSTEM INC.\nUnit 1023 City Soho Bldg. B. Rodriguez St. Guadalupe Cebu City Phil, 6000\nTIN: 010-045-930-000\nPTU: NA\nPermit Validity: MM/dd/yyyy-MM/dd/yyy"
+  "ZReadingFooter": "EASY CLOUD SYSTEM INC.\nUnit 1023 City Soho Bldg. B. Rodriguez St. Guadalupe Cebu City Phil, 6000\nTIN: 010-045-930-000\nPTU: NA\nPermit Validity: MM/dd/yyyy-MM/dd/yyy",
+  "EasypayAPIURL": "http://localhost:2650",
+  "EasypayDefaultUsername": "admin",
+  "EasypayDefaultPassword": "@Sodex123",
+  "EasypayMotherCardNumber": "0000000001"
 }

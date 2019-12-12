@@ -42,5 +42,9 @@ namespace EasyPOS.Entities
         public String CustomerDisplayIfCounterClosedMessage { get; set; }
         public String CollectionReport { get; set; }
         public String ZReadingFooter { get; set; }
+        public String EasypayAPIURL { get; set; }
+        public String EasypayDefaultUsername { get; set; }
+        public String EasypayDefaultPassword { get; set; }
+        public String EasypayMotherCardNumber { get; set; }
     }
 }

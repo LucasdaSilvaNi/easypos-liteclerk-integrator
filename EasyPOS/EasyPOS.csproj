@@ -174,6 +174,8 @@
     <Compile Include="Entities\DgvUserDetailUserFormEntity.cs" />
     <Compile Include="Entities\DgvUserDetailUserRightsEntity.cs" />
     <Compile Include="Entities\DgvUserListUserEntity.cs" />
+    <Compile Include="Entities\EspCardDetailsEntity.cs" />
+    <Compile Include="Entities\EspTokenEntity.cs" />
     <Compile Include="Entities\MstAccountEntity.cs" />
     <Compile Include="Entities\MstCustomerEntity.cs" />
     <Compile Include="Entities\IntCloudSettingsEntity.cs" />
