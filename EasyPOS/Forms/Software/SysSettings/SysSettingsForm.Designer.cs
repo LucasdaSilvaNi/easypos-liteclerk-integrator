@@ -154,7 +154,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 32);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1368, 583);
+            this.tabPage2.Size = new System.Drawing.Size(1392, 601);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Cloud Settings";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -187,7 +187,7 @@
             this.btnStopIntegration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStopIntegration.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStopIntegration.ForeColor = System.Drawing.Color.White;
-            this.btnStopIntegration.Location = new System.Drawing.Point(392, 240);
+            this.btnStopIntegration.Location = new System.Drawing.Point(392, 228);
             this.btnStopIntegration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStopIntegration.Name = "btnStopIntegration";
             this.btnStopIntegration.Size = new System.Drawing.Size(93, 40);
@@ -221,7 +221,7 @@
             this.btnStartIntegration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStartIntegration.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStartIntegration.ForeColor = System.Drawing.Color.White;
-            this.btnStartIntegration.Location = new System.Drawing.Point(293, 240);
+            this.btnStartIntegration.Location = new System.Drawing.Point(293, 228);
             this.btnStartIntegration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStartIntegration.Name = "btnStartIntegration";
             this.btnStartIntegration.Size = new System.Drawing.Size(93, 40);
@@ -246,14 +246,14 @@
             this.panel3.Location = new System.Drawing.Point(6, 49);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(479, 187);
+            this.panel3.Size = new System.Drawing.Size(479, 175);
             this.panel3.TabIndex = 23;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(19, 151);
+            this.label11.Location = new System.Drawing.Point(3, 146);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(124, 23);
             this.label11.TabIndex = 25;
@@ -264,7 +264,7 @@
             this.cbxUseItemPrice.AutoSize = true;
             this.cbxUseItemPrice.Enabled = false;
             this.cbxUseItemPrice.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxUseItemPrice.Location = new System.Drawing.Point(167, 154);
+            this.cbxUseItemPrice.Location = new System.Drawing.Point(133, 149);
             this.cbxUseItemPrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxUseItemPrice.Name = "cbxUseItemPrice";
             this.cbxUseItemPrice.Size = new System.Drawing.Size(18, 17);
@@ -275,7 +275,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(49, 121);
+            this.label10.Location = new System.Drawing.Point(33, 116);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(93, 23);
             this.label10.TabIndex = 22;
@@ -284,7 +284,7 @@
             // txtUserCode
             // 
             this.txtUserCode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserCode.Location = new System.Drawing.Point(167, 118);
+            this.txtUserCode.Location = new System.Drawing.Point(133, 113);
             this.txtUserCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUserCode.Name = "txtUserCode";
             this.txtUserCode.ReadOnly = true;
@@ -296,7 +296,7 @@
             this.dtpIntegrationDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.dtpIntegrationDate.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpIntegrationDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpIntegrationDate.Location = new System.Drawing.Point(167, 10);
+            this.dtpIntegrationDate.Location = new System.Drawing.Point(133, 5);
             this.dtpIntegrationDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpIntegrationDate.Name = "dtpIntegrationDate";
             this.dtpIntegrationDate.Size = new System.Drawing.Size(152, 30);
@@ -305,18 +305,18 @@
             // txtDomain
             // 
             this.txtDomain.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDomain.Location = new System.Drawing.Point(167, 46);
+            this.txtDomain.Location = new System.Drawing.Point(133, 41);
             this.txtDomain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDomain.Name = "txtDomain";
             this.txtDomain.ReadOnly = true;
-            this.txtDomain.Size = new System.Drawing.Size(295, 30);
+            this.txtDomain.Size = new System.Drawing.Size(335, 30);
             this.txtDomain.TabIndex = 20;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(31, 85);
+            this.label7.Location = new System.Drawing.Point(15, 80);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(112, 23);
             this.label7.TabIndex = 15;
@@ -326,7 +326,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(71, 49);
+            this.label9.Location = new System.Drawing.Point(55, 44);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(74, 23);
             this.label9.TabIndex = 19;
@@ -335,7 +335,7 @@
             // txtBranchCode
             // 
             this.txtBranchCode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBranchCode.Location = new System.Drawing.Point(167, 82);
+            this.txtBranchCode.Location = new System.Drawing.Point(133, 77);
             this.txtBranchCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBranchCode.Name = "txtBranchCode";
             this.txtBranchCode.ReadOnly = true;
@@ -346,7 +346,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(93, 15);
+            this.label8.Location = new System.Drawing.Point(77, 10);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(50, 23);
             this.label8.TabIndex = 17;

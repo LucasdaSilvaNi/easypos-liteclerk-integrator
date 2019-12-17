@@ -350,6 +350,11 @@ namespace EasyPOS.Controllers
 
                 if (item.Any())
                 {
+                    if (item.FirstOrDefault().ItemCode.Equals("0000000001"))
+                    {
+                        return new String[] { "Unlock not allowed.", "0" };
+                    }
+
                     var unLockItem = item.FirstOrDefault();
                     unLockItem.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
                     unLockItem.UpdateDateTime = DateTime.Today;
@@ -384,6 +389,11 @@ namespace EasyPOS.Controllers
 
                 if (item.Any())
                 {
+                    if (item.FirstOrDefault().ItemCode.Equals("0000000001"))
+                    {
+                        return new String[] { "Delete not allowed.", "0" };
+                    }
+
                     if (item.FirstOrDefault().IsLocked == false)
                     {
                         var deleteItem = item.FirstOrDefault();

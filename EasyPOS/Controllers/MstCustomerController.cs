@@ -173,7 +173,9 @@ namespace EasyPOS.Controllers
 
                 var customerCode = from d in db.MstCustomers
                                    where d.CustomerCode == objCustomer.CustomerCode
+                                   && d.IsLocked == true
                                    select d;
+
                 if (customerCode.Any())
                 {
                     return new String[] { "Customer Code already exist.", "0" };
@@ -181,12 +183,13 @@ namespace EasyPOS.Controllers
 
                 var customerName = from d in db.MstCustomers
                                    where d.Customer == objCustomer.Customer
+                                   && d.IsLocked == true
                                    select d;
+
                 if (customerName.Any())
                 {
                     return new String[] { "Customer already exist.", "0" };
                 }
-
 
                 var customer = from d in db.MstCustomers
                                where d.Id == id
@@ -246,6 +249,11 @@ namespace EasyPOS.Controllers
 
                 if (customer.Any())
                 {
+                    if (customer.FirstOrDefault().CustomerCode.Equals("0000000001"))
+                    {
+                        return new String[] { "Unlock not allowed.", "0" };
+                    }
+
                     var unLockCustomer = customer.FirstOrDefault();
                     unLockCustomer.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
                     unLockCustomer.UpdateDateTime = DateTime.Now;
@@ -280,6 +288,11 @@ namespace EasyPOS.Controllers
 
                 if (customer.Any())
                 {
+                    if (customer.FirstOrDefault().CustomerCode.Equals("0000000001"))
+                    {
+                        return new String[] { "Delete not allowed.", "0" };
+                    }
+
                     if (customer.FirstOrDefault().IsLocked == false)
                     {
                         var deleteCustomer = customer.FirstOrDefault();
