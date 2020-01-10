@@ -332,7 +332,7 @@ namespace EasyPOS.Reports
                 y += 50;
 
                 String ORFooter = systemCurrent.ReceiptFooter;
-                graphics.DrawString(ORFooter, fontArial10Regular, drawBrush, new RectangleF(x, y + 5, 490, height), drawFormatCenter);
+                graphics.DrawString(ORFooter, fontArial10Regular, drawBrush, new RectangleF(x, y + 5, 490, height));
             }
         }
     }
