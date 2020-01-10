@@ -45,7 +45,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 using (WebClient client = new WebClient())
                 {
-                    using (client.OpenRead("http://localhost:2650"))
+                    using (client.OpenRead(systemCurrent.EasypayAPIURL))
                     {
                         labelConnectionStatus.Text = "Connected";
                         labelConnectionStatus.ForeColor = Color.Lime;
