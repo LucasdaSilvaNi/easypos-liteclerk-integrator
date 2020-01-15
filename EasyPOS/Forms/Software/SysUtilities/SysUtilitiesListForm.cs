@@ -14,7 +14,6 @@ namespace EasyPOS.Forms.Software.SysUtilities
     public partial class SysUtilitiesListForm : Form
     {
         public SysSoftwareForm sysSoftwareForm;
-        private Modules.SysUserRightsModule sysUserRights;
 
         public static List<Entities.DgvSysUtilitiesAuditTrailListEntity> auditTrailListData = new List<Entities.DgvSysUtilitiesAuditTrailListEntity>();
         public static Int32 pageNumber = 1;
@@ -27,12 +26,20 @@ namespace EasyPOS.Forms.Software.SysUtilities
             InitializeComponent();
             sysSoftwareForm = softwareForm;
 
-                GetUserList();
+            GetUserList();
         }
 
         public void UpdateAuditTrailListDataSource()
         {
-            SetAuditTrailListDataSourceAsync();
+            DateTime startDateFilter = dateTimePickerSysAuditTrailListStartDateFilter.Value.Date;
+            DateTime endDateFilter = dateTimePickerSysAuditTrailListEndDateFilter.Value.Date;
+            Int32 userId = 0;
+            if (comboBoxUserFilter.SelectedValue != null)
+            {
+                userId = Convert.ToInt32(comboBoxUserFilter.SelectedValue);
+            }
+
+            SetAuditTrailListDataSourceAsync(startDateFilter, endDateFilter, userId);
         }
 
         public void GetUserList()
@@ -49,12 +56,12 @@ namespace EasyPOS.Forms.Software.SysUtilities
             }
         }
 
-        public async void SetAuditTrailListDataSourceAsync()
+        public async void SetAuditTrailListDataSourceAsync(DateTime startDate, DateTime endDate, Int32 userId)
         {
-            List<Entities.DgvSysUtilitiesAuditTrailListEntity> getStockOutListData = await GetStockOutListDataTask();
-            if (getStockOutListData.Any())
+            List<Entities.DgvSysUtilitiesAuditTrailListEntity> getAuditTrailListData = await GetAuditTrailListDataTask(startDate, endDate, userId);
+            if (getAuditTrailListData.Any())
             {
-                auditTrailListData = getStockOutListData;
+                auditTrailListData = getAuditTrailListData;
                 auditTrailListPageList = new PagedList<Entities.DgvSysUtilitiesAuditTrailListEntity>(auditTrailListData, pageNumber, pageSize);
 
                 if (auditTrailListPageList.PageCount == 1)
@@ -104,15 +111,13 @@ namespace EasyPOS.Forms.Software.SysUtilities
             }
         }
 
-        public Task<List<Entities.DgvSysUtilitiesAuditTrailListEntity>> GetStockOutListDataTask()
+        public Task<List<Entities.DgvSysUtilitiesAuditTrailListEntity>> GetAuditTrailListDataTask(DateTime startDate, DateTime endDate, Int32 userId)
         {
-            DateTime startDateFilter = dateTimePickerSysAuditTrailListStartDateFilter.Value.Date;
-            DateTime endDateFilter = dateTimePickerSysAuditTrailListEndDateFilter.Value.Date;
-            Int32 userId = Convert.ToInt32(comboBoxUserFilter.SelectedValue);
+
 
             Controllers.SysAuditTrailController sysAuditTrailController = new Controllers.SysAuditTrailController();
 
-            List<Entities.SysAuditTrailEntity> listAuditTrail = sysAuditTrailController.ListAuditTrail(startDateFilter, endDateFilter, userId);
+            List<Entities.SysAuditTrailEntity> listAuditTrail = sysAuditTrailController.ListAuditTrail(startDate, endDate, userId);
             if (listAuditTrail.Any())
             {
                 var auditTrail = from d in listAuditTrail
@@ -121,7 +126,7 @@ namespace EasyPOS.Forms.Software.SysUtilities
                                      ColumnAuditTrailListId = d.Id,
                                      ColumnAuditTrailListUserId = d.UserId,
                                      ColumnAuditTrailListUser = d.User,
-                                     ColumnAuditTrailListAuditDate = d.User.ToString(),
+                                     ColumnAuditTrailListAuditDate = d.AuditDate.ToString(),
                                      ColumnAuditTrailListTableInformation = d.TableInformation,
                                      ColumnAuditTrailListRecordInformation = d.RecordInformation,
                                      ColumnAuditTrailListFormInformation = d.FormInformation,
@@ -153,7 +158,6 @@ namespace EasyPOS.Forms.Software.SysUtilities
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            Close();
             sysSoftwareForm.RemoveTabPage();
         }
 
@@ -236,6 +240,21 @@ namespace EasyPOS.Forms.Software.SysUtilities
 
             pageNumber = auditTrailListPageList.PageCount;
             textBoxAuditTrailListPageNumber.Text = pageNumber + " / " + auditTrailListPageList.PageCount;
+        }
+
+        private void AuditTrailList_Filter(object sender, EventArgs e)
+        {
+            UpdateAuditTrailListDataSource();
+        }
+
+        private void dateTimePickerSysAuditTrailListEndDateFilter_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateAuditTrailListDataSource();
+        }
+
+        private void dateTimePickerSysAuditTrailListStartDateFilter_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateAuditTrailListDataSource();
         }
     }
 }

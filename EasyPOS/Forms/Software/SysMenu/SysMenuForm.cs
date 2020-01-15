@@ -192,15 +192,8 @@ namespace EasyPOS.Forms.Software.SysMenu
 
         private void buttonUtilities_Click(object sender, EventArgs e)
         {
-            sysUserRights = new Modules.SysUserRightsModule("SysUtilities");
-            if (sysUserRights.GetUserRights() == null)
-            {
-                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                sysSoftwareForm.AddTabPageUtilities();
-            }
+            sysSoftwareForm.AddTabPageUtilities();
         }
+
     }
 }

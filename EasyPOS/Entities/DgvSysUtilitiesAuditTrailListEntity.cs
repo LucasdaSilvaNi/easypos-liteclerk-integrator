@@ -16,5 +16,7 @@ namespace EasyPOS.Entities
         public String ColumnAuditTrailListRecordInformation { get; set; }
         public String ColumnAuditTrailListFormInformation { get; set; }
         public String ColumnAuditTrailListActionInformation { get; set; }
+        public String ColumnAuditTrailListSpace { get; set; }
+
     }
 }
