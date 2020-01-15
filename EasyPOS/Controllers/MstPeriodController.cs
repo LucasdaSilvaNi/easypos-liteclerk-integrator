@@ -36,6 +36,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 Data.MstPeriod addPeriod = new Data.MstPeriod()
                 {
                     Period = objPeriod.Period
@@ -43,6 +49,19 @@ namespace EasyPOS.Controllers
 
                 db.MstPeriods.InsertOnSubmit(addPeriod);
                 db.SubmitChanges();
+
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(addPeriod);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "MstPeriod",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "AddPeriod"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                 return new String[] { "", "" };
             }
@@ -59,15 +78,36 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var period = from d in db.MstPeriods
                              where d.Id == objPeriod.Id
                              select d;
 
                 if (period.Any())
                 {
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(period.FirstOrDefault());
+
                     var updatePeriod = period.FirstOrDefault();
                     updatePeriod.Period = objPeriod.Period;
                     db.SubmitChanges();
+
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(period.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "MstPeriod",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "UpdatePeriod"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                     return new String[] { "", "" };
                 }
@@ -89,6 +129,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var period = from d in db.MstPeriods
                              where d.Id == id
                              select d;
@@ -97,6 +143,20 @@ namespace EasyPOS.Controllers
                 {
                     var deletePeriod = period.FirstOrDefault();
                     db.MstPeriods.DeleteOnSubmit(deletePeriod);
+
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(period.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "MstPeriod",
+                        RecordInformation = oldObject,
+                        FormInformation = "",
+                        ActionInformation = "DeletePeriod"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                     db.SubmitChanges();
 
                     return new String[] { "", "" };

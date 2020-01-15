@@ -54,6 +54,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 Data.MstPayType addPayType = new Data.MstPayType()
                 {
                     PayType = objPayType.PayType,
@@ -62,6 +68,19 @@ namespace EasyPOS.Controllers
 
                 db.MstPayTypes.InsertOnSubmit(addPayType);
                 db.SubmitChanges();
+
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(addPayType);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "MstPayType",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "AddPayType"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                 return new string[] { "", "" };
             }
@@ -78,16 +97,37 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var payType = from d in db.MstPayTypes
                               where d.Id == objPayType.Id
                               select d;
 
                 if (payType.Any())
                 {
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(payType.FirstOrDefault());
+
                     var updatePayType = payType.FirstOrDefault();
                     updatePayType.PayType = objPayType.PayType;
                     updatePayType.AccountId = objPayType.AccountId;
                     db.SubmitChanges();
+
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(payType.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "MstPayType",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "UpdatePayType"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                     return new String[] { "", "" };
                 }
@@ -109,6 +149,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var payType = from d in db.MstPayTypes
                               where d.Id == id
                               select d;
@@ -117,6 +163,20 @@ namespace EasyPOS.Controllers
                 {
                     var deletePayType = payType.FirstOrDefault();
                     db.MstPayTypes.DeleteOnSubmit(deletePayType);
+
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(payType.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "MstPayType",
+                        RecordInformation = oldObject,
+                        FormInformation = "",
+                        ActionInformation = "DeletePayType"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                     db.SubmitChanges();
 
                     return new String[] { "", "" };

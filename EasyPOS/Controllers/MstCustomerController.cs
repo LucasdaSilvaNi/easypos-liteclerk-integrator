@@ -150,6 +150,19 @@ namespace EasyPOS.Controllers
                 db.MstCustomers.InsertOnSubmit(newCustomer);
                 db.SubmitChanges();
 
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(newCustomer);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "MstCustomer",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "AddCustomer"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                 return new String[] { "", newCustomer.Id.ToString() };
             }
             catch (Exception e)
@@ -197,6 +210,8 @@ namespace EasyPOS.Controllers
 
                 if (customer.Any())
                 {
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(customer.FirstOrDefault());
+
                     var lockCustomer = customer.FirstOrDefault();
                     lockCustomer.Customer = objCustomer.Customer;
                     lockCustomer.Address = objCustomer.Address;
@@ -216,6 +231,19 @@ namespace EasyPOS.Controllers
                     lockCustomer.DefaultPriceDescription = objCustomer.DefaultPriceDescription;
                     lockCustomer.CustomerCode = objCustomer.CustomerCode;
                     db.SubmitChanges();
+
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(customer.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "MstCustomer",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "LockCustomer"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                     return new String[] { "", "" };
                 }
@@ -254,11 +282,26 @@ namespace EasyPOS.Controllers
                         return new String[] { "Unlock not allowed.", "0" };
                     }
 
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(customer.FirstOrDefault());
+
                     var unLockCustomer = customer.FirstOrDefault();
                     unLockCustomer.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
                     unLockCustomer.UpdateDateTime = DateTime.Now;
                     unLockCustomer.IsLocked = false;
                     db.SubmitChanges();
+
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(customer.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "MstCustomer",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "UnlockCustomer"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
                 }
 
                 return new String[] { "", "" };
@@ -297,6 +340,20 @@ namespace EasyPOS.Controllers
                     {
                         var deleteCustomer = customer.FirstOrDefault();
                         db.MstCustomers.DeleteOnSubmit(deleteCustomer);
+
+                        String oldObject = Modules.SysAuditTrailModule.GetObjectString(customer.FirstOrDefault());
+
+                        Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                        {
+                            UserId = currentUserLogin.FirstOrDefault().Id,
+                            AuditDate = DateTime.Now,
+                            TableInformation = "MstCustomer",
+                            RecordInformation = oldObject,
+                            FormInformation = "",
+                            ActionInformation = "DeleteCustomer"
+                        };
+                        Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                         db.SubmitChanges();
 
                         return new String[] { "", "" };
@@ -310,8 +367,6 @@ namespace EasyPOS.Controllers
                 {
                     return new String[] { "Customer not found", "0" };
                 }
-
-
             }
             catch (Exception e)
             {

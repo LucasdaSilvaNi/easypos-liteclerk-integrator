@@ -73,7 +73,8 @@ namespace EasyPOS.Modules
                 EasypayAPIURL = currentSettings.EasypayAPIURL,
                 EasypayDefaultUsername = currentSettings.EasypayDefaultUsername,
                 EasypayDefaultPassword = currentSettings.EasypayDefaultPassword,
-                EasypayMotherCardNumber = currentSettings.EasypayMotherCardNumber
+                EasypayMotherCardNumber = currentSettings.EasypayMotherCardNumber,
+                ActivateAuditTrail = currentSettings.ActivateAuditTrail
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);

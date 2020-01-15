@@ -264,6 +264,19 @@ namespace EasyPOS.Controllers
                 db.MstItems.InsertOnSubmit(newItem);
                 db.SubmitChanges();
 
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(newItem);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "MstItem",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "AddItem"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                 return new String[] { "", newItem.Id.ToString() };
             }
             catch (Exception e)
@@ -291,6 +304,8 @@ namespace EasyPOS.Controllers
 
                 if (item.Any())
                 {
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(item.FirstOrDefault());
+
                     var lockItem = item.FirstOrDefault();
                     lockItem.ItemCode = objItem.ItemCode;
                     lockItem.BarCode = objItem.BarCode;
@@ -316,14 +331,25 @@ namespace EasyPOS.Controllers
                     lockItem.IsLocked = true;
                     db.SubmitChanges();
 
-                    return new String[] { "", "" };
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(item.FirstOrDefault());
 
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "MstItem",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "LockItem"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
+                    return new String[] { "", "" };
                 }
                 else
                 {
                     return new String[] { "Item not found.", "0" };
                 }
-
             }
             catch (Exception e)
             {
@@ -355,14 +381,33 @@ namespace EasyPOS.Controllers
                         return new String[] { "Unlock not allowed.", "0" };
                     }
 
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(item.FirstOrDefault());
+
                     var unLockItem = item.FirstOrDefault();
                     unLockItem.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
                     unLockItem.UpdateDateTime = DateTime.Today;
                     unLockItem.IsLocked = false;
                     db.SubmitChanges();
-                }
 
-                return new String[] { "", "" };
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(item.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "MstItem",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "UnlockItem"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
+                    return new String[] { "", "" };
+                }
+                else
+                {
+                    return new String[] { "Item not found.", "0" };
+                }
             }
             catch (Exception e)
             {
@@ -398,10 +443,23 @@ namespace EasyPOS.Controllers
                     {
                         var deleteItem = item.FirstOrDefault();
                         db.MstItems.DeleteOnSubmit(deleteItem);
+
+                        String oldObject = Modules.SysAuditTrailModule.GetObjectString(item.FirstOrDefault());
+
+                        Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                        {
+                            UserId = currentUserLogin.FirstOrDefault().Id,
+                            AuditDate = DateTime.Now,
+                            TableInformation = "MstItem",
+                            RecordInformation = oldObject,
+                            FormInformation = "",
+                            ActionInformation = "DeleteItem"
+                        };
+                        Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                         db.SubmitChanges();
 
                         return new String[] { "", "" };
-
                     }
                     else
                     {
@@ -412,7 +470,6 @@ namespace EasyPOS.Controllers
                 {
                     return new String[] { "Item is Locked", "0" };
                 }
-
             }
             catch (Exception e)
             {

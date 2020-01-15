@@ -38,6 +38,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 Data.MstItemPrice addItemPrice = new Data.MstItemPrice()
                 {
                     ItemId = objItemPrice.ItemId,
@@ -48,6 +54,19 @@ namespace EasyPOS.Controllers
 
                 db.MstItemPrices.InsertOnSubmit(addItemPrice);
                 db.SubmitChanges();
+
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(addItemPrice);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "MstItemPrice",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "AddItemPrice"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                 return new String[] { "", "" };
             }
@@ -64,17 +83,38 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var itemPrice = from d in db.MstItemPrices
                                 where d.Id == objItemPrice.Id
                                 select d;
 
                 if (itemPrice.Any())
                 {
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(itemPrice.FirstOrDefault());
+
                     var updateItemPrice = itemPrice.FirstOrDefault();
                     updateItemPrice.PriceDescription = objItemPrice.PriceDescription;
                     updateItemPrice.Price = objItemPrice.Price;
                     updateItemPrice.TriggerQuantity = objItemPrice.TriggerQuantity;
                     db.SubmitChanges();
+
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(itemPrice.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "MstItemPrice",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "UpdateItemPrice"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                     return new String[] { "", "" };
                 }
@@ -96,6 +136,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var itemPrice = from d in db.MstItemPrices
                                 where d.Id == id
                                 select d;
@@ -104,6 +150,20 @@ namespace EasyPOS.Controllers
                 {
                     var deleteItemPrice = itemPrice.FirstOrDefault();
                     db.MstItemPrices.DeleteOnSubmit(deleteItemPrice);
+
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(itemPrice.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "MstItemPrice",
+                        RecordInformation = oldObject,
+                        FormInformation = "",
+                        ActionInformation = "DeleteItemPrice"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                     db.SubmitChanges();
 
                     return new String[] { "", "" };

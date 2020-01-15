@@ -52,6 +52,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current user not found.", "0" };
+                }
+
                 Data.MstAccount addAccount = new Data.MstAccount()
                 {
                     Code = objAccount.Code,
@@ -62,6 +68,19 @@ namespace EasyPOS.Controllers
 
                 db.MstAccounts.InsertOnSubmit(addAccount);
                 db.SubmitChanges();
+
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(addAccount);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "MstAccount",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "AddAccount"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                 return new String[] { "", "" };
             }
@@ -78,17 +97,38 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current user not found.", "0" };
+                }
+
                 var account = from d in db.MstAccounts
                               where d.Id == objAccount.Id
                               select d;
 
                 if (account.Any())
                 {
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(account.FirstOrDefault());
+
                     var updateAccount = account.FirstOrDefault();
                     updateAccount.Code = objAccount.Code;
                     updateAccount.Account = objAccount.Account;
                     updateAccount.AccountType = objAccount.AccountType;
                     db.SubmitChanges();
+
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(account.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "MstAccount",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "UpdateAccount"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                     return new String[] { "", "" };
                 }
@@ -110,6 +150,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current user not found.", "0" };
+                }
+
                 var account = from d in db.MstAccounts
                               where d.Id == id
                               select d;
@@ -118,6 +164,20 @@ namespace EasyPOS.Controllers
                 {
                     var deleteAccount = account.FirstOrDefault();
                     db.MstAccounts.DeleteOnSubmit(deleteAccount);
+
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(account.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "MstAccount",
+                        RecordInformation = oldObject,
+                        FormInformation = "",
+                        ActionInformation = "DeleteAccount"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                     db.SubmitChanges();
 
                     return new string[] { "", "" };

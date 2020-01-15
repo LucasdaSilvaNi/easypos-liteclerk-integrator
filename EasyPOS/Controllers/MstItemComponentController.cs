@@ -83,6 +83,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var componentItem = from d in db.MstItems
                                     where d.Id == objItemComponent.ComponentItemId
                                     select d;
@@ -106,6 +112,19 @@ namespace EasyPOS.Controllers
                 db.MstItemComponents.InsertOnSubmit(addComponent);
                 db.SubmitChanges();
 
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(addComponent);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "MstItemComponent",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "AddItemComponent"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                 return new String[] { "", "" };
             }
             catch (Exception e)
@@ -121,6 +140,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var itemComponent = from d in db.MstItemComponents
                                     where d.Id == objItemComponent.Id
                                     select d;
@@ -136,6 +161,8 @@ namespace EasyPOS.Controllers
                         return new String[] { "Component item not found.", "0" };
                     }
 
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(itemComponent.FirstOrDefault());
+
                     var updateItemComponent = itemComponent.FirstOrDefault();
                     updateItemComponent.ComponentItemId = objItemComponent.ComponentItemId;
                     updateItemComponent.UnitId = componentItem.FirstOrDefault().UnitId;
@@ -143,6 +170,19 @@ namespace EasyPOS.Controllers
                     updateItemComponent.Cost = objItemComponent.Cost;
                     updateItemComponent.Amount = objItemComponent.Amount;
                     db.SubmitChanges();
+
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(itemComponent.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "MstItemComponent",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "UpdateItemComponent"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                     return new String[] { "", "" };
                 }
@@ -164,6 +204,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var itemComponent = from d in db.MstItemComponents
                                     where d.Id == id
                                     select d;
@@ -172,6 +218,20 @@ namespace EasyPOS.Controllers
                 {
                     var deleteItemComponent = itemComponent.FirstOrDefault();
                     db.MstItemComponents.DeleteOnSubmit(deleteItemComponent);
+
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(itemComponent.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "MstItemComponent",
+                        RecordInformation = oldObject,
+                        FormInformation = "",
+                        ActionInformation = "DeleteItemComponent"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                     db.SubmitChanges();
 
                     return new String[] { "", "" };

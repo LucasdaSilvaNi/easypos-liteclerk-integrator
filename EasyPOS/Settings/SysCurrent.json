@@ -36,5 +36,6 @@
   "EasypayAPIURL": "http://localhost:2650",
   "EasypayDefaultUsername": "admin",
   "EasypayDefaultPassword": "@Sodex123",
-  "EasypayMotherCardNumber": "0000000001"
+  "EasypayMotherCardNumber": "0000000001",
+  "ActivateAuditTrail": "true"
 }
