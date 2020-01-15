@@ -268,17 +268,17 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                             sysSettingsForm.logMessages("Saving Item: " + item.Article + "\r\n\n");
                                             sysSettingsForm.logMessages("Barcode: " + item.ManualArticleCode + "\r\n\n");
 
-                                            var defaultItemCode = "000001";
+                                            var itemCode = "0000000001";
                                             var lastItem = from d in posdb.MstItems.OrderByDescending(d => d.Id) select d;
                                             if (lastItem.Any())
                                             {
-                                                var OTNumber = Convert.ToInt32(lastItem.FirstOrDefault().ItemCode) + 000001;
-                                                defaultItemCode = FillLeadingZeroes(OTNumber, 6);
+                                                var newItemCode = Convert.ToInt32(lastItem.FirstOrDefault().ItemCode) + 0000000001;
+                                                itemCode = FillLeadingZeroes(newItemCode, 10);
                                             }
 
                                             Data.MstItem newItem = new Data.MstItem
                                             {
-                                                ItemCode = defaultItemCode,
+                                                ItemCode = itemCode,
                                                 BarCode = item.ManualArticleCode,
                                                 ItemDescription = item.Article,
                                                 Alias = item.Article,

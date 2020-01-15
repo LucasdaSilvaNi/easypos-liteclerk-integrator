@@ -93,23 +93,19 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                     var defaultPeriod = from d in posdb.MstPeriods select d;
                                     var defaultSettings = from d in posdb.IntCloudSettings select d;
 
-                                    var lastStockInNumber = from d in posdb.TrnStockIns.OrderByDescending(d => d.Id) select d;
-                                    var stockInNumberResult = defaultPeriod.FirstOrDefault().Period + "-000001";
-
-                                    if (lastStockInNumber.Any())
+                                    String stockInNumber = "0000000001";
+                                    var lastStockIn = from d in posdb.TrnStockIns.OrderByDescending(d => d.Id) select d;
+                                    if (lastStockIn.Any())
                                     {
-                                        var stockInNumberSplitStrings = lastStockInNumber.FirstOrDefault().StockInNumber;
-                                        Int32 secondIndex = stockInNumberSplitStrings.IndexOf('-', stockInNumberSplitStrings.IndexOf('-'));
-                                        var stockInNumberSplitStringValue = stockInNumberSplitStrings.Substring(secondIndex + 1);
-                                        var stockInNumber = Convert.ToInt32(stockInNumberSplitStringValue) + 000001;
-                                        stockInNumberResult = defaultPeriod.FirstOrDefault().Period + "-" + FillLeadingZeroes(stockInNumber, 6);
+                                        Int32 newStockInNumber = Convert.ToInt32(lastStockIn.FirstOrDefault().StockInNumber) + 1;
+                                        stockInNumber = FillLeadingZeroes(newStockInNumber, 10);
                                     }
 
                                     Data.TrnStockIn newStockIn = new Data.TrnStockIn
                                     {
                                         PeriodId = defaultPeriod.FirstOrDefault().Id,
                                         StockInDate = Convert.ToDateTime(receivingReceipt.RRDate),
-                                        StockInNumber = stockInNumberResult,
+                                        StockInNumber = stockInNumber,
                                         SupplierId = defaultSettings.FirstOrDefault().PostSupplierId,
                                         Remarks = "RR-" + receivingReceipt.BranchCode + "-" + receivingReceipt.RRNumber,
                                         IsReturn = false,

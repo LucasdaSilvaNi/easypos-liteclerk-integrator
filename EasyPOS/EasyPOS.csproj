@@ -598,6 +598,7 @@
     <Compile Include="IndexForm.Designer.cs">
       <DependentUpon>IndexForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\SysAuditTrailModule.cs" />
     <Compile Include="Modules\SysSerialPortModule.cs" />
     <Compile Include="Modules\SysUserRightsModule.cs" />
     <Compile Include="Modules\TrnInventoryModule.cs" />

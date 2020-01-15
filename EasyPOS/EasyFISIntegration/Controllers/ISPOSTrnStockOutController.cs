@@ -91,16 +91,12 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                 var defaultPeriod = from d in posdb.MstPeriods select d;
                                 var defaultSettings = from d in posdb.IntCloudSettings select d;
 
-                                var lastStockOutNumber = from d in posdb.TrnStockOuts.OrderByDescending(d => d.Id) select d;
-                                var stockOutNumberResult = defaultPeriod.FirstOrDefault().Period + "-000001";
-
-                                if (lastStockOutNumber.Any())
+                                String stockOutNumber = "0000000001";
+                                var lastStockOut = from d in posdb.TrnStockOuts.OrderByDescending(d => d.Id) select d;
+                                if (lastStockOut.Any())
                                 {
-                                    var stockOutNumberSplitStrings = lastStockOutNumber.FirstOrDefault().StockOutNumber;
-                                    Int32 secondIndex = stockOutNumberSplitStrings.IndexOf('-', stockOutNumberSplitStrings.IndexOf('-'));
-                                    var stockOutNumberSplitStringValue = stockOutNumberSplitStrings.Substring(secondIndex + 1);
-                                    var stockOutNumber = Convert.ToInt32(stockOutNumberSplitStringValue) + 000001;
-                                    stockOutNumberResult = defaultPeriod.FirstOrDefault().Period + "-" + FillLeadingZeroes(stockOutNumber, 6);
+                                    Int32 newStockOutNumber = Convert.ToInt32(lastStockOut.FirstOrDefault().StockOutNumber) + 1;
+                                    stockOutNumber = FillLeadingZeroes(newStockOutNumber, 10);
                                 }
 
                                 var accounts = from d in posdb.MstAccounts select d;
@@ -110,7 +106,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                     {
                                         PeriodId = defaultPeriod.FirstOrDefault().Id,
                                         StockOutDate = Convert.ToDateTime(stockOut.OTDate),
-                                        StockOutNumber = stockOutNumberResult,
+                                        StockOutNumber = stockOutNumber,
                                         AccountId = accounts.FirstOrDefault().Id,
                                         Remarks = "OT-" + stockOut.BranchCode + "-" + stockOut.OTNumber,
                                         PreparedBy = defaultSettings.FirstOrDefault().PostUserId,
