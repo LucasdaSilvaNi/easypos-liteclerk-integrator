@@ -305,6 +305,19 @@ namespace EasyPOS.Controllers
                 db.TrnDisbursements.InsertOnSubmit(newDisbursement);
                 db.SubmitChanges();
 
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(newDisbursement);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "TrnDisbursement",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "AddDisbursement"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                 return new String[] { "", newDisbursement.Id.ToString() };
             }
             catch (Exception e)
@@ -377,6 +390,8 @@ namespace EasyPOS.Controllers
                         return new String[] { "Already locked.", "0" };
                     }
 
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(disbursement.FirstOrDefault());
+
                     var lockDisbursement = disbursement.FirstOrDefault();
                     lockDisbursement.DisbursementType = objDisbursement.DisbursementType;
                     lockDisbursement.PayTypeId = payType.FirstOrDefault().Id;
@@ -404,6 +419,19 @@ namespace EasyPOS.Controllers
                     lockDisbursement.Amount001 = objDisbursement.Amount001;
                     lockDisbursement.Payee = objDisbursement.Payee;
                     db.SubmitChanges();
+
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(disbursement.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "TrnDisbursement",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "LockDisbursement"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                     return new String[] { "", "1" };
                 }
@@ -442,11 +470,26 @@ namespace EasyPOS.Controllers
                         return new String[] { "Already unlocked.", "0" };
                     }
 
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(disbursement.FirstOrDefault());
+
                     var unlockDisbursement = disbursement.FirstOrDefault();
                     unlockDisbursement.IsLocked = false;
                     unlockDisbursement.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
                     unlockDisbursement.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
+
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(disbursement.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "TrnDisbursement",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "UnlockDisbursement"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                     return new String[] { "", "1" };
                 }
@@ -487,6 +530,20 @@ namespace EasyPOS.Controllers
 
                     var deleteDisbursement = disbursement.FirstOrDefault();
                     db.TrnDisbursements.DeleteOnSubmit(deleteDisbursement);
+
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(disbursement.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "TrnDisbursement",
+                        RecordInformation = oldObject,
+                        FormInformation = "",
+                        ActionInformation = "DeleteDisbursement"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                     db.SubmitChanges();
 
                     return new String[] { "", "1" };

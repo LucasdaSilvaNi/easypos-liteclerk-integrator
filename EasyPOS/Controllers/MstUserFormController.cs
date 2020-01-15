@@ -67,6 +67,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var user = from d in db.MstUsers
                            where d.Id == objUserForm.UserId
                            select d;
@@ -107,6 +113,19 @@ namespace EasyPOS.Controllers
                 db.MstUserForms.InsertOnSubmit(newUserForm);
                 db.SubmitChanges();
 
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(newUserForm);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "MstUserForm",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "AddUserForm"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                 return new String[] { "", "1" };
             }
             catch (Exception e)
@@ -122,6 +141,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var userForm = from d in db.MstUserForms
                                where d.Id == id
                                select d;
@@ -136,6 +161,8 @@ namespace EasyPOS.Controllers
                     {
                         return new String[] { "User transaction not found.", "0" };
                     }
+
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(userForm.FirstOrDefault());
 
                     var updateUserForm = userForm.FirstOrDefault();
                     updateUserForm.FormId = objUserForm.FormId;
@@ -153,6 +180,19 @@ namespace EasyPOS.Controllers
                     updateUserForm.CanCancel = objUserForm.CanCancel;
                     updateUserForm.CanReturn = objUserForm.CanReturn;
                     db.SubmitChanges();
+
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(userForm.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "MstUserForm",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "UpdateUserForm"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                     return new String[] { "", "1" };
                 }
@@ -174,6 +214,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var userForm = from d in db.MstUserForms
                                where d.Id == id
                                select d;
@@ -182,6 +228,20 @@ namespace EasyPOS.Controllers
                 {
                     var deleteUserForm = userForm.FirstOrDefault();
                     db.MstUserForms.DeleteOnSubmit(deleteUserForm);
+
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(userForm.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "MstUserForm",
+                        RecordInformation = oldObject,
+                        FormInformation = "",
+                        ActionInformation = "DeleteUserForm"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                     db.SubmitChanges();
 
                     return new String[] { "", "1" };

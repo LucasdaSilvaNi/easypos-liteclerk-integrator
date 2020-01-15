@@ -169,6 +169,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var period = from d in db.MstPeriods where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentPeriodId) select d;
                 if (period.Any() == false)
                 {
@@ -246,6 +252,19 @@ namespace EasyPOS.Controllers
                 db.TrnSales.InsertOnSubmit(newSales);
                 db.SubmitChanges();
 
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(newSales);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "TrnSale",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "AddSales"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                 return new String[] { "", newSales.Id.ToString() };
             }
             catch (Exception e)
@@ -277,6 +296,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var currentSales = from d in db.TrnSales
                                    where d.Id == salesId
                                    select d;
@@ -336,6 +361,19 @@ namespace EasyPOS.Controllers
 
                 db.TrnCollections.InsertOnSubmit(newCollection);
                 db.SubmitChanges();
+
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(newCollection);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "TrnCollection",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "TenderSales"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                 if (objCollection.CollectionLines.Any())
                 {
@@ -409,6 +447,8 @@ namespace EasyPOS.Controllers
                     paidAmount = totalCollectionLineAmount;
                 }
 
+                String oldObject3 = Modules.SysAuditTrailModule.GetObjectString(currentSales.FirstOrDefault());
+
                 var lockSales = currentSales.FirstOrDefault();
                 lockSales.PaidAmount = paidAmount;
                 lockSales.BalanceAmount = salesAmount - paidAmount;
@@ -420,6 +460,19 @@ namespace EasyPOS.Controllers
 
                 Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
                 trnInventoryModule.UpdateSalesInventory(currentSales.FirstOrDefault().Id);
+
+                String newObject3 = Modules.SysAuditTrailModule.GetObjectString(currentSales.FirstOrDefault());
+
+                Entities.SysAuditTrailEntity newAuditTrail3 = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "TrnSales",
+                    RecordInformation = oldObject3,
+                    FormInformation = newObject3,
+                    ActionInformation = "TenderSales"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail3);
 
                 return new String[] { "", newCollection.Id.ToString() };
             }
@@ -518,6 +571,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var sales = from d in db.TrnSales
                             where d.Id == salesId
                             select d;
@@ -535,6 +594,20 @@ namespace EasyPOS.Controllers
                     }
 
                     db.TrnSales.DeleteOnSubmit(sales.FirstOrDefault());
+
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(sales.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "TrnSales",
+                        RecordInformation = oldObject,
+                        FormInformation = "",
+                        ActionInformation = "DeleteSales"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                     db.SubmitChanges();
 
                     return new String[] { "", "1" };
@@ -557,33 +630,77 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var sales = from d in db.TrnSales
                             where d.Id == salesId
                             && d.IsLocked == true
-                            && d.IsCancelled == false
                             select d;
 
                 if (sales.Any())
                 {
+                    if (sales.FirstOrDefault().IsCancelled)
+                    {
+                        return new String[] { "Already cancelled.", "0" };
+                    }
+
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(sales.FirstOrDefault());
+
+                    var cancelSales = sales.FirstOrDefault();
+                    cancelSales.IsCancelled = true;
+                    cancelSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
+                    cancelSales.UpdateDateTime = DateTime.Now;
+                    db.SubmitChanges();
+
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(sales.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "TrnSales",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "CancelSales"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                     var collection = from d in db.TrnCollections
                                      where d.SalesId == salesId
                                      && d.IsLocked == true
-                                     && d.IsCancelled == false
                                      select d;
 
                     if (collection.Any())
                     {
-                        var cancelSales = sales.FirstOrDefault();
-                        cancelSales.IsCancelled = true;
-                        cancelSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
-                        cancelSales.UpdateDateTime = DateTime.Now;
-                        db.SubmitChanges();
+                        if (collection.FirstOrDefault().IsCancelled)
+                        {
+                            return new String[] { "Already cancelled.", "0" };
+                        }
+
+                        String oldObject2 = Modules.SysAuditTrailModule.GetObjectString(collection.FirstOrDefault());
 
                         var cancelCollection = collection.FirstOrDefault();
                         cancelCollection.IsCancelled = true;
                         cancelCollection.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
                         cancelCollection.UpdateDateTime = DateTime.Now;
                         db.SubmitChanges();
+
+                        String newObject2 = Modules.SysAuditTrailModule.GetObjectString(collection.FirstOrDefault());
+
+                        Entities.SysAuditTrailEntity newAuditTrail2 = new Entities.SysAuditTrailEntity()
+                        {
+                            UserId = currentUserLogin.FirstOrDefault().Id,
+                            AuditDate = DateTime.Now,
+                            TableInformation = "TrnCollection",
+                            RecordInformation = oldObject2,
+                            FormInformation = newObject2,
+                            ActionInformation = "CancelSales"
+                        };
+                        Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail2);
 
                         return new String[] { "", "1" };
                     }

@@ -113,7 +113,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
             else
             {
-                String[] addSales = trnPOSSalesLineController.UpdatealesLine(trnSalesLineEntity.Id, newSalesLineEntity);
+                String[] addSales = trnPOSSalesLineController.UpdateSalesLine(trnSalesLineEntity.Id, newSalesLineEntity);
                 if (addSales[1].Equals("0") == false)
                 {
                     trnSalesDetailForm.GetSalesLineList();

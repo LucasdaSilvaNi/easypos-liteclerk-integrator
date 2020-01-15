@@ -192,6 +192,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var sales = from d in db.TrnSales
                             where d.Id == objSalesLine.SalesId
                             select d;
@@ -256,6 +262,19 @@ namespace EasyPOS.Controllers
                 db.TrnSalesLines.InsertOnSubmit(newSaleLine);
                 db.SubmitChanges();
 
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(newSaleLine);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "TrnSalesLine",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "AddSalesLine"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                 var updateSales = sales.FirstOrDefault();
                 updateSales.Amount = sales.FirstOrDefault().TrnSalesLines.Any() ? sales.FirstOrDefault().TrnSalesLines.Sum(d => d.Amount) : 0;
                 db.SubmitChanges();
@@ -271,10 +290,16 @@ namespace EasyPOS.Controllers
         // =================
         // Update Sales Line
         // =================
-        public String[] UpdatealesLine(Int32 id, Entities.TrnSalesLineEntity objSalesLine)
+        public String[] UpdateSalesLine(Int32 id, Entities.TrnSalesLineEntity objSalesLine)
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var salesLine = from d in db.TrnSalesLines
                                 where d.Id == id
                                 select d;
@@ -314,6 +339,8 @@ namespace EasyPOS.Controllers
                         return new String[] { "User not found.", "0" };
                     }
 
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(salesLine.FirstOrDefault());
+
                     var updateSalesLine = salesLine.FirstOrDefault();
                     updateSalesLine.Quantity = objSalesLine.Quantity;
                     updateSalesLine.Price = objSalesLine.Price;
@@ -329,6 +356,19 @@ namespace EasyPOS.Controllers
                     updateSalesLine.UserId = user.FirstOrDefault().Id;
                     updateSalesLine.Preparation = objSalesLine.Preparation;
                     db.SubmitChanges();
+
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(salesLine.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "TrnSalesLine",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "UpdateSalesLine"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                     var updateSales = sales.FirstOrDefault();
                     updateSales.Amount = sales.FirstOrDefault().TrnSalesLines.Any() ? sales.FirstOrDefault().TrnSalesLines.Sum(d => d.Amount) : 0;
@@ -354,6 +394,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var salesLine = from d in db.TrnSalesLines
                                 where d.Id == id
                                 select d;
@@ -363,6 +409,20 @@ namespace EasyPOS.Controllers
                     Int32 salesId = salesLine.FirstOrDefault().SalesId;
 
                     db.TrnSalesLines.DeleteOnSubmit(salesLine.FirstOrDefault());
+
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(salesLine.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "TrnSalesLine",
+                        RecordInformation = oldObject,
+                        FormInformation = "",
+                        ActionInformation = "DeleteSalesLine"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                     db.SubmitChanges();
 
                     var sales = from d in db.TrnSales

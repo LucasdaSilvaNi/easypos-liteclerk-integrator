@@ -97,6 +97,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var stockOut = from d in db.TrnStockOuts
                                where d.Id == objStockOutLine.StockOutId
                                select d;
@@ -130,6 +136,19 @@ namespace EasyPOS.Controllers
                 db.TrnStockOutLines.InsertOnSubmit(newStockOutLine);
                 db.SubmitChanges();
 
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(newStockOutLine);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "TrnStockOutLine",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "AddStockOutLine"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                 return new String[] { "", "1" };
             }
             catch (Exception e)
@@ -145,6 +164,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var stockOutLine = from d in db.TrnStockOutLines
                                    where d.Id == id
                                    select d;
@@ -160,11 +185,26 @@ namespace EasyPOS.Controllers
                         return new String[] { "Stock-Out transaction not found.", "0" };
                     }
 
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(stockOutLine.FirstOrDefault());
+
                     var updateStockOutLine = stockOutLine.FirstOrDefault();
                     updateStockOutLine.Quantity = objStockOutLine.Quantity;
                     updateStockOutLine.Cost = objStockOutLine.Cost;
                     updateStockOutLine.Amount = objStockOutLine.Amount;
                     db.SubmitChanges();
+
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(stockOutLine.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "TrnStockOutLine",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "UpdateStockOutLine"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                     return new String[] { "", "1" };
                 }
@@ -186,6 +226,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var stockOutLine = from d in db.TrnStockOutLines
                                    where d.Id == id
                                    select d;
@@ -194,6 +240,20 @@ namespace EasyPOS.Controllers
                 {
                     var deleteStockOutLine = stockOutLine.FirstOrDefault();
                     db.TrnStockOutLines.DeleteOnSubmit(deleteStockOutLine);
+
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(stockOutLine.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "TrnStockOutLine",
+                        RecordInformation = oldObject,
+                        FormInformation = "",
+                        ActionInformation = "DeleteStockOutLine"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                     db.SubmitChanges();
 
                     return new String[] { "", "1" };
@@ -216,6 +276,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var stockOut = from d in db.TrnStockOuts
                                where d.Id == stockOutId
                                select d;
@@ -248,6 +314,19 @@ namespace EasyPOS.Controllers
 
                 db.TrnStockOutLines.InsertOnSubmit(newStockOutLine);
                 db.SubmitChanges();
+
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(newStockOutLine);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "TrnStockOutLine",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "AddStockOutLine"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                 return new String[] { "", "1" };
             }

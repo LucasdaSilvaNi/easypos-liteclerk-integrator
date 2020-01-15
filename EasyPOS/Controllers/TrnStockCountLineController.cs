@@ -95,6 +95,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var stockCount = from d in db.TrnStockCounts
                                  where d.Id == objStockCountLine.StockCountId
                                  select d;
@@ -127,6 +133,19 @@ namespace EasyPOS.Controllers
                 db.TrnStockCountLines.InsertOnSubmit(newStockCountLine);
                 db.SubmitChanges();
 
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(newStockCountLine);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "TrnStockCountLine",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "AddStockCountLine"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                 return new String[] { "", "1" };
             }
             catch (Exception e)
@@ -142,6 +161,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var stockCountLine = from d in db.TrnStockCountLines
                                      where d.Id == id
                                      select d;
@@ -157,11 +182,26 @@ namespace EasyPOS.Controllers
                         return new String[] { "Stock-Count transaction not found.", "0" };
                     }
 
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(stockCountLine.FirstOrDefault());
+
                     var updateStockCountLine = stockCountLine.FirstOrDefault();
                     updateStockCountLine.Quantity = objStockCountLine.Quantity;
                     updateStockCountLine.Cost = objStockCountLine.Cost;
                     updateStockCountLine.Amount = objStockCountLine.Amount;
                     db.SubmitChanges();
+
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(stockCountLine.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "TrnStockCountLine",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "UpdateStockCountLine"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                     return new String[] { "", "1" };
                 }
@@ -183,6 +223,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var stockCountLine = from d in db.TrnStockCountLines
                                      where d.Id == id
                                      select d;
@@ -191,6 +237,20 @@ namespace EasyPOS.Controllers
                 {
                     var deleteStockCountLine = stockCountLine.FirstOrDefault();
                     db.TrnStockCountLines.DeleteOnSubmit(deleteStockCountLine);
+
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(stockCountLine.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "TrnStockCountLine",
+                        RecordInformation = oldObject,
+                        FormInformation = "",
+                        ActionInformation = "DeleteStockCountLine"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                     db.SubmitChanges();
 
                     return new String[] { "", "1" };
@@ -213,6 +273,12 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
                 var stockCount = from d in db.TrnStockCounts
                                  where d.Id == stockCountId
                                  select d;
@@ -244,6 +310,19 @@ namespace EasyPOS.Controllers
 
                 db.TrnStockCountLines.InsertOnSubmit(newStockCountLine);
                 db.SubmitChanges();
+
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(newStockCountLine);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "TrnStockCountLine",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "AddStockCountLine"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                 return new String[] { "", "1" };
             }
