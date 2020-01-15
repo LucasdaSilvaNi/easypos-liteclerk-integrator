@@ -160,6 +160,19 @@ namespace EasyPOS.Controllers
                 db.MstSuppliers.InsertOnSubmit(addSupplier);
                 db.SubmitChanges();
 
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(addSupplier);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "MstSupplier",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "AddSupplier"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                 return new String[] { addSupplier.Id.ToString(), "" };
             }
             catch (Exception e)
@@ -187,6 +200,8 @@ namespace EasyPOS.Controllers
 
                 if (supplier.Any())
                 {
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(supplier.FirstOrDefault());
+
                     var lockSupplier = supplier.FirstOrDefault();
                     lockSupplier.Supplier = objSupplier.Supplier;
                     lockSupplier.Address = objSupplier.Address;
@@ -200,13 +215,25 @@ namespace EasyPOS.Controllers
                     lockSupplier.IsLocked = true;
                     db.SubmitChanges();
 
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(supplier.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "MstSupplier",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "LockSupplier"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                     return new String[] { "", "" };
                 }
                 else
                 {
                     return new String[] { "Supplier not found!", "0" };
                 }
-
             }
             catch (Exception e)
             {
@@ -233,11 +260,26 @@ namespace EasyPOS.Controllers
 
                 if (supplier.Any())
                 {
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(supplier.FirstOrDefault());
+
                     var unlockSupplier = supplier.FirstOrDefault();
                     unlockSupplier.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
                     unlockSupplier.UpdateDateTime = DateTime.Today;
                     unlockSupplier.IsLocked = false;
                     db.SubmitChanges();
+
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(supplier.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "MstSupplier",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "UnlockSupplier"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                     return new String[] { "", "" };
                 }
@@ -276,6 +318,20 @@ namespace EasyPOS.Controllers
                     {
                         var deleteSupplier = supplier.FirstOrDefault();
                         db.MstSuppliers.DeleteOnSubmit(deleteSupplier);
+
+                        String oldObject = Modules.SysAuditTrailModule.GetObjectString(supplier.FirstOrDefault());
+
+                        Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                        {
+                            UserId = currentUserLogin.FirstOrDefault().Id,
+                            AuditDate = DateTime.Now,
+                            TableInformation = "MstSupplier",
+                            RecordInformation = oldObject,
+                            FormInformation = "",
+                            ActionInformation = "DeleteSupplier"
+                        };
+                        Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                         db.SubmitChanges();
 
                         return new String[] { "", "" };

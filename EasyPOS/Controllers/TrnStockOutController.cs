@@ -171,6 +171,19 @@ namespace EasyPOS.Controllers
                 db.TrnStockOuts.InsertOnSubmit(newStockOut);
                 db.SubmitChanges();
 
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(newStockOut);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "TrnStockOut",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "AddStockOut"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                 return new String[] { "", newStockOut.Id.ToString() };
             }
             catch (Exception e)
@@ -233,6 +246,8 @@ namespace EasyPOS.Controllers
                         return new String[] { "Already locked.", "0" };
                     }
 
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(stockOut.FirstOrDefault());
+
                     var lockStockOut = stockOut.FirstOrDefault();
                     lockStockOut.AccountId = objStockOut.AccountId;
                     lockStockOut.Remarks = objStockOut.Remarks;
@@ -245,6 +260,19 @@ namespace EasyPOS.Controllers
 
                     Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
                     trnInventoryModule.UpdateStockOutInventory(stockOut.FirstOrDefault().Id);
+
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(stockOut.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "TrnStockOut",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "LockStockOut"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                     return new String[] { "", "1" };
                 }
@@ -283,6 +311,8 @@ namespace EasyPOS.Controllers
                         return new String[] { "Already unlocked.", "0" };
                     }
 
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(stockOut.FirstOrDefault());
+
                     var unLockStockOut = stockOut.FirstOrDefault();
                     unLockStockOut.IsLocked = false;
                     unLockStockOut.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
@@ -291,6 +321,19 @@ namespace EasyPOS.Controllers
 
                     Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
                     trnInventoryModule.UpdateStockOutInventory(stockOut.FirstOrDefault().Id);
+
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(stockOut.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "TrnStockOut",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "UnlockStockOut"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                     return new String[] { "", "1" };
                 }
@@ -331,13 +374,27 @@ namespace EasyPOS.Controllers
 
                     var deleteStockOut = stockOut.FirstOrDefault();
                     db.TrnStockOuts.DeleteOnSubmit(deleteStockOut);
+
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(stockOut.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "TrnStockOut",
+                        RecordInformation = oldObject,
+                        FormInformation = "",
+                        ActionInformation = "DeleteStockOut"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                     db.SubmitChanges();
 
                     return new String[] { "", "" };
                 }
                 else
                 {
-                    return new String[] { "StockOut not found", "0" };
+                    return new String[] { "Stock-Out not found", "0" };
                 }
             }
             catch (Exception e)

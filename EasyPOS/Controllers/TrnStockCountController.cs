@@ -145,6 +145,19 @@ namespace EasyPOS.Controllers
                 db.TrnStockCounts.InsertOnSubmit(newStockCount);
                 db.SubmitChanges();
 
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(newStockCount);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "TrnStockCount",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "AddStockCount"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                 return new String[] { "", newStockCount.Id.ToString() };
             }
             catch (Exception e)
@@ -197,6 +210,8 @@ namespace EasyPOS.Controllers
                         return new String[] { "Already locked.", "0" };
                     }
 
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(stockCount.FirstOrDefault());
+
                     var lockStockCount = stockCount.FirstOrDefault();
                     lockStockCount.StockCountDate = Convert.ToDateTime(objStockCount.StockCountDate);
                     lockStockCount.Remarks = objStockCount.Remarks;
@@ -206,6 +221,19 @@ namespace EasyPOS.Controllers
                     lockStockCount.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
                     lockStockCount.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
+
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(stockCount.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "TrnStockCount",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "LockStockCount"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                     return new String[] { "", "1" };
                 }
@@ -244,11 +272,26 @@ namespace EasyPOS.Controllers
                         return new String[] { "Already unlocked.", "0" };
                     }
 
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(stockCount.FirstOrDefault());
+
                     var unlockStockCount = stockCount.FirstOrDefault();
                     unlockStockCount.IsLocked = false;
                     unlockStockCount.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
                     unlockStockCount.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
+
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(stockCount.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "TrnStockCount",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "UnlockStockCount"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                     return new String[] { "", "1" };
                 }
@@ -289,6 +332,20 @@ namespace EasyPOS.Controllers
 
                     var deleteStockCount = stockCount.FirstOrDefault();
                     db.TrnStockCounts.DeleteOnSubmit(deleteStockCount);
+
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(stockCount.FirstOrDefault());
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "TrnStockCount",
+                        RecordInformation = oldObject,
+                        FormInformation = "",
+                        ActionInformation = "DeleteStockCount"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
                     db.SubmitChanges();
 
                     return new String[] { "", "1" };
