@@ -10,6 +10,7 @@ namespace EasyPOS.Entities
     {
         public Int32 Id { get; set; }
         public Int32 UserId { get; set; }
+        public String User { get; set; }
         public DateTime AuditDate { get; set; }
         public String TableInformation { get; set; }
         public String RecordInformation { get; set; }

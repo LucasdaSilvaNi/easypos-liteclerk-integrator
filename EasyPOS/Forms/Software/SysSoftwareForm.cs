@@ -64,6 +64,9 @@ namespace EasyPOS.Forms.Software
 
         public TabPage tabPageSettings = new TabPage { Name = "tabPageSettings", Text = "Settings" };
 
+        public TabPage tabPageSystemUtilities = new TabPage { Name = "tabPageSystemUtilities", Text = "System - Utilities" };
+
+
         // =====
         // Forms
         // =====
@@ -95,6 +98,8 @@ namespace EasyPOS.Forms.Software
         public SysSystemTables.SysSystemTablesForm sysSystemTablesForm = null;
 
         public SysSettings.SysSettingsForm sysSettingsForm = null;
+
+        public SysUtilities.SysUtilitiesListForm sysUtilitiesListForm = null;
 
         public void InitializeDefaultForm()
         {
@@ -663,6 +668,33 @@ namespace EasyPOS.Forms.Software
             {
                 tabControlSoftware.TabPages.Add(tabPageSettings);
                 tabControlSoftware.SelectTab(tabPageSettings);
+            }
+        }
+
+        public void AddTabPageUtilities()
+        {
+            tabPageSystemUtilities.Controls.Remove(sysUtilitiesListForm);
+
+            if (sysUtilitiesListForm == null)
+            {
+                sysUtilitiesListForm = new SysUtilities.SysUtilitiesListForm(this)
+                {
+                    TopLevel = false,
+                    Visible = true,
+                    Dock = DockStyle.Fill
+                };
+            }
+
+            tabPageSystemUtilities.Controls.Add(sysUtilitiesListForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageSystemUtilities) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageSystemUtilities);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageSystemUtilities);
+                tabControlSoftware.SelectTab(tabPageSystemUtilities);
             }
         }
 

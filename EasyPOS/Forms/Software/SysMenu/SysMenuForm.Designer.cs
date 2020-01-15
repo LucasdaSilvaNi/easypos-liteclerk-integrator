@@ -35,7 +35,7 @@
             this.buttonItem = new System.Windows.Forms.Button();
             this.buttonUser = new System.Windows.Forms.Button();
             this.buttonPOS = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
+            this.buttonUtilities = new System.Windows.Forms.Button();
             this.buttonDiscounting = new System.Windows.Forms.Button();
             this.buttonSettings = new System.Windows.Forms.Button();
             this.buttonCustomer = new System.Windows.Forms.Button();
@@ -75,7 +75,7 @@
             this.panel1.Controls.Add(this.buttonItem);
             this.panel1.Controls.Add(this.buttonUser);
             this.panel1.Controls.Add(this.buttonPOS);
-            this.panel1.Controls.Add(this.button15);
+            this.panel1.Controls.Add(this.buttonUtilities);
             this.panel1.Controls.Add(this.buttonDiscounting);
             this.panel1.Controls.Add(this.buttonSettings);
             this.panel1.Controls.Add(this.buttonCustomer);
@@ -154,24 +154,25 @@
             this.buttonPOS.UseVisualStyleBackColor = false;
             this.buttonPOS.Click += new System.EventHandler(this.buttonPOS_Click);
             // 
-            // button15
+            // buttonUtilities
             // 
-            this.button15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button15.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button15.FlatAppearance.BorderSize = 0;
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.button15.ForeColor = System.Drawing.Color.White;
-            this.button15.ImageKey = "Utilities.png";
-            this.button15.ImageList = this.imageListMenuIcons;
-            this.button15.Location = new System.Drawing.Point(711, 266);
-            this.button15.Name = "button15";
-            this.button15.Padding = new System.Windows.Forms.Padding(10);
-            this.button15.Size = new System.Drawing.Size(227, 121);
-            this.button15.TabIndex = 17;
-            this.button15.Text = "\r\nUtilities";
-            this.button15.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button15.UseVisualStyleBackColor = false;
+            this.buttonUtilities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonUtilities.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonUtilities.FlatAppearance.BorderSize = 0;
+            this.buttonUtilities.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUtilities.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonUtilities.ForeColor = System.Drawing.Color.White;
+            this.buttonUtilities.ImageKey = "Utilities.png";
+            this.buttonUtilities.ImageList = this.imageListMenuIcons;
+            this.buttonUtilities.Location = new System.Drawing.Point(711, 266);
+            this.buttonUtilities.Name = "buttonUtilities";
+            this.buttonUtilities.Padding = new System.Windows.Forms.Padding(10);
+            this.buttonUtilities.Size = new System.Drawing.Size(227, 121);
+            this.buttonUtilities.TabIndex = 17;
+            this.buttonUtilities.Text = "\r\nUtilities";
+            this.buttonUtilities.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonUtilities.UseVisualStyleBackColor = false;
+            this.buttonUtilities.Click += new System.EventHandler(this.buttonUtilities_Click);
             // 
             // buttonDiscounting
             // 
@@ -447,7 +448,7 @@
         private System.Windows.Forms.Button buttonStockCount;
         private System.Windows.Forms.Button buttonPOSReport;
         private System.Windows.Forms.Button buttonSettings;
-        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button buttonUtilities;
         private System.Windows.Forms.Button buttonUser;
         private System.Windows.Forms.Panel panel1;
     }
