@@ -511,6 +511,7 @@
       <Column Name="CollectionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="CollectionNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="TerminalId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CancelledCollectionNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ManualORNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="CustomerId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />

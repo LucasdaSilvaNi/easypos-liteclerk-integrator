@@ -12435,6 +12435,8 @@ namespace EasyPOS.Data
 		
 		private int _TerminalId;
 		
+		private string _CancelledCollectionNumber;
+		
 		private string _ManualORNumber;
 		
 		private int _CustomerId;
@@ -12509,6 +12511,8 @@ namespace EasyPOS.Data
     partial void OnCollectionNumberChanged();
     partial void OnTerminalIdChanging(int value);
     partial void OnTerminalIdChanged();
+    partial void OnCancelledCollectionNumberChanging(string value);
+    partial void OnCancelledCollectionNumberChanged();
     partial void OnManualORNumberChanging(string value);
     partial void OnManualORNumberChanged();
     partial void OnCustomerIdChanging(int value);
@@ -12668,6 +12672,26 @@ namespace EasyPOS.Data
 					this._TerminalId = value;
 					this.SendPropertyChanged("TerminalId");
 					this.OnTerminalIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CancelledCollectionNumber", DbType="NVarChar(50)")]
+		public string CancelledCollectionNumber
+		{
+			get
+			{
+				return this._CancelledCollectionNumber;
+			}
+			set
+			{
+				if ((this._CancelledCollectionNumber != value))
+				{
+					this.OnCancelledCollectionNumberChanging(value);
+					this.SendPropertyChanging();
+					this._CancelledCollectionNumber = value;
+					this.SendPropertyChanged("CancelledCollectionNumber");
+					this.OnCancelledCollectionNumberChanged();
 				}
 			}
 		}

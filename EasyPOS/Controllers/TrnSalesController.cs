@@ -681,13 +681,44 @@ namespace EasyPOS.Controllers
                             return new String[] { "Already cancelled.", "0" };
                         }
 
+                        String cancelledCollectionNumber = "0000000001";
+                        var lastCancelledCollection = from d in db.TrnCollections.OrderByDescending(d => d.Id)
+                                                      where d.TerminalId == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId)
+                                                      && d.IsCancelled == true
+                                                      select d;
+
+                        if (lastCancelledCollection.Any())
+                        {
+                            Int32 newCancelledCollectionNumber = Convert.ToInt32(lastCancelledCollection.FirstOrDefault().CancelledCollectionNumber) + 1;
+                            cancelledCollectionNumber = FillLeadingZeroes(newCancelledCollectionNumber, 10);
+                        }
+
                         String oldObject2 = Modules.SysAuditTrailModule.GetObjectString(collection.FirstOrDefault());
 
                         var cancelCollection = collection.FirstOrDefault();
+                        cancelCollection.CancelledCollectionNumber = cancelledCollectionNumber;
+                        cancelCollection.SalesBalanceAmount = 0;
+                        cancelCollection.TenderAmount = 0;
+                        cancelCollection.ChangeAmount = 0;
+                        cancelCollection.Amount = 0;
                         cancelCollection.IsCancelled = true;
                         cancelCollection.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
                         cancelCollection.UpdateDateTime = DateTime.Now;
                         db.SubmitChanges();
+
+                        var collectionLines = from d in db.TrnCollectionLines
+                                              where d.CollectionId == collection.FirstOrDefault().Id
+                                              select d;
+
+                        if (collectionLines.Any())
+                        {
+                            foreach (var collectionLine in collectionLines)
+                            {
+                                collectionLine.Amount = 0;
+                            }
+
+                            db.SubmitChanges();
+                        }
 
                         String newObject2 = Modules.SysAuditTrailModule.GetObjectString(collection.FirstOrDefault());
 
