@@ -867,6 +867,9 @@ namespace EasyPOS.Controllers
                         }
                     }
 
+                    updateSales.Amount = sales.FirstOrDefault().TrnSalesLines.Any() ? sales.FirstOrDefault().TrnSalesLines.Sum(d => d.Amount) : 0;
+                    db.SubmitChanges();
+
                     return new String[] { "", "1" };
                 }
                 else

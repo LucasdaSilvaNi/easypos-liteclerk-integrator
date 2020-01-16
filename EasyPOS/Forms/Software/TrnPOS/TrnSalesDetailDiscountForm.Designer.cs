@@ -143,6 +143,7 @@
             this.textBoxSeniorCitizenAge.TabIndex = 39;
             this.textBoxSeniorCitizenAge.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxSeniorCitizenAge.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSeniorCitizenAge_KeyPress);
+            this.textBoxSeniorCitizenAge.Leave += new System.EventHandler(this.textBoxSeniorCitizenAge_Leave);
             // 
             // label5
             // 

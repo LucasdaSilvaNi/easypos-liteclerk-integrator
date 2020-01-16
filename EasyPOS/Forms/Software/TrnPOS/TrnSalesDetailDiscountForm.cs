@@ -45,6 +45,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 textBoxSeniorCitizenName.Text = trnSalesController.DiscountDetailSales(trnSalesDetailForm.trnSalesEntity.Id).SeniorCitizenName;
                 textBoxSeniorCitizenAge.Text = trnSalesController.DiscountDetailSales(trnSalesDetailForm.trnSalesEntity.Id).SeniorCitizenAge.ToString();
             }
+            else
+            {
+                textBoxSeniorCitizenAge.Text = "0";
+            }
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -104,6 +108,18 @@ namespace EasyPOS.Forms.Software.TrnPOS
             if (selectedItemDiscount != null)
             {
 
+            }
+        }
+
+        private void textBoxSeniorCitizenAge_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBoxSeniorCitizenAge.Text))
+            {
+                textBoxSeniorCitizenAge.Text = "0";
+            }
+            else
+            {
+                textBoxSeniorCitizenAge.Text = Convert.ToDecimal(textBoxSeniorCitizenAge.Text).ToString("#,##0");
             }
         }
     }
