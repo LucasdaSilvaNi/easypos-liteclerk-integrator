@@ -57,13 +57,11 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                               ColumnSalesNumber = d.SalesNumber,
                               ColumnCustomerCode = d.CustomerCode,
                               ColumnCustomer = d.Customer,
-                              ColumnItemDescription = d.ItemDescription,
                               ColumnItemCode = d.ItemCode,
+                              ColumnItemDescription = d.ItemDescription,
                               ColumnItemCategory = d.ItemCategory,
                               ColumnUnit = d.Unit,
                               ColumnPrice = d.Price.ToString("#,##0.00"),
-                              ColumnDiscount = d.Discount,
-                              ColumnDiscountRate = d.DiscountRate.ToString("#,##0.00"),
                               ColumnDiscountAmount = d.DiscountAmount.ToString("#,##0.00"),
                               ColumnNetPrice = d.NetPrice.ToString("#,##0.00"),
                               ColumnQuantity = d.Quantity.ToString("#,##0.00"),
@@ -71,8 +69,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                               ColumnTax = d.Tax,
                               ColumnTaxRate = d.TaxRate.ToString("#,##0.00"),
                               ColumnTaxAmount = d.TaxAmount.ToString("#,##0.00"),
-                              ColumnUser = d.User,
-                              ColumnTimeStamp = d.SalesLineTimeStamp,
+                              ColumnSpace = ""
                           };
 
                 totalAmount = salesDetailList.Sum(d => d.Amount);
@@ -222,7 +219,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     DateTime endDate = dateEnd;
 
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Terminal", "Date", "Sales Number", "Customer Code", "Customer", "Item Description", "Item Code", "Item Category", "Unit","Price", "Discount", "Discount Rate", "Discount Amount", "Net Price", "Quantity", "Amount", "Tax", "Tax Amount", "User", "Time Stamp" };
+                    String[] header = { "Terminal", "Date", "Sales Number", "Customer Code", "Customer", "Item Code", "Item Description", "Item Category", "Unit", "Price", "Discount", "Net Price", "Quantity", "Amount", "Tax", "Tax Rate", "Tax Amount" };
                     csv.AppendLine(String.Join(",", header));
 
                     if (salesDetailList.Any())
@@ -240,13 +237,11 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                             salesDetail.ColumnSalesNumber,
                                             customerCode,
                                             salesDetail.ColumnCustomer.Replace("," , " "),
-                                            salesDetail.ColumnItemDescription.Replace("," , " "),
                                             salesDetail.ColumnItemCode,
+                                            salesDetail.ColumnItemDescription.Replace("," , " "),
                                             salesDetail.ColumnItemCategory.Replace("," , " "),
                                             salesDetail.ColumnUnit,
                                             salesDetail.ColumnPrice,
-                                            salesDetail.ColumnDiscount,
-                                            salesDetail.ColumnDiscountRate,
                                             salesDetail.ColumnDiscountAmount.Replace("," , ""),
                                             salesDetail.ColumnNetPrice.Replace("," , ""),
                                             salesDetail.ColumnQuantity.Replace("," , ""),
@@ -254,8 +249,6 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                             salesDetail.ColumnTax,
                                             salesDetail.ColumnTaxRate.Replace("," , ""),
                                             salesDetail.ColumnTaxAmount.Replace("," , ""),
-                                            salesDetail.ColumnUser,
-                                            salesDetail.ColumnTimeStamp
                             };
                             csv.AppendLine(String.Join(",", data));
                         }

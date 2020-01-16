@@ -166,6 +166,7 @@ namespace EasyPOS.Controllers
                                            Id = d.Id,
                                            Terminal = d.MstTerminal.Terminal,
                                            CollectionDate = d.CollectionDate.ToShortDateString(),
+                                           CancelledCollectionNumber = d.CancelledCollectionNumber,
                                            CollectionNumber = d.CollectionNumber,
                                            CustomerCode = d.MstCustomer.CustomerCode,
                                            Customer = d.MstCustomer.Customer,

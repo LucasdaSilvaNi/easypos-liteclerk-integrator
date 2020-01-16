@@ -12,6 +12,7 @@ namespace EasyPOS.Entities
         public Int32 PeriodId { get; set; }
         public String Period { get; set; }
         public String CollectionDate { get; set; }
+        public String CancelledCollectionNumber { get; set; }
         public String CollectionNumber { get; set; }
         public Int32 TerminalId { get; set; }
         public String Terminal { get; set; }
