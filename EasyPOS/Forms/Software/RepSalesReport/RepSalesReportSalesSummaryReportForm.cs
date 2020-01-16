@@ -24,25 +24,27 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
         public DateTime dateStart;
         public DateTime dateEnd;
+        public Int32 filterTerminalId;
 
-        public RepSalesReportSalesSummaryReportForm(DateTime startDate, DateTime endDate)
+        public RepSalesReportSalesSummaryReportForm(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
             InitializeComponent();
+
             dateStart = startDate;
             dateEnd = endDate;
+            filterTerminalId = terminalId;
 
             GetSalesSummaryListDataSource();
             CreateSalesSummaryListDataGrid();
         }
 
-
-        public List<Entities.DgvSalesReportSalesSummaryReportEntity> GetSalesSummaryListData(DateTime startDate, DateTime endDate)
+        public List<Entities.DgvSalesReportSalesSummaryReportEntity> GetSalesSummaryListData(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
             List<Entities.DgvSalesReportSalesSummaryReportEntity> rowList = new List<Entities.DgvSalesReportSalesSummaryReportEntity>();
 
             Controllers.RepSalesReportController repSalesSummaryReportController = new Controllers.RepSalesReportController();
 
-            var salesList = repSalesSummaryReportController.SalesSummaryReport(startDate, endDate);
+            var salesList = repSalesSummaryReportController.SalesSummaryReport(startDate, endDate, terminalId);
             if (salesList.Any())
             {
                 Decimal totalAmount = 0;
@@ -50,24 +52,18 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                           select new Entities.DgvSalesReportSalesSummaryReportEntity
                           {
                               ColumnId = d.Id,
-                              ColumnPeriod = d.Period,
                               ColumnTerminal = d.Terminal,
                               ColumnSalesDate = d.SalesDate,
                               ColumnSalesNumber = d.SalesNumber,
-                              ColumnManualInvoiceNumber = d.ManualInvoiceNumber,
-                              ColumnAmount = d.Amount.ToString("#,##0.00"),
                               ColumnCustomerCode = d.CustomerCode,
                               ColumnCustomer = d.Customer,
                               ColumnTerm = d.Term,
                               ColumnRemarks = d.Remarks,
-                              ColumnPreparedBy = d.PreparedBy,
                               ColumnPreparedByUserName = d.PreparedByUserName,
-                              ColumnPax = d.Pax,
-                              ColumnTable = d.Table,
+                              ColumnAmount = d.Amount.ToString("#,##0.00")
                           };
 
                 totalAmount = salesList.Sum(d => d.Amount);
-
                 textBoxTotalAmount.Text = totalAmount.ToString("#,##0.00");
 
                 rowList = row.ToList();
@@ -78,7 +74,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
         public void GetSalesSummaryListDataSource()
         {
-            salesList = GetSalesSummaryListData(dateStart, dateEnd);
+            salesList = GetSalesSummaryListData(dateStart, dateEnd, filterTerminalId);
             if (salesList.Any())
             {
 
@@ -214,7 +210,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 if (dialogResult == DialogResult.OK)
                 {
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Terminal", "Date", "Sales Number", "Manual Invoice No.", "Customer Code", "Customer", "Term", "Remarks", "Prepared By", "Amount", "Pax", "Table" };
+                    String[] header = { "Terminal", "Date", "Sales Number", "Customer Code", "Customer", "Term", "Remarks", "Prepared By", "Amount" };
                     csv.AppendLine(String.Join(",", header));
 
                     if (salesList.Any())
@@ -227,18 +223,16 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                 customerCode = sales.ColumnCustomerCode.Replace(",", " ");
                             }
 
-                            String[] data = {sales.ColumnTerminal,
+                            String[] data = {
+                                sales.ColumnTerminal,
                                 sales.ColumnSalesDate,
                                 sales.ColumnSalesNumber,
-                                sales.ColumnManualInvoiceNumber,
                                 customerCode,
                                 sales.ColumnCustomer.Replace("," , " "),
                                 sales.ColumnTerm,
                                 sales.ColumnRemarks,
                                 sales.ColumnPreparedByUserName,
                                 sales.ColumnAmount,
-                                sales.ColumnPax.ToString(),
-                                sales.ColumnTable
                             };
 
                             csv.AppendLine(String.Join(",", data));

@@ -349,11 +349,11 @@ namespace EasyPOS.Reports
                 graphics.DrawString(totalNonVatAmount, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(totalNonVatAmount, fontArial8Regular).Height;
 
-                String totalVATExclusiveLabel = "VAT Exclusive";
-                String totaltotalVATExclusiveAmount = totalVATExclusive.ToString("#,##0.00");
-                graphics.DrawString(totalVATExclusiveLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totaltotalVATExclusiveAmount, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totaltotalVATExclusiveAmount, fontArial8Regular).Height;
+                //String totalVATExclusiveLabel = "VAT Exclusive";
+                //String totaltotalVATExclusiveAmount = totalVATExclusive.ToString("#,##0.00");
+                //graphics.DrawString(totalVATExclusiveLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                //graphics.DrawString(totaltotalVATExclusiveAmount, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                //y += graphics.MeasureString(totaltotalVATExclusiveAmount, fontArial8Regular).Height;
 
                 String totalVATExemptLabel = "VAT Exempt";
                 String totaltotalVATExemptAmount = totalVATExempt.ToString("#,##0.00");

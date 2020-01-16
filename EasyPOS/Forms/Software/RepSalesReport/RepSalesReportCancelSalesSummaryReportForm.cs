@@ -24,24 +24,27 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
         public DateTime dateStart;
         public DateTime dateEnd;
+        public Int32 filterTerminalId;
 
-        public RepSalesReportCancelSalesSummaryReportForm(DateTime startDate, DateTime endDate)
+        public RepSalesReportCancelSalesSummaryReportForm(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
             InitializeComponent();
+
             dateStart = startDate;
             dateEnd = endDate;
+            filterTerminalId = terminalId;
 
             GetCancelSalesListDataSource();
             GetCancelSalesSummaryReportSource();
         }
 
-        public List<Entities.DgvSalesReportCancelledSalesSummaryReportEntity> GetCancelSalesSummaryListData(DateTime startDate, DateTime endDate)
+        public List<Entities.DgvSalesReportCancelledSalesSummaryReportEntity> GetCancelSalesSummaryListData(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
             List<Entities.DgvSalesReportCancelledSalesSummaryReportEntity> rowList = new List<Entities.DgvSalesReportCancelledSalesSummaryReportEntity>();
 
             Controllers.RepSalesReportController repSalesReportController = new Controllers.RepSalesReportController();
 
-            var cancelSalesList = repSalesReportController.CancelledSalesSummaryReport(startDate, endDate);
+            var cancelSalesList = repSalesReportController.CancelledSalesSummaryReport(startDate, endDate, terminalId);
             if (cancelSalesList.Any())
             {
                 Decimal totalAmount = 0;
@@ -52,24 +55,15 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                               ColumnPeriodId = d.Id,
                               ColumnPeriod = d.Period,
                               ColumnTerminal = d.Terminal,
-                              ColumnSalesDate = d.SalesDate,
                               ColumnSalesNumber = d.SalesNumber,
-                              ColumnManualInvoiceNumber = d.ManualInvoiceNumber,
                               ColumnAmount = d.Amount.ToString("#,##0.00"),
-                              ColumnTableId = d.TableId,
                               ColumnCustomerId = d.CustomerId,
                               ColumnCustomerCode = d.CustomerCode,
                               ColumnCustomer = d.Customer,
-                              ColumnAccountId = d.AccountId,
-                              ColumnTermId = d.TermId,
-                              ColumnTerm = d.Term,
-                              ColumnDiscountId = d.DiscountId,
                               ColumnRemarks = d.Remarks,
                               ColumnTerminalId = d.TerminalId,
                               ColumnPreparedBy = d.PreparedBy,
                               ColumnPreparedByUserName = d.PreparedByUserName,
-                              ColumnPax = d.Pax,
-                              ColumnTable = d.Table,
                           };
 
                 totalAmount = cancelSalesList.Sum(d => d.Amount);
@@ -84,7 +78,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
         public void GetCancelSalesListDataSource()
         {
-            cancelledSalesList = GetCancelSalesSummaryListData(dateStart, dateEnd);
+            cancelledSalesList = GetCancelSalesSummaryListData(dateStart, dateEnd, filterTerminalId);
             if (cancelledSalesList.Any())
             {
 

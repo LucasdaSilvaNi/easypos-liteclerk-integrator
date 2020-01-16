@@ -22,28 +22,29 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         public Int32 pageNumber = 1;
         public Int32 pageSize = 50;
 
-
         public DateTime dateStart;
         public DateTime dateEnd;
+        public Int32 filterTerminalId;
 
-        public RepSalesReportSalesDetailReportForm(DateTime startDate, DateTime endDate)
+        public RepSalesReportSalesDetailReportForm(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
             InitializeComponent();
 
             dateStart = startDate;
             dateEnd = endDate;
+            filterTerminalId = terminalId;
 
             GetSalesDetailListDataSource();
             GetSalesDetailListDataGridSource();
         }
 
-        public List<Entities.DgvSalesReportSalesDetailReportEntity> GetSalesDetailListData(DateTime startDate, DateTime endDate)
+        public List<Entities.DgvSalesReportSalesDetailReportEntity> GetSalesDetailListData(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
             List<Entities.DgvSalesReportSalesDetailReportEntity> rowList = new List<Entities.DgvSalesReportSalesDetailReportEntity>();
 
             Controllers.RepSalesReportController repSalesDetailReportController = new Controllers.RepSalesReportController();
 
-            var salesDetailList = repSalesDetailReportController.SalesDetailReport(startDate, endDate);
+            var salesDetailList = repSalesDetailReportController.SalesDetailReport(startDate, endDate, terminalId);
             if (salesDetailList.OrderByDescending(d => d.Id).Any())
             {
                 Decimal totalAmount = 0;
@@ -86,7 +87,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
         public void GetSalesDetailListDataSource()
         {
-            salesDetailList = GetSalesDetailListData(dateStart, dateEnd);
+            salesDetailList = GetSalesDetailListData(dateStart, dateEnd, filterTerminalId);
             if (salesDetailList.Any())
             {
 
