@@ -51,26 +51,17 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 var row = from d in collectionDetailList
                           select new Entities.DgvSalesReportCollectionDetailReportEntity
                           {
+                              ColumnTerminal = d.Terminal,
                               ColumnCollectionDate = d.CollectionDate,
                               ColumnCollectionNumber = d.CollectionNumber,
-                              ColumnTerminal = d.Terminal,
-                              ColumnManualORNumber = d.ManualORNumber,
                               ColumnCustomerCode = d.CustomerCode,
                               ColumnCustomer = d.Customer,
                               ColumnSalesNumber = d.SalesNumber,
-                              ColumnAmount = d.Amount.ToString("#,##0.00"),
                               ColumnPayType = d.PayType,
+                              ColumnAmount = d.Amount.ToString("#,##0.00"),
                               ColumnCheckNumber = d.CheckNumber,
                               ColumnCheckDate = d.CheckDate,
                               ColumnCheckBank = d.CheckBank,
-                              ColumnCreditCardVerificationCode = d.CreditCardVerificationCode,
-                              ColumnCreditCardNumber = d.CreditCardNumber,
-                              ColumnCreditCardType = d.CreditCardType,
-                              ColumnCreditCardBank = d.CreditCardBank,
-                              ColumnCreditCardReferenceNumber = d.CreditCardReferenceNumber,
-                              ColumnCreditCardHolderName = d.CreditCardHolderName,
-                              ColumnCreditCardExpiry = d.CreditCardExpiry,
-                              ColumnGiftCertificateNumber = d.GiftCertificateNumber,
                               ColumnOtherInformation = d.OtherInformation
                           };
 
@@ -225,50 +216,62 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     DateTime endDate = dateEnd;
 
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Collection Date", "Collection Number", "Terminal", "Manual OR Number", "Customer Code", "Customer",
-                        "Sales Number", "Amount", "PayType", "CheckNumber", "CheckDate", "CheckBank", "CreditCardVerificationCode",
-                        "CreditCardNumber", "CreditCardType", "CreditCardBank", "CreditCardReferenceNumber", "CreditCardHolderName",
-                        "CreditCardExpiry", "GiftCertificateNumber", "OtherInformation"
+                    String[] header = { "Terminal", "Collection Date", "Collection Number", "Customer Code", "Customer",
+                        "Sales Number", "PayType", "Amount",  "CheckNumber", "CheckDate", "CheckBank", "OtherInformation"
                     };
                     csv.AppendLine(String.Join(",", header));
+                    
 
                     if (collectionDetailList.Any())
                     {
                         foreach (var collectionDetail in collectionDetailList)
                         {
                             String customerCode = "";
+                            String checkNumber = "";
+                            String checkDate = "";
+                            String checkBank = "";
+                            String otherInformation = "";
+
+
+
                             if (collectionDetail.ColumnCustomerCode != null)
                             {
                                 customerCode = collectionDetail.ColumnCustomerCode.Replace(",", " ");
                             }
 
-                            String otherInformation = "";
+                            if (collectionDetail.ColumnCheckNumber != null)
+                            {
+                                checkNumber = collectionDetail.ColumnCheckNumber.Replace(",", " ");
+                            }
+
+                            if (collectionDetail.ColumnCheckDate != null)
+                            {
+                                otherInformation = collectionDetail.ColumnCheckDate.Replace(",", " ");
+                            }
+
+                            if (collectionDetail.ColumnCheckBank != null)
+                            {
+                                otherInformation = collectionDetail.ColumnCheckBank.Replace(",", " ");
+                            }
+
                             if (collectionDetail.ColumnOtherInformation != null)
                             {
                                 otherInformation = collectionDetail.ColumnOtherInformation.Replace(",", " ");
                             }
 
+
                             String[] data = {
+                                collectionDetail.ColumnTerminal,
                                 collectionDetail.ColumnCollectionDate,
                                 collectionDetail.ColumnCollectionNumber,
-                                collectionDetail.ColumnTerminal,
-                                collectionDetail.ColumnManualORNumber,
                                 customerCode,
                                 collectionDetail.ColumnCustomer.Replace("," , " "),
                                 collectionDetail.ColumnSalesNumber,
-                                collectionDetail.ColumnAmount.Replace("," , ""),
                                 collectionDetail.ColumnPayType.Replace("," , " "),
-                                collectionDetail.ColumnCheckNumber.Replace("," , " "),
-                                collectionDetail.ColumnCheckDate,
-                                collectionDetail.ColumnCheckBank.Replace("," , " "),
-                                collectionDetail.ColumnCreditCardVerificationCode.Replace("," , " "),
-                                collectionDetail.ColumnCreditCardNumber.Replace("," , " "),
-                                collectionDetail.ColumnCreditCardType.Replace("," , " "),
-                                collectionDetail.ColumnCreditCardBank.Replace("," , " "),
-                                collectionDetail.ColumnCreditCardReferenceNumber.Replace("," , " "),
-                                collectionDetail.ColumnCreditCardHolderName.Replace("," , " "),
-                                collectionDetail.ColumnCreditCardExpiry,
-                                collectionDetail.ColumnGiftCertificateNumber.Replace("," , " "),
+                                collectionDetail.ColumnAmount.Replace("," , ""),
+                                checkNumber,
+                                checkDate,
+                                checkBank,
                                 otherInformation
                             };
 

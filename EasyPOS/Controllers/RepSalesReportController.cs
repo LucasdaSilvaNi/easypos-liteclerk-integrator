@@ -138,6 +138,7 @@ namespace EasyPOS.Controllers
                                       CollectionNumber = d.TrnCollection.CollectionNumber,
                                       CustomerCode = d.TrnCollection.MstCustomer.CustomerCode,
                                       Customer = d.TrnCollection.MstCustomer.Customer,
+                                      SalesNumber = d.TrnCollection.TrnSale.SalesNumber,
                                       PayType = d.MstPayType.PayType,
                                       Amount = d.MstPayType.PayType.Equals("Cash") ? d.Amount - d.TrnCollection.ChangeAmount : d.Amount,
                                       CheckNumber = d.CheckNumber,

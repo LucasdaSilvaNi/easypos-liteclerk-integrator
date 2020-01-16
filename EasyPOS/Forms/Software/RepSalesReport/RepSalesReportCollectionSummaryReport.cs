@@ -50,16 +50,16 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 var row = from d in collectionList
                           select new Entities.DgvSalesReportCollectionSummaryReportEntity
                           {
+                              ColumnTerminal = d.Terminal,
                               ColumnCollectionDate = d.CollectionDate,
                               ColumnCollectionNumber = d.CollectionNumber,
-                              ColumnTerminal = d.Terminal,
-                              ColumnManualORNumber = d.ManualORNumber,
                               ColumnCustomerCode = d.CustomerCode,
                               ColumnCustomer = d.Customer,
-                              ColumnRemarks = d.Remarks,
                               ColumnSalesNumber = d.SalesNumber,
-                              ColumnAmount = d.Amount.ToString("#,##0.00"),
+                              ColumnRemarks = d.Remarks,
                               ColumnPreparedBy = d.PreparedByUserName,
+                              ColumnIsCancelled = d.IsCancelled,
+                              ColumnAmount = d.Amount.ToString("#,##0.00")
                           };
 
                 totalAmount = collectionList.Sum(d => d.Amount);
@@ -212,7 +212,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     DateTime endDate = dateEnd;
 
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Collection Date", "Collection Number", "Terminal", "Manual OR Number", "Customer Code", "Customer", "Remarks", "Sales Number", "Amount", "PreparedBy"};
+                    String[] header = { "Terminal", "Collection Date", "Collection Number", "Customer Code", "Customer", "Sales Number", "Remarks",  "PreparedBy",  "Cancelled", "Amount"};
                     csv.AppendLine(String.Join(",", header));
 
                     if (collectionList.Any())
@@ -225,16 +225,16 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                 customerCode = collection.ColumnCustomerCode.Replace(",", " ");
                             }
 
-                            String[] data = {collection.ColumnCollectionDate,
+                            String[] data = {collection.ColumnTerminal,
+                                        collection.ColumnCollectionDate,
                                         collection.ColumnCollectionNumber,
-                                        collection.ColumnTerminal,
-                                        collection.ColumnManualORNumber,
                                         customerCode,
                                         collection.ColumnCustomer.Replace("," , " "),
-                                        collection.ColumnRemarks,
                                         collection.ColumnSalesNumber,
-                                        collection.ColumnAmount.Replace("," , ""),
+                                        collection.ColumnRemarks,
                                         collection.ColumnPreparedBy,
+                                        collection.ColumnIsCancelled.ToString(),
+                                        collection.ColumnAmount.Replace("," , ""),
                             };
 
                             csv.AppendLine(String.Join(",", data));
