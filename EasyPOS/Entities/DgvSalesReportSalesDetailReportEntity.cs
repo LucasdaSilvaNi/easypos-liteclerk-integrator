@@ -13,13 +13,11 @@ namespace EasyPOS.Entities
         public String ColumnSalesNumber { get; set; }
         public String ColumnCustomerCode { get; set; }
         public String ColumnCustomer { get; set; }
-        public String ColumnItemDescription { get; set; }
         public String ColumnItemCode { get; set; }
+        public String ColumnItemDescription { get; set; }
         public String ColumnItemCategory { get; set; }
         public String ColumnUnit { get; set; }
         public String ColumnPrice { get; set; }
-        public String ColumnDiscount { get; set; }
-        public String ColumnDiscountRate { get; set; }
         public String ColumnDiscountAmount { get; set; }
         public String ColumnNetPrice { get; set; }
         public String ColumnQuantity { get; set; }
@@ -27,8 +25,7 @@ namespace EasyPOS.Entities
         public String ColumnTax { get; set; }
         public String ColumnTaxRate { get; set; }
         public String ColumnTaxAmount { get; set; }
-        public String ColumnUser { get; set; }
-        public String ColumnTimeStamp { get; set; }
+        public String ColumnSpace { get; set; }
     }
 }
  

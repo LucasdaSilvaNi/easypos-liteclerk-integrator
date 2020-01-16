@@ -52,18 +52,16 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                           select new Entities.DgvSalesReportCancelledSalesSummaryReportEntity
                           {
                               ColumnId = d.Id,
-                              ColumnPeriodId = d.Id,
-                              ColumnPeriod = d.Period,
                               ColumnTerminal = d.Terminal,
-                              ColumnSalesNumber = d.SalesNumber,
-                              ColumnAmount = d.Amount.ToString("#,##0.00"),
-                              ColumnCustomerId = d.CustomerId,
+                              ColumnCollectionDate = d.CollectionDate,
+                              ColumnCancelledCollectionNumber = d.CancelledCollectionNumber,
+                              ColumnCollectionNumber = d.CollectionNumber,
                               ColumnCustomerCode = d.CustomerCode,
                               ColumnCustomer = d.Customer,
+                              ColumnSalesNumber = d.SalesNumber,
                               ColumnRemarks = d.Remarks,
-                              ColumnTerminalId = d.TerminalId,
-                              ColumnPreparedBy = d.PreparedBy,
                               ColumnPreparedByUserName = d.PreparedByUserName,
+                              ColumnAmount = d.Amount.ToString("#,##0.00")
                           };
 
                 totalAmount = cancelSalesList.Sum(d => d.Amount);
@@ -128,10 +126,11 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             }
         }
 
-        public void GetCancelSalesSummaryReportSource() {
+        public void GetCancelSalesSummaryReportSource()
+        {
             dataGridCancelSalesSummaryReport.DataSource = dataCancelSalesListSource;
         }
-      
+
 
         private void buttonSalesListPageListFirst_Click(object sender, EventArgs e)
         {
@@ -217,7 +216,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     DateTime endDate = dateEnd;
 
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Terminal", "Date", "Cancelled Sales Number", "Manual Invoice No.", "Customer Code", "Customer", "Term", "Remarks", "Prepared By", "Amount", "Pax", "Table" };
+                    String[] header = { "Terminal", "Date", "Cancelled Collection Number", "Collection Number", "Customer Code", "Customer", "Remarks", "Prepared By", "Amount" };
                     csv.AppendLine(String.Join(",", header));
 
                     if (cancelledSalesList.Any())
@@ -231,17 +230,15 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             }
 
                             String[] data = {sales.ColumnTerminal,
-                                sales.ColumnSalesDate,
-                                sales.ColumnSalesNumber,
-                                sales.ColumnManualInvoiceNumber,
+                                sales.ColumnTerminal,
+                                sales.ColumnCollectionDate,
+                                sales.ColumnCancelledCollectionNumber,
+                                sales.ColumnCollectionNumber,
                                 customerCode,
                                 sales.ColumnCustomer.Replace("," , " "),
-                                sales.ColumnTerm,
                                 sales.ColumnRemarks,
                                 sales.ColumnPreparedByUserName,
-                                sales.ColumnAmount.Replace("," , ""),
-                                sales.ColumnPax.ToString(),
-                                sales.ColumnTable
+                                sales.ColumnAmount.Replace("," , "")
                             };
 
                             csv.AppendLine(String.Join(",", data));
