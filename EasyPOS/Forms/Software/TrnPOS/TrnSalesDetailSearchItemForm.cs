@@ -88,6 +88,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Int32 DiscountId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().DefaultDiscountId);
                 Int32 UserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
 
+                Decimal TaxAmount = 0;
+                if (TaxRate > 0)
+                {
+                    TaxAmount = (Price / (1 + (TaxRate / 100))) * (TaxRate / 100);
+                }
+
                 Entities.TrnSalesLineEntity trnSalesLineEntity = new Entities.TrnSalesLineEntity()
                 {
                     Id = 0,
@@ -107,7 +113,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     TaxId = TaxId,
                     Tax = Tax,
                     TaxRate = TaxRate,
-                    TaxAmount = 0,
+                    TaxAmount = TaxAmount,
                     SalesAccountId = 159,
                     AssetAccountId = 255,
                     CostAccountId = 238,

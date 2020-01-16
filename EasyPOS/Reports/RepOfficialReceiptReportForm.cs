@@ -126,7 +126,7 @@ namespace EasyPOS.Reports
                 graphics.DrawString(collectionNumberText, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
                 y += graphics.MeasureString(collectionNumberText, fontArial8Regular).Height;
 
-                String collectionDateText = collections.FirstOrDefault().CollectionDate.ToString("MM-dd-yyyy h:mm:ss tt", CultureInfo.InvariantCulture);
+                String collectionDateText = collections.FirstOrDefault().CollectionDate.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
                 graphics.DrawString(collectionDateText, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
                 y += graphics.MeasureString(collectionDateText, fontArial8Regular).Height;
 
@@ -392,7 +392,7 @@ namespace EasyPOS.Reports
                 Point seventhLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
                 graphics.DrawLine(blackPen, seventhLineFirstPoint, seventhLineSecondPoint);
 
-                String soldToLabel = "\nSold To: ______________________________";
+                String soldToLabel = "\nCustomer Name: _______________________";
                 graphics.DrawString(soldToLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 y += graphics.MeasureString(soldToLabel, fontArial8Regular).Height;
 
@@ -402,6 +402,10 @@ namespace EasyPOS.Reports
 
                 String soldToTINLabel = "TIN: _________________________________";
                 graphics.DrawString(soldToTINLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                y += graphics.MeasureString(soldToTINLabel, fontArial8Regular).Height;
+
+                String soldToBusinessStyleLabel = "Business Style: ________________________";
+                graphics.DrawString(soldToBusinessStyleLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 y += graphics.MeasureString(soldToTINLabel, fontArial8Regular).Height;
 
                 // ========
