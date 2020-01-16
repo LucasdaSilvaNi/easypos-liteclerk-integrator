@@ -392,6 +392,8 @@ namespace EasyPOS.Reports
                 Point seventhLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
                 graphics.DrawLine(blackPen, seventhLineFirstPoint, seventhLineSecondPoint);
 
+                String soldToLabel = "\nCustomer Name: _______________________";
+
                 // ==================================
                 // Senior Citizen and PWD Information
                 // ==================================
@@ -409,7 +411,7 @@ namespace EasyPOS.Reports
                         graphics.DrawString("\nSC/PWD Name: " + seniorCitizenName, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                         y += graphics.MeasureString(seniorCitizenName, fontArial8Regular).Height;
 
-                        graphics.DrawString("\nSC/PWD Age: " + seniorCitizenAge + "\n", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                        graphics.DrawString("\nSC/PWD Age: " + seniorCitizenAge, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                         y += graphics.MeasureString(seniorCitizenAge, fontArial8Regular).Height;
 
                         // ========
@@ -418,10 +420,11 @@ namespace EasyPOS.Reports
                         Point eightLineFirstPoint = new Point(0, Convert.ToInt32(y) + 18);
                         Point eightLineSecondPoint = new Point(500, Convert.ToInt32(y) + 18);
                         graphics.DrawLine(blackPen, eightLineFirstPoint, eightLineSecondPoint);
+
+                        soldToLabel = "\n\nCustomer Name: _______________________";
                     }
                 }
 
-                String soldToLabel = "\nCustomer Name: _______________________";
                 graphics.DrawString(soldToLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 y += graphics.MeasureString(soldToLabel, fontArial8Regular).Height;
 
