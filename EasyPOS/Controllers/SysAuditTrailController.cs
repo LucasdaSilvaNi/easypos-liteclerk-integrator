@@ -19,8 +19,9 @@ namespace EasyPOS.Controllers
         public List<Entities.SysAuditTrailEntity> ListAuditTrail(DateTime startDate, DateTime endDate, Int32 userId)
         {
             var auditTrail = from d in db.SysAuditTrails
-                             where d.AuditDate >= startDate
-                             && d.AuditDate >= endDate
+                             where d.AuditDate.Date >= startDate.Date
+                             && d.AuditDate.Date <= endDate.Date
+                             && d.UserId == userId
                              select new Entities.SysAuditTrailEntity
                              {
                                  Id = d.Id,
@@ -31,7 +32,6 @@ namespace EasyPOS.Controllers
                                  RecordInformation = d.RecordInformation,
                                  FormInformation = d.FormInformation,
                                  ActionInformation = d.ActionInformation
-
                              };
 
             return auditTrail.OrderByDescending(d => d.Id).ToList();
