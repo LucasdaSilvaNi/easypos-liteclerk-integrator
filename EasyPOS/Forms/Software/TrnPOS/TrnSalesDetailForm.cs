@@ -357,5 +357,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             Modules.SysSerialPortModule.CloseSerialPort();
         }
+
+        private void buttonDiscount_Click(object sender, EventArgs e)
+        {
+            TrnSalesDetailDiscountForm trnSalesDetailDiscountForm = new TrnSalesDetailDiscountForm(this);
+            trnSalesDetailDiscountForm.ShowDialog();
+        }
     }
 }

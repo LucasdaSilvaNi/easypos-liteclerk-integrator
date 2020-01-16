@@ -778,5 +778,124 @@ namespace EasyPOS.Controllers
 
             return isTendered;
         }
+
+        // ======================
+        // Dropdown List Discount
+        // ======================
+        public List<Entities.MstDiscountEntity> DropdownListDiscount()
+        {
+            var discounts = from d in db.MstDiscounts
+                            where d.Id != 3
+                            select new Entities.MstDiscountEntity
+                            {
+                                Id = d.Id,
+                                Discount = d.Discount,
+                                DiscountRate = d.DiscountRate
+                            };
+
+            return discounts.ToList();
+        }
+
+        // ==============
+        // Discount Sales
+        // ==============
+        public String[] DiscountSales(Int32 salesId, Entities.TrnSalesEntity objSalesEntity)
+        {
+            try
+            {
+                var sales = from d in db.TrnSales
+                            where d.Id == salesId
+                            select d;
+
+                if (sales.Any())
+                {
+                    var updateSales = sales.FirstOrDefault();
+                    updateSales.DiscountId = objSalesEntity.DiscountId;
+                    updateSales.SeniorCitizenId = objSalesEntity.SeniorCitizenId;
+                    updateSales.SeniorCitizenName = objSalesEntity.SeniorCitizenName;
+                    updateSales.SeniorCitizenAge = objSalesEntity.SeniorCitizenAge;
+                    updateSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
+                    updateSales.UpdateDateTime = DateTime.Now;
+                    db.SubmitChanges();
+
+                    Decimal discountRate = 0;
+
+                    var discount = from d in db.MstDiscounts
+                                   where d.Id == objSalesEntity.DiscountId
+                                   select d;
+
+                    if (discount.Any())
+                    {
+                        discountRate = discount.FirstOrDefault().DiscountRate;
+                    }
+
+                    var salesLines = from d in db.TrnSalesLines
+                                     where d.SalesId == salesId
+                                     select d;
+
+                    if (salesLines.Any())
+                    {
+                        foreach (var salesLine in salesLines)
+                        {
+                            Decimal quantity = salesLine.Quantity;
+                            Decimal price = salesLine.Price;
+                            Decimal taxRate = salesLine.TaxRate;
+
+                            Decimal discountAmount = 0;
+                            if (discountRate > 0)
+                            {
+                                discountAmount = price * (discountRate / 100);
+                            }
+
+                            Decimal netPrice = price - discountAmount;
+                            Decimal amount = netPrice * quantity;
+
+                            Decimal taxAmount = 0;
+                            if (taxRate > 0)
+                            {
+                                taxAmount = (amount / (1 + (taxRate / 100))) * (taxRate / 100);
+                            }
+
+                            salesLine.DiscountId = discount.FirstOrDefault().Id;
+                            salesLine.DiscountRate = discountRate;
+                            salesLine.DiscountAmount = discountAmount;
+                            salesLine.NetPrice = netPrice;
+                            salesLine.Amount = amount;
+                            salesLine.TaxAmount = taxAmount;
+
+                            db.SubmitChanges();
+                        }
+                    }
+
+                    return new String[] { "", "1" };
+                }
+                else
+                {
+                    return new String[] { "Sales not found.", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
+        // =====================
+        // Discount Detail Sales 
+        // =====================
+        public Entities.TrnSalesEntity DiscountDetailSales(Int32 id)
+        {
+            var sales = from d in db.TrnSales
+                        where d.Id == id
+                        select new Entities.TrnSalesEntity
+                        {
+                            DiscountId = d.DiscountId,
+                            SeniorCitizenId = d.SeniorCitizenId,
+                            SeniorCitizenName = d.SeniorCitizenName,
+                            SeniorCitizenAge = d.SeniorCitizenAge
+                        };
+
+            return sales.FirstOrDefault();
+        }
     }
 }

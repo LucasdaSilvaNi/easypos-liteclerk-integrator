@@ -87,6 +87,7 @@
             this.textBoxBarcode = new System.Windows.Forms.TextBox();
             this.buttonBarcode = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonDiscount = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -97,6 +98,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.buttonDiscount);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.buttonClose);
@@ -617,6 +619,24 @@
             this.panel3.Size = new System.Drawing.Size(1400, 527);
             this.panel3.TabIndex = 7;
             // 
+            // buttonDiscount
+            // 
+            this.buttonDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDiscount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonDiscount.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonDiscount.FlatAppearance.BorderSize = 0;
+            this.buttonDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDiscount.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDiscount.ForeColor = System.Drawing.Color.White;
+            this.buttonDiscount.Location = new System.Drawing.Point(1104, 12);
+            this.buttonDiscount.Name = "buttonDiscount";
+            this.buttonDiscount.Size = new System.Drawing.Size(96, 40);
+            this.buttonDiscount.TabIndex = 4;
+            this.buttonDiscount.TabStop = false;
+            this.buttonDiscount.Text = "Discount";
+            this.buttonDiscount.UseVisualStyleBackColor = false;
+            this.buttonDiscount.Click += new System.EventHandler(this.buttonDiscount_Click);
+            // 
             // TrnSalesDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -695,5 +715,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePriceSplitPercentage;
         private System.Windows.Forms.Button buttonBarcode;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button buttonDiscount;
     }
 }
