@@ -58,7 +58,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(660, 63);
+            this.panel1.Size = new System.Drawing.Size(589, 63);
             this.panel1.TabIndex = 4;
             // 
             // pictureBox1
@@ -91,7 +91,7 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(560, 12);
+            this.buttonClose.Location = new System.Drawing.Point(489, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
@@ -109,7 +109,7 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(466, 12);
+            this.buttonSave.Location = new System.Drawing.Point(395, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
             this.buttonSave.TabIndex = 1;
@@ -131,13 +131,13 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 63);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(660, 173);
+            this.panel2.Size = new System.Drawing.Size(589, 173);
             this.panel2.TabIndex = 5;
             // 
             // textBoxSeniorCitizenAge
             // 
             this.textBoxSeniorCitizenAge.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxSeniorCitizenAge.Location = new System.Drawing.Point(211, 128);
+            this.textBoxSeniorCitizenAge.Location = new System.Drawing.Point(166, 128);
             this.textBoxSeniorCitizenAge.Name = "textBoxSeniorCitizenAge";
             this.textBoxSeniorCitizenAge.Size = new System.Drawing.Size(152, 34);
             this.textBoxSeniorCitizenAge.TabIndex = 39;
@@ -151,16 +151,16 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label5.Location = new System.Drawing.Point(29, 131);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(176, 28);
+            this.label5.Size = new System.Drawing.Size(131, 28);
             this.label5.TabIndex = 40;
-            this.label5.Text = "Senior Citizen Age:";
+            this.label5.Text = "SC/PWD Age:";
             // 
             // textBoxSeniorCitizenName
             // 
             this.textBoxSeniorCitizenName.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxSeniorCitizenName.Location = new System.Drawing.Point(211, 88);
+            this.textBoxSeniorCitizenName.Location = new System.Drawing.Point(166, 88);
             this.textBoxSeniorCitizenName.Name = "textBoxSeniorCitizenName";
-            this.textBoxSeniorCitizenName.Size = new System.Drawing.Size(437, 34);
+            this.textBoxSeniorCitizenName.Size = new System.Drawing.Size(411, 34);
             this.textBoxSeniorCitizenName.TabIndex = 38;
             // 
             // label4
@@ -169,15 +169,15 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label4.Location = new System.Drawing.Point(12, 91);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(193, 28);
+            this.label4.Size = new System.Drawing.Size(148, 28);
             this.label4.TabIndex = 38;
-            this.label4.Text = "Senior Citizen Name:";
+            this.label4.Text = "SC/PWD Name:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label3.Location = new System.Drawing.Point(112, 9);
+            this.label3.Location = new System.Drawing.Point(67, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 28);
             this.label3.TabIndex = 37;
@@ -187,18 +187,18 @@
             // 
             this.comboBoxDiscount.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.comboBoxDiscount.FormattingEnabled = true;
-            this.comboBoxDiscount.Location = new System.Drawing.Point(211, 6);
+            this.comboBoxDiscount.Location = new System.Drawing.Point(166, 6);
             this.comboBoxDiscount.Name = "comboBoxDiscount";
-            this.comboBoxDiscount.Size = new System.Drawing.Size(437, 36);
+            this.comboBoxDiscount.Size = new System.Drawing.Size(411, 36);
             this.comboBoxDiscount.TabIndex = 36;
             this.comboBoxDiscount.SelectedIndexChanged += new System.EventHandler(this.comboBoxDiscount_SelectedIndexChanged);
             // 
             // textBoxSeniorCitizenID
             // 
             this.textBoxSeniorCitizenID.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxSeniorCitizenID.Location = new System.Drawing.Point(211, 48);
+            this.textBoxSeniorCitizenID.Location = new System.Drawing.Point(166, 48);
             this.textBoxSeniorCitizenID.Name = "textBoxSeniorCitizenID";
-            this.textBoxSeniorCitizenID.Size = new System.Drawing.Size(437, 34);
+            this.textBoxSeniorCitizenID.Size = new System.Drawing.Size(411, 34);
             this.textBoxSeniorCitizenID.TabIndex = 37;
             // 
             // label2
@@ -207,15 +207,15 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label2.Location = new System.Drawing.Point(45, 51);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(160, 28);
+            this.label2.Size = new System.Drawing.Size(115, 28);
             this.label2.TabIndex = 34;
-            this.label2.Text = "Senior Citizen ID:";
+            this.label2.Text = "SC/PWD ID:";
             // 
             // TrnSalesDetailDiscountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(660, 236);
+            this.ClientSize = new System.Drawing.Size(589, 236);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);

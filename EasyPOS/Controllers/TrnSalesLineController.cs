@@ -532,5 +532,24 @@ namespace EasyPOS.Controllers
                 return new String[] { e.Message, "0" };
             }
         }
+
+        // =========================
+        // Check Discount VAT Exempt
+        // =========================
+        public Boolean IsVATExempt(Int32 discountId)
+        {
+            Boolean isDiscountVATExempt = false;
+
+            var discount = from d in db.MstDiscounts
+                           where d.Id == discountId
+                           select d;
+
+            if (discount.Any())
+            {
+                isDiscountVATExempt = discount.FirstOrDefault().IsVatExempt;
+            }
+
+            return isDiscountVATExempt;
+        }
     }
 }

@@ -70,6 +70,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             String[] discountSales = trnSalesController.DiscountSales(trnSalesDetailForm.trnSalesEntity.Id, salesEntity);
             if (discountSales[1].Equals("0") == false)
             {
+                trnSalesDetailForm.trnSalesEntity.DiscountId = discountId;
+
                 trnSalesDetailForm.GetSalesLineList();
                 Close();
             }
@@ -107,7 +109,22 @@ namespace EasyPOS.Forms.Software.TrnPOS
             var selectedItemDiscount = (Entities.MstDiscountEntity)comboBoxDiscount.SelectedItem;
             if (selectedItemDiscount != null)
             {
+                if (selectedItemDiscount.Id == 7 || selectedItemDiscount.Id == 16)
+                {
+                    textBoxSeniorCitizenID.Enabled = true;
+                    textBoxSeniorCitizenName.Enabled = true;
+                    textBoxSeniorCitizenAge.Enabled = true;
+                }
+                else
+                {
+                    textBoxSeniorCitizenID.Enabled = false;
+                    textBoxSeniorCitizenName.Enabled = false;
+                    textBoxSeniorCitizenAge.Enabled = false;
 
+                    textBoxSeniorCitizenID.Text = String.Empty;
+                    textBoxSeniorCitizenName.Text = String.Empty;
+                    textBoxSeniorCitizenAge.Text = "0";
+                }
             }
         }
 

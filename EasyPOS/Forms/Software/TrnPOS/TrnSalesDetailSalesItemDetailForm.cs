@@ -38,9 +38,41 @@ namespace EasyPOS.Forms.Software.TrnPOS
             Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
             if (trnPOSSalesLineController.DropdownListDiscount().Any())
             {
-                comboBoxSalesLineDiscount.DataSource = trnPOSSalesLineController.DropdownListDiscount();
-                comboBoxSalesLineDiscount.ValueMember = "Id";
-                comboBoxSalesLineDiscount.DisplayMember = "Discount";
+                if (trnSalesDetailForm.trnSalesEntity.DiscountId != null)
+                {
+                    if (trnPOSSalesLineController.IsVATExempt(Convert.ToInt32(trnSalesDetailForm.trnSalesEntity.DiscountId)) == true)
+                    {
+                        var discounts = from d in trnPOSSalesLineController.DropdownListDiscount()
+                                        select d;
+
+                        comboBoxSalesLineDiscount.DataSource = discounts.ToList();
+                        comboBoxSalesLineDiscount.ValueMember = "Id";
+                        comboBoxSalesLineDiscount.DisplayMember = "Discount";
+
+                    }
+                    else
+                    {
+                        var discounts = from d in trnPOSSalesLineController.DropdownListDiscount()
+                                        where d.Id != 7
+                                        && d.Id != 16
+                                        select d;
+
+                        comboBoxSalesLineDiscount.DataSource = discounts.ToList();
+                        comboBoxSalesLineDiscount.ValueMember = "Id";
+                        comboBoxSalesLineDiscount.DisplayMember = "Discount";
+                    }
+                }
+                else
+                {
+                    var discounts = from d in trnPOSSalesLineController.DropdownListDiscount()
+                                    where d.Id != 7
+                                    && d.Id != 16
+                                    select d;
+
+                    comboBoxSalesLineDiscount.DataSource = discounts.ToList();
+                    comboBoxSalesLineDiscount.ValueMember = "Id";
+                    comboBoxSalesLineDiscount.DisplayMember = "Discount";
+                }
 
                 GetSalesLineItemDetail();
             }
@@ -60,6 +92,19 @@ namespace EasyPOS.Forms.Software.TrnPOS
             textBoxSalesLineVATRate.Text = trnSalesLineEntity.TaxRate.ToString("#,##0.00");
             textBoxSalesLineVATAmount.Text = trnSalesLineEntity.TaxAmount.ToString("#,##0.00");
             textBoxSalesLineRemarks.Text = trnSalesLineEntity.Preparation;
+
+            if (trnSalesDetailForm.trnSalesEntity.DiscountId != null)
+            {
+                Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
+                if (trnPOSSalesLineController.IsVATExempt(Convert.ToInt32(trnSalesDetailForm.trnSalesEntity.DiscountId)) == true)
+                {
+                    comboBoxSalesLineDiscount.Enabled = false;
+                }
+                else
+                {
+                    comboBoxSalesLineDiscount.Enabled = true;
+                }
+            }
         }
 
         public void SaveSalesLine()
@@ -178,7 +223,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     textBoxSalesLineVATAmount.Text = taxAmount.ToString("#,##0.00");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

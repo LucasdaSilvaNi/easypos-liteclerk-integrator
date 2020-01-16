@@ -840,31 +840,73 @@ namespace EasyPOS.Controllers
                             Decimal quantity = salesLine.Quantity;
                             Decimal price = salesLine.Price;
                             Decimal taxRate = salesLine.TaxRate;
-
+                            Decimal priceVatExempt = 0;
                             Decimal discountAmount = 0;
-                            if (discountRate > 0)
-                            {
-                                discountAmount = price * (discountRate / 100);
-                            }
-
-                            Decimal netPrice = price - discountAmount;
-                            Decimal amount = netPrice * quantity;
-
                             Decimal taxAmount = 0;
-                            if (taxRate > 0)
-                            {
-                                taxAmount = (amount / (1 + (taxRate / 100))) * (taxRate / 100);
-                            }
+                            Decimal netPrice = 0;
+                            Decimal amount = 0;
 
-                            salesLine.DiscountId = discount.FirstOrDefault().Id;
-                            salesLine.DiscountRate = discountRate;
-                            salesLine.DiscountAmount = discountAmount;
-                            salesLine.NetPrice = netPrice;
-                            salesLine.Amount = amount;
-                            salesLine.TaxAmount = taxAmount;
+                            if (discount.FirstOrDefault().IsVatExempt == true)
+                            {
+                                if (taxRate > 0)
+                                {
+                                    priceVatExempt = price - (price / (1 + (taxRate / 100))) * (taxRate / 100);
+
+                                    discountAmount = priceVatExempt * (discountRate / 100);
+                                    netPrice = priceVatExempt - discountAmount;
+                                    amount = netPrice * quantity;
+                                }
+                                else
+                                {
+                                    discountAmount = price * (discountRate / 100);
+                                    netPrice = price - discountAmount;
+                                    amount = netPrice * quantity;
+                                }
+
+                                salesLine.DiscountId = discount.FirstOrDefault().Id;
+                                salesLine.DiscountRate = discountRate;
+                                salesLine.DiscountAmount = discountAmount;
+                                salesLine.NetPrice = netPrice;
+                                salesLine.Amount = amount;
+                                salesLine.TaxId = 18;
+                                salesLine.TaxRate = 0;
+                                salesLine.TaxAmount = 0;
+                            }
+                            else
+                            {
+                                if (taxRate > 0)
+                                {
+                                    discountAmount = price * (discountRate / 100);
+                                    netPrice = price - discountAmount;
+                                    amount = netPrice * quantity;
+                                    taxAmount = (amount / (1 + (taxRate / 100))) * (taxRate / 100);
+                                }
+                                else
+                                {
+                                    discountAmount = price * (discountRate / 100);
+                                    netPrice = price - discountAmount;
+                                    amount = netPrice * quantity;
+                                    taxAmount = 0;
+                                }
+
+                                salesLine.DiscountId = discount.FirstOrDefault().Id;
+                                salesLine.DiscountRate = discountRate;
+                                salesLine.DiscountAmount = discountAmount;
+                                salesLine.NetPrice = netPrice;
+                                salesLine.Amount = amount;
+                                salesLine.TaxAmount = taxAmount;
+                            }
 
                             db.SubmitChanges();
                         }
+                    }
+
+                    if (discount.FirstOrDefault().Id == 2)
+                    {
+                        updateSales.DiscountId = null;
+                        updateSales.SeniorCitizenId = "";
+                        updateSales.SeniorCitizenName = "";
+                        updateSales.SeniorCitizenAge = null;
                     }
 
                     updateSales.Amount = sales.FirstOrDefault().TrnSalesLines.Any() ? sales.FirstOrDefault().TrnSalesLines.Sum(d => d.Amount) : 0;
