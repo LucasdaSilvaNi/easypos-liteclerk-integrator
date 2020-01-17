@@ -204,7 +204,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                     writer.Write("MIN: " + systemCurrent.MachineNo + "\n");
                                     writer.Write(systemCurrent.ORPrintTitle + "\n");
                                     writer.Write(collection.CollectionNumber + "\n");
-                                    writer.Write("---------------------------------------------\n");
+                                    writer.Write("---------------------------------------------------------\n");
 
                                     if (collection.SalesId != null)
                                     {
@@ -216,7 +216,24 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                                             foreach (var salesLine in repPOSReportController.ListSalesLines(Convert.ToInt32(collection.SalesId)))
                                             {
-                                                writer.Write(salesLine.ItemDescription + " " + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,#00.00"));
+                                                String itemDescription = salesLine.ItemDescription + " " + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,#00.00") + " \t\t" + salesLine.Amount.ToString("#,#00.00");
+                                                if (salesLine.ItemDescription.Length >= 20)
+                                                {
+                                                    itemDescription = salesLine.ItemDescription.Substring(0, 20) + " " + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,#00.00") + " \t" + salesLine.Amount.ToString("#,#00.00");
+                                                }
+                                                else
+                                                {
+                                                    if (salesLine.ItemDescription.Length <= 12)
+                                                    {
+                                                        itemDescription = salesLine.ItemDescription + " " + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,#00.00") + " \t\t\t" + salesLine.Amount.ToString("#,#00.00");
+                                                    }
+                                                    if (salesLine.ItemDescription.Length <= 4)
+                                                    {
+                                                        itemDescription = salesLine.ItemDescription + " " + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,#00.00") + " \t\t\t\t" + salesLine.Amount.ToString("#,#00.00");
+                                                    }
+                                                }
+
+                                                writer.Write(itemDescription);
                                                 writer.Write("\n");
 
                                                 totalSales += salesLine.Amount;
@@ -224,15 +241,59 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                                 totalDiscount += salesLine.DiscountAmount;
                                             }
 
-                                            writer.Write("---------------------------------------------\n");
-
-                                            writer.Write("Total Sales: " + totalSales.ToString("#,#00.00"));
-                                            writer.Write("Total No. of Item(s): " + totalNumberOfItems.ToString("#,#00.00"));
-                                            writer.Write("Total Discount: " + totalDiscount.ToString("#,#00.00"));
+                                            writer.Write("---------------------------------------------------------\n");
+                                            writer.Write("Total Sales: \t\t\t\t\t" + totalSales.ToString("#,#00.00"));
+                                            writer.Write("\n");
+                                            writer.Write("Total No. of Item(s): \t\t\t\t" + totalNumberOfItems.ToString("#,#00.00"));
+                                            writer.Write("\n");
+                                            writer.Write("Total Discount: \t\t\t\t" + totalDiscount.ToString("#,#00.00"));
+                                            writer.Write("\n");
+                                            writer.Write("---------------------------------------------------------\n");
                                         }
+
+                                        if (repPOSReportController.ListCollectionLines(Convert.ToInt32(collection.Id)).Any())
+                                        {
+                                            foreach (var collectionLine in repPOSReportController.ListCollectionLines(Convert.ToInt32(collection.Id)))
+                                            {
+                                                writer.Write(collectionLine.PayType + ": \t\t\t\t\t\t" + collectionLine.Amount.ToString("#,##0.00"));
+                                                writer.Write("\n");
+                                            }
+                                        }
+
+                                        writer.Write("---------------------------------------------------------\n");
+                                        writer.Write("VAT ANALYSIS\n");
+
+                                        Decimal VATSales = 0;
+                                        Decimal VATAmount = 0;
+                                        Decimal NonVAT = 0;
+                                        Decimal VATExempt = 0;
+                                        Decimal VATZeroRated = 0;
+
+                                        writer.Write("VAT Sales: \t\t\t\t\t" + VATSales.ToString("#,#00.00"));
+                                        writer.Write("\n");
+                                        writer.Write("VAT Amount: \t\t\t\t\t" + VATAmount.ToString("#,#00.00"));
+                                        writer.Write("\n");
+                                        writer.Write("Non-VAT: \t\t\t\t\t" + NonVAT.ToString("#,#00.00"));
+                                        writer.Write("\n");
+                                        writer.Write("VAT Exempt: \t\t\t\t\t" + VATExempt.ToString("#,#00.00"));
+                                        writer.Write("\n");
+                                        writer.Write("VAT Zero Rated: \t\t\t\t" + VATZeroRated.ToString("#,#00.00"));
+                                        writer.Write("\n");
+
+                                        writer.Write("---------------------------------------------------------\n");
+                                        writer.Write("Cashier: " + collection.PreparedByUserName);
+                                        writer.Write("\n");
+                                        writer.Write("---------------------------------------------------------\n");
+                                        writer.Write("Customer Name: \n");
+                                        writer.Write("Address: \n");
+                                        writer.Write("TIN: \n");
+                                        writer.Write("Business Style: \n");
+                                        writer.Write("---------------------------------------------------------\n");
+
+                                        writer.Write(systemCurrent.ReceiptFooter);
                                     }
 
-                                    writer.Write("\n\n\n");
+                                    writer.Write("\n\n\n\n\n");
                                 }
                             }
 

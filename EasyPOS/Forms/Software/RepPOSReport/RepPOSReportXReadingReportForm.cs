@@ -609,7 +609,9 @@ namespace EasyPOS.Reports
             Point ninethLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
             graphics.DrawLine(blackPen, ninethLineFirstPoint, ninethLineSecondPoint);
 
-            String zReadingEndLabel = "\nX Reading End\n\n\n\n\n\n\n\n\n\n.";
+            String zReadingFooter = systemCurrent.ZReadingFooter;
+
+            String zReadingEndLabel = "\n" + zReadingFooter + "\n \n\n\n\n\n\n\n\n\n\n.";
             graphics.DrawString(zReadingEndLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             y += graphics.MeasureString(zReadingEndLabel, fontArial8Regular).Height;
         }

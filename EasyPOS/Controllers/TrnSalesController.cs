@@ -697,28 +697,10 @@ namespace EasyPOS.Controllers
 
                         var cancelCollection = collection.FirstOrDefault();
                         cancelCollection.CancelledCollectionNumber = cancelledCollectionNumber;
-                        cancelCollection.SalesBalanceAmount = 0;
-                        cancelCollection.TenderAmount = 0;
-                        cancelCollection.ChangeAmount = 0;
-                        cancelCollection.Amount = 0;
                         cancelCollection.IsCancelled = true;
                         cancelCollection.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
                         cancelCollection.UpdateDateTime = DateTime.Now;
                         db.SubmitChanges();
-
-                        var collectionLines = from d in db.TrnCollectionLines
-                                              where d.CollectionId == collection.FirstOrDefault().Id
-                                              select d;
-
-                        if (collectionLines.Any())
-                        {
-                            foreach (var collectionLine in collectionLines)
-                            {
-                                collectionLine.Amount = 0;
-                            }
-
-                            db.SubmitChanges();
-                        }
 
                         String newObject2 = Modules.SysAuditTrailModule.GetObjectString(collection.FirstOrDefault());
 

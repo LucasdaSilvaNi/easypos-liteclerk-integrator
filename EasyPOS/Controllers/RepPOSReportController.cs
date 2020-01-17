@@ -58,7 +58,8 @@ namespace EasyPOS.Controllers
                                   Id = d.Id,
                                   Terminal = d.MstTerminal.Terminal,
                                   CollectionNumber = d.CollectionNumber,
-                                  SalesId = d.SalesId
+                                  SalesId = d.SalesId,
+                                  PreparedByUserName = d.MstUser3.UserName
                               };
 
             return collections.ToList();
@@ -82,6 +83,23 @@ namespace EasyPOS.Controllers
                              };
 
             return salesLines.ToList();
+        }
+
+        // =====================
+        // Collection Lines List
+        // =====================
+        public List<Entities.TrnCollectionLineEntity> ListCollectionLines(Int32 collectionId)
+        {
+            var collectionLines = from d in db.TrnCollectionLines.OrderByDescending(d => d.Id)
+                                  where d.CollectionId == collectionId
+                                  select new Entities.TrnCollectionLineEntity
+                                  {
+                                      Id = d.Id,
+                                      PayType = d.MstPayType.PayType,
+                                      Amount = d.Amount
+                                  };
+
+            return collectionLines.ToList();
         }
     }
 }
