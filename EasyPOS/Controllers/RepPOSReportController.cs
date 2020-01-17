@@ -101,5 +101,35 @@ namespace EasyPOS.Controllers
 
             return collectionLines.ToList();
         }
+
+        // ========================
+        // Collection Register List
+        // ========================
+        public List<Entities.TrnCollectionEntity> ListCollectionRegister(DateTime startDate, DateTime endDate, Int32 terminalId)
+        {
+            var collections = from d in db.TrnCollections.OrderByDescending(d => d.Id)
+                              where d.CollectionDate >= startDate
+                              && d.CollectionDate <= endDate
+                              && d.TerminalId == terminalId
+                              && d.SalesId != null
+                              && d.IsLocked == true
+                              select new Entities.TrnCollectionEntity
+                              {
+                                  Terminal = d.MstTerminal.Terminal,
+                                  CollectionDate = d.CollectionDate.ToShortDateString(),
+                                  CollectionNumber = d.CollectionNumber,
+                                  CustomerCode = d.MstCustomer.CustomerCode,
+                                  Customer = d.MstCustomer.Customer,
+                                  Amount = d.Amount,
+                                  VATSales = d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VAT").Any() ? d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VAT").Sum(s => s.Amount) - d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VAT").Sum(s => s.TaxAmount) : 0,
+                                  VATAmount = d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VAT").Any() ? d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VAT").Sum(s => s.TaxAmount) : 0,
+                                  NonVAT = d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "NONVAT").Any() ? d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "NONVAT").Sum(s => s.Amount) : 0,
+                                  VATExempt = d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VATEXEMPT").Any() ? d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VATEXEMPT").Sum(s => s.Amount) : 0,
+                                  VATZeroRated = d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VATZERORATED").Any() ? d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VATZERORATED").Sum(s => s.Amount) : 0,
+                              };
+
+            return collections.ToList();
+        }
+
     }
 }

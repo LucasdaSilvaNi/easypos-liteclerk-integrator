@@ -34,6 +34,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.listBoxPOSReport = new System.Windows.Forms.ListBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
+            this.labelStartDate = new System.Windows.Forms.Label();
+            this.dateTimePickerEndDate = new System.Windows.Forms.DateTimePicker();
+            this.labelEndDate = new System.Windows.Forms.Label();
             this.dateTimePickerDate = new System.Windows.Forms.DateTimePicker();
             this.labelUser = new System.Windows.Forms.Label();
             this.labelTerminal = new System.Windows.Forms.Label();
@@ -45,11 +49,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonView = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
-            this.labelStartDate = new System.Windows.Forms.Label();
-            this.dateTimePickerEndDate = new System.Windows.Forms.DateTimePicker();
-            this.labelEndDate = new System.Windows.Forms.Label();
             this.folderBrowserDialogSaveEJournal = new System.Windows.Forms.FolderBrowserDialog();
+            this.folderBrowserDialogCollectionRegister = new System.Windows.Forms.FolderBrowserDialog();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -100,7 +101,8 @@
             "Z Reading Report",
             "X Reading Report",
             "",
-            "E-Journal Report"});
+            "E-Journal Report (ejournal.txt)",
+            "Collection Register (collectionregister.csv)"});
             this.listBoxPOSReport.Location = new System.Drawing.Point(0, 0);
             this.listBoxPOSReport.Name = "listBoxPOSReport";
             this.listBoxPOSReport.Size = new System.Drawing.Size(380, 556);
@@ -126,6 +128,46 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1400, 637);
             this.panel4.TabIndex = 6;
+            // 
+            // dateTimePickerStartDate
+            // 
+            this.dateTimePickerStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerStartDate.Location = new System.Drawing.Point(500, 170);
+            this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
+            this.dateTimePickerStartDate.Size = new System.Drawing.Size(220, 30);
+            this.dateTimePickerStartDate.TabIndex = 28;
+            this.dateTimePickerStartDate.Visible = false;
+            // 
+            // labelStartDate
+            // 
+            this.labelStartDate.AutoSize = true;
+            this.labelStartDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.labelStartDate.Location = new System.Drawing.Point(407, 173);
+            this.labelStartDate.Name = "labelStartDate";
+            this.labelStartDate.Size = new System.Drawing.Size(86, 23);
+            this.labelStartDate.TabIndex = 27;
+            this.labelStartDate.Text = "Start Date";
+            this.labelStartDate.Visible = false;
+            // 
+            // dateTimePickerEndDate
+            // 
+            this.dateTimePickerEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerEndDate.Location = new System.Drawing.Point(500, 209);
+            this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
+            this.dateTimePickerEndDate.Size = new System.Drawing.Size(220, 30);
+            this.dateTimePickerEndDate.TabIndex = 26;
+            this.dateTimePickerEndDate.Visible = false;
+            // 
+            // labelEndDate
+            // 
+            this.labelEndDate.AutoSize = true;
+            this.labelEndDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.labelEndDate.Location = new System.Drawing.Point(407, 213);
+            this.labelEndDate.Name = "labelEndDate";
+            this.labelEndDate.Size = new System.Drawing.Size(80, 23);
+            this.labelEndDate.TabIndex = 25;
+            this.labelEndDate.Text = "End Date";
+            this.labelEndDate.Visible = false;
             // 
             // dateTimePickerDate
             // 
@@ -260,46 +302,6 @@
             this.panel1.Size = new System.Drawing.Size(1400, 63);
             this.panel1.TabIndex = 3;
             // 
-            // dateTimePickerStartDate
-            // 
-            this.dateTimePickerStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerStartDate.Location = new System.Drawing.Point(500, 170);
-            this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
-            this.dateTimePickerStartDate.Size = new System.Drawing.Size(220, 30);
-            this.dateTimePickerStartDate.TabIndex = 28;
-            this.dateTimePickerStartDate.Visible = false;
-            // 
-            // labelStartDate
-            // 
-            this.labelStartDate.AutoSize = true;
-            this.labelStartDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelStartDate.Location = new System.Drawing.Point(407, 173);
-            this.labelStartDate.Name = "labelStartDate";
-            this.labelStartDate.Size = new System.Drawing.Size(86, 23);
-            this.labelStartDate.TabIndex = 27;
-            this.labelStartDate.Text = "Start Date";
-            this.labelStartDate.Visible = false;
-            // 
-            // dateTimePickerEndDate
-            // 
-            this.dateTimePickerEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerEndDate.Location = new System.Drawing.Point(500, 209);
-            this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
-            this.dateTimePickerEndDate.Size = new System.Drawing.Size(220, 30);
-            this.dateTimePickerEndDate.TabIndex = 26;
-            this.dateTimePickerEndDate.Visible = false;
-            // 
-            // labelEndDate
-            // 
-            this.labelEndDate.AutoSize = true;
-            this.labelEndDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelEndDate.Location = new System.Drawing.Point(407, 213);
-            this.labelEndDate.Name = "labelEndDate";
-            this.labelEndDate.Size = new System.Drawing.Size(80, 23);
-            this.labelEndDate.TabIndex = 25;
-            this.labelEndDate.Text = "End Date";
-            this.labelEndDate.Visible = false;
-            // 
             // RepPOSReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -348,5 +350,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerEndDate;
         private System.Windows.Forms.Label labelEndDate;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogSaveEJournal;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogCollectionRegister;
     }
 }

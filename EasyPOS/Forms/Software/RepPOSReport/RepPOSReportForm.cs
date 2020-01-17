@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -92,7 +94,23 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                         dateTimePickerEndDate.Visible = false;
                         labelEndDate.Visible = false;
                         break;
-                    case "E-Journal Report":
+                    case "E-Journal Report (ejournal.txt)":
+                        labelTerminal.Visible = true;
+                        comboBoxTerminal.Visible = true;
+
+                        dateTimePickerDate.Visible = false;
+                        labelDate.Visible = false;
+
+                        comboBoxUser.Visible = false;
+                        labelUser.Visible = false;
+
+                        dateTimePickerStartDate.Visible = true;
+                        labelStartDate.Visible = true;
+
+                        dateTimePickerEndDate.Visible = true;
+                        labelEndDate.Visible = true;
+                        break;
+                    case "Collection Register (collectionregister.csv)":
                         labelTerminal.Visible = true;
                         comboBoxTerminal.Visible = true;
 
@@ -181,13 +199,13 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                         }
 
                         break;
-                    case "E-Journal Report":
+                    case "E-Journal Report (ejournal.txt)":
                         DialogResult dialogResult = folderBrowserDialogSaveEJournal.ShowDialog();
                         if (dialogResult == DialogResult.OK)
                         {
                             String folderPath = folderBrowserDialogSaveEJournal.SelectedPath;
 
-                            FileStream fs1 = new FileStream(folderPath + "\\EJournalReport.txt", FileMode.OpenOrCreate, FileAccess.Write);
+                            FileStream fs1 = new FileStream(folderPath + "\\ejournal" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".txt", FileMode.OpenOrCreate, FileAccess.Write);
                             StreamWriter writer = new StreamWriter(fs1);
 
                             Controllers.RepPOSReportController repPOSReportController = new Controllers.RepPOSReportController();
@@ -298,6 +316,67 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                             }
 
                             writer.Close();
+                        }
+
+                        break;
+                    case "Collection Register (collectionregister.csv)":
+                        DialogResult dialogResultCollectionRegister = folderBrowserDialogCollectionRegister.ShowDialog();
+                        if (dialogResultCollectionRegister == DialogResult.OK)
+                        {
+                            StringBuilder csv = new StringBuilder();
+                            String[] header = {
+                                "Terminal",
+                                "Date",
+                                "Collection Number",
+                                "Customer Code",
+                                "Customer",
+                                "Amount",
+                                "VAT Sales",
+                                "VAT Amount",
+                                "Non-VAT",
+                                "VAT Exempt",
+                                "VAT Zero Rated"
+                            };
+                            csv.AppendLine(String.Join(",", header));
+
+                            Controllers.RepPOSReportController repPOSReportController = new Controllers.RepPOSReportController();
+                            if (repPOSReportController.ListCollectionRegister(dateTimePickerStartDate.Value, dateTimePickerEndDate.Value, Convert.ToInt32(comboBoxTerminal.SelectedValue)).Any())
+                            {
+                                foreach (var collectionRegister in repPOSReportController.ListCollectionRegister(dateTimePickerStartDate.Value, dateTimePickerEndDate.Value, Convert.ToInt32(comboBoxTerminal.SelectedValue)))
+                                {
+                                    String customerCode = "";
+                                    if (collectionRegister.CustomerCode != null)
+                                    {
+                                        customerCode = collectionRegister.CustomerCode.Replace(",", " ");
+                                    }
+
+                                    String[] data = {
+                                        collectionRegister.Terminal,
+                                        collectionRegister.CollectionDate,
+                                        collectionRegister.CollectionNumber,
+                                        customerCode,
+                                        collectionRegister.Customer.Replace("," , ""),
+                                        collectionRegister.Amount.ToString("#,#00.00").Replace("," , ""),
+                                        collectionRegister.VATSales.ToString("#,#00.00").Replace("," , ""),
+                                        collectionRegister.VATAmount.ToString("#,#00.00").Replace("," , ""),
+                                        collectionRegister.NonVAT.ToString("#,#00.00").Replace("," , ""),
+                                        collectionRegister.VATExempt.ToString("#,#00.00").Replace("," , ""),
+                                        collectionRegister.VATZeroRated.ToString("#,#00.00").Replace("," , ""),
+                                    };
+                                    csv.AppendLine(String.Join(",", data));
+                                }
+                            }
+
+                            String executingUser = WindowsIdentity.GetCurrent().Name;
+
+                            DirectorySecurity securityRules = new DirectorySecurity();
+                            securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.Read, AccessControlType.Allow));
+                            securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
+
+                            DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogCollectionRegister.SelectedPath, securityRules);
+                            File.WriteAllText(createDirectorySTCSV.FullName + "\\collectionregister" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+
+                            MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
 
                         break;

@@ -17,6 +17,7 @@ namespace EasyPOS.Entities
         public String Terminal { get; set; }
         public String ManualORNumber { get; set; }
         public Int32 CustomerId { get; set; }
+        public String CustomerCode { get; set; }
         public String Customer { get; set; }
         public String Remarks { get; set; }
         public Int32? SalesId { get; set; }
@@ -41,5 +42,10 @@ namespace EasyPOS.Entities
         public String UpdatedUserName { get; set; }
         public String UpdateDateTime { get; set; }
         public List<TrnCollectionLineEntity> CollectionLines { get; set; }
+        public Decimal VATSales { get; set; }
+        public Decimal VATAmount { get; set; }
+        public Decimal NonVAT { get; set; }
+        public Decimal VATExempt { get; set; }
+        public Decimal VATZeroRated { get; set; }
     }
 }

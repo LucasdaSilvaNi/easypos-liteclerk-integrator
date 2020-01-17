@@ -96,7 +96,8 @@ namespace EasyPOS.Reports
                 TotalNumberOfSKU = 0,
                 TotalQuantity = 0,
                 TotalPreviousReading = 0,
-                RunningTotal = 0
+                RunningTotal = 0,
+                ZReadingCounter = ""
             };
 
             repZReadingReportEntity.Date = filterDate.ToShortDateString();
@@ -258,6 +259,16 @@ namespace EasyPOS.Reports
             {
                 repZReadingReportEntity.TotalPreviousReading = previousCollections.Sum(d => d.Amount);
                 repZReadingReportEntity.RunningTotal = repZReadingReportEntity.TotalNetSales + repZReadingReportEntity.TotalPreviousReading;
+            }
+
+            var firstCollection = from d in db.TrnCollections.OrderByDescending(d => d.Id)
+                                  where d.IsLocked == true
+                                  select d;
+
+            if (firstCollection.Any())
+            {
+                Double totalDays = (filterDate - firstCollection.FirstOrDefault().CollectionDate).TotalDays;
+                repZReadingReportEntity.ZReadingCounter = totalDays.ToString("#,##0");
             }
 
             zReadingReportEntity = repZReadingReportEntity;
@@ -627,6 +638,14 @@ namespace EasyPOS.Reports
             graphics.DrawString(runningTotalLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(runningTotalData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(runningTotalData, fontArial8Regular).Height;
+
+            String zReadingCounter = dataSource.ZReadingCounter;
+
+            String zReadingCounterLabel = "Z-Reading Counter";
+            String zReadingCounterData = zReadingCounter;
+            graphics.DrawString(zReadingCounterLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(zReadingCounterData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(zReadingCounterData, fontArial8Regular).Height;
 
             // ========
             // 9th Line
