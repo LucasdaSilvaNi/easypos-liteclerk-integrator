@@ -31,6 +31,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             InitializeComponent();
             sysSoftwareForm = softwareForm;
 
+            dateTimePickerSalesDate.Value = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate);
+
             sysUserRights = new Modules.SysUserRightsModule("TrnSales");
             if (sysUserRights.GetUserRights() == null)
             {

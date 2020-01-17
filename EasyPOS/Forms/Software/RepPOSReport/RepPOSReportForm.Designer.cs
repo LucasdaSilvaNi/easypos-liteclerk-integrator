@@ -102,6 +102,8 @@
             "X Reading Report",
             "",
             "E-Journal Report (ejournal.txt)",
+            "E-Sales Report (esales.csv)",
+            "",
             "Collection Register (collectionregister.csv)"});
             this.listBoxPOSReport.Location = new System.Drawing.Point(0, 0);
             this.listBoxPOSReport.Name = "listBoxPOSReport";

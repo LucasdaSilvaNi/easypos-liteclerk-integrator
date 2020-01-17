@@ -109,6 +109,24 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                         dateTimePickerEndDate.Visible = true;
                         labelEndDate.Visible = true;
+
+                        break;
+                    case "E-Sales Report (esales.csv)":
+                        labelTerminal.Visible = true;
+                        comboBoxTerminal.Visible = true;
+
+                        dateTimePickerDate.Visible = false;
+                        labelDate.Visible = false;
+
+                        comboBoxUser.Visible = false;
+                        labelUser.Visible = false;
+
+                        dateTimePickerStartDate.Visible = true;
+                        labelStartDate.Visible = true;
+
+                        dateTimePickerEndDate.Visible = true;
+                        labelEndDate.Visible = true;
+
                         break;
                     case "Collection Register (collectionregister.csv)":
                         labelTerminal.Visible = true;
@@ -317,6 +335,9 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                             writer.Close();
                         }
+
+                        break;
+                    case "E-Sales Report (esales.csv)":
 
                         break;
                     case "Collection Register (collectionregister.csv)":
