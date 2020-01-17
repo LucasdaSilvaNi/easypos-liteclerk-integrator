@@ -95,8 +95,10 @@ namespace EasyPOS.Reports
                 TotalNumberOfTransactions = 0,
                 TotalNumberOfSKU = 0,
                 TotalQuantity = 0,
-                TotalPreviousReading = 0,
-                RunningTotal = 0,
+                GrossSalesTotalPreviousReading = 0,
+                GrossSalesRunningTotal = 0,
+                NetSalesTotalPreviousReading = 0,
+                NetSalesRunningTotal = 0,
                 ZReadingCounter = ""
             };
 
@@ -248,17 +250,31 @@ namespace EasyPOS.Reports
                 repZReadingReportEntity.TotalCancelledAmount = currentCancelledCollections.Sum(d => d.Amount);
             }
 
-            var previousCollections = from d in db.TrnCollections
-                                      where d.TerminalId == filterTerminalId
-                                      && d.CollectionDate < filterDate
-                                      && d.IsLocked == true
-                                      && d.IsCancelled == false
-                                      select d;
+            var grossSalesPreviousCollections = from d in db.TrnCollections
+                                                where d.TerminalId == filterTerminalId
+                                                && d.CollectionDate < filterDate
+                                                && d.IsLocked == true
+                                                && d.IsCancelled == false
+                                                && d.SalesId != null
+                                                select d;
 
-            if (previousCollections.Any())
+            if (grossSalesPreviousCollections.Any())
             {
-                repZReadingReportEntity.TotalPreviousReading = previousCollections.Sum(d => d.Amount);
-                repZReadingReportEntity.RunningTotal = repZReadingReportEntity.TotalNetSales + repZReadingReportEntity.TotalPreviousReading;
+                repZReadingReportEntity.GrossSalesTotalPreviousReading = grossSalesPreviousCollections.Sum(d => d.TrnSale.TrnSalesLines.Any() ? d.TrnSale.TrnSalesLines.Sum(s => s.Price * s.Quantity) : 0);
+                repZReadingReportEntity.GrossSalesRunningTotal = repZReadingReportEntity.TotalGrossSales + repZReadingReportEntity.GrossSalesTotalPreviousReading;
+            }
+
+            var netSalesPreviousCollections = from d in db.TrnCollections
+                                              where d.TerminalId == filterTerminalId
+                                              && d.CollectionDate < filterDate
+                                              && d.IsLocked == true
+                                              && d.IsCancelled == false
+                                              select d;
+
+            if (netSalesPreviousCollections.Any())
+            {
+                repZReadingReportEntity.NetSalesTotalPreviousReading = netSalesPreviousCollections.Sum(d => d.Amount);
+                repZReadingReportEntity.NetSalesRunningTotal = repZReadingReportEntity.TotalNetSales + repZReadingReportEntity.NetSalesTotalPreviousReading;
             }
 
             var firstCollection = from d in db.TrnCollections.OrderByDescending(d => d.Id)
@@ -267,7 +283,7 @@ namespace EasyPOS.Reports
 
             if (firstCollection.Any())
             {
-                Double totalDays = (filterDate - firstCollection.FirstOrDefault().CollectionDate).TotalDays;
+                Double totalDays = (filterDate - firstCollection.FirstOrDefault().CollectionDate).TotalDays + 1;
                 repZReadingReportEntity.ZReadingCounter = totalDays.ToString("#,##0");
             }
 
@@ -620,32 +636,27 @@ namespace EasyPOS.Reports
             Point eightLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
             graphics.DrawLine(blackPen, eightLineFirstPoint, eightLineSecondPoint);
 
-            Decimal totalPreviousReading = dataSource.TotalPreviousReading;
-            Decimal runningTotal = dataSource.RunningTotal;
+            graphics.DrawString("\nAccumulated Gross Sales", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            y += graphics.MeasureString("\nAccumulated Gross Sales", fontArial8Regular).Height;
 
-            String totalPreviousReadingLabel = "\nPrevious Reading";
-            String totalPreviousReadingData = "\n" + totalPreviousReading.ToString("#,##0.00");
-            graphics.DrawString(totalPreviousReadingLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            graphics.DrawString(totalPreviousReadingData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-            y += graphics.MeasureString(totalPreviousReadingData, fontArial8Regular).Height;
+            Decimal grossSalesTotalPreviousReading = dataSource.GrossSalesTotalPreviousReading;
+            Decimal grossSalesRunningTotal = dataSource.GrossSalesRunningTotal;
 
-            graphics.DrawString("Net Sales", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            graphics.DrawString(totalNetSales.ToString("#,##0.00"), fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-            y += graphics.MeasureString(totalNetSales.ToString("#,##0.00"), fontArial8Regular).Height;
+            String grossSalesTotalPreviousReadingLabel = "\nPrevious Reading";
+            String grossSalesTotalPreviousReadingData = "\n" + grossSalesTotalPreviousReading.ToString("#,##0.00");
+            graphics.DrawString(grossSalesTotalPreviousReadingLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(grossSalesTotalPreviousReadingData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(grossSalesTotalPreviousReadingData, fontArial8Regular).Height;
 
-            String runningTotalLabel = "Running Total";
-            String runningTotalData = runningTotal.ToString("#,##0.00");
-            graphics.DrawString(runningTotalLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            graphics.DrawString(runningTotalData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-            y += graphics.MeasureString(runningTotalData, fontArial8Regular).Height;
+            graphics.DrawString("Gross Sales", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(totalGrossSales.ToString("#,##0.00"), fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(totalGrossSales.ToString("#,##0.00"), fontArial8Regular).Height;
 
-            String zReadingCounter = dataSource.ZReadingCounter;
-
-            String zReadingCounterLabel = "Z-Reading Counter";
-            String zReadingCounterData = zReadingCounter;
-            graphics.DrawString(zReadingCounterLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            graphics.DrawString(zReadingCounterData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-            y += graphics.MeasureString(zReadingCounterData, fontArial8Regular).Height;
+            String grossSalesRunningTotalLabel = "Running Total";
+            String grossSalesRunningTotalData = grossSalesRunningTotal.ToString("#,##0.00");
+            graphics.DrawString(grossSalesRunningTotalLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(grossSalesRunningTotalData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(grossSalesRunningTotalData, fontArial8Regular).Height;
 
             // ========
             // 9th Line
@@ -653,6 +664,50 @@ namespace EasyPOS.Reports
             Point ninethLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
             Point ninethLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
             graphics.DrawLine(blackPen, ninethLineFirstPoint, ninethLineSecondPoint);
+
+            graphics.DrawString("\nAccumulated Net Sales", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            y += graphics.MeasureString("\nAccumulated Net Sales", fontArial8Regular).Height;
+
+            Decimal netSalesTotalPreviousReading = dataSource.NetSalesTotalPreviousReading;
+            Decimal netSalesRunningTotal = dataSource.NetSalesRunningTotal;
+
+            String netSalesTotalPreviousReadingLabel = "\nPrevious Reading";
+            String netSalesTotalPreviousReadingData = "\n" + netSalesTotalPreviousReading.ToString("#,##0.00");
+            graphics.DrawString(netSalesTotalPreviousReadingLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(netSalesTotalPreviousReadingData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(netSalesTotalPreviousReadingData, fontArial8Regular).Height;
+
+            graphics.DrawString("Net Sales", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(totalNetSales.ToString("#,##0.00"), fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(totalNetSales.ToString("#,##0.00"), fontArial8Regular).Height;
+
+            String netSalesRunningTotalLabel = "Running Total";
+            String netSalesRunningTotalData = netSalesRunningTotal.ToString("#,##0.00");
+            graphics.DrawString(netSalesRunningTotalLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(netSalesRunningTotalData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(netSalesRunningTotalData, fontArial8Regular).Height;
+            
+            // =========
+            // 10th Line
+            // =========
+            Point tenthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            Point tenthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            graphics.DrawLine(blackPen, tenthLineFirstPoint, tenthLineSecondPoint);
+
+            String zReadingCounter = dataSource.ZReadingCounter;
+
+            String zReadingCounterLabel = "\nZ-Reading Counter";
+            String zReadingCounterData = "\n" + zReadingCounter;
+            graphics.DrawString(zReadingCounterLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(zReadingCounterData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(zReadingCounterData, fontArial8Regular).Height;
+
+            // =========
+            // 11th Line
+            // =========
+            Point eleventhLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            Point eleventhLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            graphics.DrawLine(blackPen, eleventhLineFirstPoint, eleventhLineSecondPoint);
 
             String zReadingFooter = systemCurrent.ZReadingFooter;
 

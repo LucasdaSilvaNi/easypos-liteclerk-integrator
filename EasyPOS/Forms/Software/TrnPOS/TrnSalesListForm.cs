@@ -398,14 +398,21 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     {
                         Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
 
-                        String[] cancelSales = trnPOSSalesController.CancelSales(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value));
-                        if (cancelSales[1].Equals("0") == false)
+                        if (trnPOSSalesController.CanCancelCollection(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value)))
                         {
-                            UpdateSalesListGridDataSource();
+                            String[] cancelSales = trnPOSSalesController.CancelSales(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value));
+                            if (cancelSales[1].Equals("0") == false)
+                            {
+                                UpdateSalesListGridDataSource();
+                            }
+                            else
+                            {
+                                MessageBox.Show(cancelSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                         else
                         {
-                            MessageBox.Show(cancelSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Not allowed.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }

@@ -287,9 +287,9 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(17, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 20);
+            this.label2.Size = new System.Drawing.Size(112, 20);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Invoice No.:";
+            this.label2.Text = "Reference No.:";
             // 
             // labelTransactionDate
             // 
@@ -343,9 +343,9 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(17, 73);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(131, 20);
+            this.label5.Size = new System.Drawing.Size(85, 20);
             this.label5.TabIndex = 3;
-            this.label5.Text = "Transaction Date:";
+            this.label5.Text = "Sales Date:";
             // 
             // dataGridViewSalesLineItemDisplay
             // 
@@ -650,7 +650,7 @@
             // ColumnSalesNumber
             // 
             this.ColumnSalesNumber.DataPropertyName = "ColumnSalesNumber";
-            this.ColumnSalesNumber.HeaderText = "Sales No.";
+            this.ColumnSalesNumber.HeaderText = "Ref. No.";
             this.ColumnSalesNumber.Name = "ColumnSalesNumber";
             this.ColumnSalesNumber.ReadOnly = true;
             // 

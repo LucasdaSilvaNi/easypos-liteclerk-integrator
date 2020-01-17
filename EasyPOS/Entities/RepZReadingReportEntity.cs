@@ -30,8 +30,10 @@ namespace EasyPOS.Entities
         public Decimal TotalNumberOfTransactions { get; set; }
         public Decimal TotalNumberOfSKU { get; set; }
         public Decimal TotalQuantity { get; set; }
-        public Decimal TotalPreviousReading { get; set; }
-        public Decimal RunningTotal { get; set; }
+        public Decimal GrossSalesTotalPreviousReading { get; set; }
+        public Decimal GrossSalesRunningTotal { get; set; }
+        public Decimal NetSalesTotalPreviousReading { get; set; }
+        public Decimal NetSalesRunningTotal { get; set; }
         public String ZReadingCounter { get; set; }
     }
 }

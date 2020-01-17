@@ -39,6 +39,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnSalesDetailForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonDiscount = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
@@ -87,7 +88,6 @@
             this.textBoxBarcode = new System.Windows.Forms.TextBox();
             this.buttonBarcode = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.buttonDiscount = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -108,6 +108,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1400, 63);
             this.panel1.TabIndex = 3;
+            // 
+            // buttonDiscount
+            // 
+            this.buttonDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDiscount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonDiscount.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonDiscount.FlatAppearance.BorderSize = 0;
+            this.buttonDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDiscount.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDiscount.ForeColor = System.Drawing.Color.White;
+            this.buttonDiscount.Location = new System.Drawing.Point(1104, 12);
+            this.buttonDiscount.Name = "buttonDiscount";
+            this.buttonDiscount.Size = new System.Drawing.Size(96, 40);
+            this.buttonDiscount.TabIndex = 4;
+            this.buttonDiscount.TabStop = false;
+            this.buttonDiscount.Text = "Discount";
+            this.buttonDiscount.UseVisualStyleBackColor = false;
+            this.buttonDiscount.Click += new System.EventHandler(this.buttonDiscount_Click);
             // 
             // pictureBox1
             // 
@@ -210,9 +228,9 @@
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveBorder;
             this.label4.Location = new System.Drawing.Point(12, 40);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 23);
+            this.label4.Size = new System.Drawing.Size(93, 23);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Invoice Date:";
+            this.label4.Text = "Sales Date:";
             // 
             // labelInvoiceDate
             // 
@@ -231,9 +249,9 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveBorder;
             this.label3.Location = new System.Drawing.Point(12, 17);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 23);
+            this.label3.Size = new System.Drawing.Size(123, 23);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Invoice No.:";
+            this.label3.Text = "Reference No.:";
             // 
             // labelInvoiceNumber
             // 
@@ -618,24 +636,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1400, 527);
             this.panel3.TabIndex = 7;
-            // 
-            // buttonDiscount
-            // 
-            this.buttonDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDiscount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonDiscount.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonDiscount.FlatAppearance.BorderSize = 0;
-            this.buttonDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDiscount.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDiscount.ForeColor = System.Drawing.Color.White;
-            this.buttonDiscount.Location = new System.Drawing.Point(1104, 12);
-            this.buttonDiscount.Name = "buttonDiscount";
-            this.buttonDiscount.Size = new System.Drawing.Size(96, 40);
-            this.buttonDiscount.TabIndex = 4;
-            this.buttonDiscount.TabStop = false;
-            this.buttonDiscount.Text = "Discount";
-            this.buttonDiscount.UseVisualStyleBackColor = false;
-            this.buttonDiscount.Click += new System.EventHandler(this.buttonDiscount_Click);
             // 
             // TrnSalesDetailForm
             // 

@@ -630,6 +630,8 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                DateTime currentLoginDate = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate);
+
                 var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
                 if (currentUserLogin.Any() == false)
                 {
@@ -954,6 +956,43 @@ namespace EasyPOS.Controllers
                         };
 
             return sales.FirstOrDefault();
+        }
+
+        // ===================================
+        // Can Cancel Collection Previous Date
+        // ===================================
+        public Boolean CanCancelCollection(Int32 salesId)
+        {
+            var collection = from d in db.TrnCollections
+                             where d.SalesId == salesId
+                             select d;
+
+            if (collection.Any())
+            {
+                var lastCollection = from d in db.TrnCollections.OrderByDescending(d => d.Id)
+                                     where d.IsLocked == true
+                                     select d;
+
+                if (lastCollection.Any())
+                {
+                    if (lastCollection.FirstOrDefault().CollectionDate.Date == collection.FirstOrDefault().CollectionDate)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

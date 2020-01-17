@@ -146,6 +146,7 @@ namespace EasyPOS.Reports
                 // ==========
                 // Sales Line
                 // ==========
+                Decimal totalGrossSales = 0;
                 Decimal totalSales = 0;
                 Decimal totalDiscount = 0;
                 Decimal change = 0;
@@ -213,6 +214,7 @@ namespace EasyPOS.Reports
                         {
                             totalNumberOfItems += 1;
 
+                            totalGrossSales += salesLine.Amount + salesLine.DiscountAmount;
                             totalSales += salesLine.Amount;
                             totalDiscount += salesLine.DiscountAmount;
 
@@ -240,7 +242,7 @@ namespace EasyPOS.Reports
                             }
 
                             String itemData = salesLine.ItemDescription + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.Tax[0];
-                            String itemAmountData = salesLine.Amount.ToString("#,##0.00");
+                            String itemAmountData = (salesLine.Amount + salesLine.DiscountAmount).ToString("#,##0.00");
                             RectangleF itemDataRectangle = new RectangleF
                             {
                                 X = x,
@@ -264,23 +266,29 @@ namespace EasyPOS.Reports
                 // ==============================
                 // Total Sales and Total Discount
                 // ==============================
-                String totalSalesLabel = "\n\nTotal Sales";
-                String totalSalesAmount = "\n" + totalSales.ToString("#,##0.00");
+                String totalSalesLabel = "\nTotal Sales";
+                String totalSalesAmount = "\n" + totalGrossSales.ToString("#,##0.00");
                 graphics.DrawString(totalSalesLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalSalesAmount, fontArial12Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalSalesAmount, fontArial12Regular).Height;
+                graphics.DrawString(totalSalesAmount, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalSalesAmount, fontArial8Regular).Height;
 
-                String totalNumberOfItemsLabel = "Total No. of Item(s)";
-                String totalNumberOfItemsQuantity = totalNumberOfItems.ToString("#,##0.00");
-                graphics.DrawString(totalNumberOfItemsLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalNumberOfItemsQuantity, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalNumberOfItemsQuantity, fontArial8Regular).Height;
-
-                String totalDiscountLabel = "Total Discount\n\n";
-                String totalDiscountAmount = totalDiscount.ToString("#,##0.00") + "\n\n";
+                String totalDiscountLabel = "Total Discount";
+                String totalDiscountAmount = totalDiscount.ToString("#,##0.00");
                 graphics.DrawString(totalDiscountLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(totalDiscountAmount, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(totalDiscountAmount, fontArial8Regular).Height;
+
+                String netSalesLabel = "Net Sales";
+                String netSalesAmount = totalSales.ToString("#,##0.00");
+                graphics.DrawString(netSalesLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(netSalesAmount, fontArial12Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(netSalesAmount, fontArial12Regular).Height;
+
+                String totalNumberOfItemsLabel = "Total No. of Item(s)\n\n";
+                String totalNumberOfItemsQuantity = totalNumberOfItems.ToString("#,##0.00") + "\n\n";
+                graphics.DrawString(totalNumberOfItemsLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalNumberOfItemsQuantity, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalNumberOfItemsQuantity, fontArial8Regular).Height;
 
                 // ========
                 // 3rd Line
