@@ -131,7 +131,9 @@
             "Collection Summary Report",
             "Collection Detail Report",
             "",
-            "Cancelled Summary Report"});
+            "Cancelled Summary Report",
+            "",
+            "Stock Withdrawal Report"});
             this.listBoxSalesReport.Location = new System.Drawing.Point(0, 0);
             this.listBoxSalesReport.Name = "listBoxSalesReport";
             this.listBoxSalesReport.Size = new System.Drawing.Size(380, 619);

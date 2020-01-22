@@ -301,7 +301,19 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 String payType = dataGridViewTenderPayType.Rows[dataGridViewTenderPayType.CurrentCell.RowIndex].Cells[dataGridViewTenderPayType.Columns["ColumnTenderListPayTypePayType"].Index].Value.ToString();
                 if (payType == "Easypay")
                 {
-                    TrnSalesDetailTenderEasypayInformationForm trnSalesDetailTenderEasypayInformationForm = new TrnSalesDetailTenderEasypayInformationForm(this, dataGridViewTenderPayType, trnSalesEntity.Amount);
+                    Decimal totalTenderAmount = 0;
+
+                    if (dataGridViewTenderPayType.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in dataGridViewTenderPayType.Rows)
+                        {
+                            totalTenderAmount += Convert.ToDecimal(row.Cells[2].Value);
+                        }
+                    }
+
+                    Decimal easypayAmount = trnSalesEntity.Amount - totalTenderAmount;
+
+                    TrnSalesDetailTenderEasypayInformationForm trnSalesDetailTenderEasypayInformationForm = new TrnSalesDetailTenderEasypayInformationForm(this, dataGridViewTenderPayType, easypayAmount);
                     trnSalesDetailTenderEasypayInformationForm.ShowDialog();
                 }
                 else
