@@ -100,6 +100,7 @@ namespace EasyPOS.Forms.Software.MstUser
             textBoxPassword.Enabled = !isLocked;
 
             buttonAddUserForm.Enabled = !isLocked;
+            buttonCopyUseRights.Enabled = !isLocked;
 
             dataGridViewUserFormList.Columns[0].Visible = !isLocked;
             dataGridViewUserFormList.Columns[1].Visible = !isLocked;
@@ -433,6 +434,12 @@ namespace EasyPOS.Forms.Software.MstUser
 
             MstUserDetailUserFormDetailForm mstUserDetailUserFormDetailForm = new MstUserDetailUserFormDetailForm(this, mstUserFormEntity);
             mstUserDetailUserFormDetailForm.ShowDialog();
+        }
+
+        private void buttonCopyUseRights_Click(object sender, EventArgs e)
+        {
+            MstUserCopyUserRightsForm mstUserCopyUserRightsForm = new MstUserCopyUserRightsForm(this, mstUserEntity.Id);
+            mstUserCopyUserRightsForm.ShowDialog();
         }
     }
 }
