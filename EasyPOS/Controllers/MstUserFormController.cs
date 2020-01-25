@@ -44,18 +44,109 @@ namespace EasyPOS.Controllers
             return userForms.OrderByDescending(d => d.Id).ToList();
         }
 
+
+        // ==========
+        // List Users
+        // ==========
+        public List<Entities.MstUserEntity> ListUser()
+        {
+            var users = from d in db.MstUsers
+                        where d.IsLocked == true
+                        select new Entities.MstUserEntity
+                        {
+                            Id = d.Id,
+                            UserName = d.UserName,
+                        };
+
+            return users.OrderBy(d => d.Id).ToList();
+        }
+
+        public String[] CopyUserRight(Int32 userId, Int32 copyRightFromUserId)
+        {
+            try
+            {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
+                var user = from d in db.MstUsers
+                           where d.Id == userId
+                           select d;
+
+                if (user.Any() == false)
+                {
+                    return new String[] { "User transaction not found.", "0" };
+                }
+
+                var currentUserFormList = from d in db.MstUserForms
+                                          where d.UserId == userId
+                                          select d;
+
+                if (currentUserFormList.Any()) {
+
+                    db.MstUserForms.DeleteAllOnSubmit(currentUserFormList);
+                    db.SubmitChanges();
+                }
+
+                var userForms = from d in db.MstUserForms
+                                where d.UserId == copyRightFromUserId
+                                select d;
+
+                if (userForms.Any())
+                {
+                    List<Data.MstUserForm> newForms = new List<Data.MstUserForm>();
+                    foreach (var userForm in userForms)
+                    {
+                        newForms.Add(new Data.MstUserForm()
+                        {
+                            FormId = userForm.FormId,
+                            UserId = userId,
+                            CanDelete = userForm.CanDelete,
+                            CanAdd = userForm.CanAdd,
+                            CanLock = userForm.CanLock,
+                            CanUnlock = userForm.CanUnlock,
+                            CanPrint = userForm.CanPrint,
+                            CanPreview = userForm.CanPreview,
+                            CanEdit = userForm.CanEdit,
+                            CanTender = userForm.CanTender,
+                            CanDiscount = userForm.CanDiscount,
+                            CanView = userForm.CanView,
+                            CanSplit = userForm.CanSplit,
+                            CanCancel = userForm.CanCancel,
+                            CanReturn = userForm.CanReturn
+                        });
+                    }
+
+                    db.MstUserForms.InsertAllOnSubmit(newForms);
+                    db.SubmitChanges();
+
+                    return new String[] { "", "1" };
+                }
+                else
+                {
+                    return new String[] { "Form not found.", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
         // ==================
         // Dropdown List Form
         // ==================
         public List<Entities.SysFormEntity> DropdownListForm()
         {
             var forms = from d in db.SysForms
-                            select new Entities.SysFormEntity
-                            {
-                                Id = d.Id,
-                                Form = d.Form,
-                                FormDescription = d.FormDescription
-                            };
+                        select new Entities.SysFormEntity
+                        {
+                            Id = d.Id,
+                            Form = d.Form,
+                            FormDescription = d.FormDescription
+                        };
 
             return forms.ToList();
         }
