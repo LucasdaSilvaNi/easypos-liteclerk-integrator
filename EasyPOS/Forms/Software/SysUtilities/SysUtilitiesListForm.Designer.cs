@@ -41,29 +41,29 @@
             this.dateTimePickerSysAuditTrailListStartDateFilter = new System.Windows.Forms.DateTimePicker();
             this.dataGridViewAuditTrailList = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.tabControlSystemTable = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ColumnAuditTrailListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAuditTrailListUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAuditTrailListUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAuditTrailListAuditDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAuditTrailListUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAuditTrailListTableInformation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAuditTrailListActionInformation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAuditTrailListRecordInformation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAuditTrailListFormInformation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAuditTrailListActionInformation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAuditTrailListSpace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuditTrailList)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControlSystemTable.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -204,12 +204,12 @@
             this.dataGridViewAuditTrailList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnAuditTrailListId,
             this.ColumnAuditTrailListUserId,
-            this.ColumnAuditTrailListUser,
             this.ColumnAuditTrailListAuditDate,
+            this.ColumnAuditTrailListUser,
             this.ColumnAuditTrailListTableInformation,
+            this.ColumnAuditTrailListActionInformation,
             this.ColumnAuditTrailListRecordInformation,
             this.ColumnAuditTrailListFormInformation,
-            this.ColumnAuditTrailListActionInformation,
             this.ColumnAuditTrailListSpace});
             this.dataGridViewAuditTrailList.Location = new System.Drawing.Point(5, 42);
             this.dataGridViewAuditTrailList.MultiSelect = false;
@@ -232,6 +232,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1400, 63);
             this.panel1.TabIndex = 8;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Utilities;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -291,16 +301,6 @@
             this.panel9.Size = new System.Drawing.Size(1386, 595);
             this.panel9.TabIndex = 1;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Utilities;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
             // ColumnAuditTrailListId
             // 
             this.ColumnAuditTrailListId.DataPropertyName = "ColumnAuditTrailListId";
@@ -317,14 +317,6 @@
             this.ColumnAuditTrailListUserId.ReadOnly = true;
             this.ColumnAuditTrailListUserId.Visible = false;
             // 
-            // ColumnAuditTrailListUser
-            // 
-            this.ColumnAuditTrailListUser.DataPropertyName = "ColumnAuditTrailListUser";
-            this.ColumnAuditTrailListUser.HeaderText = "User";
-            this.ColumnAuditTrailListUser.Name = "ColumnAuditTrailListUser";
-            this.ColumnAuditTrailListUser.ReadOnly = true;
-            this.ColumnAuditTrailListUser.Width = 150;
-            // 
             // ColumnAuditTrailListAuditDate
             // 
             this.ColumnAuditTrailListAuditDate.DataPropertyName = "ColumnAuditTrailListAuditDate";
@@ -333,18 +325,34 @@
             this.ColumnAuditTrailListAuditDate.ReadOnly = true;
             this.ColumnAuditTrailListAuditDate.Width = 150;
             // 
+            // ColumnAuditTrailListUser
+            // 
+            this.ColumnAuditTrailListUser.DataPropertyName = "ColumnAuditTrailListUser";
+            this.ColumnAuditTrailListUser.HeaderText = "User";
+            this.ColumnAuditTrailListUser.Name = "ColumnAuditTrailListUser";
+            this.ColumnAuditTrailListUser.ReadOnly = true;
+            this.ColumnAuditTrailListUser.Width = 150;
+            // 
             // ColumnAuditTrailListTableInformation
             // 
             this.ColumnAuditTrailListTableInformation.DataPropertyName = "ColumnAuditTrailListTableInformation";
-            this.ColumnAuditTrailListTableInformation.HeaderText = "Table Information";
+            this.ColumnAuditTrailListTableInformation.HeaderText = "Module";
             this.ColumnAuditTrailListTableInformation.Name = "ColumnAuditTrailListTableInformation";
             this.ColumnAuditTrailListTableInformation.ReadOnly = true;
             this.ColumnAuditTrailListTableInformation.Width = 200;
             // 
+            // ColumnAuditTrailListActionInformation
+            // 
+            this.ColumnAuditTrailListActionInformation.DataPropertyName = "ColumnAuditTrailListActionInformation";
+            this.ColumnAuditTrailListActionInformation.HeaderText = "Action Taken";
+            this.ColumnAuditTrailListActionInformation.Name = "ColumnAuditTrailListActionInformation";
+            this.ColumnAuditTrailListActionInformation.ReadOnly = true;
+            this.ColumnAuditTrailListActionInformation.Width = 150;
+            // 
             // ColumnAuditTrailListRecordInformation
             // 
             this.ColumnAuditTrailListRecordInformation.DataPropertyName = "ColumnAuditTrailListRecordInformation";
-            this.ColumnAuditTrailListRecordInformation.HeaderText = "Record Information";
+            this.ColumnAuditTrailListRecordInformation.HeaderText = "Old Value";
             this.ColumnAuditTrailListRecordInformation.Name = "ColumnAuditTrailListRecordInformation";
             this.ColumnAuditTrailListRecordInformation.ReadOnly = true;
             this.ColumnAuditTrailListRecordInformation.Width = 320;
@@ -352,18 +360,10 @@
             // ColumnAuditTrailListFormInformation
             // 
             this.ColumnAuditTrailListFormInformation.DataPropertyName = "ColumnAuditTrailListFormInformation";
-            this.ColumnAuditTrailListFormInformation.HeaderText = "Form Information";
+            this.ColumnAuditTrailListFormInformation.HeaderText = "New Value";
             this.ColumnAuditTrailListFormInformation.Name = "ColumnAuditTrailListFormInformation";
             this.ColumnAuditTrailListFormInformation.ReadOnly = true;
             this.ColumnAuditTrailListFormInformation.Width = 320;
-            // 
-            // ColumnAuditTrailListActionInformation
-            // 
-            this.ColumnAuditTrailListActionInformation.DataPropertyName = "ColumnAuditTrailListActionInformation";
-            this.ColumnAuditTrailListActionInformation.HeaderText = "Action Information";
-            this.ColumnAuditTrailListActionInformation.Name = "ColumnAuditTrailListActionInformation";
-            this.ColumnAuditTrailListActionInformation.ReadOnly = true;
-            this.ColumnAuditTrailListActionInformation.Width = 150;
             // 
             // ColumnAuditTrailListSpace
             // 
@@ -392,10 +392,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuditTrailList)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControlSystemTable.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -422,12 +422,12 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAuditTrailListId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAuditTrailListUserId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAuditTrailListUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAuditTrailListAuditDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAuditTrailListUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAuditTrailListTableInformation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAuditTrailListActionInformation;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAuditTrailListRecordInformation;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAuditTrailListFormInformation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAuditTrailListActionInformation;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAuditTrailListSpace;
     }
 }

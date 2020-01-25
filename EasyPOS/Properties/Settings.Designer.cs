@@ -33,5 +33,16 @@ namespace EasyPOS.Properties {
                 return ((string)(this["easyposConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=easypos_sonnets;Persist Security Info=True;" +
+            "User ID=sa")]
+        public string easypos_sonnetsConnectionString {
+            get {
+                return ((string)(this["easypos_sonnetsConnectionString"]));
+            }
+        }
     }
 }

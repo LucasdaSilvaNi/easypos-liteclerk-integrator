@@ -227,10 +227,10 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                             StreamWriter writer = new StreamWriter(fs1);
 
                             Controllers.RepPOSReportController repPOSReportController = new Controllers.RepPOSReportController();
-                            if (repPOSReportController.ListCollections(dateTimePickerStartDate.Value, dateTimePickerEndDate.Value, Convert.ToInt32(comboBoxTerminal.SelectedValue)).Any())
+                            if (repPOSReportController.ListCollections(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue)).Any())
                             {
                                 var systemCurrent = Modules.SysCurrentModule.GetCurrentSettings();
-                                foreach (var collection in repPOSReportController.ListCollections(dateTimePickerStartDate.Value, dateTimePickerEndDate.Value, Convert.ToInt32(comboBoxTerminal.SelectedValue)))
+                                foreach (var collection in repPOSReportController.ListCollections(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue)))
                                 {
                                     writer.Write(systemCurrent.CompanyName + "\n");
                                     writer.Write(systemCurrent.Address + "\n");
@@ -338,6 +338,81 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                         break;
                     case "E-Sales Report (esales.csv)":
+                        DialogResult dialogResultESales = folderBrowserDialogESales.ShowDialog();
+                        if (dialogResultESales == DialogResult.OK)
+                        {
+                            StringBuilder csv = new StringBuilder();
+                            String[] header = {
+                                "Gross Sales",
+                                "Regular Discount",
+                                "Senior Discount",
+                                "PWD Discount",
+                                "Sales Return",
+                                "Net Sales",
+                                "Total Collection",
+                                "VAT Sales",
+                                "VAT Amount",
+                                "Non-VAT",
+                                "VAT Exempt",
+                                "VAT Zero Rated",
+                                "Counter ID Start",
+                                "Counter ID End",
+                                "Cancelled Tx",
+                                "Cancelled Amount",
+                                "Accumulated Gross Sales - Previous Reading",
+                                "Accumulated Gross Sales - Gross Sales",
+                                "Accumulated Gross Sales - Running Total",
+                                "Accumulated Net Sales - Previous Reading",
+                                "Accumulated Net Sales - Net Sales",
+                                "Accumulated Net Sales - Running Total",
+                                "Z-Reading Counter"
+                            };
+                            csv.AppendLine(String.Join(",", header));
+
+                            Controllers.RepPOSReportController repPOSReportController = new Controllers.RepPOSReportController();
+                            if (repPOSReportController.ZReadingESalesDataSource(Convert.ToInt32(comboBoxTerminal.SelectedValue), dateTimePickerDate.Value.Date) != null)
+                            {
+                                var objData = repPOSReportController.ZReadingESalesDataSource(Convert.ToInt32(comboBoxTerminal.SelectedValue), dateTimePickerDate.Value.Date);
+
+                                String[] data = {
+                                        objData.TotalGrossSales.ToString("#,##0"),
+                                        objData.TotalRegularDiscount.ToString("#,##0"),
+                                        objData.TotalSeniorDiscount.ToString("#,##0"),
+                                        objData.TotalPWDDiscount.ToString("#,##0"),
+                                        objData.TotalSalesReturn.ToString("#,##0"),
+                                        objData.TotalNetSales.ToString("#,##0"),
+                                        objData.TotalCollection.ToString("#,##0"),
+                                        objData.TotalVATSales.ToString("#,##0"),
+                                        objData.TotalVATAmount.ToString("#,##0"),
+                                        objData.TotalNonVAT.ToString("#,##0"),
+                                        objData.TotalVATExempt.ToString("#,##0"),
+                                        objData.TotalVATZeroRated.ToString("#,##0"),
+                                        objData.CounterIdStart,
+                                        objData.CounterIdEnd,
+                                        objData.TotalCancelledTrnsactionCount.ToString("#,##0"),
+                                        objData.TotalCancelledAmount.ToString("#,##0"),
+                                        objData.GrossSalesTotalPreviousReading.ToString("#,##0"),
+                                        objData.TotalGrossSales.ToString("#,##0"),
+                                        objData.GrossSalesRunningTotal.ToString("#,##0"),
+                                        objData.NetSalesTotalPreviousReading.ToString("#,##0"),
+                                        objData.TotalNetSales.ToString("#,##0"),
+                                        objData.NetSalesRunningTotal.ToString("#,##0"),
+                                        objData.ZReadingCounter
+                                    };
+                                csv.AppendLine(String.Join(",", data));
+                            }
+
+                            String executingUser = WindowsIdentity.GetCurrent().Name;
+
+                            DirectorySecurity securityRules = new DirectorySecurity();
+                            securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.Read, AccessControlType.Allow));
+                            securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
+
+                            DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogCollectionRegister.SelectedPath, securityRules);
+                            File.WriteAllText(createDirectorySTCSV.FullName + "\\esales" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+
+                            MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
 
                         break;
                     case "Collection Register (collectionregister.csv)":
@@ -361,9 +436,9 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                             csv.AppendLine(String.Join(",", header));
 
                             Controllers.RepPOSReportController repPOSReportController = new Controllers.RepPOSReportController();
-                            if (repPOSReportController.ListCollectionRegister(dateTimePickerStartDate.Value, dateTimePickerEndDate.Value, Convert.ToInt32(comboBoxTerminal.SelectedValue)).Any())
+                            if (repPOSReportController.ListCollectionRegister(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue)).Any())
                             {
-                                foreach (var collectionRegister in repPOSReportController.ListCollectionRegister(dateTimePickerStartDate.Value, dateTimePickerEndDate.Value, Convert.ToInt32(comboBoxTerminal.SelectedValue)))
+                                foreach (var collectionRegister in repPOSReportController.ListCollectionRegister(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue)))
                                 {
                                     String customerCode = "";
                                     if (collectionRegister.CustomerCode != null)

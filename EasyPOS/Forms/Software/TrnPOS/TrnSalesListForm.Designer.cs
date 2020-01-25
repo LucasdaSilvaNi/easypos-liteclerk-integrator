@@ -48,6 +48,10 @@
             this.buttonSales = new System.Windows.Forms.Button();
             this.dataGridViewSalesList = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.labelReceiptInvoiceNumber = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.labelCustomer = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.labelTransactionDate = new System.Windows.Forms.Label();
@@ -80,6 +84,7 @@
             this.ColumnTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnRececiptInvoiceNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -235,6 +240,7 @@
             this.ColumnTerminal,
             this.ColumnSalesDate,
             this.ColumnSalesNumber,
+            this.ColumnRececiptInvoiceNumber,
             this.ColumnCustomer,
             this.ColumnSalesAgent,
             this.ColumnAmount,
@@ -258,6 +264,10 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoSize = true;
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.labelReceiptInvoiceNumber);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.labelCustomer);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.labelTransactionDate);
@@ -268,34 +278,72 @@
             this.panel2.Controls.Add(this.label5);
             this.panel2.Location = new System.Drawing.Point(924, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(464, 111);
+            this.panel2.Size = new System.Drawing.Size(464, 148);
             this.panel2.TabIndex = 5;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(14, 72);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(159, 20);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Receipt / Invoice No.:";
+            // 
+            // labelReceiptInvoiceNumber
+            // 
+            this.labelReceiptInvoiceNumber.AutoSize = true;
+            this.labelReceiptInvoiceNumber.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelReceiptInvoiceNumber.Location = new System.Drawing.Point(183, 74);
+            this.labelReceiptInvoiceNumber.Name = "labelReceiptInvoiceNumber";
+            this.labelReceiptInvoiceNumber.Size = new System.Drawing.Size(0, 20);
+            this.labelReceiptInvoiceNumber.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(14, 92);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(82, 20);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Customer:";
+            // 
+            // labelCustomer
+            // 
+            this.labelCustomer.AutoSize = true;
+            this.labelCustomer.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCustomer.Location = new System.Drawing.Point(183, 92);
+            this.labelCustomer.Name = "labelCustomer";
+            this.labelCustomer.Size = new System.Drawing.Size(0, 20);
+            this.labelCustomer.TabIndex = 9;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(17, 53);
+            this.label4.Location = new System.Drawing.Point(14, 112);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 20);
+            this.label4.Size = new System.Drawing.Size(96, 20);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Prepared by:";
+            this.label4.Text = "Order Taker:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(17, 13);
+            this.label2.Location = new System.Drawing.Point(14, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 20);
+            this.label2.Size = new System.Drawing.Size(82, 20);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Reference No.:";
+            this.label2.Text = "Order No.:";
             // 
             // labelTransactionDate
             // 
             this.labelTransactionDate.AutoSize = true;
             this.labelTransactionDate.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTransactionDate.Location = new System.Drawing.Point(154, 73);
+            this.labelTransactionDate.Location = new System.Drawing.Point(183, 32);
             this.labelTransactionDate.Name = "labelTransactionDate";
             this.labelTransactionDate.Size = new System.Drawing.Size(0, 20);
             this.labelTransactionDate.TabIndex = 7;
@@ -304,7 +352,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(17, 33);
+            this.label3.Location = new System.Drawing.Point(14, 11);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 20);
             this.label3.TabIndex = 1;
@@ -314,7 +362,7 @@
             // 
             this.labelInvoiceNumber.AutoSize = true;
             this.labelInvoiceNumber.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInvoiceNumber.Location = new System.Drawing.Point(154, 15);
+            this.labelInvoiceNumber.Location = new System.Drawing.Point(183, 54);
             this.labelInvoiceNumber.Name = "labelInvoiceNumber";
             this.labelInvoiceNumber.Size = new System.Drawing.Size(0, 20);
             this.labelInvoiceNumber.TabIndex = 4;
@@ -323,7 +371,7 @@
             // 
             this.labelPreparedBy.AutoSize = true;
             this.labelPreparedBy.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPreparedBy.Location = new System.Drawing.Point(154, 53);
+            this.labelPreparedBy.Location = new System.Drawing.Point(183, 112);
             this.labelPreparedBy.Name = "labelPreparedBy";
             this.labelPreparedBy.Size = new System.Drawing.Size(0, 20);
             this.labelPreparedBy.TabIndex = 6;
@@ -332,7 +380,7 @@
             // 
             this.labelTerminal.AutoSize = true;
             this.labelTerminal.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTerminal.Location = new System.Drawing.Point(154, 33);
+            this.labelTerminal.Location = new System.Drawing.Point(183, 11);
             this.labelTerminal.Name = "labelTerminal";
             this.labelTerminal.Size = new System.Drawing.Size(0, 20);
             this.labelTerminal.TabIndex = 5;
@@ -341,7 +389,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(17, 73);
+            this.label5.Location = new System.Drawing.Point(14, 32);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 20);
             this.label5.TabIndex = 3;
@@ -377,7 +425,7 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewSalesLineItemDisplay.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewSalesLineItemDisplay.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.dataGridViewSalesLineItemDisplay.Location = new System.Drawing.Point(924, 123);
+            this.dataGridViewSalesLineItemDisplay.Location = new System.Drawing.Point(924, 160);
             this.dataGridViewSalesLineItemDisplay.Name = "dataGridViewSalesLineItemDisplay";
             this.dataGridViewSalesLineItemDisplay.ReadOnly = true;
             this.dataGridViewSalesLineItemDisplay.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -390,7 +438,7 @@
             this.dataGridViewSalesLineItemDisplay.RowTemplate.ReadOnly = true;
             this.dataGridViewSalesLineItemDisplay.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewSalesLineItemDisplay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSalesLineItemDisplay.Size = new System.Drawing.Size(464, 455);
+            this.dataGridViewSalesLineItemDisplay.Size = new System.Drawing.Size(464, 418);
             this.dataGridViewSalesLineItemDisplay.TabIndex = 8;
             // 
             // ColumnSalesLineItemQuantity
@@ -642,7 +690,7 @@
             this.ColumnSalesDate.DataPropertyName = "ColumnSalesDate";
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnSalesDate.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColumnSalesDate.HeaderText = "Sales Date";
+            this.ColumnSalesDate.HeaderText = "Order Date";
             this.ColumnSalesDate.Name = "ColumnSalesDate";
             this.ColumnSalesDate.ReadOnly = true;
             this.ColumnSalesDate.Width = 95;
@@ -650,9 +698,16 @@
             // ColumnSalesNumber
             // 
             this.ColumnSalesNumber.DataPropertyName = "ColumnSalesNumber";
-            this.ColumnSalesNumber.HeaderText = "Ref. No.";
+            this.ColumnSalesNumber.HeaderText = "Order No.";
             this.ColumnSalesNumber.Name = "ColumnSalesNumber";
             this.ColumnSalesNumber.ReadOnly = true;
+            // 
+            // ColumnRececiptInvoiceNumber
+            // 
+            this.ColumnRececiptInvoiceNumber.DataPropertyName = "ColumnRececiptInvoiceNumber";
+            this.ColumnRececiptInvoiceNumber.HeaderText = "Receipt / Invoice No.";
+            this.ColumnRececiptInvoiceNumber.Name = "ColumnRececiptInvoiceNumber";
+            this.ColumnRececiptInvoiceNumber.ReadOnly = true;
             // 
             // ColumnCustomer
             // 
@@ -665,7 +720,7 @@
             // ColumnSalesAgent
             // 
             this.ColumnSalesAgent.DataPropertyName = "ColumnSalesAgent";
-            this.ColumnSalesAgent.HeaderText = "Sales";
+            this.ColumnSalesAgent.HeaderText = "Order Taker";
             this.ColumnSalesAgent.Name = "ColumnSalesAgent";
             this.ColumnSalesAgent.ReadOnly = true;
             this.ColumnSalesAgent.Width = 120;
@@ -784,12 +839,17 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label labelLastChange;
         private System.Windows.Forms.TextBox textBoxLastChange;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelReceiptInvoiceNumber;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label labelCustomer;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTerminal;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRececiptInvoiceNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCustomer;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesAgent;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAmount;

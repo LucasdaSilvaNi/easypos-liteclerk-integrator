@@ -99,7 +99,7 @@ namespace EasyPOS.Reports
                 GrossSalesRunningTotal = 0,
                 NetSalesTotalPreviousReading = 0,
                 NetSalesRunningTotal = 0,
-                ZReadingCounter = ""
+                ZReadingCounter = "0"
             };
 
             repZReadingReportEntity.Date = filterDate.ToShortDateString();

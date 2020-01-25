@@ -51,6 +51,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.folderBrowserDialogSaveEJournal = new System.Windows.Forms.FolderBrowserDialog();
             this.folderBrowserDialogCollectionRegister = new System.Windows.Forms.FolderBrowserDialog();
+            this.folderBrowserDialogESales = new System.Windows.Forms.FolderBrowserDialog();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -353,5 +354,6 @@
         private System.Windows.Forms.Label labelEndDate;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogSaveEJournal;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogCollectionRegister;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogESales;
     }
 }

@@ -450,6 +450,7 @@ namespace EasyPOS.Controllers
                 String oldObject3 = Modules.SysAuditTrailModule.GetObjectString(currentSales.FirstOrDefault());
 
                 var lockSales = currentSales.FirstOrDefault();
+                lockSales.CollectionNumber = collection.FirstOrDefault().CollectionNumber;
                 lockSales.PaidAmount = paidAmount;
                 lockSales.BalanceAmount = salesAmount - paidAmount;
                 lockSales.IsLocked = true;
