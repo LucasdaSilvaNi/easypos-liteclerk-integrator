@@ -168,6 +168,14 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             }
         }
 
+        public IEnumerable<DateTime> EachDay(DateTime from, DateTime thru)
+        {
+            for (var day = from.Date; day.Date <= thru.Date; day = day.AddDays(1))
+            {
+                yield return day;
+            }
+        }
+
         private void buttonView_Click(object sender, EventArgs e)
         {
             if (listBoxPOSReport.SelectedItem != null)
@@ -343,6 +351,8 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                         {
                             StringBuilder csv = new StringBuilder();
                             String[] header = {
+                                "Terminal",
+                                "Date",
                                 "Gross Sales",
                                 "Regular Discount",
                                 "Senior Discount",
@@ -369,37 +379,42 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                             };
                             csv.AppendLine(String.Join(",", header));
 
-                            Controllers.RepPOSReportController repPOSReportController = new Controllers.RepPOSReportController();
-                            if (repPOSReportController.ZReadingESalesDataSource(Convert.ToInt32(comboBoxTerminal.SelectedValue), dateTimePickerDate.Value.Date) != null)
+                            foreach (DateTime date in EachDay(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date))
                             {
-                                var objData = repPOSReportController.ZReadingESalesDataSource(Convert.ToInt32(comboBoxTerminal.SelectedValue), dateTimePickerDate.Value.Date);
+                                Controllers.RepPOSReportController repPOSReportController = new Controllers.RepPOSReportController();
+                                if (repPOSReportController.ZReadingESalesDataSource(Convert.ToInt32(comboBoxTerminal.SelectedValue), date) != null)
+                                {
+                                    var objData = repPOSReportController.ZReadingESalesDataSource(Convert.ToInt32(comboBoxTerminal.SelectedValue), date);
 
-                                String[] data = {
-                                        objData.TotalGrossSales.ToString("#,##0"),
-                                        objData.TotalRegularDiscount.ToString("#,##0"),
-                                        objData.TotalSeniorDiscount.ToString("#,##0"),
-                                        objData.TotalPWDDiscount.ToString("#,##0"),
-                                        objData.TotalSalesReturn.ToString("#,##0"),
-                                        objData.TotalNetSales.ToString("#,##0"),
-                                        objData.TotalCollection.ToString("#,##0"),
-                                        objData.TotalVATSales.ToString("#,##0"),
-                                        objData.TotalVATAmount.ToString("#,##0"),
-                                        objData.TotalNonVAT.ToString("#,##0"),
-                                        objData.TotalVATExempt.ToString("#,##0"),
-                                        objData.TotalVATZeroRated.ToString("#,##0"),
+                                    String[] data = {
+                                        objData.Terminal,
+                                        date.ToShortDateString(),
+                                        objData.TotalGrossSales.ToString("#,##0").Replace("," , ""),
+                                        objData.TotalRegularDiscount.ToString("#,##0").Replace("," , ""),
+                                        objData.TotalSeniorDiscount.ToString("#,##0").Replace("," , ""),
+                                        objData.TotalPWDDiscount.ToString("#,##0").Replace("," , ""),
+                                        objData.TotalSalesReturn.ToString("#,##0").Replace("," , ""),
+                                        objData.TotalNetSales.ToString("#,##0").Replace("," , ""),
+                                        objData.TotalCollection.ToString("#,##0").Replace("," , ""),
+                                        objData.TotalVATSales.ToString("#,##0").Replace("," , ""),
+                                        objData.TotalVATAmount.ToString("#,##0").Replace("," , ""),
+                                        objData.TotalNonVAT.ToString("#,##0").Replace("," , ""),
+                                        objData.TotalVATExempt.ToString("#,##0").Replace("," , ""),
+                                        objData.TotalVATZeroRated.ToString("#,##0").Replace("," , ""),
                                         objData.CounterIdStart,
                                         objData.CounterIdEnd,
-                                        objData.TotalCancelledTrnsactionCount.ToString("#,##0"),
-                                        objData.TotalCancelledAmount.ToString("#,##0"),
-                                        objData.GrossSalesTotalPreviousReading.ToString("#,##0"),
-                                        objData.TotalGrossSales.ToString("#,##0"),
-                                        objData.GrossSalesRunningTotal.ToString("#,##0"),
-                                        objData.NetSalesTotalPreviousReading.ToString("#,##0"),
-                                        objData.TotalNetSales.ToString("#,##0"),
-                                        objData.NetSalesRunningTotal.ToString("#,##0"),
+                                        objData.TotalCancelledTrnsactionCount.ToString("#,##0").Replace("," , ""),
+                                        objData.TotalCancelledAmount.ToString("#,##0").Replace("," , ""),
+                                        objData.GrossSalesTotalPreviousReading.ToString("#,##0").Replace("," , ""),
+                                        objData.TotalGrossSales.ToString("#,##0").Replace("," , ""),
+                                        objData.GrossSalesRunningTotal.ToString("#,##0").Replace("," , ""),
+                                        objData.NetSalesTotalPreviousReading.ToString("#,##0").Replace("," , ""),
+                                        objData.TotalNetSales.ToString("#,##0").Replace("," , ""),
+                                        objData.NetSalesRunningTotal.ToString("#,##0").Replace("," , ""),
                                         objData.ZReadingCounter
                                     };
-                                csv.AppendLine(String.Join(",", data));
+                                    csv.AppendLine(String.Join(",", data));
+                                }
                             }
 
                             String executingUser = WindowsIdentity.GetCurrent().Name;
@@ -408,7 +423,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                             securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.Read, AccessControlType.Allow));
                             securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
 
-                            DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogCollectionRegister.SelectedPath, securityRules);
+                            DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogESales.SelectedPath, securityRules);
                             File.WriteAllText(createDirectorySTCSV.FullName + "\\esales" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
 
                             MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);

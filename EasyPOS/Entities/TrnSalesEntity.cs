@@ -14,6 +14,7 @@ namespace EasyPOS.Entities
         public String SalesDate { get; set; }
         public String SalesNumber { get; set; }
         public String ManualInvoiceNumber { get; set; }
+        public String CollectionNumber { get; set; }
         public Decimal Amount { get; set; }
         public Int32? TableId { get; set; }
         public Int32 CustomerId { get; set; }

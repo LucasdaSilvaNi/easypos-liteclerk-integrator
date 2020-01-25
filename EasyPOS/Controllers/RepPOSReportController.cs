@@ -145,6 +145,7 @@ namespace EasyPOS.Controllers
 
             Entities.RepZReadingReportEntity repZReadingReportEntity = new Entities.RepZReadingReportEntity()
             {
+                Terminal = "",
                 Date = "",
                 TotalGrossSales = 0,
                 TotalRegularDiscount = 0,
@@ -205,6 +206,15 @@ namespace EasyPOS.Controllers
 
             if (salesLines.Any() && currentCollectionLines.Any())
             {
+                var terminal = from d in db.MstTerminals
+                               where d.Id == filterTerminalId
+                               select d;
+
+                if (terminal.Any())
+                {
+                    repZReadingReportEntity.Terminal = terminal.FirstOrDefault().Terminal;
+                }
+
                 var grossSales = salesLines.Where(d => d.Quantity > 0);
                 if (grossSales.Any())
                 {

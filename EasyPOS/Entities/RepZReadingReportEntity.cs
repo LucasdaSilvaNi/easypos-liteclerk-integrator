@@ -8,6 +8,7 @@ namespace EasyPOS.Entities
 {
     public class RepZReadingReportEntity
     {
+        public String Terminal { get; set; }
         public String Date { get; set; }
         public Decimal TotalGrossSales { get; set; }
         public Decimal TotalRegularDiscount { get; set; }

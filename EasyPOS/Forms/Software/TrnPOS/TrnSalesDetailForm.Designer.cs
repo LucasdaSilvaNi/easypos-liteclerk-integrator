@@ -228,9 +228,9 @@
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveBorder;
             this.label4.Location = new System.Drawing.Point(12, 40);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 23);
+            this.label4.Size = new System.Drawing.Size(99, 23);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Sales Date:";
+            this.label4.Text = "Order Date:";
             // 
             // labelInvoiceDate
             // 
@@ -249,9 +249,9 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveBorder;
             this.label3.Location = new System.Drawing.Point(12, 17);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 23);
+            this.label3.Size = new System.Drawing.Size(90, 23);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Reference No.:";
+            this.label3.Text = "Order No.:";
             // 
             // labelInvoiceNumber
             // 

@@ -228,7 +228,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                   ColumnTerminal = d.Terminal,
                                   ColumnSalesDate = d.SalesDate,
                                   ColumnSalesNumber = d.SalesNumber,
-                                  ColumnRececiptInvoiceNumber = "",
+                                  ColumnRececiptInvoiceNumber = d.CollectionNumber,
                                   ColumnCustomer = d.Customer,
                                   ColumnSalesAgent = d.SalesAgentUserName,
                                   ColumnAmount = d.Amount.ToString("#,##0.00"),
@@ -352,7 +352,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 labelTerminal.Text = dataGridViewSalesList.Rows[rowIndex].Cells[3].Value.ToString();
                 labelTransactionDate.Text = dataGridViewSalesList.Rows[rowIndex].Cells[4].Value.ToString();
                 labelInvoiceNumber.Text = dataGridViewSalesList.Rows[rowIndex].Cells[5].Value.ToString();
-                labelReceiptInvoiceNumber.Text = dataGridViewSalesList.Rows[rowIndex].Cells[6].Value.ToString();
+
+                String receiptInvoiceNumber = "";
+                if (dataGridViewSalesList.Rows[rowIndex].Cells[6].Value != null)
+                {
+                    receiptInvoiceNumber = dataGridViewSalesList.Rows[rowIndex].Cells[6].Value.ToString();
+                }
+
+                labelReceiptInvoiceNumber.Text = receiptInvoiceNumber;
                 labelCustomer.Text = dataGridViewSalesList.Rows[rowIndex].Cells[7].Value.ToString();
                 labelPreparedBy.Text = dataGridViewSalesList.Rows[rowIndex].Cells[8].Value.ToString();
 
