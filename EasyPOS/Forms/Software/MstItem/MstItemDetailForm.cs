@@ -46,6 +46,7 @@ namespace EasyPOS.Forms.Software.MstItem
                 mstItemEntity = itemEntity;
 
                 GetUnitList();
+                textBoxBarcode.Focus();
             }
         }
 
@@ -161,6 +162,7 @@ namespace EasyPOS.Forms.Software.MstItem
             textBoxRemarks.Enabled = !isLocked;
             textBoxGenericName.Enabled = !isLocked;
             comboBoxSalesVAT.Enabled = !isLocked;
+            textBoxBarcode.Focus();
 
             if (sysUserRights.GetUserRights().CanAdd == false)
             {

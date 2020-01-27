@@ -81,7 +81,8 @@
             this.buttonUnlock.Location = new System.Drawing.Point(371, 12);
             this.buttonUnlock.Name = "buttonUnlock";
             this.buttonUnlock.Size = new System.Drawing.Size(88, 40);
-            this.buttonUnlock.TabIndex = 5;
+            this.buttonUnlock.TabIndex = 21;
+            this.buttonUnlock.TabStop = false;
             this.buttonUnlock.Text = "Unlock";
             this.buttonUnlock.UseVisualStyleBackColor = false;
             this.buttonUnlock.Click += new System.EventHandler(this.buttonUnlock_Click);
@@ -98,7 +99,8 @@
             this.buttonLock.Location = new System.Drawing.Point(278, 12);
             this.buttonLock.Name = "buttonLock";
             this.buttonLock.Size = new System.Drawing.Size(88, 40);
-            this.buttonLock.TabIndex = 4;
+            this.buttonLock.TabIndex = 20;
+            this.buttonLock.TabStop = false;
             this.buttonLock.Text = "Lock";
             this.buttonLock.UseVisualStyleBackColor = false;
             this.buttonLock.Click += new System.EventHandler(this.buttonLock_Click);
@@ -136,7 +138,8 @@
             this.buttonClose.Location = new System.Drawing.Point(463, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 22;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -148,7 +151,7 @@
             this.comboBoxTerm.Location = new System.Drawing.Point(142, 327);
             this.comboBoxTerm.Name = "comboBoxTerm";
             this.comboBoxTerm.Size = new System.Drawing.Size(224, 31);
-            this.comboBoxTerm.TabIndex = 18;
+            this.comboBoxTerm.TabIndex = 5;
             // 
             // textBoxAddress
             // 
@@ -157,7 +160,7 @@
             this.textBoxAddress.Multiline = true;
             this.textBoxAddress.Name = "textBoxAddress";
             this.textBoxAddress.Size = new System.Drawing.Size(409, 108);
-            this.textBoxAddress.TabIndex = 17;
+            this.textBoxAddress.TabIndex = 1;
             // 
             // Term
             // 
@@ -191,11 +194,13 @@
             // 
             // textBoxSupplier
             // 
+            this.textBoxSupplier.AcceptsTab = true;
             this.textBoxSupplier.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxSupplier.HideSelection = false;
             this.textBoxSupplier.Location = new System.Drawing.Point(142, 69);
             this.textBoxSupplier.Name = "textBoxSupplier";
             this.textBoxSupplier.Size = new System.Drawing.Size(409, 30);
-            this.textBoxSupplier.TabIndex = 13;
+            this.textBoxSupplier.TabIndex = 0;
             // 
             // textBoxCellphoneNumber
             // 
@@ -203,7 +208,7 @@
             this.textBoxCellphoneNumber.Location = new System.Drawing.Point(142, 255);
             this.textBoxCellphoneNumber.Name = "textBoxCellphoneNumber";
             this.textBoxCellphoneNumber.Size = new System.Drawing.Size(409, 30);
-            this.textBoxCellphoneNumber.TabIndex = 22;
+            this.textBoxCellphoneNumber.TabIndex = 3;
             // 
             // label5
             // 
@@ -231,7 +236,7 @@
             this.textBoxTelephoneNumber.Location = new System.Drawing.Point(142, 219);
             this.textBoxTelephoneNumber.Name = "textBoxTelephoneNumber";
             this.textBoxTelephoneNumber.Size = new System.Drawing.Size(409, 30);
-            this.textBoxTelephoneNumber.TabIndex = 19;
+            this.textBoxTelephoneNumber.TabIndex = 2;
             // 
             // textBoxFaxNumber
             // 
@@ -239,7 +244,7 @@
             this.textBoxFaxNumber.Location = new System.Drawing.Point(142, 291);
             this.textBoxFaxNumber.Name = "textBoxFaxNumber";
             this.textBoxFaxNumber.Size = new System.Drawing.Size(317, 30);
-            this.textBoxFaxNumber.TabIndex = 24;
+            this.textBoxFaxNumber.TabIndex = 4;
             // 
             // label7
             // 
@@ -257,7 +262,7 @@
             this.textBoxTIN.Location = new System.Drawing.Point(142, 364);
             this.textBoxTIN.Name = "textBoxTIN";
             this.textBoxTIN.Size = new System.Drawing.Size(317, 30);
-            this.textBoxTIN.TabIndex = 28;
+            this.textBoxTIN.TabIndex = 6;
             // 
             // label4
             // 
@@ -275,7 +280,7 @@
             this.comboBoxAccount.Location = new System.Drawing.Point(142, 400);
             this.comboBoxAccount.Name = "comboBoxAccount";
             this.comboBoxAccount.Size = new System.Drawing.Size(317, 31);
-            this.comboBoxAccount.TabIndex = 26;
+            this.comboBoxAccount.TabIndex = 7;
             // 
             // label8
             // 

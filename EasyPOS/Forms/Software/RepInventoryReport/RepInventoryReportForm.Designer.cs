@@ -90,7 +90,7 @@
             this.comboBoxTerminal.Location = new System.Drawing.Point(502, 136);
             this.comboBoxTerminal.Name = "comboBoxTerminal";
             this.comboBoxTerminal.Size = new System.Drawing.Size(220, 31);
-            this.comboBoxTerminal.TabIndex = 26;
+            this.comboBoxTerminal.TabIndex = 2;
             this.comboBoxTerminal.Visible = false;
             // 
             // labelTerminal
@@ -110,7 +110,7 @@
             this.dateTimePickerStartDate.Location = new System.Drawing.Point(502, 58);
             this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
             this.dateTimePickerStartDate.Size = new System.Drawing.Size(220, 30);
-            this.dateTimePickerStartDate.TabIndex = 24;
+            this.dateTimePickerStartDate.TabIndex = 0;
             this.dateTimePickerStartDate.Visible = false;
             // 
             // labelStartDate
@@ -141,7 +141,7 @@
             this.dateTimePickerEndDate.Location = new System.Drawing.Point(502, 97);
             this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
             this.dateTimePickerEndDate.Size = new System.Drawing.Size(220, 30);
-            this.dateTimePickerEndDate.TabIndex = 21;
+            this.dateTimePickerEndDate.TabIndex = 1;
             this.dateTimePickerEndDate.Visible = false;
             // 
             // panel3
@@ -202,7 +202,7 @@
             this.buttonView.Location = new System.Drawing.Point(1206, 12);
             this.buttonView.Name = "buttonView";
             this.buttonView.Size = new System.Drawing.Size(88, 40);
-            this.buttonView.TabIndex = 5;
+            this.buttonView.TabIndex = 20;
             this.buttonView.TabStop = false;
             this.buttonView.Text = "View";
             this.buttonView.UseVisualStyleBackColor = false;
@@ -241,7 +241,8 @@
             this.buttonClose.Location = new System.Drawing.Point(1300, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 21;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.buttonClose.UseVisualStyleBackColor = false;

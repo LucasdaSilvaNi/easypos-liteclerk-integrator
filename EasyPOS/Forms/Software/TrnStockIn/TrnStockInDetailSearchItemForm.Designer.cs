@@ -38,26 +38,26 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.dataGridViewSearchItemList = new System.Windows.Forms.DataGridView();
+            this.ColumnSearchItemListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListBarCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListGenericName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListOutTaxId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListOutTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListOutTaxRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListUnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListOnhandQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListButtonPick = new System.Windows.Forms.DataGridViewButtonColumn();
             this.textBoxSearchItemListFilter = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBoxSearchItemListPageNumber = new System.Windows.Forms.TextBox();
-            this.buttonSearchItemListPageListLast = new System.Windows.Forms.Button();
-            this.buttonSearchItemListPageListNext = new System.Windows.Forms.Button();
-            this.buttonSearchItemListPageListPrevious = new System.Windows.Forms.Button();
             this.buttonSearchItemListPageListFirst = new System.Windows.Forms.Button();
+            this.buttonSearchItemListPageListPrevious = new System.Windows.Forms.Button();
+            this.buttonSearchItemListPageListNext = new System.Windows.Forms.Button();
+            this.buttonSearchItemListPageListLast = new System.Windows.Forms.Button();
+            this.textBoxSearchItemListPageNumber = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.ColumnSearchItemListButtonPick = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnSearchItemListOnhandQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListUnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListOutTaxRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListOutTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListOutTaxId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListGenericName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListBarCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchItemList)).BeginInit();
@@ -110,7 +110,8 @@
             this.buttonClose.Location = new System.Drawing.Point(882, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 20;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -173,6 +174,108 @@
             this.dataGridViewSearchItemList.TabIndex = 6;
             this.dataGridViewSearchItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSearchItemList_CellClick);
             // 
+            // ColumnSearchItemListId
+            // 
+            this.ColumnSearchItemListId.DataPropertyName = "ColumnSearchItemListId";
+            this.ColumnSearchItemListId.HeaderText = "Id";
+            this.ColumnSearchItemListId.Name = "ColumnSearchItemListId";
+            this.ColumnSearchItemListId.ReadOnly = true;
+            this.ColumnSearchItemListId.Visible = false;
+            // 
+            // ColumnSearchItemListBarCode
+            // 
+            this.ColumnSearchItemListBarCode.DataPropertyName = "ColumnSearchItemListBarCode";
+            this.ColumnSearchItemListBarCode.HeaderText = "Barcode";
+            this.ColumnSearchItemListBarCode.Name = "ColumnSearchItemListBarCode";
+            this.ColumnSearchItemListBarCode.ReadOnly = true;
+            this.ColumnSearchItemListBarCode.Width = 150;
+            // 
+            // ColumnSearchItemListDescription
+            // 
+            this.ColumnSearchItemListDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnSearchItemListDescription.DataPropertyName = "ColumnSearchItemListDescription";
+            this.ColumnSearchItemListDescription.HeaderText = "Item Description";
+            this.ColumnSearchItemListDescription.Name = "ColumnSearchItemListDescription";
+            this.ColumnSearchItemListDescription.ReadOnly = true;
+            // 
+            // ColumnSearchItemListGenericName
+            // 
+            this.ColumnSearchItemListGenericName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnSearchItemListGenericName.DataPropertyName = "ColumnSearchItemListGenericName";
+            this.ColumnSearchItemListGenericName.HeaderText = "Generic Name";
+            this.ColumnSearchItemListGenericName.Name = "ColumnSearchItemListGenericName";
+            this.ColumnSearchItemListGenericName.ReadOnly = true;
+            // 
+            // ColumnSearchItemListOutTaxId
+            // 
+            this.ColumnSearchItemListOutTaxId.DataPropertyName = "ColumnSearchItemListOutTaxId";
+            this.ColumnSearchItemListOutTaxId.HeaderText = "OutTaxId";
+            this.ColumnSearchItemListOutTaxId.Name = "ColumnSearchItemListOutTaxId";
+            this.ColumnSearchItemListOutTaxId.ReadOnly = true;
+            this.ColumnSearchItemListOutTaxId.Visible = false;
+            // 
+            // ColumnSearchItemListOutTax
+            // 
+            this.ColumnSearchItemListOutTax.DataPropertyName = "ColumnSearchItemListOutTax";
+            this.ColumnSearchItemListOutTax.HeaderText = "OutTax";
+            this.ColumnSearchItemListOutTax.Name = "ColumnSearchItemListOutTax";
+            this.ColumnSearchItemListOutTax.ReadOnly = true;
+            this.ColumnSearchItemListOutTax.Visible = false;
+            // 
+            // ColumnSearchItemListOutTaxRate
+            // 
+            this.ColumnSearchItemListOutTaxRate.DataPropertyName = "ColumnSearchItemListOutTaxRate";
+            this.ColumnSearchItemListOutTaxRate.HeaderText = "OutTaxRate";
+            this.ColumnSearchItemListOutTaxRate.Name = "ColumnSearchItemListOutTaxRate";
+            this.ColumnSearchItemListOutTaxRate.ReadOnly = true;
+            this.ColumnSearchItemListOutTaxRate.Visible = false;
+            // 
+            // ColumnSearchItemListUnitId
+            // 
+            this.ColumnSearchItemListUnitId.DataPropertyName = "ColumnSearchItemListUnitId";
+            this.ColumnSearchItemListUnitId.HeaderText = "UnitId";
+            this.ColumnSearchItemListUnitId.Name = "ColumnSearchItemListUnitId";
+            this.ColumnSearchItemListUnitId.ReadOnly = true;
+            this.ColumnSearchItemListUnitId.Visible = false;
+            // 
+            // ColumnSearchItemListUnit
+            // 
+            this.ColumnSearchItemListUnit.DataPropertyName = "ColumnSearchItemListUnit";
+            this.ColumnSearchItemListUnit.HeaderText = "Unit";
+            this.ColumnSearchItemListUnit.Name = "ColumnSearchItemListUnit";
+            this.ColumnSearchItemListUnit.ReadOnly = true;
+            this.ColumnSearchItemListUnit.Visible = false;
+            // 
+            // ColumnSearchItemListPrice
+            // 
+            this.ColumnSearchItemListPrice.DataPropertyName = "ColumnSearchItemListPrice";
+            this.ColumnSearchItemListPrice.HeaderText = "Price";
+            this.ColumnSearchItemListPrice.Name = "ColumnSearchItemListPrice";
+            this.ColumnSearchItemListPrice.ReadOnly = true;
+            this.ColumnSearchItemListPrice.Visible = false;
+            // 
+            // ColumnSearchItemListOnhandQuantity
+            // 
+            this.ColumnSearchItemListOnhandQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ColumnSearchItemListOnhandQuantity.DataPropertyName = "ColumnSearchItemListOnhandQuantity";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSearchItemListOnhandQuantity.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnSearchItemListOnhandQuantity.HeaderText = "On Hand Qty.";
+            this.ColumnSearchItemListOnhandQuantity.Name = "ColumnSearchItemListOnhandQuantity";
+            this.ColumnSearchItemListOnhandQuantity.ReadOnly = true;
+            this.ColumnSearchItemListOnhandQuantity.Width = 144;
+            // 
+            // ColumnSearchItemListButtonPick
+            // 
+            this.ColumnSearchItemListButtonPick.DataPropertyName = "ColumnSearchItemListButtonPick";
+            this.ColumnSearchItemListButtonPick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnSearchItemListButtonPick.HeaderText = "Pick";
+            this.ColumnSearchItemListButtonPick.Name = "ColumnSearchItemListButtonPick";
+            this.ColumnSearchItemListButtonPick.ReadOnly = true;
+            this.ColumnSearchItemListButtonPick.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnSearchItemListButtonPick.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnSearchItemListButtonPick.Width = 70;
+            // 
             // textBoxSearchItemListFilter
             // 
             this.textBoxSearchItemListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -181,7 +284,7 @@
             this.textBoxSearchItemListFilter.Location = new System.Drawing.Point(12, 6);
             this.textBoxSearchItemListFilter.Name = "textBoxSearchItemListFilter";
             this.textBoxSearchItemListFilter.Size = new System.Drawing.Size(958, 30);
-            this.textBoxSearchItemListFilter.TabIndex = 5;
+            this.textBoxSearchItemListFilter.TabIndex = 0;
             this.textBoxSearchItemListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSearchItemListFilter_KeyDown);
             // 
             // panel3
@@ -198,46 +301,20 @@
             this.panel3.Size = new System.Drawing.Size(982, 53);
             this.panel3.TabIndex = 19;
             // 
-            // textBoxSearchItemListPageNumber
+            // buttonSearchItemListPageListFirst
             // 
-            this.textBoxSearchItemListPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxSearchItemListPageNumber.BackColor = System.Drawing.Color.White;
-            this.textBoxSearchItemListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxSearchItemListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxSearchItemListPageNumber.Location = new System.Drawing.Point(188, 14);
-            this.textBoxSearchItemListPageNumber.Name = "textBoxSearchItemListPageNumber";
-            this.textBoxSearchItemListPageNumber.ReadOnly = true;
-            this.textBoxSearchItemListPageNumber.Size = new System.Drawing.Size(69, 20);
-            this.textBoxSearchItemListPageNumber.TabIndex = 17;
-            this.textBoxSearchItemListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // buttonSearchItemListPageListLast
-            // 
-            this.buttonSearchItemListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonSearchItemListPageListLast.FlatAppearance.BorderSize = 0;
-            this.buttonSearchItemListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchItemListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonSearchItemListPageListLast.Location = new System.Drawing.Point(348, 9);
-            this.buttonSearchItemListPageListLast.Name = "buttonSearchItemListPageListLast";
-            this.buttonSearchItemListPageListLast.Size = new System.Drawing.Size(82, 32);
-            this.buttonSearchItemListPageListLast.TabIndex = 16;
-            this.buttonSearchItemListPageListLast.Text = "Last";
-            this.buttonSearchItemListPageListLast.UseVisualStyleBackColor = false;
-            this.buttonSearchItemListPageListLast.Click += new System.EventHandler(this.buttonSearchItemListPageListLast_Click);
-            // 
-            // buttonSearchItemListPageListNext
-            // 
-            this.buttonSearchItemListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonSearchItemListPageListNext.FlatAppearance.BorderSize = 0;
-            this.buttonSearchItemListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchItemListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonSearchItemListPageListNext.Location = new System.Drawing.Point(263, 9);
-            this.buttonSearchItemListPageListNext.Name = "buttonSearchItemListPageListNext";
-            this.buttonSearchItemListPageListNext.Size = new System.Drawing.Size(82, 32);
-            this.buttonSearchItemListPageListNext.TabIndex = 15;
-            this.buttonSearchItemListPageListNext.Text = "Next";
-            this.buttonSearchItemListPageListNext.UseVisualStyleBackColor = false;
-            this.buttonSearchItemListPageListNext.Click += new System.EventHandler(this.buttonSearchItemListPageListNext_Click);
+            this.buttonSearchItemListPageListFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonSearchItemListPageListFirst.Enabled = false;
+            this.buttonSearchItemListPageListFirst.FlatAppearance.BorderSize = 0;
+            this.buttonSearchItemListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchItemListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonSearchItemListPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonSearchItemListPageListFirst.Name = "buttonSearchItemListPageListFirst";
+            this.buttonSearchItemListPageListFirst.Size = new System.Drawing.Size(82, 32);
+            this.buttonSearchItemListPageListFirst.TabIndex = 13;
+            this.buttonSearchItemListPageListFirst.Text = "First";
+            this.buttonSearchItemListPageListFirst.UseVisualStyleBackColor = false;
+            this.buttonSearchItemListPageListFirst.Click += new System.EventHandler(this.buttonSearchItemListPageListFirst_Click);
             // 
             // buttonSearchItemListPageListPrevious
             // 
@@ -254,20 +331,46 @@
             this.buttonSearchItemListPageListPrevious.UseVisualStyleBackColor = false;
             this.buttonSearchItemListPageListPrevious.Click += new System.EventHandler(this.buttonSearchItemListPageListPrevious_Click);
             // 
-            // buttonSearchItemListPageListFirst
+            // buttonSearchItemListPageListNext
             // 
-            this.buttonSearchItemListPageListFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonSearchItemListPageListFirst.Enabled = false;
-            this.buttonSearchItemListPageListFirst.FlatAppearance.BorderSize = 0;
-            this.buttonSearchItemListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchItemListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonSearchItemListPageListFirst.Location = new System.Drawing.Point(12, 9);
-            this.buttonSearchItemListPageListFirst.Name = "buttonSearchItemListPageListFirst";
-            this.buttonSearchItemListPageListFirst.Size = new System.Drawing.Size(82, 32);
-            this.buttonSearchItemListPageListFirst.TabIndex = 13;
-            this.buttonSearchItemListPageListFirst.Text = "First";
-            this.buttonSearchItemListPageListFirst.UseVisualStyleBackColor = false;
-            this.buttonSearchItemListPageListFirst.Click += new System.EventHandler(this.buttonSearchItemListPageListFirst_Click);
+            this.buttonSearchItemListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonSearchItemListPageListNext.FlatAppearance.BorderSize = 0;
+            this.buttonSearchItemListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchItemListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonSearchItemListPageListNext.Location = new System.Drawing.Point(263, 9);
+            this.buttonSearchItemListPageListNext.Name = "buttonSearchItemListPageListNext";
+            this.buttonSearchItemListPageListNext.Size = new System.Drawing.Size(82, 32);
+            this.buttonSearchItemListPageListNext.TabIndex = 15;
+            this.buttonSearchItemListPageListNext.Text = "Next";
+            this.buttonSearchItemListPageListNext.UseVisualStyleBackColor = false;
+            this.buttonSearchItemListPageListNext.Click += new System.EventHandler(this.buttonSearchItemListPageListNext_Click);
+            // 
+            // buttonSearchItemListPageListLast
+            // 
+            this.buttonSearchItemListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonSearchItemListPageListLast.FlatAppearance.BorderSize = 0;
+            this.buttonSearchItemListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchItemListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonSearchItemListPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonSearchItemListPageListLast.Name = "buttonSearchItemListPageListLast";
+            this.buttonSearchItemListPageListLast.Size = new System.Drawing.Size(82, 32);
+            this.buttonSearchItemListPageListLast.TabIndex = 16;
+            this.buttonSearchItemListPageListLast.Text = "Last";
+            this.buttonSearchItemListPageListLast.UseVisualStyleBackColor = false;
+            this.buttonSearchItemListPageListLast.Click += new System.EventHandler(this.buttonSearchItemListPageListLast_Click);
+            // 
+            // textBoxSearchItemListPageNumber
+            // 
+            this.textBoxSearchItemListPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBoxSearchItemListPageNumber.BackColor = System.Drawing.Color.White;
+            this.textBoxSearchItemListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxSearchItemListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textBoxSearchItemListPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxSearchItemListPageNumber.Name = "textBoxSearchItemListPageNumber";
+            this.textBoxSearchItemListPageNumber.ReadOnly = true;
+            this.textBoxSearchItemListPageNumber.Size = new System.Drawing.Size(69, 20);
+            this.textBoxSearchItemListPageNumber.TabIndex = 17;
+            this.textBoxSearchItemListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel2
             // 
@@ -279,108 +382,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(982, 540);
             this.panel2.TabIndex = 10;
-            // 
-            // ColumnSearchItemListButtonPick
-            // 
-            this.ColumnSearchItemListButtonPick.DataPropertyName = "ColumnSearchItemListButtonPick";
-            this.ColumnSearchItemListButtonPick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnSearchItemListButtonPick.HeaderText = "Pick";
-            this.ColumnSearchItemListButtonPick.Name = "ColumnSearchItemListButtonPick";
-            this.ColumnSearchItemListButtonPick.ReadOnly = true;
-            this.ColumnSearchItemListButtonPick.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnSearchItemListButtonPick.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColumnSearchItemListButtonPick.Width = 70;
-            // 
-            // ColumnSearchItemListOnhandQuantity
-            // 
-            this.ColumnSearchItemListOnhandQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.ColumnSearchItemListOnhandQuantity.DataPropertyName = "ColumnSearchItemListOnhandQuantity";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSearchItemListOnhandQuantity.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnSearchItemListOnhandQuantity.HeaderText = "On Hand Qty.";
-            this.ColumnSearchItemListOnhandQuantity.Name = "ColumnSearchItemListOnhandQuantity";
-            this.ColumnSearchItemListOnhandQuantity.ReadOnly = true;
-            this.ColumnSearchItemListOnhandQuantity.Width = 144;
-            // 
-            // ColumnSearchItemListPrice
-            // 
-            this.ColumnSearchItemListPrice.DataPropertyName = "ColumnSearchItemListPrice";
-            this.ColumnSearchItemListPrice.HeaderText = "Price";
-            this.ColumnSearchItemListPrice.Name = "ColumnSearchItemListPrice";
-            this.ColumnSearchItemListPrice.ReadOnly = true;
-            this.ColumnSearchItemListPrice.Visible = false;
-            // 
-            // ColumnSearchItemListUnit
-            // 
-            this.ColumnSearchItemListUnit.DataPropertyName = "ColumnSearchItemListUnit";
-            this.ColumnSearchItemListUnit.HeaderText = "Unit";
-            this.ColumnSearchItemListUnit.Name = "ColumnSearchItemListUnit";
-            this.ColumnSearchItemListUnit.ReadOnly = true;
-            this.ColumnSearchItemListUnit.Visible = false;
-            // 
-            // ColumnSearchItemListUnitId
-            // 
-            this.ColumnSearchItemListUnitId.DataPropertyName = "ColumnSearchItemListUnitId";
-            this.ColumnSearchItemListUnitId.HeaderText = "UnitId";
-            this.ColumnSearchItemListUnitId.Name = "ColumnSearchItemListUnitId";
-            this.ColumnSearchItemListUnitId.ReadOnly = true;
-            this.ColumnSearchItemListUnitId.Visible = false;
-            // 
-            // ColumnSearchItemListOutTaxRate
-            // 
-            this.ColumnSearchItemListOutTaxRate.DataPropertyName = "ColumnSearchItemListOutTaxRate";
-            this.ColumnSearchItemListOutTaxRate.HeaderText = "OutTaxRate";
-            this.ColumnSearchItemListOutTaxRate.Name = "ColumnSearchItemListOutTaxRate";
-            this.ColumnSearchItemListOutTaxRate.ReadOnly = true;
-            this.ColumnSearchItemListOutTaxRate.Visible = false;
-            // 
-            // ColumnSearchItemListOutTax
-            // 
-            this.ColumnSearchItemListOutTax.DataPropertyName = "ColumnSearchItemListOutTax";
-            this.ColumnSearchItemListOutTax.HeaderText = "OutTax";
-            this.ColumnSearchItemListOutTax.Name = "ColumnSearchItemListOutTax";
-            this.ColumnSearchItemListOutTax.ReadOnly = true;
-            this.ColumnSearchItemListOutTax.Visible = false;
-            // 
-            // ColumnSearchItemListOutTaxId
-            // 
-            this.ColumnSearchItemListOutTaxId.DataPropertyName = "ColumnSearchItemListOutTaxId";
-            this.ColumnSearchItemListOutTaxId.HeaderText = "OutTaxId";
-            this.ColumnSearchItemListOutTaxId.Name = "ColumnSearchItemListOutTaxId";
-            this.ColumnSearchItemListOutTaxId.ReadOnly = true;
-            this.ColumnSearchItemListOutTaxId.Visible = false;
-            // 
-            // ColumnSearchItemListGenericName
-            // 
-            this.ColumnSearchItemListGenericName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnSearchItemListGenericName.DataPropertyName = "ColumnSearchItemListGenericName";
-            this.ColumnSearchItemListGenericName.HeaderText = "Generic Name";
-            this.ColumnSearchItemListGenericName.Name = "ColumnSearchItemListGenericName";
-            this.ColumnSearchItemListGenericName.ReadOnly = true;
-            // 
-            // ColumnSearchItemListDescription
-            // 
-            this.ColumnSearchItemListDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnSearchItemListDescription.DataPropertyName = "ColumnSearchItemListDescription";
-            this.ColumnSearchItemListDescription.HeaderText = "Item Description";
-            this.ColumnSearchItemListDescription.Name = "ColumnSearchItemListDescription";
-            this.ColumnSearchItemListDescription.ReadOnly = true;
-            // 
-            // ColumnSearchItemListBarCode
-            // 
-            this.ColumnSearchItemListBarCode.DataPropertyName = "ColumnSearchItemListBarCode";
-            this.ColumnSearchItemListBarCode.HeaderText = "Barcode";
-            this.ColumnSearchItemListBarCode.Name = "ColumnSearchItemListBarCode";
-            this.ColumnSearchItemListBarCode.ReadOnly = true;
-            this.ColumnSearchItemListBarCode.Width = 150;
-            // 
-            // ColumnSearchItemListId
-            // 
-            this.ColumnSearchItemListId.DataPropertyName = "ColumnSearchItemListId";
-            this.ColumnSearchItemListId.HeaderText = "Id";
-            this.ColumnSearchItemListId.Name = "ColumnSearchItemListId";
-            this.ColumnSearchItemListId.ReadOnly = true;
-            this.ColumnSearchItemListId.Visible = false;
             // 
             // TrnStockInDetailSearchItemForm
             // 

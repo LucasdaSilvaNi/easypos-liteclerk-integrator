@@ -67,7 +67,8 @@
             this.buttonSave.Location = new System.Drawing.Point(314, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
-            this.buttonSave.TabIndex = 4;
+            this.buttonSave.TabIndex = 20;
+            this.buttonSave.TabStop = false;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -105,7 +106,8 @@
             this.buttonClose.Location = new System.Drawing.Point(408, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 21;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -117,15 +119,17 @@
             this.comboBoxAccount.Location = new System.Drawing.Point(98, 105);
             this.comboBoxAccount.Name = "comboBoxAccount";
             this.comboBoxAccount.Size = new System.Drawing.Size(304, 31);
-            this.comboBoxAccount.TabIndex = 16;
+            this.comboBoxAccount.TabIndex = 1;
             // 
             // textBoxPayType
             // 
+            this.textBoxPayType.AcceptsTab = true;
             this.textBoxPayType.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxPayType.HideSelection = false;
             this.textBoxPayType.Location = new System.Drawing.Point(98, 69);
             this.textBoxPayType.Name = "textBoxPayType";
             this.textBoxPayType.Size = new System.Drawing.Size(398, 30);
-            this.textBoxPayType.TabIndex = 15;
+            this.textBoxPayType.TabIndex = 0;
             // 
             // label4
             // 

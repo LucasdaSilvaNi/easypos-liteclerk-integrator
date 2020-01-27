@@ -34,6 +34,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             else
             {
                 GetTerminals();
+                comboBoxTerminal.Focus();
             }
 
         }
@@ -218,6 +219,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             textBoxAmountDenominationXC10.Enabled = !isLocked;
             textBoxAmountDenominationXC5.Enabled = !isLocked;
             textBoxAmountDenominationXC1.Enabled = !isLocked;
+            comboBoxTerminal.Focus();
         }
 
         private void buttonLock_Click(object sender, EventArgs e)

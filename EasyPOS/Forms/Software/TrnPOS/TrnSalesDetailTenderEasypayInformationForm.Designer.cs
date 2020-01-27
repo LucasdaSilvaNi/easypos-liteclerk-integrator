@@ -106,7 +106,7 @@
             this.buttonClose.Location = new System.Drawing.Point(530, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 21;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
@@ -124,7 +124,7 @@
             this.buttonPay.Location = new System.Drawing.Point(436, 12);
             this.buttonPay.Name = "buttonPay";
             this.buttonPay.Size = new System.Drawing.Size(88, 40);
-            this.buttonPay.TabIndex = 1;
+            this.buttonPay.TabIndex = 20;
             this.buttonPay.TabStop = false;
             this.buttonPay.Text = "Pay";
             this.buttonPay.UseVisualStyleBackColor = false;

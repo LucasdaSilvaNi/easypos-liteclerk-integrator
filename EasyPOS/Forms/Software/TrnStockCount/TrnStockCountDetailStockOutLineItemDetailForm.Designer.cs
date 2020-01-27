@@ -95,7 +95,8 @@
             this.buttonClose.Location = new System.Drawing.Point(586, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 21;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -112,7 +113,8 @@
             this.buttonSave.Location = new System.Drawing.Point(492, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
-            this.buttonSave.TabIndex = 0;
+            this.buttonSave.TabIndex = 20;
+            this.buttonSave.TabStop = false;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -141,7 +143,7 @@
             this.textBoxStockCountLineAmount.Name = "textBoxStockCountLineAmount";
             this.textBoxStockCountLineAmount.ReadOnly = true;
             this.textBoxStockCountLineAmount.Size = new System.Drawing.Size(269, 30);
-            this.textBoxStockCountLineAmount.TabIndex = 24;
+            this.textBoxStockCountLineAmount.TabIndex = 3;
             this.textBoxStockCountLineAmount.TabStop = false;
             this.textBoxStockCountLineAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -171,7 +173,7 @@
             this.textBoxStockCountLineCost.Location = new System.Drawing.Point(98, 116);
             this.textBoxStockCountLineCost.Name = "textBoxStockCountLineCost";
             this.textBoxStockCountLineCost.Size = new System.Drawing.Size(269, 30);
-            this.textBoxStockCountLineCost.TabIndex = 16;
+            this.textBoxStockCountLineCost.TabIndex = 2;
             this.textBoxStockCountLineCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxStockCountLineCost.TextChanged += new System.EventHandler(this.textBoxStockCountLineCost_TextChanged);
             this.textBoxStockCountLineCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStockCountLineCost_KeyPress);
@@ -204,11 +206,13 @@
             // 
             // textBoxStockCountLineQuantity
             // 
+            this.textBoxStockCountLineQuantity.AcceptsTab = true;
             this.textBoxStockCountLineQuantity.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxStockCountLineQuantity.HideSelection = false;
             this.textBoxStockCountLineQuantity.Location = new System.Drawing.Point(98, 44);
             this.textBoxStockCountLineQuantity.Name = "textBoxStockCountLineQuantity";
             this.textBoxStockCountLineQuantity.Size = new System.Drawing.Size(269, 30);
-            this.textBoxStockCountLineQuantity.TabIndex = 11;
+            this.textBoxStockCountLineQuantity.TabIndex = 0;
             this.textBoxStockCountLineQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxStockCountLineQuantity.TextChanged += new System.EventHandler(this.textBoxStockCountLineQuantity_TextChanged);
             this.textBoxStockCountLineQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStockCountLineQuantity_KeyPress);
@@ -231,7 +235,7 @@
             this.textBoxStockCountLineUnit.Name = "textBoxStockCountLineUnit";
             this.textBoxStockCountLineUnit.ReadOnly = true;
             this.textBoxStockCountLineUnit.Size = new System.Drawing.Size(116, 30);
-            this.textBoxStockCountLineUnit.TabIndex = 15;
+            this.textBoxStockCountLineUnit.TabIndex = 1;
             this.textBoxStockCountLineUnit.TabStop = false;
             // 
             // TrnStockCountDetailStockCountLineItemDetailForm

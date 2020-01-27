@@ -110,7 +110,8 @@
             this.buttonClose.Location = new System.Drawing.Point(882, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 20;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -277,13 +278,15 @@
             // 
             // textBoxSearchItemListFilter
             // 
+            this.textBoxSearchItemListFilter.AcceptsTab = true;
             this.textBoxSearchItemListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSearchItemListFilter.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxSearchItemListFilter.HideSelection = false;
             this.textBoxSearchItemListFilter.Location = new System.Drawing.Point(12, 6);
             this.textBoxSearchItemListFilter.Name = "textBoxSearchItemListFilter";
             this.textBoxSearchItemListFilter.Size = new System.Drawing.Size(958, 30);
-            this.textBoxSearchItemListFilter.TabIndex = 5;
+            this.textBoxSearchItemListFilter.TabIndex = 0;
             this.textBoxSearchItemListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSearchItemListFilter_KeyDown);
             // 
             // panel3

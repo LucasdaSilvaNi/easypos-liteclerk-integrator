@@ -94,7 +94,7 @@
             this.buttonClose.Location = new System.Drawing.Point(489, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 21;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Cancel";
             this.buttonClose.UseVisualStyleBackColor = false;
@@ -112,7 +112,7 @@
             this.buttonSave.Location = new System.Drawing.Point(395, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
-            this.buttonSave.TabIndex = 1;
+            this.buttonSave.TabIndex = 20;
             this.buttonSave.TabStop = false;
             this.buttonSave.Text = "OK";
             this.buttonSave.UseVisualStyleBackColor = false;
@@ -140,7 +140,7 @@
             this.textBoxSeniorCitizenAge.Location = new System.Drawing.Point(166, 128);
             this.textBoxSeniorCitizenAge.Name = "textBoxSeniorCitizenAge";
             this.textBoxSeniorCitizenAge.Size = new System.Drawing.Size(152, 34);
-            this.textBoxSeniorCitizenAge.TabIndex = 39;
+            this.textBoxSeniorCitizenAge.TabIndex = 3;
             this.textBoxSeniorCitizenAge.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxSeniorCitizenAge.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSeniorCitizenAge_KeyPress);
             this.textBoxSeniorCitizenAge.Leave += new System.EventHandler(this.textBoxSeniorCitizenAge_Leave);
@@ -161,7 +161,7 @@
             this.textBoxSeniorCitizenName.Location = new System.Drawing.Point(166, 88);
             this.textBoxSeniorCitizenName.Name = "textBoxSeniorCitizenName";
             this.textBoxSeniorCitizenName.Size = new System.Drawing.Size(411, 34);
-            this.textBoxSeniorCitizenName.TabIndex = 38;
+            this.textBoxSeniorCitizenName.TabIndex = 2;
             // 
             // label4
             // 
@@ -190,7 +190,7 @@
             this.comboBoxDiscount.Location = new System.Drawing.Point(166, 6);
             this.comboBoxDiscount.Name = "comboBoxDiscount";
             this.comboBoxDiscount.Size = new System.Drawing.Size(411, 36);
-            this.comboBoxDiscount.TabIndex = 36;
+            this.comboBoxDiscount.TabIndex = 0;
             this.comboBoxDiscount.SelectedIndexChanged += new System.EventHandler(this.comboBoxDiscount_SelectedIndexChanged);
             // 
             // textBoxSeniorCitizenID
@@ -199,7 +199,7 @@
             this.textBoxSeniorCitizenID.Location = new System.Drawing.Point(166, 48);
             this.textBoxSeniorCitizenID.Name = "textBoxSeniorCitizenID";
             this.textBoxSeniorCitizenID.Size = new System.Drawing.Size(411, 34);
-            this.textBoxSeniorCitizenID.TabIndex = 37;
+            this.textBoxSeniorCitizenID.TabIndex = 1;
             // 
             // label2
             // 

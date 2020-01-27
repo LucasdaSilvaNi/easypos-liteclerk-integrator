@@ -30,10 +30,10 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnStockInDetailForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonLock = new System.Windows.Forms.Button();
@@ -43,53 +43,53 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonPrint = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBoxStockInNumber = new System.Windows.Forms.TextBox();
-            this.dateTimePickerStockInDate = new System.Windows.Forms.DateTimePicker();
-            this.comboBoxSupplier = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.checkBoxReturn = new System.Windows.Forms.CheckBox();
-            this.textBoxReturnORNumber = new System.Windows.Forms.TextBox();
-            this.textBoxReturnSalesNumber = new System.Windows.Forms.TextBox();
-            this.comboBoxPreparedBy = new System.Windows.Forms.ComboBox();
-            this.comboBoxCheckedBy = new System.Windows.Forms.ComboBox();
-            this.comboBoxApprovedBy = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.textBoxRemarks = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comboBoxApprovedBy = new System.Windows.Forms.ComboBox();
+            this.comboBoxCheckedBy = new System.Windows.Forms.ComboBox();
+            this.comboBoxPreparedBy = new System.Windows.Forms.ComboBox();
+            this.textBoxReturnSalesNumber = new System.Windows.Forms.TextBox();
+            this.textBoxReturnORNumber = new System.Windows.Forms.TextBox();
+            this.checkBoxReturn = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBoxSupplier = new System.Windows.Forms.ComboBox();
+            this.dateTimePickerStockInDate = new System.Windows.Forms.DateTimePicker();
+            this.textBoxStockInNumber = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.textBoxStockInLineListPageNumber = new System.Windows.Forms.TextBox();
-            this.buttonStockInLineListPageListLast = new System.Windows.Forms.Button();
-            this.buttonStockInLineListPageListNext = new System.Windows.Forms.Button();
-            this.buttonStockInLineListPageListPrevious = new System.Windows.Forms.Button();
             this.buttonStockInLineListPageListFirst = new System.Windows.Forms.Button();
+            this.buttonStockInLineListPageListPrevious = new System.Windows.Forms.Button();
+            this.buttonStockInLineListPageListNext = new System.Windows.Forms.Button();
+            this.buttonStockInLineListPageListLast = new System.Windows.Forms.Button();
+            this.textBoxStockInLineListPageNumber = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.buttonSearchItem = new System.Windows.Forms.Button();
-            this.buttonBarcode = new System.Windows.Forms.Button();
             this.textBoxBarcode = new System.Windows.Forms.TextBox();
+            this.buttonBarcode = new System.Windows.Forms.Button();
+            this.buttonSearchItem = new System.Windows.Forms.Button();
             this.dataGridViewStockInLineList = new System.Windows.Forms.DataGridView();
-            this.ColumnStockInLineListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockInLineListAssetAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockInLineListAssetAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockInLineListLotNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockInLineListExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockInLineListAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockInLineListCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockInLineListQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockInLineListUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockInLineListUnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockInLineListItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockInLineListItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockInLineListStockInId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockInLineListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockInLineListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnStockInLineListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnStockInLineListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnStockInLineListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockInLineListStockInId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockInLineListItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockInLineListItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockInLineListUnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockInLineListUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockInLineListQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockInLineListCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockInLineListAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockInLineListExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockInLineListLotNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockInLineListAssetAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockInLineListAssetAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockInLineListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -129,7 +129,8 @@
             this.buttonLock.Location = new System.Drawing.Point(1018, 12);
             this.buttonLock.Name = "buttonLock";
             this.buttonLock.Size = new System.Drawing.Size(88, 40);
-            this.buttonLock.TabIndex = 5;
+            this.buttonLock.TabIndex = 20;
+            this.buttonLock.TabStop = false;
             this.buttonLock.Text = "Lock";
             this.buttonLock.UseVisualStyleBackColor = false;
             this.buttonLock.Click += new System.EventHandler(this.buttonLock_Click);
@@ -146,7 +147,8 @@
             this.buttonUnlock.Location = new System.Drawing.Point(1112, 12);
             this.buttonUnlock.Name = "buttonUnlock";
             this.buttonUnlock.Size = new System.Drawing.Size(88, 40);
-            this.buttonUnlock.TabIndex = 4;
+            this.buttonUnlock.TabIndex = 21;
+            this.buttonUnlock.TabStop = false;
             this.buttonUnlock.Text = "Unlock";
             this.buttonUnlock.UseVisualStyleBackColor = false;
             this.buttonUnlock.Click += new System.EventHandler(this.buttonUnlock_Click);
@@ -184,7 +186,8 @@
             this.buttonClose.Location = new System.Drawing.Point(1300, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 23;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -201,7 +204,8 @@
             this.buttonPrint.Location = new System.Drawing.Point(1206, 12);
             this.buttonPrint.Name = "buttonPrint";
             this.buttonPrint.Size = new System.Drawing.Size(88, 40);
-            this.buttonPrint.TabIndex = 0;
+            this.buttonPrint.TabIndex = 22;
+            this.buttonPrint.TabStop = false;
             this.buttonPrint.Text = "Print";
             this.buttonPrint.UseVisualStyleBackColor = false;
             this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
@@ -236,179 +240,14 @@
             this.panel3.Size = new System.Drawing.Size(1400, 234);
             this.panel3.TabIndex = 0;
             // 
-            // textBoxStockInNumber
+            // textBoxRemarks
             // 
-            this.textBoxStockInNumber.Enabled = false;
-            this.textBoxStockInNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxStockInNumber.Location = new System.Drawing.Point(163, 7);
-            this.textBoxStockInNumber.Name = "textBoxStockInNumber";
-            this.textBoxStockInNumber.Size = new System.Drawing.Size(196, 30);
-            this.textBoxStockInNumber.TabIndex = 0;
-            // 
-            // dateTimePickerStockInDate
-            // 
-            this.dateTimePickerStockInDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.dateTimePickerStockInDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerStockInDate.Location = new System.Drawing.Point(163, 43);
-            this.dateTimePickerStockInDate.Name = "dateTimePickerStockInDate";
-            this.dateTimePickerStockInDate.Size = new System.Drawing.Size(196, 30);
-            this.dateTimePickerStockInDate.TabIndex = 2;
-            // 
-            // comboBoxSupplier
-            // 
-            this.comboBoxSupplier.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBoxSupplier.FormattingEnabled = true;
-            this.comboBoxSupplier.Location = new System.Drawing.Point(163, 79);
-            this.comboBoxSupplier.Name = "comboBoxSupplier";
-            this.comboBoxSupplier.Size = new System.Drawing.Size(298, 31);
-            this.comboBoxSupplier.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label2.Location = new System.Drawing.Point(13, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 23);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Stock-In Number:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label4.Location = new System.Drawing.Point(40, 46);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(117, 23);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Stock-In Date:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label5.Location = new System.Drawing.Point(81, 82);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 23);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Supplier:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label7.Location = new System.Drawing.Point(79, 119);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 23);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Remarks:";
-            // 
-            // checkBoxReturn
-            // 
-            this.checkBoxReturn.AutoSize = true;
-            this.checkBoxReturn.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxReturn.Location = new System.Drawing.Point(649, 9);
-            this.checkBoxReturn.Name = "checkBoxReturn";
-            this.checkBoxReturn.Size = new System.Drawing.Size(37, 27);
-            this.checkBoxReturn.TabIndex = 12;
-            this.checkBoxReturn.Text = " ";
-            this.checkBoxReturn.UseVisualStyleBackColor = true;
-            // 
-            // textBoxReturnORNumber
-            // 
-            this.textBoxReturnORNumber.Enabled = false;
-            this.textBoxReturnORNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxReturnORNumber.Location = new System.Drawing.Point(649, 43);
-            this.textBoxReturnORNumber.Name = "textBoxReturnORNumber";
-            this.textBoxReturnORNumber.Size = new System.Drawing.Size(288, 30);
-            this.textBoxReturnORNumber.TabIndex = 13;
-            // 
-            // textBoxReturnSalesNumber
-            // 
-            this.textBoxReturnSalesNumber.Enabled = false;
-            this.textBoxReturnSalesNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxReturnSalesNumber.Location = new System.Drawing.Point(649, 80);
-            this.textBoxReturnSalesNumber.Name = "textBoxReturnSalesNumber";
-            this.textBoxReturnSalesNumber.Size = new System.Drawing.Size(288, 30);
-            this.textBoxReturnSalesNumber.TabIndex = 14;
-            // 
-            // comboBoxPreparedBy
-            // 
-            this.comboBoxPreparedBy.Enabled = false;
-            this.comboBoxPreparedBy.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBoxPreparedBy.FormattingEnabled = true;
-            this.comboBoxPreparedBy.Location = new System.Drawing.Point(649, 116);
-            this.comboBoxPreparedBy.Name = "comboBoxPreparedBy";
-            this.comboBoxPreparedBy.Size = new System.Drawing.Size(288, 31);
-            this.comboBoxPreparedBy.TabIndex = 15;
-            // 
-            // comboBoxCheckedBy
-            // 
-            this.comboBoxCheckedBy.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBoxCheckedBy.FormattingEnabled = true;
-            this.comboBoxCheckedBy.Location = new System.Drawing.Point(649, 153);
-            this.comboBoxCheckedBy.Name = "comboBoxCheckedBy";
-            this.comboBoxCheckedBy.Size = new System.Drawing.Size(288, 31);
-            this.comboBoxCheckedBy.TabIndex = 16;
-            // 
-            // comboBoxApprovedBy
-            // 
-            this.comboBoxApprovedBy.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBoxApprovedBy.FormattingEnabled = true;
-            this.comboBoxApprovedBy.Location = new System.Drawing.Point(649, 190);
-            this.comboBoxApprovedBy.Name = "comboBoxApprovedBy";
-            this.comboBoxApprovedBy.Size = new System.Drawing.Size(288, 31);
-            this.comboBoxApprovedBy.TabIndex = 17;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label8.Location = new System.Drawing.Point(578, 10);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 23);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "Return:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label9.Location = new System.Drawing.Point(482, 46);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(161, 23);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "Return OR Number:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label10.Location = new System.Drawing.Point(467, 83);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(176, 23);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "Return Sales Number:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label11.Location = new System.Drawing.Point(537, 119);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(106, 23);
-            this.label11.TabIndex = 21;
-            this.label11.Text = "Prepared by:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label12.Location = new System.Drawing.Point(541, 156);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(102, 23);
-            this.label12.TabIndex = 22;
-            this.label12.Text = "Checked by:";
+            this.textBoxRemarks.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxRemarks.Location = new System.Drawing.Point(163, 116);
+            this.textBoxRemarks.Multiline = true;
+            this.textBoxRemarks.Name = "textBoxRemarks";
+            this.textBoxRemarks.Size = new System.Drawing.Size(298, 105);
+            this.textBoxRemarks.TabIndex = 3;
             // 
             // label13
             // 
@@ -420,14 +259,180 @@
             this.label13.TabIndex = 23;
             this.label13.Text = "Approved by:";
             // 
-            // textBoxRemarks
+            // label12
             // 
-            this.textBoxRemarks.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxRemarks.Location = new System.Drawing.Point(163, 116);
-            this.textBoxRemarks.Multiline = true;
-            this.textBoxRemarks.Name = "textBoxRemarks";
-            this.textBoxRemarks.Size = new System.Drawing.Size(298, 105);
-            this.textBoxRemarks.TabIndex = 24;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label12.Location = new System.Drawing.Point(541, 156);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(102, 23);
+            this.label12.TabIndex = 22;
+            this.label12.Text = "Checked by:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label11.Location = new System.Drawing.Point(537, 119);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(106, 23);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "Prepared by:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label10.Location = new System.Drawing.Point(467, 83);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(176, 23);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Return Sales Number:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label9.Location = new System.Drawing.Point(482, 46);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(161, 23);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "Return OR Number:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label8.Location = new System.Drawing.Point(578, 10);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 23);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Return:";
+            // 
+            // comboBoxApprovedBy
+            // 
+            this.comboBoxApprovedBy.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxApprovedBy.FormattingEnabled = true;
+            this.comboBoxApprovedBy.Location = new System.Drawing.Point(649, 190);
+            this.comboBoxApprovedBy.Name = "comboBoxApprovedBy";
+            this.comboBoxApprovedBy.Size = new System.Drawing.Size(288, 31);
+            this.comboBoxApprovedBy.TabIndex = 9;
+            // 
+            // comboBoxCheckedBy
+            // 
+            this.comboBoxCheckedBy.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxCheckedBy.FormattingEnabled = true;
+            this.comboBoxCheckedBy.Location = new System.Drawing.Point(649, 153);
+            this.comboBoxCheckedBy.Name = "comboBoxCheckedBy";
+            this.comboBoxCheckedBy.Size = new System.Drawing.Size(288, 31);
+            this.comboBoxCheckedBy.TabIndex = 8;
+            // 
+            // comboBoxPreparedBy
+            // 
+            this.comboBoxPreparedBy.Enabled = false;
+            this.comboBoxPreparedBy.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxPreparedBy.FormattingEnabled = true;
+            this.comboBoxPreparedBy.Location = new System.Drawing.Point(649, 116);
+            this.comboBoxPreparedBy.Name = "comboBoxPreparedBy";
+            this.comboBoxPreparedBy.Size = new System.Drawing.Size(288, 31);
+            this.comboBoxPreparedBy.TabIndex = 7;
+            // 
+            // textBoxReturnSalesNumber
+            // 
+            this.textBoxReturnSalesNumber.Enabled = false;
+            this.textBoxReturnSalesNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxReturnSalesNumber.Location = new System.Drawing.Point(649, 80);
+            this.textBoxReturnSalesNumber.Name = "textBoxReturnSalesNumber";
+            this.textBoxReturnSalesNumber.Size = new System.Drawing.Size(288, 30);
+            this.textBoxReturnSalesNumber.TabIndex = 6;
+            // 
+            // textBoxReturnORNumber
+            // 
+            this.textBoxReturnORNumber.Enabled = false;
+            this.textBoxReturnORNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxReturnORNumber.Location = new System.Drawing.Point(649, 43);
+            this.textBoxReturnORNumber.Name = "textBoxReturnORNumber";
+            this.textBoxReturnORNumber.Size = new System.Drawing.Size(288, 30);
+            this.textBoxReturnORNumber.TabIndex = 5;
+            // 
+            // checkBoxReturn
+            // 
+            this.checkBoxReturn.AutoSize = true;
+            this.checkBoxReturn.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.checkBoxReturn.Location = new System.Drawing.Point(649, 9);
+            this.checkBoxReturn.Name = "checkBoxReturn";
+            this.checkBoxReturn.Size = new System.Drawing.Size(37, 27);
+            this.checkBoxReturn.TabIndex = 4;
+            this.checkBoxReturn.Text = " ";
+            this.checkBoxReturn.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label7.Location = new System.Drawing.Point(79, 119);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 23);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Remarks:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label5.Location = new System.Drawing.Point(81, 82);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(76, 23);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Supplier:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label4.Location = new System.Drawing.Point(40, 46);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(117, 23);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Stock-In Date:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label2.Location = new System.Drawing.Point(13, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(144, 23);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Stock-In Number:";
+            // 
+            // comboBoxSupplier
+            // 
+            this.comboBoxSupplier.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxSupplier.FormattingEnabled = true;
+            this.comboBoxSupplier.Location = new System.Drawing.Point(163, 79);
+            this.comboBoxSupplier.Name = "comboBoxSupplier";
+            this.comboBoxSupplier.Size = new System.Drawing.Size(298, 31);
+            this.comboBoxSupplier.TabIndex = 2;
+            // 
+            // dateTimePickerStockInDate
+            // 
+            this.dateTimePickerStockInDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.dateTimePickerStockInDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerStockInDate.Location = new System.Drawing.Point(163, 43);
+            this.dateTimePickerStockInDate.Name = "dateTimePickerStockInDate";
+            this.dateTimePickerStockInDate.Size = new System.Drawing.Size(196, 30);
+            this.dateTimePickerStockInDate.TabIndex = 1;
+            // 
+            // textBoxStockInNumber
+            // 
+            this.textBoxStockInNumber.Enabled = false;
+            this.textBoxStockInNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxStockInNumber.Location = new System.Drawing.Point(163, 7);
+            this.textBoxStockInNumber.Name = "textBoxStockInNumber";
+            this.textBoxStockInNumber.Size = new System.Drawing.Size(196, 30);
+            this.textBoxStockInNumber.TabIndex = 0;
+            this.textBoxStockInNumber.TabStop = false;
             // 
             // panel4
             // 
@@ -443,46 +448,21 @@
             this.panel4.Size = new System.Drawing.Size(1400, 53);
             this.panel4.TabIndex = 25;
             // 
-            // textBoxStockInLineListPageNumber
+            // buttonStockInLineListPageListFirst
             // 
-            this.textBoxStockInLineListPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxStockInLineListPageNumber.BackColor = System.Drawing.Color.White;
-            this.textBoxStockInLineListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxStockInLineListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxStockInLineListPageNumber.Location = new System.Drawing.Point(188, 14);
-            this.textBoxStockInLineListPageNumber.Name = "textBoxStockInLineListPageNumber";
-            this.textBoxStockInLineListPageNumber.ReadOnly = true;
-            this.textBoxStockInLineListPageNumber.Size = new System.Drawing.Size(69, 20);
-            this.textBoxStockInLineListPageNumber.TabIndex = 17;
-            this.textBoxStockInLineListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // buttonStockInLineListPageListLast
-            // 
-            this.buttonStockInLineListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonStockInLineListPageListLast.FlatAppearance.BorderSize = 0;
-            this.buttonStockInLineListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStockInLineListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockInLineListPageListLast.Location = new System.Drawing.Point(348, 9);
-            this.buttonStockInLineListPageListLast.Name = "buttonStockInLineListPageListLast";
-            this.buttonStockInLineListPageListLast.Size = new System.Drawing.Size(82, 32);
-            this.buttonStockInLineListPageListLast.TabIndex = 16;
-            this.buttonStockInLineListPageListLast.Text = "Last";
-            this.buttonStockInLineListPageListLast.UseVisualStyleBackColor = false;
-            this.buttonStockInLineListPageListLast.Click += new System.EventHandler(this.buttonStockInLineListPageListLast_Click);
-            // 
-            // buttonStockInLineListPageListNext
-            // 
-            this.buttonStockInLineListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonStockInLineListPageListNext.FlatAppearance.BorderSize = 0;
-            this.buttonStockInLineListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStockInLineListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockInLineListPageListNext.Location = new System.Drawing.Point(263, 9);
-            this.buttonStockInLineListPageListNext.Name = "buttonStockInLineListPageListNext";
-            this.buttonStockInLineListPageListNext.Size = new System.Drawing.Size(82, 32);
-            this.buttonStockInLineListPageListNext.TabIndex = 15;
-            this.buttonStockInLineListPageListNext.Text = "Next";
-            this.buttonStockInLineListPageListNext.UseVisualStyleBackColor = false;
-            this.buttonStockInLineListPageListNext.Click += new System.EventHandler(this.buttonStockInLineListPageListNext_Click);
+            this.buttonStockInLineListPageListFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonStockInLineListPageListFirst.Enabled = false;
+            this.buttonStockInLineListPageListFirst.FlatAppearance.BorderSize = 0;
+            this.buttonStockInLineListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStockInLineListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonStockInLineListPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonStockInLineListPageListFirst.Name = "buttonStockInLineListPageListFirst";
+            this.buttonStockInLineListPageListFirst.Size = new System.Drawing.Size(82, 32);
+            this.buttonStockInLineListPageListFirst.TabIndex = 13;
+            this.buttonStockInLineListPageListFirst.TabStop = false;
+            this.buttonStockInLineListPageListFirst.Text = "First";
+            this.buttonStockInLineListPageListFirst.UseVisualStyleBackColor = false;
+            this.buttonStockInLineListPageListFirst.Click += new System.EventHandler(this.buttonStockInLineListPageListFirst_Click);
             // 
             // buttonStockInLineListPageListPrevious
             // 
@@ -495,24 +475,54 @@
             this.buttonStockInLineListPageListPrevious.Name = "buttonStockInLineListPageListPrevious";
             this.buttonStockInLineListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonStockInLineListPageListPrevious.TabIndex = 14;
+            this.buttonStockInLineListPageListPrevious.TabStop = false;
             this.buttonStockInLineListPageListPrevious.Text = "Previous";
             this.buttonStockInLineListPageListPrevious.UseVisualStyleBackColor = false;
             this.buttonStockInLineListPageListPrevious.Click += new System.EventHandler(this.buttonStockInLineListPageListPrevious_Click);
             // 
-            // buttonStockInLineListPageListFirst
+            // buttonStockInLineListPageListNext
             // 
-            this.buttonStockInLineListPageListFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonStockInLineListPageListFirst.Enabled = false;
-            this.buttonStockInLineListPageListFirst.FlatAppearance.BorderSize = 0;
-            this.buttonStockInLineListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStockInLineListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockInLineListPageListFirst.Location = new System.Drawing.Point(12, 9);
-            this.buttonStockInLineListPageListFirst.Name = "buttonStockInLineListPageListFirst";
-            this.buttonStockInLineListPageListFirst.Size = new System.Drawing.Size(82, 32);
-            this.buttonStockInLineListPageListFirst.TabIndex = 13;
-            this.buttonStockInLineListPageListFirst.Text = "First";
-            this.buttonStockInLineListPageListFirst.UseVisualStyleBackColor = false;
-            this.buttonStockInLineListPageListFirst.Click += new System.EventHandler(this.buttonStockInLineListPageListFirst_Click);
+            this.buttonStockInLineListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonStockInLineListPageListNext.FlatAppearance.BorderSize = 0;
+            this.buttonStockInLineListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStockInLineListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonStockInLineListPageListNext.Location = new System.Drawing.Point(263, 9);
+            this.buttonStockInLineListPageListNext.Name = "buttonStockInLineListPageListNext";
+            this.buttonStockInLineListPageListNext.Size = new System.Drawing.Size(82, 32);
+            this.buttonStockInLineListPageListNext.TabIndex = 15;
+            this.buttonStockInLineListPageListNext.TabStop = false;
+            this.buttonStockInLineListPageListNext.Text = "Next";
+            this.buttonStockInLineListPageListNext.UseVisualStyleBackColor = false;
+            this.buttonStockInLineListPageListNext.Click += new System.EventHandler(this.buttonStockInLineListPageListNext_Click);
+            // 
+            // buttonStockInLineListPageListLast
+            // 
+            this.buttonStockInLineListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonStockInLineListPageListLast.FlatAppearance.BorderSize = 0;
+            this.buttonStockInLineListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStockInLineListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonStockInLineListPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonStockInLineListPageListLast.Name = "buttonStockInLineListPageListLast";
+            this.buttonStockInLineListPageListLast.Size = new System.Drawing.Size(82, 32);
+            this.buttonStockInLineListPageListLast.TabIndex = 16;
+            this.buttonStockInLineListPageListLast.TabStop = false;
+            this.buttonStockInLineListPageListLast.Text = "Last";
+            this.buttonStockInLineListPageListLast.UseVisualStyleBackColor = false;
+            this.buttonStockInLineListPageListLast.Click += new System.EventHandler(this.buttonStockInLineListPageListLast_Click);
+            // 
+            // textBoxStockInLineListPageNumber
+            // 
+            this.textBoxStockInLineListPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBoxStockInLineListPageNumber.BackColor = System.Drawing.Color.White;
+            this.textBoxStockInLineListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxStockInLineListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textBoxStockInLineListPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxStockInLineListPageNumber.Name = "textBoxStockInLineListPageNumber";
+            this.textBoxStockInLineListPageNumber.ReadOnly = true;
+            this.textBoxStockInLineListPageNumber.Size = new System.Drawing.Size(69, 20);
+            this.textBoxStockInLineListPageNumber.TabIndex = 17;
+            this.textBoxStockInLineListPageNumber.TabStop = false;
+            this.textBoxStockInLineListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel5
             // 
@@ -526,23 +536,15 @@
             this.panel5.Size = new System.Drawing.Size(1400, 44);
             this.panel5.TabIndex = 26;
             // 
-            // buttonSearchItem
+            // textBoxBarcode
             // 
-            this.buttonSearchItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSearchItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonSearchItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
-            this.buttonSearchItem.FlatAppearance.BorderSize = 0;
-            this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
-            this.buttonSearchItem.Location = new System.Drawing.Point(1206, 5);
-            this.buttonSearchItem.Name = "buttonSearchItem";
-            this.buttonSearchItem.Size = new System.Drawing.Size(182, 32);
-            this.buttonSearchItem.TabIndex = 8;
-            this.buttonSearchItem.TabStop = false;
-            this.buttonSearchItem.Text = "Search Item";
-            this.buttonSearchItem.UseVisualStyleBackColor = false;
-            this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
+            this.textBoxBarcode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.textBoxBarcode.Location = new System.Drawing.Point(163, 5);
+            this.textBoxBarcode.Name = "textBoxBarcode";
+            this.textBoxBarcode.Size = new System.Drawing.Size(774, 30);
+            this.textBoxBarcode.TabIndex = 10;
+            this.textBoxBarcode.TabStop = false;
+            this.textBoxBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarcode_KeyDown);
             // 
             // buttonBarcode
             // 
@@ -561,14 +563,23 @@
             this.buttonBarcode.UseVisualStyleBackColor = false;
             this.buttonBarcode.Click += new System.EventHandler(this.buttonBarcode_Click);
             // 
-            // textBoxBarcode
+            // buttonSearchItem
             // 
-            this.textBoxBarcode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.textBoxBarcode.Location = new System.Drawing.Point(163, 5);
-            this.textBoxBarcode.Name = "textBoxBarcode";
-            this.textBoxBarcode.Size = new System.Drawing.Size(774, 30);
-            this.textBoxBarcode.TabIndex = 10;
-            this.textBoxBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarcode_KeyDown);
+            this.buttonSearchItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSearchItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonSearchItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
+            this.buttonSearchItem.FlatAppearance.BorderSize = 0;
+            this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
+            this.buttonSearchItem.Location = new System.Drawing.Point(1206, 5);
+            this.buttonSearchItem.Name = "buttonSearchItem";
+            this.buttonSearchItem.Size = new System.Drawing.Size(182, 32);
+            this.buttonSearchItem.TabIndex = 8;
+            this.buttonSearchItem.TabStop = false;
+            this.buttonSearchItem.Text = "Search Item";
+            this.buttonSearchItem.UseVisualStyleBackColor = false;
+            this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
             // 
             // dataGridViewStockInLineList
             // 
@@ -620,67 +631,71 @@
             this.dataGridViewStockInLineList.TabStop = false;
             this.dataGridViewStockInLineList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStockInLineList_CellClick);
             // 
-            // ColumnStockInLineListPrice
+            // ColumnStockInLineListButtonEdit
             // 
-            this.ColumnStockInLineListPrice.DataPropertyName = "ColumnStockInLineListPrice";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnStockInLineListPrice.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ColumnStockInLineListPrice.HeaderText = "Price";
-            this.ColumnStockInLineListPrice.Name = "ColumnStockInLineListPrice";
-            this.ColumnStockInLineListPrice.ReadOnly = true;
-            this.ColumnStockInLineListPrice.Width = 150;
+            this.ColumnStockInLineListButtonEdit.DataPropertyName = "ColumnStockInLineListButtonEdit";
+            this.ColumnStockInLineListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnStockInLineListButtonEdit.HeaderText = "";
+            this.ColumnStockInLineListButtonEdit.Name = "ColumnStockInLineListButtonEdit";
+            this.ColumnStockInLineListButtonEdit.ReadOnly = true;
+            this.ColumnStockInLineListButtonEdit.Width = 70;
             // 
-            // ColumnStockInLineListAssetAccount
+            // ColumnStockInLineListButtonDelete
             // 
-            this.ColumnStockInLineListAssetAccount.DataPropertyName = "ColumnStockInLineListAssetAccount";
-            this.ColumnStockInLineListAssetAccount.HeaderText = "Asset Account";
-            this.ColumnStockInLineListAssetAccount.Name = "ColumnStockInLineListAssetAccount";
-            this.ColumnStockInLineListAssetAccount.ReadOnly = true;
-            this.ColumnStockInLineListAssetAccount.Visible = false;
-            this.ColumnStockInLineListAssetAccount.Width = 250;
+            this.ColumnStockInLineListButtonDelete.DataPropertyName = "ColumnStockInLineListButtonDelete";
+            this.ColumnStockInLineListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnStockInLineListButtonDelete.HeaderText = "";
+            this.ColumnStockInLineListButtonDelete.Name = "ColumnStockInLineListButtonDelete";
+            this.ColumnStockInLineListButtonDelete.ReadOnly = true;
+            this.ColumnStockInLineListButtonDelete.Width = 70;
             // 
-            // ColumnStockInLineListAssetAccountId
+            // ColumnStockInLineListId
             // 
-            this.ColumnStockInLineListAssetAccountId.DataPropertyName = "ColumnStockInLineListAssetAccountId";
-            this.ColumnStockInLineListAssetAccountId.HeaderText = "Asset Account Id";
-            this.ColumnStockInLineListAssetAccountId.Name = "ColumnStockInLineListAssetAccountId";
-            this.ColumnStockInLineListAssetAccountId.ReadOnly = true;
-            this.ColumnStockInLineListAssetAccountId.Visible = false;
+            this.ColumnStockInLineListId.DataPropertyName = "ColumnStockInLineListId";
+            this.ColumnStockInLineListId.HeaderText = "Id";
+            this.ColumnStockInLineListId.Name = "ColumnStockInLineListId";
+            this.ColumnStockInLineListId.ReadOnly = true;
+            this.ColumnStockInLineListId.Visible = false;
             // 
-            // ColumnStockInLineListLotNumber
+            // ColumnStockInLineListStockInId
             // 
-            this.ColumnStockInLineListLotNumber.DataPropertyName = "ColumnStockInLineListLotNumber";
-            this.ColumnStockInLineListLotNumber.HeaderText = "Lot Number";
-            this.ColumnStockInLineListLotNumber.Name = "ColumnStockInLineListLotNumber";
-            this.ColumnStockInLineListLotNumber.ReadOnly = true;
-            this.ColumnStockInLineListLotNumber.Width = 200;
+            this.ColumnStockInLineListStockInId.DataPropertyName = "ColumnStockInLineListStockInId";
+            this.ColumnStockInLineListStockInId.HeaderText = "Stock-In Id";
+            this.ColumnStockInLineListStockInId.Name = "ColumnStockInLineListStockInId";
+            this.ColumnStockInLineListStockInId.ReadOnly = true;
+            this.ColumnStockInLineListStockInId.Visible = false;
             // 
-            // ColumnStockInLineListExpiryDate
+            // ColumnStockInLineListItemId
             // 
-            this.ColumnStockInLineListExpiryDate.DataPropertyName = "ColumnStockInLineListExpiryDate";
-            this.ColumnStockInLineListExpiryDate.HeaderText = "Expiry";
-            this.ColumnStockInLineListExpiryDate.Name = "ColumnStockInLineListExpiryDate";
-            this.ColumnStockInLineListExpiryDate.ReadOnly = true;
+            this.ColumnStockInLineListItemId.DataPropertyName = "ColumnStockInLineListItemId";
+            this.ColumnStockInLineListItemId.HeaderText = "Item Id";
+            this.ColumnStockInLineListItemId.Name = "ColumnStockInLineListItemId";
+            this.ColumnStockInLineListItemId.ReadOnly = true;
+            this.ColumnStockInLineListItemId.Visible = false;
             // 
-            // ColumnStockInLineListAmount
+            // ColumnStockInLineListItemDescription
             // 
-            this.ColumnStockInLineListAmount.DataPropertyName = "ColumnStockInLineListAmount";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnStockInLineListAmount.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ColumnStockInLineListAmount.HeaderText = "Amount";
-            this.ColumnStockInLineListAmount.Name = "ColumnStockInLineListAmount";
-            this.ColumnStockInLineListAmount.ReadOnly = true;
-            this.ColumnStockInLineListAmount.Width = 150;
+            this.ColumnStockInLineListItemDescription.DataPropertyName = "ColumnStockInLineListItemDescription";
+            this.ColumnStockInLineListItemDescription.HeaderText = "Item Description";
+            this.ColumnStockInLineListItemDescription.Name = "ColumnStockInLineListItemDescription";
+            this.ColumnStockInLineListItemDescription.ReadOnly = true;
+            this.ColumnStockInLineListItemDescription.Width = 300;
             // 
-            // ColumnStockInLineListCost
+            // ColumnStockInLineListUnitId
             // 
-            this.ColumnStockInLineListCost.DataPropertyName = "ColumnStockInLineListCost";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnStockInLineListCost.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnStockInLineListCost.HeaderText = "Cost";
-            this.ColumnStockInLineListCost.Name = "ColumnStockInLineListCost";
-            this.ColumnStockInLineListCost.ReadOnly = true;
-            this.ColumnStockInLineListCost.Width = 150;
+            this.ColumnStockInLineListUnitId.DataPropertyName = "ColumnStockInLineListUnitId";
+            this.ColumnStockInLineListUnitId.HeaderText = "Unit Id";
+            this.ColumnStockInLineListUnitId.Name = "ColumnStockInLineListUnitId";
+            this.ColumnStockInLineListUnitId.ReadOnly = true;
+            this.ColumnStockInLineListUnitId.Visible = false;
+            // 
+            // ColumnStockInLineListUnit
+            // 
+            this.ColumnStockInLineListUnit.DataPropertyName = "ColumnStockInLineListUnit";
+            this.ColumnStockInLineListUnit.HeaderText = "Unit";
+            this.ColumnStockInLineListUnit.Name = "ColumnStockInLineListUnit";
+            this.ColumnStockInLineListUnit.ReadOnly = true;
+            this.ColumnStockInLineListUnit.Width = 150;
             // 
             // ColumnStockInLineListQuantity
             // 
@@ -692,71 +707,67 @@
             this.ColumnStockInLineListQuantity.ReadOnly = true;
             this.ColumnStockInLineListQuantity.Width = 150;
             // 
-            // ColumnStockInLineListUnit
+            // ColumnStockInLineListCost
             // 
-            this.ColumnStockInLineListUnit.DataPropertyName = "ColumnStockInLineListUnit";
-            this.ColumnStockInLineListUnit.HeaderText = "Unit";
-            this.ColumnStockInLineListUnit.Name = "ColumnStockInLineListUnit";
-            this.ColumnStockInLineListUnit.ReadOnly = true;
-            this.ColumnStockInLineListUnit.Width = 150;
+            this.ColumnStockInLineListCost.DataPropertyName = "ColumnStockInLineListCost";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnStockInLineListCost.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnStockInLineListCost.HeaderText = "Cost";
+            this.ColumnStockInLineListCost.Name = "ColumnStockInLineListCost";
+            this.ColumnStockInLineListCost.ReadOnly = true;
+            this.ColumnStockInLineListCost.Width = 150;
             // 
-            // ColumnStockInLineListUnitId
+            // ColumnStockInLineListAmount
             // 
-            this.ColumnStockInLineListUnitId.DataPropertyName = "ColumnStockInLineListUnitId";
-            this.ColumnStockInLineListUnitId.HeaderText = "Unit Id";
-            this.ColumnStockInLineListUnitId.Name = "ColumnStockInLineListUnitId";
-            this.ColumnStockInLineListUnitId.ReadOnly = true;
-            this.ColumnStockInLineListUnitId.Visible = false;
+            this.ColumnStockInLineListAmount.DataPropertyName = "ColumnStockInLineListAmount";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnStockInLineListAmount.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColumnStockInLineListAmount.HeaderText = "Amount";
+            this.ColumnStockInLineListAmount.Name = "ColumnStockInLineListAmount";
+            this.ColumnStockInLineListAmount.ReadOnly = true;
+            this.ColumnStockInLineListAmount.Width = 150;
             // 
-            // ColumnStockInLineListItemDescription
+            // ColumnStockInLineListExpiryDate
             // 
-            this.ColumnStockInLineListItemDescription.DataPropertyName = "ColumnStockInLineListItemDescription";
-            this.ColumnStockInLineListItemDescription.HeaderText = "Item Description";
-            this.ColumnStockInLineListItemDescription.Name = "ColumnStockInLineListItemDescription";
-            this.ColumnStockInLineListItemDescription.ReadOnly = true;
-            this.ColumnStockInLineListItemDescription.Width = 300;
+            this.ColumnStockInLineListExpiryDate.DataPropertyName = "ColumnStockInLineListExpiryDate";
+            this.ColumnStockInLineListExpiryDate.HeaderText = "Expiry";
+            this.ColumnStockInLineListExpiryDate.Name = "ColumnStockInLineListExpiryDate";
+            this.ColumnStockInLineListExpiryDate.ReadOnly = true;
             // 
-            // ColumnStockInLineListItemId
+            // ColumnStockInLineListLotNumber
             // 
-            this.ColumnStockInLineListItemId.DataPropertyName = "ColumnStockInLineListItemId";
-            this.ColumnStockInLineListItemId.HeaderText = "Item Id";
-            this.ColumnStockInLineListItemId.Name = "ColumnStockInLineListItemId";
-            this.ColumnStockInLineListItemId.ReadOnly = true;
-            this.ColumnStockInLineListItemId.Visible = false;
+            this.ColumnStockInLineListLotNumber.DataPropertyName = "ColumnStockInLineListLotNumber";
+            this.ColumnStockInLineListLotNumber.HeaderText = "Lot Number";
+            this.ColumnStockInLineListLotNumber.Name = "ColumnStockInLineListLotNumber";
+            this.ColumnStockInLineListLotNumber.ReadOnly = true;
+            this.ColumnStockInLineListLotNumber.Width = 200;
             // 
-            // ColumnStockInLineListStockInId
+            // ColumnStockInLineListAssetAccountId
             // 
-            this.ColumnStockInLineListStockInId.DataPropertyName = "ColumnStockInLineListStockInId";
-            this.ColumnStockInLineListStockInId.HeaderText = "Stock-In Id";
-            this.ColumnStockInLineListStockInId.Name = "ColumnStockInLineListStockInId";
-            this.ColumnStockInLineListStockInId.ReadOnly = true;
-            this.ColumnStockInLineListStockInId.Visible = false;
+            this.ColumnStockInLineListAssetAccountId.DataPropertyName = "ColumnStockInLineListAssetAccountId";
+            this.ColumnStockInLineListAssetAccountId.HeaderText = "Asset Account Id";
+            this.ColumnStockInLineListAssetAccountId.Name = "ColumnStockInLineListAssetAccountId";
+            this.ColumnStockInLineListAssetAccountId.ReadOnly = true;
+            this.ColumnStockInLineListAssetAccountId.Visible = false;
             // 
-            // ColumnStockInLineListId
+            // ColumnStockInLineListAssetAccount
             // 
-            this.ColumnStockInLineListId.DataPropertyName = "ColumnStockInLineListId";
-            this.ColumnStockInLineListId.HeaderText = "Id";
-            this.ColumnStockInLineListId.Name = "ColumnStockInLineListId";
-            this.ColumnStockInLineListId.ReadOnly = true;
-            this.ColumnStockInLineListId.Visible = false;
+            this.ColumnStockInLineListAssetAccount.DataPropertyName = "ColumnStockInLineListAssetAccount";
+            this.ColumnStockInLineListAssetAccount.HeaderText = "Asset Account";
+            this.ColumnStockInLineListAssetAccount.Name = "ColumnStockInLineListAssetAccount";
+            this.ColumnStockInLineListAssetAccount.ReadOnly = true;
+            this.ColumnStockInLineListAssetAccount.Visible = false;
+            this.ColumnStockInLineListAssetAccount.Width = 250;
             // 
-            // ColumnStockInLineListButtonDelete
+            // ColumnStockInLineListPrice
             // 
-            this.ColumnStockInLineListButtonDelete.DataPropertyName = "ColumnStockInLineListButtonDelete";
-            this.ColumnStockInLineListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnStockInLineListButtonDelete.HeaderText = "";
-            this.ColumnStockInLineListButtonDelete.Name = "ColumnStockInLineListButtonDelete";
-            this.ColumnStockInLineListButtonDelete.ReadOnly = true;
-            this.ColumnStockInLineListButtonDelete.Width = 70;
-            // 
-            // ColumnStockInLineListButtonEdit
-            // 
-            this.ColumnStockInLineListButtonEdit.DataPropertyName = "ColumnStockInLineListButtonEdit";
-            this.ColumnStockInLineListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnStockInLineListButtonEdit.HeaderText = "";
-            this.ColumnStockInLineListButtonEdit.Name = "ColumnStockInLineListButtonEdit";
-            this.ColumnStockInLineListButtonEdit.ReadOnly = true;
-            this.ColumnStockInLineListButtonEdit.Width = 70;
+            this.ColumnStockInLineListPrice.DataPropertyName = "ColumnStockInLineListPrice";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnStockInLineListPrice.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ColumnStockInLineListPrice.HeaderText = "Price";
+            this.ColumnStockInLineListPrice.Name = "ColumnStockInLineListPrice";
+            this.ColumnStockInLineListPrice.ReadOnly = true;
+            this.ColumnStockInLineListPrice.Width = 150;
             // 
             // panel2
             // 

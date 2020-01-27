@@ -115,10 +115,11 @@
             // textBoxCode
             // 
             this.textBoxCode.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxCode.HideSelection = false;
             this.textBoxCode.Location = new System.Drawing.Point(95, 69);
             this.textBoxCode.Name = "textBoxCode";
             this.textBoxCode.Size = new System.Drawing.Size(156, 30);
-            this.textBoxCode.TabIndex = 7;
+            this.textBoxCode.TabIndex = 0;
             // 
             // label2
             // 
@@ -152,11 +153,12 @@
             // 
             // textBoxAccount
             // 
+            this.textBoxAccount.AcceptsTab = true;
             this.textBoxAccount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxAccount.Location = new System.Drawing.Point(95, 105);
             this.textBoxAccount.Name = "textBoxAccount";
             this.textBoxAccount.Size = new System.Drawing.Size(390, 30);
-            this.textBoxAccount.TabIndex = 11;
+            this.textBoxAccount.TabIndex = 1;
             // 
             // comboBoxType
             // 
@@ -165,7 +167,7 @@
             this.comboBoxType.Location = new System.Drawing.Point(95, 141);
             this.comboBoxType.Name = "comboBoxType";
             this.comboBoxType.Size = new System.Drawing.Size(296, 31);
-            this.comboBoxType.TabIndex = 12;
+            this.comboBoxType.TabIndex = 2;
             // 
             // SysSystemTablesAccountDetailForm
             // 

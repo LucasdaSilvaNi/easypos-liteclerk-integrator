@@ -131,7 +131,8 @@
             this.buttonLock.Location = new System.Drawing.Point(1018, 12);
             this.buttonLock.Name = "buttonLock";
             this.buttonLock.Size = new System.Drawing.Size(88, 40);
-            this.buttonLock.TabIndex = 5;
+            this.buttonLock.TabIndex = 20;
+            this.buttonLock.TabStop = false;
             this.buttonLock.Text = "Lock";
             this.buttonLock.UseVisualStyleBackColor = false;
             this.buttonLock.Click += new System.EventHandler(this.buttonLock_Click);
@@ -148,7 +149,8 @@
             this.buttonUnlock.Location = new System.Drawing.Point(1112, 12);
             this.buttonUnlock.Name = "buttonUnlock";
             this.buttonUnlock.Size = new System.Drawing.Size(88, 40);
-            this.buttonUnlock.TabIndex = 4;
+            this.buttonUnlock.TabIndex = 21;
+            this.buttonUnlock.TabStop = false;
             this.buttonUnlock.Text = "Unlock";
             this.buttonUnlock.UseVisualStyleBackColor = false;
             this.buttonUnlock.Click += new System.EventHandler(this.buttonUnlock_Click);
@@ -186,7 +188,8 @@
             this.buttonClose.Location = new System.Drawing.Point(1300, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 23;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -203,7 +206,8 @@
             this.buttonPrint.Location = new System.Drawing.Point(1206, 12);
             this.buttonPrint.Name = "buttonPrint";
             this.buttonPrint.Size = new System.Drawing.Size(88, 40);
-            this.buttonPrint.TabIndex = 0;
+            this.buttonPrint.TabIndex = 22;
+            this.buttonPrint.TabStop = false;
             this.buttonPrint.Text = "Print";
             this.buttonPrint.UseVisualStyleBackColor = false;
             this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
@@ -310,7 +314,7 @@
             this.textBoxAmountDenominationXC1.Location = new System.Drawing.Point(861, 361);
             this.textBoxAmountDenominationXC1.Name = "textBoxAmountDenominationXC1";
             this.textBoxAmountDenominationXC1.Size = new System.Drawing.Size(73, 30);
-            this.textBoxAmountDenominationXC1.TabIndex = 68;
+            this.textBoxAmountDenominationXC1.TabIndex = 26;
             this.textBoxAmountDenominationXC1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxAmountDenominationXC1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAmount_KeyPress);
             this.textBoxAmountDenominationXC1.Leave += new System.EventHandler(this.textBoxAmountDenomination_Leave);
@@ -331,7 +335,7 @@
             this.textBoxAmountDenominationXC5.Location = new System.Drawing.Point(861, 325);
             this.textBoxAmountDenominationXC5.Name = "textBoxAmountDenominationXC5";
             this.textBoxAmountDenominationXC5.Size = new System.Drawing.Size(73, 30);
-            this.textBoxAmountDenominationXC5.TabIndex = 66;
+            this.textBoxAmountDenominationXC5.TabIndex = 25;
             this.textBoxAmountDenominationXC5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxAmountDenominationXC5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAmount_KeyPress);
             this.textBoxAmountDenominationXC5.Leave += new System.EventHandler(this.textBoxAmountDenomination_Leave);
@@ -352,7 +356,7 @@
             this.textBoxAmountDenominationXC10.Location = new System.Drawing.Point(861, 289);
             this.textBoxAmountDenominationXC10.Name = "textBoxAmountDenominationXC10";
             this.textBoxAmountDenominationXC10.Size = new System.Drawing.Size(73, 30);
-            this.textBoxAmountDenominationXC10.TabIndex = 64;
+            this.textBoxAmountDenominationXC10.TabIndex = 24;
             this.textBoxAmountDenominationXC10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxAmountDenominationXC10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAmount_KeyPress);
             this.textBoxAmountDenominationXC10.Leave += new System.EventHandler(this.textBoxAmountDenomination_Leave);
@@ -373,7 +377,7 @@
             this.textBoxAmountDenominationXC25.Location = new System.Drawing.Point(861, 253);
             this.textBoxAmountDenominationXC25.Name = "textBoxAmountDenominationXC25";
             this.textBoxAmountDenominationXC25.Size = new System.Drawing.Size(73, 30);
-            this.textBoxAmountDenominationXC25.TabIndex = 62;
+            this.textBoxAmountDenominationXC25.TabIndex = 23;
             this.textBoxAmountDenominationXC25.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxAmountDenominationXC25.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAmount_KeyPress);
             this.textBoxAmountDenominationXC25.Leave += new System.EventHandler(this.textBoxAmountDenomination_Leave);
@@ -394,7 +398,7 @@
             this.textBoxAmountDenominationXP1.Location = new System.Drawing.Point(861, 217);
             this.textBoxAmountDenominationXP1.Name = "textBoxAmountDenominationXP1";
             this.textBoxAmountDenominationXP1.Size = new System.Drawing.Size(73, 30);
-            this.textBoxAmountDenominationXP1.TabIndex = 60;
+            this.textBoxAmountDenominationXP1.TabIndex = 22;
             this.textBoxAmountDenominationXP1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxAmountDenominationXP1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAmount_KeyPress);
             this.textBoxAmountDenominationXP1.Leave += new System.EventHandler(this.textBoxAmountDenomination_Leave);
@@ -415,7 +419,7 @@
             this.textBoxAmountDenominationXP5.Location = new System.Drawing.Point(861, 181);
             this.textBoxAmountDenominationXP5.Name = "textBoxAmountDenominationXP5";
             this.textBoxAmountDenominationXP5.Size = new System.Drawing.Size(73, 30);
-            this.textBoxAmountDenominationXP5.TabIndex = 58;
+            this.textBoxAmountDenominationXP5.TabIndex = 21;
             this.textBoxAmountDenominationXP5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxAmountDenominationXP5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAmount_KeyPress);
             this.textBoxAmountDenominationXP5.Leave += new System.EventHandler(this.textBoxAmountDenomination_Leave);
@@ -436,7 +440,7 @@
             this.textBoxAmountDenominationXP10.Location = new System.Drawing.Point(698, 397);
             this.textBoxAmountDenominationXP10.Name = "textBoxAmountDenominationXP10";
             this.textBoxAmountDenominationXP10.Size = new System.Drawing.Size(73, 30);
-            this.textBoxAmountDenominationXP10.TabIndex = 56;
+            this.textBoxAmountDenominationXP10.TabIndex = 20;
             this.textBoxAmountDenominationXP10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxAmountDenominationXP10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAmount_KeyPress);
             this.textBoxAmountDenominationXP10.Leave += new System.EventHandler(this.textBoxAmountDenomination_Leave);
@@ -457,7 +461,7 @@
             this.textBoxAmountDenominationXP20.Location = new System.Drawing.Point(698, 361);
             this.textBoxAmountDenominationXP20.Name = "textBoxAmountDenominationXP20";
             this.textBoxAmountDenominationXP20.Size = new System.Drawing.Size(73, 30);
-            this.textBoxAmountDenominationXP20.TabIndex = 54;
+            this.textBoxAmountDenominationXP20.TabIndex = 19;
             this.textBoxAmountDenominationXP20.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxAmountDenominationXP20.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAmount_KeyPress);
             this.textBoxAmountDenominationXP20.Leave += new System.EventHandler(this.textBoxAmountDenomination_Leave);
@@ -478,7 +482,7 @@
             this.textBoxAmountDenominationXP50.Location = new System.Drawing.Point(698, 325);
             this.textBoxAmountDenominationXP50.Name = "textBoxAmountDenominationXP50";
             this.textBoxAmountDenominationXP50.Size = new System.Drawing.Size(73, 30);
-            this.textBoxAmountDenominationXP50.TabIndex = 52;
+            this.textBoxAmountDenominationXP50.TabIndex = 18;
             this.textBoxAmountDenominationXP50.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxAmountDenominationXP50.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAmount_KeyPress);
             this.textBoxAmountDenominationXP50.Leave += new System.EventHandler(this.textBoxAmountDenomination_Leave);
@@ -499,7 +503,7 @@
             this.textBoxAmountDenominationXP100.Location = new System.Drawing.Point(698, 289);
             this.textBoxAmountDenominationXP100.Name = "textBoxAmountDenominationXP100";
             this.textBoxAmountDenominationXP100.Size = new System.Drawing.Size(73, 30);
-            this.textBoxAmountDenominationXP100.TabIndex = 50;
+            this.textBoxAmountDenominationXP100.TabIndex = 17;
             this.textBoxAmountDenominationXP100.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxAmountDenominationXP100.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAmount_KeyPress);
             this.textBoxAmountDenominationXP100.Leave += new System.EventHandler(this.textBoxAmountDenomination_Leave);
@@ -520,7 +524,7 @@
             this.textBoxAmountDenominationXP200.Location = new System.Drawing.Point(698, 253);
             this.textBoxAmountDenominationXP200.Name = "textBoxAmountDenominationXP200";
             this.textBoxAmountDenominationXP200.Size = new System.Drawing.Size(73, 30);
-            this.textBoxAmountDenominationXP200.TabIndex = 48;
+            this.textBoxAmountDenominationXP200.TabIndex = 16;
             this.textBoxAmountDenominationXP200.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxAmountDenominationXP200.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAmount_KeyPress);
             this.textBoxAmountDenominationXP200.Leave += new System.EventHandler(this.textBoxAmountDenomination_Leave);
@@ -541,7 +545,7 @@
             this.textBoxAmountDenominationXP500.Location = new System.Drawing.Point(698, 217);
             this.textBoxAmountDenominationXP500.Name = "textBoxAmountDenominationXP500";
             this.textBoxAmountDenominationXP500.Size = new System.Drawing.Size(73, 30);
-            this.textBoxAmountDenominationXP500.TabIndex = 46;
+            this.textBoxAmountDenominationXP500.TabIndex = 15;
             this.textBoxAmountDenominationXP500.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxAmountDenominationXP500.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAmount_KeyPress);
             this.textBoxAmountDenominationXP500.Leave += new System.EventHandler(this.textBoxAmountDenomination_Leave);
@@ -562,7 +566,7 @@
             this.textBoxAmountDenominationXP1000.Location = new System.Drawing.Point(698, 181);
             this.textBoxAmountDenominationXP1000.Name = "textBoxAmountDenominationXP1000";
             this.textBoxAmountDenominationXP1000.Size = new System.Drawing.Size(73, 30);
-            this.textBoxAmountDenominationXP1000.TabIndex = 44;
+            this.textBoxAmountDenominationXP1000.TabIndex = 14;
             this.textBoxAmountDenominationXP1000.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxAmountDenominationXP1000.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAmount_KeyPress);
             this.textBoxAmountDenominationXP1000.Leave += new System.EventHandler(this.textBoxAmountDenomination_Leave);
@@ -628,7 +632,7 @@
             this.comboBoxReturnStockInNumber.Location = new System.Drawing.Point(186, 493);
             this.comboBoxReturnStockInNumber.Name = "comboBoxReturnStockInNumber";
             this.comboBoxReturnStockInNumber.Size = new System.Drawing.Size(196, 31);
-            this.comboBoxReturnStockInNumber.TabIndex = 38;
+            this.comboBoxReturnStockInNumber.TabIndex = 10;
             // 
             // checkBoxReturn
             // 
@@ -637,7 +641,7 @@
             this.checkBoxReturn.Location = new System.Drawing.Point(186, 460);
             this.checkBoxReturn.Name = "checkBoxReturn";
             this.checkBoxReturn.Size = new System.Drawing.Size(37, 27);
-            this.checkBoxReturn.TabIndex = 37;
+            this.checkBoxReturn.TabIndex = 9;
             this.checkBoxReturn.Text = " ";
             this.checkBoxReturn.UseVisualStyleBackColor = true;
             this.checkBoxReturn.CheckedChanged += new System.EventHandler(this.checkBoxReturn_CheckedChanged);
@@ -659,7 +663,7 @@
             this.textBoxRemarks.Multiline = true;
             this.textBoxRemarks.Name = "textBoxRemarks";
             this.textBoxRemarks.Size = new System.Drawing.Size(394, 69);
-            this.textBoxRemarks.TabIndex = 35;
+            this.textBoxRemarks.TabIndex = 8;
             // 
             // label16
             // 
@@ -687,7 +691,7 @@
             this.textBoxAmount.Location = new System.Drawing.Point(186, 320);
             this.textBoxAmount.Name = "textBoxAmount";
             this.textBoxAmount.Size = new System.Drawing.Size(196, 30);
-            this.textBoxAmount.TabIndex = 32;
+            this.textBoxAmount.TabIndex = 7;
             this.textBoxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAmount_KeyPress);
             this.textBoxAmount.Leave += new System.EventHandler(this.textBoxAmount_Leave);
@@ -708,7 +712,7 @@
             this.textBoxPayee.Location = new System.Drawing.Point(186, 284);
             this.textBoxPayee.Name = "textBoxPayee";
             this.textBoxPayee.Size = new System.Drawing.Size(394, 30);
-            this.textBoxPayee.TabIndex = 30;
+            this.textBoxPayee.TabIndex = 6;
             // 
             // label7
             // 
@@ -727,7 +731,7 @@
             this.comboBoxAccount.Location = new System.Drawing.Point(186, 247);
             this.comboBoxAccount.Name = "comboBoxAccount";
             this.comboBoxAccount.Size = new System.Drawing.Size(299, 31);
-            this.comboBoxAccount.TabIndex = 28;
+            this.comboBoxAccount.TabIndex = 5;
             // 
             // label6
             // 
@@ -746,7 +750,7 @@
             this.comboBoxPayType.Location = new System.Drawing.Point(186, 210);
             this.comboBoxPayType.Name = "comboBoxPayType";
             this.comboBoxPayType.Size = new System.Drawing.Size(196, 31);
-            this.comboBoxPayType.TabIndex = 26;
+            this.comboBoxPayType.TabIndex = 4;
             // 
             // label3
             // 
@@ -765,7 +769,7 @@
             this.comboBoxRemittanceType.Location = new System.Drawing.Point(186, 145);
             this.comboBoxRemittanceType.Name = "comboBoxRemittanceType";
             this.comboBoxRemittanceType.Size = new System.Drawing.Size(196, 31);
-            this.comboBoxRemittanceType.TabIndex = 24;
+            this.comboBoxRemittanceType.TabIndex = 3;
             // 
             // label13
             // 
@@ -804,7 +808,7 @@
             this.comboBoxApprovedBy.Location = new System.Drawing.Point(698, 81);
             this.comboBoxApprovedBy.Name = "comboBoxApprovedBy";
             this.comboBoxApprovedBy.Size = new System.Drawing.Size(288, 31);
-            this.comboBoxApprovedBy.TabIndex = 17;
+            this.comboBoxApprovedBy.TabIndex = 13;
             // 
             // comboBoxCheckedBy
             // 
@@ -813,7 +817,7 @@
             this.comboBoxCheckedBy.Location = new System.Drawing.Point(698, 44);
             this.comboBoxCheckedBy.Name = "comboBoxCheckedBy";
             this.comboBoxCheckedBy.Size = new System.Drawing.Size(288, 31);
-            this.comboBoxCheckedBy.TabIndex = 16;
+            this.comboBoxCheckedBy.TabIndex = 12;
             // 
             // comboBoxPreparedBy
             // 
@@ -823,7 +827,7 @@
             this.comboBoxPreparedBy.Location = new System.Drawing.Point(698, 7);
             this.comboBoxPreparedBy.Name = "comboBoxPreparedBy";
             this.comboBoxPreparedBy.Size = new System.Drawing.Size(288, 31);
-            this.comboBoxPreparedBy.TabIndex = 15;
+            this.comboBoxPreparedBy.TabIndex = 11;
             // 
             // label5
             // 
@@ -862,7 +866,7 @@
             this.comboBoxTerminal.Location = new System.Drawing.Point(186, 43);
             this.comboBoxTerminal.Name = "comboBoxTerminal";
             this.comboBoxTerminal.Size = new System.Drawing.Size(196, 31);
-            this.comboBoxTerminal.TabIndex = 3;
+            this.comboBoxTerminal.TabIndex = 1;
             // 
             // dateTimePickerRemittanceDate
             // 
@@ -875,8 +879,10 @@
             // 
             // textBoxRemittanceNumber
             // 
+            this.textBoxRemittanceNumber.AcceptsTab = true;
             this.textBoxRemittanceNumber.Enabled = false;
             this.textBoxRemittanceNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxRemittanceNumber.HideSelection = false;
             this.textBoxRemittanceNumber.Location = new System.Drawing.Point(186, 7);
             this.textBoxRemittanceNumber.Name = "textBoxRemittanceNumber";
             this.textBoxRemittanceNumber.Size = new System.Drawing.Size(196, 30);

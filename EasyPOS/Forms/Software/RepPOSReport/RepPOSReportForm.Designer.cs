@@ -138,7 +138,7 @@
             this.dateTimePickerStartDate.Location = new System.Drawing.Point(500, 170);
             this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
             this.dateTimePickerStartDate.Size = new System.Drawing.Size(220, 30);
-            this.dateTimePickerStartDate.TabIndex = 28;
+            this.dateTimePickerStartDate.TabIndex = 3;
             this.dateTimePickerStartDate.Visible = false;
             // 
             // labelStartDate
@@ -158,7 +158,7 @@
             this.dateTimePickerEndDate.Location = new System.Drawing.Point(500, 209);
             this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
             this.dateTimePickerEndDate.Size = new System.Drawing.Size(220, 30);
-            this.dateTimePickerEndDate.TabIndex = 26;
+            this.dateTimePickerEndDate.TabIndex = 4;
             this.dateTimePickerEndDate.Visible = false;
             // 
             // labelEndDate
@@ -178,7 +178,7 @@
             this.dateTimePickerDate.Location = new System.Drawing.Point(500, 97);
             this.dateTimePickerDate.Name = "dateTimePickerDate";
             this.dateTimePickerDate.Size = new System.Drawing.Size(220, 30);
-            this.dateTimePickerDate.TabIndex = 21;
+            this.dateTimePickerDate.TabIndex = 1;
             this.dateTimePickerDate.Visible = false;
             // 
             // labelUser
@@ -221,8 +221,7 @@
             this.comboBoxUser.Location = new System.Drawing.Point(500, 133);
             this.comboBoxUser.Name = "comboBoxUser";
             this.comboBoxUser.Size = new System.Drawing.Size(220, 31);
-            this.comboBoxUser.TabIndex = 19;
-            this.comboBoxUser.TabStop = false;
+            this.comboBoxUser.TabIndex = 2;
             this.comboBoxUser.Visible = false;
             // 
             // comboBoxTerminal
@@ -232,8 +231,7 @@
             this.comboBoxTerminal.Location = new System.Drawing.Point(500, 60);
             this.comboBoxTerminal.Name = "comboBoxTerminal";
             this.comboBoxTerminal.Size = new System.Drawing.Size(220, 31);
-            this.comboBoxTerminal.TabIndex = 15;
-            this.comboBoxTerminal.TabStop = false;
+            this.comboBoxTerminal.TabIndex = 0;
             this.comboBoxTerminal.Visible = false;
             // 
             // buttonClose

@@ -30,6 +30,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             trnStockInEntity = stockInEntity;
 
             CreateSearchItemListDataGridView();
+            textBoxSearchItemListFilter.Focus();
         }
 
         public void UpdateSearchItemListDataSource()

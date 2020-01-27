@@ -37,6 +37,7 @@ namespace EasyPOS.Forms.Software.MstUser
                 }
 
                 GetFormList();
+                comboBoxForm.Focus();
             }
 
             

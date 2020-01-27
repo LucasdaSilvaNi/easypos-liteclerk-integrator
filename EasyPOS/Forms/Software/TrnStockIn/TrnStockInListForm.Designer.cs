@@ -66,7 +66,7 @@
             this.textBoxStockInListFilter.Location = new System.Drawing.Point(159, 6);
             this.textBoxStockInListFilter.Name = "textBoxStockInListFilter";
             this.textBoxStockInListFilter.Size = new System.Drawing.Size(1229, 30);
-            this.textBoxStockInListFilter.TabIndex = 19;
+            this.textBoxStockInListFilter.TabIndex = 1;
             this.textBoxStockInListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxStockInListFilter_KeyDown);
             // 
             // buttonStockInListPageListFirst
@@ -267,7 +267,7 @@
             this.dateTimePickerStockInListFilter.Location = new System.Drawing.Point(12, 6);
             this.dateTimePickerStockInListFilter.Name = "dateTimePickerStockInListFilter";
             this.dateTimePickerStockInListFilter.Size = new System.Drawing.Size(141, 30);
-            this.dateTimePickerStockInListFilter.TabIndex = 22;
+            this.dateTimePickerStockInListFilter.TabIndex = 0;
             this.dateTimePickerStockInListFilter.ValueChanged += new System.EventHandler(this.dateTimePickerStockInListFilter_ValueChanged);
             // 
             // pictureBox1
@@ -303,7 +303,8 @@
             this.buttonClose.Location = new System.Drawing.Point(1300, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 21;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -320,7 +321,8 @@
             this.buttonAdd.Location = new System.Drawing.Point(1206, 12);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(88, 40);
-            this.buttonAdd.TabIndex = 0;
+            this.buttonAdd.TabIndex = 20;
+            this.buttonAdd.TabStop = false;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);

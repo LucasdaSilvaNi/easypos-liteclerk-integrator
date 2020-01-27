@@ -40,13 +40,6 @@
             this.dateTimePickerSysAuditTrailListEndDateFilter = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerSysAuditTrailListStartDateFilter = new System.Windows.Forms.DateTimePicker();
             this.dataGridViewAuditTrailList = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonClose = new System.Windows.Forms.Button();
-            this.tabControlSystemTable = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.panel9 = new System.Windows.Forms.Panel();
             this.ColumnAuditTrailListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAuditTrailListUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAuditTrailListAuditDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +49,13 @@
             this.ColumnAuditTrailListRecordInformation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAuditTrailListFormInformation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAuditTrailListSpace = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonClose = new System.Windows.Forms.Button();
+            this.tabControlSystemTable = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panel9 = new System.Windows.Forms.Panel();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuditTrailList)).BeginInit();
@@ -91,6 +91,7 @@
             this.buttonAuditTrailListPageListFirst.Name = "buttonAuditTrailListPageListFirst";
             this.buttonAuditTrailListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonAuditTrailListPageListFirst.TabIndex = 13;
+            this.buttonAuditTrailListPageListFirst.TabStop = false;
             this.buttonAuditTrailListPageListFirst.Text = "First";
             this.buttonAuditTrailListPageListFirst.UseVisualStyleBackColor = false;
             this.buttonAuditTrailListPageListFirst.Click += new System.EventHandler(this.buttonAudiTrailListPageListLastFirst_Click);
@@ -106,6 +107,7 @@
             this.buttonAuditTrailListPageListPrevious.Name = "buttonAuditTrailListPageListPrevious";
             this.buttonAuditTrailListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonAuditTrailListPageListPrevious.TabIndex = 14;
+            this.buttonAuditTrailListPageListPrevious.TabStop = false;
             this.buttonAuditTrailListPageListPrevious.Text = "Previous";
             this.buttonAuditTrailListPageListPrevious.UseVisualStyleBackColor = false;
             this.buttonAuditTrailListPageListPrevious.Click += new System.EventHandler(this.buttonAudiTrailListPageListLastPrevious_Click);
@@ -120,6 +122,7 @@
             this.buttonAuditTrailListPageListNext.Name = "buttonAuditTrailListPageListNext";
             this.buttonAuditTrailListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonAuditTrailListPageListNext.TabIndex = 15;
+            this.buttonAuditTrailListPageListNext.TabStop = false;
             this.buttonAuditTrailListPageListNext.Text = "Next";
             this.buttonAuditTrailListPageListNext.UseVisualStyleBackColor = false;
             this.buttonAuditTrailListPageListNext.Click += new System.EventHandler(this.buttonAudiTrailListPageListLastNext_Click);
@@ -134,6 +137,7 @@
             this.buttonAuditTrailListPageListLast.Name = "buttonAuditTrailListPageListLast";
             this.buttonAuditTrailListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonAuditTrailListPageListLast.TabIndex = 16;
+            this.buttonAuditTrailListPageListLast.TabStop = false;
             this.buttonAuditTrailListPageListLast.Text = "Last";
             this.buttonAuditTrailListPageListLast.UseVisualStyleBackColor = false;
             this.buttonAuditTrailListPageListLast.Click += new System.EventHandler(this.buttonAudiTrailListPageListLastLast_Click);
@@ -149,6 +153,7 @@
             this.textBoxAuditTrailListPageNumber.ReadOnly = true;
             this.textBoxAuditTrailListPageNumber.Size = new System.Drawing.Size(69, 20);
             this.textBoxAuditTrailListPageNumber.TabIndex = 17;
+            this.textBoxAuditTrailListPageNumber.TabStop = false;
             this.textBoxAuditTrailListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel2
@@ -170,7 +175,7 @@
             this.comboBoxUserFilter.Location = new System.Drawing.Point(298, 5);
             this.comboBoxUserFilter.Name = "comboBoxUserFilter";
             this.comboBoxUserFilter.Size = new System.Drawing.Size(264, 31);
-            this.comboBoxUserFilter.TabIndex = 24;
+            this.comboBoxUserFilter.TabIndex = 2;
             this.comboBoxUserFilter.SelectedIndexChanged += new System.EventHandler(this.AuditTrailList_Filter);
             // 
             // dateTimePickerSysAuditTrailListEndDateFilter
@@ -179,7 +184,7 @@
             this.dateTimePickerSysAuditTrailListEndDateFilter.Location = new System.Drawing.Point(151, 5);
             this.dateTimePickerSysAuditTrailListEndDateFilter.Name = "dateTimePickerSysAuditTrailListEndDateFilter";
             this.dateTimePickerSysAuditTrailListEndDateFilter.Size = new System.Drawing.Size(141, 30);
-            this.dateTimePickerSysAuditTrailListEndDateFilter.TabIndex = 23;
+            this.dateTimePickerSysAuditTrailListEndDateFilter.TabIndex = 1;
             this.dateTimePickerSysAuditTrailListEndDateFilter.ValueChanged += new System.EventHandler(this.dateTimePickerSysAuditTrailListEndDateFilter_ValueChanged);
             // 
             // dateTimePickerSysAuditTrailListStartDateFilter
@@ -188,7 +193,7 @@
             this.dateTimePickerSysAuditTrailListStartDateFilter.Location = new System.Drawing.Point(5, 5);
             this.dateTimePickerSysAuditTrailListStartDateFilter.Name = "dateTimePickerSysAuditTrailListStartDateFilter";
             this.dateTimePickerSysAuditTrailListStartDateFilter.Size = new System.Drawing.Size(141, 30);
-            this.dateTimePickerSysAuditTrailListStartDateFilter.TabIndex = 22;
+            this.dateTimePickerSysAuditTrailListStartDateFilter.TabIndex = 0;
             this.dateTimePickerSysAuditTrailListStartDateFilter.ValueChanged += new System.EventHandler(this.dateTimePickerSysAuditTrailListStartDateFilter_ValueChanged);
             // 
             // dataGridViewAuditTrailList
@@ -220,86 +225,6 @@
             this.dataGridViewAuditTrailList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewAuditTrailList.Size = new System.Drawing.Size(1376, 494);
             this.dataGridViewAuditTrailList.TabIndex = 20;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.buttonClose);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1400, 63);
-            this.panel1.TabIndex = 8;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Utilities;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(63, 17);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(197, 35);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "System Utilities";
-            // 
-            // buttonClose
-            // 
-            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(79)))), ((int)(((byte)(28)))));
-            this.buttonClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(79)))), ((int)(((byte)(28)))));
-            this.buttonClose.FlatAppearance.BorderSize = 0;
-            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(1300, 12);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
-            this.buttonClose.Text = "Close";
-            this.buttonClose.UseVisualStyleBackColor = false;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
-            // 
-            // tabControlSystemTable
-            // 
-            this.tabControlSystemTable.Controls.Add(this.tabPage1);
-            this.tabControlSystemTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlSystemTable.Location = new System.Drawing.Point(0, 63);
-            this.tabControlSystemTable.Name = "tabControlSystemTable";
-            this.tabControlSystemTable.SelectedIndex = 0;
-            this.tabControlSystemTable.Size = new System.Drawing.Size(1400, 637);
-            this.tabControlSystemTable.TabIndex = 10;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.panel9);
-            this.tabPage1.Location = new System.Drawing.Point(4, 32);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1392, 601);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Audit Trail";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.panel2);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(3, 3);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1386, 595);
-            this.panel9.TabIndex = 1;
             // 
             // ColumnAuditTrailListId
             // 
@@ -372,6 +297,87 @@
             this.ColumnAuditTrailListSpace.HeaderText = "";
             this.ColumnAuditTrailListSpace.Name = "ColumnAuditTrailListSpace";
             this.ColumnAuditTrailListSpace.ReadOnly = true;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.buttonClose);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1400, 63);
+            this.panel1.TabIndex = 8;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Utilities;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(63, 17);
+            this.label1.Margin = new System.Windows.Forms.Padding(0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(197, 35);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "System Utilities";
+            // 
+            // buttonClose
+            // 
+            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(79)))), ((int)(((byte)(28)))));
+            this.buttonClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(79)))), ((int)(((byte)(28)))));
+            this.buttonClose.FlatAppearance.BorderSize = 0;
+            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonClose.ForeColor = System.Drawing.Color.White;
+            this.buttonClose.Location = new System.Drawing.Point(1300, 12);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(88, 40);
+            this.buttonClose.TabIndex = 20;
+            this.buttonClose.TabStop = false;
+            this.buttonClose.Text = "Close";
+            this.buttonClose.UseVisualStyleBackColor = false;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            // 
+            // tabControlSystemTable
+            // 
+            this.tabControlSystemTable.Controls.Add(this.tabPage1);
+            this.tabControlSystemTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlSystemTable.Location = new System.Drawing.Point(0, 63);
+            this.tabControlSystemTable.Name = "tabControlSystemTable";
+            this.tabControlSystemTable.SelectedIndex = 0;
+            this.tabControlSystemTable.Size = new System.Drawing.Size(1400, 637);
+            this.tabControlSystemTable.TabIndex = 10;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.panel9);
+            this.tabPage1.Location = new System.Drawing.Point(4, 32);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1392, 601);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Audit Trail";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.panel2);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(3, 3);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1386, 595);
+            this.panel9.TabIndex = 1;
             // 
             // SysUtilitiesListForm
             // 

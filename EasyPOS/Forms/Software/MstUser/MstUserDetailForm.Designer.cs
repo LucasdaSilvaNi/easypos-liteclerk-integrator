@@ -111,7 +111,8 @@
             this.buttonLock.Location = new System.Drawing.Point(1112, 12);
             this.buttonLock.Name = "buttonLock";
             this.buttonLock.Size = new System.Drawing.Size(88, 40);
-            this.buttonLock.TabIndex = 4;
+            this.buttonLock.TabIndex = 20;
+            this.buttonLock.TabStop = false;
             this.buttonLock.Text = "Lock";
             this.buttonLock.UseVisualStyleBackColor = false;
             this.buttonLock.Click += new System.EventHandler(this.buttonLock_Click);
@@ -149,7 +150,8 @@
             this.buttonClose.Location = new System.Drawing.Point(1300, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 22;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -166,7 +168,8 @@
             this.buttonUnlock.Location = new System.Drawing.Point(1206, 12);
             this.buttonUnlock.Name = "buttonUnlock";
             this.buttonUnlock.Size = new System.Drawing.Size(88, 40);
-            this.buttonUnlock.TabIndex = 0;
+            this.buttonUnlock.TabIndex = 21;
+            this.buttonUnlock.TabStop = false;
             this.buttonUnlock.Text = "Unlock";
             this.buttonUnlock.UseVisualStyleBackColor = false;
             this.buttonUnlock.Click += new System.EventHandler(this.buttonUnlock_Click);
@@ -448,7 +451,7 @@
             this.buttonCopyUseRights.Location = new System.Drawing.Point(1206, 7);
             this.buttonCopyUseRights.Name = "buttonCopyUseRights";
             this.buttonCopyUseRights.Size = new System.Drawing.Size(88, 40);
-            this.buttonCopyUseRights.TabIndex = 9;
+            this.buttonCopyUseRights.TabIndex = 23;
             this.buttonCopyUseRights.TabStop = false;
             this.buttonCopyUseRights.Text = "Copy";
             this.buttonCopyUseRights.UseVisualStyleBackColor = false;
@@ -466,7 +469,7 @@
             this.buttonAddUserForm.Location = new System.Drawing.Point(1300, 6);
             this.buttonAddUserForm.Name = "buttonAddUserForm";
             this.buttonAddUserForm.Size = new System.Drawing.Size(88, 40);
-            this.buttonAddUserForm.TabIndex = 8;
+            this.buttonAddUserForm.TabIndex = 24;
             this.buttonAddUserForm.TabStop = false;
             this.buttonAddUserForm.Text = "Add";
             this.buttonAddUserForm.UseVisualStyleBackColor = false;
@@ -496,7 +499,8 @@
             this.buttonUserFormListPageListFirst.Location = new System.Drawing.Point(12, 9);
             this.buttonUserFormListPageListFirst.Name = "buttonUserFormListPageListFirst";
             this.buttonUserFormListPageListFirst.Size = new System.Drawing.Size(82, 32);
-            this.buttonUserFormListPageListFirst.TabIndex = 13;
+            this.buttonUserFormListPageListFirst.TabIndex = 25;
+            this.buttonUserFormListPageListFirst.TabStop = false;
             this.buttonUserFormListPageListFirst.Text = "First";
             this.buttonUserFormListPageListFirst.UseVisualStyleBackColor = false;
             this.buttonUserFormListPageListFirst.Click += new System.EventHandler(this.buttonUserFormListPageListFirst_Click);
@@ -511,7 +515,8 @@
             this.buttonUserFormListPageListPrevious.Location = new System.Drawing.Point(100, 9);
             this.buttonUserFormListPageListPrevious.Name = "buttonUserFormListPageListPrevious";
             this.buttonUserFormListPageListPrevious.Size = new System.Drawing.Size(82, 32);
-            this.buttonUserFormListPageListPrevious.TabIndex = 14;
+            this.buttonUserFormListPageListPrevious.TabIndex = 26;
+            this.buttonUserFormListPageListPrevious.TabStop = false;
             this.buttonUserFormListPageListPrevious.Text = "Previous";
             this.buttonUserFormListPageListPrevious.UseVisualStyleBackColor = false;
             this.buttonUserFormListPageListPrevious.Click += new System.EventHandler(this.buttonUserFormListPageListPrevious_Click);
@@ -525,7 +530,8 @@
             this.buttonUserFormListPageListNext.Location = new System.Drawing.Point(263, 9);
             this.buttonUserFormListPageListNext.Name = "buttonUserFormListPageListNext";
             this.buttonUserFormListPageListNext.Size = new System.Drawing.Size(82, 32);
-            this.buttonUserFormListPageListNext.TabIndex = 15;
+            this.buttonUserFormListPageListNext.TabIndex = 28;
+            this.buttonUserFormListPageListNext.TabStop = false;
             this.buttonUserFormListPageListNext.Text = "Next";
             this.buttonUserFormListPageListNext.UseVisualStyleBackColor = false;
             this.buttonUserFormListPageListNext.Click += new System.EventHandler(this.buttonUserFormListPageListNext_Click);
@@ -539,7 +545,8 @@
             this.buttonUserFormListPageListLast.Location = new System.Drawing.Point(348, 9);
             this.buttonUserFormListPageListLast.Name = "buttonUserFormListPageListLast";
             this.buttonUserFormListPageListLast.Size = new System.Drawing.Size(82, 32);
-            this.buttonUserFormListPageListLast.TabIndex = 16;
+            this.buttonUserFormListPageListLast.TabIndex = 29;
+            this.buttonUserFormListPageListLast.TabStop = false;
             this.buttonUserFormListPageListLast.Text = "Last";
             this.buttonUserFormListPageListLast.UseVisualStyleBackColor = false;
             this.buttonUserFormListPageListLast.Click += new System.EventHandler(this.buttonUserFormListPageListLast_Click);
@@ -554,7 +561,8 @@
             this.textBoxUserFormListPageNumber.Name = "textBoxUserFormListPageNumber";
             this.textBoxUserFormListPageNumber.ReadOnly = true;
             this.textBoxUserFormListPageNumber.Size = new System.Drawing.Size(69, 20);
-            this.textBoxUserFormListPageNumber.TabIndex = 17;
+            this.textBoxUserFormListPageNumber.TabIndex = 27;
+            this.textBoxUserFormListPageNumber.TabStop = false;
             this.textBoxUserFormListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel3
@@ -580,8 +588,7 @@
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '•';
             this.textBoxPassword.Size = new System.Drawing.Size(319, 30);
-            this.textBoxPassword.TabIndex = 5;
-            this.textBoxPassword.TabStop = false;
+            this.textBoxPassword.TabIndex = 2;
             // 
             // label5
             // 
@@ -595,12 +602,13 @@
             // 
             // textBoxFullName
             // 
+            this.textBoxFullName.AcceptsTab = true;
             this.textBoxFullName.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxFullName.HideSelection = false;
             this.textBoxFullName.Location = new System.Drawing.Point(110, 7);
             this.textBoxFullName.Name = "textBoxFullName";
             this.textBoxFullName.Size = new System.Drawing.Size(319, 30);
-            this.textBoxFullName.TabIndex = 3;
-            this.textBoxFullName.TabStop = false;
+            this.textBoxFullName.TabIndex = 0;
             // 
             // label4
             // 
@@ -619,7 +627,6 @@
             this.textBoxUserName.Name = "textBoxUserName";
             this.textBoxUserName.Size = new System.Drawing.Size(319, 30);
             this.textBoxUserName.TabIndex = 1;
-            this.textBoxUserName.TabStop = false;
             // 
             // label3
             // 

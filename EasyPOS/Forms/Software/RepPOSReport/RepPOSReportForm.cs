@@ -77,6 +77,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                         dateTimePickerEndDate.Visible = false;
                         labelEndDate.Visible = false;
+                        comboBoxTerminal.Focus();
                         break;
                     case "X Reading Report":
                         labelTerminal.Visible = true;
@@ -93,6 +94,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                         dateTimePickerEndDate.Visible = false;
                         labelEndDate.Visible = false;
+                        comboBoxTerminal.Focus();
                         break;
                     case "E-Journal Report (ejournal.txt)":
                         labelTerminal.Visible = true;
@@ -109,7 +111,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                         dateTimePickerEndDate.Visible = true;
                         labelEndDate.Visible = true;
-
+                        comboBoxTerminal.Focus();
                         break;
                     case "E-Sales Report (esales.csv)":
                         labelTerminal.Visible = true;
@@ -126,7 +128,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                         dateTimePickerEndDate.Visible = true;
                         labelEndDate.Visible = true;
-
+                        comboBoxTerminal.Focus();
                         break;
                     case "Collection Register (collectionregister.csv)":
                         labelTerminal.Visible = true;
@@ -143,6 +145,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                         dateTimePickerEndDate.Visible = true;
                         labelEndDate.Visible = true;
+                        comboBoxTerminal.Focus();
                         break;
                     default:
                         labelTerminal.Visible = false;
@@ -159,6 +162,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                         dateTimePickerEndDate.Visible = false;
                         labelEndDate.Visible = false;
+                        comboBoxTerminal.Focus();
                         break;
                 }
             }

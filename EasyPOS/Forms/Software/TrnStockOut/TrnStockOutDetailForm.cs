@@ -145,6 +145,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
 
             dataGridViewStockOutLineList.Columns[0].Visible = !isLocked;
             dataGridViewStockOutLineList.Columns[1].Visible = !isLocked;
+            dateTimePickerStockOutDate.Focus();
         }
 
         private void buttonLock_Click(object sender, EventArgs e)

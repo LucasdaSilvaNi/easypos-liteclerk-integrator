@@ -36,6 +36,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                 }
 
                 LoadPeriod();
+                textBoxPeriod.Focus();
             }
         }
 

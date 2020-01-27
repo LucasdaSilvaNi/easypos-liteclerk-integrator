@@ -44,6 +44,17 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dataGridViewStockCountLineList = new System.Windows.Forms.DataGridView();
+            this.ColumnStockCountLineListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnStockCountLineListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnStockCountLineListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListStockOutId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListUnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.textBoxBarcode = new System.Windows.Forms.TextBox();
             this.buttonBarcode = new System.Windows.Forms.Button();
@@ -67,17 +78,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePickerStockCountDate = new System.Windows.Forms.DateTimePicker();
             this.textBoxStockCountNumber = new System.Windows.Forms.TextBox();
-            this.ColumnStockCountLineListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnStockCountLineListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnStockCountLineListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockCountLineListStockOutId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockCountLineListItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockCountLineListItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockCountLineListUnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockCountLineListUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockCountLineListQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockCountLineListCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockCountLineListAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -115,7 +115,8 @@
             this.buttonLock.Location = new System.Drawing.Point(1018, 12);
             this.buttonLock.Name = "buttonLock";
             this.buttonLock.Size = new System.Drawing.Size(88, 40);
-            this.buttonLock.TabIndex = 5;
+            this.buttonLock.TabIndex = 20;
+            this.buttonLock.TabStop = false;
             this.buttonLock.Text = "Lock";
             this.buttonLock.UseVisualStyleBackColor = false;
             this.buttonLock.Click += new System.EventHandler(this.buttonLock_Click);
@@ -132,7 +133,8 @@
             this.buttonUnlock.Location = new System.Drawing.Point(1112, 12);
             this.buttonUnlock.Name = "buttonUnlock";
             this.buttonUnlock.Size = new System.Drawing.Size(88, 40);
-            this.buttonUnlock.TabIndex = 4;
+            this.buttonUnlock.TabIndex = 21;
+            this.buttonUnlock.TabStop = false;
             this.buttonUnlock.Text = "Unlock";
             this.buttonUnlock.UseVisualStyleBackColor = false;
             this.buttonUnlock.Click += new System.EventHandler(this.buttonUnlock_Click);
@@ -170,7 +172,8 @@
             this.buttonClose.Location = new System.Drawing.Point(1300, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 23;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -187,7 +190,8 @@
             this.buttonPrint.Location = new System.Drawing.Point(1206, 12);
             this.buttonPrint.Name = "buttonPrint";
             this.buttonPrint.Size = new System.Drawing.Size(88, 40);
-            this.buttonPrint.TabIndex = 0;
+            this.buttonPrint.TabIndex = 22;
+            this.buttonPrint.TabStop = false;
             this.buttonPrint.Text = "Print";
             this.buttonPrint.UseVisualStyleBackColor = false;
             this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
@@ -257,284 +261,6 @@
             this.dataGridViewStockCountLineList.TabIndex = 2;
             this.dataGridViewStockCountLineList.TabStop = false;
             this.dataGridViewStockCountLineList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStockCountLineList_CellClick);
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Controls.Add(this.textBoxBarcode);
-            this.panel5.Controls.Add(this.buttonBarcode);
-            this.panel5.Controls.Add(this.buttonSearchItem);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 234);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1400, 44);
-            this.panel5.TabIndex = 28;
-            // 
-            // textBoxBarcode
-            // 
-            this.textBoxBarcode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.textBoxBarcode.Location = new System.Drawing.Point(195, 5);
-            this.textBoxBarcode.Name = "textBoxBarcode";
-            this.textBoxBarcode.Size = new System.Drawing.Size(742, 30);
-            this.textBoxBarcode.TabIndex = 10;
-            this.textBoxBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarcode_KeyDown);
-            // 
-            // buttonBarcode
-            // 
-            this.buttonBarcode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonBarcode.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
-            this.buttonBarcode.FlatAppearance.BorderSize = 0;
-            this.buttonBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBarcode.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonBarcode.ForeColor = System.Drawing.Color.White;
-            this.buttonBarcode.Location = new System.Drawing.Point(12, 5);
-            this.buttonBarcode.Name = "buttonBarcode";
-            this.buttonBarcode.Size = new System.Drawing.Size(177, 32);
-            this.buttonBarcode.TabIndex = 9;
-            this.buttonBarcode.TabStop = false;
-            this.buttonBarcode.Text = "Barcode";
-            this.buttonBarcode.UseVisualStyleBackColor = false;
-            this.buttonBarcode.Click += new System.EventHandler(this.buttonBarcode_Click);
-            // 
-            // buttonSearchItem
-            // 
-            this.buttonSearchItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSearchItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonSearchItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
-            this.buttonSearchItem.FlatAppearance.BorderSize = 0;
-            this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
-            this.buttonSearchItem.Location = new System.Drawing.Point(1206, 5);
-            this.buttonSearchItem.Name = "buttonSearchItem";
-            this.buttonSearchItem.Size = new System.Drawing.Size(182, 32);
-            this.buttonSearchItem.TabIndex = 8;
-            this.buttonSearchItem.TabStop = false;
-            this.buttonSearchItem.Text = "Search Item";
-            this.buttonSearchItem.UseVisualStyleBackColor = false;
-            this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.buttonStockCountLineListPageListFirst);
-            this.panel4.Controls.Add(this.buttonStockCountLineListPageListPrevious);
-            this.panel4.Controls.Add(this.buttonStockCountLineListPageListNext);
-            this.panel4.Controls.Add(this.buttonStockCountLineListPageListLast);
-            this.panel4.Controls.Add(this.textBoxStockCountLineListPageNumber);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 584);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1400, 53);
-            this.panel4.TabIndex = 25;
-            // 
-            // buttonStockCountLineListPageListFirst
-            // 
-            this.buttonStockCountLineListPageListFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonStockCountLineListPageListFirst.Enabled = false;
-            this.buttonStockCountLineListPageListFirst.FlatAppearance.BorderSize = 0;
-            this.buttonStockCountLineListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStockCountLineListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockCountLineListPageListFirst.Location = new System.Drawing.Point(12, 9);
-            this.buttonStockCountLineListPageListFirst.Name = "buttonStockCountLineListPageListFirst";
-            this.buttonStockCountLineListPageListFirst.Size = new System.Drawing.Size(82, 32);
-            this.buttonStockCountLineListPageListFirst.TabIndex = 13;
-            this.buttonStockCountLineListPageListFirst.Text = "First";
-            this.buttonStockCountLineListPageListFirst.UseVisualStyleBackColor = false;
-            this.buttonStockCountLineListPageListFirst.Click += new System.EventHandler(this.buttonStockCountLineListPageListFirst_Click);
-            // 
-            // buttonStockCountLineListPageListPrevious
-            // 
-            this.buttonStockCountLineListPageListPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonStockCountLineListPageListPrevious.Enabled = false;
-            this.buttonStockCountLineListPageListPrevious.FlatAppearance.BorderSize = 0;
-            this.buttonStockCountLineListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStockCountLineListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockCountLineListPageListPrevious.Location = new System.Drawing.Point(100, 9);
-            this.buttonStockCountLineListPageListPrevious.Name = "buttonStockCountLineListPageListPrevious";
-            this.buttonStockCountLineListPageListPrevious.Size = new System.Drawing.Size(82, 32);
-            this.buttonStockCountLineListPageListPrevious.TabIndex = 14;
-            this.buttonStockCountLineListPageListPrevious.Text = "Previous";
-            this.buttonStockCountLineListPageListPrevious.UseVisualStyleBackColor = false;
-            this.buttonStockCountLineListPageListPrevious.Click += new System.EventHandler(this.buttonStockCountLineListPageListPrevious_Click);
-            // 
-            // buttonStockCountLineListPageListNext
-            // 
-            this.buttonStockCountLineListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonStockCountLineListPageListNext.FlatAppearance.BorderSize = 0;
-            this.buttonStockCountLineListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStockCountLineListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockCountLineListPageListNext.Location = new System.Drawing.Point(263, 9);
-            this.buttonStockCountLineListPageListNext.Name = "buttonStockCountLineListPageListNext";
-            this.buttonStockCountLineListPageListNext.Size = new System.Drawing.Size(82, 32);
-            this.buttonStockCountLineListPageListNext.TabIndex = 15;
-            this.buttonStockCountLineListPageListNext.Text = "Next";
-            this.buttonStockCountLineListPageListNext.UseVisualStyleBackColor = false;
-            this.buttonStockCountLineListPageListNext.Click += new System.EventHandler(this.buttonStockCountLineListPageListNext_Click);
-            // 
-            // buttonStockCountLineListPageListLast
-            // 
-            this.buttonStockCountLineListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonStockCountLineListPageListLast.FlatAppearance.BorderSize = 0;
-            this.buttonStockCountLineListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStockCountLineListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockCountLineListPageListLast.Location = new System.Drawing.Point(348, 9);
-            this.buttonStockCountLineListPageListLast.Name = "buttonStockCountLineListPageListLast";
-            this.buttonStockCountLineListPageListLast.Size = new System.Drawing.Size(82, 32);
-            this.buttonStockCountLineListPageListLast.TabIndex = 16;
-            this.buttonStockCountLineListPageListLast.Text = "Last";
-            this.buttonStockCountLineListPageListLast.UseVisualStyleBackColor = false;
-            this.buttonStockCountLineListPageListLast.Click += new System.EventHandler(this.buttonStockCountLineListPageListLast_Click);
-            // 
-            // textBoxStockCountLineListPageNumber
-            // 
-            this.textBoxStockCountLineListPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxStockCountLineListPageNumber.BackColor = System.Drawing.Color.White;
-            this.textBoxStockCountLineListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxStockCountLineListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxStockCountLineListPageNumber.Location = new System.Drawing.Point(188, 14);
-            this.textBoxStockCountLineListPageNumber.Name = "textBoxStockCountLineListPageNumber";
-            this.textBoxStockCountLineListPageNumber.ReadOnly = true;
-            this.textBoxStockCountLineListPageNumber.Size = new System.Drawing.Size(69, 20);
-            this.textBoxStockCountLineListPageNumber.TabIndex = 17;
-            this.textBoxStockCountLineListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel3.Controls.Add(this.textBoxRemarks);
-            this.panel3.Controls.Add(this.label13);
-            this.panel3.Controls.Add(this.label12);
-            this.panel3.Controls.Add(this.label11);
-            this.panel3.Controls.Add(this.comboBoxApprovedBy);
-            this.panel3.Controls.Add(this.comboBoxCheckedBy);
-            this.panel3.Controls.Add(this.comboBoxPreparedBy);
-            this.panel3.Controls.Add(this.label7);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.dateTimePickerStockCountDate);
-            this.panel3.Controls.Add(this.textBoxStockCountNumber);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(10);
-            this.panel3.Size = new System.Drawing.Size(1400, 234);
-            this.panel3.TabIndex = 0;
-            // 
-            // textBoxRemarks
-            // 
-            this.textBoxRemarks.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxRemarks.Location = new System.Drawing.Point(195, 79);
-            this.textBoxRemarks.Multiline = true;
-            this.textBoxRemarks.Name = "textBoxRemarks";
-            this.textBoxRemarks.Size = new System.Drawing.Size(298, 142);
-            this.textBoxRemarks.TabIndex = 24;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label13.Location = new System.Drawing.Point(499, 84);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(111, 23);
-            this.label13.TabIndex = 23;
-            this.label13.Text = "Approved by:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label12.Location = new System.Drawing.Point(508, 47);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(102, 23);
-            this.label12.TabIndex = 22;
-            this.label12.Text = "Checked by:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label11.Location = new System.Drawing.Point(504, 10);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(106, 23);
-            this.label11.TabIndex = 21;
-            this.label11.Text = "Prepared by:";
-            // 
-            // comboBoxApprovedBy
-            // 
-            this.comboBoxApprovedBy.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBoxApprovedBy.FormattingEnabled = true;
-            this.comboBoxApprovedBy.Location = new System.Drawing.Point(616, 81);
-            this.comboBoxApprovedBy.Name = "comboBoxApprovedBy";
-            this.comboBoxApprovedBy.Size = new System.Drawing.Size(288, 31);
-            this.comboBoxApprovedBy.TabIndex = 17;
-            // 
-            // comboBoxCheckedBy
-            // 
-            this.comboBoxCheckedBy.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBoxCheckedBy.FormattingEnabled = true;
-            this.comboBoxCheckedBy.Location = new System.Drawing.Point(616, 44);
-            this.comboBoxCheckedBy.Name = "comboBoxCheckedBy";
-            this.comboBoxCheckedBy.Size = new System.Drawing.Size(288, 31);
-            this.comboBoxCheckedBy.TabIndex = 16;
-            // 
-            // comboBoxPreparedBy
-            // 
-            this.comboBoxPreparedBy.Enabled = false;
-            this.comboBoxPreparedBy.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBoxPreparedBy.FormattingEnabled = true;
-            this.comboBoxPreparedBy.Location = new System.Drawing.Point(616, 7);
-            this.comboBoxPreparedBy.Name = "comboBoxPreparedBy";
-            this.comboBoxPreparedBy.Size = new System.Drawing.Size(288, 31);
-            this.comboBoxPreparedBy.TabIndex = 15;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label7.Location = new System.Drawing.Point(111, 82);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 23);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Remarks:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label4.Location = new System.Drawing.Point(40, 46);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(149, 23);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Stock-Count Date:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label2.Location = new System.Drawing.Point(13, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(176, 23);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Stock-Count Number:";
-            // 
-            // dateTimePickerStockCountDate
-            // 
-            this.dateTimePickerStockCountDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.dateTimePickerStockCountDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerStockCountDate.Location = new System.Drawing.Point(195, 43);
-            this.dateTimePickerStockCountDate.Name = "dateTimePickerStockCountDate";
-            this.dateTimePickerStockCountDate.Size = new System.Drawing.Size(196, 30);
-            this.dateTimePickerStockCountDate.TabIndex = 2;
-            // 
-            // textBoxStockCountNumber
-            // 
-            this.textBoxStockCountNumber.Enabled = false;
-            this.textBoxStockCountNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxStockCountNumber.Location = new System.Drawing.Point(195, 7);
-            this.textBoxStockCountNumber.Name = "textBoxStockCountNumber";
-            this.textBoxStockCountNumber.Size = new System.Drawing.Size(196, 30);
-            this.textBoxStockCountNumber.TabIndex = 0;
             // 
             // ColumnStockCountLineListButtonEdit
             // 
@@ -631,6 +357,290 @@
             this.ColumnStockCountLineListAmount.Name = "ColumnStockCountLineListAmount";
             this.ColumnStockCountLineListAmount.ReadOnly = true;
             this.ColumnStockCountLineListAmount.Width = 150;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Controls.Add(this.textBoxBarcode);
+            this.panel5.Controls.Add(this.buttonBarcode);
+            this.panel5.Controls.Add(this.buttonSearchItem);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 234);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1400, 44);
+            this.panel5.TabIndex = 28;
+            // 
+            // textBoxBarcode
+            // 
+            this.textBoxBarcode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.textBoxBarcode.Location = new System.Drawing.Point(195, 5);
+            this.textBoxBarcode.Name = "textBoxBarcode";
+            this.textBoxBarcode.Size = new System.Drawing.Size(742, 30);
+            this.textBoxBarcode.TabIndex = 10;
+            this.textBoxBarcode.TabStop = false;
+            this.textBoxBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarcode_KeyDown);
+            // 
+            // buttonBarcode
+            // 
+            this.buttonBarcode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonBarcode.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
+            this.buttonBarcode.FlatAppearance.BorderSize = 0;
+            this.buttonBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBarcode.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonBarcode.ForeColor = System.Drawing.Color.White;
+            this.buttonBarcode.Location = new System.Drawing.Point(12, 5);
+            this.buttonBarcode.Name = "buttonBarcode";
+            this.buttonBarcode.Size = new System.Drawing.Size(177, 32);
+            this.buttonBarcode.TabIndex = 9;
+            this.buttonBarcode.TabStop = false;
+            this.buttonBarcode.Text = "Barcode";
+            this.buttonBarcode.UseVisualStyleBackColor = false;
+            this.buttonBarcode.Click += new System.EventHandler(this.buttonBarcode_Click);
+            // 
+            // buttonSearchItem
+            // 
+            this.buttonSearchItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSearchItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonSearchItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
+            this.buttonSearchItem.FlatAppearance.BorderSize = 0;
+            this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
+            this.buttonSearchItem.Location = new System.Drawing.Point(1206, 5);
+            this.buttonSearchItem.Name = "buttonSearchItem";
+            this.buttonSearchItem.Size = new System.Drawing.Size(182, 32);
+            this.buttonSearchItem.TabIndex = 8;
+            this.buttonSearchItem.TabStop = false;
+            this.buttonSearchItem.Text = "Search Item";
+            this.buttonSearchItem.UseVisualStyleBackColor = false;
+            this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.buttonStockCountLineListPageListFirst);
+            this.panel4.Controls.Add(this.buttonStockCountLineListPageListPrevious);
+            this.panel4.Controls.Add(this.buttonStockCountLineListPageListNext);
+            this.panel4.Controls.Add(this.buttonStockCountLineListPageListLast);
+            this.panel4.Controls.Add(this.textBoxStockCountLineListPageNumber);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 584);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1400, 53);
+            this.panel4.TabIndex = 25;
+            // 
+            // buttonStockCountLineListPageListFirst
+            // 
+            this.buttonStockCountLineListPageListFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonStockCountLineListPageListFirst.Enabled = false;
+            this.buttonStockCountLineListPageListFirst.FlatAppearance.BorderSize = 0;
+            this.buttonStockCountLineListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStockCountLineListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonStockCountLineListPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonStockCountLineListPageListFirst.Name = "buttonStockCountLineListPageListFirst";
+            this.buttonStockCountLineListPageListFirst.Size = new System.Drawing.Size(82, 32);
+            this.buttonStockCountLineListPageListFirst.TabIndex = 13;
+            this.buttonStockCountLineListPageListFirst.TabStop = false;
+            this.buttonStockCountLineListPageListFirst.Text = "First";
+            this.buttonStockCountLineListPageListFirst.UseVisualStyleBackColor = false;
+            this.buttonStockCountLineListPageListFirst.Click += new System.EventHandler(this.buttonStockCountLineListPageListFirst_Click);
+            // 
+            // buttonStockCountLineListPageListPrevious
+            // 
+            this.buttonStockCountLineListPageListPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonStockCountLineListPageListPrevious.Enabled = false;
+            this.buttonStockCountLineListPageListPrevious.FlatAppearance.BorderSize = 0;
+            this.buttonStockCountLineListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStockCountLineListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonStockCountLineListPageListPrevious.Location = new System.Drawing.Point(100, 9);
+            this.buttonStockCountLineListPageListPrevious.Name = "buttonStockCountLineListPageListPrevious";
+            this.buttonStockCountLineListPageListPrevious.Size = new System.Drawing.Size(82, 32);
+            this.buttonStockCountLineListPageListPrevious.TabIndex = 14;
+            this.buttonStockCountLineListPageListPrevious.TabStop = false;
+            this.buttonStockCountLineListPageListPrevious.Text = "Previous";
+            this.buttonStockCountLineListPageListPrevious.UseVisualStyleBackColor = false;
+            this.buttonStockCountLineListPageListPrevious.Click += new System.EventHandler(this.buttonStockCountLineListPageListPrevious_Click);
+            // 
+            // buttonStockCountLineListPageListNext
+            // 
+            this.buttonStockCountLineListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonStockCountLineListPageListNext.FlatAppearance.BorderSize = 0;
+            this.buttonStockCountLineListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStockCountLineListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonStockCountLineListPageListNext.Location = new System.Drawing.Point(263, 9);
+            this.buttonStockCountLineListPageListNext.Name = "buttonStockCountLineListPageListNext";
+            this.buttonStockCountLineListPageListNext.Size = new System.Drawing.Size(82, 32);
+            this.buttonStockCountLineListPageListNext.TabIndex = 15;
+            this.buttonStockCountLineListPageListNext.TabStop = false;
+            this.buttonStockCountLineListPageListNext.Text = "Next";
+            this.buttonStockCountLineListPageListNext.UseVisualStyleBackColor = false;
+            this.buttonStockCountLineListPageListNext.Click += new System.EventHandler(this.buttonStockCountLineListPageListNext_Click);
+            // 
+            // buttonStockCountLineListPageListLast
+            // 
+            this.buttonStockCountLineListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonStockCountLineListPageListLast.FlatAppearance.BorderSize = 0;
+            this.buttonStockCountLineListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStockCountLineListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonStockCountLineListPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonStockCountLineListPageListLast.Name = "buttonStockCountLineListPageListLast";
+            this.buttonStockCountLineListPageListLast.Size = new System.Drawing.Size(82, 32);
+            this.buttonStockCountLineListPageListLast.TabIndex = 16;
+            this.buttonStockCountLineListPageListLast.TabStop = false;
+            this.buttonStockCountLineListPageListLast.Text = "Last";
+            this.buttonStockCountLineListPageListLast.UseVisualStyleBackColor = false;
+            this.buttonStockCountLineListPageListLast.Click += new System.EventHandler(this.buttonStockCountLineListPageListLast_Click);
+            // 
+            // textBoxStockCountLineListPageNumber
+            // 
+            this.textBoxStockCountLineListPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBoxStockCountLineListPageNumber.BackColor = System.Drawing.Color.White;
+            this.textBoxStockCountLineListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxStockCountLineListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textBoxStockCountLineListPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxStockCountLineListPageNumber.Name = "textBoxStockCountLineListPageNumber";
+            this.textBoxStockCountLineListPageNumber.ReadOnly = true;
+            this.textBoxStockCountLineListPageNumber.Size = new System.Drawing.Size(69, 20);
+            this.textBoxStockCountLineListPageNumber.TabIndex = 17;
+            this.textBoxStockCountLineListPageNumber.TabStop = false;
+            this.textBoxStockCountLineListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel3.Controls.Add(this.textBoxRemarks);
+            this.panel3.Controls.Add(this.label13);
+            this.panel3.Controls.Add(this.label12);
+            this.panel3.Controls.Add(this.label11);
+            this.panel3.Controls.Add(this.comboBoxApprovedBy);
+            this.panel3.Controls.Add(this.comboBoxCheckedBy);
+            this.panel3.Controls.Add(this.comboBoxPreparedBy);
+            this.panel3.Controls.Add(this.label7);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.dateTimePickerStockCountDate);
+            this.panel3.Controls.Add(this.textBoxStockCountNumber);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(10);
+            this.panel3.Size = new System.Drawing.Size(1400, 234);
+            this.panel3.TabIndex = 0;
+            // 
+            // textBoxRemarks
+            // 
+            this.textBoxRemarks.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxRemarks.Location = new System.Drawing.Point(195, 79);
+            this.textBoxRemarks.Multiline = true;
+            this.textBoxRemarks.Name = "textBoxRemarks";
+            this.textBoxRemarks.Size = new System.Drawing.Size(298, 142);
+            this.textBoxRemarks.TabIndex = 2;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label13.Location = new System.Drawing.Point(499, 84);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(111, 23);
+            this.label13.TabIndex = 23;
+            this.label13.Text = "Approved by:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label12.Location = new System.Drawing.Point(508, 47);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(102, 23);
+            this.label12.TabIndex = 22;
+            this.label12.Text = "Checked by:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label11.Location = new System.Drawing.Point(504, 10);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(106, 23);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "Prepared by:";
+            // 
+            // comboBoxApprovedBy
+            // 
+            this.comboBoxApprovedBy.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxApprovedBy.FormattingEnabled = true;
+            this.comboBoxApprovedBy.Location = new System.Drawing.Point(616, 81);
+            this.comboBoxApprovedBy.Name = "comboBoxApprovedBy";
+            this.comboBoxApprovedBy.Size = new System.Drawing.Size(288, 31);
+            this.comboBoxApprovedBy.TabIndex = 5;
+            // 
+            // comboBoxCheckedBy
+            // 
+            this.comboBoxCheckedBy.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxCheckedBy.FormattingEnabled = true;
+            this.comboBoxCheckedBy.Location = new System.Drawing.Point(616, 44);
+            this.comboBoxCheckedBy.Name = "comboBoxCheckedBy";
+            this.comboBoxCheckedBy.Size = new System.Drawing.Size(288, 31);
+            this.comboBoxCheckedBy.TabIndex = 4;
+            // 
+            // comboBoxPreparedBy
+            // 
+            this.comboBoxPreparedBy.Enabled = false;
+            this.comboBoxPreparedBy.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxPreparedBy.FormattingEnabled = true;
+            this.comboBoxPreparedBy.Location = new System.Drawing.Point(616, 7);
+            this.comboBoxPreparedBy.Name = "comboBoxPreparedBy";
+            this.comboBoxPreparedBy.Size = new System.Drawing.Size(288, 31);
+            this.comboBoxPreparedBy.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label7.Location = new System.Drawing.Point(111, 82);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 23);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Remarks:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label4.Location = new System.Drawing.Point(40, 46);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(149, 23);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Stock-Count Date:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label2.Location = new System.Drawing.Point(13, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(176, 23);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Stock-Count Number:";
+            // 
+            // dateTimePickerStockCountDate
+            // 
+            this.dateTimePickerStockCountDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.dateTimePickerStockCountDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerStockCountDate.Location = new System.Drawing.Point(195, 43);
+            this.dateTimePickerStockCountDate.Name = "dateTimePickerStockCountDate";
+            this.dateTimePickerStockCountDate.Size = new System.Drawing.Size(196, 30);
+            this.dateTimePickerStockCountDate.TabIndex = 1;
+            // 
+            // textBoxStockCountNumber
+            // 
+            this.textBoxStockCountNumber.Enabled = false;
+            this.textBoxStockCountNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxStockCountNumber.Location = new System.Drawing.Point(195, 7);
+            this.textBoxStockCountNumber.Name = "textBoxStockCountNumber";
+            this.textBoxStockCountNumber.Size = new System.Drawing.Size(196, 30);
+            this.textBoxStockCountNumber.TabIndex = 0;
             // 
             // TrnStockCountDetailForm
             // 

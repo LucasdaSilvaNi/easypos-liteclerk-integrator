@@ -37,6 +37,7 @@ namespace EasyPOS.Forms.Software.SysMenu
             else
             {
                 sysSoftwareForm.AddTabPageItemList();
+                buttonItem.Focus();
             }
         }
 

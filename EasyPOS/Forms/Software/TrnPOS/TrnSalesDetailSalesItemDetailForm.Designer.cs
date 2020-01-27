@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnSalesDetailSalesItemDetailForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.textBoxItemDescription = new System.Windows.Forms.TextBox();
@@ -59,10 +60,9 @@
             this.textBoxSalesLineRemarks = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -90,11 +90,21 @@
             this.buttonSave.Location = new System.Drawing.Point(742, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
-            this.buttonSave.TabIndex = 4;
+            this.buttonSave.TabIndex = 20;
             this.buttonSave.TabStop = false;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.POS;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -119,7 +129,7 @@
             this.buttonClose.Location = new System.Drawing.Point(836, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 20;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
@@ -136,7 +146,7 @@
             this.textBoxItemDescription.Name = "textBoxItemDescription";
             this.textBoxItemDescription.ReadOnly = true;
             this.textBoxItemDescription.Size = new System.Drawing.Size(912, 40);
-            this.textBoxItemDescription.TabIndex = 6;
+            this.textBoxItemDescription.TabIndex = 13;
             this.textBoxItemDescription.TabStop = false;
             this.textBoxItemDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -152,7 +162,9 @@
             // 
             // textBoxSalesLineQuantity
             // 
+            this.textBoxSalesLineQuantity.AcceptsTab = true;
             this.textBoxSalesLineQuantity.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.textBoxSalesLineQuantity.HideSelection = false;
             this.textBoxSalesLineQuantity.Location = new System.Drawing.Point(182, 52);
             this.textBoxSalesLineQuantity.Name = "textBoxSalesLineQuantity";
             this.textBoxSalesLineQuantity.Size = new System.Drawing.Size(269, 34);
@@ -170,7 +182,7 @@
             this.textBoxSalesLineUnit.Name = "textBoxSalesLineUnit";
             this.textBoxSalesLineUnit.ReadOnly = true;
             this.textBoxSalesLineUnit.Size = new System.Drawing.Size(269, 34);
-            this.textBoxSalesLineUnit.TabIndex = 10;
+            this.textBoxSalesLineUnit.TabIndex = 2;
             this.textBoxSalesLineUnit.TabStop = false;
             // 
             // label3
@@ -192,7 +204,7 @@
             this.textBoxSalesLinePrice.Name = "textBoxSalesLinePrice";
             this.textBoxSalesLinePrice.ReadOnly = true;
             this.textBoxSalesLinePrice.Size = new System.Drawing.Size(269, 34);
-            this.textBoxSalesLinePrice.TabIndex = 12;
+            this.textBoxSalesLinePrice.TabIndex = 3;
             this.textBoxSalesLinePrice.TabStop = false;
             this.textBoxSalesLinePrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxSalesLinePrice.Click += new System.EventHandler(this.textBoxSalesLinePrice_Click);
@@ -214,8 +226,7 @@
             this.comboBoxSalesLineDiscount.Location = new System.Drawing.Point(182, 172);
             this.comboBoxSalesLineDiscount.Name = "comboBoxSalesLineDiscount";
             this.comboBoxSalesLineDiscount.Size = new System.Drawing.Size(269, 36);
-            this.comboBoxSalesLineDiscount.TabIndex = 13;
-            this.comboBoxSalesLineDiscount.TabStop = false;
+            this.comboBoxSalesLineDiscount.TabIndex = 4;
             this.comboBoxSalesLineDiscount.SelectedIndexChanged += new System.EventHandler(this.comboBoxSalesLineDiscount_SelectedIndexChanged);
             // 
             // label5
@@ -235,7 +246,7 @@
             this.textBoxSalesLineDiscountRate.Name = "textBoxSalesLineDiscountRate";
             this.textBoxSalesLineDiscountRate.ReadOnly = true;
             this.textBoxSalesLineDiscountRate.Size = new System.Drawing.Size(269, 34);
-            this.textBoxSalesLineDiscountRate.TabIndex = 16;
+            this.textBoxSalesLineDiscountRate.TabIndex = 5;
             this.textBoxSalesLineDiscountRate.TabStop = false;
             this.textBoxSalesLineDiscountRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -256,7 +267,7 @@
             this.textBoxSalesLineDiscountAmount.Name = "textBoxSalesLineDiscountAmount";
             this.textBoxSalesLineDiscountAmount.ReadOnly = true;
             this.textBoxSalesLineDiscountAmount.Size = new System.Drawing.Size(269, 34);
-            this.textBoxSalesLineDiscountAmount.TabIndex = 18;
+            this.textBoxSalesLineDiscountAmount.TabIndex = 6;
             this.textBoxSalesLineDiscountAmount.TabStop = false;
             this.textBoxSalesLineDiscountAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -277,7 +288,7 @@
             this.textBoxSalesLineNetPrice.Name = "textBoxSalesLineNetPrice";
             this.textBoxSalesLineNetPrice.ReadOnly = true;
             this.textBoxSalesLineNetPrice.Size = new System.Drawing.Size(269, 34);
-            this.textBoxSalesLineNetPrice.TabIndex = 20;
+            this.textBoxSalesLineNetPrice.TabIndex = 7;
             this.textBoxSalesLineNetPrice.TabStop = false;
             this.textBoxSalesLineNetPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -298,7 +309,7 @@
             this.textBoxSalesLineAmount.Name = "textBoxSalesLineAmount";
             this.textBoxSalesLineAmount.ReadOnly = true;
             this.textBoxSalesLineAmount.Size = new System.Drawing.Size(269, 34);
-            this.textBoxSalesLineAmount.TabIndex = 22;
+            this.textBoxSalesLineAmount.TabIndex = 8;
             this.textBoxSalesLineAmount.TabStop = false;
             this.textBoxSalesLineAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -319,7 +330,7 @@
             this.textBoxSalesLineVAT.Name = "textBoxSalesLineVAT";
             this.textBoxSalesLineVAT.ReadOnly = true;
             this.textBoxSalesLineVAT.Size = new System.Drawing.Size(269, 34);
-            this.textBoxSalesLineVAT.TabIndex = 24;
+            this.textBoxSalesLineVAT.TabIndex = 9;
             this.textBoxSalesLineVAT.TabStop = false;
             // 
             // label10
@@ -339,7 +350,7 @@
             this.textBoxSalesLineVATRate.Name = "textBoxSalesLineVATRate";
             this.textBoxSalesLineVATRate.ReadOnly = true;
             this.textBoxSalesLineVATRate.Size = new System.Drawing.Size(269, 34);
-            this.textBoxSalesLineVATRate.TabIndex = 26;
+            this.textBoxSalesLineVATRate.TabIndex = 10;
             this.textBoxSalesLineVATRate.TabStop = false;
             this.textBoxSalesLineVATRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -360,7 +371,7 @@
             this.textBoxSalesLineVATAmount.Name = "textBoxSalesLineVATAmount";
             this.textBoxSalesLineVATAmount.ReadOnly = true;
             this.textBoxSalesLineVATAmount.Size = new System.Drawing.Size(269, 34);
-            this.textBoxSalesLineVATAmount.TabIndex = 28;
+            this.textBoxSalesLineVATAmount.TabIndex = 11;
             this.textBoxSalesLineVATAmount.TabStop = false;
             this.textBoxSalesLineVATAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -381,7 +392,7 @@
             this.textBoxSalesLineRemarks.Multiline = true;
             this.textBoxSalesLineRemarks.Name = "textBoxSalesLineRemarks";
             this.textBoxSalesLineRemarks.Size = new System.Drawing.Size(467, 396);
-            this.textBoxSalesLineRemarks.TabIndex = 30;
+            this.textBoxSalesLineRemarks.TabIndex = 12;
             this.textBoxSalesLineRemarks.TabStop = false;
             // 
             // label13
@@ -427,16 +438,6 @@
             this.panel2.Size = new System.Drawing.Size(936, 500);
             this.panel2.TabIndex = 31;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.POS;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
             // TrnSalesDetailSalesItemDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -453,9 +454,9 @@
             this.Text = "Sales Item";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

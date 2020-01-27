@@ -101,7 +101,8 @@
             this.buttonClose.Location = new System.Drawing.Point(416, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 21;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -118,7 +119,8 @@
             this.buttonSave.Location = new System.Drawing.Point(322, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
-            this.buttonSave.TabIndex = 0;
+            this.buttonSave.TabIndex = 20;
+            this.buttonSave.TabStop = false;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -153,7 +155,7 @@
             this.checkBoxCanReturn.Location = new System.Drawing.Point(260, 185);
             this.checkBoxCanReturn.Name = "checkBoxCanReturn";
             this.checkBoxCanReturn.Size = new System.Drawing.Size(118, 27);
-            this.checkBoxCanReturn.TabIndex = 29;
+            this.checkBoxCanReturn.TabIndex = 13;
             this.checkBoxCanReturn.Text = "Can Return";
             this.checkBoxCanReturn.UseVisualStyleBackColor = true;
             // 
@@ -164,7 +166,7 @@
             this.checkBoxCanCancel.Location = new System.Drawing.Point(260, 152);
             this.checkBoxCanCancel.Name = "checkBoxCanCancel";
             this.checkBoxCanCancel.Size = new System.Drawing.Size(118, 27);
-            this.checkBoxCanCancel.TabIndex = 28;
+            this.checkBoxCanCancel.TabIndex = 12;
             this.checkBoxCanCancel.Text = "Can Cancel";
             this.checkBoxCanCancel.UseVisualStyleBackColor = true;
             // 
@@ -175,7 +177,7 @@
             this.checkBoxCanSplit.Location = new System.Drawing.Point(260, 119);
             this.checkBoxCanSplit.Name = "checkBoxCanSplit";
             this.checkBoxCanSplit.Size = new System.Drawing.Size(100, 27);
-            this.checkBoxCanSplit.TabIndex = 27;
+            this.checkBoxCanSplit.TabIndex = 11;
             this.checkBoxCanSplit.Text = "Can Split";
             this.checkBoxCanSplit.UseVisualStyleBackColor = true;
             // 
@@ -186,7 +188,7 @@
             this.checkBoxCanView.Location = new System.Drawing.Point(260, 86);
             this.checkBoxCanView.Name = "checkBoxCanView";
             this.checkBoxCanView.Size = new System.Drawing.Size(103, 27);
-            this.checkBoxCanView.TabIndex = 26;
+            this.checkBoxCanView.TabIndex = 10;
             this.checkBoxCanView.Text = "Can View";
             this.checkBoxCanView.UseVisualStyleBackColor = true;
             // 
@@ -197,7 +199,7 @@
             this.checkBoxCanDiscount.Location = new System.Drawing.Point(260, 53);
             this.checkBoxCanDiscount.Name = "checkBoxCanDiscount";
             this.checkBoxCanDiscount.Size = new System.Drawing.Size(134, 27);
-            this.checkBoxCanDiscount.TabIndex = 25;
+            this.checkBoxCanDiscount.TabIndex = 9;
             this.checkBoxCanDiscount.Text = "Can Discount";
             this.checkBoxCanDiscount.UseVisualStyleBackColor = true;
             // 
@@ -208,7 +210,7 @@
             this.checkBoxCanTender.Location = new System.Drawing.Point(71, 284);
             this.checkBoxCanTender.Name = "checkBoxCanTender";
             this.checkBoxCanTender.Size = new System.Drawing.Size(118, 27);
-            this.checkBoxCanTender.TabIndex = 24;
+            this.checkBoxCanTender.TabIndex = 8;
             this.checkBoxCanTender.Text = "Can Tender";
             this.checkBoxCanTender.UseVisualStyleBackColor = true;
             // 
@@ -219,7 +221,7 @@
             this.checkBoxCanEdit.Location = new System.Drawing.Point(71, 251);
             this.checkBoxCanEdit.Name = "checkBoxCanEdit";
             this.checkBoxCanEdit.Size = new System.Drawing.Size(96, 27);
-            this.checkBoxCanEdit.TabIndex = 23;
+            this.checkBoxCanEdit.TabIndex = 7;
             this.checkBoxCanEdit.Text = "Can Edit";
             this.checkBoxCanEdit.UseVisualStyleBackColor = true;
             // 
@@ -230,7 +232,7 @@
             this.checkBoxCanPreview.Location = new System.Drawing.Point(71, 218);
             this.checkBoxCanPreview.Name = "checkBoxCanPreview";
             this.checkBoxCanPreview.Size = new System.Drawing.Size(125, 27);
-            this.checkBoxCanPreview.TabIndex = 22;
+            this.checkBoxCanPreview.TabIndex = 6;
             this.checkBoxCanPreview.Text = "Can Preview";
             this.checkBoxCanPreview.UseVisualStyleBackColor = true;
             // 
@@ -241,7 +243,7 @@
             this.checkBoxCanPrint.Location = new System.Drawing.Point(71, 185);
             this.checkBoxCanPrint.Name = "checkBoxCanPrint";
             this.checkBoxCanPrint.Size = new System.Drawing.Size(103, 27);
-            this.checkBoxCanPrint.TabIndex = 21;
+            this.checkBoxCanPrint.TabIndex = 5;
             this.checkBoxCanPrint.Text = "Can Print";
             this.checkBoxCanPrint.UseVisualStyleBackColor = true;
             // 
@@ -252,7 +254,7 @@
             this.checkBoxCanUnlock.Location = new System.Drawing.Point(71, 152);
             this.checkBoxCanUnlock.Name = "checkBoxCanUnlock";
             this.checkBoxCanUnlock.Size = new System.Drawing.Size(119, 27);
-            this.checkBoxCanUnlock.TabIndex = 20;
+            this.checkBoxCanUnlock.TabIndex = 4;
             this.checkBoxCanUnlock.Text = "Can Unlock";
             this.checkBoxCanUnlock.UseVisualStyleBackColor = true;
             // 
@@ -263,7 +265,7 @@
             this.checkBoxCanLock.Location = new System.Drawing.Point(71, 119);
             this.checkBoxCanLock.Name = "checkBoxCanLock";
             this.checkBoxCanLock.Size = new System.Drawing.Size(101, 27);
-            this.checkBoxCanLock.TabIndex = 19;
+            this.checkBoxCanLock.TabIndex = 3;
             this.checkBoxCanLock.Text = "Can Lock";
             this.checkBoxCanLock.UseVisualStyleBackColor = true;
             // 
@@ -274,7 +276,7 @@
             this.checkBoxCanAdd.Location = new System.Drawing.Point(71, 86);
             this.checkBoxCanAdd.Name = "checkBoxCanAdd";
             this.checkBoxCanAdd.Size = new System.Drawing.Size(98, 27);
-            this.checkBoxCanAdd.TabIndex = 18;
+            this.checkBoxCanAdd.TabIndex = 2;
             this.checkBoxCanAdd.Text = "Can Add";
             this.checkBoxCanAdd.UseVisualStyleBackColor = true;
             // 
@@ -285,7 +287,7 @@
             this.checkBoxCanDelete.Location = new System.Drawing.Point(71, 53);
             this.checkBoxCanDelete.Name = "checkBoxCanDelete";
             this.checkBoxCanDelete.Size = new System.Drawing.Size(116, 27);
-            this.checkBoxCanDelete.TabIndex = 17;
+            this.checkBoxCanDelete.TabIndex = 1;
             this.checkBoxCanDelete.Text = "Can Delete";
             this.checkBoxCanDelete.UseVisualStyleBackColor = true;
             // 
@@ -296,7 +298,7 @@
             this.comboBoxForm.Location = new System.Drawing.Point(71, 6);
             this.comboBoxForm.Name = "comboBoxForm";
             this.comboBoxForm.Size = new System.Drawing.Size(433, 31);
-            this.comboBoxForm.TabIndex = 16;
+            this.comboBoxForm.TabIndex = 0;
             // 
             // label2
             // 

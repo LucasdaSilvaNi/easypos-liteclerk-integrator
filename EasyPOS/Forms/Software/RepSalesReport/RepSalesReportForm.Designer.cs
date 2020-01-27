@@ -73,7 +73,7 @@
             this.comboBoxTerminal.Location = new System.Drawing.Point(502, 136);
             this.comboBoxTerminal.Name = "comboBoxTerminal";
             this.comboBoxTerminal.Size = new System.Drawing.Size(220, 31);
-            this.comboBoxTerminal.TabIndex = 26;
+            this.comboBoxTerminal.TabIndex = 2;
             this.comboBoxTerminal.Visible = false;
             // 
             // labelTerminal
@@ -93,7 +93,7 @@
             this.dateTimePickerStartDate.Location = new System.Drawing.Point(502, 58);
             this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
             this.dateTimePickerStartDate.Size = new System.Drawing.Size(220, 30);
-            this.dateTimePickerStartDate.TabIndex = 24;
+            this.dateTimePickerStartDate.TabIndex = 0;
             this.dateTimePickerStartDate.Visible = false;
             // 
             // labelStartDate
@@ -146,7 +146,7 @@
             this.dateTimePickerEndDate.Location = new System.Drawing.Point(502, 97);
             this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
             this.dateTimePickerEndDate.Size = new System.Drawing.Size(220, 30);
-            this.dateTimePickerEndDate.TabIndex = 21;
+            this.dateTimePickerEndDate.TabIndex = 1;
             this.dateTimePickerEndDate.Visible = false;
             // 
             // panel3

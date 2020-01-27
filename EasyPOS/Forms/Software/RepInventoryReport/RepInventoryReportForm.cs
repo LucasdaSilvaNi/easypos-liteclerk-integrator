@@ -33,24 +33,28 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         dateTimePickerStartDate.Visible = true;
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
+                        dateTimePickerStartDate.Focus();
                         break;
                     case "Stock In Detail Report":
                         labelStartDate.Visible = true;
                         dateTimePickerStartDate.Visible = true;
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
+                        dateTimePickerStartDate.Focus();
                         break;
                     case "Stock Out Detail Report":
                         labelStartDate.Visible = true;
                         dateTimePickerStartDate.Visible = true;
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
+                        dateTimePickerStartDate.Focus();
                         break;
                     case "Stock Count Detail Report":
                         labelStartDate.Visible = true;
                         dateTimePickerStartDate.Visible = true;
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
+                        dateTimePickerStartDate.Focus();
                         break;
                     default:
                         break;

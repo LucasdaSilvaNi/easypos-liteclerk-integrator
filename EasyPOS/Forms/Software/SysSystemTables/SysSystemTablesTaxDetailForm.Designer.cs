@@ -71,7 +71,8 @@
             this.buttonSave.Location = new System.Drawing.Point(302, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
-            this.buttonSave.TabIndex = 4;
+            this.buttonSave.TabIndex = 20;
+            this.buttonSave.TabStop = false;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -109,7 +110,8 @@
             this.buttonClose.Location = new System.Drawing.Point(396, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 21;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -160,7 +162,7 @@
             this.textBoxTax.Location = new System.Drawing.Point(95, 105);
             this.textBoxTax.Name = "textBoxTax";
             this.textBoxTax.Size = new System.Drawing.Size(389, 30);
-            this.textBoxTax.TabIndex = 17;
+            this.textBoxTax.TabIndex = 1;
             // 
             // comboBoxAccount
             // 
@@ -169,7 +171,7 @@
             this.comboBoxAccount.Location = new System.Drawing.Point(95, 177);
             this.comboBoxAccount.Name = "comboBoxAccount";
             this.comboBoxAccount.Size = new System.Drawing.Size(295, 31);
-            this.comboBoxAccount.TabIndex = 20;
+            this.comboBoxAccount.TabIndex = 3;
             // 
             // textBoxRate
             // 
@@ -177,15 +179,17 @@
             this.textBoxRate.Location = new System.Drawing.Point(95, 141);
             this.textBoxRate.Name = "textBoxRate";
             this.textBoxRate.Size = new System.Drawing.Size(99, 30);
-            this.textBoxRate.TabIndex = 19;
+            this.textBoxRate.TabIndex = 2;
             // 
             // textBoxCode
             // 
+            this.textBoxCode.AcceptsTab = true;
             this.textBoxCode.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxCode.HideSelection = false;
             this.textBoxCode.Location = new System.Drawing.Point(95, 69);
             this.textBoxCode.Name = "textBoxCode";
             this.textBoxCode.Size = new System.Drawing.Size(295, 30);
-            this.textBoxCode.TabIndex = 21;
+            this.textBoxCode.TabIndex = 0;
             // 
             // SysSystemTablesTaxDetailForm
             // 

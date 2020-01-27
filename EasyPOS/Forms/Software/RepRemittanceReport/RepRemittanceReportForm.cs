@@ -66,6 +66,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                     labelUser.Visible = true;
                     textBoxRemittanceNumber.Visible = true;
                     labelRemittanceNumber.Visible = true;
+                    comboBoxTerminal.Focus();
                     break;
                 default:
                     break;

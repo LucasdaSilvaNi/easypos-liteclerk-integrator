@@ -55,6 +55,7 @@ namespace EasyPOS.Forms.Software.MstUser
                 }
 
                 GetUserDetail();
+                textBoxFullName.Focus();
             }
 
         }
@@ -104,6 +105,7 @@ namespace EasyPOS.Forms.Software.MstUser
 
             dataGridViewUserFormList.Columns[0].Visible = !isLocked;
             dataGridViewUserFormList.Columns[1].Visible = !isLocked;
+            textBoxFullName.Focus();
         }
 
         private void buttonLock_Click(object sender, EventArgs e)

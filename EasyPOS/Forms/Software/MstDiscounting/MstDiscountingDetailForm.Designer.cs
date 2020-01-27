@@ -134,7 +134,8 @@
             this.buttonStockInLineListPageListFirst.Location = new System.Drawing.Point(12, 9);
             this.buttonStockInLineListPageListFirst.Name = "buttonStockInLineListPageListFirst";
             this.buttonStockInLineListPageListFirst.Size = new System.Drawing.Size(82, 32);
-            this.buttonStockInLineListPageListFirst.TabIndex = 13;
+            this.buttonStockInLineListPageListFirst.TabIndex = 23;
+            this.buttonStockInLineListPageListFirst.TabStop = false;
             this.buttonStockInLineListPageListFirst.Text = "First";
             this.buttonStockInLineListPageListFirst.UseVisualStyleBackColor = false;
             // 
@@ -148,7 +149,8 @@
             this.buttonStockInLineListPageListPrevious.Location = new System.Drawing.Point(100, 9);
             this.buttonStockInLineListPageListPrevious.Name = "buttonStockInLineListPageListPrevious";
             this.buttonStockInLineListPageListPrevious.Size = new System.Drawing.Size(82, 32);
-            this.buttonStockInLineListPageListPrevious.TabIndex = 14;
+            this.buttonStockInLineListPageListPrevious.TabIndex = 24;
+            this.buttonStockInLineListPageListPrevious.TabStop = false;
             this.buttonStockInLineListPageListPrevious.Text = "Previous";
             this.buttonStockInLineListPageListPrevious.UseVisualStyleBackColor = false;
             // 
@@ -161,7 +163,8 @@
             this.buttonStockInLineListPageListNext.Location = new System.Drawing.Point(263, 9);
             this.buttonStockInLineListPageListNext.Name = "buttonStockInLineListPageListNext";
             this.buttonStockInLineListPageListNext.Size = new System.Drawing.Size(82, 32);
-            this.buttonStockInLineListPageListNext.TabIndex = 15;
+            this.buttonStockInLineListPageListNext.TabIndex = 26;
+            this.buttonStockInLineListPageListNext.TabStop = false;
             this.buttonStockInLineListPageListNext.Text = "Next";
             this.buttonStockInLineListPageListNext.UseVisualStyleBackColor = false;
             // 
@@ -174,7 +177,8 @@
             this.buttonStockInLineListPageListLast.Location = new System.Drawing.Point(348, 9);
             this.buttonStockInLineListPageListLast.Name = "buttonStockInLineListPageListLast";
             this.buttonStockInLineListPageListLast.Size = new System.Drawing.Size(82, 32);
-            this.buttonStockInLineListPageListLast.TabIndex = 16;
+            this.buttonStockInLineListPageListLast.TabIndex = 26;
+            this.buttonStockInLineListPageListLast.TabStop = false;
             this.buttonStockInLineListPageListLast.Text = "Last";
             this.buttonStockInLineListPageListLast.UseVisualStyleBackColor = false;
             // 
@@ -188,7 +192,8 @@
             this.textBoxStockInLineListPageNumber.Name = "textBoxStockInLineListPageNumber";
             this.textBoxStockInLineListPageNumber.ReadOnly = true;
             this.textBoxStockInLineListPageNumber.Size = new System.Drawing.Size(69, 20);
-            this.textBoxStockInLineListPageNumber.TabIndex = 17;
+            this.textBoxStockInLineListPageNumber.TabIndex = 25;
+            this.textBoxStockInLineListPageNumber.TabStop = false;
             this.textBoxStockInLineListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel7
@@ -230,7 +235,7 @@
             this.dateTimePickerTimeEnd.Location = new System.Drawing.Point(889, 181);
             this.dateTimePickerTimeEnd.Name = "dateTimePickerTimeEnd";
             this.dateTimePickerTimeEnd.Size = new System.Drawing.Size(129, 30);
-            this.dateTimePickerTimeEnd.TabIndex = 48;
+            this.dateTimePickerTimeEnd.TabIndex = 17;
             // 
             // dateTimePickerTimeStart
             // 
@@ -240,7 +245,7 @@
             this.dateTimePickerTimeStart.Location = new System.Drawing.Point(889, 144);
             this.dateTimePickerTimeStart.Name = "dateTimePickerTimeStart";
             this.dateTimePickerTimeStart.Size = new System.Drawing.Size(129, 30);
-            this.dateTimePickerTimeStart.TabIndex = 47;
+            this.dateTimePickerTimeStart.TabIndex = 16;
             // 
             // panel5
             // 
@@ -264,7 +269,7 @@
             this.checkBoxMon.Location = new System.Drawing.Point(21, 19);
             this.checkBoxMon.Name = "checkBoxMon";
             this.checkBoxMon.Size = new System.Drawing.Size(67, 27);
-            this.checkBoxMon.TabIndex = 32;
+            this.checkBoxMon.TabIndex = 7;
             this.checkBoxMon.Text = "Mon";
             this.checkBoxMon.UseVisualStyleBackColor = true;
             // 
@@ -275,7 +280,7 @@
             this.checkBoxWed.Location = new System.Drawing.Point(160, 19);
             this.checkBoxWed.Name = "checkBoxWed";
             this.checkBoxWed.Size = new System.Drawing.Size(66, 27);
-            this.checkBoxWed.TabIndex = 34;
+            this.checkBoxWed.TabIndex = 9;
             this.checkBoxWed.Text = "Wed";
             this.checkBoxWed.UseVisualStyleBackColor = true;
             // 
@@ -286,7 +291,7 @@
             this.checkBoxTue.Location = new System.Drawing.Point(94, 19);
             this.checkBoxTue.Name = "checkBoxTue";
             this.checkBoxTue.Size = new System.Drawing.Size(60, 27);
-            this.checkBoxTue.TabIndex = 33;
+            this.checkBoxTue.TabIndex = 8;
             this.checkBoxTue.Text = "Tue";
             this.checkBoxTue.UseVisualStyleBackColor = true;
             // 
@@ -297,7 +302,7 @@
             this.checkBoxThu.Location = new System.Drawing.Point(232, 19);
             this.checkBoxThu.Name = "checkBoxThu";
             this.checkBoxThu.Size = new System.Drawing.Size(61, 27);
-            this.checkBoxThu.TabIndex = 35;
+            this.checkBoxThu.TabIndex = 10;
             this.checkBoxThu.Text = "Thu";
             this.checkBoxThu.UseVisualStyleBackColor = true;
             // 
@@ -308,7 +313,7 @@
             this.checkBoxFri.Location = new System.Drawing.Point(299, 19);
             this.checkBoxFri.Name = "checkBoxFri";
             this.checkBoxFri.Size = new System.Drawing.Size(50, 27);
-            this.checkBoxFri.TabIndex = 36;
+            this.checkBoxFri.TabIndex = 11;
             this.checkBoxFri.Text = "Fri";
             this.checkBoxFri.UseVisualStyleBackColor = true;
             // 
@@ -319,7 +324,7 @@
             this.checkBoxSat.Location = new System.Drawing.Point(355, 19);
             this.checkBoxSat.Name = "checkBoxSat";
             this.checkBoxSat.Size = new System.Drawing.Size(56, 27);
-            this.checkBoxSat.TabIndex = 37;
+            this.checkBoxSat.TabIndex = 12;
             this.checkBoxSat.Text = "Sat";
             this.checkBoxSat.UseVisualStyleBackColor = true;
             // 
@@ -330,7 +335,7 @@
             this.checkBoxSun.Location = new System.Drawing.Point(417, 19);
             this.checkBoxSun.Name = "checkBoxSun";
             this.checkBoxSun.Size = new System.Drawing.Size(61, 27);
-            this.checkBoxSun.TabIndex = 38;
+            this.checkBoxSun.TabIndex = 13;
             this.checkBoxSun.Text = "Sun";
             this.checkBoxSun.UseVisualStyleBackColor = true;
             // 
@@ -371,7 +376,7 @@
             this.checkBoxTimeScheduled.Location = new System.Drawing.Point(932, 111);
             this.checkBoxTimeScheduled.Name = "checkBoxTimeScheduled";
             this.checkBoxTimeScheduled.Size = new System.Drawing.Size(37, 27);
-            this.checkBoxTimeScheduled.TabIndex = 40;
+            this.checkBoxTimeScheduled.TabIndex = 14;
             this.checkBoxTimeScheduled.Text = " ";
             this.checkBoxTimeScheduled.UseVisualStyleBackColor = true;
             this.checkBoxTimeScheduled.CheckedChanged += new System.EventHandler(this.checkBoxTimeScheduled_CheckedChanged);
@@ -382,7 +387,7 @@
             this.textBoxDiscountRate.Location = new System.Drawing.Point(152, 42);
             this.textBoxDiscountRate.Name = "textBoxDiscountRate";
             this.textBoxDiscountRate.Size = new System.Drawing.Size(196, 30);
-            this.textBoxDiscountRate.TabIndex = 39;
+            this.textBoxDiscountRate.TabIndex = 1;
             this.textBoxDiscountRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxDiscountRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDiscountRate_KeyPress);
             this.textBoxDiscountRate.Leave += new System.EventHandler(this.textBoxDiscountRate_Leave);
@@ -404,7 +409,7 @@
             this.checkBoxDaySchedule.Location = new System.Drawing.Point(416, 111);
             this.checkBoxDaySchedule.Name = "checkBoxDaySchedule";
             this.checkBoxDaySchedule.Size = new System.Drawing.Size(37, 27);
-            this.checkBoxDaySchedule.TabIndex = 30;
+            this.checkBoxDaySchedule.TabIndex = 6;
             this.checkBoxDaySchedule.Text = " ";
             this.checkBoxDaySchedule.UseVisualStyleBackColor = true;
             this.checkBoxDaySchedule.CheckedChanged += new System.EventHandler(this.checkBoxDaySchedule_CheckedChanged);
@@ -426,7 +431,7 @@
             this.dateTimePickerDateEnd.Location = new System.Drawing.Point(152, 181);
             this.dateTimePickerDateEnd.Name = "dateTimePickerDateEnd";
             this.dateTimePickerDateEnd.Size = new System.Drawing.Size(129, 30);
-            this.dateTimePickerDateEnd.TabIndex = 28;
+            this.dateTimePickerDateEnd.TabIndex = 5;
             // 
             // label5
             // 
@@ -445,7 +450,7 @@
             this.dateTimePickerDateStart.Location = new System.Drawing.Point(152, 144);
             this.dateTimePickerDateStart.Name = "dateTimePickerDateStart";
             this.dateTimePickerDateStart.Size = new System.Drawing.Size(129, 30);
-            this.dateTimePickerDateStart.TabIndex = 26;
+            this.dateTimePickerDateStart.TabIndex = 4;
             // 
             // label3
             // 
@@ -464,7 +469,7 @@
             this.checkBoxDateScheduled.Location = new System.Drawing.Point(152, 111);
             this.checkBoxDateScheduled.Name = "checkBoxDateScheduled";
             this.checkBoxDateScheduled.Size = new System.Drawing.Size(37, 27);
-            this.checkBoxDateScheduled.TabIndex = 24;
+            this.checkBoxDateScheduled.TabIndex = 3;
             this.checkBoxDateScheduled.Text = " ";
             this.checkBoxDateScheduled.UseVisualStyleBackColor = true;
             this.checkBoxDateScheduled.CheckedChanged += new System.EventHandler(this.checkBoxDateScheduled_CheckedChanged);
@@ -486,7 +491,7 @@
             this.checkBoxVATExempt.Location = new System.Drawing.Point(152, 78);
             this.checkBoxVATExempt.Name = "checkBoxVATExempt";
             this.checkBoxVATExempt.Size = new System.Drawing.Size(37, 27);
-            this.checkBoxVATExempt.TabIndex = 12;
+            this.checkBoxVATExempt.TabIndex = 2;
             this.checkBoxVATExempt.Text = " ";
             this.checkBoxVATExempt.UseVisualStyleBackColor = true;
             // 
@@ -512,7 +517,9 @@
             // 
             // textBoxDiscount
             // 
+            this.textBoxDiscount.AcceptsTab = true;
             this.textBoxDiscount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxDiscount.HideSelection = false;
             this.textBoxDiscount.Location = new System.Drawing.Point(152, 6);
             this.textBoxDiscount.Name = "textBoxDiscount";
             this.textBoxDiscount.Size = new System.Drawing.Size(277, 30);
@@ -530,7 +537,8 @@
             this.buttonLock.Location = new System.Drawing.Point(1112, 12);
             this.buttonLock.Name = "buttonLock";
             this.buttonLock.Size = new System.Drawing.Size(88, 40);
-            this.buttonLock.TabIndex = 4;
+            this.buttonLock.TabIndex = 20;
+            this.buttonLock.TabStop = false;
             this.buttonLock.Text = "Lock";
             this.buttonLock.UseVisualStyleBackColor = false;
             this.buttonLock.Click += new System.EventHandler(this.buttonLock_Click);
@@ -558,7 +566,8 @@
             this.buttonClose.Location = new System.Drawing.Point(1300, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 22;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -575,7 +584,8 @@
             this.buttonUnlock.Location = new System.Drawing.Point(1206, 12);
             this.buttonUnlock.Name = "buttonUnlock";
             this.buttonUnlock.Size = new System.Drawing.Size(88, 40);
-            this.buttonUnlock.TabIndex = 0;
+            this.buttonUnlock.TabIndex = 21;
+            this.buttonUnlock.TabStop = false;
             this.buttonUnlock.Text = "Unlock";
             this.buttonUnlock.UseVisualStyleBackColor = false;
             this.buttonUnlock.Click += new System.EventHandler(this.buttonUnlock_Click);

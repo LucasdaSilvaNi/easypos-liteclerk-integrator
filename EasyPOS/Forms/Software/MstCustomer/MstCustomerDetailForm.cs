@@ -33,6 +33,7 @@ namespace EasyPOS.Forms.Software.MstCustomer
                 mstCustomerListForm = itemListForm;
                 mstCustomerEntity = itemEntity;
 
+                textBoxCustomerCode.Focus();
                 GetTermList();
             }
         }
@@ -101,6 +102,7 @@ namespace EasyPOS.Forms.Software.MstCustomer
             textBoxRewardNumber.Enabled = !isLocked;
             textBoxRewardConversion.Enabled = !isLocked;
             textBoxDefaultPrice.Enabled = !isLocked;
+            textBoxCustomerCode.Focus();
         }
 
         private void buttonLock_Click(object sender, EventArgs e)

@@ -124,7 +124,9 @@
             // 
             // textBoxCollectionLineOtherInformation
             // 
+            this.textBoxCollectionLineOtherInformation.AcceptsTab = true;
             this.textBoxCollectionLineOtherInformation.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.textBoxCollectionLineOtherInformation.HideSelection = false;
             this.textBoxCollectionLineOtherInformation.Location = new System.Drawing.Point(12, 34);
             this.textBoxCollectionLineOtherInformation.Multiline = true;
             this.textBoxCollectionLineOtherInformation.Name = "textBoxCollectionLineOtherInformation";

@@ -50,6 +50,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         comboBoxTerminal.Visible = true;
                         labelTerminal.Visible = true;
+                        dateTimePickerStartDate.Focus();
                         break;
                     case "Sales Detail Report":
                         labelStartDate.Visible = true;
@@ -60,6 +61,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         comboBoxTerminal.Visible = true;
                         labelTerminal.Visible = true;
+                        dateTimePickerStartDate.Focus();
                         break;
                     case "Collection Summary Report":
                         labelStartDate.Visible = true;
@@ -70,6 +72,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         comboBoxTerminal.Visible = true;
                         labelTerminal.Visible = true;
+                        dateTimePickerStartDate.Focus();
                         break;
                     case "Collection Detail Report":
                         labelStartDate.Visible = true;
@@ -80,6 +83,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         comboBoxTerminal.Visible = true;
                         labelTerminal.Visible = true;
+                        dateTimePickerStartDate.Focus();
                         break;
                     case "Cancelled Summary Report":
                         labelStartDate.Visible = true;
@@ -90,6 +94,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         comboBoxTerminal.Visible = true;
                         labelTerminal.Visible = true;
+                        dateTimePickerStartDate.Focus();
                         break;
                     default:
                         labelStartDate.Visible = false;
@@ -100,6 +105,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         comboBoxTerminal.Visible = false;
                         labelTerminal.Visible = false;
+                        dateTimePickerStartDate.Focus();
                         break;
                 }
             }

@@ -67,6 +67,14 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel11 = new System.Windows.Forms.Panel();
             this.dataGridViewTaxList = new System.Windows.Forms.DataGridView();
+            this.ColumnTaxListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnTaxListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnTaxListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTaxListCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTaxListTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTaxListRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTaxListAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTaxListAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxTaxListFilter = new System.Windows.Forms.TextBox();
             this.panel17 = new System.Windows.Forms.Panel();
             this.buttonTaxListPageListFirst = new System.Windows.Forms.Button();
@@ -143,14 +151,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.ColumnTaxListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnTaxListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnTaxListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTaxListCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTaxListTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTaxListRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTaxListAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTaxListAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.tabControlSystemTable.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -345,6 +345,7 @@
             this.buttonAccountListPageListFirst.Name = "buttonAccountListPageListFirst";
             this.buttonAccountListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonAccountListPageListFirst.TabIndex = 13;
+            this.buttonAccountListPageListFirst.TabStop = false;
             this.buttonAccountListPageListFirst.Text = "First";
             this.buttonAccountListPageListFirst.UseVisualStyleBackColor = false;
             this.buttonAccountListPageListFirst.Click += new System.EventHandler(this.buttonAccountListPageListFirst_Click);
@@ -360,6 +361,7 @@
             this.buttonAccountListPageListPrevious.Name = "buttonAccountListPageListPrevious";
             this.buttonAccountListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonAccountListPageListPrevious.TabIndex = 14;
+            this.buttonAccountListPageListPrevious.TabStop = false;
             this.buttonAccountListPageListPrevious.Text = "Previous";
             this.buttonAccountListPageListPrevious.UseVisualStyleBackColor = false;
             this.buttonAccountListPageListPrevious.Click += new System.EventHandler(this.buttonAccountListPageListPrevious_Click);
@@ -374,6 +376,7 @@
             this.buttonAccountListPageListNext.Name = "buttonAccountListPageListNext";
             this.buttonAccountListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonAccountListPageListNext.TabIndex = 15;
+            this.buttonAccountListPageListNext.TabStop = false;
             this.buttonAccountListPageListNext.Text = "Next";
             this.buttonAccountListPageListNext.UseVisualStyleBackColor = false;
             this.buttonAccountListPageListNext.Click += new System.EventHandler(this.buttonAccountListPageListNext_Click);
@@ -388,6 +391,7 @@
             this.buttonAccountListPageListLast.Name = "buttonAccountListPageListLast";
             this.buttonAccountListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonAccountListPageListLast.TabIndex = 16;
+            this.buttonAccountListPageListLast.TabStop = false;
             this.buttonAccountListPageListLast.Text = "Last";
             this.buttonAccountListPageListLast.UseVisualStyleBackColor = false;
             this.buttonAccountListPageListLast.Click += new System.EventHandler(this.buttonAccountListPageListLast_Click);
@@ -403,6 +407,7 @@
             this.textBoxAccountListPageNumber.ReadOnly = true;
             this.textBoxAccountListPageNumber.Size = new System.Drawing.Size(69, 20);
             this.textBoxAccountListPageNumber.TabIndex = 17;
+            this.textBoxAccountListPageNumber.TabStop = false;
             this.textBoxAccountListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tabPage2
@@ -540,6 +545,7 @@
             this.buttonPayTypeListPageListFirst.Name = "buttonPayTypeListPageListFirst";
             this.buttonPayTypeListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonPayTypeListPageListFirst.TabIndex = 13;
+            this.buttonPayTypeListPageListFirst.TabStop = false;
             this.buttonPayTypeListPageListFirst.Text = "First";
             this.buttonPayTypeListPageListFirst.UseVisualStyleBackColor = false;
             this.buttonPayTypeListPageListFirst.Click += new System.EventHandler(this.buttonPayTypeListPageListFirst_Click);
@@ -555,6 +561,7 @@
             this.buttonPayTypeListPageListPrevious.Name = "buttonPayTypeListPageListPrevious";
             this.buttonPayTypeListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonPayTypeListPageListPrevious.TabIndex = 14;
+            this.buttonPayTypeListPageListPrevious.TabStop = false;
             this.buttonPayTypeListPageListPrevious.Text = "Previous";
             this.buttonPayTypeListPageListPrevious.UseVisualStyleBackColor = false;
             this.buttonPayTypeListPageListPrevious.Click += new System.EventHandler(this.buttonPayTypeListPageListPrevious_Click);
@@ -569,6 +576,7 @@
             this.buttonPayTypeListPageListNext.Name = "buttonPayTypeListPageListNext";
             this.buttonPayTypeListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonPayTypeListPageListNext.TabIndex = 15;
+            this.buttonPayTypeListPageListNext.TabStop = false;
             this.buttonPayTypeListPageListNext.Text = "Next";
             this.buttonPayTypeListPageListNext.UseVisualStyleBackColor = false;
             this.buttonPayTypeListPageListNext.Click += new System.EventHandler(this.buttonPayTypeListPageListNext_Click);
@@ -583,6 +591,7 @@
             this.buttonPayTypeListPageListLast.Name = "buttonPayTypeListPageListLast";
             this.buttonPayTypeListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonPayTypeListPageListLast.TabIndex = 16;
+            this.buttonPayTypeListPageListLast.TabStop = false;
             this.buttonPayTypeListPageListLast.Text = "Last";
             this.buttonPayTypeListPageListLast.UseVisualStyleBackColor = false;
             this.buttonPayTypeListPageListLast.Click += new System.EventHandler(this.buttonPayTypeListPageListLast_Click);
@@ -598,6 +607,7 @@
             this.textBoxPayTypeListPageNumber.ReadOnly = true;
             this.textBoxPayTypeListPageNumber.Size = new System.Drawing.Size(69, 20);
             this.textBoxPayTypeListPageNumber.TabIndex = 17;
+            this.textBoxPayTypeListPageNumber.TabStop = false;
             this.textBoxPayTypeListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tabPage3
@@ -652,6 +662,73 @@
             this.dataGridViewTaxList.TabIndex = 28;
             this.dataGridViewTaxList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTaxList_CellClick);
             // 
+            // ColumnTaxListButtonEdit
+            // 
+            this.ColumnTaxListButtonEdit.DataPropertyName = "ColumnTaxListButtonEdit";
+            this.ColumnTaxListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnTaxListButtonEdit.HeaderText = "";
+            this.ColumnTaxListButtonEdit.Name = "ColumnTaxListButtonEdit";
+            this.ColumnTaxListButtonEdit.ReadOnly = true;
+            this.ColumnTaxListButtonEdit.Width = 70;
+            // 
+            // ColumnTaxListButtonDelete
+            // 
+            this.ColumnTaxListButtonDelete.DataPropertyName = "ColumnTaxListButtonDelete";
+            this.ColumnTaxListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnTaxListButtonDelete.HeaderText = "";
+            this.ColumnTaxListButtonDelete.Name = "ColumnTaxListButtonDelete";
+            this.ColumnTaxListButtonDelete.ReadOnly = true;
+            this.ColumnTaxListButtonDelete.Width = 70;
+            // 
+            // ColumnTaxListId
+            // 
+            this.ColumnTaxListId.DataPropertyName = "ColumnTaxListId";
+            this.ColumnTaxListId.HeaderText = "Id";
+            this.ColumnTaxListId.Name = "ColumnTaxListId";
+            this.ColumnTaxListId.ReadOnly = true;
+            this.ColumnTaxListId.Visible = false;
+            // 
+            // ColumnTaxListCode
+            // 
+            this.ColumnTaxListCode.DataPropertyName = "ColumnTaxListCode";
+            this.ColumnTaxListCode.HeaderText = "Code";
+            this.ColumnTaxListCode.Name = "ColumnTaxListCode";
+            this.ColumnTaxListCode.ReadOnly = true;
+            this.ColumnTaxListCode.Width = 150;
+            // 
+            // ColumnTaxListTax
+            // 
+            this.ColumnTaxListTax.DataPropertyName = "ColumnTaxListTax";
+            this.ColumnTaxListTax.HeaderText = "Tax";
+            this.ColumnTaxListTax.Name = "ColumnTaxListTax";
+            this.ColumnTaxListTax.ReadOnly = true;
+            this.ColumnTaxListTax.Width = 250;
+            // 
+            // ColumnTaxListRate
+            // 
+            this.ColumnTaxListRate.DataPropertyName = "ColumnTaxListRate";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnTaxListRate.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColumnTaxListRate.HeaderText = "Rate";
+            this.ColumnTaxListRate.Name = "ColumnTaxListRate";
+            this.ColumnTaxListRate.ReadOnly = true;
+            // 
+            // ColumnTaxListAccountId
+            // 
+            this.ColumnTaxListAccountId.DataPropertyName = "ColumnTaxListAccountId";
+            this.ColumnTaxListAccountId.HeaderText = "AccountId";
+            this.ColumnTaxListAccountId.Name = "ColumnTaxListAccountId";
+            this.ColumnTaxListAccountId.ReadOnly = true;
+            this.ColumnTaxListAccountId.Visible = false;
+            // 
+            // ColumnTaxListAccount
+            // 
+            this.ColumnTaxListAccount.DataPropertyName = "ColumnTaxListAccount";
+            this.ColumnTaxListAccount.HeaderText = "Account";
+            this.ColumnTaxListAccount.Name = "ColumnTaxListAccount";
+            this.ColumnTaxListAccount.ReadOnly = true;
+            this.ColumnTaxListAccount.Width = 200;
+            // 
             // textBoxTaxListFilter
             // 
             this.textBoxTaxListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -686,7 +763,8 @@
             this.buttonTaxListPageListFirst.Location = new System.Drawing.Point(12, 9);
             this.buttonTaxListPageListFirst.Name = "buttonTaxListPageListFirst";
             this.buttonTaxListPageListFirst.Size = new System.Drawing.Size(82, 32);
-            this.buttonTaxListPageListFirst.TabIndex = 13;
+            this.buttonTaxListPageListFirst.TabIndex = 22;
+            this.buttonTaxListPageListFirst.TabStop = false;
             this.buttonTaxListPageListFirst.Text = "First";
             this.buttonTaxListPageListFirst.UseVisualStyleBackColor = false;
             this.buttonTaxListPageListFirst.Click += new System.EventHandler(this.buttonTaxListPageListFirst_Click);
@@ -701,7 +779,8 @@
             this.buttonTaxListPageListPrevious.Location = new System.Drawing.Point(100, 9);
             this.buttonTaxListPageListPrevious.Name = "buttonTaxListPageListPrevious";
             this.buttonTaxListPageListPrevious.Size = new System.Drawing.Size(82, 32);
-            this.buttonTaxListPageListPrevious.TabIndex = 14;
+            this.buttonTaxListPageListPrevious.TabIndex = 23;
+            this.buttonTaxListPageListPrevious.TabStop = false;
             this.buttonTaxListPageListPrevious.Text = "Previous";
             this.buttonTaxListPageListPrevious.UseVisualStyleBackColor = false;
             this.buttonTaxListPageListPrevious.Click += new System.EventHandler(this.buttonTaxListPageListPrevious_Click);
@@ -715,7 +794,8 @@
             this.buttonTaxListPageListNext.Location = new System.Drawing.Point(263, 9);
             this.buttonTaxListPageListNext.Name = "buttonTaxListPageListNext";
             this.buttonTaxListPageListNext.Size = new System.Drawing.Size(82, 32);
-            this.buttonTaxListPageListNext.TabIndex = 15;
+            this.buttonTaxListPageListNext.TabIndex = 25;
+            this.buttonTaxListPageListNext.TabStop = false;
             this.buttonTaxListPageListNext.Text = "Next";
             this.buttonTaxListPageListNext.UseVisualStyleBackColor = false;
             this.buttonTaxListPageListNext.Click += new System.EventHandler(this.buttonTaxListPageListNext_Click);
@@ -729,7 +809,8 @@
             this.buttonTaxListPageListLast.Location = new System.Drawing.Point(348, 9);
             this.buttonTaxListPageListLast.Name = "buttonTaxListPageListLast";
             this.buttonTaxListPageListLast.Size = new System.Drawing.Size(82, 32);
-            this.buttonTaxListPageListLast.TabIndex = 16;
+            this.buttonTaxListPageListLast.TabIndex = 26;
+            this.buttonTaxListPageListLast.TabStop = false;
             this.buttonTaxListPageListLast.Text = "Last";
             this.buttonTaxListPageListLast.UseVisualStyleBackColor = false;
             this.buttonTaxListPageListLast.Click += new System.EventHandler(this.buttonTaxListPageListLast_Click);
@@ -744,7 +825,8 @@
             this.textBoxTaxListPageNumber.Name = "textBoxTaxListPageNumber";
             this.textBoxTaxListPageNumber.ReadOnly = true;
             this.textBoxTaxListPageNumber.Size = new System.Drawing.Size(69, 20);
-            this.textBoxTaxListPageNumber.TabIndex = 17;
+            this.textBoxTaxListPageNumber.TabIndex = 24;
+            this.textBoxTaxListPageNumber.TabStop = false;
             this.textBoxTaxListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tabPage4
@@ -864,6 +946,7 @@
             this.buttonUnitListPageListFirst.Name = "buttonUnitListPageListFirst";
             this.buttonUnitListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonUnitListPageListFirst.TabIndex = 13;
+            this.buttonUnitListPageListFirst.TabStop = false;
             this.buttonUnitListPageListFirst.Text = "First";
             this.buttonUnitListPageListFirst.UseVisualStyleBackColor = false;
             this.buttonUnitListPageListFirst.Click += new System.EventHandler(this.buttonUnitListPageListFirst_Click);
@@ -879,6 +962,7 @@
             this.buttonUnitListPageListPrevious.Name = "buttonUnitListPageListPrevious";
             this.buttonUnitListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonUnitListPageListPrevious.TabIndex = 14;
+            this.buttonUnitListPageListPrevious.TabStop = false;
             this.buttonUnitListPageListPrevious.Text = "Previous";
             this.buttonUnitListPageListPrevious.UseVisualStyleBackColor = false;
             this.buttonUnitListPageListPrevious.Click += new System.EventHandler(this.buttonUnitListPageListPrevious_Click);
@@ -893,6 +977,7 @@
             this.buttonUnitListPageListNext.Name = "buttonUnitListPageListNext";
             this.buttonUnitListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonUnitListPageListNext.TabIndex = 15;
+            this.buttonUnitListPageListNext.TabStop = false;
             this.buttonUnitListPageListNext.Text = "Next";
             this.buttonUnitListPageListNext.UseVisualStyleBackColor = false;
             this.buttonUnitListPageListNext.Click += new System.EventHandler(this.buttonUnitListPageListNext_Click);
@@ -907,6 +992,7 @@
             this.buttonUnitListPageListLast.Name = "buttonUnitListPageListLast";
             this.buttonUnitListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonUnitListPageListLast.TabIndex = 16;
+            this.buttonUnitListPageListLast.TabStop = false;
             this.buttonUnitListPageListLast.Text = "Last";
             this.buttonUnitListPageListLast.UseVisualStyleBackColor = false;
             this.buttonUnitListPageListLast.Click += new System.EventHandler(this.buttonUnitListPageListLast_Click);
@@ -922,6 +1008,7 @@
             this.textBoxUnitListPageNumber.ReadOnly = true;
             this.textBoxUnitListPageNumber.Size = new System.Drawing.Size(69, 20);
             this.textBoxUnitListPageNumber.TabIndex = 17;
+            this.textBoxUnitListPageNumber.TabStop = false;
             this.textBoxUnitListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tabPage5
@@ -1041,6 +1128,7 @@
             this.buttonPeriodListPageListFirst.Name = "buttonPeriodListPageListFirst";
             this.buttonPeriodListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonPeriodListPageListFirst.TabIndex = 13;
+            this.buttonPeriodListPageListFirst.TabStop = false;
             this.buttonPeriodListPageListFirst.Text = "First";
             this.buttonPeriodListPageListFirst.UseVisualStyleBackColor = false;
             this.buttonPeriodListPageListFirst.Click += new System.EventHandler(this.buttonPeriodListPageListFirst_Click);
@@ -1056,6 +1144,7 @@
             this.buttonPeriodListPageListPrevious.Name = "buttonPeriodListPageListPrevious";
             this.buttonPeriodListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonPeriodListPageListPrevious.TabIndex = 14;
+            this.buttonPeriodListPageListPrevious.TabStop = false;
             this.buttonPeriodListPageListPrevious.Text = "Previous";
             this.buttonPeriodListPageListPrevious.UseVisualStyleBackColor = false;
             this.buttonPeriodListPageListPrevious.Click += new System.EventHandler(this.buttonPeriodListPageListPrevious_Click);
@@ -1070,6 +1159,7 @@
             this.buttonPeriodListPageListNext.Name = "buttonPeriodListPageListNext";
             this.buttonPeriodListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonPeriodListPageListNext.TabIndex = 15;
+            this.buttonPeriodListPageListNext.TabStop = false;
             this.buttonPeriodListPageListNext.Text = "Next";
             this.buttonPeriodListPageListNext.UseVisualStyleBackColor = false;
             this.buttonPeriodListPageListNext.Click += new System.EventHandler(this.buttonPeriodListPageListNext_Click);
@@ -1084,6 +1174,7 @@
             this.buttonPeriodListPageListLast.Name = "buttonPeriodListPageListLast";
             this.buttonPeriodListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonPeriodListPageListLast.TabIndex = 16;
+            this.buttonPeriodListPageListLast.TabStop = false;
             this.buttonPeriodListPageListLast.Text = "Last";
             this.buttonPeriodListPageListLast.UseVisualStyleBackColor = false;
             this.buttonPeriodListPageListLast.Click += new System.EventHandler(this.buttonPeriodListPageListLast_Click);
@@ -1099,6 +1190,7 @@
             this.textBoxPeriodListPageNumber.ReadOnly = true;
             this.textBoxPeriodListPageNumber.Size = new System.Drawing.Size(69, 20);
             this.textBoxPeriodListPageNumber.TabIndex = 17;
+            this.textBoxPeriodListPageNumber.TabStop = false;
             this.textBoxPeriodListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tabPage6
@@ -1218,6 +1310,7 @@
             this.buttonTerminalListPageListFirst.Name = "buttonTerminalListPageListFirst";
             this.buttonTerminalListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonTerminalListPageListFirst.TabIndex = 13;
+            this.buttonTerminalListPageListFirst.TabStop = false;
             this.buttonTerminalListPageListFirst.Text = "First";
             this.buttonTerminalListPageListFirst.UseVisualStyleBackColor = false;
             this.buttonTerminalListPageListFirst.Click += new System.EventHandler(this.buttonTerminalListPageListFirst_Click);
@@ -1233,6 +1326,7 @@
             this.buttonTerminalListPageListPrevious.Name = "buttonTerminalListPageListPrevious";
             this.buttonTerminalListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonTerminalListPageListPrevious.TabIndex = 14;
+            this.buttonTerminalListPageListPrevious.TabStop = false;
             this.buttonTerminalListPageListPrevious.Text = "Previous";
             this.buttonTerminalListPageListPrevious.UseVisualStyleBackColor = false;
             this.buttonTerminalListPageListPrevious.Click += new System.EventHandler(this.buttonTerminalListPageListPrevious_Click);
@@ -1247,6 +1341,7 @@
             this.buttonTerminalListPageListNext.Name = "buttonTerminalListPageListNext";
             this.buttonTerminalListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonTerminalListPageListNext.TabIndex = 15;
+            this.buttonTerminalListPageListNext.TabStop = false;
             this.buttonTerminalListPageListNext.Text = "Next";
             this.buttonTerminalListPageListNext.UseVisualStyleBackColor = false;
             this.buttonTerminalListPageListNext.Click += new System.EventHandler(this.buttonTerminalListPageListNext_Click);
@@ -1261,6 +1356,7 @@
             this.buttonTerminalListPageListLast.Name = "buttonTerminalListPageListLast";
             this.buttonTerminalListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonTerminalListPageListLast.TabIndex = 16;
+            this.buttonTerminalListPageListLast.TabStop = false;
             this.buttonTerminalListPageListLast.Text = "Last";
             this.buttonTerminalListPageListLast.UseVisualStyleBackColor = false;
             this.buttonTerminalListPageListLast.Click += new System.EventHandler(this.buttonTerminalListPageListLast_Click);
@@ -1276,6 +1372,7 @@
             this.textBoxTerminalListPageNumber.ReadOnly = true;
             this.textBoxTerminalListPageNumber.Size = new System.Drawing.Size(69, 20);
             this.textBoxTerminalListPageNumber.TabIndex = 17;
+            this.textBoxTerminalListPageNumber.TabStop = false;
             this.textBoxTerminalListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tabPage7
@@ -1468,6 +1565,7 @@
             this.buttonSupplierListPageListFirst.Name = "buttonSupplierListPageListFirst";
             this.buttonSupplierListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonSupplierListPageListFirst.TabIndex = 13;
+            this.buttonSupplierListPageListFirst.TabStop = false;
             this.buttonSupplierListPageListFirst.Text = "First";
             this.buttonSupplierListPageListFirst.UseVisualStyleBackColor = false;
             this.buttonSupplierListPageListFirst.Click += new System.EventHandler(this.buttonSupplierListPageListFirst_Click);
@@ -1483,6 +1581,7 @@
             this.buttonSupplierListPageListPrevious.Name = "buttonSupplierListPageListPrevious";
             this.buttonSupplierListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonSupplierListPageListPrevious.TabIndex = 14;
+            this.buttonSupplierListPageListPrevious.TabStop = false;
             this.buttonSupplierListPageListPrevious.Text = "Previous";
             this.buttonSupplierListPageListPrevious.UseVisualStyleBackColor = false;
             this.buttonSupplierListPageListPrevious.Click += new System.EventHandler(this.buttonSupplierListPageListPrevious_Click);
@@ -1497,6 +1596,7 @@
             this.buttonSupplierListPageListNext.Name = "buttonSupplierListPageListNext";
             this.buttonSupplierListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonSupplierListPageListNext.TabIndex = 15;
+            this.buttonSupplierListPageListNext.TabStop = false;
             this.buttonSupplierListPageListNext.Text = "Next";
             this.buttonSupplierListPageListNext.UseVisualStyleBackColor = false;
             this.buttonSupplierListPageListNext.Click += new System.EventHandler(this.buttonSupplierListPageListNext_Click);
@@ -1511,6 +1611,7 @@
             this.buttonSupplierListPageListLast.Name = "buttonSupplierListPageListLast";
             this.buttonSupplierListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonSupplierListPageListLast.TabIndex = 16;
+            this.buttonSupplierListPageListLast.TabStop = false;
             this.buttonSupplierListPageListLast.Text = "Last";
             this.buttonSupplierListPageListLast.UseVisualStyleBackColor = false;
             this.buttonSupplierListPageListLast.Click += new System.EventHandler(this.buttonSupplierListPageListLast_Click);
@@ -1526,6 +1627,7 @@
             this.textBoxSupplierListPageNumber.ReadOnly = true;
             this.textBoxSupplierListPageNumber.Size = new System.Drawing.Size(69, 20);
             this.textBoxSupplierListPageNumber.TabIndex = 17;
+            this.textBoxSupplierListPageNumber.TabStop = false;
             this.textBoxSupplierListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel1
@@ -1553,7 +1655,8 @@
             this.buttonAdd.Location = new System.Drawing.Point(1206, 12);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(88, 40);
-            this.buttonAdd.TabIndex = 4;
+            this.buttonAdd.TabIndex = 20;
+            this.buttonAdd.TabStop = false;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
@@ -1591,77 +1694,11 @@
             this.buttonClose.Location = new System.Drawing.Point(1300, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 21;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
-            // 
-            // ColumnTaxListButtonEdit
-            // 
-            this.ColumnTaxListButtonEdit.DataPropertyName = "ColumnTaxListButtonEdit";
-            this.ColumnTaxListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnTaxListButtonEdit.HeaderText = "";
-            this.ColumnTaxListButtonEdit.Name = "ColumnTaxListButtonEdit";
-            this.ColumnTaxListButtonEdit.ReadOnly = true;
-            this.ColumnTaxListButtonEdit.Width = 70;
-            // 
-            // ColumnTaxListButtonDelete
-            // 
-            this.ColumnTaxListButtonDelete.DataPropertyName = "ColumnTaxListButtonDelete";
-            this.ColumnTaxListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnTaxListButtonDelete.HeaderText = "";
-            this.ColumnTaxListButtonDelete.Name = "ColumnTaxListButtonDelete";
-            this.ColumnTaxListButtonDelete.ReadOnly = true;
-            this.ColumnTaxListButtonDelete.Width = 70;
-            // 
-            // ColumnTaxListId
-            // 
-            this.ColumnTaxListId.DataPropertyName = "ColumnTaxListId";
-            this.ColumnTaxListId.HeaderText = "Id";
-            this.ColumnTaxListId.Name = "ColumnTaxListId";
-            this.ColumnTaxListId.ReadOnly = true;
-            this.ColumnTaxListId.Visible = false;
-            // 
-            // ColumnTaxListCode
-            // 
-            this.ColumnTaxListCode.DataPropertyName = "ColumnTaxListCode";
-            this.ColumnTaxListCode.HeaderText = "Code";
-            this.ColumnTaxListCode.Name = "ColumnTaxListCode";
-            this.ColumnTaxListCode.ReadOnly = true;
-            this.ColumnTaxListCode.Width = 150;
-            // 
-            // ColumnTaxListTax
-            // 
-            this.ColumnTaxListTax.DataPropertyName = "ColumnTaxListTax";
-            this.ColumnTaxListTax.HeaderText = "Tax";
-            this.ColumnTaxListTax.Name = "ColumnTaxListTax";
-            this.ColumnTaxListTax.ReadOnly = true;
-            this.ColumnTaxListTax.Width = 250;
-            // 
-            // ColumnTaxListRate
-            // 
-            this.ColumnTaxListRate.DataPropertyName = "ColumnTaxListRate";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnTaxListRate.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColumnTaxListRate.HeaderText = "Rate";
-            this.ColumnTaxListRate.Name = "ColumnTaxListRate";
-            this.ColumnTaxListRate.ReadOnly = true;
-            // 
-            // ColumnTaxListAccountId
-            // 
-            this.ColumnTaxListAccountId.DataPropertyName = "ColumnTaxListAccountId";
-            this.ColumnTaxListAccountId.HeaderText = "AccountId";
-            this.ColumnTaxListAccountId.Name = "ColumnTaxListAccountId";
-            this.ColumnTaxListAccountId.ReadOnly = true;
-            this.ColumnTaxListAccountId.Visible = false;
-            // 
-            // ColumnTaxListAccount
-            // 
-            this.ColumnTaxListAccount.DataPropertyName = "ColumnTaxListAccount";
-            this.ColumnTaxListAccount.HeaderText = "Account";
-            this.ColumnTaxListAccount.Name = "ColumnTaxListAccount";
-            this.ColumnTaxListAccount.ReadOnly = true;
-            this.ColumnTaxListAccount.Width = 200;
             // 
             // SysSystemTablesForm
             // 

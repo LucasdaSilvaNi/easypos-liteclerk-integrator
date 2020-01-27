@@ -34,6 +34,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
                 mstDiscountEntity = itemEntity;
 
                 GetDiscountDetail();
+                textBoxDiscount.Focus();
             }
         }
 
@@ -89,7 +90,6 @@ namespace EasyPOS.Forms.Software.MstDiscounting
             {
                 dateTimePickerTimeEnd.Value = Convert.ToDateTime(mstDiscountEntity.TimeEnd);
             }
-
             UpdateComponents(mstDiscountEntity.IsLocked);
         }
 
@@ -116,6 +116,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
             textBoxDiscount.Enabled = !isLocked;
             textBoxDiscountRate.Enabled = !isLocked;
             checkBoxVATExempt.Enabled = !isLocked;
+            textBoxDiscount.Focus();
 
             checkBoxDateScheduled.Enabled = !isLocked;
             if (mstDiscountEntity.IsDateScheduled == true)
@@ -279,6 +280,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
                 checkBoxFri.Enabled = true;
                 checkBoxSat.Enabled = true;
                 checkBoxSun.Enabled = true;
+                checkBoxMon.Focus();
             }
             else
             {

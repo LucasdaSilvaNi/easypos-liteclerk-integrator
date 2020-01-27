@@ -56,7 +56,8 @@
             this.textBoxCost.Name = "textBoxCost";
             this.textBoxCost.ReadOnly = true;
             this.textBoxCost.Size = new System.Drawing.Size(195, 30);
-            this.textBoxCost.TabIndex = 23;
+            this.textBoxCost.TabIndex = 3;
+            this.textBoxCost.TabStop = false;
             this.textBoxCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label4
@@ -75,7 +76,7 @@
             this.textBoxQuantity.Location = new System.Drawing.Point(161, 142);
             this.textBoxQuantity.Name = "textBoxQuantity";
             this.textBoxQuantity.Size = new System.Drawing.Size(195, 30);
-            this.textBoxQuantity.TabIndex = 21;
+            this.textBoxQuantity.TabIndex = 2;
             this.textBoxQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxQuantity_KeyPress);
             this.textBoxQuantity.Leave += new System.EventHandler(this.textBoxQuantity_Leave);
@@ -125,7 +126,8 @@
             this.buttonSave.Location = new System.Drawing.Point(388, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
-            this.buttonSave.TabIndex = 4;
+            this.buttonSave.TabIndex = 20;
+            this.buttonSave.TabStop = false;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -163,7 +165,8 @@
             this.buttonClose.Location = new System.Drawing.Point(482, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 21;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -184,7 +187,7 @@
             this.comboBoxItemComponent.Location = new System.Drawing.Point(160, 69);
             this.comboBoxItemComponent.Name = "comboBoxItemComponent";
             this.comboBoxItemComponent.Size = new System.Drawing.Size(410, 31);
-            this.comboBoxItemComponent.TabIndex = 26;
+            this.comboBoxItemComponent.TabIndex = 0;
             this.comboBoxItemComponent.SelectedIndexChanged += new System.EventHandler(this.comboBoxItemComponent_SelectedIndexChanged);
             this.comboBoxItemComponent.Click += new System.EventHandler(this.comboBoxItemComponent_Click);
             // 
@@ -195,7 +198,8 @@
             this.textBoxAmount.Name = "textBoxAmount";
             this.textBoxAmount.ReadOnly = true;
             this.textBoxAmount.Size = new System.Drawing.Size(195, 30);
-            this.textBoxAmount.TabIndex = 30;
+            this.textBoxAmount.TabIndex = 4;
+            this.textBoxAmount.TabStop = false;
             this.textBoxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label7
@@ -215,7 +219,8 @@
             this.textBoxOnHantQty.Name = "textBoxOnHantQty";
             this.textBoxOnHantQty.ReadOnly = true;
             this.textBoxOnHantQty.Size = new System.Drawing.Size(195, 30);
-            this.textBoxOnHantQty.TabIndex = 32;
+            this.textBoxOnHantQty.TabIndex = 5;
+            this.textBoxOnHantQty.TabStop = false;
             this.textBoxOnHantQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label8
@@ -235,7 +240,8 @@
             this.textBoxUnit.Name = "textBoxUnit";
             this.textBoxUnit.ReadOnly = true;
             this.textBoxUnit.Size = new System.Drawing.Size(195, 30);
-            this.textBoxUnit.TabIndex = 33;
+            this.textBoxUnit.TabIndex = 1;
+            this.textBoxUnit.TabStop = false;
             this.textBoxUnit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // MstItemDetailItemComponentDetailForm

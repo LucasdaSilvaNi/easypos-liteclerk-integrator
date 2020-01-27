@@ -37,6 +37,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                 }
 
                 GetAccountList();
+                textBoxCode.Focus();
             }
         }
 

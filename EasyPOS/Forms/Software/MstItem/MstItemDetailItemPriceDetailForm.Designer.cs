@@ -69,7 +69,7 @@
             this.buttonSave.Location = new System.Drawing.Point(324, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
-            this.buttonSave.TabIndex = 4;
+            this.buttonSave.TabIndex = 20;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -107,7 +107,8 @@
             this.buttonClose.Location = new System.Drawing.Point(418, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 21;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -118,7 +119,7 @@
             this.textBoxPriceDescription.Location = new System.Drawing.Point(160, 69);
             this.textBoxPriceDescription.Name = "textBoxPriceDescription";
             this.textBoxPriceDescription.Size = new System.Drawing.Size(346, 30);
-            this.textBoxPriceDescription.TabIndex = 12;
+            this.textBoxPriceDescription.TabIndex = 0;
             // 
             // label2
             // 
@@ -136,7 +137,7 @@
             this.textBoxPrice.Location = new System.Drawing.Point(160, 105);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(252, 30);
-            this.textBoxPrice.TabIndex = 14;
+            this.textBoxPrice.TabIndex = 1;
             this.textBoxPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPrice_KeyPress);
             this.textBoxPrice.Leave += new System.EventHandler(this.textBoxPrice_Leave);
@@ -157,7 +158,7 @@
             this.textBoxTriggerQuantity.Location = new System.Drawing.Point(160, 141);
             this.textBoxTriggerQuantity.Name = "textBoxTriggerQuantity";
             this.textBoxTriggerQuantity.Size = new System.Drawing.Size(252, 30);
-            this.textBoxTriggerQuantity.TabIndex = 16;
+            this.textBoxTriggerQuantity.TabIndex = 2;
             this.textBoxTriggerQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxTriggerQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTriggerQuantity_KeyPress);
             this.textBoxTriggerQuantity.Leave += new System.EventHandler(this.textBoxTriggerQuantity_Leave);

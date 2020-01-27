@@ -88,6 +88,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                 comboBoxTerm.Enabled = !isLocked;
                 textBoxTIN.Enabled = !isLocked;
                 comboBoxAccount.Enabled = !isLocked;
+                textBoxSupplier.Focus();
             }
 
             if (sysUserRights.GetUserRights().CanUnlock == false)
