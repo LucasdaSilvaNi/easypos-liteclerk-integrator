@@ -38,6 +38,11 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
+            this.comboBoxCurrentPeriod = new System.Windows.Forms.ComboBox();
+            this.comboBoxWalkinCustomer = new System.Windows.Forms.ComboBox();
+            this.comboBoxDefaultDiscount = new System.Windows.Forms.ComboBox();
+            this.comboBoxReturnSupplier = new System.Windows.Forms.ComboBox();
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.checkBoxActivateAuditTrail = new System.Windows.Forms.CheckBox();
@@ -121,11 +126,6 @@
             this.txtBranchCode = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
-            this.comboBoxReturnSupplier = new System.Windows.Forms.ComboBox();
-            this.comboBoxDefaultDiscount = new System.Windows.Forms.ComboBox();
-            this.comboBoxWalkinCustomer = new System.Windows.Forms.ComboBox();
-            this.comboBoxCurrentPeriod = new System.Windows.Forms.ComboBox();
-            this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -238,7 +238,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1392, 608);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "System Current";
+            this.tabPage1.Text = "System Settings";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // panel4
@@ -319,6 +319,51 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1376, 556);
             this.panel4.TabIndex = 33;
+            // 
+            // comboBoxTerminal
+            // 
+            this.comboBoxTerminal.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxTerminal.FormattingEnabled = true;
+            this.comboBoxTerminal.Location = new System.Drawing.Point(157, 293);
+            this.comboBoxTerminal.Name = "comboBoxTerminal";
+            this.comboBoxTerminal.Size = new System.Drawing.Size(248, 31);
+            this.comboBoxTerminal.TabIndex = 8;
+            // 
+            // comboBoxCurrentPeriod
+            // 
+            this.comboBoxCurrentPeriod.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxCurrentPeriod.FormattingEnabled = true;
+            this.comboBoxCurrentPeriod.Location = new System.Drawing.Point(603, 185);
+            this.comboBoxCurrentPeriod.Name = "comboBoxCurrentPeriod";
+            this.comboBoxCurrentPeriod.Size = new System.Drawing.Size(248, 31);
+            this.comboBoxCurrentPeriod.TabIndex = 16;
+            // 
+            // comboBoxWalkinCustomer
+            // 
+            this.comboBoxWalkinCustomer.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxWalkinCustomer.FormattingEnabled = true;
+            this.comboBoxWalkinCustomer.Location = new System.Drawing.Point(603, 221);
+            this.comboBoxWalkinCustomer.Name = "comboBoxWalkinCustomer";
+            this.comboBoxWalkinCustomer.Size = new System.Drawing.Size(248, 31);
+            this.comboBoxWalkinCustomer.TabIndex = 17;
+            // 
+            // comboBoxDefaultDiscount
+            // 
+            this.comboBoxDefaultDiscount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxDefaultDiscount.FormattingEnabled = true;
+            this.comboBoxDefaultDiscount.Location = new System.Drawing.Point(603, 257);
+            this.comboBoxDefaultDiscount.Name = "comboBoxDefaultDiscount";
+            this.comboBoxDefaultDiscount.Size = new System.Drawing.Size(248, 31);
+            this.comboBoxDefaultDiscount.TabIndex = 18;
+            // 
+            // comboBoxReturnSupplier
+            // 
+            this.comboBoxReturnSupplier.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxReturnSupplier.FormattingEnabled = true;
+            this.comboBoxReturnSupplier.Location = new System.Drawing.Point(603, 293);
+            this.comboBoxReturnSupplier.Name = "comboBoxReturnSupplier";
+            this.comboBoxReturnSupplier.Size = new System.Drawing.Size(248, 31);
+            this.comboBoxReturnSupplier.TabIndex = 19;
             // 
             // label31
             // 
@@ -561,11 +606,11 @@
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(426, 474);
+            this.label29.Location = new System.Drawing.Point(414, 474);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(173, 23);
+            this.label29.Size = new System.Drawing.Size(183, 23);
             this.label29.TabIndex = 48;
-            this.label29.Text = "CustomerDisplayPort:";
+            this.label29.Text = "Customer Display Port:";
             // 
             // textBoxORPrintTitle
             // 
@@ -589,41 +634,41 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(450, 296);
+            this.label26.Location = new System.Drawing.Point(465, 296);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(147, 23);
+            this.label26.Size = new System.Drawing.Size(132, 23);
             this.label26.TabIndex = 38;
-            this.label26.Text = "Return SupplierId:";
+            this.label26.Text = "Return Supplier:";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(441, 260);
+            this.label27.Location = new System.Drawing.Point(456, 260);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(156, 23);
+            this.label27.Size = new System.Drawing.Size(141, 23);
             this.label27.TabIndex = 36;
-            this.label27.Text = "Default DiscountId:";
+            this.label27.Text = "Default Discount:";
             // 
             // label28
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(439, 224);
+            this.label28.Location = new System.Drawing.Point(454, 224);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(158, 23);
+            this.label28.Size = new System.Drawing.Size(143, 23);
             this.label28.TabIndex = 34;
-            this.label28.Text = "Walkin CustomerId:";
+            this.label28.Text = "Walkin Customer:";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(459, 188);
+            this.label23.Location = new System.Drawing.Point(472, 188);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(140, 23);
+            this.label23.Size = new System.Drawing.Size(125, 23);
             this.label23.TabIndex = 32;
-            this.label23.Text = "Current PeriodId:";
+            this.label23.Text = "Current Period:";
             // 
             // textBoxCurrentSupport
             // 
@@ -757,11 +802,11 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(41, 296);
+            this.label18.Location = new System.Drawing.Point(73, 296);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(98, 23);
+            this.label18.Size = new System.Drawing.Size(78, 23);
             this.label18.TabIndex = 16;
-            this.label18.Text = "Terminal Id:";
+            this.label18.Text = "Terminal:";
             // 
             // textBoxMachineNo
             // 
@@ -916,9 +961,9 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label3.Location = new System.Drawing.Point(69, 10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(218, 28);
+            this.label3.Size = new System.Drawing.Size(224, 28);
             this.label3.TabIndex = 31;
-            this.label3.Text = "Easyfis System Current";
+            this.label3.Text = "Easyfis System Settings";
             // 
             // pictureBox3
             // 
@@ -1144,51 +1189,6 @@
             this.backgroundWorkerEasyfisIntegration.WorkerReportsProgress = true;
             this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
             this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
-            // 
-            // comboBoxReturnSupplier
-            // 
-            this.comboBoxReturnSupplier.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBoxReturnSupplier.FormattingEnabled = true;
-            this.comboBoxReturnSupplier.Location = new System.Drawing.Point(603, 293);
-            this.comboBoxReturnSupplier.Name = "comboBoxReturnSupplier";
-            this.comboBoxReturnSupplier.Size = new System.Drawing.Size(248, 31);
-            this.comboBoxReturnSupplier.TabIndex = 19;
-            // 
-            // comboBoxDefaultDiscount
-            // 
-            this.comboBoxDefaultDiscount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBoxDefaultDiscount.FormattingEnabled = true;
-            this.comboBoxDefaultDiscount.Location = new System.Drawing.Point(603, 257);
-            this.comboBoxDefaultDiscount.Name = "comboBoxDefaultDiscount";
-            this.comboBoxDefaultDiscount.Size = new System.Drawing.Size(248, 31);
-            this.comboBoxDefaultDiscount.TabIndex = 18;
-            // 
-            // comboBoxWalkinCustomer
-            // 
-            this.comboBoxWalkinCustomer.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBoxWalkinCustomer.FormattingEnabled = true;
-            this.comboBoxWalkinCustomer.Location = new System.Drawing.Point(603, 221);
-            this.comboBoxWalkinCustomer.Name = "comboBoxWalkinCustomer";
-            this.comboBoxWalkinCustomer.Size = new System.Drawing.Size(248, 31);
-            this.comboBoxWalkinCustomer.TabIndex = 17;
-            // 
-            // comboBoxCurrentPeriod
-            // 
-            this.comboBoxCurrentPeriod.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBoxCurrentPeriod.FormattingEnabled = true;
-            this.comboBoxCurrentPeriod.Location = new System.Drawing.Point(603, 185);
-            this.comboBoxCurrentPeriod.Name = "comboBoxCurrentPeriod";
-            this.comboBoxCurrentPeriod.Size = new System.Drawing.Size(248, 31);
-            this.comboBoxCurrentPeriod.TabIndex = 16;
-            // 
-            // comboBoxTerminal
-            // 
-            this.comboBoxTerminal.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBoxTerminal.FormattingEnabled = true;
-            this.comboBoxTerminal.Location = new System.Drawing.Point(157, 293);
-            this.comboBoxTerminal.Name = "comboBoxTerminal";
-            this.comboBoxTerminal.Size = new System.Drawing.Size(248, 31);
-            this.comboBoxTerminal.TabIndex = 8;
             // 
             // SysSettingsForm
             // 
