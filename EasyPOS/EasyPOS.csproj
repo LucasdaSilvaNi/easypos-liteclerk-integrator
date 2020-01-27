@@ -98,6 +98,7 @@
     <Compile Include="Controllers\SysAuditTrailController.cs" />
     <Compile Include="Controllers\SysLoginController.cs" />
     <Compile Include="Controllers\IntCloudSettingsController.cs" />
+    <Compile Include="Controllers\SysCurrentController.cs" />
     <Compile Include="Controllers\SysSoftwareController.cs" />
     <Compile Include="Controllers\TrnDisbursementController.cs" />
     <Compile Include="Controllers\TrnSalesController.cs" />

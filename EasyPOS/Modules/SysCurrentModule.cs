@@ -80,5 +80,59 @@ namespace EasyPOS.Modules
             String newJson = new JavaScriptSerializer().Serialize(newEntities);
             File.WriteAllText(path, newJson);
         }
+
+        // ===============================
+        // Update Current Settings - Login
+        // ===============================
+        public static void UpdateCurrentSettings(Entities.SysCurrentEntity objSysCurrentEntity)
+        {
+            var currentSettings = GetCurrentSettings();
+
+            Entities.SysCurrentEntity newSysCurrentEntities = new Entities.SysCurrentEntity()
+            {
+                CompanyName = objSysCurrentEntity.CompanyName,
+                Address = objSysCurrentEntity.Address,
+                ContactNo = objSysCurrentEntity.ContactNo,
+                TIN = objSysCurrentEntity.TIN,
+                AccreditationNo = objSysCurrentEntity.AccreditationNo,
+                SerialNo = objSysCurrentEntity.SerialNo,
+                PermitNo = objSysCurrentEntity.PermitNo,
+                MachineNo = objSysCurrentEntity.MachineNo,
+                DeclareRate = objSysCurrentEntity.DeclareRate,
+                ReceiptFooter = objSysCurrentEntity.ReceiptFooter,
+                InvoiceFooter = objSysCurrentEntity.InvoiceFooter,
+                LicenseCode = objSysCurrentEntity.LicenseCode,
+                TenantOf = objSysCurrentEntity.TenantOf,
+                CurrentUserId = currentSettings.CurrentUserId,
+                CurrentUserName = currentSettings.CurrentUserName,
+                CurrentVersion = objSysCurrentEntity.CurrentDate,
+                CurrentDeveloper = objSysCurrentEntity.CurrentDeveloper,
+                CurrentSupport = objSysCurrentEntity.CurrentSupport,
+                CurrentPeriodId = objSysCurrentEntity.CurrentPeriodId,
+                CurrentDate = currentSettings.CurrentDate,
+                TerminalId = objSysCurrentEntity.TerminalId,
+                WalkinCustomerId = objSysCurrentEntity.WalkinCustomerId,
+                DefaultDiscountId = objSysCurrentEntity.DefaultDiscountId,
+                ReturnSupplierId = objSysCurrentEntity.ReturnSupplierId,
+                ORPrintTitle = objSysCurrentEntity.ORPrintTitle,
+                IsTenderPrint = objSysCurrentEntity.IsTenderPrint,
+                IsBarcodeQuantityAlwaysOne = objSysCurrentEntity.IsBarcodeQuantityAlwaysOne,
+                WithCustomerDisplay = objSysCurrentEntity.WithCustomerDisplay,
+                CustomerDisplayPort = objSysCurrentEntity.CustomerDisplayPort,
+                CustomerDisplayBaudRate = objSysCurrentEntity.CustomerDisplayBaudRate,
+                CustomerDisplayFirstLineMessage = objSysCurrentEntity.CustomerDisplayFirstLineMessage,
+                CustomerDisplayIfCounterClosedMessage = objSysCurrentEntity.CustomerDisplayIfCounterClosedMessage,
+                CollectionReport = objSysCurrentEntity.CollectionReport,
+                ZReadingFooter = objSysCurrentEntity.ZReadingFooter,
+                EasypayAPIURL = objSysCurrentEntity.EasypayAPIURL,
+                EasypayDefaultUsername = objSysCurrentEntity.EasypayDefaultUsername,
+                EasypayDefaultPassword = objSysCurrentEntity.EasypayDefaultPassword,
+                EasypayMotherCardNumber = objSysCurrentEntity.EasypayMotherCardNumber,
+                ActivateAuditTrail = objSysCurrentEntity.ActivateAuditTrail
+            };
+
+            String newJson = new JavaScriptSerializer().Serialize(newSysCurrentEntities);
+            File.WriteAllText(path, newJson);
+        }
     }
 }
