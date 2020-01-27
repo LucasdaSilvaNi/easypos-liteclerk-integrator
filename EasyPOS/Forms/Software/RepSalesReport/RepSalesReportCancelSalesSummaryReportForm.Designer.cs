@@ -36,15 +36,6 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridCancelSalesSummaryReport = new System.Windows.Forms.DataGridView();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.textBoxTotalAmount = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.buttonPageListFirst = new System.Windows.Forms.Button();
-            this.buttonPageListNext = new System.Windows.Forms.Button();
-            this.buttonPageListLast = new System.Windows.Forms.Button();
-            this.buttonPageListPrevious = new System.Windows.Forms.Button();
-            this.textBoxPageNumber = new System.Windows.Forms.TextBox();
-            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
             this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCollectionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +48,15 @@
             this.ColumnPreparedByUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSpace = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.textBoxTotalAmount = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.buttonPageListFirst = new System.Windows.Forms.Button();
+            this.buttonPageListNext = new System.Windows.Forms.Button();
+            this.buttonPageListLast = new System.Windows.Forms.Button();
+            this.buttonPageListPrevious = new System.Windows.Forms.Button();
+            this.textBoxPageNumber = new System.Windows.Forms.TextBox();
+            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -133,6 +133,7 @@
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_OnClick);
@@ -178,118 +179,6 @@
             this.dataGridCancelSalesSummaryReport.ShowEditingIcon = false;
             this.dataGridCancelSalesSummaryReport.Size = new System.Drawing.Size(1370, 590);
             this.dataGridCancelSalesSummaryReport.TabIndex = 21;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.textBoxTotalAmount);
-            this.panel4.Controls.Add(this.label2);
-            this.panel4.Controls.Add(this.buttonPageListFirst);
-            this.panel4.Controls.Add(this.buttonPageListNext);
-            this.panel4.Controls.Add(this.buttonPageListLast);
-            this.panel4.Controls.Add(this.buttonPageListPrevious);
-            this.panel4.Controls.Add(this.textBoxPageNumber);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 600);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1370, 52);
-            this.panel4.TabIndex = 20;
-            // 
-            // textBoxTotalAmount
-            // 
-            this.textBoxTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxTotalAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxTotalAmount.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTotalAmount.Location = new System.Drawing.Point(1000, 14);
-            this.textBoxTotalAmount.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxTotalAmount.Name = "textBoxTotalAmount";
-            this.textBoxTotalAmount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBoxTotalAmount.Size = new System.Drawing.Size(308, 23);
-            this.textBoxTotalAmount.TabIndex = 15;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(860, 14);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 23);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Total Amount:";
-            // 
-            // buttonPageListFirst
-            // 
-            this.buttonPageListFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonPageListFirst.Enabled = false;
-            this.buttonPageListFirst.FlatAppearance.BorderSize = 0;
-            this.buttonPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPageListFirst.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonPageListFirst.Location = new System.Drawing.Point(12, 9);
-            this.buttonPageListFirst.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonPageListFirst.Name = "buttonPageListFirst";
-            this.buttonPageListFirst.Size = new System.Drawing.Size(82, 32);
-            this.buttonPageListFirst.TabIndex = 8;
-            this.buttonPageListFirst.Text = "First";
-            this.buttonPageListFirst.UseVisualStyleBackColor = false;
-            // 
-            // buttonPageListNext
-            // 
-            this.buttonPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonPageListNext.FlatAppearance.BorderSize = 0;
-            this.buttonPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPageListNext.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonPageListNext.Location = new System.Drawing.Point(338, 9);
-            this.buttonPageListNext.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonPageListNext.Name = "buttonPageListNext";
-            this.buttonPageListNext.Size = new System.Drawing.Size(82, 32);
-            this.buttonPageListNext.TabIndex = 10;
-            this.buttonPageListNext.Text = "Next";
-            this.buttonPageListNext.UseVisualStyleBackColor = false;
-            // 
-            // buttonPageListLast
-            // 
-            this.buttonPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonPageListLast.FlatAppearance.BorderSize = 0;
-            this.buttonPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPageListLast.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonPageListLast.Location = new System.Drawing.Point(422, 9);
-            this.buttonPageListLast.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonPageListLast.Name = "buttonPageListLast";
-            this.buttonPageListLast.Size = new System.Drawing.Size(82, 32);
-            this.buttonPageListLast.TabIndex = 11;
-            this.buttonPageListLast.Text = "Last";
-            this.buttonPageListLast.UseVisualStyleBackColor = false;
-            // 
-            // buttonPageListPrevious
-            // 
-            this.buttonPageListPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonPageListPrevious.Enabled = false;
-            this.buttonPageListPrevious.FlatAppearance.BorderSize = 0;
-            this.buttonPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonPageListPrevious.Location = new System.Drawing.Point(100, 9);
-            this.buttonPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonPageListPrevious.Name = "buttonPageListPrevious";
-            this.buttonPageListPrevious.Size = new System.Drawing.Size(82, 32);
-            this.buttonPageListPrevious.TabIndex = 9;
-            this.buttonPageListPrevious.Text = "Previous";
-            this.buttonPageListPrevious.UseVisualStyleBackColor = false;
-            // 
-            // textBoxPageNumber
-            // 
-            this.textBoxPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxPageNumber.BackColor = System.Drawing.Color.White;
-            this.textBoxPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxPageNumber.Location = new System.Drawing.Point(238, 14);
-            this.textBoxPageNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxPageNumber.Name = "textBoxPageNumber";
-            this.textBoxPageNumber.ReadOnly = true;
-            this.textBoxPageNumber.Size = new System.Drawing.Size(69, 23);
-            this.textBoxPageNumber.TabIndex = 12;
-            this.textBoxPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ColumnId
             // 
@@ -383,6 +272,124 @@
             this.ColumnSpace.HeaderText = "";
             this.ColumnSpace.Name = "ColumnSpace";
             this.ColumnSpace.ReadOnly = true;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.textBoxTotalAmount);
+            this.panel4.Controls.Add(this.label2);
+            this.panel4.Controls.Add(this.buttonPageListFirst);
+            this.panel4.Controls.Add(this.buttonPageListNext);
+            this.panel4.Controls.Add(this.buttonPageListLast);
+            this.panel4.Controls.Add(this.buttonPageListPrevious);
+            this.panel4.Controls.Add(this.textBoxPageNumber);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 600);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1370, 52);
+            this.panel4.TabIndex = 20;
+            // 
+            // textBoxTotalAmount
+            // 
+            this.textBoxTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxTotalAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxTotalAmount.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTotalAmount.Location = new System.Drawing.Point(1000, 14);
+            this.textBoxTotalAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxTotalAmount.Name = "textBoxTotalAmount";
+            this.textBoxTotalAmount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBoxTotalAmount.Size = new System.Drawing.Size(308, 23);
+            this.textBoxTotalAmount.TabIndex = 15;
+            this.textBoxTotalAmount.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(860, 14);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(124, 23);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Total Amount:";
+            // 
+            // buttonPageListFirst
+            // 
+            this.buttonPageListFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonPageListFirst.Enabled = false;
+            this.buttonPageListFirst.FlatAppearance.BorderSize = 0;
+            this.buttonPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPageListFirst.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonPageListFirst.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonPageListFirst.Name = "buttonPageListFirst";
+            this.buttonPageListFirst.Size = new System.Drawing.Size(82, 32);
+            this.buttonPageListFirst.TabIndex = 8;
+            this.buttonPageListFirst.TabStop = false;
+            this.buttonPageListFirst.Text = "First";
+            this.buttonPageListFirst.UseVisualStyleBackColor = false;
+            // 
+            // buttonPageListNext
+            // 
+            this.buttonPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonPageListNext.FlatAppearance.BorderSize = 0;
+            this.buttonPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPageListNext.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonPageListNext.Location = new System.Drawing.Point(338, 9);
+            this.buttonPageListNext.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonPageListNext.Name = "buttonPageListNext";
+            this.buttonPageListNext.Size = new System.Drawing.Size(82, 32);
+            this.buttonPageListNext.TabIndex = 10;
+            this.buttonPageListNext.TabStop = false;
+            this.buttonPageListNext.Text = "Next";
+            this.buttonPageListNext.UseVisualStyleBackColor = false;
+            // 
+            // buttonPageListLast
+            // 
+            this.buttonPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonPageListLast.FlatAppearance.BorderSize = 0;
+            this.buttonPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPageListLast.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonPageListLast.Location = new System.Drawing.Point(422, 9);
+            this.buttonPageListLast.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonPageListLast.Name = "buttonPageListLast";
+            this.buttonPageListLast.Size = new System.Drawing.Size(82, 32);
+            this.buttonPageListLast.TabIndex = 11;
+            this.buttonPageListLast.TabStop = false;
+            this.buttonPageListLast.Text = "Last";
+            this.buttonPageListLast.UseVisualStyleBackColor = false;
+            // 
+            // buttonPageListPrevious
+            // 
+            this.buttonPageListPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonPageListPrevious.Enabled = false;
+            this.buttonPageListPrevious.FlatAppearance.BorderSize = 0;
+            this.buttonPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonPageListPrevious.Location = new System.Drawing.Point(100, 9);
+            this.buttonPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonPageListPrevious.Name = "buttonPageListPrevious";
+            this.buttonPageListPrevious.Size = new System.Drawing.Size(82, 32);
+            this.buttonPageListPrevious.TabIndex = 9;
+            this.buttonPageListPrevious.TabStop = false;
+            this.buttonPageListPrevious.Text = "Previous";
+            this.buttonPageListPrevious.UseVisualStyleBackColor = false;
+            // 
+            // textBoxPageNumber
+            // 
+            this.textBoxPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBoxPageNumber.BackColor = System.Drawing.Color.White;
+            this.textBoxPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxPageNumber.Location = new System.Drawing.Point(238, 14);
+            this.textBoxPageNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxPageNumber.Name = "textBoxPageNumber";
+            this.textBoxPageNumber.ReadOnly = true;
+            this.textBoxPageNumber.Size = new System.Drawing.Size(69, 23);
+            this.textBoxPageNumber.TabIndex = 12;
+            this.textBoxPageNumber.TabStop = false;
+            this.textBoxPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // RepSalesReportCancelSalesSummaryReportForm
             // 

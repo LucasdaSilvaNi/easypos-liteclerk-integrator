@@ -84,6 +84,7 @@
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -95,6 +96,7 @@
             this.dateTimePickerDisbursementListFilter.Name = "dateTimePickerDisbursementListFilter";
             this.dateTimePickerDisbursementListFilter.Size = new System.Drawing.Size(141, 30);
             this.dateTimePickerDisbursementListFilter.TabIndex = 22;
+            this.dateTimePickerDisbursementListFilter.TabStop = false;
             this.dateTimePickerDisbursementListFilter.ValueChanged += new System.EventHandler(this.dateTimePickerDisbursementListFilter_ValueChanged);
             // 
             // buttonDisbursementListPageListLast
@@ -106,6 +108,7 @@
             this.buttonDisbursementListPageListLast.Name = "buttonDisbursementListPageListLast";
             this.buttonDisbursementListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonDisbursementListPageListLast.TabIndex = 16;
+            this.buttonDisbursementListPageListLast.TabStop = false;
             this.buttonDisbursementListPageListLast.Text = "Last";
             this.buttonDisbursementListPageListLast.UseVisualStyleBackColor = false;
             this.buttonDisbursementListPageListLast.Click += new System.EventHandler(this.buttonDisbursementListPageListLast_Click);
@@ -120,6 +123,7 @@
             this.textBoxDisbursementListPageNumber.ReadOnly = true;
             this.textBoxDisbursementListPageNumber.Size = new System.Drawing.Size(69, 20);
             this.textBoxDisbursementListPageNumber.TabIndex = 17;
+            this.textBoxDisbursementListPageNumber.TabStop = false;
             this.textBoxDisbursementListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonAdd
@@ -135,6 +139,7 @@
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(88, 40);
             this.buttonAdd.TabIndex = 0;
+            this.buttonAdd.TabStop = false;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
@@ -246,6 +251,7 @@
             this.buttonDisbursementListPageListFirst.Name = "buttonDisbursementListPageListFirst";
             this.buttonDisbursementListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonDisbursementListPageListFirst.TabIndex = 13;
+            this.buttonDisbursementListPageListFirst.TabStop = false;
             this.buttonDisbursementListPageListFirst.Text = "First";
             this.buttonDisbursementListPageListFirst.UseVisualStyleBackColor = false;
             this.buttonDisbursementListPageListFirst.Click += new System.EventHandler(this.buttonDisbursementListPageListFirst_Click);
@@ -260,6 +266,7 @@
             this.buttonDisbursementListPageListPrevious.Name = "buttonDisbursementListPageListPrevious";
             this.buttonDisbursementListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonDisbursementListPageListPrevious.TabIndex = 14;
+            this.buttonDisbursementListPageListPrevious.TabStop = false;
             this.buttonDisbursementListPageListPrevious.Text = "Previous";
             this.buttonDisbursementListPageListPrevious.UseVisualStyleBackColor = false;
             this.buttonDisbursementListPageListPrevious.Click += new System.EventHandler(this.buttonDisbursementListPageListPrevious_Click);
@@ -273,6 +280,7 @@
             this.buttonDisbursementListPageListNext.Name = "buttonDisbursementListPageListNext";
             this.buttonDisbursementListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonDisbursementListPageListNext.TabIndex = 15;
+            this.buttonDisbursementListPageListNext.TabStop = false;
             this.buttonDisbursementListPageListNext.Text = "Next";
             this.buttonDisbursementListPageListNext.UseVisualStyleBackColor = false;
             this.buttonDisbursementListPageListNext.Click += new System.EventHandler(this.buttonDisbursementListPageListNext_Click);
@@ -299,6 +307,7 @@
             this.textBoxDisbursementListFilter.Name = "textBoxDisbursementListFilter";
             this.textBoxDisbursementListFilter.Size = new System.Drawing.Size(1229, 30);
             this.textBoxDisbursementListFilter.TabIndex = 19;
+            this.textBoxDisbursementListFilter.TabStop = false;
             this.textBoxDisbursementListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxDisbursementListFilter_KeyDown);
             // 
             // panel2

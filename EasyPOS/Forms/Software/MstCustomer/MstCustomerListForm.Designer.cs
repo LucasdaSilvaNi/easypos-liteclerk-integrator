@@ -104,7 +104,8 @@
             this.buttonClose.Location = new System.Drawing.Point(1300, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 21;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -121,7 +122,8 @@
             this.buttonAdd.Location = new System.Drawing.Point(1206, 12);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(88, 40);
-            this.buttonAdd.TabIndex = 0;
+            this.buttonAdd.TabIndex = 20;
+            this.buttonAdd.TabStop = false;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
@@ -162,6 +164,7 @@
             this.buttonCustomerListPageListFirst.Name = "buttonCustomerListPageListFirst";
             this.buttonCustomerListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonCustomerListPageListFirst.TabIndex = 13;
+            this.buttonCustomerListPageListFirst.TabStop = false;
             this.buttonCustomerListPageListFirst.Text = "First";
             this.buttonCustomerListPageListFirst.UseVisualStyleBackColor = false;
             this.buttonCustomerListPageListFirst.Click += new System.EventHandler(this.buttonCustomerListPageListFirst_Click);
@@ -177,6 +180,7 @@
             this.buttonCustomerListPageListPrevious.Name = "buttonCustomerListPageListPrevious";
             this.buttonCustomerListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonCustomerListPageListPrevious.TabIndex = 14;
+            this.buttonCustomerListPageListPrevious.TabStop = false;
             this.buttonCustomerListPageListPrevious.Text = "Previous";
             this.buttonCustomerListPageListPrevious.UseVisualStyleBackColor = false;
             this.buttonCustomerListPageListPrevious.Click += new System.EventHandler(this.buttonCustomerListPageListPrevious_Click);
@@ -191,6 +195,7 @@
             this.buttonCustomerListPageListNext.Name = "buttonCustomerListPageListNext";
             this.buttonCustomerListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonCustomerListPageListNext.TabIndex = 15;
+            this.buttonCustomerListPageListNext.TabStop = false;
             this.buttonCustomerListPageListNext.Text = "Next";
             this.buttonCustomerListPageListNext.UseVisualStyleBackColor = false;
             this.buttonCustomerListPageListNext.Click += new System.EventHandler(this.buttonCustomerListPageListNext_Click);
@@ -205,6 +210,7 @@
             this.buttonCustomerListPageListLast.Name = "buttonCustomerListPageListLast";
             this.buttonCustomerListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonCustomerListPageListLast.TabIndex = 16;
+            this.buttonCustomerListPageListLast.TabStop = false;
             this.buttonCustomerListPageListLast.Text = "Last";
             this.buttonCustomerListPageListLast.UseVisualStyleBackColor = false;
             this.buttonCustomerListPageListLast.Click += new System.EventHandler(this.buttonCustomerListPageListLast_Click);
@@ -220,6 +226,7 @@
             this.textBoxCustomerListPageNumber.ReadOnly = true;
             this.textBoxCustomerListPageNumber.Size = new System.Drawing.Size(69, 20);
             this.textBoxCustomerListPageNumber.TabIndex = 17;
+            this.textBoxCustomerListPageNumber.TabStop = false;
             this.textBoxCustomerListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dataGridViewCustomerList
@@ -326,6 +333,7 @@
             this.textBoxCustomerListFilter.Name = "textBoxCustomerListFilter";
             this.textBoxCustomerListFilter.Size = new System.Drawing.Size(1376, 30);
             this.textBoxCustomerListFilter.TabIndex = 19;
+            this.textBoxCustomerListFilter.TabStop = false;
             this.textBoxCustomerListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxCustomerListFilter_KeyDown);
             // 
             // MstCustomerListForm

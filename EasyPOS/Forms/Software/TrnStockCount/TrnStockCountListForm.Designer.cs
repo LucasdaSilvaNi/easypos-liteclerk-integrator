@@ -167,6 +167,7 @@
             this.dateTimePickerStockCountListFilter.Name = "dateTimePickerStockCountListFilter";
             this.dateTimePickerStockCountListFilter.Size = new System.Drawing.Size(141, 30);
             this.dateTimePickerStockCountListFilter.TabIndex = 0;
+            this.dateTimePickerStockCountListFilter.TabStop = false;
             this.dateTimePickerStockCountListFilter.ValueChanged += new System.EventHandler(this.dateTimePickerStockCountListFilter_ValueChanged);
             // 
             // dataGridViewStockCountList
@@ -263,6 +264,7 @@
             this.textBoxStockCountListFilter.Name = "textBoxStockCountListFilter";
             this.textBoxStockCountListFilter.Size = new System.Drawing.Size(1229, 30);
             this.textBoxStockCountListFilter.TabIndex = 1;
+            this.textBoxStockCountListFilter.TabStop = false;
             this.textBoxStockCountListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxStockCountListFilter_KeyDown);
             // 
             // panel1

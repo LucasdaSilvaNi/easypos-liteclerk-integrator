@@ -141,7 +141,7 @@
             this.textBoxStockOutLineAmount.Name = "textBoxStockOutLineAmount";
             this.textBoxStockOutLineAmount.ReadOnly = true;
             this.textBoxStockOutLineAmount.Size = new System.Drawing.Size(269, 30);
-            this.textBoxStockOutLineAmount.TabIndex = 24;
+            this.textBoxStockOutLineAmount.TabIndex = 3;
             this.textBoxStockOutLineAmount.TabStop = false;
             this.textBoxStockOutLineAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -171,7 +171,7 @@
             this.textBoxStockOutLineCost.Location = new System.Drawing.Point(98, 116);
             this.textBoxStockOutLineCost.Name = "textBoxStockOutLineCost";
             this.textBoxStockOutLineCost.Size = new System.Drawing.Size(269, 30);
-            this.textBoxStockOutLineCost.TabIndex = 16;
+            this.textBoxStockOutLineCost.TabIndex = 2;
             this.textBoxStockOutLineCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxStockOutLineCost.TextChanged += new System.EventHandler(this.textBoxStockOutLineCost_TextChanged);
             this.textBoxStockOutLineCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStockOutLineCost_KeyPress);
@@ -204,11 +204,13 @@
             // 
             // textBoxStockOutLineQuantity
             // 
+            this.textBoxStockOutLineQuantity.AcceptsTab = true;
             this.textBoxStockOutLineQuantity.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxStockOutLineQuantity.HideSelection = false;
             this.textBoxStockOutLineQuantity.Location = new System.Drawing.Point(98, 44);
             this.textBoxStockOutLineQuantity.Name = "textBoxStockOutLineQuantity";
             this.textBoxStockOutLineQuantity.Size = new System.Drawing.Size(269, 30);
-            this.textBoxStockOutLineQuantity.TabIndex = 11;
+            this.textBoxStockOutLineQuantity.TabIndex = 0;
             this.textBoxStockOutLineQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxStockOutLineQuantity.TextChanged += new System.EventHandler(this.textBoxStockOutLineQuantity_TextChanged);
             this.textBoxStockOutLineQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStockOutLineQuantity_KeyPress);
@@ -231,7 +233,7 @@
             this.textBoxStockOutLineUnit.Name = "textBoxStockOutLineUnit";
             this.textBoxStockOutLineUnit.ReadOnly = true;
             this.textBoxStockOutLineUnit.Size = new System.Drawing.Size(116, 30);
-            this.textBoxStockOutLineUnit.TabIndex = 15;
+            this.textBoxStockOutLineUnit.TabIndex = 1;
             this.textBoxStockOutLineUnit.TabStop = false;
             // 
             // TrnStockOutDetailStockOutLineItemDetailForm

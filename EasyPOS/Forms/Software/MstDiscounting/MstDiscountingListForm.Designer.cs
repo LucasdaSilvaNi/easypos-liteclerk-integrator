@@ -70,6 +70,7 @@
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(88, 40);
             this.buttonAdd.TabIndex = 0;
+            this.buttonAdd.TabStop = false;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
@@ -87,6 +88,7 @@
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -161,6 +163,7 @@
             this.buttonDiscountListPageListFirst.Name = "buttonDiscountListPageListFirst";
             this.buttonDiscountListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonDiscountListPageListFirst.TabIndex = 13;
+            this.buttonDiscountListPageListFirst.TabStop = false;
             this.buttonDiscountListPageListFirst.Text = "First";
             this.buttonDiscountListPageListFirst.UseVisualStyleBackColor = false;
             this.buttonDiscountListPageListFirst.Click += new System.EventHandler(this.buttonDiscountListPageListFirst_Click);
@@ -176,6 +179,7 @@
             this.buttonDiscountListPageListPrevious.Name = "buttonDiscountListPageListPrevious";
             this.buttonDiscountListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonDiscountListPageListPrevious.TabIndex = 14;
+            this.buttonDiscountListPageListPrevious.TabStop = false;
             this.buttonDiscountListPageListPrevious.Text = "Previous";
             this.buttonDiscountListPageListPrevious.UseVisualStyleBackColor = false;
             this.buttonDiscountListPageListPrevious.Click += new System.EventHandler(this.buttonDiscountListPageListPrevious_Click);
@@ -190,6 +194,7 @@
             this.buttonDiscountListPageListNext.Name = "buttonDiscountListPageListNext";
             this.buttonDiscountListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonDiscountListPageListNext.TabIndex = 15;
+            this.buttonDiscountListPageListNext.TabStop = false;
             this.buttonDiscountListPageListNext.Text = "Next";
             this.buttonDiscountListPageListNext.UseVisualStyleBackColor = false;
             this.buttonDiscountListPageListNext.Click += new System.EventHandler(this.buttonDiscountListPageListNext_Click);
@@ -204,6 +209,7 @@
             this.buttonDiscountListPageListLast.Name = "buttonDiscountListPageListLast";
             this.buttonDiscountListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonDiscountListPageListLast.TabIndex = 16;
+            this.buttonDiscountListPageListLast.TabStop = false;
             this.buttonDiscountListPageListLast.Text = "Last";
             this.buttonDiscountListPageListLast.UseVisualStyleBackColor = false;
             this.buttonDiscountListPageListLast.Click += new System.EventHandler(this.buttonDiscountListPageListLast_Click);
@@ -219,6 +225,7 @@
             this.textBoxDiscountListPageNumber.ReadOnly = true;
             this.textBoxDiscountListPageNumber.Size = new System.Drawing.Size(69, 20);
             this.textBoxDiscountListPageNumber.TabIndex = 17;
+            this.textBoxDiscountListPageNumber.TabStop = false;
             this.textBoxDiscountListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dataGridViewDiscountList

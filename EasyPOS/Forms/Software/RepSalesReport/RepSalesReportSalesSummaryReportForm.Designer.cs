@@ -132,6 +132,7 @@
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_OnClick);
@@ -290,6 +291,7 @@
             this.textBoxTotalAmount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBoxTotalAmount.Size = new System.Drawing.Size(308, 23);
             this.textBoxTotalAmount.TabIndex = 15;
+            this.textBoxTotalAmount.TabStop = false;
             // 
             // label2
             // 
@@ -313,6 +315,7 @@
             this.buttonSalesListPageListFirst.Name = "buttonSalesListPageListFirst";
             this.buttonSalesListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesListPageListFirst.TabIndex = 8;
+            this.buttonSalesListPageListFirst.TabStop = false;
             this.buttonSalesListPageListFirst.Text = "First";
             this.buttonSalesListPageListFirst.UseVisualStyleBackColor = false;
             this.buttonSalesListPageListFirst.Click += new System.EventHandler(this.buttonSalesListPageListFirst_Click);
@@ -327,6 +330,7 @@
             this.buttonSalesListPageListNext.Name = "buttonSalesListPageListNext";
             this.buttonSalesListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesListPageListNext.TabIndex = 10;
+            this.buttonSalesListPageListNext.TabStop = false;
             this.buttonSalesListPageListNext.Text = "Next";
             this.buttonSalesListPageListNext.UseVisualStyleBackColor = false;
             this.buttonSalesListPageListNext.Click += new System.EventHandler(this.buttonSalesListPageListNext_Click);
@@ -341,6 +345,7 @@
             this.buttonSalesListPageListLast.Name = "buttonSalesListPageListLast";
             this.buttonSalesListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesListPageListLast.TabIndex = 11;
+            this.buttonSalesListPageListLast.TabStop = false;
             this.buttonSalesListPageListLast.Text = "Last";
             this.buttonSalesListPageListLast.UseVisualStyleBackColor = false;
             this.buttonSalesListPageListLast.Click += new System.EventHandler(this.buttonSalesListPageListLast_Click);
@@ -356,6 +361,7 @@
             this.buttonSalesListPageListPrevious.Name = "buttonSalesListPageListPrevious";
             this.buttonSalesListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesListPageListPrevious.TabIndex = 9;
+            this.buttonSalesListPageListPrevious.TabStop = false;
             this.buttonSalesListPageListPrevious.Text = "Previous";
             this.buttonSalesListPageListPrevious.UseVisualStyleBackColor = false;
             this.buttonSalesListPageListPrevious.Click += new System.EventHandler(this.buttonSalesListPageListPrevious_Click);
@@ -370,6 +376,7 @@
             this.textBoxPageNumber.ReadOnly = true;
             this.textBoxPageNumber.Size = new System.Drawing.Size(69, 23);
             this.textBoxPageNumber.TabIndex = 12;
+            this.textBoxPageNumber.TabStop = false;
             this.textBoxPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // RepSalesReportSalesSummaryReportForm

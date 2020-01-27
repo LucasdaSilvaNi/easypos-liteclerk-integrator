@@ -312,6 +312,7 @@
             this.buttonSearchItemListPageListFirst.Name = "buttonSearchItemListPageListFirst";
             this.buttonSearchItemListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonSearchItemListPageListFirst.TabIndex = 13;
+            this.buttonSearchItemListPageListFirst.TabStop = false;
             this.buttonSearchItemListPageListFirst.Text = "First";
             this.buttonSearchItemListPageListFirst.UseVisualStyleBackColor = false;
             this.buttonSearchItemListPageListFirst.Click += new System.EventHandler(this.buttonSearchItemListPageListFirst_Click);
@@ -327,6 +328,7 @@
             this.buttonSearchItemListPageListPrevious.Name = "buttonSearchItemListPageListPrevious";
             this.buttonSearchItemListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonSearchItemListPageListPrevious.TabIndex = 14;
+            this.buttonSearchItemListPageListPrevious.TabStop = false;
             this.buttonSearchItemListPageListPrevious.Text = "Previous";
             this.buttonSearchItemListPageListPrevious.UseVisualStyleBackColor = false;
             this.buttonSearchItemListPageListPrevious.Click += new System.EventHandler(this.buttonSearchItemListPageListPrevious_Click);
@@ -341,6 +343,7 @@
             this.buttonSearchItemListPageListNext.Name = "buttonSearchItemListPageListNext";
             this.buttonSearchItemListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonSearchItemListPageListNext.TabIndex = 15;
+            this.buttonSearchItemListPageListNext.TabStop = false;
             this.buttonSearchItemListPageListNext.Text = "Next";
             this.buttonSearchItemListPageListNext.UseVisualStyleBackColor = false;
             this.buttonSearchItemListPageListNext.Click += new System.EventHandler(this.buttonSearchItemListPageListNext_Click);
@@ -355,6 +358,7 @@
             this.buttonSearchItemListPageListLast.Name = "buttonSearchItemListPageListLast";
             this.buttonSearchItemListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonSearchItemListPageListLast.TabIndex = 16;
+            this.buttonSearchItemListPageListLast.TabStop = false;
             this.buttonSearchItemListPageListLast.Text = "Last";
             this.buttonSearchItemListPageListLast.UseVisualStyleBackColor = false;
             this.buttonSearchItemListPageListLast.Click += new System.EventHandler(this.buttonSearchItemListPageListLast_Click);
@@ -370,6 +374,7 @@
             this.textBoxSearchItemListPageNumber.ReadOnly = true;
             this.textBoxSearchItemListPageNumber.Size = new System.Drawing.Size(69, 20);
             this.textBoxSearchItemListPageNumber.TabIndex = 17;
+            this.textBoxSearchItemListPageNumber.TabStop = false;
             this.textBoxSearchItemListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel2

@@ -155,7 +155,7 @@
             this.checkBoxIncludeExpiry.Location = new System.Drawing.Point(742, 51);
             this.checkBoxIncludeExpiry.Name = "checkBoxIncludeExpiry";
             this.checkBoxIncludeExpiry.Size = new System.Drawing.Size(18, 17);
-            this.checkBoxIncludeExpiry.TabIndex = 34;
+            this.checkBoxIncludeExpiry.TabIndex = 6;
             this.checkBoxIncludeExpiry.UseVisualStyleBackColor = true;
             this.checkBoxIncludeExpiry.CheckedChanged += new System.EventHandler(this.checkBoxIncludeExpiry_CheckedChanged);
             // 
@@ -167,7 +167,7 @@
             this.dateTimePickerStockInLineExpiryDate.Location = new System.Drawing.Point(485, 44);
             this.dateTimePickerStockInLineExpiryDate.Name = "dateTimePickerStockInLineExpiryDate";
             this.dateTimePickerStockInLineExpiryDate.Size = new System.Drawing.Size(251, 30);
-            this.dateTimePickerStockInLineExpiryDate.TabIndex = 33;
+            this.dateTimePickerStockInLineExpiryDate.TabIndex = 5;
             // 
             // label8
             // 
@@ -185,7 +185,7 @@
             this.textBoxStockInLinePrice.Location = new System.Drawing.Point(98, 188);
             this.textBoxStockInLinePrice.Name = "textBoxStockInLinePrice";
             this.textBoxStockInLinePrice.Size = new System.Drawing.Size(269, 30);
-            this.textBoxStockInLinePrice.TabIndex = 31;
+            this.textBoxStockInLinePrice.TabIndex = 4;
             this.textBoxStockInLinePrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxStockInLinePrice.TextChanged += new System.EventHandler(this.textBoxStockInLinePrice_TextChanged);
             this.textBoxStockInLinePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStockInLinePrice_KeyPress);
@@ -207,7 +207,7 @@
             this.textBoxStockInLineLotNumber.Location = new System.Drawing.Point(485, 80);
             this.textBoxStockInLineLotNumber.Name = "textBoxStockInLineLotNumber";
             this.textBoxStockInLineLotNumber.Size = new System.Drawing.Size(251, 30);
-            this.textBoxStockInLineLotNumber.TabIndex = 29;
+            this.textBoxStockInLineLotNumber.TabIndex = 7;
             // 
             // label6
             // 
@@ -226,7 +226,7 @@
             this.textBoxStockInLineAmount.Name = "textBoxStockInLineAmount";
             this.textBoxStockInLineAmount.ReadOnly = true;
             this.textBoxStockInLineAmount.Size = new System.Drawing.Size(269, 30);
-            this.textBoxStockInLineAmount.TabIndex = 24;
+            this.textBoxStockInLineAmount.TabIndex = 3;
             this.textBoxStockInLineAmount.TabStop = false;
             this.textBoxStockInLineAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -256,7 +256,7 @@
             this.textBoxStockInLineCost.Location = new System.Drawing.Point(98, 116);
             this.textBoxStockInLineCost.Name = "textBoxStockInLineCost";
             this.textBoxStockInLineCost.Size = new System.Drawing.Size(269, 30);
-            this.textBoxStockInLineCost.TabIndex = 16;
+            this.textBoxStockInLineCost.TabIndex = 2;
             this.textBoxStockInLineCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxStockInLineCost.TextChanged += new System.EventHandler(this.textBoxStockInLineCost_TextChanged);
             this.textBoxStockInLineCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStockInLineCost_KeyPress);
@@ -289,11 +289,13 @@
             // 
             // textBoxStockInLineQuantity
             // 
+            this.textBoxStockInLineQuantity.AcceptsTab = true;
             this.textBoxStockInLineQuantity.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxStockInLineQuantity.HideSelection = false;
             this.textBoxStockInLineQuantity.Location = new System.Drawing.Point(98, 44);
             this.textBoxStockInLineQuantity.Name = "textBoxStockInLineQuantity";
             this.textBoxStockInLineQuantity.Size = new System.Drawing.Size(269, 30);
-            this.textBoxStockInLineQuantity.TabIndex = 11;
+            this.textBoxStockInLineQuantity.TabIndex = 0;
             this.textBoxStockInLineQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxStockInLineQuantity.TextChanged += new System.EventHandler(this.textBoxStockInLineQuantity_TextChanged);
             this.textBoxStockInLineQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStockInLineQuantity_KeyPress);
@@ -316,7 +318,7 @@
             this.textBoxStockInLineUnit.Name = "textBoxStockInLineUnit";
             this.textBoxStockInLineUnit.ReadOnly = true;
             this.textBoxStockInLineUnit.Size = new System.Drawing.Size(116, 30);
-            this.textBoxStockInLineUnit.TabIndex = 15;
+            this.textBoxStockInLineUnit.TabIndex = 1;
             this.textBoxStockInLineUnit.TabStop = false;
             // 
             // TrnStockInDetailStockInLineItemDetailForm

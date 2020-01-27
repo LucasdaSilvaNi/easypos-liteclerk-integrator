@@ -77,6 +77,7 @@
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(88, 40);
             this.buttonAdd.TabIndex = 0;
+            this.buttonAdd.TabStop = false;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
@@ -94,6 +95,7 @@
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -168,6 +170,7 @@
             this.buttonItemListPageListFirst.Name = "buttonItemListPageListFirst";
             this.buttonItemListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonItemListPageListFirst.TabIndex = 13;
+            this.buttonItemListPageListFirst.TabStop = false;
             this.buttonItemListPageListFirst.Text = "First";
             this.buttonItemListPageListFirst.UseVisualStyleBackColor = false;
             this.buttonItemListPageListFirst.Click += new System.EventHandler(this.buttonItemListPageListFirst_Click);
@@ -183,6 +186,7 @@
             this.buttonItemListPageListPrevious.Name = "buttonItemListPageListPrevious";
             this.buttonItemListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonItemListPageListPrevious.TabIndex = 14;
+            this.buttonItemListPageListPrevious.TabStop = false;
             this.buttonItemListPageListPrevious.Text = "Previous";
             this.buttonItemListPageListPrevious.UseVisualStyleBackColor = false;
             this.buttonItemListPageListPrevious.Click += new System.EventHandler(this.buttonItemListPageListPrevious_Click);
@@ -197,6 +201,7 @@
             this.buttonItemListPageListNext.Name = "buttonItemListPageListNext";
             this.buttonItemListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonItemListPageListNext.TabIndex = 15;
+            this.buttonItemListPageListNext.TabStop = false;
             this.buttonItemListPageListNext.Text = "Next";
             this.buttonItemListPageListNext.UseVisualStyleBackColor = false;
             this.buttonItemListPageListNext.Click += new System.EventHandler(this.buttonItemListPageListNext_Click);
@@ -211,6 +216,7 @@
             this.buttonItemListPageListLast.Name = "buttonItemListPageListLast";
             this.buttonItemListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonItemListPageListLast.TabIndex = 16;
+            this.buttonItemListPageListLast.TabStop = false;
             this.buttonItemListPageListLast.Text = "Last";
             this.buttonItemListPageListLast.UseVisualStyleBackColor = false;
             this.buttonItemListPageListLast.Click += new System.EventHandler(this.buttonItemListPageListLast_Click);
@@ -226,6 +232,7 @@
             this.textBoxItemListPageNumber.ReadOnly = true;
             this.textBoxItemListPageNumber.Size = new System.Drawing.Size(69, 20);
             this.textBoxItemListPageNumber.TabIndex = 17;
+            this.textBoxItemListPageNumber.TabStop = false;
             this.textBoxItemListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dataGridViewItemList
@@ -370,6 +377,7 @@
             this.textBoxItemListFilter.Name = "textBoxItemListFilter";
             this.textBoxItemListFilter.Size = new System.Drawing.Size(1376, 30);
             this.textBoxItemListFilter.TabIndex = 8;
+            this.textBoxItemListFilter.TabStop = false;
             this.textBoxItemListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxItemListFilter_KeyDown);
             // 
             // MstItemListForm
