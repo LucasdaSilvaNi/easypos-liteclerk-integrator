@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -255,6 +258,53 @@ namespace EasyPOS.Forms.Software.SysUtilities
         private void dateTimePickerSysAuditTrailListStartDateFilter_ValueChanged(object sender, EventArgs e)
         {
             UpdateAuditTrailListDataSource();
+        }
+
+        private void buttonView_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = folderBrowserDialogGenerateCSV.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    
+
+                    StringBuilder csv = new StringBuilder();
+                    String[] header = { "Date", "User", "Module", "Action Taken", "Old Value", "New Value" };
+                    csv.AppendLine(String.Join(",", header));
+
+                    if (auditTrailListPageList.Any())
+                    {
+                        foreach (var auditTrail in auditTrailListPageList)
+                        {
+                            String[] data = {auditTrail.ColumnAuditTrailListAuditDate,
+                                        auditTrail.ColumnAuditTrailListUser.Replace("," , ""),
+                                        auditTrail.ColumnAuditTrailListTableInformation.Replace("," , "-"),
+                                        auditTrail.ColumnAuditTrailListRecordInformation.Replace("," , "-"),
+                                        auditTrail.ColumnAuditTrailListFormInformation.Replace("," , "-"),
+                                        auditTrail.ColumnAuditTrailListActionInformation.Replace("," , "-")
+                            };
+
+                            csv.AppendLine(String.Join(",", data));
+                        }
+                    }
+
+                    String executingUser = WindowsIdentity.GetCurrent().Name;
+
+                    DirectorySecurity securityRules = new DirectorySecurity();
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.Read, AccessControlType.Allow));
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
+
+                    DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\AuditSummaryReport_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+
+                    MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -56,6 +56,8 @@
             this.tabControlSystemTable = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.buttonView = new System.Windows.Forms.Button();
+            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuditTrailList)).BeginInit();
@@ -158,6 +160,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.buttonView);
             this.panel2.Controls.Add(this.comboBoxUserFilter);
             this.panel2.Controls.Add(this.dateTimePickerSysAuditTrailListEndDateFilter);
             this.panel2.Controls.Add(this.dateTimePickerSysAuditTrailListStartDateFilter);
@@ -172,7 +175,7 @@
             // comboBoxUserFilter
             // 
             this.comboBoxUserFilter.FormattingEnabled = true;
-            this.comboBoxUserFilter.Location = new System.Drawing.Point(298, 5);
+            this.comboBoxUserFilter.Location = new System.Drawing.Point(298, 7);
             this.comboBoxUserFilter.Name = "comboBoxUserFilter";
             this.comboBoxUserFilter.Size = new System.Drawing.Size(264, 31);
             this.comboBoxUserFilter.TabIndex = 2;
@@ -181,7 +184,7 @@
             // dateTimePickerSysAuditTrailListEndDateFilter
             // 
             this.dateTimePickerSysAuditTrailListEndDateFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerSysAuditTrailListEndDateFilter.Location = new System.Drawing.Point(151, 5);
+            this.dateTimePickerSysAuditTrailListEndDateFilter.Location = new System.Drawing.Point(151, 8);
             this.dateTimePickerSysAuditTrailListEndDateFilter.Name = "dateTimePickerSysAuditTrailListEndDateFilter";
             this.dateTimePickerSysAuditTrailListEndDateFilter.Size = new System.Drawing.Size(141, 30);
             this.dateTimePickerSysAuditTrailListEndDateFilter.TabIndex = 1;
@@ -190,7 +193,7 @@
             // dateTimePickerSysAuditTrailListStartDateFilter
             // 
             this.dateTimePickerSysAuditTrailListStartDateFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerSysAuditTrailListStartDateFilter.Location = new System.Drawing.Point(5, 5);
+            this.dateTimePickerSysAuditTrailListStartDateFilter.Location = new System.Drawing.Point(5, 8);
             this.dateTimePickerSysAuditTrailListStartDateFilter.Name = "dateTimePickerSysAuditTrailListStartDateFilter";
             this.dateTimePickerSysAuditTrailListStartDateFilter.Size = new System.Drawing.Size(141, 30);
             this.dateTimePickerSysAuditTrailListStartDateFilter.TabIndex = 0;
@@ -216,14 +219,14 @@
             this.ColumnAuditTrailListRecordInformation,
             this.ColumnAuditTrailListFormInformation,
             this.ColumnAuditTrailListSpace});
-            this.dataGridViewAuditTrailList.Location = new System.Drawing.Point(5, 42);
+            this.dataGridViewAuditTrailList.Location = new System.Drawing.Point(5, 52);
             this.dataGridViewAuditTrailList.MultiSelect = false;
             this.dataGridViewAuditTrailList.Name = "dataGridViewAuditTrailList";
             this.dataGridViewAuditTrailList.ReadOnly = true;
             this.dataGridViewAuditTrailList.RowHeadersVisible = false;
             this.dataGridViewAuditTrailList.RowTemplate.Height = 24;
             this.dataGridViewAuditTrailList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewAuditTrailList.Size = new System.Drawing.Size(1376, 494);
+            this.dataGridViewAuditTrailList.Size = new System.Drawing.Size(1376, 484);
             this.dataGridViewAuditTrailList.TabIndex = 20;
             // 
             // ColumnAuditTrailListId
@@ -379,6 +382,24 @@
             this.panel9.Size = new System.Drawing.Size(1386, 595);
             this.panel9.TabIndex = 1;
             // 
+            // buttonView
+            // 
+            this.buttonView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonView.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonView.FlatAppearance.BorderSize = 0;
+            this.buttonView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonView.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonView.ForeColor = System.Drawing.Color.White;
+            this.buttonView.Location = new System.Drawing.Point(568, 5);
+            this.buttonView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonView.Name = "buttonView";
+            this.buttonView.Size = new System.Drawing.Size(88, 40);
+            this.buttonView.TabIndex = 22;
+            this.buttonView.TabStop = false;
+            this.buttonView.Text = "CSV";
+            this.buttonView.UseVisualStyleBackColor = false;
+            this.buttonView.Click += new System.EventHandler(this.buttonView_Click);
+            // 
             // SysUtilitiesListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -435,5 +456,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAuditTrailListRecordInformation;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAuditTrailListFormInformation;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAuditTrailListSpace;
+        private System.Windows.Forms.Button buttonView;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
     }
 }
