@@ -84,7 +84,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.textBoxReceiptFooter = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBoxTerminalId = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.textBoxMachineNo = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -299,7 +298,6 @@
             this.panel4.Controls.Add(this.label16);
             this.panel4.Controls.Add(this.textBoxReceiptFooter);
             this.panel4.Controls.Add(this.label17);
-            this.panel4.Controls.Add(this.textBoxTerminalId);
             this.panel4.Controls.Add(this.label18);
             this.panel4.Controls.Add(this.textBoxMachineNo);
             this.panel4.Controls.Add(this.label19);
@@ -326,7 +324,7 @@
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(905, 175);
+            this.label31.Location = new System.Drawing.Point(905, 144);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(203, 23);
             this.label31.TabIndex = 77;
@@ -346,7 +344,7 @@
             // 
             this.checkBoxActivateAuditTrail.AutoSize = true;
             this.checkBoxActivateAuditTrail.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxActivateAuditTrail.Location = new System.Drawing.Point(1114, 473);
+            this.checkBoxActivateAuditTrail.Location = new System.Drawing.Point(1114, 484);
             this.checkBoxActivateAuditTrail.Name = "checkBoxActivateAuditTrail";
             this.checkBoxActivateAuditTrail.Size = new System.Drawing.Size(165, 27);
             this.checkBoxActivateAuditTrail.TabIndex = 34;
@@ -389,7 +387,7 @@
             // textBoxEasypayMotherCardNumber
             // 
             this.textBoxEasypayMotherCardNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEasypayMotherCardNumber.Location = new System.Drawing.Point(1114, 437);
+            this.textBoxEasypayMotherCardNumber.Location = new System.Drawing.Point(1114, 448);
             this.textBoxEasypayMotherCardNumber.Name = "textBoxEasypayMotherCardNumber";
             this.textBoxEasypayMotherCardNumber.Size = new System.Drawing.Size(248, 30);
             this.textBoxEasypayMotherCardNumber.TabIndex = 33;
@@ -398,7 +396,7 @@
             // 
             this.label41.AutoSize = true;
             this.label41.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.Location = new System.Drawing.Point(864, 440);
+            this.label41.Location = new System.Drawing.Point(864, 451);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(244, 23);
             this.label41.TabIndex = 68;
@@ -407,7 +405,7 @@
             // textBoxEasypayDefaultPassword
             // 
             this.textBoxEasypayDefaultPassword.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEasypayDefaultPassword.Location = new System.Drawing.Point(1114, 401);
+            this.textBoxEasypayDefaultPassword.Location = new System.Drawing.Point(1114, 412);
             this.textBoxEasypayDefaultPassword.Name = "textBoxEasypayDefaultPassword";
             this.textBoxEasypayDefaultPassword.Size = new System.Drawing.Size(248, 30);
             this.textBoxEasypayDefaultPassword.TabIndex = 32;
@@ -416,7 +414,7 @@
             // 
             this.label42.AutoSize = true;
             this.label42.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.Location = new System.Drawing.Point(899, 404);
+            this.label42.Location = new System.Drawing.Point(899, 415);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(209, 23);
             this.label42.TabIndex = 66;
@@ -425,7 +423,7 @@
             // textBoxEasypayDefaultUsername
             // 
             this.textBoxEasypayDefaultUsername.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEasypayDefaultUsername.Location = new System.Drawing.Point(1114, 365);
+            this.textBoxEasypayDefaultUsername.Location = new System.Drawing.Point(1114, 376);
             this.textBoxEasypayDefaultUsername.Name = "textBoxEasypayDefaultUsername";
             this.textBoxEasypayDefaultUsername.Size = new System.Drawing.Size(248, 30);
             this.textBoxEasypayDefaultUsername.TabIndex = 31;
@@ -434,7 +432,7 @@
             // 
             this.label43.AutoSize = true;
             this.label43.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.Location = new System.Drawing.Point(892, 368);
+            this.label43.Location = new System.Drawing.Point(892, 379);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(216, 23);
             this.label43.TabIndex = 64;
@@ -443,7 +441,7 @@
             // textBoxEasypayAPIURL
             // 
             this.textBoxEasypayAPIURL.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEasypayAPIURL.Location = new System.Drawing.Point(1114, 329);
+            this.textBoxEasypayAPIURL.Location = new System.Drawing.Point(1114, 340);
             this.textBoxEasypayAPIURL.Name = "textBoxEasypayAPIURL";
             this.textBoxEasypayAPIURL.Size = new System.Drawing.Size(248, 30);
             this.textBoxEasypayAPIURL.TabIndex = 30;
@@ -452,7 +450,7 @@
             // 
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(978, 332);
+            this.label34.Location = new System.Drawing.Point(978, 343);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(130, 23);
             this.label34.TabIndex = 62;
@@ -461,16 +459,17 @@
             // textBoxZReadingFooter
             // 
             this.textBoxZReadingFooter.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxZReadingFooter.Location = new System.Drawing.Point(1114, 293);
+            this.textBoxZReadingFooter.Location = new System.Drawing.Point(1114, 231);
+            this.textBoxZReadingFooter.Multiline = true;
             this.textBoxZReadingFooter.Name = "textBoxZReadingFooter";
-            this.textBoxZReadingFooter.Size = new System.Drawing.Size(248, 30);
+            this.textBoxZReadingFooter.Size = new System.Drawing.Size(248, 103);
             this.textBoxZReadingFooter.TabIndex = 29;
             // 
             // label35
             // 
             this.label35.AutoSize = true;
             this.label35.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.Location = new System.Drawing.Point(973, 296);
+            this.label35.Location = new System.Drawing.Point(973, 234);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(135, 23);
             this.label35.TabIndex = 60;
@@ -479,7 +478,7 @@
             // textBoxCollectionReport
             // 
             this.textBoxCollectionReport.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCollectionReport.Location = new System.Drawing.Point(1114, 257);
+            this.textBoxCollectionReport.Location = new System.Drawing.Point(1114, 195);
             this.textBoxCollectionReport.Name = "textBoxCollectionReport";
             this.textBoxCollectionReport.Size = new System.Drawing.Size(248, 30);
             this.textBoxCollectionReport.TabIndex = 28;
@@ -488,7 +487,7 @@
             // 
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(967, 260);
+            this.label36.Location = new System.Drawing.Point(967, 198);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(141, 23);
             this.label36.TabIndex = 58;
@@ -497,17 +496,17 @@
             // textBoxCustomerDisplayIfCounterClosedMessage
             // 
             this.textBoxCustomerDisplayIfCounterClosedMessage.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCustomerDisplayIfCounterClosedMessage.Location = new System.Drawing.Point(1114, 149);
+            this.textBoxCustomerDisplayIfCounterClosedMessage.Location = new System.Drawing.Point(1114, 118);
             this.textBoxCustomerDisplayIfCounterClosedMessage.Multiline = true;
             this.textBoxCustomerDisplayIfCounterClosedMessage.Name = "textBoxCustomerDisplayIfCounterClosedMessage";
-            this.textBoxCustomerDisplayIfCounterClosedMessage.Size = new System.Drawing.Size(248, 103);
+            this.textBoxCustomerDisplayIfCounterClosedMessage.Size = new System.Drawing.Size(248, 71);
             this.textBoxCustomerDisplayIfCounterClosedMessage.TabIndex = 27;
             // 
             // label37
             // 
             this.label37.AutoSize = true;
             this.label37.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(949, 152);
+            this.label37.Location = new System.Drawing.Point(949, 121);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(158, 23);
             this.label37.TabIndex = 56;
@@ -519,7 +518,7 @@
             this.textBoxCustomerDisplayFirstLineMessage.Location = new System.Drawing.Point(1114, 41);
             this.textBoxCustomerDisplayFirstLineMessage.Multiline = true;
             this.textBoxCustomerDisplayFirstLineMessage.Name = "textBoxCustomerDisplayFirstLineMessage";
-            this.textBoxCustomerDisplayFirstLineMessage.Size = new System.Drawing.Size(248, 103);
+            this.textBoxCustomerDisplayFirstLineMessage.Size = new System.Drawing.Size(248, 71);
             this.textBoxCustomerDisplayFirstLineMessage.TabIndex = 26;
             // 
             // label38
@@ -753,14 +752,6 @@
             this.label17.Size = new System.Drawing.Size(124, 23);
             this.label17.TabIndex = 18;
             this.label17.Text = "Receipt Footer:";
-            // 
-            // textBoxTerminalId
-            // 
-            this.textBoxTerminalId.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTerminalId.Location = new System.Drawing.Point(727, 521);
-            this.textBoxTerminalId.Name = "textBoxTerminalId";
-            this.textBoxTerminalId.Size = new System.Drawing.Size(248, 30);
-            this.textBoxTerminalId.TabIndex = 8;
             // 
             // label18
             // 
@@ -1158,45 +1149,45 @@
             // 
             this.comboBoxReturnSupplier.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxReturnSupplier.FormattingEnabled = true;
-            this.comboBoxReturnSupplier.Location = new System.Drawing.Point(602, 293);
+            this.comboBoxReturnSupplier.Location = new System.Drawing.Point(603, 293);
             this.comboBoxReturnSupplier.Name = "comboBoxReturnSupplier";
-            this.comboBoxReturnSupplier.Size = new System.Drawing.Size(249, 31);
+            this.comboBoxReturnSupplier.Size = new System.Drawing.Size(248, 31);
             this.comboBoxReturnSupplier.TabIndex = 19;
             // 
             // comboBoxDefaultDiscount
             // 
             this.comboBoxDefaultDiscount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxDefaultDiscount.FormattingEnabled = true;
-            this.comboBoxDefaultDiscount.Location = new System.Drawing.Point(602, 257);
+            this.comboBoxDefaultDiscount.Location = new System.Drawing.Point(603, 257);
             this.comboBoxDefaultDiscount.Name = "comboBoxDefaultDiscount";
-            this.comboBoxDefaultDiscount.Size = new System.Drawing.Size(249, 31);
+            this.comboBoxDefaultDiscount.Size = new System.Drawing.Size(248, 31);
             this.comboBoxDefaultDiscount.TabIndex = 18;
             // 
             // comboBoxWalkinCustomer
             // 
             this.comboBoxWalkinCustomer.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxWalkinCustomer.FormattingEnabled = true;
-            this.comboBoxWalkinCustomer.Location = new System.Drawing.Point(602, 221);
+            this.comboBoxWalkinCustomer.Location = new System.Drawing.Point(603, 221);
             this.comboBoxWalkinCustomer.Name = "comboBoxWalkinCustomer";
-            this.comboBoxWalkinCustomer.Size = new System.Drawing.Size(249, 31);
+            this.comboBoxWalkinCustomer.Size = new System.Drawing.Size(248, 31);
             this.comboBoxWalkinCustomer.TabIndex = 17;
             // 
             // comboBoxCurrentPeriod
             // 
             this.comboBoxCurrentPeriod.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxCurrentPeriod.FormattingEnabled = true;
-            this.comboBoxCurrentPeriod.Location = new System.Drawing.Point(601, 185);
+            this.comboBoxCurrentPeriod.Location = new System.Drawing.Point(603, 185);
             this.comboBoxCurrentPeriod.Name = "comboBoxCurrentPeriod";
-            this.comboBoxCurrentPeriod.Size = new System.Drawing.Size(249, 31);
+            this.comboBoxCurrentPeriod.Size = new System.Drawing.Size(248, 31);
             this.comboBoxCurrentPeriod.TabIndex = 16;
             // 
             // comboBoxTerminal
             // 
             this.comboBoxTerminal.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxTerminal.FormattingEnabled = true;
-            this.comboBoxTerminal.Location = new System.Drawing.Point(156, 293);
+            this.comboBoxTerminal.Location = new System.Drawing.Point(157, 293);
             this.comboBoxTerminal.Name = "comboBoxTerminal";
-            this.comboBoxTerminal.Size = new System.Drawing.Size(249, 31);
+            this.comboBoxTerminal.Size = new System.Drawing.Size(248, 31);
             this.comboBoxTerminal.TabIndex = 8;
             // 
             // SysSettingsForm
@@ -1268,7 +1259,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textBoxReceiptFooter;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBoxTerminalId;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBoxMachineNo;
         private System.Windows.Forms.Label label19;
