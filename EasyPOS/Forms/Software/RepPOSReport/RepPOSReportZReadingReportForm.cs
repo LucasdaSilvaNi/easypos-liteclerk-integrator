@@ -658,11 +658,11 @@ namespace EasyPOS.Reports
             graphics.DrawString(grossSalesTotalPreviousReadingData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(grossSalesTotalPreviousReadingData, fontArial8Regular).Height;
 
-            graphics.DrawString("Gross Sales", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString("Gross Sales (Net of VAT)", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(totalGrossSales.ToString("#,##0.00"), fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(totalGrossSales.ToString("#,##0.00"), fontArial8Regular).Height;
 
-            String grossSalesRunningTotalLabel = "Running Total";
+            String grossSalesRunningTotalLabel = "Accu. Gross Sales (Net of VAT)";
             String grossSalesRunningTotalData = grossSalesRunningTotal.ToString("#,##0.00");
             graphics.DrawString(grossSalesRunningTotalLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(grossSalesRunningTotalData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
@@ -691,7 +691,7 @@ namespace EasyPOS.Reports
             graphics.DrawString(totalNetSales.ToString("#,##0.00"), fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(totalNetSales.ToString("#,##0.00"), fontArial8Regular).Height;
 
-            String netSalesRunningTotalLabel = "Running Total";
+            String netSalesRunningTotalLabel = "Accu. Net Sales";
             String netSalesRunningTotalData = netSalesRunningTotal.ToString("#,##0.00");
             graphics.DrawString(netSalesRunningTotalLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(netSalesRunningTotalData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
