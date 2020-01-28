@@ -25,6 +25,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
+            trnSalesListForm.SetContinueCancel(false);
             Close();
         }
 
@@ -32,6 +33,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             String remarks = textBoxCancelRemarks.Text;
             trnSalesListForm.SetCancelRemarks(remarks);
+            trnSalesListForm.SetContinueCancel(true);
             Close();
         }
     }
