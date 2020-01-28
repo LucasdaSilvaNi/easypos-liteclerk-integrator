@@ -51,7 +51,7 @@ namespace EasyPOS.Reports
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
-            DialogResult printerDialogResult =  printDialogXReadingReport.ShowDialog();
+            DialogResult printerDialogResult = printDialogXReadingReport.ShowDialog();
             if (printerDialogResult == DialogResult.OK)
             {
                 PrintReport();
@@ -75,6 +75,7 @@ namespace EasyPOS.Reports
 
             Entities.RepXReadingReportEntity repXReadingReportEntity = new Entities.RepXReadingReportEntity()
             {
+                SalesAgent = "",
                 Date = "",
                 TotalGrossSales = 0,
                 TotalRegularDiscount = 0,
@@ -103,11 +104,20 @@ namespace EasyPOS.Reports
 
             repXReadingReportEntity.Date = filterDate.ToShortDateString();
 
+            var salesAgentUser = from d in db.MstUsers
+                                 where d.Id == filterSalesAgentId
+                                 select d;
+
+            if (salesAgentUser.Any())
+            {
+                repXReadingReportEntity.SalesAgent = salesAgentUser.FirstOrDefault().UserName;
+            }
+
             var salesLines = from d in db.TrnSalesLines
-                             where d.TrnSale.TrnCollections.Where(s => s.TerminalId == filterTerminalId 
+                             where d.TrnSale.TrnCollections.Where(s => s.TerminalId == filterTerminalId
                              && s.CollectionDate == filterDate
                              && s.PreparedBy == filterSalesAgentId
-                             && s.IsLocked == true 
+                             && s.IsLocked == true
                              && s.IsCancelled == false).Count() > 0
                              select d;
 
@@ -323,7 +333,7 @@ namespace EasyPOS.Reports
             y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
 
             // ======================
-            // Z Reading Report Title
+            // X Reading Report Title
             // ======================
             String zReadingReportTitle = "X Reading Report";
             graphics.DrawString(zReadingReportTitle, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
@@ -335,6 +345,13 @@ namespace EasyPOS.Reports
             String collectionDateText = filterDate.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
             graphics.DrawString(collectionDateText, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             y += graphics.MeasureString(collectionDateText, fontArial8Regular).Height;
+
+            // ===========
+            // Sales Agent 
+            // ===========
+            String salesAgent = dataSource.SalesAgent;
+            graphics.DrawString(salesAgent, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            y += graphics.MeasureString(salesAgent, fontArial8Regular).Height;
 
             // ========
             // 1st Line
