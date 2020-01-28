@@ -212,7 +212,9 @@ namespace EasyPOS.Controllers
                 var grossSales = salesLines.Where(d => d.Quantity > 0);
                 if (grossSales.Any())
                 {
-                    repZReadingReportEntity.TotalGrossSales = grossSales.Sum(d => d.Quantity * d.Price);
+                    repZReadingReportEntity.TotalGrossSales = grossSales.Sum(d => d.MstTax.Code == "EXEMPTVAT" ? d.MstItem.MstTax1.Rate > 0 ? (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) :
+                                                              (d.Quantity * d.Price) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) :
+                                                              (d.Quantity * d.Price) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)));
                 }
 
                 var regularDiscounts = salesLines.Where(d => d.Quantity > 0
@@ -244,7 +246,7 @@ namespace EasyPOS.Controllers
                 var netSales = salesLines.Where(d => d.Quantity > 0);
                 if (netSales.Any())
                 {
-                    repZReadingReportEntity.TotalNetSales = netSales.Sum(d => d.Amount);
+                    repZReadingReportEntity.TotalNetSales = repZReadingReportEntity.TotalGrossSales - repZReadingReportEntity.TotalRegularDiscount - repZReadingReportEntity.TotalSeniorDiscount - repZReadingReportEntity.TotalPWDDiscount;
                 }
 
                 foreach (var collectionLine in currentCollectionLines)
@@ -330,7 +332,12 @@ namespace EasyPOS.Controllers
 
             if (grossSalesPreviousCollections.Any())
             {
-                repZReadingReportEntity.GrossSalesTotalPreviousReading = grossSalesPreviousCollections.Sum(d => d.TrnSale.TrnSalesLines.Any() ? d.TrnSale.TrnSalesLines.Sum(s => s.Price * s.Quantity) : 0);
+                repZReadingReportEntity.GrossSalesTotalPreviousReading = grossSalesPreviousCollections.Sum(d => d.TrnSale.TrnSalesLines.Any() ?
+                                                                         d.TrnSale.TrnSalesLines.Sum(s => s.MstTax.Code == "EXEMPTVAT" ?
+                                                                         s.MstItem.MstTax1.Rate > 0 ? (s.Price * s.Quantity) - ((s.Price * s.Quantity) / (1 + (s.MstItem.MstTax1.Rate / 100)) * (s.MstItem.MstTax1.Rate / 100)) :
+                                                                         (s.Quantity * s.Price) - ((s.Price * s.Quantity) / (1 + (s.MstTax.Rate / 100)) * (s.MstTax.Rate / 100)) :
+                                                                         (s.Quantity * s.Price) - ((s.Price * s.Quantity) / (1 + (s.MstTax.Rate / 100)) * (s.MstTax.Rate / 100))) : 0);
+
                 repZReadingReportEntity.GrossSalesRunningTotal = repZReadingReportEntity.TotalGrossSales + repZReadingReportEntity.GrossSalesTotalPreviousReading;
             }
 
@@ -343,7 +350,7 @@ namespace EasyPOS.Controllers
 
             if (netSalesPreviousCollections.Any())
             {
-                repZReadingReportEntity.NetSalesTotalPreviousReading = netSalesPreviousCollections.Sum(d => d.Amount);
+                repZReadingReportEntity.NetSalesTotalPreviousReading = repZReadingReportEntity.GrossSalesTotalPreviousReading - netSalesPreviousCollections.Sum(s => s.TrnSale.TrnSalesLines.Any() ? s.TrnSale.TrnSalesLines.Sum(d => d.DiscountAmount * d.Quantity) : 0);
                 repZReadingReportEntity.NetSalesRunningTotal = repZReadingReportEntity.TotalNetSales + repZReadingReportEntity.NetSalesTotalPreviousReading;
             }
 
