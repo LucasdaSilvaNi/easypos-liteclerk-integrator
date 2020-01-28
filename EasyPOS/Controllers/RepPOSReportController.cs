@@ -59,7 +59,8 @@ namespace EasyPOS.Controllers
                                   Terminal = d.MstTerminal.Terminal,
                                   CollectionNumber = d.CollectionNumber,
                                   SalesId = d.SalesId,
-                                  PreparedByUserName = d.MstUser3.UserName
+                                  PreparedByUserName = d.MstUser3.UserName,
+                                  IsCancelled = d.IsCancelled
                               };
 
             return collections.ToList();
@@ -68,21 +69,13 @@ namespace EasyPOS.Controllers
         // ===============
         // Sales Line List
         // ===============
-        public List<Entities.TrnSalesLineEntity> ListSalesLines(Int32 salesId)
+        public IQueryable<Data.TrnSalesLine> ListSalesLines(Int32 salesId)
         {
             var salesLines = from d in db.TrnSalesLines
                              where d.SalesId == salesId
-                             select new Entities.TrnSalesLineEntity
-                             {
-                                 Id = d.Id,
-                                 ItemDescription = d.MstItem.ItemDescription,
-                                 Quantity = d.Quantity,
-                                 Unit = d.MstUnit.Unit,
-                                 Price = d.Price,
-                                 Amount = d.Amount,
-                             };
+                             select d;
 
-            return salesLines.ToList();
+            return salesLines;
         }
 
         // =====================
@@ -120,12 +113,13 @@ namespace EasyPOS.Controllers
                                   CollectionNumber = d.CollectionNumber,
                                   CustomerCode = d.MstCustomer.CustomerCode,
                                   Customer = d.MstCustomer.Customer,
-                                  Amount = d.Amount,
-                                  VATSales = d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VAT").Any() ? d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VAT").Sum(s => s.Amount) - d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VAT").Sum(s => s.TaxAmount) : 0,
-                                  VATAmount = d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VAT").Any() ? d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VAT").Sum(s => s.TaxAmount) : 0,
-                                  NonVAT = d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "NONVAT").Any() ? d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "NONVAT").Sum(s => s.Amount) : 0,
-                                  VATExempt = d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VATEXEMPT").Any() ? d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VATEXEMPT").Sum(s => s.Amount) : 0,
-                                  VATZeroRated = d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VATZERORATED").Any() ? d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VATZERORATED").Sum(s => s.Amount) : 0,
+                                  Amount = d.IsCancelled == true ? 0 : d.Amount,
+                                  VATSales = d.IsCancelled == true ? 0 : d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VAT").Any() ? d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VAT").Sum(s => s.Amount) - d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VAT").Sum(s => s.TaxAmount) : 0,
+                                  VATAmount = d.IsCancelled == true ? 0 : d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VAT").Any() ? d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "VAT").Sum(s => s.TaxAmount) : 0,
+                                  NonVAT = d.IsCancelled == true ? 0 : d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "NONVAT").Any() ? d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "NONVAT").Sum(s => s.Amount) : 0,
+                                  VATExempt = d.IsCancelled == true ? 0 : d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "EXEMPTVAT").Any() ?
+                                              d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "EXEMPTVAT").Sum(s => s.MstItem.MstTax1.Rate > 0 ? (s.Price * s.Quantity) - ((s.Price * s.Quantity) / (1 + (s.MstItem.MstTax1.Rate / 100)) * (s.MstItem.MstTax1.Rate / 100)) : s.Price * s.Quantity) : 0,
+                                  VATZeroRated = d.IsCancelled == true ? 0 : d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "ZEROVAT").Any() ? d.TrnSale.TrnSalesLines.Where(s => s.MstTax.Code == "ZEROVAT").Sum(s => s.Amount) : 0,
                               };
 
             return collections.ToList();
@@ -273,7 +267,7 @@ namespace EasyPOS.Controllers
                 var VATSales = salesLines.Where(d => d.MstTax.Code.Equals("VAT") == true);
                 if (VATSales.Any())
                 {
-                    repZReadingReportEntity.TotalVATSales = VATSales.Sum(d => d.Amount - d.TaxAmount);
+                    repZReadingReportEntity.TotalVATSales = VATSales.Sum(d => (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)));
                 }
 
                 repZReadingReportEntity.TotalVATAmount = salesLines.Sum(d => d.TaxAmount);
@@ -281,29 +275,32 @@ namespace EasyPOS.Controllers
                 var nonVATSales = salesLines.Where(d => d.MstTax.Code.Equals("NONVAT") == true);
                 if (nonVATSales.Any())
                 {
-                    repZReadingReportEntity.TotalNonVAT = nonVATSales.Sum(d => d.Amount);
+                    repZReadingReportEntity.TotalNonVAT = nonVATSales.Sum(d => d.Price * d.Quantity);
                 }
 
-                var VATExclusives = salesLines.Where(d => d.MstTax.Code.Equals("VATEXCLUSIVE") == true);
-                if (VATExclusives.Any())
-                {
-                    repZReadingReportEntity.TotalVATExclusive = VATExclusives.Sum(d => d.Amount);
-                }
-
-                var VATExempts = salesLines.Where(d => d.MstTax.Code.Equals("VATEXEMPT") == true);
+                var VATExempts = salesLines.Where(d => d.MstTax.Code.Equals("EXEMPTVAT") == true);
                 if (VATExempts.Any())
                 {
-                    repZReadingReportEntity.TotalVATExempt = VATExempts.Sum(d => d.Amount);
+                    repZReadingReportEntity.TotalVATExempt = VATExempts.Sum(d => d.MstItem.MstTax1.Rate > 0 ? (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : d.Price * d.Quantity);
                 }
 
-                var VATZeroRateds = salesLines.Where(d => d.MstTax.Code.Equals("VATZERORATED") == true);
+                var VATZeroRateds = salesLines.Where(d => d.MstTax.Code.Equals("ZEROVAT") == true);
                 if (VATZeroRateds.Any())
                 {
                     repZReadingReportEntity.TotalVATZeroRated = VATZeroRateds.Sum(d => d.Amount);
                 }
 
-                repZReadingReportEntity.CounterIdStart = currentCollections.OrderBy(d => d.Id).FirstOrDefault().CollectionNumber;
-                repZReadingReportEntity.CounterIdEnd = currentCollections.OrderByDescending(d => d.Id).FirstOrDefault().CollectionNumber;
+                var counterCollections = from d in db.TrnCollections
+                                         where d.TerminalId == filterTerminalId
+                                         && d.CollectionDate == filterDate
+                                         && d.IsLocked == true
+                                         select d;
+
+                if (counterCollections.Any())
+                {
+                    repZReadingReportEntity.CounterIdStart = counterCollections.OrderBy(d => d.Id).FirstOrDefault().CollectionNumber;
+                    repZReadingReportEntity.CounterIdEnd = counterCollections.OrderByDescending(d => d.Id).FirstOrDefault().CollectionNumber;
+                }
 
                 repZReadingReportEntity.TotalNumberOfTransactions = currentCollections.Count();
                 repZReadingReportEntity.TotalNumberOfSKU = salesLines.Count();

@@ -251,7 +251,14 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                     writer.Write("S/N: " + systemCurrent.SerialNo + "\n");
                                     writer.Write("MIN: " + systemCurrent.MachineNo + "\n");
                                     writer.Write(systemCurrent.ORPrintTitle + "\n");
-                                    writer.Write(collection.CollectionNumber + "\n");
+
+                                    String isCancelled = "";
+                                    if (collection.IsCancelled == true)
+                                    {
+                                        isCancelled = "-CANCELLED";
+                                    }
+
+                                    writer.Write(collection.CollectionNumber + isCancelled + "\n");
                                     writer.Write("---------------------------------------------------------\n");
 
                                     if (collection.SalesId != null)
@@ -270,23 +277,45 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                                             foreach (var salesLine in repPOSReportController.ListSalesLines(Convert.ToInt32(collection.SalesId)))
                                             {
-
-
-
-                                                String itemDescription = salesLine.ItemDescription + " " + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,#00.00") + " \t\t" + salesLine.Amount.ToString("#,#00.00");
-                                                if (salesLine.ItemDescription.Length >= 20)
+                                                if (salesLine.MstTax.Code == "VAT")
                                                 {
-                                                    itemDescription = salesLine.ItemDescription.Substring(0, 20) + " " + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,#00.00") + " \t" + salesLine.Amount.ToString("#,#00.00");
+                                                    VATSales += (salesLine.Price * salesLine.Quantity) - ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstItem.MstTax1.Rate / 100)) * (salesLine.MstItem.MstTax1.Rate / 100));
+                                                    VATAmount += salesLine.TaxAmount;
+                                                }
+                                                else if (salesLine.MstTax.Code == "NONVAT")
+                                                {
+                                                    NonVAT += salesLine.Price * salesLine.Quantity;
+                                                }
+                                                else if (salesLine.MstTax.Code == "EXEMPTVAT")
+                                                {
+                                                    if (salesLine.MstItem.MstTax1.Rate > 0)
+                                                    {
+                                                        VATExempt += (salesLine.Price * salesLine.Quantity) - ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstItem.MstTax1.Rate / 100)) * (salesLine.MstItem.MstTax1.Rate / 100));
+                                                    }
+                                                    else
+                                                    {
+                                                        VATExempt += salesLine.Price * salesLine.Quantity;
+                                                    }
+                                                }
+                                                else if (salesLine.MstTax.Code == "ZEROVAT")
+                                                {
+                                                    VATZeroRated += salesLine.Amount;
+                                                }
+
+                                                String itemDescription = salesLine.MstItem.ItemDescription + " " + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.MstUnit.Unit + " @ " + salesLine.Price.ToString("#,#00.00") + " \t\t" + salesLine.Amount.ToString("#,#00.00");
+                                                if (salesLine.MstItem.ItemDescription.Length >= 20)
+                                                {
+                                                    itemDescription = salesLine.MstItem.ItemDescription.Substring(0, 20) + " " + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.MstUnit.Unit + " @ " + salesLine.Price.ToString("#,#00.00") + " \t" + salesLine.Amount.ToString("#,#00.00");
                                                 }
                                                 else
                                                 {
-                                                    if (salesLine.ItemDescription.Length <= 12)
+                                                    if (salesLine.MstItem.ItemDescription.Length <= 12)
                                                     {
-                                                        itemDescription = salesLine.ItemDescription + " " + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,#00.00") + " \t\t\t" + salesLine.Amount.ToString("#,#00.00");
+                                                        itemDescription = salesLine.MstItem.ItemDescription + " " + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.MstUnit.Unit + " @ " + salesLine.Price.ToString("#,#00.00") + " \t\t\t" + salesLine.Amount.ToString("#,#00.00");
                                                     }
-                                                    if (salesLine.ItemDescription.Length <= 4)
+                                                    if (salesLine.MstItem.ItemDescription.Length <= 4)
                                                     {
-                                                        itemDescription = salesLine.ItemDescription + " " + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,#00.00") + " \t\t\t\t" + salesLine.Amount.ToString("#,#00.00");
+                                                        itemDescription = salesLine.MstItem.ItemDescription + " " + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.MstUnit.Unit + " @ " + salesLine.Price.ToString("#,#00.00") + " \t\t\t\t" + salesLine.Amount.ToString("#,#00.00");
                                                     }
                                                 }
 
@@ -396,28 +425,28 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                     String[] data = {
                                         objData.Terminal,
                                         date.ToShortDateString(),
-                                        objData.TotalGrossSales.ToString("#,##0").Replace("," , ""),
-                                        objData.TotalRegularDiscount.ToString("#,##0").Replace("," , ""),
-                                        objData.TotalSeniorDiscount.ToString("#,##0").Replace("," , ""),
-                                        objData.TotalPWDDiscount.ToString("#,##0").Replace("," , ""),
-                                        objData.TotalSalesReturn.ToString("#,##0").Replace("," , ""),
-                                        objData.TotalNetSales.ToString("#,##0").Replace("," , ""),
-                                        objData.TotalCollection.ToString("#,##0").Replace("," , ""),
-                                        objData.TotalVATSales.ToString("#,##0").Replace("," , ""),
-                                        objData.TotalVATAmount.ToString("#,##0").Replace("," , ""),
-                                        objData.TotalNonVAT.ToString("#,##0").Replace("," , ""),
-                                        objData.TotalVATExempt.ToString("#,##0").Replace("," , ""),
-                                        objData.TotalVATZeroRated.ToString("#,##0").Replace("," , ""),
+                                        objData.TotalGrossSales.ToString("#,##0.00").Replace("," , ""),
+                                        objData.TotalRegularDiscount.ToString("#,##0.00").Replace("," , ""),
+                                        objData.TotalSeniorDiscount.ToString("#,##0.00").Replace("," , ""),
+                                        objData.TotalPWDDiscount.ToString("#,##0.00").Replace("," , ""),
+                                        objData.TotalSalesReturn.ToString("#,##0.00").Replace("," , ""),
+                                        objData.TotalNetSales.ToString("#,##0.00").Replace("," , ""),
+                                        objData.TotalCollection.ToString("#,##0.00").Replace("," , ""),
+                                        objData.TotalVATSales.ToString("#,##0.00").Replace("," , ""),
+                                        objData.TotalVATAmount.ToString("#,##0.00").Replace("," , ""),
+                                        objData.TotalNonVAT.ToString("#,##0.00").Replace("," , ""),
+                                        objData.TotalVATExempt.ToString("#,##0.00").Replace("," , ""),
+                                        objData.TotalVATZeroRated.ToString("#,##0.00").Replace("," , ""),
                                         objData.CounterIdStart,
                                         objData.CounterIdEnd,
-                                        objData.TotalCancelledTrnsactionCount.ToString("#,##0").Replace("," , ""),
-                                        objData.TotalCancelledAmount.ToString("#,##0").Replace("," , ""),
-                                        objData.GrossSalesTotalPreviousReading.ToString("#,##0").Replace("," , ""),
-                                        objData.TotalGrossSales.ToString("#,##0").Replace("," , ""),
-                                        objData.GrossSalesRunningTotal.ToString("#,##0").Replace("," , ""),
-                                        objData.NetSalesTotalPreviousReading.ToString("#,##0").Replace("," , ""),
-                                        objData.TotalNetSales.ToString("#,##0").Replace("," , ""),
-                                        objData.NetSalesRunningTotal.ToString("#,##0").Replace("," , ""),
+                                        objData.TotalCancelledTrnsactionCount.ToString("#,##0.00").Replace("," , ""),
+                                        objData.TotalCancelledAmount.ToString("#,##0.00").Replace("," , ""),
+                                        objData.GrossSalesTotalPreviousReading.ToString("#,##0.00").Replace("," , ""),
+                                        objData.TotalGrossSales.ToString("#,##0.00").Replace("," , ""),
+                                        objData.GrossSalesRunningTotal.ToString("#,##0.00").Replace("," , ""),
+                                        objData.NetSalesTotalPreviousReading.ToString("#,##0.00").Replace("," , ""),
+                                        objData.TotalNetSales.ToString("#,##0.00").Replace("," , ""),
+                                        objData.NetSalesRunningTotal.ToString("#,##0.00").Replace("," , ""),
                                         objData.ZReadingCounter
                                     };
                                     csv.AppendLine(String.Join(",", data));
