@@ -410,40 +410,45 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 if (dataGridViewSalesList.CurrentCell.RowIndex != -1)
                 {
                     Boolean isCanclled = Convert.ToBoolean(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnIsCancelled"].Index].Value);
+                    Boolean isTendered = Convert.ToBoolean(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnIsTendered"].Index].Value);
+
                     if (isCanclled == true)
                     {
                         MessageBox.Show("Already Cancelled.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        TrnSalesListCancelRemarksForm trnSalesListCancelRemarksForm = new TrnSalesListCancelRemarksForm(sysSoftwareForm, this);
-                        trnSalesListCancelRemarksForm.ShowDialog();
-
-                        if (continueCancel)
+                        if (isTendered == true)
                         {
-                            DialogResult cancelDialogResult = MessageBox.Show("Cancel Transaction? ", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                            if (cancelDialogResult == DialogResult.Yes)
+                            TrnSalesListCancelRemarksForm trnSalesListCancelRemarksForm = new TrnSalesListCancelRemarksForm(sysSoftwareForm, this);
+                            trnSalesListCancelRemarksForm.ShowDialog();
+
+                            if (continueCancel)
                             {
-                                Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-
-                                if (trnPOSSalesController.CanCancelCollection(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value)))
+                                DialogResult cancelDialogResult = MessageBox.Show("Cancel Transaction? ", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                if (cancelDialogResult == DialogResult.Yes)
                                 {
-                                    String[] cancelSales = trnPOSSalesController.CancelSales(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value), cancelRemarks);
-                                    if (cancelSales[1].Equals("0") == false)
-                                    {
-                                        String collectionNumber = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnRececiptInvoiceNumber"].Index].Value.ToString();
-                                        MessageBox.Show(collectionNumber + " is successfully cancelled.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
 
-                                        UpdateSalesListGridDataSource();
+                                    if (trnPOSSalesController.CanCancelCollection(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value)))
+                                    {
+                                        String[] cancelSales = trnPOSSalesController.CancelSales(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value), cancelRemarks);
+                                        if (cancelSales[1].Equals("0") == false)
+                                        {
+                                            String collectionNumber = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnRececiptInvoiceNumber"].Index].Value.ToString();
+                                            MessageBox.Show(collectionNumber + " is successfully cancelled.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                            UpdateSalesListGridDataSource();
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show(cancelSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
                                     }
                                     else
                                     {
-                                        MessageBox.Show(cancelSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        MessageBox.Show("Not allowed.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Not allowed.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
                         }

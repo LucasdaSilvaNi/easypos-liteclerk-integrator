@@ -151,7 +151,9 @@ namespace EasyPOS.Reports
                 var grossSales = salesLines.Where(d => d.Quantity > 0);
                 if (grossSales.Any())
                 {
-                    repXReadingReportEntity.TotalGrossSales = grossSales.Sum(d => d.Quantity * d.Price);
+                    repXReadingReportEntity.TotalGrossSales = grossSales.Sum(d => d.MstTax.Code == "EXEMPTVAT" ? d.MstItem.MstTax1.Rate > 0 ? (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) :
+                                                                 (d.Quantity * d.Price) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) :
+                                                                 (d.Quantity * d.Price) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)));
                 }
 
                 var regularDiscounts = salesLines.Where(d => d.Quantity > 0
@@ -183,7 +185,7 @@ namespace EasyPOS.Reports
                 var netSales = salesLines.Where(d => d.Quantity > 0);
                 if (netSales.Any())
                 {
-                    repXReadingReportEntity.TotalNetSales = netSales.Sum(d => d.Amount);
+                    repXReadingReportEntity.TotalNetSales = repXReadingReportEntity.TotalGrossSales - repXReadingReportEntity.TotalRegularDiscount - repXReadingReportEntity.TotalSeniorDiscount - repXReadingReportEntity.TotalPWDDiscount;
                 }
 
                 foreach (var collectionLine in currentCollectionLines)
@@ -370,7 +372,7 @@ namespace EasyPOS.Reports
             // ===========
             // Gross Sales
             // ===========
-            String totalGrossSalesLabel = "\nGross Sales";
+            String totalGrossSalesLabel = "\nGross Sales (Net of VAT)";
             String totalGrossSalesData = "\n" + totalGrossSales.ToString("#,##0.00");
             graphics.DrawString(totalGrossSalesLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(totalGrossSalesData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);

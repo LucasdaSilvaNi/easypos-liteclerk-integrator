@@ -145,7 +145,9 @@ namespace EasyPOS.Reports
                 var grossSales = salesLines.Where(d => d.Quantity > 0);
                 if (grossSales.Any())
                 {
-                    repZReadingReportEntity.TotalGrossSales = grossSales.Sum(d => d.Quantity * d.Price);
+                    repZReadingReportEntity.TotalGrossSales = grossSales.Sum(d => d.MstTax.Code == "EXEMPTVAT" ? d.MstItem.MstTax1.Rate > 0 ? (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) :
+                                                              (d.Quantity * d.Price) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) :
+                                                              (d.Quantity * d.Price) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)));
                 }
 
                 var regularDiscounts = salesLines.Where(d => d.Quantity > 0
@@ -177,7 +179,7 @@ namespace EasyPOS.Reports
                 var netSales = salesLines.Where(d => d.Quantity > 0);
                 if (netSales.Any())
                 {
-                    repZReadingReportEntity.TotalNetSales = netSales.Sum(d => d.Amount);
+                    repZReadingReportEntity.TotalNetSales = repZReadingReportEntity.TotalGrossSales - repZReadingReportEntity.TotalRegularDiscount - repZReadingReportEntity.TotalSeniorDiscount - repZReadingReportEntity.TotalPWDDiscount;
                 }
 
                 foreach (var collectionLine in currentCollectionLines)
@@ -263,7 +265,12 @@ namespace EasyPOS.Reports
 
             if (grossSalesPreviousCollections.Any())
             {
-                repZReadingReportEntity.GrossSalesTotalPreviousReading = grossSalesPreviousCollections.Sum(d => d.TrnSale.TrnSalesLines.Any() ? d.TrnSale.TrnSalesLines.Sum(s => s.Price * s.Quantity) : 0);
+                repZReadingReportEntity.GrossSalesTotalPreviousReading = grossSalesPreviousCollections.Sum(d => d.TrnSale.TrnSalesLines.Any() ?
+                                                                         d.TrnSale.TrnSalesLines.Sum(s => s.MstTax.Code == "EXEMPTVAT" ?
+                                                                         s.MstItem.MstTax1.Rate > 0 ? (s.Price * s.Quantity) - ((s.Price * s.Quantity) / (1 + (s.MstItem.MstTax1.Rate / 100)) * (s.MstItem.MstTax1.Rate / 100)) :
+                                                                         (s.Quantity * s.Price) - ((s.Price * s.Quantity) / (1 + (s.MstTax.Rate / 100)) * (s.MstTax.Rate / 100)) :
+                                                                         (s.Quantity * s.Price) - ((s.Price * s.Quantity) / (1 + (s.MstTax.Rate / 100)) * (s.MstTax.Rate / 100))) : 0);
+
                 repZReadingReportEntity.GrossSalesRunningTotal = repZReadingReportEntity.TotalGrossSales + repZReadingReportEntity.GrossSalesTotalPreviousReading;
             }
 
@@ -276,7 +283,7 @@ namespace EasyPOS.Reports
 
             if (netSalesPreviousCollections.Any())
             {
-                repZReadingReportEntity.NetSalesTotalPreviousReading = netSalesPreviousCollections.Sum(d => d.Amount);
+                repZReadingReportEntity.NetSalesTotalPreviousReading = repZReadingReportEntity.GrossSalesTotalPreviousReading - netSalesPreviousCollections.Sum(s => s.TrnSale.TrnSalesLines.Any() ? s.TrnSale.TrnSalesLines.Sum(d => d.DiscountAmount * d.Quantity) : 0);
                 repZReadingReportEntity.NetSalesRunningTotal = repZReadingReportEntity.TotalNetSales + repZReadingReportEntity.NetSalesTotalPreviousReading;
             }
 
@@ -407,7 +414,7 @@ namespace EasyPOS.Reports
             // ===========
             // Gross Sales
             // ===========
-            String totalGrossSalesLabel = "\nGross Sales";
+            String totalGrossSalesLabel = "\nGross Sales (Net of VAT)";
             String totalGrossSalesData = "\n" + totalGrossSales.ToString("#,##0.00");
             graphics.DrawString(totalGrossSalesLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(totalGrossSalesData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
@@ -452,7 +459,7 @@ namespace EasyPOS.Reports
             // =========
             // Net Sales
             // =========
-            String totalNetSalesLabel = "Net Sales\n\n";
+            String totalNetSalesLabel = "Net Sales \n\n";
             String totalNetSalesData = totalNetSales.ToString("#,##0.00") + "\n\n";
             graphics.DrawString(totalNetSalesLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(totalNetSalesData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
@@ -639,8 +646,8 @@ namespace EasyPOS.Reports
             Point eightLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
             graphics.DrawLine(blackPen, eightLineFirstPoint, eightLineSecondPoint);
 
-            graphics.DrawString("\nAccumulated Gross Sales", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            y += graphics.MeasureString("\nAccumulated Gross Sales", fontArial8Regular).Height;
+            graphics.DrawString("\nAccumulated Gross Sales (Net of VAT)", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            y += graphics.MeasureString("\nAccumulated Gross Sales (Net of VAT)", fontArial8Regular).Height;
 
             Decimal grossSalesTotalPreviousReading = dataSource.GrossSalesTotalPreviousReading;
             Decimal grossSalesRunningTotal = dataSource.GrossSalesRunningTotal;
