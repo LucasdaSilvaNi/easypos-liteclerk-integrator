@@ -256,6 +256,12 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                                     if (collection.SalesId != null)
                                     {
+                                        Decimal VATSales = 0;
+                                        Decimal VATAmount = 0;
+                                        Decimal NonVAT = 0;
+                                        Decimal VATExempt = 0;
+                                        Decimal VATZeroRated = 0;
+
                                         if (repPOSReportController.ListSalesLines(Convert.ToInt32(collection.SalesId)).Any())
                                         {
                                             Decimal totalSales = 0;
@@ -264,6 +270,9 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                                             foreach (var salesLine in repPOSReportController.ListSalesLines(Convert.ToInt32(collection.SalesId)))
                                             {
+
+
+
                                                 String itemDescription = salesLine.ItemDescription + " " + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,#00.00") + " \t\t" + salesLine.Amount.ToString("#,#00.00");
                                                 if (salesLine.ItemDescription.Length >= 20)
                                                 {
@@ -310,12 +319,6 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                                         writer.Write("---------------------------------------------------------\n");
                                         writer.Write("VAT ANALYSIS\n");
-
-                                        Decimal VATSales = 0;
-                                        Decimal VATAmount = 0;
-                                        Decimal NonVAT = 0;
-                                        Decimal VATExempt = 0;
-                                        Decimal VATZeroRated = 0;
 
                                         writer.Write("VAT Sales: \t\t\t\t\t" + VATSales.ToString("#,#00.00"));
                                         writer.Write("\n");

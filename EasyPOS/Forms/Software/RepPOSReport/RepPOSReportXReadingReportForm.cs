@@ -196,7 +196,7 @@ namespace EasyPOS.Reports
                 var VATSales = salesLines.Where(d => d.MstTax.Code.Equals("VAT") == true);
                 if (VATSales.Any())
                 {
-                    repXReadingReportEntity.TotalVATSales = VATSales.Sum(d => d.Amount - d.TaxAmount);
+                    repXReadingReportEntity.TotalVATSales = VATSales.Sum(d => (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)));
                 }
 
                 repXReadingReportEntity.TotalVATAmount = salesLines.Sum(d => d.TaxAmount);
@@ -204,29 +204,32 @@ namespace EasyPOS.Reports
                 var nonVATSales = salesLines.Where(d => d.MstTax.Code.Equals("NONVAT") == true);
                 if (nonVATSales.Any())
                 {
-                    repXReadingReportEntity.TotalNonVAT = nonVATSales.Sum(d => d.Amount);
+                    repXReadingReportEntity.TotalNonVAT = nonVATSales.Sum(d => d.Price * d.Quantity);
                 }
 
-                var VATExclusives = salesLines.Where(d => d.MstTax.Code.Equals("VATEXCLUSIVE") == true);
-                if (VATExclusives.Any())
-                {
-                    repXReadingReportEntity.TotalVATExclusive = VATExclusives.Sum(d => d.Amount);
-                }
-
-                var VATExempts = salesLines.Where(d => d.MstTax.Code.Equals("VATEXEMPT") == true);
+                var VATExempts = salesLines.Where(d => d.MstTax.Code.Equals("EXEMPTVAT") == true);
                 if (VATExempts.Any())
                 {
-                    repXReadingReportEntity.TotalVATExempt = VATExempts.Sum(d => d.Amount);
+                    repXReadingReportEntity.TotalVATExempt = VATExempts.Sum(d => d.MstItem.MstTax1.Rate > 0 ? (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : d.Price * d.Quantity);
                 }
 
-                var VATZeroRateds = salesLines.Where(d => d.MstTax.Code.Equals("VATZERORATED") == true);
+                var VATZeroRateds = salesLines.Where(d => d.MstTax.Code.Equals("ZEROVAT") == true);
                 if (VATZeroRateds.Any())
                 {
                     repXReadingReportEntity.TotalVATZeroRated = VATZeroRateds.Sum(d => d.Amount);
                 }
 
-                repXReadingReportEntity.CounterIdStart = currentCollections.OrderBy(d => d.Id).FirstOrDefault().CollectionNumber;
-                repXReadingReportEntity.CounterIdEnd = currentCollections.OrderByDescending(d => d.Id).FirstOrDefault().CollectionNumber;
+                var counterCollections = from d in db.TrnCollections
+                                         where d.TerminalId == filterTerminalId
+                                         && d.CollectionDate == filterDate
+                                         && d.IsLocked == true
+                                         select d;
+
+                if (counterCollections.Any())
+                {
+                    repXReadingReportEntity.CounterIdStart = counterCollections.OrderBy(d => d.Id).FirstOrDefault().CollectionNumber;
+                    repXReadingReportEntity.CounterIdEnd = counterCollections.OrderByDescending(d => d.Id).FirstOrDefault().CollectionNumber;
+                }
 
                 repXReadingReportEntity.TotalNumberOfTransactions = currentCollections.Count();
                 repXReadingReportEntity.TotalNumberOfSKU = salesLines.Count();
@@ -583,31 +586,31 @@ namespace EasyPOS.Reports
             Point eightLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
             graphics.DrawLine(blackPen, eightLineFirstPoint, eightLineSecondPoint);
 
-            Decimal totalPreviousReading = dataSource.TotalPreviousReading;
-            Decimal runningTotal = dataSource.RunningTotal;
+            //Decimal totalPreviousReading = dataSource.TotalPreviousReading;
+            //Decimal runningTotal = dataSource.RunningTotal;
 
-            String totalPreviousReadingLabel = "\nPrevious Reading";
-            String totalPreviousReadingData = "\n" + totalPreviousReading.ToString("#,##0.00");
-            graphics.DrawString(totalPreviousReadingLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            graphics.DrawString(totalPreviousReadingData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-            y += graphics.MeasureString(totalPreviousReadingData, fontArial8Regular).Height;
+            //String totalPreviousReadingLabel = "\nPrevious Reading";
+            //String totalPreviousReadingData = "\n" + totalPreviousReading.ToString("#,##0.00");
+            //graphics.DrawString(totalPreviousReadingLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            //graphics.DrawString(totalPreviousReadingData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            //y += graphics.MeasureString(totalPreviousReadingData, fontArial8Regular).Height;
 
-            graphics.DrawString("Net Sales", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            graphics.DrawString(totalNetSales.ToString("#,##0.00"), fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-            y += graphics.MeasureString(totalNetSales.ToString("#,##0.00"), fontArial8Regular).Height;
+            //graphics.DrawString("Net Sales", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            //graphics.DrawString(totalNetSales.ToString("#,##0.00"), fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            //y += graphics.MeasureString(totalNetSales.ToString("#,##0.00"), fontArial8Regular).Height;
 
-            String runningTotalLabel = "Running Total";
-            String runningTotalData = runningTotal.ToString("#,##0.00");
-            graphics.DrawString(runningTotalLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            graphics.DrawString(runningTotalData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-            y += graphics.MeasureString(runningTotalData, fontArial8Regular).Height;
+            //String runningTotalLabel = "Running Total";
+            //String runningTotalData = runningTotal.ToString("#,##0.00");
+            //graphics.DrawString(runningTotalLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            //graphics.DrawString(runningTotalData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            //y += graphics.MeasureString(runningTotalData, fontArial8Regular).Height;
 
-            // ========
-            // 9th Line
-            // ========
-            Point ninethLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-            Point ninethLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-            graphics.DrawLine(blackPen, ninethLineFirstPoint, ninethLineSecondPoint);
+            //// ========
+            //// 9th Line
+            //// ========
+            //Point ninethLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            //Point ninethLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            //graphics.DrawLine(blackPen, ninethLineFirstPoint, ninethLineSecondPoint);
 
             String zReadingFooter = systemCurrent.ZReadingFooter;
 

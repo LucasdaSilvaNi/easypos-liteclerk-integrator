@@ -25,6 +25,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public Boolean isAutoRefresh = false;
 
         public SerialPort serialPort = null;
+        public String cancelRemarks = "";
 
         public TrnSalesListForm(SysSoftwareForm softwareForm)
         {
@@ -407,6 +408,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 if (dataGridViewSalesList.CurrentCell.RowIndex != -1)
                 {
+                    TrnSalesListCancelRemarksForm trnSalesListCancelRemarksForm = new TrnSalesListCancelRemarksForm(sysSoftwareForm, this);
+                    trnSalesListCancelRemarksForm.ShowDialog();
+
                     DialogResult cancelDialogResult = MessageBox.Show("Cancel Transaction? ", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (cancelDialogResult == DialogResult.Yes)
                     {
@@ -414,9 +418,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                         if (trnPOSSalesController.CanCancelCollection(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value)))
                         {
-                            String[] cancelSales = trnPOSSalesController.CancelSales(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value));
+                            String[] cancelSales = trnPOSSalesController.CancelSales(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value), cancelRemarks);
                             if (cancelSales[1].Equals("0") == false)
                             {
+                                String collectionNumber = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnRececiptInvoiceNumber"].Index].Value.ToString();
+                                MessageBox.Show(collectionNumber + " is successfully cancelled.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                                 UpdateSalesListGridDataSource();
                             }
                             else
@@ -439,6 +446,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 MessageBox.Show("Sales empty.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public void SetCancelRemarks(String remarks)
+        {
+            cancelRemarks = remarks;
         }
 
         private void buttonTender_Click(object sender, EventArgs e)

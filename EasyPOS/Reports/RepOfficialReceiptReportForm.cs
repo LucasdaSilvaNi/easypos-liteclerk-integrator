@@ -172,10 +172,13 @@ namespace EasyPOS.Reports
                                                {
                                                    s.SalesId,
                                                    s.ItemId,
+                                                   s.MstItem,
                                                    s.UnitId,
+                                                   s.MstUnit,
                                                    s.NetPrice,
                                                    s.Price,
                                                    s.TaxId,
+                                                   s.MstTax,
                                                    s.DiscountId,
                                                    s.DiscountRate,
                                                    s.SalesAccountId,
@@ -193,15 +196,16 @@ namespace EasyPOS.Reports
                                                select new
                                                {
                                                    g.Key.ItemId,
-                                                   db.MstItems.Where(i => i.Id == g.Key.ItemId).First().ItemDescription,
-                                                   db.MstUnits.Where(u => u.Id == g.Key.UnitId).First().Unit,
+                                                   g.Key.MstItem,
+                                                   g.Key.MstItem.ItemDescription,
+                                                   g.Key.MstUnit.Unit,
                                                    g.Key.Price,
                                                    g.Key.NetPrice,
                                                    g.Key.DiscountId,
                                                    g.Key.DiscountRate,
                                                    g.Key.TaxId,
-                                                   db.MstTaxes.Where(t => t.Id == g.Key.TaxId).FirstOrDefault().Tax,
-                                                   MstTax = db.MstTaxes.Where(t => t.Id == g.Key.TaxId).FirstOrDefault(),
+                                                   g.Key.MstTax,
+                                                   g.Key.MstTax.Tax,
                                                    Amount = g.Sum(a => a.Amount),
                                                    Quantity = g.Sum(a => a.Quantity),
                                                    DiscountAmount = g.Sum(a => a.DiscountAmount * a.Quantity),
@@ -220,28 +224,30 @@ namespace EasyPOS.Reports
 
                             if (salesLine.MstTax.Code == "VAT")
                             {
-                                totalVATSales += salesLine.Amount - salesLine.TaxAmount;
+                                totalVATSales += (salesLine.Price * salesLine.Quantity) - ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstItem.MstTax1.Rate / 100)) * (salesLine.MstItem.MstTax1.Rate / 100));
                                 totalVATAmount += salesLine.TaxAmount;
                             }
                             else if (salesLine.MstTax.Code == "NONVAT")
                             {
-                                totalNonVATSales += salesLine.Amount;
+                                totalNonVATSales += salesLine.Price * salesLine.Quantity;
                             }
-                            else if (salesLine.MstTax.Code == "VATEXCLUSIVE")
+                            else if (salesLine.MstTax.Code == "EXEMPTVAT")
                             {
-                                totalVATExclusive += salesLine.Amount;
-                                totalVATAmount += salesLine.TaxAmount;
+                                if (salesLine.MstItem.MstTax1.Rate > 0)
+                                {
+                                    totalVATExempt += (salesLine.Price * salesLine.Quantity) - ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstItem.MstTax1.Rate / 100)) * (salesLine.MstItem.MstTax1.Rate / 100));
+                                }
+                                else
+                                {
+                                    totalVATExempt += salesLine.Price * salesLine.Quantity;
+                                }
                             }
-                            else if (salesLine.MstTax.Code == "VATEXEMPT")
-                            {
-                                totalVATExempt += salesLine.Amount;
-                            }
-                            else if (salesLine.MstTax.Code == "VATZERORATED")
+                            else if (salesLine.MstTax.Code == "ZEROVAT")
                             {
                                 totalVATZeroRated += salesLine.Amount;
                             }
 
-                            String itemData = salesLine.ItemDescription + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.Tax[0];
+                            String itemData = salesLine.ItemDescription + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
                             String itemAmountData = (salesLine.Amount + salesLine.DiscountAmount).ToString("#,##0.00");
                             RectangleF itemDataRectangle = new RectangleF
                             {

@@ -630,7 +630,7 @@ namespace EasyPOS.Controllers
         // ============
         // Cancel Sales
         // ============
-        public String[] CancelSales(Int32 salesId)
+        public String[] CancelSales(Int32 salesId, String cancelRemarks)
         {
             try
             {
@@ -703,6 +703,7 @@ namespace EasyPOS.Controllers
 
                         var cancelCollection = collection.FirstOrDefault();
                         cancelCollection.CancelledCollectionNumber = cancelledCollectionNumber;
+                        cancelCollection.Remarks = cancelRemarks;
                         cancelCollection.IsCancelled = true;
                         cancelCollection.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
                         cancelCollection.UpdateDateTime = DateTime.Now;
@@ -898,7 +899,7 @@ namespace EasyPOS.Controllers
                                     discountAmount = price * (discountRate / 100);
                                     netPrice = price - discountAmount;
                                     amount = netPrice * quantity;
-                                    taxAmount = (amount / (1 + (taxRate / 100))) * (taxRate / 100);
+                                    taxAmount = (price * quantity) / (1 + (taxRate / 100)) * (taxRate / 100);
                                 }
                                 else
                                 {
