@@ -94,7 +94,21 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         comboBoxTerminal.Visible = true;
                         labelTerminal.Visible = true;
+
                         dateTimePickerStartDate.Focus();
+                        break;
+                    case "Stock Withdrawal Report":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+
+                        comboBoxTerminal.Visible = true;
+                        labelTerminal.Visible = true;
+
+                        dateTimePickerStartDate.Focus();
+
                         break;
                     default:
                         labelStartDate.Visible = false;
@@ -231,6 +245,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             }
                         }
 
+                        break;
+                    case "Stock Withdrawal Report":
+                        new RepStockWithdrawalReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
                         break;
                     default:
                         MessageBox.Show("Please select a report.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
