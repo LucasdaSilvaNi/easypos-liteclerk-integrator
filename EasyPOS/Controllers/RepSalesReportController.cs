@@ -178,5 +178,27 @@ namespace EasyPOS.Controllers
 
             return cancelledCollections.ToList();
         }
+
+        // =======================
+        // Stock Withdrawal Report
+        // =======================
+        public List<Entities.RepSalesReportTrnCollectionEntity> StockWithdrawalReport(DateTime startDate, DateTime endDate, Int32 terminalId)
+        {
+            var stockWithdrawalReports = from d in db.TrnCollections.OrderByDescending(d => d.Id)
+                                         where d.CollectionDate >= startDate
+                                         && d.CollectionDate <= endDate
+                                         && d.TerminalId == terminalId
+                                         && d.IsLocked == true
+                                         && d.IsCancelled == false
+                                         && d.SalesId != null
+                                         select new Entities.RepSalesReportTrnCollectionEntity
+                                         {
+                                             Id = d.Id,
+                                             SalesId = d.SalesId,
+                                             CollectionNumber = d.CollectionNumber
+                                         };
+
+            return stockWithdrawalReports.ToList();
+        }
     }
 }

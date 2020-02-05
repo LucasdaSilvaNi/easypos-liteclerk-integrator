@@ -45,6 +45,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.printDialogStockWithdrawalReport = new System.Windows.Forms.PrintDialog();
+            this.folderBrowserDialogStockWithdrawalReport = new System.Windows.Forms.FolderBrowserDialog();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -300,5 +301,6 @@
         private System.Windows.Forms.ComboBox comboBoxTerminal;
         private System.Windows.Forms.Label labelTerminal;
         private System.Windows.Forms.PrintDialog printDialogStockWithdrawalReport;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogStockWithdrawalReport;
     }
 }

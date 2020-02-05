@@ -353,12 +353,6 @@
     <Compile Include="Forms\Software\RepRemittanceReport\RepRemittanceReportRemittanceReportForm.Designer.cs">
       <DependentUpon>RepRemittanceReportRemittanceReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepStockWithdrawalReportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepStockWithdrawalReportForm.Designer.cs">
-      <DependentUpon>RepStockWithdrawalReportForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepSalesReportCollectionDetailReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -717,9 +711,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepRemittanceReport\RepRemittanceReportRemittanceReportForm.resx">
       <DependentUpon>RepRemittanceReportRemittanceReportForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepStockWithdrawalReportForm.resx">
-      <DependentUpon>RepStockWithdrawalReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportCollectionDetailReportForm.resx">
       <DependentUpon>RepSalesReportCollectionDetailReportForm.cs</DependentUpon>

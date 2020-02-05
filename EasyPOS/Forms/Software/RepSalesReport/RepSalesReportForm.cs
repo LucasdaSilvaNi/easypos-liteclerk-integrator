@@ -247,7 +247,32 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         break;
                     case "Stock Withdrawal Report":
-                        new RepStockWithdrawalReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
+                        DialogResult printDialogResult = printDialogStockWithdrawalReport.ShowDialog();
+                        if (printDialogResult == DialogResult.OK)
+                        {
+                            String printerName = printDialogStockWithdrawalReport.PrinterSettings.PrinterName;
+                            String printFilePath = "";
+
+                            if (printerName == "Microsoft XPS Document Writer")
+                            {
+                                DialogResult folderBrowserDialoResult = folderBrowserDialogStockWithdrawalReport.ShowDialog();
+                                if (folderBrowserDialoResult == DialogResult.OK)
+                                {
+                                    printFilePath = folderBrowserDialogStockWithdrawalReport.SelectedPath;
+                                }
+                            }
+
+                            Controllers.RepSalesReportController repSalesReportController = new Controllers.RepSalesReportController();
+                            if (repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue)).Any())
+                            {
+                                foreach (var objStockWithdrawalReport in repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue)))
+                                {
+                                    String printFileName = printFilePath + "\\" + objStockWithdrawalReport.CollectionNumber + ".oxps";
+                                    new Reports.RepDeliveryReceiptReportForm(Convert.ToInt32(objStockWithdrawalReport.SalesId), objStockWithdrawalReport.Id, false, printerName, printFileName);
+                                }
+                            }
+                        }
+
                         break;
                     default:
                         MessageBox.Show("Please select a report.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);

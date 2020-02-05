@@ -17,13 +17,20 @@ namespace EasyPOS.Reports
         public Int32 trnCollectionId = 0;
         public Boolean trnIsReprinted = false;
 
-        public RepDeliveryReceiptReportForm(Int32 salesId, Int32 collectionId, Boolean isReprinted)
+        public RepDeliveryReceiptReportForm(Int32 salesId, Int32 collectionId, Boolean isReprinted, String printerName, String printerFileName)
         {
             InitializeComponent();
 
             trnSalesId = salesId;
             trnCollectionId = collectionId;
             trnIsReprinted = isReprinted;
+
+            if (printerName == "Microsoft XPS Document Writer")
+            {
+                printDocumentDeliveryReceipt.PrinterSettings.PrinterName = printerName;
+                printDocumentDeliveryReceipt.PrinterSettings.PrintToFile = true;
+                printDocumentDeliveryReceipt.PrinterSettings.PrintFileName = printerFileName;
+            }
 
             printDocumentDeliveryReceipt.DefaultPageSettings.PaperSize = new PaperSize("Delivery Receipt", 1200, 850);
 
