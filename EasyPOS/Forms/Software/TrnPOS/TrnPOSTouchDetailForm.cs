@@ -10,11 +10,15 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.TrnPOS
 {
-    public partial class TrnPOSTouchForm : Form
+    public partial class TrnPOSTouchDetailForm : Form
     {
         public SysSoftwareForm sysSoftwareForm;
+        private Modules.SysUserRightsModule sysUserRights;
 
-        public TrnPOSTouchForm(SysSoftwareForm softwareForm)
+        public TrnPOSTouchForm trnPOSTouchForm;
+        public Entities.TrnSalesEntity trnSalesEntity;
+
+        public TrnPOSTouchDetailForm(SysSoftwareForm softwareForm, TrnPOSTouchForm POSTouchForm, Entities.TrnSalesEntity salesEntity)
         {
             InitializeComponent();
         }

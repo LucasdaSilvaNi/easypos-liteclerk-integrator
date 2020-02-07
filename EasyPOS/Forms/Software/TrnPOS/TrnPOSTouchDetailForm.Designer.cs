@@ -1,6 +1,6 @@
 ﻿namespace EasyPOS.Forms.Software.TrnPOS
 {
-    partial class TrnPOSTouchDetail
+    partial class TrnPOSTouchDetailForm
     {
         /// <summary>
         /// Required designer variable.

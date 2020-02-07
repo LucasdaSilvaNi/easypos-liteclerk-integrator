@@ -46,6 +46,10 @@ namespace EasyPOS.Forms.Software
 
         public TabPage tabPagePOSSalesList = new TabPage { Name = "tabPagePOSSalesList", Text = "Activity - POS Barcode - Sales List" };
         public TabPage tabPagePOSSalesDetail = new TabPage { Name = "tabPagePOSSalesDetail", Text = "Activity - POS Barcode - Sales Detail" };
+
+        public TabPage tabPagePOSTouchSalesList = new TabPage { Name = "tabPagePOSTouchSalesList", Text = "Activity - POS Touch - Sales List" };
+        public TabPage tabPagePOSTouchSalesDetail = new TabPage { Name = "tabPagePOSTouchSalesDetail", Text = "Activity - POS Touch - Sales Detail" };
+
         public TabPage tabPageStockInList = new TabPage { Name = "tabPageStockInList", Text = "Activity - Stock-In List" };
         public TabPage tabPageStockInDetail = new TabPage { Name = "tabPageStockInDetail", Text = "Activity - Stock-In Detail" };
         public TabPage tabPageStockOutList = new TabPage { Name = "tabPageStockOutList", Text = "Activity - Stock-Out List" };
@@ -81,6 +85,10 @@ namespace EasyPOS.Forms.Software
 
         public TrnPOS.TrnSalesListForm trnSalesListForm = null;
         public TrnPOS.TrnSalesDetailForm trnSalesDetailForm = null;
+
+        public TrnPOS.TrnPOSTouchForm trnPOSTouchForm = null;
+        public TrnPOS.TrnPOSTouchDetailForm trnPOSTouchDetailForm = null;
+
         public TrnStockIn.TrnStockInListForm trnStockInListForm = null;
         public TrnStockIn.TrnStockInDetailForm trnStockInDetailForm = null;
         public TrnStockOut.TrnStockOutListForm trnStockOutListForm = null;
@@ -722,6 +730,54 @@ namespace EasyPOS.Forms.Software
             }
         }
 
+        public void AddTabPagePOSTouchSalesList()
+        {
+            tabPagePOSTouchSalesList.Controls.Remove(trnPOSTouchForm);
+
+            trnPOSTouchForm = new TrnPOS.TrnPOSTouchForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPagePOSTouchSalesList.Controls.Add(trnPOSTouchForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPagePOSTouchSalesList) == true)
+            {
+                tabControlSoftware.SelectTab(tabPagePOSTouchSalesList);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPagePOSTouchSalesList);
+                tabControlSoftware.SelectTab(tabPagePOSTouchSalesList);
+            }
+        }
+
+        public void AddTabPagePOSTouchSalesDetail(TrnPOS.TrnPOSTouchForm POSTouchForm, Entities.TrnSalesEntity salesEntity)
+        {
+            tabPagePOSTouchSalesDetail.Controls.Remove(trnPOSTouchDetailForm);
+
+            trnPOSTouchDetailForm = new TrnPOS.TrnPOSTouchDetailForm(this, POSTouchForm, salesEntity)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPagePOSTouchSalesDetail.Controls.Add(trnPOSTouchDetailForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPagePOSTouchSalesDetail) == true)
+            {
+                tabControlSoftware.SelectTab(tabPagePOSTouchSalesDetail);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPagePOSTouchSalesDetail);
+                tabControlSoftware.SelectTab(tabPagePOSTouchSalesDetail);
+            }
+        }
+
         public void RemoveTabPage()
         {
             tabControlSoftware.TabPages.Remove(tabControlSoftware.SelectedTab);
@@ -792,7 +848,7 @@ namespace EasyPOS.Forms.Software
 
         private void pOSTouchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            AddTabPagePOSTouchSalesList();
         }
 
         private void remittanceToolStripMenuItem_Click(object sender, EventArgs e)

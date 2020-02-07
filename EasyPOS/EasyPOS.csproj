@@ -473,11 +473,11 @@
     <Compile Include="Forms\Software\TrnDisbursement\TrnDisbursementListForm.Designer.cs">
       <DependentUpon>TrnDisbursementListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchDetail.cs">
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchDetail.Designer.cs">
-      <DependentUpon>TrnPOSTouchDetail.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchDetailForm.Designer.cs">
+      <DependentUpon>TrnPOSTouchDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchForm.cs">
       <SubType>Form</SubType>
