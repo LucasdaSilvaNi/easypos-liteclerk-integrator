@@ -188,7 +188,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             }
                             else if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Delivery Receipt")
                             {
-                                new Reports.RepDeliveryReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]), false, "", "");
+                                new Reports.RepDeliveryReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]), false, "", "", false);
                             }
                             else
                             {

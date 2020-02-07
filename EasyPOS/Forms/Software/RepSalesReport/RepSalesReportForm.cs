@@ -268,7 +268,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                 foreach (var objStockWithdrawalReport in repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue)))
                                 {
                                     String printFileName = printFilePath + "\\" + objStockWithdrawalReport.CollectionNumber + ".oxps";
-                                    new Reports.RepDeliveryReceiptReportForm(Convert.ToInt32(objStockWithdrawalReport.SalesId), objStockWithdrawalReport.Id, false, printerName, printFileName);
+                                    new Reports.RepDeliveryReceiptReportForm(Convert.ToInt32(objStockWithdrawalReport.SalesId), objStockWithdrawalReport.Id, false, printerName, printFileName, true);
                                 }
                             }
                         }
