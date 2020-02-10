@@ -94,8 +94,8 @@ namespace EasyPOS.Forms.Software.SysUtilities
             // =====
             // Sizes
             // =====
-            float x = 5, y = 5;
-            float width = 245.0F, height = 0F;
+            float x = 5, y = 20;
+            float width = 113.58F, height = 0F;
 
             // ==============
             // Tools Settings
@@ -141,8 +141,8 @@ namespace EasyPOS.Forms.Software.SysUtilities
             y += graphics.MeasureString(itemAlias, fontArial8Regular).Height;
 
             Code128BarcodeDraw barcode = BarcodeDrawFactory.Code128WithChecksum;
-            Image image = barcode.Draw(itemEntity.BarCode, 50);
-            graphics.DrawImage(image, new RectangleF(x, y, width, 55));
+            Image image = barcode.Draw(itemEntity.BarCode, 40);
+            graphics.DrawImage(image, new RectangleF(x + 5, y, 107, 45));
             y += image.Height + 7;
 
             String itemPrice = itemEntity.Price.ToString("#,##0.00");
