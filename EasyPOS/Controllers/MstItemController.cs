@@ -39,6 +39,7 @@ namespace EasyPOS.Controllers
                         || d.ItemDescription.Contains(filter)
                         || d.BarCode.Contains(filter)
                         || d.Category.Contains(filter)
+                        || d.Alias.Contains(filter)
                         || d.MstUnit.Unit.Contains(filter)
                         select new Entities.MstItemEntity
                         {

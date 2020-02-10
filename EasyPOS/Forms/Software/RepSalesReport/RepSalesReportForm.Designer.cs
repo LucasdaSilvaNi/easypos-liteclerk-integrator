@@ -46,6 +46,8 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.printDialogStockWithdrawalReport = new System.Windows.Forms.PrintDialog();
             this.folderBrowserDialogStockWithdrawalReport = new System.Windows.Forms.FolderBrowserDialog();
+            this.comboBoxCustomer = new System.Windows.Forms.ComboBox();
+            this.labelCustomer = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -55,6 +57,8 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.comboBoxCustomer);
+            this.panel4.Controls.Add(this.labelCustomer);
             this.panel4.Controls.Add(this.comboBoxTerminal);
             this.panel4.Controls.Add(this.labelTerminal);
             this.panel4.Controls.Add(this.dateTimePickerStartDate);
@@ -72,7 +76,7 @@
             // comboBoxTerminal
             // 
             this.comboBoxTerminal.FormattingEnabled = true;
-            this.comboBoxTerminal.Location = new System.Drawing.Point(502, 136);
+            this.comboBoxTerminal.Location = new System.Drawing.Point(499, 122);
             this.comboBoxTerminal.Name = "comboBoxTerminal";
             this.comboBoxTerminal.Size = new System.Drawing.Size(220, 31);
             this.comboBoxTerminal.TabIndex = 2;
@@ -82,7 +86,7 @@
             // 
             this.labelTerminal.AutoSize = true;
             this.labelTerminal.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelTerminal.Location = new System.Drawing.Point(409, 137);
+            this.labelTerminal.Location = new System.Drawing.Point(419, 125);
             this.labelTerminal.Name = "labelTerminal";
             this.labelTerminal.Size = new System.Drawing.Size(74, 23);
             this.labelTerminal.TabIndex = 25;
@@ -92,7 +96,7 @@
             // dateTimePickerStartDate
             // 
             this.dateTimePickerStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerStartDate.Location = new System.Drawing.Point(502, 58);
+            this.dateTimePickerStartDate.Location = new System.Drawing.Point(499, 50);
             this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
             this.dateTimePickerStartDate.Size = new System.Drawing.Size(220, 30);
             this.dateTimePickerStartDate.TabIndex = 0;
@@ -102,7 +106,7 @@
             // 
             this.labelStartDate.AutoSize = true;
             this.labelStartDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelStartDate.Location = new System.Drawing.Point(409, 61);
+            this.labelStartDate.Location = new System.Drawing.Point(407, 53);
             this.labelStartDate.Name = "labelStartDate";
             this.labelStartDate.Size = new System.Drawing.Size(86, 23);
             this.labelStartDate.TabIndex = 23;
@@ -145,7 +149,7 @@
             // dateTimePickerEndDate
             // 
             this.dateTimePickerEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerEndDate.Location = new System.Drawing.Point(502, 97);
+            this.dateTimePickerEndDate.Location = new System.Drawing.Point(499, 86);
             this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
             this.dateTimePickerEndDate.Size = new System.Drawing.Size(220, 30);
             this.dateTimePickerEndDate.TabIndex = 1;
@@ -177,7 +181,7 @@
             // 
             this.labelEndDate.AutoSize = true;
             this.labelEndDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelEndDate.Location = new System.Drawing.Point(409, 101);
+            this.labelEndDate.Location = new System.Drawing.Point(413, 89);
             this.labelEndDate.Name = "labelEndDate";
             this.labelEndDate.Size = new System.Drawing.Size(80, 23);
             this.labelEndDate.TabIndex = 18;
@@ -258,6 +262,26 @@
             // 
             this.printDialogStockWithdrawalReport.UseEXDialog = true;
             // 
+            // comboBoxCustomer
+            // 
+            this.comboBoxCustomer.FormattingEnabled = true;
+            this.comboBoxCustomer.Location = new System.Drawing.Point(499, 159);
+            this.comboBoxCustomer.Name = "comboBoxCustomer";
+            this.comboBoxCustomer.Size = new System.Drawing.Size(220, 31);
+            this.comboBoxCustomer.TabIndex = 26;
+            this.comboBoxCustomer.Visible = false;
+            // 
+            // labelCustomer
+            // 
+            this.labelCustomer.AutoSize = true;
+            this.labelCustomer.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.labelCustomer.Location = new System.Drawing.Point(409, 162);
+            this.labelCustomer.Name = "labelCustomer";
+            this.labelCustomer.Size = new System.Drawing.Size(84, 23);
+            this.labelCustomer.TabIndex = 27;
+            this.labelCustomer.Text = "Customer";
+            this.labelCustomer.Visible = false;
+            // 
             // RepSalesReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -302,5 +326,7 @@
         private System.Windows.Forms.Label labelTerminal;
         private System.Windows.Forms.PrintDialog printDialogStockWithdrawalReport;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogStockWithdrawalReport;
+        private System.Windows.Forms.ComboBox comboBoxCustomer;
+        private System.Windows.Forms.Label labelCustomer;
     }
 }

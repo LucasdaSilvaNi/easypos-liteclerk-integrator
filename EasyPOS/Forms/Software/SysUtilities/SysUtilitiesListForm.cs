@@ -24,12 +24,19 @@ namespace EasyPOS.Forms.Software.SysUtilities
         public PagedList<Entities.DgvSysUtilitiesAuditTrailListEntity> auditTrailListPageList = new PagedList<Entities.DgvSysUtilitiesAuditTrailListEntity>(auditTrailListData, pageNumber, pageSize);
         public BindingSource audiTrailListDataSource = new BindingSource();
 
+        public static List<Entities.DgvUtilitiesBarcodePrintingItemList> itemListData = new List<Entities.DgvUtilitiesBarcodePrintingItemList>();
+        public static Int32 itemListPageNumber = 1;
+        public static Int32 itemListPageSize = 50;
+        public PagedList<Entities.DgvUtilitiesBarcodePrintingItemList> itemListPageList = new PagedList<Entities.DgvUtilitiesBarcodePrintingItemList>(itemListData, pageNumber, pageSize);
+        public BindingSource itemListDataSource = new BindingSource();
+
         public SysUtilitiesListForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();
             sysSoftwareForm = softwareForm;
 
             GetUserList();
+            CreateItemListDataGridView();
         }
 
         public void UpdateAuditTrailListDataSource()
@@ -305,6 +312,209 @@ namespace EasyPOS.Forms.Software.SysUtilities
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public void UpdateItemListDataSource()
+        {
+            SetItemListDataSourceAsync();
+        }
+
+        public async void SetItemListDataSourceAsync()
+        {
+            List<Entities.DgvUtilitiesBarcodePrintingItemList> getItemListData = await GetItemListDataTask();
+            if (getItemListData.Any())
+            {
+                itemListData = getItemListData;
+                itemListPageList = new PagedList<Entities.DgvUtilitiesBarcodePrintingItemList>(itemListData, itemListPageNumber, itemListPageSize);
+
+                if (itemListPageList.PageCount == 1)
+                {
+                    buttonItemListPageListFirst.Enabled = false;
+                    buttonItemListPageListPrevious.Enabled = false;
+                    buttonItemListPageListNext.Enabled = false;
+                    buttonItemListPageListLast.Enabled = false;
+                }
+                else if (itemListPageNumber == 1)
+                {
+                    buttonItemListPageListFirst.Enabled = false;
+                    buttonItemListPageListPrevious.Enabled = false;
+                    buttonItemListPageListNext.Enabled = true;
+                    buttonItemListPageListLast.Enabled = true;
+                }
+                else if (itemListPageNumber == itemListPageList.PageCount)
+                {
+                    buttonItemListPageListFirst.Enabled = true;
+                    buttonItemListPageListPrevious.Enabled = true;
+                    buttonItemListPageListNext.Enabled = false;
+                    buttonItemListPageListLast.Enabled = false;
+                }
+                else
+                {
+                    buttonItemListPageListFirst.Enabled = true;
+                    buttonItemListPageListPrevious.Enabled = true;
+                    buttonItemListPageListNext.Enabled = true;
+                    buttonItemListPageListLast.Enabled = true;
+                }
+
+                textBoxItemListPageNumber.Text = itemListPageNumber + " / " + itemListPageList.PageCount;
+                itemListDataSource.DataSource = itemListPageList;
+            }
+            else
+            {
+                buttonItemListPageListFirst.Enabled = false;
+                buttonItemListPageListPrevious.Enabled = false;
+                buttonItemListPageListNext.Enabled = false;
+                buttonItemListPageListLast.Enabled = false;
+
+                itemListPageNumber = 1;
+
+                itemListData = new List<Entities.DgvUtilitiesBarcodePrintingItemList>();
+                itemListDataSource.Clear();
+                textBoxItemListPageNumber.Text = "1 / 1";
+            }
+        }
+
+        public Task<List<Entities.DgvUtilitiesBarcodePrintingItemList>> GetItemListDataTask()
+        {
+            String filter = textBoxItemListFilter.Text;
+            Controllers.MstItemController mstItemController = new Controllers.MstItemController();
+
+            List<Entities.MstItemEntity> listItem = mstItemController.ListItem(filter);
+            if (listItem.Any())
+            {
+                var items = from d in listItem
+                            select new Entities.DgvUtilitiesBarcodePrintingItemList
+                            {
+                                ColumnItemListButtonPick = "Pick",
+                                ColumnItemListId = d.Id,
+                                ColumnItemListCode = d.ItemCode,
+                                ColumnItemListDescription = d.ItemDescription,
+                                ColumnItemListBarcode = d.BarCode,
+                                ColumnItemListUnit = d.Unit,
+                                ColumnItemListCategory = d.Category,
+                                ColumnItemListAlias = d.Alias,
+                                ColumnItemListPrice = d.Price.ToString("#,##0.00"),
+                                ColumnItemListIsInventory = d.IsInventory,
+                                ColumnItemListIsLocked = d.IsLocked
+                            };
+
+                return Task.FromResult(items.ToList());
+            }
+            else
+            {
+                return Task.FromResult(new List<Entities.DgvUtilitiesBarcodePrintingItemList>());
+            }
+        }
+
+        public void CreateItemListDataGridView()
+        {
+            UpdateItemListDataSource();
+
+            dataGridViewItemList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewItemList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewItemList.Columns[0].DefaultCellStyle.ForeColor = Color.White;
+
+            dataGridViewItemList.Columns[1].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#F34F1C");
+            dataGridViewItemList.Columns[1].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#F34F1C");
+            dataGridViewItemList.Columns[1].DefaultCellStyle.ForeColor = Color.White;
+
+            dataGridViewItemList.DataSource = itemListDataSource;
+        }
+
+        public void GetItemListCurrentSelectedCell(Int32 rowIndex)
+        {
+
+        }
+
+        private void dataGridViewItemList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                GetItemListCurrentSelectedCell(e.RowIndex);
+            }
+
+            if (e.RowIndex > -1 && dataGridViewItemList.CurrentCell.ColumnIndex == dataGridViewItemList.Columns["ColumnItemListButtonPick"].Index)
+            {
+                Int32 itemId = Convert.ToInt32(dataGridViewItemList.Rows[dataGridViewItemList.CurrentCell.RowIndex].Cells[dataGridViewItemList.Columns["ColumnItemListId"].Index].Value);
+                SysUtilitiesBarcodePrintingQuantity sysUtilitiesBarcodePrintingQuantity = new SysUtilitiesBarcodePrintingQuantity(itemId);
+                sysUtilitiesBarcodePrintingQuantity.ShowDialog();
+            }
+        }
+
+        private void textBoxItemListFilter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                UpdateItemListDataSource();
+            }
+        }
+
+        private void buttonItemListPageListFirst_Click(object sender, EventArgs e)
+        {
+            itemListPageList = new PagedList<Entities.DgvUtilitiesBarcodePrintingItemList>(itemListData, 1, itemListPageSize);
+            itemListDataSource.DataSource = itemListPageList;
+
+            buttonItemListPageListFirst.Enabled = false;
+            buttonItemListPageListPrevious.Enabled = false;
+            buttonItemListPageListNext.Enabled = true;
+            buttonItemListPageListLast.Enabled = true;
+
+            itemListPageNumber = 1;
+            textBoxItemListPageNumber.Text = itemListPageNumber + " / " + itemListPageList.PageCount;
+        }
+
+        private void buttonItemListPageListPrevious_Click(object sender, EventArgs e)
+        {
+            if (itemListPageList.HasPreviousPage == true)
+            {
+                itemListPageList = new PagedList<Entities.DgvUtilitiesBarcodePrintingItemList>(itemListData, --itemListPageNumber, itemListPageSize);
+                itemListDataSource.DataSource = itemListPageList;
+            }
+
+            buttonItemListPageListNext.Enabled = true;
+            buttonItemListPageListLast.Enabled = true;
+
+            if (itemListPageNumber == 1)
+            {
+                buttonItemListPageListFirst.Enabled = false;
+                buttonItemListPageListPrevious.Enabled = false;
+            }
+
+            textBoxItemListPageNumber.Text = itemListPageNumber + " / " + itemListPageList.PageCount;
+        }
+
+        private void buttonItemListPageListNext_Click(object sender, EventArgs e)
+        {
+            if (itemListPageList.HasNextPage == true)
+            {
+                itemListPageList = new PagedList<Entities.DgvUtilitiesBarcodePrintingItemList>(itemListData, ++itemListPageNumber, itemListPageSize);
+                itemListDataSource.DataSource = itemListPageList;
+            }
+
+            buttonItemListPageListFirst.Enabled = true;
+            buttonItemListPageListPrevious.Enabled = true;
+
+            if (itemListPageNumber == itemListPageList.PageCount)
+            {
+                buttonItemListPageListNext.Enabled = false;
+                buttonItemListPageListLast.Enabled = false;
+            }
+
+            textBoxItemListPageNumber.Text = itemListPageNumber + " / " + itemListPageList.PageCount;
+        }
+
+        private void buttonItemListPageListLast_Click(object sender, EventArgs e)
+        {
+            itemListPageList = new PagedList<Entities.DgvUtilitiesBarcodePrintingItemList>(itemListData, itemListPageList.PageCount, itemListPageSize);
+            itemListDataSource.DataSource = itemListPageList;
+
+            buttonItemListPageListFirst.Enabled = true;
+            buttonItemListPageListPrevious.Enabled = true;
+            buttonItemListPageListNext.Enabled = false;
+            buttonItemListPageListLast.Enabled = false;
+
+            itemListPageNumber = itemListPageList.PageCount;
+            textBoxItemListPageNumber.Text = itemListPageNumber + " / " + itemListPageList.PageCount;
         }
     }
 }

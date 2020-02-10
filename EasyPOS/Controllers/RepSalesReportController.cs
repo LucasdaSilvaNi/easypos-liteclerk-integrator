@@ -28,6 +28,21 @@ namespace EasyPOS.Controllers
             return terminals.ToList();
         }
 
+        // ======================
+        // Dropdown List Customer
+        // ======================
+        public List<Entities.MstCustomerEntity> DropdownListCustomer()
+        {
+            var customers = from d in db.MstCustomers
+                            select new Entities.MstCustomerEntity
+                            {
+                                Id = d.Id,
+                                Customer = d.Customer
+                            };
+
+            return customers.ToList();
+        }
+
         // ====================
         // Sales Summary Report
         // ====================
@@ -182,12 +197,13 @@ namespace EasyPOS.Controllers
         // =======================
         // Stock Withdrawal Report
         // =======================
-        public List<Entities.RepSalesReportTrnCollectionEntity> StockWithdrawalReport(DateTime startDate, DateTime endDate, Int32 terminalId)
+        public List<Entities.RepSalesReportTrnCollectionEntity> StockWithdrawalReport(DateTime startDate, DateTime endDate, Int32 terminalId, Int32 customerId)
         {
             var stockWithdrawalReports = from d in db.TrnCollections.OrderByDescending(d => d.Id)
                                          where d.CollectionDate >= startDate
                                          && d.CollectionDate <= endDate
                                          && d.TerminalId == terminalId
+                                         && d.CustomerId == customerId
                                          && d.IsLocked == true
                                          && d.IsCancelled == false
                                          && d.SalesId != null

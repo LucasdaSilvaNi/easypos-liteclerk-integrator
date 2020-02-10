@@ -32,6 +32,19 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 comboBoxTerminal.ValueMember = "Id";
                 comboBoxTerminal.DisplayMember = "Terminal";
             }
+
+            GetCustomerList();
+        }
+
+        public void GetCustomerList()
+        {
+            Controllers.RepSalesReportController repSalesReportController = new Controllers.RepSalesReportController();
+            if (repSalesReportController.DropdownListCustomer().Any())
+            {
+                comboBoxCustomer.DataSource = repSalesReportController.DropdownListCustomer();
+                comboBoxCustomer.ValueMember = "Id";
+                comboBoxCustomer.DisplayMember = "Customer";
+            }
         }
 
         private void listBoxSalesReport_SelectedIndexChanged(object sender, EventArgs e)
@@ -48,8 +61,12 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
 
-                        comboBoxTerminal.Visible = true;
                         labelTerminal.Visible = true;
+                        comboBoxTerminal.Visible = true;
+
+                        labelCustomer.Visible = false;
+                        comboBoxCustomer.Visible = false;
+
                         dateTimePickerStartDate.Focus();
                         break;
                     case "Sales Detail Report":
@@ -59,8 +76,12 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
 
-                        comboBoxTerminal.Visible = true;
                         labelTerminal.Visible = true;
+                        comboBoxTerminal.Visible = true;
+
+                        labelCustomer.Visible = false;
+                        comboBoxCustomer.Visible = false;
+
                         dateTimePickerStartDate.Focus();
                         break;
                     case "Collection Summary Report":
@@ -70,8 +91,12 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
 
-                        comboBoxTerminal.Visible = true;
                         labelTerminal.Visible = true;
+                        comboBoxTerminal.Visible = true;
+
+                        labelCustomer.Visible = false;
+                        comboBoxCustomer.Visible = false;
+
                         dateTimePickerStartDate.Focus();
                         break;
                     case "Collection Detail Report":
@@ -81,8 +106,12 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
 
-                        comboBoxTerminal.Visible = true;
                         labelTerminal.Visible = true;
+                        comboBoxTerminal.Visible = true;
+
+                        labelCustomer.Visible = false;
+                        comboBoxCustomer.Visible = false;
+
                         dateTimePickerStartDate.Focus();
                         break;
                     case "Cancelled Summary Report":
@@ -92,8 +121,11 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
 
-                        comboBoxTerminal.Visible = true;
                         labelTerminal.Visible = true;
+                        comboBoxTerminal.Visible = true;
+
+                        labelCustomer.Visible = false;
+                        comboBoxCustomer.Visible = false;
 
                         dateTimePickerStartDate.Focus();
                         break;
@@ -104,8 +136,11 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
 
-                        comboBoxTerminal.Visible = true;
                         labelTerminal.Visible = true;
+                        comboBoxTerminal.Visible = true;
+
+                        labelCustomer.Visible = true;
+                        comboBoxCustomer.Visible = true;
 
                         dateTimePickerStartDate.Focus();
 
@@ -117,8 +152,12 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         labelEndDate.Visible = false;
                         dateTimePickerEndDate.Visible = false;
 
-                        comboBoxTerminal.Visible = false;
                         labelTerminal.Visible = false;
+                        comboBoxTerminal.Visible = false;
+
+                        labelCustomer.Visible = false;
+                        comboBoxCustomer.Visible = false;
+
                         dateTimePickerStartDate.Focus();
                         break;
                 }
@@ -263,9 +302,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             }
 
                             Controllers.RepSalesReportController repSalesReportController = new Controllers.RepSalesReportController();
-                            if (repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue)).Any())
+                            if (repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxCustomer.SelectedValue)).Any())
                             {
-                                foreach (var objStockWithdrawalReport in repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue)))
+                                foreach (var objStockWithdrawalReport in repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxCustomer.SelectedValue)))
                                 {
                                     String printFileName = printFilePath + "\\" + objStockWithdrawalReport.CollectionNumber + ".oxps";
                                     new Reports.RepDeliveryReceiptReportForm(Convert.ToInt32(objStockWithdrawalReport.SalesId), objStockWithdrawalReport.Id, false, printerName, printFileName, true);

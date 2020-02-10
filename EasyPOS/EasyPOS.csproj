@@ -13,7 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>F:\Easypos Setup\</PublishUrl>
+    <PublishUrl>C:\Users\Developer\Desktop\Easypos Training\Setup\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationRevision>9</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -76,6 +76,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Zen.Barcode.Core, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b5ae55aa76d2d9de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zen.Barcode.Rendering.Framework.3.1.10729.1\lib\Zen.Barcode.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\MstAccountController.cs" />
@@ -180,6 +183,7 @@
     <Compile Include="Entities\DgvUserDetailUserFormEntity.cs" />
     <Compile Include="Entities\DgvUserDetailUserRightsEntity.cs" />
     <Compile Include="Entities\DgvUserListUserEntity.cs" />
+    <Compile Include="Entities\DgvUtilitiesBarcodePrintingItemList.cs" />
     <Compile Include="Entities\EspCardDetailsEntity.cs" />
     <Compile Include="Entities\EspTokenEntity.cs" />
     <Compile Include="Entities\MstAccountEntity.cs" />
@@ -460,6 +464,12 @@
     </Compile>
     <Compile Include="Forms\Software\SysUtilities\SysUtilitiesListForm.Designer.cs">
       <DependentUpon>SysUtilitiesListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\SysUtilities\SysUtilitiesBarcodePrintingQuantity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\SysUtilities\SysUtilitiesBarcodePrintingQuantity.Designer.cs">
+      <DependentUpon>SysUtilitiesBarcodePrintingQuantity.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\TrnDisbursement\TrnDisbursementDetailForm.cs">
       <SubType>Form</SubType>
@@ -759,6 +769,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\SysUtilities\SysUtilitiesListForm.resx">
       <DependentUpon>SysUtilitiesListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\SysUtilities\SysUtilitiesBarcodePrintingQuantity.resx">
+      <DependentUpon>SysUtilitiesBarcodePrintingQuantity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnDisbursement\TrnDisbursementDetailForm.resx">
       <DependentUpon>TrnDisbursementDetailForm.cs</DependentUpon>
