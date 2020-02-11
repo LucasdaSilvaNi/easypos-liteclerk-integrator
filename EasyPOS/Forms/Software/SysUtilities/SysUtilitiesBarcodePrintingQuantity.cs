@@ -16,6 +16,9 @@ namespace EasyPOS.Forms.Software.SysUtilities
         public Int32 itemId;
         public Entities.MstItemEntity itemEntity;
 
+        public Int32 quantity = 0;
+        public Int32 columns = 0;
+
         public SysUtilitiesBarcodePrintingQuantity(Int32 itemIdFilter)
         {
             InitializeComponent();
@@ -31,6 +34,12 @@ namespace EasyPOS.Forms.Software.SysUtilities
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
+            printBarcode();
+            Close();
+        }
+
+        public void printBarcode()
+        {
             try
             {
                 Controllers.MstItemController mstItemController = new Controllers.MstItemController();
@@ -42,7 +51,46 @@ namespace EasyPOS.Forms.Software.SysUtilities
                     if (printDialogBarcodePrintingDialogResult == DialogResult.OK)
                     {
                         printDocumentBarcodePrinting.PrinterSettings.PrinterName = printDialogBarcodePrinting.PrinterSettings.PrinterName;
-                        printDocumentBarcodePrinting.Print();
+                        quantity = Convert.ToInt32(textBoxPrintQuantity.Text);
+
+                        for (int i = 1; i <= quantity; i++)
+                        {
+                            if (i % 3 == 1)
+                            {
+                                columns = 1;
+                            }
+                            else if (i % 3 == 2)
+                            {
+                                columns = 2;
+                            }
+                            else if (i % 3 == 0)
+                            {
+                                columns = 3;
+                                printDocumentBarcodePrinting.Print();
+                            }
+                            else
+                            {
+                                columns = 0;
+                            }
+
+                            if (i % 3 != 0)
+                            {
+                                if (quantity == i)
+                                {
+                                    if (quantity % 3 == 1)
+                                    {
+                                        columns = 1;
+                                    }
+
+                                    if (quantity % 3 == 2)
+                                    {
+                                        columns = 2;
+                                    }
+
+                                    printDocumentBarcodePrinting.Print();
+                                }
+                            }
+                        }
                     }
                 }
                 else
@@ -136,18 +184,64 @@ namespace EasyPOS.Forms.Software.SysUtilities
             StringFormat drawFormatLeft = new StringFormat { Alignment = StringAlignment.Near };
             StringFormat drawFormatRight = new StringFormat { Alignment = StringAlignment.Far };
 
-            String itemAlias = itemEntity.Alias;
-            graphics.DrawString(itemAlias, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += graphics.MeasureString(itemAlias, fontArial8Regular).Height;
 
+            // ALIAS
+            String itemAlias = itemEntity.Alias;
+
+            // BARCODE
             Code128BarcodeDraw barcode = BarcodeDrawFactory.Code128WithChecksum;
             Image image = barcode.Draw(itemEntity.BarCode, 40);
-            graphics.DrawImage(image, new RectangleF(x + 5, y, 107, 45));
-            y += image.Height + 7;
 
+            // PRICE
             String itemPrice = itemEntity.Price.ToString("#,##0.00");
-            graphics.DrawString(itemPrice, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += graphics.MeasureString(itemPrice, fontArial8Regular).Height;
+
+            switch (columns)
+            {
+                case 1:
+                    graphics.DrawString(itemAlias, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(itemAlias, fontArial8Regular).Height;
+
+                    graphics.DrawImage(image, new RectangleF(x, y, 107, 45));
+                    y += image.Height + 7;
+
+                    graphics.DrawString(itemPrice, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(itemPrice, fontArial8Regular).Height;
+
+                    break;
+                case 2:
+                    graphics.DrawString(itemAlias, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    graphics.DrawString(itemAlias, fontArial8Regular, drawBrush, new RectangleF(x + 5 + width, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(itemAlias, fontArial8Regular).Height;
+
+                    graphics.DrawImage(image, new RectangleF(x, y, 107, 45));
+                    graphics.DrawImage(image, new RectangleF(x + 13 + 107, y, 107, 45));
+                    y += image.Height + 7;
+
+                    graphics.DrawString(itemPrice, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    graphics.DrawString(itemPrice, fontArial8Regular, drawBrush, new RectangleF(x + 5 + width, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(itemPrice, fontArial8Regular).Height;
+
+                    break;
+                case 3:
+                    graphics.DrawString(itemAlias, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    graphics.DrawString(itemAlias, fontArial8Regular, drawBrush, new RectangleF(x + 5 + width, y, width, height), drawFormatCenter);
+                    graphics.DrawString(itemAlias, fontArial8Regular, drawBrush, new RectangleF(x + 10 + width + width, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(itemAlias, fontArial8Regular).Height;
+
+                    graphics.DrawImage(image, new RectangleF(x, y, 107, 45));
+                    graphics.DrawImage(image, new RectangleF(x + 13 + 107, y, 107, 45));
+                    graphics.DrawImage(image, new RectangleF(x + 25 + 214, y, 107, 45));
+                    y += image.Height + 7;
+
+                    graphics.DrawString(itemPrice, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    graphics.DrawString(itemPrice, fontArial8Regular, drawBrush, new RectangleF(x + 5 + width, y, width, height), drawFormatCenter);
+                    graphics.DrawString(itemPrice, fontArial8Regular, drawBrush, new RectangleF(x + 10 + width + width, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(itemPrice, fontArial8Regular).Height;
+
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
