@@ -185,15 +185,10 @@ namespace EasyPOS.Forms.Software.SysUtilities
             StringFormat drawFormatRight = new StringFormat { Alignment = StringAlignment.Far };
 
 
-            // ALIAS
             String itemAlias = itemEntity.Alias;
-
-            // BARCODE
             Code128BarcodeDraw barcode = BarcodeDrawFactory.Code128WithChecksum;
             Image image = barcode.Draw(itemEntity.BarCode, 40);
-
-            // PRICE
-            String itemPrice = itemEntity.Price.ToString("#,##0.00");
+            String itemPrice = "P " + itemEntity.Price.ToString("#,##0.00");
 
             switch (columns)
             {

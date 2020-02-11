@@ -947,6 +947,8 @@
     <Content Include="Resources\Images\Icons\User.png" />
     <Content Include="Resources\Images\Logo\easypos cropped.ico" />
     <Content Include="Resources\Images\Logo\easypos cropped.jpg" />
+    <Content Include="Resources\Images\NewLogo\easypos.ico" />
+    <Content Include="Resources\Images\NewLogo\easypos.png" />
     <Content Include="Resources\Images\Others\color theme.jpg" />
     <Content Include="Resources\Images\Products\easyapp.jpg" />
     <Content Include="Resources\Images\Products\easyfis.jpg" />
