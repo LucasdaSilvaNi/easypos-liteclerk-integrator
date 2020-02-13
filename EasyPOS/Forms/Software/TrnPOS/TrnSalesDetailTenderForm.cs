@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -18,6 +20,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public TrnSalesListForm trnSalesListForm;
         public TrnSalesDetailForm trnSalesDetailForm;
         public Entities.TrnSalesEntity trnSalesEntity;
+        public String collectionNumber = "";
 
         public TrnSalesDetailTenderForm(SysSoftwareForm softwareForm, TrnSalesListForm salesListForm, TrnSalesDetailForm salesDetailForm, Entities.TrnSalesEntity salesEntity)
         {
@@ -126,7 +129,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 if (isValidTender == true)
                 {
                     buttonTender.Enabled = true;
-                    CreateCollection();
+                    CreateCollection(null);
                 }
                 else
                 {
@@ -136,7 +139,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
         }
 
-        public void CreateCollection()
+        public void CreateCollection(Image facepayCapturedImage)
         {
             List<Entities.TrnCollectionLineEntity> listCollectionLine = new List<Entities.TrnCollectionLineEntity>();
             if (dataGridViewTenderPayType.Rows.Count > 0)
@@ -199,7 +202,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         }
                     }
 
-                    Close();
+                    if (facepayCapturedImage != null)
+                    {
+                        SaveImageCaptured(facepayCapturedImage);
+                    }
+                    else
+                    {
+                        Close();
+                    }
 
                     if (trnSalesDetailForm != null)
                     {
@@ -221,6 +231,32 @@ namespace EasyPOS.Forms.Software.TrnPOS
             else
             {
                 MessageBox.Show("Cannot tender zero amount.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void SaveImageCaptured(Image facepayCapturedImage)
+        {
+            try
+            {
+                Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
+                Entities.TrnSalesEntity salesEntity = trnPOSSalesController.DetailSales(trnSalesEntity.Id);
+
+                if (salesEntity != null && String.IsNullOrEmpty(salesEntity.CollectionNumber) == false)
+                {
+                    String imageName = salesEntity.CollectionNumber;
+                    String facepayImagePath = Modules.SysCurrentModule.GetCurrentSettings().FacepayImagePath;
+
+                    if (Directory.Exists(facepayImagePath) == false)
+                    {
+                        Directory.CreateDirectory(facepayImagePath);
+                    }
+
+                    facepayCapturedImage.Save(facepayImagePath + "\\" + imageName + ".png", ImageFormat.Png);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

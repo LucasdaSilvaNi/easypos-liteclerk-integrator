@@ -226,7 +226,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     mstDataGridViewTenderPayType.CurrentRow.Cells[2].Selected = true;
 
                     trnSalesDetailTenderForm.ComputeAmount();
-                    trnSalesDetailTenderForm.CreateCollection();
+                    trnSalesDetailTenderForm.CreateCollection(null);
                 }
                 else
                 {

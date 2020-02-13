@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
@@ -23,7 +24,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public FilterInfoCollection videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
         public VideoCaptureDevice videoDevice;
         public Boolean captured = false;
-        public String facepayImagePath = Modules.SysCurrentModule.GetCurrentSettings().FacepayImagePath;
 
         public Entities.SysCurrentEntity systemCurrent = Modules.SysCurrentModule.GetCurrentSettings();
         public TrnSalesDetailTenderForm trnSalesDetailTenderForm;
@@ -46,7 +46,64 @@ namespace EasyPOS.Forms.Software.TrnPOS
             Close();
         }
 
-        private void buttonCapture_Click(object sender, EventArgs e)
+        public void Pay(Image capturedImage)
+        {
+            try
+            {
+                Decimal amount = Convert.ToDecimal(textBoxTotalSalesAmount.Text);
+                if (amount >= 0)
+                {
+                    if (mstDataGridViewTenderPayType.Rows.Contains(mstDataGridViewTenderPayType.CurrentRow))
+                    {
+                        Int32 id = Convert.ToInt32(mstDataGridViewTenderPayType.CurrentRow.Cells[0].Value);
+                        String payType = mstDataGridViewTenderPayType.CurrentRow.Cells[1].Value.ToString();
+                        String otherInformation = "Facepay Payment " + DateTime.Now.ToLongDateString();
+
+                        mstDataGridViewTenderPayType.CurrentRow.Cells[0].Value = id;
+                        mstDataGridViewTenderPayType.CurrentRow.Cells[1].Value = payType;
+                        mstDataGridViewTenderPayType.CurrentRow.Cells[2].Value = amount;
+                        mstDataGridViewTenderPayType.CurrentRow.Cells[3].Value = otherInformation;
+                    }
+
+                    mstDataGridViewTenderPayType.Refresh();
+
+                    mstDataGridViewTenderPayType.Focus();
+                    mstDataGridViewTenderPayType.CurrentRow.Cells[2].Selected = true;
+
+                    trnSalesDetailTenderForm.ComputeAmount();
+                    trnSalesDetailTenderForm.CreateCollection(capturedImage);
+                }
+                else
+                {
+                    MessageBox.Show("Cannot pay if amount is zero or below.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void SaveImageCaptured(Image facepayCapturedImage, String imageName)
+        {
+            try
+            {
+                String facepayImagePath = Modules.SysCurrentModule.GetCurrentSettings().FacepayImagePath;
+
+                if (Directory.Exists(facepayImagePath) == false)
+                {
+                    Directory.CreateDirectory(facepayImagePath);
+                }
+
+                facepayCapturedImage.Save(facepayImagePath + "\\" + imageName + ".png", ImageFormat.Png);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonPay_Click(object sender, EventArgs e)
         {
             captured = true;
         }
@@ -68,6 +125,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
 
                 comboBoxCameraDevices.SelectedIndex = 0;
+
                 OpenCamera();
             }
             catch (Exception ex)
@@ -83,7 +141,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 String cameraDevices = comboBoxCameraDevices.SelectedIndex.ToString();
                 videoDevice = new VideoCaptureDevice(videoDevices[Convert.ToInt32(cameraDevices)].MonikerString);
 
-                OpenVideoSource(videoDevice);
+                StartVideoSourcePlayer(videoDevice);
             }
             catch (Exception ex)
             {
@@ -91,7 +149,20 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
         }
 
-        public void OpenVideoSource(IVideoSource source)
+        public void StartVideoSourcePlayer(IVideoSource source)
+        {
+            try
+            {
+                videoSourcePlayerCamera.VideoSource = source;
+                videoSourcePlayerCamera.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void StopVideoSourcePlayer()
         {
             try
             {
@@ -99,26 +170,23 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 {
                     videoSourcePlayerCamera.SignalToStop();
 
-                    while (true)
-                    {
-                        if (!videoSourcePlayerCamera.IsRunning)
-                        {
-                            break;
-                        }
-
-                        System.Threading.Thread.Sleep(500);
-                    }
-
                     if (videoSourcePlayerCamera.IsRunning)
                     {
-                        videoSourcePlayerCamera.Stop();
+                        videoSourcePlayerCamera.VideoSource = null;
                     }
-
-                    videoSourcePlayerCamera.VideoSource = null;
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
-                videoSourcePlayerCamera.VideoSource = source;
-                videoSourcePlayerCamera.Start();
+        public void CloseCamera()
+        {
+            try
+            {
+                StopVideoSourcePlayer();
             }
             catch (Exception ex)
             {
@@ -132,21 +200,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
             try
             {
                 captured = false;
+                Pay(image);
+                CloseCamera();
 
-                pictureBoxCapturedPhoto.Image = image;
-                pictureBoxCapturedPhoto.Update();
+                Close();
 
-                String imageName = "\\ORNUMBER_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".png";
-
-                if (Directory.Exists(facepayImagePath))
-                {
-                    pictureBoxCapturedPhoto.Image.Save(facepayImagePath + imageName, ImageFormat.Png);
-                }
-                else
-                {
-                    Directory.CreateDirectory(facepayImagePath);
-                    pictureBoxCapturedPhoto.Image.Save(facepayImagePath + imageName, ImageFormat.Png);
-                }
+                trnSalesDetailTenderForm.Close();
             }
             catch (Exception ex)
             {
@@ -169,31 +228,28 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
         }
 
-        public void CloseCamera()
-        {
-            try
-            {
-                videoDevice = null;
-                OpenVideoSource(videoDevice);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void TrnSalesDetailTenderFacepayCameraForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             CloseCamera();
         }
 
-        private void videoSourcePlayerCamera_PlayingFinished(object sender, ReasonToFinishPlaying reason)
+        private void textBoxTappedCardNumber_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Enter)
+            {
+                captured = true;
+            }
         }
 
-        private void comboBoxCameraDevices_SelectedIndexChanged(object sender, EventArgs e)
+        private void buttonOpen_Click(object sender, EventArgs e)
         {
+            StopVideoSourcePlayer();
+
+            for (int i = 0; i < 10; i++)
+            {
+                Thread.Sleep(100);
+            }
+
             OpenCamera();
         }
     }
