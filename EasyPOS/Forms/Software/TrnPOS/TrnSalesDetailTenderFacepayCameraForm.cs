@@ -29,12 +29,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public TrnSalesDetailTenderForm trnSalesDetailTenderForm;
         public DataGridView mstDataGridViewTenderPayType;
 
-        public TrnSalesDetailTenderFacepayCameraForm(TrnSalesDetailTenderForm salesDetailTenderForm, DataGridView dataGridViewTenderPayType)
+        public TrnSalesDetailTenderFacepayCameraForm(TrnSalesDetailTenderForm salesDetailTenderForm, DataGridView dataGridViewTenderPayType, Decimal totalSalesAmount)
         {
             InitializeComponent();
 
             trnSalesDetailTenderForm = salesDetailTenderForm;
             mstDataGridViewTenderPayType = dataGridViewTenderPayType;
+
+            textBoxTotalSalesAmount.Text = totalSalesAmount.ToString("#,##0.00");
 
             GetCameraDevicesList();
         }

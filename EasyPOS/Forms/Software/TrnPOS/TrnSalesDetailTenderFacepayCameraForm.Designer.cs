@@ -35,20 +35,20 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonCapture = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.videoSourcePlayerCamera = new AForge.Controls.VideoSourcePlayer();
-            this.pictureBoxCapturedPhoto = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBoxCameraDevices = new System.Windows.Forms.ComboBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.textBoxTappedCardNumber = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBoxTotalSalesAmount = new System.Windows.Forms.TextBox();
+            this.videoSourcePlayerCamera = new AForge.Controls.VideoSourcePlayer();
+            this.pictureBoxCapturedPhoto = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBoxCameraDevices = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCapturedPhoto)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCapturedPhoto)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -132,48 +132,8 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 63);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(935, 612);
+            this.panel2.Size = new System.Drawing.Size(935, 525);
             this.panel2.TabIndex = 6;
-            // 
-            // videoSourcePlayerCamera
-            // 
-            this.videoSourcePlayerCamera.BackColor = System.Drawing.Color.Black;
-            this.videoSourcePlayerCamera.Location = new System.Drawing.Point(12, 174);
-            this.videoSourcePlayerCamera.Name = "videoSourcePlayerCamera";
-            this.videoSourcePlayerCamera.Size = new System.Drawing.Size(453, 426);
-            this.videoSourcePlayerCamera.TabIndex = 3;
-            this.videoSourcePlayerCamera.Text = "videoSourcePlayer1";
-            this.videoSourcePlayerCamera.VideoSource = null;
-            this.videoSourcePlayerCamera.NewFrame += new AForge.Controls.VideoSourcePlayer.NewFrameHandler(this.videoSourcePlayerCamera_NewFrame);
-            this.videoSourcePlayerCamera.PlayingFinished += new AForge.Video.PlayingFinishedEventHandler(this.videoSourcePlayerCamera_PlayingFinished);
-            // 
-            // pictureBoxCapturedPhoto
-            // 
-            this.pictureBoxCapturedPhoto.BackColor = System.Drawing.Color.White;
-            this.pictureBoxCapturedPhoto.Location = new System.Drawing.Point(471, 174);
-            this.pictureBoxCapturedPhoto.Name = "pictureBoxCapturedPhoto";
-            this.pictureBoxCapturedPhoto.Size = new System.Drawing.Size(452, 426);
-            this.pictureBoxCapturedPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxCapturedPhoto.TabIndex = 2;
-            this.pictureBoxCapturedPhoto.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 140);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 23);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Camera:";
-            // 
-            // comboBoxCameraDevices
-            // 
-            this.comboBoxCameraDevices.FormattingEnabled = true;
-            this.comboBoxCameraDevices.Location = new System.Drawing.Point(91, 137);
-            this.comboBoxCameraDevices.Name = "comboBoxCameraDevices";
-            this.comboBoxCameraDevices.Size = new System.Drawing.Size(832, 31);
-            this.comboBoxCameraDevices.TabIndex = 0;
-            this.comboBoxCameraDevices.SelectedIndexChanged += new System.EventHandler(this.comboBoxCameraDevices_SelectedIndexChanged);
             // 
             // panel5
             // 
@@ -225,11 +185,51 @@
             this.textBoxTotalSalesAmount.Text = "0.00";
             this.textBoxTotalSalesAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // videoSourcePlayerCamera
+            // 
+            this.videoSourcePlayerCamera.BackColor = System.Drawing.Color.Black;
+            this.videoSourcePlayerCamera.Location = new System.Drawing.Point(12, 174);
+            this.videoSourcePlayerCamera.Name = "videoSourcePlayerCamera";
+            this.videoSourcePlayerCamera.Size = new System.Drawing.Size(453, 339);
+            this.videoSourcePlayerCamera.TabIndex = 3;
+            this.videoSourcePlayerCamera.Text = "videoSourcePlayer1";
+            this.videoSourcePlayerCamera.VideoSource = null;
+            this.videoSourcePlayerCamera.NewFrame += new AForge.Controls.VideoSourcePlayer.NewFrameHandler(this.videoSourcePlayerCamera_NewFrame);
+            this.videoSourcePlayerCamera.PlayingFinished += new AForge.Video.PlayingFinishedEventHandler(this.videoSourcePlayerCamera_PlayingFinished);
+            // 
+            // pictureBoxCapturedPhoto
+            // 
+            this.pictureBoxCapturedPhoto.BackColor = System.Drawing.Color.White;
+            this.pictureBoxCapturedPhoto.Location = new System.Drawing.Point(471, 174);
+            this.pictureBoxCapturedPhoto.Name = "pictureBoxCapturedPhoto";
+            this.pictureBoxCapturedPhoto.Size = new System.Drawing.Size(452, 339);
+            this.pictureBoxCapturedPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxCapturedPhoto.TabIndex = 2;
+            this.pictureBoxCapturedPhoto.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 140);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 23);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Camera:";
+            // 
+            // comboBoxCameraDevices
+            // 
+            this.comboBoxCameraDevices.FormattingEnabled = true;
+            this.comboBoxCameraDevices.Location = new System.Drawing.Point(91, 137);
+            this.comboBoxCameraDevices.Name = "comboBoxCameraDevices";
+            this.comboBoxCameraDevices.Size = new System.Drawing.Size(832, 31);
+            this.comboBoxCameraDevices.TabIndex = 0;
+            this.comboBoxCameraDevices.SelectedIndexChanged += new System.EventHandler(this.comboBoxCameraDevices_SelectedIndexChanged);
+            // 
             // TrnSalesDetailTenderFacepayCameraForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(935, 675);
+            this.ClientSize = new System.Drawing.Size(935, 588);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
@@ -245,11 +245,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCapturedPhoto)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCapturedPhoto)).EndInit();
             this.ResumeLayout(false);
 
         }

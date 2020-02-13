@@ -320,7 +320,19 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
                 else if (payType == "Facepay")
                 {
-                    TrnSalesDetailTenderFacepayCameraForm trnSalesDetailTenderFacepayCameraForm = new TrnSalesDetailTenderFacepayCameraForm(this, dataGridViewTenderPayType);
+                    Decimal totalTenderAmount = 0;
+
+                    if (dataGridViewTenderPayType.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in dataGridViewTenderPayType.Rows)
+                        {
+                            totalTenderAmount += Convert.ToDecimal(row.Cells[2].Value);
+                        }
+                    }
+
+                    Decimal facepayAmount = trnSalesEntity.Amount - totalTenderAmount;
+
+                    TrnSalesDetailTenderFacepayCameraForm trnSalesDetailTenderFacepayCameraForm = new TrnSalesDetailTenderFacepayCameraForm(this, dataGridViewTenderPayType, facepayAmount);
                     trnSalesDetailTenderFacepayCameraForm.ShowDialog();
                 }
                 else
