@@ -1,10 +1,12 @@
-﻿using System;
+﻿using OpenCvSharp.CPlusPlus;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -315,6 +317,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                     TrnSalesDetailTenderEasypayInformationForm trnSalesDetailTenderEasypayInformationForm = new TrnSalesDetailTenderEasypayInformationForm(this, dataGridViewTenderPayType, easypayAmount);
                     trnSalesDetailTenderEasypayInformationForm.ShowDialog();
+                }
+                else if (payType == "Facepay")
+                {
+                    TrnSalesDetailTenderFacepayCameraForm trnSalesDetailTenderFacepayCameraForm = new TrnSalesDetailTenderFacepayCameraForm(this, dataGridViewTenderPayType);
+                    trnSalesDetailTenderFacepayCameraForm.ShowDialog();
                 }
                 else
                 {

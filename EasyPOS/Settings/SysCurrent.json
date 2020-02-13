@@ -20,7 +20,7 @@
   "CurrentPeriodId": "1",
   "CurrentDate": "01/16/2020",
   "TerminalId": "7",
-  "WalkinCustomerId": "5579",
+  "WalkinCustomerId": "5451",
   "DefaultDiscountId": "2",
   "ReturnSupplierId": "23",
   "ORPrintTitle": "O F F I C I A L  R E C E I P T",
@@ -37,5 +37,6 @@
   "EasypayDefaultUsername": "admin",
   "EasypayDefaultPassword": "@Sodex123",
   "EasypayMotherCardNumber": "0000000001",
-  "ActivateAuditTrail": "true"
+  "ActivateAuditTrail": "true",
+  "FacepayImagePath":  "D:\\Facepay"
 }

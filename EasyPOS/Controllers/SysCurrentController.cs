@@ -24,6 +24,7 @@ namespace EasyPOS.Controllers
                                 Id = d.Id,
                                 Terminal = d.Terminal
                             };
+
             return terminals.ToList();
         }
 
@@ -33,11 +34,12 @@ namespace EasyPOS.Controllers
         public List<Entities.MstPeriodEntity> DropDownPeriodList()
         {
             var periods = from d in db.MstPeriods
-                            select new Entities.MstPeriodEntity
-                            {
-                                Id = d.Id,
-                                Period = d.Period
-                            };
+                          select new Entities.MstPeriodEntity
+                          {
+                              Id = d.Id,
+                              Period = d.Period
+                          };
+
             return periods.ToList();
         }
 
@@ -52,6 +54,7 @@ namespace EasyPOS.Controllers
                                 Id = d.Id,
                                 Customer = d.Customer
                             };
+
             return customers.OrderByDescending(d => d.Id).ToList();
         }
 
@@ -66,6 +69,7 @@ namespace EasyPOS.Controllers
                                 Id = d.Id,
                                 Discount = d.Discount
                             };
+
             return discounts.OrderByDescending(d => d.Id).ToList();
         }
 
@@ -80,6 +84,7 @@ namespace EasyPOS.Controllers
                                 Id = d.Id,
                                 Supplier = d.Supplier
                             };
+
             return suppliers.OrderByDescending(d => d.Id).ToList();
         }
 
@@ -108,10 +113,12 @@ namespace EasyPOS.Controllers
             }
         }
 
+        // ============
+        // Get Currents
+        // ============
         public Entities.SysCurrentEntity GetSysCurrent()
         {
-            var sysCurrent = Modules.SysCurrentModule.GetCurrentSettings();
-            return sysCurrent;
+            return Modules.SysCurrentModule.GetCurrentSettings();
         }
     }
 }

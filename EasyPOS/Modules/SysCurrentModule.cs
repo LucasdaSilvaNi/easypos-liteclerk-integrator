@@ -74,7 +74,8 @@ namespace EasyPOS.Modules
                 EasypayDefaultUsername = currentSettings.EasypayDefaultUsername,
                 EasypayDefaultPassword = currentSettings.EasypayDefaultPassword,
                 EasypayMotherCardNumber = currentSettings.EasypayMotherCardNumber,
-                ActivateAuditTrail = currentSettings.ActivateAuditTrail
+                ActivateAuditTrail = currentSettings.ActivateAuditTrail,
+                FacepayImagePath = currentSettings.FacepayImagePath
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);
@@ -128,7 +129,8 @@ namespace EasyPOS.Modules
                 EasypayDefaultUsername = objSysCurrentEntity.EasypayDefaultUsername,
                 EasypayDefaultPassword = objSysCurrentEntity.EasypayDefaultPassword,
                 EasypayMotherCardNumber = objSysCurrentEntity.EasypayMotherCardNumber,
-                ActivateAuditTrail = objSysCurrentEntity.ActivateAuditTrail
+                ActivateAuditTrail = objSysCurrentEntity.ActivateAuditTrail,
+                FacepayImagePath = currentSettings.FacepayImagePath
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newSysCurrentEntities);

@@ -47,5 +47,6 @@ namespace EasyPOS.Entities
         public String EasypayDefaultPassword { get; set; }
         public String EasypayMotherCardNumber { get; set; }
         public String ActivateAuditTrail { get; set; }
+        public String FacepayImagePath { get; set; }
     }
 }
