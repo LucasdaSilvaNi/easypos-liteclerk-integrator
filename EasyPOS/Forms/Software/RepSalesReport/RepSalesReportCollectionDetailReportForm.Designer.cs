@@ -33,18 +33,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.buttonPageListFirst = new System.Windows.Forms.Button();
             this.dataGridViewCollectionDetailReport = new System.Windows.Forms.DataGridView();
-            this.ColumnTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCollectionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCollectionNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCustomerCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPayType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCheckNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCheckDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCheckBank = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnOtherInformation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonPageListNext = new System.Windows.Forms.Button();
             this.buttonPageListPrevious = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -57,6 +45,19 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
+            this.ColumnTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCollectionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCollectionNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCustomerCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPayType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCheckNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCheckDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCheckBank = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnOtherInformation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPhoto = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCollectionDetailReport)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -124,7 +125,8 @@
             this.ColumnCheckNumber,
             this.ColumnCheckDate,
             this.ColumnCheckBank,
-            this.ColumnOtherInformation});
+            this.ColumnOtherInformation,
+            this.ColumnPhoto});
             this.dataGridViewCollectionDetailReport.Location = new System.Drawing.Point(0, 1);
             this.dataGridViewCollectionDetailReport.Name = "dataGridViewCollectionDetailReport";
             this.dataGridViewCollectionDetailReport.ReadOnly = true;
@@ -133,97 +135,6 @@
             this.dataGridViewCollectionDetailReport.ShowEditingIcon = false;
             this.dataGridViewCollectionDetailReport.Size = new System.Drawing.Size(1379, 531);
             this.dataGridViewCollectionDetailReport.TabIndex = 0;
-            // 
-            // ColumnTerminal
-            // 
-            this.ColumnTerminal.DataPropertyName = "ColumnTerminal";
-            this.ColumnTerminal.HeaderText = "Terminal";
-            this.ColumnTerminal.Name = "ColumnTerminal";
-            this.ColumnTerminal.ReadOnly = true;
-            // 
-            // ColumnCollectionDate
-            // 
-            this.ColumnCollectionDate.DataPropertyName = "ColumnCollectionDate";
-            this.ColumnCollectionDate.HeaderText = "Date";
-            this.ColumnCollectionDate.Name = "ColumnCollectionDate";
-            this.ColumnCollectionDate.ReadOnly = true;
-            // 
-            // ColumnCollectionNumber
-            // 
-            this.ColumnCollectionNumber.DataPropertyName = "ColumnCollectionNumber";
-            this.ColumnCollectionNumber.HeaderText = "Collection No.";
-            this.ColumnCollectionNumber.Name = "ColumnCollectionNumber";
-            this.ColumnCollectionNumber.ReadOnly = true;
-            this.ColumnCollectionNumber.Width = 150;
-            // 
-            // ColumnCustomerCode
-            // 
-            this.ColumnCustomerCode.DataPropertyName = "ColumnCustomerCode";
-            this.ColumnCustomerCode.HeaderText = "Customer Code";
-            this.ColumnCustomerCode.Name = "ColumnCustomerCode";
-            this.ColumnCustomerCode.ReadOnly = true;
-            this.ColumnCustomerCode.Width = 150;
-            // 
-            // ColumnCustomer
-            // 
-            this.ColumnCustomer.DataPropertyName = "ColumnCustomer";
-            this.ColumnCustomer.HeaderText = "Customer";
-            this.ColumnCustomer.Name = "ColumnCustomer";
-            this.ColumnCustomer.ReadOnly = true;
-            // 
-            // ColumnSalesNumber
-            // 
-            this.ColumnSalesNumber.DataPropertyName = "ColumnSalesNumber";
-            this.ColumnSalesNumber.HeaderText = "Sales No.";
-            this.ColumnSalesNumber.Name = "ColumnSalesNumber";
-            this.ColumnSalesNumber.ReadOnly = true;
-            this.ColumnSalesNumber.Width = 150;
-            // 
-            // ColumnPayType
-            // 
-            this.ColumnPayType.DataPropertyName = "ColumnPayType";
-            this.ColumnPayType.HeaderText = "PayType";
-            this.ColumnPayType.Name = "ColumnPayType";
-            this.ColumnPayType.ReadOnly = true;
-            // 
-            // ColumnAmount
-            // 
-            this.ColumnAmount.DataPropertyName = "ColumnAmount";
-            this.ColumnAmount.HeaderText = "Amount";
-            this.ColumnAmount.Name = "ColumnAmount";
-            this.ColumnAmount.ReadOnly = true;
-            // 
-            // ColumnCheckNumber
-            // 
-            this.ColumnCheckNumber.DataPropertyName = "ColumnCheckNumber";
-            this.ColumnCheckNumber.HeaderText = "Check No.";
-            this.ColumnCheckNumber.Name = "ColumnCheckNumber";
-            this.ColumnCheckNumber.ReadOnly = true;
-            this.ColumnCheckNumber.Width = 150;
-            // 
-            // ColumnCheckDate
-            // 
-            this.ColumnCheckDate.DataPropertyName = "ColumnCheckDate";
-            this.ColumnCheckDate.HeaderText = "Check Date";
-            this.ColumnCheckDate.Name = "ColumnCheckDate";
-            this.ColumnCheckDate.ReadOnly = true;
-            this.ColumnCheckDate.Width = 150;
-            // 
-            // ColumnCheckBank
-            // 
-            this.ColumnCheckBank.DataPropertyName = "ColumnCheckBank";
-            this.ColumnCheckBank.HeaderText = "Check Bank";
-            this.ColumnCheckBank.Name = "ColumnCheckBank";
-            this.ColumnCheckBank.ReadOnly = true;
-            this.ColumnCheckBank.Width = 150;
-            // 
-            // ColumnOtherInformation
-            // 
-            this.ColumnOtherInformation.DataPropertyName = "ColumnOtherInformation";
-            this.ColumnOtherInformation.HeaderText = "Other Information";
-            this.ColumnOtherInformation.Name = "ColumnOtherInformation";
-            this.ColumnOtherInformation.ReadOnly = true;
-            this.ColumnOtherInformation.Width = 200;
             // 
             // buttonPageListNext
             // 
@@ -384,6 +295,105 @@
             this.panel1.Size = new System.Drawing.Size(1382, 63);
             this.panel1.TabIndex = 14;
             // 
+            // ColumnTerminal
+            // 
+            this.ColumnTerminal.DataPropertyName = "ColumnTerminal";
+            this.ColumnTerminal.HeaderText = "Terminal";
+            this.ColumnTerminal.Name = "ColumnTerminal";
+            this.ColumnTerminal.ReadOnly = true;
+            // 
+            // ColumnCollectionDate
+            // 
+            this.ColumnCollectionDate.DataPropertyName = "ColumnCollectionDate";
+            this.ColumnCollectionDate.HeaderText = "Date";
+            this.ColumnCollectionDate.Name = "ColumnCollectionDate";
+            this.ColumnCollectionDate.ReadOnly = true;
+            // 
+            // ColumnCollectionNumber
+            // 
+            this.ColumnCollectionNumber.DataPropertyName = "ColumnCollectionNumber";
+            this.ColumnCollectionNumber.HeaderText = "Collection No.";
+            this.ColumnCollectionNumber.Name = "ColumnCollectionNumber";
+            this.ColumnCollectionNumber.ReadOnly = true;
+            this.ColumnCollectionNumber.Width = 150;
+            // 
+            // ColumnCustomerCode
+            // 
+            this.ColumnCustomerCode.DataPropertyName = "ColumnCustomerCode";
+            this.ColumnCustomerCode.HeaderText = "Customer Code";
+            this.ColumnCustomerCode.Name = "ColumnCustomerCode";
+            this.ColumnCustomerCode.ReadOnly = true;
+            this.ColumnCustomerCode.Width = 150;
+            // 
+            // ColumnCustomer
+            // 
+            this.ColumnCustomer.DataPropertyName = "ColumnCustomer";
+            this.ColumnCustomer.HeaderText = "Customer";
+            this.ColumnCustomer.Name = "ColumnCustomer";
+            this.ColumnCustomer.ReadOnly = true;
+            // 
+            // ColumnSalesNumber
+            // 
+            this.ColumnSalesNumber.DataPropertyName = "ColumnSalesNumber";
+            this.ColumnSalesNumber.HeaderText = "Sales No.";
+            this.ColumnSalesNumber.Name = "ColumnSalesNumber";
+            this.ColumnSalesNumber.ReadOnly = true;
+            this.ColumnSalesNumber.Width = 150;
+            // 
+            // ColumnPayType
+            // 
+            this.ColumnPayType.DataPropertyName = "ColumnPayType";
+            this.ColumnPayType.HeaderText = "PayType";
+            this.ColumnPayType.Name = "ColumnPayType";
+            this.ColumnPayType.ReadOnly = true;
+            // 
+            // ColumnAmount
+            // 
+            this.ColumnAmount.DataPropertyName = "ColumnAmount";
+            this.ColumnAmount.HeaderText = "Amount";
+            this.ColumnAmount.Name = "ColumnAmount";
+            this.ColumnAmount.ReadOnly = true;
+            // 
+            // ColumnCheckNumber
+            // 
+            this.ColumnCheckNumber.DataPropertyName = "ColumnCheckNumber";
+            this.ColumnCheckNumber.HeaderText = "Check No.";
+            this.ColumnCheckNumber.Name = "ColumnCheckNumber";
+            this.ColumnCheckNumber.ReadOnly = true;
+            this.ColumnCheckNumber.Width = 150;
+            // 
+            // ColumnCheckDate
+            // 
+            this.ColumnCheckDate.DataPropertyName = "ColumnCheckDate";
+            this.ColumnCheckDate.HeaderText = "Check Date";
+            this.ColumnCheckDate.Name = "ColumnCheckDate";
+            this.ColumnCheckDate.ReadOnly = true;
+            this.ColumnCheckDate.Width = 150;
+            // 
+            // ColumnCheckBank
+            // 
+            this.ColumnCheckBank.DataPropertyName = "ColumnCheckBank";
+            this.ColumnCheckBank.HeaderText = "Check Bank";
+            this.ColumnCheckBank.Name = "ColumnCheckBank";
+            this.ColumnCheckBank.ReadOnly = true;
+            this.ColumnCheckBank.Width = 150;
+            // 
+            // ColumnOtherInformation
+            // 
+            this.ColumnOtherInformation.DataPropertyName = "ColumnOtherInformation";
+            this.ColumnOtherInformation.HeaderText = "Other Information";
+            this.ColumnOtherInformation.Name = "ColumnOtherInformation";
+            this.ColumnOtherInformation.ReadOnly = true;
+            this.ColumnOtherInformation.Width = 200;
+            // 
+            // ColumnPhoto
+            // 
+            this.ColumnPhoto.DataPropertyName = "ColumnPhoto";
+            this.ColumnPhoto.HeaderText = "Photo";
+            this.ColumnPhoto.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.ColumnPhoto.Name = "ColumnPhoto";
+            this.ColumnPhoto.ReadOnly = true;
+            // 
             // RepSalesReportCollectionDetailReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -437,5 +447,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCheckDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCheckBank;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnOtherInformation;
+        private System.Windows.Forms.DataGridViewImageColumn ColumnPhoto;
     }
 }

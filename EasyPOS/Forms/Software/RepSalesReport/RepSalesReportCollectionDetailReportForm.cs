@@ -40,6 +40,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
         public List<Entities.DgvSalesReportCollectionDetailReportEntity> GetCollectionDetailListData(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
+            String facepayImagePath = Modules.SysCurrentModule.GetCurrentSettings().FacepayImagePath;
+
             List<Entities.DgvSalesReportCollectionDetailReportEntity> rowList = new List<Entities.DgvSalesReportCollectionDetailReportEntity>();
 
             Controllers.RepSalesReportController repSalesReportController = new Controllers.RepSalesReportController();
@@ -62,7 +64,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                               ColumnCheckNumber = d.CheckNumber,
                               ColumnCheckDate = d.CheckDate,
                               ColumnCheckBank = d.CheckBank,
-                              ColumnOtherInformation = d.OtherInformation
+                              ColumnOtherInformation = d.OtherInformation,
+                              ColumnPhoto = Directory.Exists(facepayImagePath) == true ? File.Exists(facepayImagePath + "\\" + d.CollectionNumber + ".png") == true ? Image.FromFile(facepayImagePath + "\\" + d.CollectionNumber + ".png") : null : null
                           };
 
                 totalAmount = collectionDetailList.Sum(d => d.Amount);
@@ -220,7 +223,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         "Sales Number", "PayType", "Amount",  "CheckNumber", "CheckDate", "CheckBank", "OtherInformation"
                     };
                     csv.AppendLine(String.Join(",", header));
-                    
+
 
                     if (collectionDetailList.Any())
                     {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,5 +21,6 @@ namespace EasyPOS.Entities
         public String ColumnCheckDate { get; set; }
         public String ColumnCheckBank { get; set; }
         public String ColumnOtherInformation { get; set; }
+        public Image ColumnPhoto { get; set; }
     }
 }
