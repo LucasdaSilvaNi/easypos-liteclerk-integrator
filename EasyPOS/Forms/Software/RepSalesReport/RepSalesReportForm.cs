@@ -145,6 +145,22 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         dateTimePickerStartDate.Focus();
 
                         break;
+                    case "Collection Detail Report (Facepay)":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+
+                        labelTerminal.Visible = true;
+                        comboBoxTerminal.Visible = true;
+
+                        labelCustomer.Visible = false;
+                        comboBoxCustomer.Visible = false;
+
+                        dateTimePickerStartDate.Focus();
+
+                        break;
                     default:
                         labelStartDate.Visible = false;
                         dateTimePickerStartDate.Visible = false;
@@ -310,6 +326,17 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                     new Reports.RepDeliveryReceiptReportForm(Convert.ToInt32(objStockWithdrawalReport.SalesId), objStockWithdrawalReport.Id, false, printerName, printFileName, true);
                                 }
                             }
+                        }
+
+                        break;
+                    case "Collection Detail Report (Facepay)":
+                        String printCollectionDetailReportFacepayFilePath = "";
+
+                        DialogResult folderBrowserDialogCollectionDetailReportFacepayDialoResult = folderBrowserDialogCollectionDetailReportFacepay.ShowDialog();
+                        if (folderBrowserDialogCollectionDetailReportFacepayDialoResult == DialogResult.OK)
+                        {
+                            printCollectionDetailReportFacepayFilePath = folderBrowserDialogCollectionDetailReportFacepay.SelectedPath;
+                            new RepSalesReportCollectionDetailFacepayReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), printCollectionDetailReportFacepayFilePath);
                         }
 
                         break;

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel4 = new System.Windows.Forms.Panel();
+            this.comboBoxCustomer = new System.Windows.Forms.ComboBox();
+            this.labelCustomer = new System.Windows.Forms.Label();
             this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
             this.labelTerminal = new System.Windows.Forms.Label();
             this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
@@ -46,8 +48,7 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.printDialogStockWithdrawalReport = new System.Windows.Forms.PrintDialog();
             this.folderBrowserDialogStockWithdrawalReport = new System.Windows.Forms.FolderBrowserDialog();
-            this.comboBoxCustomer = new System.Windows.Forms.ComboBox();
-            this.labelCustomer = new System.Windows.Forms.Label();
+            this.folderBrowserDialogCollectionDetailReportFacepay = new System.Windows.Forms.FolderBrowserDialog();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -72,6 +73,26 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1400, 637);
             this.panel4.TabIndex = 8;
+            // 
+            // comboBoxCustomer
+            // 
+            this.comboBoxCustomer.FormattingEnabled = true;
+            this.comboBoxCustomer.Location = new System.Drawing.Point(499, 159);
+            this.comboBoxCustomer.Name = "comboBoxCustomer";
+            this.comboBoxCustomer.Size = new System.Drawing.Size(220, 31);
+            this.comboBoxCustomer.TabIndex = 26;
+            this.comboBoxCustomer.Visible = false;
+            // 
+            // labelCustomer
+            // 
+            this.labelCustomer.AutoSize = true;
+            this.labelCustomer.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.labelCustomer.Location = new System.Drawing.Point(409, 162);
+            this.labelCustomer.Name = "labelCustomer";
+            this.labelCustomer.Size = new System.Drawing.Size(84, 23);
+            this.labelCustomer.TabIndex = 27;
+            this.labelCustomer.Text = "Customer";
+            this.labelCustomer.Visible = false;
             // 
             // comboBoxTerminal
             // 
@@ -139,7 +160,8 @@
             "",
             "Cancelled Summary Report",
             "",
-            "Stock Withdrawal Report"});
+            "Stock Withdrawal Report",
+            "Collection Detail Report (Facepay)"});
             this.listBoxSalesReport.Location = new System.Drawing.Point(0, 0);
             this.listBoxSalesReport.Name = "listBoxSalesReport";
             this.listBoxSalesReport.Size = new System.Drawing.Size(380, 619);
@@ -262,26 +284,6 @@
             // 
             this.printDialogStockWithdrawalReport.UseEXDialog = true;
             // 
-            // comboBoxCustomer
-            // 
-            this.comboBoxCustomer.FormattingEnabled = true;
-            this.comboBoxCustomer.Location = new System.Drawing.Point(499, 159);
-            this.comboBoxCustomer.Name = "comboBoxCustomer";
-            this.comboBoxCustomer.Size = new System.Drawing.Size(220, 31);
-            this.comboBoxCustomer.TabIndex = 26;
-            this.comboBoxCustomer.Visible = false;
-            // 
-            // labelCustomer
-            // 
-            this.labelCustomer.AutoSize = true;
-            this.labelCustomer.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelCustomer.Location = new System.Drawing.Point(409, 162);
-            this.labelCustomer.Name = "labelCustomer";
-            this.labelCustomer.Size = new System.Drawing.Size(84, 23);
-            this.labelCustomer.TabIndex = 27;
-            this.labelCustomer.Text = "Customer";
-            this.labelCustomer.Visible = false;
-            // 
             // RepSalesReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -328,5 +330,6 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogStockWithdrawalReport;
         private System.Windows.Forms.ComboBox comboBoxCustomer;
         private System.Windows.Forms.Label labelCustomer;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogCollectionDetailReportFacepay;
     }
 }
