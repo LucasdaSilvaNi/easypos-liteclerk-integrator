@@ -361,7 +361,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 SerialNo = textBoxSerialNo.Text,
                 PermitNo = textBoxPermitNo.Text,
                 MachineNo = textBoxMachineNo.Text,
-                DeclareRate = textBoxReceiptFooter.Text,
+                DeclareRate = "",
                 ReceiptFooter = textBoxInvoiceFooter.Text,
                 InvoiceFooter = textBoxInvoiceFooter.Text,
                 LicenseCode = textBoxLicenseCode.Text,
@@ -375,9 +375,9 @@ namespace EasyPOS.Forms.Software.SysSettings
                 DefaultDiscountId = comboBoxDefaultDiscount.SelectedValue.ToString(),
                 ReturnSupplierId = comboBoxReturnSupplier.SelectedValue.ToString(),
                 ORPrintTitle = textBoxORPrintTitle.Text,
-                IsTenderPrint = checkBoxIsTenderPrint.Text,
-                IsBarcodeQuantityAlwaysOne = checkBoxIsBarcodeQuantityAlwaysOne.Text,
-                WithCustomerDisplay = checkBoxWithCustomerDisplay.Text,
+                IsTenderPrint = checkBoxIsTenderPrint.Checked.ToString(),
+                IsBarcodeQuantityAlwaysOne = checkBoxIsBarcodeQuantityAlwaysOne.Checked.ToString(),
+                WithCustomerDisplay = checkBoxWithCustomerDisplay.Checked.ToString(),
                 CustomerDisplayPort = textBoxCustomerDisplayPort.Text,
                 CustomerDisplayBaudRate = textBoxCustomerDisplayBaudRate.Text,
                 CustomerDisplayFirstLineMessage = textBoxCustomerDisplayFirstLineMessage.Text,
@@ -388,7 +388,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 EasypayDefaultUsername = textBoxEasypayDefaultUsername.Text,
                 EasypayDefaultPassword = textBoxEasypayDefaultPassword.Text,
                 EasypayMotherCardNumber = textBoxEasypayMotherCardNumber.Text,
-                ActivateAuditTrail = checkBoxActivateAuditTrail.Text
+                ActivateAuditTrail = checkBoxActivateAuditTrail.Checked.ToString()
             };
 
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);

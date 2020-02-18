@@ -34,7 +34,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
         public static Int32 taxListPageNumber = 1;
 
         public static List<Entities.DgvSystemTablesUnitListEntity> unitListData = new List<Entities.DgvSystemTablesUnitListEntity>();
-        public PagedList<Entities.DgvSystemTablesUnitListEntity> unitListPageList = new PagedList<Entities.DgvSystemTablesUnitListEntity>(unitListData, accountListPageNumber, pageSize);
+        public PagedList<Entities.DgvSystemTablesUnitListEntity> unitListPageList = new PagedList<Entities.DgvSystemTablesUnitListEntity>(unitListData, unitListPageNumber, pageSize);
         public BindingSource unitListDataSource = new BindingSource();
         public static Int32 unitListPageNumber = 1;
 
@@ -101,6 +101,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                 CreateSupplierListDataGridView();
             }
         }
+
 
         // =======
         // Account

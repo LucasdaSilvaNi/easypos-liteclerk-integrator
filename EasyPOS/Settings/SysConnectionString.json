@@ -1,6 +1,6 @@
 ﻿{
   "DataSource": "localhost",
-  "InitialCatalog": "easypos_sonnets",
+  "InitialCatalog": "pos13",
   "UserId": "sa",
   "Password": "innosoft"
 }
