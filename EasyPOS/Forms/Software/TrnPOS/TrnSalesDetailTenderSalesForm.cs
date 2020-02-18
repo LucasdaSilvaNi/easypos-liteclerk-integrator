@@ -70,6 +70,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 comboBoxTenderSalesUsers.DataSource = trnPOSSalesController.TenderSalesDropdownListUser();
                 comboBoxTenderSalesUsers.ValueMember = "Id";
                 comboBoxTenderSalesUsers.DisplayMember = "FullName";
+
+                var currentUserId = Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId;
+                comboBoxTenderSalesUsers.SelectedValue = Convert.ToInt32(currentUserId);
             }
         }
 

@@ -95,7 +95,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     Directory.CreateDirectory(facepayImagePath);
                 }
 
-                facepayCapturedImage.Save(facepayImagePath + "\\" + imageName + ".png", ImageFormat.Png);
+                facepayCapturedImage.Save(facepayImagePath + "\\" + imageName + ".jpeg", ImageFormat.Jpeg);
             }
             catch (Exception ex)
             {

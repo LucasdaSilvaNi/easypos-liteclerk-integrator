@@ -145,6 +145,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\AForge.NET\Framework\Release\IPPrototyper.exe</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.1, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -505,6 +508,12 @@
     <Compile Include="Forms\Software\RepSalesReport\RepSalesReportCancelSalesSummaryReportForm.Designer.cs">
       <DependentUpon>RepSalesReportCancelSalesSummaryReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportCollectionDetailFacepayReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportCollectionDetailFacepayReportForm.designer.cs">
+      <DependentUpon>RepSalesReportCollectionDetailFacepayReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\SysSettings\SysSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -857,6 +866,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportCancelSalesSummaryReportForm.resx">
       <DependentUpon>RepSalesReportCancelSalesSummaryReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportCollectionDetailFacepayReportForm.resx">
+      <DependentUpon>RepSalesReportCollectionDetailFacepayReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\SysSettings\SysSettingsForm.resx">
       <DependentUpon>SysSettingsForm.cs</DependentUpon>
