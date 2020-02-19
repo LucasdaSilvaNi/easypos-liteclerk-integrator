@@ -472,7 +472,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             {
                 Controllers.TrnStockInLineController trnPOSStockInLineController = new Controllers.TrnStockInLineController();
 
-                if (Modules.SysCurrentModule.GetCurrentSettings().IsBarcodeQuantityAlwaysOne == "true")
+                if (Modules.SysCurrentModule.GetCurrentSettings().IsBarcodeQuantityAlwaysOne == "True")
                 {
                     trnPOSStockInLineController.BarcodeStockInLine(trnStockInEntity.Id, textBoxBarcode.Text);
                     UpdateStockInLineListDataSource();

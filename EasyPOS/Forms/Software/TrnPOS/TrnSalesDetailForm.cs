@@ -279,7 +279,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
 
-                if (Modules.SysCurrentModule.GetCurrentSettings().IsBarcodeQuantityAlwaysOne == "true")
+                if (Modules.SysCurrentModule.GetCurrentSettings().IsBarcodeQuantityAlwaysOne == "True")
                 {
                     trnPOSSalesLineController.BarcodeSalesLine(trnSalesEntity.Id, textBoxBarcode.Text);
                     GetSalesLineList();

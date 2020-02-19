@@ -436,7 +436,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
             {
                 Controllers.TrnStockCountLineController trnPOSStockCountLineController = new Controllers.TrnStockCountLineController();
 
-                if (Modules.SysCurrentModule.GetCurrentSettings().IsBarcodeQuantityAlwaysOne == "true")
+                if (Modules.SysCurrentModule.GetCurrentSettings().IsBarcodeQuantityAlwaysOne == "True")
                 {
                     trnPOSStockCountLineController.BarcodeStockCountLine(trnStockCountEntity.Id, textBoxBarcode.Text);
                     UpdateStockCountLineListDataSource();

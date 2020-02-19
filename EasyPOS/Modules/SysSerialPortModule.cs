@@ -20,7 +20,7 @@ namespace EasyPOS.Modules
             {
                 if (serialPort == null)
                 {
-                    if (SysCurrentModule.GetCurrentSettings().WithCustomerDisplay == "true")
+                    if (SysCurrentModule.GetCurrentSettings().WithCustomerDisplay == "True")
                     {
                         String port = SysCurrentModule.GetCurrentSettings().CustomerDisplayPort;
                         String baudRate = SysCurrentModule.GetCurrentSettings().CustomerDisplayBaudRate;
