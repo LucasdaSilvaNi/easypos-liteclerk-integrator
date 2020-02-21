@@ -9,6 +9,7 @@ namespace EasyPOS.Entities
     public class DgvSalesDetailTenderPayTypeEntity
     {
         public Int32 Id { get; set; }
+        public String Code { get; set; }
         public String PayType { get; set; }
         public Decimal Amount { get; set; }
         public String OtherInformation { get; set; }

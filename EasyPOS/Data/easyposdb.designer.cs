@@ -22,7 +22,7 @@ namespace EasyPOS.Data
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="easypos_sonnets")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="easypos")]
 	public partial class easyposdbDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -129,12 +129,6 @@ namespace EasyPOS.Data
     partial void InsertTrnJournal(TrnJournal instance);
     partial void UpdateTrnJournal(TrnJournal instance);
     partial void DeleteTrnJournal(TrnJournal instance);
-    partial void InsertTrnPaymentSubsidy(TrnPaymentSubsidy instance);
-    partial void UpdateTrnPaymentSubsidy(TrnPaymentSubsidy instance);
-    partial void DeleteTrnPaymentSubsidy(TrnPaymentSubsidy instance);
-    partial void InsertTrnPaymentSubsidySetting(TrnPaymentSubsidySetting instance);
-    partial void UpdateTrnPaymentSubsidySetting(TrnPaymentSubsidySetting instance);
-    partial void DeleteTrnPaymentSubsidySetting(TrnPaymentSubsidySetting instance);
     partial void InsertTrnPurchaseOrder(TrnPurchaseOrder instance);
     partial void UpdateTrnPurchaseOrder(TrnPurchaseOrder instance);
     partial void DeleteTrnPurchaseOrder(TrnPurchaseOrder instance);
@@ -168,7 +162,7 @@ namespace EasyPOS.Data
     #endregion
 		
 		public easyposdbDataContext() : 
-				base(global::EasyPOS.Properties.Settings.Default.easypos_sonnetsConnectionString, mappingSource)
+				base(global::EasyPOS.Properties.Settings.Default.easyposConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -458,22 +452,6 @@ namespace EasyPOS.Data
 			get
 			{
 				return this.GetTable<TrnJournal>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TrnPaymentSubsidy> TrnPaymentSubsidies
-		{
-			get
-			{
-				return this.GetTable<TrnPaymentSubsidy>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TrnPaymentSubsidySetting> TrnPaymentSubsidySettings
-		{
-			get
-			{
-				return this.GetTable<TrnPaymentSubsidySetting>();
 			}
 		}
 		
@@ -1974,8 +1952,6 @@ namespace EasyPOS.Data
 		
 		private EntitySet<TrnCollection> _TrnCollections;
 		
-		private EntitySet<TrnPaymentSubsidy> _TrnPaymentSubsidies;
-		
 		private EntitySet<TrnSale> _TrnSales;
 		
 		private EntityRef<MstAccount> _MstAccount;
@@ -2035,7 +2011,6 @@ namespace EasyPOS.Data
 		public MstCustomer()
 		{
 			this._TrnCollections = new EntitySet<TrnCollection>(new Action<TrnCollection>(this.attach_TrnCollections), new Action<TrnCollection>(this.detach_TrnCollections));
-			this._TrnPaymentSubsidies = new EntitySet<TrnPaymentSubsidy>(new Action<TrnPaymentSubsidy>(this.attach_TrnPaymentSubsidies), new Action<TrnPaymentSubsidy>(this.detach_TrnPaymentSubsidies));
 			this._TrnSales = new EntitySet<TrnSale>(new Action<TrnSale>(this.attach_TrnSales), new Action<TrnSale>(this.detach_TrnSales));
 			this._MstAccount = default(EntityRef<MstAccount>);
 			this._MstTerm = default(EntityRef<MstTerm>);
@@ -2473,19 +2448,6 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstCustomer_TrnPaymentSubsidy", Storage="_TrnPaymentSubsidies", ThisKey="Id", OtherKey="CustomerId")]
-		public EntitySet<TrnPaymentSubsidy> TrnPaymentSubsidies
-		{
-			get
-			{
-				return this._TrnPaymentSubsidies;
-			}
-			set
-			{
-				this._TrnPaymentSubsidies.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstCustomer_TrnSale", Storage="_TrnSales", ThisKey="Id", OtherKey="CustomerId")]
 		public EntitySet<TrnSale> TrnSales
 		{
@@ -2662,18 +2624,6 @@ namespace EasyPOS.Data
 		}
 		
 		private void detach_TrnCollections(TrnCollection entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstCustomer = null;
-		}
-		
-		private void attach_TrnPaymentSubsidies(TrnPaymentSubsidy entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstCustomer = this;
-		}
-		
-		private void detach_TrnPaymentSubsidies(TrnPaymentSubsidy entity)
 		{
 			this.SendPropertyChanging();
 			entity.MstCustomer = null;
@@ -3750,6 +3700,10 @@ namespace EasyPOS.Data
 		
 		private EntitySet<MstItemPrice> _MstItemPrices;
 		
+		private EntitySet<TrnPurchaseOrderLine> _TrnPurchaseOrderLines;
+		
+		private EntitySet<TrnSalesDraft> _TrnSalesDrafts;
+		
 		private EntitySet<TrnSalesLine> _TrnSalesLines;
 		
 		private EntitySet<TrnStockCountLine> _TrnStockCountLines;
@@ -3853,6 +3807,8 @@ namespace EasyPOS.Data
 			this._MstItemPackages = new EntitySet<MstItemPackage>(new Action<MstItemPackage>(this.attach_MstItemPackages), new Action<MstItemPackage>(this.detach_MstItemPackages));
 			this._MstItemPackages1 = new EntitySet<MstItemPackage>(new Action<MstItemPackage>(this.attach_MstItemPackages1), new Action<MstItemPackage>(this.detach_MstItemPackages1));
 			this._MstItemPrices = new EntitySet<MstItemPrice>(new Action<MstItemPrice>(this.attach_MstItemPrices), new Action<MstItemPrice>(this.detach_MstItemPrices));
+			this._TrnPurchaseOrderLines = new EntitySet<TrnPurchaseOrderLine>(new Action<TrnPurchaseOrderLine>(this.attach_TrnPurchaseOrderLines), new Action<TrnPurchaseOrderLine>(this.detach_TrnPurchaseOrderLines));
+			this._TrnSalesDrafts = new EntitySet<TrnSalesDraft>(new Action<TrnSalesDraft>(this.attach_TrnSalesDrafts), new Action<TrnSalesDraft>(this.detach_TrnSalesDrafts));
 			this._TrnSalesLines = new EntitySet<TrnSalesLine>(new Action<TrnSalesLine>(this.attach_TrnSalesLines), new Action<TrnSalesLine>(this.detach_TrnSalesLines));
 			this._TrnStockCountLines = new EntitySet<TrnStockCountLine>(new Action<TrnStockCountLine>(this.attach_TrnStockCountLines), new Action<TrnStockCountLine>(this.detach_TrnStockCountLines));
 			this._TrnStockInLines = new EntitySet<TrnStockInLine>(new Action<TrnStockInLine>(this.attach_TrnStockInLines), new Action<TrnStockInLine>(this.detach_TrnStockInLines));
@@ -4641,6 +4597,32 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstItem_TrnPurchaseOrderLine", Storage="_TrnPurchaseOrderLines", ThisKey="Id", OtherKey="ItemId")]
+		public EntitySet<TrnPurchaseOrderLine> TrnPurchaseOrderLines
+		{
+			get
+			{
+				return this._TrnPurchaseOrderLines;
+			}
+			set
+			{
+				this._TrnPurchaseOrderLines.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstItem_TrnSalesDraft", Storage="_TrnSalesDrafts", ThisKey="Id", OtherKey="ItemId")]
+		public EntitySet<TrnSalesDraft> TrnSalesDrafts
+		{
+			get
+			{
+				return this._TrnSalesDrafts;
+			}
+			set
+			{
+				this._TrnSalesDrafts.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstItem_TrnSalesLine", Storage="_TrnSalesLines", ThisKey="Id", OtherKey="ItemId")]
 		public EntitySet<TrnSalesLine> TrnSalesLines
 		{
@@ -5109,6 +5091,30 @@ namespace EasyPOS.Data
 		}
 		
 		private void detach_MstItemPrices(MstItemPrice entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstItem = null;
+		}
+		
+		private void attach_TrnPurchaseOrderLines(TrnPurchaseOrderLine entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstItem = this;
+		}
+		
+		private void detach_TrnPurchaseOrderLines(TrnPurchaseOrderLine entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstItem = null;
+		}
+		
+		private void attach_TrnSalesDrafts(TrnSalesDraft entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstItem = this;
+		}
+		
+		private void detach_TrnSalesDrafts(TrnSalesDraft entity)
 		{
 			this.SendPropertyChanging();
 			entity.MstItem = null;
@@ -6747,6 +6753,8 @@ namespace EasyPOS.Data
 		
 		private int _Id;
 		
+		private string _PayTypeCode;
+		
 		private string _PayType;
 		
 		private System.Nullable<int> _AccountId;
@@ -6765,6 +6773,8 @@ namespace EasyPOS.Data
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
+    partial void OnPayTypeCodeChanging(string value);
+    partial void OnPayTypeCodeChanged();
     partial void OnPayTypeChanging(string value);
     partial void OnPayTypeChanged();
     partial void OnAccountIdChanging(System.Nullable<int> value);
@@ -6797,6 +6807,26 @@ namespace EasyPOS.Data
 					this._Id = value;
 					this.SendPropertyChanged("Id");
 					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PayTypeCode", DbType="NVarChar(50)")]
+		public string PayTypeCode
+		{
+			get
+			{
+				return this._PayTypeCode;
+			}
+			set
+			{
+				if ((this._PayTypeCode != value))
+				{
+					this.OnPayTypeCodeChanging(value);
+					this.SendPropertyChanging();
+					this._PayTypeCode = value;
+					this.SendPropertyChanged("PayTypeCode");
+					this.OnPayTypeCodeChanged();
 				}
 			}
 		}
@@ -6992,6 +7022,8 @@ namespace EasyPOS.Data
 		
 		private EntitySet<TrnStockCount> _TrnStockCounts;
 		
+		private EntitySet<TrnStockIn> _TrnStockIns;
+		
 		private EntitySet<TrnStockOut> _TrnStockOuts;
 		
     #region Extensibility Method Definitions
@@ -7012,6 +7044,7 @@ namespace EasyPOS.Data
 			this._TrnPurchaseOrders = new EntitySet<TrnPurchaseOrder>(new Action<TrnPurchaseOrder>(this.attach_TrnPurchaseOrders), new Action<TrnPurchaseOrder>(this.detach_TrnPurchaseOrders));
 			this._TrnSales = new EntitySet<TrnSale>(new Action<TrnSale>(this.attach_TrnSales), new Action<TrnSale>(this.detach_TrnSales));
 			this._TrnStockCounts = new EntitySet<TrnStockCount>(new Action<TrnStockCount>(this.attach_TrnStockCounts), new Action<TrnStockCount>(this.detach_TrnStockCounts));
+			this._TrnStockIns = new EntitySet<TrnStockIn>(new Action<TrnStockIn>(this.attach_TrnStockIns), new Action<TrnStockIn>(this.detach_TrnStockIns));
 			this._TrnStockOuts = new EntitySet<TrnStockOut>(new Action<TrnStockOut>(this.attach_TrnStockOuts), new Action<TrnStockOut>(this.detach_TrnStockOuts));
 			OnCreated();
 		}
@@ -7134,6 +7167,19 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstPeriod_TrnStockIn", Storage="_TrnStockIns", ThisKey="Id", OtherKey="PeriodId")]
+		public EntitySet<TrnStockIn> TrnStockIns
+		{
+			get
+			{
+				return this._TrnStockIns;
+			}
+			set
+			{
+				this._TrnStockIns.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstPeriod_TrnStockOut", Storage="_TrnStockOuts", ThisKey="Id", OtherKey="PeriodId")]
 		public EntitySet<TrnStockOut> TrnStockOuts
 		{
@@ -7234,6 +7280,18 @@ namespace EasyPOS.Data
 		}
 		
 		private void detach_TrnStockCounts(TrnStockCount entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstPeriod = null;
+		}
+		
+		private void attach_TrnStockIns(TrnStockIn entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstPeriod = this;
+		}
+		
+		private void detach_TrnStockIns(TrnStockIn entity)
 		{
 			this.SendPropertyChanging();
 			entity.MstPeriod = null;
@@ -8151,6 +8209,10 @@ namespace EasyPOS.Data
 		
 		private EntitySet<MstTable> _MstTables;
 		
+		private EntityRef<MstUser> _MstUser;
+		
+		private EntityRef<MstUser> _MstUser1;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -8174,6 +8236,8 @@ namespace EasyPOS.Data
 		public MstTableGroup()
 		{
 			this._MstTables = new EntitySet<MstTable>(new Action<MstTable>(this.attach_MstTables), new Action<MstTable>(this.detach_MstTables));
+			this._MstUser = default(EntityRef<MstUser>);
+			this._MstUser1 = default(EntityRef<MstUser>);
 			OnCreated();
 		}
 		
@@ -8228,6 +8292,10 @@ namespace EasyPOS.Data
 			{
 				if ((this._EntryUserId != value))
 				{
+					if (this._MstUser.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnEntryUserIdChanging(value);
 					this.SendPropertyChanging();
 					this._EntryUserId = value;
@@ -8268,6 +8336,10 @@ namespace EasyPOS.Data
 			{
 				if ((this._UpdateUserId != value))
 				{
+					if (this._MstUser1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnUpdateUserIdChanging(value);
 					this.SendPropertyChanging();
 					this._UpdateUserId = value;
@@ -8327,6 +8399,74 @@ namespace EasyPOS.Data
 			set
 			{
 				this._MstTables.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_MstTableGroup", Storage="_MstUser", ThisKey="EntryUserId", OtherKey="Id", IsForeignKey=true)]
+		public MstUser MstUser
+		{
+			get
+			{
+				return this._MstUser.Entity;
+			}
+			set
+			{
+				MstUser previousValue = this._MstUser.Entity;
+				if (((previousValue != value) 
+							|| (this._MstUser.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstUser.Entity = null;
+						previousValue.MstTableGroups.Remove(this);
+					}
+					this._MstUser.Entity = value;
+					if ((value != null))
+					{
+						value.MstTableGroups.Add(this);
+						this._EntryUserId = value.Id;
+					}
+					else
+					{
+						this._EntryUserId = default(int);
+					}
+					this.SendPropertyChanged("MstUser");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_MstTableGroup1", Storage="_MstUser1", ThisKey="UpdateUserId", OtherKey="Id", IsForeignKey=true)]
+		public MstUser MstUser1
+		{
+			get
+			{
+				return this._MstUser1.Entity;
+			}
+			set
+			{
+				MstUser previousValue = this._MstUser1.Entity;
+				if (((previousValue != value) 
+							|| (this._MstUser1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstUser1.Entity = null;
+						previousValue.MstTableGroups1.Remove(this);
+					}
+					this._MstUser1.Entity = value;
+					if ((value != null))
+					{
+						value.MstTableGroups1.Add(this);
+						this._UpdateUserId = value.Id;
+					}
+					else
+					{
+						this._UpdateUserId = default(int);
+					}
+					this.SendPropertyChanged("MstUser1");
+				}
 			}
 		}
 		
@@ -9028,6 +9168,8 @@ namespace EasyPOS.Data
 		
 		private EntitySet<MstItemPackage> _MstItemPackages;
 		
+		private EntitySet<TrnPurchaseOrderLine> _TrnPurchaseOrderLines;
+		
 		private EntitySet<TrnSalesLine> _TrnSalesLines;
 		
 		private EntitySet<TrnStockCountLine> _TrnStockCountLines;
@@ -9050,6 +9192,7 @@ namespace EasyPOS.Data
 			this._MstItems = new EntitySet<MstItem>(new Action<MstItem>(this.attach_MstItems), new Action<MstItem>(this.detach_MstItems));
 			this._MstItemComponents = new EntitySet<MstItemComponent>(new Action<MstItemComponent>(this.attach_MstItemComponents), new Action<MstItemComponent>(this.detach_MstItemComponents));
 			this._MstItemPackages = new EntitySet<MstItemPackage>(new Action<MstItemPackage>(this.attach_MstItemPackages), new Action<MstItemPackage>(this.detach_MstItemPackages));
+			this._TrnPurchaseOrderLines = new EntitySet<TrnPurchaseOrderLine>(new Action<TrnPurchaseOrderLine>(this.attach_TrnPurchaseOrderLines), new Action<TrnPurchaseOrderLine>(this.detach_TrnPurchaseOrderLines));
 			this._TrnSalesLines = new EntitySet<TrnSalesLine>(new Action<TrnSalesLine>(this.attach_TrnSalesLines), new Action<TrnSalesLine>(this.detach_TrnSalesLines));
 			this._TrnStockCountLines = new EntitySet<TrnStockCountLine>(new Action<TrnStockCountLine>(this.attach_TrnStockCountLines), new Action<TrnStockCountLine>(this.detach_TrnStockCountLines));
 			this._TrnStockInLines = new EntitySet<TrnStockInLine>(new Action<TrnStockInLine>(this.attach_TrnStockInLines), new Action<TrnStockInLine>(this.detach_TrnStockInLines));
@@ -9145,6 +9288,19 @@ namespace EasyPOS.Data
 			set
 			{
 				this._MstItemPackages.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUnit_TrnPurchaseOrderLine", Storage="_TrnPurchaseOrderLines", ThisKey="Id", OtherKey="UnitId")]
+		public EntitySet<TrnPurchaseOrderLine> TrnPurchaseOrderLines
+		{
+			get
+			{
+				return this._TrnPurchaseOrderLines;
+			}
+			set
+			{
+				this._TrnPurchaseOrderLines.Assign(value);
 			}
 		}
 		
@@ -9255,6 +9411,18 @@ namespace EasyPOS.Data
 			entity.MstUnit = null;
 		}
 		
+		private void attach_TrnPurchaseOrderLines(TrnPurchaseOrderLine entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUnit = this;
+		}
+		
+		private void detach_TrnPurchaseOrderLines(TrnPurchaseOrderLine entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUnit = null;
+		}
+		
 		private void attach_TrnSalesLines(TrnSalesLine entity)
 		{
 			this.SendPropertyChanging();
@@ -9340,6 +9508,10 @@ namespace EasyPOS.Data
 		
 		private EntitySet<MstSupplier> _MstSuppliers1;
 		
+		private EntitySet<MstTableGroup> _MstTableGroups;
+		
+		private EntitySet<MstTableGroup> _MstTableGroups1;
+		
 		private EntitySet<MstUserForm> _MstUserForms;
 		
 		private EntitySet<SysAuditTrail> _SysAuditTrails;
@@ -9376,8 +9548,6 @@ namespace EasyPOS.Data
 		
 		private EntitySet<TrnDisbursement> _TrnDisbursements4;
 		
-		private EntitySet<TrnPaymentSubsidy> _TrnPaymentSubsidies;
-		
 		private EntitySet<TrnPurchaseOrder> _TrnPurchaseOrders;
 		
 		private EntitySet<TrnPurchaseOrder> _TrnPurchaseOrders1;
@@ -9401,6 +9571,26 @@ namespace EasyPOS.Data
 		private EntitySet<TrnSale> _TrnSales5;
 		
 		private EntitySet<TrnSalesLine> _TrnSalesLines;
+		
+		private EntitySet<TrnStockCount> _TrnStockCounts;
+		
+		private EntitySet<TrnStockCount> _TrnStockCounts1;
+		
+		private EntitySet<TrnStockCount> _TrnStockCounts2;
+		
+		private EntitySet<TrnStockCount> _TrnStockCounts3;
+		
+		private EntitySet<TrnStockCount> _TrnStockCounts4;
+		
+		private EntitySet<TrnStockIn> _TrnStockIns;
+		
+		private EntitySet<TrnStockIn> _TrnStockIns1;
+		
+		private EntitySet<TrnStockIn> _TrnStockIns2;
+		
+		private EntitySet<TrnStockIn> _TrnStockIns3;
+		
+		private EntitySet<TrnStockIn> _TrnStockIns4;
 		
 		private EntitySet<TrnStockOut> _TrnStockOuts;
 		
@@ -9451,6 +9641,8 @@ namespace EasyPOS.Data
 			this._MstItemGroups1 = new EntitySet<MstItemGroup>(new Action<MstItemGroup>(this.attach_MstItemGroups1), new Action<MstItemGroup>(this.detach_MstItemGroups1));
 			this._MstSuppliers = new EntitySet<MstSupplier>(new Action<MstSupplier>(this.attach_MstSuppliers), new Action<MstSupplier>(this.detach_MstSuppliers));
 			this._MstSuppliers1 = new EntitySet<MstSupplier>(new Action<MstSupplier>(this.attach_MstSuppliers1), new Action<MstSupplier>(this.detach_MstSuppliers1));
+			this._MstTableGroups = new EntitySet<MstTableGroup>(new Action<MstTableGroup>(this.attach_MstTableGroups), new Action<MstTableGroup>(this.detach_MstTableGroups));
+			this._MstTableGroups1 = new EntitySet<MstTableGroup>(new Action<MstTableGroup>(this.attach_MstTableGroups1), new Action<MstTableGroup>(this.detach_MstTableGroups1));
 			this._MstUserForms = new EntitySet<MstUserForm>(new Action<MstUserForm>(this.attach_MstUserForms), new Action<MstUserForm>(this.detach_MstUserForms));
 			this._SysAuditTrails = new EntitySet<SysAuditTrail>(new Action<SysAuditTrail>(this.attach_SysAuditTrails), new Action<SysAuditTrail>(this.detach_SysAuditTrails));
 			this._SysSalesLockeds = new EntitySet<SysSalesLocked>(new Action<SysSalesLocked>(this.attach_SysSalesLockeds), new Action<SysSalesLocked>(this.detach_SysSalesLockeds));
@@ -9469,7 +9661,6 @@ namespace EasyPOS.Data
 			this._TrnDisbursements2 = new EntitySet<TrnDisbursement>(new Action<TrnDisbursement>(this.attach_TrnDisbursements2), new Action<TrnDisbursement>(this.detach_TrnDisbursements2));
 			this._TrnDisbursements3 = new EntitySet<TrnDisbursement>(new Action<TrnDisbursement>(this.attach_TrnDisbursements3), new Action<TrnDisbursement>(this.detach_TrnDisbursements3));
 			this._TrnDisbursements4 = new EntitySet<TrnDisbursement>(new Action<TrnDisbursement>(this.attach_TrnDisbursements4), new Action<TrnDisbursement>(this.detach_TrnDisbursements4));
-			this._TrnPaymentSubsidies = new EntitySet<TrnPaymentSubsidy>(new Action<TrnPaymentSubsidy>(this.attach_TrnPaymentSubsidies), new Action<TrnPaymentSubsidy>(this.detach_TrnPaymentSubsidies));
 			this._TrnPurchaseOrders = new EntitySet<TrnPurchaseOrder>(new Action<TrnPurchaseOrder>(this.attach_TrnPurchaseOrders), new Action<TrnPurchaseOrder>(this.detach_TrnPurchaseOrders));
 			this._TrnPurchaseOrders1 = new EntitySet<TrnPurchaseOrder>(new Action<TrnPurchaseOrder>(this.attach_TrnPurchaseOrders1), new Action<TrnPurchaseOrder>(this.detach_TrnPurchaseOrders1));
 			this._TrnPurchaseOrders2 = new EntitySet<TrnPurchaseOrder>(new Action<TrnPurchaseOrder>(this.attach_TrnPurchaseOrders2), new Action<TrnPurchaseOrder>(this.detach_TrnPurchaseOrders2));
@@ -9482,6 +9673,16 @@ namespace EasyPOS.Data
 			this._TrnSales4 = new EntitySet<TrnSale>(new Action<TrnSale>(this.attach_TrnSales4), new Action<TrnSale>(this.detach_TrnSales4));
 			this._TrnSales5 = new EntitySet<TrnSale>(new Action<TrnSale>(this.attach_TrnSales5), new Action<TrnSale>(this.detach_TrnSales5));
 			this._TrnSalesLines = new EntitySet<TrnSalesLine>(new Action<TrnSalesLine>(this.attach_TrnSalesLines), new Action<TrnSalesLine>(this.detach_TrnSalesLines));
+			this._TrnStockCounts = new EntitySet<TrnStockCount>(new Action<TrnStockCount>(this.attach_TrnStockCounts), new Action<TrnStockCount>(this.detach_TrnStockCounts));
+			this._TrnStockCounts1 = new EntitySet<TrnStockCount>(new Action<TrnStockCount>(this.attach_TrnStockCounts1), new Action<TrnStockCount>(this.detach_TrnStockCounts1));
+			this._TrnStockCounts2 = new EntitySet<TrnStockCount>(new Action<TrnStockCount>(this.attach_TrnStockCounts2), new Action<TrnStockCount>(this.detach_TrnStockCounts2));
+			this._TrnStockCounts3 = new EntitySet<TrnStockCount>(new Action<TrnStockCount>(this.attach_TrnStockCounts3), new Action<TrnStockCount>(this.detach_TrnStockCounts3));
+			this._TrnStockCounts4 = new EntitySet<TrnStockCount>(new Action<TrnStockCount>(this.attach_TrnStockCounts4), new Action<TrnStockCount>(this.detach_TrnStockCounts4));
+			this._TrnStockIns = new EntitySet<TrnStockIn>(new Action<TrnStockIn>(this.attach_TrnStockIns), new Action<TrnStockIn>(this.detach_TrnStockIns));
+			this._TrnStockIns1 = new EntitySet<TrnStockIn>(new Action<TrnStockIn>(this.attach_TrnStockIns1), new Action<TrnStockIn>(this.detach_TrnStockIns1));
+			this._TrnStockIns2 = new EntitySet<TrnStockIn>(new Action<TrnStockIn>(this.attach_TrnStockIns2), new Action<TrnStockIn>(this.detach_TrnStockIns2));
+			this._TrnStockIns3 = new EntitySet<TrnStockIn>(new Action<TrnStockIn>(this.attach_TrnStockIns3), new Action<TrnStockIn>(this.detach_TrnStockIns3));
+			this._TrnStockIns4 = new EntitySet<TrnStockIn>(new Action<TrnStockIn>(this.attach_TrnStockIns4), new Action<TrnStockIn>(this.detach_TrnStockIns4));
 			this._TrnStockOuts = new EntitySet<TrnStockOut>(new Action<TrnStockOut>(this.attach_TrnStockOuts), new Action<TrnStockOut>(this.detach_TrnStockOuts));
 			this._TrnStockOuts1 = new EntitySet<TrnStockOut>(new Action<TrnStockOut>(this.attach_TrnStockOuts1), new Action<TrnStockOut>(this.detach_TrnStockOuts1));
 			this._TrnStockOuts2 = new EntitySet<TrnStockOut>(new Action<TrnStockOut>(this.attach_TrnStockOuts2), new Action<TrnStockOut>(this.detach_TrnStockOuts2));
@@ -9833,6 +10034,32 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_MstTableGroup", Storage="_MstTableGroups", ThisKey="Id", OtherKey="EntryUserId")]
+		public EntitySet<MstTableGroup> MstTableGroups
+		{
+			get
+			{
+				return this._MstTableGroups;
+			}
+			set
+			{
+				this._MstTableGroups.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_MstTableGroup1", Storage="_MstTableGroups1", ThisKey="Id", OtherKey="UpdateUserId")]
+		public EntitySet<MstTableGroup> MstTableGroups1
+		{
+			get
+			{
+				return this._MstTableGroups1;
+			}
+			set
+			{
+				this._MstTableGroups1.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_MstUserForm", Storage="_MstUserForms", ThisKey="Id", OtherKey="UserId")]
 		public EntitySet<MstUserForm> MstUserForms
 		{
@@ -10067,19 +10294,6 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnPaymentSubsidy", Storage="_TrnPaymentSubsidies", ThisKey="Id", OtherKey="UserId")]
-		public EntitySet<TrnPaymentSubsidy> TrnPaymentSubsidies
-		{
-			get
-			{
-				return this._TrnPaymentSubsidies;
-			}
-			set
-			{
-				this._TrnPaymentSubsidies.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnPurchaseOrder", Storage="_TrnPurchaseOrders", ThisKey="Id", OtherKey="PreparedBy")]
 		public EntitySet<TrnPurchaseOrder> TrnPurchaseOrders
 		{
@@ -10233,6 +10447,136 @@ namespace EasyPOS.Data
 			set
 			{
 				this._TrnSalesLines.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnStockCount", Storage="_TrnStockCounts", ThisKey="Id", OtherKey="PreparedBy")]
+		public EntitySet<TrnStockCount> TrnStockCounts
+		{
+			get
+			{
+				return this._TrnStockCounts;
+			}
+			set
+			{
+				this._TrnStockCounts.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnStockCount1", Storage="_TrnStockCounts1", ThisKey="Id", OtherKey="CheckedBy")]
+		public EntitySet<TrnStockCount> TrnStockCounts1
+		{
+			get
+			{
+				return this._TrnStockCounts1;
+			}
+			set
+			{
+				this._TrnStockCounts1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnStockCount2", Storage="_TrnStockCounts2", ThisKey="Id", OtherKey="ApprovedBy")]
+		public EntitySet<TrnStockCount> TrnStockCounts2
+		{
+			get
+			{
+				return this._TrnStockCounts2;
+			}
+			set
+			{
+				this._TrnStockCounts2.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnStockCount3", Storage="_TrnStockCounts3", ThisKey="Id", OtherKey="EntryUserId")]
+		public EntitySet<TrnStockCount> TrnStockCounts3
+		{
+			get
+			{
+				return this._TrnStockCounts3;
+			}
+			set
+			{
+				this._TrnStockCounts3.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnStockCount4", Storage="_TrnStockCounts4", ThisKey="Id", OtherKey="UpdateUserId")]
+		public EntitySet<TrnStockCount> TrnStockCounts4
+		{
+			get
+			{
+				return this._TrnStockCounts4;
+			}
+			set
+			{
+				this._TrnStockCounts4.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnStockIn", Storage="_TrnStockIns", ThisKey="Id", OtherKey="PreparedBy")]
+		public EntitySet<TrnStockIn> TrnStockIns
+		{
+			get
+			{
+				return this._TrnStockIns;
+			}
+			set
+			{
+				this._TrnStockIns.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnStockIn1", Storage="_TrnStockIns1", ThisKey="Id", OtherKey="CheckedBy")]
+		public EntitySet<TrnStockIn> TrnStockIns1
+		{
+			get
+			{
+				return this._TrnStockIns1;
+			}
+			set
+			{
+				this._TrnStockIns1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnStockIn2", Storage="_TrnStockIns2", ThisKey="Id", OtherKey="ApprovedBy")]
+		public EntitySet<TrnStockIn> TrnStockIns2
+		{
+			get
+			{
+				return this._TrnStockIns2;
+			}
+			set
+			{
+				this._TrnStockIns2.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnStockIn3", Storage="_TrnStockIns3", ThisKey="Id", OtherKey="EntryUserId")]
+		public EntitySet<TrnStockIn> TrnStockIns3
+		{
+			get
+			{
+				return this._TrnStockIns3;
+			}
+			set
+			{
+				this._TrnStockIns3.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnStockIn4", Storage="_TrnStockIns4", ThisKey="Id", OtherKey="UpdateUserId")]
+		public EntitySet<TrnStockIn> TrnStockIns4
+		{
+			get
+			{
+				return this._TrnStockIns4;
+			}
+			set
+			{
+				this._TrnStockIns4.Assign(value);
 			}
 		}
 		
@@ -10448,6 +10792,30 @@ namespace EasyPOS.Data
 		}
 		
 		private void detach_MstSuppliers1(MstSupplier entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser1 = null;
+		}
+		
+		private void attach_MstTableGroups(MstTableGroup entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser = this;
+		}
+		
+		private void detach_MstTableGroups(MstTableGroup entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser = null;
+		}
+		
+		private void attach_MstTableGroups1(MstTableGroup entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser1 = this;
+		}
+		
+		private void detach_MstTableGroups1(MstTableGroup entity)
 		{
 			this.SendPropertyChanging();
 			entity.MstUser1 = null;
@@ -10669,18 +11037,6 @@ namespace EasyPOS.Data
 			entity.MstUser4 = null;
 		}
 		
-		private void attach_TrnPaymentSubsidies(TrnPaymentSubsidy entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstUser = this;
-		}
-		
-		private void detach_TrnPaymentSubsidies(TrnPaymentSubsidy entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstUser = null;
-		}
-		
 		private void attach_TrnPurchaseOrders(TrnPurchaseOrder entity)
 		{
 			this.SendPropertyChanging();
@@ -10823,6 +11179,126 @@ namespace EasyPOS.Data
 		{
 			this.SendPropertyChanging();
 			entity.MstUser = null;
+		}
+		
+		private void attach_TrnStockCounts(TrnStockCount entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser = this;
+		}
+		
+		private void detach_TrnStockCounts(TrnStockCount entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser = null;
+		}
+		
+		private void attach_TrnStockCounts1(TrnStockCount entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser1 = this;
+		}
+		
+		private void detach_TrnStockCounts1(TrnStockCount entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser1 = null;
+		}
+		
+		private void attach_TrnStockCounts2(TrnStockCount entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser2 = this;
+		}
+		
+		private void detach_TrnStockCounts2(TrnStockCount entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser2 = null;
+		}
+		
+		private void attach_TrnStockCounts3(TrnStockCount entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser3 = this;
+		}
+		
+		private void detach_TrnStockCounts3(TrnStockCount entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser3 = null;
+		}
+		
+		private void attach_TrnStockCounts4(TrnStockCount entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser4 = this;
+		}
+		
+		private void detach_TrnStockCounts4(TrnStockCount entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser4 = null;
+		}
+		
+		private void attach_TrnStockIns(TrnStockIn entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser = this;
+		}
+		
+		private void detach_TrnStockIns(TrnStockIn entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser = null;
+		}
+		
+		private void attach_TrnStockIns1(TrnStockIn entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser1 = this;
+		}
+		
+		private void detach_TrnStockIns1(TrnStockIn entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser1 = null;
+		}
+		
+		private void attach_TrnStockIns2(TrnStockIn entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser2 = this;
+		}
+		
+		private void detach_TrnStockIns2(TrnStockIn entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser2 = null;
+		}
+		
+		private void attach_TrnStockIns3(TrnStockIn entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser3 = this;
+		}
+		
+		private void detach_TrnStockIns3(TrnStockIn entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser3 = null;
+		}
+		
+		private void attach_TrnStockIns4(TrnStockIn entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser4 = this;
+		}
+		
+		private void detach_TrnStockIns4(TrnStockIn entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser4 = null;
 		}
 		
 		private void attach_TrnStockOuts(TrnStockOut entity)
@@ -16554,428 +17030,6 @@ namespace EasyPOS.Data
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrnPaymentSubsidy")]
-	public partial class TrnPaymentSubsidy : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private int _CustomerId;
-		
-		private System.DateTime _Date;
-		
-		private string _SubsidyCode;
-		
-		private decimal _DebitAmount;
-		
-		private decimal _CreditAmount;
-		
-		private string _Particulars;
-		
-		private int _UserId;
-		
-		private System.DateTime _TimeStamp;
-		
-		private EntityRef<MstCustomer> _MstCustomer;
-		
-		private EntityRef<MstUser> _MstUser;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnCustomerIdChanging(int value);
-    partial void OnCustomerIdChanged();
-    partial void OnDateChanging(System.DateTime value);
-    partial void OnDateChanged();
-    partial void OnSubsidyCodeChanging(string value);
-    partial void OnSubsidyCodeChanged();
-    partial void OnDebitAmountChanging(decimal value);
-    partial void OnDebitAmountChanged();
-    partial void OnCreditAmountChanging(decimal value);
-    partial void OnCreditAmountChanged();
-    partial void OnParticularsChanging(string value);
-    partial void OnParticularsChanged();
-    partial void OnUserIdChanging(int value);
-    partial void OnUserIdChanged();
-    partial void OnTimeStampChanging(System.DateTime value);
-    partial void OnTimeStampChanged();
-    #endregion
-		
-		public TrnPaymentSubsidy()
-		{
-			this._MstCustomer = default(EntityRef<MstCustomer>);
-			this._MstUser = default(EntityRef<MstUser>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerId", DbType="Int NOT NULL")]
-		public int CustomerId
-		{
-			get
-			{
-				return this._CustomerId;
-			}
-			set
-			{
-				if ((this._CustomerId != value))
-				{
-					if (this._MstCustomer.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCustomerIdChanging(value);
-					this.SendPropertyChanging();
-					this._CustomerId = value;
-					this.SendPropertyChanged("CustomerId");
-					this.OnCustomerIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime NOT NULL")]
-		public System.DateTime Date
-		{
-			get
-			{
-				return this._Date;
-			}
-			set
-			{
-				if ((this._Date != value))
-				{
-					this.OnDateChanging(value);
-					this.SendPropertyChanging();
-					this._Date = value;
-					this.SendPropertyChanged("Date");
-					this.OnDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SubsidyCode", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string SubsidyCode
-		{
-			get
-			{
-				return this._SubsidyCode;
-			}
-			set
-			{
-				if ((this._SubsidyCode != value))
-				{
-					this.OnSubsidyCodeChanging(value);
-					this.SendPropertyChanging();
-					this._SubsidyCode = value;
-					this.SendPropertyChanged("SubsidyCode");
-					this.OnSubsidyCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DebitAmount", DbType="Decimal(18,5) NOT NULL")]
-		public decimal DebitAmount
-		{
-			get
-			{
-				return this._DebitAmount;
-			}
-			set
-			{
-				if ((this._DebitAmount != value))
-				{
-					this.OnDebitAmountChanging(value);
-					this.SendPropertyChanging();
-					this._DebitAmount = value;
-					this.SendPropertyChanged("DebitAmount");
-					this.OnDebitAmountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreditAmount", DbType="Decimal(18,5) NOT NULL")]
-		public decimal CreditAmount
-		{
-			get
-			{
-				return this._CreditAmount;
-			}
-			set
-			{
-				if ((this._CreditAmount != value))
-				{
-					this.OnCreditAmountChanging(value);
-					this.SendPropertyChanging();
-					this._CreditAmount = value;
-					this.SendPropertyChanged("CreditAmount");
-					this.OnCreditAmountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Particulars", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string Particulars
-		{
-			get
-			{
-				return this._Particulars;
-			}
-			set
-			{
-				if ((this._Particulars != value))
-				{
-					this.OnParticularsChanging(value);
-					this.SendPropertyChanging();
-					this._Particulars = value;
-					this.SendPropertyChanged("Particulars");
-					this.OnParticularsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
-		public int UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					if (this._MstUser.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._UserId = value;
-					this.SendPropertyChanged("UserId");
-					this.OnUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeStamp", DbType="DateTime NOT NULL")]
-		public System.DateTime TimeStamp
-		{
-			get
-			{
-				return this._TimeStamp;
-			}
-			set
-			{
-				if ((this._TimeStamp != value))
-				{
-					this.OnTimeStampChanging(value);
-					this.SendPropertyChanging();
-					this._TimeStamp = value;
-					this.SendPropertyChanged("TimeStamp");
-					this.OnTimeStampChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstCustomer_TrnPaymentSubsidy", Storage="_MstCustomer", ThisKey="CustomerId", OtherKey="Id", IsForeignKey=true)]
-		public MstCustomer MstCustomer
-		{
-			get
-			{
-				return this._MstCustomer.Entity;
-			}
-			set
-			{
-				MstCustomer previousValue = this._MstCustomer.Entity;
-				if (((previousValue != value) 
-							|| (this._MstCustomer.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._MstCustomer.Entity = null;
-						previousValue.TrnPaymentSubsidies.Remove(this);
-					}
-					this._MstCustomer.Entity = value;
-					if ((value != null))
-					{
-						value.TrnPaymentSubsidies.Add(this);
-						this._CustomerId = value.Id;
-					}
-					else
-					{
-						this._CustomerId = default(int);
-					}
-					this.SendPropertyChanged("MstCustomer");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnPaymentSubsidy", Storage="_MstUser", ThisKey="UserId", OtherKey="Id", IsForeignKey=true)]
-		public MstUser MstUser
-		{
-			get
-			{
-				return this._MstUser.Entity;
-			}
-			set
-			{
-				MstUser previousValue = this._MstUser.Entity;
-				if (((previousValue != value) 
-							|| (this._MstUser.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._MstUser.Entity = null;
-						previousValue.TrnPaymentSubsidies.Remove(this);
-					}
-					this._MstUser.Entity = value;
-					if ((value != null))
-					{
-						value.TrnPaymentSubsidies.Add(this);
-						this._UserId = value.Id;
-					}
-					else
-					{
-						this._UserId = default(int);
-					}
-					this.SendPropertyChanged("MstUser");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrnPaymentSubsidySettings")]
-	public partial class TrnPaymentSubsidySetting : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private decimal _DefaultDebitAmount;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnDefaultDebitAmountChanging(decimal value);
-    partial void OnDefaultDebitAmountChanged();
-    #endregion
-		
-		public TrnPaymentSubsidySetting()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DefaultDebitAmount", DbType="Decimal(18,5) NOT NULL")]
-		public decimal DefaultDebitAmount
-		{
-			get
-			{
-				return this._DefaultDebitAmount;
-			}
-			set
-			{
-				if ((this._DefaultDebitAmount != value))
-				{
-					this.OnDefaultDebitAmountChanging(value);
-					this.SendPropertyChanging();
-					this._DefaultDebitAmount = value;
-					this.SendPropertyChanged("DefaultDebitAmount");
-					this.OnDefaultDebitAmountChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrnPurchaseOrder")]
 	public partial class TrnPurchaseOrder : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -17015,6 +17069,8 @@ namespace EasyPOS.Data
 		private System.Nullable<int> _RequestedBy;
 		
 		private EntitySet<TrnPurchaseOrderLine> _TrnPurchaseOrderLines;
+		
+		private EntitySet<TrnStockIn> _TrnStockIns;
 		
 		private EntityRef<MstPeriod> _MstPeriod;
 		
@@ -17071,6 +17127,7 @@ namespace EasyPOS.Data
 		public TrnPurchaseOrder()
 		{
 			this._TrnPurchaseOrderLines = new EntitySet<TrnPurchaseOrderLine>(new Action<TrnPurchaseOrderLine>(this.attach_TrnPurchaseOrderLines), new Action<TrnPurchaseOrderLine>(this.detach_TrnPurchaseOrderLines));
+			this._TrnStockIns = new EntitySet<TrnStockIn>(new Action<TrnStockIn>(this.attach_TrnStockIns), new Action<TrnStockIn>(this.detach_TrnStockIns));
 			this._MstPeriod = default(EntityRef<MstPeriod>);
 			this._MstSupplier = default(EntityRef<MstSupplier>);
 			this._MstUser = default(EntityRef<MstUser>);
@@ -17442,6 +17499,19 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnPurchaseOrder_TrnStockIn", Storage="_TrnStockIns", ThisKey="Id", OtherKey="PurchaseOrderId")]
+		public EntitySet<TrnStockIn> TrnStockIns
+		{
+			get
+			{
+				return this._TrnStockIns;
+			}
+			set
+			{
+				this._TrnStockIns.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstPeriod_TrnPurchaseOrder", Storage="_MstPeriod", ThisKey="PeriodId", OtherKey="Id", IsForeignKey=true)]
 		public MstPeriod MstPeriod
 		{
@@ -17711,6 +17781,18 @@ namespace EasyPOS.Data
 			this.SendPropertyChanging();
 			entity.TrnPurchaseOrder = null;
 		}
+		
+		private void attach_TrnStockIns(TrnStockIn entity)
+		{
+			this.SendPropertyChanging();
+			entity.TrnPurchaseOrder = this;
+		}
+		
+		private void detach_TrnStockIns(TrnStockIn entity)
+		{
+			this.SendPropertyChanging();
+			entity.TrnPurchaseOrder = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrnPurchaseOrderLine")]
@@ -17732,6 +17814,10 @@ namespace EasyPOS.Data
 		private decimal _Cost;
 		
 		private decimal _Amount;
+		
+		private EntityRef<MstItem> _MstItem;
+		
+		private EntityRef<MstUnit> _MstUnit;
 		
 		private EntityRef<TrnPurchaseOrder> _TrnPurchaseOrder;
 		
@@ -17757,6 +17843,8 @@ namespace EasyPOS.Data
 		
 		public TrnPurchaseOrderLine()
 		{
+			this._MstItem = default(EntityRef<MstItem>);
+			this._MstUnit = default(EntityRef<MstUnit>);
 			this._TrnPurchaseOrder = default(EntityRef<TrnPurchaseOrder>);
 			OnCreated();
 		}
@@ -17816,6 +17904,10 @@ namespace EasyPOS.Data
 			{
 				if ((this._ItemId != value))
 				{
+					if (this._MstItem.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnItemIdChanging(value);
 					this.SendPropertyChanging();
 					this._ItemId = value;
@@ -17836,6 +17928,10 @@ namespace EasyPOS.Data
 			{
 				if ((this._UnitId != value))
 				{
+					if (this._MstUnit.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnUnitIdChanging(value);
 					this.SendPropertyChanging();
 					this._UnitId = value;
@@ -17901,6 +17997,74 @@ namespace EasyPOS.Data
 					this._Amount = value;
 					this.SendPropertyChanged("Amount");
 					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstItem_TrnPurchaseOrderLine", Storage="_MstItem", ThisKey="ItemId", OtherKey="Id", IsForeignKey=true)]
+		public MstItem MstItem
+		{
+			get
+			{
+				return this._MstItem.Entity;
+			}
+			set
+			{
+				MstItem previousValue = this._MstItem.Entity;
+				if (((previousValue != value) 
+							|| (this._MstItem.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstItem.Entity = null;
+						previousValue.TrnPurchaseOrderLines.Remove(this);
+					}
+					this._MstItem.Entity = value;
+					if ((value != null))
+					{
+						value.TrnPurchaseOrderLines.Add(this);
+						this._ItemId = value.Id;
+					}
+					else
+					{
+						this._ItemId = default(int);
+					}
+					this.SendPropertyChanged("MstItem");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUnit_TrnPurchaseOrderLine", Storage="_MstUnit", ThisKey="UnitId", OtherKey="Id", IsForeignKey=true)]
+		public MstUnit MstUnit
+		{
+			get
+			{
+				return this._MstUnit.Entity;
+			}
+			set
+			{
+				MstUnit previousValue = this._MstUnit.Entity;
+				if (((previousValue != value) 
+							|| (this._MstUnit.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstUnit.Entity = null;
+						previousValue.TrnPurchaseOrderLines.Remove(this);
+					}
+					this._MstUnit.Entity = value;
+					if ((value != null))
+					{
+						value.TrnPurchaseOrderLines.Add(this);
+						this._UnitId = value.Id;
+					}
+					else
+					{
+						this._UnitId = default(int);
+					}
+					this.SendPropertyChanged("MstUnit");
 				}
 			}
 		}
@@ -18044,6 +18208,8 @@ namespace EasyPOS.Data
 		
 		private EntitySet<TrnSalesLine> _TrnSalesLines;
 		
+		private EntitySet<TrnStockIn> _TrnStockIns;
+		
 		private EntityRef<MstCustomer> _MstCustomer;
 		
 		private EntityRef<MstPeriod> _MstPeriod;
@@ -18149,6 +18315,7 @@ namespace EasyPOS.Data
 			this._TrnDebitCreditMemoLines = new EntitySet<TrnDebitCreditMemoLine>(new Action<TrnDebitCreditMemoLine>(this.attach_TrnDebitCreditMemoLines), new Action<TrnDebitCreditMemoLine>(this.detach_TrnDebitCreditMemoLines));
 			this._TrnJournals = new EntitySet<TrnJournal>(new Action<TrnJournal>(this.attach_TrnJournals), new Action<TrnJournal>(this.detach_TrnJournals));
 			this._TrnSalesLines = new EntitySet<TrnSalesLine>(new Action<TrnSalesLine>(this.attach_TrnSalesLines), new Action<TrnSalesLine>(this.detach_TrnSalesLines));
+			this._TrnStockIns = new EntitySet<TrnStockIn>(new Action<TrnStockIn>(this.attach_TrnStockIns), new Action<TrnStockIn>(this.detach_TrnStockIns));
 			this._MstCustomer = default(EntityRef<MstCustomer>);
 			this._MstPeriod = default(EntityRef<MstPeriod>);
 			this._MstTable = default(EntityRef<MstTable>);
@@ -18957,6 +19124,19 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnSale_TrnStockIn", Storage="_TrnStockIns", ThisKey="Id", OtherKey="SalesId")]
+		public EntitySet<TrnStockIn> TrnStockIns
+		{
+			get
+			{
+				return this._TrnStockIns;
+			}
+			set
+			{
+				this._TrnStockIns.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstCustomer_TrnSale", Storage="_MstCustomer", ThisKey="CustomerId", OtherKey="Id", IsForeignKey=true)]
 		public MstCustomer MstCustomer
 		{
@@ -19444,6 +19624,18 @@ namespace EasyPOS.Data
 			this.SendPropertyChanging();
 			entity.TrnSale = null;
 		}
+		
+		private void attach_TrnStockIns(TrnStockIn entity)
+		{
+			this.SendPropertyChanging();
+			entity.TrnSale = this;
+		}
+		
+		private void detach_TrnStockIns(TrnStockIn entity)
+		{
+			this.SendPropertyChanging();
+			entity.TrnSale = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrnSalesDraft")]
@@ -19479,6 +19671,8 @@ namespace EasyPOS.Data
 		private string _PhoneNumber;
 		
 		private string _MobilePhoneNumber;
+		
+		private EntityRef<MstItem> _MstItem;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -19516,6 +19710,7 @@ namespace EasyPOS.Data
 		
 		public TrnSalesDraft()
 		{
+			this._MstItem = default(EntityRef<MstItem>);
 			OnCreated();
 		}
 		
@@ -19610,6 +19805,10 @@ namespace EasyPOS.Data
 			{
 				if ((this._ItemId != value))
 				{
+					if (this._MstItem.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnItemIdChanging(value);
 					this.SendPropertyChanging();
 					this._ItemId = value;
@@ -19795,6 +19994,40 @@ namespace EasyPOS.Data
 					this._MobilePhoneNumber = value;
 					this.SendPropertyChanged("MobilePhoneNumber");
 					this.OnMobilePhoneNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstItem_TrnSalesDraft", Storage="_MstItem", ThisKey="ItemId", OtherKey="Id", IsForeignKey=true)]
+		public MstItem MstItem
+		{
+			get
+			{
+				return this._MstItem.Entity;
+			}
+			set
+			{
+				MstItem previousValue = this._MstItem.Entity;
+				if (((previousValue != value) 
+							|| (this._MstItem.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstItem.Entity = null;
+						previousValue.TrnSalesDrafts.Remove(this);
+					}
+					this._MstItem.Entity = value;
+					if ((value != null))
+					{
+						value.TrnSalesDrafts.Add(this);
+						this._ItemId = value.Id;
+					}
+					else
+					{
+						this._ItemId = default(int);
+					}
+					this.SendPropertyChanged("MstItem");
 				}
 			}
 		}
@@ -20904,6 +21137,16 @@ namespace EasyPOS.Data
 		
 		private EntityRef<MstPeriod> _MstPeriod;
 		
+		private EntityRef<MstUser> _MstUser;
+		
+		private EntityRef<MstUser> _MstUser1;
+		
+		private EntityRef<MstUser> _MstUser2;
+		
+		private EntityRef<MstUser> _MstUser3;
+		
+		private EntityRef<MstUser> _MstUser4;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -20940,6 +21183,11 @@ namespace EasyPOS.Data
 		{
 			this._TrnStockCountLines = new EntitySet<TrnStockCountLine>(new Action<TrnStockCountLine>(this.attach_TrnStockCountLines), new Action<TrnStockCountLine>(this.detach_TrnStockCountLines));
 			this._MstPeriod = default(EntityRef<MstPeriod>);
+			this._MstUser = default(EntityRef<MstUser>);
+			this._MstUser1 = default(EntityRef<MstUser>);
+			this._MstUser2 = default(EntityRef<MstUser>);
+			this._MstUser3 = default(EntityRef<MstUser>);
+			this._MstUser4 = default(EntityRef<MstUser>);
 			OnCreated();
 		}
 		
@@ -21058,6 +21306,10 @@ namespace EasyPOS.Data
 			{
 				if ((this._PreparedBy != value))
 				{
+					if (this._MstUser.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnPreparedByChanging(value);
 					this.SendPropertyChanging();
 					this._PreparedBy = value;
@@ -21078,6 +21330,10 @@ namespace EasyPOS.Data
 			{
 				if ((this._CheckedBy != value))
 				{
+					if (this._MstUser1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnCheckedByChanging(value);
 					this.SendPropertyChanging();
 					this._CheckedBy = value;
@@ -21098,6 +21354,10 @@ namespace EasyPOS.Data
 			{
 				if ((this._ApprovedBy != value))
 				{
+					if (this._MstUser2.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnApprovedByChanging(value);
 					this.SendPropertyChanging();
 					this._ApprovedBy = value;
@@ -21138,6 +21398,10 @@ namespace EasyPOS.Data
 			{
 				if ((this._EntryUserId != value))
 				{
+					if (this._MstUser3.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnEntryUserIdChanging(value);
 					this.SendPropertyChanging();
 					this._EntryUserId = value;
@@ -21178,6 +21442,10 @@ namespace EasyPOS.Data
 			{
 				if ((this._UpdateUserId != value))
 				{
+					if (this._MstUser4.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnUpdateUserIdChanging(value);
 					this.SendPropertyChanging();
 					this._UpdateUserId = value;
@@ -21250,6 +21518,176 @@ namespace EasyPOS.Data
 						this._PeriodId = default(int);
 					}
 					this.SendPropertyChanged("MstPeriod");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnStockCount", Storage="_MstUser", ThisKey="PreparedBy", OtherKey="Id", IsForeignKey=true)]
+		public MstUser MstUser
+		{
+			get
+			{
+				return this._MstUser.Entity;
+			}
+			set
+			{
+				MstUser previousValue = this._MstUser.Entity;
+				if (((previousValue != value) 
+							|| (this._MstUser.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstUser.Entity = null;
+						previousValue.TrnStockCounts.Remove(this);
+					}
+					this._MstUser.Entity = value;
+					if ((value != null))
+					{
+						value.TrnStockCounts.Add(this);
+						this._PreparedBy = value.Id;
+					}
+					else
+					{
+						this._PreparedBy = default(int);
+					}
+					this.SendPropertyChanged("MstUser");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnStockCount1", Storage="_MstUser1", ThisKey="CheckedBy", OtherKey="Id", IsForeignKey=true)]
+		public MstUser MstUser1
+		{
+			get
+			{
+				return this._MstUser1.Entity;
+			}
+			set
+			{
+				MstUser previousValue = this._MstUser1.Entity;
+				if (((previousValue != value) 
+							|| (this._MstUser1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstUser1.Entity = null;
+						previousValue.TrnStockCounts1.Remove(this);
+					}
+					this._MstUser1.Entity = value;
+					if ((value != null))
+					{
+						value.TrnStockCounts1.Add(this);
+						this._CheckedBy = value.Id;
+					}
+					else
+					{
+						this._CheckedBy = default(int);
+					}
+					this.SendPropertyChanged("MstUser1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnStockCount2", Storage="_MstUser2", ThisKey="ApprovedBy", OtherKey="Id", IsForeignKey=true)]
+		public MstUser MstUser2
+		{
+			get
+			{
+				return this._MstUser2.Entity;
+			}
+			set
+			{
+				MstUser previousValue = this._MstUser2.Entity;
+				if (((previousValue != value) 
+							|| (this._MstUser2.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstUser2.Entity = null;
+						previousValue.TrnStockCounts2.Remove(this);
+					}
+					this._MstUser2.Entity = value;
+					if ((value != null))
+					{
+						value.TrnStockCounts2.Add(this);
+						this._ApprovedBy = value.Id;
+					}
+					else
+					{
+						this._ApprovedBy = default(int);
+					}
+					this.SendPropertyChanged("MstUser2");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnStockCount3", Storage="_MstUser3", ThisKey="EntryUserId", OtherKey="Id", IsForeignKey=true)]
+		public MstUser MstUser3
+		{
+			get
+			{
+				return this._MstUser3.Entity;
+			}
+			set
+			{
+				MstUser previousValue = this._MstUser3.Entity;
+				if (((previousValue != value) 
+							|| (this._MstUser3.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstUser3.Entity = null;
+						previousValue.TrnStockCounts3.Remove(this);
+					}
+					this._MstUser3.Entity = value;
+					if ((value != null))
+					{
+						value.TrnStockCounts3.Add(this);
+						this._EntryUserId = value.Id;
+					}
+					else
+					{
+						this._EntryUserId = default(int);
+					}
+					this.SendPropertyChanged("MstUser3");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnStockCount4", Storage="_MstUser4", ThisKey="UpdateUserId", OtherKey="Id", IsForeignKey=true)]
+		public MstUser MstUser4
+		{
+			get
+			{
+				return this._MstUser4.Entity;
+			}
+			set
+			{
+				MstUser previousValue = this._MstUser4.Entity;
+				if (((previousValue != value) 
+							|| (this._MstUser4.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstUser4.Entity = null;
+						previousValue.TrnStockCounts4.Remove(this);
+					}
+					this._MstUser4.Entity = value;
+					if ((value != null))
+					{
+						value.TrnStockCounts4.Add(this);
+						this._UpdateUserId = value.Id;
+					}
+					else
+					{
+						this._UpdateUserId = default(int);
+					}
+					this.SendPropertyChanged("MstUser4");
 				}
 			}
 		}
@@ -21668,9 +22106,25 @@ namespace EasyPOS.Data
 		
 		private EntitySet<TrnStockInLine> _TrnStockInLines;
 		
+		private EntityRef<MstPeriod> _MstPeriod;
+		
 		private EntityRef<MstSupplier> _MstSupplier;
 		
+		private EntityRef<MstUser> _MstUser;
+		
+		private EntityRef<MstUser> _MstUser1;
+		
+		private EntityRef<MstUser> _MstUser2;
+		
+		private EntityRef<MstUser> _MstUser3;
+		
+		private EntityRef<MstUser> _MstUser4;
+		
 		private EntityRef<TrnCollection> _TrnCollection;
+		
+		private EntityRef<TrnPurchaseOrder> _TrnPurchaseOrder;
+		
+		private EntityRef<TrnSale> _TrnSale;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -21722,8 +22176,16 @@ namespace EasyPOS.Data
 			this._TrnDisbursements = new EntitySet<TrnDisbursement>(new Action<TrnDisbursement>(this.attach_TrnDisbursements), new Action<TrnDisbursement>(this.detach_TrnDisbursements));
 			this._TrnJournals = new EntitySet<TrnJournal>(new Action<TrnJournal>(this.attach_TrnJournals), new Action<TrnJournal>(this.detach_TrnJournals));
 			this._TrnStockInLines = new EntitySet<TrnStockInLine>(new Action<TrnStockInLine>(this.attach_TrnStockInLines), new Action<TrnStockInLine>(this.detach_TrnStockInLines));
+			this._MstPeriod = default(EntityRef<MstPeriod>);
 			this._MstSupplier = default(EntityRef<MstSupplier>);
+			this._MstUser = default(EntityRef<MstUser>);
+			this._MstUser1 = default(EntityRef<MstUser>);
+			this._MstUser2 = default(EntityRef<MstUser>);
+			this._MstUser3 = default(EntityRef<MstUser>);
+			this._MstUser4 = default(EntityRef<MstUser>);
 			this._TrnCollection = default(EntityRef<TrnCollection>);
+			this._TrnPurchaseOrder = default(EntityRef<TrnPurchaseOrder>);
+			this._TrnSale = default(EntityRef<TrnSale>);
 			OnCreated();
 		}
 		
@@ -21758,6 +22220,10 @@ namespace EasyPOS.Data
 			{
 				if ((this._PeriodId != value))
 				{
+					if (this._MstPeriod.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnPeriodIdChanging(value);
 					this.SendPropertyChanging();
 					this._PeriodId = value;
@@ -21906,6 +22372,10 @@ namespace EasyPOS.Data
 			{
 				if ((this._PurchaseOrderId != value))
 				{
+					if (this._TrnPurchaseOrder.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnPurchaseOrderIdChanging(value);
 					this.SendPropertyChanging();
 					this._PurchaseOrderId = value;
@@ -21926,6 +22396,10 @@ namespace EasyPOS.Data
 			{
 				if ((this._PreparedBy != value))
 				{
+					if (this._MstUser.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnPreparedByChanging(value);
 					this.SendPropertyChanging();
 					this._PreparedBy = value;
@@ -21946,6 +22420,10 @@ namespace EasyPOS.Data
 			{
 				if ((this._CheckedBy != value))
 				{
+					if (this._MstUser1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnCheckedByChanging(value);
 					this.SendPropertyChanging();
 					this._CheckedBy = value;
@@ -21966,6 +22444,10 @@ namespace EasyPOS.Data
 			{
 				if ((this._ApprovedBy != value))
 				{
+					if (this._MstUser2.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnApprovedByChanging(value);
 					this.SendPropertyChanging();
 					this._ApprovedBy = value;
@@ -21986,6 +22468,10 @@ namespace EasyPOS.Data
 			{
 				if ((this._SalesId != value))
 				{
+					if (this._TrnSale.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnSalesIdChanging(value);
 					this.SendPropertyChanging();
 					this._SalesId = value;
@@ -22046,6 +22532,10 @@ namespace EasyPOS.Data
 			{
 				if ((this._EntryUserId != value))
 				{
+					if (this._MstUser3.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnEntryUserIdChanging(value);
 					this.SendPropertyChanging();
 					this._EntryUserId = value;
@@ -22086,6 +22576,10 @@ namespace EasyPOS.Data
 			{
 				if ((this._UpdateUserId != value))
 				{
+					if (this._MstUser4.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnUpdateUserIdChanging(value);
 					this.SendPropertyChanging();
 					this._UpdateUserId = value;
@@ -22167,6 +22661,40 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstPeriod_TrnStockIn", Storage="_MstPeriod", ThisKey="PeriodId", OtherKey="Id", IsForeignKey=true)]
+		public MstPeriod MstPeriod
+		{
+			get
+			{
+				return this._MstPeriod.Entity;
+			}
+			set
+			{
+				MstPeriod previousValue = this._MstPeriod.Entity;
+				if (((previousValue != value) 
+							|| (this._MstPeriod.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstPeriod.Entity = null;
+						previousValue.TrnStockIns.Remove(this);
+					}
+					this._MstPeriod.Entity = value;
+					if ((value != null))
+					{
+						value.TrnStockIns.Add(this);
+						this._PeriodId = value.Id;
+					}
+					else
+					{
+						this._PeriodId = default(int);
+					}
+					this.SendPropertyChanged("MstPeriod");
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstSupplier_TrnStockIn", Storage="_MstSupplier", ThisKey="SupplierId", OtherKey="Id", IsForeignKey=true)]
 		public MstSupplier MstSupplier
 		{
@@ -22201,6 +22729,176 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnStockIn", Storage="_MstUser", ThisKey="PreparedBy", OtherKey="Id", IsForeignKey=true)]
+		public MstUser MstUser
+		{
+			get
+			{
+				return this._MstUser.Entity;
+			}
+			set
+			{
+				MstUser previousValue = this._MstUser.Entity;
+				if (((previousValue != value) 
+							|| (this._MstUser.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstUser.Entity = null;
+						previousValue.TrnStockIns.Remove(this);
+					}
+					this._MstUser.Entity = value;
+					if ((value != null))
+					{
+						value.TrnStockIns.Add(this);
+						this._PreparedBy = value.Id;
+					}
+					else
+					{
+						this._PreparedBy = default(int);
+					}
+					this.SendPropertyChanged("MstUser");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnStockIn1", Storage="_MstUser1", ThisKey="CheckedBy", OtherKey="Id", IsForeignKey=true)]
+		public MstUser MstUser1
+		{
+			get
+			{
+				return this._MstUser1.Entity;
+			}
+			set
+			{
+				MstUser previousValue = this._MstUser1.Entity;
+				if (((previousValue != value) 
+							|| (this._MstUser1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstUser1.Entity = null;
+						previousValue.TrnStockIns1.Remove(this);
+					}
+					this._MstUser1.Entity = value;
+					if ((value != null))
+					{
+						value.TrnStockIns1.Add(this);
+						this._CheckedBy = value.Id;
+					}
+					else
+					{
+						this._CheckedBy = default(int);
+					}
+					this.SendPropertyChanged("MstUser1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnStockIn2", Storage="_MstUser2", ThisKey="ApprovedBy", OtherKey="Id", IsForeignKey=true)]
+		public MstUser MstUser2
+		{
+			get
+			{
+				return this._MstUser2.Entity;
+			}
+			set
+			{
+				MstUser previousValue = this._MstUser2.Entity;
+				if (((previousValue != value) 
+							|| (this._MstUser2.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstUser2.Entity = null;
+						previousValue.TrnStockIns2.Remove(this);
+					}
+					this._MstUser2.Entity = value;
+					if ((value != null))
+					{
+						value.TrnStockIns2.Add(this);
+						this._ApprovedBy = value.Id;
+					}
+					else
+					{
+						this._ApprovedBy = default(int);
+					}
+					this.SendPropertyChanged("MstUser2");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnStockIn3", Storage="_MstUser3", ThisKey="EntryUserId", OtherKey="Id", IsForeignKey=true)]
+		public MstUser MstUser3
+		{
+			get
+			{
+				return this._MstUser3.Entity;
+			}
+			set
+			{
+				MstUser previousValue = this._MstUser3.Entity;
+				if (((previousValue != value) 
+							|| (this._MstUser3.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstUser3.Entity = null;
+						previousValue.TrnStockIns3.Remove(this);
+					}
+					this._MstUser3.Entity = value;
+					if ((value != null))
+					{
+						value.TrnStockIns3.Add(this);
+						this._EntryUserId = value.Id;
+					}
+					else
+					{
+						this._EntryUserId = default(int);
+					}
+					this.SendPropertyChanged("MstUser3");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnStockIn4", Storage="_MstUser4", ThisKey="UpdateUserId", OtherKey="Id", IsForeignKey=true)]
+		public MstUser MstUser4
+		{
+			get
+			{
+				return this._MstUser4.Entity;
+			}
+			set
+			{
+				MstUser previousValue = this._MstUser4.Entity;
+				if (((previousValue != value) 
+							|| (this._MstUser4.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstUser4.Entity = null;
+						previousValue.TrnStockIns4.Remove(this);
+					}
+					this._MstUser4.Entity = value;
+					if ((value != null))
+					{
+						value.TrnStockIns4.Add(this);
+						this._UpdateUserId = value.Id;
+					}
+					else
+					{
+						this._UpdateUserId = default(int);
+					}
+					this.SendPropertyChanged("MstUser4");
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnCollection_TrnStockIn", Storage="_TrnCollection", ThisKey="CollectionId", OtherKey="Id", IsForeignKey=true)]
 		public TrnCollection TrnCollection
 		{
@@ -22231,6 +22929,74 @@ namespace EasyPOS.Data
 						this._CollectionId = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("TrnCollection");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnPurchaseOrder_TrnStockIn", Storage="_TrnPurchaseOrder", ThisKey="PurchaseOrderId", OtherKey="Id", IsForeignKey=true)]
+		public TrnPurchaseOrder TrnPurchaseOrder
+		{
+			get
+			{
+				return this._TrnPurchaseOrder.Entity;
+			}
+			set
+			{
+				TrnPurchaseOrder previousValue = this._TrnPurchaseOrder.Entity;
+				if (((previousValue != value) 
+							|| (this._TrnPurchaseOrder.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TrnPurchaseOrder.Entity = null;
+						previousValue.TrnStockIns.Remove(this);
+					}
+					this._TrnPurchaseOrder.Entity = value;
+					if ((value != null))
+					{
+						value.TrnStockIns.Add(this);
+						this._PurchaseOrderId = value.Id;
+					}
+					else
+					{
+						this._PurchaseOrderId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("TrnPurchaseOrder");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnSale_TrnStockIn", Storage="_TrnSale", ThisKey="SalesId", OtherKey="Id", IsForeignKey=true)]
+		public TrnSale TrnSale
+		{
+			get
+			{
+				return this._TrnSale.Entity;
+			}
+			set
+			{
+				TrnSale previousValue = this._TrnSale.Entity;
+				if (((previousValue != value) 
+							|| (this._TrnSale.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TrnSale.Entity = null;
+						previousValue.TrnStockIns.Remove(this);
+					}
+					this._TrnSale.Entity = value;
+					if ((value != null))
+					{
+						value.TrnStockIns.Add(this);
+						this._SalesId = value.Id;
+					}
+					else
+					{
+						this._SalesId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("TrnSale");
 				}
 			}
 		}

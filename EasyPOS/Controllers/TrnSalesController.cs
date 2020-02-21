@@ -285,6 +285,7 @@ namespace EasyPOS.Controllers
                            select new Entities.MstPayTypeEntity
                            {
                                Id = d.Id,
+                               PayTypeCode = d.PayTypeCode,
                                PayType = d.PayType,
                                SortNumber = d.SortNumber
                            };

@@ -33,8 +33,20 @@ namespace EasyPOS.Reports
                 printDocumentDeliveryReceipt.PrinterSettings.PrintToFile = true;
                 printDocumentDeliveryReceipt.PrinterSettings.PrintFileName = printerFileName;
             }
+            else
+            {
+                if (isWithdrawal == true)
+                {
+                    printDocumentDeliveryReceipt.PrinterSettings.PrinterName = printerName;
+                }
+            }
 
             printDocumentDeliveryReceipt.DefaultPageSettings.PaperSize = new PaperSize("Delivery Receipt", 1200, 850);
+
+            //IEnumerable<PaperSize> paperSizes = printDocumentDeliveryReceipt.PrinterSettings.PaperSizes.Cast<PaperSize>();
+            //PaperSize sizeA4 = paperSizes.First<PaperSize>(size => size.Kind == PaperKind.Letter);
+            //printDocumentDeliveryReceipt.DefaultPageSettings.PaperSize = sizeA4;
+            //printDocumentDeliveryReceipt.DefaultPageSettings.Landscape = true;
 
             Margins margins = new Margins(15, 0, 20, 0);
             printDocumentDeliveryReceipt.DefaultPageSettings.Margins = margins;
@@ -340,10 +352,6 @@ namespace EasyPOS.Reports
 
                 y += graphics.MeasureString("Total: ", fontArial10Bold).Height + 70;
 
-                //graphics.DrawString("Payment / Deductions: ", fontArial9Bold, drawBrush, new RectangleF(x + 100, y + 5, 245.0F, height), drawFormatRight);
-                //graphics.DrawString("0.00", fontArial9Bold, drawBrush, new RectangleF(x + 240, y + 5, 245.0F, height), drawFormatRight);
-                //y += graphics.MeasureString("Payment / Deductions: ", fontArial9Bold).Height + 10;
-
                 // ========
                 // 6th Line
                 // ========
@@ -351,24 +359,21 @@ namespace EasyPOS.Reports
                 Point sixthFirstLineSecondPoint = new Point(205, Convert.ToInt32(y));
                 graphics.DrawLine(blackDashPen, sixthFirstLineFirstPoint, sixthFirstLineSecondPoint);
 
-                //Point sixthSecondLineFirstPoint = new Point(210, Convert.ToInt32(y));
-                //Point sixthSecondLineSecondPoint = new Point(490, Convert.ToInt32(y));
-                //graphics.DrawLine(blackPen, sixthSecondLineFirstPoint, sixthSecondLineSecondPoint);
-
-                //y += 5;
-
                 // =====
                 // Total
                 // =====
                 graphics.DrawString("DR No.: " + collection.FirstOrDefault().CollectionNumber, fontArial11Bold, drawBrush, new RectangleF(x, y + 5, 245.0F, height), drawFormatLeft);
-                //graphics.DrawString("Total: ", fontArial9Bold, drawBrush, new RectangleF(x + 100, y + 5, 245.0F, height), drawFormatRight);
-                //graphics.DrawString(subTotalAmount.ToString("#,##0.00"), fontArial9Bold, drawBrush, new RectangleF(x + 240, y + 5, 245.0F, height), drawFormatRight);
-                //y += graphics.MeasureString("Total: ", fontArial9Bold).Height + 5;
-
                 y += 50;
 
                 String ORFooter = systemCurrent.ReceiptFooter;
-                graphics.DrawString(ORFooter, fontArial10Regular, drawBrush, new RectangleF(x, y + 5, 490, height));
+                RectangleF ORFooterRectangle = new RectangleF
+                {
+                    X = x,
+                    Y = y + 5,
+                    Size = new Size(490, ((int)graphics.MeasureString(ORFooter, fontArial10Regular, 80, StringFormat.GenericTypographic).Height))
+                };
+                graphics.DrawString(ORFooter, fontArial10Regular, Brushes.Black, ORFooterRectangle, drawFormatLeft);
+                y += ORFooterRectangle.Size.Height + 5;
             }
         }
     }

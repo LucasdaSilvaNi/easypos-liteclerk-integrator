@@ -51,12 +51,6 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel10 = new System.Windows.Forms.Panel();
             this.dataGridViewPayTypeList = new System.Windows.Forms.DataGridView();
-            this.ColumnPayTypeListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnPayTypeListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnPayTypeListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPayTypeListPayType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPayTypeListAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxPayTypeListFilter = new System.Windows.Forms.TextBox();
             this.panel16 = new System.Windows.Forms.Panel();
             this.buttonPayTypeListPageListFirst = new System.Windows.Forms.Button();
@@ -151,6 +145,13 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
+            this.ColumnPayTypeListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnPayTypeListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnPayTypeListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPayTypeListPayTypeCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPayTypeListPayType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPayTypeListAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.tabControlSystemTable.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -446,6 +447,7 @@
             this.ColumnPayTypeListButtonEdit,
             this.ColumnPayTypeListButtonDelete,
             this.ColumnPayTypeListId,
+            this.ColumnPayTypeListPayTypeCode,
             this.ColumnPayTypeListPayType,
             this.ColumnAccountId,
             this.ColumnPayTypeListAccount});
@@ -459,56 +461,6 @@
             this.dataGridViewPayTypeList.Size = new System.Drawing.Size(1376, 497);
             this.dataGridViewPayTypeList.TabIndex = 26;
             this.dataGridViewPayTypeList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPayTypeList_CellClick);
-            // 
-            // ColumnPayTypeListButtonEdit
-            // 
-            this.ColumnPayTypeListButtonEdit.DataPropertyName = "ColumnPayTypeListButtonEdit";
-            this.ColumnPayTypeListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnPayTypeListButtonEdit.HeaderText = "";
-            this.ColumnPayTypeListButtonEdit.Name = "ColumnPayTypeListButtonEdit";
-            this.ColumnPayTypeListButtonEdit.ReadOnly = true;
-            this.ColumnPayTypeListButtonEdit.Width = 70;
-            // 
-            // ColumnPayTypeListButtonDelete
-            // 
-            this.ColumnPayTypeListButtonDelete.DataPropertyName = "ColumnPayTypeListButtonDelete";
-            this.ColumnPayTypeListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnPayTypeListButtonDelete.HeaderText = "";
-            this.ColumnPayTypeListButtonDelete.Name = "ColumnPayTypeListButtonDelete";
-            this.ColumnPayTypeListButtonDelete.ReadOnly = true;
-            this.ColumnPayTypeListButtonDelete.Width = 70;
-            // 
-            // ColumnPayTypeListId
-            // 
-            this.ColumnPayTypeListId.DataPropertyName = "ColumnPayTypeListId";
-            this.ColumnPayTypeListId.HeaderText = "Id";
-            this.ColumnPayTypeListId.Name = "ColumnPayTypeListId";
-            this.ColumnPayTypeListId.ReadOnly = true;
-            this.ColumnPayTypeListId.Visible = false;
-            // 
-            // ColumnPayTypeListPayType
-            // 
-            this.ColumnPayTypeListPayType.DataPropertyName = "ColumnPayTypeListPayType";
-            this.ColumnPayTypeListPayType.HeaderText = "Pay Type";
-            this.ColumnPayTypeListPayType.Name = "ColumnPayTypeListPayType";
-            this.ColumnPayTypeListPayType.ReadOnly = true;
-            this.ColumnPayTypeListPayType.Width = 250;
-            // 
-            // ColumnAccountId
-            // 
-            this.ColumnAccountId.DataPropertyName = "ColumnAccountId";
-            this.ColumnAccountId.HeaderText = "AccountId";
-            this.ColumnAccountId.Name = "ColumnAccountId";
-            this.ColumnAccountId.ReadOnly = true;
-            this.ColumnAccountId.Visible = false;
-            // 
-            // ColumnPayTypeListAccount
-            // 
-            this.ColumnPayTypeListAccount.DataPropertyName = "ColumnPayTypeListAccount";
-            this.ColumnPayTypeListAccount.HeaderText = "Account";
-            this.ColumnPayTypeListAccount.Name = "ColumnPayTypeListAccount";
-            this.ColumnPayTypeListAccount.ReadOnly = true;
-            this.ColumnPayTypeListAccount.Width = 200;
             // 
             // textBoxPayTypeListFilter
             // 
@@ -1700,6 +1652,64 @@
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
+            // ColumnPayTypeListButtonEdit
+            // 
+            this.ColumnPayTypeListButtonEdit.DataPropertyName = "ColumnPayTypeListButtonEdit";
+            this.ColumnPayTypeListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnPayTypeListButtonEdit.HeaderText = "";
+            this.ColumnPayTypeListButtonEdit.Name = "ColumnPayTypeListButtonEdit";
+            this.ColumnPayTypeListButtonEdit.ReadOnly = true;
+            this.ColumnPayTypeListButtonEdit.Width = 70;
+            // 
+            // ColumnPayTypeListButtonDelete
+            // 
+            this.ColumnPayTypeListButtonDelete.DataPropertyName = "ColumnPayTypeListButtonDelete";
+            this.ColumnPayTypeListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnPayTypeListButtonDelete.HeaderText = "";
+            this.ColumnPayTypeListButtonDelete.Name = "ColumnPayTypeListButtonDelete";
+            this.ColumnPayTypeListButtonDelete.ReadOnly = true;
+            this.ColumnPayTypeListButtonDelete.Width = 70;
+            // 
+            // ColumnPayTypeListId
+            // 
+            this.ColumnPayTypeListId.DataPropertyName = "ColumnPayTypeListId";
+            this.ColumnPayTypeListId.HeaderText = "Id";
+            this.ColumnPayTypeListId.Name = "ColumnPayTypeListId";
+            this.ColumnPayTypeListId.ReadOnly = true;
+            this.ColumnPayTypeListId.Visible = false;
+            // 
+            // ColumnPayTypeListPayTypeCode
+            // 
+            this.ColumnPayTypeListPayTypeCode.DataPropertyName = "ColumnPayTypeListPayTypeCode";
+            this.ColumnPayTypeListPayTypeCode.HeaderText = "Code";
+            this.ColumnPayTypeListPayTypeCode.Name = "ColumnPayTypeListPayTypeCode";
+            this.ColumnPayTypeListPayTypeCode.ReadOnly = true;
+            this.ColumnPayTypeListPayTypeCode.Width = 150;
+            // 
+            // ColumnPayTypeListPayType
+            // 
+            this.ColumnPayTypeListPayType.DataPropertyName = "ColumnPayTypeListPayType";
+            this.ColumnPayTypeListPayType.HeaderText = "Pay Type";
+            this.ColumnPayTypeListPayType.Name = "ColumnPayTypeListPayType";
+            this.ColumnPayTypeListPayType.ReadOnly = true;
+            this.ColumnPayTypeListPayType.Width = 250;
+            // 
+            // ColumnAccountId
+            // 
+            this.ColumnAccountId.DataPropertyName = "ColumnAccountId";
+            this.ColumnAccountId.HeaderText = "AccountId";
+            this.ColumnAccountId.Name = "ColumnAccountId";
+            this.ColumnAccountId.ReadOnly = true;
+            this.ColumnAccountId.Visible = false;
+            // 
+            // ColumnPayTypeListAccount
+            // 
+            this.ColumnPayTypeListAccount.DataPropertyName = "ColumnPayTypeListAccount";
+            this.ColumnPayTypeListAccount.HeaderText = "Account";
+            this.ColumnPayTypeListAccount.Name = "ColumnPayTypeListAccount";
+            this.ColumnPayTypeListAccount.ReadOnly = true;
+            this.ColumnPayTypeListAccount.Width = 200;
+            // 
             // SysSystemTablesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -1861,12 +1871,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn ColumnTerminalListButtonDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTerminalListId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTerminalListTerminal;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnPayTypeListButtonEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnPayTypeListButtonDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPayTypeListId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPayTypeListPayType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccountId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPayTypeListAccount;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnSupplierListButtonEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnSupplierListButtonDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSupplierListId;
@@ -1887,5 +1891,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListRate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListAccountId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTaxListAccount;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnPayTypeListButtonEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnPayTypeListButtonDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPayTypeListId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPayTypeListPayTypeCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPayTypeListPayType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccountId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPayTypeListAccount;
     }
 }

@@ -17,6 +17,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public TrnPOSTouchForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();
+            sysSoftwareForm = softwareForm;
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            sysSoftwareForm.RemoveTabPage();
         }
     }
 }

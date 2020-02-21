@@ -734,14 +734,14 @@
             this.ColumnItemPriceListPriceDescription,
             this.ColumnItemPriceListPrice,
             this.ColumnItemPriceListTriggerQuantity});
-            this.dataGridViewItemPriceList.Location = new System.Drawing.Point(5, 49);
+            this.dataGridViewItemPriceList.Location = new System.Drawing.Point(3, 49);
             this.dataGridViewItemPriceList.MultiSelect = false;
             this.dataGridViewItemPriceList.Name = "dataGridViewItemPriceList";
             this.dataGridViewItemPriceList.ReadOnly = true;
             this.dataGridViewItemPriceList.RowHeadersVisible = false;
             this.dataGridViewItemPriceList.RowTemplate.Height = 24;
             this.dataGridViewItemPriceList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewItemPriceList.Size = new System.Drawing.Size(1376, 496);
+            this.dataGridViewItemPriceList.Size = new System.Drawing.Size(1378, 496);
             this.dataGridViewItemPriceList.TabIndex = 35;
             this.dataGridViewItemPriceList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItemPriceList_CellClick);
             // 
@@ -945,14 +945,14 @@
             this.ColumnItemComponenAmount,
             this.ColumnItemComponenIsPrinted,
             this.ColumnItemComponenOnHandQty});
-            this.dataGridViewItemComponentList.Location = new System.Drawing.Point(5, 49);
+            this.dataGridViewItemComponentList.Location = new System.Drawing.Point(3, 49);
             this.dataGridViewItemComponentList.MultiSelect = false;
             this.dataGridViewItemComponentList.Name = "dataGridViewItemComponentList";
             this.dataGridViewItemComponentList.ReadOnly = true;
             this.dataGridViewItemComponentList.RowHeadersVisible = false;
             this.dataGridViewItemComponentList.RowTemplate.Height = 24;
             this.dataGridViewItemComponentList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewItemComponentList.Size = new System.Drawing.Size(1376, 496);
+            this.dataGridViewItemComponentList.Size = new System.Drawing.Size(1378, 496);
             this.dataGridViewItemComponentList.TabIndex = 38;
             this.dataGridViewItemComponentList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItemComponentList_CellClick);
             // 

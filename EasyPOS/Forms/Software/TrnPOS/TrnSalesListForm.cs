@@ -540,60 +540,67 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonReprint_Click(object sender, EventArgs e)
         {
-            if (dataGridViewSalesList.Rows.Count > 1)
+            try
             {
-                if (dataGridViewSalesList.CurrentCell.RowIndex != -1)
+                if (dataGridViewSalesList.Rows.Count > 1)
                 {
-                    Boolean isLocked = Convert.ToBoolean(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnIsLocked"].Index].Value);
-                    Boolean isTendered = Convert.ToBoolean(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnIsTendered"].Index].Value);
+                    if (dataGridViewSalesList.CurrentCell.RowIndex != -1)
+                    {
+                        Boolean isLocked = Convert.ToBoolean(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnIsLocked"].Index].Value);
+                        Boolean isTendered = Convert.ToBoolean(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnIsTendered"].Index].Value);
 
-                    if (isTendered != true)
-                    {
-                        MessageBox.Show("Not tendered.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else if (isLocked != true)
-                    {
-                        MessageBox.Show("Not locked.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        DialogResult cancelDialogResult = MessageBox.Show("Reprint Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (cancelDialogResult == DialogResult.Yes)
+                        if (isTendered != true)
                         {
-                            Int32 salesId = Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value);
-
-                            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-                            Int32 collectionId = trnPOSSalesController.GetCollectionId(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value));
-                            if (collectionId != 0)
+                            MessageBox.Show("Not tendered.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else if (isLocked != true)
+                        {
+                            MessageBox.Show("Not locked.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            DialogResult cancelDialogResult = MessageBox.Show("Reprint Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (cancelDialogResult == DialogResult.Yes)
                             {
-                                if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Official Receipt")
+                                Int32 salesId = Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value);
+
+                                Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
+                                Int32 collectionId = trnPOSSalesController.GetCollectionId(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value));
+                                if (collectionId != 0)
                                 {
-                                    new Reports.RepOfficialReceiptReportForm(salesId, collectionId, true);
-                                }
-                                else if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Delivery Receipt")
-                                {
-                                    new Reports.RepDeliveryReceiptReportForm(salesId, collectionId, false, "", "", false);
+                                    if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Official Receipt")
+                                    {
+                                        new Reports.RepOfficialReceiptReportForm(salesId, collectionId, true);
+                                    }
+                                    else if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Delivery Receipt")
+                                    {
+                                        new Reports.RepDeliveryReceiptReportForm(salesId, collectionId, false, "", "", false);
+                                    }
+                                    else
+                                    {
+
+                                    }
                                 }
                                 else
                                 {
-
+                                    MessageBox.Show("No collection.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
-                            else
-                            {
-                                MessageBox.Show("No collection.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select sales.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Please select sales.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Sales empty.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Sales empty.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

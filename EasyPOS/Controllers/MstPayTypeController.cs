@@ -23,6 +23,7 @@ namespace EasyPOS.Controllers
                            select new Entities.MstPayTypeEntity
                            {
                                Id = d.Id,
+                               PayTypeCode = d.PayTypeCode,
                                PayType = d.PayType,
                                AccountId = d.AccountId,
                                Account = d.AccountId != null ? d.MstAccount.Account : "",
@@ -62,6 +63,7 @@ namespace EasyPOS.Controllers
 
                 Data.MstPayType addPayType = new Data.MstPayType()
                 {
+                    PayTypeCode = objPayType.PayTypeCode,
                     PayType = objPayType.PayType,
                     AccountId = objPayType.AccountId
                 };
@@ -112,6 +114,7 @@ namespace EasyPOS.Controllers
                     String oldObject = Modules.SysAuditTrailModule.GetObjectString(payType.FirstOrDefault());
 
                     var updatePayType = payType.FirstOrDefault();
+                    updatePayType.PayTypeCode = objPayType.PayTypeCode;
                     updatePayType.PayType = objPayType.PayType;
                     updatePayType.AccountId = objPayType.AccountId;
                     db.SubmitChanges();

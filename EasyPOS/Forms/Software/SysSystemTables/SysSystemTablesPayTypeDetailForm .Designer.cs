@@ -38,6 +38,8 @@
             this.textBoxPayType = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.textBoxPayTypeCode = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -116,7 +118,7 @@
             // 
             this.comboBoxAccount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxAccount.FormattingEnabled = true;
-            this.comboBoxAccount.Location = new System.Drawing.Point(98, 105);
+            this.comboBoxAccount.Location = new System.Drawing.Point(94, 141);
             this.comboBoxAccount.Name = "comboBoxAccount";
             this.comboBoxAccount.Size = new System.Drawing.Size(304, 31);
             this.comboBoxAccount.TabIndex = 1;
@@ -126,16 +128,16 @@
             this.textBoxPayType.AcceptsTab = true;
             this.textBoxPayType.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxPayType.HideSelection = false;
-            this.textBoxPayType.Location = new System.Drawing.Point(98, 69);
+            this.textBoxPayType.Location = new System.Drawing.Point(94, 105);
             this.textBoxPayType.Name = "textBoxPayType";
-            this.textBoxPayType.Size = new System.Drawing.Size(398, 30);
+            this.textBoxPayType.Size = new System.Drawing.Size(402, 30);
             this.textBoxPayType.TabIndex = 0;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label4.Location = new System.Drawing.Point(15, 108);
+            this.label4.Location = new System.Drawing.Point(11, 144);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 23);
             this.label4.TabIndex = 14;
@@ -145,17 +147,39 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label3.Location = new System.Drawing.Point(12, 72);
+            this.label3.Location = new System.Drawing.Point(8, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 23);
             this.label3.TabIndex = 13;
             this.label3.Text = "Pay Type:";
             // 
+            // textBoxPayTypeCode
+            // 
+            this.textBoxPayTypeCode.AcceptsTab = true;
+            this.textBoxPayTypeCode.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxPayTypeCode.HideSelection = false;
+            this.textBoxPayTypeCode.Location = new System.Drawing.Point(94, 69);
+            this.textBoxPayTypeCode.Name = "textBoxPayTypeCode";
+            this.textBoxPayTypeCode.Size = new System.Drawing.Size(220, 30);
+            this.textBoxPayTypeCode.TabIndex = 15;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label2.Location = new System.Drawing.Point(34, 72);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 23);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Code:";
+            // 
             // SysSystemTablesPayTypeDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(508, 144);
+            this.ClientSize = new System.Drawing.Size(508, 179);
+            this.Controls.Add(this.textBoxPayTypeCode);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxAccount);
             this.Controls.Add(this.textBoxPayType);
             this.Controls.Add(this.label4);
@@ -186,5 +210,7 @@
         private System.Windows.Forms.TextBox textBoxPayType;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxPayTypeCode;
+        private System.Windows.Forms.Label label2;
     }
 }

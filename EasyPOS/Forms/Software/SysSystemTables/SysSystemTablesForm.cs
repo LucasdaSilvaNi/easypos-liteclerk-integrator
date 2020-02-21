@@ -410,6 +410,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                                    ColumnPayTypeListButtonEdit = "Edit",
                                    ColumnPayTypeListButtonDelete = "Delete",
                                    ColumnPayTypeListId = d.Id,
+                                   ColumnPayTypeListPayTypeCode = d.PayTypeCode,
                                    ColumnPayTypeListPayType = d.PayType,
                                    ColumnAccountId = Convert.ToInt32(d.AccountId),
                                    ColumnPayTypeListAccount = d.Account
@@ -458,8 +459,9 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                 Entities.MstPayTypeEntity selectePaytype = new Entities.MstPayTypeEntity()
                 {
                     Id = Convert.ToInt32(dataGridViewPayTypeList.Rows[e.RowIndex].Cells[2].Value),
-                    PayType = dataGridViewPayTypeList.Rows[e.RowIndex].Cells[3].Value.ToString(),
-                    AccountId = Convert.ToInt32(dataGridViewPayTypeList.Rows[e.RowIndex].Cells[4].Value)
+                    PayTypeCode = dataGridViewPayTypeList.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                    PayType = dataGridViewPayTypeList.Rows[e.RowIndex].Cells[4].Value.ToString(),
+                    AccountId = Convert.ToInt32(dataGridViewPayTypeList.Rows[e.RowIndex].Cells[5].Value)
                 };
                 SysSystemTablesPayTypeDetailForm sysSystemTablesPayTypeDetailForm = new SysSystemTablesPayTypeDetailForm(this, selectePaytype);
                 sysSystemTablesPayTypeDetailForm.ShowDialog();

@@ -191,164 +191,171 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
         private void buttonView_OnClick(object sender, EventArgs e)
         {
-            if (listBoxSalesReport.SelectedItem != null)
+            try
             {
-                String selectedItem = listBoxSalesReport.SelectedItem.ToString();
-                switch (selectedItem)
+                if (listBoxSalesReport.SelectedItem != null)
                 {
-                    case "Sales Summary Report":
-                        sysUserRights = new Modules.SysUserRightsModule("RepSalesSummary");
+                    String selectedItem = listBoxSalesReport.SelectedItem.ToString();
+                    switch (selectedItem)
+                    {
+                        case "Sales Summary Report":
+                            sysUserRights = new Modules.SysUserRightsModule("RepSalesSummary");
 
-                        if (sysUserRights.GetUserRights() == null)
-                        {
-                            MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            if (sysUserRights.GetUserRights().CanView == true)
-                            {
-                                RepSalesReportSalesSummaryReportForm repSalesSummaryReport = new RepSalesReportSalesSummaryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
-                                repSalesSummaryReport.ShowDialog();
-                            }
-                            else
+                            if (sysUserRights.GetUserRights() == null)
                             {
                                 MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
-                        }
-
-                        break;
-                    case "Sales Detail Report":
-                        sysUserRights = new Modules.SysUserRightsModule("RepSalesDetail");
-
-                        if (sysUserRights.GetUserRights() == null)
-                        {
-                            MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            if (sysUserRights.GetUserRights().CanView == true)
-                            {
-                                RepSalesReportSalesDetailReportForm repSalesReportSalesDetail = new RepSalesReportSalesDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
-                                repSalesReportSalesDetail.ShowDialog();
-                            }
                             else
                             {
-                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-
-                        break;
-                    case "Collection Summary Report":
-                        sysUserRights = new Modules.SysUserRightsModule("RepCollectionSummary");
-
-                        if (sysUserRights.GetUserRights() == null)
-                        {
-                            MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            if (sysUserRights.GetUserRights().CanView == true)
-                            {
-                                RepSalesReportCollectionSummaryReport reportCollectionReport = new RepSalesReportCollectionSummaryReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
-                                reportCollectionReport.ShowDialog();
-                            }
-                            else
-                            {
-                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-
-                        break;
-                    case "Collection Detail Report":
-                        sysUserRights = new Modules.SysUserRightsModule("RepCollectionDetail");
-
-                        if (sysUserRights.GetUserRights() == null)
-                        {
-                            MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            if (sysUserRights.GetUserRights().CanView == true)
-                            {
-                                RepSalesReportCollectionDetailReportForm reportCollectionDetailReportForm = new RepSalesReportCollectionDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
-                                reportCollectionDetailReportForm.ShowDialog();
-                            }
-                            else
-                            {
-                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-
-                        break;
-                    case "Cancelled Summary Report":
-                        sysUserRights = new Modules.SysUserRightsModule("RepSalesCancelledSummary");
-
-                        if (sysUserRights.GetUserRights() == null)
-                        {
-                            MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            if (sysUserRights.GetUserRights().CanView == true)
-                            {
-                                RepSalesReportCancelSalesSummaryReportForm repCancelSalesSummaryReport = new RepSalesReportCancelSalesSummaryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
-                                repCancelSalesSummaryReport.ShowDialog();
-                            }
-                            else
-                            {
-                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-
-                        break;
-                    case "Stock Withdrawal Report":
-                        DialogResult printDialogResult = printDialogStockWithdrawalReport.ShowDialog();
-                        if (printDialogResult == DialogResult.OK)
-                        {
-                            String printerName = printDialogStockWithdrawalReport.PrinterSettings.PrinterName;
-                            String printFilePath = "";
-
-                            if (printerName == "Microsoft XPS Document Writer")
-                            {
-                                DialogResult folderBrowserDialoResult = folderBrowserDialogStockWithdrawalReport.ShowDialog();
-                                if (folderBrowserDialoResult == DialogResult.OK)
+                                if (sysUserRights.GetUserRights().CanView == true)
                                 {
-                                    printFilePath = folderBrowserDialogStockWithdrawalReport.SelectedPath;
+                                    RepSalesReportSalesSummaryReportForm repSalesSummaryReport = new RepSalesReportSalesSummaryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
+                                    repSalesSummaryReport.ShowDialog();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                             }
 
-                            Controllers.RepSalesReportController repSalesReportController = new Controllers.RepSalesReportController();
-                            if (repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxCustomer.SelectedValue)).Any())
+                            break;
+                        case "Sales Detail Report":
+                            sysUserRights = new Modules.SysUserRightsModule("RepSalesDetail");
+
+                            if (sysUserRights.GetUserRights() == null)
                             {
-                                foreach (var objStockWithdrawalReport in repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxCustomer.SelectedValue)))
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                if (sysUserRights.GetUserRights().CanView == true)
                                 {
-                                    String printFileName = printFilePath + "\\" + objStockWithdrawalReport.CollectionNumber + ".oxps";
-                                    new Reports.RepDeliveryReceiptReportForm(Convert.ToInt32(objStockWithdrawalReport.SalesId), objStockWithdrawalReport.Id, false, printerName, printFileName, true);
+                                    RepSalesReportSalesDetailReportForm repSalesReportSalesDetail = new RepSalesReportSalesDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
+                                    repSalesReportSalesDetail.ShowDialog();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                             }
-                        }
 
-                        break;
-                    case "Collection Detail Report (Facepay)":
-                        String printCollectionDetailReportFacepayFilePath = "";
+                            break;
+                        case "Collection Summary Report":
+                            sysUserRights = new Modules.SysUserRightsModule("RepCollectionSummary");
 
-                        DialogResult folderBrowserDialogCollectionDetailReportFacepayDialoResult = folderBrowserDialogCollectionDetailReportFacepay.ShowDialog();
-                        if (folderBrowserDialogCollectionDetailReportFacepayDialoResult == DialogResult.OK)
-                        {
-                            printCollectionDetailReportFacepayFilePath = folderBrowserDialogCollectionDetailReportFacepay.SelectedPath;
-                            new RepSalesReportCollectionDetailFacepayReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), printCollectionDetailReportFacepayFilePath);
-                        }
+                            if (sysUserRights.GetUserRights() == null)
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                if (sysUserRights.GetUserRights().CanView == true)
+                                {
+                                    RepSalesReportCollectionSummaryReport reportCollectionReport = new RepSalesReportCollectionSummaryReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
+                                    reportCollectionReport.ShowDialog();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
 
-                        break;
-                    default:
-                        MessageBox.Show("Please select a report.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        case "Collection Detail Report":
+                            sysUserRights = new Modules.SysUserRightsModule("RepCollectionDetail");
 
-                        break;
+                            if (sysUserRights.GetUserRights() == null)
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                if (sysUserRights.GetUserRights().CanView == true)
+                                {
+                                    RepSalesReportCollectionDetailReportForm reportCollectionDetailReportForm = new RepSalesReportCollectionDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
+                                    reportCollectionDetailReportForm.ShowDialog();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+
+                            break;
+                        case "Cancelled Summary Report":
+                            sysUserRights = new Modules.SysUserRightsModule("RepSalesCancelledSummary");
+
+                            if (sysUserRights.GetUserRights() == null)
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                if (sysUserRights.GetUserRights().CanView == true)
+                                {
+                                    RepSalesReportCancelSalesSummaryReportForm repCancelSalesSummaryReport = new RepSalesReportCancelSalesSummaryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
+                                    repCancelSalesSummaryReport.ShowDialog();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+
+                            break;
+                        case "Stock Withdrawal Report":
+                            DialogResult printDialogResult = printDialogStockWithdrawalReport.ShowDialog();
+                            if (printDialogResult == DialogResult.OK)
+                            {
+                                String printerName = printDialogStockWithdrawalReport.PrinterSettings.PrinterName;
+                                String printFilePath = "";
+
+                                if (printerName == "Microsoft XPS Document Writer")
+                                {
+                                    DialogResult folderBrowserDialoResult = folderBrowserDialogStockWithdrawalReport.ShowDialog();
+                                    if (folderBrowserDialoResult == DialogResult.OK)
+                                    {
+                                        printFilePath = folderBrowserDialogStockWithdrawalReport.SelectedPath;
+                                    }
+                                }
+
+                                Controllers.RepSalesReportController repSalesReportController = new Controllers.RepSalesReportController();
+                                if (repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxCustomer.SelectedValue)).Any())
+                                {
+                                    foreach (var objStockWithdrawalReport in repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxCustomer.SelectedValue)))
+                                    {
+                                        String printFileName = printFilePath + "\\" + objStockWithdrawalReport.CollectionNumber + ".oxps";
+                                        new Reports.RepDeliveryReceiptReportForm(Convert.ToInt32(objStockWithdrawalReport.SalesId), objStockWithdrawalReport.Id, false, printerName, printFileName, true);
+                                    }
+                                }
+                            }
+
+                            break;
+                        case "Collection Detail Report (Facepay)":
+                            String printCollectionDetailReportFacepayFilePath = "";
+
+                            DialogResult folderBrowserDialogCollectionDetailReportFacepayDialoResult = folderBrowserDialogCollectionDetailReportFacepay.ShowDialog();
+                            if (folderBrowserDialogCollectionDetailReportFacepayDialoResult == DialogResult.OK)
+                            {
+                                printCollectionDetailReportFacepayFilePath = folderBrowserDialogCollectionDetailReportFacepay.SelectedPath;
+                                new RepSalesReportCollectionDetailFacepayReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), printCollectionDetailReportFacepayFilePath);
+                            }
+
+                            break;
+                        default:
+                            MessageBox.Show("Please select a report.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            break;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a report.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Please select a report.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

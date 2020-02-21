@@ -45,6 +45,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
         {
             if (mstPayTypeEntity != null)
             {
+                textBoxPayTypeCode.Text = mstPayTypeEntity.PayType;
                 textBoxPayType.Text = mstPayTypeEntity.PayType;
                 comboBoxAccount.SelectedValue = mstPayTypeEntity.AccountId;
             }
@@ -75,6 +76,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             {
                 MstPayTypeEntity updatePayType = new MstPayTypeEntity()
                 {
+                    PayTypeCode = textBoxPayTypeCode.Text,
                     PayType = textBoxPayType.Text,
                     AccountId = Convert.ToInt32(comboBoxAccount.SelectedValue)
                 };
