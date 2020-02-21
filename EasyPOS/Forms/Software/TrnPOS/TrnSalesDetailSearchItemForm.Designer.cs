@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnSalesDetailSearchItemForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -36,6 +37,7 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.dataGridViewSearchItemList = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.ColumnSearchItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSearchItemBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSearchItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,7 +50,6 @@
             this.ColumnSearchItemPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSearchItemOnHandQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSearchItemButtonPick = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchItemList)).BeginInit();
@@ -149,6 +150,16 @@
             this.dataGridViewSearchItemList.TabIndex = 6;
             this.dataGridViewSearchItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSearchItemList_CellClick);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.textBoxFilter);
+            this.panel2.Controls.Add(this.dataGridViewSearchItemList);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 63);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(982, 490);
+            this.panel2.TabIndex = 7;
+            // 
             // ColumnSearchItemId
             // 
             this.ColumnSearchItemId.HeaderText = "Id";
@@ -214,16 +225,17 @@
             // 
             // ColumnSearchItemPrice
             // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSearchItemPrice.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColumnSearchItemPrice.HeaderText = "Price";
             this.ColumnSearchItemPrice.Name = "ColumnSearchItemPrice";
             this.ColumnSearchItemPrice.ReadOnly = true;
-            this.ColumnSearchItemPrice.Visible = false;
             // 
             // ColumnSearchItemOnHandQuantity
             // 
             this.ColumnSearchItemOnHandQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSearchItemOnHandQuantity.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSearchItemOnHandQuantity.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnSearchItemOnHandQuantity.HeaderText = "On Hand Qty.";
             this.ColumnSearchItemOnHandQuantity.Name = "ColumnSearchItemOnHandQuantity";
             this.ColumnSearchItemOnHandQuantity.ReadOnly = true;
@@ -238,16 +250,6 @@
             this.ColumnSearchItemButtonPick.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ColumnSearchItemButtonPick.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.ColumnSearchItemButtonPick.Width = 70;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.textBoxFilter);
-            this.panel2.Controls.Add(this.dataGridViewSearchItemList);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 63);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(982, 490);
-            this.panel2.TabIndex = 7;
             // 
             // TrnSalesDetailSearchItemForm
             // 
@@ -282,6 +284,7 @@
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.TextBox textBoxFilter;
         private System.Windows.Forms.DataGridView dataGridViewSearchItemList;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSearchItemId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSearchItemBarcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSearchItemDescription;
@@ -294,6 +297,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSearchItemPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSearchItemOnHandQuantity;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnSearchItemButtonPick;
-        private System.Windows.Forms.Panel panel2;
     }
 }
