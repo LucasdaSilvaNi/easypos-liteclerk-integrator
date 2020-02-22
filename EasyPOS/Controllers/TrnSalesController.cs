@@ -44,6 +44,65 @@ namespace EasyPOS.Controllers
             return terminals.ToList();
         }
 
+        // ==============
+        // POS List Sales 
+        // ==============
+        public List<Entities.TrnSalesEntity> POSTTouchListSales(DateTime dateTime, Int32 terminalId)
+        {
+            var sales = from d in db.TrnSales
+                        where d.SalesDate == dateTime
+                        && d.TerminalId == terminalId
+                        select new Entities.TrnSalesEntity
+                        {
+                            Id = d.Id,
+                            PeriodId = d.PeriodId,
+                            Period = d.MstPeriod.Period,
+                            SalesDate = d.SalesDate.ToShortDateString(),
+                            SalesNumber = d.SalesNumber,
+                            ManualInvoiceNumber = d.ManualInvoiceNumber,
+                            CollectionNumber = d.CollectionNumber,
+                            Amount = d.Amount,
+                            TableId = d.TableId,
+                            CustomerId = d.CustomerId,
+                            Customer = d.MstCustomer.Customer,
+                            AccountId = d.AccountId,
+                            TermId = d.TermId,
+                            Term = d.MstTerm.Term,
+                            DiscountId = d.DiscountId,
+                            SeniorCitizenId = d.SeniorCitizenId,
+                            SeniorCitizenName = d.SeniorCitizenName,
+                            SeniorCitizenAge = d.SeniorCitizenAge,
+                            Remarks = d.Remarks,
+                            SalesAgent = d.SalesAgent,
+                            SalesAgentUserName = d.SalesAgent != null ? d.MstUser5.UserName : "",
+                            TerminalId = d.TerminalId,
+                            Terminal = d.MstTerminal.Terminal,
+                            PreparedBy = d.PreparedBy,
+                            PreparedByUserName = d.MstUser.FullName,
+                            CheckedBy = d.CheckedBy,
+                            CheckedByUserName = d.MstUser1.FullName,
+                            ApprovedBy = d.ApprovedBy,
+                            ApprovedByUserName = d.MstUser2.FullName,
+                            IsLocked = d.IsLocked,
+                            IsTendered = d.IsTendered,
+                            IsCancelled = d.IsCancelled,
+                            PaidAmount = d.PaidAmount,
+                            CreditAmount = d.CreditAmount,
+                            DebitAmount = d.DebitAmount,
+                            BalanceAmount = d.BalanceAmount,
+                            EntryUserId = d.EntryUserId,
+                            EntryUserName = d.MstUser3.FullName,
+                            EntryDateTime = d.EntryDateTime.ToShortDateString(),
+                            UpdateUserId = d.UpdateUserId,
+                            UpdatedUserName = d.MstUser4.FullName,
+                            UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
+                            Pax = d.Pax,
+                            TableStatus = d.TableStatus,
+                        };
+
+            return sales.OrderByDescending(d => d.Id).ToList();
+        }
+
         // ==========
         // List Sales 
         // ==========
@@ -998,6 +1057,70 @@ namespace EasyPOS.Controllers
             else
             {
                 return false;
+            }
+        }
+
+        // ==========
+        // Lock Sales
+        // ==========
+        public String[] LockSales(Int32 salesId)
+        {
+            try
+            {
+                var sales = from d in db.TrnSales
+                            where d.Id == salesId
+                            select d;
+
+                if (sales.Any())
+                {
+                    var updateSales = sales.FirstOrDefault();
+                    updateSales.IsLocked = true;
+                    updateSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
+                    updateSales.UpdateDateTime = DateTime.Now;
+                    db.SubmitChanges();
+
+                    return new String[] { "", "1" };
+                }
+                else
+                {
+                    return new String[] { "Sales not found.", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
+        // ============
+        // Unlock Sales
+        // ============
+        public String[] UnlockSales(Int32 salesId)
+        {
+            try
+            {
+                var sales = from d in db.TrnSales
+                            where d.Id == salesId
+                            select d;
+
+                if (sales.Any())
+                {
+                    var updateSales = sales.FirstOrDefault();
+                    updateSales.IsLocked = false;
+                    updateSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
+                    updateSales.UpdateDateTime = DateTime.Now;
+                    db.SubmitChanges();
+
+                    return new String[] { "", "1" };
+                }
+                else
+                {
+                    return new String[] { "Sales not found.", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
             }
         }
     }

@@ -33,6 +33,38 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
             else
             {
+                if (sysUserRights.GetUserRights().CanLock == false)
+                {
+                    buttonLock.Enabled = false;
+                }
+                else
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        buttonLock.Enabled = false;
+                    }
+                    else
+                    {
+                        buttonLock.Enabled = true;
+                    }
+                }
+
+                if (sysUserRights.GetUserRights().CanUnlock == false)
+                {
+                    buttonUnlock.Enabled = false;
+                }
+                else
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        buttonUnlock.Enabled = true;
+                    }
+                    else
+                    {
+                        buttonUnlock.Enabled = false;
+                    }
+                }
+
                 if (sysUserRights.GetUserRights().CanTender == false)
                 {
                     buttonTender.Enabled = false;
@@ -43,15 +75,50 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     buttonBarcode.Enabled = false;
                     buttonSearchItem.Enabled = false;
                 }
+                else
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        buttonBarcode.Enabled = false;
+                        buttonSearchItem.Enabled = false;
+                    }
+                    else
+                    {
+                        buttonBarcode.Enabled = true;
+                        buttonSearchItem.Enabled = true;
+                    }
+                }
 
                 if (sysUserRights.GetUserRights().CanEdit == false)
                 {
                     dataGridViewSalesLineList.Columns[0].Visible = false;
                 }
+                else
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        dataGridViewSalesLineList.Columns[0].Visible = false;
+                    }
+                    else
+                    {
+                        dataGridViewSalesLineList.Columns[0].Visible = true;
+                    }
+                }
 
                 if (sysUserRights.GetUserRights().CanDelete == false)
                 {
                     dataGridViewSalesLineList.Columns[1].Visible = false;
+                }
+                else
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        dataGridViewSalesLineList.Columns[1].Visible = false;
+                    }
+                    else
+                    {
+                        dataGridViewSalesLineList.Columns[1].Visible = true;
+                    }
                 }
 
                 GetSalesDetail();
@@ -352,5 +419,50 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
         }
 
+        private void buttonLock_Click(object sender, EventArgs e)
+        {
+            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
+            String[] lockSales = trnPOSSalesController.LockSales(trnSalesEntity.Id);
+            if (lockSales[1].Equals("0") == false)
+            {
+                buttonLock.Enabled = false;
+                buttonUnlock.Enabled = true;
+                buttonDiscount.Enabled = false;
+
+                buttonBarcode.Enabled = false;
+                buttonSearchItem.Enabled = false;
+                textBoxBarcode.Enabled = false;
+
+                dataGridViewSalesLineList.Columns[0].Visible = false;
+                dataGridViewSalesLineList.Columns[1].Visible = false;
+            }
+            else
+            {
+                MessageBox.Show(lockSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonUnlock_Click(object sender, EventArgs e)
+        {
+            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
+            String[] lockSales = trnPOSSalesController.UnlockSales(trnSalesEntity.Id);
+            if (lockSales[1].Equals("0") == false)
+            {
+                buttonLock.Enabled = true;
+                buttonUnlock.Enabled = false;
+                buttonDiscount.Enabled = true;
+
+                buttonBarcode.Enabled = true;
+                buttonSearchItem.Enabled = true;
+                textBoxBarcode.Enabled = true;
+
+                dataGridViewSalesLineList.Columns[0].Visible = true;
+                dataGridViewSalesLineList.Columns[1].Visible = true;
+            }
+            else
+            {
+                MessageBox.Show(lockSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
