@@ -17,19 +17,25 @@ namespace EasyPOS.Forms.Software.TrnPOS
     public partial class TrnSalesDetailTenderForm : Form
     {
         public SysSoftwareForm sysSoftwareForm;
+
         public TrnSalesListForm trnSalesListForm;
+
         public TrnSalesDetailForm trnSalesDetailForm;
+        public TrnPOSTouchDetailForm trnPOSTouchDetailForm;
+
         public Entities.TrnSalesEntity trnSalesEntity;
         public String collectionNumber = "";
 
-        public TrnSalesDetailTenderForm(SysSoftwareForm softwareForm, TrnSalesListForm salesListForm, TrnSalesDetailForm salesDetailForm, Entities.TrnSalesEntity salesEntity)
+        public TrnSalesDetailTenderForm(SysSoftwareForm softwareForm, TrnSalesListForm salesListForm, TrnSalesDetailForm salesDetailForm, TrnPOSTouchDetailForm POSTouchDetailForm, Entities.TrnSalesEntity salesEntity)
         {
             InitializeComponent();
 
             sysSoftwareForm = softwareForm;
 
             trnSalesListForm = salesListForm;
+
             trnSalesDetailForm = salesDetailForm;
+            trnPOSTouchDetailForm = POSTouchDetailForm;
 
             trnSalesEntity = salesEntity;
 
@@ -217,11 +223,23 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         trnSalesDetailForm.Close();
                         sysSoftwareForm.RemoveTabPage();
 
-                        trnSalesDetailForm.trnSalesListForm.newSales();
+                        if (trnSalesListForm != null)
+                        {
+                            trnSalesDetailForm.trnSalesListForm.newSales();
+                        }
                     }
                     else
                     {
-                        trnSalesListForm.UpdateSalesListGridDataSource();
+                        if (trnSalesListForm != null)
+                        {
+                            trnSalesListForm.UpdateSalesListGridDataSource();
+                        }
+                    }
+
+                    if (trnPOSTouchDetailForm != null)
+                    {
+                        trnPOSTouchDetailForm.Close();
+                        sysSoftwareForm.RemoveTabPage();
                     }
                 }
                 else
@@ -339,7 +357,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             if (e.RowIndex > -1 && dataGridViewTenderPayType.CurrentCell.ColumnIndex == dataGridViewTenderPayType.Columns["ColumnTenderListPayTypePayType"].Index)
             {
                 String payTypeCode = dataGridViewTenderPayType.Rows[dataGridViewTenderPayType.CurrentCell.RowIndex].Cells[dataGridViewTenderPayType.Columns["ColumnTenderListPayTypePayTypeCode"].Index].Value.ToString();
-                if (payTypeCode == "Easypay")
+                if (payTypeCode == "EASYPAY")
                 {
                     Decimal totalTenderAmount = 0;
 
@@ -356,7 +374,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     TrnSalesDetailTenderEasypayInformationForm trnSalesDetailTenderEasypayInformationForm = new TrnSalesDetailTenderEasypayInformationForm(this, dataGridViewTenderPayType, easypayAmount);
                     trnSalesDetailTenderEasypayInformationForm.ShowDialog();
                 }
-                else if (payTypeCode == "Facepay")
+                else if (payTypeCode == "FACEPAY")
                 {
                     Decimal totalTenderAmount = 0;
 

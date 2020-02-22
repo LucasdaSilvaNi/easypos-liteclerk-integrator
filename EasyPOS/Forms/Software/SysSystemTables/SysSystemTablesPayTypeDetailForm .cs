@@ -37,7 +37,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                 }
 
                 GetAccountList();
-                textBoxPayType.Focus();
+                textBoxPayTypeCode.Focus();
             }
         }
 
@@ -45,7 +45,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
         {
             if (mstPayTypeEntity != null)
             {
-                textBoxPayTypeCode.Text = mstPayTypeEntity.PayType;
+                textBoxPayTypeCode.Text = mstPayTypeEntity.PayTypeCode;
                 textBoxPayType.Text = mstPayTypeEntity.PayType;
                 comboBoxAccount.SelectedValue = mstPayTypeEntity.AccountId;
             }
@@ -95,8 +95,10 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             }
             else
             {
+                mstPayTypeEntity.PayTypeCode = textBoxPayTypeCode.Text;
                 mstPayTypeEntity.PayType = textBoxPayType.Text;
                 mstPayTypeEntity.AccountId = Convert.ToInt32(comboBoxAccount.SelectedValue);
+
                 Controllers.MstPayTypeController mstPayTypeController = new Controllers.MstPayTypeController();
                 String[] updatePayType = mstPayTypeController.UpdatePayType(mstPayTypeEntity);
                 if (updatePayType[1].Equals("0"))

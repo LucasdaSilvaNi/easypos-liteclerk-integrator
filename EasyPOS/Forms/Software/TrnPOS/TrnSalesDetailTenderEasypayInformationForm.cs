@@ -209,14 +209,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     if (mstDataGridViewTenderPayType.Rows.Contains(mstDataGridViewTenderPayType.CurrentRow))
                     {
                         Int32 id = Convert.ToInt32(mstDataGridViewTenderPayType.CurrentRow.Cells[0].Value);
-                        String payType = mstDataGridViewTenderPayType.CurrentRow.Cells[1].Value.ToString();
+                        String payTypeCode = mstDataGridViewTenderPayType.CurrentRow.Cells[1].Value.ToString();
+                        String payType = mstDataGridViewTenderPayType.CurrentRow.Cells[2].Value.ToString();
                         Decimal amount = Convert.ToDecimal(textBoxAmountCharge.Text);
                         String otherInformation = "Easypay Payment " + DateTime.Now.ToLongDateString();
 
                         mstDataGridViewTenderPayType.CurrentRow.Cells[0].Value = id;
-                        mstDataGridViewTenderPayType.CurrentRow.Cells[1].Value = payType;
-                        mstDataGridViewTenderPayType.CurrentRow.Cells[2].Value = amount;
-                        mstDataGridViewTenderPayType.CurrentRow.Cells[3].Value = otherInformation;
+                        mstDataGridViewTenderPayType.CurrentRow.Cells[1].Value = payTypeCode;
+                        mstDataGridViewTenderPayType.CurrentRow.Cells[2].Value = payType;
+                        mstDataGridViewTenderPayType.CurrentRow.Cells[3].Value = amount;
+                        mstDataGridViewTenderPayType.CurrentRow.Cells[4].Value = otherInformation;
                     }
 
                     mstDataGridViewTenderPayType.Refresh();

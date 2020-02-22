@@ -13,11 +13,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
     public partial class TrnSalesDetailDiscountForm : Form
     {
         public TrnSalesDetailForm trnSalesDetailForm;
+        public TrnPOSTouchDetailForm trnPOSTouchDetailForm;
 
-        public TrnSalesDetailDiscountForm(TrnSalesDetailForm salesDetailForm)
+        public TrnSalesDetailDiscountForm(TrnSalesDetailForm salesDetailForm, TrnPOSTouchDetailForm POSTouchDetailForm)
         {
             InitializeComponent();
+
             trnSalesDetailForm = salesDetailForm;
+            trnPOSTouchDetailForm = POSTouchDetailForm;
 
             GetDiscount();
         }
@@ -38,12 +41,34 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public void GetSalesDiscountInformation()
         {
             Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();
-            if (trnSalesController.DiscountDetailSales(trnSalesDetailForm.trnSalesEntity.Id).DiscountId != null)
+
+            Int32? discountId = null;
+            String seniorCitizenID = "";
+            String seniorCitizenName = "";
+            String seniorCitizenAge = "";
+
+            if (trnSalesDetailForm != null)
             {
-                comboBoxDiscount.SelectedValue = trnSalesController.DiscountDetailSales(trnSalesDetailForm.trnSalesEntity.Id).DiscountId;
-                textBoxSeniorCitizenID.Text = trnSalesController.DiscountDetailSales(trnSalesDetailForm.trnSalesEntity.Id).SeniorCitizenId;
-                textBoxSeniorCitizenName.Text = trnSalesController.DiscountDetailSales(trnSalesDetailForm.trnSalesEntity.Id).SeniorCitizenName;
-                textBoxSeniorCitizenAge.Text = trnSalesController.DiscountDetailSales(trnSalesDetailForm.trnSalesEntity.Id).SeniorCitizenAge.ToString();
+                discountId = trnSalesController.DiscountDetailSales(trnSalesDetailForm.trnSalesEntity.Id).DiscountId;
+                seniorCitizenID = trnSalesController.DiscountDetailSales(trnSalesDetailForm.trnSalesEntity.Id).SeniorCitizenId;
+                seniorCitizenName = trnSalesController.DiscountDetailSales(trnSalesDetailForm.trnSalesEntity.Id).SeniorCitizenName;
+                seniorCitizenAge = trnSalesController.DiscountDetailSales(trnSalesDetailForm.trnSalesEntity.Id).SeniorCitizenAge.ToString();
+            }
+
+            if (trnPOSTouchDetailForm != null)
+            {
+                discountId = trnSalesController.DiscountDetailSales(trnPOSTouchDetailForm.trnSalesEntity.Id).DiscountId;
+                seniorCitizenID = trnSalesController.DiscountDetailSales(trnPOSTouchDetailForm.trnSalesEntity.Id).SeniorCitizenId;
+                seniorCitizenName = trnSalesController.DiscountDetailSales(trnPOSTouchDetailForm.trnSalesEntity.Id).SeniorCitizenName;
+                seniorCitizenAge = trnSalesController.DiscountDetailSales(trnPOSTouchDetailForm.trnSalesEntity.Id).SeniorCitizenAge.ToString();
+            }
+
+            if (discountId != null)
+            {
+                comboBoxDiscount.SelectedValue = discountId;
+                textBoxSeniorCitizenID.Text = seniorCitizenID;
+                textBoxSeniorCitizenName.Text = seniorCitizenName;
+                textBoxSeniorCitizenAge.Text = seniorCitizenAge;
             }
             else
             {
@@ -67,12 +92,33 @@ namespace EasyPOS.Forms.Software.TrnPOS
             };
 
             Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();
-            String[] discountSales = trnSalesController.DiscountSales(trnSalesDetailForm.trnSalesEntity.Id, salesEntity);
+
+            String[] discountSales = new String[2];
+
+            if (trnSalesDetailForm != null)
+            {
+                discountSales = trnSalesController.DiscountSales(trnSalesDetailForm.trnSalesEntity.Id, salesEntity);
+            }
+
+            if (trnPOSTouchDetailForm != null)
+            {
+                discountSales = trnSalesController.DiscountSales(trnPOSTouchDetailForm.trnSalesEntity.Id, salesEntity);
+            }
+
             if (discountSales[1].Equals("0") == false)
             {
-                trnSalesDetailForm.trnSalesEntity.DiscountId = discountId;
+                if (trnSalesDetailForm != null)
+                {
+                    trnSalesDetailForm.trnSalesEntity.DiscountId = discountId;
+                    trnSalesDetailForm.GetSalesLineList();
+                }
 
-                trnSalesDetailForm.GetSalesLineList();
+                if (trnPOSTouchDetailForm != null)
+                {
+                    trnPOSTouchDetailForm.trnSalesEntity.DiscountId = discountId;
+                    trnPOSTouchDetailForm.GetSalesLineList();
+                }
+
                 Close();
             }
             else

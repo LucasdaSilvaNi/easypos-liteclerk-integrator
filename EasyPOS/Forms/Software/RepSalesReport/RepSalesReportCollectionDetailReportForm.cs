@@ -65,7 +65,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                               ColumnCheckDate = d.CheckDate,
                               ColumnCheckBank = d.CheckBank,
                               ColumnOtherInformation = d.OtherInformation,
-                              ColumnPhoto = Directory.Exists(facepayImagePath) == true ? File.Exists(facepayImagePath + "\\" + d.CollectionNumber + ".png") == true ? Image.FromFile(facepayImagePath + "\\" + d.CollectionNumber + ".png") : null : null
+                              ColumnPhoto = Directory.Exists(facepayImagePath) == true ? File.Exists(facepayImagePath + "\\" + d.CollectionNumber + ".jpeg") == true ? Image.FromFile(facepayImagePath + "\\" + d.CollectionNumber + ".jpeg") : null : null
                           };
 
                 totalAmount = collectionDetailList.Sum(d => d.Amount);

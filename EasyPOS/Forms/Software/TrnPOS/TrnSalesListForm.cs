@@ -522,7 +522,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                             Modules.SysSerialPortModule.WriteSeralPortMessage(line1, line2);
 
-                            TrnSalesDetailTenderForm trnSalesDetailTenderForm = new TrnSalesDetailTenderForm(sysSoftwareForm, this, null, newSalesEntity);
+                            TrnSalesDetailTenderForm trnSalesDetailTenderForm = new TrnSalesDetailTenderForm(sysSoftwareForm, this, null, null, newSalesEntity);
                             trnSalesDetailTenderForm.ShowDialog();
                         }
                     }

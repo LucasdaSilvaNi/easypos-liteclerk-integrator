@@ -121,7 +121,7 @@
             this.comboBoxAccount.Location = new System.Drawing.Point(94, 141);
             this.comboBoxAccount.Name = "comboBoxAccount";
             this.comboBoxAccount.Size = new System.Drawing.Size(304, 31);
-            this.comboBoxAccount.TabIndex = 1;
+            this.comboBoxAccount.TabIndex = 2;
             // 
             // textBoxPayType
             // 
@@ -131,7 +131,7 @@
             this.textBoxPayType.Location = new System.Drawing.Point(94, 105);
             this.textBoxPayType.Name = "textBoxPayType";
             this.textBoxPayType.Size = new System.Drawing.Size(402, 30);
-            this.textBoxPayType.TabIndex = 0;
+            this.textBoxPayType.TabIndex = 1;
             // 
             // label4
             // 
@@ -161,7 +161,7 @@
             this.textBoxPayTypeCode.Location = new System.Drawing.Point(94, 69);
             this.textBoxPayTypeCode.Name = "textBoxPayTypeCode";
             this.textBoxPayTypeCode.Size = new System.Drawing.Size(220, 30);
-            this.textBoxPayTypeCode.TabIndex = 15;
+            this.textBoxPayTypeCode.TabIndex = 0;
             // 
             // label2
             // 

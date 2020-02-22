@@ -81,7 +81,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                       && d.TrnCollection.TerminalId == terminalId
                                       && d.TrnCollection.IsLocked == true
                                       && d.TrnCollection.IsCancelled == false
-                                      && d.MstPayType.PayType == "Facepay"
+                                      && d.MstPayType.PayTypeCode == "FACEPAY"
                                       select d;
 
                 if (collectionLines.Any())

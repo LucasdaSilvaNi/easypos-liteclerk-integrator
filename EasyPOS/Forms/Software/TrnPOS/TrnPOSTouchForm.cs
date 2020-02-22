@@ -24,5 +24,20 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             sysSoftwareForm.RemoveTabPage();
         }
+
+        private void buttonWalkIn_Click(object sender, EventArgs e)
+        {
+            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
+            String[] addSales = trnPOSSalesController.AddSales();
+            if (addSales[1].Equals("0") == false)
+            {
+                sysSoftwareForm.AddTabPagePOSTouchSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(addSales[1])));
+                //UpdateSalesListGridDataSource();
+            }
+            else
+            {
+                MessageBox.Show(addSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

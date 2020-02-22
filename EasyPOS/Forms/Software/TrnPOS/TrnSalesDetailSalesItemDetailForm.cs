@@ -13,13 +13,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
     public partial class TrnSalesDetailSalesItemDetailForm : Form
     {
         public TrnSalesDetailForm trnSalesDetailForm;
+        public TrnPOSTouchDetailForm trnPOSTouchDetailForm;
         public Entities.TrnSalesLineEntity trnSalesLineEntity;
 
-        public TrnSalesDetailSalesItemDetailForm(TrnSalesDetailForm salesDetailForm, Entities.TrnSalesLineEntity salesLineEntity)
+        public TrnSalesDetailSalesItemDetailForm(TrnSalesDetailForm salesDetailForm, TrnPOSTouchDetailForm POSTouchDetailForm, Entities.TrnSalesLineEntity salesLineEntity)
         {
             InitializeComponent();
 
             trnSalesDetailForm = salesDetailForm;
+            trnPOSTouchDetailForm = POSTouchDetailForm;
+
             trnSalesLineEntity = salesLineEntity;
 
             GetDiscountList();
@@ -38,9 +41,21 @@ namespace EasyPOS.Forms.Software.TrnPOS
             Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
             if (trnPOSSalesLineController.DropdownListDiscount().Any())
             {
-                if (trnSalesDetailForm.trnSalesEntity.DiscountId != null)
+                Int32? discountId = null;
+
+                if (trnSalesDetailForm != null)
                 {
-                    if (trnPOSSalesLineController.IsVATExempt(Convert.ToInt32(trnSalesDetailForm.trnSalesEntity.DiscountId)) == true)
+                    discountId = trnSalesDetailForm.trnSalesEntity.DiscountId;
+                }
+
+                if (trnPOSTouchDetailForm != null)
+                {
+                    discountId = trnPOSTouchDetailForm.trnSalesEntity.DiscountId;
+                }
+
+                if (discountId != null)
+                {
+                    if (trnPOSSalesLineController.IsVATExempt(Convert.ToInt32(discountId)) == true)
                     {
                         var discounts = from d in trnPOSSalesLineController.DropdownListDiscount()
                                         select d;
@@ -93,10 +108,22 @@ namespace EasyPOS.Forms.Software.TrnPOS
             textBoxSalesLineVATAmount.Text = trnSalesLineEntity.TaxAmount.ToString("#,##0.00");
             textBoxSalesLineRemarks.Text = trnSalesLineEntity.Preparation;
 
-            if (trnSalesDetailForm.trnSalesEntity.DiscountId != null)
+            Int32? discountId = null;
+
+            if (trnSalesDetailForm != null)
+            {
+                discountId = trnSalesDetailForm.trnSalesEntity.DiscountId;
+            }
+
+            if (trnPOSTouchDetailForm != null)
+            {
+                discountId = trnPOSTouchDetailForm.trnSalesEntity.DiscountId;
+            }
+
+            if (discountId != null)
             {
                 Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
-                if (trnPOSSalesLineController.IsVATExempt(Convert.ToInt32(trnSalesDetailForm.trnSalesEntity.DiscountId)) == true)
+                if (trnPOSSalesLineController.IsVATExempt(Convert.ToInt32(discountId)) == true)
                 {
                     comboBoxSalesLineDiscount.Enabled = false;
                 }
@@ -148,7 +175,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 String[] addSales = trnPOSSalesLineController.AddSalesLine(newSalesLineEntity);
                 if (addSales[1].Equals("0") == false)
                 {
-                    trnSalesDetailForm.GetSalesLineList();
+                    if (trnSalesDetailForm != null)
+                    {
+                        trnSalesDetailForm.GetSalesLineList();
+                    }
+
+                    if (trnPOSTouchDetailForm != null)
+                    {
+                        trnPOSTouchDetailForm.GetSalesLineList();
+                    }
+
                     Close();
                 }
                 else
@@ -161,7 +197,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 String[] addSales = trnPOSSalesLineController.UpdateSalesLine(trnSalesLineEntity.Id, newSalesLineEntity);
                 if (addSales[1].Equals("0") == false)
                 {
-                    trnSalesDetailForm.GetSalesLineList();
+                    if (trnSalesDetailForm != null)
+                    {
+                        trnSalesDetailForm.GetSalesLineList();
+                    }
+
+                    if (trnPOSTouchDetailForm != null)
+                    {
+                        trnPOSTouchDetailForm.GetSalesLineList();
+                    }
+
                     Close();
                 }
                 else

@@ -909,6 +909,9 @@
     <EmbeddedResource Include="Forms\Software\TrnDisbursement\TrnDisbursementListForm.resx">
       <DependentUpon>TrnDisbursementListForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTouchDetailForm.resx">
+      <DependentUpon>TrnPOSTouchDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTouchForm.resx">
       <DependentUpon>TrnPOSTouchForm.cs</DependentUpon>
     </EmbeddedResource>

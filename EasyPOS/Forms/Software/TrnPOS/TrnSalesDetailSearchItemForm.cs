@@ -13,13 +13,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
     public partial class TrnSalesDetailSearchItemForm : Form
     {
         public TrnSalesDetailForm trnSalesDetailForm;
+        public TrnPOSTouchDetailForm trnPOSTouchDetailForm;
         public Entities.TrnSalesEntity trnSalesEntity;
 
-        public TrnSalesDetailSearchItemForm(TrnSalesDetailForm salesDetailForm, Entities.TrnSalesEntity salesEntity)
+        public TrnSalesDetailSearchItemForm(TrnSalesDetailForm salesDetailForm, TrnPOSTouchDetailForm POSTouchDetailForm, Entities.TrnSalesEntity salesEntity)
         {
             InitializeComponent();
 
             trnSalesDetailForm = salesDetailForm;
+            trnPOSTouchDetailForm = POSTouchDetailForm;
+
             trnSalesEntity = salesEntity;
 
             GetSearchItemList();
@@ -127,7 +130,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     PriceSplitPercentage = 0
                 };
 
-                TrnSalesDetailSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnSalesDetailSalesItemDetailForm(trnSalesDetailForm, trnSalesLineEntity);
+                TrnSalesDetailSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnSalesDetailSalesItemDetailForm(trnSalesDetailForm, trnPOSTouchDetailForm, trnSalesLineEntity);
                 trnSalesDetailSalesItemDetailForm.ShowDialog();
             }
         }

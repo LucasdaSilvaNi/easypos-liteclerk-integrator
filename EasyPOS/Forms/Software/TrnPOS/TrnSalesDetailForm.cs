@@ -61,7 +61,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 GetSalesDetail();
                 GetSalesLineList();
             }
-            
+
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -94,7 +94,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     Customer = trnSalesEntity.Customer
                 };
 
-                TrnSalesDetailTenderForm trnSalesDetailTenderForm = new TrnSalesDetailTenderForm(sysSoftwareForm, null, this, newSalesEntity);
+                TrnSalesDetailTenderForm trnSalesDetailTenderForm = new TrnSalesDetailTenderForm(sysSoftwareForm, null, this, null, newSalesEntity);
                 trnSalesDetailTenderForm.ShowDialog();
             }
             else
@@ -105,7 +105,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonSearchItem_Click(object sender, EventArgs e)
         {
-            TrnSalesDetailSearchItemForm trnSalesDetailSearchItemForm = new TrnSalesDetailSearchItemForm(this, trnSalesEntity);
+            TrnSalesDetailSearchItemForm trnSalesDetailSearchItemForm = new TrnSalesDetailSearchItemForm(this, null, trnSalesEntity);
             trnSalesDetailSearchItemForm.ShowDialog();
         }
 
@@ -249,7 +249,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     PriceSplitPercentage = PriceSplitPercentage,
                 };
 
-                TrnSalesDetailSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnSalesDetailSalesItemDetailForm(this, trnSalesLineEntity);
+                TrnSalesDetailSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnSalesDetailSalesItemDetailForm(this, null, trnSalesLineEntity);
                 trnSalesDetailSalesItemDetailForm.ShowDialog();
             }
 
@@ -334,7 +334,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             PriceSplitPercentage = 0
                         };
 
-                        TrnSalesDetailSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnSalesDetailSalesItemDetailForm(this, trnSalesLineEntity);
+                        TrnSalesDetailSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnSalesDetailSalesItemDetailForm(this, null, trnSalesLineEntity);
                         trnSalesDetailSalesItemDetailForm.ShowDialog();
                     }
                     else
@@ -360,7 +360,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonDiscount_Click(object sender, EventArgs e)
         {
-            TrnSalesDetailDiscountForm trnSalesDetailDiscountForm = new TrnSalesDetailDiscountForm(this);
+            TrnSalesDetailDiscountForm trnSalesDetailDiscountForm = new TrnSalesDetailDiscountForm(this, null);
             trnSalesDetailDiscountForm.ShowDialog();
         }
     }
