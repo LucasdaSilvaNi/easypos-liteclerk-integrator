@@ -201,10 +201,12 @@
     <Compile Include="Controllers\MstDiscountController.cs" />
     <Compile Include="Controllers\MstItemComponentController.cs" />
     <Compile Include="Controllers\MstItemController.cs" />
+    <Compile Include="Controllers\MstItemGroupController.cs" />
     <Compile Include="Controllers\MstItemPriceController.cs" />
     <Compile Include="Controllers\MstPayTypeController.cs" />
     <Compile Include="Controllers\MstPeriodController.cs" />
     <Compile Include="Controllers\MstSupplierController.cs" />
+    <Compile Include="Controllers\MstTableGroupController.cs" />
     <Compile Include="Controllers\MstTaxController.cs" />
     <Compile Include="Controllers\MstTerminalController.cs" />
     <Compile Include="Controllers\MstUnitController.cs" />
@@ -259,6 +261,8 @@
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransfer.cs" />
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransferItem.cs" />
     <Compile Include="Entities\DgvDiscountListDiscountEntity.cs" />
+    <Compile Include="Entities\DgvTableGroupListTableGroupEntity.cs" />
+    <Compile Include="Entities\DgvItemGroupListItemGroupEntity.cs" />
     <Compile Include="Entities\DgvMstItemComponentEntity.cs" />
     <Compile Include="Entities\DgvSalesDetailItemPriceListEntity.cs" />
     <Compile Include="Entities\DgvSalesReportCollectionDetailReportEntity.cs" />
@@ -307,11 +311,13 @@
     <Compile Include="Entities\MstDiscountEntity.cs" />
     <Compile Include="Entities\MstItemComponentEntity.cs" />
     <Compile Include="Entities\MstItemEntity.cs" />
+    <Compile Include="Entities\MstItemGroupEntity.cs" />
     <Compile Include="Entities\MstItemInventoryEntity.cs" />
     <Compile Include="Entities\MstItemPriceEntity.cs" />
     <Compile Include="Entities\MstPayTypeEntity.cs" />
     <Compile Include="Entities\MstPeriodEntity.cs" />
     <Compile Include="Entities\MstSupplierEntity.cs" />
+    <Compile Include="Entities\MstTableGroupEntity.cs" />
     <Compile Include="Entities\MstTaxEntity.cs" />
     <Compile Include="Entities\MstTermEntity.cs" />
     <Compile Include="Entities\MstTerminalEntity.cs" />
@@ -376,6 +382,18 @@
     <Compile Include="Forms\Software\MstDiscounting\MstDiscountingDetailForm.Designer.cs">
       <DependentUpon>MstDiscountingDetailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\MstItemGroup\MstItemGroupDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\MstItemGroup\MstItemGroupDetailForm.Designer.cs">
+      <DependentUpon>MstItemGroupDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\MstItemGroup\MstItemGroupListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\MstItemGroup\MstItemGroupListForm.Designer.cs">
+      <DependentUpon>MstItemGroupListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\MstItem\MstItemDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -399,6 +417,18 @@
     </Compile>
     <Compile Include="Forms\Software\MstItem\MstItemListForm.Designer.cs">
       <DependentUpon>MstItemListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\MstTableGroup\MstTableGroupDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\MstTableGroup\MstTableGroupDetailForm.Designer.cs">
+      <DependentUpon>MstTableGroupDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\MstTableGroup\MstTableGroupListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\MstTableGroup\MstTableGroupListForm.Designer.cs">
+      <DependentUpon>MstTableGroupListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\MstUser\MstUserDetailForm.cs">
       <SubType>Form</SubType>
@@ -813,6 +843,12 @@
     <EmbeddedResource Include="Forms\Software\MstDiscounting\MstDiscountingDetailForm.resx">
       <DependentUpon>MstDiscountingDetailForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\MstItemGroup\MstItemGroupDetailForm.resx">
+      <DependentUpon>MstItemGroupDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\MstItemGroup\MstItemGroupListForm.resx">
+      <DependentUpon>MstItemGroupListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstItem\MstItemDetailForm.resx">
       <DependentUpon>MstItemDetailForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -821,6 +857,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstItem\MstItemDetailItemPriceDetailForm.resx">
       <DependentUpon>MstItemDetailItemPriceDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\MstTableGroup\MstTableGroupDetailForm.resx">
+      <DependentUpon>MstTableGroupDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\MstTableGroup\MstTableGroupListForm.resx">
+      <DependentUpon>MstTableGroupListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstUser\MstUserDetailForm.resx">
       <DependentUpon>MstUserDetailForm.cs</DependentUpon>

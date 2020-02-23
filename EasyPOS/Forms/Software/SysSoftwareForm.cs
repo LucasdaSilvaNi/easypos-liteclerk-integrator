@@ -70,6 +70,11 @@ namespace EasyPOS.Forms.Software
 
         public TabPage tabPageSystemUtilities = new TabPage { Name = "tabPageSystemUtilities", Text = "System - Utilities" };
 
+        public TabPage tabPageItemGroupList = new TabPage { Name = "tabPageItemGroupList", Text = "Setup - Item Group List" };
+        public TabPage tabPageItemGroupDetail = new TabPage { Name = "tabPageItemGroupDetail", Text = "Setup - Item Group Detail" };
+
+        public TabPage tabPageTableGroupList = new TabPage { Name = "tabPageTableGroupList", Text = "Setup - Table Group List" };
+        public TabPage tabPageTableGroupDetail = new TabPage { Name = "tabPageTableGroupDetail", Text = "Setup - Table Group Detail" };
 
         // =====
         // Forms
@@ -108,6 +113,12 @@ namespace EasyPOS.Forms.Software
         public SysSettings.SysSettingsForm sysSettingsForm = null;
 
         public SysUtilities.SysUtilitiesListForm sysUtilitiesListForm = null;
+
+        public MstItemGroup.MstItemGroupListForm mstItemGroupListForm = null;
+        public MstItemGroup.MstItemGroupDetailForm mstItemGroupDetailForm = null;
+
+        public MstTableGroup.MstTableGroupListForm mstTableGroupListForm = null;
+        public MstTableGroup.MstTableGroupDetailForm mstTableGroupDetailForm = null;
 
         public void InitializeDefaultForm()
         {
@@ -778,6 +789,102 @@ namespace EasyPOS.Forms.Software
             }
         }
 
+        public void AddTabPageItemGroupList()
+        {
+            tabPageItemGroupList.Controls.Remove(mstItemGroupListForm);
+
+            mstItemGroupListForm = new MstItemGroup.MstItemGroupListForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageItemGroupList.Controls.Add(mstItemGroupListForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageItemGroupList) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageItemGroupList);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageItemGroupList);
+                tabControlSoftware.SelectTab(tabPageItemGroupList);
+            }
+        }
+
+        public void AddTabPageItemGroupDetail(MstItemGroup.MstItemGroupListForm discountingListForm, Entities.MstItemGroupEntity itemGroupEntity)
+        {
+            tabPageItemGroupDetail.Controls.Remove(mstItemGroupDetailForm);
+
+            mstItemGroupDetailForm = new MstItemGroup.MstItemGroupDetailForm(this, discountingListForm, itemGroupEntity)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageItemGroupDetail.Controls.Add(mstItemGroupDetailForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageItemGroupDetail) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageItemGroupDetail);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageItemGroupDetail);
+                tabControlSoftware.SelectTab(tabPageItemGroupDetail);
+            }
+        }
+
+        public void AddTabPageTableGroupList()
+        {
+            tabPageTableGroupList.Controls.Remove(mstTableGroupListForm);
+
+            mstTableGroupListForm = new MstTableGroup.MstTableGroupListForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageTableGroupList.Controls.Add(mstTableGroupListForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageTableGroupList) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageTableGroupList);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageTableGroupList);
+                tabControlSoftware.SelectTab(tabPageTableGroupList);
+            }
+        }
+
+        public void AddTabPageTableGroupDetail(MstTableGroup.MstTableGroupListForm discountingListForm, Entities.MstTableGroupEntity tableGroupEntity)
+        {
+            tabPageTableGroupDetail.Controls.Remove(mstTableGroupDetailForm);
+
+            mstTableGroupDetailForm = new MstTableGroup.MstTableGroupDetailForm(this, discountingListForm, tableGroupEntity)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageTableGroupDetail.Controls.Add(mstTableGroupDetailForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageTableGroupDetail) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageTableGroupDetail);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageTableGroupDetail);
+                tabControlSoftware.SelectTab(tabPageTableGroupDetail);
+            }
+        }
+
         public void RemoveTabPage()
         {
             tabControlSoftware.TabPages.Remove(tabControlSoftware.SelectedTab);
@@ -904,6 +1011,16 @@ namespace EasyPOS.Forms.Software
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddTabPageSettings();
+        }
+
+        private void toolStripMenuItemTabeGroup_Click(object sender, EventArgs e)
+        {
+            AddTabPageTableGroupList();
+        }
+
+        private void toolStripMenuItemItemGroup_Click(object sender, EventArgs e)
+        {
+            AddTabPageItemGroupList();
         }
     }
 }
