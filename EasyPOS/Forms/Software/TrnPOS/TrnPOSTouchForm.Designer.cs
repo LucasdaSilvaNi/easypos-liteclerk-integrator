@@ -28,40 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSTouchForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSTouchForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonDelivery = new System.Windows.Forms.Button();
+            this.imageListPOSTouch = new System.Windows.Forms.ImageList(this.components);
             this.buttonWalkIn = new System.Windows.Forms.Button();
             this.button40 = new System.Windows.Forms.Button();
             this.button41 = new System.Windows.Forms.Button();
@@ -107,45 +110,6 @@
             this.tabControlSales = new System.Windows.Forms.TabControl();
             this.tabPageOpen = new System.Windows.Forms.TabPage();
             this.dataGridViewOpenSalesList = new System.Windows.Forms.DataGridView();
-            this.tabPageBilledOut = new System.Windows.Forms.TabPage();
-            this.tabPageCollected = new System.Windows.Forms.TabPage();
-            this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.textBoxLastChange = new System.Windows.Forms.TextBox();
-            this.labelLastChange = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.dataGridViewBilledOutSalesList = new System.Windows.Forms.DataGridView();
-            this.dataGridViewCollectedSalesList = new System.Windows.Forms.DataGridView();
-            this.dataGridViewButtonColumn3 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dataGridViewButtonColumn4 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewLinkColumn2 = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn6 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewLinkColumn1 = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabPageOpenColumnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.TabPageOpenColumnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.TabPageOpenColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -161,6 +125,45 @@
             this.TabPageOpenColumnIsTendered = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TabPageOpenColumnIsCancelled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TabPageColumnSpace = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageBilledOut = new System.Windows.Forms.TabPage();
+            this.dataGridViewBilledOutSalesList = new System.Windows.Forms.DataGridView();
+            this.tabPageBilledOutColumnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tabPageBilledOutColumnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tabPageBilledOutColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageBilledOutColumnTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageBilledOutColumnSalesDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageBilledOutColumnSalesNumber = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.tabPageBilledOutColumnInvoiceNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageBilledOutColumnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageBilledOutColumnSalesAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageBilledOutColumnTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageBilledOutColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageBilledOutColumnIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tabPageBilledOutColumnIsTendered = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tabPageBilledOutColumnIsCancelled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tabPageBilledOutColumnSpace = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageCollected = new System.Windows.Forms.TabPage();
+            this.dataGridViewCollectedSalesList = new System.Windows.Forms.DataGridView();
+            this.tabPageCollectedColumnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tabPageCollectedColumnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tabPageCollectedColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageCollectedColumnTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageCollectedColumnSalesDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageCollectedColumnSalesNumber = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.tabPageCollectedColumnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageCollectedColumnSalesAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageCollectedColumnTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageCollectedColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageCollectedColumnCollectionNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageCollectedColumnIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tabPageCollectedColumnIsTendered = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tabPageCollectedColumnIsCancelled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tabPageCollectedColumnSpace = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.textBoxLastChange = new System.Windows.Forms.TextBox();
+            this.labelLastChange = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -168,11 +171,11 @@
             this.tabPageOpen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOpenSalesList)).BeginInit();
             this.tabPageBilledOut.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBilledOutSalesList)).BeginInit();
             this.tabPageCollected.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCollectedSalesList)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBilledOutSalesList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCollectedSalesList)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -230,7 +233,7 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.buttonDelivery);
             this.panel2.Controls.Add(this.buttonWalkIn);
             this.panel2.Controls.Add(this.button40);
             this.panel2.Controls.Add(this.button41);
@@ -272,27 +275,39 @@
             this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button1);
-            this.panel2.Location = new System.Drawing.Point(12, 42);
+            this.panel2.Location = new System.Drawing.Point(12, 45);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(5);
-            this.panel2.Size = new System.Drawing.Size(900, 584);
+            this.panel2.Size = new System.Drawing.Size(900, 581);
             this.panel2.TabIndex = 20;
             // 
-            // button4
+            // buttonDelivery
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.buttonDelivery.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(455, 491);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(438, 85);
-            this.button4.TabIndex = 45;
-            this.button4.Text = "DELIVERY";
-            this.button4.UseVisualStyleBackColor = false;
+            this.buttonDelivery.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonDelivery.FlatAppearance.BorderSize = 0;
+            this.buttonDelivery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDelivery.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
+            this.buttonDelivery.ForeColor = System.Drawing.Color.White;
+            this.buttonDelivery.ImageIndex = 0;
+            this.buttonDelivery.ImageList = this.imageListPOSTouch;
+            this.buttonDelivery.Location = new System.Drawing.Point(454, 491);
+            this.buttonDelivery.Name = "buttonDelivery";
+            this.buttonDelivery.Size = new System.Drawing.Size(438, 82);
+            this.buttonDelivery.TabIndex = 45;
+            this.buttonDelivery.Text = "\r\nDelivery";
+            this.buttonDelivery.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonDelivery.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonDelivery.UseVisualStyleBackColor = false;
+            this.buttonDelivery.Click += new System.EventHandler(this.buttonDelivery_Click);
+            // 
+            // imageListPOSTouch
+            // 
+            this.imageListPOSTouch.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListPOSTouch.ImageStream")));
+            this.imageListPOSTouch.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListPOSTouch.Images.SetKeyName(0, "delivery.png");
+            this.imageListPOSTouch.Images.SetKeyName(1, "walkin.png");
             // 
             // buttonWalkIn
             // 
@@ -301,13 +316,17 @@
             this.buttonWalkIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
             this.buttonWalkIn.FlatAppearance.BorderSize = 0;
             this.buttonWalkIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonWalkIn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonWalkIn.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
             this.buttonWalkIn.ForeColor = System.Drawing.Color.White;
+            this.buttonWalkIn.ImageIndex = 1;
+            this.buttonWalkIn.ImageList = this.imageListPOSTouch;
             this.buttonWalkIn.Location = new System.Drawing.Point(9, 491);
             this.buttonWalkIn.Name = "buttonWalkIn";
-            this.buttonWalkIn.Size = new System.Drawing.Size(439, 85);
+            this.buttonWalkIn.Size = new System.Drawing.Size(439, 82);
             this.buttonWalkIn.TabIndex = 44;
-            this.buttonWalkIn.Text = "WALK-IN";
+            this.buttonWalkIn.Text = "\r\nWalk In";
+            this.buttonWalkIn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonWalkIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonWalkIn.UseVisualStyleBackColor = false;
             this.buttonWalkIn.Click += new System.EventHandler(this.buttonWalkIn_Click);
             // 
@@ -769,10 +788,11 @@
             // 
             // dateTimePickerSalesDate
             // 
+            this.dateTimePickerSalesDate.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.dateTimePickerSalesDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerSalesDate.Location = new System.Drawing.Point(12, 6);
+            this.dateTimePickerSalesDate.Location = new System.Drawing.Point(12, 5);
             this.dateTimePickerSalesDate.Name = "dateTimePickerSalesDate";
-            this.dateTimePickerSalesDate.Size = new System.Drawing.Size(150, 30);
+            this.dateTimePickerSalesDate.Size = new System.Drawing.Size(156, 34);
             this.dateTimePickerSalesDate.TabIndex = 8;
             this.dateTimePickerSalesDate.ValueChanged += new System.EventHandler(this.dateTimePickerSalesDate_ValueChanged);
             // 
@@ -784,6 +804,7 @@
             this.tabControlSales.Controls.Add(this.tabPageOpen);
             this.tabControlSales.Controls.Add(this.tabPageBilledOut);
             this.tabControlSales.Controls.Add(this.tabPageCollected);
+            this.tabControlSales.Font = new System.Drawing.Font("Segoe UI", 13F);
             this.tabControlSales.Location = new System.Drawing.Point(918, 6);
             this.tabControlSales.Name = "tabControlSales";
             this.tabControlSales.SelectedIndex = 0;
@@ -794,10 +815,10 @@
             // tabPageOpen
             // 
             this.tabPageOpen.Controls.Add(this.dataGridViewOpenSalesList);
-            this.tabPageOpen.Location = new System.Drawing.Point(4, 32);
+            this.tabPageOpen.Location = new System.Drawing.Point(4, 39);
             this.tabPageOpen.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageOpen.Name = "tabPageOpen";
-            this.tabPageOpen.Size = new System.Drawing.Size(462, 525);
+            this.tabPageOpen.Size = new System.Drawing.Size(462, 518);
             this.tabPageOpen.TabIndex = 0;
             this.tabPageOpen.Text = "Open";
             this.tabPageOpen.UseVisualStyleBackColor = true;
@@ -815,7 +836,7 @@
             this.dataGridViewOpenSalesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewOpenSalesList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 13F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -839,8 +860,8 @@
             this.TabPageColumnSpace});
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 13F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -852,7 +873,7 @@
             this.dataGridViewOpenSalesList.ReadOnly = true;
             this.dataGridViewOpenSalesList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 13F);
             dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -864,493 +885,9 @@
             this.dataGridViewOpenSalesList.RowTemplate.ReadOnly = true;
             this.dataGridViewOpenSalesList.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewOpenSalesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewOpenSalesList.Size = new System.Drawing.Size(462, 525);
+            this.dataGridViewOpenSalesList.Size = new System.Drawing.Size(462, 518);
             this.dataGridViewOpenSalesList.TabIndex = 8;
-            // 
-            // tabPageBilledOut
-            // 
-            this.tabPageBilledOut.Controls.Add(this.dataGridViewBilledOutSalesList);
-            this.tabPageBilledOut.Location = new System.Drawing.Point(4, 32);
-            this.tabPageBilledOut.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageBilledOut.Name = "tabPageBilledOut";
-            this.tabPageBilledOut.Size = new System.Drawing.Size(462, 525);
-            this.tabPageBilledOut.TabIndex = 1;
-            this.tabPageBilledOut.Text = "Billed Out";
-            this.tabPageBilledOut.UseVisualStyleBackColor = true;
-            // 
-            // tabPageCollected
-            // 
-            this.tabPageCollected.Controls.Add(this.dataGridViewCollectedSalesList);
-            this.tabPageCollected.Location = new System.Drawing.Point(4, 32);
-            this.tabPageCollected.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageCollected.Name = "tabPageCollected";
-            this.tabPageCollected.Size = new System.Drawing.Size(462, 525);
-            this.tabPageCollected.TabIndex = 2;
-            this.tabPageCollected.Text = "Collected";
-            this.tabPageCollected.UseVisualStyleBackColor = true;
-            // 
-            // comboBoxTerminal
-            // 
-            this.comboBoxTerminal.Font = new System.Drawing.Font("Segoe UI", 9.8F);
-            this.comboBoxTerminal.FormattingEnabled = true;
-            this.comboBoxTerminal.Location = new System.Drawing.Point(168, 6);
-            this.comboBoxTerminal.Name = "comboBoxTerminal";
-            this.comboBoxTerminal.Size = new System.Drawing.Size(174, 29);
-            this.comboBoxTerminal.TabIndex = 7;
-            this.comboBoxTerminal.SelectedIndexChanged += new System.EventHandler(this.comboBoxTerminal_SelectedIndexChanged);
-            // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.textBoxLastChange);
-            this.panel4.Controls.Add(this.labelLastChange);
-            this.panel4.Location = new System.Drawing.Point(918, 573);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(470, 53);
-            this.panel4.TabIndex = 22;
-            // 
-            // textBoxLastChange
-            // 
-            this.textBoxLastChange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxLastChange.BackColor = System.Drawing.Color.White;
-            this.textBoxLastChange.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxLastChange.Font = new System.Drawing.Font("Segoe UI", 15F);
-            this.textBoxLastChange.ForeColor = System.Drawing.Color.Black;
-            this.textBoxLastChange.Location = new System.Drawing.Point(142, 8);
-            this.textBoxLastChange.Name = "textBoxLastChange";
-            this.textBoxLastChange.ReadOnly = true;
-            this.textBoxLastChange.Size = new System.Drawing.Size(316, 34);
-            this.textBoxLastChange.TabIndex = 17;
-            this.textBoxLastChange.Text = "0.00";
-            this.textBoxLastChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // labelLastChange
-            // 
-            this.labelLastChange.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelLastChange.AutoSize = true;
-            this.labelLastChange.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.labelLastChange.ForeColor = System.Drawing.Color.Black;
-            this.labelLastChange.Location = new System.Drawing.Point(12, 14);
-            this.labelLastChange.Name = "labelLastChange";
-            this.labelLastChange.Size = new System.Drawing.Size(124, 25);
-            this.labelLastChange.TabIndex = 16;
-            this.labelLastChange.Text = "Last Change:";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.panel4);
-            this.panel3.Controls.Add(this.comboBoxTerminal);
-            this.panel3.Controls.Add(this.tabControlSales);
-            this.panel3.Controls.Add(this.dateTimePickerSalesDate);
-            this.panel3.Controls.Add(this.panel2);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.ForeColor = System.Drawing.Color.White;
-            this.panel3.Location = new System.Drawing.Point(0, 63);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1400, 638);
-            this.panel3.TabIndex = 15;
-            // 
-            // dataGridViewBilledOutSalesList
-            // 
-            this.dataGridViewBilledOutSalesList.AllowUserToAddRows = false;
-            this.dataGridViewBilledOutSalesList.AllowUserToDeleteRows = false;
-            this.dataGridViewBilledOutSalesList.AllowUserToResizeColumns = false;
-            this.dataGridViewBilledOutSalesList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridViewBilledOutSalesList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
-            this.dataGridViewBilledOutSalesList.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewBilledOutSalesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewBilledOutSalesList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewBilledOutSalesList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            this.dataGridViewBilledOutSalesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewBilledOutSalesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewButtonColumn1,
-            this.dataGridViewButtonColumn2,
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewLinkColumn1,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewCheckBoxColumn1,
-            this.dataGridViewCheckBoxColumn2,
-            this.dataGridViewCheckBoxColumn3,
-            this.dataGridViewTextBoxColumn9});
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewBilledOutSalesList.DefaultCellStyle = dataGridViewCellStyle17;
-            this.dataGridViewBilledOutSalesList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewBilledOutSalesList.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.dataGridViewBilledOutSalesList.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewBilledOutSalesList.Name = "dataGridViewBilledOutSalesList";
-            this.dataGridViewBilledOutSalesList.ReadOnly = true;
-            this.dataGridViewBilledOutSalesList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewBilledOutSalesList.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
-            this.dataGridViewBilledOutSalesList.RowHeadersVisible = false;
-            this.dataGridViewBilledOutSalesList.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewBilledOutSalesList.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridViewBilledOutSalesList.RowTemplate.Height = 30;
-            this.dataGridViewBilledOutSalesList.RowTemplate.ReadOnly = true;
-            this.dataGridViewBilledOutSalesList.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewBilledOutSalesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewBilledOutSalesList.Size = new System.Drawing.Size(462, 525);
-            this.dataGridViewBilledOutSalesList.TabIndex = 9;
-            // 
-            // dataGridViewCollectedSalesList
-            // 
-            this.dataGridViewCollectedSalesList.AllowUserToAddRows = false;
-            this.dataGridViewCollectedSalesList.AllowUserToDeleteRows = false;
-            this.dataGridViewCollectedSalesList.AllowUserToResizeColumns = false;
-            this.dataGridViewCollectedSalesList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridViewCollectedSalesList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
-            this.dataGridViewCollectedSalesList.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewCollectedSalesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewCollectedSalesList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCollectedSalesList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
-            this.dataGridViewCollectedSalesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCollectedSalesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewButtonColumn3,
-            this.dataGridViewButtonColumn4,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12,
-            this.dataGridViewLinkColumn2,
-            this.dataGridViewTextBoxColumn14,
-            this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn16,
-            this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewCheckBoxColumn4,
-            this.dataGridViewCheckBoxColumn5,
-            this.dataGridViewCheckBoxColumn6,
-            this.dataGridViewTextBoxColumn18});
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCollectedSalesList.DefaultCellStyle = dataGridViewCellStyle26;
-            this.dataGridViewCollectedSalesList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewCollectedSalesList.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.dataGridViewCollectedSalesList.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewCollectedSalesList.Name = "dataGridViewCollectedSalesList";
-            this.dataGridViewCollectedSalesList.ReadOnly = true;
-            this.dataGridViewCollectedSalesList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCollectedSalesList.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
-            this.dataGridViewCollectedSalesList.RowHeadersVisible = false;
-            this.dataGridViewCollectedSalesList.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewCollectedSalesList.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridViewCollectedSalesList.RowTemplate.Height = 30;
-            this.dataGridViewCollectedSalesList.RowTemplate.ReadOnly = true;
-            this.dataGridViewCollectedSalesList.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCollectedSalesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCollectedSalesList.Size = new System.Drawing.Size(462, 525);
-            this.dataGridViewCollectedSalesList.TabIndex = 10;
-            // 
-            // dataGridViewButtonColumn3
-            // 
-            this.dataGridViewButtonColumn3.DataPropertyName = "ColumnEdit";
-            this.dataGridViewButtonColumn3.HeaderText = "Edit";
-            this.dataGridViewButtonColumn3.Name = "dataGridViewButtonColumn3";
-            this.dataGridViewButtonColumn3.ReadOnly = true;
-            this.dataGridViewButtonColumn3.Visible = false;
-            // 
-            // dataGridViewButtonColumn4
-            // 
-            this.dataGridViewButtonColumn4.DataPropertyName = "ColumnDelete";
-            this.dataGridViewButtonColumn4.HeaderText = "Delete";
-            this.dataGridViewButtonColumn4.Name = "dataGridViewButtonColumn4";
-            this.dataGridViewButtonColumn4.ReadOnly = true;
-            this.dataGridViewButtonColumn4.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "ColumnId";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            this.dataGridViewTextBoxColumn10.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "ColumnTerminal";
-            this.dataGridViewTextBoxColumn11.HeaderText = "Terminal";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            this.dataGridViewTextBoxColumn11.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "ColumnSalesDate";
-            this.dataGridViewTextBoxColumn12.HeaderText = "SalesDate";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            this.dataGridViewTextBoxColumn12.Visible = false;
-            // 
-            // dataGridViewLinkColumn2
-            // 
-            this.dataGridViewLinkColumn2.ActiveLinkColor = System.Drawing.Color.Black;
-            this.dataGridViewLinkColumn2.DataPropertyName = "ColumnSalesNumber";
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewLinkColumn2.DefaultCellStyle = dataGridViewCellStyle21;
-            this.dataGridViewLinkColumn2.HeaderText = "Order No.";
-            this.dataGridViewLinkColumn2.LinkColor = System.Drawing.Color.Black;
-            this.dataGridViewLinkColumn2.Name = "dataGridViewLinkColumn2";
-            this.dataGridViewLinkColumn2.ReadOnly = true;
-            this.dataGridViewLinkColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewLinkColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewLinkColumn2.VisitedLinkColor = System.Drawing.Color.Black;
-            this.dataGridViewLinkColumn2.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "ColumnCustomer";
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn14.DefaultCellStyle = dataGridViewCellStyle22;
-            this.dataGridViewTextBoxColumn14.HeaderText = "Customer";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            this.dataGridViewTextBoxColumn14.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "ColumnSalesAgent";
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn15.DefaultCellStyle = dataGridViewCellStyle23;
-            this.dataGridViewTextBoxColumn15.HeaderText = "User";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
-            this.dataGridViewTextBoxColumn15.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle24;
-            this.dataGridViewTextBoxColumn16.HeaderText = "Table";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.DataPropertyName = "ColumnAmount";
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle25;
-            this.dataGridViewTextBoxColumn17.HeaderText = "Amount";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            this.dataGridViewTextBoxColumn17.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "ColumnRececiptInvoiceNumber";
-            this.dataGridViewTextBoxColumn13.HeaderText = "Collection No.";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
-            this.dataGridViewTextBoxColumn13.Width = 130;
-            // 
-            // dataGridViewCheckBoxColumn4
-            // 
-            this.dataGridViewCheckBoxColumn4.DataPropertyName = "ColumnIsLocked";
-            this.dataGridViewCheckBoxColumn4.HeaderText = "L";
-            this.dataGridViewCheckBoxColumn4.Name = "dataGridViewCheckBoxColumn4";
-            this.dataGridViewCheckBoxColumn4.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn4.Visible = false;
-            // 
-            // dataGridViewCheckBoxColumn5
-            // 
-            this.dataGridViewCheckBoxColumn5.DataPropertyName = "ColumnIsTendered";
-            this.dataGridViewCheckBoxColumn5.HeaderText = "T";
-            this.dataGridViewCheckBoxColumn5.Name = "dataGridViewCheckBoxColumn5";
-            this.dataGridViewCheckBoxColumn5.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn5.Visible = false;
-            // 
-            // dataGridViewCheckBoxColumn6
-            // 
-            this.dataGridViewCheckBoxColumn6.DataPropertyName = "ColumnIsCancelled";
-            this.dataGridViewCheckBoxColumn6.HeaderText = "C";
-            this.dataGridViewCheckBoxColumn6.Name = "dataGridViewCheckBoxColumn6";
-            this.dataGridViewCheckBoxColumn6.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn6.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn18.DataPropertyName = "ColumnSpace";
-            this.dataGridViewTextBoxColumn18.HeaderText = "";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.ReadOnly = true;
-            // 
-            // dataGridViewButtonColumn1
-            // 
-            this.dataGridViewButtonColumn1.DataPropertyName = "ColumnEdit";
-            this.dataGridViewButtonColumn1.HeaderText = "Edit";
-            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
-            this.dataGridViewButtonColumn1.ReadOnly = true;
-            this.dataGridViewButtonColumn1.Visible = false;
-            // 
-            // dataGridViewButtonColumn2
-            // 
-            this.dataGridViewButtonColumn2.DataPropertyName = "ColumnDelete";
-            this.dataGridViewButtonColumn2.HeaderText = "Delete";
-            this.dataGridViewButtonColumn2.Name = "dataGridViewButtonColumn2";
-            this.dataGridViewButtonColumn2.ReadOnly = true;
-            this.dataGridViewButtonColumn2.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ColumnId";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "ColumnTerminal";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Terminal";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "ColumnSalesDate";
-            this.dataGridViewTextBoxColumn3.HeaderText = "SalesDate";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Visible = false;
-            // 
-            // dataGridViewLinkColumn1
-            // 
-            this.dataGridViewLinkColumn1.ActiveLinkColor = System.Drawing.Color.Black;
-            this.dataGridViewLinkColumn1.DataPropertyName = "ColumnSalesNumber";
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewLinkColumn1.DefaultCellStyle = dataGridViewCellStyle12;
-            this.dataGridViewLinkColumn1.HeaderText = "Order No.";
-            this.dataGridViewLinkColumn1.LinkColor = System.Drawing.Color.Black;
-            this.dataGridViewLinkColumn1.Name = "dataGridViewLinkColumn1";
-            this.dataGridViewLinkColumn1.ReadOnly = true;
-            this.dataGridViewLinkColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewLinkColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewLinkColumn1.VisitedLinkColor = System.Drawing.Color.Black;
-            this.dataGridViewLinkColumn1.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "ColumnRececiptInvoiceNumber";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Collection No.";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Visible = false;
-            this.dataGridViewTextBoxColumn4.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "ColumnCustomer";
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle13;
-            this.dataGridViewTextBoxColumn5.HeaderText = "Customer";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "ColumnSalesAgent";
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dataGridViewTextBoxColumn6.HeaderText = "User";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle15;
-            this.dataGridViewTextBoxColumn7.HeaderText = "Table";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "ColumnAmount";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle16;
-            this.dataGridViewTextBoxColumn8.HeaderText = "Amount";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Width = 120;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "ColumnIsLocked";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "L";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn1.Visible = false;
-            // 
-            // dataGridViewCheckBoxColumn2
-            // 
-            this.dataGridViewCheckBoxColumn2.DataPropertyName = "ColumnIsTendered";
-            this.dataGridViewCheckBoxColumn2.HeaderText = "T";
-            this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
-            this.dataGridViewCheckBoxColumn2.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn2.Visible = false;
-            // 
-            // dataGridViewCheckBoxColumn3
-            // 
-            this.dataGridViewCheckBoxColumn3.DataPropertyName = "ColumnIsCancelled";
-            this.dataGridViewCheckBoxColumn3.HeaderText = "C";
-            this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
-            this.dataGridViewCheckBoxColumn3.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn3.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "ColumnSpace";
-            this.dataGridViewTextBoxColumn9.HeaderText = "";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewOpenSalesList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOpenSalesList_CellClick);
             // 
             // TabPageOpenColumnEdit
             // 
@@ -1487,6 +1024,495 @@
             this.TabPageColumnSpace.Name = "TabPageColumnSpace";
             this.TabPageColumnSpace.ReadOnly = true;
             // 
+            // tabPageBilledOut
+            // 
+            this.tabPageBilledOut.Controls.Add(this.dataGridViewBilledOutSalesList);
+            this.tabPageBilledOut.Location = new System.Drawing.Point(4, 39);
+            this.tabPageBilledOut.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageBilledOut.Name = "tabPageBilledOut";
+            this.tabPageBilledOut.Size = new System.Drawing.Size(462, 518);
+            this.tabPageBilledOut.TabIndex = 1;
+            this.tabPageBilledOut.Text = "Billed Out";
+            this.tabPageBilledOut.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewBilledOutSalesList
+            // 
+            this.dataGridViewBilledOutSalesList.AllowUserToAddRows = false;
+            this.dataGridViewBilledOutSalesList.AllowUserToDeleteRows = false;
+            this.dataGridViewBilledOutSalesList.AllowUserToResizeColumns = false;
+            this.dataGridViewBilledOutSalesList.AllowUserToResizeRows = false;
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridViewBilledOutSalesList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            this.dataGridViewBilledOutSalesList.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewBilledOutSalesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewBilledOutSalesList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 13F);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewBilledOutSalesList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridViewBilledOutSalesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewBilledOutSalesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tabPageBilledOutColumnEdit,
+            this.tabPageBilledOutColumnDelete,
+            this.tabPageBilledOutColumnId,
+            this.tabPageBilledOutColumnTerminal,
+            this.tabPageBilledOutColumnSalesDate,
+            this.tabPageBilledOutColumnSalesNumber,
+            this.tabPageBilledOutColumnInvoiceNumber,
+            this.tabPageBilledOutColumnCustomer,
+            this.tabPageBilledOutColumnSalesAgent,
+            this.tabPageBilledOutColumnTable,
+            this.tabPageBilledOutColumnAmount,
+            this.tabPageBilledOutColumnIsLocked,
+            this.tabPageBilledOutColumnIsTendered,
+            this.tabPageBilledOutColumnIsCancelled,
+            this.tabPageBilledOutColumnSpace});
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 13F);
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewBilledOutSalesList.DefaultCellStyle = dataGridViewCellStyle17;
+            this.dataGridViewBilledOutSalesList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewBilledOutSalesList.GridColor = System.Drawing.SystemColors.ControlLight;
+            this.dataGridViewBilledOutSalesList.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewBilledOutSalesList.Name = "dataGridViewBilledOutSalesList";
+            this.dataGridViewBilledOutSalesList.ReadOnly = true;
+            this.dataGridViewBilledOutSalesList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 13F);
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewBilledOutSalesList.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            this.dataGridViewBilledOutSalesList.RowHeadersVisible = false;
+            this.dataGridViewBilledOutSalesList.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewBilledOutSalesList.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridViewBilledOutSalesList.RowTemplate.Height = 30;
+            this.dataGridViewBilledOutSalesList.RowTemplate.ReadOnly = true;
+            this.dataGridViewBilledOutSalesList.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewBilledOutSalesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewBilledOutSalesList.Size = new System.Drawing.Size(462, 518);
+            this.dataGridViewBilledOutSalesList.TabIndex = 9;
+            this.dataGridViewBilledOutSalesList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBilledOutSalesList_CellClick);
+            // 
+            // tabPageBilledOutColumnEdit
+            // 
+            this.tabPageBilledOutColumnEdit.DataPropertyName = "ColumnEdit";
+            this.tabPageBilledOutColumnEdit.HeaderText = "Edit";
+            this.tabPageBilledOutColumnEdit.Name = "tabPageBilledOutColumnEdit";
+            this.tabPageBilledOutColumnEdit.ReadOnly = true;
+            this.tabPageBilledOutColumnEdit.Visible = false;
+            // 
+            // tabPageBilledOutColumnDelete
+            // 
+            this.tabPageBilledOutColumnDelete.DataPropertyName = "ColumnDelete";
+            this.tabPageBilledOutColumnDelete.HeaderText = "Delete";
+            this.tabPageBilledOutColumnDelete.Name = "tabPageBilledOutColumnDelete";
+            this.tabPageBilledOutColumnDelete.ReadOnly = true;
+            this.tabPageBilledOutColumnDelete.Visible = false;
+            // 
+            // tabPageBilledOutColumnId
+            // 
+            this.tabPageBilledOutColumnId.DataPropertyName = "ColumnId";
+            this.tabPageBilledOutColumnId.HeaderText = "Id";
+            this.tabPageBilledOutColumnId.Name = "tabPageBilledOutColumnId";
+            this.tabPageBilledOutColumnId.ReadOnly = true;
+            this.tabPageBilledOutColumnId.Visible = false;
+            // 
+            // tabPageBilledOutColumnTerminal
+            // 
+            this.tabPageBilledOutColumnTerminal.DataPropertyName = "ColumnTerminal";
+            this.tabPageBilledOutColumnTerminal.HeaderText = "Terminal";
+            this.tabPageBilledOutColumnTerminal.Name = "tabPageBilledOutColumnTerminal";
+            this.tabPageBilledOutColumnTerminal.ReadOnly = true;
+            this.tabPageBilledOutColumnTerminal.Visible = false;
+            // 
+            // tabPageBilledOutColumnSalesDate
+            // 
+            this.tabPageBilledOutColumnSalesDate.DataPropertyName = "ColumnSalesDate";
+            this.tabPageBilledOutColumnSalesDate.HeaderText = "SalesDate";
+            this.tabPageBilledOutColumnSalesDate.Name = "tabPageBilledOutColumnSalesDate";
+            this.tabPageBilledOutColumnSalesDate.ReadOnly = true;
+            this.tabPageBilledOutColumnSalesDate.Visible = false;
+            // 
+            // tabPageBilledOutColumnSalesNumber
+            // 
+            this.tabPageBilledOutColumnSalesNumber.ActiveLinkColor = System.Drawing.Color.Black;
+            this.tabPageBilledOutColumnSalesNumber.DataPropertyName = "ColumnSalesNumber";
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPageBilledOutColumnSalesNumber.DefaultCellStyle = dataGridViewCellStyle12;
+            this.tabPageBilledOutColumnSalesNumber.HeaderText = "Order No.";
+            this.tabPageBilledOutColumnSalesNumber.LinkColor = System.Drawing.Color.Black;
+            this.tabPageBilledOutColumnSalesNumber.Name = "tabPageBilledOutColumnSalesNumber";
+            this.tabPageBilledOutColumnSalesNumber.ReadOnly = true;
+            this.tabPageBilledOutColumnSalesNumber.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.tabPageBilledOutColumnSalesNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.tabPageBilledOutColumnSalesNumber.VisitedLinkColor = System.Drawing.Color.Black;
+            this.tabPageBilledOutColumnSalesNumber.Width = 130;
+            // 
+            // tabPageBilledOutColumnInvoiceNumber
+            // 
+            this.tabPageBilledOutColumnInvoiceNumber.DataPropertyName = "ColumnRececiptInvoiceNumber";
+            this.tabPageBilledOutColumnInvoiceNumber.HeaderText = "Collection No.";
+            this.tabPageBilledOutColumnInvoiceNumber.Name = "tabPageBilledOutColumnInvoiceNumber";
+            this.tabPageBilledOutColumnInvoiceNumber.ReadOnly = true;
+            this.tabPageBilledOutColumnInvoiceNumber.Visible = false;
+            this.tabPageBilledOutColumnInvoiceNumber.Width = 130;
+            // 
+            // tabPageBilledOutColumnCustomer
+            // 
+            this.tabPageBilledOutColumnCustomer.DataPropertyName = "ColumnCustomer";
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPageBilledOutColumnCustomer.DefaultCellStyle = dataGridViewCellStyle13;
+            this.tabPageBilledOutColumnCustomer.HeaderText = "Customer";
+            this.tabPageBilledOutColumnCustomer.Name = "tabPageBilledOutColumnCustomer";
+            this.tabPageBilledOutColumnCustomer.ReadOnly = true;
+            this.tabPageBilledOutColumnCustomer.Visible = false;
+            // 
+            // tabPageBilledOutColumnSalesAgent
+            // 
+            this.tabPageBilledOutColumnSalesAgent.DataPropertyName = "ColumnSalesAgent";
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPageBilledOutColumnSalesAgent.DefaultCellStyle = dataGridViewCellStyle14;
+            this.tabPageBilledOutColumnSalesAgent.HeaderText = "User";
+            this.tabPageBilledOutColumnSalesAgent.Name = "tabPageBilledOutColumnSalesAgent";
+            this.tabPageBilledOutColumnSalesAgent.ReadOnly = true;
+            this.tabPageBilledOutColumnSalesAgent.Width = 130;
+            // 
+            // tabPageBilledOutColumnTable
+            // 
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPageBilledOutColumnTable.DefaultCellStyle = dataGridViewCellStyle15;
+            this.tabPageBilledOutColumnTable.HeaderText = "Table";
+            this.tabPageBilledOutColumnTable.Name = "tabPageBilledOutColumnTable";
+            this.tabPageBilledOutColumnTable.ReadOnly = true;
+            // 
+            // tabPageBilledOutColumnAmount
+            // 
+            this.tabPageBilledOutColumnAmount.DataPropertyName = "ColumnAmount";
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPageBilledOutColumnAmount.DefaultCellStyle = dataGridViewCellStyle16;
+            this.tabPageBilledOutColumnAmount.HeaderText = "Amount";
+            this.tabPageBilledOutColumnAmount.Name = "tabPageBilledOutColumnAmount";
+            this.tabPageBilledOutColumnAmount.ReadOnly = true;
+            this.tabPageBilledOutColumnAmount.Width = 120;
+            // 
+            // tabPageBilledOutColumnIsLocked
+            // 
+            this.tabPageBilledOutColumnIsLocked.DataPropertyName = "ColumnIsLocked";
+            this.tabPageBilledOutColumnIsLocked.HeaderText = "L";
+            this.tabPageBilledOutColumnIsLocked.Name = "tabPageBilledOutColumnIsLocked";
+            this.tabPageBilledOutColumnIsLocked.ReadOnly = true;
+            this.tabPageBilledOutColumnIsLocked.Visible = false;
+            // 
+            // tabPageBilledOutColumnIsTendered
+            // 
+            this.tabPageBilledOutColumnIsTendered.DataPropertyName = "ColumnIsTendered";
+            this.tabPageBilledOutColumnIsTendered.HeaderText = "T";
+            this.tabPageBilledOutColumnIsTendered.Name = "tabPageBilledOutColumnIsTendered";
+            this.tabPageBilledOutColumnIsTendered.ReadOnly = true;
+            this.tabPageBilledOutColumnIsTendered.Visible = false;
+            // 
+            // tabPageBilledOutColumnIsCancelled
+            // 
+            this.tabPageBilledOutColumnIsCancelled.DataPropertyName = "ColumnIsCancelled";
+            this.tabPageBilledOutColumnIsCancelled.HeaderText = "C";
+            this.tabPageBilledOutColumnIsCancelled.Name = "tabPageBilledOutColumnIsCancelled";
+            this.tabPageBilledOutColumnIsCancelled.ReadOnly = true;
+            this.tabPageBilledOutColumnIsCancelled.Visible = false;
+            // 
+            // tabPageBilledOutColumnSpace
+            // 
+            this.tabPageBilledOutColumnSpace.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tabPageBilledOutColumnSpace.DataPropertyName = "ColumnSpace";
+            this.tabPageBilledOutColumnSpace.HeaderText = "";
+            this.tabPageBilledOutColumnSpace.Name = "tabPageBilledOutColumnSpace";
+            this.tabPageBilledOutColumnSpace.ReadOnly = true;
+            // 
+            // tabPageCollected
+            // 
+            this.tabPageCollected.Controls.Add(this.dataGridViewCollectedSalesList);
+            this.tabPageCollected.Location = new System.Drawing.Point(4, 39);
+            this.tabPageCollected.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageCollected.Name = "tabPageCollected";
+            this.tabPageCollected.Size = new System.Drawing.Size(462, 518);
+            this.tabPageCollected.TabIndex = 2;
+            this.tabPageCollected.Text = "Collected";
+            this.tabPageCollected.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewCollectedSalesList
+            // 
+            this.dataGridViewCollectedSalesList.AllowUserToAddRows = false;
+            this.dataGridViewCollectedSalesList.AllowUserToDeleteRows = false;
+            this.dataGridViewCollectedSalesList.AllowUserToResizeColumns = false;
+            this.dataGridViewCollectedSalesList.AllowUserToResizeRows = false;
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridViewCollectedSalesList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
+            this.dataGridViewCollectedSalesList.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewCollectedSalesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewCollectedSalesList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 13F);
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCollectedSalesList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            this.dataGridViewCollectedSalesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCollectedSalesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tabPageCollectedColumnEdit,
+            this.tabPageCollectedColumnDelete,
+            this.tabPageCollectedColumnId,
+            this.tabPageCollectedColumnTerminal,
+            this.tabPageCollectedColumnSalesDate,
+            this.tabPageCollectedColumnSalesNumber,
+            this.tabPageCollectedColumnCustomer,
+            this.tabPageCollectedColumnSalesAgent,
+            this.tabPageCollectedColumnTable,
+            this.tabPageCollectedColumnAmount,
+            this.tabPageCollectedColumnCollectionNumber,
+            this.tabPageCollectedColumnIsLocked,
+            this.tabPageCollectedColumnIsTendered,
+            this.tabPageCollectedColumnIsCancelled,
+            this.tabPageCollectedColumnSpace});
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Segoe UI", 13F);
+            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCollectedSalesList.DefaultCellStyle = dataGridViewCellStyle27;
+            this.dataGridViewCollectedSalesList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewCollectedSalesList.GridColor = System.Drawing.SystemColors.ControlLight;
+            this.dataGridViewCollectedSalesList.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewCollectedSalesList.Name = "dataGridViewCollectedSalesList";
+            this.dataGridViewCollectedSalesList.ReadOnly = true;
+            this.dataGridViewCollectedSalesList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Segoe UI", 13F);
+            dataGridViewCellStyle28.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCollectedSalesList.RowHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            this.dataGridViewCollectedSalesList.RowHeadersVisible = false;
+            this.dataGridViewCollectedSalesList.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewCollectedSalesList.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridViewCollectedSalesList.RowTemplate.Height = 30;
+            this.dataGridViewCollectedSalesList.RowTemplate.ReadOnly = true;
+            this.dataGridViewCollectedSalesList.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCollectedSalesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewCollectedSalesList.Size = new System.Drawing.Size(462, 518);
+            this.dataGridViewCollectedSalesList.TabIndex = 10;
+            this.dataGridViewCollectedSalesList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCollectedSalesList_CellClick);
+            // 
+            // tabPageCollectedColumnEdit
+            // 
+            this.tabPageCollectedColumnEdit.DataPropertyName = "ColumnEdit";
+            this.tabPageCollectedColumnEdit.HeaderText = "Edit";
+            this.tabPageCollectedColumnEdit.Name = "tabPageCollectedColumnEdit";
+            this.tabPageCollectedColumnEdit.ReadOnly = true;
+            this.tabPageCollectedColumnEdit.Visible = false;
+            // 
+            // tabPageCollectedColumnDelete
+            // 
+            this.tabPageCollectedColumnDelete.DataPropertyName = "ColumnDelete";
+            this.tabPageCollectedColumnDelete.HeaderText = "Delete";
+            this.tabPageCollectedColumnDelete.Name = "tabPageCollectedColumnDelete";
+            this.tabPageCollectedColumnDelete.ReadOnly = true;
+            this.tabPageCollectedColumnDelete.Visible = false;
+            // 
+            // tabPageCollectedColumnId
+            // 
+            this.tabPageCollectedColumnId.DataPropertyName = "ColumnId";
+            this.tabPageCollectedColumnId.HeaderText = "Id";
+            this.tabPageCollectedColumnId.Name = "tabPageCollectedColumnId";
+            this.tabPageCollectedColumnId.ReadOnly = true;
+            this.tabPageCollectedColumnId.Visible = false;
+            // 
+            // tabPageCollectedColumnTerminal
+            // 
+            this.tabPageCollectedColumnTerminal.DataPropertyName = "ColumnTerminal";
+            this.tabPageCollectedColumnTerminal.HeaderText = "Terminal";
+            this.tabPageCollectedColumnTerminal.Name = "tabPageCollectedColumnTerminal";
+            this.tabPageCollectedColumnTerminal.ReadOnly = true;
+            this.tabPageCollectedColumnTerminal.Visible = false;
+            // 
+            // tabPageCollectedColumnSalesDate
+            // 
+            this.tabPageCollectedColumnSalesDate.DataPropertyName = "ColumnSalesDate";
+            this.tabPageCollectedColumnSalesDate.HeaderText = "SalesDate";
+            this.tabPageCollectedColumnSalesDate.Name = "tabPageCollectedColumnSalesDate";
+            this.tabPageCollectedColumnSalesDate.ReadOnly = true;
+            this.tabPageCollectedColumnSalesDate.Visible = false;
+            // 
+            // tabPageCollectedColumnSalesNumber
+            // 
+            this.tabPageCollectedColumnSalesNumber.ActiveLinkColor = System.Drawing.Color.Black;
+            this.tabPageCollectedColumnSalesNumber.DataPropertyName = "ColumnSalesNumber";
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPageCollectedColumnSalesNumber.DefaultCellStyle = dataGridViewCellStyle21;
+            this.tabPageCollectedColumnSalesNumber.HeaderText = "Order No.";
+            this.tabPageCollectedColumnSalesNumber.LinkColor = System.Drawing.Color.Black;
+            this.tabPageCollectedColumnSalesNumber.Name = "tabPageCollectedColumnSalesNumber";
+            this.tabPageCollectedColumnSalesNumber.ReadOnly = true;
+            this.tabPageCollectedColumnSalesNumber.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.tabPageCollectedColumnSalesNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.tabPageCollectedColumnSalesNumber.VisitedLinkColor = System.Drawing.Color.Black;
+            this.tabPageCollectedColumnSalesNumber.Width = 130;
+            // 
+            // tabPageCollectedColumnCustomer
+            // 
+            this.tabPageCollectedColumnCustomer.DataPropertyName = "ColumnCustomer";
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPageCollectedColumnCustomer.DefaultCellStyle = dataGridViewCellStyle22;
+            this.tabPageCollectedColumnCustomer.HeaderText = "Customer";
+            this.tabPageCollectedColumnCustomer.Name = "tabPageCollectedColumnCustomer";
+            this.tabPageCollectedColumnCustomer.ReadOnly = true;
+            this.tabPageCollectedColumnCustomer.Visible = false;
+            // 
+            // tabPageCollectedColumnSalesAgent
+            // 
+            this.tabPageCollectedColumnSalesAgent.DataPropertyName = "ColumnSalesAgent";
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPageCollectedColumnSalesAgent.DefaultCellStyle = dataGridViewCellStyle23;
+            this.tabPageCollectedColumnSalesAgent.HeaderText = "User";
+            this.tabPageCollectedColumnSalesAgent.Name = "tabPageCollectedColumnSalesAgent";
+            this.tabPageCollectedColumnSalesAgent.ReadOnly = true;
+            this.tabPageCollectedColumnSalesAgent.Width = 130;
+            // 
+            // tabPageCollectedColumnTable
+            // 
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPageCollectedColumnTable.DefaultCellStyle = dataGridViewCellStyle24;
+            this.tabPageCollectedColumnTable.HeaderText = "Table";
+            this.tabPageCollectedColumnTable.Name = "tabPageCollectedColumnTable";
+            this.tabPageCollectedColumnTable.ReadOnly = true;
+            // 
+            // tabPageCollectedColumnAmount
+            // 
+            this.tabPageCollectedColumnAmount.DataPropertyName = "ColumnAmount";
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPageCollectedColumnAmount.DefaultCellStyle = dataGridViewCellStyle25;
+            this.tabPageCollectedColumnAmount.HeaderText = "Amount";
+            this.tabPageCollectedColumnAmount.Name = "tabPageCollectedColumnAmount";
+            this.tabPageCollectedColumnAmount.ReadOnly = true;
+            this.tabPageCollectedColumnAmount.Width = 120;
+            // 
+            // tabPageCollectedColumnCollectionNumber
+            // 
+            this.tabPageCollectedColumnCollectionNumber.DataPropertyName = "ColumnRececiptInvoiceNumber";
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.tabPageCollectedColumnCollectionNumber.DefaultCellStyle = dataGridViewCellStyle26;
+            this.tabPageCollectedColumnCollectionNumber.HeaderText = "Collection No.";
+            this.tabPageCollectedColumnCollectionNumber.Name = "tabPageCollectedColumnCollectionNumber";
+            this.tabPageCollectedColumnCollectionNumber.ReadOnly = true;
+            this.tabPageCollectedColumnCollectionNumber.Width = 130;
+            // 
+            // tabPageCollectedColumnIsLocked
+            // 
+            this.tabPageCollectedColumnIsLocked.DataPropertyName = "ColumnIsLocked";
+            this.tabPageCollectedColumnIsLocked.HeaderText = "L";
+            this.tabPageCollectedColumnIsLocked.Name = "tabPageCollectedColumnIsLocked";
+            this.tabPageCollectedColumnIsLocked.ReadOnly = true;
+            this.tabPageCollectedColumnIsLocked.Visible = false;
+            // 
+            // tabPageCollectedColumnIsTendered
+            // 
+            this.tabPageCollectedColumnIsTendered.DataPropertyName = "ColumnIsTendered";
+            this.tabPageCollectedColumnIsTendered.HeaderText = "T";
+            this.tabPageCollectedColumnIsTendered.Name = "tabPageCollectedColumnIsTendered";
+            this.tabPageCollectedColumnIsTendered.ReadOnly = true;
+            this.tabPageCollectedColumnIsTendered.Visible = false;
+            // 
+            // tabPageCollectedColumnIsCancelled
+            // 
+            this.tabPageCollectedColumnIsCancelled.DataPropertyName = "ColumnIsCancelled";
+            this.tabPageCollectedColumnIsCancelled.HeaderText = "C";
+            this.tabPageCollectedColumnIsCancelled.Name = "tabPageCollectedColumnIsCancelled";
+            this.tabPageCollectedColumnIsCancelled.ReadOnly = true;
+            this.tabPageCollectedColumnIsCancelled.Width = 30;
+            // 
+            // tabPageCollectedColumnSpace
+            // 
+            this.tabPageCollectedColumnSpace.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tabPageCollectedColumnSpace.DataPropertyName = "ColumnSpace";
+            this.tabPageCollectedColumnSpace.HeaderText = "";
+            this.tabPageCollectedColumnSpace.Name = "tabPageCollectedColumnSpace";
+            this.tabPageCollectedColumnSpace.ReadOnly = true;
+            // 
+            // comboBoxTerminal
+            // 
+            this.comboBoxTerminal.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.comboBoxTerminal.FormattingEnabled = true;
+            this.comboBoxTerminal.Location = new System.Drawing.Point(174, 5);
+            this.comboBoxTerminal.Name = "comboBoxTerminal";
+            this.comboBoxTerminal.Size = new System.Drawing.Size(174, 36);
+            this.comboBoxTerminal.TabIndex = 7;
+            this.comboBoxTerminal.SelectedIndexChanged += new System.EventHandler(this.comboBoxTerminal_SelectedIndexChanged);
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.textBoxLastChange);
+            this.panel4.Controls.Add(this.labelLastChange);
+            this.panel4.Location = new System.Drawing.Point(918, 573);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(470, 53);
+            this.panel4.TabIndex = 22;
+            // 
+            // textBoxLastChange
+            // 
+            this.textBoxLastChange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxLastChange.BackColor = System.Drawing.Color.White;
+            this.textBoxLastChange.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxLastChange.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.textBoxLastChange.ForeColor = System.Drawing.Color.Black;
+            this.textBoxLastChange.Location = new System.Drawing.Point(142, 8);
+            this.textBoxLastChange.Name = "textBoxLastChange";
+            this.textBoxLastChange.ReadOnly = true;
+            this.textBoxLastChange.Size = new System.Drawing.Size(316, 34);
+            this.textBoxLastChange.TabIndex = 17;
+            this.textBoxLastChange.Text = "0.00";
+            this.textBoxLastChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // labelLastChange
+            // 
+            this.labelLastChange.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelLastChange.AutoSize = true;
+            this.labelLastChange.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.labelLastChange.ForeColor = System.Drawing.Color.Black;
+            this.labelLastChange.Location = new System.Drawing.Point(12, 14);
+            this.labelLastChange.Name = "labelLastChange";
+            this.labelLastChange.Size = new System.Drawing.Size(124, 25);
+            this.labelLastChange.TabIndex = 16;
+            this.labelLastChange.Text = "Last Change:";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.comboBoxTerminal);
+            this.panel3.Controls.Add(this.tabControlSales);
+            this.panel3.Controls.Add(this.dateTimePickerSalesDate);
+            this.panel3.Controls.Add(this.panel2);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.ForeColor = System.Drawing.Color.White;
+            this.panel3.Location = new System.Drawing.Point(0, 63);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1400, 638);
+            this.panel3.TabIndex = 15;
+            // 
             // TrnPOSTouchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -1508,12 +1534,12 @@
             this.tabPageOpen.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOpenSalesList)).EndInit();
             this.tabPageBilledOut.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBilledOutSalesList)).EndInit();
             this.tabPageCollected.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCollectedSalesList)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBilledOutSalesList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCollectedSalesList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1525,7 +1551,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button buttonWalkIn;
         private System.Windows.Forms.Button button40;
         private System.Windows.Forms.Button button41;
@@ -1580,36 +1605,6 @@
         private System.Windows.Forms.TabPage tabPageBilledOut;
         private System.Windows.Forms.DataGridView dataGridViewBilledOutSalesList;
         private System.Windows.Forms.DataGridView dataGridViewCollectedSalesList;
-        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn3;
-        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewLinkColumn dataGridViewLinkColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn4;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn5;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
-        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewLinkColumn dataGridViewLinkColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewButtonColumn TabPageOpenColumnEdit;
         private System.Windows.Forms.DataGridViewButtonColumn TabPageOpenColumnDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn TabPageOpenColumnId;
@@ -1625,5 +1620,37 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn TabPageOpenColumnIsTendered;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TabPageOpenColumnIsCancelled;
         private System.Windows.Forms.DataGridViewTextBoxColumn TabPageColumnSpace;
+        private System.Windows.Forms.DataGridViewButtonColumn tabPageBilledOutColumnEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn tabPageBilledOutColumnDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabPageBilledOutColumnId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabPageBilledOutColumnTerminal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabPageBilledOutColumnSalesDate;
+        private System.Windows.Forms.DataGridViewLinkColumn tabPageBilledOutColumnSalesNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabPageBilledOutColumnInvoiceNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabPageBilledOutColumnCustomer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabPageBilledOutColumnSalesAgent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabPageBilledOutColumnTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabPageBilledOutColumnAmount;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn tabPageBilledOutColumnIsLocked;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn tabPageBilledOutColumnIsTendered;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn tabPageBilledOutColumnIsCancelled;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabPageBilledOutColumnSpace;
+        private System.Windows.Forms.DataGridViewButtonColumn tabPageCollectedColumnEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn tabPageCollectedColumnDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabPageCollectedColumnId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabPageCollectedColumnTerminal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabPageCollectedColumnSalesDate;
+        private System.Windows.Forms.DataGridViewLinkColumn tabPageCollectedColumnSalesNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabPageCollectedColumnCustomer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabPageCollectedColumnSalesAgent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabPageCollectedColumnTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabPageCollectedColumnAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabPageCollectedColumnCollectionNumber;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn tabPageCollectedColumnIsLocked;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn tabPageCollectedColumnIsTendered;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn tabPageCollectedColumnIsCancelled;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tabPageCollectedColumnSpace;
+        private System.Windows.Forms.ImageList imageListPOSTouch;
+        private System.Windows.Forms.Button buttonDelivery;
     }
 }

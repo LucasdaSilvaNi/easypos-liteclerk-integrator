@@ -160,7 +160,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     Customer = trnSalesEntity.Customer
                 };
 
-                TrnSalesDetailTenderForm trnSalesDetailTenderForm = new TrnSalesDetailTenderForm(sysSoftwareForm, null, null, this, newSalesEntity);
+                TrnSalesDetailTenderForm trnSalesDetailTenderForm = new TrnSalesDetailTenderForm(sysSoftwareForm, null, null, trnPOSTouchForm, this, newSalesEntity);
                 trnSalesDetailTenderForm.ShowDialog();
             }
             else
@@ -435,6 +435,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 dataGridViewSalesLineList.Columns[0].Visible = false;
                 dataGridViewSalesLineList.Columns[1].Visible = false;
+
+                trnPOSTouchForm.UpdateSalesListGridDataSource();
             }
             else
             {
@@ -458,11 +460,18 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 dataGridViewSalesLineList.Columns[0].Visible = true;
                 dataGridViewSalesLineList.Columns[1].Visible = true;
+
+                trnPOSTouchForm.UpdateSalesListGridDataSource();
             }
             else
             {
                 MessageBox.Show(lockSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public void UpdatePOSTouchSalesListDataSource()
+        {
+            trnPOSTouchForm.UpdateSalesListGridDataSource();
         }
     }
 }

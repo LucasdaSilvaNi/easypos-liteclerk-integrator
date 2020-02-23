@@ -420,7 +420,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     {
                         if (isTendered == true)
                         {
-                            TrnSalesListCancelRemarksForm trnSalesListCancelRemarksForm = new TrnSalesListCancelRemarksForm(sysSoftwareForm, this);
+                            TrnSalesListCancelRemarksForm trnSalesListCancelRemarksForm = new TrnSalesListCancelRemarksForm(sysSoftwareForm, this, null, Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value));
                             trnSalesListCancelRemarksForm.ShowDialog();
 
                             if (continueCancel)
@@ -522,7 +522,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                             Modules.SysSerialPortModule.WriteSeralPortMessage(line1, line2);
 
-                            TrnSalesDetailTenderForm trnSalesDetailTenderForm = new TrnSalesDetailTenderForm(sysSoftwareForm, this, null, null, newSalesEntity);
+                            TrnSalesDetailTenderForm trnSalesDetailTenderForm = new TrnSalesDetailTenderForm(sysSoftwareForm, this, null, null, null, newSalesEntity);
                             trnSalesDetailTenderForm.ShowDialog();
                         }
                     }

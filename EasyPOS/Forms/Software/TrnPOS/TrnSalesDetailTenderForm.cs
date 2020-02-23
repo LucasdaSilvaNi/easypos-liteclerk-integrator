@@ -19,22 +19,24 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public SysSoftwareForm sysSoftwareForm;
 
         public TrnSalesListForm trnSalesListForm;
-
         public TrnSalesDetailForm trnSalesDetailForm;
+
+        public TrnPOSTouchForm trnPOSTouchForm;
         public TrnPOSTouchDetailForm trnPOSTouchDetailForm;
 
         public Entities.TrnSalesEntity trnSalesEntity;
         public String collectionNumber = "";
 
-        public TrnSalesDetailTenderForm(SysSoftwareForm softwareForm, TrnSalesListForm salesListForm, TrnSalesDetailForm salesDetailForm, TrnPOSTouchDetailForm POSTouchDetailForm, Entities.TrnSalesEntity salesEntity)
+        public TrnSalesDetailTenderForm(SysSoftwareForm softwareForm, TrnSalesListForm salesListForm, TrnSalesDetailForm salesDetailForm, TrnPOSTouchForm POSTouchForm, TrnPOSTouchDetailForm POSTouchDetailForm, Entities.TrnSalesEntity salesEntity)
         {
             InitializeComponent();
 
             sysSoftwareForm = softwareForm;
 
             trnSalesListForm = salesListForm;
-
             trnSalesDetailForm = salesDetailForm;
+
+            trnPOSTouchForm = POSTouchForm;
             trnPOSTouchDetailForm = POSTouchDetailForm;
 
             trnSalesEntity = salesEntity;
@@ -234,12 +236,20 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         {
                             trnSalesListForm.UpdateSalesListGridDataSource();
                         }
+
+                        if (trnPOSTouchForm != null)
+                        {
+                            trnPOSTouchForm.ClosePOSTouchActivity();
+                            trnPOSTouchForm.UpdateSalesListGridDataSource();
+                        }
                     }
 
                     if (trnPOSTouchDetailForm != null)
                     {
                         trnPOSTouchDetailForm.Close();
                         sysSoftwareForm.RemoveTabPage();
+
+                        trnPOSTouchForm.UpdateSalesListGridDataSource();
                     }
                 }
                 else

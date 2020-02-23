@@ -183,6 +183,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     if (trnPOSTouchDetailForm != null)
                     {
                         trnPOSTouchDetailForm.GetSalesLineList();
+                        trnPOSTouchDetailForm.UpdatePOSTouchSalesListDataSource();
                     }
 
                     Close();

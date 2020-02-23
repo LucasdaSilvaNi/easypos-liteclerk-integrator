@@ -21,6 +21,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public BindingSource dataBilledOutSalesListSource = new BindingSource();
         public BindingSource dataCollectedSalesListSource = new BindingSource();
 
+        public TrnPOSTouchActivityForm trnPOSTouchActivityForm;
 
         public TrnPOSTouchForm(SysSoftwareForm softwareForm)
         {
@@ -220,6 +221,52 @@ namespace EasyPOS.Forms.Software.TrnPOS
             dataGridViewOpenSalesList.DataSource = dataOpenSalesListSource;
             dataGridViewBilledOutSalesList.DataSource = dataBilledOutSalesListSource;
             dataGridViewCollectedSalesList.DataSource = dataCollectedSalesListSource;
+        }
+
+        private void dataGridViewOpenSalesList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && dataGridViewOpenSalesList.CurrentCell.ColumnIndex == dataGridViewOpenSalesList.Columns["TabPageOpenColumnSalesNumber"].Index)
+            {
+                Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();
+                Entities.TrnSalesEntity salesEntity = trnSalesController.DetailSales(Convert.ToInt32(dataGridViewOpenSalesList.Rows[dataGridViewOpenSalesList.CurrentCell.RowIndex].Cells[dataGridViewOpenSalesList.Columns["TabPageOpenColumnId"].Index].Value));
+
+                trnPOSTouchActivityForm = new TrnPOSTouchActivityForm(sysSoftwareForm, this, salesEntity);
+                trnPOSTouchActivityForm.ShowDialog();
+            }
+        }
+
+        private void dataGridViewBilledOutSalesList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && dataGridViewBilledOutSalesList.CurrentCell.ColumnIndex == dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnSalesNumber"].Index)
+            {
+                Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();
+                Entities.TrnSalesEntity salesEntity = trnSalesController.DetailSales(Convert.ToInt32(dataGridViewBilledOutSalesList.Rows[dataGridViewBilledOutSalesList.CurrentCell.RowIndex].Cells[dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnId"].Index].Value));
+
+                trnPOSTouchActivityForm = new TrnPOSTouchActivityForm(sysSoftwareForm, this, salesEntity);
+                trnPOSTouchActivityForm.ShowDialog();
+            }
+        }
+
+        private void dataGridViewCollectedSalesList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && dataGridViewCollectedSalesList.CurrentCell.ColumnIndex == dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnSalesNumber"].Index)
+            {
+                Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();
+                Entities.TrnSalesEntity salesEntity = trnSalesController.DetailSales(Convert.ToInt32(dataGridViewCollectedSalesList.Rows[dataGridViewCollectedSalesList.CurrentCell.RowIndex].Cells[dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnId"].Index].Value));
+
+                trnPOSTouchActivityForm = new TrnPOSTouchActivityForm(sysSoftwareForm, this, salesEntity);
+                trnPOSTouchActivityForm.ShowDialog();
+            }
+        }
+
+        public void ClosePOSTouchActivity()
+        {
+            trnPOSTouchActivityForm.Close();
+        }
+
+        private void buttonDelivery_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

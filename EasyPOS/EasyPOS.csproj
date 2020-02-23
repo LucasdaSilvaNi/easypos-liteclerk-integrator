@@ -604,6 +604,12 @@
     <Compile Include="Forms\Software\TrnDisbursement\TrnDisbursementListForm.Designer.cs">
       <DependentUpon>TrnDisbursementListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchActivityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchActivityForm.Designer.cs">
+      <DependentUpon>TrnPOSTouchActivityForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -909,6 +915,9 @@
     <EmbeddedResource Include="Forms\Software\TrnDisbursement\TrnDisbursementListForm.resx">
       <DependentUpon>TrnDisbursementListForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTouchActivityForm.resx">
+      <DependentUpon>TrnPOSTouchActivityForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTouchDetailForm.resx">
       <DependentUpon>TrnPOSTouchDetailForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1094,6 +1103,16 @@
     <Content Include="Resources\Images\NewLogo\easypos.ico" />
     <Content Include="Resources\Images\NewLogo\easypos.png" />
     <Content Include="Resources\Images\Others\color theme.jpg" />
+    <Content Include="Resources\Images\POSTouchIcons\cancel.png" />
+    <Content Include="Resources\Images\POSTouchIcons\changeTable.png" />
+    <Content Include="Resources\Images\POSTouchIcons\delivery.png" />
+    <Content Include="Resources\Images\POSTouchIcons\editOrder.png" />
+    <Content Include="Resources\Images\POSTouchIcons\print.png" />
+    <Content Include="Resources\Images\POSTouchIcons\printBills.png" />
+    <Content Include="Resources\Images\POSTouchIcons\scanQRCode.png" />
+    <Content Include="Resources\Images\POSTouchIcons\splitMergeBill.png" />
+    <Content Include="Resources\Images\POSTouchIcons\tender.png" />
+    <Content Include="Resources\Images\POSTouchIcons\walkin.png" />
     <Content Include="Resources\Images\Products\easyapp.jpg" />
     <Content Include="Resources\Images\Products\easyfis.jpg" />
     <None Include="Resources\Images\Products\easyfis_logo.jpg" />
