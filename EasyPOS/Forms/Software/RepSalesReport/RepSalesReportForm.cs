@@ -304,29 +304,26 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                             break;
                         case "Stock Withdrawal Report":
-                            DialogResult printDialogResult = printDialogStockWithdrawalReport.ShowDialog();
-                            if (printDialogResult == DialogResult.OK)
+                            String printFilePath = "";
+                            DialogResult folderBrowserDialoResult = folderBrowserDialogStockWithdrawalReport.ShowDialog();
+                            if (folderBrowserDialoResult == DialogResult.OK)
                             {
-                                String printerName = printDialogStockWithdrawalReport.PrinterSettings.PrinterName;
-                                String printFilePath = "";
+                                printFilePath = folderBrowserDialogStockWithdrawalReport.SelectedPath;
+                            }
 
-                                if (printerName == "Microsoft XPS Document Writer")
-                                {
-                                    DialogResult folderBrowserDialoResult = folderBrowserDialogStockWithdrawalReport.ShowDialog();
-                                    if (folderBrowserDialoResult == DialogResult.OK)
-                                    {
-                                        printFilePath = folderBrowserDialogStockWithdrawalReport.SelectedPath;
-                                    }
-                                }
-
+                            if (String.IsNullOrEmpty(printFilePath) == true)
+                            {
+                                MessageBox.Show("Empty file path", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
                                 Controllers.RepSalesReportController repSalesReportController = new Controllers.RepSalesReportController();
                                 if (repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxCustomer.SelectedValue)).Any())
                                 {
-                                    foreach (var objStockWithdrawalReport in repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxCustomer.SelectedValue)))
-                                    {
-                                        String printFileName = printFilePath + "\\" + objStockWithdrawalReport.CollectionNumber + ".oxps";
-                                        new Reports.RepDeliveryReceiptReportForm(Convert.ToInt32(objStockWithdrawalReport.SalesId), objStockWithdrawalReport.Id, false, printerName, printFileName, true);
-                                    }
+                                    var collectionList = repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxCustomer.SelectedValue));
+                                    new RepSalesReportStockWithdrawalReportForm(printFilePath + "\\", collectionList);
+
+                                    MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                             }
 
