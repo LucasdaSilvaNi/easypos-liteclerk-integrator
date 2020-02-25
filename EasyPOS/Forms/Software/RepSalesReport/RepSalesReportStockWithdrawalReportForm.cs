@@ -33,7 +33,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 iTextSharp.text.Rectangle pagesize = new iTextSharp.text.Rectangle(432, 576);
 
                 Document document = new Document(pagesize);
-                document.SetMargins(5f, 5f, 5f, 5f);
+                document.SetMargins(5f, 72f, 5f, 5f);
 
                 PdfWriter.GetInstance(document, new FileStream(fileName, FileMode.Create));
 
