@@ -304,26 +304,28 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                             break;
                         case "Stock Withdrawal Report":
+
                             String printFilePath = "";
                             DialogResult folderBrowserDialoResult = folderBrowserDialogStockWithdrawalReport.ShowDialog();
+
                             if (folderBrowserDialoResult == DialogResult.OK)
                             {
                                 printFilePath = folderBrowserDialogStockWithdrawalReport.SelectedPath;
-                            }
 
-                            if (String.IsNullOrEmpty(printFilePath) == true)
-                            {
-                                MessageBox.Show("Empty file path", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                Controllers.RepSalesReportController repSalesReportController = new Controllers.RepSalesReportController();
-                                if (repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxCustomer.SelectedValue)).Any())
+                                if (String.IsNullOrEmpty(printFilePath) == true)
                                 {
-                                    var collectionList = repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxCustomer.SelectedValue));
-                                    new RepSalesReportStockWithdrawalReportForm(printFilePath + "\\", collectionList);
+                                    MessageBox.Show("Empty file path", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    Controllers.RepSalesReportController repSalesReportController = new Controllers.RepSalesReportController();
+                                    if (repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxCustomer.SelectedValue)).Any())
+                                    {
+                                        var collectionList = repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxCustomer.SelectedValue));
+                                        new RepSalesReportStockWithdrawalReportForm(printFilePath + "\\", collectionList);
 
-                                    MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        MessageBox.Show("Generate PDF Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
                                 }
                             }
 
