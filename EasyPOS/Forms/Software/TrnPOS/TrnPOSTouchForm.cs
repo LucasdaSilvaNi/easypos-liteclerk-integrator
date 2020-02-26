@@ -98,7 +98,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     }
                 }
 
-                FillTable(listTableGroupPage[0].Id);
+                selectedTableGroupId = listTableGroupPage[0].Id;
+                FillTable(selectedTableGroupId);
             }
             catch (Exception ex)
             {

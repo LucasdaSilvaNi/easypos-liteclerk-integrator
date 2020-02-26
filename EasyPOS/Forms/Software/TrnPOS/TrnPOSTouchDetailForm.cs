@@ -213,6 +213,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     }
                 }
 
+                selectedItemGroupId = listItemGroupPage[0].Id;
                 FillItemGroupItem(listItemGroupPage[0].Id);
             }
             catch (Exception ex)
