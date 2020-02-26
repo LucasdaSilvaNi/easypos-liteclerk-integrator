@@ -51,7 +51,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>easypos cropped.ico</ApplicationIcon>
+    <ApplicationIcon>newEasyposIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -1129,6 +1129,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="easypos cropped.ico" />
+    <Content Include="newEasyposIcon.ico" />
     <Content Include="OpenCvSharpExtern.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1153,6 +1154,7 @@
     <Content Include="Resources\Images\Icons\User.png" />
     <Content Include="Resources\Images\Logo\easypos cropped.ico" />
     <Content Include="Resources\Images\Logo\easypos cropped.jpg" />
+    <Content Include="Resources\Images\Logo\newEasyposIcon.ico" />
     <Content Include="Resources\Images\NewLogo\easypos.ico" />
     <Content Include="Resources\Images\NewLogo\easypos.png" />
     <Content Include="Resources\Images\Others\color theme.jpg" />
