@@ -18,6 +18,20 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public TrnPOSTouchForm trnPOSTouchForm;
         public Entities.TrnSalesEntity trnSalesEntity;
 
+        private List<Entities.MstItemGroupEntity> listItemGroups = new List<Entities.MstItemGroupEntity>();
+        private ToolTip itemGroupToolTip = new ToolTip();
+        private const int itemGroupNoOfButtons = 6;
+        private int itemGroupPages;
+        private int itemGroupPage = 1;
+        private Int32 selectedItemGroupId;
+
+        private List<Entities.MstItemGroupItemEntity> listItemGroupItems = new List<Entities.MstItemGroupItemEntity>();
+        private ToolTip itemGroupItemToolTip = new ToolTip();
+        private const int itemGroupItemNoOfButtons = 30;
+        private int itemGroupItemPages;
+        private int itemGroupItemPage = 1;
+        Button[] itemGroupItemButtons;
+
         public TrnPOSTouchDetailForm(SysSoftwareForm softwareForm, TrnPOSTouchForm POSTouchForm, Entities.TrnSalesEntity salesEntity)
         {
             InitializeComponent();
@@ -123,6 +137,198 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 GetSalesDetail();
                 GetSalesLineList();
+            }
+
+            Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();
+            listItemGroups = trnSalesController.ListItemGroup();
+            itemGroupPages = listItemGroups.Count();
+
+            itemGroupItemButtons = new Button[] {
+                buttonItemGroupItem1,
+                buttonItemGroupItem2,
+                buttonItemGroupItem3,
+                buttonItemGroupItem4,
+                buttonItemGroupItem5,
+                buttonItemGroupItem6,
+                buttonItemGroupItem7,
+                buttonItemGroupItem8,
+                buttonItemGroupItem9,
+                buttonItemGroupItem10,
+                buttonItemGroupItem11,
+                buttonItemGroupItem12,
+                buttonItemGroupItem13,
+                buttonItemGroupItem14,
+                buttonItemGroupItem15,
+                buttonItemGroupItem16,
+                buttonItemGroupItem17,
+                buttonItemGroupItem18,
+                buttonItemGroupItem19,
+                buttonItemGroupItem20,
+                buttonItemGroupItem21,
+                buttonItemGroupItem22,
+                buttonItemGroupItem23,
+                buttonItemGroupItem24,
+                buttonItemGroupItem25,
+                buttonItemGroupItem26,
+                buttonItemGroupItem27,
+                buttonItemGroupItem28,
+                buttonItemGroupItem29,
+                buttonItemGroupItem30
+            };
+
+            for (int i = 0; i < itemGroupItemNoOfButtons; i++)
+            {
+                itemGroupItemButtons[i].Click += new EventHandler(buttonItemGroupItem_Click);
+            }
+
+            FillItemGroup();
+        }
+
+        private void FillItemGroup()
+        {
+            try
+            {
+                Button[] itemGroupButtons = new Button[] {
+                    buttonItemGroup1,
+                    buttonItemGroup2,
+                    buttonItemGroup3,
+                    buttonItemGroup4,
+                    buttonItemGroup5,
+                    buttonItemGroup6
+                };
+
+                for (int i = 0; i < itemGroupNoOfButtons; i++)
+                {
+                    itemGroupToolTip.SetToolTip(itemGroupButtons[i], "");
+                    itemGroupButtons[i].Text = "";
+                }
+
+                var listItemGroupPage = listItemGroups.Skip((itemGroupPage - 1) * itemGroupNoOfButtons).Take(itemGroupNoOfButtons).ToList();
+                if (listItemGroupPage.Any())
+                {
+                    for (int i = 0; i < listItemGroupPage.Count(); i++)
+                    {
+                        itemGroupToolTip.SetToolTip(itemGroupButtons[i], listItemGroupPage[i].Id.ToString());
+                        itemGroupButtons[i].Text = listItemGroupPage[i].ItemGroup;
+                    }
+                }
+
+                FillItemGroupItem(listItemGroupPage[0].Id);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void FillItemGroupItem(Int32 itemGroupItemGroupId)
+        {
+            try
+            {
+                Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();
+
+                listItemGroupItems = trnSalesController.ListItemGroupItem(itemGroupItemGroupId);
+                itemGroupItemPages = listItemGroupItems.Count();
+
+                for (int i = 0; i < itemGroupItemNoOfButtons; i++)
+                {
+                    itemGroupItemToolTip.SetToolTip(itemGroupItemButtons[i], "");
+                    itemGroupItemButtons[i].Text = "";
+                }
+
+                var listItemGroupItemPage = listItemGroupItems.Skip((itemGroupItemPage - 1) * itemGroupItemNoOfButtons).Take(itemGroupItemNoOfButtons).ToList();
+                if (listItemGroupItemPage.Any())
+                {
+                    for (int i = 0; i < listItemGroupItemPage.Count(); i++)
+                    {
+                        itemGroupItemToolTip.SetToolTip(itemGroupItemButtons[i], listItemGroupItemPage[i].Barcode.ToString());
+                        itemGroupItemButtons[i].Text = listItemGroupItemPage[i].Alias;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonItemGroupItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Button b = sender as Button;
+                String barcode = itemGroupItemToolTip.GetToolTip(b);
+
+                Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
+
+                if (Modules.SysCurrentModule.GetCurrentSettings().IsBarcodeQuantityAlwaysOne == "True")
+                {
+                    trnPOSSalesLineController.BarcodeSalesLine(trnSalesEntity.Id, barcode);
+                    GetSalesLineList();
+                }
+                else
+                {
+                    Entities.MstItemEntity detailItem = trnPOSSalesLineController.DetailItem(barcode);
+                    if (detailItem != null)
+                    {
+                        Int32 ItemId = detailItem.Id;
+                        Int32 SalesId = trnSalesEntity.Id;
+                        String ItemDescription = detailItem.ItemDescription;
+                        Int32 TaxId = detailItem.OutTaxId;
+                        String Tax = detailItem.OutTax;
+                        Decimal TaxRate = detailItem.OutTaxRate;
+                        Int32 UnitId = detailItem.UnitId;
+                        String Unit = detailItem.Unit;
+                        Decimal Price = detailItem.Price;
+                        Int32 DiscountId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().DefaultDiscountId);
+                        Int32 UserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
+
+                        Entities.TrnSalesLineEntity trnSalesLineEntity = new Entities.TrnSalesLineEntity()
+                        {
+                            Id = 0,
+                            SalesId = SalesId,
+                            ItemId = ItemId,
+                            ItemDescription = ItemDescription,
+                            UnitId = UnitId,
+                            Unit = Unit,
+                            Price = Price,
+                            DiscountId = DiscountId,
+                            Discount = "",
+                            DiscountRate = 0,
+                            DiscountAmount = 0,
+                            NetPrice = Price,
+                            Quantity = 1,
+                            Amount = Price,
+                            TaxId = TaxId,
+                            Tax = Tax,
+                            TaxRate = TaxRate,
+                            TaxAmount = 0,
+                            SalesAccountId = 159,
+                            AssetAccountId = 255,
+                            CostAccountId = 238,
+                            TaxAccountId = 87,
+                            SalesLineTimeStamp = DateTime.Now.Date.ToShortDateString(),
+                            UserId = UserId,
+                            Preparation = "NA",
+                            Price1 = 0,
+                            Price2 = 0,
+                            Price2LessTax = 0,
+                            PriceSplitPercentage = 0
+                        };
+
+                        TrnSalesDetailSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnSalesDetailSalesItemDetailForm(null, this, trnSalesLineEntity);
+                        trnSalesDetailSalesItemDetailForm.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Item not found.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -472,6 +678,144 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public void UpdatePOSTouchSalesListDataSource()
         {
             trnPOSTouchForm.UpdateSalesListGridDataSource();
+        }
+
+        private void buttonItemGroupPrevious_Click(object sender, EventArgs e)
+        {
+            itemGroupPage--;
+            if (itemGroupPage == 0)
+            {
+                itemGroupPage = 1;
+            }
+
+            itemGroupItemPage = 1;
+
+            FillItemGroup();
+        }
+
+        private void buttonItemGroupNext_Click(object sender, EventArgs e)
+        {
+            itemGroupPage++;
+
+            Int32 modulosPage = itemGroupPages % itemGroupNoOfButtons;
+            Int32 maximumNoOfPages = (itemGroupPages - modulosPage) / itemGroupNoOfButtons;
+
+            if (modulosPage > 0)
+            {
+                maximumNoOfPages += 1;
+            }
+
+            if (itemGroupPage > maximumNoOfPages)
+            {
+                itemGroupPage = maximumNoOfPages;
+            }
+
+            itemGroupItemPage = 1;
+
+            FillItemGroup();
+        }
+
+        private void buttonItemGroupItemPrevious_Click(object sender, EventArgs e)
+        {
+            itemGroupItemPage--;
+            if (itemGroupItemPage == 0)
+            {
+                itemGroupItemPage = 1;
+            }
+
+            FillItemGroupItem(selectedItemGroupId);
+        }
+
+        private void buttonItemGroupItemNext_Click(object sender, EventArgs e)
+        {
+            itemGroupItemPage++;
+
+            Int32 modulosPage = itemGroupItemPages % itemGroupItemNoOfButtons;
+            Int32 maximumNoOfPages = (itemGroupItemPages - modulosPage) / itemGroupItemNoOfButtons;
+
+            if (modulosPage > 0)
+            {
+                maximumNoOfPages += 1;
+            }
+
+            if (itemGroupItemPage > maximumNoOfPages)
+            {
+                itemGroupItemPage = maximumNoOfPages;
+            }
+
+            FillItemGroupItem(selectedItemGroupId);
+        }
+
+        private void buttonItemGroup1_Click(object sender, EventArgs e)
+        {
+            itemGroupItemPage = 1;
+
+            if (itemGroupToolTip.GetToolTip(buttonItemGroup1) != "")
+            {
+                Int32 itemGroupId = Convert.ToInt32(itemGroupToolTip.GetToolTip(buttonItemGroup1));
+                selectedItemGroupId = itemGroupId;
+                FillItemGroupItem(itemGroupId);
+            }
+        }
+
+        private void buttonItemGroup2_Click(object sender, EventArgs e)
+        {
+            itemGroupItemPage = 1;
+
+            if (itemGroupToolTip.GetToolTip(buttonItemGroup2) != "")
+            {
+                Int32 itemGroupId = Convert.ToInt32(itemGroupToolTip.GetToolTip(buttonItemGroup2));
+                selectedItemGroupId = itemGroupId;
+                FillItemGroupItem(itemGroupId);
+            }
+        }
+
+        private void buttonItemGroup3_Click(object sender, EventArgs e)
+        {
+            itemGroupItemPage = 1;
+
+            if (itemGroupToolTip.GetToolTip(buttonItemGroup3) != "")
+            {
+                Int32 itemGroupId = Convert.ToInt32(itemGroupToolTip.GetToolTip(buttonItemGroup3));
+                selectedItemGroupId = itemGroupId;
+                FillItemGroupItem(itemGroupId);
+            }
+        }
+
+        private void buttonItemGroup4_Click(object sender, EventArgs e)
+        {
+            itemGroupItemPage = 1;
+
+            if (itemGroupToolTip.GetToolTip(buttonItemGroup4) != "")
+            {
+                Int32 itemGroupId = Convert.ToInt32(itemGroupToolTip.GetToolTip(buttonItemGroup4));
+                selectedItemGroupId = itemGroupId;
+                FillItemGroupItem(itemGroupId);
+            }
+        }
+
+        private void buttonItemGroup5_Click(object sender, EventArgs e)
+        {
+            itemGroupItemPage = 1;
+
+            if (itemGroupToolTip.GetToolTip(buttonItemGroup5) != "")
+            {
+                Int32 itemGroupId = Convert.ToInt32(itemGroupToolTip.GetToolTip(buttonItemGroup5));
+                selectedItemGroupId = itemGroupId;
+                FillItemGroupItem(itemGroupId);
+            }
+        }
+
+        private void buttonItemGroup6_Click(object sender, EventArgs e)
+        {
+            itemGroupItemPage = 1;
+
+            if (itemGroupToolTip.GetToolTip(buttonItemGroup6) != "")
+            {
+                Int32 itemGroupId = Convert.ToInt32(itemGroupToolTip.GetToolTip(buttonItemGroup6));
+                selectedItemGroupId = itemGroupId;
+                FillItemGroupItem(itemGroupId);
+            }
         }
     }
 }

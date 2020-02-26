@@ -312,11 +312,13 @@
     <Compile Include="Entities\MstItemComponentEntity.cs" />
     <Compile Include="Entities\MstItemEntity.cs" />
     <Compile Include="Entities\MstItemGroupEntity.cs" />
+    <Compile Include="Entities\MstItemGroupItemEntity.cs" />
     <Compile Include="Entities\MstItemInventoryEntity.cs" />
     <Compile Include="Entities\MstItemPriceEntity.cs" />
     <Compile Include="Entities\MstPayTypeEntity.cs" />
     <Compile Include="Entities\MstPeriodEntity.cs" />
     <Compile Include="Entities\MstSupplierEntity.cs" />
+    <Compile Include="Entities\MstTableEntity.cs" />
     <Compile Include="Entities\MstTableGroupEntity.cs" />
     <Compile Include="Entities\MstTaxEntity.cs" />
     <Compile Include="Entities\MstTermEntity.cs" />

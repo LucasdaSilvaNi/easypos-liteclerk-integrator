@@ -30,15 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSTouchDetailForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle82 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle83 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle84 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle85 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle86 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle87 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle88 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle89 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle90 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonLock = new System.Windows.Forms.Button();
             this.buttonUnlock = new System.Windows.Forms.Button();
@@ -62,46 +62,46 @@
             this.button4 = new System.Windows.Forms.Button();
             this.imageListPOSTouchDetail = new System.Windows.Forms.ImageList(this.components);
             this.buttonWalkIn = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
-            this.button23 = new System.Windows.Forms.Button();
-            this.button24 = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
-            this.button26 = new System.Windows.Forms.Button();
-            this.button40 = new System.Windows.Forms.Button();
-            this.button41 = new System.Windows.Forms.Button();
-            this.button42 = new System.Windows.Forms.Button();
-            this.button37 = new System.Windows.Forms.Button();
-            this.button38 = new System.Windows.Forms.Button();
-            this.button39 = new System.Windows.Forms.Button();
-            this.button28 = new System.Windows.Forms.Button();
-            this.button29 = new System.Windows.Forms.Button();
-            this.button30 = new System.Windows.Forms.Button();
-            this.button31 = new System.Windows.Forms.Button();
-            this.button32 = new System.Windows.Forms.Button();
-            this.button33 = new System.Windows.Forms.Button();
-            this.button34 = new System.Windows.Forms.Button();
-            this.button35 = new System.Windows.Forms.Button();
-            this.button36 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem28 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem29 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem30 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem25 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem26 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem27 = new System.Windows.Forms.Button();
+            this.buttonItemGroup4 = new System.Windows.Forms.Button();
+            this.buttonItemGroup5 = new System.Windows.Forms.Button();
+            this.buttonItemGroup6 = new System.Windows.Forms.Button();
+            this.buttonItemGroup1 = new System.Windows.Forms.Button();
+            this.buttonItemGroup2 = new System.Windows.Forms.Button();
+            this.buttonItemGroup3 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem4 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem5 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem6 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem10 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem11 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem12 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem16 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem17 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem18 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem1 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem2 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem3 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem7 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem8 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem9 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem13 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem14 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem15 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem22 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem23 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem24 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem19 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem20 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItem21 = new System.Windows.Forms.Button();
+            this.buttonItemGroupItemNext = new System.Windows.Forms.Button();
+            this.buttonItemGroupNext = new System.Windows.Forms.Button();
+            this.buttonItemGroupItemPrevious = new System.Windows.Forms.Button();
+            this.buttonItemGroupPrevious = new System.Windows.Forms.Button();
             this.dataGridViewSalesLineList = new System.Windows.Forms.DataGridView();
             this.ColumnSalesLineEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnSalesLineDelete = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -417,46 +417,46 @@
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.button4);
             this.panel3.Controls.Add(this.buttonWalkIn);
-            this.panel3.Controls.Add(this.button3);
-            this.panel3.Controls.Add(this.button22);
-            this.panel3.Controls.Add(this.button23);
-            this.panel3.Controls.Add(this.button24);
-            this.panel3.Controls.Add(this.button25);
-            this.panel3.Controls.Add(this.button26);
-            this.panel3.Controls.Add(this.button40);
-            this.panel3.Controls.Add(this.button41);
-            this.panel3.Controls.Add(this.button42);
-            this.panel3.Controls.Add(this.button37);
-            this.panel3.Controls.Add(this.button38);
-            this.panel3.Controls.Add(this.button39);
-            this.panel3.Controls.Add(this.button28);
-            this.panel3.Controls.Add(this.button29);
-            this.panel3.Controls.Add(this.button30);
-            this.panel3.Controls.Add(this.button31);
-            this.panel3.Controls.Add(this.button32);
-            this.panel3.Controls.Add(this.button33);
-            this.panel3.Controls.Add(this.button34);
-            this.panel3.Controls.Add(this.button35);
-            this.panel3.Controls.Add(this.button36);
-            this.panel3.Controls.Add(this.button19);
-            this.panel3.Controls.Add(this.button20);
-            this.panel3.Controls.Add(this.button21);
-            this.panel3.Controls.Add(this.button16);
-            this.panel3.Controls.Add(this.button17);
-            this.panel3.Controls.Add(this.button18);
-            this.panel3.Controls.Add(this.button13);
-            this.panel3.Controls.Add(this.button14);
-            this.panel3.Controls.Add(this.button15);
-            this.panel3.Controls.Add(this.button10);
-            this.panel3.Controls.Add(this.button11);
-            this.panel3.Controls.Add(this.button12);
-            this.panel3.Controls.Add(this.button9);
-            this.panel3.Controls.Add(this.button8);
-            this.panel3.Controls.Add(this.button7);
-            this.panel3.Controls.Add(this.button5);
-            this.panel3.Controls.Add(this.button6);
-            this.panel3.Controls.Add(this.button2);
-            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.buttonItemGroupItem28);
+            this.panel3.Controls.Add(this.buttonItemGroupItem29);
+            this.panel3.Controls.Add(this.buttonItemGroupItem30);
+            this.panel3.Controls.Add(this.buttonItemGroupItem25);
+            this.panel3.Controls.Add(this.buttonItemGroupItem26);
+            this.panel3.Controls.Add(this.buttonItemGroupItem27);
+            this.panel3.Controls.Add(this.buttonItemGroup4);
+            this.panel3.Controls.Add(this.buttonItemGroup5);
+            this.panel3.Controls.Add(this.buttonItemGroup6);
+            this.panel3.Controls.Add(this.buttonItemGroup1);
+            this.panel3.Controls.Add(this.buttonItemGroup2);
+            this.panel3.Controls.Add(this.buttonItemGroup3);
+            this.panel3.Controls.Add(this.buttonItemGroupItem4);
+            this.panel3.Controls.Add(this.buttonItemGroupItem5);
+            this.panel3.Controls.Add(this.buttonItemGroupItem6);
+            this.panel3.Controls.Add(this.buttonItemGroupItem10);
+            this.panel3.Controls.Add(this.buttonItemGroupItem11);
+            this.panel3.Controls.Add(this.buttonItemGroupItem12);
+            this.panel3.Controls.Add(this.buttonItemGroupItem16);
+            this.panel3.Controls.Add(this.buttonItemGroupItem17);
+            this.panel3.Controls.Add(this.buttonItemGroupItem18);
+            this.panel3.Controls.Add(this.buttonItemGroupItem1);
+            this.panel3.Controls.Add(this.buttonItemGroupItem2);
+            this.panel3.Controls.Add(this.buttonItemGroupItem3);
+            this.panel3.Controls.Add(this.buttonItemGroupItem7);
+            this.panel3.Controls.Add(this.buttonItemGroupItem8);
+            this.panel3.Controls.Add(this.buttonItemGroupItem9);
+            this.panel3.Controls.Add(this.buttonItemGroupItem13);
+            this.panel3.Controls.Add(this.buttonItemGroupItem14);
+            this.panel3.Controls.Add(this.buttonItemGroupItem15);
+            this.panel3.Controls.Add(this.buttonItemGroupItem22);
+            this.panel3.Controls.Add(this.buttonItemGroupItem23);
+            this.panel3.Controls.Add(this.buttonItemGroupItem24);
+            this.panel3.Controls.Add(this.buttonItemGroupItem19);
+            this.panel3.Controls.Add(this.buttonItemGroupItem20);
+            this.panel3.Controls.Add(this.buttonItemGroupItem21);
+            this.panel3.Controls.Add(this.buttonItemGroupItemNext);
+            this.panel3.Controls.Add(this.buttonItemGroupNext);
+            this.panel3.Controls.Add(this.buttonItemGroupItemPrevious);
+            this.panel3.Controls.Add(this.buttonItemGroupPrevious);
             this.panel3.Location = new System.Drawing.Point(12, 9);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(5);
@@ -510,461 +510,507 @@
             this.buttonWalkIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonWalkIn.UseVisualStyleBackColor = false;
             // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.Control;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(454, 408);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(118, 77);
-            this.button3.TabIndex = 49;
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button22
-            // 
-            this.button22.BackColor = System.Drawing.SystemColors.Control;
-            this.button22.FlatAppearance.BorderSize = 0;
-            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button22.Location = new System.Drawing.Point(578, 408);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(118, 77);
-            this.button22.TabIndex = 48;
-            this.button22.UseVisualStyleBackColor = false;
-            // 
-            // button23
-            // 
-            this.button23.BackColor = System.Drawing.SystemColors.Control;
-            this.button23.FlatAppearance.BorderSize = 0;
-            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button23.Location = new System.Drawing.Point(702, 408);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(119, 77);
-            this.button23.TabIndex = 47;
-            this.button23.UseVisualStyleBackColor = false;
-            // 
-            // button24
-            // 
-            this.button24.BackColor = System.Drawing.SystemColors.Control;
-            this.button24.FlatAppearance.BorderSize = 0;
-            this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button24.Location = new System.Drawing.Point(79, 408);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(119, 77);
-            this.button24.TabIndex = 46;
-            this.button24.UseVisualStyleBackColor = false;
-            // 
-            // button25
-            // 
-            this.button25.BackColor = System.Drawing.SystemColors.Control;
-            this.button25.FlatAppearance.BorderSize = 0;
-            this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button25.Location = new System.Drawing.Point(204, 408);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(119, 77);
-            this.button25.TabIndex = 45;
-            this.button25.UseVisualStyleBackColor = false;
-            // 
-            // button26
-            // 
-            this.button26.BackColor = System.Drawing.SystemColors.Control;
-            this.button26.FlatAppearance.BorderSize = 0;
-            this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button26.Location = new System.Drawing.Point(329, 408);
-            this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(119, 77);
-            this.button26.TabIndex = 44;
-            this.button26.UseVisualStyleBackColor = false;
-            // 
-            // button40
-            // 
-            this.button40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button40.FlatAppearance.BorderSize = 0;
-            this.button40.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button40.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button40.Location = new System.Drawing.Point(454, 8);
-            this.button40.Name = "button40";
-            this.button40.Size = new System.Drawing.Size(118, 62);
-            this.button40.TabIndex = 41;
-            this.button40.UseVisualStyleBackColor = false;
-            // 
-            // button41
-            // 
-            this.button41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button41.FlatAppearance.BorderSize = 0;
-            this.button41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button41.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button41.Location = new System.Drawing.Point(578, 8);
-            this.button41.Name = "button41";
-            this.button41.Size = new System.Drawing.Size(118, 62);
-            this.button41.TabIndex = 40;
-            this.button41.UseVisualStyleBackColor = false;
-            // 
-            // button42
-            // 
-            this.button42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button42.FlatAppearance.BorderSize = 0;
-            this.button42.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button42.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button42.Location = new System.Drawing.Point(702, 8);
-            this.button42.Name = "button42";
-            this.button42.Size = new System.Drawing.Size(119, 62);
-            this.button42.TabIndex = 39;
-            this.button42.UseVisualStyleBackColor = false;
-            // 
-            // button37
-            // 
-            this.button37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button37.FlatAppearance.BorderSize = 0;
-            this.button37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button37.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button37.Location = new System.Drawing.Point(79, 8);
-            this.button37.Name = "button37";
-            this.button37.Size = new System.Drawing.Size(119, 62);
-            this.button37.TabIndex = 38;
-            this.button37.UseVisualStyleBackColor = false;
-            // 
-            // button38
-            // 
-            this.button38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button38.FlatAppearance.BorderSize = 0;
-            this.button38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button38.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button38.Location = new System.Drawing.Point(204, 8);
-            this.button38.Name = "button38";
-            this.button38.Size = new System.Drawing.Size(119, 62);
-            this.button38.TabIndex = 37;
-            this.button38.UseVisualStyleBackColor = false;
-            // 
-            // button39
-            // 
-            this.button39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.button39.FlatAppearance.BorderSize = 0;
-            this.button39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button39.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button39.Location = new System.Drawing.Point(329, 8);
-            this.button39.Name = "button39";
-            this.button39.Size = new System.Drawing.Size(118, 62);
-            this.button39.TabIndex = 36;
-            this.button39.UseVisualStyleBackColor = false;
-            // 
-            // button28
-            // 
-            this.button28.BackColor = System.Drawing.SystemColors.Control;
-            this.button28.FlatAppearance.BorderSize = 0;
-            this.button28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button28.Location = new System.Drawing.Point(454, 76);
-            this.button28.Name = "button28";
-            this.button28.Size = new System.Drawing.Size(119, 77);
-            this.button28.TabIndex = 32;
-            this.button28.UseVisualStyleBackColor = false;
-            // 
-            // button29
-            // 
-            this.button29.BackColor = System.Drawing.SystemColors.Control;
-            this.button29.FlatAppearance.BorderSize = 0;
-            this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button29.Location = new System.Drawing.Point(578, 76);
-            this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(119, 77);
-            this.button29.TabIndex = 31;
-            this.button29.UseVisualStyleBackColor = false;
-            // 
-            // button30
-            // 
-            this.button30.BackColor = System.Drawing.SystemColors.Control;
-            this.button30.FlatAppearance.BorderSize = 0;
-            this.button30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button30.Location = new System.Drawing.Point(702, 76);
-            this.button30.Name = "button30";
-            this.button30.Size = new System.Drawing.Size(119, 77);
-            this.button30.TabIndex = 30;
-            this.button30.UseVisualStyleBackColor = false;
-            // 
-            // button31
-            // 
-            this.button31.BackColor = System.Drawing.SystemColors.Control;
-            this.button31.FlatAppearance.BorderSize = 0;
-            this.button31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button31.Location = new System.Drawing.Point(453, 159);
-            this.button31.Name = "button31";
-            this.button31.Size = new System.Drawing.Size(119, 77);
-            this.button31.TabIndex = 29;
-            this.button31.UseVisualStyleBackColor = false;
-            // 
-            // button32
-            // 
-            this.button32.BackColor = System.Drawing.SystemColors.Control;
-            this.button32.FlatAppearance.BorderSize = 0;
-            this.button32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button32.Location = new System.Drawing.Point(578, 159);
-            this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(118, 77);
-            this.button32.TabIndex = 28;
-            this.button32.UseVisualStyleBackColor = false;
-            // 
-            // button33
-            // 
-            this.button33.BackColor = System.Drawing.SystemColors.Control;
-            this.button33.FlatAppearance.BorderSize = 0;
-            this.button33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button33.Location = new System.Drawing.Point(702, 159);
-            this.button33.Name = "button33";
-            this.button33.Size = new System.Drawing.Size(119, 77);
-            this.button33.TabIndex = 27;
-            this.button33.UseVisualStyleBackColor = false;
-            // 
-            // button34
-            // 
-            this.button34.BackColor = System.Drawing.SystemColors.Control;
-            this.button34.FlatAppearance.BorderSize = 0;
-            this.button34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button34.Location = new System.Drawing.Point(453, 242);
-            this.button34.Name = "button34";
-            this.button34.Size = new System.Drawing.Size(119, 77);
-            this.button34.TabIndex = 26;
-            this.button34.UseVisualStyleBackColor = false;
-            // 
-            // button35
-            // 
-            this.button35.BackColor = System.Drawing.SystemColors.Control;
-            this.button35.FlatAppearance.BorderSize = 0;
-            this.button35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button35.Location = new System.Drawing.Point(578, 242);
-            this.button35.Name = "button35";
-            this.button35.Size = new System.Drawing.Size(118, 77);
-            this.button35.TabIndex = 25;
-            this.button35.UseVisualStyleBackColor = false;
-            // 
-            // button36
-            // 
-            this.button36.BackColor = System.Drawing.SystemColors.Control;
-            this.button36.FlatAppearance.BorderSize = 0;
-            this.button36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button36.Location = new System.Drawing.Point(702, 242);
-            this.button36.Name = "button36";
-            this.button36.Size = new System.Drawing.Size(119, 77);
-            this.button36.TabIndex = 24;
-            this.button36.UseVisualStyleBackColor = false;
-            // 
-            // button19
-            // 
-            this.button19.BackColor = System.Drawing.SystemColors.Control;
-            this.button19.FlatAppearance.BorderSize = 0;
-            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button19.Location = new System.Drawing.Point(79, 76);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(119, 77);
-            this.button19.TabIndex = 20;
-            this.button19.UseVisualStyleBackColor = false;
-            // 
-            // button20
-            // 
-            this.button20.BackColor = System.Drawing.SystemColors.Control;
-            this.button20.FlatAppearance.BorderSize = 0;
-            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button20.Location = new System.Drawing.Point(204, 76);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(119, 77);
-            this.button20.TabIndex = 19;
-            this.button20.UseVisualStyleBackColor = false;
-            // 
-            // button21
-            // 
-            this.button21.BackColor = System.Drawing.SystemColors.Control;
-            this.button21.FlatAppearance.BorderSize = 0;
-            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button21.Location = new System.Drawing.Point(329, 76);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(119, 77);
-            this.button21.TabIndex = 18;
-            this.button21.UseVisualStyleBackColor = false;
-            // 
-            // button16
-            // 
-            this.button16.BackColor = System.Drawing.SystemColors.Control;
-            this.button16.FlatAppearance.BorderSize = 0;
-            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button16.Location = new System.Drawing.Point(79, 159);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(119, 77);
-            this.button16.TabIndex = 17;
-            this.button16.UseVisualStyleBackColor = false;
-            // 
-            // button17
-            // 
-            this.button17.BackColor = System.Drawing.SystemColors.Control;
-            this.button17.FlatAppearance.BorderSize = 0;
-            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button17.Location = new System.Drawing.Point(204, 159);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(119, 77);
-            this.button17.TabIndex = 16;
-            this.button17.UseVisualStyleBackColor = false;
-            // 
-            // button18
-            // 
-            this.button18.BackColor = System.Drawing.SystemColors.Control;
-            this.button18.FlatAppearance.BorderSize = 0;
-            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button18.Location = new System.Drawing.Point(329, 159);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(119, 77);
-            this.button18.TabIndex = 15;
-            this.button18.UseVisualStyleBackColor = false;
-            // 
-            // button13
-            // 
-            this.button13.BackColor = System.Drawing.SystemColors.Control;
-            this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Location = new System.Drawing.Point(79, 242);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(119, 77);
-            this.button13.TabIndex = 14;
-            this.button13.UseVisualStyleBackColor = false;
-            // 
-            // button14
-            // 
-            this.button14.BackColor = System.Drawing.SystemColors.Control;
-            this.button14.FlatAppearance.BorderSize = 0;
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Location = new System.Drawing.Point(204, 242);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(119, 77);
-            this.button14.TabIndex = 13;
-            this.button14.UseVisualStyleBackColor = false;
-            // 
-            // button15
-            // 
-            this.button15.BackColor = System.Drawing.SystemColors.Control;
-            this.button15.FlatAppearance.BorderSize = 0;
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Location = new System.Drawing.Point(329, 242);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(119, 77);
-            this.button15.TabIndex = 12;
-            this.button15.UseVisualStyleBackColor = false;
-            // 
-            // button10
-            // 
-            this.button10.BackColor = System.Drawing.SystemColors.Control;
-            this.button10.FlatAppearance.BorderSize = 0;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Location = new System.Drawing.Point(454, 325);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(118, 77);
-            this.button10.TabIndex = 11;
-            this.button10.UseVisualStyleBackColor = false;
-            // 
-            // button11
-            // 
-            this.button11.BackColor = System.Drawing.SystemColors.Control;
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Location = new System.Drawing.Point(578, 325);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(118, 77);
-            this.button11.TabIndex = 10;
-            this.button11.UseVisualStyleBackColor = false;
-            // 
-            // button12
-            // 
-            this.button12.BackColor = System.Drawing.SystemColors.Control;
-            this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Location = new System.Drawing.Point(702, 325);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(119, 77);
-            this.button12.TabIndex = 9;
-            this.button12.UseVisualStyleBackColor = false;
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.SystemColors.Control;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Location = new System.Drawing.Point(79, 325);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(119, 77);
-            this.button9.TabIndex = 8;
-            this.button9.UseVisualStyleBackColor = false;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.SystemColors.Control;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(204, 325);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(119, 77);
-            this.button8.TabIndex = 7;
-            this.button8.UseVisualStyleBackColor = false;
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.SystemColors.Control;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(329, 325);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(119, 77);
-            this.button7.TabIndex = 6;
-            this.button7.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.Black;
-            this.button5.Location = new System.Drawing.Point(827, 76);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(65, 409);
-            this.button5.TabIndex = 5;
-            this.button5.Text = ">";
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.SteelBlue;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(827, 8);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(65, 62);
-            this.button6.TabIndex = 4;
-            this.button6.Text = ">";
-            this.button6.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(8, 76);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(65, 409);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "<";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.SteelBlue;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(8, 8);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(65, 62);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "<";
-            this.button1.UseVisualStyleBackColor = false;
+            // buttonItemGroupItem28
+            // 
+            this.buttonItemGroupItem28.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem28.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem28.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem28.Location = new System.Drawing.Point(454, 408);
+            this.buttonItemGroupItem28.Name = "buttonItemGroupItem28";
+            this.buttonItemGroupItem28.Size = new System.Drawing.Size(118, 77);
+            this.buttonItemGroupItem28.TabIndex = 49;
+            this.buttonItemGroupItem28.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem29
+            // 
+            this.buttonItemGroupItem29.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem29.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem29.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem29.Location = new System.Drawing.Point(578, 408);
+            this.buttonItemGroupItem29.Name = "buttonItemGroupItem29";
+            this.buttonItemGroupItem29.Size = new System.Drawing.Size(118, 77);
+            this.buttonItemGroupItem29.TabIndex = 48;
+            this.buttonItemGroupItem29.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem30
+            // 
+            this.buttonItemGroupItem30.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem30.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem30.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem30.Location = new System.Drawing.Point(702, 408);
+            this.buttonItemGroupItem30.Name = "buttonItemGroupItem30";
+            this.buttonItemGroupItem30.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem30.TabIndex = 47;
+            this.buttonItemGroupItem30.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem25
+            // 
+            this.buttonItemGroupItem25.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem25.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem25.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem25.Location = new System.Drawing.Point(79, 408);
+            this.buttonItemGroupItem25.Name = "buttonItemGroupItem25";
+            this.buttonItemGroupItem25.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem25.TabIndex = 46;
+            this.buttonItemGroupItem25.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem26
+            // 
+            this.buttonItemGroupItem26.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem26.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem26.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem26.Location = new System.Drawing.Point(204, 408);
+            this.buttonItemGroupItem26.Name = "buttonItemGroupItem26";
+            this.buttonItemGroupItem26.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem26.TabIndex = 45;
+            this.buttonItemGroupItem26.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem27
+            // 
+            this.buttonItemGroupItem27.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem27.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem27.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem27.Location = new System.Drawing.Point(329, 408);
+            this.buttonItemGroupItem27.Name = "buttonItemGroupItem27";
+            this.buttonItemGroupItem27.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem27.TabIndex = 44;
+            this.buttonItemGroupItem27.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroup4
+            // 
+            this.buttonItemGroup4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonItemGroup4.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroup4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroup4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonItemGroup4.ForeColor = System.Drawing.Color.White;
+            this.buttonItemGroup4.Location = new System.Drawing.Point(454, 8);
+            this.buttonItemGroup4.Name = "buttonItemGroup4";
+            this.buttonItemGroup4.Size = new System.Drawing.Size(118, 62);
+            this.buttonItemGroup4.TabIndex = 41;
+            this.buttonItemGroup4.UseVisualStyleBackColor = false;
+            this.buttonItemGroup4.Click += new System.EventHandler(this.buttonItemGroup4_Click);
+            // 
+            // buttonItemGroup5
+            // 
+            this.buttonItemGroup5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonItemGroup5.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroup5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroup5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonItemGroup5.ForeColor = System.Drawing.Color.White;
+            this.buttonItemGroup5.Location = new System.Drawing.Point(578, 8);
+            this.buttonItemGroup5.Name = "buttonItemGroup5";
+            this.buttonItemGroup5.Size = new System.Drawing.Size(118, 62);
+            this.buttonItemGroup5.TabIndex = 40;
+            this.buttonItemGroup5.UseVisualStyleBackColor = false;
+            this.buttonItemGroup5.Click += new System.EventHandler(this.buttonItemGroup5_Click);
+            // 
+            // buttonItemGroup6
+            // 
+            this.buttonItemGroup6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonItemGroup6.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroup6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroup6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonItemGroup6.ForeColor = System.Drawing.Color.White;
+            this.buttonItemGroup6.Location = new System.Drawing.Point(702, 8);
+            this.buttonItemGroup6.Name = "buttonItemGroup6";
+            this.buttonItemGroup6.Size = new System.Drawing.Size(119, 62);
+            this.buttonItemGroup6.TabIndex = 39;
+            this.buttonItemGroup6.UseVisualStyleBackColor = false;
+            this.buttonItemGroup6.Click += new System.EventHandler(this.buttonItemGroup6_Click);
+            // 
+            // buttonItemGroup1
+            // 
+            this.buttonItemGroup1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonItemGroup1.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroup1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroup1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonItemGroup1.ForeColor = System.Drawing.Color.White;
+            this.buttonItemGroup1.Location = new System.Drawing.Point(79, 8);
+            this.buttonItemGroup1.Name = "buttonItemGroup1";
+            this.buttonItemGroup1.Size = new System.Drawing.Size(119, 62);
+            this.buttonItemGroup1.TabIndex = 38;
+            this.buttonItemGroup1.UseVisualStyleBackColor = false;
+            this.buttonItemGroup1.Click += new System.EventHandler(this.buttonItemGroup1_Click);
+            // 
+            // buttonItemGroup2
+            // 
+            this.buttonItemGroup2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonItemGroup2.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroup2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroup2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonItemGroup2.ForeColor = System.Drawing.Color.White;
+            this.buttonItemGroup2.Location = new System.Drawing.Point(204, 8);
+            this.buttonItemGroup2.Name = "buttonItemGroup2";
+            this.buttonItemGroup2.Size = new System.Drawing.Size(119, 62);
+            this.buttonItemGroup2.TabIndex = 37;
+            this.buttonItemGroup2.UseVisualStyleBackColor = false;
+            this.buttonItemGroup2.Click += new System.EventHandler(this.buttonItemGroup2_Click);
+            // 
+            // buttonItemGroup3
+            // 
+            this.buttonItemGroup3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonItemGroup3.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroup3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroup3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonItemGroup3.ForeColor = System.Drawing.Color.White;
+            this.buttonItemGroup3.Location = new System.Drawing.Point(329, 8);
+            this.buttonItemGroup3.Name = "buttonItemGroup3";
+            this.buttonItemGroup3.Size = new System.Drawing.Size(118, 62);
+            this.buttonItemGroup3.TabIndex = 36;
+            this.buttonItemGroup3.UseVisualStyleBackColor = false;
+            this.buttonItemGroup3.Click += new System.EventHandler(this.buttonItemGroup3_Click);
+            // 
+            // buttonItemGroupItem4
+            // 
+            this.buttonItemGroupItem4.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem4.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem4.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem4.Location = new System.Drawing.Point(454, 76);
+            this.buttonItemGroupItem4.Name = "buttonItemGroupItem4";
+            this.buttonItemGroupItem4.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem4.TabIndex = 32;
+            this.buttonItemGroupItem4.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem5
+            // 
+            this.buttonItemGroupItem5.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem5.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem5.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem5.Location = new System.Drawing.Point(578, 76);
+            this.buttonItemGroupItem5.Name = "buttonItemGroupItem5";
+            this.buttonItemGroupItem5.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem5.TabIndex = 31;
+            this.buttonItemGroupItem5.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem6
+            // 
+            this.buttonItemGroupItem6.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem6.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem6.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem6.Location = new System.Drawing.Point(702, 76);
+            this.buttonItemGroupItem6.Name = "buttonItemGroupItem6";
+            this.buttonItemGroupItem6.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem6.TabIndex = 30;
+            this.buttonItemGroupItem6.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem10
+            // 
+            this.buttonItemGroupItem10.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem10.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem10.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem10.Location = new System.Drawing.Point(453, 159);
+            this.buttonItemGroupItem10.Name = "buttonItemGroupItem10";
+            this.buttonItemGroupItem10.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem10.TabIndex = 29;
+            this.buttonItemGroupItem10.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem11
+            // 
+            this.buttonItemGroupItem11.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem11.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem11.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem11.Location = new System.Drawing.Point(578, 159);
+            this.buttonItemGroupItem11.Name = "buttonItemGroupItem11";
+            this.buttonItemGroupItem11.Size = new System.Drawing.Size(118, 77);
+            this.buttonItemGroupItem11.TabIndex = 28;
+            this.buttonItemGroupItem11.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem12
+            // 
+            this.buttonItemGroupItem12.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem12.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem12.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem12.Location = new System.Drawing.Point(702, 159);
+            this.buttonItemGroupItem12.Name = "buttonItemGroupItem12";
+            this.buttonItemGroupItem12.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem12.TabIndex = 27;
+            this.buttonItemGroupItem12.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem16
+            // 
+            this.buttonItemGroupItem16.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem16.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem16.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem16.Location = new System.Drawing.Point(453, 242);
+            this.buttonItemGroupItem16.Name = "buttonItemGroupItem16";
+            this.buttonItemGroupItem16.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem16.TabIndex = 26;
+            this.buttonItemGroupItem16.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem17
+            // 
+            this.buttonItemGroupItem17.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem17.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem17.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem17.Location = new System.Drawing.Point(578, 242);
+            this.buttonItemGroupItem17.Name = "buttonItemGroupItem17";
+            this.buttonItemGroupItem17.Size = new System.Drawing.Size(118, 77);
+            this.buttonItemGroupItem17.TabIndex = 25;
+            this.buttonItemGroupItem17.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem18
+            // 
+            this.buttonItemGroupItem18.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem18.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem18.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem18.Location = new System.Drawing.Point(702, 242);
+            this.buttonItemGroupItem18.Name = "buttonItemGroupItem18";
+            this.buttonItemGroupItem18.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem18.TabIndex = 24;
+            this.buttonItemGroupItem18.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem1
+            // 
+            this.buttonItemGroupItem1.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem1.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem1.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem1.Location = new System.Drawing.Point(79, 76);
+            this.buttonItemGroupItem1.Name = "buttonItemGroupItem1";
+            this.buttonItemGroupItem1.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem1.TabIndex = 20;
+            this.buttonItemGroupItem1.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem2
+            // 
+            this.buttonItemGroupItem2.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem2.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem2.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem2.Location = new System.Drawing.Point(204, 76);
+            this.buttonItemGroupItem2.Name = "buttonItemGroupItem2";
+            this.buttonItemGroupItem2.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem2.TabIndex = 19;
+            this.buttonItemGroupItem2.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem3
+            // 
+            this.buttonItemGroupItem3.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem3.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem3.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem3.Location = new System.Drawing.Point(329, 76);
+            this.buttonItemGroupItem3.Name = "buttonItemGroupItem3";
+            this.buttonItemGroupItem3.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem3.TabIndex = 18;
+            this.buttonItemGroupItem3.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem7
+            // 
+            this.buttonItemGroupItem7.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem7.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem7.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem7.Location = new System.Drawing.Point(79, 159);
+            this.buttonItemGroupItem7.Name = "buttonItemGroupItem7";
+            this.buttonItemGroupItem7.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem7.TabIndex = 17;
+            this.buttonItemGroupItem7.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem8
+            // 
+            this.buttonItemGroupItem8.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem8.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem8.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem8.Location = new System.Drawing.Point(204, 159);
+            this.buttonItemGroupItem8.Name = "buttonItemGroupItem8";
+            this.buttonItemGroupItem8.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem8.TabIndex = 16;
+            this.buttonItemGroupItem8.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem9
+            // 
+            this.buttonItemGroupItem9.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem9.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem9.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem9.Location = new System.Drawing.Point(329, 159);
+            this.buttonItemGroupItem9.Name = "buttonItemGroupItem9";
+            this.buttonItemGroupItem9.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem9.TabIndex = 15;
+            this.buttonItemGroupItem9.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem13
+            // 
+            this.buttonItemGroupItem13.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem13.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem13.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem13.Location = new System.Drawing.Point(79, 242);
+            this.buttonItemGroupItem13.Name = "buttonItemGroupItem13";
+            this.buttonItemGroupItem13.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem13.TabIndex = 14;
+            this.buttonItemGroupItem13.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem14
+            // 
+            this.buttonItemGroupItem14.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem14.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem14.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem14.Location = new System.Drawing.Point(204, 242);
+            this.buttonItemGroupItem14.Name = "buttonItemGroupItem14";
+            this.buttonItemGroupItem14.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem14.TabIndex = 13;
+            this.buttonItemGroupItem14.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem15
+            // 
+            this.buttonItemGroupItem15.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem15.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem15.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem15.Location = new System.Drawing.Point(329, 242);
+            this.buttonItemGroupItem15.Name = "buttonItemGroupItem15";
+            this.buttonItemGroupItem15.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem15.TabIndex = 12;
+            this.buttonItemGroupItem15.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem22
+            // 
+            this.buttonItemGroupItem22.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem22.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem22.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem22.Location = new System.Drawing.Point(454, 325);
+            this.buttonItemGroupItem22.Name = "buttonItemGroupItem22";
+            this.buttonItemGroupItem22.Size = new System.Drawing.Size(118, 77);
+            this.buttonItemGroupItem22.TabIndex = 11;
+            this.buttonItemGroupItem22.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem23
+            // 
+            this.buttonItemGroupItem23.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem23.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem23.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem23.Location = new System.Drawing.Point(578, 325);
+            this.buttonItemGroupItem23.Name = "buttonItemGroupItem23";
+            this.buttonItemGroupItem23.Size = new System.Drawing.Size(118, 77);
+            this.buttonItemGroupItem23.TabIndex = 10;
+            this.buttonItemGroupItem23.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem24
+            // 
+            this.buttonItemGroupItem24.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem24.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem24.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem24.Location = new System.Drawing.Point(702, 325);
+            this.buttonItemGroupItem24.Name = "buttonItemGroupItem24";
+            this.buttonItemGroupItem24.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem24.TabIndex = 9;
+            this.buttonItemGroupItem24.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem19
+            // 
+            this.buttonItemGroupItem19.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem19.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem19.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem19.Location = new System.Drawing.Point(79, 325);
+            this.buttonItemGroupItem19.Name = "buttonItemGroupItem19";
+            this.buttonItemGroupItem19.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem19.TabIndex = 8;
+            this.buttonItemGroupItem19.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem20
+            // 
+            this.buttonItemGroupItem20.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem20.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem20.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem20.Location = new System.Drawing.Point(204, 325);
+            this.buttonItemGroupItem20.Name = "buttonItemGroupItem20";
+            this.buttonItemGroupItem20.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem20.TabIndex = 7;
+            this.buttonItemGroupItem20.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItem21
+            // 
+            this.buttonItemGroupItem21.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonItemGroupItem21.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItem21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem21.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItem21.Location = new System.Drawing.Point(329, 325);
+            this.buttonItemGroupItem21.Name = "buttonItemGroupItem21";
+            this.buttonItemGroupItem21.Size = new System.Drawing.Size(119, 77);
+            this.buttonItemGroupItem21.TabIndex = 6;
+            this.buttonItemGroupItem21.UseVisualStyleBackColor = false;
+            // 
+            // buttonItemGroupItemNext
+            // 
+            this.buttonItemGroupItemNext.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonItemGroupItemNext.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItemNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItemNext.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonItemGroupItemNext.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItemNext.Location = new System.Drawing.Point(827, 76);
+            this.buttonItemGroupItemNext.Name = "buttonItemGroupItemNext";
+            this.buttonItemGroupItemNext.Size = new System.Drawing.Size(65, 409);
+            this.buttonItemGroupItemNext.TabIndex = 5;
+            this.buttonItemGroupItemNext.Text = ">";
+            this.buttonItemGroupItemNext.UseVisualStyleBackColor = false;
+            this.buttonItemGroupItemNext.Click += new System.EventHandler(this.buttonItemGroupItemNext_Click);
+            // 
+            // buttonItemGroupNext
+            // 
+            this.buttonItemGroupNext.BackColor = System.Drawing.Color.SteelBlue;
+            this.buttonItemGroupNext.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupNext.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonItemGroupNext.Location = new System.Drawing.Point(827, 8);
+            this.buttonItemGroupNext.Name = "buttonItemGroupNext";
+            this.buttonItemGroupNext.Size = new System.Drawing.Size(65, 62);
+            this.buttonItemGroupNext.TabIndex = 4;
+            this.buttonItemGroupNext.Text = ">";
+            this.buttonItemGroupNext.UseVisualStyleBackColor = false;
+            this.buttonItemGroupNext.Click += new System.EventHandler(this.buttonItemGroupNext_Click);
+            // 
+            // buttonItemGroupItemPrevious
+            // 
+            this.buttonItemGroupItemPrevious.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonItemGroupItemPrevious.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItemPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItemPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonItemGroupItemPrevious.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItemPrevious.Location = new System.Drawing.Point(8, 76);
+            this.buttonItemGroupItemPrevious.Name = "buttonItemGroupItemPrevious";
+            this.buttonItemGroupItemPrevious.Size = new System.Drawing.Size(65, 409);
+            this.buttonItemGroupItemPrevious.TabIndex = 1;
+            this.buttonItemGroupItemPrevious.Text = "<";
+            this.buttonItemGroupItemPrevious.UseVisualStyleBackColor = false;
+            this.buttonItemGroupItemPrevious.Click += new System.EventHandler(this.buttonItemGroupItemPrevious_Click);
+            // 
+            // buttonItemGroupPrevious
+            // 
+            this.buttonItemGroupPrevious.BackColor = System.Drawing.Color.SteelBlue;
+            this.buttonItemGroupPrevious.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonItemGroupPrevious.Location = new System.Drawing.Point(8, 8);
+            this.buttonItemGroupPrevious.Name = "buttonItemGroupPrevious";
+            this.buttonItemGroupPrevious.Size = new System.Drawing.Size(65, 62);
+            this.buttonItemGroupPrevious.TabIndex = 0;
+            this.buttonItemGroupPrevious.Text = "<";
+            this.buttonItemGroupPrevious.UseVisualStyleBackColor = false;
+            this.buttonItemGroupPrevious.Click += new System.EventHandler(this.buttonItemGroupPrevious_Click);
             // 
             // dataGridViewSalesLineList
             // 
@@ -975,14 +1021,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewSalesLineList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSalesLineList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle82.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle82.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle82.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            dataGridViewCellStyle82.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle82.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle82.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle82.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSalesLineList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle82;
             this.dataGridViewSalesLineList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSalesLineList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnSalesLineEdit,
@@ -1091,8 +1137,8 @@
             // 
             // ColumnSalesLinePrice
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLinePrice.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle83.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLinePrice.DefaultCellStyle = dataGridViewCellStyle83;
             this.ColumnSalesLinePrice.HeaderText = "Price";
             this.ColumnSalesLinePrice.Name = "ColumnSalesLinePrice";
             this.ColumnSalesLinePrice.ReadOnly = true;
@@ -1114,8 +1160,8 @@
             // 
             // ColumnSalesLineDiscountRate
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineDiscountRate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle84.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineDiscountRate.DefaultCellStyle = dataGridViewCellStyle84;
             this.ColumnSalesLineDiscountRate.HeaderText = "Discount Rate";
             this.ColumnSalesLineDiscountRate.Name = "ColumnSalesLineDiscountRate";
             this.ColumnSalesLineDiscountRate.ReadOnly = true;
@@ -1123,8 +1169,8 @@
             // 
             // ColumnSalesLineDiscountAmount
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineDiscountAmount.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle85.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineDiscountAmount.DefaultCellStyle = dataGridViewCellStyle85;
             this.ColumnSalesLineDiscountAmount.HeaderText = "Discount";
             this.ColumnSalesLineDiscountAmount.Name = "ColumnSalesLineDiscountAmount";
             this.ColumnSalesLineDiscountAmount.ReadOnly = true;
@@ -1132,8 +1178,8 @@
             // 
             // ColumnSalesLineNetPrice
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineNetPrice.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle86.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineNetPrice.DefaultCellStyle = dataGridViewCellStyle86;
             this.ColumnSalesLineNetPrice.HeaderText = "Net Price";
             this.ColumnSalesLineNetPrice.Name = "ColumnSalesLineNetPrice";
             this.ColumnSalesLineNetPrice.ReadOnly = true;
@@ -1141,8 +1187,8 @@
             // 
             // ColumnSalesLineQuantity
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineQuantity.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle87.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineQuantity.DefaultCellStyle = dataGridViewCellStyle87;
             this.ColumnSalesLineQuantity.HeaderText = "Quantity";
             this.ColumnSalesLineQuantity.Name = "ColumnSalesLineQuantity";
             this.ColumnSalesLineQuantity.ReadOnly = true;
@@ -1150,8 +1196,8 @@
             // 
             // ColumnSalesLineAmount
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineAmount.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle88.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineAmount.DefaultCellStyle = dataGridViewCellStyle88;
             this.ColumnSalesLineAmount.HeaderText = "Amount";
             this.ColumnSalesLineAmount.Name = "ColumnSalesLineAmount";
             this.ColumnSalesLineAmount.ReadOnly = true;
@@ -1174,8 +1220,8 @@
             // 
             // ColumnSalesLineTaxRate
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineTaxRate.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle89.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineTaxRate.DefaultCellStyle = dataGridViewCellStyle89;
             this.ColumnSalesLineTaxRate.HeaderText = "Tax Rate";
             this.ColumnSalesLineTaxRate.Name = "ColumnSalesLineTaxRate";
             this.ColumnSalesLineTaxRate.ReadOnly = true;
@@ -1183,8 +1229,8 @@
             // 
             // ColumnSalesLineTaxAmount
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineTaxAmount.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle90.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineTaxAmount.DefaultCellStyle = dataGridViewCellStyle90;
             this.ColumnSalesLineTaxAmount.HeaderText = "Tax Amount";
             this.ColumnSalesLineTaxAmount.Name = "ColumnSalesLineTaxAmount";
             this.ColumnSalesLineTaxAmount.ReadOnly = true;
@@ -1323,40 +1369,40 @@
         private System.Windows.Forms.Button buttonSearchItem;
         private System.Windows.Forms.TextBox textBoxBarcode;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button40;
-        private System.Windows.Forms.Button button41;
-        private System.Windows.Forms.Button button42;
-        private System.Windows.Forms.Button button37;
-        private System.Windows.Forms.Button button38;
-        private System.Windows.Forms.Button button39;
-        private System.Windows.Forms.Button button28;
-        private System.Windows.Forms.Button button29;
-        private System.Windows.Forms.Button button30;
-        private System.Windows.Forms.Button button31;
-        private System.Windows.Forms.Button button32;
-        private System.Windows.Forms.Button button33;
-        private System.Windows.Forms.Button button34;
-        private System.Windows.Forms.Button button35;
-        private System.Windows.Forms.Button button36;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonItemGroup4;
+        private System.Windows.Forms.Button buttonItemGroup5;
+        private System.Windows.Forms.Button buttonItemGroup6;
+        private System.Windows.Forms.Button buttonItemGroup1;
+        private System.Windows.Forms.Button buttonItemGroup2;
+        private System.Windows.Forms.Button buttonItemGroup3;
+        private System.Windows.Forms.Button buttonItemGroupItem4;
+        private System.Windows.Forms.Button buttonItemGroupItem5;
+        private System.Windows.Forms.Button buttonItemGroupItem6;
+        private System.Windows.Forms.Button buttonItemGroupItem10;
+        private System.Windows.Forms.Button buttonItemGroupItem11;
+        private System.Windows.Forms.Button buttonItemGroupItem12;
+        private System.Windows.Forms.Button buttonItemGroupItem16;
+        private System.Windows.Forms.Button buttonItemGroupItem17;
+        private System.Windows.Forms.Button buttonItemGroupItem18;
+        private System.Windows.Forms.Button buttonItemGroupItem1;
+        private System.Windows.Forms.Button buttonItemGroupItem2;
+        private System.Windows.Forms.Button buttonItemGroupItem3;
+        private System.Windows.Forms.Button buttonItemGroupItem7;
+        private System.Windows.Forms.Button buttonItemGroupItem8;
+        private System.Windows.Forms.Button buttonItemGroupItem9;
+        private System.Windows.Forms.Button buttonItemGroupItem13;
+        private System.Windows.Forms.Button buttonItemGroupItem14;
+        private System.Windows.Forms.Button buttonItemGroupItem15;
+        private System.Windows.Forms.Button buttonItemGroupItem22;
+        private System.Windows.Forms.Button buttonItemGroupItem23;
+        private System.Windows.Forms.Button buttonItemGroupItem24;
+        private System.Windows.Forms.Button buttonItemGroupItem19;
+        private System.Windows.Forms.Button buttonItemGroupItem20;
+        private System.Windows.Forms.Button buttonItemGroupItem21;
+        private System.Windows.Forms.Button buttonItemGroupItemNext;
+        private System.Windows.Forms.Button buttonItemGroupNext;
+        private System.Windows.Forms.Button buttonItemGroupItemPrevious;
+        private System.Windows.Forms.Button buttonItemGroupPrevious;
         private System.Windows.Forms.Button buttonDiscount;
         private System.Windows.Forms.DataGridView dataGridViewSalesLineList;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnSalesLineEdit;
@@ -1392,12 +1438,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePriceSplitPercentage;
         private System.Windows.Forms.Button buttonLock;
         private System.Windows.Forms.Button buttonUnlock;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.Button button23;
-        private System.Windows.Forms.Button button24;
-        private System.Windows.Forms.Button button25;
-        private System.Windows.Forms.Button button26;
+        private System.Windows.Forms.Button buttonItemGroupItem28;
+        private System.Windows.Forms.Button buttonItemGroupItem29;
+        private System.Windows.Forms.Button buttonItemGroupItem30;
+        private System.Windows.Forms.Button buttonItemGroupItem25;
+        private System.Windows.Forms.Button buttonItemGroupItem26;
+        private System.Windows.Forms.Button buttonItemGroupItem27;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ImageList imageListPOSTouchDetail;
         private System.Windows.Forms.Button buttonWalkIn;

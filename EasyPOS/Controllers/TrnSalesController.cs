@@ -1123,5 +1123,86 @@ namespace EasyPOS.Controllers
                 return new String[] { e.Message, "0" };
             }
         }
+
+        // ============
+        // Table Groups
+        // ============
+        public List<Entities.MstTableGroupEntity> ListTableGroup()
+        {
+            var tableGroups = from d in db.MstTableGroups
+                              where d.TableGroup != "Walk-in" && d.TableGroup != "Delivery"
+                              select new Entities.MstTableGroupEntity
+                              {
+                                  Id = d.Id,
+                                  TableGroup = d.TableGroup,
+                                  EntryUserId = d.EntryUserId,
+                                  EntryUserName = d.MstUser.UserName,
+                                  EntryDateTime = d.EntryDateTime.ToShortDateString(),
+                                  UpdateUserId = d.UpdateUserId,
+                                  UpdatedUserName = d.MstUser1.UserName,
+                                  UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
+                                  IsLocked = d.IsLocked,
+                              };
+
+            return tableGroups.OrderBy(d => d.TableGroup).ToList();
+        }
+
+        // ======
+        // Tables
+        // ======
+        public List<Entities.MstTableEntity> ListTable(Int32 tableGroupId)
+        {
+            var tables = from d in db.MstTables
+                         where d.TableGroupId == tableGroupId
+                         select new Entities.MstTableEntity
+                         {
+                             Id = d.Id,
+                             TableCode = d.TableCode,
+                         };
+
+            return tables.OrderBy(d => d.TableCode).ToList();
+        }
+
+        // ===============
+        // List Item Group 
+        // ===============
+        public List<Entities.MstItemGroupEntity> ListItemGroup()
+        {
+            var itemGroups = from d in db.MstItemGroups
+                             select new Entities.MstItemGroupEntity
+                             {
+                                 Id = d.Id,
+                                 ItemGroup = d.ItemGroup,
+                                 ImagePath = d.ImagePath,
+                                 KitchenReport = d.KitchenReport,
+                                 EntryUserId = d.EntryUserId,
+                                 EntryUserName = d.MstUser.UserName,
+                                 EntryDateTime = d.EntryDateTime.ToShortDateString(),
+                                 UpdateUserId = d.UpdateUserId,
+                                 UpdatedUserName = d.MstUser1.UserName,
+                                 UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
+                                 IsLocked = d.IsLocked,
+                             };
+
+            return itemGroups.OrderBy(d => d.ItemGroup).ToList();
+        }
+
+        // ====================
+        // List Item Group Item
+        // ====================
+        public List<Entities.MstItemGroupItemEntity> ListItemGroupItem(Int32 itemGroupId)
+        {
+            var itemGroupItems = from d in db.MstItemGroupItems
+                                 where d.ItemGroupId == itemGroupId
+                                 select new Entities.MstItemGroupItemEntity
+                                 {
+                                     Id = d.Id,
+                                     ItemId = d.ItemId,
+                                     Barcode = d.MstItem.BarCode,
+                                     Alias = d.MstItem.Alias
+                                 };
+
+            return itemGroupItems.OrderBy(d => d.Alias).ToList();
+        }
     }
 }
