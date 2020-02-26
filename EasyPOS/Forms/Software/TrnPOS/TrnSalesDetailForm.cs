@@ -94,7 +94,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     Customer = trnSalesEntity.Customer
                 };
 
-                TrnSalesDetailTenderForm trnSalesDetailTenderForm = new TrnSalesDetailTenderForm(sysSoftwareForm, null, this, null, null, newSalesEntity);
+                TrnSalesDetailTenderForm trnSalesDetailTenderForm = new TrnSalesDetailTenderForm(sysSoftwareForm, trnSalesListForm, this, null, null, newSalesEntity);
                 trnSalesDetailTenderForm.ShowDialog();
             }
             else

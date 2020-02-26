@@ -178,8 +178,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonWalkIn_Click(object sender, EventArgs e)
         {
+            NewWalkInSales();
+        }
+
+        public void NewWalkInSales()
+        {
             Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-            String[] addSales = trnPOSSalesController.AddSales();
+            String[] addSales = trnPOSSalesController.AddSales("Walk-in");
             if (addSales[1].Equals("0") == false)
             {
                 sysSoftwareForm.AddTabPagePOSTouchSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(addSales[1])));
@@ -322,6 +327,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                   ColumnRececiptInvoiceNumber = d.CollectionNumber,
                                   ColumnCustomer = d.Customer,
                                   ColumnSalesAgent = d.SalesAgentUserName,
+                                  ColumnTable = d.Table,
                                   ColumnAmount = d.Amount.ToString("#,##0.00"),
                                   ColumnIsLocked = d.IsLocked,
                                   ColumnIsTendered = d.IsTendered,

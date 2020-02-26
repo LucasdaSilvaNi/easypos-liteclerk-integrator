@@ -220,6 +220,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         Close();
                     }
 
+
+
                     if (trnSalesDetailForm != null)
                     {
                         trnSalesDetailForm.Close();
@@ -236,7 +238,20 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         {
                             trnSalesListForm.UpdateSalesListGridDataSource();
                         }
+                    }
 
+                    if (trnPOSTouchDetailForm != null)
+                    {
+                        trnPOSTouchDetailForm.Close();
+                        sysSoftwareForm.RemoveTabPage();
+                        
+                        if (trnPOSTouchForm != null)
+                        {
+                            trnPOSTouchForm.NewWalkInSales();
+                        }
+                    }
+                    else
+                    {
                         if (trnPOSTouchForm != null)
                         {
                             bool isPOSTouchActivityFormOpen = false;
@@ -257,14 +272,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                             trnPOSTouchForm.UpdateSalesListGridDataSource();
                         }
-                    }
-
-                    if (trnPOSTouchDetailForm != null)
-                    {
-                        trnPOSTouchDetailForm.Close();
-                        sysSoftwareForm.RemoveTabPage();
-
-                        trnPOSTouchForm.UpdateSalesListGridDataSource();
                     }
                 }
                 else

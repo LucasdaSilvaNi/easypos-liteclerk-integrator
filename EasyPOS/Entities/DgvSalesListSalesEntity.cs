@@ -22,5 +22,6 @@ namespace EasyPOS.Entities
         public Boolean ColumnIsLocked { get; set; }
         public Boolean ColumnIsTendered { get; set; }
         public Boolean ColumnIsCancelled { get; set; }
+        public String ColumnTable { get; set; }
     }
 }

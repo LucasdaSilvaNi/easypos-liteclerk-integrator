@@ -63,6 +63,7 @@ namespace EasyPOS.Controllers
                             CollectionNumber = d.CollectionNumber,
                             Amount = d.Amount,
                             TableId = d.TableId,
+                            Table = d.TableId != null ? d.MstTable.TableCode : "",
                             CustomerId = d.CustomerId,
                             Customer = d.MstCustomer.Customer,
                             AccountId = d.AccountId,
@@ -226,7 +227,7 @@ namespace EasyPOS.Controllers
         // =========
         // Add Sales 
         // =========
-        public String[] AddSales()
+        public String[] AddSales(String tableCode)
         {
             try
             {
@@ -242,10 +243,19 @@ namespace EasyPOS.Controllers
                     return new String[] { "Period not found.", "0" };
                 }
 
-                var table = from d in db.MstTables select d;
-                if (table.Any() == false)
+                Int32? tableId = null;
+                if (tableCode != "")
                 {
-                    return new String[] { "Table not found.", "0" };
+                    var table = from d in db.MstTables
+                                where d.TableCode == tableCode
+                                select d;
+
+                    if (table.Any() == false)
+                    {
+                        return new String[] { "Table not found.", "0" };
+                    }
+
+                    tableId = table.FirstOrDefault().Id;
                 }
 
                 var walkinCustomer = from d in db.MstCustomers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().WalkinCustomerId) select d;
@@ -282,7 +292,7 @@ namespace EasyPOS.Controllers
                     ManualInvoiceNumber = terminal.FirstOrDefault().Terminal + "-" + salesNumber,
                     CollectionNumber = null,
                     Amount = 0,
-                    TableId = table.FirstOrDefault().Id,
+                    TableId = tableId,
                     CustomerId = walkinCustomer.FirstOrDefault().Id,
                     AccountId = walkinCustomer.FirstOrDefault().AccountId,
                     TermId = walkinCustomer.FirstOrDefault().TermId,

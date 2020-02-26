@@ -93,7 +93,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public void newSales()
         {
             Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-            String[] addSales = trnPOSSalesController.AddSales();
+            String[] addSales = trnPOSSalesController.AddSales("");
             if (addSales[1].Equals("0") == false)
             {
                 sysSoftwareForm.AddTabPagePOSSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(addSales[1])));
@@ -237,7 +237,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                   ColumnIsLocked = d.IsLocked,
                                   ColumnIsTendered = d.IsTendered,
                                   ColumnIsCancelled = d.IsCancelled,
-                                  ColumnSpace = ""
+                                  ColumnSpace = "",
+                                  ColumnTable = d.Table
                               };
 
                     rowList = row.ToList();
@@ -506,10 +507,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             Entities.TrnSalesEntity newSalesEntity = new Entities.TrnSalesEntity
                             {
                                 Id = Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value),
-                                Amount = Convert.ToDecimal(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[8].Value),
+                                Amount = Convert.ToDecimal(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[9].Value),
                                 SalesNumber = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[5].Value.ToString(),
                                 SalesDate = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[4].Value.ToString(),
-                                Customer = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[6].Value.ToString()
+                                Customer = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[7].Value.ToString()
                             };
 
                             String line1 = Modules.SysCurrentModule.GetCurrentSettings().CustomerDisplayFirstLineMessage;
