@@ -239,7 +239,22 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                         if (trnPOSTouchForm != null)
                         {
-                            trnPOSTouchForm.ClosePOSTouchActivity();
+                            bool isPOSTouchActivityFormOpen = false;
+
+                            FormCollection fc = Application.OpenForms;
+                            foreach (Form frm in fc)
+                            {
+                                if (frm.Name == "TrnPOSTouchActivityForm")
+                                {
+                                    isPOSTouchActivityFormOpen = true;
+                                }
+                            }
+
+                            if (isPOSTouchActivityFormOpen == true)
+                            {
+                                trnPOSTouchForm.ClosePOSTouchActivity();
+                            }
+
                             trnPOSTouchForm.UpdateSalesListGridDataSource();
                         }
                     }
