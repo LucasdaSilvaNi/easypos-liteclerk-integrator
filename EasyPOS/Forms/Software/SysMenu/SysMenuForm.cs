@@ -25,6 +25,12 @@ namespace EasyPOS.Forms.Software.SysMenu
             {
                 MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+            var sysCurrent = Modules.SysCurrentModule.GetCurrentSettings();
+            if (sysCurrent.POSType == "POS Touch")
+            {
+                buttonPOS.ImageIndex = 14;
+            }
         }
 
         private void buttonItem_Click(object sender, EventArgs e)
@@ -50,7 +56,15 @@ namespace EasyPOS.Forms.Software.SysMenu
             }
             else
             {
-                sysSoftwareForm.AddTabPagePOSSalesList();
+                var sysCurrent = Modules.SysCurrentModule.GetCurrentSettings();
+                if (sysCurrent.POSType == "POS Touch")
+                {
+                    sysSoftwareForm.AddTabPagePOSTouchSalesList();
+                }
+                else
+                {
+                    sysSoftwareForm.AddTabPagePOSSalesList();
+                }
             }
         }
 

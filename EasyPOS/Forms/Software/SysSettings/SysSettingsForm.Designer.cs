@@ -126,6 +126,8 @@
             this.txtBranchCode = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
+            this.textBoxPOSType = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -247,6 +249,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.SystemColors.Control;
+            this.panel4.Controls.Add(this.textBoxPOSType);
+            this.panel4.Controls.Add(this.label32);
             this.panel4.Controls.Add(this.comboBoxTerminal);
             this.panel4.Controls.Add(this.comboBoxCurrentPeriod);
             this.panel4.Controls.Add(this.comboBoxWalkinCustomer);
@@ -597,7 +601,7 @@
             // textBoxCustomerDisplayPort
             // 
             this.textBoxCustomerDisplayPort.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCustomerDisplayPort.Location = new System.Drawing.Point(603, 471);
+            this.textBoxCustomerDisplayPort.Location = new System.Drawing.Point(603, 511);
             this.textBoxCustomerDisplayPort.Name = "textBoxCustomerDisplayPort";
             this.textBoxCustomerDisplayPort.Size = new System.Drawing.Size(248, 30);
             this.textBoxCustomerDisplayPort.TabIndex = 24;
@@ -606,7 +610,7 @@
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(414, 474);
+            this.label29.Location = new System.Drawing.Point(413, 514);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(183, 23);
             this.label29.TabIndex = 48;
@@ -1190,6 +1194,24 @@
             this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
             this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
             // 
+            // textBoxPOSType
+            // 
+            this.textBoxPOSType.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPOSType.Location = new System.Drawing.Point(602, 472);
+            this.textBoxPOSType.Name = "textBoxPOSType";
+            this.textBoxPOSType.Size = new System.Drawing.Size(248, 30);
+            this.textBoxPOSType.TabIndex = 78;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(510, 475);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(86, 23);
+            this.label32.TabIndex = 79;
+            this.label32.Text = "POS Type:";
+            // 
             // SysSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -1320,5 +1342,7 @@
         private System.Windows.Forms.ComboBox comboBoxWalkinCustomer;
         private System.Windows.Forms.ComboBox comboBoxDefaultDiscount;
         private System.Windows.Forms.ComboBox comboBoxReturnSupplier;
+        private System.Windows.Forms.TextBox textBoxPOSType;
+        private System.Windows.Forms.Label label32;
     }
 }

@@ -343,9 +343,9 @@ namespace EasyPOS.Forms.Software.SysSettings
                 textBoxEasypayDefaultPassword.Text = sysCurrent.EasypayDefaultPassword;
                 textBoxEasypayMotherCardNumber.Text = sysCurrent.EasypayMotherCardNumber;
                 checkBoxActivateAuditTrail.Checked = Convert.ToBoolean(sysCurrent.ActivateAuditTrail);
+                textBoxPOSType.Text = sysCurrent.POSType;
             }
         }
-
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
@@ -388,7 +388,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 EasypayDefaultUsername = textBoxEasypayDefaultUsername.Text,
                 EasypayDefaultPassword = textBoxEasypayDefaultPassword.Text,
                 EasypayMotherCardNumber = textBoxEasypayMotherCardNumber.Text,
-                ActivateAuditTrail = checkBoxActivateAuditTrail.Checked.ToString()
+                ActivateAuditTrail = checkBoxActivateAuditTrail.Checked.ToString(),
+                POSType = textBoxPOSType.Text
             };
 
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);
@@ -404,10 +405,8 @@ namespace EasyPOS.Forms.Software.SysSettings
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             if (tabControl1.SelectedTab.Name == "System Current") { textBoxCompanyName.Focus(); }
             if (tabControl1.SelectedTab.Name == "Cloud Settings") { dtpIntegrationDate.Focus(); }
-
         }
     }
 }

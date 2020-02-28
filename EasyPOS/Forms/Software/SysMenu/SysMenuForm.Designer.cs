@@ -69,6 +69,7 @@
             this.imageListMenuIcons.Images.SetKeyName(11, "Settings.png");
             this.imageListMenuIcons.Images.SetKeyName(12, "Stock Count.png");
             this.imageListMenuIcons.Images.SetKeyName(13, "System Tables.png");
+            this.imageListMenuIcons.Images.SetKeyName(14, "POS Touch.png");
             // 
             // panel1
             // 
@@ -142,7 +143,7 @@
             this.buttonPOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPOS.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.buttonPOS.ForeColor = System.Drawing.Color.White;
-            this.buttonPOS.ImageKey = "POS.png";
+            this.buttonPOS.ImageIndex = 5;
             this.buttonPOS.ImageList = this.imageListMenuIcons;
             this.buttonPOS.Location = new System.Drawing.Point(245, 12);
             this.buttonPOS.Name = "buttonPOS";

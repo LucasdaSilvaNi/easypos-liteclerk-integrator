@@ -38,5 +38,6 @@
   "EasypayDefaultPassword": "@Sodex123",
   "EasypayMotherCardNumber": "0000000001",
   "ActivateAuditTrail": "True",
-  "FacepayImagePath": "D:\\Facepay"
+  "FacepayImagePath": "D:\\Facepay",
+  "POSType": "POS Barcode"
 }
