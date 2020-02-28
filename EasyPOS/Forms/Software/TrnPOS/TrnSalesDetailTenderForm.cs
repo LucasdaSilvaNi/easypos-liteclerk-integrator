@@ -80,8 +80,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     {
                         Code = row.Cells[1].Value.ToString(),
                         PayType = row.Cells[2].Value.ToString(),
-                        Amount = Convert.ToDecimal(row.Cells[3].Value),
-                        OtherInformation = row.Cells[4].Value.ToString()
+                        Amount = Convert.ToDecimal(row.Cells[4].Value),
+                        OtherInformation = row.Cells[5].Value.ToString()
                     });
                 }
 
@@ -155,11 +155,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 foreach (DataGridViewRow row in dataGridViewTenderPayType.Rows)
                 {
-                    if (Convert.ToDecimal(row.Cells[3].Value) > 0)
+                    if (Convert.ToDecimal(row.Cells[4].Value) > 0)
                     {
                         listCollectionLine.Add(new Entities.TrnCollectionLineEntity()
                         {
-                            Amount = Convert.ToDecimal(row.Cells[3].Value),
+                            Amount = Convert.ToDecimal(row.Cells[4].Value),
                             PayTypeId = Convert.ToInt32(row.Cells[0].Value),
                             CheckNumber = "NA",
                             CheckDate = null,
@@ -244,7 +244,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     {
                         trnPOSTouchDetailForm.Close();
                         sysSoftwareForm.RemoveTabPage();
-                        
+
                         if (trnPOSTouchForm != null)
                         {
                             trnPOSTouchForm.NewWalkInSales();
@@ -325,12 +325,17 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 dataGridViewTenderPayType.Columns[2].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#7FBC00");
                 dataGridViewTenderPayType.Columns[2].DefaultCellStyle.ForeColor = Color.White;
 
+                dataGridViewTenderPayType.Columns[3].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
+                dataGridViewTenderPayType.Columns[3].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
+                dataGridViewTenderPayType.Columns[3].DefaultCellStyle.ForeColor = Color.White;
+
                 foreach (var objPayTypeList in payTypeList)
                 {
                     dataGridViewTenderPayType.Rows.Add(
                         objPayTypeList.Id,
                         objPayTypeList.PayTypeCode,
                         objPayTypeList.PayType,
+                        "#",
                         "0.00",
                         ""
                     );
@@ -345,9 +350,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             try
             {
-                if (e.RowIndex > -1 && dataGridViewTenderPayType.CurrentCell.ColumnIndex == dataGridViewTenderPayType.Columns["ColumnTenderListPayTypeOtherInformation"].Index)
+                if (e.RowIndex > -1 && dataGridViewTenderPayType.CurrentCell.ColumnIndex == dataGridViewTenderPayType.Columns["ColumnTenderListPayTypeAmount"].Index)
                 {
-                    dataGridViewTenderPayType.CurrentCell.Value = Convert.ToDecimal(dataGridViewTenderPayType.CurrentCell.Value).ToString("#,##0.00");
+                    Decimal amount = Convert.ToDecimal(dataGridViewTenderPayType.CurrentCell.Value);
+                    dataGridViewTenderPayType.CurrentCell.Value = amount.ToString("#,##0.00");
                 }
 
                 ComputeAmount();
@@ -368,7 +374,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 foreach (DataGridViewRow row in dataGridViewTenderPayType.Rows)
                 {
-                    totalTenderAmount += Convert.ToDecimal(row.Cells[3].Value);
+                    totalTenderAmount += Convert.ToDecimal(row.Cells[4].Value);
                 }
             }
 
@@ -397,7 +403,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     {
                         foreach (DataGridViewRow row in dataGridViewTenderPayType.Rows)
                         {
-                            totalTenderAmount += Convert.ToDecimal(row.Cells[3].Value);
+                            totalTenderAmount += Convert.ToDecimal(row.Cells[4].Value);
                         }
                     }
 
@@ -414,7 +420,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     {
                         foreach (DataGridViewRow row in dataGridViewTenderPayType.Rows)
                         {
-                            totalTenderAmount += Convert.ToDecimal(row.Cells[3].Value);
+                            totalTenderAmount += Convert.ToDecimal(row.Cells[4].Value);
                         }
                     }
 
@@ -428,6 +434,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     TrnSalesDetailTenderMoreInformationForm trnSalesDetailTenderMoreInfoForm = new TrnSalesDetailTenderMoreInformationForm(this, dataGridViewTenderPayType);
                     trnSalesDetailTenderMoreInfoForm.ShowDialog();
                 }
+            }
+
+            if (e.RowIndex > -1 && dataGridViewTenderPayType.CurrentCell.ColumnIndex == dataGridViewTenderPayType.Columns["ColumnTenderListNumpad"].Index)
+            {
+                SysKeyboard.SysKeyboardNumpadForm sysKeyboardNumpadForm = new SysKeyboard.SysKeyboardNumpadForm(this, dataGridViewTenderPayType);
+                sysKeyboardNumpadForm.ShowDialog();
             }
         }
 

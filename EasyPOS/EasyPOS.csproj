@@ -552,6 +552,12 @@
     <Compile Include="Forms\Software\RepSalesReport\RepSalesReportStockWithdrawalReportForm.Designer.cs">
       <DependentUpon>RepSalesReportStockWithdrawalReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\SysKeyboard\SysKeyboardNumpadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\SysKeyboard\SysKeyboardNumpadForm.Designer.cs">
+      <DependentUpon>SysKeyboardNumpadForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\SysSettings\SysSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -928,6 +934,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportStockWithdrawalReportForm.resx">
       <DependentUpon>RepSalesReportStockWithdrawalReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\SysKeyboard\SysKeyboardNumpadForm.resx">
+      <DependentUpon>SysKeyboardNumpadForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\SysSettings\SysSettingsForm.resx">
       <DependentUpon>SysSettingsForm.cs</DependentUpon>

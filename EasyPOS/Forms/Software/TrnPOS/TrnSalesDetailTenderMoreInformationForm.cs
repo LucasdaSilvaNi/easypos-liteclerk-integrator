@@ -22,7 +22,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             trnSalesDetailTenderForm = salesDetailTenderForm;
             mstDataGridViewTenderPayType = dataGridViewTenderPayType;
 
-            textBoxCollectionLineOtherInformation.Text = dataGridViewTenderPayType.CurrentRow.Cells[4].Value.ToString();
+            textBoxCollectionLineOtherInformation.Text = dataGridViewTenderPayType.CurrentRow.Cells[5].Value.ToString();
             textBoxCollectionLineOtherInformation.Focus();
             textBoxCollectionLineOtherInformation.SelectAll();
         }
@@ -39,21 +39,21 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Int32 id = Convert.ToInt32(mstDataGridViewTenderPayType.CurrentRow.Cells[0].Value);
                 String payTypeCode = mstDataGridViewTenderPayType.CurrentRow.Cells[1].Value.ToString();
                 String payType = mstDataGridViewTenderPayType.CurrentRow.Cells[2].Value.ToString();
-                Decimal amount = Convert.ToDecimal(mstDataGridViewTenderPayType.CurrentRow.Cells[3].Value);
+                Decimal amount = Convert.ToDecimal(mstDataGridViewTenderPayType.CurrentRow.Cells[4].Value);
                 String otherInformation = textBoxCollectionLineOtherInformation.Text;
 
                 mstDataGridViewTenderPayType.CurrentRow.Cells[0].Value = id;
                 mstDataGridViewTenderPayType.CurrentRow.Cells[1].Value = payTypeCode;
                 mstDataGridViewTenderPayType.CurrentRow.Cells[2].Value = payType;
-                mstDataGridViewTenderPayType.CurrentRow.Cells[3].Value = amount;
-                mstDataGridViewTenderPayType.CurrentRow.Cells[4].Value = otherInformation;
+                mstDataGridViewTenderPayType.CurrentRow.Cells[4].Value = amount.ToString("#,##0.00");
+                mstDataGridViewTenderPayType.CurrentRow.Cells[5].Value = otherInformation;
             }
 
             mstDataGridViewTenderPayType.Refresh();
             Close();
 
             mstDataGridViewTenderPayType.Focus();
-            mstDataGridViewTenderPayType.CurrentRow.Cells[2].Selected = true;
+            mstDataGridViewTenderPayType.CurrentRow.Cells[4].Selected = true;
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -61,13 +61,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
             Close();
 
             mstDataGridViewTenderPayType.Focus();
-            mstDataGridViewTenderPayType.CurrentRow.Cells[2].Selected = true;
+            mstDataGridViewTenderPayType.CurrentRow.Cells[4].Selected = true;
         }
 
         private void TrnSalesDetailTenderMoreInfoForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             mstDataGridViewTenderPayType.Focus();
-            mstDataGridViewTenderPayType.CurrentRow.Cells[2].Selected = true;
+            mstDataGridViewTenderPayType.CurrentRow.Cells[4].Selected = true;
         }
     }
 }

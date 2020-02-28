@@ -44,6 +44,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
         private void buttonClose_Click(object sender, EventArgs e)
         {
             Close();
+
+            mstDataGridViewTenderPayType.Focus();
+            mstDataGridViewTenderPayType.CurrentRow.Cells[2].Selected = true;
         }
 
         public void Pay(Image capturedImage)
@@ -63,8 +66,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         mstDataGridViewTenderPayType.CurrentRow.Cells[0].Value = id;
                         mstDataGridViewTenderPayType.CurrentRow.Cells[1].Value = payTypeCode;
                         mstDataGridViewTenderPayType.CurrentRow.Cells[2].Value = payType;
-                        mstDataGridViewTenderPayType.CurrentRow.Cells[3].Value = amount;
-                        mstDataGridViewTenderPayType.CurrentRow.Cells[4].Value = otherInformation;
+                        mstDataGridViewTenderPayType.CurrentRow.Cells[4].Value = amount.ToString("#,##0.00");
+                        mstDataGridViewTenderPayType.CurrentRow.Cells[5].Value = otherInformation;
                     }
 
                     mstDataGridViewTenderPayType.Refresh();
