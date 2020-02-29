@@ -174,7 +174,6 @@ namespace EasyPOS.Forms.Software.SysKeyboard
                 mstDataGridViewTenderPayType.CurrentRow.Cells[2].Selected = true;
 
                 trnSalesDetailTenderForm.ComputeAmount();
-                trnSalesDetailTenderForm.TenderSales();
             }
             catch (Exception ex)
             {

@@ -286,7 +286,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
-
+            new TrnDisbursementDetailPrintForm(trnDisbursementEntity.Id);
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -326,21 +326,39 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
 
         private void textBoxAmount_Leave(object sender, EventArgs e)
         {
-            textBoxAmountDenominationXP1000.Text = "0";
-            textBoxAmountDenominationXP500.Text = "0";
-            textBoxAmountDenominationXP200.Text = "0";
-            textBoxAmountDenominationXP100.Text = "0";
-            textBoxAmountDenominationXP50.Text = "0";
-            textBoxAmountDenominationXP20.Text = "0";
-            textBoxAmountDenominationXP10.Text = "0";
-            textBoxAmountDenominationXP5.Text = "0";
-            textBoxAmountDenominationXP1.Text = "0";
-            textBoxAmountDenominationXC25.Text = "0";
-            textBoxAmountDenominationXC10.Text = "0";
-            textBoxAmountDenominationXC5.Text = "0";
-            textBoxAmountDenominationXC1.Text = "0";
+            Decimal P1000 = Convert.ToDecimal(textBoxAmountDenominationXP1000.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP1000.Text) * 1000 : 0;
+            Decimal P500 = Convert.ToDecimal(textBoxAmountDenominationXP500.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP500.Text) * 500 : 0;
+            Decimal P200 = Convert.ToDecimal(textBoxAmountDenominationXP200.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP200.Text) * 200 : 0;
+            Decimal P100 = Convert.ToDecimal(textBoxAmountDenominationXP100.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP100.Text) * 100 : 0;
+            Decimal P50 = Convert.ToDecimal(textBoxAmountDenominationXP50.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP50.Text) * 50 : 0;
+            Decimal P20 = Convert.ToDecimal(textBoxAmountDenominationXP20.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP20.Text) * 20 : 0;
+            Decimal P10 = Convert.ToDecimal(textBoxAmountDenominationXP10.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP10.Text) * 10 : 0;
+            Decimal P5 = Convert.ToDecimal(textBoxAmountDenominationXP5.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP5.Text) * 10 : 0;
+            Decimal P1 = Convert.ToDecimal(textBoxAmountDenominationXP1.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP1.Text) * 1 : 0;
+            Decimal C25 = Convert.ToDecimal(textBoxAmountDenominationXC25.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXC25.Text) * Convert.ToDecimal(1m / 4m) : 0;
+            Decimal C10 = Convert.ToDecimal(textBoxAmountDenominationXC10.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXC10.Text) * Convert.ToDecimal(1m / 10m) : 0;
+            Decimal C5 = Convert.ToDecimal(textBoxAmountDenominationXC5.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXC5.Text) * Convert.ToDecimal(1m / 20m) : 0;
+            Decimal C1 = Convert.ToDecimal(textBoxAmountDenominationXC1.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXC1.Text) * Convert.ToDecimal(1m / 100m) : 0;
+            Decimal totalAmount = P1000 + P500 + P200 + P100 + P50 + P20 + P10 + P5 + P1 + C25 + C10 + C5 + C1;
 
-            textBoxAmount.Text = Convert.ToDecimal(textBoxAmount.Text).ToString("#,##0.00");
+            if (totalAmount != Convert.ToDecimal(textBoxAmount.Text))
+            {
+                textBoxAmountDenominationXP1000.Text = "0";
+                textBoxAmountDenominationXP500.Text = "0";
+                textBoxAmountDenominationXP200.Text = "0";
+                textBoxAmountDenominationXP100.Text = "0";
+                textBoxAmountDenominationXP50.Text = "0";
+                textBoxAmountDenominationXP20.Text = "0";
+                textBoxAmountDenominationXP10.Text = "0";
+                textBoxAmountDenominationXP5.Text = "0";
+                textBoxAmountDenominationXP1.Text = "0";
+                textBoxAmountDenominationXC25.Text = "0";
+                textBoxAmountDenominationXC10.Text = "0";
+                textBoxAmountDenominationXC5.Text = "0";
+                textBoxAmountDenominationXC1.Text = "0";
+
+                textBoxAmount.Text = Convert.ToDecimal(textBoxAmount.Text).ToString("#,##0.00");
+            }
         }
 
         private void textBoxAmountDenomination_Leave(object sender, EventArgs e)

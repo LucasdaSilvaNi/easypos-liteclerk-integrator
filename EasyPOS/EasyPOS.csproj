@@ -636,6 +636,12 @@
     <Compile Include="Forms\Software\SysUtilities\SysUtilitiesBarcodePrintingQuantity.Designer.cs">
       <DependentUpon>SysUtilitiesBarcodePrintingQuantity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnDisbursement\TrnDisbursementDetailPrintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnDisbursement\TrnDisbursementDetailPrintForm.Designer.cs">
+      <DependentUpon>TrnDisbursementDetailPrintForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnDisbursement\TrnDisbursementDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -970,6 +976,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\SysUtilities\SysUtilitiesBarcodePrintingQuantity.resx">
       <DependentUpon>SysUtilitiesBarcodePrintingQuantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnDisbursement\TrnDisbursementDetailPrintForm.resx">
+      <DependentUpon>TrnDisbursementDetailPrintForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnDisbursement\TrnDisbursementDetailForm.resx">
       <DependentUpon>TrnDisbursementDetailForm.cs</DependentUpon>
