@@ -333,7 +333,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             Decimal P50 = Convert.ToDecimal(textBoxAmountDenominationXP50.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP50.Text) * 50 : 0;
             Decimal P20 = Convert.ToDecimal(textBoxAmountDenominationXP20.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP20.Text) * 20 : 0;
             Decimal P10 = Convert.ToDecimal(textBoxAmountDenominationXP10.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP10.Text) * 10 : 0;
-            Decimal P5 = Convert.ToDecimal(textBoxAmountDenominationXP5.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP5.Text) * 10 : 0;
+            Decimal P5 = Convert.ToDecimal(textBoxAmountDenominationXP5.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP5.Text) * 5 : 0;
             Decimal P1 = Convert.ToDecimal(textBoxAmountDenominationXP1.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP1.Text) * 1 : 0;
             Decimal C25 = Convert.ToDecimal(textBoxAmountDenominationXC25.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXC25.Text) * Convert.ToDecimal(1m / 4m) : 0;
             Decimal C10 = Convert.ToDecimal(textBoxAmountDenominationXC10.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXC10.Text) * Convert.ToDecimal(1m / 10m) : 0;
@@ -370,7 +370,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             Decimal P50 = Convert.ToDecimal(textBoxAmountDenominationXP50.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP50.Text) * 50 : 0;
             Decimal P20 = Convert.ToDecimal(textBoxAmountDenominationXP20.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP20.Text) * 20 : 0;
             Decimal P10 = Convert.ToDecimal(textBoxAmountDenominationXP10.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP10.Text) * 10 : 0;
-            Decimal P5 = Convert.ToDecimal(textBoxAmountDenominationXP5.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP5.Text) * 10 : 0;
+            Decimal P5 = Convert.ToDecimal(textBoxAmountDenominationXP5.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP5.Text) * 5 : 0;
             Decimal P1 = Convert.ToDecimal(textBoxAmountDenominationXP1.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP1.Text) * 1 : 0;
             Decimal C25 = Convert.ToDecimal(textBoxAmountDenominationXC25.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXC25.Text) * Convert.ToDecimal(1m / 4m) : 0;
             Decimal C10 = Convert.ToDecimal(textBoxAmountDenominationXC10.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXC10.Text) * Convert.ToDecimal(1m / 10m) : 0;
