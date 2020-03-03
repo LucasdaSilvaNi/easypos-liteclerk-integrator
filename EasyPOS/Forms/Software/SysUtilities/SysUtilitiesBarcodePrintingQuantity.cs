@@ -160,22 +160,8 @@ namespace EasyPOS.Forms.Software.SysUtilities
             // =============
             // Font Settings
             // =============
-            Font fontArial15Bold = new Font("Arial", 15, FontStyle.Bold);
-            Font fontArial15Regular = new Font("Arial", 15, FontStyle.Regular);
-            Font fontArial14Bold = new Font("Arial", 14, FontStyle.Bold);
-            Font fontArial14Regular = new Font("Arial", 14, FontStyle.Regular);
-            Font fontArial13Bold = new Font("Arial", 13, FontStyle.Bold);
-            Font fontArial13Regular = new Font("Arial", 13, FontStyle.Regular);
-            Font fontArial12Bold = new Font("Arial", 12, FontStyle.Bold);
-            Font fontArial12Regular = new Font("Arial", 12, FontStyle.Regular);
-            Font fontArial11Bold = new Font("Arial", 11, FontStyle.Bold);
-            Font fontArial11Regular = new Font("Arial", 11, FontStyle.Regular);
-            Font fontArial11Italic = new Font("Arial", 11, FontStyle.Italic);
-            Font fontArial10Bold = new Font("Arial", 10, FontStyle.Bold);
-            Font fontArial10Regular = new Font("Arial", 10, FontStyle.Regular);
-            Font fontArial10Italic = new Font("Arial", 10, FontStyle.Italic);
-            Font fontArial8Bold = new Font("Arial", 8, FontStyle.Bold);
-            Font fontArial8Regular = new Font("Arial", 8, FontStyle.Regular);
+            Font fontArial8Bold = new Font("Arial", 6, FontStyle.Bold);
+            Font fontArial8Regular = new Font("Arial", 6, FontStyle.Regular);
 
             // ==================
             // Alignment Settings
@@ -184,53 +170,78 @@ namespace EasyPOS.Forms.Software.SysUtilities
             StringFormat drawFormatLeft = new StringFormat { Alignment = StringAlignment.Near };
             StringFormat drawFormatRight = new StringFormat { Alignment = StringAlignment.Far };
 
-
+            String company = Modules.SysCurrentModule.GetCurrentSettings().CompanyName;
             String itemAlias = itemEntity.Alias;
+            String barcodeNumber = itemEntity.BarCode;
             Code128BarcodeDraw barcode = BarcodeDrawFactory.Code128WithChecksum;
-            Image image = barcode.Draw(itemEntity.BarCode, 40);
+            Image image = barcode.Draw(itemEntity.BarCode, 35);
             String itemPrice = "P " + itemEntity.Price.ToString("#,##0.00");
 
             switch (columns)
             {
                 case 1:
+                    graphics.DrawString(company, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(company, fontArial8Regular).Height;
+
                     graphics.DrawString(itemAlias, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
                     y += graphics.MeasureString(itemAlias, fontArial8Regular).Height;
 
-                    graphics.DrawImage(image, new RectangleF(x, y, 107, 45));
+                    graphics.DrawImage(image, new RectangleF(x, y, 107, 40));
                     y += image.Height + 7;
+
+                    graphics.DrawString(barcodeNumber, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(barcodeNumber, fontArial8Regular).Height;
 
                     graphics.DrawString(itemPrice, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
                     y += graphics.MeasureString(itemPrice, fontArial8Regular).Height;
 
                     break;
                 case 2:
+                    graphics.DrawString(company, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    graphics.DrawString(company, fontArial8Regular, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(company, fontArial8Regular).Height;
+
                     graphics.DrawString(itemAlias, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                    graphics.DrawString(itemAlias, fontArial8Regular, drawBrush, new RectangleF(x + 5 + width, y, width, height), drawFormatCenter);
+                    graphics.DrawString(itemAlias, fontArial8Regular, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
                     y += graphics.MeasureString(itemAlias, fontArial8Regular).Height;
 
-                    graphics.DrawImage(image, new RectangleF(x, y, 107, 45));
-                    graphics.DrawImage(image, new RectangleF(x + 13 + 107, y, 107, 45));
+                    graphics.DrawImage(image, new RectangleF(x, y, 107, 40));
+                    graphics.DrawImage(image, new RectangleF(x + 15 + 107, y, 107, 40));
                     y += image.Height + 7;
 
+                    graphics.DrawString(barcodeNumber, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    graphics.DrawString(barcodeNumber, fontArial8Regular, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(barcodeNumber, fontArial8Regular).Height;
+
                     graphics.DrawString(itemPrice, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                    graphics.DrawString(itemPrice, fontArial8Regular, drawBrush, new RectangleF(x + 5 + width, y, width, height), drawFormatCenter);
+                    graphics.DrawString(itemPrice, fontArial8Regular, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
                     y += graphics.MeasureString(itemPrice, fontArial8Regular).Height;
 
                     break;
                 case 3:
+                    graphics.DrawString(company, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    graphics.DrawString(company, fontArial8Regular, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
+                    graphics.DrawString(company, fontArial8Regular, drawBrush, new RectangleF(x + 15 + width + width, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(company, fontArial8Regular).Height;
+
                     graphics.DrawString(itemAlias, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                    graphics.DrawString(itemAlias, fontArial8Regular, drawBrush, new RectangleF(x + 5 + width, y, width, height), drawFormatCenter);
-                    graphics.DrawString(itemAlias, fontArial8Regular, drawBrush, new RectangleF(x + 10 + width + width, y, width, height), drawFormatCenter);
+                    graphics.DrawString(itemAlias, fontArial8Regular, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
+                    graphics.DrawString(itemAlias, fontArial8Regular, drawBrush, new RectangleF(x + 15 + width + width, y, width, height), drawFormatCenter);
                     y += graphics.MeasureString(itemAlias, fontArial8Regular).Height;
 
-                    graphics.DrawImage(image, new RectangleF(x, y, 107, 45));
-                    graphics.DrawImage(image, new RectangleF(x + 13 + 107, y, 107, 45));
-                    graphics.DrawImage(image, new RectangleF(x + 25 + 214, y, 107, 45));
+                    graphics.DrawImage(image, new RectangleF(x, y, 107, 40));
+                    graphics.DrawImage(image, new RectangleF(x + 15 + 107, y, 107, 40));
+                    graphics.DrawImage(image, new RectangleF(x + 30 + 214, y, 107, 40));
                     y += image.Height + 7;
 
+                    graphics.DrawString(barcodeNumber, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    graphics.DrawString(barcodeNumber, fontArial8Regular, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
+                    graphics.DrawString(barcodeNumber, fontArial8Regular, drawBrush, new RectangleF(x + 15 + width + width, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(barcodeNumber, fontArial8Regular).Height;
+
                     graphics.DrawString(itemPrice, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                    graphics.DrawString(itemPrice, fontArial8Regular, drawBrush, new RectangleF(x + 5 + width, y, width, height), drawFormatCenter);
-                    graphics.DrawString(itemPrice, fontArial8Regular, drawBrush, new RectangleF(x + 10 + width + width, y, width, height), drawFormatCenter);
+                    graphics.DrawString(itemPrice, fontArial8Regular, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
+                    graphics.DrawString(itemPrice, fontArial8Regular, drawBrush, new RectangleF(x + 15 + width + width, y, width, height), drawFormatCenter);
                     y += graphics.MeasureString(itemPrice, fontArial8Regular).Height;
 
                     break;
