@@ -362,7 +362,7 @@ namespace EasyPOS.Reports
                 // =====
                 // Total
                 // =====
-                graphics.DrawString("DR No.: " + collection.FirstOrDefault().CollectionNumber, fontArial11Bold, drawBrush, new RectangleF(x, y + 5, 245.0F, height), drawFormatLeft);
+                graphics.DrawString("No.: " + collection.FirstOrDefault().CollectionNumber, fontArial11Bold, drawBrush, new RectangleF(x, y + 5, 245.0F, height), drawFormatLeft);
                 y += 50;
 
                 String ORFooter = systemCurrent.ReceiptFooter;

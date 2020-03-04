@@ -26,6 +26,15 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         {
             try
             {
+                iTextSharp.text.Font fontArial09 = FontFactory.GetFont("Arial", 09);
+                iTextSharp.text.Font fontArial09Italic = FontFactory.GetFont("Arial", 09, iTextSharp.text.Font.ITALIC);
+                iTextSharp.text.Font fontArial0Italic = FontFactory.GetFont("Arial", 10, iTextSharp.text.Font.ITALIC);
+                iTextSharp.text.Font fontArial10 = FontFactory.GetFont("Arial", 10);
+                iTextSharp.text.Font fontArial10Bold = FontFactory.GetFont("Arial", 10, iTextSharp.text.Font.BOLD);
+                iTextSharp.text.Font fontArial14Bold = FontFactory.GetFont("Arial", 14, iTextSharp.text.Font.BOLD);
+
+                Paragraph line = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.5F, 100.0F, BaseColor.DARK_GRAY, Element.ALIGN_MIDDLE, 10F)));
+
                 Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
 
                 var fileName = filePath + "StockWithdrawalReport" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
@@ -36,7 +45,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 Document document = new Document(pagesize);
                 document.SetMargins(5f, 72f, 5f, 5f);
 
-                PdfWriter.GetInstance(document, new FileStream(fileName, FileMode.Create));
+                PdfWriter pdfWriter = PdfWriter.GetInstance(document, new FileStream(fileName, FileMode.Create));
 
                 document.Open();
 
@@ -46,51 +55,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     {
                         var collection = from d in db.TrnCollections where d.Id == collectionList.Id select d;
 
-                        iTextSharp.text.Font fontArial09 = FontFactory.GetFont("Arial", 09);
-                        iTextSharp.text.Font fontArial09Italic = FontFactory.GetFont("Arial", 09, iTextSharp.text.Font.ITALIC);
-                        iTextSharp.text.Font fontArial0Italic = FontFactory.GetFont("Arial", 10, iTextSharp.text.Font.ITALIC);
-                        iTextSharp.text.Font fontArial10 = FontFactory.GetFont("Arial", 10);
-                        iTextSharp.text.Font fontArial10Bold = FontFactory.GetFont("Arial", 10, iTextSharp.text.Font.BOLD);
-                        iTextSharp.text.Font fontArial14Bold = FontFactory.GetFont("Arial", 14, iTextSharp.text.Font.BOLD);
-
-                        var systemCurrent = Modules.SysCurrentModule.GetCurrentSettings();
-
-                        String documentTitle = systemCurrent.ORPrintTitle;
-                        String documentDate = DateTime.Today.ToShortDateString();
-
-                        PdfPTable tableHeader = new PdfPTable(2);
-                        tableHeader.SetWidths(new float[] { 70f, 30f });
-                        tableHeader.WidthPercentage = 100;
-                        tableHeader.AddCell(new PdfPCell(new Phrase(documentTitle, fontArial14Bold)) { Border = 0, Padding = 0 });
-                        tableHeader.AddCell(new PdfPCell(new Phrase(documentDate, fontArial10)) { Border = 0, Padding = 0, HorizontalAlignment = Element.ALIGN_RIGHT, PaddingTop = 5f });
-                        document.Add(tableHeader);
-
-                        Paragraph line = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.5F, 100.0F, BaseColor.DARK_GRAY, Element.ALIGN_MIDDLE, 10F)));
-                        document.Add(line);
-
-                        String term = collection.FirstOrDefault().MstCustomer.MstTerm.Term;
-                        String dueDate = collection.FirstOrDefault().CollectionDate.AddDays(Convert.ToDouble(collection.FirstOrDefault().MstCustomer.MstTerm.NumberOfDays)).Date.ToShortDateString();
-                        String deliveryDate = collection.FirstOrDefault().CollectionDate.ToShortDateString();
-
-                        PdfPTable tableDates = new PdfPTable(3);
-                        tableDates.SetWidths(new float[] { 80f, 100f, 100f });
-                        tableDates.WidthPercentage = 100;
-                        tableDates.AddCell(new PdfPCell(new Phrase("Term: " + term, fontArial10)) { Border = 0, PaddingLeft = 0, PaddingRight = 0, PaddingTop = -5f, PaddingBottom = 0 });
-                        tableDates.AddCell(new PdfPCell(new Phrase("Due Date: " + dueDate, fontArial10)) { Border = 0, PaddingLeft = 0, PaddingRight = 0, PaddingTop = -5f, PaddingBottom = 00 });
-                        tableDates.AddCell(new PdfPCell(new Phrase("Delivery Date: " + deliveryDate, fontArial10)) { Border = 0, PaddingLeft = 0, PaddingRight = 0, PaddingTop = -5f, PaddingBottom = 0 });
-                        document.Add(tableDates);
-                        document.Add(line);
-
-                        String customer = collection.FirstOrDefault().MstCustomer.Customer;
-                        String address = collection.FirstOrDefault().MstCustomer.Address;
-
-                        PdfPTable tableCustomer = new PdfPTable(1);
-                        tableCustomer.SetWidths(new float[] { 100f });
-                        tableCustomer.WidthPercentage = 100;
-                        tableCustomer.AddCell(new PdfPCell(new Phrase(customer, fontArial10Bold)) { Border = 0, PaddingLeft = 0, PaddingRight = 0, PaddingTop = -5f, PaddingBottom = 0 });
-                        tableCustomer.AddCell(new PdfPCell(new Phrase(address, fontArial10)) { Border = 0, PaddingLeft = 0, PaddingRight = 0, PaddingTop = 2f, PaddingBottom = 0 });
-                        document.Add(tableCustomer);
-                        document.Add(line);
+                        pdfWriter.PageEvent = new CollectionHeaderFooter(currentUser.FirstOrDefault().Id, collectionList.Id);
 
                         PdfPTable tableItem = new PdfPTable(3);
                         tableItem.SetWidths(new float[] { 100f, 20f, 30f });
@@ -113,21 +78,6 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         document.Add(tableItem);
                         document.Add(line);
 
-                        PdfPTable tableSignature = new PdfPTable(1);
-                        tableSignature.SetWidths(new float[] { 100f });
-                        tableSignature.WidthPercentage = 100;
-                        tableSignature.AddCell(new PdfPCell(new Phrase("Received by / Date Received:", fontArial0Italic)) { Border = 0, PaddingTop = -3f });
-                        tableSignature.AddCell(new PdfPCell(new Phrase("_____________________")) { Border = 0, PaddingTop = 25f });
-                        tableSignature.AddCell(new PdfPCell(new Phrase("DR No.: " + collection.FirstOrDefault().CollectionNumber, fontArial10Bold)) { Border = 0, PaddingTop = 3f });
-                        document.Add(tableSignature);
-
-                        String ORFooter = systemCurrent.ReceiptFooter;
-                        PdfPTable tableFooter = new PdfPTable(1);
-                        tableFooter.SetWidths(new float[] { 100f });
-                        tableFooter.WidthPercentage = 100;
-                        tableFooter.AddCell(new PdfPCell(new Phrase(ORFooter, fontArial10)) { Border = 0, PaddingTop = 15f });
-                        document.Add(tableFooter);
-
                         document.NewPage();
                     }
                 }
@@ -140,6 +90,87 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             {
                 MessageBox.Show(ex.Message, "Easy ERP", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+    }
+
+    class CollectionHeaderFooter : PdfPageEventHelper
+    {
+        public Int32 userId = 0;
+        public Int32 collectonId = 0;
+        public Data.easyposdbDataContext db;
+
+        public CollectionHeaderFooter(Int32 currentUserId, Int32 currentCollectonId)
+        {
+            userId = currentUserId;
+            collectonId = currentCollectonId;
+
+            db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
+        }
+
+        public override void OnEndPage(PdfWriter writer, Document document)
+        {
+            var collection = from d in db.TrnCollections where d.Id == collectonId select d;
+
+            iTextSharp.text.Font fontArial09 = FontFactory.GetFont("Arial", 09);
+            iTextSharp.text.Font fontArial09Italic = FontFactory.GetFont("Arial", 09, iTextSharp.text.Font.ITALIC);
+            iTextSharp.text.Font fontArial0Italic = FontFactory.GetFont("Arial", 10, iTextSharp.text.Font.ITALIC);
+            iTextSharp.text.Font fontArial10 = FontFactory.GetFont("Arial", 10);
+            iTextSharp.text.Font fontArial10Bold = FontFactory.GetFont("Arial", 10, iTextSharp.text.Font.BOLD);
+            iTextSharp.text.Font fontArial14Bold = FontFactory.GetFont("Arial", 14, iTextSharp.text.Font.BOLD);
+
+            var systemCurrent = Modules.SysCurrentModule.GetCurrentSettings();
+
+            Paragraph headerLine = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(2F, 100.0F, BaseColor.BLACK, Element.ALIGN_MIDDLE, 5F)));
+            Paragraph footerLine = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0F, 100.0F, BaseColor.BLACK, Element.ALIGN_MIDDLE, 5F)));
+
+            String documentTitle = systemCurrent.ORPrintTitle;
+            String date = DateTime.Today.ToShortDateString();
+            String terminal = collection.FirstOrDefault().MstTerminal.Terminal;
+            String term = collection.FirstOrDefault().MstCustomer.MstTerm.Term;
+            String user = collection.FirstOrDefault().TrnSale.MstUser.UserName;
+            String dueDate = collection.FirstOrDefault().CollectionDate.AddDays(Convert.ToDouble(collection.FirstOrDefault().MstCustomer.MstTerm.NumberOfDays)).Date.ToShortDateString();
+            String deliveryDate = collection.FirstOrDefault().CollectionDate.ToShortDateString();
+
+            String customer = collection.FirstOrDefault().MstCustomer.Customer;
+            String address = collection.FirstOrDefault().MstCustomer.Address;
+
+            String ORFooter = systemCurrent.ReceiptFooter;
+
+            PdfPTable tableHeader = new PdfPTable(4);
+            tableHeader.SetWidths(new float[] { 50f, 50f, 50f, 50f });
+            tableHeader.DefaultCell.Border = 0;
+            tableHeader.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
+            tableHeader.AddCell(new PdfPCell(new Phrase(documentTitle, fontArial14Bold)) { Colspan = 2, Border = 0, Padding = 3f });
+            tableHeader.AddCell(new PdfPCell(new Phrase("No.: " + collection.FirstOrDefault().CollectionNumber, fontArial10Bold)) { HorizontalAlignment = 2, Colspan = 2, Border = 0, Padding = 3f });
+            tableHeader.AddCell(new PdfPCell(new Phrase(headerLine)) { Border = 0, Colspan = 4 });
+            tableHeader.AddCell(new PdfPCell(new Phrase("Date: ", fontArial09)) { HorizontalAlignment = 2, Border = 0 });
+            tableHeader.AddCell(new PdfPCell(new Phrase(date, fontArial09)) { Border = 0 });
+            tableHeader.AddCell(new PdfPCell(new Phrase("Terminal: ", fontArial09)) { HorizontalAlignment = 2, Border = 0 });
+            tableHeader.AddCell(new PdfPCell(new Phrase(terminal, fontArial09)) { Border = 0 });
+            tableHeader.AddCell(new PdfPCell(new Phrase("Term: ", fontArial09)) { HorizontalAlignment = 2, Border = 0 });
+            tableHeader.AddCell(new PdfPCell(new Phrase(term, fontArial09)) { Border = 0 });
+            tableHeader.AddCell(new PdfPCell(new Phrase("User: ", fontArial09)) { HorizontalAlignment = 2, Border = 0 });
+            tableHeader.AddCell(new PdfPCell(new Phrase(user, fontArial09)) { Border = 0 });
+            tableHeader.AddCell(new PdfPCell(new Phrase("Due Date: ", fontArial09)) { HorizontalAlignment = 2, Border = 0 });
+            tableHeader.AddCell(new PdfPCell(new Phrase(dueDate, fontArial09)) { Border = 0 });
+            tableHeader.AddCell(new PdfPCell(new Phrase("Delivery Date: ", fontArial09)) { HorizontalAlignment = 2, Border = 0 });
+            tableHeader.AddCell(new PdfPCell(new Phrase(deliveryDate, fontArial09)) { Border = 0 });
+            tableHeader.AddCell(new PdfPCell(new Phrase(headerLine)) { Border = 0, Colspan = 4 });
+            tableHeader.AddCell(new PdfPCell(new Phrase(customer, fontArial10Bold)) { Border = 0, Colspan = 4 });
+            tableHeader.AddCell(new PdfPCell(new Phrase(address, fontArial10)) { Border = 0, Colspan = 4 });
+            tableHeader.AddCell(new PdfPCell(new Phrase(headerLine)) { Border = 0, Colspan = 4 });
+            tableHeader.WriteSelectedRows(0, -1, document.LeftMargin, writer.PageSize.GetTop(document.TopMargin) + 80, writer.DirectContent);
+
+            PdfPTable tableFooter = new PdfPTable(2);
+            tableFooter.SetWidths(new float[] { 50f, 50f });
+            tableFooter.DefaultCell.Border = 0;
+            tableFooter.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
+            tableFooter.AddCell(new PdfPCell(new Phrase("Received by / Date Received:", fontArial0Italic)) { Border = 0, Padding = 3f, Colspan = 2 });
+            tableFooter.AddCell(new PdfPCell(new Phrase("_____________________")) { Border = 0, PaddingTop = 25f });
+            tableFooter.AddCell(new PdfPCell(new Phrase("")) { Border = 0, PaddingTop = 25f });
+            tableFooter.AddCell(new PdfPCell(new Phrase("No.: " + collection.FirstOrDefault().CollectionNumber, fontArial10Bold)) { Border = 0, PaddingTop = 3f, Colspan = 2 });
+            tableFooter.AddCell(new PdfPCell(new Phrase(ORFooter, fontArial10)) { Border = 0, Padding = 3f, Colspan = 2 });
+            tableFooter.WriteSelectedRows(0, -1, document.LeftMargin, writer.PageSize.GetBottom(document.BottomMargin) - 10, writer.DirectContent);
         }
     }
 }
