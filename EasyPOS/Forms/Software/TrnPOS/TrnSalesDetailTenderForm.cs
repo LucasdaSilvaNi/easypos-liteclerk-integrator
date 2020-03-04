@@ -342,7 +342,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
             }
 
-            dataGridViewTenderPayType.Rows[0].Cells[3].Selected = true;
+            dataGridViewTenderPayType.Rows[0].Cells[4].Selected = true;
             ComputeAmount();
         }
 

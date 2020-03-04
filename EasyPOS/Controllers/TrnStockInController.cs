@@ -332,6 +332,35 @@ namespace EasyPOS.Controllers
                         return new String[] { "Already unlocked.", "0" };
                     }
 
+                    if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == "False")
+                    {
+                        Boolean isNegativeInventory = false;
+                        String negativeInventoryItem = "";
+
+                        if (stockIn.FirstOrDefault().TrnStockInLines.Any())
+                        {
+                            var groupedStockInLines = from d in stockIn.FirstOrDefault().TrnStockInLines
+                                                      group d by d.MstItem into g
+                                                      select g;
+
+                            foreach (var stockInLine in groupedStockInLines.ToList())
+                            {
+                                negativeInventoryItem = stockInLine.Key.ItemDescription;
+
+                                if (stockInLine.Key.OnhandQuantity <= 0)
+                                {
+                                    isNegativeInventory = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (isNegativeInventory == true)
+                        {
+                            return new String[] { "Negative inventory item found. " + negativeInventoryItem, "0" };
+                        }
+                    }
+
                     String oldObject = Modules.SysAuditTrailModule.GetObjectString(stockIn.FirstOrDefault());
 
                     var unlockStockIn = stockIn.FirstOrDefault();

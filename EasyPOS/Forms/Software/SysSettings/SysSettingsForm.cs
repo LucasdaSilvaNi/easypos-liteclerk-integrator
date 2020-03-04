@@ -306,6 +306,7 @@ namespace EasyPOS.Forms.Software.SysSettings
         {
             Controllers.SysCurrentController sysSettingsController = new Controllers.SysCurrentController();
             var sysCurrent = sysSettingsController.GetSysCurrent();
+
             if (sysCurrent != null)
             {
                 textBoxCompanyName.Text = sysCurrent.CompanyName;
@@ -344,13 +345,15 @@ namespace EasyPOS.Forms.Software.SysSettings
                 textBoxEasypayMotherCardNumber.Text = sysCurrent.EasypayMotherCardNumber;
                 checkBoxActivateAuditTrail.Checked = Convert.ToBoolean(sysCurrent.ActivateAuditTrail);
                 textBoxPOSType.Text = sysCurrent.POSType;
+                checkBoxAllowNegativeInventory.Checked = Convert.ToBoolean(sysCurrent.AllowNegativeInventory);
             }
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            Controllers.SysCurrentController sysSettingsController = new Controllers.SysCurrentController();
+            var currentSettings = Modules.SysCurrentModule.GetCurrentSettings();
 
+            Controllers.SysCurrentController sysSettingsController = new Controllers.SysCurrentController();
             Entities.SysCurrentEntity sysCurrentEntity = new Entities.SysCurrentEntity()
             {
                 CompanyName = textBoxCompanyName.Text,
@@ -361,15 +364,18 @@ namespace EasyPOS.Forms.Software.SysSettings
                 SerialNo = textBoxSerialNo.Text,
                 PermitNo = textBoxPermitNo.Text,
                 MachineNo = textBoxMachineNo.Text,
-                DeclareRate = "",
+                DeclareRate = currentSettings.DeclareRate,
                 ReceiptFooter = textBoxInvoiceFooter.Text,
                 InvoiceFooter = textBoxInvoiceFooter.Text,
                 LicenseCode = textBoxLicenseCode.Text,
                 TenantOf = textBoxTenantOf.Text,
+                CurrentUserId = currentSettings.CurrentUserId,
+                CurrentUserName = currentSettings.CurrentUserName,
                 CurrentVersion = textBoxCurrentVersion.Text,
                 CurrentDeveloper = textBoxCurrentDeveloper.Text,
                 CurrentSupport = textBoxCurrentSupport.Text,
                 CurrentPeriodId = comboBoxCurrentPeriod.SelectedValue.ToString(),
+                CurrentDate = currentSettings.CurrentDate,
                 TerminalId = comboBoxTerminal.SelectedValue.ToString(),
                 WalkinCustomerId = comboBoxWalkinCustomer.SelectedValue.ToString(),
                 DefaultDiscountId = comboBoxDefaultDiscount.SelectedValue.ToString(),
@@ -389,7 +395,9 @@ namespace EasyPOS.Forms.Software.SysSettings
                 EasypayDefaultPassword = textBoxEasypayDefaultPassword.Text,
                 EasypayMotherCardNumber = textBoxEasypayMotherCardNumber.Text,
                 ActivateAuditTrail = checkBoxActivateAuditTrail.Checked.ToString(),
-                POSType = textBoxPOSType.Text
+                FacepayImagePath = currentSettings.FacepayImagePath,
+                POSType = textBoxPOSType.Text,
+                AllowNegativeInventory = checkBoxAllowNegativeInventory.Checked.ToString()
             };
 
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);

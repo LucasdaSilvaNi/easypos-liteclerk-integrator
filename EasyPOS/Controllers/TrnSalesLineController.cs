@@ -213,6 +213,21 @@ namespace EasyPOS.Controllers
                     return new String[] { "Item not found.", "0" };
                 }
 
+                if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == "False")
+                {
+                    if (item.FirstOrDefault().OnhandQuantity <= 0)
+                    {
+                        return new String[] { "Item " + item.FirstOrDefault().ItemDescription + " has negative inventory", "0" };
+                    }
+                    else
+                    {
+                        if (item.FirstOrDefault().OnhandQuantity < objSalesLine.Quantity)
+                        {
+                            return new String[] { "Item " + item.FirstOrDefault().ItemDescription + " has negative inventory", "0" };
+                        }
+                    }
+                }
+
                 var discount = from d in db.MstDiscounts where d.Id == objSalesLine.DiscountId select d;
                 if (discount.Any() == false)
                 {
@@ -337,6 +352,21 @@ namespace EasyPOS.Controllers
                     if (user.Any() == false)
                     {
                         return new String[] { "User not found.", "0" };
+                    }
+
+                    if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == "False")
+                    {
+                        if (salesLine.FirstOrDefault().MstItem.OnhandQuantity <= 0)
+                        {
+                            return new String[] { "Item " + salesLine.FirstOrDefault().MstItem.ItemDescription + " has negative inventory", "0" };
+                        }
+                        else
+                        {
+                            if (salesLine.FirstOrDefault().MstItem.OnhandQuantity < objSalesLine.Quantity)
+                            {
+                                return new String[] { "Item " + salesLine.FirstOrDefault().MstItem.ItemDescription + " has negative inventory", "0" };
+                            }
+                        }
                     }
 
                     String oldObject = Modules.SysAuditTrailModule.GetObjectString(salesLine.FirstOrDefault());

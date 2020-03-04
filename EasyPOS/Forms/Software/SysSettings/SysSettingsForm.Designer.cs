@@ -38,6 +38,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.textBoxPOSType = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
             this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
             this.comboBoxCurrentPeriod = new System.Windows.Forms.ComboBox();
             this.comboBoxWalkinCustomer = new System.Windows.Forms.ComboBox();
@@ -106,8 +108,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxCompanyName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -126,15 +126,13 @@
             this.txtBranchCode = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
-            this.textBoxPOSType = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
+            this.checkBoxAllowNegativeInventory = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
@@ -162,7 +160,7 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(1206, 11);
+            this.buttonSave.Location = new System.Drawing.Point(1206, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
             this.buttonSave.TabIndex = 7;
@@ -233,8 +231,6 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.panel4);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.pictureBox3);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -249,6 +245,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.SystemColors.Control;
+            this.panel4.Controls.Add(this.checkBoxAllowNegativeInventory);
             this.panel4.Controls.Add(this.textBoxPOSType);
             this.panel4.Controls.Add(this.label32);
             this.panel4.Controls.Add(this.comboBoxTerminal);
@@ -319,10 +316,28 @@
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.textBoxCompanyName);
             this.panel4.Controls.Add(this.label4);
-            this.panel4.Location = new System.Drawing.Point(8, 49);
+            this.panel4.Location = new System.Drawing.Point(8, 6);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1376, 556);
+            this.panel4.Size = new System.Drawing.Size(1376, 594);
             this.panel4.TabIndex = 33;
+            // 
+            // textBoxPOSType
+            // 
+            this.textBoxPOSType.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPOSType.Location = new System.Drawing.Point(602, 472);
+            this.textBoxPOSType.Name = "textBoxPOSType";
+            this.textBoxPOSType.Size = new System.Drawing.Size(248, 30);
+            this.textBoxPOSType.TabIndex = 78;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(510, 475);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(86, 23);
+            this.label32.TabIndex = 79;
+            this.label32.Text = "POS Type:";
             // 
             // comboBoxTerminal
             // 
@@ -958,27 +973,6 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Company Name:";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(69, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(224, 28);
-            this.label3.TabIndex = 31;
-            this.label3.Text = "Easyfis System Settings";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::EasyPOS.Properties.Resources.easyfis_logo;
-            this.pictureBox3.Location = new System.Drawing.Point(8, 6);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(55, 37);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 32;
-            this.pictureBox3.TabStop = false;
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.label2);
@@ -1194,23 +1188,16 @@
             this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
             this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
             // 
-            // textBoxPOSType
+            // checkBoxAllowNegativeInventory
             // 
-            this.textBoxPOSType.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPOSType.Location = new System.Drawing.Point(602, 472);
-            this.textBoxPOSType.Name = "textBoxPOSType";
-            this.textBoxPOSType.Size = new System.Drawing.Size(248, 30);
-            this.textBoxPOSType.TabIndex = 78;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(510, 475);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(86, 23);
-            this.label32.TabIndex = 79;
-            this.label32.Text = "POS Type:";
+            this.checkBoxAllowNegativeInventory.AutoSize = true;
+            this.checkBoxAllowNegativeInventory.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxAllowNegativeInventory.Location = new System.Drawing.Point(1114, 514);
+            this.checkBoxAllowNegativeInventory.Name = "checkBoxAllowNegativeInventory";
+            this.checkBoxAllowNegativeInventory.Size = new System.Drawing.Size(223, 27);
+            this.checkBoxAllowNegativeInventory.TabIndex = 80;
+            this.checkBoxAllowNegativeInventory.Text = "Allow Negative Inventory";
+            this.checkBoxAllowNegativeInventory.UseVisualStyleBackColor = true;
             // 
             // SysSettingsForm
             // 
@@ -1230,10 +1217,8 @@
             this.panel2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -1271,8 +1256,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerEasyfisIntegration;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxCompanyName;
         private System.Windows.Forms.TextBox textBoxLicenseCode;
@@ -1344,5 +1327,6 @@
         private System.Windows.Forms.ComboBox comboBoxReturnSupplier;
         private System.Windows.Forms.TextBox textBoxPOSType;
         private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.CheckBox checkBoxAllowNegativeInventory;
     }
 }

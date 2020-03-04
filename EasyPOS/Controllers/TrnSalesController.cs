@@ -383,6 +383,45 @@ namespace EasyPOS.Controllers
                 {
                     return new String[] { "Sales not found.", "0" };
                 }
+                else
+                {
+                    if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == "False")
+                    {
+                        Boolean isNegativeInventory = false;
+                        String negativeInventoryItem = "";
+
+                        if (currentSales.FirstOrDefault().TrnSalesLines.Any())
+                        {
+                            var groupedSalesLines = from d in currentSales.FirstOrDefault().TrnSalesLines
+                                                    group d by d.MstItem into g
+                                                    select g;
+
+                            foreach (var salesLine in groupedSalesLines.ToList())
+                            {
+                                negativeInventoryItem = salesLine.Key.ItemDescription;
+
+                                if (salesLine.Key.OnhandQuantity <= 0)
+                                {
+                                    isNegativeInventory = true;
+                                    break;
+                                }
+                                else
+                                {
+                                    if (salesLine.Key.OnhandQuantity < salesLine.Sum(d => d.Quantity))
+                                    {
+                                        isNegativeInventory = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (isNegativeInventory == true)
+                        {
+                            return new String[] { "Negative inventory item found. " + negativeInventoryItem, "0" };
+                        }
+                    }
+                }
 
                 var user = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
                 if (user.Any() == false)
@@ -1083,6 +1122,43 @@ namespace EasyPOS.Controllers
 
                 if (sales.Any())
                 {
+                    if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == "False")
+                    {
+                        Boolean isNegativeInventory = false;
+                        String negativeInventoryItem = "";
+
+                        if (sales.FirstOrDefault().TrnSalesLines.Any())
+                        {
+                            var groupedSalesLines = from d in sales.FirstOrDefault().TrnSalesLines
+                                                    group d by d.MstItem into g
+                                                    select g;
+
+                            foreach (var salesLine in groupedSalesLines.ToList())
+                            {
+                                negativeInventoryItem = salesLine.Key.ItemDescription;
+
+                                if (salesLine.Key.OnhandQuantity <= 0)
+                                {
+                                    isNegativeInventory = true;
+                                    break;
+                                }
+                                else
+                                {
+                                    if (salesLine.Key.OnhandQuantity < salesLine.Sum(d => d.Quantity))
+                                    {
+                                        isNegativeInventory = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (isNegativeInventory == true)
+                        {
+                            return new String[] { "Negative inventory item found. " + negativeInventoryItem, "0" };
+                        }
+                    }
+
                     var updateSales = sales.FirstOrDefault();
                     updateSales.IsLocked = true;
                     updateSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);

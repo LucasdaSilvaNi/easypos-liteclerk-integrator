@@ -39,5 +39,6 @@
   "EasypayMotherCardNumber": "0000000001",
   "ActivateAuditTrail": "True",
   "FacepayImagePath": "D:\\Facepay",
-  "POSType": "POS Barcode"
+  "POSType": "POS Barcode",
+  "AllowNegativeInventory":  "False"
 }

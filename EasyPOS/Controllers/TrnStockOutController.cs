@@ -246,6 +246,43 @@ namespace EasyPOS.Controllers
                         return new String[] { "Already locked.", "0" };
                     }
 
+                    if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == "False")
+                    {
+                        Boolean isNegativeInventory = false;
+                        String negativeInventoryItem = "";
+
+                        if (stockOut.FirstOrDefault().TrnStockOutLines.Any())
+                        {
+                            var groupedStockOutLines = from d in stockOut.FirstOrDefault().TrnStockOutLines
+                                                       group d by d.MstItem into g
+                                                       select g;
+
+                            foreach (var stockOutLine in groupedStockOutLines.ToList())
+                            {
+                                negativeInventoryItem = stockOutLine.Key.ItemDescription;
+
+                                if (stockOutLine.Key.OnhandQuantity <= 0)
+                                {
+                                    isNegativeInventory = true;
+                                    break;
+                                }
+                                else
+                                {
+                                    if (stockOutLine.Key.OnhandQuantity < stockOutLine.Sum(d => d.Quantity))
+                                    {
+                                        isNegativeInventory = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (isNegativeInventory == true)
+                        {
+                            return new String[] { "Negative inventory item found. " + negativeInventoryItem, "0" };
+                        }
+                    }
+
                     String oldObject = Modules.SysAuditTrailModule.GetObjectString(stockOut.FirstOrDefault());
 
                     var lockStockOut = stockOut.FirstOrDefault();

@@ -49,5 +49,6 @@ namespace EasyPOS.Entities
         public String ActivateAuditTrail { get; set; }
         public String FacepayImagePath { get; set; }
         public String POSType { get; set; }
+        public String AllowNegativeInventory { get; set; }
     }
 }

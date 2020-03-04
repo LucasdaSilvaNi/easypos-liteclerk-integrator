@@ -76,7 +76,8 @@ namespace EasyPOS.Modules
                 EasypayMotherCardNumber = currentSettings.EasypayMotherCardNumber,
                 ActivateAuditTrail = currentSettings.ActivateAuditTrail,
                 FacepayImagePath = currentSettings.FacepayImagePath,
-                POSType = currentSettings.POSType
+                POSType = currentSettings.POSType,
+                AllowNegativeInventory = currentSettings.AllowNegativeInventory
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);
@@ -132,7 +133,8 @@ namespace EasyPOS.Modules
                 EasypayMotherCardNumber = objSysCurrentEntity.EasypayMotherCardNumber,
                 ActivateAuditTrail = objSysCurrentEntity.ActivateAuditTrail,
                 FacepayImagePath = currentSettings.FacepayImagePath,
-                POSType = currentSettings.POSType
+                POSType = currentSettings.POSType,
+                AllowNegativeInventory = currentSettings.AllowNegativeInventory
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newSysCurrentEntities);
