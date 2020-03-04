@@ -560,32 +560,46 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         }
                         else
                         {
-                            DialogResult cancelDialogResult = MessageBox.Show("Reprint Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                            if (cancelDialogResult == DialogResult.Yes)
+                            //DialogResult cancelDialogResult = MessageBox.Show("Reprint Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            //if (cancelDialogResult == DialogResult.Yes)
+                            //{
+                            //    Int32 salesId = Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value);
+
+                            //    Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
+                            //    Int32 collectionId = trnPOSSalesController.GetCollectionId(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value));
+                            //    if (collectionId != 0)
+                            //    {
+                            //        if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Official Receipt")
+                            //        {
+                            //            new Reports.RepOfficialReceiptReportForm(salesId, collectionId, true);
+                            //        }
+                            //        else if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Delivery Receipt")
+                            //        {
+                            //            new Reports.RepDeliveryReceiptReportForm(salesId, collectionId, false, "", "", false);
+                            //        }
+                            //        else
+                            //        {
+
+                            //        }
+                            //    }
+                            //    else
+                            //    {
+                            //        MessageBox.Show("No collection.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //    }
+                            //}
+
+                            Int32 salesId = Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value);
+
+                            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
+                            Int32 collectionId = trnPOSSalesController.GetCollectionId(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value));
+                            if (collectionId != 0)
                             {
-                                Int32 salesId = Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value);
-
-                                Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-                                Int32 collectionId = trnPOSSalesController.GetCollectionId(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value));
-                                if (collectionId != 0)
-                                {
-                                    if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Official Receipt")
-                                    {
-                                        new Reports.RepOfficialReceiptReportForm(salesId, collectionId, true);
-                                    }
-                                    else if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Delivery Receipt")
-                                    {
-                                        new Reports.RepDeliveryReceiptReportForm(salesId, collectionId, false, "", "", false);
-                                    }
-                                    else
-                                    {
-
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("No collection.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
+                                TrnSalesListReprintForm trnSalesListReprintForm = new TrnSalesListReprintForm(sysSoftwareForm, salesId, collectionId);
+                                trnSalesListReprintForm.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No collection.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }

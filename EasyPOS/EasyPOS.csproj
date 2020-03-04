@@ -744,6 +744,12 @@
     <Compile Include="Forms\Software\TrnPOS\TrnSalesListForm.Designer.cs">
       <DependentUpon>TrnSalesListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnSalesListReprintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnSalesListReprintForm.Designer.cs">
+      <DependentUpon>TrnSalesListReprintForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnStockIn\TrnStockInDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1015,6 +1021,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesListCancelRemarksForm.resx">
       <DependentUpon>TrnSalesListCancelRemarksForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesListReprintForm.resx">
+      <DependentUpon>TrnSalesListReprintForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnStockIn\TrnStockInDetailForm.resx">
       <DependentUpon>TrnStockInDetailForm.cs</DependentUpon>
