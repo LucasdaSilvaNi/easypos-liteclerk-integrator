@@ -429,6 +429,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     TrnSalesDetailTenderFacepayCameraForm trnSalesDetailTenderFacepayCameraForm = new TrnSalesDetailTenderFacepayCameraForm(this, dataGridViewTenderPayType, facepayAmount);
                     trnSalesDetailTenderFacepayCameraForm.ShowDialog();
                 }
+                else if (payTypeCode == "CHARGE")
+                {
+                    dataGridViewTenderPayType.CurrentRow.Cells[4].Value = trnSalesEntity.Amount.ToString("#,##0.00");
+                    ComputeAmount();
+                }
                 else
                 {
                     TrnSalesDetailTenderMoreInformationForm trnSalesDetailTenderMoreInfoForm = new TrnSalesDetailTenderMoreInformationForm(this, dataGridViewTenderPayType);
