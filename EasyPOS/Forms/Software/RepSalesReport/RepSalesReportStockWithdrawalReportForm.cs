@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -132,6 +133,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 }
 
                 document.Close();
+
+                Process.Start(fileName);
             }
             catch (Exception ex)
             {
