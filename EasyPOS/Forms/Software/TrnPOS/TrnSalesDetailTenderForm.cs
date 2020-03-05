@@ -223,8 +223,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         Close();
                     }
 
-
-
                     if (trnSalesDetailForm != null)
                     {
                         trnSalesDetailForm.Close();

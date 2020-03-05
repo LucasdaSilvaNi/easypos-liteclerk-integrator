@@ -170,6 +170,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
 
             textBoxTotalSalesAmount.Text = totalSalesAmount.ToString("#,##0.00");
+            trnSalesEntity.Amount = totalSalesAmount;
 
             String line1 = Modules.SysCurrentModule.GetCurrentSettings().CustomerDisplayFirstLineMessage;
             String line2 = "P " + textBoxTotalSalesAmount.Text;
