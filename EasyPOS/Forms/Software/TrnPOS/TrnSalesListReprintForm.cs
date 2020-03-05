@@ -46,23 +46,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             DialogResult cancelDialogResult = MessageBox.Show("Reprint Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (cancelDialogResult == DialogResult.Yes)
             {
-                String printFilePath = "";
-                DialogResult folderBrowserDialoResult = folderBrowserDialogReprint.ShowDialog();
-
-                if (folderBrowserDialoResult == DialogResult.OK)
-                {
-                    printFilePath = folderBrowserDialogReprint.SelectedPath;
-
-                    if (String.IsNullOrEmpty(printFilePath) == true)
-                    {
-                        MessageBox.Show("Empty file path", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        new RepSalesReport.RepSalesReportStockWithdrawalReportForm(printFilePath + "\\", StockWithdrawalReport(trnCollectionId), true, false);
-                        MessageBox.Show("Generate PDF Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
+                new RepSalesReport.RepSalesReportStockWithdrawalReportForm("", StockWithdrawalReport(trnCollectionId), true, false);
+                MessageBox.Show("Generate PDF Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -71,30 +56,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             DialogResult cancelDialogResult = MessageBox.Show("Reprint Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (cancelDialogResult == DialogResult.Yes)
             {
-                //DialogResult printDialogResult = printDialogReprint.ShowDialog();
-                //if (printDialogResult == DialogResult.OK)
-                //{
-                //    new Reports.RepDeliveryReceiptReportForm(trnSalesId, trnCollectionId, true, printDialogReprint.PrinterSettings.PrinterName);
-                //    Close();
-                //}
-
-                String printFilePath = "";
-                DialogResult folderBrowserDialoResult = folderBrowserDialogReprint.ShowDialog();
-
-                if (folderBrowserDialoResult == DialogResult.OK)
-                {
-                    printFilePath = folderBrowserDialogReprint.SelectedPath;
-
-                    if (String.IsNullOrEmpty(printFilePath) == true)
-                    {
-                        MessageBox.Show("Empty file path", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        new RepSalesReport.RepSalesReportStockWithdrawalReportForm(printFilePath + "\\", StockWithdrawalReport(trnCollectionId), false, false);
-                        MessageBox.Show("Generate PDF Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
+                new RepSalesReport.RepSalesReportStockWithdrawalReportForm("", StockWithdrawalReport(trnCollectionId), false, false);
+                MessageBox.Show("Generate PDF Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
