@@ -98,6 +98,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
             else
             {
                 buttonUnlock.Enabled = isLocked;
+                buttonPost.Enabled = isLocked;
             }
 
             if (sysUserRights.GetUserRights().CanPrint == false)
@@ -476,6 +477,35 @@ namespace EasyPOS.Forms.Software.TrnStockCount
                 }
 
                 textBoxBarcode.SelectAll();
+            }
+        }
+
+        private void buttonPost_Click(object sender, EventArgs e)
+        {
+            DialogResult cancelDialogResult = MessageBox.Show("Post Inventory?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (cancelDialogResult == DialogResult.Yes)
+            {
+                Controllers.TrnStockCountController trnStockCountController = new Controllers.TrnStockCountController();
+                String[] postStockCount = trnStockCountController.PostStockCount(trnStockCountEntity.Id);
+
+                if (postStockCount[1].Equals("0") == false)
+                {
+                    UpdateComponents(true);
+
+                    var trnStockOutListForm = new TrnStockOut.TrnStockOutListForm(sysSoftwareForm)
+                    {
+                        TopLevel = false,
+                        Visible = true,
+                        Dock = DockStyle.Fill
+                    };
+
+                    Controllers.TrnStockOutController trnStockOutController = new Controllers.TrnStockOutController();
+                    sysSoftwareForm.AddTabPageStockOutDetail(trnStockOutListForm, trnStockOutController.DetailStockOut(Convert.ToInt32(postStockCount[1])));
+                }
+                else
+                {
+                    MessageBox.Show(postStockCount[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

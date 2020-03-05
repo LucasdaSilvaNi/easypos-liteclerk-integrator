@@ -45,6 +45,7 @@ namespace EasyPOS.Controllers
         {
             var items = from d in db.MstItems
                         where d.BarCode.Contains(filter)
+                        && d.IsInventory == true
                         || d.ItemDescription.Contains(filter)
                         || d.GenericName.Contains(filter)
                         select new Entities.MstItemEntity
@@ -72,6 +73,7 @@ namespace EasyPOS.Controllers
         {
             var item = from d in db.MstItems
                        where d.BarCode.Equals(barcode)
+                       && d.IsInventory == true
                        select new Entities.MstItemEntity
                        {
                            Id = d.Id,
@@ -114,6 +116,7 @@ namespace EasyPOS.Controllers
 
                 var item = from d in db.MstItems
                            where d.Id == objStockOutLine.ItemId
+                           && d.IsInventory == true
                            && d.IsLocked == true
                            select d;
 
@@ -329,6 +332,7 @@ namespace EasyPOS.Controllers
 
                 var item = from d in db.MstItems
                            where d.BarCode.Equals(barcode)
+                           && d.IsInventory == true
                            && d.IsLocked == true
                            select d;
 

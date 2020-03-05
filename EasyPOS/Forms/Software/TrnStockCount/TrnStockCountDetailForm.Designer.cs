@@ -78,6 +78,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePickerStockCountDate = new System.Windows.Forms.DateTimePicker();
             this.textBoxStockCountNumber = new System.Windows.Forms.TextBox();
+            this.buttonPost = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -91,6 +92,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.buttonPost);
             this.panel1.Controls.Add(this.buttonLock);
             this.panel1.Controls.Add(this.buttonUnlock);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -642,6 +644,24 @@
             this.textBoxStockCountNumber.Size = new System.Drawing.Size(196, 30);
             this.textBoxStockCountNumber.TabIndex = 0;
             // 
+            // buttonPost
+            // 
+            this.buttonPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonPost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonPost.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonPost.FlatAppearance.BorderSize = 0;
+            this.buttonPost.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPost.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPost.ForeColor = System.Drawing.Color.White;
+            this.buttonPost.Location = new System.Drawing.Point(924, 12);
+            this.buttonPost.Name = "buttonPost";
+            this.buttonPost.Size = new System.Drawing.Size(88, 40);
+            this.buttonPost.TabIndex = 24;
+            this.buttonPost.TabStop = false;
+            this.buttonPost.Text = "Post";
+            this.buttonPost.UseVisualStyleBackColor = false;
+            this.buttonPost.Click += new System.EventHandler(this.buttonPost_Click);
+            // 
             // TrnStockCountDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -717,5 +737,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockCountLineListQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockCountLineListCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockCountLineListAmount;
+        private System.Windows.Forms.Button buttonPost;
     }
 }

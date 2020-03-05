@@ -16,9 +16,13 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 {
     public partial class RepSalesReportStockWithdrawalReportForm : Form
     {
-        public RepSalesReportStockWithdrawalReportForm(String filePath, List<Entities.RepSalesReportTrnCollectionEntity> collectionLists)
+        public Boolean isDeliveryReceipt;
+
+        public RepSalesReportStockWithdrawalReportForm(String filePath, List<Entities.RepSalesReportTrnCollectionEntity> collectionLists, Boolean filterIsDeliveryReceipt)
         {
             InitializeComponent();
+            isDeliveryReceipt = filterIsDeliveryReceipt;
+
             PrintStockWithdrawalReport(filePath, collectionLists);
         }
 
@@ -68,11 +72,24 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     {
                         var collection = from d in db.TrnCollections where d.Id == collectionList.Id select d;
 
-                        pdfWriter.PageEvent = new CollectionHeaderFooter(currentUser.FirstOrDefault().Id, collectionList.Id);
+                        pdfWriter.PageEvent = new CollectionHeaderFooter(currentUser.FirstOrDefault().Id, collectionList.Id, isDeliveryReceipt);
 
-                        PdfPTable tableItem = new PdfPTable(3);
-                        tableItem.SetWidths(new float[] { 100f, 20f, 30f });
+                        Int32 colspan = 3;
+                        Int32 numberOfColumns = 3;
+                        float[] widths = new float[] { 100f, 20f, 30f };
+
+                        if (isDeliveryReceipt == true)
+                        {
+                            colspan = 5;
+                            numberOfColumns = 5;
+                            widths = new float[] { 70f, 20f, 30f, 30f, 30f };
+                        }
+
+                        PdfPTable tableItem = new PdfPTable(numberOfColumns);
+                        tableItem.SetWidths(widths);
                         tableItem.WidthPercentage = 100;
+
+                        Decimal totalAmount = 0;
 
                         if (collection.FirstOrDefault().TrnSale.TrnSalesLines.Any())
                         {
@@ -81,7 +98,21 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                 tableItem.AddCell(new PdfPCell(new Phrase(salesItem.MstItem.ItemDescription, fontArial10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
                                 tableItem.AddCell(new PdfPCell(new Phrase(salesItem.Quantity.ToString("#,##0.00"), fontArial10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f, HorizontalAlignment = 2 });
                                 tableItem.AddCell(new PdfPCell(new Phrase(salesItem.MstItem.MstUnit.Unit, fontArial10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+
+                                if (isDeliveryReceipt == true)
+                                {
+                                    tableItem.AddCell(new PdfPCell(new Phrase(salesItem.Price.ToString("#,##0.00"), fontArial10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f, HorizontalAlignment = 2 });
+                                    tableItem.AddCell(new PdfPCell(new Phrase(salesItem.Amount.ToString("#,##0.00"), fontArial10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f, HorizontalAlignment = 2 });
+                                }
+
+                                totalAmount += salesItem.Amount;
                             }
+                        }
+
+                        if (isDeliveryReceipt == true)
+                        {
+                            tableItem.AddCell(new PdfPCell(new Phrase(line)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = -5f, Colspan = colspan });
+                            tableItem.AddCell(new PdfPCell(new Phrase("Total: " + totalAmount.ToString("#,##0.00"), fontArial10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f, Colspan = colspan, HorizontalAlignment = 2 });
                         }
 
                         document.Add(tableItem);
@@ -106,12 +137,14 @@ namespace EasyPOS.Forms.Software.RepSalesReport
     {
         public Int32 userId = 0;
         public Int32 collectonId = 0;
+        public Boolean isDeliveryReceipt;
         public Data.easyposdbDataContext db;
 
-        public CollectionHeaderFooter(Int32 currentUserId, Int32 currentCollectonId)
+        public CollectionHeaderFooter(Int32 currentUserId, Int32 currentCollectonId, Boolean filterIsDeliveryReceipt)
         {
             userId = currentUserId;
             collectonId = currentCollectonId;
+            isDeliveryReceipt = filterIsDeliveryReceipt;
 
             db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
         }
@@ -169,13 +202,30 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             tableHeader.AddCell(new PdfPCell(new Phrase(address, fontArial09)) { Border = 0, Colspan = 4, Rowspan = 2, Padding = 1f });
             tableHeader.AddCell(new PdfPCell(new Phrase(line)) { Border = 0, Colspan = 4, PaddingBottom = -5f, PaddingLeft = 0f, PaddingRight = 0f });
 
-            PdfPTable tableItem = new PdfPTable(3);
-            tableItem.SetWidths(new float[] { 100f, 20f, 30f });
+            Int32 colspan = 3;
+            Int32 numberOfColumns = 3;
+            float[] widths = new float[] { 100f, 20f, 30f };
+
+            if (isDeliveryReceipt == true)
+            {
+                colspan = 5;
+                numberOfColumns = 5;
+                widths = new float[] { 70f, 20f, 30f, 30f, 30f };
+            }
+
+            PdfPTable tableItem = new PdfPTable(numberOfColumns);
+            tableItem.SetWidths(widths);
             tableItem.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
-            tableItem.AddCell(new PdfPCell(new Phrase(" ", fontArial10Bold)) { Border = 0, Colspan = 3, PaddingTop = -10f });
+            tableItem.AddCell(new PdfPCell(new Phrase(" ", fontArial10Bold)) { Border = 0, Colspan = colspan, PaddingTop = -10f });
             tableItem.AddCell(new PdfPCell(new Phrase("Description", fontArial10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
             tableItem.AddCell(new PdfPCell(new Phrase("Qty.", fontArial10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
             tableItem.AddCell(new PdfPCell(new Phrase("Unit", fontArial10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
+
+            if (isDeliveryReceipt == true)
+            {
+                tableItem.AddCell(new PdfPCell(new Phrase("Price", fontArial10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
+                tableItem.AddCell(new PdfPCell(new Phrase("Amount", fontArial10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
+            }
 
             tableHeader.AddCell(new PdfPCell(tableItem) { Border = 0, Colspan = 4, PaddingBottom = -5f, PaddingLeft = 0f, PaddingRight = 0f });
             tableHeader.WriteSelectedRows(0, -1, document.LeftMargin, writer.PageSize.GetTop(document.TopMargin) + 117f, writer.DirectContent);

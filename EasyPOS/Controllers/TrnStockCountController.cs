@@ -360,5 +360,110 @@ namespace EasyPOS.Controllers
                 return new String[] { e.Message, "0" };
             }
         }
+
+        // ================
+        // Post Stock-Count
+        // ================
+        public String[] PostStockCount(Int32 id)
+        {
+            try
+            {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
+                var account = from d in db.MstAccounts select d;
+                if (account.Any() == false)
+                {
+                    return new String[] { "Account not found.", "0" };
+                }
+
+                var stockCount = from d in db.TrnStockCounts
+                                 where d.Id == id
+                                 select d;
+
+                if (stockCount.Any())
+                {
+                    String oldObject = Modules.SysAuditTrailModule.GetObjectString(stockCount.FirstOrDefault());
+
+                    String stockOutNumber = "0000000001";
+                    var lastStockOut = from d in db.TrnStockOuts.OrderByDescending(d => d.Id) select d;
+                    if (lastStockOut.Any())
+                    {
+                        Int32 newStockOutNumber = Convert.ToInt32(lastStockOut.FirstOrDefault().StockOutNumber) + 1;
+                        stockOutNumber = FillLeadingZeroes(newStockOutNumber, 10);
+                    }
+
+                    Data.TrnStockOut newStockOut = new Data.TrnStockOut()
+                    {
+                        PeriodId = stockCount.FirstOrDefault().PeriodId,
+                        StockOutDate = stockCount.FirstOrDefault().StockCountDate,
+                        StockOutNumber = stockOutNumber,
+                        AccountId = account.FirstOrDefault().Id,
+                        Remarks = stockCount.FirstOrDefault().Remarks,
+                        PreparedBy = stockCount.FirstOrDefault().PreparedBy,
+                        CheckedBy = stockCount.FirstOrDefault().CheckedBy,
+                        ApprovedBy = stockCount.FirstOrDefault().ApprovedBy,
+                        IsLocked = true,
+                        EntryUserId = currentUserLogin.FirstOrDefault().Id,
+                        EntryDateTime = DateTime.Now,
+                        UpdateUserId = currentUserLogin.FirstOrDefault().Id,
+                        UpdateDateTime = DateTime.Now
+                    };
+
+                    db.TrnStockOuts.InsertOnSubmit(newStockOut);
+                    db.SubmitChanges();
+
+                    String newObject = Modules.SysAuditTrailModule.GetObjectString(newStockOut);
+
+                    Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                    {
+                        UserId = currentUserLogin.FirstOrDefault().Id,
+                        AuditDate = DateTime.Now,
+                        TableInformation = "TrnStockCount",
+                        RecordInformation = oldObject,
+                        FormInformation = newObject,
+                        ActionInformation = "PostStockCount"
+                    };
+                    Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
+                    if (stockCount.FirstOrDefault().TrnStockCountLines.Any() == true)
+                    {
+                        List<Data.TrnStockOutLine> newStockOutLines = new List<Data.TrnStockOutLine>();
+                        foreach (var stockCountLines in stockCount.FirstOrDefault().TrnStockCountLines)
+                        {
+                            newStockOutLines.Add(new Data.TrnStockOutLine
+                            {
+                                StockOutId = newStockOut.Id,
+                                ItemId = stockCountLines.ItemId,
+                                UnitId = stockCountLines.UnitId,
+                                Quantity = stockCountLines.MstItem.OnhandQuantity - stockCountLines.Quantity,
+                                Cost = stockCountLines.Cost,
+                                Amount = stockCountLines.Amount,
+                                AssetAccountId = stockCountLines.MstItem.AssetAccountId
+                            });
+                        }
+
+                        db.TrnStockOutLines.InsertAllOnSubmit(newStockOutLines);
+                        db.SubmitChanges();
+                    }
+
+                    Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
+                    trnInventoryModule.UpdateStockOutInventory(newStockOut.Id);
+
+                    return new String[] { "", newStockOut.Id.ToString() };
+                }
+                else
+                {
+                    return new String[] { "Stock-Count not found.", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
     }
 }

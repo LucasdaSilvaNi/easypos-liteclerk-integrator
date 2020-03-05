@@ -46,11 +46,22 @@ namespace EasyPOS.Forms.Software.TrnPOS
             DialogResult cancelDialogResult = MessageBox.Show("Reprint Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (cancelDialogResult == DialogResult.Yes)
             {
-                DialogResult printDialogResult = printDialogReprint.ShowDialog();
-                if (printDialogResult == DialogResult.OK)
+                String printFilePath = "";
+                DialogResult folderBrowserDialoResult = folderBrowserDialogReprint.ShowDialog();
+
+                if (folderBrowserDialoResult == DialogResult.OK)
                 {
-                    new Reports.RepDeliveryReceiptReportForm(trnSalesId, trnCollectionId, true, printDialogReprint.PrinterSettings.PrinterName);
-                    Close();
+                    printFilePath = folderBrowserDialogReprint.SelectedPath;
+
+                    if (String.IsNullOrEmpty(printFilePath) == true)
+                    {
+                        MessageBox.Show("Empty file path", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        new RepSalesReport.RepSalesReportStockWithdrawalReportForm(printFilePath + "\\", StockWithdrawalReport(trnCollectionId), true);
+                        MessageBox.Show("Generate PDF Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
         }
@@ -60,11 +71,29 @@ namespace EasyPOS.Forms.Software.TrnPOS
             DialogResult cancelDialogResult = MessageBox.Show("Reprint Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (cancelDialogResult == DialogResult.Yes)
             {
-                DialogResult printDialogResult = printDialogReprint.ShowDialog();
-                if (printDialogResult == DialogResult.OK)
+                //DialogResult printDialogResult = printDialogReprint.ShowDialog();
+                //if (printDialogResult == DialogResult.OK)
+                //{
+                //    new Reports.RepDeliveryReceiptReportForm(trnSalesId, trnCollectionId, true, printDialogReprint.PrinterSettings.PrinterName);
+                //    Close();
+                //}
+
+                String printFilePath = "";
+                DialogResult folderBrowserDialoResult = folderBrowserDialogReprint.ShowDialog();
+
+                if (folderBrowserDialoResult == DialogResult.OK)
                 {
-                    new Reports.RepDeliveryReceiptReportForm(trnSalesId, trnCollectionId, true, printDialogReprint.PrinterSettings.PrinterName);
-                    Close();
+                    printFilePath = folderBrowserDialogReprint.SelectedPath;
+
+                    if (String.IsNullOrEmpty(printFilePath) == true)
+                    {
+                        MessageBox.Show("Empty file path", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        new RepSalesReport.RepSalesReportStockWithdrawalReportForm(printFilePath + "\\", StockWithdrawalReport(trnCollectionId), false);
+                        MessageBox.Show("Generate PDF Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
         }
@@ -72,6 +101,25 @@ namespace EasyPOS.Forms.Software.TrnPOS
         private void buttonClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        // ===============================================
+        // Stock Withdrawal Report (Copied) To be modified
+        // ===============================================
+        public List<Entities.RepSalesReportTrnCollectionEntity> StockWithdrawalReport(Int32 id)
+        {
+            Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
+
+            var stockWithdrawalReports = from d in db.TrnCollections
+                                         where d.Id == id
+                                         select new Entities.RepSalesReportTrnCollectionEntity
+                                         {
+                                             Id = d.Id,
+                                             SalesId = d.SalesId,
+                                             CollectionNumber = d.CollectionNumber
+                                         };
+
+            return stockWithdrawalReports.ToList();
         }
     }
 }

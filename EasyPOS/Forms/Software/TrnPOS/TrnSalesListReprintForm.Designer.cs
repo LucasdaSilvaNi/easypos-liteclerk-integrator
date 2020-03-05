@@ -37,6 +37,7 @@
             this.buttonDeliveryReceipt = new System.Windows.Forms.Button();
             this.buttonWithdrawalSlip = new System.Windows.Forms.Button();
             this.printDialogReprint = new System.Windows.Forms.PrintDialog();
+            this.folderBrowserDialogReprint = new System.Windows.Forms.FolderBrowserDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -187,5 +188,6 @@
         private System.Windows.Forms.Button buttonDeliveryReceipt;
         private System.Windows.Forms.Button buttonWithdrawalSlip;
         private System.Windows.Forms.PrintDialog printDialogReprint;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogReprint;
     }
 }
