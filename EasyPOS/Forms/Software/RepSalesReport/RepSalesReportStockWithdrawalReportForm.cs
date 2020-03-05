@@ -17,11 +17,13 @@ namespace EasyPOS.Forms.Software.RepSalesReport
     public partial class RepSalesReportStockWithdrawalReportForm : Form
     {
         public Boolean isDeliveryReceipt;
+        public Boolean isDirectPrint;
 
-        public RepSalesReportStockWithdrawalReportForm(String filePath, List<Entities.RepSalesReportTrnCollectionEntity> collectionLists, Boolean filterIsDeliveryReceipt)
+        public RepSalesReportStockWithdrawalReportForm(String filePath, List<Entities.RepSalesReportTrnCollectionEntity> collectionLists, Boolean filterIsDeliveryReceipt, Boolean filterIsDirectPrint)
         {
             InitializeComponent();
             isDeliveryReceipt = filterIsDeliveryReceipt;
+            isDirectPrint = filterIsDirectPrint;
 
             PrintStockWithdrawalReport(filePath, collectionLists);
         }
@@ -124,7 +126,27 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                 document.Close();
 
-                Process.Start(fileName);
+                if (isDirectPrint == true)
+                {
+                    ProcessStartInfo info = new ProcessStartInfo(fileName)
+                    {
+                        Verb = "Print",
+                        CreateNoWindow = true,
+                        WindowStyle = ProcessWindowStyle.Hidden
+                    };
+
+                    Process printDwg = new Process
+                    {
+                        StartInfo = info
+                    };
+
+                    printDwg.Start();
+                    printDwg.Close();
+                }
+                else
+                {
+                    Process.Start(fileName);
+                }
             }
             catch (Exception ex)
             {

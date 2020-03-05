@@ -59,7 +59,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     }
                     else
                     {
-                        new RepSalesReport.RepSalesReportStockWithdrawalReportForm(printFilePath + "\\", StockWithdrawalReport(trnCollectionId), true);
+                        new RepSalesReport.RepSalesReportStockWithdrawalReportForm(printFilePath + "\\", StockWithdrawalReport(trnCollectionId), true, false);
                         MessageBox.Show("Generate PDF Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -91,7 +91,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     }
                     else
                     {
-                        new RepSalesReport.RepSalesReportStockWithdrawalReportForm(printFilePath + "\\", StockWithdrawalReport(trnCollectionId), false);
+                        new RepSalesReport.RepSalesReportStockWithdrawalReportForm(printFilePath + "\\", StockWithdrawalReport(trnCollectionId), false, false);
                         MessageBox.Show("Generate PDF Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }

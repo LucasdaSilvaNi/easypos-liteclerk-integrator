@@ -322,7 +322,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                     if (repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxCustomer.SelectedValue)).Any())
                                     {
                                         var collectionList = repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxCustomer.SelectedValue));
-                                        new RepSalesReportStockWithdrawalReportForm(printFilePath + "\\", collectionList, false);
+                                        new RepSalesReportStockWithdrawalReportForm(printFilePath + "\\", collectionList, false, false);
 
                                         MessageBox.Show("Generate PDF Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepSalesReportStockWithdrawalReportForm));
             this.label2 = new System.Windows.Forms.Label();
+            this.printDocumentPrint = new System.Drawing.Printing.PrintDocument();
             this.SuspendLayout();
             // 
             // label2
@@ -64,5 +65,6 @@
         #endregion
 
         private System.Windows.Forms.Label label2;
+        private System.Drawing.Printing.PrintDocument printDocumentPrint;
     }
 }

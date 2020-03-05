@@ -202,7 +202,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             }
                             else if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Delivery Receipt")
                             {
-                                new Reports.RepDeliveryReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]), false, "");
+                                //new Reports.RepDeliveryReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]), false, "");
+
+                                new RepSalesReport.RepSalesReportStockWithdrawalReportForm("", StockWithdrawalReport(trnSalesEntity.Id), true, true);
+                                //MessageBox.Show("Generate PDF Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
@@ -283,6 +286,25 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 MessageBox.Show("Cannot tender zero amount.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        // ===============================================
+        // Stock Withdrawal Report (Copied) To be modified
+        // ===============================================
+        public List<Entities.RepSalesReportTrnCollectionEntity> StockWithdrawalReport(Int32 salesId)
+        {
+            Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
+
+            var stockWithdrawalReports = from d in db.TrnCollections
+                                         where d.SalesId == salesId
+                                         select new Entities.RepSalesReportTrnCollectionEntity
+                                         {
+                                             Id = d.Id,
+                                             SalesId = d.SalesId,
+                                             CollectionNumber = d.CollectionNumber
+                                         };
+
+            return stockWithdrawalReports.ToList();
         }
 
         public void SaveImageCaptured(Image facepayCapturedImage)
