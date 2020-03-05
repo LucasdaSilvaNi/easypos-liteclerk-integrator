@@ -365,7 +365,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 PermitNo = textBoxPermitNo.Text,
                 MachineNo = textBoxMachineNo.Text,
                 DeclareRate = currentSettings.DeclareRate,
-                ReceiptFooter = textBoxInvoiceFooter.Text,
+                ReceiptFooter = textBoxReceiptFooter.Text,
                 InvoiceFooter = textBoxInvoiceFooter.Text,
                 LicenseCode = textBoxLicenseCode.Text,
                 TenantOf = textBoxTenantOf.Text,
