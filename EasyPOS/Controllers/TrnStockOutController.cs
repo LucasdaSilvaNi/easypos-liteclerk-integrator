@@ -251,9 +251,9 @@ namespace EasyPOS.Controllers
                         Boolean isNegativeInventory = false;
                         String negativeInventoryItem = "";
 
-                        if (stockOut.FirstOrDefault().TrnStockOutLines.Any())
+                        if (stockOut.FirstOrDefault().TrnStockOutLines.Where(d => d.MstItem.IsInventory == true).Any())
                         {
-                            var groupedStockOutLines = from d in stockOut.FirstOrDefault().TrnStockOutLines
+                            var groupedStockOutLines = from d in stockOut.FirstOrDefault().TrnStockOutLines.Where(d => d.MstItem.IsInventory == true)
                                                        group d by d.MstItem into g
                                                        select g;
 

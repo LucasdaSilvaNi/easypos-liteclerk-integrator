@@ -30,12 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnSalesListReprintForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonOfficialReceipt = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonDeliveryReceipt = new System.Windows.Forms.Button();
             this.buttonWithdrawalSlip = new System.Windows.Forms.Button();
+            this.printDialogReprint = new System.Windows.Forms.PrintDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -51,6 +52,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(409, 63);
             this.panel1.TabIndex = 5;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Reports;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -100,16 +111,6 @@
             this.buttonOfficialReceipt.UseVisualStyleBackColor = false;
             this.buttonOfficialReceipt.Click += new System.EventHandler(this.buttonOfficialReceipt_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Reports;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
             // buttonDeliveryReceipt
             // 
             this.buttonDeliveryReceipt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -148,6 +149,10 @@
             this.buttonWithdrawalSlip.UseVisualStyleBackColor = false;
             this.buttonWithdrawalSlip.Click += new System.EventHandler(this.buttonWithdrawalSlip_Click);
             // 
+            // printDialogReprint
+            // 
+            this.printDialogReprint.UseEXDialog = true;
+            // 
             // TrnSalesListReprintForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -181,5 +186,6 @@
         private System.Windows.Forms.Button buttonOfficialReceipt;
         private System.Windows.Forms.Button buttonDeliveryReceipt;
         private System.Windows.Forms.Button buttonWithdrawalSlip;
+        private System.Windows.Forms.PrintDialog printDialogReprint;
     }
 }

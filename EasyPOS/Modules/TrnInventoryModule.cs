@@ -26,7 +26,7 @@ namespace EasyPOS.Modules
 
                 if (sales.Any())
                 {
-                    var salesLines = sales.FirstOrDefault().TrnSalesLines;
+                    var salesLines = sales.FirstOrDefault().TrnSalesLines.Where(d => d.MstItem.IsInventory == true);
                     if (salesLines.Any())
                     {
                         var salesLineItems = from d in salesLines
@@ -68,7 +68,7 @@ namespace EasyPOS.Modules
 
                 if (stockIn.Any())
                 {
-                    var stockInLines = stockIn.FirstOrDefault().TrnStockInLines;
+                    var stockInLines = stockIn.FirstOrDefault().TrnStockInLines.Where(d => d.MstItem.IsInventory == true);
                     if (stockInLines.Any())
                     {
                         var stockInLineItems = from d in stockInLines
@@ -110,7 +110,7 @@ namespace EasyPOS.Modules
 
                 if (stockOut.Any())
                 {
-                    var stockOutLines = stockOut.FirstOrDefault().TrnStockOutLines;
+                    var stockOutLines = stockOut.FirstOrDefault().TrnStockOutLines.Where(d => d.MstItem.IsInventory == true);
                     if (stockOutLines.Any())
                     {
                         var stockOutLineItems = from d in stockOutLines

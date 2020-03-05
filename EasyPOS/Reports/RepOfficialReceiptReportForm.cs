@@ -18,13 +18,18 @@ namespace EasyPOS.Reports
         public Int32 trnCollectionId = 0;
         public Boolean trnIsReprinted = false;
 
-        public RepOfficialReceiptReportForm(Int32 salesId, Int32 collectionId, Boolean isReprinted)
+        public RepOfficialReceiptReportForm(Int32 salesId, Int32 collectionId, Boolean isReprinted, String printerName)
         {
             InitializeComponent();
 
             trnSalesId = salesId;
             trnCollectionId = collectionId;
             trnIsReprinted = isReprinted;
+
+            if (trnIsReprinted == true)
+            {
+                printDocumentOfficialReceipt.PrinterSettings.PrinterName = printerName;
+            }
 
             printDocumentOfficialReceipt.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 255, 1000);
             printDocumentOfficialReceipt.Print();

@@ -390,9 +390,9 @@ namespace EasyPOS.Controllers
                         Boolean isNegativeInventory = false;
                         String negativeInventoryItem = "";
 
-                        if (currentSales.FirstOrDefault().TrnSalesLines.Any())
+                        if (currentSales.FirstOrDefault().TrnSalesLines.Where(d => d.MstItem.IsInventory == true).Any())
                         {
-                            var groupedSalesLines = from d in currentSales.FirstOrDefault().TrnSalesLines
+                            var groupedSalesLines = from d in currentSales.FirstOrDefault().TrnSalesLines.Where(d => d.MstItem.IsInventory == true)
                                                     group d by d.MstItem into g
                                                     select g;
 
@@ -1127,9 +1127,9 @@ namespace EasyPOS.Controllers
                         Boolean isNegativeInventory = false;
                         String negativeInventoryItem = "";
 
-                        if (sales.FirstOrDefault().TrnSalesLines.Any())
+                        if (sales.FirstOrDefault().TrnSalesLines.Where(d => d.MstItem.IsInventory == true).Any())
                         {
-                            var groupedSalesLines = from d in sales.FirstOrDefault().TrnSalesLines
+                            var groupedSalesLines = from d in sales.FirstOrDefault().TrnSalesLines.Where(d => d.MstItem.IsInventory == true)
                                                     group d by d.MstItem into g
                                                     select g;
 

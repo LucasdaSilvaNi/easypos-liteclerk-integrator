@@ -32,8 +32,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
             DialogResult cancelDialogResult = MessageBox.Show("Reprint Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (cancelDialogResult == DialogResult.Yes)
             {
-                new Reports.RepOfficialReceiptReportForm(trnSalesId, trnCollectionId, true);
-                Close();
+                DialogResult printDialogResult = printDialogReprint.ShowDialog();
+                if (printDialogResult == DialogResult.OK)
+                {
+                    new Reports.RepOfficialReceiptReportForm(trnSalesId, trnCollectionId, true, printDialogReprint.PrinterSettings.PrinterName);
+                    Close();
+                }
             }
         }
 
@@ -42,8 +46,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
             DialogResult cancelDialogResult = MessageBox.Show("Reprint Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (cancelDialogResult == DialogResult.Yes)
             {
-                new Reports.RepDeliveryReceiptReportForm(trnSalesId, trnCollectionId, false, "", "", false);
-                Close();
+                DialogResult printDialogResult = printDialogReprint.ShowDialog();
+                if (printDialogResult == DialogResult.OK)
+                {
+                    new Reports.RepDeliveryReceiptReportForm(trnSalesId, trnCollectionId, true, printDialogReprint.PrinterSettings.PrinterName);
+                    Close();
+                }
             }
         }
 
@@ -52,8 +60,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
             DialogResult cancelDialogResult = MessageBox.Show("Reprint Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (cancelDialogResult == DialogResult.Yes)
             {
-                new Reports.RepDeliveryReceiptReportForm(trnSalesId, trnCollectionId, false, "", "", false);
-                Close();
+                DialogResult printDialogResult = printDialogReprint.ShowDialog();
+                if (printDialogResult == DialogResult.OK)
+                {
+                    new Reports.RepDeliveryReceiptReportForm(trnSalesId, trnCollectionId, true, printDialogReprint.PrinterSettings.PrinterName);
+                    Close();
+                }
             }
         }
 

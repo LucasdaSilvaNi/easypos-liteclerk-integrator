@@ -124,15 +124,18 @@ namespace EasyPOS.Controllers
 
                 if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == "False")
                 {
-                    if (item.FirstOrDefault().OnhandQuantity <= 0)
+                    if (item.FirstOrDefault().IsInventory == true)
                     {
-                        return new String[] { "Item " + item.FirstOrDefault().ItemDescription + " has negative inventory", "0" };
-                    }
-                    else
-                    {
-                        if (item.FirstOrDefault().OnhandQuantity < objStockOutLine.Quantity)
+                        if (item.FirstOrDefault().OnhandQuantity <= 0)
                         {
                             return new String[] { "Item " + item.FirstOrDefault().ItemDescription + " has negative inventory", "0" };
+                        }
+                        else
+                        {
+                            if (item.FirstOrDefault().OnhandQuantity < objStockOutLine.Quantity)
+                            {
+                                return new String[] { "Item " + item.FirstOrDefault().ItemDescription + " has negative inventory", "0" };
+                            }
                         }
                     }
                 }
@@ -202,15 +205,18 @@ namespace EasyPOS.Controllers
 
                     if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == "False")
                     {
-                        if (stockOutLine.FirstOrDefault().MstItem.OnhandQuantity <= 0)
+                        if (stockOutLine.FirstOrDefault().MstItem.IsInventory == true)
                         {
-                            return new String[] { "Item " + stockOutLine.FirstOrDefault().MstItem.ItemDescription + " has negative inventory", "0" };
-                        }
-                        else
-                        {
-                            if (stockOutLine.FirstOrDefault().MstItem.OnhandQuantity < objStockOutLine.Quantity)
+                            if (stockOutLine.FirstOrDefault().MstItem.OnhandQuantity <= 0)
                             {
                                 return new String[] { "Item " + stockOutLine.FirstOrDefault().MstItem.ItemDescription + " has negative inventory", "0" };
+                            }
+                            else
+                            {
+                                if (stockOutLine.FirstOrDefault().MstItem.OnhandQuantity < objStockOutLine.Quantity)
+                                {
+                                    return new String[] { "Item " + stockOutLine.FirstOrDefault().MstItem.ItemDescription + " has negative inventory", "0" };
+                                }
                             }
                         }
                     }
