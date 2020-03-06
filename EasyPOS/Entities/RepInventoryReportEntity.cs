@@ -9,11 +9,12 @@ namespace EasyPOS.Entities
     class RepInventoryReportEntity
     {
         public String Document { get; set; }
+        public String Id { get; set; }
         public DateTime InventoryDate { get; set; }
         public String ItemDescription { get; set; }
         public String Unit { get; set; }
         public Decimal Quantity { get; set; }
-        public Decimal BegQuantity { get; set; }
+        public Decimal BeginningQuantity { get; set; }
         public Decimal InQuantity { get; set; }
         public Decimal OutQuantity { get; set; }
         public Decimal EndingQuantity { get; set; }

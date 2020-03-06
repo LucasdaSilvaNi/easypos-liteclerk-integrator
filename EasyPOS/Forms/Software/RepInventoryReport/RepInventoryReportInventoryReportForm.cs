@@ -29,17 +29,17 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             startDate = dateStart;
             endDate = dateEnd;
 
-            GetInventoryReportDataSource();
+            GetInventoryReportDataSource("");
             GetDataGridViewCollectionDetailReportSource();
         }
 
-        public List<Entities.DgvInventoryReportEntity> GetInventoryReportListData(DateTime startDate, DateTime endDate)
+        public List<Entities.DgvInventoryReportEntity> GetInventoryReportListData(DateTime startDate, DateTime endDate, String filter)
         {
             List<Entities.DgvInventoryReportEntity> rowList = new List<Entities.DgvInventoryReportEntity>();
 
             Controllers.RepInventoryReportController repInvetoryReportController = new Controllers.RepInventoryReportController();
 
-            var inventoryReportList = repInvetoryReportController.InventoryReport(startDate, endDate);
+            var inventoryReportList = repInvetoryReportController.InventoryReport(startDate, endDate, filter);
             if (inventoryReportList.Any())
             {
                 Decimal totalAmount = 0;
@@ -48,7 +48,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                           {
                               ColumnItemDescription = d.ItemDescription,
                               ColumnUnit = d.Unit,
-                              ColumnBegQuantity = d.BegQuantity.ToString("#,##0.00"),
+                              ColumnBegQuantity = d.BeginningQuantity.ToString("#,##0.00"),
                               ColumnInQuantity = d.InQuantity.ToString("#,##0.00"),
                               ColumnOutQuantity = d.OutQuantity.ToString("#,##0.00"),
                               ColumnEndingQuantity = d.EndingQuantity.ToString("#,##0.00"),
@@ -69,9 +69,9 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             return rowList;
         }
 
-        public void GetInventoryReportDataSource()
+        public void GetInventoryReportDataSource(String filter)
         {
-            inventoryReportList = GetInventoryReportListData(startDate, endDate);
+            inventoryReportList = GetInventoryReportListData(startDate, endDate, filter);
             if (inventoryReportList.Any())
             {
 
@@ -197,6 +197,14 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
         private void buttonClose_OnClick(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void textBoxFilter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                GetInventoryReportDataSource(textBoxFilter.Text);
+            }
         }
     }
 }

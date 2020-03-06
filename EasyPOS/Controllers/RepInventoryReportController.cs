@@ -16,131 +16,242 @@ namespace EasyPOS.Controllers
         // ================
         // Inventory Report
         // ================
-        public List<Entities.RepInventoryReportEntity> InventoryReport(DateTime startDate, DateTime endDate)
+        public List<Entities.RepInventoryReportEntity> InventoryReport(DateTime startDate, DateTime endDate, String filter)
         {
             List<Entities.RepInventoryReportEntity> newRepInventoryReportEntity = new List<Entities.RepInventoryReportEntity>();
+            var beginningInInventories = from d in db.TrnStockInLines
+                                         where d.TrnStockIn.IsLocked == true
+                                         && d.TrnStockIn.StockInDate < startDate.Date
+                                         && d.MstItem.IsInventory == true
+                                         && d.MstItem.IsLocked == true
+                                         select new Entities.RepInventoryReportEntity
+                                         {
+                                             Document = "Beg",
+                                             Id = "Beg-In-" + d.Id,
+                                             InventoryDate = d.TrnStockIn.StockInDate,
+                                             ItemDescription = d.MstItem.ItemDescription,
+                                             BeginningQuantity = d.Quantity,
+                                             InQuantity = 0,
+                                             OutQuantity = 0,
+                                             EndingQuantity = 0,
+                                             Unit = d.MstUnit.Unit,
+                                             Cost = d.MstItem.Cost,
+                                             Amount = 0
+                                         };
 
-            var stockInLines = from d in db.TrnStockInLines
-                               where d.TrnStockIn.IsLocked == true
-                               select new Entities.RepInventoryReportEntity
-                               {
-                                   InventoryDate = d.TrnStockIn.StockInDate,
-                                   ItemDescription = d.MstItem.ItemDescription,
-                                   Unit = d.MstItem.MstUnit.Unit,
-                                   InQuantity = d.Quantity,
-                                   OutQuantity = 0,
-                                   Quantity = d.Quantity,
-                                   Cost = d.MstItem.Cost,
-                                   Amount = d.Quantity * d.MstItem.Cost
-                               };
+            var beginningSoldInventories = from d in db.TrnSalesLines
+                                           where d.TrnSale.IsLocked == true
+                                           && d.TrnSale.IsCancelled == false
+                                           && d.TrnSale.SalesDate < startDate.Date
+                                           && d.MstItem.IsInventory == true
+                                           && d.MstItem.IsLocked == true
+                                           select new Entities.RepInventoryReportEntity
+                                           {
+                                               Document = "Beg",
+                                               Id = "Beg-Sold-" + d.Id,
+                                               InventoryDate = d.TrnSale.SalesDate,
+                                               ItemDescription = d.MstItem.ItemDescription,
+                                               BeginningQuantity = d.Quantity * -1,
+                                               InQuantity = 0,
+                                               OutQuantity = 0,
+                                               EndingQuantity = 0,
+                                               Unit = d.MstUnit.Unit,
+                                               Cost = d.MstItem.Cost,
+                                               Amount = 0
+                                           };
 
-            if (stockInLines.Any())
+            List<Entities.RepInventoryReportEntity> beginningSoldComponentInventories = new List<Entities.RepInventoryReportEntity>();
+
+            var beginningSoldComponents = from d in db.TrnSalesLines
+                                          where d.TrnSale.IsLocked == true
+                                          && d.TrnSale.IsCancelled == false
+                                          && d.TrnSale.SalesDate < startDate.Date
+                                          && d.MstItem.IsInventory == false
+                                          && d.MstItem.MstItemComponents.Any() == true
+                                          && d.MstItem.IsLocked == true
+                                          select d;
+
+            if (beginningSoldComponents.ToList().Any() == true)
             {
-                newRepInventoryReportEntity.AddRange(stockInLines.ToList());
-            }
-
-            var saleLines = from d in db.TrnSalesLines
-                            where d.TrnSale.IsLocked == true
-                            && d.TrnSale.IsCancelled == false
-                            select new Entities.RepInventoryReportEntity
+                foreach (var beginningSoldComponent in beginningSoldComponents.ToList())
+                {
+                    var itemComponents = beginningSoldComponent.MstItem.MstItemComponents;
+                    if (itemComponents.Any() == true)
+                    {
+                        foreach (var itemComponent in itemComponents.ToList())
+                        {
+                            beginningSoldComponentInventories.Add(new Entities.RepInventoryReportEntity()
                             {
-                                InventoryDate = d.TrnSale.SalesDate,
-                                ItemDescription = d.MstItem.ItemDescription,
-                                Unit = d.MstItem.MstUnit.Unit,
+                                Document = "Cur",
+                                Id = "Beg-Sold-Component" + itemComponent.Id,
+                                InventoryDate = beginningSoldComponent.TrnSale.SalesDate,
+                                ItemDescription = itemComponent.MstItem1.ItemDescription,
+                                BeginningQuantity = (itemComponent.Quantity * beginningSoldComponent.Quantity) * -1,
                                 InQuantity = 0,
-                                OutQuantity = d.Quantity,
-                                Quantity = d.Quantity * -1,
-                                Cost = d.MstItem.Cost,
-                                Amount = (d.Quantity * -1) * d.MstItem.Cost
-                            };
-
-            if (saleLines.Any())
-            {
-                newRepInventoryReportEntity.AddRange(saleLines.ToList());
+                                OutQuantity = 0,
+                                EndingQuantity = 0,
+                                Unit = itemComponent.MstItem1.MstUnit.Unit,
+                                Cost = itemComponent.MstItem1.Cost,
+                                Amount = 0
+                            });
+                        }
+                    }
+                }
             }
 
-            var stockOutLines = from d in db.TrnStockOutLines
-                                select new Entities.RepInventoryReportEntity
-                                {
-                                    InventoryDate = d.TrnStockOut.StockOutDate,
-                                    ItemDescription = d.MstItem.ItemDescription,
-                                    Unit = d.MstItem.MstUnit.Unit,
-                                    InQuantity = 0,
-                                    OutQuantity = d.Quantity,
-                                    Quantity = d.Quantity * -1,
-                                    Cost = d.MstItem.Cost,
-                                    Amount = (d.Quantity * -1) * d.MstItem.Cost
-                                };
+            var beginningOutInventories = from d in db.TrnStockOutLines
+                                          where d.TrnStockOut.IsLocked == true
+                                          && d.TrnStockOut.StockOutDate < startDate.Date
+                                          && d.MstItem.IsInventory == true
+                                          && d.MstItem.IsLocked == true
+                                          select new Entities.RepInventoryReportEntity
+                                          {
+                                              Document = "Beg",
+                                              Id = "Beg-Out-" + d.Id,
+                                              InventoryDate = d.TrnStockOut.StockOutDate,
+                                              ItemDescription = d.MstItem.ItemDescription,
+                                              BeginningQuantity = d.Quantity * -1,
+                                              InQuantity = 0,
+                                              OutQuantity = 0,
+                                              EndingQuantity = 0,
+                                              Unit = d.MstUnit.Unit,
+                                              Cost = d.MstItem.Cost,
+                                              Amount = 0
+                                          };
 
-            if (stockOutLines.Any())
+            var unionBeginningInventories = beginningInInventories.ToList().Union(beginningSoldInventories.ToList()).Union(beginningSoldComponentInventories.ToList()).Union(beginningOutInventories.ToList());
+
+            var currentInInventories = from d in db.TrnStockInLines
+                                       where d.TrnStockIn.IsLocked == true
+                                       && d.TrnStockIn.StockInDate >= startDate.Date
+                                       && d.TrnStockIn.StockInDate <= endDate.Date
+                                       && d.MstItem.IsInventory == true
+                                       && d.MstItem.IsLocked == true
+                                       select new Entities.RepInventoryReportEntity
+                                       {
+                                           Document = "Cur",
+                                           Id = "Cur-In-" + d.Id,
+                                           InventoryDate = d.TrnStockIn.StockInDate,
+                                           ItemDescription = d.MstItem.ItemDescription,
+                                           BeginningQuantity = 0,
+                                           InQuantity = d.Quantity,
+                                           OutQuantity = 0,
+                                           EndingQuantity = 0,
+                                           Unit = d.MstUnit.Unit,
+                                           Cost = d.MstItem.Cost,
+                                           Amount = 0
+                                       };
+
+            var currentSoldInventories = from d in db.TrnSalesLines
+                                         where d.TrnSale.IsLocked == true
+                                         && d.TrnSale.IsCancelled == false
+                                         && d.TrnSale.SalesDate >= startDate.Date
+                                         && d.TrnSale.SalesDate <= endDate.Date
+                                         && d.MstItem.IsInventory == true
+                                         && d.MstItem.IsLocked == true
+                                         select new Entities.RepInventoryReportEntity
+                                         {
+                                             Document = "Cur",
+                                             Id = "Cur-Sold-" + d.Id,
+                                             InventoryDate = d.TrnSale.SalesDate,
+                                             ItemDescription = d.MstItem.ItemDescription,
+                                             BeginningQuantity = 0,
+                                             InQuantity = 0,
+                                             OutQuantity = d.Quantity,
+                                             EndingQuantity = 0,
+                                             Unit = d.MstUnit.Unit,
+                                             Cost = d.MstItem.Cost,
+                                             Amount = 0
+                                         };
+
+            List<Entities.RepInventoryReportEntity> currentSoldComponentInventories = new List<Entities.RepInventoryReportEntity>();
+
+            var currentSoldComponents = from d in db.TrnSalesLines
+                                        where d.TrnSale.IsLocked == true
+                                        && d.TrnSale.IsCancelled == false
+                                        && d.TrnSale.SalesDate >= startDate.Date
+                                        && d.TrnSale.SalesDate <= endDate.Date
+                                        && d.MstItem.IsInventory == false
+                                        && d.MstItem.MstItemComponents.Any() == true
+                                        && d.MstItem.IsLocked == true
+                                        select d;
+
+            if (currentSoldComponents.ToList().Any() == true)
             {
-                newRepInventoryReportEntity.AddRange(stockOutLines.ToList());
+                foreach (var currentSoldComponent in currentSoldComponents.ToList())
+                {
+                    var itemComponents = currentSoldComponent.MstItem.MstItemComponents;
+                    if (itemComponents.Any() == true)
+                    {
+                        foreach (var itemComponent in itemComponents.ToList())
+                        {
+                            currentSoldComponentInventories.Add(new Entities.RepInventoryReportEntity()
+                            {
+                                Document = "Cur",
+                                Id = "Cur-Sold-Component" + itemComponent.Id,
+                                InventoryDate = currentSoldComponent.TrnSale.SalesDate,
+                                ItemDescription = itemComponent.MstItem1.ItemDescription,
+                                BeginningQuantity = 0,
+                                InQuantity = 0,
+                                OutQuantity = itemComponent.Quantity * currentSoldComponent.Quantity,
+                                EndingQuantity = 0,
+                                Unit = itemComponent.MstItem1.MstUnit.Unit,
+                                Cost = itemComponent.MstItem1.Cost,
+                                Amount = 0
+                            });
+                        }
+                    }
+                }
             }
 
-            if (newRepInventoryReportEntity.Any())
+            var currentOutInventories = from d in db.TrnStockOutLines
+                                        where d.TrnStockOut.IsLocked == true
+                                        && d.TrnStockOut.StockOutDate >= startDate.Date
+                                        && d.TrnStockOut.StockOutDate <= endDate.Date
+                                        && d.MstItem.IsInventory == true
+                                        && d.MstItem.IsLocked == true
+                                        select new Entities.RepInventoryReportEntity
+                                        {
+                                            Document = "Cur",
+                                            Id = "Cur-Out-" + d.Id,
+                                            InventoryDate = d.TrnStockOut.StockOutDate,
+                                            ItemDescription = d.MstItem.ItemDescription,
+                                            BeginningQuantity = 0,
+                                            InQuantity = 0,
+                                            OutQuantity = d.Quantity,
+                                            EndingQuantity = 0,
+                                            Unit = d.MstUnit.Unit,
+                                            Cost = d.MstItem.Cost,
+                                            Amount = 0
+                                        };
+
+            var unionCurrentInventories = currentInInventories.ToList().Union(currentSoldInventories.ToList()).Union(currentSoldComponentInventories.ToList()).Union(currentOutInventories.ToList());
+
+            var unionInventories = unionBeginningInventories.ToList().Union(unionCurrentInventories.ToList());
+            if (unionInventories.Any())
             {
-                var begInventories = from d in newRepInventoryReportEntity
-                                     where d.InventoryDate < startDate
-                                     select new Entities.RepInventoryReportEntity
-                                     {
-                                         Document = "Beg",
-                                         InventoryDate = d.InventoryDate,
-                                         ItemDescription = d.ItemDescription,
-                                         Unit = d.Unit,
-                                         InQuantity = d.InQuantity,
-                                         OutQuantity = d.OutQuantity,
-                                         Quantity = d.Quantity,
-                                         Cost = d.Cost,
-                                         Amount = d.Amount
-                                     };
+                var inventories = from d in unionInventories
+                                  group d by new
+                                  {
+                                      d.ItemDescription,
+                                      d.Unit,
+                                      d.Cost
+                                  } into g
+                                  select new Entities.RepInventoryReportEntity
+                                  {
+                                      ItemDescription = g.Key.ItemDescription,
+                                      Unit = g.Key.Unit,
+                                      BeginningQuantity = g.Sum(s => s.BeginningQuantity),
+                                      InQuantity = g.Sum(s => s.InQuantity),
+                                      OutQuantity = g.Sum(s => s.OutQuantity) * -1,
+                                      EndingQuantity = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
+                                      CountQuantity = 0,
+                                      Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
+                                      Cost = g.Key.Cost,
+                                      Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
+                                  };
 
-                var curInventories = from d in newRepInventoryReportEntity
-                                     where d.InventoryDate >= startDate
-                                     && d.InventoryDate <= endDate
-                                     select new Entities.RepInventoryReportEntity
-                                     {
-                                         Document = "Cur",
-                                         InventoryDate = d.InventoryDate,
-                                         ItemDescription = d.ItemDescription,
-                                         Unit = d.Unit,
-                                         InQuantity = d.InQuantity,
-                                         OutQuantity = d.OutQuantity,
-                                         Quantity = d.Quantity,
-                                         Cost = d.Cost,
-                                         Amount = d.Amount
-                                     };
-
-                var unionInventories = begInventories.Union(curInventories);
-
-                if (unionInventories.ToList().Any())
-                {
-                    var inventories = from d in unionInventories
-                                      group d by new
-                                      {
-                                          d.ItemDescription,
-                                          d.Unit,
-                                          d.Cost
-                                      } into g
-                                      select new Entities.RepInventoryReportEntity
-                                      {
-                                          ItemDescription = g.Key.ItemDescription,
-                                          Unit = g.Key.ItemDescription,
-                                          BegQuantity = g.Sum(s => s.Document == "Beg" ? s.Quantity : 0),
-                                          InQuantity = g.Sum(s => s.Document == "Cur" ? s.InQuantity : 0),
-                                          OutQuantity = g.Sum(s => s.Document == "Cur" ? s.OutQuantity : 0),
-                                          EndingQuantity = g.Sum(s => s.Quantity),
-                                          CountQuantity = 0,
-                                          Variance = g.Sum(s => s.Quantity),
-                                          Cost = g.Key.Cost,
-                                          Amount = g.Sum(s => s.Amount),
-                                      };
-
-                    return inventories.OrderBy(d => d.ItemDescription).ToList();
-                }
-                else
-                {
-                    return new List<Entities.RepInventoryReportEntity>();
-                }
+                return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
             }
             else
             {
