@@ -43,9 +43,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
             var itemList = trnPOSSalesLineController.ListSearchItem(textBoxFilter.Text);
             if (itemList.Any())
             {
-                dataGridViewSearchItemList.Columns[11].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
-                dataGridViewSearchItemList.Columns[11].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
-                dataGridViewSearchItemList.Columns[11].DefaultCellStyle.ForeColor = Color.White;
+                dataGridViewSearchItemList.Columns[12].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
+                dataGridViewSearchItemList.Columns[12].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
+                dataGridViewSearchItemList.Columns[12].DefaultCellStyle.ForeColor = Color.White;
 
                 foreach (var objItemList in itemList)
                 {
@@ -61,6 +61,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         objItemList.Unit,
                         objItemList.Price.ToString("#,##0.00"),
                         objItemList.OnhandQuantity.ToString("#,##0.00"),
+                        objItemList.IsInventory,
                         "Pick"
                     );
                 }

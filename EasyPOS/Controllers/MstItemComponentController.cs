@@ -36,6 +36,7 @@ namespace EasyPOS.Controllers
         {
             var itemComponent = from d in db.MstItemComponents
                                 where d.ItemId == itemId
+                                && d.MstItem1.IsInventory == true
                                 select new Entities.MstItemComponentEntity
                                 {
                                     Id = d.Id,

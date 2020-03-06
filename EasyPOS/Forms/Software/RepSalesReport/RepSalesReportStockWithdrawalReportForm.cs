@@ -62,7 +62,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 tableFooter.AddCell(new PdfPCell(new Phrase(ORFooter, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 5f, PaddingBottom = 3f, Colspan = 2 });
 
                 Document document = new Document(pagesize);
-                document.SetMargins(5f, 72f, 117f, 5f + tableFooter.TotalHeight);
+                document.SetMargins(5f, 72f, 127f, 5f + tableFooter.TotalHeight);
 
                 PdfWriter pdfWriter = PdfWriter.GetInstance(document, new FileStream(fileName, FileMode.Create));
 
@@ -221,7 +221,11 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             tableHeader.AddCell(new PdfPCell(new Phrase(deliveryDate, fontTimesNewRoman09)) { Border = 0, Padding = 1f });
             tableHeader.AddCell(new PdfPCell(new Phrase(line)) { Border = 0, Colspan = 4, PaddingBottom = -5f, PaddingLeft = 0f, PaddingRight = 0f });
             tableHeader.AddCell(new PdfPCell(new Phrase(customer, fontTimesNewRoman10Bold)) { Border = 0, Colspan = 4, Padding = 1f });
-            tableHeader.AddCell(new PdfPCell(new Phrase(address, fontTimesNewRoman09)) { Border = 0, Colspan = 4, Rowspan = 2, Padding = 1f });
+
+            var addressCell = new PdfPCell(new Phrase(address, fontTimesNewRoman09)) { Border = 0, Colspan = 4, Rowspan = 2, Padding = 1f };
+            addressCell.FixedHeight = 20f;
+
+            tableHeader.AddCell(addressCell);
             tableHeader.AddCell(new PdfPCell(new Phrase(line)) { Border = 0, Colspan = 4, PaddingBottom = -5f, PaddingLeft = 0f, PaddingRight = 0f });
 
             Int32 colspan = 3;
@@ -250,7 +254,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             }
 
             tableHeader.AddCell(new PdfPCell(tableItem) { Border = 0, Colspan = 4, PaddingBottom = -5f, PaddingLeft = 0f, PaddingRight = 0f });
-            tableHeader.WriteSelectedRows(0, -1, document.LeftMargin, writer.PageSize.GetTop(document.TopMargin) + 117f, writer.DirectContent);
+            tableHeader.WriteSelectedRows(0, -1, document.LeftMargin, writer.PageSize.GetTop(document.TopMargin) + 127f, writer.DirectContent);
 
             PdfPTable tableFooter = new PdfPTable(2);
             tableFooter.SetWidths(new float[] { 50f, 50f });

@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnSalesDetailSearchItemForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -49,6 +50,7 @@
             this.ColumnSearchItemUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSearchItemPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSearchItemOnHandQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemIsInventory = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColumnSearchItemButtonPick = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -138,6 +140,7 @@
             this.ColumnSearchItemUnit,
             this.ColumnSearchItemPrice,
             this.ColumnSearchItemOnHandQuantity,
+            this.ColumnSearchItemIsInventory,
             this.ColumnSearchItemButtonPick});
             this.dataGridViewSearchItemList.Location = new System.Drawing.Point(12, 42);
             this.dataGridViewSearchItemList.MultiSelect = false;
@@ -172,12 +175,12 @@
             this.ColumnSearchItemBarcode.HeaderText = "Barcode";
             this.ColumnSearchItemBarcode.Name = "ColumnSearchItemBarcode";
             this.ColumnSearchItemBarcode.ReadOnly = true;
-            this.ColumnSearchItemBarcode.Width = 150;
+            this.ColumnSearchItemBarcode.Width = 130;
             // 
             // ColumnSearchItemDescription
             // 
             this.ColumnSearchItemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnSearchItemDescription.HeaderText = "Item Description";
+            this.ColumnSearchItemDescription.HeaderText = "Description";
             this.ColumnSearchItemDescription.Name = "ColumnSearchItemDescription";
             this.ColumnSearchItemDescription.ReadOnly = true;
             // 
@@ -241,8 +244,19 @@
             this.ColumnSearchItemOnHandQuantity.ReadOnly = true;
             this.ColumnSearchItemOnHandQuantity.Width = 144;
             // 
+            // ColumnSearchItemIsInventory
+            // 
+            this.ColumnSearchItemIsInventory.HeaderText = "I";
+            this.ColumnSearchItemIsInventory.Name = "ColumnSearchItemIsInventory";
+            this.ColumnSearchItemIsInventory.ReadOnly = true;
+            this.ColumnSearchItemIsInventory.Width = 40;
+            // 
             // ColumnSearchItemButtonPick
             // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            this.ColumnSearchItemButtonPick.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnSearchItemButtonPick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ColumnSearchItemButtonPick.HeaderText = "Pick";
             this.ColumnSearchItemButtonPick.Name = "ColumnSearchItemButtonPick";
@@ -296,6 +310,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSearchItemUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSearchItemPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSearchItemOnHandQuantity;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnSearchItemIsInventory;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnSearchItemButtonPick;
     }
 }

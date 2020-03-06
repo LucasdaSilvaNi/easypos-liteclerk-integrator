@@ -420,6 +420,46 @@ namespace EasyPOS.Controllers
                         {
                             return new String[] { "Negative inventory item found. " + negativeInventoryItem, "0" };
                         }
+
+                        Boolean isNegativeInventoryComponent = false;
+                        String negativeInventoryComponentItem = "";
+
+                        if (currentSales.FirstOrDefault().TrnSalesLines.Where(d => d.MstItem.IsInventory == false).Any())
+                        {
+                            var groupedSalesLines = from d in currentSales.FirstOrDefault().TrnSalesLines.Where(d => d.MstItem.IsInventory == false)
+                                                    group d by d.MstItem into g
+                                                    select g;
+
+                            foreach (var salesLine in groupedSalesLines.ToList())
+                            {
+                                if (salesLine.Key.MstItemComponents.Any())
+                                {
+                                    foreach (var component in salesLine.Key.MstItemComponents)
+                                    {
+                                        negativeInventoryComponentItem = component.MstItem1.ItemDescription;
+
+                                        if (component.MstItem1.OnhandQuantity <= 0)
+                                        {
+                                            isNegativeInventoryComponent = true;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            if (component.MstItem1.OnhandQuantity < (salesLine.Sum(d => d.Quantity) * component.Quantity))
+                                            {
+                                                isNegativeInventoryComponent = true;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        if (isNegativeInventoryComponent == true)
+                        {
+                            return new String[] { "Negative inventory component item found. " + negativeInventoryComponentItem, "0" };
+                        }
                     }
                 }
 

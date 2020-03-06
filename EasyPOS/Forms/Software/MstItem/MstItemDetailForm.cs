@@ -30,6 +30,8 @@ namespace EasyPOS.Forms.Software.MstItem
         public PagedList<Entities.DgvMstItemComponentEntity> itemComponentListPageList = new PagedList<Entities.DgvMstItemComponentEntity>(itemComponentListData, pageNumber, pageSize);
         public BindingSource itemComponentListDataSource = new BindingSource();
 
+        public Boolean hasComponents = false;
+
         public MstItemDetailForm(SysSoftwareForm softwareForm, MstItemListForm itemListForm, Entities.MstItemEntity itemEntity)
         {
             InitializeComponent();
@@ -155,7 +157,16 @@ namespace EasyPOS.Forms.Software.MstItem
             textBoxMarkUp.Enabled = !isLocked;
             textBoxPrice.Enabled = !isLocked;
             textBoxStockLevelQuantity.Enabled = !isLocked;
-            checkBoxIsInventory.Enabled = !isLocked;
+
+            if (hasComponents)
+            {
+                checkBoxIsInventory.Enabled = false;
+            }
+            else
+            {
+                checkBoxIsInventory.Enabled = !isLocked;
+            }
+
             checkBoxIsPackage.Enabled = !isLocked;
             dateTimePickerExpiryDate.Enabled = !isLocked;
             textBoxLotNumber.Enabled = !isLocked;
@@ -196,7 +207,6 @@ namespace EasyPOS.Forms.Software.MstItem
             {
                 dataGridViewItemPriceList.Columns[1].Visible = !isLocked;
                 dataGridViewItemComponentList.Columns[1].Visible = !isLocked;
-
             }
         }
 
@@ -230,11 +240,15 @@ namespace EasyPOS.Forms.Software.MstItem
             String[] lockItem = mstItemController.LockItem(mstItemEntity.Id, newItemEntity);
             if (lockItem[1].Equals("0") == false)
             {
+                mstItemEntity.IsLocked = true;
+
                 UpdateComponents(true);
                 mstItemListForm.UpdateItemListDataSource();
             }
             else
             {
+                mstItemEntity.IsLocked = false;
+
                 UpdateComponents(false);
                 MessageBox.Show(lockItem[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -247,11 +261,15 @@ namespace EasyPOS.Forms.Software.MstItem
             String[] unlockItem = mstItemController.UnlockItem(mstItemEntity.Id);
             if (unlockItem[1].Equals("0") == false)
             {
+                mstItemEntity.IsLocked = false;
+
                 UpdateComponents(false);
                 mstItemListForm.UpdateItemListDataSource();
             }
             else
             {
+                mstItemEntity.IsLocked = true;
+
                 UpdateComponents(true);
                 MessageBox.Show(unlockItem[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -593,6 +611,9 @@ namespace EasyPOS.Forms.Software.MstItem
             List<Entities.MstItemComponentEntity> listItemComponent = mstItemComponentController.ItemComponentList(mstItemEntity.Id);
             if (listItemComponent.Any())
             {
+                hasComponents = true;
+                checkBoxIsInventory.Enabled = false;
+
                 var itemComponent = from d in listItemComponent
                                     select new Entities.DgvMstItemComponentEntity
                                     {
@@ -616,6 +637,16 @@ namespace EasyPOS.Forms.Software.MstItem
             }
             else
             {
+                hasComponents = false;
+                if (mstItemEntity.IsLocked == false)
+                {
+                    checkBoxIsInventory.Enabled = true;
+                }
+                else
+                {
+
+                }
+
                 return Task.FromResult(new List<Entities.DgvMstItemComponentEntity>());
             }
         }
@@ -813,6 +844,27 @@ namespace EasyPOS.Forms.Software.MstItem
 
             pageNumber = itemComponentListPageList.PageCount;
             textBoxItemComponentListPageNumber.Text = pageNumber + " / " + itemComponentListPageList.PageCount;
+        }
+
+        private void checkBoxIsInventory_CheckedChanged(object sender, EventArgs e)
+        {
+            mstItemEntity.IsInventory = checkBoxIsInventory.Checked;
+
+            if (checkBoxIsInventory.Checked == true)
+            {
+                buttonItemComponentAdd.Enabled = false;
+            }
+            else
+            {
+                if (mstItemEntity.IsLocked == false)
+                {
+                    buttonItemComponentAdd.Enabled = true;
+                }
+                else
+                {
+                    buttonItemComponentAdd.Enabled = false;
+                }
+            }
         }
     }
 }

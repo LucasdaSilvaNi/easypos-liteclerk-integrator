@@ -26,24 +26,37 @@ namespace EasyPOS.Modules
 
                 if (sales.Any())
                 {
-                    var salesLines = sales.FirstOrDefault().TrnSalesLines.Where(d => d.MstItem.IsInventory == true);
+                    var salesLines = sales.FirstOrDefault().TrnSalesLines;
                     if (salesLines.Any())
                     {
                         var salesLineItems = from d in salesLines
                                              group d by new
                                              {
-                                                 d.ItemId
+                                                 d.MstItem
                                              } into g
                                              select new
                                              {
-                                                 g.Key.ItemId,
+                                                 g.Key.MstItem,
                                              };
 
                         if (salesLineItems.Any())
                         {
                             foreach (var salesLineItem in salesLineItems)
                             {
-                                UpdateItemInventory(salesLineItem.ItemId);
+                                if (salesLineItem.MstItem.IsInventory == true)
+                                {
+                                    UpdateItemInventory(salesLineItem.MstItem.Id);
+                                }
+                                else
+                                {
+                                    if (salesLineItem.MstItem.MstItemComponents.Any())
+                                    {
+                                        foreach (var component in salesLineItem.MstItem.MstItemComponents)
+                                        {
+                                            UpdateItemInventory(component.ComponentItemId);
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -184,8 +197,31 @@ namespace EasyPOS.Modules
                     totalStockOutLineQuantity = allStockOutLineItems.Sum(d => d.Quantity);
                 }
 
+                // Get total SOLD Components Quantity
+                Decimal totalSalesLineComponentQuantity = 0;
+                var components = from d in db.MstItemComponents
+                                 where d.ComponentItemId == itemId
+                                 select d;
+
+                if (components.Any())
+                {
+                    foreach (var component in components)
+                    {
+                        var allSalesLineComponentItems = from d in db.TrnSalesLines
+                                                         where d.ItemId == component.ItemId
+                                                         && d.TrnSale.IsLocked == true
+                                                         && d.TrnSale.IsCancelled == false
+                                                         select d;
+
+                        if (allSalesLineComponentItems.Any())
+                        {
+                            totalSalesLineComponentQuantity += allSalesLineComponentItems.Sum(d => d.Quantity) * component.Quantity;
+                        }
+                    }
+                }
+
                 var updateItem = item.FirstOrDefault();
-                updateItem.OnhandQuantity = totalStockInLineQuantity - (totalSalesLineQuantity + totalStockOutLineQuantity);
+                updateItem.OnhandQuantity = totalStockInLineQuantity - (totalSalesLineQuantity + totalStockOutLineQuantity + totalSalesLineComponentQuantity);
                 db.SubmitChanges();
             }
         }

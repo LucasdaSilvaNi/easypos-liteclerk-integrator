@@ -60,45 +60,52 @@ namespace EasyPOS.Forms.Software.MstItem
         {
             try
             {
-                Entities.MstItemComponentEntity newItemComponent = new Entities.MstItemComponentEntity()
+                if (mstItemDetailForm.mstItemEntity.IsInventory == false)
                 {
-                    Id = mstItemComponentEntity.Id,
-                    ItemId = mstItemComponentEntity.ItemId,
-                    ComponentItemId = Convert.ToInt32(comboBoxItemComponent.SelectedValue),
-                    Quantity = Convert.ToDecimal(textBoxQuantity.Text),
-                    Cost = Convert.ToDecimal(textBoxCost.Text),
-                    Amount = Convert.ToDecimal(textBoxAmount.Text),
-                };
-
-                if (mstItemComponentEntity.Id == 0)
-                {
-                    Controllers.MstItemComponentController mstItemComponentController = new Controllers.MstItemComponentController();
-                    String[] addItemComponent = mstItemComponentController.AddItemComponent(newItemComponent);
-
-                    if (addItemComponent[1].Equals("0") == true)
+                    Entities.MstItemComponentEntity newItemComponent = new Entities.MstItemComponentEntity()
                     {
-                        MessageBox.Show(addItemComponent[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Id = mstItemComponentEntity.Id,
+                        ItemId = mstItemComponentEntity.ItemId,
+                        ComponentItemId = Convert.ToInt32(comboBoxItemComponent.SelectedValue),
+                        Quantity = Convert.ToDecimal(textBoxQuantity.Text),
+                        Cost = Convert.ToDecimal(textBoxCost.Text),
+                        Amount = Convert.ToDecimal(textBoxAmount.Text),
+                    };
+
+                    if (mstItemComponentEntity.Id == 0)
+                    {
+                        Controllers.MstItemComponentController mstItemComponentController = new Controllers.MstItemComponentController();
+                        String[] addItemComponent = mstItemComponentController.AddItemComponent(newItemComponent);
+
+                        if (addItemComponent[1].Equals("0") == true)
+                        {
+                            MessageBox.Show(addItemComponent[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            mstItemDetailForm.UpdateItemComponentListDataSource();
+                            Close();
+                        }
                     }
                     else
                     {
-                        mstItemDetailForm.UpdateItemComponentListDataSource();
-                        Close();
+                        Controllers.MstItemComponentController mstItemComponentController = new Controllers.MstItemComponentController();
+                        String[] updateItemComponent = mstItemComponentController.UpdateItemComponent(newItemComponent);
+
+                        if (updateItemComponent[1].Equals("0") == true)
+                        {
+                            MessageBox.Show(updateItemComponent[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            mstItemDetailForm.UpdateItemComponentListDataSource();
+                            Close();
+                        }
                     }
                 }
                 else
                 {
-                    Controllers.MstItemComponentController mstItemComponentController = new Controllers.MstItemComponentController();
-                    String[] updateItemComponent = mstItemComponentController.UpdateItemComponent(newItemComponent);
-
-                    if (updateItemComponent[1].Equals("0") == true)
-                    {
-                        MessageBox.Show(updateItemComponent[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        mstItemDetailForm.UpdateItemComponentListDataSource();
-                        Close();
-                    }
+                    MessageBox.Show("Cannot add component to Non-Inventory item.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)

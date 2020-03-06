@@ -455,6 +455,7 @@
             this.checkBoxIsInventory.TabIndex = 12;
             this.checkBoxIsInventory.Text = " ";
             this.checkBoxIsInventory.UseVisualStyleBackColor = true;
+            this.checkBoxIsInventory.CheckedChanged += new System.EventHandler(this.checkBoxIsInventory_CheckedChanged);
             // 
             // label10
             // 

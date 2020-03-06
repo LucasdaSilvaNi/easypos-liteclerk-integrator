@@ -120,7 +120,8 @@ namespace EasyPOS.Controllers
                             UnitId = d.UnitId,
                             Unit = d.MstUnit.Unit,
                             Price = d.Price,
-                            OnhandQuantity = d.OnhandQuantity
+                            OnhandQuantity = d.OnhandQuantity,
+                            IsInventory = d.IsInventory
                         };
 
             return items.OrderBy(d => d.ItemDescription).ToList();
