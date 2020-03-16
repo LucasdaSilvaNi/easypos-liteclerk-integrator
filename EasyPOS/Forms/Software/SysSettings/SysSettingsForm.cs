@@ -397,7 +397,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 ActivateAuditTrail = checkBoxActivateAuditTrail.Checked.ToString(),
                 FacepayImagePath = currentSettings.FacepayImagePath,
                 POSType = textBoxPOSType.Text,
-                AllowNegativeInventory = checkBoxAllowNegativeInventory.Checked.ToString()
+                AllowNegativeInventory = checkBoxAllowNegativeInventory.Checked.ToString(),
+                IsLoginDate = currentSettings.IsLoginDate
             };
 
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);

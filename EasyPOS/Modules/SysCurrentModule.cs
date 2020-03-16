@@ -30,9 +30,15 @@ namespace EasyPOS.Modules
         // ===============================
         // Update Current Settings - Login
         // ===============================
-        public static void UpdateCurrentSettingsLogin(String currentUserId, String userName, String loginDate)
+        public static void UpdateCurrentSettingsLogin(String currentUserId, String userName, String loginDate, Boolean IsLoginDate)
         {
             var currentSettings = GetCurrentSettings();
+
+            DateTime currentDate = DateTime.Today;
+            if (IsLoginDate == true)
+            {
+                currentDate = Convert.ToDateTime(loginDate);
+            }
 
             Entities.SysCurrentEntity newEntities = new Entities.SysCurrentEntity()
             {
@@ -55,7 +61,7 @@ namespace EasyPOS.Modules
                 CurrentDeveloper = currentSettings.CurrentDeveloper,
                 CurrentSupport = currentSettings.CurrentSupport,
                 CurrentPeriodId = currentSettings.CurrentPeriodId,
-                CurrentDate = loginDate,
+                CurrentDate = currentDate.ToShortDateString(),
                 TerminalId = currentSettings.TerminalId,
                 WalkinCustomerId = currentSettings.WalkinCustomerId,
                 DefaultDiscountId = currentSettings.DefaultDiscountId,
@@ -77,7 +83,8 @@ namespace EasyPOS.Modules
                 ActivateAuditTrail = currentSettings.ActivateAuditTrail,
                 FacepayImagePath = currentSettings.FacepayImagePath,
                 POSType = currentSettings.POSType,
-                AllowNegativeInventory = currentSettings.AllowNegativeInventory
+                AllowNegativeInventory = currentSettings.AllowNegativeInventory,
+                IsLoginDate = IsLoginDate.ToString()
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);
@@ -134,7 +141,8 @@ namespace EasyPOS.Modules
                 ActivateAuditTrail = objSysCurrentEntity.ActivateAuditTrail,
                 FacepayImagePath = currentSettings.FacepayImagePath,
                 POSType = currentSettings.POSType,
-                AllowNegativeInventory = currentSettings.AllowNegativeInventory
+                AllowNegativeInventory = currentSettings.AllowNegativeInventory,
+                IsLoginDate = currentSettings.IsLoginDate
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newSysCurrentEntities);

@@ -71,10 +71,9 @@ namespace EasyPOS.Controllers
                             Unit = d.MstUnit.Unit,
                             Cost = d.Cost,
                             OnhandQuantity = d.OnhandQuantity,
-
                         };
 
-            return items.ToList();
+            return items.OrderBy(d => d.ItemDescription).ToList();
         }
 
         // ==================

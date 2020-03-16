@@ -50,5 +50,6 @@ namespace EasyPOS.Entities
         public String FacepayImagePath { get; set; }
         public String POSType { get; set; }
         public String AllowNegativeInventory { get; set; }
+        public String IsLoginDate { get; set; }
     }
 }

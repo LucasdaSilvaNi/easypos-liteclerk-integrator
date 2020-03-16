@@ -24,7 +24,12 @@ namespace EasyPOS.Forms.Software
                 terminal = sysSoftwareController.GetCurrentTerminal(Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId));
             }
 
-            String currentDate = Modules.SysCurrentModule.GetCurrentSettings().CurrentDate + "\t\t";
+            String currentDate = DateTime.Today.ToShortDateString() + "\t\t";
+            if (Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == "True")
+            {
+                currentDate = Modules.SysCurrentModule.GetCurrentSettings().CurrentDate + "\t\t";
+            }
+
             String currentUserName = Modules.SysCurrentModule.GetCurrentSettings().CurrentUserName + "\t\t";
             String currentTerminal = terminal;
 

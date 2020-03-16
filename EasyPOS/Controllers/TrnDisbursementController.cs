@@ -257,6 +257,12 @@ namespace EasyPOS.Controllers
                     return new String[] { "Terminal not found.", "0" };
                 }
 
+                DateTime currentDate = DateTime.Today;
+                if (Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == "True")
+                {
+                    currentDate = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate);
+                }
+
                 String disbursementNumber = "0000000001";
                 var lastDisbursement = from d in db.TrnDisbursements.OrderByDescending(d => d.Id) select d;
                 if (lastDisbursement.Any())
@@ -268,7 +274,7 @@ namespace EasyPOS.Controllers
                 Data.TrnDisbursement newDisbursement = new Data.TrnDisbursement()
                 {
                     PeriodId = period.FirstOrDefault().Id,
-                    DisbursementDate = DateTime.Today,
+                    DisbursementDate = currentDate,
                     DisbursementNumber = disbursementNumber,
                     DisbursementType = "",
                     AccountId = account.FirstOrDefault().Id,

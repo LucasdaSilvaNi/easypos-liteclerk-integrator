@@ -118,6 +118,12 @@ namespace EasyPOS.Controllers
                     return new String[] { "Periods not found.", "0" };
                 }
 
+                DateTime currentDate = DateTime.Today;
+                if (Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == "True")
+                {
+                    currentDate = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate);
+                }
+
                 String stockCountNumber = "0000000001";
                 var lastStockCount = from d in db.TrnStockCounts.OrderByDescending(d => d.Id) select d;
                 if (lastStockCount.Any())
@@ -129,7 +135,7 @@ namespace EasyPOS.Controllers
                 Data.TrnStockCount newStockCount = new Data.TrnStockCount()
                 {
                     PeriodId = period.FirstOrDefault().Id,
-                    StockCountDate = DateTime.Today,
+                    StockCountDate = currentDate,
                     StockCountNumber = stockCountNumber,
                     Remarks = "",
                     PreparedBy = currentUserLogin.FirstOrDefault().Id,

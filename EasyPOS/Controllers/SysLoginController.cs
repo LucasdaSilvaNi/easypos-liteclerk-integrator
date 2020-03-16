@@ -16,7 +16,7 @@ namespace EasyPOS.Controllers
         // =====
         // Login
         // =====
-        public String[] Login(String username, String password, String loginDate)
+        public String[] Login(String username, String password, String loginDate, Boolean isLoginDate)
         {
             try
             {
@@ -27,7 +27,7 @@ namespace EasyPOS.Controllers
 
                 if (currentUser.Any())
                 {
-                    Modules.SysCurrentModule.UpdateCurrentSettingsLogin(currentUser.FirstOrDefault().Id.ToString(), currentUser.FirstOrDefault().UserName, loginDate);
+                    Modules.SysCurrentModule.UpdateCurrentSettingsLogin(currentUser.FirstOrDefault().Id.ToString(), currentUser.FirstOrDefault().UserName, loginDate, isLoginDate);
                     return new String[] { "", currentUser.FirstOrDefault().Id.ToString() };
                 }
                 else

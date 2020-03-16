@@ -46,6 +46,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.dateTimePickerLoginDate = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
+            this.radioButtonSystemDate = new System.Windows.Forms.RadioButton();
+            this.radioButtonLoginDate = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -133,7 +135,7 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 241);
+            this.panel2.Location = new System.Drawing.Point(0, 303);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(594, 109);
             this.panel2.TabIndex = 10;
@@ -205,7 +207,7 @@
             this.textBoxUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxUsername.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxUsername.Location = new System.Drawing.Point(196, 129);
+            this.textBoxUsername.Location = new System.Drawing.Point(196, 183);
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(312, 34);
             this.textBoxUsername.TabIndex = 12;
@@ -215,7 +217,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label6.Location = new System.Drawing.Point(63, 132);
+            this.label6.Location = new System.Drawing.Point(63, 186);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(103, 28);
             this.label6.TabIndex = 11;
@@ -226,7 +228,7 @@
             this.textBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPassword.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxPassword.Location = new System.Drawing.Point(196, 169);
+            this.textBoxPassword.Location = new System.Drawing.Point(196, 223);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '•';
             this.textBoxPassword.Size = new System.Drawing.Size(312, 34);
@@ -237,7 +239,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label7.Location = new System.Drawing.Point(63, 172);
+            this.label7.Location = new System.Drawing.Point(63, 226);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(97, 28);
             this.label7.TabIndex = 14;
@@ -250,7 +252,7 @@
             this.dateTimePickerLoginDate.CalendarFont = new System.Drawing.Font("Segoe UI", 12F);
             this.dateTimePickerLoginDate.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.dateTimePickerLoginDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerLoginDate.Location = new System.Drawing.Point(196, 89);
+            this.dateTimePickerLoginDate.Location = new System.Drawing.Point(196, 122);
             this.dateTimePickerLoginDate.Name = "dateTimePickerLoginDate";
             this.dateTimePickerLoginDate.Size = new System.Drawing.Size(312, 34);
             this.dateTimePickerLoginDate.TabIndex = 15;
@@ -259,17 +261,43 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label8.Location = new System.Drawing.Point(63, 94);
+            this.label8.Location = new System.Drawing.Point(63, 127);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(111, 28);
             this.label8.TabIndex = 16;
             this.label8.Text = "Login Date:";
             // 
+            // radioButtonSystemDate
+            // 
+            this.radioButtonSystemDate.AutoSize = true;
+            this.radioButtonSystemDate.Location = new System.Drawing.Point(316, 89);
+            this.radioButtonSystemDate.Name = "radioButtonSystemDate";
+            this.radioButtonSystemDate.Size = new System.Drawing.Size(126, 27);
+            this.radioButtonSystemDate.TabIndex = 20;
+            this.radioButtonSystemDate.Text = "System Date";
+            this.radioButtonSystemDate.UseVisualStyleBackColor = true;
+            this.radioButtonSystemDate.CheckedChanged += new System.EventHandler(this.radioButtonSystemDate_CheckedChanged);
+            // 
+            // radioButtonLoginDate
+            // 
+            this.radioButtonLoginDate.AutoSize = true;
+            this.radioButtonLoginDate.Checked = true;
+            this.radioButtonLoginDate.Location = new System.Drawing.Point(196, 89);
+            this.radioButtonLoginDate.Name = "radioButtonLoginDate";
+            this.radioButtonLoginDate.Size = new System.Drawing.Size(114, 27);
+            this.radioButtonLoginDate.TabIndex = 19;
+            this.radioButtonLoginDate.TabStop = true;
+            this.radioButtonLoginDate.Text = "Login Date";
+            this.radioButtonLoginDate.UseVisualStyleBackColor = true;
+            this.radioButtonLoginDate.CheckedChanged += new System.EventHandler(this.radioButtonLoginDate_CheckedChanged);
+            // 
             // SysLoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(594, 350);
+            this.ClientSize = new System.Drawing.Size(594, 412);
+            this.Controls.Add(this.radioButtonSystemDate);
+            this.Controls.Add(this.radioButtonLoginDate);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dateTimePickerLoginDate);
             this.Controls.Add(this.label7);
@@ -317,5 +345,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dateTimePickerLoginDate;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.RadioButton radioButtonSystemDate;
+        private System.Windows.Forms.RadioButton radioButtonLoginDate;
     }
 }

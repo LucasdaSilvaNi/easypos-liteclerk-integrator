@@ -157,6 +157,12 @@ namespace EasyPOS.Controllers
                     return new String[] { "Supplier not found.", "0" };
                 }
 
+                DateTime currentDate = DateTime.Today;
+                if (Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == "True")
+                {
+                    currentDate = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate);
+                }
+
                 String stockInNumber = "0000000001";
                 var lastStockIn = from d in db.TrnStockIns.OrderByDescending(d => d.Id) select d;
                 if (lastStockIn.Any())
@@ -168,7 +174,7 @@ namespace EasyPOS.Controllers
                 Data.TrnStockIn newStockIn = new Data.TrnStockIn()
                 {
                     PeriodId = period.FirstOrDefault().Id,
-                    StockInDate = DateTime.Today,
+                    StockInDate = currentDate,
                     StockInNumber = stockInNumber,
                     SupplierId = supplier.FirstOrDefault().Id,
                     Remarks = "",

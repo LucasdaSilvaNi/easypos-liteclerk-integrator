@@ -284,10 +284,16 @@ namespace EasyPOS.Controllers
                     salesNumber = FillLeadingZeroes(newSalesNumber, 10);
                 }
 
+                DateTime currentDate = DateTime.Today;
+                if (Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == "True")
+                {
+                    currentDate = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate);
+                }
+
                 Data.TrnSale newSales = new Data.TrnSale()
                 {
                     PeriodId = period.FirstOrDefault().Id,
-                    SalesDate = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate),
+                    SalesDate = currentDate,
                     SalesNumber = salesNumber,
                     ManualInvoiceNumber = terminal.FirstOrDefault().Terminal + "-" + salesNumber,
                     CollectionNumber = null,
@@ -485,10 +491,16 @@ namespace EasyPOS.Controllers
                     collectionNumber = FillLeadingZeroes(newCollectionNumber, 10);
                 }
 
+                DateTime currentDate = DateTime.Today;
+                if (Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == "True")
+                {
+                    currentDate = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate);
+                }
+
                 Data.TrnCollection newCollection = new Data.TrnCollection
                 {
                     PeriodId = currentSales.FirstOrDefault().PeriodId,
-                    CollectionDate = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate),
+                    CollectionDate = currentDate,
                     CollectionNumber = collectionNumber,
                     TerminalId = currentSales.FirstOrDefault().TerminalId,
                     ManualORNumber = currentSales.FirstOrDefault().MstTerminal.Terminal + "-" + collectionNumber,
@@ -783,8 +795,6 @@ namespace EasyPOS.Controllers
         {
             try
             {
-                DateTime currentLoginDate = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate);
-
                 var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
                 if (currentUserLogin.Any() == false)
                 {

@@ -31,7 +31,7 @@ namespace EasyPOS.Forms.Account.SysLogin
         {
             Controllers.SysLoginController sysLoginController = new Controllers.SysLoginController();
 
-            String[] login = sysLoginController.Login(textBoxUsername.Text, textBoxPassword.Text, dateTimePickerLoginDate.Value.ToShortDateString());
+            String[] login = sysLoginController.Login(textBoxUsername.Text, textBoxPassword.Text, dateTimePickerLoginDate.Value.ToShortDateString(), radioButtonLoginDate.Checked);
             if (login[1].Equals("0") == false)
             {
                 Hide();
@@ -64,6 +64,16 @@ namespace EasyPOS.Forms.Account.SysLogin
         private void SysLoginForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void radioButtonSystemDate_CheckedChanged(object sender, EventArgs e)
+        {
+            dateTimePickerLoginDate.Enabled = false;
+        }
+
+        private void radioButtonLoginDate_CheckedChanged(object sender, EventArgs e)
+        {
+            dateTimePickerLoginDate.Enabled = true;
         }
     }
 }

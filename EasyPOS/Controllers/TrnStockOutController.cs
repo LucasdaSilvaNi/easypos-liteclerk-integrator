@@ -143,6 +143,12 @@ namespace EasyPOS.Controllers
                     return new String[] { "Account not found.", "0" };
                 }
 
+                DateTime currentDate = DateTime.Today;
+                if (Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == "True")
+                {
+                    currentDate = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate);
+                }
+
                 String stockOutNumber = "0000000001";
                 var lastStockOut = from d in db.TrnStockOuts.OrderByDescending(d => d.Id) select d;
                 if (lastStockOut.Any())
@@ -154,7 +160,7 @@ namespace EasyPOS.Controllers
                 Data.TrnStockOut newStockOut = new Data.TrnStockOut()
                 {
                     PeriodId = period.FirstOrDefault().Id,
-                    StockOutDate = DateTime.Today,
+                    StockOutDate = currentDate,
                     StockOutNumber = stockOutNumber,
                     AccountId = account.FirstOrDefault().Id,
                     Remarks = "",
