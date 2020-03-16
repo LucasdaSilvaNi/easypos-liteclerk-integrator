@@ -106,7 +106,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                     Modules.SysSerialPortModule.WriteSeralPortMessage(line1, line2);
 
-                    TrnSalesDetailTenderForm trnSalesDetailTenderForm = new TrnSalesDetailTenderForm(sysSoftwareForm, null, null, trnPOSTouchForm, null, newSalesEntity);
+                    TrnPOSTenderForm trnSalesDetailTenderForm = new TrnPOSTenderForm(sysSoftwareForm, null, null, trnPOSTouchForm, null, newSalesEntity);
                     trnSalesDetailTenderForm.ShowDialog();
                 }
             }
@@ -125,7 +125,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 if (isTendered == true)
                 {
-                    TrnSalesListCancelRemarksForm trnSalesListCancelRemarksForm = new TrnSalesListCancelRemarksForm(sysSoftwareForm, null, trnPOSTouchForm, trnSalesEntity.Id);
+                    TrnPOSCancelRemarksForm trnSalesListCancelRemarksForm = new TrnPOSCancelRemarksForm(sysSoftwareForm, null, trnPOSTouchForm, trnSalesEntity.Id);
                     trnSalesListCancelRemarksForm.ShowDialog();
                 }
             }

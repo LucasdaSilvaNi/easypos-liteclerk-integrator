@@ -93,8 +93,8 @@ namespace EasyPOS.Forms.Software
         public MstUser.MstUserListForm mstUserListForm = null;
         public MstUser.MstUserDetailForm mstUserDetailForm = null;
 
-        public TrnPOS.TrnSalesListForm trnSalesListForm = null;
-        public TrnPOS.TrnSalesDetailForm trnSalesDetailForm = null;
+        public TrnPOS.TrnPOSBarcodeForm trnSalesListForm = null;
+        public TrnPOS.TrnPOSBarcodeDetailForm trnSalesDetailForm = null;
 
         public TrnPOS.TrnPOSTouchForm trnPOSTouchForm = null;
         public TrnPOS.TrnPOSTouchDetailForm trnPOSTouchDetailForm = null;
@@ -360,7 +360,7 @@ namespace EasyPOS.Forms.Software
         {
             tabPagePOSSalesList.Controls.Remove(trnSalesListForm);
 
-            trnSalesListForm = new TrnPOS.TrnSalesListForm(this)
+            trnSalesListForm = new TrnPOS.TrnPOSBarcodeForm(this)
             {
                 TopLevel = false,
                 Visible = true,
@@ -380,11 +380,11 @@ namespace EasyPOS.Forms.Software
             }
         }
 
-        public void AddTabPagePOSSalesDetail(TrnPOS.TrnSalesListForm salesListForm, Entities.TrnSalesEntity salesEntity)
+        public void AddTabPagePOSSalesDetail(TrnPOS.TrnPOSBarcodeForm salesListForm, Entities.TrnSalesEntity salesEntity)
         {
             tabPagePOSSalesDetail.Controls.Remove(trnSalesDetailForm);
 
-            trnSalesDetailForm = new TrnPOS.TrnSalesDetailForm(this, salesListForm, salesEntity)
+            trnSalesDetailForm = new TrnPOS.TrnPOSBarcodeDetailForm(this, salesListForm, salesEntity)
             {
                 TopLevel = false,
                 Visible = true,

@@ -12,10 +12,10 @@ namespace EasyPOS.Forms.Software.SysKeyboard
 {
     public partial class SysKeyboardNumpadForm : Form
     {
-        public TrnPOS.TrnSalesDetailTenderForm trnSalesDetailTenderForm;
+        public TrnPOS.TrnPOSTenderForm trnSalesDetailTenderForm;
         public DataGridView mstDataGridViewTenderPayType;
 
-        public SysKeyboardNumpadForm(TrnPOS.TrnSalesDetailTenderForm salesDetailTenderForm, DataGridView dataGridViewTenderPayType)
+        public SysKeyboardNumpadForm(TrnPOS.TrnPOSTenderForm salesDetailTenderForm, DataGridView dataGridViewTenderPayType)
         {
             InitializeComponent();
 

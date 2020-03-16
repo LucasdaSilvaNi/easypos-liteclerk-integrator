@@ -549,11 +549,11 @@
     <Compile Include="Forms\Software\RepSalesReport\RepSalesReportCollectionDetailFacepayReportForm.designer.cs">
       <DependentUpon>RepSalesReportCollectionDetailFacepayReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportStockWithdrawalReportForm.cs">
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSDeliveryReceiptReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportStockWithdrawalReportForm.Designer.cs">
-      <DependentUpon>RepSalesReportStockWithdrawalReportForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSDeliveryReceiptReportForm.Designer.cs">
+      <DependentUpon>TrnPOSDeliveryReceiptReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\SysKeyboard\SysKeyboardNumpadForm.cs">
       <SubType>Form</SubType>
@@ -675,83 +675,83 @@
     <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchForm.Designer.cs">
       <DependentUpon>TrnPOSTouchForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailForm.cs">
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSBarcodeDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailForm.Designer.cs">
-      <DependentUpon>TrnSalesDetailForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSBarcodeDetailForm.Designer.cs">
+      <DependentUpon>TrnPOSBarcodeDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailSalesItemDetailForm.cs">
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSSalesItemDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailSalesItemDetailForm.Designer.cs">
-      <DependentUpon>TrnSalesDetailSalesItemDetailForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSSalesItemDetailForm.Designer.cs">
+      <DependentUpon>TrnPOSSalesItemDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailSalesItemDetailItemPriceForm.cs">
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSItemPriceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailSalesItemDetailItemPriceForm.Designer.cs">
-      <DependentUpon>TrnSalesDetailSalesItemDetailItemPriceForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSItemPriceForm.Designer.cs">
+      <DependentUpon>TrnPOSItemPriceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailSearchItemForm.cs">
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSSearchItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailSearchItemForm.Designer.cs">
-      <DependentUpon>TrnSalesDetailSearchItemForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSSearchItemForm.Designer.cs">
+      <DependentUpon>TrnPOSSearchItemForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderFacepayCameraForm.cs">
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderFacepayCameraForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderFacepayCameraForm.Designer.cs">
-      <DependentUpon>TrnSalesDetailTenderFacepayCameraForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderFacepayCameraForm.Designer.cs">
+      <DependentUpon>TrnPOSTenderFacepayCameraForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderEasypayInformationForm.cs">
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderEasypayInformationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderEasypayInformationForm.Designer.cs">
-      <DependentUpon>TrnSalesDetailTenderEasypayInformationForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderEasypayInformationForm.Designer.cs">
+      <DependentUpon>TrnPOSTenderEasypayInformationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderForm.cs">
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderForm.Designer.cs">
-      <DependentUpon>TrnSalesDetailTenderForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderForm.Designer.cs">
+      <DependentUpon>TrnPOSTenderForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailDiscountForm.cs">
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSDiscountForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailDiscountForm.Designer.cs">
-      <DependentUpon>TrnSalesDetailDiscountForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSDiscountForm.Designer.cs">
+      <DependentUpon>TrnPOSDiscountForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderMoreInformationForm.cs">
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderMoreInformationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderMoreInformationForm.Designer.cs">
-      <DependentUpon>TrnSalesDetailTenderMoreInformationForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderMoreInformationForm.Designer.cs">
+      <DependentUpon>TrnPOSTenderMoreInformationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderSalesForm.cs">
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderSalesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesDetailTenderSalesForm.Designer.cs">
-      <DependentUpon>TrnSalesDetailTenderSalesForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderSalesForm.Designer.cs">
+      <DependentUpon>TrnPOSTenderSalesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesListCancelRemarksForm.cs">
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSCancelRemarksForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesListCancelRemarksForm.Designer.cs">
-      <DependentUpon>TrnSalesListCancelRemarksForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSCancelRemarksForm.Designer.cs">
+      <DependentUpon>TrnPOSCancelRemarksForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesListForm.cs">
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSBarcodeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesListForm.Designer.cs">
-      <DependentUpon>TrnSalesListForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSBarcodeForm.Designer.cs">
+      <DependentUpon>TrnPOSBarcodeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesListReprintForm.cs">
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSReprintForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnSalesListReprintForm.Designer.cs">
-      <DependentUpon>TrnSalesListReprintForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSReprintForm.Designer.cs">
+      <DependentUpon>TrnPOSReprintForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\TrnStockIn\TrnStockInDetailForm.cs">
       <SubType>Form</SubType>
@@ -839,17 +839,11 @@
     <Compile Include="Modules\SysCurrentModule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports\RepDeliveryReceiptReportForm.cs">
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSOfficialReceiptReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\RepDeliveryReceiptReportForm.Designer.cs">
-      <DependentUpon>RepDeliveryReceiptReportForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\RepOfficialReceiptReportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reports\RepOfficialReceiptReportForm.Designer.cs">
-      <DependentUpon>RepOfficialReceiptReportForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSOfficialReceiptReportForm.Designer.cs">
+      <DependentUpon>TrnPOSOfficialReceiptReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\RepPOSReport\RepPOSReportXReadingReportForm.cs">
       <SubType>Form</SubType>
@@ -947,8 +941,8 @@
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportCollectionDetailFacepayReportForm.resx">
       <DependentUpon>RepSalesReportCollectionDetailFacepayReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportStockWithdrawalReportForm.resx">
-      <DependentUpon>RepSalesReportStockWithdrawalReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSDeliveryReceiptReportForm.resx">
+      <DependentUpon>TrnPOSDeliveryReceiptReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\SysKeyboard\SysKeyboardNumpadForm.resx">
       <DependentUpon>SysKeyboardNumpadForm.cs</DependentUpon>
@@ -1004,29 +998,29 @@
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTouchForm.resx">
       <DependentUpon>TrnPOSTouchForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailSalesItemDetailItemPriceForm.resx">
-      <DependentUpon>TrnSalesDetailSalesItemDetailItemPriceForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSItemPriceForm.resx">
+      <DependentUpon>TrnPOSItemPriceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailTenderFacepayCameraForm.resx">
-      <DependentUpon>TrnSalesDetailTenderFacepayCameraForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTenderFacepayCameraForm.resx">
+      <DependentUpon>TrnPOSTenderFacepayCameraForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailTenderEasypayInformationForm.resx">
-      <DependentUpon>TrnSalesDetailTenderEasypayInformationForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTenderEasypayInformationForm.resx">
+      <DependentUpon>TrnPOSTenderEasypayInformationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailDiscountForm.resx">
-      <DependentUpon>TrnSalesDetailDiscountForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSDiscountForm.resx">
+      <DependentUpon>TrnPOSDiscountForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailTenderMoreInformationForm.resx">
-      <DependentUpon>TrnSalesDetailTenderMoreInformationForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTenderMoreInformationForm.resx">
+      <DependentUpon>TrnPOSTenderMoreInformationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailTenderSalesForm.resx">
-      <DependentUpon>TrnSalesDetailTenderSalesForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTenderSalesForm.resx">
+      <DependentUpon>TrnPOSTenderSalesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesListCancelRemarksForm.resx">
-      <DependentUpon>TrnSalesListCancelRemarksForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSCancelRemarksForm.resx">
+      <DependentUpon>TrnPOSCancelRemarksForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesListReprintForm.resx">
-      <DependentUpon>TrnSalesListReprintForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSReprintForm.resx">
+      <DependentUpon>TrnPOSReprintForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnStockIn\TrnStockInDetailForm.resx">
       <DependentUpon>TrnStockInDetailForm.cs</DependentUpon>
@@ -1064,11 +1058,8 @@
     <EmbeddedResource Include="Forms\Software\TrnStockOut\TrnStockOutListForm.resx">
       <DependentUpon>TrnStockOutListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\RepDeliveryReceiptReportForm.resx">
-      <DependentUpon>RepDeliveryReceiptReportForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\RepOfficialReceiptReportForm.resx">
-      <DependentUpon>RepOfficialReceiptReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSOfficialReceiptReportForm.resx">
+      <DependentUpon>TrnPOSOfficialReceiptReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepPOSReport\RepPOSReportXReadingReportForm.resx">
       <DependentUpon>RepPOSReportXReadingReportForm.cs</DependentUpon>
@@ -1097,20 +1088,20 @@
     <EmbeddedResource Include="Forms\Software\SysMenu\SysMenuForm.resx">
       <DependentUpon>SysMenuForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailForm.resx">
-      <DependentUpon>TrnSalesDetailForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSBarcodeDetailForm.resx">
+      <DependentUpon>TrnPOSBarcodeDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailSalesItemDetailForm.resx">
-      <DependentUpon>TrnSalesDetailSalesItemDetailForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSSalesItemDetailForm.resx">
+      <DependentUpon>TrnPOSSalesItemDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailSearchItemForm.resx">
-      <DependentUpon>TrnSalesDetailSearchItemForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSSearchItemForm.resx">
+      <DependentUpon>TrnPOSSearchItemForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesDetailTenderForm.resx">
-      <DependentUpon>TrnSalesDetailTenderForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTenderForm.resx">
+      <DependentUpon>TrnPOSTenderForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnSalesListForm.resx">
-      <DependentUpon>TrnSalesListForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSBarcodeForm.resx">
+      <DependentUpon>TrnPOSBarcodeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IndexForm.resx">
       <DependentUpon>IndexForm.cs</DependentUpon>
