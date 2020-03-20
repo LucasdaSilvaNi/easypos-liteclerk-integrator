@@ -24,7 +24,7 @@
   "DefaultDiscountId": "2",
   "ReturnSupplierId": "23",
   "ORPrintTitle": "O F F I C I A L  R E C E I P T",
-  "IsTenderPrint": "True",
+  "IsTenderPrint": "False",
   "IsBarcodeQuantityAlwaysOne": "True",
   "WithCustomerDisplay": "True",
   "CustomerDisplayPort": "COM3",
@@ -40,6 +40,6 @@
   "ActivateAuditTrail": "True",
   "FacepayImagePath": "D:\\Facepay",
   "POSType": "POS Barcode",
-  "AllowNegativeInventory": "False",
+  "AllowNegativeInventory": "True",
   "IsLoginDate": "True"
 }

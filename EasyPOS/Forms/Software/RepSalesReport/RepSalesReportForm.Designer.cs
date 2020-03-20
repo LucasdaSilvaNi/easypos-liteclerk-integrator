@@ -161,7 +161,9 @@
             "Cancelled Summary Report",
             "",
             "Stock Withdrawal Report",
-            "Collection Detail Report (Facepay)"});
+            "Collection Detail Report (Facepay)",
+            "",
+            "Top Selling Items Report"});
             this.listBoxSalesReport.Location = new System.Drawing.Point(0, 0);
             this.listBoxSalesReport.Name = "listBoxSalesReport";
             this.listBoxSalesReport.Size = new System.Drawing.Size(380, 619);

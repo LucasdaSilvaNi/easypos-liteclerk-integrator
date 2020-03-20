@@ -480,6 +480,16 @@ namespace EasyPOS.Controllers
                     return new String[] { "User are not found.", "0" };
                 }
 
+                var collectedSales = from d in db.TrnCollections
+                                     where d.SalesId == salesId
+                                     && d.IsLocked == true
+                                     select d;
+
+                if (collectedSales.Any())
+                {
+                    return new String[] { "Sales already collected.", "0" };
+                }
+
                 String collectionNumber = "0000000001";
                 var lastCollection = from d in db.TrnCollections.OrderByDescending(d => d.Id)
                                      where d.TerminalId == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId)

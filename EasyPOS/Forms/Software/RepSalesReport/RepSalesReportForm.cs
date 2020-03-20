@@ -161,6 +161,22 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         dateTimePickerStartDate.Focus();
 
                         break;
+                    case "Top Selling Items Report":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+
+                        labelTerminal.Visible = false;
+                        comboBoxTerminal.Visible = false;
+
+                        labelCustomer.Visible = false;
+                        comboBoxCustomer.Visible = false;
+
+                        dateTimePickerStartDate.Focus();
+
+                        break;
                     default:
                         labelStartDate.Visible = false;
                         dateTimePickerStartDate.Visible = false;
@@ -339,6 +355,11 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                 printCollectionDetailReportFacepayFilePath = folderBrowserDialogCollectionDetailReportFacepay.SelectedPath;
                                 new RepSalesReportCollectionDetailFacepayReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), printCollectionDetailReportFacepayFilePath);
                             }
+
+                            break;
+                        case "Top Selling Items Report":
+                            RepSalesReportTopSellingItemsReportForm repSalesReportTopSellingItemsReportForm = new RepSalesReportTopSellingItemsReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                            repSalesReportTopSellingItemsReportForm.ShowDialog();
 
                             break;
                         default:

@@ -264,6 +264,7 @@
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransfer.cs" />
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransferItem.cs" />
     <Compile Include="Entities\DgvDiscountListDiscountEntity.cs" />
+    <Compile Include="Entities\DgvSalesReportTopSellingItemsReportEntity.cs" />
     <Compile Include="Entities\DgvTableGroupListTableGroupEntity.cs" />
     <Compile Include="Entities\DgvItemGroupListItemGroupEntity.cs" />
     <Compile Include="Entities\DgvMstItemComponentEntity.cs" />
@@ -336,6 +337,7 @@
     <Compile Include="Entities\RepInventoryReportUnionEntity.cs" />
     <Compile Include="Entities\RepRemitanceReportEntity.cs" />
     <Compile Include="Entities\RepSalesReportSalesDetailReportEntity.cs" />
+    <Compile Include="Entities\RepSalesReportTopSellingItemsReportEntity.cs" />
     <Compile Include="Entities\RepSalesReportTrnCollectionEntity.cs" />
     <Compile Include="Entities\RepSalesReportTrnSalesEntity.cs" />
     <Compile Include="Entities\RepXReadingReportEntity.cs" />
@@ -524,6 +526,12 @@
     </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepSalesReportForm.Designer.cs">
       <DependentUpon>RepSalesReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportTopSellingItemsReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportTopSellingItemsReportForm.Designer.cs">
+      <DependentUpon>RepSalesReportTopSellingItemsReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepSalesReportSalesDetailReportForm.cs">
       <SubType>Form</SubType>
@@ -928,6 +936,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportForm.resx">
       <DependentUpon>RepSalesReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportTopSellingItemsReportForm.resx">
+      <DependentUpon>RepSalesReportTopSellingItemsReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportSalesDetailReportForm.resx">
       <DependentUpon>RepSalesReportSalesDetailReportForm.cs</DependentUpon>
