@@ -69,6 +69,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     totalAmount += topSellingItemsReport.Amount;
                 }
 
+                textBoxTotalAmount.Text = totalAmount.ToString("#,##0.00");
                 rowList = newTopSellingItemsReportList.ToList();
             }
 
