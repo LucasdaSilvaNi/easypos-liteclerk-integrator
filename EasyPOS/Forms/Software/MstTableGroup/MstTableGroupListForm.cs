@@ -16,10 +16,10 @@ namespace EasyPOS.Forms.Software.MstTableGroup
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
 
-        public static List<Entities.DgvTableGroupListTableGroupEntity> tableGroupListData = new List<Entities.DgvTableGroupListTableGroupEntity>();
+        public static List<Entities.DgvMstTableGroupListEntity> tableGroupListData = new List<Entities.DgvMstTableGroupListEntity>();
         public static Int32 pageNumber = 1;
         public static Int32 pageSize = 50;
-        public PagedList<Entities.DgvTableGroupListTableGroupEntity> tableGroupListPageList = new PagedList<Entities.DgvTableGroupListTableGroupEntity>(tableGroupListData, pageNumber, pageSize);
+        public PagedList<Entities.DgvMstTableGroupListEntity> tableGroupListPageList = new PagedList<Entities.DgvMstTableGroupListEntity>(tableGroupListData, pageNumber, pageSize);
         public BindingSource tableGroupListDataSource = new BindingSource();
 
         public MstTableGroupListForm(SysSoftwareForm softwareForm)
@@ -60,11 +60,11 @@ namespace EasyPOS.Forms.Software.MstTableGroup
 
         public async void SetTableGroupListDataSourceAsync()
         {
-            List<Entities.DgvTableGroupListTableGroupEntity> getTableGroupListData = await GetTableGroupListDataTask();
+            List<Entities.DgvMstTableGroupListEntity> getTableGroupListData = await GetTableGroupListDataTask();
             if (getTableGroupListData.Any())
             {
                 tableGroupListData = getTableGroupListData;
-                tableGroupListPageList = new PagedList<Entities.DgvTableGroupListTableGroupEntity>(tableGroupListData, pageNumber, pageSize);
+                tableGroupListPageList = new PagedList<Entities.DgvMstTableGroupListEntity>(tableGroupListData, pageNumber, pageSize);
 
                 if (tableGroupListPageList.PageCount == 1)
                 {
@@ -107,13 +107,13 @@ namespace EasyPOS.Forms.Software.MstTableGroup
 
                 pageNumber = 1;
 
-                tableGroupListData = new List<Entities.DgvTableGroupListTableGroupEntity>();
+                tableGroupListData = new List<Entities.DgvMstTableGroupListEntity>();
                 tableGroupListDataSource.Clear();
                 textBoxTableGroupListPageNumber.Text = "1 / 1";
             }
         }
 
-        public Task<List<Entities.DgvTableGroupListTableGroupEntity>> GetTableGroupListDataTask()
+        public Task<List<Entities.DgvMstTableGroupListEntity>> GetTableGroupListDataTask()
         {
             String filter = textBoxTableGroupListFilter.Text;
             Controllers.MstTableGroupController mstTableGroupController = new Controllers.MstTableGroupController();
@@ -122,7 +122,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
             if (listTableGroup.Any())
             {
                 var tableGroups = from d in listTableGroup
-                                  select new Entities.DgvTableGroupListTableGroupEntity
+                                  select new Entities.DgvMstTableGroupListEntity
                                   {
                                       ColumnTableGroupListButtonEdit = "Edit",
                                       ColumnTableGroupListButtonDelete = "Delete",
@@ -135,7 +135,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
             }
             else
             {
-                return Task.FromResult(new List<Entities.DgvTableGroupListTableGroupEntity>());
+                return Task.FromResult(new List<Entities.DgvMstTableGroupListEntity>());
             }
         }
 
@@ -252,7 +252,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
 
         private void buttonTableGroupListPageListFirst_Click(object sender, EventArgs e)
         {
-            tableGroupListPageList = new PagedList<Entities.DgvTableGroupListTableGroupEntity>(tableGroupListData, 1, pageSize);
+            tableGroupListPageList = new PagedList<Entities.DgvMstTableGroupListEntity>(tableGroupListData, 1, pageSize);
             tableGroupListDataSource.DataSource = tableGroupListPageList;
 
             buttonTableGroupListPageListFirst.Enabled = false;
@@ -268,7 +268,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
         {
             if (tableGroupListPageList.HasPreviousPage == true)
             {
-                tableGroupListPageList = new PagedList<Entities.DgvTableGroupListTableGroupEntity>(tableGroupListData, --pageNumber, pageSize);
+                tableGroupListPageList = new PagedList<Entities.DgvMstTableGroupListEntity>(tableGroupListData, --pageNumber, pageSize);
                 tableGroupListDataSource.DataSource = tableGroupListPageList;
             }
 
@@ -288,7 +288,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
         {
             if (tableGroupListPageList.HasNextPage == true)
             {
-                tableGroupListPageList = new PagedList<Entities.DgvTableGroupListTableGroupEntity>(tableGroupListData, ++pageNumber, pageSize);
+                tableGroupListPageList = new PagedList<Entities.DgvMstTableGroupListEntity>(tableGroupListData, ++pageNumber, pageSize);
                 tableGroupListDataSource.DataSource = tableGroupListPageList;
             }
 
@@ -306,7 +306,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
 
         private void buttonTableGroupListPageListLast_Click(object sender, EventArgs e)
         {
-            tableGroupListPageList = new PagedList<Entities.DgvTableGroupListTableGroupEntity>(tableGroupListData, tableGroupListPageList.PageCount, pageSize);
+            tableGroupListPageList = new PagedList<Entities.DgvMstTableGroupListEntity>(tableGroupListData, tableGroupListPageList.PageCount, pageSize);
             tableGroupListDataSource.DataSource = tableGroupListPageList;
 
             buttonTableGroupListPageListFirst.Enabled = true;

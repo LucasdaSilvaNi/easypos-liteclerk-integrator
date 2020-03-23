@@ -19,10 +19,10 @@ namespace EasyPOS.Forms.Software.TrnStockOut
         public TrnStockOutListForm trnStockOutListForm;
         public Entities.TrnStockOutEntity trnStockOutEntity;
 
-        public static List<Entities.DgvStockOutDetailStockOutLineEntity> stockOutLineData = new List<Entities.DgvStockOutDetailStockOutLineEntity>();
+        public static List<Entities.DgvTrnStockOutLineListEntity> stockOutLineData = new List<Entities.DgvTrnStockOutLineListEntity>();
         public static Int32 stockOutLinePageNumber = 1;
         public static Int32 stockOutLinePageSize = 50;
-        public PagedList<Entities.DgvStockOutDetailStockOutLineEntity> stockOutLinePageList = new PagedList<Entities.DgvStockOutDetailStockOutLineEntity>(stockOutLineData, stockOutLinePageNumber, stockOutLinePageSize);
+        public PagedList<Entities.DgvTrnStockOutLineListEntity> stockOutLinePageList = new PagedList<Entities.DgvTrnStockOutLineListEntity>(stockOutLineData, stockOutLinePageNumber, stockOutLinePageSize);
         public BindingSource stockOutLineDataSource = new BindingSource();
 
         public TrnStockOutDetailForm(SysSoftwareForm softwareForm, TrnStockOutListForm stockOutListForm, Entities.TrnStockOutEntity stockOutEntity)
@@ -206,11 +206,11 @@ namespace EasyPOS.Forms.Software.TrnStockOut
 
         public async void SetStockOutLineListDataSourceAsync()
         {
-            List<Entities.DgvStockOutDetailStockOutLineEntity> getStockOutLineListData = await GetStockOutLineListDataTask();
+            List<Entities.DgvTrnStockOutLineListEntity> getStockOutLineListData = await GetStockOutLineListDataTask();
             if (getStockOutLineListData.Any())
             {
                 stockOutLineData = getStockOutLineListData;
-                stockOutLinePageList = new PagedList<Entities.DgvStockOutDetailStockOutLineEntity>(stockOutLineData, stockOutLinePageNumber, stockOutLinePageSize);
+                stockOutLinePageList = new PagedList<Entities.DgvTrnStockOutLineListEntity>(stockOutLineData, stockOutLinePageNumber, stockOutLinePageSize);
 
                 if (stockOutLinePageList.PageCount == 1)
                 {
@@ -253,13 +253,13 @@ namespace EasyPOS.Forms.Software.TrnStockOut
 
                 stockOutLinePageNumber = 1;
 
-                stockOutLineData = new List<Entities.DgvStockOutDetailStockOutLineEntity>();
+                stockOutLineData = new List<Entities.DgvTrnStockOutLineListEntity>();
                 stockOutLineDataSource.Clear();
                 textBoxStockOutLineListPageNumber.Text = "1 / 1";
             }
         }
 
-        public Task<List<Entities.DgvStockOutDetailStockOutLineEntity>> GetStockOutLineListDataTask()
+        public Task<List<Entities.DgvTrnStockOutLineListEntity>> GetStockOutLineListDataTask()
         {
             Controllers.TrnStockOutLineController trnStockOutLineController = new Controllers.TrnStockOutLineController();
 
@@ -267,7 +267,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
             if (listStockOutLine.Any())
             {
                 var items = from d in listStockOutLine
-                            select new Entities.DgvStockOutDetailStockOutLineEntity
+                            select new Entities.DgvTrnStockOutLineListEntity
                             {
                                 ColumnStockOutLineListButtonEdit = "Edit",
                                 ColumnStockOutLineListButtonDelete = "Delete",
@@ -288,7 +288,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
             }
             else
             {
-                return Task.FromResult(new List<Entities.DgvStockOutDetailStockOutLineEntity>());
+                return Task.FromResult(new List<Entities.DgvTrnStockOutLineListEntity>());
             }
         }
 
@@ -348,7 +348,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                     AssetAccount = assetAccount
                 };
 
-                TrnStockOutDetailStockOutLineItemDetailForm trnStockOutDetailStockOutLineItemDetailForm = new TrnStockOutDetailStockOutLineItemDetailForm(this, trnStockOutLineEntity);
+                TrnStockOutLineItemDetailForm trnStockOutDetailStockOutLineItemDetailForm = new TrnStockOutLineItemDetailForm(this, trnStockOutLineEntity);
                 trnStockOutDetailStockOutLineItemDetailForm.ShowDialog();
             }
 
@@ -376,7 +376,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
 
         private void buttonStockOutLineListPageListFirst_Click(object sender, EventArgs e)
         {
-            stockOutLinePageList = new PagedList<Entities.DgvStockOutDetailStockOutLineEntity>(stockOutLineData, 1, stockOutLinePageSize);
+            stockOutLinePageList = new PagedList<Entities.DgvTrnStockOutLineListEntity>(stockOutLineData, 1, stockOutLinePageSize);
             stockOutLineDataSource.DataSource = stockOutLinePageList;
 
             buttonStockOutLineListPageListFirst.Enabled = false;
@@ -392,7 +392,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
         {
             if (stockOutLinePageList.HasPreviousPage == true)
             {
-                stockOutLinePageList = new PagedList<Entities.DgvStockOutDetailStockOutLineEntity>(stockOutLineData, --stockOutLinePageNumber, stockOutLinePageSize);
+                stockOutLinePageList = new PagedList<Entities.DgvTrnStockOutLineListEntity>(stockOutLineData, --stockOutLinePageNumber, stockOutLinePageSize);
                 stockOutLineDataSource.DataSource = stockOutLinePageList;
             }
 
@@ -412,7 +412,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
         {
             if (stockOutLinePageList.HasNextPage == true)
             {
-                stockOutLinePageList = new PagedList<Entities.DgvStockOutDetailStockOutLineEntity>(stockOutLineData, ++stockOutLinePageNumber, stockOutLinePageSize);
+                stockOutLinePageList = new PagedList<Entities.DgvTrnStockOutLineListEntity>(stockOutLineData, ++stockOutLinePageNumber, stockOutLinePageSize);
                 stockOutLineDataSource.DataSource = stockOutLinePageList;
             }
 
@@ -430,7 +430,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
 
         private void buttonStockOutLineListPageListLast_Click(object sender, EventArgs e)
         {
-            stockOutLinePageList = new PagedList<Entities.DgvStockOutDetailStockOutLineEntity>(stockOutLineData, stockOutLinePageList.PageCount, stockOutLinePageSize);
+            stockOutLinePageList = new PagedList<Entities.DgvTrnStockOutLineListEntity>(stockOutLineData, stockOutLinePageList.PageCount, stockOutLinePageSize);
             stockOutLineDataSource.DataSource = stockOutLinePageList;
 
             buttonStockOutLineListPageListFirst.Enabled = true;
@@ -444,7 +444,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
 
         private void buttonSearchItem_Click(object sender, EventArgs e)
         {
-            TrnStockOutDetailSearchItemForm trnStockOutDetailSearchItemForm = new TrnStockOutDetailSearchItemForm(this, trnStockOutEntity);
+            TrnSearchItemForm trnStockOutDetailSearchItemForm = new TrnSearchItemForm(this, trnStockOutEntity);
             trnStockOutDetailSearchItemForm.ShowDialog();
         }
 
@@ -492,7 +492,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                             AssetAccount = ""
                         };
 
-                        TrnStockOutDetailStockOutLineItemDetailForm trnStockOutDetailStockOutLineItemDetailForm = new TrnStockOutDetailStockOutLineItemDetailForm(this, trnStockOutLineEntity);
+                        TrnStockOutLineItemDetailForm trnStockOutDetailStockOutLineItemDetailForm = new TrnStockOutLineItemDetailForm(this, trnStockOutLineEntity);
                         trnStockOutDetailStockOutLineItemDetailForm.ShowDialog();
                     }
                     else

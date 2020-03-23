@@ -209,6 +209,5 @@ namespace EasyPOS.Forms.Software.SysMenu
         {
             sysSoftwareForm.AddTabPageUtilities();
         }
-
     }
 }

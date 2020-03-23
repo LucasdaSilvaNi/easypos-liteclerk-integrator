@@ -286,7 +286,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
-            new TrnDisbursementDetailPrintForm(trnDisbursementEntity.Id);
+            new TrnPrintDisbursementForm(trnDisbursementEntity.Id);
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

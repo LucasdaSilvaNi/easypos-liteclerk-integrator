@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,141 +13,198 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
 {
     public partial class RepInventoryReportForm : Form
     {
-        public SysSoftwareForm sysSoftwareForm;
-        private Modules.SysUserRightsModule sysUserRights;
+        public List<Entities.DgvRepInventoryInventoryReportListEntity> inventoryReportList;
+        public BindingSource dataInventoryReportListSource = new BindingSource();
+        public PagedList<Entities.DgvRepInventoryInventoryReportListEntity> pageList;
+        public Int32 pageNumber = 1;
+        public Int32 pageSize = 50;
 
-        public RepInventoryReportForm(SysSoftwareForm softwareForm)
+        public DateTime startDate;
+        public DateTime endDate;
+
+        public RepInventoryReportForm(DateTime dateStart, DateTime dateEnd)
         {
             InitializeComponent();
-            sysSoftwareForm = softwareForm;
+
+            startDate = dateStart;
+            endDate = dateEnd;
+
+            GetInventoryReportDataSource("");
+            GetDataGridViewCollectionDetailReportSource();
         }
 
-        private void listBoxSalesReport_SelectedIndexChanged(object sender, EventArgs e)
+        public List<Entities.DgvRepInventoryInventoryReportListEntity> GetInventoryReportListData(DateTime startDate, DateTime endDate, String filter)
         {
-            if (listBoxInventoryReport.SelectedItem != null)
+            List<Entities.DgvRepInventoryInventoryReportListEntity> rowList = new List<Entities.DgvRepInventoryInventoryReportListEntity>();
+
+            Controllers.RepInventoryReportController repInvetoryReportController = new Controllers.RepInventoryReportController();
+
+            var inventoryReportList = repInvetoryReportController.InventoryReport(startDate, endDate, filter);
+            if (inventoryReportList.Any())
             {
-                String selectedItem = listBoxInventoryReport.SelectedItem.ToString();
-                switch (selectedItem)
+                Decimal totalAmount = 0;
+                var row = from d in inventoryReportList
+                          select new Entities.DgvRepInventoryInventoryReportListEntity
+                          {
+                              ColumnItemDescription = d.ItemDescription,
+                              ColumnUnit = d.Unit,
+                              ColumnBegQuantity = d.BeginningQuantity.ToString("#,##0.00"),
+                              ColumnInQuantity = d.InQuantity.ToString("#,##0.00"),
+                              ColumnOutQuantity = d.OutQuantity.ToString("#,##0.00"),
+                              ColumnEndingQuantity = d.EndingQuantity.ToString("#,##0.00"),
+                              ColumnStockCount = d.CountQuantity.ToString("#,##0.00"),
+                              ColumnVariance = d.Variance.ToString("#,##0.00"),
+                              ColumnCost = d.Cost.ToString("#,##0.00"),
+                              ColumnAmount = d.Amount.ToString("#,##0.00")
+
+                          };
+
+                totalAmount = inventoryReportList.Sum(d => d.Amount);
+
+                textBoxTotalAmount.Text = totalAmount.ToString("#,##0.00");
+
+                rowList = row.ToList();
+
+            }
+            return rowList;
+        }
+
+        public void GetInventoryReportDataSource(String filter)
+        {
+            inventoryReportList = GetInventoryReportListData(startDate, endDate, filter);
+            if (inventoryReportList.Any())
+            {
+
+                pageList = new PagedList<Entities.DgvRepInventoryInventoryReportListEntity>(inventoryReportList, pageNumber, pageSize);
+
+                if (pageList.PageCount == 1)
                 {
-                    case "Inventory Report":
-                        labelStartDate.Visible = true;
-                        dateTimePickerStartDate.Visible = true;
-                        labelEndDate.Visible = true;
-                        dateTimePickerEndDate.Visible = true;
-                        dateTimePickerStartDate.Focus();
-                        break;
-                    case "Stock In Detail Report":
-                        labelStartDate.Visible = true;
-                        dateTimePickerStartDate.Visible = true;
-                        labelEndDate.Visible = true;
-                        dateTimePickerEndDate.Visible = true;
-                        dateTimePickerStartDate.Focus();
-                        break;
-                    case "Stock Out Detail Report":
-                        labelStartDate.Visible = true;
-                        dateTimePickerStartDate.Visible = true;
-                        labelEndDate.Visible = true;
-                        dateTimePickerEndDate.Visible = true;
-                        dateTimePickerStartDate.Focus();
-                        break;
-                    case "Stock Count Detail Report":
-                        labelStartDate.Visible = true;
-                        dateTimePickerStartDate.Visible = true;
-                        labelEndDate.Visible = true;
-                        dateTimePickerEndDate.Visible = true;
-                        dateTimePickerStartDate.Focus();
-                        break;
-                    default:
-                        break;
+                    buttonPageListFirst.Enabled = false;
+                    buttonPageListPrevious.Enabled = false;
+                    buttonPageListNext.Enabled = false;
+                    buttonPageListLast.Enabled = false;
                 }
+                else if (pageNumber == 1)
+                {
+                    buttonPageListFirst.Enabled = false;
+                    buttonPageListPrevious.Enabled = false;
+                    buttonPageListNext.Enabled = true;
+                    buttonPageListLast.Enabled = true;
+                }
+                else if (pageNumber == pageList.PageCount)
+                {
+                    buttonPageListFirst.Enabled = true;
+                    buttonPageListPrevious.Enabled = true;
+                    buttonPageListNext.Enabled = false;
+                    buttonPageListLast.Enabled = false;
+                }
+                else
+                {
+                    buttonPageListFirst.Enabled = true;
+                    buttonPageListPrevious.Enabled = true;
+                    buttonPageListNext.Enabled = true;
+                    buttonPageListLast.Enabled = true;
+                }
+
+                textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+                dataInventoryReportListSource.DataSource = pageList;
             }
             else
             {
-                MessageBox.Show("Please select a report.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                buttonPageListFirst.Enabled = false;
+                buttonPageListPrevious.Enabled = false;
+                buttonPageListNext.Enabled = false;
+                buttonPageListLast.Enabled = false;
+
+                dataInventoryReportListSource.Clear();
+                textBoxPageNumber.Text = "0 / 0";
             }
         }
 
-        private void buttonView_OnClick(object sender, EventArgs e)
+        public void GetDataGridViewCollectionDetailReportSource()
         {
-            if (listBoxInventoryReport.SelectedItem != null)
+            dataGridViewInventoryReport.DataSource = dataInventoryReportListSource;
+        }
+
+        private void buttonPageListFirst_Click(object sender, EventArgs e)
+        {
+            pageList = new PagedList<Entities.DgvRepInventoryInventoryReportListEntity>(inventoryReportList, 1, pageSize);
+            dataInventoryReportListSource.DataSource = pageList;
+
+            buttonPageListFirst.Enabled = false;
+            buttonPageListPrevious.Enabled = false;
+            buttonPageListNext.Enabled = true;
+            buttonPageListLast.Enabled = true;
+
+            pageNumber = 1;
+            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+        }
+
+        private void buttonPageListPrevious_Click(object sender, EventArgs e)
+        {
+            if (pageList.HasPreviousPage == true)
             {
-                String selectedItem = listBoxInventoryReport.SelectedItem.ToString();
-                switch (selectedItem)
-                {
-                    case "Inventory Report":
-                        sysUserRights = new Modules.SysUserRightsModule("RepInventory");
-                        if (sysUserRights.GetUserRights() == null)
-                        {
-                            MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            if (sysUserRights.GetUserRights().CanView == true)
-                            {
-                                RepInventoryReportInventoryReportForm repInventoryReportInventoryReport = new RepInventoryReportInventoryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
-                                repInventoryReportInventoryReport.ShowDialog();
-                            }
-                            else
-                            {
-                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-                        break;
-                    case "Stock In Detail Report":
-                        sysUserRights = new Modules.SysUserRightsModule("RepInventoryStockInDetail");
-                        if (sysUserRights.GetUserRights() == null)
-                        {
-                            MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            if (sysUserRights.GetUserRights().CanView == true)
-                            {
-                                RepInventoryReportStockInDetailReportForm reportStockInDetailReport = new RepInventoryReportStockInDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
-                                reportStockInDetailReport.ShowDialog();
-                            }
-                            else
-                            {
-                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-                        break;
-                    case "Stock Out Detail Report":
-                        sysUserRights = new Modules.SysUserRightsModule("RepInventoryStockInDetail");
-                        if (sysUserRights.GetUserRights() == null)
-                        {
-                            MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            if (sysUserRights.GetUserRights().CanView == true)
-                            {
-                                RepInventoryReportStockOutDetailReportForm repInventoryReportStockOut = new RepInventoryReportStockOutDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
-                                repInventoryReportStockOut.ShowDialog();
-                            }
-                            else
-                            {
-                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-                        break;
-                    case "Stock Count Detail Report":
-                        RepInventoryReportStockCountDetailReportForm repInventoryReportStockCount = new RepInventoryReportStockCountDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
-                        repInventoryReportStockCount.ShowDialog();
-                        break;
-                    default:
-                        break;
-                }
+                pageList = new PagedList<Entities.DgvRepInventoryInventoryReportListEntity>(inventoryReportList, --pageNumber, pageSize);
+                dataInventoryReportListSource.DataSource = pageList;
             }
-            else
+
+            buttonPageListNext.Enabled = true;
+            buttonPageListLast.Enabled = true;
+
+            if (pageNumber == 1)
             {
-                MessageBox.Show("Please select a report.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                buttonPageListFirst.Enabled = false;
+                buttonPageListPrevious.Enabled = false;
             }
+
+            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+        }
+
+        private void buttonPageListNext_Click(object sender, EventArgs e)
+        {
+            if (pageList.HasNextPage == true)
+            {
+                pageList = new PagedList<Entities.DgvRepInventoryInventoryReportListEntity>(inventoryReportList, ++pageNumber, pageSize);
+                dataInventoryReportListSource.DataSource = pageList;
+            }
+
+            buttonPageListFirst.Enabled = true;
+            buttonPageListPrevious.Enabled = true;
+
+            if (pageNumber == pageList.PageCount)
+            {
+                buttonPageListNext.Enabled = false;
+                buttonPageListLast.Enabled = false;
+            }
+
+            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+        }
+
+        private void buttonPageListLast_Click(object sender, EventArgs e)
+        {
+            pageList = new PagedList<Entities.DgvRepInventoryInventoryReportListEntity>(inventoryReportList, pageList.PageCount, pageSize);
+            dataInventoryReportListSource.DataSource = pageList;
+
+            buttonPageListFirst.Enabled = true;
+            buttonPageListPrevious.Enabled = true;
+            buttonPageListNext.Enabled = false;
+            buttonPageListLast.Enabled = false;
+
+            pageNumber = pageList.PageCount;
+            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
         }
 
         private void buttonClose_OnClick(object sender, EventArgs e)
         {
-            sysSoftwareForm.RemoveTabPage();
+            Close();
+        }
+
+        private void textBoxFilter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                GetInventoryReportDataSource(textBoxFilter.Text);
+            }
         }
     }
 }

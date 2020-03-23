@@ -16,10 +16,10 @@ namespace EasyPOS.Forms.Software.MstDiscounting
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
 
-        public static List<Entities.DgvDiscountListDiscountEntity> discountListData = new List<Entities.DgvDiscountListDiscountEntity>();
+        public static List<Entities.DgvMstDiscountingListEntity> discountListData = new List<Entities.DgvMstDiscountingListEntity>();
         public static Int32 pageNumber = 1;
         public static Int32 pageSize = 50;
-        public PagedList<Entities.DgvDiscountListDiscountEntity> discountListPageList = new PagedList<Entities.DgvDiscountListDiscountEntity>(discountListData, pageNumber, pageSize);
+        public PagedList<Entities.DgvMstDiscountingListEntity> discountListPageList = new PagedList<Entities.DgvMstDiscountingListEntity>(discountListData, pageNumber, pageSize);
         public BindingSource discountListDataSource = new BindingSource();
 
 
@@ -61,11 +61,11 @@ namespace EasyPOS.Forms.Software.MstDiscounting
 
         public async void SetDiscountListDataSourceAsync()
         {
-            List<Entities.DgvDiscountListDiscountEntity> getDiscountListData = await GetDiscountListDataTask();
+            List<Entities.DgvMstDiscountingListEntity> getDiscountListData = await GetDiscountListDataTask();
             if (getDiscountListData.Any())
             {
                 discountListData = getDiscountListData;
-                discountListPageList = new PagedList<Entities.DgvDiscountListDiscountEntity>(discountListData, pageNumber, pageSize);
+                discountListPageList = new PagedList<Entities.DgvMstDiscountingListEntity>(discountListData, pageNumber, pageSize);
 
                 if (discountListPageList.PageCount == 1)
                 {
@@ -108,13 +108,13 @@ namespace EasyPOS.Forms.Software.MstDiscounting
 
                 pageNumber = 1;
 
-                discountListData = new List<Entities.DgvDiscountListDiscountEntity>();
+                discountListData = new List<Entities.DgvMstDiscountingListEntity>();
                 discountListDataSource.Clear();
                 textBoxDiscountListPageNumber.Text = "1 / 1";
             }
         }
 
-        public Task<List<Entities.DgvDiscountListDiscountEntity>> GetDiscountListDataTask()
+        public Task<List<Entities.DgvMstDiscountingListEntity>> GetDiscountListDataTask()
         {
             String filter = textBoxDiscountListFilter.Text;
             Controllers.MstDiscountController mstDiscountController = new Controllers.MstDiscountController();
@@ -123,7 +123,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
             if (listDiscount.Any())
             {
                 var discounts = from d in listDiscount
-                                select new Entities.DgvDiscountListDiscountEntity
+                                select new Entities.DgvMstDiscountingListEntity
                                 {
                                     ColumnDiscountListButtonEdit = "Edit",
                                     ColumnDiscountListButtonDelete = "Delete",
@@ -137,7 +137,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
             }
             else
             {
-                return Task.FromResult(new List<Entities.DgvDiscountListDiscountEntity>());
+                return Task.FromResult(new List<Entities.DgvMstDiscountingListEntity>());
             }
         }
 
@@ -254,7 +254,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
 
         private void buttonDiscountListPageListFirst_Click(object sender, EventArgs e)
         {
-            discountListPageList = new PagedList<Entities.DgvDiscountListDiscountEntity>(discountListData, 1, pageSize);
+            discountListPageList = new PagedList<Entities.DgvMstDiscountingListEntity>(discountListData, 1, pageSize);
             discountListDataSource.DataSource = discountListPageList;
 
             buttonDiscountListPageListFirst.Enabled = false;
@@ -270,7 +270,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
         {
             if (discountListPageList.HasPreviousPage == true)
             {
-                discountListPageList = new PagedList<Entities.DgvDiscountListDiscountEntity>(discountListData, --pageNumber, pageSize);
+                discountListPageList = new PagedList<Entities.DgvMstDiscountingListEntity>(discountListData, --pageNumber, pageSize);
                 discountListDataSource.DataSource = discountListPageList;
             }
 
@@ -290,7 +290,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
         {
             if (discountListPageList.HasNextPage == true)
             {
-                discountListPageList = new PagedList<Entities.DgvDiscountListDiscountEntity>(discountListData, ++pageNumber, pageSize);
+                discountListPageList = new PagedList<Entities.DgvMstDiscountingListEntity>(discountListData, ++pageNumber, pageSize);
                 discountListDataSource.DataSource = discountListPageList;
             }
 
@@ -308,7 +308,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
 
         private void buttonDiscountListPageListLast_Click(object sender, EventArgs e)
         {
-            discountListPageList = new PagedList<Entities.DgvDiscountListDiscountEntity>(discountListData, discountListPageList.PageCount, pageSize);
+            discountListPageList = new PagedList<Entities.DgvMstDiscountingListEntity>(discountListData, discountListPageList.PageCount, pageSize);
             discountListDataSource.DataSource = discountListPageList;
 
             buttonDiscountListPageListFirst.Enabled = true;

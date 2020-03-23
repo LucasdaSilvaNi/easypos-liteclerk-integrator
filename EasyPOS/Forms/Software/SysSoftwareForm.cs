@@ -37,9 +37,6 @@ namespace EasyPOS.Forms.Software
             panelSidebarMenu.Visible = false;
         }
 
-        // =========
-        // Tab Pages
-        // =========
         public TabPage tabPageItemList = new TabPage { Name = "tabPageItemList", Text = "Setup - Item List" };
         public TabPage tabPageItemDetail = new TabPage { Name = "tabPageItemDetail", Text = "Setup - Item Detail" };
         public TabPage tabPageCustomerList = new TabPage { Name = "tabPageCustomerList", Text = "Setup - Customer List" };
@@ -48,13 +45,14 @@ namespace EasyPOS.Forms.Software
         public TabPage tabPageDiscountingDetail = new TabPage { Name = "tabPageDiscountingDetail", Text = "Setup - Discounting Detail" };
         public TabPage tabPageUserList = new TabPage { Name = "tabPageUserList", Text = "Setup - User List" };
         public TabPage tabPageUserDetail = new TabPage { Name = "tabPageUserDetail", Text = "Setup - User Detail" };
-
-        public TabPage tabPagePOSSalesList = new TabPage { Name = "tabPagePOSSalesList", Text = "Activity - POS Barcode - Sales List" };
-        public TabPage tabPagePOSSalesDetail = new TabPage { Name = "tabPagePOSSalesDetail", Text = "Activity - POS Barcode - Sales Detail" };
-
-        public TabPage tabPagePOSTouchSalesList = new TabPage { Name = "tabPagePOSTouchSalesList", Text = "Activity - POS Touch - Sales List" };
-        public TabPage tabPagePOSTouchSalesDetail = new TabPage { Name = "tabPagePOSTouchSalesDetail", Text = "Activity - POS Touch - Sales Detail" };
-
+        public TabPage tabPageItemGroupList = new TabPage { Name = "tabPageItemGroupList", Text = "Setup - Item Group List" };
+        public TabPage tabPageItemGroupDetail = new TabPage { Name = "tabPageItemGroupDetail", Text = "Setup - Item Group Detail" };
+        public TabPage tabPageTableGroupList = new TabPage { Name = "tabPageTableGroupList", Text = "Setup - Table Group List" };
+        public TabPage tabPageTableGroupDetail = new TabPage { Name = "tabPageTableGroupDetail", Text = "Setup - Table Group Detail" };
+        public TabPage tabPagePOSBarcode = new TabPage { Name = "tabPagePOSBarcode", Text = "Activity - POS Barcode" };
+        public TabPage tabPagePOSBarcodeDetail = new TabPage { Name = "tabPagePOSBarcodeDetail", Text = "Activity - POS Barcode Detail" };
+        public TabPage tabPagePOSTouch = new TabPage { Name = "tabPagePOSTouch", Text = "Activity - POS Touch" };
+        public TabPage tabPagePOSTouchDetail = new TabPage { Name = "tabPagePOSTouchDetail", Text = "Activity - POS Touch Detail" };
         public TabPage tabPageStockInList = new TabPage { Name = "tabPageStockInList", Text = "Activity - Stock-In List" };
         public TabPage tabPageStockInDetail = new TabPage { Name = "tabPageStockInDetail", Text = "Activity - Stock-In Detail" };
         public TabPage tabPageStockOutList = new TabPage { Name = "tabPageStockOutList", Text = "Activity - Stock-Out List" };
@@ -63,27 +61,14 @@ namespace EasyPOS.Forms.Software
         public TabPage tabPageStockCountDetail = new TabPage { Name = "tabPageStockCountDetail", Text = "Activity - Stock-Count Detail" };
         public TabPage tabPageDisbursementList = new TabPage { Name = "tabPageDisbursementList", Text = "Activity - Remittance List" };
         public TabPage tabPageDisbursementDetail = new TabPage { Name = "tabPageDisbursementDetail", Text = "Activity - Remittance Detail" };
-
         public TabPage tabPagePOSReport = new TabPage { Name = "tabPagePOSReport", Text = "Report - POS Report" };
         public TabPage tabPageSalesReports = new TabPage { Name = "tabPageSalesReports ", Text = "Report - Sales Report" };
         public TabPage tabPageInventoryReports = new TabPage { Name = "tabPageInventoryReports ", Text = "Report - Inventory Report" };
         public TabPage tabPageRemittanceReports = new TabPage { Name = "tabPageRemittanceReports ", Text = "Report - Remittance Report" };
-
         public TabPage tabPageSystemTables = new TabPage { Name = "tabPageSystemTables", Text = "System - System Tables" };
-
+        public TabPage tabPageSystemUtilities = new TabPage { Name = "tabPageSystemUtilities", Text = "System - Utilities" };
         public TabPage tabPageSettings = new TabPage { Name = "tabPageSettings", Text = "Settings" };
 
-        public TabPage tabPageSystemUtilities = new TabPage { Name = "tabPageSystemUtilities", Text = "System - Utilities" };
-
-        public TabPage tabPageItemGroupList = new TabPage { Name = "tabPageItemGroupList", Text = "Setup - Item Group List" };
-        public TabPage tabPageItemGroupDetail = new TabPage { Name = "tabPageItemGroupDetail", Text = "Setup - Item Group Detail" };
-
-        public TabPage tabPageTableGroupList = new TabPage { Name = "tabPageTableGroupList", Text = "Setup - Table Group List" };
-        public TabPage tabPageTableGroupDetail = new TabPage { Name = "tabPageTableGroupDetail", Text = "Setup - Table Group Detail" };
-
-        // =====
-        // Forms
-        // =====
         public MstItem.MstItemListForm mstItemListForm = null;
         public MstItem.MstItemDetailForm mstItemDetailForm = null;
         public MstCustomer.MstCustomerListForm mstCustomerListForm = null;
@@ -92,13 +77,14 @@ namespace EasyPOS.Forms.Software
         public MstDiscounting.MstDiscountingDetailForm mstDiscountingDetailForm = null;
         public MstUser.MstUserListForm mstUserListForm = null;
         public MstUser.MstUserDetailForm mstUserDetailForm = null;
-
+        public MstItemGroup.MstItemGroupListForm mstItemGroupListForm = null;
+        public MstItemGroup.MstItemGroupDetailForm mstItemGroupDetailForm = null;
+        public MstTableGroup.MstTableGroupListForm mstTableGroupListForm = null;
+        public MstTableGroup.MstTableGroupDetailForm mstTableGroupDetailForm = null;
         public TrnPOS.TrnPOSBarcodeForm trnSalesListForm = null;
         public TrnPOS.TrnPOSBarcodeDetailForm trnSalesDetailForm = null;
-
         public TrnPOS.TrnPOSTouchForm trnPOSTouchForm = null;
         public TrnPOS.TrnPOSTouchDetailForm trnPOSTouchDetailForm = null;
-
         public TrnStockIn.TrnStockInListForm trnStockInListForm = null;
         public TrnStockIn.TrnStockInDetailForm trnStockInDetailForm = null;
         public TrnStockOut.TrnStockOutListForm trnStockOutListForm = null;
@@ -107,23 +93,13 @@ namespace EasyPOS.Forms.Software
         public TrnStockCount.TrnStockCountDetailForm trnStockCountDetailForm = null;
         public TrnDisbursement.TrnDisbursementListForm trnDisbursementListForm = null;
         public TrnDisbursement.TrnDisbursementDetailForm trnDisbursementDetailForm = null;
-
         public RepPOSReport.RepPOSReportForm repPOSReportForm = null;
         public RepSalesReport.RepSalesReportForm repSalesReportForm = null;
-        public RepInventoryReport.RepInventoryReportForm repInventoryReportForm = null;
-        public RepRemittanceReport.RepRemittanceReportForm repRemittanceReportForm = null;
-
+        public RepInventoryReport.RepInventoryForm repInventoryReportForm = null;
+        public RepRemittanceReport.RepRemittanceForm repRemittanceReportForm = null;
+        public SysUtilities.SysUtilitiesForm sysUtilitiesListForm = null;
         public SysSystemTables.SysSystemTablesForm sysSystemTablesForm = null;
-
         public SysSettings.SysSettingsForm sysSettingsForm = null;
-
-        public SysUtilities.SysUtilitiesListForm sysUtilitiesListForm = null;
-
-        public MstItemGroup.MstItemGroupListForm mstItemGroupListForm = null;
-        public MstItemGroup.MstItemGroupDetailForm mstItemGroupDetailForm = null;
-
-        public MstTableGroup.MstTableGroupListForm mstTableGroupListForm = null;
-        public MstTableGroup.MstTableGroupDetailForm mstTableGroupDetailForm = null;
 
         public void InitializeDefaultForm()
         {
@@ -141,7 +117,7 @@ namespace EasyPOS.Forms.Software
         {
             tabPageRemittanceReports.Controls.Remove(repRemittanceReportForm);
 
-            repRemittanceReportForm = new RepRemittanceReport.RepRemittanceReportForm(this)
+            repRemittanceReportForm = new RepRemittanceReport.RepRemittanceForm(this)
             {
                 TopLevel = false,
                 Visible = true,
@@ -161,9 +137,6 @@ namespace EasyPOS.Forms.Software
             }
         }
 
-        // =============
-        // Tab Functions
-        // =============
         public void AddTabPageItemList()
         {
             tabPageItemList.Controls.Remove(mstItemListForm);
@@ -358,7 +331,7 @@ namespace EasyPOS.Forms.Software
 
         public void AddTabPagePOSSalesList()
         {
-            tabPagePOSSalesList.Controls.Remove(trnSalesListForm);
+            tabPagePOSBarcode.Controls.Remove(trnSalesListForm);
 
             trnSalesListForm = new TrnPOS.TrnPOSBarcodeForm(this)
             {
@@ -367,22 +340,22 @@ namespace EasyPOS.Forms.Software
                 Dock = DockStyle.Fill
             };
 
-            tabPagePOSSalesList.Controls.Add(trnSalesListForm);
+            tabPagePOSBarcode.Controls.Add(trnSalesListForm);
 
-            if (tabControlSoftware.TabPages.Contains(tabPagePOSSalesList) == true)
+            if (tabControlSoftware.TabPages.Contains(tabPagePOSBarcode) == true)
             {
-                tabControlSoftware.SelectTab(tabPagePOSSalesList);
+                tabControlSoftware.SelectTab(tabPagePOSBarcode);
             }
             else
             {
-                tabControlSoftware.TabPages.Add(tabPagePOSSalesList);
-                tabControlSoftware.SelectTab(tabPagePOSSalesList);
+                tabControlSoftware.TabPages.Add(tabPagePOSBarcode);
+                tabControlSoftware.SelectTab(tabPagePOSBarcode);
             }
         }
 
         public void AddTabPagePOSSalesDetail(TrnPOS.TrnPOSBarcodeForm salesListForm, Entities.TrnSalesEntity salesEntity)
         {
-            tabPagePOSSalesDetail.Controls.Remove(trnSalesDetailForm);
+            tabPagePOSBarcodeDetail.Controls.Remove(trnSalesDetailForm);
 
             trnSalesDetailForm = new TrnPOS.TrnPOSBarcodeDetailForm(this, salesListForm, salesEntity)
             {
@@ -391,16 +364,16 @@ namespace EasyPOS.Forms.Software
                 Dock = DockStyle.Fill
             };
 
-            tabPagePOSSalesDetail.Controls.Add(trnSalesDetailForm);
+            tabPagePOSBarcodeDetail.Controls.Add(trnSalesDetailForm);
 
-            if (tabControlSoftware.TabPages.Contains(tabPagePOSSalesDetail) == true)
+            if (tabControlSoftware.TabPages.Contains(tabPagePOSBarcodeDetail) == true)
             {
-                tabControlSoftware.SelectTab(tabPagePOSSalesDetail);
+                tabControlSoftware.SelectTab(tabPagePOSBarcodeDetail);
             }
             else
             {
-                tabControlSoftware.TabPages.Add(tabPagePOSSalesDetail);
-                tabControlSoftware.SelectTab(tabPagePOSSalesDetail);
+                tabControlSoftware.TabPages.Add(tabPagePOSBarcodeDetail);
+                tabControlSoftware.SelectTab(tabPagePOSBarcodeDetail);
             }
         }
 
@@ -624,7 +597,7 @@ namespace EasyPOS.Forms.Software
         {
             tabPageInventoryReports.Controls.Remove(repInventoryReportForm);
 
-            repInventoryReportForm = new RepInventoryReport.RepInventoryReportForm(this)
+            repInventoryReportForm = new RepInventoryReport.RepInventoryForm(this)
             {
                 TopLevel = false,
                 Visible = true,
@@ -699,15 +672,12 @@ namespace EasyPOS.Forms.Software
         {
             tabPageSystemUtilities.Controls.Remove(sysUtilitiesListForm);
 
-            if (sysUtilitiesListForm == null)
+            sysUtilitiesListForm = new SysUtilities.SysUtilitiesForm(this)
             {
-                sysUtilitiesListForm = new SysUtilities.SysUtilitiesListForm(this)
-                {
-                    TopLevel = false,
-                    Visible = true,
-                    Dock = DockStyle.Fill
-                };
-            }
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
 
             tabPageSystemUtilities.Controls.Add(sysUtilitiesListForm);
 
@@ -748,7 +718,7 @@ namespace EasyPOS.Forms.Software
 
         public void AddTabPagePOSTouchSalesList()
         {
-            tabPagePOSTouchSalesList.Controls.Remove(trnPOSTouchForm);
+            tabPagePOSTouch.Controls.Remove(trnPOSTouchForm);
 
             trnPOSTouchForm = new TrnPOS.TrnPOSTouchForm(this)
             {
@@ -757,22 +727,22 @@ namespace EasyPOS.Forms.Software
                 Dock = DockStyle.Fill
             };
 
-            tabPagePOSTouchSalesList.Controls.Add(trnPOSTouchForm);
+            tabPagePOSTouch.Controls.Add(trnPOSTouchForm);
 
-            if (tabControlSoftware.TabPages.Contains(tabPagePOSTouchSalesList) == true)
+            if (tabControlSoftware.TabPages.Contains(tabPagePOSTouch) == true)
             {
-                tabControlSoftware.SelectTab(tabPagePOSTouchSalesList);
+                tabControlSoftware.SelectTab(tabPagePOSTouch);
             }
             else
             {
-                tabControlSoftware.TabPages.Add(tabPagePOSTouchSalesList);
-                tabControlSoftware.SelectTab(tabPagePOSTouchSalesList);
+                tabControlSoftware.TabPages.Add(tabPagePOSTouch);
+                tabControlSoftware.SelectTab(tabPagePOSTouch);
             }
         }
 
         public void AddTabPagePOSTouchSalesDetail(TrnPOS.TrnPOSTouchForm POSTouchForm, Entities.TrnSalesEntity salesEntity)
         {
-            tabPagePOSTouchSalesDetail.Controls.Remove(trnPOSTouchDetailForm);
+            tabPagePOSTouchDetail.Controls.Remove(trnPOSTouchDetailForm);
 
             trnPOSTouchDetailForm = new TrnPOS.TrnPOSTouchDetailForm(this, POSTouchForm, salesEntity)
             {
@@ -781,16 +751,16 @@ namespace EasyPOS.Forms.Software
                 Dock = DockStyle.Fill
             };
 
-            tabPagePOSTouchSalesDetail.Controls.Add(trnPOSTouchDetailForm);
+            tabPagePOSTouchDetail.Controls.Add(trnPOSTouchDetailForm);
 
-            if (tabControlSoftware.TabPages.Contains(tabPagePOSTouchSalesDetail) == true)
+            if (tabControlSoftware.TabPages.Contains(tabPagePOSTouchDetail) == true)
             {
-                tabControlSoftware.SelectTab(tabPagePOSTouchSalesDetail);
+                tabControlSoftware.SelectTab(tabPagePOSTouchDetail);
             }
             else
             {
-                tabControlSoftware.TabPages.Add(tabPagePOSTouchSalesDetail);
-                tabControlSoftware.SelectTab(tabPagePOSTouchSalesDetail);
+                tabControlSoftware.TabPages.Add(tabPagePOSTouchDetail);
+                tabControlSoftware.SelectTab(tabPagePOSTouchDetail);
             }
         }
 
@@ -904,16 +874,7 @@ namespace EasyPOS.Forms.Software
 
         private void tabControlSoftware_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (tabControlSoftware.SelectedTab == tabPagePOSSalesList || tabControlSoftware.SelectedTab == tabPagePOSSalesDetail)
-            //{
-            //    labelLastChange.Visible = true;
-            //    textBoxLastChange.Visible = true;
-            //}
-            //else
-            //{
-            //    labelLastChange.Visible = false;
-            //    textBoxLastChange.Visible = false;
-            //}
+            
         }
 
         private void buttonOpenSidebarMenu_Click(object sender, EventArgs e)

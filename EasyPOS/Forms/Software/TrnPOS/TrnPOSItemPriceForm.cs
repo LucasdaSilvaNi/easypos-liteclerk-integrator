@@ -19,8 +19,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public static Int32 pageNumber = 1;
         public static Int32 pageSize = 50;
 
-        public static List<Entities.DgvSalesDetailItemPriceListEntity> itemPriceListData = new List<Entities.DgvSalesDetailItemPriceListEntity>();
-        public PagedList<Entities.DgvSalesDetailItemPriceListEntity> itemPriceListPageList = new PagedList<Entities.DgvSalesDetailItemPriceListEntity>(itemPriceListData, pageNumber, pageSize);
+        public static List<Entities.DgvTrnSalesItemPriceListEntity> itemPriceListData = new List<Entities.DgvTrnSalesItemPriceListEntity>();
+        public PagedList<Entities.DgvTrnSalesItemPriceListEntity> itemPriceListPageList = new PagedList<Entities.DgvTrnSalesItemPriceListEntity>(itemPriceListData, pageNumber, pageSize);
         public BindingSource itemPriceListDataSource = new BindingSource();
 
         public TrnPOSItemPriceForm(TrnPOSSalesItemDetailForm salesDetailSalesItemDetailForm, Entities.TrnSalesLineEntity salesLineEntity)
@@ -51,11 +51,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         public async void SetItemPriceListDataSourceAsync()
         {
-            List<Entities.DgvSalesDetailItemPriceListEntity> getItemPriceListData = await GetItemPriceListDataTask();
+            List<Entities.DgvTrnSalesItemPriceListEntity> getItemPriceListData = await GetItemPriceListDataTask();
             if (getItemPriceListData.Any())
             {
                 itemPriceListData = getItemPriceListData;
-                itemPriceListPageList = new PagedList<Entities.DgvSalesDetailItemPriceListEntity>(itemPriceListData, pageNumber, pageSize);
+                itemPriceListPageList = new PagedList<Entities.DgvTrnSalesItemPriceListEntity>(itemPriceListData, pageNumber, pageSize);
 
                 if (itemPriceListPageList.PageCount == 1)
                 {
@@ -98,13 +98,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 pageNumber = 1;
 
-                itemPriceListData = new List<Entities.DgvSalesDetailItemPriceListEntity>();
+                itemPriceListData = new List<Entities.DgvTrnSalesItemPriceListEntity>();
                 itemPriceListDataSource.Clear();
                 textBoxItemPriceListPageNumber.Text = "1 / 1";
             }
         }
 
-        public Task<List<Entities.DgvSalesDetailItemPriceListEntity>> GetItemPriceListDataTask()
+        public Task<List<Entities.DgvTrnSalesItemPriceListEntity>> GetItemPriceListDataTask()
         {
             Controllers.MstItemPriceController mstItemPriceController = new Controllers.MstItemPriceController();
             List<Entities.MstItemPriceEntity> listItemPrice = mstItemPriceController.ListItemPrice(trnSalesLineEntity.ItemId);
@@ -112,7 +112,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             if (listItemPrice.Any())
             {
                 var itemPrices = from d in listItemPrice
-                                 select new Entities.DgvSalesDetailItemPriceListEntity
+                                 select new Entities.DgvTrnSalesItemPriceListEntity
                                  {
                                      ColumnItemPriceListButtonPick = "Pick",
                                      ColumnItemPriceListPriceDescription = d.PriceDescription,
@@ -123,7 +123,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
             else
             {
-                return Task.FromResult(new List<Entities.DgvSalesDetailItemPriceListEntity>());
+                return Task.FromResult(new List<Entities.DgvTrnSalesItemPriceListEntity>());
             }
         }
 
@@ -145,7 +145,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonItemPriceListPageListFirst_Click(object sender, EventArgs e)
         {
-            itemPriceListPageList = new PagedList<Entities.DgvSalesDetailItemPriceListEntity>(itemPriceListData, 1, pageSize);
+            itemPriceListPageList = new PagedList<Entities.DgvTrnSalesItemPriceListEntity>(itemPriceListData, 1, pageSize);
             itemPriceListDataSource.DataSource = itemPriceListPageList;
 
             buttonItemPriceListPageListFirst.Enabled = false;
@@ -161,7 +161,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             if (itemPriceListPageList.HasPreviousPage == true)
             {
-                itemPriceListPageList = new PagedList<Entities.DgvSalesDetailItemPriceListEntity>(itemPriceListData, --pageNumber, pageSize);
+                itemPriceListPageList = new PagedList<Entities.DgvTrnSalesItemPriceListEntity>(itemPriceListData, --pageNumber, pageSize);
                 itemPriceListDataSource.DataSource = itemPriceListPageList;
             }
 
@@ -181,7 +181,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             if (itemPriceListPageList.HasNextPage == true)
             {
-                itemPriceListPageList = new PagedList<Entities.DgvSalesDetailItemPriceListEntity>(itemPriceListData, ++pageNumber, pageSize);
+                itemPriceListPageList = new PagedList<Entities.DgvTrnSalesItemPriceListEntity>(itemPriceListData, ++pageNumber, pageSize);
                 itemPriceListDataSource.DataSource = itemPriceListPageList;
             }
 
@@ -199,7 +199,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonItemPriceListPageListLast_Click(object sender, EventArgs e)
         {
-            itemPriceListPageList = new PagedList<Entities.DgvSalesDetailItemPriceListEntity>(itemPriceListData, itemPriceListPageList.PageCount, pageSize);
+            itemPriceListPageList = new PagedList<Entities.DgvTrnSalesItemPriceListEntity>(itemPriceListData, itemPriceListPageList.PageCount, pageSize);
             itemPriceListDataSource.DataSource = itemPriceListPageList;
 
             buttonItemPriceListPageListFirst.Enabled = true;

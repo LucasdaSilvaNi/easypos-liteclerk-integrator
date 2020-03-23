@@ -18,10 +18,10 @@ namespace EasyPOS.Forms.Software.TrnStockCount
         public TrnStockCountListForm trnStockCountListForm;
         public Entities.TrnStockCountEntity trnStockCountEntity;
 
-        public static List<Entities.DgvStockCountDetailStockCountLineEntity> stockOutLineData = new List<Entities.DgvStockCountDetailStockCountLineEntity>();
+        public static List<Entities.DgvTrnStockCountLineListEntity> stockOutLineData = new List<Entities.DgvTrnStockCountLineListEntity>();
         public static Int32 stockOutLinePageNumber = 1;
         public static Int32 stockOutLinePageSize = 50;
-        public PagedList<Entities.DgvStockCountDetailStockCountLineEntity> stockOutLinePageList = new PagedList<Entities.DgvStockCountDetailStockCountLineEntity>(stockOutLineData, stockOutLinePageNumber, stockOutLinePageSize);
+        public PagedList<Entities.DgvTrnStockCountLineListEntity> stockOutLinePageList = new PagedList<Entities.DgvTrnStockCountLineListEntity>(stockOutLineData, stockOutLinePageNumber, stockOutLinePageSize);
         public BindingSource stockOutLineDataSource = new BindingSource();
 
         public TrnStockCountDetailForm(SysSoftwareForm softwareForm, TrnStockCountListForm stockOutListForm, Entities.TrnStockCountEntity stockOutEntity)
@@ -189,11 +189,11 @@ namespace EasyPOS.Forms.Software.TrnStockCount
 
         public async void SetStockCountLineListDataSourceAsync()
         {
-            List<Entities.DgvStockCountDetailStockCountLineEntity> getStockCountLineListData = await GetStockCountLineListDataTask();
+            List<Entities.DgvTrnStockCountLineListEntity> getStockCountLineListData = await GetStockCountLineListDataTask();
             if (getStockCountLineListData.Any())
             {
                 stockOutLineData = getStockCountLineListData;
-                stockOutLinePageList = new PagedList<Entities.DgvStockCountDetailStockCountLineEntity>(stockOutLineData, stockOutLinePageNumber, stockOutLinePageSize);
+                stockOutLinePageList = new PagedList<Entities.DgvTrnStockCountLineListEntity>(stockOutLineData, stockOutLinePageNumber, stockOutLinePageSize);
 
                 if (stockOutLinePageList.PageCount == 1)
                 {
@@ -236,13 +236,13 @@ namespace EasyPOS.Forms.Software.TrnStockCount
 
                 stockOutLinePageNumber = 1;
 
-                stockOutLineData = new List<Entities.DgvStockCountDetailStockCountLineEntity>();
+                stockOutLineData = new List<Entities.DgvTrnStockCountLineListEntity>();
                 stockOutLineDataSource.Clear();
                 textBoxStockCountLineListPageNumber.Text = "1 / 1";
             }
         }
 
-        public Task<List<Entities.DgvStockCountDetailStockCountLineEntity>> GetStockCountLineListDataTask()
+        public Task<List<Entities.DgvTrnStockCountLineListEntity>> GetStockCountLineListDataTask()
         {
             Controllers.TrnStockCountLineController trnStockCountLineController = new Controllers.TrnStockCountLineController();
 
@@ -250,7 +250,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
             if (listStockCountLine.Any())
             {
                 var items = from d in listStockCountLine
-                            select new Entities.DgvStockCountDetailStockCountLineEntity
+                            select new Entities.DgvTrnStockCountLineListEntity
                             {
                                 ColumnStockCountLineListButtonEdit = "Edit",
                                 ColumnStockCountLineListButtonDelete = "Delete",
@@ -269,7 +269,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
             }
             else
             {
-                return Task.FromResult(new List<Entities.DgvStockCountDetailStockCountLineEntity>());
+                return Task.FromResult(new List<Entities.DgvTrnStockCountLineListEntity>());
             }
         }
 
@@ -325,8 +325,8 @@ namespace EasyPOS.Forms.Software.TrnStockCount
                     Amount = amount
                 };
 
-                TrnStockCountDetailStockCountLineItemDetailForm trnStockCountDetailStockCountLineItemDetailForm = new TrnStockCountDetailStockCountLineItemDetailForm(this, trnStockCountLineEntity);
-                trnStockCountDetailStockCountLineItemDetailForm.ShowDialog();
+                TrnStockCountLineItemDetailForm trnStockCountLineItemDetailForm = new TrnStockCountLineItemDetailForm(this, trnStockCountLineEntity);
+                trnStockCountLineItemDetailForm.ShowDialog();
             }
 
             if (e.RowIndex > -1 && dataGridViewStockCountLineList.CurrentCell.ColumnIndex == dataGridViewStockCountLineList.Columns["ColumnStockCountLineListButtonDelete"].Index)
@@ -353,7 +353,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
 
         private void buttonStockCountLineListPageListFirst_Click(object sender, EventArgs e)
         {
-            stockOutLinePageList = new PagedList<Entities.DgvStockCountDetailStockCountLineEntity>(stockOutLineData, 1, stockOutLinePageSize);
+            stockOutLinePageList = new PagedList<Entities.DgvTrnStockCountLineListEntity>(stockOutLineData, 1, stockOutLinePageSize);
             stockOutLineDataSource.DataSource = stockOutLinePageList;
 
             buttonStockCountLineListPageListFirst.Enabled = false;
@@ -369,7 +369,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
         {
             if (stockOutLinePageList.HasPreviousPage == true)
             {
-                stockOutLinePageList = new PagedList<Entities.DgvStockCountDetailStockCountLineEntity>(stockOutLineData, --stockOutLinePageNumber, stockOutLinePageSize);
+                stockOutLinePageList = new PagedList<Entities.DgvTrnStockCountLineListEntity>(stockOutLineData, --stockOutLinePageNumber, stockOutLinePageSize);
                 stockOutLineDataSource.DataSource = stockOutLinePageList;
             }
 
@@ -389,7 +389,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
         {
             if (stockOutLinePageList.HasNextPage == true)
             {
-                stockOutLinePageList = new PagedList<Entities.DgvStockCountDetailStockCountLineEntity>(stockOutLineData, ++stockOutLinePageNumber, stockOutLinePageSize);
+                stockOutLinePageList = new PagedList<Entities.DgvTrnStockCountLineListEntity>(stockOutLineData, ++stockOutLinePageNumber, stockOutLinePageSize);
                 stockOutLineDataSource.DataSource = stockOutLinePageList;
             }
 
@@ -407,7 +407,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
 
         private void buttonStockCountLineListPageListLast_Click(object sender, EventArgs e)
         {
-            stockOutLinePageList = new PagedList<Entities.DgvStockCountDetailStockCountLineEntity>(stockOutLineData, stockOutLinePageList.PageCount, stockOutLinePageSize);
+            stockOutLinePageList = new PagedList<Entities.DgvTrnStockCountLineListEntity>(stockOutLineData, stockOutLinePageList.PageCount, stockOutLinePageSize);
             stockOutLineDataSource.DataSource = stockOutLinePageList;
 
             buttonStockCountLineListPageListFirst.Enabled = true;
@@ -421,7 +421,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
 
         private void buttonSearchItem_Click(object sender, EventArgs e)
         {
-            TrnStockCountDetailSearchItemForm trnStockCountDetailSearchItemForm = new TrnStockCountDetailSearchItemForm(this, trnStockCountEntity);
+            TrnSearchItemForm trnStockCountDetailSearchItemForm = new TrnSearchItemForm(this, trnStockCountEntity);
             trnStockCountDetailSearchItemForm.ShowDialog();
         }
 
@@ -467,8 +467,8 @@ namespace EasyPOS.Forms.Software.TrnStockCount
                             Amount = 0
                         };
 
-                        TrnStockCountDetailStockCountLineItemDetailForm trnStockCountDetailStockCountLineItemDetailForm = new TrnStockCountDetailStockCountLineItemDetailForm(this, trnStockCountLineEntity);
-                        trnStockCountDetailStockCountLineItemDetailForm.ShowDialog();
+                        TrnStockCountLineItemDetailForm trnStockCountLineItemDetailForm = new TrnStockCountLineItemDetailForm(this, trnStockCountLineEntity);
+                        trnStockCountLineItemDetailForm.ShowDialog();
                     }
                     else
                     {

@@ -104,7 +104,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(221, 20);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Easy POS Version: 1.20191109";
+            this.label1.Text = "Easy POS Version: 1.20200323";
             // 
             // pictureBox1
             // 
@@ -325,7 +325,7 @@
             // 
             this.toolStripMenuItemTabeGroup.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemTabeGroup.Image")));
             this.toolStripMenuItemTabeGroup.Name = "toolStripMenuItemTabeGroup";
-            this.toolStripMenuItemTabeGroup.Size = new System.Drawing.Size(216, 28);
+            this.toolStripMenuItemTabeGroup.Size = new System.Drawing.Size(178, 28);
             this.toolStripMenuItemTabeGroup.Text = "Table Group";
             this.toolStripMenuItemTabeGroup.Click += new System.EventHandler(this.toolStripMenuItemTabeGroup_Click);
             // 
@@ -333,7 +333,7 @@
             // 
             this.toolStripMenuItemItemGroup.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemItemGroup.Image")));
             this.toolStripMenuItemItemGroup.Name = "toolStripMenuItemItemGroup";
-            this.toolStripMenuItemItemGroup.Size = new System.Drawing.Size(216, 28);
+            this.toolStripMenuItemItemGroup.Size = new System.Drawing.Size(178, 28);
             this.toolStripMenuItemItemGroup.Text = "Item Group";
             this.toolStripMenuItemItemGroup.Click += new System.EventHandler(this.toolStripMenuItemItemGroup_Click);
             // 

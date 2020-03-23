@@ -16,10 +16,10 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
 
-        public static List<Entities.DgvDisbursementListDisbursementEntity> itemListData = new List<Entities.DgvDisbursementListDisbursementEntity>();
+        public static List<Entities.DgvTrnDisbursementListEntity> itemListData = new List<Entities.DgvTrnDisbursementListEntity>();
         public static Int32 pageNumber = 1;
         public static Int32 pageSize = 50;
-        public PagedList<Entities.DgvDisbursementListDisbursementEntity> itemListPageList = new PagedList<Entities.DgvDisbursementListDisbursementEntity>(itemListData, pageNumber, pageSize);
+        public PagedList<Entities.DgvTrnDisbursementListEntity> itemListPageList = new PagedList<Entities.DgvTrnDisbursementListEntity>(itemListData, pageNumber, pageSize);
         public BindingSource itemListDataSource = new BindingSource();
 
         public TrnDisbursementListForm(SysSoftwareForm softwareForm)
@@ -69,11 +69,11 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
 
         public async void SetDisbursementListDataSourceAsync()
         {
-            List<Entities.DgvDisbursementListDisbursementEntity> getDisbursementListData = await GetDisbursementListDataTask();
+            List<Entities.DgvTrnDisbursementListEntity> getDisbursementListData = await GetDisbursementListDataTask();
             if (getDisbursementListData.Any())
             {
                 itemListData = getDisbursementListData;
-                itemListPageList = new PagedList<Entities.DgvDisbursementListDisbursementEntity>(itemListData, pageNumber, pageSize);
+                itemListPageList = new PagedList<Entities.DgvTrnDisbursementListEntity>(itemListData, pageNumber, pageSize);
 
                 if (itemListPageList.PageCount == 1)
                 {
@@ -116,13 +116,13 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
 
                 pageNumber = 1;
 
-                itemListData = new List<Entities.DgvDisbursementListDisbursementEntity>();
+                itemListData = new List<Entities.DgvTrnDisbursementListEntity>();
                 itemListDataSource.Clear();
                 textBoxDisbursementListPageNumber.Text = "1 / 1";
             }
         }
 
-        public Task<List<Entities.DgvDisbursementListDisbursementEntity>> GetDisbursementListDataTask()
+        public Task<List<Entities.DgvTrnDisbursementListEntity>> GetDisbursementListDataTask()
         {
             DateTime dateFilter = dateTimePickerDisbursementListFilter.Value.Date;
             String filter = textBoxDisbursementListFilter.Text;
@@ -132,7 +132,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             if (listDisbursement.Any())
             {
                 var items = from d in listDisbursement
-                            select new Entities.DgvDisbursementListDisbursementEntity
+                            select new Entities.DgvTrnDisbursementListEntity
                             {
                                 ColumnDisbursementListButtonEdit = "Edit",
                                 ColumnDisbursementListButtonDelete = "Delete",
@@ -148,7 +148,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             }
             else
             {
-                return Task.FromResult(new List<Entities.DgvDisbursementListDisbursementEntity>());
+                return Task.FromResult(new List<Entities.DgvTrnDisbursementListEntity>());
             }
         }
 
@@ -251,7 +251,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
 
         private void buttonDisbursementListPageListFirst_Click(object sender, EventArgs e)
         {
-            itemListPageList = new PagedList<Entities.DgvDisbursementListDisbursementEntity>(itemListData, 1, pageSize);
+            itemListPageList = new PagedList<Entities.DgvTrnDisbursementListEntity>(itemListData, 1, pageSize);
             itemListDataSource.DataSource = itemListPageList;
 
             buttonDisbursementListPageListFirst.Enabled = false;
@@ -267,7 +267,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
         {
             if (itemListPageList.HasPreviousPage == true)
             {
-                itemListPageList = new PagedList<Entities.DgvDisbursementListDisbursementEntity>(itemListData, --pageNumber, pageSize);
+                itemListPageList = new PagedList<Entities.DgvTrnDisbursementListEntity>(itemListData, --pageNumber, pageSize);
                 itemListDataSource.DataSource = itemListPageList;
             }
 
@@ -287,7 +287,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
         {
             if (itemListPageList.HasNextPage == true)
             {
-                itemListPageList = new PagedList<Entities.DgvDisbursementListDisbursementEntity>(itemListData, ++pageNumber, pageSize);
+                itemListPageList = new PagedList<Entities.DgvTrnDisbursementListEntity>(itemListData, ++pageNumber, pageSize);
                 itemListDataSource.DataSource = itemListPageList;
             }
 
@@ -305,7 +305,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
 
         private void buttonDisbursementListPageListLast_Click(object sender, EventArgs e)
         {
-            itemListPageList = new PagedList<Entities.DgvDisbursementListDisbursementEntity>(itemListData, itemListPageList.PageCount, pageSize);
+            itemListPageList = new PagedList<Entities.DgvTrnDisbursementListEntity>(itemListData, itemListPageList.PageCount, pageSize);
             itemListDataSource.DataSource = itemListPageList;
 
             buttonDisbursementListPageListFirst.Enabled = true;

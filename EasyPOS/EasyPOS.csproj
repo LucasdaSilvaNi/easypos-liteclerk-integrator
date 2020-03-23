@@ -263,50 +263,50 @@
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockOutItem.cs" />
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransfer.cs" />
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransferItem.cs" />
-    <Compile Include="Entities\DgvDiscountListDiscountEntity.cs" />
-    <Compile Include="Entities\DgvSalesReportTopSellingItemsReportEntity.cs" />
-    <Compile Include="Entities\DgvTableGroupListTableGroupEntity.cs" />
-    <Compile Include="Entities\DgvItemGroupListItemGroupEntity.cs" />
-    <Compile Include="Entities\DgvMstItemComponentEntity.cs" />
-    <Compile Include="Entities\DgvSalesDetailItemPriceListEntity.cs" />
-    <Compile Include="Entities\DgvSalesReportCollectionDetailReportEntity.cs" />
-    <Compile Include="Entities\DgvSalesReportCollectionSummaryReportEntity.cs" />
-    <Compile Include="Entities\DgvInventoryReportEntity.cs" />
-    <Compile Include="Entities\DgvInventoryReportStockCountDetailReportEntity.cs" />
-    <Compile Include="Entities\DgvInventoryReportStockInDetailReportEntity.cs" />
-    <Compile Include="Entities\DgvInventoryReportStockOutDetailReportEntity.cs" />
-    <Compile Include="Entities\DgvSalesReportCancelledSalesSummaryReportEntity.cs" />
-    <Compile Include="Entities\DgvCustomerListCustomerEntity.cs" />
-    <Compile Include="Entities\DgvDisbursementListDisbursementEntity.cs" />
-    <Compile Include="Entities\DgvItemListItemEntity.cs" />
-    <Compile Include="Entities\DgvSalesReportSalesDetailReportEntity.cs" />
-    <Compile Include="Entities\DgvSalesDetailSalesLineEntity.cs" />
-    <Compile Include="Entities\DgvSalesDetailSearchItemEntity.cs" />
-    <Compile Include="Entities\DgvSalesDetailTenderPayTypeEntity.cs" />
-    <Compile Include="Entities\DgvSalesListSalesEntity.cs" />
-    <Compile Include="Entities\DgvSalesReportSalesSummaryReportEntity.cs" />
-    <Compile Include="Entities\DgvStockCountDetailStockCountLineEntity.cs" />
-    <Compile Include="Entities\DgvStockCountListStockCountEntity.cs" />
-    <Compile Include="Entities\DgvStockCountSearchItemListEntity.cs" />
-    <Compile Include="Entities\DgvStockInDetailStockInLineEntity.cs" />
-    <Compile Include="Entities\DgvStockInSearchItemListEntity.cs" />
-    <Compile Include="Entities\DgvStockOutDetailStockOutLineEntity.cs" />
-    <Compile Include="Entities\DgvStockOutListStockInEntity.cs" />
-    <Compile Include="Entities\DgvStockInListStockInEntity.cs" />
-    <Compile Include="Entities\DgvStockOutSearchItemListEntity.cs" />
-    <Compile Include="Entities\DgvSystemTablesAccountListEntity.cs" />
-    <Compile Include="Entities\DgvItemDetailItemPriceListEntity.cs" />
-    <Compile Include="Entities\DgvSystemTablesPayTypeListEntity.cs" />
-    <Compile Include="Entities\DgvSystemTablesPeriodListEntity.cs" />
-    <Compile Include="Entities\DgvSystemTablesSupplierListEntity.cs" />
-    <Compile Include="Entities\DgvSystemTablesTaxListEntity.cs" />
-    <Compile Include="Entities\DgvSystemTablesTerminalListEntity.cs" />
-    <Compile Include="Entities\DgvSystemTablesUnitListEntity.cs" />
-    <Compile Include="Entities\DgvSysUtilitiesAuditTrailListEntity.cs" />
-    <Compile Include="Entities\DgvUserDetailUserFormEntity.cs" />
-    <Compile Include="Entities\DgvUserDetailUserRightsEntity.cs" />
-    <Compile Include="Entities\DgvUserListUserEntity.cs" />
-    <Compile Include="Entities\DgvUtilitiesBarcodePrintingItemList.cs" />
+    <Compile Include="Entities\DgvMstDiscountingListEntity.cs" />
+    <Compile Include="Entities\DgvRepSalesReportTopSellingItemsReportListEntity.cs" />
+    <Compile Include="Entities\DgvMstTableGroupListEntity.cs" />
+    <Compile Include="Entities\DgvMstItemGroupListEntity.cs" />
+    <Compile Include="Entities\DgvMstItemComponentListEntity.cs" />
+    <Compile Include="Entities\DgvTrnSalesItemPriceListEntity.cs" />
+    <Compile Include="Entities\DgvRepSalesReportCollectionDetailReportListEntity.cs" />
+    <Compile Include="Entities\DgvRepSalesReportCollectionSummaryReportEntityList.cs" />
+    <Compile Include="Entities\DgvRepInventoryInventoryReportListEntity.cs" />
+    <Compile Include="Entities\DgvRepInventoryStockCountDetailReportListEntity.cs" />
+    <Compile Include="Entities\DgvRepInventoryStockInDetailReportListEntity.cs" />
+    <Compile Include="Entities\DgvRepInventoryStockOutDetailReportListEntity.cs" />
+    <Compile Include="Entities\DgvRepSalesReportCancelledSalesSummaryReportListEntity.cs" />
+    <Compile Include="Entities\DgvMstCustomerListEntity.cs" />
+    <Compile Include="Entities\DgvTrnDisbursementListEntity.cs" />
+    <Compile Include="Entities\DgvMstItemListEntity.cs" />
+    <Compile Include="Entities\DgvRepSalesReportSalesDetailReportListEntity.cs" />
+    <Compile Include="Entities\DgvTrnSalesLineListEntity.cs" />
+    <Compile Include="Entities\DgvTrnSalesSearchItemListEntity.cs" />
+    <Compile Include="Entities\DgvTrnSalesTenderPayTypeListEntity.cs" />
+    <Compile Include="Entities\DgvTrnSalesListEntity.cs" />
+    <Compile Include="Entities\DgvRepSalesReportSalesSummaryReportListEntity.cs" />
+    <Compile Include="Entities\DgvTrnStockCountLineListEntity.cs" />
+    <Compile Include="Entities\DgvTrnStockCountListEntity.cs" />
+    <Compile Include="Entities\DgvTrnStockCountSearchItemListEntity.cs" />
+    <Compile Include="Entities\DgvTrnStockInLineListEntity.cs" />
+    <Compile Include="Entities\DgvTrnStockInSearchItemListEntity.cs" />
+    <Compile Include="Entities\DgvTrnStockOutLineListEntity.cs" />
+    <Compile Include="Entities\DgvTrnStockOutListEntity.cs" />
+    <Compile Include="Entities\DgvTrnStockInListEntity.cs" />
+    <Compile Include="Entities\DgvTrnStockOutSearchItemListEntity.cs" />
+    <Compile Include="Entities\DgvMstSystemTablesAccountListEntity.cs" />
+    <Compile Include="Entities\DgvMstItemPriceListEntity.cs" />
+    <Compile Include="Entities\DgvMstSystemTablesPayTypeListEntity.cs" />
+    <Compile Include="Entities\DgvMstSystemTablesPeriodListEntity.cs" />
+    <Compile Include="Entities\DgvMstSystemTablesSupplierListEntity.cs" />
+    <Compile Include="Entities\DgvMstSystemTablesTaxListEntity.cs" />
+    <Compile Include="Entities\DgvMstSystemTablesTerminalListEntity.cs" />
+    <Compile Include="Entities\DgvMstSystemTablesUnitListEntity.cs" />
+    <Compile Include="Entities\DgvSysSysUtilitiesAuditTrailListEntity.cs" />
+    <Compile Include="Entities\DgvMstUserFormListEntity.cs" />
+    <Compile Include="Entities\DgvMstUserRightsListEntity.cs" />
+    <Compile Include="Entities\DgvMstUserListEntity.cs" />
+    <Compile Include="Entities\DgvSysUtilitiesBarcodePrintingItemList.cs" />
     <Compile Include="Entities\EspCardDetailsEntity.cs" />
     <Compile Include="Entities\EspTokenEntity.cs" />
     <Compile Include="Entities\MstAccountEntity.cs" />
@@ -407,17 +407,17 @@
     <Compile Include="Forms\Software\MstItem\MstItemDetailForm.Designer.cs">
       <DependentUpon>MstItemDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\MstItem\MstItemDetailItemComponentDetailForm.cs">
+    <Compile Include="Forms\Software\MstItem\MstItemComponentDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\MstItem\MstItemDetailItemComponentDetailForm.Designer.cs">
-      <DependentUpon>MstItemDetailItemComponentDetailForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\MstItem\MstItemComponentDetailForm.Designer.cs">
+      <DependentUpon>MstItemComponentDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\MstItem\MstItemDetailItemPriceDetailForm.cs">
+    <Compile Include="Forms\Software\MstItem\MstItemPriceDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\MstItem\MstItemDetailItemPriceDetailForm.Designer.cs">
-      <DependentUpon>MstItemDetailItemPriceDetailForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\MstItem\MstItemPriceDetailForm.Designer.cs">
+      <DependentUpon>MstItemPriceDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\MstItem\MstItemListForm.cs">
       <SubType>Form</SubType>
@@ -443,11 +443,11 @@
     <Compile Include="Forms\Software\MstUser\MstUserDetailForm.Designer.cs">
       <DependentUpon>MstUserDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\MstUser\MstUserDetailUserFormDetailForm.cs">
+    <Compile Include="Forms\Software\MstUser\MstUserFormDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\MstUser\MstUserDetailUserFormDetailForm.Designer.cs">
-      <DependentUpon>MstUserDetailUserFormDetailForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\MstUser\MstUserFormDetailForm.Designer.cs">
+      <DependentUpon>MstUserFormDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\MstUser\MstUserListForm.cs">
       <SubType>Form</SubType>
@@ -455,11 +455,17 @@
     <Compile Include="Forms\Software\MstUser\MstUserListForm.Designer.cs">
       <DependentUpon>MstUserListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\MstUser\MstUserCopyUserRightsForm.cs">
+    <Compile Include="Forms\Software\MstUser\MstCopyUserRightsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\MstUser\MstUserCopyUserRightsForm.Designer.cs">
-      <DependentUpon>MstUserCopyUserRightsForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\MstUser\MstCopyUserRightsForm.Designer.cs">
+      <DependentUpon>MstCopyUserRightsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryForm.Designer.cs">
+      <DependentUpon>RepInventoryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportForm.cs">
       <SubType>Form</SubType>
@@ -467,29 +473,23 @@
     <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportForm.Designer.cs">
       <DependentUpon>RepInventoryReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportInventoryReportForm.cs">
+    <Compile Include="Forms\Software\RepInventoryReport\RepStockCountDetailReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportInventoryReportForm.Designer.cs">
-      <DependentUpon>RepInventoryReportInventoryReportForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\RepInventoryReport\RepStockCountDetailReportForm.Designer.cs">
+      <DependentUpon>RepStockCountDetailReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportStockCountDetailReportForm.cs">
+    <Compile Include="Forms\Software\RepInventoryReport\RepStockInDetailReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportStockCountDetailReportForm.Designer.cs">
-      <DependentUpon>RepInventoryReportStockCountDetailReportForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\RepInventoryReport\RepStockInDetailReportForm.Designer.cs">
+      <DependentUpon>RepStockInDetailReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportStockInDetailReportForm.cs">
+    <Compile Include="Forms\Software\RepInventoryReport\RepStockOutDetailReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportStockInDetailReportForm.Designer.cs">
-      <DependentUpon>RepInventoryReportStockInDetailReportForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportStockOutDetailReportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportStockOutDetailReportForm.Designer.cs">
-      <DependentUpon>RepInventoryReportStockOutDetailReportForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\RepInventoryReport\RepStockOutDetailReportForm.Designer.cs">
+      <DependentUpon>RepStockOutDetailReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\RepPOSReport\RepPOSReportForm.cs">
       <SubType>Form</SubType>
@@ -497,29 +497,29 @@
     <Compile Include="Forms\Software\RepPOSReport\RepPOSReportForm.Designer.cs">
       <DependentUpon>RepPOSReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\RepRemittanceReport\RepRemittanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepRemittanceReport\RepRemittanceForm.Designer.cs">
+      <DependentUpon>RepRemittanceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\RepRemittanceReport\RepRemittanceReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Software\RepRemittanceReport\RepRemittanceReportForm.Designer.cs">
       <DependentUpon>RepRemittanceReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\RepRemittanceReport\RepRemittanceReportRemittanceReportForm.cs">
+    <Compile Include="Forms\Software\RepSalesReport\RepCollectionDetailReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\RepRemittanceReport\RepRemittanceReportRemittanceReportForm.Designer.cs">
-      <DependentUpon>RepRemittanceReportRemittanceReportForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\RepSalesReport\RepCollectionDetailReportForm.Designer.cs">
+      <DependentUpon>RepCollectionDetailReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportCollectionDetailReportForm.cs">
+    <Compile Include="Forms\Software\RepSalesReport\RepCollectionSummaryReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportCollectionDetailReportForm.Designer.cs">
-      <DependentUpon>RepSalesReportCollectionDetailReportForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportCollectionSummaryReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportCollectionSummaryReport.Designer.cs">
-      <DependentUpon>RepSalesReportCollectionSummaryReport.cs</DependentUpon>
+    <Compile Include="Forms\Software\RepSalesReport\RepCollectionSummaryReport.Designer.cs">
+      <DependentUpon>RepCollectionSummaryReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepSalesReportForm.cs">
       <SubType>Form</SubType>
@@ -527,35 +527,35 @@
     <Compile Include="Forms\Software\RepSalesReport\RepSalesReportForm.Designer.cs">
       <DependentUpon>RepSalesReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportTopSellingItemsReportForm.cs">
+    <Compile Include="Forms\Software\RepSalesReport\RepTopSellingItemsReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportTopSellingItemsReportForm.Designer.cs">
-      <DependentUpon>RepSalesReportTopSellingItemsReportForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\RepSalesReport\RepTopSellingItemsReportForm.Designer.cs">
+      <DependentUpon>RepTopSellingItemsReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportSalesDetailReportForm.cs">
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesDetailReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportSalesDetailReportForm.Designer.cs">
-      <DependentUpon>RepSalesReportSalesDetailReportForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesDetailReportForm.Designer.cs">
+      <DependentUpon>RepSalesDetailReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportSalesSummaryReportForm.cs">
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesSummaryReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportSalesSummaryReportForm.Designer.cs">
-      <DependentUpon>RepSalesReportSalesSummaryReportForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesSummaryReportForm.Designer.cs">
+      <DependentUpon>RepSalesSummaryReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportCancelSalesSummaryReportForm.cs">
+    <Compile Include="Forms\Software\RepSalesReport\RepCancelSalesSummaryReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportCancelSalesSummaryReportForm.Designer.cs">
-      <DependentUpon>RepSalesReportCancelSalesSummaryReportForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\RepSalesReport\RepCancelSalesSummaryReportForm.Designer.cs">
+      <DependentUpon>RepCancelSalesSummaryReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportCollectionDetailFacepayReportForm.cs">
+    <Compile Include="Forms\Software\RepSalesReport\RepCollectionDetailFacepayReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\RepSalesReport\RepSalesReportCollectionDetailFacepayReportForm.designer.cs">
-      <DependentUpon>RepSalesReportCollectionDetailFacepayReportForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\RepSalesReport\RepCollectionDetailFacepayReportForm.designer.cs">
+      <DependentUpon>RepCollectionDetailFacepayReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnPOSDeliveryReceiptReportForm.cs">
       <SubType>Form</SubType>
@@ -563,11 +563,11 @@
     <Compile Include="Forms\Software\TrnPOS\TrnPOSDeliveryReceiptReportForm.Designer.cs">
       <DependentUpon>TrnPOSDeliveryReceiptReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\SysKeyboard\SysKeyboardNumpadForm.cs">
+    <Compile Include="Forms\Software\SysKeyboard\SysNumpadForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\SysKeyboard\SysKeyboardNumpadForm.Designer.cs">
-      <DependentUpon>SysKeyboardNumpadForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\SysKeyboard\SysNumpadForm.Designer.cs">
+      <DependentUpon>SysNumpadForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\SysSettings\SysSettingsForm.cs">
       <SubType>Form</SubType>
@@ -587,47 +587,47 @@
     <Compile Include="Forms\Software\SysMenu\SysMenuForm.Designer.cs">
       <DependentUpon>SysMenuForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\SysSystemTables\SysSystemTablesTerminalDetailForm.cs">
+    <Compile Include="Forms\Software\SysSystemTables\SysTerminalDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\SysSystemTables\SysSystemTablesTerminalDetailForm.Designer.cs">
-      <DependentUpon>SysSystemTablesTerminalDetailForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\SysSystemTables\SysTerminalDetailForm.Designer.cs">
+      <DependentUpon>SysTerminalDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\SysSystemTables\SysSystemTablesPeriodDetailForm.cs">
+    <Compile Include="Forms\Software\SysSystemTables\SysPeriodDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\SysSystemTables\SysSystemTablesPeriodDetailForm.Designer.cs">
-      <DependentUpon>SysSystemTablesPeriodDetailForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\SysSystemTables\SysPeriodDetailForm.Designer.cs">
+      <DependentUpon>SysPeriodDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\SysSystemTables\SysSystemTablesSupplierDetailForm.cs">
+    <Compile Include="Forms\Software\SysSystemTables\SysSupplierDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\SysSystemTables\SysSystemTablesSupplierDetailForm.Designer.cs">
-      <DependentUpon>SysSystemTablesSupplierDetailForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\SysSystemTables\SysSupplierDetailForm.Designer.cs">
+      <DependentUpon>SysSupplierDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\SysSystemTables\SysSystemTablesUnitDetailForm.cs">
+    <Compile Include="Forms\Software\SysSystemTables\SysUnitDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\SysSystemTables\SysSystemTablesUnitDetailForm.Designer.cs">
-      <DependentUpon>SysSystemTablesUnitDetailForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\SysSystemTables\SysUnitDetailForm.Designer.cs">
+      <DependentUpon>SysUnitDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\SysSystemTables\SysSystemTablesTaxDetailForm.cs">
+    <Compile Include="Forms\Software\SysSystemTables\SysTaxDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\SysSystemTables\SysSystemTablesTaxDetailForm.Designer.cs">
-      <DependentUpon>SysSystemTablesTaxDetailForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\SysSystemTables\SysTaxDetailForm.Designer.cs">
+      <DependentUpon>SysTaxDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\SysSystemTables\SysSystemTablesPayTypeDetailForm .cs">
+    <Compile Include="Forms\Software\SysSystemTables\SysPayTypeDetailForm .cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\SysSystemTables\SysSystemTablesPayTypeDetailForm .Designer.cs">
-      <DependentUpon>SysSystemTablesPayTypeDetailForm .cs</DependentUpon>
+    <Compile Include="Forms\Software\SysSystemTables\SysPayTypeDetailForm .Designer.cs">
+      <DependentUpon>SysPayTypeDetailForm .cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\SysSystemTables\SysSystemTablesAccountDetailForm.cs">
+    <Compile Include="Forms\Software\SysSystemTables\SysAccountDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\SysSystemTables\SysSystemTablesAccountDetailForm.Designer.cs">
-      <DependentUpon>SysSystemTablesAccountDetailForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\SysSystemTables\SysAccountDetailForm.Designer.cs">
+      <DependentUpon>SysAccountDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\SysSystemTables\SysSystemTablesForm.cs">
       <SubType>Form</SubType>
@@ -635,23 +635,23 @@
     <Compile Include="Forms\Software\SysSystemTables\SysSystemTablesForm.Designer.cs">
       <DependentUpon>SysSystemTablesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\SysUtilities\SysUtilitiesListForm.cs">
+    <Compile Include="Forms\Software\SysUtilities\SysUtilitiesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\SysUtilities\SysUtilitiesListForm.Designer.cs">
-      <DependentUpon>SysUtilitiesListForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\SysUtilities\SysUtilitiesForm.Designer.cs">
+      <DependentUpon>SysUtilitiesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\SysUtilities\SysUtilitiesBarcodePrintingQuantity.cs">
+    <Compile Include="Forms\Software\SysUtilities\SysBarcodePrintingQuantity.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\SysUtilities\SysUtilitiesBarcodePrintingQuantity.Designer.cs">
-      <DependentUpon>SysUtilitiesBarcodePrintingQuantity.cs</DependentUpon>
+    <Compile Include="Forms\Software\SysUtilities\SysBarcodePrintingQuantity.Designer.cs">
+      <DependentUpon>SysBarcodePrintingQuantity.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnDisbursement\TrnDisbursementDetailPrintForm.cs">
+    <Compile Include="Forms\Software\TrnDisbursement\TrnPrintDisbursementForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnDisbursement\TrnDisbursementDetailPrintForm.Designer.cs">
-      <DependentUpon>TrnDisbursementDetailPrintForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnDisbursement\TrnPrintDisbursementForm.Designer.cs">
+      <DependentUpon>TrnPrintDisbursementForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\TrnDisbursement\TrnDisbursementDetailForm.cs">
       <SubType>Form</SubType>
@@ -767,17 +767,17 @@
     <Compile Include="Forms\Software\TrnStockIn\TrnStockInDetailForm.Designer.cs">
       <DependentUpon>TrnStockInDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnStockIn\TrnStockInDetailSearchItemForm.cs">
+    <Compile Include="Forms\Software\TrnStockIn\TrnSearchItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnStockIn\TrnStockInDetailSearchItemForm.Designer.cs">
-      <DependentUpon>TrnStockInDetailSearchItemForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnStockIn\TrnSearchItemForm.Designer.cs">
+      <DependentUpon>TrnSearchItemForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnStockIn\TrnStockInDetailStockInLineItemDetailForm.cs">
+    <Compile Include="Forms\Software\TrnStockIn\TrnStockInLineItemDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnStockIn\TrnStockInDetailStockInLineItemDetailForm.Designer.cs">
-      <DependentUpon>TrnStockInDetailStockInLineItemDetailForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnStockIn\TrnStockInLineItemDetailForm.Designer.cs">
+      <DependentUpon>TrnStockInLineItemDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\TrnStockIn\TrnStockInListForm.cs">
       <SubType>Form</SubType>
@@ -791,17 +791,17 @@
     <Compile Include="Forms\Software\TrnStockCount\TrnStockCountDetailForm.Designer.cs">
       <DependentUpon>TrnStockCountDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnStockCount\TrnStockCountDetailSearchItemForm.cs">
+    <Compile Include="Forms\Software\TrnStockCount\TrnSearchItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnStockCount\TrnStockCountDetailSearchItemForm.Designer.cs">
-      <DependentUpon>TrnStockCountDetailSearchItemForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnStockCount\TrnSearchItemForm.Designer.cs">
+      <DependentUpon>TrnSearchItemForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnStockCount\TrnStockCountDetailStockOutLineItemDetailForm.cs">
+    <Compile Include="Forms\Software\TrnStockCount\TrnStockCountLineItemDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnStockCount\TrnStockCountDetailStockOutLineItemDetailForm.Designer.cs">
-      <DependentUpon>TrnStockCountDetailStockOutLineItemDetailForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnStockCount\TrnStockCountLineItemDetailForm.Designer.cs">
+      <DependentUpon>TrnStockCountLineItemDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\TrnStockCount\TrnStockCountListForm.cs">
       <SubType>Form</SubType>
@@ -809,17 +809,17 @@
     <Compile Include="Forms\Software\TrnStockCount\TrnStockCountListForm.Designer.cs">
       <DependentUpon>TrnStockCountListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnStockOut\TrnStockOutDetailStockOutLineItemDetailForm.cs">
+    <Compile Include="Forms\Software\TrnStockOut\TrnStockOutLineItemDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnStockOut\TrnStockOutDetailStockOutLineItemDetailForm.Designer.cs">
-      <DependentUpon>TrnStockOutDetailStockOutLineItemDetailForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnStockOut\TrnStockOutLineItemDetailForm.Designer.cs">
+      <DependentUpon>TrnStockOutLineItemDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnStockOut\TrnStockOutDetailSearchItemForm.cs">
+    <Compile Include="Forms\Software\TrnStockOut\TrnSearchItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnStockOut\TrnStockOutDetailSearchItemForm.Designer.cs">
-      <DependentUpon>TrnStockOutDetailSearchItemForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnStockOut\TrnSearchItemForm.Designer.cs">
+      <DependentUpon>TrnSearchItemForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\TrnStockOut\TrnStockOutDetailForm.cs">
       <SubType>Form</SubType>
@@ -853,17 +853,17 @@
     <Compile Include="Forms\Software\TrnPOS\TrnPOSOfficialReceiptReportForm.Designer.cs">
       <DependentUpon>TrnPOSOfficialReceiptReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\RepPOSReport\RepPOSReportXReadingReportForm.cs">
+    <Compile Include="Forms\Software\RepPOSReport\RepXReadingReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\RepPOSReport\RepPOSReportXReadingReportForm.Designer.cs">
-      <DependentUpon>RepPOSReportXReadingReportForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\RepPOSReport\RepXReadingReportForm.Designer.cs">
+      <DependentUpon>RepXReadingReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\RepPOSReport\RepPOSReportZReadingReportForm.cs">
+    <Compile Include="Forms\Software\RepPOSReport\RepZReadingReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\RepPOSReport\RepPOSReportZReadingReportForm.Designer.cs">
-      <DependentUpon>RepPOSReportZReadingReportForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\RepPOSReport\RepZReadingReportForm.Designer.cs">
+      <DependentUpon>RepZReadingReportForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\Software\MstCustomer\MstCustomerDetailForm.resx">
       <DependentUpon>MstCustomerDetailForm.cs</DependentUpon>
@@ -883,11 +883,11 @@
     <EmbeddedResource Include="Forms\Software\MstItem\MstItemDetailForm.resx">
       <DependentUpon>MstItemDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\MstItem\MstItemDetailItemComponentDetailForm.resx">
-      <DependentUpon>MstItemDetailItemComponentDetailForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\MstItem\MstItemComponentDetailForm.resx">
+      <DependentUpon>MstItemComponentDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\MstItem\MstItemDetailItemPriceDetailForm.resx">
-      <DependentUpon>MstItemDetailItemPriceDetailForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\MstItem\MstItemPriceDetailForm.resx">
+      <DependentUpon>MstItemPriceDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstTableGroup\MstTableGroupDetailForm.resx">
       <DependentUpon>MstTableGroupDetailForm.cs</DependentUpon>
@@ -898,101 +898,101 @@
     <EmbeddedResource Include="Forms\Software\MstUser\MstUserDetailForm.resx">
       <DependentUpon>MstUserDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\MstUser\MstUserDetailUserFormDetailForm.resx">
-      <DependentUpon>MstUserDetailUserFormDetailForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\MstUser\MstUserFormDetailForm.resx">
+      <DependentUpon>MstUserFormDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstUser\MstUserListForm.resx">
       <DependentUpon>MstUserListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\MstUser\MstUserCopyUserRightsForm.resx">
-      <DependentUpon>MstUserCopyUserRightsForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\MstUser\MstCopyUserRightsForm.resx">
+      <DependentUpon>MstCopyUserRightsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepInventoryForm.resx">
+      <DependentUpon>RepInventoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepInventoryReportForm.resx">
       <DependentUpon>RepInventoryReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepInventoryReportInventoryReportForm.resx">
-      <DependentUpon>RepInventoryReportInventoryReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepStockCountDetailReportForm.resx">
+      <DependentUpon>RepStockCountDetailReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepInventoryReportStockCountDetailReportForm.resx">
-      <DependentUpon>RepInventoryReportStockCountDetailReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepStockInDetailReportForm.resx">
+      <DependentUpon>RepStockInDetailReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepInventoryReportStockInDetailReportForm.resx">
-      <DependentUpon>RepInventoryReportStockInDetailReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepStockOutDetailReportForm.resx">
+      <DependentUpon>RepStockOutDetailReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepInventoryReportStockOutDetailReportForm.resx">
-      <DependentUpon>RepInventoryReportStockOutDetailReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\RepRemittanceReport\RepRemittanceForm.resx">
+      <DependentUpon>RepRemittanceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepRemittanceReport\RepRemittanceReportForm.resx">
       <DependentUpon>RepRemittanceReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\RepRemittanceReport\RepRemittanceReportRemittanceReportForm.resx">
-      <DependentUpon>RepRemittanceReportRemittanceReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepCollectionDetailReportForm.resx">
+      <DependentUpon>RepCollectionDetailReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportCollectionDetailReportForm.resx">
-      <DependentUpon>RepSalesReportCollectionDetailReportForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportCollectionSummaryReport.resx">
-      <DependentUpon>RepSalesReportCollectionSummaryReport.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepCollectionSummaryReport.resx">
+      <DependentUpon>RepCollectionSummaryReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportForm.resx">
       <DependentUpon>RepSalesReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportTopSellingItemsReportForm.resx">
-      <DependentUpon>RepSalesReportTopSellingItemsReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepTopSellingItemsReportForm.resx">
+      <DependentUpon>RepTopSellingItemsReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportSalesDetailReportForm.resx">
-      <DependentUpon>RepSalesReportSalesDetailReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesDetailReportForm.resx">
+      <DependentUpon>RepSalesDetailReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportSalesSummaryReportForm.resx">
-      <DependentUpon>RepSalesReportSalesSummaryReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesSummaryReportForm.resx">
+      <DependentUpon>RepSalesSummaryReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportCancelSalesSummaryReportForm.resx">
-      <DependentUpon>RepSalesReportCancelSalesSummaryReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepCancelSalesSummaryReportForm.resx">
+      <DependentUpon>RepCancelSalesSummaryReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportCollectionDetailFacepayReportForm.resx">
-      <DependentUpon>RepSalesReportCollectionDetailFacepayReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepCollectionDetailFacepayReportForm.resx">
+      <DependentUpon>RepCollectionDetailFacepayReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSDeliveryReceiptReportForm.resx">
       <DependentUpon>TrnPOSDeliveryReceiptReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\SysKeyboard\SysKeyboardNumpadForm.resx">
-      <DependentUpon>SysKeyboardNumpadForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\SysKeyboard\SysNumpadForm.resx">
+      <DependentUpon>SysNumpadForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\SysSettings\SysSettingsForm.resx">
       <DependentUpon>SysSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\SysSystemTables\SysSystemTablesTerminalDetailForm.resx">
-      <DependentUpon>SysSystemTablesTerminalDetailForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\SysSystemTables\SysTerminalDetailForm.resx">
+      <DependentUpon>SysTerminalDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\SysSystemTables\SysSystemTablesPeriodDetailForm.resx">
-      <DependentUpon>SysSystemTablesPeriodDetailForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\SysSystemTables\SysPeriodDetailForm.resx">
+      <DependentUpon>SysPeriodDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\SysSystemTables\SysSystemTablesSupplierDetailForm.resx">
-      <DependentUpon>SysSystemTablesSupplierDetailForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\SysSystemTables\SysSupplierDetailForm.resx">
+      <DependentUpon>SysSupplierDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\SysSystemTables\SysSystemTablesUnitDetailForm.resx">
-      <DependentUpon>SysSystemTablesUnitDetailForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\SysSystemTables\SysUnitDetailForm.resx">
+      <DependentUpon>SysUnitDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\SysSystemTables\SysSystemTablesTaxDetailForm.resx">
-      <DependentUpon>SysSystemTablesTaxDetailForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\SysSystemTables\SysTaxDetailForm.resx">
+      <DependentUpon>SysTaxDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\SysSystemTables\SysSystemTablesPayTypeDetailForm .resx">
-      <DependentUpon>SysSystemTablesPayTypeDetailForm .cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\SysSystemTables\SysPayTypeDetailForm .resx">
+      <DependentUpon>SysPayTypeDetailForm .cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\SysSystemTables\SysSystemTablesAccountDetailForm.resx">
-      <DependentUpon>SysSystemTablesAccountDetailForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\SysSystemTables\SysAccountDetailForm.resx">
+      <DependentUpon>SysAccountDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\SysSystemTables\SysSystemTablesForm.resx">
       <DependentUpon>SysSystemTablesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\SysUtilities\SysUtilitiesListForm.resx">
-      <DependentUpon>SysUtilitiesListForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\SysUtilities\SysUtilitiesForm.resx">
+      <DependentUpon>SysUtilitiesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\SysUtilities\SysUtilitiesBarcodePrintingQuantity.resx">
-      <DependentUpon>SysUtilitiesBarcodePrintingQuantity.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\SysUtilities\SysBarcodePrintingQuantity.resx">
+      <DependentUpon>SysBarcodePrintingQuantity.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnDisbursement\TrnDisbursementDetailPrintForm.resx">
-      <DependentUpon>TrnDisbursementDetailPrintForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnDisbursement\TrnPrintDisbursementForm.resx">
+      <DependentUpon>TrnPrintDisbursementForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnDisbursement\TrnDisbursementDetailForm.resx">
       <DependentUpon>TrnDisbursementDetailForm.cs</DependentUpon>
@@ -1036,11 +1036,11 @@
     <EmbeddedResource Include="Forms\Software\TrnStockIn\TrnStockInDetailForm.resx">
       <DependentUpon>TrnStockInDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnStockIn\TrnStockInDetailSearchItemForm.resx">
-      <DependentUpon>TrnStockInDetailSearchItemForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnStockIn\TrnSearchItemForm.resx">
+      <DependentUpon>TrnSearchItemForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnStockIn\TrnStockInDetailStockInLineItemDetailForm.resx">
-      <DependentUpon>TrnStockInDetailStockInLineItemDetailForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnStockIn\TrnStockInLineItemDetailForm.resx">
+      <DependentUpon>TrnStockInLineItemDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnStockIn\TrnStockInListForm.resx">
       <DependentUpon>TrnStockInListForm.cs</DependentUpon>
@@ -1048,20 +1048,20 @@
     <EmbeddedResource Include="Forms\Software\TrnStockCount\TrnStockCountDetailForm.resx">
       <DependentUpon>TrnStockCountDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnStockCount\TrnStockCountDetailSearchItemForm.resx">
-      <DependentUpon>TrnStockCountDetailSearchItemForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnStockCount\TrnSearchItemForm.resx">
+      <DependentUpon>TrnSearchItemForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnStockCount\TrnStockCountDetailStockOutLineItemDetailForm.resx">
-      <DependentUpon>TrnStockCountDetailStockOutLineItemDetailForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnStockCount\TrnStockCountLineItemDetailForm.resx">
+      <DependentUpon>TrnStockCountLineItemDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnStockCount\TrnStockCountListForm.resx">
       <DependentUpon>TrnStockCountListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnStockOut\TrnStockOutDetailStockOutLineItemDetailForm.resx">
-      <DependentUpon>TrnStockOutDetailStockOutLineItemDetailForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnStockOut\TrnStockOutLineItemDetailForm.resx">
+      <DependentUpon>TrnStockOutLineItemDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnStockOut\TrnStockOutDetailSearchItemForm.resx">
-      <DependentUpon>TrnStockOutDetailSearchItemForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnStockOut\TrnSearchItemForm.resx">
+      <DependentUpon>TrnSearchItemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnStockOut\TrnStockOutDetailForm.resx">
       <DependentUpon>TrnStockOutDetailForm.cs</DependentUpon>
@@ -1072,11 +1072,11 @@
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSOfficialReceiptReportForm.resx">
       <DependentUpon>TrnPOSOfficialReceiptReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\RepPOSReport\RepPOSReportXReadingReportForm.resx">
-      <DependentUpon>RepPOSReportXReadingReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\RepPOSReport\RepXReadingReportForm.resx">
+      <DependentUpon>RepXReadingReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\RepPOSReport\RepPOSReportZReadingReportForm.resx">
-      <DependentUpon>RepPOSReportZReadingReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\RepPOSReport\RepZReadingReportForm.resx">
+      <DependentUpon>RepZReadingReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Data\easyposdb.dbml.layout">
       <DependentUpon>easyposdb.dbml</DependentUpon>
@@ -1127,7 +1127,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="AppSettings.json" />
     <None Include="Data\easyposdb.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>easyposdb.designer.cs</LastGenOutput>
@@ -1160,7 +1159,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="easypos cropped.ico" />
     <Content Include="newEasyposIcon.ico" />
     <Content Include="OpenCvSharpExtern.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

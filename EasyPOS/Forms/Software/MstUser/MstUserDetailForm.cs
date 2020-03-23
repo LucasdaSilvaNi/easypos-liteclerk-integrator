@@ -19,10 +19,10 @@ namespace EasyPOS.Forms.Software.MstUser
         public MstUserListForm mstUserListForm;
         public Entities.MstUserEntity mstUserEntity;
 
-        public static List<Entities.DgvUserDetailUserFormEntity> userFormData = new List<Entities.DgvUserDetailUserFormEntity>();
+        public static List<Entities.DgvMstUserFormListEntity> userFormData = new List<Entities.DgvMstUserFormListEntity>();
         public static Int32 userFormPageNumber = 1;
         public static Int32 userFormPageSize = 50;
-        public PagedList<Entities.DgvUserDetailUserFormEntity> userFormPageList = new PagedList<Entities.DgvUserDetailUserFormEntity>(userFormData, userFormPageNumber, userFormPageSize);
+        public PagedList<Entities.DgvMstUserFormListEntity> userFormPageList = new PagedList<Entities.DgvMstUserFormListEntity>(userFormData, userFormPageNumber, userFormPageSize);
         public BindingSource userFormDataSource = new BindingSource();
 
         public MstUserDetailForm(SysSoftwareForm softwareForm, MstUserListForm userListForm, Entities.MstUserEntity userEntity)
@@ -157,11 +157,11 @@ namespace EasyPOS.Forms.Software.MstUser
 
         public async void SetUserFormListDataSourceAsync()
         {
-            List<Entities.DgvUserDetailUserFormEntity> getUserFormListData = await GetUserFormListDataTask();
+            List<Entities.DgvMstUserFormListEntity> getUserFormListData = await GetUserFormListDataTask();
             if (getUserFormListData.Any())
             {
                 userFormData = getUserFormListData;
-                userFormPageList = new PagedList<Entities.DgvUserDetailUserFormEntity>(userFormData, userFormPageNumber, userFormPageSize);
+                userFormPageList = new PagedList<Entities.DgvMstUserFormListEntity>(userFormData, userFormPageNumber, userFormPageSize);
 
                 if (userFormPageList.PageCount == 1)
                 {
@@ -204,13 +204,13 @@ namespace EasyPOS.Forms.Software.MstUser
 
                 userFormPageNumber = 1;
 
-                userFormData = new List<Entities.DgvUserDetailUserFormEntity>();
+                userFormData = new List<Entities.DgvMstUserFormListEntity>();
                 userFormDataSource.Clear();
                 textBoxUserFormListPageNumber.Text = "1 / 1";
             }
         }
 
-        public Task<List<Entities.DgvUserDetailUserFormEntity>> GetUserFormListDataTask()
+        public Task<List<Entities.DgvMstUserFormListEntity>> GetUserFormListDataTask()
         {
             Controllers.MstUserFormController trnUserFormController = new Controllers.MstUserFormController();
 
@@ -218,7 +218,7 @@ namespace EasyPOS.Forms.Software.MstUser
             if (listUserForm.Any())
             {
                 var items = from d in listUserForm
-                            select new Entities.DgvUserDetailUserFormEntity
+                            select new Entities.DgvMstUserFormListEntity
                             {
                                 ColumnUserFormListButtonEdit = "Edit",
                                 ColumnUserFormListButtonDelete = "Delete",
@@ -245,7 +245,7 @@ namespace EasyPOS.Forms.Software.MstUser
             }
             else
             {
-                return Task.FromResult(new List<Entities.DgvUserDetailUserFormEntity>());
+                return Task.FromResult(new List<Entities.DgvMstUserFormListEntity>());
             }
         }
 
@@ -317,7 +317,7 @@ namespace EasyPOS.Forms.Software.MstUser
                     CanReturn = canReturn
                 };
 
-                MstUserDetailUserFormDetailForm mstUserDetailUserFormDetailForm = new MstUserDetailUserFormDetailForm(this, mstUserFormEntity);
+                MstUserFormDetailForm mstUserDetailUserFormDetailForm = new MstUserFormDetailForm(this, mstUserFormEntity);
                 mstUserDetailUserFormDetailForm.ShowDialog();
             }
 
@@ -345,7 +345,7 @@ namespace EasyPOS.Forms.Software.MstUser
 
         private void buttonUserFormListPageListFirst_Click(object sender, EventArgs e)
         {
-            userFormPageList = new PagedList<Entities.DgvUserDetailUserFormEntity>(userFormData, 1, userFormPageSize);
+            userFormPageList = new PagedList<Entities.DgvMstUserFormListEntity>(userFormData, 1, userFormPageSize);
             userFormDataSource.DataSource = userFormPageList;
 
             buttonUserFormListPageListFirst.Enabled = false;
@@ -361,7 +361,7 @@ namespace EasyPOS.Forms.Software.MstUser
         {
             if (userFormPageList.HasPreviousPage == true)
             {
-                userFormPageList = new PagedList<Entities.DgvUserDetailUserFormEntity>(userFormData, --userFormPageNumber, userFormPageSize);
+                userFormPageList = new PagedList<Entities.DgvMstUserFormListEntity>(userFormData, --userFormPageNumber, userFormPageSize);
                 userFormDataSource.DataSource = userFormPageList;
             }
 
@@ -381,7 +381,7 @@ namespace EasyPOS.Forms.Software.MstUser
         {
             if (userFormPageList.HasNextPage == true)
             {
-                userFormPageList = new PagedList<Entities.DgvUserDetailUserFormEntity>(userFormData, ++userFormPageNumber, userFormPageSize);
+                userFormPageList = new PagedList<Entities.DgvMstUserFormListEntity>(userFormData, ++userFormPageNumber, userFormPageSize);
                 userFormDataSource.DataSource = userFormPageList;
             }
 
@@ -399,7 +399,7 @@ namespace EasyPOS.Forms.Software.MstUser
 
         private void buttonUserFormListPageListLast_Click(object sender, EventArgs e)
         {
-            userFormPageList = new PagedList<Entities.DgvUserDetailUserFormEntity>(userFormData, userFormPageList.PageCount, userFormPageSize);
+            userFormPageList = new PagedList<Entities.DgvMstUserFormListEntity>(userFormData, userFormPageList.PageCount, userFormPageSize);
             userFormDataSource.DataSource = userFormPageList;
 
             buttonUserFormListPageListFirst.Enabled = true;
@@ -434,13 +434,13 @@ namespace EasyPOS.Forms.Software.MstUser
                 CanReturn = false
             };
 
-            MstUserDetailUserFormDetailForm mstUserDetailUserFormDetailForm = new MstUserDetailUserFormDetailForm(this, mstUserFormEntity);
+            MstUserFormDetailForm mstUserDetailUserFormDetailForm = new MstUserFormDetailForm(this, mstUserFormEntity);
             mstUserDetailUserFormDetailForm.ShowDialog();
         }
 
         private void buttonCopyUseRights_Click(object sender, EventArgs e)
         {
-            MstUserCopyUserRightsForm mstUserCopyUserRightsForm = new MstUserCopyUserRightsForm(this, mstUserEntity.Id);
+            MstCopyUserRightsForm mstUserCopyUserRightsForm = new MstCopyUserRightsForm(this, mstUserEntity.Id);
             mstUserCopyUserRightsForm.ShowDialog();
         }
     }

@@ -15,7 +15,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
 
-        public List<Entities.DgvSalesListSalesEntity> salesList;
+        public List<Entities.DgvTrnSalesListEntity> salesList;
 
         public BindingSource dataOpenSalesListSource = new BindingSource();
         public BindingSource dataBilledOutSalesListSource = new BindingSource();
@@ -311,18 +311,18 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
         }
 
-        public async Task<List<Entities.DgvSalesListSalesEntity>> GetSalesListDataTask(DateTime salesDate, Int32 terminalId, String filter)
+        public async Task<List<Entities.DgvTrnSalesListEntity>> GetSalesListDataTask(DateTime salesDate, Int32 terminalId, String filter)
         {
             return await Task.Factory.StartNew(() =>
             {
-                List<Entities.DgvSalesListSalesEntity> rowList = new List<Entities.DgvSalesListSalesEntity>();
+                List<Entities.DgvTrnSalesListEntity> rowList = new List<Entities.DgvTrnSalesListEntity>();
 
                 Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
                 var salesList = trnPOSSalesController.POSTTouchListSales(salesDate, terminalId);
                 if (salesList.Any())
                 {
                     var row = from d in salesList
-                              select new Entities.DgvSalesListSalesEntity
+                              select new Entities.DgvTrnSalesListEntity
                               {
                                   ColumnEdit = "Edit",
                                   ColumnDelete = "Delete",

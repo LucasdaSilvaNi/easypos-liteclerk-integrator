@@ -17,9 +17,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
 
-        public List<Entities.DgvSalesListSalesEntity> salesList;
+        public List<Entities.DgvTrnSalesListEntity> salesList;
         public BindingSource dataSalesListSource = new BindingSource();
-        public PagedList<Entities.DgvSalesListSalesEntity> pageList;
+        public PagedList<Entities.DgvTrnSalesListEntity> pageList;
         public Int32 pageNumber = 1;
         public Int32 pageSize = 50;
         public Boolean isAutoRefresh = false;
@@ -166,7 +166,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 dataGridViewSalesList.BeginInvoke((MethodInvoker)delegate ()
                 {
-                    pageList = new PagedList<Entities.DgvSalesListSalesEntity>(salesList, pageNumber, pageSize);
+                    pageList = new PagedList<Entities.DgvTrnSalesListEntity>(salesList, pageNumber, pageSize);
 
                     if (pageList.PageCount == 1)
                     {
@@ -217,18 +217,18 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
         }
 
-        public async Task<List<Entities.DgvSalesListSalesEntity>> GetSalesListDataTask(DateTime salesDate, Int32 terminalId, String filter)
+        public async Task<List<Entities.DgvTrnSalesListEntity>> GetSalesListDataTask(DateTime salesDate, Int32 terminalId, String filter)
         {
             return await Task.Factory.StartNew(() =>
             {
-                List<Entities.DgvSalesListSalesEntity> rowList = new List<Entities.DgvSalesListSalesEntity>();
+                List<Entities.DgvTrnSalesListEntity> rowList = new List<Entities.DgvTrnSalesListEntity>();
 
                 Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
                 var salesList = trnPOSSalesController.ListSales(salesDate, terminalId, filter);
                 if (salesList.Any())
                 {
                     var row = from d in salesList
-                              select new Entities.DgvSalesListSalesEntity
+                              select new Entities.DgvTrnSalesListEntity
                               {
                                   ColumnEdit = "Edit",
                                   ColumnDelete = "Delete",
@@ -627,7 +627,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonSalesListPageListFirst_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvSalesListSalesEntity>(salesList, 1, pageSize);
+            pageList = new PagedList<Entities.DgvTrnSalesListEntity>(salesList, 1, pageSize);
             dataSalesListSource.DataSource = pageList;
 
             buttonSalesListPageListFirst.Enabled = false;
@@ -643,7 +643,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             if (pageList.HasPreviousPage == true)
             {
-                pageList = new PagedList<Entities.DgvSalesListSalesEntity>(salesList, --pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvTrnSalesListEntity>(salesList, --pageNumber, pageSize);
                 dataSalesListSource.DataSource = pageList;
             }
 
@@ -663,7 +663,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             if (pageList.HasNextPage == true)
             {
-                pageList = new PagedList<Entities.DgvSalesListSalesEntity>(salesList, ++pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvTrnSalesListEntity>(salesList, ++pageNumber, pageSize);
                 dataSalesListSource.DataSource = pageList;
             }
 
@@ -681,7 +681,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonSalesListPageListLast_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvSalesListSalesEntity>(salesList, pageList.PageCount, pageSize);
+            pageList = new PagedList<Entities.DgvTrnSalesListEntity>(salesList, pageList.PageCount, pageSize);
             dataSalesListSource.DataSource = pageList;
 
             buttonSalesListPageListFirst.Enabled = true;

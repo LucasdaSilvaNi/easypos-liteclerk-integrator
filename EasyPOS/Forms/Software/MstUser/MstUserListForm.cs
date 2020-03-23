@@ -16,10 +16,10 @@ namespace EasyPOS.Forms.Software.MstUser
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
 
-        public static List<Entities.DgvUserListUserEntity> userListData = new List<Entities.DgvUserListUserEntity>();
+        public static List<Entities.DgvMstUserListEntity> userListData = new List<Entities.DgvMstUserListEntity>();
         public static Int32 pageNumber = 1;
         public static Int32 pageSize = 50;
-        public PagedList<Entities.DgvUserListUserEntity> userListPageList = new PagedList<Entities.DgvUserListUserEntity>(userListData, pageNumber, pageSize);
+        public PagedList<Entities.DgvMstUserListEntity> userListPageList = new PagedList<Entities.DgvMstUserListEntity>(userListData, pageNumber, pageSize);
         public BindingSource userListDataSource = new BindingSource();
 
         public MstUserListForm(SysSoftwareForm softwareForm)
@@ -60,11 +60,11 @@ namespace EasyPOS.Forms.Software.MstUser
 
         public async void SetUserListDataSourceAsync()
         {
-            List<Entities.DgvUserListUserEntity> getUserListData = await GetUserListDataTask();
+            List<Entities.DgvMstUserListEntity> getUserListData = await GetUserListDataTask();
             if (getUserListData.Any())
             {
                 userListData = getUserListData;
-                userListPageList = new PagedList<Entities.DgvUserListUserEntity>(userListData, pageNumber, pageSize);
+                userListPageList = new PagedList<Entities.DgvMstUserListEntity>(userListData, pageNumber, pageSize);
 
                 if (userListPageList.PageCount == 1)
                 {
@@ -112,7 +112,7 @@ namespace EasyPOS.Forms.Software.MstUser
             }
         }
 
-        public Task<List<Entities.DgvUserListUserEntity>> GetUserListDataTask()
+        public Task<List<Entities.DgvMstUserListEntity>> GetUserListDataTask()
         {
             String filter = textBoxUserListFilter.Text;
             Controllers.MstUserController mstUserController = new Controllers.MstUserController();
@@ -121,7 +121,7 @@ namespace EasyPOS.Forms.Software.MstUser
             if (listUser.Any())
             {
                 var users = from d in listUser
-                            select new Entities.DgvUserListUserEntity
+                            select new Entities.DgvMstUserListEntity
                             {
                                 ColumnUserListButtonEdit = "Edit",
                                 ColumnUserListButtonDelete = "Delete",
@@ -135,7 +135,7 @@ namespace EasyPOS.Forms.Software.MstUser
             }
             else
             {
-                return Task.FromResult(new List<Entities.DgvUserListUserEntity>());
+                return Task.FromResult(new List<Entities.DgvMstUserListEntity>());
             }
         }
 
@@ -248,7 +248,7 @@ namespace EasyPOS.Forms.Software.MstUser
 
         private void buttonUserListPageListFirst_Click(object sender, EventArgs e)
         {
-            userListPageList = new PagedList<Entities.DgvUserListUserEntity>(userListData, 1, pageSize);
+            userListPageList = new PagedList<Entities.DgvMstUserListEntity>(userListData, 1, pageSize);
             userListDataSource.DataSource = userListPageList;
 
             buttonUserListPageListFirst.Enabled = false;
@@ -264,7 +264,7 @@ namespace EasyPOS.Forms.Software.MstUser
         {
             if (userListPageList.HasPreviousPage == true)
             {
-                userListPageList = new PagedList<Entities.DgvUserListUserEntity>(userListData, --pageNumber, pageSize);
+                userListPageList = new PagedList<Entities.DgvMstUserListEntity>(userListData, --pageNumber, pageSize);
                 userListDataSource.DataSource = userListPageList;
             }
 
@@ -284,7 +284,7 @@ namespace EasyPOS.Forms.Software.MstUser
         {
             if (userListPageList.HasNextPage == true)
             {
-                userListPageList = new PagedList<Entities.DgvUserListUserEntity>(userListData, ++pageNumber, pageSize);
+                userListPageList = new PagedList<Entities.DgvMstUserListEntity>(userListData, ++pageNumber, pageSize);
                 userListDataSource.DataSource = userListPageList;
             }
 
@@ -302,7 +302,7 @@ namespace EasyPOS.Forms.Software.MstUser
 
         private void buttonUserListPageListLast_Click(object sender, EventArgs e)
         {
-            userListPageList = new PagedList<Entities.DgvUserListUserEntity>(userListData, userListPageList.PageCount, pageSize);
+            userListPageList = new PagedList<Entities.DgvMstUserListEntity>(userListData, userListPageList.PageCount, pageSize);
             userListDataSource.DataSource = userListPageList;
 
             buttonUserListPageListFirst.Enabled = true;

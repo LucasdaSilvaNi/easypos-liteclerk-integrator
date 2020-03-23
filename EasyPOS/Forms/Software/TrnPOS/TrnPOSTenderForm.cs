@@ -73,10 +73,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
             else
             {
-                List<Entities.DgvSalesDetailTenderPayTypeEntity> payTypes = new List<Entities.DgvSalesDetailTenderPayTypeEntity>();
+                List<Entities.DgvTrnSalesTenderPayTypeListEntity> payTypes = new List<Entities.DgvTrnSalesTenderPayTypeListEntity>();
                 foreach (DataGridViewRow row in dataGridViewTenderPayType.Rows)
                 {
-                    payTypes.Add(new Entities.DgvSalesDetailTenderPayTypeEntity()
+                    payTypes.Add(new Entities.DgvTrnSalesTenderPayTypeListEntity()
                     {
                         Code = row.Cells[1].Value.ToString(),
                         PayType = row.Cells[2].Value.ToString(),
@@ -463,7 +463,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             if (e.RowIndex > -1 && dataGridViewTenderPayType.CurrentCell.ColumnIndex == dataGridViewTenderPayType.Columns["ColumnTenderListNumpad"].Index)
             {
-                SysKeyboard.SysKeyboardNumpadForm sysKeyboardNumpadForm = new SysKeyboard.SysKeyboardNumpadForm(this, dataGridViewTenderPayType);
+                SysKeyboard.SysNumpadForm sysKeyboardNumpadForm = new SysKeyboard.SysNumpadForm(this, dataGridViewTenderPayType);
                 sysKeyboardNumpadForm.ShowDialog();
             }
         }

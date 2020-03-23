@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSBarcodeForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonTender = new System.Windows.Forms.Button();
@@ -47,6 +47,21 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonSales = new System.Windows.Forms.Button();
             this.dataGridViewSalesList = new System.Windows.Forms.DataGridView();
+            this.ColumnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnRececiptInvoiceNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnIsTendered = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnIsCancelled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnSpace = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.labelReceiptInvoiceNumber = new System.Windows.Forms.Label();
@@ -78,21 +93,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBoxLastChange = new System.Windows.Forms.TextBox();
             this.labelLastChange = new System.Windows.Forms.Label();
-            this.ColumnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnRececiptInvoiceNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnIsTendered = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnIsCancelled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnSpace = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesList)).BeginInit();
@@ -186,9 +186,9 @@
             this.label1.Location = new System.Drawing.Point(63, 17);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 35);
+            this.label1.Size = new System.Drawing.Size(74, 35);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Sales List";
+            this.label1.Text = "Sales";
             // 
             // buttonClose
             // 
@@ -260,6 +260,138 @@
             this.dataGridViewSalesList.Size = new System.Drawing.Size(900, 536);
             this.dataGridViewSalesList.TabIndex = 4;
             this.dataGridViewSalesList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesList_CellClick);
+            // 
+            // ColumnEdit
+            // 
+            this.ColumnEdit.DataPropertyName = "ColumnEdit";
+            this.ColumnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnEdit.Frozen = true;
+            this.ColumnEdit.HeaderText = "";
+            this.ColumnEdit.Name = "ColumnEdit";
+            this.ColumnEdit.ReadOnly = true;
+            this.ColumnEdit.Width = 70;
+            // 
+            // ColumnDelete
+            // 
+            this.ColumnDelete.DataPropertyName = "ColumnDelete";
+            this.ColumnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnDelete.Frozen = true;
+            this.ColumnDelete.HeaderText = "";
+            this.ColumnDelete.Name = "ColumnDelete";
+            this.ColumnDelete.ReadOnly = true;
+            this.ColumnDelete.Width = 70;
+            // 
+            // ColumnId
+            // 
+            this.ColumnId.DataPropertyName = "ColumnId";
+            this.ColumnId.HeaderText = "Id";
+            this.ColumnId.Name = "ColumnId";
+            this.ColumnId.ReadOnly = true;
+            this.ColumnId.Visible = false;
+            // 
+            // ColumnTerminal
+            // 
+            this.ColumnTerminal.DataPropertyName = "ColumnTerminal";
+            this.ColumnTerminal.HeaderText = "Terminal";
+            this.ColumnTerminal.Name = "ColumnTerminal";
+            this.ColumnTerminal.ReadOnly = true;
+            this.ColumnTerminal.Width = 70;
+            // 
+            // ColumnSalesDate
+            // 
+            this.ColumnSalesDate.DataPropertyName = "ColumnSalesDate";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesDate.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColumnSalesDate.HeaderText = "Order Date";
+            this.ColumnSalesDate.Name = "ColumnSalesDate";
+            this.ColumnSalesDate.ReadOnly = true;
+            this.ColumnSalesDate.Width = 95;
+            // 
+            // ColumnSalesNumber
+            // 
+            this.ColumnSalesNumber.DataPropertyName = "ColumnSalesNumber";
+            this.ColumnSalesNumber.HeaderText = "Order No.";
+            this.ColumnSalesNumber.Name = "ColumnSalesNumber";
+            this.ColumnSalesNumber.ReadOnly = true;
+            // 
+            // ColumnRececiptInvoiceNumber
+            // 
+            this.ColumnRececiptInvoiceNumber.DataPropertyName = "ColumnRececiptInvoiceNumber";
+            this.ColumnRececiptInvoiceNumber.HeaderText = "Receipt / Invoice No.";
+            this.ColumnRececiptInvoiceNumber.Name = "ColumnRececiptInvoiceNumber";
+            this.ColumnRececiptInvoiceNumber.ReadOnly = true;
+            // 
+            // ColumnCustomer
+            // 
+            this.ColumnCustomer.DataPropertyName = "ColumnCustomer";
+            this.ColumnCustomer.HeaderText = "Customer";
+            this.ColumnCustomer.Name = "ColumnCustomer";
+            this.ColumnCustomer.ReadOnly = true;
+            this.ColumnCustomer.Width = 130;
+            // 
+            // ColumnSalesAgent
+            // 
+            this.ColumnSalesAgent.DataPropertyName = "ColumnSalesAgent";
+            this.ColumnSalesAgent.HeaderText = "Order Taker";
+            this.ColumnSalesAgent.Name = "ColumnSalesAgent";
+            this.ColumnSalesAgent.ReadOnly = true;
+            this.ColumnSalesAgent.Width = 120;
+            // 
+            // ColumnAmount
+            // 
+            this.ColumnAmount.DataPropertyName = "ColumnAmount";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnAmount.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnAmount.HeaderText = "Amount";
+            this.ColumnAmount.Name = "ColumnAmount";
+            this.ColumnAmount.ReadOnly = true;
+            this.ColumnAmount.Width = 120;
+            // 
+            // ColumnIsLocked
+            // 
+            this.ColumnIsLocked.DataPropertyName = "ColumnIsLocked";
+            this.ColumnIsLocked.HeaderText = "L";
+            this.ColumnIsLocked.Name = "ColumnIsLocked";
+            this.ColumnIsLocked.ReadOnly = true;
+            this.ColumnIsLocked.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnIsLocked.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnIsLocked.Width = 35;
+            // 
+            // ColumnIsTendered
+            // 
+            this.ColumnIsTendered.DataPropertyName = "ColumnIsTendered";
+            this.ColumnIsTendered.HeaderText = "T";
+            this.ColumnIsTendered.Name = "ColumnIsTendered";
+            this.ColumnIsTendered.ReadOnly = true;
+            this.ColumnIsTendered.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnIsTendered.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnIsTendered.Width = 35;
+            // 
+            // ColumnIsCancelled
+            // 
+            this.ColumnIsCancelled.DataPropertyName = "ColumnIsCancelled";
+            this.ColumnIsCancelled.HeaderText = "C";
+            this.ColumnIsCancelled.Name = "ColumnIsCancelled";
+            this.ColumnIsCancelled.ReadOnly = true;
+            this.ColumnIsCancelled.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnIsCancelled.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnIsCancelled.Width = 35;
+            // 
+            // ColumnSpace
+            // 
+            this.ColumnSpace.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnSpace.DataPropertyName = "ColumnSpace";
+            this.ColumnSpace.HeaderText = "";
+            this.ColumnSpace.Name = "ColumnSpace";
+            this.ColumnSpace.ReadOnly = true;
+            // 
+            // ColumnTable
+            // 
+            this.ColumnTable.DataPropertyName = "ColumnTable";
+            this.ColumnTable.HeaderText = "Table";
+            this.ColumnTable.Name = "ColumnTable";
+            this.ColumnTable.ReadOnly = true;
+            this.ColumnTable.Visible = false;
             // 
             // panel2
             // 
@@ -651,139 +783,7 @@
             this.labelLastChange.TabIndex = 14;
             this.labelLastChange.Text = "Last Change:";
             // 
-            // ColumnEdit
-            // 
-            this.ColumnEdit.DataPropertyName = "ColumnEdit";
-            this.ColumnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnEdit.Frozen = true;
-            this.ColumnEdit.HeaderText = "";
-            this.ColumnEdit.Name = "ColumnEdit";
-            this.ColumnEdit.ReadOnly = true;
-            this.ColumnEdit.Width = 70;
-            // 
-            // ColumnDelete
-            // 
-            this.ColumnDelete.DataPropertyName = "ColumnDelete";
-            this.ColumnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnDelete.Frozen = true;
-            this.ColumnDelete.HeaderText = "";
-            this.ColumnDelete.Name = "ColumnDelete";
-            this.ColumnDelete.ReadOnly = true;
-            this.ColumnDelete.Width = 70;
-            // 
-            // ColumnId
-            // 
-            this.ColumnId.DataPropertyName = "ColumnId";
-            this.ColumnId.HeaderText = "Id";
-            this.ColumnId.Name = "ColumnId";
-            this.ColumnId.ReadOnly = true;
-            this.ColumnId.Visible = false;
-            // 
-            // ColumnTerminal
-            // 
-            this.ColumnTerminal.DataPropertyName = "ColumnTerminal";
-            this.ColumnTerminal.HeaderText = "Terminal";
-            this.ColumnTerminal.Name = "ColumnTerminal";
-            this.ColumnTerminal.ReadOnly = true;
-            this.ColumnTerminal.Width = 70;
-            // 
-            // ColumnSalesDate
-            // 
-            this.ColumnSalesDate.DataPropertyName = "ColumnSalesDate";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesDate.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColumnSalesDate.HeaderText = "Order Date";
-            this.ColumnSalesDate.Name = "ColumnSalesDate";
-            this.ColumnSalesDate.ReadOnly = true;
-            this.ColumnSalesDate.Width = 95;
-            // 
-            // ColumnSalesNumber
-            // 
-            this.ColumnSalesNumber.DataPropertyName = "ColumnSalesNumber";
-            this.ColumnSalesNumber.HeaderText = "Order No.";
-            this.ColumnSalesNumber.Name = "ColumnSalesNumber";
-            this.ColumnSalesNumber.ReadOnly = true;
-            // 
-            // ColumnRececiptInvoiceNumber
-            // 
-            this.ColumnRececiptInvoiceNumber.DataPropertyName = "ColumnRececiptInvoiceNumber";
-            this.ColumnRececiptInvoiceNumber.HeaderText = "Receipt / Invoice No.";
-            this.ColumnRececiptInvoiceNumber.Name = "ColumnRececiptInvoiceNumber";
-            this.ColumnRececiptInvoiceNumber.ReadOnly = true;
-            // 
-            // ColumnCustomer
-            // 
-            this.ColumnCustomer.DataPropertyName = "ColumnCustomer";
-            this.ColumnCustomer.HeaderText = "Customer";
-            this.ColumnCustomer.Name = "ColumnCustomer";
-            this.ColumnCustomer.ReadOnly = true;
-            this.ColumnCustomer.Width = 130;
-            // 
-            // ColumnSalesAgent
-            // 
-            this.ColumnSalesAgent.DataPropertyName = "ColumnSalesAgent";
-            this.ColumnSalesAgent.HeaderText = "Order Taker";
-            this.ColumnSalesAgent.Name = "ColumnSalesAgent";
-            this.ColumnSalesAgent.ReadOnly = true;
-            this.ColumnSalesAgent.Width = 120;
-            // 
-            // ColumnAmount
-            // 
-            this.ColumnAmount.DataPropertyName = "ColumnAmount";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnAmount.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnAmount.HeaderText = "Amount";
-            this.ColumnAmount.Name = "ColumnAmount";
-            this.ColumnAmount.ReadOnly = true;
-            this.ColumnAmount.Width = 120;
-            // 
-            // ColumnIsLocked
-            // 
-            this.ColumnIsLocked.DataPropertyName = "ColumnIsLocked";
-            this.ColumnIsLocked.HeaderText = "L";
-            this.ColumnIsLocked.Name = "ColumnIsLocked";
-            this.ColumnIsLocked.ReadOnly = true;
-            this.ColumnIsLocked.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnIsLocked.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColumnIsLocked.Width = 35;
-            // 
-            // ColumnIsTendered
-            // 
-            this.ColumnIsTendered.DataPropertyName = "ColumnIsTendered";
-            this.ColumnIsTendered.HeaderText = "T";
-            this.ColumnIsTendered.Name = "ColumnIsTendered";
-            this.ColumnIsTendered.ReadOnly = true;
-            this.ColumnIsTendered.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnIsTendered.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColumnIsTendered.Width = 35;
-            // 
-            // ColumnIsCancelled
-            // 
-            this.ColumnIsCancelled.DataPropertyName = "ColumnIsCancelled";
-            this.ColumnIsCancelled.HeaderText = "C";
-            this.ColumnIsCancelled.Name = "ColumnIsCancelled";
-            this.ColumnIsCancelled.ReadOnly = true;
-            this.ColumnIsCancelled.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnIsCancelled.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColumnIsCancelled.Width = 35;
-            // 
-            // ColumnSpace
-            // 
-            this.ColumnSpace.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnSpace.DataPropertyName = "ColumnSpace";
-            this.ColumnSpace.HeaderText = "";
-            this.ColumnSpace.Name = "ColumnSpace";
-            this.ColumnSpace.ReadOnly = true;
-            // 
-            // ColumnTable
-            // 
-            this.ColumnTable.DataPropertyName = "ColumnTable";
-            this.ColumnTable.HeaderText = "Table";
-            this.ColumnTable.Name = "ColumnTable";
-            this.ColumnTable.ReadOnly = true;
-            this.ColumnTable.Visible = false;
-            // 
-            // TrnSalesListForm
+            // TrnPOSBarcodeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -794,7 +794,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "TrnSalesListForm";
+            this.Name = "TrnPOSBarcodeForm";
             this.Text = "Sales List";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

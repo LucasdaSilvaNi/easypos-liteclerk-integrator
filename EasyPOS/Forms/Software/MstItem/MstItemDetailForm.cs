@@ -22,12 +22,12 @@ namespace EasyPOS.Forms.Software.MstItem
         public static Int32 pageSize = 50;
         public static Int32 pageNumber = 1;
 
-        public static List<Entities.DgvItemDetailItemPriceListEntity> itemPriceListData = new List<Entities.DgvItemDetailItemPriceListEntity>();
-        public PagedList<Entities.DgvItemDetailItemPriceListEntity> itemPriceListPageList = new PagedList<Entities.DgvItemDetailItemPriceListEntity>(itemPriceListData, pageNumber, pageSize);
+        public static List<Entities.DgvMstItemPriceListEntity> itemPriceListData = new List<Entities.DgvMstItemPriceListEntity>();
+        public PagedList<Entities.DgvMstItemPriceListEntity> itemPriceListPageList = new PagedList<Entities.DgvMstItemPriceListEntity>(itemPriceListData, pageNumber, pageSize);
         public BindingSource itemPriceListDataSource = new BindingSource();
 
-        public static List<Entities.DgvMstItemComponentEntity> itemComponentListData = new List<Entities.DgvMstItemComponentEntity>();
-        public PagedList<Entities.DgvMstItemComponentEntity> itemComponentListPageList = new PagedList<Entities.DgvMstItemComponentEntity>(itemComponentListData, pageNumber, pageSize);
+        public static List<Entities.DgvMstItemComponentListEntity> itemComponentListData = new List<Entities.DgvMstItemComponentListEntity>();
+        public PagedList<Entities.DgvMstItemComponentListEntity> itemComponentListPageList = new PagedList<Entities.DgvMstItemComponentListEntity>(itemComponentListData, pageNumber, pageSize);
         public BindingSource itemComponentListDataSource = new BindingSource();
 
         public Boolean hasComponents = false;
@@ -352,11 +352,11 @@ namespace EasyPOS.Forms.Software.MstItem
 
         public async void SetItemPriceListDataSourceAsync()
         {
-            List<Entities.DgvItemDetailItemPriceListEntity> getItemPriceListData = await GetItemPriceListDataTask();
+            List<Entities.DgvMstItemPriceListEntity> getItemPriceListData = await GetItemPriceListDataTask();
             if (getItemPriceListData.Any())
             {
                 itemPriceListData = getItemPriceListData;
-                itemPriceListPageList = new PagedList<Entities.DgvItemDetailItemPriceListEntity>(itemPriceListData, pageNumber, pageSize);
+                itemPriceListPageList = new PagedList<Entities.DgvMstItemPriceListEntity>(itemPriceListData, pageNumber, pageSize);
 
                 if (itemPriceListPageList.PageCount == 1)
                 {
@@ -399,20 +399,20 @@ namespace EasyPOS.Forms.Software.MstItem
 
                 pageNumber = 1;
 
-                itemPriceListData = new List<Entities.DgvItemDetailItemPriceListEntity>();
+                itemPriceListData = new List<Entities.DgvMstItemPriceListEntity>();
                 itemPriceListDataSource.Clear();
                 textBoxItemPriceListPageNumber.Text = "1 / 1";
             }
         }
 
-        public Task<List<Entities.DgvItemDetailItemPriceListEntity>> GetItemPriceListDataTask()
+        public Task<List<Entities.DgvMstItemPriceListEntity>> GetItemPriceListDataTask()
         {
             Controllers.MstItemPriceController mstItemPriceController = new Controllers.MstItemPriceController();
             List<Entities.MstItemPriceEntity> listItemPrice = mstItemPriceController.ListItemPrice(mstItemEntity.Id);
             if (listItemPrice.Any())
             {
                 var itemPrices = from d in listItemPrice
-                                 select new Entities.DgvItemDetailItemPriceListEntity
+                                 select new Entities.DgvMstItemPriceListEntity
                                  {
                                      ColumnItemPriceListButtonEdit = "Edit",
                                      ColumnItemPriceListButtonDelete = "Delete",
@@ -426,7 +426,7 @@ namespace EasyPOS.Forms.Software.MstItem
             }
             else
             {
-                return Task.FromResult(new List<Entities.DgvItemDetailItemPriceListEntity>());
+                return Task.FromResult(new List<Entities.DgvMstItemPriceListEntity>());
             }
         }
 
@@ -471,7 +471,7 @@ namespace EasyPOS.Forms.Software.MstItem
                     TriggerQuantity = Convert.ToDecimal(dataGridViewItemPriceList.Rows[e.RowIndex].Cells[dataGridViewItemPriceList.Columns["ColumnItemPriceListTriggerQuantity"].Index].Value)
                 };
 
-                MstItemDetailItemPriceDetailForm sysSystemTablesItemPriceDetailForm = new MstItemDetailItemPriceDetailForm(this, selectedItemPrice);
+                MstItemPriceDetailForm sysSystemTablesItemPriceDetailForm = new MstItemPriceDetailForm(this, selectedItemPrice);
                 sysSystemTablesItemPriceDetailForm.ShowDialog();
             }
 
@@ -505,7 +505,7 @@ namespace EasyPOS.Forms.Software.MstItem
 
         private void buttonItemPriceListPageListFirst_Click(object sender, EventArgs e)
         {
-            itemPriceListPageList = new PagedList<Entities.DgvItemDetailItemPriceListEntity>(itemPriceListData, 1, pageSize);
+            itemPriceListPageList = new PagedList<Entities.DgvMstItemPriceListEntity>(itemPriceListData, 1, pageSize);
             itemPriceListDataSource.DataSource = itemPriceListPageList;
 
             buttonItemPriceListPageListFirst.Enabled = false;
@@ -521,7 +521,7 @@ namespace EasyPOS.Forms.Software.MstItem
         {
             if (itemPriceListPageList.HasPreviousPage == true)
             {
-                itemPriceListPageList = new PagedList<Entities.DgvItemDetailItemPriceListEntity>(itemPriceListData, --pageNumber, pageSize);
+                itemPriceListPageList = new PagedList<Entities.DgvMstItemPriceListEntity>(itemPriceListData, --pageNumber, pageSize);
                 itemPriceListDataSource.DataSource = itemPriceListPageList;
             }
 
@@ -541,7 +541,7 @@ namespace EasyPOS.Forms.Software.MstItem
         {
             if (itemPriceListPageList.HasNextPage == true)
             {
-                itemPriceListPageList = new PagedList<Entities.DgvItemDetailItemPriceListEntity>(itemPriceListData, ++pageNumber, pageSize);
+                itemPriceListPageList = new PagedList<Entities.DgvMstItemPriceListEntity>(itemPriceListData, ++pageNumber, pageSize);
                 itemPriceListDataSource.DataSource = itemPriceListPageList;
             }
 
@@ -559,7 +559,7 @@ namespace EasyPOS.Forms.Software.MstItem
 
         private void buttonItemPriceListPageListLast_Click(object sender, EventArgs e)
         {
-            itemPriceListPageList = new PagedList<Entities.DgvItemDetailItemPriceListEntity>(itemPriceListData, itemPriceListPageList.PageCount, pageSize);
+            itemPriceListPageList = new PagedList<Entities.DgvMstItemPriceListEntity>(itemPriceListData, itemPriceListPageList.PageCount, pageSize);
             itemPriceListDataSource.DataSource = itemPriceListPageList;
 
             buttonItemPriceListPageListFirst.Enabled = true;
@@ -582,7 +582,7 @@ namespace EasyPOS.Forms.Software.MstItem
                 TriggerQuantity = 0,
             };
 
-            MstItemDetailItemPriceDetailForm sysSystemTablesItemPriceDetailForm = new MstItemDetailItemPriceDetailForm(this, newItemPrice);
+            MstItemPriceDetailForm sysSystemTablesItemPriceDetailForm = new MstItemPriceDetailForm(this, newItemPrice);
             sysSystemTablesItemPriceDetailForm.ShowDialog();
         }
 
@@ -601,11 +601,11 @@ namespace EasyPOS.Forms.Software.MstItem
                 OnHandQuantity = 0
             };
 
-            MstItemDetailItemComponentDetailForm mstItemDetailItemComponentDetailForm = new MstItemDetailItemComponentDetailForm(this, newItemComponent);
+            MstItemComponentDetailForm mstItemDetailItemComponentDetailForm = new MstItemComponentDetailForm(this, newItemComponent);
             mstItemDetailItemComponentDetailForm.ShowDialog();
         }
 
-        public Task<List<Entities.DgvMstItemComponentEntity>> GetItemComponentListDataTask()
+        public Task<List<Entities.DgvMstItemComponentListEntity>> GetItemComponentListDataTask()
         {
             Controllers.MstItemComponentController mstItemComponentController = new Controllers.MstItemComponentController();
             List<Entities.MstItemComponentEntity> listItemComponent = mstItemComponentController.ItemComponentList(mstItemEntity.Id);
@@ -615,7 +615,7 @@ namespace EasyPOS.Forms.Software.MstItem
                 checkBoxIsInventory.Enabled = false;
 
                 var itemComponent = from d in listItemComponent
-                                    select new Entities.DgvMstItemComponentEntity
+                                    select new Entities.DgvMstItemComponentListEntity
                                     {
                                         ColumnItemComponentButtonEdit = "Edit",
                                         ColumnItemComponentButtonDelete = "Delete",
@@ -647,17 +647,17 @@ namespace EasyPOS.Forms.Software.MstItem
 
                 }
 
-                return Task.FromResult(new List<Entities.DgvMstItemComponentEntity>());
+                return Task.FromResult(new List<Entities.DgvMstItemComponentListEntity>());
             }
         }
 
         public async void SetItemComponentListDataSourceAsync()
         {
-            List<Entities.DgvMstItemComponentEntity> getItemComponentListData = await GetItemComponentListDataTask();
+            List<Entities.DgvMstItemComponentListEntity> getItemComponentListData = await GetItemComponentListDataTask();
             if (getItemComponentListData.Any())
             {
                 itemComponentListData = getItemComponentListData;
-                itemComponentListPageList = new PagedList<Entities.DgvMstItemComponentEntity>(itemComponentListData, pageNumber, pageSize);
+                itemComponentListPageList = new PagedList<Entities.DgvMstItemComponentListEntity>(itemComponentListData, pageNumber, pageSize);
 
                 if (itemComponentListPageList.PageCount == 1)
                 {
@@ -700,7 +700,7 @@ namespace EasyPOS.Forms.Software.MstItem
 
                 pageNumber = 1;
 
-                itemComponentListData = new List<Entities.DgvMstItemComponentEntity>();
+                itemComponentListData = new List<Entities.DgvMstItemComponentListEntity>();
                 itemComponentListDataSource.Clear();
                 textBoxItemComponentListPageNumber.Text = "1 / 1";
             }
@@ -749,7 +749,7 @@ namespace EasyPOS.Forms.Software.MstItem
                     OnHandQuantity = Convert.ToDecimal(dataGridViewItemComponentList.Rows[e.RowIndex].Cells[dataGridViewItemComponentList.Columns["ColumnItemComponenOnHandQty"].Index].Value),
                 };
 
-                MstItemDetailItemComponentDetailForm mstItemDetailItemComponentDetailForm = new MstItemDetailItemComponentDetailForm(this, selectedItemComponent);
+                MstItemComponentDetailForm mstItemDetailItemComponentDetailForm = new MstItemComponentDetailForm(this, selectedItemComponent);
                 mstItemDetailItemComponentDetailForm.ShowDialog();
             }
 
@@ -780,7 +780,7 @@ namespace EasyPOS.Forms.Software.MstItem
 
         private void buttonItemComponentListPageListFirst_Click(object sender, EventArgs e)
         {
-            itemComponentListPageList = new PagedList<Entities.DgvMstItemComponentEntity>(itemComponentListData, 1, pageSize);
+            itemComponentListPageList = new PagedList<Entities.DgvMstItemComponentListEntity>(itemComponentListData, 1, pageSize);
             itemComponentListDataSource.DataSource = itemComponentListPageList;
 
             buttonItemComponentListPageListFirst.Enabled = false;
@@ -796,7 +796,7 @@ namespace EasyPOS.Forms.Software.MstItem
         {
             if (itemComponentListPageList.HasPreviousPage == true)
             {
-                itemComponentListPageList = new PagedList<Entities.DgvMstItemComponentEntity>(itemComponentListData, --pageNumber, pageSize);
+                itemComponentListPageList = new PagedList<Entities.DgvMstItemComponentListEntity>(itemComponentListData, --pageNumber, pageSize);
                 itemComponentListDataSource.DataSource = itemComponentListPageList;
             }
 
@@ -816,7 +816,7 @@ namespace EasyPOS.Forms.Software.MstItem
         {
             if (itemComponentListPageList.HasNextPage == true)
             {
-                itemComponentListPageList = new PagedList<Entities.DgvMstItemComponentEntity>(itemComponentListData, ++pageNumber, pageSize);
+                itemComponentListPageList = new PagedList<Entities.DgvMstItemComponentListEntity>(itemComponentListData, ++pageNumber, pageSize);
                 itemComponentListDataSource.DataSource = itemComponentListPageList;
             }
 
@@ -834,7 +834,7 @@ namespace EasyPOS.Forms.Software.MstItem
 
         private void buttonItemComponentListPageListLast_Click(object sender, EventArgs e)
         {
-            itemComponentListPageList = new PagedList<Entities.DgvMstItemComponentEntity>(itemComponentListData, itemComponentListPageList.PageCount, pageSize);
+            itemComponentListPageList = new PagedList<Entities.DgvMstItemComponentListEntity>(itemComponentListData, itemComponentListPageList.PageCount, pageSize);
             itemComponentListDataSource.DataSource = itemComponentListPageList;
 
             buttonItemComponentListPageListFirst.Enabled = true;

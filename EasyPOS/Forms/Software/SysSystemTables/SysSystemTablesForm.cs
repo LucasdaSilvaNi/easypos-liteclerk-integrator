@@ -18,38 +18,38 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         public static Int32 pageSize = 50;
 
-        public static List<Entities.DgvSystemTablesAccountListEntity> accountListData = new List<Entities.DgvSystemTablesAccountListEntity>();
-        public PagedList<Entities.DgvSystemTablesAccountListEntity> accountListPageList = new PagedList<Entities.DgvSystemTablesAccountListEntity>(accountListData, accountListPageNumber, pageSize);
+        public static List<Entities.DgvMstSystemTablesAccountListEntity> accountListData = new List<Entities.DgvMstSystemTablesAccountListEntity>();
+        public PagedList<Entities.DgvMstSystemTablesAccountListEntity> accountListPageList = new PagedList<Entities.DgvMstSystemTablesAccountListEntity>(accountListData, accountListPageNumber, pageSize);
         public BindingSource accountListDataSource = new BindingSource();
         public static Int32 accountListPageNumber = 1;
 
-        public static List<Entities.DgvSystemTablesPayTypeListEntity> payTypeListData = new List<Entities.DgvSystemTablesPayTypeListEntity>();
-        public PagedList<Entities.DgvSystemTablesPayTypeListEntity> payTypeListPageList = new PagedList<Entities.DgvSystemTablesPayTypeListEntity>(payTypeListData, accountListPageNumber, pageSize);
+        public static List<Entities.DgvMstSystemTablesPayTypeListEntity> payTypeListData = new List<Entities.DgvMstSystemTablesPayTypeListEntity>();
+        public PagedList<Entities.DgvMstSystemTablesPayTypeListEntity> payTypeListPageList = new PagedList<Entities.DgvMstSystemTablesPayTypeListEntity>(payTypeListData, accountListPageNumber, pageSize);
         public BindingSource payTypeListDataSource = new BindingSource();
         public static Int32 payTypeListPageNumber = 1;
 
-        public static List<Entities.DgvSystemTablesTaxListEntity> taxListData = new List<Entities.DgvSystemTablesTaxListEntity>();
-        public PagedList<Entities.DgvSystemTablesTaxListEntity> taxListPageList = new PagedList<Entities.DgvSystemTablesTaxListEntity>(taxListData, accountListPageNumber, pageSize);
+        public static List<Entities.DgvMstSystemTablesTaxListEntity> taxListData = new List<Entities.DgvMstSystemTablesTaxListEntity>();
+        public PagedList<Entities.DgvMstSystemTablesTaxListEntity> taxListPageList = new PagedList<Entities.DgvMstSystemTablesTaxListEntity>(taxListData, accountListPageNumber, pageSize);
         public BindingSource taxListDataSource = new BindingSource();
         public static Int32 taxListPageNumber = 1;
 
-        public static List<Entities.DgvSystemTablesUnitListEntity> unitListData = new List<Entities.DgvSystemTablesUnitListEntity>();
-        public PagedList<Entities.DgvSystemTablesUnitListEntity> unitListPageList = new PagedList<Entities.DgvSystemTablesUnitListEntity>(unitListData, unitListPageNumber, pageSize);
+        public static List<Entities.DgvMstSystemTablesUnitListEntity> unitListData = new List<Entities.DgvMstSystemTablesUnitListEntity>();
+        public PagedList<Entities.DgvMstSystemTablesUnitListEntity> unitListPageList = new PagedList<Entities.DgvMstSystemTablesUnitListEntity>(unitListData, unitListPageNumber, pageSize);
         public BindingSource unitListDataSource = new BindingSource();
         public static Int32 unitListPageNumber = 1;
 
-        public static List<Entities.DgvSystemTablesPeriodListEntity> periodListData = new List<Entities.DgvSystemTablesPeriodListEntity>();
-        public PagedList<Entities.DgvSystemTablesPeriodListEntity> periodListPageList = new PagedList<Entities.DgvSystemTablesPeriodListEntity>(periodListData, accountListPageNumber, pageSize);
+        public static List<Entities.DgvMstSystemTablesPeriodListEntity> periodListData = new List<Entities.DgvMstSystemTablesPeriodListEntity>();
+        public PagedList<Entities.DgvMstSystemTablesPeriodListEntity> periodListPageList = new PagedList<Entities.DgvMstSystemTablesPeriodListEntity>(periodListData, accountListPageNumber, pageSize);
         public BindingSource periodListDataSource = new BindingSource();
         public static Int32 periodListPageNumber = 1;
 
-        public static List<Entities.DgvSystemTablesTerminalListEntity> terminalListData = new List<Entities.DgvSystemTablesTerminalListEntity>();
-        public PagedList<Entities.DgvSystemTablesTerminalListEntity> terminalListPageList = new PagedList<Entities.DgvSystemTablesTerminalListEntity>(terminalListData, accountListPageNumber, pageSize);
+        public static List<Entities.DgvMstSystemTablesTerminalListEntity> terminalListData = new List<Entities.DgvMstSystemTablesTerminalListEntity>();
+        public PagedList<Entities.DgvMstSystemTablesTerminalListEntity> terminalListPageList = new PagedList<Entities.DgvMstSystemTablesTerminalListEntity>(terminalListData, accountListPageNumber, pageSize);
         public BindingSource terminalListDataSource = new BindingSource();
         public static Int32 terminalListPageNumber = 1;
 
-        public static List<Entities.DgvSystemTablesSupplierListEntity> supplierListData = new List<Entities.DgvSystemTablesSupplierListEntity>();
-        public PagedList<Entities.DgvSystemTablesSupplierListEntity> supplierListPageList = new PagedList<Entities.DgvSystemTablesSupplierListEntity>(supplierListData, accountListPageNumber, pageSize);
+        public static List<Entities.DgvMstSystemTablesSupplierListEntity> supplierListData = new List<Entities.DgvMstSystemTablesSupplierListEntity>();
+        public PagedList<Entities.DgvMstSystemTablesSupplierListEntity> supplierListPageList = new PagedList<Entities.DgvMstSystemTablesSupplierListEntity>(supplierListData, accountListPageNumber, pageSize);
         public BindingSource supplierListDataSource = new BindingSource();
         public static Int32 supplierListPageNumber = 1;
 
@@ -113,11 +113,11 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         public async void SetAccountListDataSourceAsync()
         {
-            List<Entities.DgvSystemTablesAccountListEntity> getAccountListData = await GetAccountListDataTask();
+            List<Entities.DgvMstSystemTablesAccountListEntity> getAccountListData = await GetAccountListDataTask();
             if (getAccountListData.Any())
             {
                 accountListData = getAccountListData;
-                accountListPageList = new PagedList<Entities.DgvSystemTablesAccountListEntity>(accountListData, accountListPageNumber, pageSize);
+                accountListPageList = new PagedList<Entities.DgvMstSystemTablesAccountListEntity>(accountListData, accountListPageNumber, pageSize);
 
                 if (accountListPageList.PageCount == 1)
                 {
@@ -160,13 +160,13 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
                 accountListPageNumber = 1;
 
-                accountListData = new List<Entities.DgvSystemTablesAccountListEntity>();
+                accountListData = new List<Entities.DgvMstSystemTablesAccountListEntity>();
                 accountListDataSource.Clear();
                 textBoxAccountListPageNumber.Text = "1 / 1";
             }
         }
 
-        public Task<List<Entities.DgvSystemTablesAccountListEntity>> GetAccountListDataTask()
+        public Task<List<Entities.DgvMstSystemTablesAccountListEntity>> GetAccountListDataTask()
         {
             String filter = textBoxAccountListFilter.Text;
             Controllers.MstAccountController mstAccountController = new Controllers.MstAccountController();
@@ -175,7 +175,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             if (listAccount.Any())
             {
                 var accounts = from d in listAccount
-                               select new Entities.DgvSystemTablesAccountListEntity
+                               select new Entities.DgvMstSystemTablesAccountListEntity
                                {
                                    ColumnAccountListButtonEdit = "Edit",
                                    ColumnAccountListButtonDelete = "Delete",
@@ -189,7 +189,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             }
             else
             {
-                return Task.FromResult(new List<Entities.DgvSystemTablesAccountListEntity>());
+                return Task.FromResult(new List<Entities.DgvMstSystemTablesAccountListEntity>());
             }
         }
 
@@ -215,7 +215,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         private void buttonAccountListPageListFirst_Click(object sender, EventArgs e)
         {
-            accountListPageList = new PagedList<Entities.DgvSystemTablesAccountListEntity>(accountListData, 1, pageSize);
+            accountListPageList = new PagedList<Entities.DgvMstSystemTablesAccountListEntity>(accountListData, 1, pageSize);
             accountListDataSource.DataSource = accountListPageList;
 
             buttonAccountListPageListFirst.Enabled = false;
@@ -231,7 +231,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
         {
             if (accountListPageList.HasPreviousPage == true)
             {
-                accountListPageList = new PagedList<Entities.DgvSystemTablesAccountListEntity>(accountListData, --accountListPageNumber, pageSize);
+                accountListPageList = new PagedList<Entities.DgvMstSystemTablesAccountListEntity>(accountListData, --accountListPageNumber, pageSize);
                 accountListDataSource.DataSource = accountListPageList;
             }
 
@@ -251,7 +251,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
         {
             if (accountListPageList.HasNextPage == true)
             {
-                accountListPageList = new PagedList<Entities.DgvSystemTablesAccountListEntity>(accountListData, ++accountListPageNumber, pageSize);
+                accountListPageList = new PagedList<Entities.DgvMstSystemTablesAccountListEntity>(accountListData, ++accountListPageNumber, pageSize);
                 accountListDataSource.DataSource = accountListPageList;
             }
 
@@ -269,7 +269,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         private void buttonAccountListPageListLast_Click(object sender, EventArgs e)
         {
-            accountListPageList = new PagedList<Entities.DgvSystemTablesAccountListEntity>(accountListData, accountListPageList.PageCount, pageSize);
+            accountListPageList = new PagedList<Entities.DgvMstSystemTablesAccountListEntity>(accountListData, accountListPageList.PageCount, pageSize);
             accountListDataSource.DataSource = accountListPageList;
 
             buttonAccountListPageListFirst.Enabled = true;
@@ -298,7 +298,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                     AccountType = dataGridViewAccountList.Rows[e.RowIndex].Cells[5].Value.ToString()
                 };
 
-                SysSystemTablesAccountDetailForm sysSystemTablesAccountDetailForm = new SysSystemTablesAccountDetailForm(this, account);
+                SysAccountDetailForm sysSystemTablesAccountDetailForm = new SysAccountDetailForm(this, account);
                 sysSystemTablesAccountDetailForm.ShowDialog();
             }
 
@@ -343,11 +343,11 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         public async void SetPayTypeListDataSourceAsync()
         {
-            List<Entities.DgvSystemTablesPayTypeListEntity> getPayTypeListData = await GetPayTypeListDataTask();
+            List<Entities.DgvMstSystemTablesPayTypeListEntity> getPayTypeListData = await GetPayTypeListDataTask();
             if (getPayTypeListData.Any())
             {
                 payTypeListData = getPayTypeListData;
-                payTypeListPageList = new PagedList<Entities.DgvSystemTablesPayTypeListEntity>(payTypeListData, payTypeListPageNumber, pageSize);
+                payTypeListPageList = new PagedList<Entities.DgvMstSystemTablesPayTypeListEntity>(payTypeListData, payTypeListPageNumber, pageSize);
 
                 if (payTypeListPageList.PageCount == 1)
                 {
@@ -390,13 +390,13 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
                 payTypeListPageNumber = 1;
 
-                payTypeListData = new List<Entities.DgvSystemTablesPayTypeListEntity>();
+                payTypeListData = new List<Entities.DgvMstSystemTablesPayTypeListEntity>();
                 payTypeListDataSource.Clear();
                 textBoxPayTypeListPageNumber.Text = "1 / 1";
             }
         }
 
-        public Task<List<Entities.DgvSystemTablesPayTypeListEntity>> GetPayTypeListDataTask()
+        public Task<List<Entities.DgvMstSystemTablesPayTypeListEntity>> GetPayTypeListDataTask()
         {
             String filter = textBoxPayTypeListFilter.Text;
             Controllers.MstPayTypeController mstPayTypeController = new Controllers.MstPayTypeController();
@@ -405,7 +405,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             if (listPayType.Any())
             {
                 var payTypes = from d in listPayType
-                               select new Entities.DgvSystemTablesPayTypeListEntity
+                               select new Entities.DgvMstSystemTablesPayTypeListEntity
                                {
                                    ColumnPayTypeListButtonEdit = "Edit",
                                    ColumnPayTypeListButtonDelete = "Delete",
@@ -420,7 +420,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             }
             else
             {
-                return Task.FromResult(new List<Entities.DgvSystemTablesPayTypeListEntity>());
+                return Task.FromResult(new List<Entities.DgvMstSystemTablesPayTypeListEntity>());
             }
         }
 
@@ -463,7 +463,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                     PayType = dataGridViewPayTypeList.Rows[e.RowIndex].Cells[4].Value.ToString(),
                     AccountId = Convert.ToInt32(dataGridViewPayTypeList.Rows[e.RowIndex].Cells[5].Value)
                 };
-                SysSystemTablesPayTypeDetailForm sysSystemTablesPayTypeDetailForm = new SysSystemTablesPayTypeDetailForm(this, selectePaytype);
+                SysPayTypeDetailForm sysSystemTablesPayTypeDetailForm = new SysPayTypeDetailForm(this, selectePaytype);
                 sysSystemTablesPayTypeDetailForm.ShowDialog();
             }
 
@@ -498,7 +498,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         private void buttonPayTypeListPageListFirst_Click(object sender, EventArgs e)
         {
-            payTypeListPageList = new PagedList<Entities.DgvSystemTablesPayTypeListEntity>(payTypeListData, 1, pageSize);
+            payTypeListPageList = new PagedList<Entities.DgvMstSystemTablesPayTypeListEntity>(payTypeListData, 1, pageSize);
             payTypeListDataSource.DataSource = payTypeListPageList;
 
             buttonPayTypeListPageListFirst.Enabled = false;
@@ -514,7 +514,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
         {
             if (payTypeListPageList.HasPreviousPage == true)
             {
-                payTypeListPageList = new PagedList<Entities.DgvSystemTablesPayTypeListEntity>(payTypeListData, --payTypeListPageNumber, pageSize);
+                payTypeListPageList = new PagedList<Entities.DgvMstSystemTablesPayTypeListEntity>(payTypeListData, --payTypeListPageNumber, pageSize);
                 payTypeListDataSource.DataSource = payTypeListPageList;
             }
 
@@ -534,7 +534,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
         {
             if (payTypeListPageList.HasNextPage == true)
             {
-                payTypeListPageList = new PagedList<Entities.DgvSystemTablesPayTypeListEntity>(payTypeListData, ++payTypeListPageNumber, pageSize);
+                payTypeListPageList = new PagedList<Entities.DgvMstSystemTablesPayTypeListEntity>(payTypeListData, ++payTypeListPageNumber, pageSize);
                 payTypeListDataSource.DataSource = payTypeListPageList;
             }
 
@@ -552,7 +552,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         private void buttonPayTypeListPageListLast_Click(object sender, EventArgs e)
         {
-            payTypeListPageList = new PagedList<Entities.DgvSystemTablesPayTypeListEntity>(payTypeListData, payTypeListPageList.PageCount, pageSize);
+            payTypeListPageList = new PagedList<Entities.DgvMstSystemTablesPayTypeListEntity>(payTypeListData, payTypeListPageList.PageCount, pageSize);
             payTypeListDataSource.DataSource = payTypeListPageList;
 
             buttonPayTypeListPageListFirst.Enabled = true;
@@ -574,11 +574,11 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         public async void SetTaxListDataSourceAsync()
         {
-            List<Entities.DgvSystemTablesTaxListEntity> getTaxListData = await GetTaxListDataTask();
+            List<Entities.DgvMstSystemTablesTaxListEntity> getTaxListData = await GetTaxListDataTask();
             if (getTaxListData.Any())
             {
                 taxListData = getTaxListData;
-                taxListPageList = new PagedList<Entities.DgvSystemTablesTaxListEntity>(taxListData, taxListPageNumber, pageSize);
+                taxListPageList = new PagedList<Entities.DgvMstSystemTablesTaxListEntity>(taxListData, taxListPageNumber, pageSize);
 
                 if (taxListPageList.PageCount == 1)
                 {
@@ -621,13 +621,13 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
                 taxListPageNumber = 1;
 
-                taxListData = new List<Entities.DgvSystemTablesTaxListEntity>();
+                taxListData = new List<Entities.DgvMstSystemTablesTaxListEntity>();
                 taxListDataSource.Clear();
                 textBoxTaxListPageNumber.Text = "1 / 1";
             }
         }
 
-        public Task<List<Entities.DgvSystemTablesTaxListEntity>> GetTaxListDataTask()
+        public Task<List<Entities.DgvMstSystemTablesTaxListEntity>> GetTaxListDataTask()
         {
             String filter = textBoxTaxListFilter.Text;
             Controllers.MstTaxController mstTaxController = new Controllers.MstTaxController();
@@ -636,7 +636,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             if (listTax.Any())
             {
                 var taxs = from d in listTax
-                           select new Entities.DgvSystemTablesTaxListEntity
+                           select new Entities.DgvMstSystemTablesTaxListEntity
                            {
                                ColumnTaxListButtonEdit = "Edit",
                                ColumnTaxListButtonDelete = "Delete",
@@ -652,7 +652,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             }
             else
             {
-                return Task.FromResult(new List<Entities.DgvSystemTablesTaxListEntity>());
+                return Task.FromResult(new List<Entities.DgvMstSystemTablesTaxListEntity>());
             }
         }
 
@@ -697,7 +697,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                     AccountId = Convert.ToInt32(dataGridViewTaxList.Rows[e.RowIndex].Cells[6].Value)
                 };
 
-                SysSystemTablesTaxDetailForm sysSystemTablesTaxDetailForm = new SysSystemTablesTaxDetailForm(this, selectedTax);
+                SysTaxDetailForm sysSystemTablesTaxDetailForm = new SysTaxDetailForm(this, selectedTax);
                 sysSystemTablesTaxDetailForm.ShowDialog();
             }
 
@@ -731,7 +731,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         private void buttonTaxListPageListFirst_Click(object sender, EventArgs e)
         {
-            taxListPageList = new PagedList<Entities.DgvSystemTablesTaxListEntity>(taxListData, 1, pageSize);
+            taxListPageList = new PagedList<Entities.DgvMstSystemTablesTaxListEntity>(taxListData, 1, pageSize);
             taxListDataSource.DataSource = taxListPageList;
 
             buttonTaxListPageListFirst.Enabled = false;
@@ -747,7 +747,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
         {
             if (taxListPageList.HasPreviousPage == true)
             {
-                taxListPageList = new PagedList<Entities.DgvSystemTablesTaxListEntity>(taxListData, --taxListPageNumber, pageSize);
+                taxListPageList = new PagedList<Entities.DgvMstSystemTablesTaxListEntity>(taxListData, --taxListPageNumber, pageSize);
                 taxListDataSource.DataSource = taxListPageList;
             }
 
@@ -767,7 +767,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
         {
             if (taxListPageList.HasNextPage == true)
             {
-                taxListPageList = new PagedList<Entities.DgvSystemTablesTaxListEntity>(taxListData, ++taxListPageNumber, pageSize);
+                taxListPageList = new PagedList<Entities.DgvMstSystemTablesTaxListEntity>(taxListData, ++taxListPageNumber, pageSize);
                 taxListDataSource.DataSource = taxListPageList;
             }
 
@@ -785,7 +785,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         private void buttonTaxListPageListLast_Click(object sender, EventArgs e)
         {
-            taxListPageList = new PagedList<Entities.DgvSystemTablesTaxListEntity>(taxListData, taxListPageList.PageCount, pageSize);
+            taxListPageList = new PagedList<Entities.DgvMstSystemTablesTaxListEntity>(taxListData, taxListPageList.PageCount, pageSize);
             taxListDataSource.DataSource = taxListPageList;
 
             buttonTaxListPageListFirst.Enabled = true;
@@ -807,11 +807,11 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         public async void SetUnitListDataSourceAsync()
         {
-            List<Entities.DgvSystemTablesUnitListEntity> getUnitListData = await GetUnitListDataTask();
+            List<Entities.DgvMstSystemTablesUnitListEntity> getUnitListData = await GetUnitListDataTask();
             if (getUnitListData.Any())
             {
                 unitListData = getUnitListData;
-                unitListPageList = new PagedList<Entities.DgvSystemTablesUnitListEntity>(unitListData, unitListPageNumber, pageSize);
+                unitListPageList = new PagedList<Entities.DgvMstSystemTablesUnitListEntity>(unitListData, unitListPageNumber, pageSize);
 
                 if (unitListPageList.PageCount == 1)
                 {
@@ -854,13 +854,13 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
                 unitListPageNumber = 1;
 
-                unitListData = new List<Entities.DgvSystemTablesUnitListEntity>();
+                unitListData = new List<Entities.DgvMstSystemTablesUnitListEntity>();
                 unitListDataSource.Clear();
                 textBoxUnitListPageNumber.Text = "1 / 1";
             }
         }
 
-        public Task<List<Entities.DgvSystemTablesUnitListEntity>> GetUnitListDataTask()
+        public Task<List<Entities.DgvMstSystemTablesUnitListEntity>> GetUnitListDataTask()
         {
             String filter = textBoxUnitListFilter.Text;
             Controllers.MstUnitController mstUnitController = new Controllers.MstUnitController();
@@ -869,7 +869,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             if (listUnit.Any())
             {
                 var units = from d in listUnit
-                            select new Entities.DgvSystemTablesUnitListEntity
+                            select new Entities.DgvMstSystemTablesUnitListEntity
                             {
                                 ColumnUnitListButtonEdit = "Edit",
                                 ColumnUnitListButtonDelete = "Delete",
@@ -881,7 +881,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             }
             else
             {
-                return Task.FromResult(new List<Entities.DgvSystemTablesUnitListEntity>());
+                return Task.FromResult(new List<Entities.DgvMstSystemTablesUnitListEntity>());
             }
         }
 
@@ -922,7 +922,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                     Id = Convert.ToInt32(dataGridViewUnitList.Rows[e.RowIndex].Cells[2].Value),
                     Unit = dataGridViewUnitList.Rows[e.RowIndex].Cells[3].Value.ToString()
                 };
-                SysSystemTablesUnitDetailForm sysSystemTablesUnitDetailForm = new SysSystemTablesUnitDetailForm(this, selectedUnit);
+                SysUnitDetailForm sysSystemTablesUnitDetailForm = new SysUnitDetailForm(this, selectedUnit);
                 sysSystemTablesUnitDetailForm.ShowDialog();
             }
 
@@ -956,7 +956,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         private void buttonUnitListPageListFirst_Click(object sender, EventArgs e)
         {
-            unitListPageList = new PagedList<Entities.DgvSystemTablesUnitListEntity>(unitListData, 1, pageSize);
+            unitListPageList = new PagedList<Entities.DgvMstSystemTablesUnitListEntity>(unitListData, 1, pageSize);
             unitListDataSource.DataSource = unitListPageList;
 
             buttonUnitListPageListFirst.Enabled = false;
@@ -972,7 +972,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
         {
             if (unitListPageList.HasPreviousPage == true)
             {
-                unitListPageList = new PagedList<Entities.DgvSystemTablesUnitListEntity>(unitListData, --unitListPageNumber, pageSize);
+                unitListPageList = new PagedList<Entities.DgvMstSystemTablesUnitListEntity>(unitListData, --unitListPageNumber, pageSize);
                 unitListDataSource.DataSource = unitListPageList;
             }
 
@@ -992,7 +992,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
         {
             if (unitListPageList.HasNextPage == true)
             {
-                unitListPageList = new PagedList<Entities.DgvSystemTablesUnitListEntity>(unitListData, ++unitListPageNumber, pageSize);
+                unitListPageList = new PagedList<Entities.DgvMstSystemTablesUnitListEntity>(unitListData, ++unitListPageNumber, pageSize);
                 unitListDataSource.DataSource = unitListPageList;
             }
 
@@ -1010,7 +1010,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         private void buttonUnitListPageListLast_Click(object sender, EventArgs e)
         {
-            unitListPageList = new PagedList<Entities.DgvSystemTablesUnitListEntity>(unitListData, unitListPageList.PageCount, pageSize);
+            unitListPageList = new PagedList<Entities.DgvMstSystemTablesUnitListEntity>(unitListData, unitListPageList.PageCount, pageSize);
             unitListDataSource.DataSource = unitListPageList;
 
             buttonUnitListPageListFirst.Enabled = true;
@@ -1032,11 +1032,11 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         public async void SetPeriodListDataSourceAsync()
         {
-            List<Entities.DgvSystemTablesPeriodListEntity> getPeriodListData = await GetPeriodListDataTask();
+            List<Entities.DgvMstSystemTablesPeriodListEntity> getPeriodListData = await GetPeriodListDataTask();
             if (getPeriodListData.Any())
             {
                 periodListData = getPeriodListData;
-                periodListPageList = new PagedList<Entities.DgvSystemTablesPeriodListEntity>(periodListData, periodListPageNumber, pageSize);
+                periodListPageList = new PagedList<Entities.DgvMstSystemTablesPeriodListEntity>(periodListData, periodListPageNumber, pageSize);
 
                 if (periodListPageList.PageCount == 1)
                 {
@@ -1079,13 +1079,13 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
                 periodListPageNumber = 1;
 
-                periodListData = new List<Entities.DgvSystemTablesPeriodListEntity>();
+                periodListData = new List<Entities.DgvMstSystemTablesPeriodListEntity>();
                 periodListDataSource.Clear();
                 textBoxPeriodListPageNumber.Text = "1 / 1";
             }
         }
 
-        public Task<List<Entities.DgvSystemTablesPeriodListEntity>> GetPeriodListDataTask()
+        public Task<List<Entities.DgvMstSystemTablesPeriodListEntity>> GetPeriodListDataTask()
         {
             String filter = textBoxPeriodListFilter.Text;
             Controllers.MstPeriodController mstPeriodController = new Controllers.MstPeriodController();
@@ -1094,7 +1094,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             if (listPeriod.Any())
             {
                 var periods = from d in listPeriod
-                              select new Entities.DgvSystemTablesPeriodListEntity
+                              select new Entities.DgvMstSystemTablesPeriodListEntity
                               {
                                   ColumnPeriodListButtonEdit = "Edit",
                                   ColumnPeriodListButtonDelete = "Delete",
@@ -1106,7 +1106,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             }
             else
             {
-                return Task.FromResult(new List<Entities.DgvSystemTablesPeriodListEntity>());
+                return Task.FromResult(new List<Entities.DgvMstSystemTablesPeriodListEntity>());
             }
         }
 
@@ -1147,7 +1147,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                     Id = Convert.ToInt32(dataGridViewPeriodList.Rows[e.RowIndex].Cells[2].Value),
                     Period = dataGridViewPeriodList.Rows[e.RowIndex].Cells[3].Value.ToString()
                 };
-                SysSystemTablesPeriodDetailForm sysSystemTablesPeriodDetailForm = new SysSystemTablesPeriodDetailForm(this, selectedPeriod);
+                SysPeriodDetailForm sysSystemTablesPeriodDetailForm = new SysPeriodDetailForm(this, selectedPeriod);
                 sysSystemTablesPeriodDetailForm.ShowDialog();
             }
 
@@ -1181,7 +1181,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         private void buttonPeriodListPageListFirst_Click(object sender, EventArgs e)
         {
-            periodListPageList = new PagedList<Entities.DgvSystemTablesPeriodListEntity>(periodListData, 1, pageSize);
+            periodListPageList = new PagedList<Entities.DgvMstSystemTablesPeriodListEntity>(periodListData, 1, pageSize);
             periodListDataSource.DataSource = periodListPageList;
 
             buttonPeriodListPageListFirst.Enabled = false;
@@ -1197,7 +1197,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
         {
             if (periodListPageList.HasPreviousPage == true)
             {
-                periodListPageList = new PagedList<Entities.DgvSystemTablesPeriodListEntity>(periodListData, --periodListPageNumber, pageSize);
+                periodListPageList = new PagedList<Entities.DgvMstSystemTablesPeriodListEntity>(periodListData, --periodListPageNumber, pageSize);
                 periodListDataSource.DataSource = periodListPageList;
             }
 
@@ -1217,7 +1217,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
         {
             if (periodListPageList.HasNextPage == true)
             {
-                periodListPageList = new PagedList<Entities.DgvSystemTablesPeriodListEntity>(periodListData, ++periodListPageNumber, pageSize);
+                periodListPageList = new PagedList<Entities.DgvMstSystemTablesPeriodListEntity>(periodListData, ++periodListPageNumber, pageSize);
                 periodListDataSource.DataSource = periodListPageList;
             }
 
@@ -1235,7 +1235,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         private void buttonPeriodListPageListLast_Click(object sender, EventArgs e)
         {
-            periodListPageList = new PagedList<Entities.DgvSystemTablesPeriodListEntity>(periodListData, periodListPageList.PageCount, pageSize);
+            periodListPageList = new PagedList<Entities.DgvMstSystemTablesPeriodListEntity>(periodListData, periodListPageList.PageCount, pageSize);
             periodListDataSource.DataSource = periodListPageList;
 
             buttonPeriodListPageListFirst.Enabled = true;
@@ -1257,11 +1257,11 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         public async void SetTerminalListDataSourceAsync()
         {
-            List<Entities.DgvSystemTablesTerminalListEntity> getTerminalListData = await GetTerminalListDataTask();
+            List<Entities.DgvMstSystemTablesTerminalListEntity> getTerminalListData = await GetTerminalListDataTask();
             if (getTerminalListData.Any())
             {
                 terminalListData = getTerminalListData;
-                terminalListPageList = new PagedList<Entities.DgvSystemTablesTerminalListEntity>(terminalListData, terminalListPageNumber, pageSize);
+                terminalListPageList = new PagedList<Entities.DgvMstSystemTablesTerminalListEntity>(terminalListData, terminalListPageNumber, pageSize);
 
                 if (terminalListPageList.PageCount == 1)
                 {
@@ -1304,13 +1304,13 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
                 terminalListPageNumber = 1;
 
-                terminalListData = new List<Entities.DgvSystemTablesTerminalListEntity>();
+                terminalListData = new List<Entities.DgvMstSystemTablesTerminalListEntity>();
                 terminalListDataSource.Clear();
                 textBoxTerminalListPageNumber.Text = "1 / 1";
             }
         }
 
-        public Task<List<Entities.DgvSystemTablesTerminalListEntity>> GetTerminalListDataTask()
+        public Task<List<Entities.DgvMstSystemTablesTerminalListEntity>> GetTerminalListDataTask()
         {
             String filter = textBoxTerminalListFilter.Text;
             Controllers.MstTerminalController mstTerminalController = new Controllers.MstTerminalController();
@@ -1319,7 +1319,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             if (listTerminal.Any())
             {
                 var terminals = from d in listTerminal
-                                select new Entities.DgvSystemTablesTerminalListEntity
+                                select new Entities.DgvMstSystemTablesTerminalListEntity
                                 {
                                     ColumnTerminalListButtonEdit = "Edit",
                                     ColumnTerminalListButtonDelete = "Delete",
@@ -1331,7 +1331,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             }
             else
             {
-                return Task.FromResult(new List<Entities.DgvSystemTablesTerminalListEntity>());
+                return Task.FromResult(new List<Entities.DgvMstSystemTablesTerminalListEntity>());
             }
         }
 
@@ -1372,7 +1372,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                     Id = Convert.ToInt32(dataGridViewTerminalList.Rows[e.RowIndex].Cells[2].Value),
                     Terminal = dataGridViewTerminalList.Rows[e.RowIndex].Cells[3].Value.ToString()
                 };
-                SysSystemTablesTerminalDetailForm sysSystemTablesTerminalDetailForm = new SysSystemTablesTerminalDetailForm(this, selectedTerminal);
+                SysTerminalDetailForm sysSystemTablesTerminalDetailForm = new SysTerminalDetailForm(this, selectedTerminal);
                 sysSystemTablesTerminalDetailForm.ShowDialog();
             }
 
@@ -1406,7 +1406,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         private void buttonTerminalListPageListFirst_Click(object sender, EventArgs e)
         {
-            terminalListPageList = new PagedList<Entities.DgvSystemTablesTerminalListEntity>(terminalListData, 1, pageSize);
+            terminalListPageList = new PagedList<Entities.DgvMstSystemTablesTerminalListEntity>(terminalListData, 1, pageSize);
             terminalListDataSource.DataSource = terminalListPageList;
 
             buttonTerminalListPageListFirst.Enabled = false;
@@ -1422,7 +1422,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
         {
             if (terminalListPageList.HasPreviousPage == true)
             {
-                terminalListPageList = new PagedList<Entities.DgvSystemTablesTerminalListEntity>(terminalListData, --terminalListPageNumber, pageSize);
+                terminalListPageList = new PagedList<Entities.DgvMstSystemTablesTerminalListEntity>(terminalListData, --terminalListPageNumber, pageSize);
                 terminalListDataSource.DataSource = terminalListPageList;
             }
 
@@ -1442,7 +1442,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
         {
             if (terminalListPageList.HasNextPage == true)
             {
-                terminalListPageList = new PagedList<Entities.DgvSystemTablesTerminalListEntity>(terminalListData, ++terminalListPageNumber, pageSize);
+                terminalListPageList = new PagedList<Entities.DgvMstSystemTablesTerminalListEntity>(terminalListData, ++terminalListPageNumber, pageSize);
                 terminalListDataSource.DataSource = terminalListPageList;
             }
 
@@ -1460,7 +1460,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         private void buttonTerminalListPageListLast_Click(object sender, EventArgs e)
         {
-            terminalListPageList = new PagedList<Entities.DgvSystemTablesTerminalListEntity>(terminalListData, terminalListPageList.PageCount, pageSize);
+            terminalListPageList = new PagedList<Entities.DgvMstSystemTablesTerminalListEntity>(terminalListData, terminalListPageList.PageCount, pageSize);
             terminalListDataSource.DataSource = terminalListPageList;
 
             buttonTerminalListPageListFirst.Enabled = true;
@@ -1482,11 +1482,11 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         public async void SetSupplierListDataSourceAsync()
         {
-            List<Entities.DgvSystemTablesSupplierListEntity> getSupplierListData = await GetSupplierListDataTask();
+            List<Entities.DgvMstSystemTablesSupplierListEntity> getSupplierListData = await GetSupplierListDataTask();
             if (getSupplierListData.Any())
             {
                 supplierListData = getSupplierListData;
-                supplierListPageList = new PagedList<Entities.DgvSystemTablesSupplierListEntity>(supplierListData, supplierListPageNumber, pageSize);
+                supplierListPageList = new PagedList<Entities.DgvMstSystemTablesSupplierListEntity>(supplierListData, supplierListPageNumber, pageSize);
 
                 if (supplierListPageList.PageCount == 1)
                 {
@@ -1529,13 +1529,13 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
                 supplierListPageNumber = 1;
 
-                supplierListData = new List<Entities.DgvSystemTablesSupplierListEntity>();
+                supplierListData = new List<Entities.DgvMstSystemTablesSupplierListEntity>();
                 supplierListDataSource.Clear();
                 textBoxSupplierListPageNumber.Text = "1 / 1";
             }
         }
 
-        public Task<List<Entities.DgvSystemTablesSupplierListEntity>> GetSupplierListDataTask()
+        public Task<List<Entities.DgvMstSystemTablesSupplierListEntity>> GetSupplierListDataTask()
         {
             String filter = textBoxSupplierListFilter.Text;
             Controllers.MstSupplierController mstSupplierController = new Controllers.MstSupplierController();
@@ -1544,7 +1544,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             if (listSupplier.Any())
             {
                 var suppliers = from d in listSupplier
-                                select new Entities.DgvSystemTablesSupplierListEntity
+                                select new Entities.DgvMstSystemTablesSupplierListEntity
                                 {
                                     ColumnSupplierListButtonEdit = "Edit",
                                     ColumnSupplierListButtonDelete = "Delete",
@@ -1564,7 +1564,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             }
             else
             {
-                return Task.FromResult(new List<Entities.DgvSystemTablesSupplierListEntity>());
+                return Task.FromResult(new List<Entities.DgvMstSystemTablesSupplierListEntity>());
             }
         }
 
@@ -1614,7 +1614,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                     IsLocked = Convert.ToBoolean(dataGridViewSupplierList.Rows[e.RowIndex].Cells[11].Value)
                 };
 
-                SysSystemTablesSupplierDetailForm systemTablesSupplierDetailForm = new SysSystemTablesSupplierDetailForm(this, selectedSupplier);
+                SysSupplierDetailForm systemTablesSupplierDetailForm = new SysSupplierDetailForm(this, selectedSupplier);
                 systemTablesSupplierDetailForm.ShowDialog();
             }
 
@@ -1648,7 +1648,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         private void buttonSupplierListPageListFirst_Click(object sender, EventArgs e)
         {
-            supplierListPageList = new PagedList<Entities.DgvSystemTablesSupplierListEntity>(supplierListData, 1, pageSize);
+            supplierListPageList = new PagedList<Entities.DgvMstSystemTablesSupplierListEntity>(supplierListData, 1, pageSize);
             supplierListDataSource.DataSource = supplierListPageList;
 
             buttonSupplierListPageListFirst.Enabled = false;
@@ -1664,7 +1664,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
         {
             if (supplierListPageList.HasPreviousPage == true)
             {
-                supplierListPageList = new PagedList<Entities.DgvSystemTablesSupplierListEntity>(supplierListData, --supplierListPageNumber, pageSize);
+                supplierListPageList = new PagedList<Entities.DgvMstSystemTablesSupplierListEntity>(supplierListData, --supplierListPageNumber, pageSize);
                 supplierListDataSource.DataSource = supplierListPageList;
             }
 
@@ -1684,7 +1684,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
         {
             if (supplierListPageList.HasNextPage == true)
             {
-                supplierListPageList = new PagedList<Entities.DgvSystemTablesSupplierListEntity>(supplierListData, ++supplierListPageNumber, pageSize);
+                supplierListPageList = new PagedList<Entities.DgvMstSystemTablesSupplierListEntity>(supplierListData, ++supplierListPageNumber, pageSize);
                 supplierListDataSource.DataSource = supplierListPageList;
             }
 
@@ -1702,7 +1702,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
 
         private void buttonSupplierListPageListLast_Click(object sender, EventArgs e)
         {
-            supplierListPageList = new PagedList<Entities.DgvSystemTablesSupplierListEntity>(supplierListData, supplierListPageList.PageCount, pageSize);
+            supplierListPageList = new PagedList<Entities.DgvMstSystemTablesSupplierListEntity>(supplierListData, supplierListPageList.PageCount, pageSize);
             supplierListDataSource.DataSource = supplierListPageList;
 
             buttonSupplierListPageListFirst.Enabled = true;
@@ -1725,27 +1725,27 @@ namespace EasyPOS.Forms.Software.SysSystemTables
             switch (selectedTab)
             {
                 case "Account":
-                    SysSystemTablesAccountDetailForm sysSystemTablesAccountDetailForm = new SysSystemTablesAccountDetailForm(this, null);
+                    SysAccountDetailForm sysSystemTablesAccountDetailForm = new SysAccountDetailForm(this, null);
                     sysSystemTablesAccountDetailForm.ShowDialog();
                     break;
                 case "Pay Type":
-                    SysSystemTablesPayTypeDetailForm sysSystemTablesPayTypeDetailForm = new SysSystemTablesPayTypeDetailForm(this, null);
+                    SysPayTypeDetailForm sysSystemTablesPayTypeDetailForm = new SysPayTypeDetailForm(this, null);
                     sysSystemTablesPayTypeDetailForm.ShowDialog();
                     break;
                 case "Tax":
-                    SysSystemTablesTaxDetailForm sysSystemTablesTaxDetailForm = new SysSystemTablesTaxDetailForm(this, null);
+                    SysTaxDetailForm sysSystemTablesTaxDetailForm = new SysTaxDetailForm(this, null);
                     sysSystemTablesTaxDetailForm.ShowDialog();
                     break;
                 case "Unit":
-                    SysSystemTablesUnitDetailForm sysSystemTablesUnitDetailForm = new SysSystemTablesUnitDetailForm(this, null);
+                    SysUnitDetailForm sysSystemTablesUnitDetailForm = new SysUnitDetailForm(this, null);
                     sysSystemTablesUnitDetailForm.ShowDialog();
                     break;
                 case "Period":
-                    SysSystemTablesPeriodDetailForm sysSystemTablesPeriodDetailForm = new SysSystemTablesPeriodDetailForm(this, null);
+                    SysPeriodDetailForm sysSystemTablesPeriodDetailForm = new SysPeriodDetailForm(this, null);
                     sysSystemTablesPeriodDetailForm.ShowDialog();
                     break;
                 case "Terminal":
-                    SysSystemTablesTerminalDetailForm sysSystemTablesTerminalDetailForm = new SysSystemTablesTerminalDetailForm(this, null);
+                    SysTerminalDetailForm sysSystemTablesTerminalDetailForm = new SysTerminalDetailForm(this, null);
                     sysSystemTablesTerminalDetailForm.ShowDialog();
                     break;
                 case "Supplier":
@@ -1755,7 +1755,7 @@ namespace EasyPOS.Forms.Software.SysSystemTables
                     {
                         var newSupplierDetail = mstSupplierController.DetailSupplier(Convert.ToInt32(newSupplier[0]));
 
-                        SysSystemTablesSupplierDetailForm systemTablesSupplierDetailForm = new SysSystemTablesSupplierDetailForm(this, newSupplierDetail);
+                        SysSupplierDetailForm systemTablesSupplierDetailForm = new SysSupplierDetailForm(this, newSupplierDetail);
                         systemTablesSupplierDetailForm.ShowDialog();
 
                         UpdateSupplierListDataSource();

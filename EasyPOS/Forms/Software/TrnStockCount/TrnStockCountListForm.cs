@@ -16,10 +16,10 @@ namespace EasyPOS.Forms.Software.TrnStockCount
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
 
-        public static List<Entities.DgvStockCountListStockCountEntity> itemListData = new List<Entities.DgvStockCountListStockCountEntity>();
+        public static List<Entities.DgvTrnStockCountListEntity> itemListData = new List<Entities.DgvTrnStockCountListEntity>();
         public static Int32 pageNumber = 1;
         public static Int32 pageSize = 50;
-        public PagedList<Entities.DgvStockCountListStockCountEntity> itemListPageList = new PagedList<Entities.DgvStockCountListStockCountEntity>(itemListData, pageNumber, pageSize);
+        public PagedList<Entities.DgvTrnStockCountListEntity> itemListPageList = new PagedList<Entities.DgvTrnStockCountListEntity>(itemListData, pageNumber, pageSize);
         public BindingSource itemListDataSource = new BindingSource();
 
         public TrnStockCountListForm(SysSoftwareForm softwareForm)
@@ -68,11 +68,11 @@ namespace EasyPOS.Forms.Software.TrnStockCount
 
         public async void SetStockCountListDataSourceAsync()
         {
-            List<Entities.DgvStockCountListStockCountEntity> getStockCountListData = await GetStockCountListDataTask();
+            List<Entities.DgvTrnStockCountListEntity> getStockCountListData = await GetStockCountListDataTask();
             if (getStockCountListData.Any())
             {
                 itemListData = getStockCountListData;
-                itemListPageList = new PagedList<Entities.DgvStockCountListStockCountEntity>(itemListData, pageNumber, pageSize);
+                itemListPageList = new PagedList<Entities.DgvTrnStockCountListEntity>(itemListData, pageNumber, pageSize);
 
                 if (itemListPageList.PageCount == 1)
                 {
@@ -115,13 +115,13 @@ namespace EasyPOS.Forms.Software.TrnStockCount
 
                 pageNumber = 1;
 
-                itemListData = new List<Entities.DgvStockCountListStockCountEntity>();
+                itemListData = new List<Entities.DgvTrnStockCountListEntity>();
                 itemListDataSource.Clear();
                 textBoxStockCountListPageNumber.Text = "1 / 1";
             }
         }
 
-        public Task<List<Entities.DgvStockCountListStockCountEntity>> GetStockCountListDataTask()
+        public Task<List<Entities.DgvTrnStockCountListEntity>> GetStockCountListDataTask()
         {
             DateTime dateFilter = dateTimePickerStockCountListFilter.Value.Date;
             String filter = textBoxStockCountListFilter.Text;
@@ -131,7 +131,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
             if (listStockCount.Any())
             {
                 var items = from d in listStockCount
-                            select new Entities.DgvStockCountListStockCountEntity
+                            select new Entities.DgvTrnStockCountListEntity
                             {
                                 ColumnStockCountListButtonEdit = "Edit",
                                 ColumnStockCountListButtonDelete = "Delete",
@@ -146,7 +146,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
             }
             else
             {
-                return Task.FromResult(new List<Entities.DgvStockCountListStockCountEntity>());
+                return Task.FromResult(new List<Entities.DgvTrnStockCountListEntity>());
             }
         }
 
@@ -249,7 +249,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
 
         private void buttonStockCountListPageListFirst_Click(object sender, EventArgs e)
         {
-            itemListPageList = new PagedList<Entities.DgvStockCountListStockCountEntity>(itemListData, 1, pageSize);
+            itemListPageList = new PagedList<Entities.DgvTrnStockCountListEntity>(itemListData, 1, pageSize);
             itemListDataSource.DataSource = itemListPageList;
 
             buttonStockCountListPageListFirst.Enabled = false;
@@ -265,7 +265,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
         {
             if (itemListPageList.HasPreviousPage == true)
             {
-                itemListPageList = new PagedList<Entities.DgvStockCountListStockCountEntity>(itemListData, --pageNumber, pageSize);
+                itemListPageList = new PagedList<Entities.DgvTrnStockCountListEntity>(itemListData, --pageNumber, pageSize);
                 itemListDataSource.DataSource = itemListPageList;
             }
 
@@ -285,7 +285,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
         {
             if (itemListPageList.HasNextPage == true)
             {
-                itemListPageList = new PagedList<Entities.DgvStockCountListStockCountEntity>(itemListData, ++pageNumber, pageSize);
+                itemListPageList = new PagedList<Entities.DgvTrnStockCountListEntity>(itemListData, ++pageNumber, pageSize);
                 itemListDataSource.DataSource = itemListPageList;
             }
 
@@ -303,7 +303,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
 
         private void buttonStockCountListPageListLast_Click(object sender, EventArgs e)
         {
-            itemListPageList = new PagedList<Entities.DgvStockCountListStockCountEntity>(itemListData, itemListPageList.PageCount, pageSize);
+            itemListPageList = new PagedList<Entities.DgvTrnStockCountListEntity>(itemListData, itemListPageList.PageCount, pageSize);
             itemListDataSource.DataSource = itemListPageList;
 
             buttonStockCountListPageListFirst.Enabled = true;

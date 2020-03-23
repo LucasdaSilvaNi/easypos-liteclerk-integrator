@@ -198,7 +198,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                         {
                             if (sysUserRights.GetUserRights().CanView == true)
                             {
-                                Reports.RepPOSReportZReadingReportForm repZReadingReportForm = new Reports.RepPOSReportZReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()));
+                                RepZReadingReportForm repZReadingReportForm = new RepZReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()));
                                 repZReadingReportForm.ShowDialog();
                             }
                             else
@@ -219,7 +219,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                         {
                             if (sysUserRights.GetUserRights().CanView == true)
                             {
-                                Reports.RepPOSReportXReadingReportForm repXReadingReportForm = new Reports.RepPOSReportXReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()), Convert.ToInt32(comboBoxUser.SelectedValue));
+                                RepXReadingReportForm repXReadingReportForm = new RepXReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()), Convert.ToInt32(comboBoxUser.SelectedValue));
                                 repXReadingReportForm.ShowDialog();
                             }
                             else
