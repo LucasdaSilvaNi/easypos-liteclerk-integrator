@@ -15,6 +15,7 @@ namespace EasyPOS.Forms.Account.SysLogin
         public SysLoginForm()
         {
             InitializeComponent();
+            dateTimePickerLoginDate.Enabled = false;
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

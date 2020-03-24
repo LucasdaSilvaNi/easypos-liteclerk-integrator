@@ -192,10 +192,12 @@
             // radioButtonSystemDate
             // 
             this.radioButtonSystemDate.AutoSize = true;
-            this.radioButtonSystemDate.Location = new System.Drawing.Point(316, 89);
+            this.radioButtonSystemDate.Checked = true;
+            this.radioButtonSystemDate.Location = new System.Drawing.Point(196, 89);
             this.radioButtonSystemDate.Name = "radioButtonSystemDate";
             this.radioButtonSystemDate.Size = new System.Drawing.Size(126, 27);
             this.radioButtonSystemDate.TabIndex = 20;
+            this.radioButtonSystemDate.TabStop = true;
             this.radioButtonSystemDate.Text = "System Date";
             this.radioButtonSystemDate.UseVisualStyleBackColor = true;
             this.radioButtonSystemDate.CheckedChanged += new System.EventHandler(this.radioButtonSystemDate_CheckedChanged);
@@ -203,12 +205,10 @@
             // radioButtonLoginDate
             // 
             this.radioButtonLoginDate.AutoSize = true;
-            this.radioButtonLoginDate.Checked = true;
-            this.radioButtonLoginDate.Location = new System.Drawing.Point(196, 89);
+            this.radioButtonLoginDate.Location = new System.Drawing.Point(328, 89);
             this.radioButtonLoginDate.Name = "radioButtonLoginDate";
             this.radioButtonLoginDate.Size = new System.Drawing.Size(114, 27);
             this.radioButtonLoginDate.TabIndex = 19;
-            this.radioButtonLoginDate.TabStop = true;
             this.radioButtonLoginDate.Text = "Login Date";
             this.radioButtonLoginDate.UseVisualStyleBackColor = true;
             this.radioButtonLoginDate.CheckedChanged += new System.EventHandler(this.radioButtonLoginDate_CheckedChanged);
