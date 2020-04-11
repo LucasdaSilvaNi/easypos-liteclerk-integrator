@@ -130,7 +130,7 @@
             this.textBoxUnit.Size = new System.Drawing.Size(344, 30);
             this.textBoxUnit.TabIndex = 0;
             // 
-            // SysSystemTablesUnitDetailForm
+            // SysUnitDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -141,7 +141,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "SysSystemTablesUnitDetailForm";
+            this.Name = "SysUnitDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Unit Detail";
             this.panel1.ResumeLayout(false);

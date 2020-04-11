@@ -269,7 +269,6 @@
             this.dataGridViewAuditTrailList.MultiSelect = false;
             this.dataGridViewAuditTrailList.Name = "dataGridViewAuditTrailList";
             this.dataGridViewAuditTrailList.ReadOnly = true;
-            this.dataGridViewAuditTrailList.RowHeadersVisible = false;
             this.dataGridViewAuditTrailList.RowTemplate.Height = 24;
             this.dataGridViewAuditTrailList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewAuditTrailList.Size = new System.Drawing.Size(1376, 494);
@@ -568,7 +567,6 @@
             this.dataGridViewItemList.MultiSelect = false;
             this.dataGridViewItemList.Name = "dataGridViewItemList";
             this.dataGridViewItemList.ReadOnly = true;
-            this.dataGridViewItemList.RowHeadersVisible = false;
             this.dataGridViewItemList.RowTemplate.Height = 24;
             this.dataGridViewItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewItemList.Size = new System.Drawing.Size(1369, 494);
@@ -683,7 +681,7 @@
             this.textBoxItemListFilter.TabStop = false;
             this.textBoxItemListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxItemListFilter_KeyDown);
             // 
-            // SysUtilitiesListForm
+            // SysUtilitiesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -694,7 +692,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "SysUtilitiesListForm";
+            this.Name = "SysUtilitiesForm";
             this.Text = "SysAuditTrailList";
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

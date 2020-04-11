@@ -75,7 +75,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(936, 63);
+            this.panel1.Size = new System.Drawing.Size(860, 63);
             this.panel1.TabIndex = 5;
             // 
             // buttonSave
@@ -87,7 +87,7 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(742, 12);
+            this.buttonSave.Location = new System.Drawing.Point(666, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
             this.buttonSave.TabIndex = 20;
@@ -126,7 +126,7 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(836, 12);
+            this.buttonClose.Location = new System.Drawing.Point(760, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 20;
@@ -145,7 +145,7 @@
             this.textBoxItemDescription.Location = new System.Drawing.Point(12, 6);
             this.textBoxItemDescription.Name = "textBoxItemDescription";
             this.textBoxItemDescription.ReadOnly = true;
-            this.textBoxItemDescription.Size = new System.Drawing.Size(912, 40);
+            this.textBoxItemDescription.Size = new System.Drawing.Size(836, 40);
             this.textBoxItemDescription.TabIndex = 13;
             this.textBoxItemDescription.TabStop = false;
             this.textBoxItemDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -391,7 +391,7 @@
             this.textBoxSalesLineRemarks.Location = new System.Drawing.Point(457, 92);
             this.textBoxSalesLineRemarks.Multiline = true;
             this.textBoxSalesLineRemarks.Name = "textBoxSalesLineRemarks";
-            this.textBoxSalesLineRemarks.Size = new System.Drawing.Size(467, 396);
+            this.textBoxSalesLineRemarks.Size = new System.Drawing.Size(391, 396);
             this.textBoxSalesLineRemarks.TabIndex = 12;
             this.textBoxSalesLineRemarks.TabStop = false;
             // 
@@ -435,21 +435,21 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 63);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(936, 500);
+            this.panel2.Size = new System.Drawing.Size(860, 500);
             this.panel2.TabIndex = 31;
             // 
-            // TrnSalesDetailSalesItemDetailForm
+            // TrnPOSSalesItemDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(936, 563);
+            this.ClientSize = new System.Drawing.Size(860, 563);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
-            this.Name = "TrnSalesDetailSalesItemDetailForm";
+            this.Name = "TrnPOSSalesItemDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sales Item";
             this.panel1.ResumeLayout(false);

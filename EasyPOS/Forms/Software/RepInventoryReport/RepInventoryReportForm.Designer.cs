@@ -28,6 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepInventoryReportForm));
             this.buttonPageListNext = new System.Windows.Forms.Button();
             this.buttonPageListPrevious = new System.Windows.Forms.Button();
@@ -38,7 +46,14 @@
             this.buttonPageListLast = new System.Windows.Forms.Button();
             this.textBoxPageNumber = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.dataGridViewInventoryReport = new System.Windows.Forms.DataGridView();
+            this.buttonGenerateCSV = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonClose = new System.Windows.Forms.Button();
+            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.ColumnItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnBegQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,13 +64,6 @@
             this.ColumnVariance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonGenerateCSV = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonClose = new System.Windows.Forms.Button();
-            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInventoryReport)).BeginInit();
@@ -185,10 +193,24 @@
             this.panel2.Size = new System.Drawing.Size(1382, 590);
             this.panel2.TabIndex = 17;
             // 
+            // textBoxFilter
+            // 
+            this.textBoxFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxFilter.Location = new System.Drawing.Point(12, 7);
+            this.textBoxFilter.Name = "textBoxFilter";
+            this.textBoxFilter.Size = new System.Drawing.Size(1357, 30);
+            this.textBoxFilter.TabIndex = 21;
+            this.textBoxFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxFilter_KeyDown);
+            // 
             // dataGridViewInventoryReport
             // 
             this.dataGridViewInventoryReport.AllowUserToAddRows = false;
             this.dataGridViewInventoryReport.AllowUserToDeleteRows = false;
+            this.dataGridViewInventoryReport.AllowUserToResizeRows = false;
+            this.dataGridViewInventoryReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewInventoryReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewInventoryReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewInventoryReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -202,93 +224,15 @@
             this.ColumnVariance,
             this.ColumnCost,
             this.ColumnAmount});
-            this.dataGridViewInventoryReport.Location = new System.Drawing.Point(0, 30);
+            this.dataGridViewInventoryReport.Location = new System.Drawing.Point(12, 43);
+            this.dataGridViewInventoryReport.MultiSelect = false;
             this.dataGridViewInventoryReport.Name = "dataGridViewInventoryReport";
             this.dataGridViewInventoryReport.ReadOnly = true;
-            this.dataGridViewInventoryReport.RowHeadersVisible = false;
             this.dataGridViewInventoryReport.RowTemplate.Height = 24;
+            this.dataGridViewInventoryReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewInventoryReport.ShowEditingIcon = false;
-            this.dataGridViewInventoryReport.Size = new System.Drawing.Size(1379, 504);
+            this.dataGridViewInventoryReport.Size = new System.Drawing.Size(1357, 488);
             this.dataGridViewInventoryReport.TabIndex = 0;
-            // 
-            // ColumnItemDescription
-            // 
-            this.ColumnItemDescription.DataPropertyName = "ColumnItemDescription";
-            this.ColumnItemDescription.HeaderText = "Item Description";
-            this.ColumnItemDescription.Name = "ColumnItemDescription";
-            this.ColumnItemDescription.ReadOnly = true;
-            this.ColumnItemDescription.Width = 300;
-            // 
-            // ColumnUnit
-            // 
-            this.ColumnUnit.DataPropertyName = "ColumnUnit";
-            this.ColumnUnit.HeaderText = "Unit";
-            this.ColumnUnit.Name = "ColumnUnit";
-            this.ColumnUnit.ReadOnly = true;
-            // 
-            // ColumnBegQuantity
-            // 
-            this.ColumnBegQuantity.DataPropertyName = "ColumnBegQuantity";
-            this.ColumnBegQuantity.HeaderText = "Beg. Qty.";
-            this.ColumnBegQuantity.Name = "ColumnBegQuantity";
-            this.ColumnBegQuantity.ReadOnly = true;
-            this.ColumnBegQuantity.Width = 150;
-            // 
-            // ColumnInQuantity
-            // 
-            this.ColumnInQuantity.DataPropertyName = "ColumnInQuantity";
-            this.ColumnInQuantity.HeaderText = "In Qty.";
-            this.ColumnInQuantity.Name = "ColumnInQuantity";
-            this.ColumnInQuantity.ReadOnly = true;
-            this.ColumnInQuantity.Width = 150;
-            // 
-            // ColumnOutQuantity
-            // 
-            this.ColumnOutQuantity.DataPropertyName = "ColumnOutQuantity";
-            this.ColumnOutQuantity.HeaderText = "Out Qty.";
-            this.ColumnOutQuantity.Name = "ColumnOutQuantity";
-            this.ColumnOutQuantity.ReadOnly = true;
-            this.ColumnOutQuantity.Width = 150;
-            // 
-            // ColumnEndingQuantity
-            // 
-            this.ColumnEndingQuantity.DataPropertyName = "ColumnEndingQuantity";
-            this.ColumnEndingQuantity.HeaderText = "Ending Qty.";
-            this.ColumnEndingQuantity.Name = "ColumnEndingQuantity";
-            this.ColumnEndingQuantity.ReadOnly = true;
-            this.ColumnEndingQuantity.Width = 150;
-            // 
-            // ColumnStockCount
-            // 
-            this.ColumnStockCount.DataPropertyName = "ColumnStockCount";
-            this.ColumnStockCount.HeaderText = "Stock Count";
-            this.ColumnStockCount.Name = "ColumnStockCount";
-            this.ColumnStockCount.ReadOnly = true;
-            this.ColumnStockCount.Width = 150;
-            // 
-            // ColumnVariance
-            // 
-            this.ColumnVariance.DataPropertyName = "ColumnVariance";
-            this.ColumnVariance.HeaderText = "Variance";
-            this.ColumnVariance.Name = "ColumnVariance";
-            this.ColumnVariance.ReadOnly = true;
-            this.ColumnVariance.Width = 150;
-            // 
-            // ColumnCost
-            // 
-            this.ColumnCost.DataPropertyName = "ColumnCost";
-            this.ColumnCost.HeaderText = "Cost";
-            this.ColumnCost.Name = "ColumnCost";
-            this.ColumnCost.ReadOnly = true;
-            this.ColumnCost.Width = 150;
-            // 
-            // ColumnAmount
-            // 
-            this.ColumnAmount.DataPropertyName = "ColumnAmount";
-            this.ColumnAmount.HeaderText = "Amount";
-            this.ColumnAmount.Name = "ColumnAmount";
-            this.ColumnAmount.ReadOnly = true;
-            this.ColumnAmount.Width = 150;
             // 
             // buttonGenerateCSV
             // 
@@ -362,16 +306,102 @@
             this.panel1.Size = new System.Drawing.Size(1382, 63);
             this.panel1.TabIndex = 16;
             // 
-            // textBoxFilter
+            // ColumnItemDescription
             // 
-            this.textBoxFilter.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBoxFilter.Location = new System.Drawing.Point(0, 0);
-            this.textBoxFilter.Name = "textBoxFilter";
-            this.textBoxFilter.Size = new System.Drawing.Size(1382, 30);
-            this.textBoxFilter.TabIndex = 21;
-            this.textBoxFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxFilter_KeyDown);
+            this.ColumnItemDescription.DataPropertyName = "ColumnItemDescription";
+            this.ColumnItemDescription.HeaderText = "Item Description";
+            this.ColumnItemDescription.Name = "ColumnItemDescription";
+            this.ColumnItemDescription.ReadOnly = true;
+            this.ColumnItemDescription.Width = 200;
             // 
-            // RepInventoryReportInventoryReportForm
+            // ColumnUnit
+            // 
+            this.ColumnUnit.DataPropertyName = "ColumnUnit";
+            this.ColumnUnit.HeaderText = "Unit";
+            this.ColumnUnit.Name = "ColumnUnit";
+            this.ColumnUnit.ReadOnly = true;
+            // 
+            // ColumnBegQuantity
+            // 
+            this.ColumnBegQuantity.DataPropertyName = "ColumnBegQuantity";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnBegQuantity.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColumnBegQuantity.HeaderText = "Beg. Qty.";
+            this.ColumnBegQuantity.Name = "ColumnBegQuantity";
+            this.ColumnBegQuantity.ReadOnly = true;
+            this.ColumnBegQuantity.Width = 120;
+            // 
+            // ColumnInQuantity
+            // 
+            this.ColumnInQuantity.DataPropertyName = "ColumnInQuantity";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnInQuantity.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnInQuantity.HeaderText = "In Qty.";
+            this.ColumnInQuantity.Name = "ColumnInQuantity";
+            this.ColumnInQuantity.ReadOnly = true;
+            this.ColumnInQuantity.Width = 120;
+            // 
+            // ColumnOutQuantity
+            // 
+            this.ColumnOutQuantity.DataPropertyName = "ColumnOutQuantity";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnOutQuantity.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnOutQuantity.HeaderText = "Out Qty.";
+            this.ColumnOutQuantity.Name = "ColumnOutQuantity";
+            this.ColumnOutQuantity.ReadOnly = true;
+            this.ColumnOutQuantity.Width = 120;
+            // 
+            // ColumnEndingQuantity
+            // 
+            this.ColumnEndingQuantity.DataPropertyName = "ColumnEndingQuantity";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnEndingQuantity.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColumnEndingQuantity.HeaderText = "Ending Qty.";
+            this.ColumnEndingQuantity.Name = "ColumnEndingQuantity";
+            this.ColumnEndingQuantity.ReadOnly = true;
+            this.ColumnEndingQuantity.Width = 120;
+            // 
+            // ColumnStockCount
+            // 
+            this.ColumnStockCount.DataPropertyName = "ColumnStockCount";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnStockCount.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ColumnStockCount.HeaderText = "Count";
+            this.ColumnStockCount.Name = "ColumnStockCount";
+            this.ColumnStockCount.ReadOnly = true;
+            this.ColumnStockCount.Width = 120;
+            // 
+            // ColumnVariance
+            // 
+            this.ColumnVariance.DataPropertyName = "ColumnVariance";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnVariance.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ColumnVariance.HeaderText = "Variance";
+            this.ColumnVariance.Name = "ColumnVariance";
+            this.ColumnVariance.ReadOnly = true;
+            this.ColumnVariance.Width = 120;
+            // 
+            // ColumnCost
+            // 
+            this.ColumnCost.DataPropertyName = "ColumnCost";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnCost.DefaultCellStyle = dataGridViewCellStyle7;
+            this.ColumnCost.HeaderText = "Cost";
+            this.ColumnCost.Name = "ColumnCost";
+            this.ColumnCost.ReadOnly = true;
+            this.ColumnCost.Width = 120;
+            // 
+            // ColumnAmount
+            // 
+            this.ColumnAmount.DataPropertyName = "ColumnAmount";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnAmount.DefaultCellStyle = dataGridViewCellStyle8;
+            this.ColumnAmount.HeaderText = "Amount";
+            this.ColumnAmount.Name = "ColumnAmount";
+            this.ColumnAmount.ReadOnly = true;
+            this.ColumnAmount.Width = 120;
+            // 
+            // RepInventoryReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -382,7 +412,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "RepInventoryReportInventoryReportForm";
+            this.Name = "RepInventoryReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventory Report";
             this.panel4.ResumeLayout(false);
@@ -415,6 +445,7 @@
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox textBoxFilter;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBegQuantity;
@@ -425,6 +456,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnVariance;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAmount;
-        private System.Windows.Forms.TextBox textBoxFilter;
     }
 }

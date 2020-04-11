@@ -42,10 +42,10 @@
             this.buttonItemPriceListPageListLast = new System.Windows.Forms.Button();
             this.textBoxItemPriceListPageNumber = new System.Windows.Forms.TextBox();
             this.dataGridViewItemPriceList = new System.Windows.Forms.DataGridView();
-            this.textBoxItemDescription = new System.Windows.Forms.TextBox();
             this.ColumnItemPriceListButtonPick = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnItemPriceListPriceDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemPriceListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBoxItemDescription = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -214,27 +214,11 @@
             this.dataGridViewItemPriceList.MultiSelect = false;
             this.dataGridViewItemPriceList.Name = "dataGridViewItemPriceList";
             this.dataGridViewItemPriceList.ReadOnly = true;
-            this.dataGridViewItemPriceList.RowHeadersVisible = false;
             this.dataGridViewItemPriceList.RowTemplate.Height = 24;
             this.dataGridViewItemPriceList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewItemPriceList.Size = new System.Drawing.Size(651, 210);
             this.dataGridViewItemPriceList.TabIndex = 25;
             this.dataGridViewItemPriceList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItemPriceList_CellClick);
-            // 
-            // textBoxItemDescription
-            // 
-            this.textBoxItemDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxItemDescription.BackColor = System.Drawing.Color.White;
-            this.textBoxItemDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxItemDescription.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.textBoxItemDescription.Location = new System.Drawing.Point(12, 6);
-            this.textBoxItemDescription.Name = "textBoxItemDescription";
-            this.textBoxItemDescription.ReadOnly = true;
-            this.textBoxItemDescription.Size = new System.Drawing.Size(651, 32);
-            this.textBoxItemDescription.TabIndex = 7;
-            this.textBoxItemDescription.TabStop = false;
-            this.textBoxItemDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ColumnItemPriceListButtonPick
             // 
@@ -263,7 +247,22 @@
             this.ColumnItemPriceListPrice.ReadOnly = true;
             this.ColumnItemPriceListPrice.Width = 150;
             // 
-            // TrnSalesDetailSalesItemDetailItemPriceForm
+            // textBoxItemDescription
+            // 
+            this.textBoxItemDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxItemDescription.BackColor = System.Drawing.Color.White;
+            this.textBoxItemDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxItemDescription.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.textBoxItemDescription.Location = new System.Drawing.Point(12, 6);
+            this.textBoxItemDescription.Name = "textBoxItemDescription";
+            this.textBoxItemDescription.ReadOnly = true;
+            this.textBoxItemDescription.Size = new System.Drawing.Size(651, 32);
+            this.textBoxItemDescription.TabIndex = 7;
+            this.textBoxItemDescription.TabStop = false;
+            this.textBoxItemDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TrnPOSItemPriceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -274,7 +273,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "TrnSalesDetailSalesItemDetailItemPriceForm";
+            this.Name = "TrnPOSItemPriceForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Item Price";
             this.panel1.ResumeLayout(false);

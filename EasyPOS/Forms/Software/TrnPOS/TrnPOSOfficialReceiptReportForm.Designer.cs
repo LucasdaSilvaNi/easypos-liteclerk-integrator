@@ -36,7 +36,7 @@
             // 
             this.printDocumentOfficialReceipt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentOfficialReceipt_PrintPage);
             // 
-            // RepOfficialReceiptReportForm
+            // TrnPOSOfficialReceiptReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -48,7 +48,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximumSize = new System.Drawing.Size(500, 100);
             this.MinimumSize = new System.Drawing.Size(500, 100);
-            this.Name = "RepOfficialReceiptReportForm";
+            this.Name = "TrnPOSOfficialReceiptReportForm";
             this.Text = "Official Receipt";
             this.ResumeLayout(false);
 

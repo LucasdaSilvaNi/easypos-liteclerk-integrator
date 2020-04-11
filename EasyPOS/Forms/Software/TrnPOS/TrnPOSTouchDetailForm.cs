@@ -211,10 +211,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         itemGroupToolTip.SetToolTip(itemGroupButtons[i], listItemGroupPage[i].Id.ToString());
                         itemGroupButtons[i].Text = listItemGroupPage[i].ItemGroup;
                     }
-                }
 
-                selectedItemGroupId = listItemGroupPage[0].Id;
-                FillItemGroupItem(listItemGroupPage[0].Id);
+                    selectedItemGroupId = listItemGroupPage[0].Id;
+                    FillItemGroupItem(listItemGroupPage[0].Id);
+                }
             }
             catch (Exception ex)
             {

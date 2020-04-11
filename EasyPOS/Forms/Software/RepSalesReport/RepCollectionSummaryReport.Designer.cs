@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepCollectionSummaryReport));
             this.textBoxPageNumber = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -264,6 +265,7 @@
             // 
             this.dataGridViewCollectionReport.AllowUserToAddRows = false;
             this.dataGridViewCollectionReport.AllowUserToDeleteRows = false;
+            this.dataGridViewCollectionReport.AllowUserToResizeRows = false;
             this.dataGridViewCollectionReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -280,13 +282,14 @@
             this.ColumnPreparedBy,
             this.ColumnIsCancelled,
             this.ColumnAmount});
-            this.dataGridViewCollectionReport.Location = new System.Drawing.Point(0, 63);
+            this.dataGridViewCollectionReport.Location = new System.Drawing.Point(13, 70);
+            this.dataGridViewCollectionReport.MultiSelect = false;
             this.dataGridViewCollectionReport.Name = "dataGridViewCollectionReport";
             this.dataGridViewCollectionReport.ReadOnly = true;
-            this.dataGridViewCollectionReport.RowHeadersVisible = false;
             this.dataGridViewCollectionReport.RowTemplate.Height = 24;
+            this.dataGridViewCollectionReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewCollectionReport.ShowEditingIcon = false;
-            this.dataGridViewCollectionReport.Size = new System.Drawing.Size(1379, 531);
+            this.dataGridViewCollectionReport.Size = new System.Drawing.Size(1356, 524);
             this.dataGridViewCollectionReport.TabIndex = 0;
             // 
             // ColumnTerminal
@@ -299,9 +302,10 @@
             // ColumnCollectionDate
             // 
             this.ColumnCollectionDate.DataPropertyName = "ColumnCollectionDate";
-            this.ColumnCollectionDate.HeaderText = "Date";
+            this.ColumnCollectionDate.HeaderText = "Collection Date";
             this.ColumnCollectionDate.Name = "ColumnCollectionDate";
             this.ColumnCollectionDate.ReadOnly = true;
+            this.ColumnCollectionDate.Width = 120;
             // 
             // ColumnCollectionNumber
             // 
@@ -309,7 +313,7 @@
             this.ColumnCollectionNumber.HeaderText = "Collection No.";
             this.ColumnCollectionNumber.Name = "ColumnCollectionNumber";
             this.ColumnCollectionNumber.ReadOnly = true;
-            this.ColumnCollectionNumber.Width = 150;
+            this.ColumnCollectionNumber.Width = 120;
             // 
             // ColumnCustomerCode
             // 
@@ -325,6 +329,7 @@
             this.ColumnCustomer.HeaderText = "Customer";
             this.ColumnCustomer.Name = "ColumnCustomer";
             this.ColumnCustomer.ReadOnly = true;
+            this.ColumnCustomer.Width = 200;
             // 
             // ColumnSalesNumber
             // 
@@ -332,7 +337,7 @@
             this.ColumnSalesNumber.HeaderText = "Sales No.";
             this.ColumnSalesNumber.Name = "ColumnSalesNumber";
             this.ColumnSalesNumber.ReadOnly = true;
-            this.ColumnSalesNumber.Width = 150;
+            this.ColumnSalesNumber.Width = 120;
             // 
             // ColumnRemarks
             // 
@@ -359,11 +364,14 @@
             // ColumnAmount
             // 
             this.ColumnAmount.DataPropertyName = "ColumnAmount";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnAmount.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColumnAmount.HeaderText = "Amount";
             this.ColumnAmount.Name = "ColumnAmount";
             this.ColumnAmount.ReadOnly = true;
+            this.ColumnAmount.Width = 120;
             // 
-            // RepSalesReportCollectionSummaryReport
+            // RepCollectionSummaryReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -374,7 +382,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "RepSalesReportCollectionSummaryReport";
+            this.Name = "RepCollectionSummaryReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Collection Summary Report";
             this.panel1.ResumeLayout(false);

@@ -256,7 +256,7 @@
             this.panel2.Size = new System.Drawing.Size(562, 364);
             this.panel2.TabIndex = 26;
             // 
-            // TrnSalesDetailTenderSalesForm
+            // TrnPOSTenderSalesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -268,7 +268,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
-            this.Name = "TrnSalesDetailTenderSalesForm";
+            this.Name = "TrnPOSTenderSalesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sales";
             this.panel1.ResumeLayout(false);

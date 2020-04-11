@@ -143,7 +143,7 @@
             // 
             this.printDocumentBarcodePrinting.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentBarcodePrinting_PrintPage);
             // 
-            // SysUtilitiesBarcodePrintingQuantity
+            // SysBarcodePrintingQuantity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -154,7 +154,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "SysUtilitiesBarcodePrintingQuantity";
+            this.Name = "SysBarcodePrintingQuantity";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Barcode Printing";
             this.panel1.ResumeLayout(false);

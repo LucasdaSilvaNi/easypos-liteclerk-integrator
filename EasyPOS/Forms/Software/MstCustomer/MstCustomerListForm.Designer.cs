@@ -252,7 +252,6 @@
             this.dataGridViewCustomerList.MultiSelect = false;
             this.dataGridViewCustomerList.Name = "dataGridViewCustomerList";
             this.dataGridViewCustomerList.ReadOnly = true;
-            this.dataGridViewCustomerList.RowHeadersVisible = false;
             this.dataGridViewCustomerList.RowTemplate.Height = 24;
             this.dataGridViewCustomerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewCustomerList.Size = new System.Drawing.Size(1376, 536);

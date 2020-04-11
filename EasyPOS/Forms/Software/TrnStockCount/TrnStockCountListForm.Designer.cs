@@ -192,7 +192,6 @@
             this.dataGridViewStockCountList.MultiSelect = false;
             this.dataGridViewStockCountList.Name = "dataGridViewStockCountList";
             this.dataGridViewStockCountList.ReadOnly = true;
-            this.dataGridViewStockCountList.RowHeadersVisible = false;
             this.dataGridViewStockCountList.RowTemplate.Height = 24;
             this.dataGridViewStockCountList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewStockCountList.Size = new System.Drawing.Size(1376, 536);

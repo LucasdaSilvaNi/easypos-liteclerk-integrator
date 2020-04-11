@@ -236,7 +236,7 @@
             this.textBoxStockOutLineUnit.TabIndex = 1;
             this.textBoxStockOutLineUnit.TabStop = false;
             // 
-            // TrnStockOutDetailStockOutLineItemDetailForm
+            // TrnStockOutLineItemDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -246,7 +246,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "TrnStockOutDetailStockOutLineItemDetailForm";
+            this.Name = "TrnStockOutLineItemDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stock-Out Line Item Detail";
             this.panel1.ResumeLayout(false);

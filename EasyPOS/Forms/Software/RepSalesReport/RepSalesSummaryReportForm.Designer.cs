@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepSalesSummaryReportForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonGenerateCSV = new System.Windows.Forms.Button();
@@ -38,15 +39,14 @@
             this.dataGridViewSalesSummaryReport = new System.Windows.Forms.DataGridView();
             this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCustomerCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTerm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPreparedByUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSpace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBoxTotalAmount = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -152,30 +152,30 @@
             this.dataGridViewSalesSummaryReport.AllowUserToAddRows = false;
             this.dataGridViewSalesSummaryReport.AllowUserToDeleteRows = false;
             this.dataGridViewSalesSummaryReport.AllowUserToResizeRows = false;
+            this.dataGridViewSalesSummaryReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewSalesSummaryReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewSalesSummaryReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSalesSummaryReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnId,
             this.ColumnTerminal,
-            this.ColumnSalesDate,
             this.ColumnSalesNumber,
+            this.ColumnSalesDate,
             this.ColumnCustomerCode,
             this.ColumnCustomer,
             this.ColumnTerm,
             this.ColumnRemarks,
             this.ColumnPreparedByUserName,
-            this.ColumnAmount,
-            this.ColumnSpace});
-            this.dataGridViewSalesSummaryReport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewSalesSummaryReport.Location = new System.Drawing.Point(0, 0);
+            this.ColumnAmount});
+            this.dataGridViewSalesSummaryReport.Location = new System.Drawing.Point(12, 7);
             this.dataGridViewSalesSummaryReport.MultiSelect = false;
             this.dataGridViewSalesSummaryReport.Name = "dataGridViewSalesSummaryReport";
             this.dataGridViewSalesSummaryReport.ReadOnly = true;
-            this.dataGridViewSalesSummaryReport.RowHeadersVisible = false;
             this.dataGridViewSalesSummaryReport.RowTemplate.Height = 24;
             this.dataGridViewSalesSummaryReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSalesSummaryReport.ShowEditingIcon = false;
-            this.dataGridViewSalesSummaryReport.Size = new System.Drawing.Size(1382, 537);
+            this.dataGridViewSalesSummaryReport.Size = new System.Drawing.Size(1357, 524);
             this.dataGridViewSalesSummaryReport.TabIndex = 22;
             // 
             // ColumnId
@@ -193,20 +193,21 @@
             this.ColumnTerminal.Name = "ColumnTerminal";
             this.ColumnTerminal.ReadOnly = true;
             // 
-            // ColumnSalesDate
-            // 
-            this.ColumnSalesDate.DataPropertyName = "ColumnSalesDate";
-            this.ColumnSalesDate.HeaderText = "Date";
-            this.ColumnSalesDate.Name = "ColumnSalesDate";
-            this.ColumnSalesDate.ReadOnly = true;
-            // 
             // ColumnSalesNumber
             // 
             this.ColumnSalesNumber.DataPropertyName = "ColumnSalesNumber";
-            this.ColumnSalesNumber.HeaderText = "SalesNumber";
+            this.ColumnSalesNumber.HeaderText = "Sales No.";
             this.ColumnSalesNumber.Name = "ColumnSalesNumber";
             this.ColumnSalesNumber.ReadOnly = true;
             this.ColumnSalesNumber.Width = 120;
+            // 
+            // ColumnSalesDate
+            // 
+            this.ColumnSalesDate.DataPropertyName = "ColumnSalesDate";
+            this.ColumnSalesDate.HeaderText = "Sales Date";
+            this.ColumnSalesDate.Name = "ColumnSalesDate";
+            this.ColumnSalesDate.ReadOnly = true;
+            this.ColumnSalesDate.Width = 120;
             // 
             // ColumnCustomerCode
             // 
@@ -239,7 +240,7 @@
             this.ColumnRemarks.HeaderText = "Remarks";
             this.ColumnRemarks.Name = "ColumnRemarks";
             this.ColumnRemarks.ReadOnly = true;
-            this.ColumnRemarks.Width = 200;
+            this.ColumnRemarks.Width = 120;
             // 
             // ColumnPreparedByUserName
             // 
@@ -253,17 +254,12 @@
             // ColumnAmount
             // 
             this.ColumnAmount.DataPropertyName = "ColumnAmount";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnAmount.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColumnAmount.HeaderText = "Amount";
             this.ColumnAmount.Name = "ColumnAmount";
             this.ColumnAmount.ReadOnly = true;
-            this.ColumnAmount.Width = 150;
-            // 
-            // ColumnSpace
-            // 
-            this.ColumnSpace.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnSpace.HeaderText = "";
-            this.ColumnSpace.Name = "ColumnSpace";
-            this.ColumnSpace.ReadOnly = true;
+            this.ColumnAmount.Width = 120;
             // 
             // panel4
             // 
@@ -379,7 +375,7 @@
             this.textBoxPageNumber.TabStop = false;
             this.textBoxPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // RepSalesReportSalesSummaryReportForm
+            // RepSalesSummaryReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -390,7 +386,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "RepSalesReportSalesSummaryReportForm";
+            this.Name = "RepSalesSummaryReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sales Summary Report";
             this.panel1.ResumeLayout(false);
@@ -424,14 +420,13 @@
         private System.Windows.Forms.DataGridView dataGridViewSalesSummaryReport;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTerminal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCustomerCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCustomer;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTerm;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRemarks;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPreparedByUserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAmount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpace;
     }
 }

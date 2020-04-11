@@ -173,7 +173,7 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "Trigger Quantity:";
             // 
-            // MstItemDetailItemPriceDetailForm
+            // MstItemPriceDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -189,7 +189,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "MstItemDetailItemPriceDetailForm";
+            this.Name = "MstItemPriceDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Item Price Detail";
             this.panel1.ResumeLayout(false);

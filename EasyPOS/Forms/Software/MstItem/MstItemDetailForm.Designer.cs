@@ -191,11 +191,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label3.Location = new System.Drawing.Point(51, 42);
+            this.label3.Location = new System.Drawing.Point(59, 42);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 23);
+            this.label3.Size = new System.Drawing.Size(122, 23);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Bar Code (SKU):";
+            this.label3.Text = "Barcode (SKU):";
             // 
             // panel2
             // 
@@ -739,7 +739,6 @@
             this.dataGridViewItemPriceList.MultiSelect = false;
             this.dataGridViewItemPriceList.Name = "dataGridViewItemPriceList";
             this.dataGridViewItemPriceList.ReadOnly = true;
-            this.dataGridViewItemPriceList.RowHeadersVisible = false;
             this.dataGridViewItemPriceList.RowTemplate.Height = 24;
             this.dataGridViewItemPriceList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewItemPriceList.Size = new System.Drawing.Size(1378, 496);
@@ -950,7 +949,6 @@
             this.dataGridViewItemComponentList.MultiSelect = false;
             this.dataGridViewItemComponentList.Name = "dataGridViewItemComponentList";
             this.dataGridViewItemComponentList.ReadOnly = true;
-            this.dataGridViewItemComponentList.RowHeadersVisible = false;
             this.dataGridViewItemComponentList.RowTemplate.Height = 24;
             this.dataGridViewItemComponentList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewItemComponentList.Size = new System.Drawing.Size(1378, 496);

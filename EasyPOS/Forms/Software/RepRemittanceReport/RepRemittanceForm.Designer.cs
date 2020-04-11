@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepRemittanceForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonView = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -287,7 +288,7 @@
             this.comboBoxTerminal.TabIndex = 0;
             this.comboBoxTerminal.Visible = false;
             // 
-            // RepRemittanceReportForm
+            // RepRemittanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -295,8 +296,9 @@
             this.Controls.Add(this.panel4);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
-            this.Name = "RepRemittanceReportForm";
+            this.Name = "RepRemittanceForm";
             this.Text = "RepRemittanceReportForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

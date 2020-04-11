@@ -38,14 +38,14 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelInvoiceNumber = new System.Windows.Forms.Label();
             this.buttonTender = new System.Windows.Forms.Button();
+            this.imageListPOSTouchOthers = new System.Windows.Forms.ImageList(this.components);
             this.buttonBillOut = new System.Windows.Forms.Button();
+            this.imageListPOSTouchBIllOut = new System.Windows.Forms.ImageList(this.components);
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSplitMergeBill = new System.Windows.Forms.Button();
             this.buttonPrintPartialBill = new System.Windows.Forms.Button();
             this.buttonEditOrder = new System.Windows.Forms.Button();
             this.imageListPOSTouchEditOrder = new System.Windows.Forms.ImageList(this.components);
-            this.imageListPOSTouchBIllOut = new System.Windows.Forms.ImageList(this.components);
-            this.imageListPOSTouchOthers = new System.Windows.Forms.ImageList(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -159,6 +159,15 @@
             this.buttonTender.UseVisualStyleBackColor = false;
             this.buttonTender.Click += new System.EventHandler(this.buttonTender_Click);
             // 
+            // imageListPOSTouchOthers
+            // 
+            this.imageListPOSTouchOthers.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListPOSTouchOthers.ImageStream")));
+            this.imageListPOSTouchOthers.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListPOSTouchOthers.Images.SetKeyName(0, "cancel.png");
+            this.imageListPOSTouchOthers.Images.SetKeyName(1, "print.png");
+            this.imageListPOSTouchOthers.Images.SetKeyName(2, "splitMergeBill.png");
+            this.imageListPOSTouchOthers.Images.SetKeyName(3, "tender.png");
+            // 
             // buttonBillOut
             // 
             this.buttonBillOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
@@ -178,6 +187,12 @@
             this.buttonBillOut.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonBillOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonBillOut.UseVisualStyleBackColor = false;
+            // 
+            // imageListPOSTouchBIllOut
+            // 
+            this.imageListPOSTouchBIllOut.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListPOSTouchBIllOut.ImageStream")));
+            this.imageListPOSTouchBIllOut.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListPOSTouchBIllOut.Images.SetKeyName(0, "print.png");
             // 
             // buttonCancel
             // 
@@ -268,21 +283,6 @@
             this.imageListPOSTouchEditOrder.Images.SetKeyName(3, "printBills.png");
             this.imageListPOSTouchEditOrder.Images.SetKeyName(4, "splitMergeBill.png");
             this.imageListPOSTouchEditOrder.Images.SetKeyName(5, "tender.png");
-            // 
-            // imageListPOSTouchBIllOut
-            // 
-            this.imageListPOSTouchBIllOut.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListPOSTouchBIllOut.ImageStream")));
-            this.imageListPOSTouchBIllOut.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListPOSTouchBIllOut.Images.SetKeyName(0, "print.png");
-            // 
-            // imageListPOSTouchOthers
-            // 
-            this.imageListPOSTouchOthers.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListPOSTouchOthers.ImageStream")));
-            this.imageListPOSTouchOthers.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListPOSTouchOthers.Images.SetKeyName(0, "cancel.png");
-            this.imageListPOSTouchOthers.Images.SetKeyName(1, "print.png");
-            this.imageListPOSTouchOthers.Images.SetKeyName(2, "splitMergeBill.png");
-            this.imageListPOSTouchOthers.Images.SetKeyName(3, "tender.png");
             // 
             // TrnPOSTouchActivityForm
             // 

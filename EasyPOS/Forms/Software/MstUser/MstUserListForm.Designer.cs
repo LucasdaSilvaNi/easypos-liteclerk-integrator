@@ -155,7 +155,6 @@
             this.dataGridViewUserList.MultiSelect = false;
             this.dataGridViewUserList.Name = "dataGridViewUserList";
             this.dataGridViewUserList.ReadOnly = true;
-            this.dataGridViewUserList.RowHeadersVisible = false;
             this.dataGridViewUserList.RowTemplate.Height = 24;
             this.dataGridViewUserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewUserList.Size = new System.Drawing.Size(1376, 536);

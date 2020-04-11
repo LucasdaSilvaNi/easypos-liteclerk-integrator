@@ -35,6 +35,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnStockCountDetailForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonPost = new System.Windows.Forms.Button();
             this.buttonLock = new System.Windows.Forms.Button();
             this.buttonUnlock = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -78,7 +79,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePickerStockCountDate = new System.Windows.Forms.DateTimePicker();
             this.textBoxStockCountNumber = new System.Windows.Forms.TextBox();
-            this.buttonPost = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -104,6 +104,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1400, 63);
             this.panel1.TabIndex = 8;
+            // 
+            // buttonPost
+            // 
+            this.buttonPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonPost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonPost.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonPost.FlatAppearance.BorderSize = 0;
+            this.buttonPost.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPost.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPost.ForeColor = System.Drawing.Color.White;
+            this.buttonPost.Location = new System.Drawing.Point(924, 12);
+            this.buttonPost.Name = "buttonPost";
+            this.buttonPost.Size = new System.Drawing.Size(88, 40);
+            this.buttonPost.TabIndex = 24;
+            this.buttonPost.TabStop = false;
+            this.buttonPost.Text = "Post";
+            this.buttonPost.UseVisualStyleBackColor = false;
+            this.buttonPost.Click += new System.EventHandler(this.buttonPost_Click);
             // 
             // buttonLock
             // 
@@ -253,7 +271,6 @@
             this.dataGridViewStockCountLineList.MultiSelect = false;
             this.dataGridViewStockCountLineList.Name = "dataGridViewStockCountLineList";
             this.dataGridViewStockCountLineList.ReadOnly = true;
-            this.dataGridViewStockCountLineList.RowHeadersVisible = false;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.dataGridViewStockCountLineList.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewStockCountLineList.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F);
@@ -643,24 +660,6 @@
             this.textBoxStockCountNumber.Name = "textBoxStockCountNumber";
             this.textBoxStockCountNumber.Size = new System.Drawing.Size(196, 30);
             this.textBoxStockCountNumber.TabIndex = 0;
-            // 
-            // buttonPost
-            // 
-            this.buttonPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonPost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonPost.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonPost.FlatAppearance.BorderSize = 0;
-            this.buttonPost.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPost.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPost.ForeColor = System.Drawing.Color.White;
-            this.buttonPost.Location = new System.Drawing.Point(924, 12);
-            this.buttonPost.Name = "buttonPost";
-            this.buttonPost.Size = new System.Drawing.Size(88, 40);
-            this.buttonPost.TabIndex = 24;
-            this.buttonPost.TabStop = false;
-            this.buttonPost.Text = "Post";
-            this.buttonPost.UseVisualStyleBackColor = false;
-            this.buttonPost.Click += new System.EventHandler(this.buttonPost_Click);
             // 
             // TrnStockCountDetailForm
             // 

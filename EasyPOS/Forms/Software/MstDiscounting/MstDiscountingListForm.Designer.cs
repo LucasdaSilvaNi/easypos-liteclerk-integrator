@@ -249,7 +249,6 @@
             this.dataGridViewDiscountList.MultiSelect = false;
             this.dataGridViewDiscountList.Name = "dataGridViewDiscountList";
             this.dataGridViewDiscountList.ReadOnly = true;
-            this.dataGridViewDiscountList.RowHeadersVisible = false;
             this.dataGridViewDiscountList.RowTemplate.Height = 24;
             this.dataGridViewDiscountList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewDiscountList.Size = new System.Drawing.Size(1376, 536);

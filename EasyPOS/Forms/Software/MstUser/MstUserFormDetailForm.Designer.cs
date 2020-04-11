@@ -310,7 +310,7 @@
             this.label2.TabIndex = 15;
             this.label2.Text = "Form:";
             // 
-            // MstUserDetailUserFormDetailForm
+            // MstUserFormDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -320,7 +320,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "MstUserDetailUserFormDetailForm";
+            this.Name = "MstUserFormDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "User Form Detail";
             this.panel1.ResumeLayout(false);

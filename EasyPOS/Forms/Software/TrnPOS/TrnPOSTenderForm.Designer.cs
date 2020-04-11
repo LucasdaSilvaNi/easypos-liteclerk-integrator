@@ -426,7 +426,7 @@
             this.ColumnTenderListPayTypeOtherInformation.Name = "ColumnTenderListPayTypeOtherInformation";
             this.ColumnTenderListPayTypeOtherInformation.Visible = false;
             // 
-            // TrnSalesDetailTenderForm
+            // TrnPOSTenderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -440,7 +440,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
-            this.Name = "TrnSalesDetailTenderForm";
+            this.Name = "TrnPOSTenderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tender";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TrnSalesDetailTenderForm_FormClosing);

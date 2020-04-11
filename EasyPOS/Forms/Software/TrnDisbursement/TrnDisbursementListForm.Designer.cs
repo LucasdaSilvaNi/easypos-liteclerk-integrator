@@ -167,7 +167,6 @@
             this.dataGridViewDisbursementList.MultiSelect = false;
             this.dataGridViewDisbursementList.Name = "dataGridViewDisbursementList";
             this.dataGridViewDisbursementList.ReadOnly = true;
-            this.dataGridViewDisbursementList.RowHeadersVisible = false;
             this.dataGridViewDisbursementList.RowTemplate.Height = 24;
             this.dataGridViewDisbursementList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewDisbursementList.Size = new System.Drawing.Size(1376, 536);

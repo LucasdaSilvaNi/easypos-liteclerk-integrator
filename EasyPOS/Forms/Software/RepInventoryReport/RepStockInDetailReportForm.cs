@@ -60,7 +60,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                               ColumnAmount = d.Amount.ToString("#,##0.00"),
                               ColumnExpiryDate = d.ExpiryDate,
                               ColumnLotNumber = d.LotNumber,
-                              ColumnSellingPrice = d.SellingPrice.ToString()
+                              ColumnSellingPrice = d.SellingPrice != null ? Convert.ToDecimal(d.SellingPrice).ToString("#,##0.00") : "0.00"
                           };
 
                 totalAmount = stockInDetailReportList.Sum(d => d.Amount);

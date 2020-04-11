@@ -42,12 +42,12 @@
             this.buttonTableGroupListPageListLast = new System.Windows.Forms.Button();
             this.textBoxTableGroupListPageNumber = new System.Windows.Forms.TextBox();
             this.dataGridViewTableGroupList = new System.Windows.Forms.DataGridView();
-            this.textBoxTableGroupListFilter = new System.Windows.Forms.TextBox();
             this.ColumnTableGroupListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnTableGroupListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnTableGroupListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTableGroupListTableGroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTableGroupListIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.textBoxTableGroupListFilter = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -246,22 +246,11 @@
             this.dataGridViewTableGroupList.MultiSelect = false;
             this.dataGridViewTableGroupList.Name = "dataGridViewTableGroupList";
             this.dataGridViewTableGroupList.ReadOnly = true;
-            this.dataGridViewTableGroupList.RowHeadersVisible = false;
             this.dataGridViewTableGroupList.RowTemplate.Height = 24;
             this.dataGridViewTableGroupList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTableGroupList.Size = new System.Drawing.Size(1376, 536);
             this.dataGridViewTableGroupList.TabIndex = 9;
             this.dataGridViewTableGroupList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTableGroupList_CellClick);
-            // 
-            // textBoxTableGroupListFilter
-            // 
-            this.textBoxTableGroupListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxTableGroupListFilter.Location = new System.Drawing.Point(12, 6);
-            this.textBoxTableGroupListFilter.Name = "textBoxTableGroupListFilter";
-            this.textBoxTableGroupListFilter.Size = new System.Drawing.Size(1376, 30);
-            this.textBoxTableGroupListFilter.TabIndex = 8;
-            this.textBoxTableGroupListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxTableGroupListFilter_KeyDown);
             // 
             // ColumnTableGroupListButtonEdit
             // 
@@ -304,6 +293,16 @@
             this.ColumnTableGroupListIsLocked.Name = "ColumnTableGroupListIsLocked";
             this.ColumnTableGroupListIsLocked.ReadOnly = true;
             this.ColumnTableGroupListIsLocked.Width = 35;
+            // 
+            // textBoxTableGroupListFilter
+            // 
+            this.textBoxTableGroupListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxTableGroupListFilter.Location = new System.Drawing.Point(12, 6);
+            this.textBoxTableGroupListFilter.Name = "textBoxTableGroupListFilter";
+            this.textBoxTableGroupListFilter.Size = new System.Drawing.Size(1376, 30);
+            this.textBoxTableGroupListFilter.TabIndex = 8;
+            this.textBoxTableGroupListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxTableGroupListFilter_KeyDown);
             // 
             // MstTableGroupListForm
             // 

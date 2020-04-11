@@ -74,7 +74,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(982, 63);
+            this.panel1.Size = new System.Drawing.Size(1082, 63);
             this.panel1.TabIndex = 9;
             // 
             // pictureBox1
@@ -107,7 +107,7 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(882, 12);
+            this.buttonClose.Location = new System.Drawing.Point(982, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 20;
@@ -167,10 +167,9 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewSearchItemList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewSearchItemList.RowHeadersVisible = false;
             this.dataGridViewSearchItemList.RowTemplate.Height = 24;
             this.dataGridViewSearchItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSearchItemList.Size = new System.Drawing.Size(958, 439);
+            this.dataGridViewSearchItemList.Size = new System.Drawing.Size(1058, 439);
             this.dataGridViewSearchItemList.TabIndex = 6;
             this.dataGridViewSearchItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSearchItemList_CellClick);
             // 
@@ -283,7 +282,7 @@
             this.textBoxSearchItemListFilter.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxSearchItemListFilter.Location = new System.Drawing.Point(12, 6);
             this.textBoxSearchItemListFilter.Name = "textBoxSearchItemListFilter";
-            this.textBoxSearchItemListFilter.Size = new System.Drawing.Size(958, 30);
+            this.textBoxSearchItemListFilter.Size = new System.Drawing.Size(1058, 30);
             this.textBoxSearchItemListFilter.TabIndex = 0;
             this.textBoxSearchItemListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSearchItemListFilter_KeyDown);
             // 
@@ -298,7 +297,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 487);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(982, 53);
+            this.panel3.Size = new System.Drawing.Size(1082, 53);
             this.panel3.TabIndex = 19;
             // 
             // buttonSearchItemListPageListFirst
@@ -385,19 +384,19 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 63);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(982, 540);
+            this.panel2.Size = new System.Drawing.Size(1082, 540);
             this.panel2.TabIndex = 10;
             // 
-            // TrnStockInDetailSearchItemForm
+            // TrnSearchItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(982, 603);
+            this.ClientSize = new System.Drawing.Size(1082, 603);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "TrnStockInDetailSearchItemForm";
+            this.Name = "TrnSearchItemForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Search Item";
             this.panel1.ResumeLayout(false);

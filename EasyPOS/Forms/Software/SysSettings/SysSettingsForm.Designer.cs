@@ -38,6 +38,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.checkBoxAllowNegativeInventory = new System.Windows.Forms.CheckBox();
             this.textBoxPOSType = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
             this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
@@ -126,7 +127,6 @@
             this.txtBranchCode = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
-            this.checkBoxAllowNegativeInventory = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -320,6 +320,17 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1376, 594);
             this.panel4.TabIndex = 33;
+            // 
+            // checkBoxAllowNegativeInventory
+            // 
+            this.checkBoxAllowNegativeInventory.AutoSize = true;
+            this.checkBoxAllowNegativeInventory.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxAllowNegativeInventory.Location = new System.Drawing.Point(1114, 514);
+            this.checkBoxAllowNegativeInventory.Name = "checkBoxAllowNegativeInventory";
+            this.checkBoxAllowNegativeInventory.Size = new System.Drawing.Size(223, 27);
+            this.checkBoxAllowNegativeInventory.TabIndex = 80;
+            this.checkBoxAllowNegativeInventory.Text = "Allow Negative Inventory";
+            this.checkBoxAllowNegativeInventory.UseVisualStyleBackColor = true;
             // 
             // textBoxPOSType
             // 
@@ -1187,17 +1198,6 @@
             this.backgroundWorkerEasyfisIntegration.WorkerReportsProgress = true;
             this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
             this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
-            // 
-            // checkBoxAllowNegativeInventory
-            // 
-            this.checkBoxAllowNegativeInventory.AutoSize = true;
-            this.checkBoxAllowNegativeInventory.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxAllowNegativeInventory.Location = new System.Drawing.Point(1114, 514);
-            this.checkBoxAllowNegativeInventory.Name = "checkBoxAllowNegativeInventory";
-            this.checkBoxAllowNegativeInventory.Size = new System.Drawing.Size(223, 27);
-            this.checkBoxAllowNegativeInventory.TabIndex = 80;
-            this.checkBoxAllowNegativeInventory.Text = "Allow Negative Inventory";
-            this.checkBoxAllowNegativeInventory.UseVisualStyleBackColor = true;
             // 
             // SysSettingsForm
             // 

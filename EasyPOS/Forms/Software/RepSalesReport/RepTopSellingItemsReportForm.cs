@@ -62,8 +62,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         ColumnUnit = topSellingItemsReport.Unit,
                         ColumnPrice = topSellingItemsReport.Price.ToString("#,##0.00"),
                         ColumnQuantity = topSellingItemsReport.Quantity.ToString("#,##0.00"),
-                        ColumnAmount = topSellingItemsReport.Amount.ToString("#,##0.00"),
-                        ColumnSpace = ""
+                        ColumnAmount = topSellingItemsReport.Amount.ToString("#,##0.00")
                     });
 
                     totalAmount += topSellingItemsReport.Amount;

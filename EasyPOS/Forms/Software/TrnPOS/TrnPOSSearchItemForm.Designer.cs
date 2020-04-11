@@ -38,7 +38,6 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.dataGridViewSearchItemList = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.ColumnSearchItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSearchItemBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSearchItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +51,7 @@
             this.ColumnSearchItemOnHandQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSearchItemIsInventory = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColumnSearchItemButtonPick = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchItemList)).BeginInit();
@@ -67,7 +67,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(982, 63);
+            this.panel1.Size = new System.Drawing.Size(1082, 63);
             this.panel1.TabIndex = 4;
             // 
             // pictureBox1
@@ -100,7 +100,7 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(882, 12);
+            this.buttonClose.Location = new System.Drawing.Point(982, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
@@ -114,7 +114,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxFilter.Location = new System.Drawing.Point(12, 6);
             this.textBoxFilter.Name = "textBoxFilter";
-            this.textBoxFilter.Size = new System.Drawing.Size(958, 30);
+            this.textBoxFilter.Size = new System.Drawing.Size(1058, 30);
             this.textBoxFilter.TabIndex = 5;
             this.textBoxFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxFilter_KeyDown);
             // 
@@ -146,22 +146,11 @@
             this.dataGridViewSearchItemList.MultiSelect = false;
             this.dataGridViewSearchItemList.Name = "dataGridViewSearchItemList";
             this.dataGridViewSearchItemList.ReadOnly = true;
-            this.dataGridViewSearchItemList.RowHeadersVisible = false;
             this.dataGridViewSearchItemList.RowTemplate.Height = 24;
             this.dataGridViewSearchItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSearchItemList.Size = new System.Drawing.Size(958, 436);
+            this.dataGridViewSearchItemList.Size = new System.Drawing.Size(1058, 436);
             this.dataGridViewSearchItemList.TabIndex = 6;
             this.dataGridViewSearchItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSearchItemList_CellClick);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.textBoxFilter);
-            this.panel2.Controls.Add(this.dataGridViewSearchItemList);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 63);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(982, 490);
-            this.panel2.TabIndex = 7;
             // 
             // ColumnSearchItemId
             // 
@@ -180,7 +169,7 @@
             // ColumnSearchItemDescription
             // 
             this.ColumnSearchItemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnSearchItemDescription.HeaderText = "Description";
+            this.ColumnSearchItemDescription.HeaderText = "Item Description";
             this.ColumnSearchItemDescription.Name = "ColumnSearchItemDescription";
             this.ColumnSearchItemDescription.ReadOnly = true;
             // 
@@ -265,11 +254,21 @@
             this.ColumnSearchItemButtonPick.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.ColumnSearchItemButtonPick.Width = 70;
             // 
-            // TrnSalesDetailSearchItemForm
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.textBoxFilter);
+            this.panel2.Controls.Add(this.dataGridViewSearchItemList);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 63);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1082, 490);
+            this.panel2.TabIndex = 7;
+            // 
+            // TrnPOSSearchItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(982, 553);
+            this.ClientSize = new System.Drawing.Size(1082, 553);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
@@ -277,7 +276,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
-            this.Name = "TrnSalesDetailSearchItemForm";
+            this.Name = "TrnPOSSearchItemForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Search Item";
             this.panel1.ResumeLayout(false);

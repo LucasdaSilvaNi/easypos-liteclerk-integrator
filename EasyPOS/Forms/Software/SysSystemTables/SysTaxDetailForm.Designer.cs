@@ -191,7 +191,7 @@
             this.textBoxCode.Size = new System.Drawing.Size(295, 30);
             this.textBoxCode.TabIndex = 0;
             // 
-            // SysSystemTablesTaxDetailForm
+            // SysTaxDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -208,7 +208,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "SysSystemTablesTaxDetailForm";
+            this.Name = "SysTaxDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tax Detail";
             this.panel1.ResumeLayout(false);

@@ -169,7 +169,7 @@
             this.comboBoxType.Size = new System.Drawing.Size(296, 31);
             this.comboBoxType.TabIndex = 2;
             // 
-            // SysSystemTablesAccountDetailForm
+            // SysAccountDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -184,7 +184,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "SysSystemTablesAccountDetailForm";
+            this.Name = "SysAccountDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Account Detail";
             this.panel1.ResumeLayout(false);

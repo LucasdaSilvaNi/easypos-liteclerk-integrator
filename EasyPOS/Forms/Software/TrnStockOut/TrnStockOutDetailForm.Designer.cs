@@ -257,7 +257,6 @@
             this.dataGridViewStockOutLineList.MultiSelect = false;
             this.dataGridViewStockOutLineList.Name = "dataGridViewStockOutLineList";
             this.dataGridViewStockOutLineList.ReadOnly = true;
-            this.dataGridViewStockOutLineList.RowHeadersVisible = false;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.dataGridViewStockOutLineList.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewStockOutLineList.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F);

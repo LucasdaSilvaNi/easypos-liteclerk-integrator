@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepRemittanceReportForm));
             this.printPreviewControlRemittanceReport = new System.Windows.Forms.PrintPreviewControl();
             this.printDocumentRemittanceReport = new System.Drawing.Printing.PrintDocument();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -145,15 +146,16 @@
             this.printDialogRemittanceReport.Document = this.printDocumentRemittanceReport;
             this.printDialogRemittanceReport.UseEXDialog = true;
             // 
-            // RepRemittanceReportRemittanceReportForm
+            // RepRemittanceReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(664, 716);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "RepRemittanceReportRemittanceReportForm";
+            this.Name = "RepRemittanceReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Remittance Report";
             this.panel1.ResumeLayout(false);

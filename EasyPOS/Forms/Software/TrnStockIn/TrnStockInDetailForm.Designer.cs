@@ -620,7 +620,6 @@
             this.dataGridViewStockInLineList.MultiSelect = false;
             this.dataGridViewStockInLineList.Name = "dataGridViewStockInLineList";
             this.dataGridViewStockInLineList.ReadOnly = true;
-            this.dataGridViewStockInLineList.RowHeadersVisible = false;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.dataGridViewStockInLineList.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewStockInLineList.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F);

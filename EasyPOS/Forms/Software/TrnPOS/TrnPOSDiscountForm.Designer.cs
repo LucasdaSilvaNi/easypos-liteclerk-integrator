@@ -211,7 +211,7 @@
             this.label2.TabIndex = 34;
             this.label2.Text = "SC/PWD ID:";
             // 
-            // TrnSalesDetailDiscountForm
+            // TrnPOSDiscountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -223,7 +223,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
-            this.Name = "TrnSalesDetailDiscountForm";
+            this.Name = "TrnPOSDiscountForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Discount";
             this.panel1.ResumeLayout(false);

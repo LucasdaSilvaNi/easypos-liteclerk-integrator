@@ -237,7 +237,6 @@
             this.dataGridViewUserFormList.MultiSelect = false;
             this.dataGridViewUserFormList.Name = "dataGridViewUserFormList";
             this.dataGridViewUserFormList.ReadOnly = true;
-            this.dataGridViewUserFormList.RowHeadersVisible = false;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.dataGridViewUserFormList.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewUserFormList.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F);

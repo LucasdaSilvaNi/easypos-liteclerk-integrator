@@ -25,7 +25,6 @@ namespace EasyPOS.Entities
         public String ColumnTax { get; set; }
         public String ColumnTaxRate { get; set; }
         public String ColumnTaxAmount { get; set; }
-        public String ColumnSpace { get; set; }
     }
 }
  

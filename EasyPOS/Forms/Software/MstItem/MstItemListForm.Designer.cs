@@ -262,7 +262,6 @@
             this.dataGridViewItemList.MultiSelect = false;
             this.dataGridViewItemList.Name = "dataGridViewItemList";
             this.dataGridViewItemList.ReadOnly = true;
-            this.dataGridViewItemList.RowHeadersVisible = false;
             this.dataGridViewItemList.RowTemplate.Height = 24;
             this.dataGridViewItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewItemList.Size = new System.Drawing.Size(1376, 536);
@@ -298,7 +297,7 @@
             // ColumnItemListCode
             // 
             this.ColumnItemListCode.DataPropertyName = "ColumnItemListCode";
-            this.ColumnItemListCode.HeaderText = "Code";
+            this.ColumnItemListCode.HeaderText = "Item Code";
             this.ColumnItemListCode.Name = "ColumnItemListCode";
             this.ColumnItemListCode.ReadOnly = true;
             this.ColumnItemListCode.Width = 150;
@@ -306,7 +305,7 @@
             // ColumnItemListDescription
             // 
             this.ColumnItemListDescription.DataPropertyName = "ColumnItemListDescription";
-            this.ColumnItemListDescription.HeaderText = "Description";
+            this.ColumnItemListDescription.HeaderText = "Item Description";
             this.ColumnItemListDescription.Name = "ColumnItemListDescription";
             this.ColumnItemListDescription.ReadOnly = true;
             this.ColumnItemListDescription.Width = 250;

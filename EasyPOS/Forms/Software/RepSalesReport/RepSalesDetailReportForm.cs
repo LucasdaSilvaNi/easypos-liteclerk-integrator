@@ -68,8 +68,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                               ColumnAmount = d.Amount.ToString("#,##0.00"),
                               ColumnTax = d.Tax,
                               ColumnTaxRate = d.TaxRate.ToString("#,##0.00"),
-                              ColumnTaxAmount = d.TaxAmount.ToString("#,##0.00"),
-                              ColumnSpace = ""
+                              ColumnTaxAmount = d.TaxAmount.ToString("#,##0.00")
                           };
 
                 totalAmount = salesDetailList.Sum(d => d.Amount);

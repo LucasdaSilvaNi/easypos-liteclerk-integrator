@@ -219,7 +219,7 @@
             this.comboBoxCameraDevices.Size = new System.Drawing.Size(409, 31);
             this.comboBoxCameraDevices.TabIndex = 0;
             // 
-            // TrnSalesDetailTenderFacepayCameraForm
+            // TrnPOSTenderFacepayCameraForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -230,7 +230,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "TrnSalesDetailTenderFacepayCameraForm";
+            this.Name = "TrnPOSTenderFacepayCameraForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facepay Camera";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TrnSalesDetailTenderFacepayCameraForm_FormClosing);
