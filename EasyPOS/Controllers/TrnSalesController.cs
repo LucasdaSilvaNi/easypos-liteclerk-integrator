@@ -277,11 +277,24 @@ namespace EasyPOS.Controllers
                 }
 
                 String salesNumber = "0000000001";
-                var lastSales = from d in db.TrnSales.OrderByDescending(d => d.Id) select d;
-                if (lastSales.Any())
+
+                while (true)
                 {
-                    Int32 newSalesNumber = Convert.ToInt32(lastSales.FirstOrDefault().SalesNumber) + 1;
-                    salesNumber = FillLeadingZeroes(newSalesNumber, 10);
+                    var lastSales = from d in db.TrnSales.OrderByDescending(d => d.Id) select d;
+                    if (lastSales.Any())
+                    {
+                        Int32 newSalesNumber = Convert.ToInt32(lastSales.FirstOrDefault().SalesNumber) + 1;
+                        salesNumber = FillLeadingZeroes(newSalesNumber, 10);
+                    }
+
+                    var existingSales = from d in db.TrnSales
+                                        where d.SalesNumber == salesNumber
+                                        select d;
+
+                    if (existingSales.Any() == false)
+                    {
+                        break;
+                    }
                 }
 
                 DateTime currentDate = DateTime.Today;
@@ -663,6 +676,7 @@ namespace EasyPOS.Controllers
         public List<Entities.MstCustomerEntity> TenderSalesDropdownListCustomer()
         {
             var customers = from d in db.MstCustomers
+                            where d.IsLocked == true
                             select new Entities.MstCustomerEntity
                             {
                                 Id = d.Id,
@@ -695,6 +709,7 @@ namespace EasyPOS.Controllers
         public List<Entities.MstUserEntity> TenderSalesDropdownListUser()
         {
             var users = from d in db.MstUsers
+                        where d.IsLocked == true
                         select new Entities.MstUserEntity
                         {
                             Id = d.Id,
@@ -975,6 +990,7 @@ namespace EasyPOS.Controllers
         {
             var discounts = from d in db.MstDiscounts
                             where d.Id != 3
+                            && d.IsLocked == true
                             select new Entities.MstDiscountEntity
                             {
                                 Id = d.Id,
