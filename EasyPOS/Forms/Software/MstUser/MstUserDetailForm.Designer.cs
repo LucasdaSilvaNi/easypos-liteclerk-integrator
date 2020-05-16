@@ -38,7 +38,6 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonUnlock = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.dataGridViewUserFormList = new System.Windows.Forms.DataGridView();
             this.ColumnUserFormListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnUserFormListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -78,7 +77,6 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserFormList)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -176,7 +174,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.panel6);
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
@@ -185,15 +182,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1400, 637);
             this.panel2.TabIndex = 6;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.dataGridViewUserFormList);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(0, 173);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1400, 411);
-            this.panel6.TabIndex = 29;
             // 
             // dataGridViewUserFormList
             // 
@@ -233,7 +221,7 @@
             this.ColumnUserFormListCanSplit,
             this.ColumnUserFormListCanCancel,
             this.ColumnUserFormListCanReturn});
-            this.dataGridViewUserFormList.Location = new System.Drawing.Point(12, 6);
+            this.dataGridViewUserFormList.Location = new System.Drawing.Point(12, 52);
             this.dataGridViewUserFormList.MultiSelect = false;
             this.dataGridViewUserFormList.Name = "dataGridViewUserFormList";
             this.dataGridViewUserFormList.ReadOnly = true;
@@ -242,7 +230,7 @@
             this.dataGridViewUserFormList.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.dataGridViewUserFormList.RowTemplate.Height = 24;
             this.dataGridViewUserFormList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewUserFormList.Size = new System.Drawing.Size(1376, 399);
+            this.dataGridViewUserFormList.Size = new System.Drawing.Size(1376, 407);
             this.dataGridViewUserFormList.TabIndex = 1;
             this.dataGridViewUserFormList.TabStop = false;
             this.dataGridViewUserFormList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUserFormList_CellClick);
@@ -287,7 +275,7 @@
             this.ColumnUserFormListForm.HeaderText = "Form";
             this.ColumnUserFormListForm.Name = "ColumnUserFormListForm";
             this.ColumnUserFormListForm.ReadOnly = true;
-            this.ColumnUserFormListForm.Width = 300;
+            this.ColumnUserFormListForm.Width = 200;
             // 
             // ColumnUserFormListUserId
             // 
@@ -429,13 +417,14 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.BackColor = System.Drawing.SystemColors.Control;
+            this.panel5.Controls.Add(this.dataGridViewUserFormList);
             this.panel5.Controls.Add(this.buttonCopyUseRights);
             this.panel5.Controls.Add(this.buttonAddUserForm);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 119);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1400, 54);
+            this.panel5.Size = new System.Drawing.Size(1400, 465);
             this.panel5.TabIndex = 28;
             // 
             // buttonCopyUseRights
@@ -447,7 +436,7 @@
             this.buttonCopyUseRights.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCopyUseRights.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.buttonCopyUseRights.ForeColor = System.Drawing.Color.White;
-            this.buttonCopyUseRights.Location = new System.Drawing.Point(1206, 7);
+            this.buttonCopyUseRights.Location = new System.Drawing.Point(1206, 6);
             this.buttonCopyUseRights.Name = "buttonCopyUseRights";
             this.buttonCopyUseRights.Size = new System.Drawing.Size(88, 40);
             this.buttonCopyUseRights.TabIndex = 23;
@@ -654,7 +643,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserFormList)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -689,8 +677,8 @@
         private System.Windows.Forms.Button buttonUserFormListPageListNext;
         private System.Windows.Forms.Button buttonUserFormListPageListLast;
         private System.Windows.Forms.TextBox textBoxUserFormListPageNumber;
-        private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.DataGridView dataGridViewUserFormList;
+        private System.Windows.Forms.Button buttonCopyUseRights;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnUserFormListButtonEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnUserFormListButtonDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUserFormListId;
@@ -710,6 +698,5 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnUserFormListCanSplit;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnUserFormListCanCancel;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnUserFormListCanReturn;
-        private System.Windows.Forms.Button buttonCopyUseRights;
     }
 }

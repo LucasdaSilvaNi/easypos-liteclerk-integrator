@@ -42,7 +42,7 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonPrint = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridViewStockOutLineList = new System.Windows.Forms.DataGridView();
             this.ColumnStockOutLineListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnStockOutLineListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -57,7 +57,6 @@
             this.ColumnStockOutLineListAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockOutLineListAssetAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockOutLineListAssetAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.textBoxBarcode = new System.Windows.Forms.TextBox();
             this.buttonBarcode = new System.Windows.Forms.Button();
             this.buttonSearchItem = new System.Windows.Forms.Button();
@@ -85,9 +84,8 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStockOutLineList)).BeginInit();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStockOutLineList)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -202,7 +200,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.panel6);
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
@@ -212,14 +209,18 @@
             this.panel2.Size = new System.Drawing.Size(1400, 637);
             this.panel2.TabIndex = 9;
             // 
-            // panel6
+            // panel5
             // 
-            this.panel6.Controls.Add(this.dataGridViewStockOutLineList);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(0, 278);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1400, 306);
-            this.panel6.TabIndex = 29;
+            this.panel5.BackColor = System.Drawing.SystemColors.Control;
+            this.panel5.Controls.Add(this.dataGridViewStockOutLineList);
+            this.panel5.Controls.Add(this.textBoxBarcode);
+            this.panel5.Controls.Add(this.buttonBarcode);
+            this.panel5.Controls.Add(this.buttonSearchItem);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 234);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1400, 350);
+            this.panel5.TabIndex = 28;
             // 
             // dataGridViewStockOutLineList
             // 
@@ -253,7 +254,7 @@
             this.ColumnStockOutLineListAmount,
             this.ColumnStockOutLineListAssetAccountId,
             this.ColumnStockOutLineListAssetAccount});
-            this.dataGridViewStockOutLineList.Location = new System.Drawing.Point(12, 6);
+            this.dataGridViewStockOutLineList.Location = new System.Drawing.Point(12, 52);
             this.dataGridViewStockOutLineList.MultiSelect = false;
             this.dataGridViewStockOutLineList.Name = "dataGridViewStockOutLineList";
             this.dataGridViewStockOutLineList.ReadOnly = true;
@@ -262,7 +263,7 @@
             this.dataGridViewStockOutLineList.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.dataGridViewStockOutLineList.RowTemplate.Height = 24;
             this.dataGridViewStockOutLineList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewStockOutLineList.Size = new System.Drawing.Size(1376, 294);
+            this.dataGridViewStockOutLineList.Size = new System.Drawing.Size(1376, 292);
             this.dataGridViewStockOutLineList.TabIndex = 2;
             this.dataGridViewStockOutLineList.TabStop = false;
             this.dataGridViewStockOutLineList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStockOutLineList_CellClick);
@@ -315,7 +316,7 @@
             this.ColumnStockOutLineListItemDescription.HeaderText = "Item Description";
             this.ColumnStockOutLineListItemDescription.Name = "ColumnStockOutLineListItemDescription";
             this.ColumnStockOutLineListItemDescription.ReadOnly = true;
-            this.ColumnStockOutLineListItemDescription.Width = 300;
+            this.ColumnStockOutLineListItemDescription.Width = 200;
             // 
             // ColumnStockOutLineListUnitId
             // 
@@ -331,7 +332,6 @@
             this.ColumnStockOutLineListUnit.HeaderText = "Unit";
             this.ColumnStockOutLineListUnit.Name = "ColumnStockOutLineListUnit";
             this.ColumnStockOutLineListUnit.ReadOnly = true;
-            this.ColumnStockOutLineListUnit.Width = 150;
             // 
             // ColumnStockOutLineListQuantity
             // 
@@ -341,7 +341,6 @@
             this.ColumnStockOutLineListQuantity.HeaderText = "Quantity";
             this.ColumnStockOutLineListQuantity.Name = "ColumnStockOutLineListQuantity";
             this.ColumnStockOutLineListQuantity.ReadOnly = true;
-            this.ColumnStockOutLineListQuantity.Width = 150;
             // 
             // ColumnStockOutLineListCost
             // 
@@ -351,7 +350,6 @@
             this.ColumnStockOutLineListCost.HeaderText = "Cost";
             this.ColumnStockOutLineListCost.Name = "ColumnStockOutLineListCost";
             this.ColumnStockOutLineListCost.ReadOnly = true;
-            this.ColumnStockOutLineListCost.Width = 150;
             // 
             // ColumnStockOutLineListAmount
             // 
@@ -361,7 +359,6 @@
             this.ColumnStockOutLineListAmount.HeaderText = "Amount";
             this.ColumnStockOutLineListAmount.Name = "ColumnStockOutLineListAmount";
             this.ColumnStockOutLineListAmount.ReadOnly = true;
-            this.ColumnStockOutLineListAmount.Width = 150;
             // 
             // ColumnStockOutLineListAssetAccountId
             // 
@@ -378,26 +375,15 @@
             this.ColumnStockOutLineListAssetAccount.Name = "ColumnStockOutLineListAssetAccount";
             this.ColumnStockOutLineListAssetAccount.ReadOnly = true;
             this.ColumnStockOutLineListAssetAccount.Visible = false;
-            this.ColumnStockOutLineListAssetAccount.Width = 250;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Controls.Add(this.textBoxBarcode);
-            this.panel5.Controls.Add(this.buttonBarcode);
-            this.panel5.Controls.Add(this.buttonSearchItem);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 234);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1400, 44);
-            this.panel5.TabIndex = 28;
             // 
             // textBoxBarcode
             // 
-            this.textBoxBarcode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.textBoxBarcode.Location = new System.Drawing.Point(177, 5);
+            this.textBoxBarcode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxBarcode.Font = new System.Drawing.Font("Segoe UI Semibold", 13.3F, System.Drawing.FontStyle.Bold);
+            this.textBoxBarcode.Location = new System.Drawing.Point(177, 7);
             this.textBoxBarcode.Name = "textBoxBarcode";
-            this.textBoxBarcode.Size = new System.Drawing.Size(760, 30);
+            this.textBoxBarcode.Size = new System.Drawing.Size(1023, 37);
             this.textBoxBarcode.TabIndex = 10;
             this.textBoxBarcode.TabStop = false;
             this.textBoxBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarcode_KeyDown);
@@ -408,11 +394,11 @@
             this.buttonBarcode.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
             this.buttonBarcode.FlatAppearance.BorderSize = 0;
             this.buttonBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBarcode.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonBarcode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.buttonBarcode.ForeColor = System.Drawing.Color.White;
-            this.buttonBarcode.Location = new System.Drawing.Point(12, 5);
+            this.buttonBarcode.Location = new System.Drawing.Point(12, 6);
             this.buttonBarcode.Name = "buttonBarcode";
-            this.buttonBarcode.Size = new System.Drawing.Size(159, 32);
+            this.buttonBarcode.Size = new System.Drawing.Size(159, 40);
             this.buttonBarcode.TabIndex = 9;
             this.buttonBarcode.TabStop = false;
             this.buttonBarcode.Text = "Barcode";
@@ -426,11 +412,11 @@
             this.buttonSearchItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
             this.buttonSearchItem.FlatAppearance.BorderSize = 0;
             this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
-            this.buttonSearchItem.Location = new System.Drawing.Point(1206, 5);
+            this.buttonSearchItem.Location = new System.Drawing.Point(1206, 6);
             this.buttonSearchItem.Name = "buttonSearchItem";
-            this.buttonSearchItem.Size = new System.Drawing.Size(182, 32);
+            this.buttonSearchItem.Size = new System.Drawing.Size(182, 40);
             this.buttonSearchItem.TabIndex = 8;
             this.buttonSearchItem.TabStop = false;
             this.buttonSearchItem.Text = "Search Item";
@@ -702,10 +688,9 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStockOutLineList)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStockOutLineList)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -745,7 +730,6 @@
         private System.Windows.Forms.ComboBox comboBoxAccount;
         private System.Windows.Forms.DateTimePicker dateTimePickerStockOutDate;
         private System.Windows.Forms.TextBox textBoxStockOutNumber;
-        private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TextBox textBoxBarcode;
         private System.Windows.Forms.Button buttonBarcode;

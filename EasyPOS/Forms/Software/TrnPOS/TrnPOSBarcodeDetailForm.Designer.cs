@@ -204,8 +204,8 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label6.Location = new System.Drawing.Point(8, 52);
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label6.Location = new System.Drawing.Point(20, 65);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 23);
             this.label6.TabIndex = 9;
@@ -216,7 +216,7 @@
             this.labelCustomer.AutoSize = true;
             this.labelCustomer.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
             this.labelCustomer.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelCustomer.Location = new System.Drawing.Point(145, 52);
+            this.labelCustomer.Location = new System.Drawing.Point(145, 65);
             this.labelCustomer.Name = "labelCustomer";
             this.labelCustomer.Size = new System.Drawing.Size(0, 23);
             this.labelCustomer.TabIndex = 10;
@@ -225,8 +225,8 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label4.Location = new System.Drawing.Point(8, 29);
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label4.Location = new System.Drawing.Point(20, 40);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(99, 23);
             this.label4.TabIndex = 7;
@@ -237,7 +237,7 @@
             this.labelInvoiceDate.AutoSize = true;
             this.labelInvoiceDate.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
             this.labelInvoiceDate.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelInvoiceDate.Location = new System.Drawing.Point(145, 29);
+            this.labelInvoiceDate.Location = new System.Drawing.Point(145, 40);
             this.labelInvoiceDate.Name = "labelInvoiceDate";
             this.labelInvoiceDate.Size = new System.Drawing.Size(0, 23);
             this.labelInvoiceDate.TabIndex = 8;
@@ -246,8 +246,8 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label3.Location = new System.Drawing.Point(8, 6);
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label3.Location = new System.Drawing.Point(20, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 23);
             this.label3.TabIndex = 5;
@@ -258,7 +258,7 @@
             this.labelInvoiceNumber.AutoSize = true;
             this.labelInvoiceNumber.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
             this.labelInvoiceNumber.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelInvoiceNumber.Location = new System.Drawing.Point(145, 6);
+            this.labelInvoiceNumber.Location = new System.Drawing.Point(145, 15);
             this.labelInvoiceNumber.Name = "labelInvoiceNumber";
             this.labelInvoiceNumber.Size = new System.Drawing.Size(0, 23);
             this.labelInvoiceNumber.TabIndex = 6;
@@ -270,7 +270,7 @@
             this.textBoxTotalSalesAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxTotalSalesAmount.Font = new System.Drawing.Font("Segoe UI Semibold", 45F, System.Drawing.FontStyle.Bold);
             this.textBoxTotalSalesAmount.ForeColor = System.Drawing.Color.White;
-            this.textBoxTotalSalesAmount.Location = new System.Drawing.Point(563, 2);
+            this.textBoxTotalSalesAmount.Location = new System.Drawing.Point(558, -1);
             this.textBoxTotalSalesAmount.Name = "textBoxTotalSalesAmount";
             this.textBoxTotalSalesAmount.ReadOnly = true;
             this.textBoxTotalSalesAmount.Size = new System.Drawing.Size(824, 100);
@@ -384,7 +384,7 @@
             this.ColumnSalesLineItemDescription.HeaderText = "Item Description";
             this.ColumnSalesLineItemDescription.Name = "ColumnSalesLineItemDescription";
             this.ColumnSalesLineItemDescription.ReadOnly = true;
-            this.ColumnSalesLineItemDescription.Width = 250;
+            this.ColumnSalesLineItemDescription.Width = 200;
             // 
             // ColumnSalesLineUnitId
             // 
@@ -398,7 +398,6 @@
             this.ColumnSalesLineUnit.HeaderText = "Unit";
             this.ColumnSalesLineUnit.Name = "ColumnSalesLineUnit";
             this.ColumnSalesLineUnit.ReadOnly = true;
-            this.ColumnSalesLineUnit.Width = 72;
             // 
             // ColumnSalesLinePrice
             // 
@@ -407,7 +406,6 @@
             this.ColumnSalesLinePrice.HeaderText = "Price";
             this.ColumnSalesLinePrice.Name = "ColumnSalesLinePrice";
             this.ColumnSalesLinePrice.ReadOnly = true;
-            this.ColumnSalesLinePrice.Width = 130;
             // 
             // ColumnSalesLineDiscountId
             // 
@@ -427,10 +425,10 @@
             // 
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnSalesLineDiscountRate.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnSalesLineDiscountRate.HeaderText = "Discount Rate";
+            this.ColumnSalesLineDiscountRate.HeaderText = "Discount %";
             this.ColumnSalesLineDiscountRate.Name = "ColumnSalesLineDiscountRate";
             this.ColumnSalesLineDiscountRate.ReadOnly = true;
-            this.ColumnSalesLineDiscountRate.Width = 130;
+            this.ColumnSalesLineDiscountRate.Width = 110;
             // 
             // ColumnSalesLineDiscountAmount
             // 
@@ -439,7 +437,6 @@
             this.ColumnSalesLineDiscountAmount.HeaderText = "Discount";
             this.ColumnSalesLineDiscountAmount.Name = "ColumnSalesLineDiscountAmount";
             this.ColumnSalesLineDiscountAmount.ReadOnly = true;
-            this.ColumnSalesLineDiscountAmount.Width = 130;
             // 
             // ColumnSalesLineNetPrice
             // 
@@ -448,7 +445,6 @@
             this.ColumnSalesLineNetPrice.HeaderText = "Net Price";
             this.ColumnSalesLineNetPrice.Name = "ColumnSalesLineNetPrice";
             this.ColumnSalesLineNetPrice.ReadOnly = true;
-            this.ColumnSalesLineNetPrice.Width = 130;
             // 
             // ColumnSalesLineQuantity
             // 
@@ -457,7 +453,6 @@
             this.ColumnSalesLineQuantity.HeaderText = "Quantity";
             this.ColumnSalesLineQuantity.Name = "ColumnSalesLineQuantity";
             this.ColumnSalesLineQuantity.ReadOnly = true;
-            this.ColumnSalesLineQuantity.Width = 130;
             // 
             // ColumnSalesLineAmount
             // 
@@ -466,7 +461,6 @@
             this.ColumnSalesLineAmount.HeaderText = "Amount";
             this.ColumnSalesLineAmount.Name = "ColumnSalesLineAmount";
             this.ColumnSalesLineAmount.ReadOnly = true;
-            this.ColumnSalesLineAmount.Width = 130;
             // 
             // ColumnSalesLineTaxId
             // 
@@ -487,19 +481,17 @@
             // 
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnSalesLineTaxRate.DefaultCellStyle = dataGridViewCellStyle8;
-            this.ColumnSalesLineTaxRate.HeaderText = "Tax Rate";
+            this.ColumnSalesLineTaxRate.HeaderText = "Tax %";
             this.ColumnSalesLineTaxRate.Name = "ColumnSalesLineTaxRate";
             this.ColumnSalesLineTaxRate.ReadOnly = true;
-            this.ColumnSalesLineTaxRate.Width = 130;
             // 
             // ColumnSalesLineTaxAmount
             // 
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnSalesLineTaxAmount.DefaultCellStyle = dataGridViewCellStyle9;
-            this.ColumnSalesLineTaxAmount.HeaderText = "Tax Amount";
+            this.ColumnSalesLineTaxAmount.HeaderText = "Tax";
             this.ColumnSalesLineTaxAmount.Name = "ColumnSalesLineTaxAmount";
             this.ColumnSalesLineTaxAmount.ReadOnly = true;
-            this.ColumnSalesLineTaxAmount.Width = 130;
             // 
             // ColumnSalesLineSalesAccountId
             // 
@@ -601,9 +593,9 @@
             this.textBoxBarcode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxBarcode.Font = new System.Drawing.Font("Segoe UI Semibold", 13.3F, System.Drawing.FontStyle.Bold);
-            this.textBoxBarcode.Location = new System.Drawing.Point(127, 7);
+            this.textBoxBarcode.Location = new System.Drawing.Point(149, 7);
             this.textBoxBarcode.Name = "textBoxBarcode";
-            this.textBoxBarcode.Size = new System.Drawing.Size(1073, 37);
+            this.textBoxBarcode.Size = new System.Drawing.Size(1051, 37);
             this.textBoxBarcode.TabIndex = 0;
             this.textBoxBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarcode_KeyDown);
             // 
@@ -617,7 +609,7 @@
             this.buttonBarcode.ForeColor = System.Drawing.Color.White;
             this.buttonBarcode.Location = new System.Drawing.Point(12, 6);
             this.buttonBarcode.Name = "buttonBarcode";
-            this.buttonBarcode.Size = new System.Drawing.Size(109, 40);
+            this.buttonBarcode.Size = new System.Drawing.Size(131, 40);
             this.buttonBarcode.TabIndex = 6;
             this.buttonBarcode.TabStop = false;
             this.buttonBarcode.Text = "Barcode";
@@ -626,6 +618,7 @@
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Control;
             this.panel3.Controls.Add(this.buttonBarcode);
             this.panel3.Controls.Add(this.dataGridViewSalesLineList);
             this.panel3.Controls.Add(this.buttonSearchItem);
@@ -681,6 +674,9 @@
         private System.Windows.Forms.Label labelInvoiceDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelInvoiceNumber;
+        private System.Windows.Forms.Button buttonBarcode;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button buttonDiscount;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnSalesLineEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnSalesLineDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineId;
@@ -712,8 +708,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2LessTax;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePriceSplitPercentage;
-        private System.Windows.Forms.Button buttonBarcode;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button buttonDiscount;
     }
 }

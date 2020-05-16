@@ -50,7 +50,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(564, 63);
+            this.panel1.Size = new System.Drawing.Size(593, 63);
             this.panel1.TabIndex = 6;
             // 
             // buttonSave
@@ -62,7 +62,7 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(370, 12);
+            this.buttonSave.Location = new System.Drawing.Point(399, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
             this.buttonSave.TabIndex = 20;
@@ -101,7 +101,7 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(464, 12);
+            this.buttonClose.Location = new System.Drawing.Point(493, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 21;
@@ -124,16 +124,16 @@
             // 
             this.comboBoxUser.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxUser.FormattingEnabled = true;
-            this.comboBoxUser.Location = new System.Drawing.Point(194, 69);
+            this.comboBoxUser.Location = new System.Drawing.Point(199, 69);
             this.comboBoxUser.Name = "comboBoxUser";
-            this.comboBoxUser.Size = new System.Drawing.Size(358, 31);
+            this.comboBoxUser.Size = new System.Drawing.Size(382, 31);
             this.comboBoxUser.TabIndex = 0;
             // 
             // MstCopyUserRightsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(564, 108);
+            this.ClientSize = new System.Drawing.Size(593, 108);
             this.Controls.Add(this.comboBoxUser);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);

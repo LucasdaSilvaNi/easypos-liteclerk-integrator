@@ -106,6 +106,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.Controls.Add(this.panel15);
             this.panel2.Controls.Add(this.dataGridViewItemPriceList);
             this.panel2.Controls.Add(this.textBoxItemDescription);

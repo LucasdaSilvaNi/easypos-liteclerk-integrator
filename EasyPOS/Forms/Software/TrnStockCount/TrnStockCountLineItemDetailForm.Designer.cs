@@ -142,7 +142,7 @@
             this.textBoxStockCountLineAmount.Location = new System.Drawing.Point(98, 152);
             this.textBoxStockCountLineAmount.Name = "textBoxStockCountLineAmount";
             this.textBoxStockCountLineAmount.ReadOnly = true;
-            this.textBoxStockCountLineAmount.Size = new System.Drawing.Size(269, 30);
+            this.textBoxStockCountLineAmount.Size = new System.Drawing.Size(176, 30);
             this.textBoxStockCountLineAmount.TabIndex = 3;
             this.textBoxStockCountLineAmount.TabStop = false;
             this.textBoxStockCountLineAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -172,7 +172,7 @@
             this.textBoxStockCountLineCost.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxStockCountLineCost.Location = new System.Drawing.Point(98, 116);
             this.textBoxStockCountLineCost.Name = "textBoxStockCountLineCost";
-            this.textBoxStockCountLineCost.Size = new System.Drawing.Size(269, 30);
+            this.textBoxStockCountLineCost.Size = new System.Drawing.Size(176, 30);
             this.textBoxStockCountLineCost.TabIndex = 2;
             this.textBoxStockCountLineCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxStockCountLineCost.TextChanged += new System.EventHandler(this.textBoxStockCountLineCost_TextChanged);
@@ -211,7 +211,7 @@
             this.textBoxStockCountLineQuantity.HideSelection = false;
             this.textBoxStockCountLineQuantity.Location = new System.Drawing.Point(98, 44);
             this.textBoxStockCountLineQuantity.Name = "textBoxStockCountLineQuantity";
-            this.textBoxStockCountLineQuantity.Size = new System.Drawing.Size(269, 30);
+            this.textBoxStockCountLineQuantity.Size = new System.Drawing.Size(176, 30);
             this.textBoxStockCountLineQuantity.TabIndex = 0;
             this.textBoxStockCountLineQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxStockCountLineQuantity.TextChanged += new System.EventHandler(this.textBoxStockCountLineQuantity_TextChanged);

@@ -70,9 +70,6 @@
             this.buttonStockInLineListPageListLast = new System.Windows.Forms.Button();
             this.textBoxStockInLineListPageNumber = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.textBoxBarcode = new System.Windows.Forms.TextBox();
-            this.buttonBarcode = new System.Windows.Forms.Button();
-            this.buttonSearchItem = new System.Windows.Forms.Button();
             this.dataGridViewStockInLineList = new System.Windows.Forms.DataGridView();
             this.ColumnStockInLineListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnStockInLineListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -90,8 +87,10 @@
             this.ColumnStockInLineListAssetAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockInLineListAssetAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockInLineListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBoxBarcode = new System.Windows.Forms.TextBox();
+            this.buttonBarcode = new System.Windows.Forms.Button();
+            this.buttonSearchItem = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -99,7 +98,6 @@
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStockInLineList)).BeginInit();
             this.panel2.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -526,60 +524,16 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.BackColor = System.Drawing.SystemColors.Control;
+            this.panel5.Controls.Add(this.dataGridViewStockInLineList);
             this.panel5.Controls.Add(this.textBoxBarcode);
             this.panel5.Controls.Add(this.buttonBarcode);
             this.panel5.Controls.Add(this.buttonSearchItem);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 234);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1400, 44);
+            this.panel5.Size = new System.Drawing.Size(1400, 350);
             this.panel5.TabIndex = 26;
-            // 
-            // textBoxBarcode
-            // 
-            this.textBoxBarcode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.textBoxBarcode.Location = new System.Drawing.Point(163, 5);
-            this.textBoxBarcode.Name = "textBoxBarcode";
-            this.textBoxBarcode.Size = new System.Drawing.Size(774, 30);
-            this.textBoxBarcode.TabIndex = 10;
-            this.textBoxBarcode.TabStop = false;
-            this.textBoxBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarcode_KeyDown);
-            // 
-            // buttonBarcode
-            // 
-            this.buttonBarcode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonBarcode.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
-            this.buttonBarcode.FlatAppearance.BorderSize = 0;
-            this.buttonBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBarcode.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonBarcode.ForeColor = System.Drawing.Color.White;
-            this.buttonBarcode.Location = new System.Drawing.Point(12, 5);
-            this.buttonBarcode.Name = "buttonBarcode";
-            this.buttonBarcode.Size = new System.Drawing.Size(145, 32);
-            this.buttonBarcode.TabIndex = 9;
-            this.buttonBarcode.TabStop = false;
-            this.buttonBarcode.Text = "Barcode";
-            this.buttonBarcode.UseVisualStyleBackColor = false;
-            this.buttonBarcode.Click += new System.EventHandler(this.buttonBarcode_Click);
-            // 
-            // buttonSearchItem
-            // 
-            this.buttonSearchItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSearchItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonSearchItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
-            this.buttonSearchItem.FlatAppearance.BorderSize = 0;
-            this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
-            this.buttonSearchItem.Location = new System.Drawing.Point(1206, 5);
-            this.buttonSearchItem.Name = "buttonSearchItem";
-            this.buttonSearchItem.Size = new System.Drawing.Size(182, 32);
-            this.buttonSearchItem.TabIndex = 8;
-            this.buttonSearchItem.TabStop = false;
-            this.buttonSearchItem.Text = "Search Item";
-            this.buttonSearchItem.UseVisualStyleBackColor = false;
-            this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
             // 
             // dataGridViewStockInLineList
             // 
@@ -616,7 +570,7 @@
             this.ColumnStockInLineListAssetAccountId,
             this.ColumnStockInLineListAssetAccount,
             this.ColumnStockInLineListPrice});
-            this.dataGridViewStockInLineList.Location = new System.Drawing.Point(12, 6);
+            this.dataGridViewStockInLineList.Location = new System.Drawing.Point(12, 52);
             this.dataGridViewStockInLineList.MultiSelect = false;
             this.dataGridViewStockInLineList.Name = "dataGridViewStockInLineList";
             this.dataGridViewStockInLineList.ReadOnly = true;
@@ -625,7 +579,7 @@
             this.dataGridViewStockInLineList.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.dataGridViewStockInLineList.RowTemplate.Height = 24;
             this.dataGridViewStockInLineList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewStockInLineList.Size = new System.Drawing.Size(1376, 294);
+            this.dataGridViewStockInLineList.Size = new System.Drawing.Size(1376, 292);
             this.dataGridViewStockInLineList.TabIndex = 1;
             this.dataGridViewStockInLineList.TabStop = false;
             this.dataGridViewStockInLineList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStockInLineList_CellClick);
@@ -678,7 +632,7 @@
             this.ColumnStockInLineListItemDescription.HeaderText = "Item Description";
             this.ColumnStockInLineListItemDescription.Name = "ColumnStockInLineListItemDescription";
             this.ColumnStockInLineListItemDescription.ReadOnly = true;
-            this.ColumnStockInLineListItemDescription.Width = 300;
+            this.ColumnStockInLineListItemDescription.Width = 200;
             // 
             // ColumnStockInLineListUnitId
             // 
@@ -694,7 +648,6 @@
             this.ColumnStockInLineListUnit.HeaderText = "Unit";
             this.ColumnStockInLineListUnit.Name = "ColumnStockInLineListUnit";
             this.ColumnStockInLineListUnit.ReadOnly = true;
-            this.ColumnStockInLineListUnit.Width = 150;
             // 
             // ColumnStockInLineListQuantity
             // 
@@ -704,7 +657,6 @@
             this.ColumnStockInLineListQuantity.HeaderText = "Quantity";
             this.ColumnStockInLineListQuantity.Name = "ColumnStockInLineListQuantity";
             this.ColumnStockInLineListQuantity.ReadOnly = true;
-            this.ColumnStockInLineListQuantity.Width = 150;
             // 
             // ColumnStockInLineListCost
             // 
@@ -714,7 +666,6 @@
             this.ColumnStockInLineListCost.HeaderText = "Cost";
             this.ColumnStockInLineListCost.Name = "ColumnStockInLineListCost";
             this.ColumnStockInLineListCost.ReadOnly = true;
-            this.ColumnStockInLineListCost.Width = 150;
             // 
             // ColumnStockInLineListAmount
             // 
@@ -724,7 +675,6 @@
             this.ColumnStockInLineListAmount.HeaderText = "Amount";
             this.ColumnStockInLineListAmount.Name = "ColumnStockInLineListAmount";
             this.ColumnStockInLineListAmount.ReadOnly = true;
-            this.ColumnStockInLineListAmount.Width = 150;
             // 
             // ColumnStockInLineListExpiryDate
             // 
@@ -736,10 +686,10 @@
             // ColumnStockInLineListLotNumber
             // 
             this.ColumnStockInLineListLotNumber.DataPropertyName = "ColumnStockInLineListLotNumber";
-            this.ColumnStockInLineListLotNumber.HeaderText = "Lot Number";
+            this.ColumnStockInLineListLotNumber.HeaderText = "Lot No.";
             this.ColumnStockInLineListLotNumber.Name = "ColumnStockInLineListLotNumber";
             this.ColumnStockInLineListLotNumber.ReadOnly = true;
-            this.ColumnStockInLineListLotNumber.Width = 200;
+            this.ColumnStockInLineListLotNumber.Width = 120;
             // 
             // ColumnStockInLineListAssetAccountId
             // 
@@ -756,7 +706,6 @@
             this.ColumnStockInLineListAssetAccount.Name = "ColumnStockInLineListAssetAccount";
             this.ColumnStockInLineListAssetAccount.ReadOnly = true;
             this.ColumnStockInLineListAssetAccount.Visible = false;
-            this.ColumnStockInLineListAssetAccount.Width = 250;
             // 
             // ColumnStockInLineListPrice
             // 
@@ -766,11 +715,56 @@
             this.ColumnStockInLineListPrice.HeaderText = "Price";
             this.ColumnStockInLineListPrice.Name = "ColumnStockInLineListPrice";
             this.ColumnStockInLineListPrice.ReadOnly = true;
-            this.ColumnStockInLineListPrice.Width = 150;
+            // 
+            // textBoxBarcode
+            // 
+            this.textBoxBarcode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxBarcode.Font = new System.Drawing.Font("Segoe UI Semibold", 13.3F, System.Drawing.FontStyle.Bold);
+            this.textBoxBarcode.Location = new System.Drawing.Point(163, 7);
+            this.textBoxBarcode.Name = "textBoxBarcode";
+            this.textBoxBarcode.Size = new System.Drawing.Size(1037, 37);
+            this.textBoxBarcode.TabIndex = 10;
+            this.textBoxBarcode.TabStop = false;
+            this.textBoxBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarcode_KeyDown);
+            // 
+            // buttonBarcode
+            // 
+            this.buttonBarcode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonBarcode.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
+            this.buttonBarcode.FlatAppearance.BorderSize = 0;
+            this.buttonBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBarcode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.buttonBarcode.ForeColor = System.Drawing.Color.White;
+            this.buttonBarcode.Location = new System.Drawing.Point(12, 6);
+            this.buttonBarcode.Name = "buttonBarcode";
+            this.buttonBarcode.Size = new System.Drawing.Size(145, 40);
+            this.buttonBarcode.TabIndex = 9;
+            this.buttonBarcode.TabStop = false;
+            this.buttonBarcode.Text = "Barcode";
+            this.buttonBarcode.UseVisualStyleBackColor = false;
+            this.buttonBarcode.Click += new System.EventHandler(this.buttonBarcode_Click);
+            // 
+            // buttonSearchItem
+            // 
+            this.buttonSearchItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSearchItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonSearchItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
+            this.buttonSearchItem.FlatAppearance.BorderSize = 0;
+            this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
+            this.buttonSearchItem.Location = new System.Drawing.Point(1206, 6);
+            this.buttonSearchItem.Name = "buttonSearchItem";
+            this.buttonSearchItem.Size = new System.Drawing.Size(182, 40);
+            this.buttonSearchItem.TabIndex = 8;
+            this.buttonSearchItem.TabStop = false;
+            this.buttonSearchItem.Text = "Search Item";
+            this.buttonSearchItem.UseVisualStyleBackColor = false;
+            this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.panel6);
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
@@ -779,15 +773,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1400, 637);
             this.panel2.TabIndex = 8;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.dataGridViewStockInLineList);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(0, 278);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1400, 306);
-            this.panel6.TabIndex = 27;
             // 
             // TrnStockInDetailForm
             // 
@@ -813,7 +798,6 @@
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStockInLineList)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -859,6 +843,7 @@
         private System.Windows.Forms.Button buttonBarcode;
         private System.Windows.Forms.Button buttonSearchItem;
         private System.Windows.Forms.DataGridView dataGridViewStockInLineList;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnStockInLineListButtonEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnStockInLineListButtonDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockInLineListId;
@@ -875,7 +860,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockInLineListAssetAccountId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockInLineListAssetAccount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockInLineListPrice;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel6;
     }
 }

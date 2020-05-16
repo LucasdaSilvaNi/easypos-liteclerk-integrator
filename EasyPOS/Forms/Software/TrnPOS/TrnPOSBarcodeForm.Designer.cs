@@ -725,6 +725,7 @@
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Control;
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.dataGridViewSalesLineItemDisplay);
             this.panel3.Controls.Add(this.panel2);
@@ -758,7 +759,7 @@
             // textBoxLastChange
             // 
             this.textBoxLastChange.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.textBoxLastChange.BackColor = System.Drawing.Color.White;
+            this.textBoxLastChange.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBoxLastChange.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxLastChange.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.textBoxLastChange.ForeColor = System.Drawing.Color.Black;

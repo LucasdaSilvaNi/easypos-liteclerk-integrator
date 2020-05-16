@@ -66,7 +66,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(772, 63);
+            this.panel1.Size = new System.Drawing.Size(686, 63);
             this.panel1.TabIndex = 8;
             // 
             // pictureBox1
@@ -99,7 +99,7 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(672, 12);
+            this.buttonClose.Location = new System.Drawing.Point(586, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
@@ -116,7 +116,7 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(578, 12);
+            this.buttonSave.Location = new System.Drawing.Point(492, 12);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(88, 40);
             this.buttonSave.TabIndex = 0;
@@ -145,14 +145,14 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 63);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(772, 233);
+            this.panel2.Size = new System.Drawing.Size(686, 191);
             this.panel2.TabIndex = 9;
             // 
             // checkBoxIncludeExpiry
             // 
             this.checkBoxIncludeExpiry.AutoSize = true;
             this.checkBoxIncludeExpiry.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxIncludeExpiry.Location = new System.Drawing.Point(742, 51);
+            this.checkBoxIncludeExpiry.Location = new System.Drawing.Point(566, 52);
             this.checkBoxIncludeExpiry.Name = "checkBoxIncludeExpiry";
             this.checkBoxIncludeExpiry.Size = new System.Drawing.Size(18, 17);
             this.checkBoxIncludeExpiry.TabIndex = 6;
@@ -164,9 +164,9 @@
             this.dateTimePickerStockInLineExpiryDate.CustomFormat = "";
             this.dateTimePickerStockInLineExpiryDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.dateTimePickerStockInLineExpiryDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerStockInLineExpiryDate.Location = new System.Drawing.Point(485, 44);
+            this.dateTimePickerStockInLineExpiryDate.Location = new System.Drawing.Point(392, 45);
             this.dateTimePickerStockInLineExpiryDate.Name = "dateTimePickerStockInLineExpiryDate";
-            this.dateTimePickerStockInLineExpiryDate.Size = new System.Drawing.Size(251, 30);
+            this.dateTimePickerStockInLineExpiryDate.Size = new System.Drawing.Size(168, 30);
             this.dateTimePickerStockInLineExpiryDate.TabIndex = 5;
             // 
             // label8
@@ -184,7 +184,7 @@
             this.textBoxStockInLinePrice.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxStockInLinePrice.Location = new System.Drawing.Point(98, 188);
             this.textBoxStockInLinePrice.Name = "textBoxStockInLinePrice";
-            this.textBoxStockInLinePrice.Size = new System.Drawing.Size(269, 30);
+            this.textBoxStockInLinePrice.Size = new System.Drawing.Size(176, 30);
             this.textBoxStockInLinePrice.TabIndex = 4;
             this.textBoxStockInLinePrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxStockInLinePrice.TextChanged += new System.EventHandler(this.textBoxStockInLinePrice_TextChanged);
@@ -195,7 +195,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label7.Location = new System.Drawing.Point(373, 83);
+            this.label7.Location = new System.Drawing.Point(280, 84);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(106, 23);
             this.label7.TabIndex = 30;
@@ -204,16 +204,16 @@
             // textBoxStockInLineLotNumber
             // 
             this.textBoxStockInLineLotNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxStockInLineLotNumber.Location = new System.Drawing.Point(485, 80);
+            this.textBoxStockInLineLotNumber.Location = new System.Drawing.Point(392, 81);
             this.textBoxStockInLineLotNumber.Name = "textBoxStockInLineLotNumber";
-            this.textBoxStockInLineLotNumber.Size = new System.Drawing.Size(251, 30);
+            this.textBoxStockInLineLotNumber.Size = new System.Drawing.Size(192, 30);
             this.textBoxStockInLineLotNumber.TabIndex = 7;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label6.Location = new System.Drawing.Point(379, 46);
+            this.label6.Location = new System.Drawing.Point(286, 47);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 23);
             this.label6.TabIndex = 28;
@@ -225,7 +225,7 @@
             this.textBoxStockInLineAmount.Location = new System.Drawing.Point(98, 152);
             this.textBoxStockInLineAmount.Name = "textBoxStockInLineAmount";
             this.textBoxStockInLineAmount.ReadOnly = true;
-            this.textBoxStockInLineAmount.Size = new System.Drawing.Size(269, 30);
+            this.textBoxStockInLineAmount.Size = new System.Drawing.Size(176, 30);
             this.textBoxStockInLineAmount.TabIndex = 3;
             this.textBoxStockInLineAmount.TabStop = false;
             this.textBoxStockInLineAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -255,7 +255,7 @@
             this.textBoxStockInLineCost.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxStockInLineCost.Location = new System.Drawing.Point(98, 116);
             this.textBoxStockInLineCost.Name = "textBoxStockInLineCost";
-            this.textBoxStockInLineCost.Size = new System.Drawing.Size(269, 30);
+            this.textBoxStockInLineCost.Size = new System.Drawing.Size(176, 30);
             this.textBoxStockInLineCost.TabIndex = 2;
             this.textBoxStockInLineCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxStockInLineCost.TextChanged += new System.EventHandler(this.textBoxStockInLineCost_TextChanged);
@@ -282,7 +282,7 @@
             this.textBoxStockInLineItemDescription.Location = new System.Drawing.Point(12, 6);
             this.textBoxStockInLineItemDescription.Name = "textBoxStockInLineItemDescription";
             this.textBoxStockInLineItemDescription.ReadOnly = true;
-            this.textBoxStockInLineItemDescription.Size = new System.Drawing.Size(748, 32);
+            this.textBoxStockInLineItemDescription.Size = new System.Drawing.Size(662, 32);
             this.textBoxStockInLineItemDescription.TabIndex = 12;
             this.textBoxStockInLineItemDescription.TabStop = false;
             this.textBoxStockInLineItemDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -294,7 +294,7 @@
             this.textBoxStockInLineQuantity.HideSelection = false;
             this.textBoxStockInLineQuantity.Location = new System.Drawing.Point(98, 44);
             this.textBoxStockInLineQuantity.Name = "textBoxStockInLineQuantity";
-            this.textBoxStockInLineQuantity.Size = new System.Drawing.Size(269, 30);
+            this.textBoxStockInLineQuantity.Size = new System.Drawing.Size(176, 30);
             this.textBoxStockInLineQuantity.TabIndex = 0;
             this.textBoxStockInLineQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxStockInLineQuantity.TextChanged += new System.EventHandler(this.textBoxStockInLineQuantity_TextChanged);
@@ -325,7 +325,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(772, 296);
+            this.ClientSize = new System.Drawing.Size(686, 254);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

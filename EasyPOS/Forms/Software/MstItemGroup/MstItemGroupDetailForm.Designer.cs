@@ -215,7 +215,6 @@
             this.textBoxItemGroupImagePath.Name = "textBoxItemGroupImagePath";
             this.textBoxItemGroupImagePath.Size = new System.Drawing.Size(533, 30);
             this.textBoxItemGroupImagePath.TabIndex = 1;
-            this.textBoxItemGroupImagePath.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label4
             // 

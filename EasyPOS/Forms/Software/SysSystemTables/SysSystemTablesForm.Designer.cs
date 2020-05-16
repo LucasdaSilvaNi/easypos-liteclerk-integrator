@@ -224,6 +224,7 @@
             // 
             // panel9
             // 
+            this.panel9.BackColor = System.Drawing.SystemColors.Control;
             this.panel9.Controls.Add(this.dataGridViewAccountList);
             this.panel9.Controls.Add(this.textBoxAccountListFilter);
             this.panel9.Controls.Add(this.panel15);
@@ -423,6 +424,7 @@
             // 
             // panel10
             // 
+            this.panel10.BackColor = System.Drawing.SystemColors.Control;
             this.panel10.Controls.Add(this.dataGridViewPayTypeList);
             this.panel10.Controls.Add(this.textBoxPayTypeListFilter);
             this.panel10.Controls.Add(this.panel16);
@@ -631,6 +633,7 @@
             // 
             // panel11
             // 
+            this.panel11.BackColor = System.Drawing.SystemColors.Control;
             this.panel11.Controls.Add(this.dataGridViewTaxList);
             this.panel11.Controls.Add(this.textBoxTaxListFilter);
             this.panel11.Controls.Add(this.panel17);
@@ -849,6 +852,7 @@
             // 
             // panel12
             // 
+            this.panel12.BackColor = System.Drawing.SystemColors.Control;
             this.panel12.Controls.Add(this.dataGridViewUnitList);
             this.panel12.Controls.Add(this.textBoxUnitListFilter);
             this.panel12.Controls.Add(this.panel18);
@@ -1030,6 +1034,7 @@
             // 
             // panel13
             // 
+            this.panel13.BackColor = System.Drawing.SystemColors.Control;
             this.panel13.Controls.Add(this.dataGridViewPeriodList);
             this.panel13.Controls.Add(this.textBoxPeriodListFilter);
             this.panel13.Controls.Add(this.panel19);
@@ -1211,6 +1216,7 @@
             // 
             // panel14
             // 
+            this.panel14.BackColor = System.Drawing.SystemColors.Control;
             this.panel14.Controls.Add(this.dataGridViewTerminalList);
             this.panel14.Controls.Add(this.textBoxTerminalListFilter);
             this.panel14.Controls.Add(this.panel20);
@@ -1392,6 +1398,7 @@
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Control;
             this.panel3.Controls.Add(this.dataGridViewSupplierList);
             this.panel3.Controls.Add(this.textBoxSupplierListFilter);
             this.panel3.Controls.Add(this.panel4);

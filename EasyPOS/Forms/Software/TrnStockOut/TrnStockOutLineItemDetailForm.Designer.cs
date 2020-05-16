@@ -64,7 +64,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Stock_In;
+            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Stock_Out;
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(48, 40);
@@ -140,7 +140,7 @@
             this.textBoxStockOutLineAmount.Location = new System.Drawing.Point(98, 152);
             this.textBoxStockOutLineAmount.Name = "textBoxStockOutLineAmount";
             this.textBoxStockOutLineAmount.ReadOnly = true;
-            this.textBoxStockOutLineAmount.Size = new System.Drawing.Size(269, 30);
+            this.textBoxStockOutLineAmount.Size = new System.Drawing.Size(176, 30);
             this.textBoxStockOutLineAmount.TabIndex = 3;
             this.textBoxStockOutLineAmount.TabStop = false;
             this.textBoxStockOutLineAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -170,7 +170,7 @@
             this.textBoxStockOutLineCost.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxStockOutLineCost.Location = new System.Drawing.Point(98, 116);
             this.textBoxStockOutLineCost.Name = "textBoxStockOutLineCost";
-            this.textBoxStockOutLineCost.Size = new System.Drawing.Size(269, 30);
+            this.textBoxStockOutLineCost.Size = new System.Drawing.Size(176, 30);
             this.textBoxStockOutLineCost.TabIndex = 2;
             this.textBoxStockOutLineCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxStockOutLineCost.TextChanged += new System.EventHandler(this.textBoxStockOutLineCost_TextChanged);
@@ -209,7 +209,7 @@
             this.textBoxStockOutLineQuantity.HideSelection = false;
             this.textBoxStockOutLineQuantity.Location = new System.Drawing.Point(98, 44);
             this.textBoxStockOutLineQuantity.Name = "textBoxStockOutLineQuantity";
-            this.textBoxStockOutLineQuantity.Size = new System.Drawing.Size(269, 30);
+            this.textBoxStockOutLineQuantity.Size = new System.Drawing.Size(176, 30);
             this.textBoxStockOutLineQuantity.TabIndex = 0;
             this.textBoxStockOutLineQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxStockOutLineQuantity.TextChanged += new System.EventHandler(this.textBoxStockOutLineQuantity_TextChanged);

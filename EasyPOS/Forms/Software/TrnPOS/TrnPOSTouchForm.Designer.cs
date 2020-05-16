@@ -144,6 +144,11 @@
             this.tabPageBilledOutColumnSpace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageCollected = new System.Windows.Forms.TabPage();
             this.dataGridViewCollectedSalesList = new System.Windows.Forms.DataGridView();
+            this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.textBoxLastChange = new System.Windows.Forms.TextBox();
+            this.labelLastChange = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.tabPageCollectedColumnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPageCollectedColumnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPageCollectedColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -159,11 +164,6 @@
             this.tabPageCollectedColumnIsTendered = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPageCollectedColumnIsCancelled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPageCollectedColumnSpace = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.textBoxLastChange = new System.Windows.Forms.TextBox();
-            this.labelLastChange = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -278,7 +278,7 @@
             this.panel2.Location = new System.Drawing.Point(12, 45);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(5);
-            this.panel2.Size = new System.Drawing.Size(900, 581);
+            this.panel2.Size = new System.Drawing.Size(828, 581);
             this.panel2.TabIndex = 20;
             // 
             // buttonDelivery
@@ -292,9 +292,9 @@
             this.buttonDelivery.ForeColor = System.Drawing.Color.White;
             this.buttonDelivery.ImageIndex = 0;
             this.buttonDelivery.ImageList = this.imageListPOSTouch;
-            this.buttonDelivery.Location = new System.Drawing.Point(454, 491);
+            this.buttonDelivery.Location = new System.Drawing.Point(418, 491);
             this.buttonDelivery.Name = "buttonDelivery";
-            this.buttonDelivery.Size = new System.Drawing.Size(438, 82);
+            this.buttonDelivery.Size = new System.Drawing.Size(401, 82);
             this.buttonDelivery.TabIndex = 45;
             this.buttonDelivery.Text = "\r\nDelivery";
             this.buttonDelivery.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -322,7 +322,7 @@
             this.buttonWalkIn.ImageList = this.imageListPOSTouch;
             this.buttonWalkIn.Location = new System.Drawing.Point(9, 491);
             this.buttonWalkIn.Name = "buttonWalkIn";
-            this.buttonWalkIn.Size = new System.Drawing.Size(439, 82);
+            this.buttonWalkIn.Size = new System.Drawing.Size(403, 82);
             this.buttonWalkIn.TabIndex = 44;
             this.buttonWalkIn.Text = "\r\nWalk In";
             this.buttonWalkIn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -336,9 +336,9 @@
             this.buttonTableGroup4.FlatAppearance.BorderSize = 0;
             this.buttonTableGroup4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTableGroup4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTableGroup4.Location = new System.Drawing.Point(454, 8);
+            this.buttonTableGroup4.Location = new System.Drawing.Point(417, 8);
             this.buttonTableGroup4.Name = "buttonTableGroup4";
-            this.buttonTableGroup4.Size = new System.Drawing.Size(118, 62);
+            this.buttonTableGroup4.Size = new System.Drawing.Size(106, 62);
             this.buttonTableGroup4.TabIndex = 41;
             this.buttonTableGroup4.UseVisualStyleBackColor = false;
             this.buttonTableGroup4.Click += new System.EventHandler(this.buttonTableGroup4_Click);
@@ -349,9 +349,9 @@
             this.buttonTableGroup5.FlatAppearance.BorderSize = 0;
             this.buttonTableGroup5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTableGroup5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTableGroup5.Location = new System.Drawing.Point(578, 8);
+            this.buttonTableGroup5.Location = new System.Drawing.Point(529, 8);
             this.buttonTableGroup5.Name = "buttonTableGroup5";
-            this.buttonTableGroup5.Size = new System.Drawing.Size(118, 62);
+            this.buttonTableGroup5.Size = new System.Drawing.Size(106, 62);
             this.buttonTableGroup5.TabIndex = 40;
             this.buttonTableGroup5.UseVisualStyleBackColor = false;
             this.buttonTableGroup5.Click += new System.EventHandler(this.buttonTableGroup5_Click);
@@ -362,9 +362,9 @@
             this.buttonTableGroup6.FlatAppearance.BorderSize = 0;
             this.buttonTableGroup6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTableGroup6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTableGroup6.Location = new System.Drawing.Point(702, 8);
+            this.buttonTableGroup6.Location = new System.Drawing.Point(641, 8);
             this.buttonTableGroup6.Name = "buttonTableGroup6";
-            this.buttonTableGroup6.Size = new System.Drawing.Size(119, 62);
+            this.buttonTableGroup6.Size = new System.Drawing.Size(107, 62);
             this.buttonTableGroup6.TabIndex = 39;
             this.buttonTableGroup6.UseVisualStyleBackColor = false;
             this.buttonTableGroup6.Click += new System.EventHandler(this.buttonTableGroup6_Click);
@@ -377,7 +377,7 @@
             this.buttonTableGroup1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTableGroup1.Location = new System.Drawing.Point(79, 8);
             this.buttonTableGroup1.Name = "buttonTableGroup1";
-            this.buttonTableGroup1.Size = new System.Drawing.Size(119, 62);
+            this.buttonTableGroup1.Size = new System.Drawing.Size(107, 62);
             this.buttonTableGroup1.TabIndex = 38;
             this.buttonTableGroup1.UseVisualStyleBackColor = false;
             this.buttonTableGroup1.Click += new System.EventHandler(this.buttonTableGroup1_Click);
@@ -388,9 +388,9 @@
             this.buttonTableGroup2.FlatAppearance.BorderSize = 0;
             this.buttonTableGroup2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTableGroup2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTableGroup2.Location = new System.Drawing.Point(204, 8);
+            this.buttonTableGroup2.Location = new System.Drawing.Point(192, 8);
             this.buttonTableGroup2.Name = "buttonTableGroup2";
-            this.buttonTableGroup2.Size = new System.Drawing.Size(119, 62);
+            this.buttonTableGroup2.Size = new System.Drawing.Size(107, 62);
             this.buttonTableGroup2.TabIndex = 37;
             this.buttonTableGroup2.UseVisualStyleBackColor = false;
             this.buttonTableGroup2.Click += new System.EventHandler(this.buttonTableGroup2_Click);
@@ -401,9 +401,9 @@
             this.buttonTableGroup3.FlatAppearance.BorderSize = 0;
             this.buttonTableGroup3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTableGroup3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTableGroup3.Location = new System.Drawing.Point(329, 8);
+            this.buttonTableGroup3.Location = new System.Drawing.Point(305, 8);
             this.buttonTableGroup3.Name = "buttonTableGroup3";
-            this.buttonTableGroup3.Size = new System.Drawing.Size(118, 62);
+            this.buttonTableGroup3.Size = new System.Drawing.Size(106, 62);
             this.buttonTableGroup3.TabIndex = 36;
             this.buttonTableGroup3.UseVisualStyleBackColor = false;
             this.buttonTableGroup3.Click += new System.EventHandler(this.buttonTableGroup3_Click);
@@ -414,9 +414,9 @@
             this.buttonTable4.FlatAppearance.BorderSize = 0;
             this.buttonTable4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable4.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable4.Location = new System.Drawing.Point(454, 76);
+            this.buttonTable4.Location = new System.Drawing.Point(417, 76);
             this.buttonTable4.Name = "buttonTable4";
-            this.buttonTable4.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable4.Size = new System.Drawing.Size(107, 77);
             this.buttonTable4.TabIndex = 35;
             this.buttonTable4.UseVisualStyleBackColor = false;
             // 
@@ -426,9 +426,9 @@
             this.buttonTable5.FlatAppearance.BorderSize = 0;
             this.buttonTable5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable5.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable5.Location = new System.Drawing.Point(578, 76);
+            this.buttonTable5.Location = new System.Drawing.Point(529, 76);
             this.buttonTable5.Name = "buttonTable5";
-            this.buttonTable5.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable5.Size = new System.Drawing.Size(107, 77);
             this.buttonTable5.TabIndex = 34;
             this.buttonTable5.UseVisualStyleBackColor = false;
             // 
@@ -438,9 +438,9 @@
             this.buttonTable6.FlatAppearance.BorderSize = 0;
             this.buttonTable6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable6.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable6.Location = new System.Drawing.Point(702, 76);
+            this.buttonTable6.Location = new System.Drawing.Point(641, 76);
             this.buttonTable6.Name = "buttonTable6";
-            this.buttonTable6.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable6.Size = new System.Drawing.Size(107, 77);
             this.buttonTable6.TabIndex = 33;
             this.buttonTable6.UseVisualStyleBackColor = false;
             // 
@@ -450,9 +450,9 @@
             this.buttonTable10.FlatAppearance.BorderSize = 0;
             this.buttonTable10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable10.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable10.Location = new System.Drawing.Point(454, 159);
+            this.buttonTable10.Location = new System.Drawing.Point(417, 159);
             this.buttonTable10.Name = "buttonTable10";
-            this.buttonTable10.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable10.Size = new System.Drawing.Size(107, 77);
             this.buttonTable10.TabIndex = 32;
             this.buttonTable10.UseVisualStyleBackColor = false;
             // 
@@ -462,9 +462,9 @@
             this.buttonTable11.FlatAppearance.BorderSize = 0;
             this.buttonTable11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable11.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable11.Location = new System.Drawing.Point(578, 159);
+            this.buttonTable11.Location = new System.Drawing.Point(529, 159);
             this.buttonTable11.Name = "buttonTable11";
-            this.buttonTable11.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable11.Size = new System.Drawing.Size(107, 77);
             this.buttonTable11.TabIndex = 31;
             this.buttonTable11.UseVisualStyleBackColor = false;
             // 
@@ -474,9 +474,9 @@
             this.buttonTable12.FlatAppearance.BorderSize = 0;
             this.buttonTable12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable12.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable12.Location = new System.Drawing.Point(702, 159);
+            this.buttonTable12.Location = new System.Drawing.Point(641, 159);
             this.buttonTable12.Name = "buttonTable12";
-            this.buttonTable12.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable12.Size = new System.Drawing.Size(107, 77);
             this.buttonTable12.TabIndex = 30;
             this.buttonTable12.UseVisualStyleBackColor = false;
             // 
@@ -486,9 +486,9 @@
             this.buttonTable16.FlatAppearance.BorderSize = 0;
             this.buttonTable16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable16.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable16.Location = new System.Drawing.Point(453, 242);
+            this.buttonTable16.Location = new System.Drawing.Point(416, 242);
             this.buttonTable16.Name = "buttonTable16";
-            this.buttonTable16.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable16.Size = new System.Drawing.Size(107, 77);
             this.buttonTable16.TabIndex = 29;
             this.buttonTable16.UseVisualStyleBackColor = false;
             // 
@@ -498,9 +498,9 @@
             this.buttonTable17.FlatAppearance.BorderSize = 0;
             this.buttonTable17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable17.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable17.Location = new System.Drawing.Point(578, 242);
+            this.buttonTable17.Location = new System.Drawing.Point(529, 242);
             this.buttonTable17.Name = "buttonTable17";
-            this.buttonTable17.Size = new System.Drawing.Size(118, 77);
+            this.buttonTable17.Size = new System.Drawing.Size(106, 77);
             this.buttonTable17.TabIndex = 28;
             this.buttonTable17.UseVisualStyleBackColor = false;
             // 
@@ -510,9 +510,9 @@
             this.buttonTable18.FlatAppearance.BorderSize = 0;
             this.buttonTable18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable18.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable18.Location = new System.Drawing.Point(702, 242);
+            this.buttonTable18.Location = new System.Drawing.Point(641, 242);
             this.buttonTable18.Name = "buttonTable18";
-            this.buttonTable18.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable18.Size = new System.Drawing.Size(107, 77);
             this.buttonTable18.TabIndex = 27;
             this.buttonTable18.UseVisualStyleBackColor = false;
             // 
@@ -522,9 +522,9 @@
             this.buttonTable22.FlatAppearance.BorderSize = 0;
             this.buttonTable22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable22.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable22.Location = new System.Drawing.Point(453, 325);
+            this.buttonTable22.Location = new System.Drawing.Point(416, 325);
             this.buttonTable22.Name = "buttonTable22";
-            this.buttonTable22.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable22.Size = new System.Drawing.Size(107, 77);
             this.buttonTable22.TabIndex = 26;
             this.buttonTable22.UseVisualStyleBackColor = false;
             // 
@@ -534,9 +534,9 @@
             this.buttonTable23.FlatAppearance.BorderSize = 0;
             this.buttonTable23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable23.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable23.Location = new System.Drawing.Point(578, 325);
+            this.buttonTable23.Location = new System.Drawing.Point(529, 325);
             this.buttonTable23.Name = "buttonTable23";
-            this.buttonTable23.Size = new System.Drawing.Size(118, 77);
+            this.buttonTable23.Size = new System.Drawing.Size(106, 77);
             this.buttonTable23.TabIndex = 25;
             this.buttonTable23.UseVisualStyleBackColor = false;
             // 
@@ -546,9 +546,9 @@
             this.buttonTable24.FlatAppearance.BorderSize = 0;
             this.buttonTable24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable24.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable24.Location = new System.Drawing.Point(702, 325);
+            this.buttonTable24.Location = new System.Drawing.Point(641, 325);
             this.buttonTable24.Name = "buttonTable24";
-            this.buttonTable24.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable24.Size = new System.Drawing.Size(107, 77);
             this.buttonTable24.TabIndex = 24;
             this.buttonTable24.UseVisualStyleBackColor = false;
             // 
@@ -560,7 +560,7 @@
             this.buttonTable1.ForeColor = System.Drawing.Color.Black;
             this.buttonTable1.Location = new System.Drawing.Point(79, 76);
             this.buttonTable1.Name = "buttonTable1";
-            this.buttonTable1.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable1.Size = new System.Drawing.Size(107, 77);
             this.buttonTable1.TabIndex = 23;
             this.buttonTable1.UseVisualStyleBackColor = false;
             // 
@@ -570,9 +570,9 @@
             this.buttonTable2.FlatAppearance.BorderSize = 0;
             this.buttonTable2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable2.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable2.Location = new System.Drawing.Point(204, 76);
+            this.buttonTable2.Location = new System.Drawing.Point(192, 76);
             this.buttonTable2.Name = "buttonTable2";
-            this.buttonTable2.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable2.Size = new System.Drawing.Size(107, 77);
             this.buttonTable2.TabIndex = 22;
             this.buttonTable2.UseVisualStyleBackColor = false;
             // 
@@ -582,9 +582,9 @@
             this.buttonTable3.FlatAppearance.BorderSize = 0;
             this.buttonTable3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable3.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable3.Location = new System.Drawing.Point(329, 76);
+            this.buttonTable3.Location = new System.Drawing.Point(305, 76);
             this.buttonTable3.Name = "buttonTable3";
-            this.buttonTable3.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable3.Size = new System.Drawing.Size(107, 77);
             this.buttonTable3.TabIndex = 21;
             this.buttonTable3.UseVisualStyleBackColor = false;
             // 
@@ -596,7 +596,7 @@
             this.buttonTable7.ForeColor = System.Drawing.Color.Black;
             this.buttonTable7.Location = new System.Drawing.Point(79, 159);
             this.buttonTable7.Name = "buttonTable7";
-            this.buttonTable7.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable7.Size = new System.Drawing.Size(107, 77);
             this.buttonTable7.TabIndex = 20;
             this.buttonTable7.UseVisualStyleBackColor = false;
             // 
@@ -606,9 +606,9 @@
             this.buttonTable8.FlatAppearance.BorderSize = 0;
             this.buttonTable8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable8.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable8.Location = new System.Drawing.Point(204, 159);
+            this.buttonTable8.Location = new System.Drawing.Point(192, 159);
             this.buttonTable8.Name = "buttonTable8";
-            this.buttonTable8.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable8.Size = new System.Drawing.Size(107, 77);
             this.buttonTable8.TabIndex = 19;
             this.buttonTable8.UseVisualStyleBackColor = false;
             // 
@@ -618,9 +618,9 @@
             this.buttonTable9.FlatAppearance.BorderSize = 0;
             this.buttonTable9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable9.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable9.Location = new System.Drawing.Point(329, 159);
+            this.buttonTable9.Location = new System.Drawing.Point(305, 159);
             this.buttonTable9.Name = "buttonTable9";
-            this.buttonTable9.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable9.Size = new System.Drawing.Size(107, 77);
             this.buttonTable9.TabIndex = 18;
             this.buttonTable9.UseVisualStyleBackColor = false;
             // 
@@ -632,7 +632,7 @@
             this.buttonTable13.ForeColor = System.Drawing.Color.Black;
             this.buttonTable13.Location = new System.Drawing.Point(79, 242);
             this.buttonTable13.Name = "buttonTable13";
-            this.buttonTable13.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable13.Size = new System.Drawing.Size(107, 77);
             this.buttonTable13.TabIndex = 17;
             this.buttonTable13.UseVisualStyleBackColor = false;
             // 
@@ -642,9 +642,9 @@
             this.buttonTable14.FlatAppearance.BorderSize = 0;
             this.buttonTable14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable14.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable14.Location = new System.Drawing.Point(204, 242);
+            this.buttonTable14.Location = new System.Drawing.Point(192, 242);
             this.buttonTable14.Name = "buttonTable14";
-            this.buttonTable14.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable14.Size = new System.Drawing.Size(107, 77);
             this.buttonTable14.TabIndex = 16;
             this.buttonTable14.UseVisualStyleBackColor = false;
             // 
@@ -654,9 +654,9 @@
             this.buttonTable15.FlatAppearance.BorderSize = 0;
             this.buttonTable15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable15.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable15.Location = new System.Drawing.Point(329, 242);
+            this.buttonTable15.Location = new System.Drawing.Point(305, 242);
             this.buttonTable15.Name = "buttonTable15";
-            this.buttonTable15.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable15.Size = new System.Drawing.Size(107, 77);
             this.buttonTable15.TabIndex = 15;
             this.buttonTable15.UseVisualStyleBackColor = false;
             // 
@@ -668,7 +668,7 @@
             this.buttonTable19.ForeColor = System.Drawing.Color.Black;
             this.buttonTable19.Location = new System.Drawing.Point(79, 325);
             this.buttonTable19.Name = "buttonTable19";
-            this.buttonTable19.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable19.Size = new System.Drawing.Size(107, 77);
             this.buttonTable19.TabIndex = 14;
             this.buttonTable19.UseVisualStyleBackColor = false;
             // 
@@ -678,9 +678,9 @@
             this.buttonTable20.FlatAppearance.BorderSize = 0;
             this.buttonTable20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable20.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable20.Location = new System.Drawing.Point(204, 325);
+            this.buttonTable20.Location = new System.Drawing.Point(192, 325);
             this.buttonTable20.Name = "buttonTable20";
-            this.buttonTable20.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable20.Size = new System.Drawing.Size(107, 77);
             this.buttonTable20.TabIndex = 13;
             this.buttonTable20.UseVisualStyleBackColor = false;
             // 
@@ -690,9 +690,9 @@
             this.buttonTable21.FlatAppearance.BorderSize = 0;
             this.buttonTable21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable21.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable21.Location = new System.Drawing.Point(329, 325);
+            this.buttonTable21.Location = new System.Drawing.Point(305, 325);
             this.buttonTable21.Name = "buttonTable21";
-            this.buttonTable21.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable21.Size = new System.Drawing.Size(107, 77);
             this.buttonTable21.TabIndex = 12;
             this.buttonTable21.UseVisualStyleBackColor = false;
             // 
@@ -702,9 +702,9 @@
             this.buttonTable28.FlatAppearance.BorderSize = 0;
             this.buttonTable28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable28.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable28.Location = new System.Drawing.Point(454, 408);
+            this.buttonTable28.Location = new System.Drawing.Point(417, 408);
             this.buttonTable28.Name = "buttonTable28";
-            this.buttonTable28.Size = new System.Drawing.Size(118, 77);
+            this.buttonTable28.Size = new System.Drawing.Size(106, 77);
             this.buttonTable28.TabIndex = 11;
             this.buttonTable28.UseVisualStyleBackColor = false;
             // 
@@ -714,9 +714,9 @@
             this.buttonTable29.FlatAppearance.BorderSize = 0;
             this.buttonTable29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable29.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable29.Location = new System.Drawing.Point(578, 408);
+            this.buttonTable29.Location = new System.Drawing.Point(529, 408);
             this.buttonTable29.Name = "buttonTable29";
-            this.buttonTable29.Size = new System.Drawing.Size(118, 77);
+            this.buttonTable29.Size = new System.Drawing.Size(106, 77);
             this.buttonTable29.TabIndex = 10;
             this.buttonTable29.UseVisualStyleBackColor = false;
             // 
@@ -726,9 +726,9 @@
             this.buttonTable30.FlatAppearance.BorderSize = 0;
             this.buttonTable30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable30.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable30.Location = new System.Drawing.Point(702, 408);
+            this.buttonTable30.Location = new System.Drawing.Point(641, 408);
             this.buttonTable30.Name = "buttonTable30";
-            this.buttonTable30.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable30.Size = new System.Drawing.Size(107, 77);
             this.buttonTable30.TabIndex = 9;
             this.buttonTable30.UseVisualStyleBackColor = false;
             // 
@@ -740,7 +740,7 @@
             this.buttonTable25.ForeColor = System.Drawing.Color.Black;
             this.buttonTable25.Location = new System.Drawing.Point(79, 408);
             this.buttonTable25.Name = "buttonTable25";
-            this.buttonTable25.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable25.Size = new System.Drawing.Size(107, 77);
             this.buttonTable25.TabIndex = 8;
             this.buttonTable25.UseVisualStyleBackColor = false;
             // 
@@ -750,9 +750,9 @@
             this.buttonTable26.FlatAppearance.BorderSize = 0;
             this.buttonTable26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable26.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable26.Location = new System.Drawing.Point(204, 408);
+            this.buttonTable26.Location = new System.Drawing.Point(192, 408);
             this.buttonTable26.Name = "buttonTable26";
-            this.buttonTable26.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable26.Size = new System.Drawing.Size(107, 77);
             this.buttonTable26.TabIndex = 7;
             this.buttonTable26.UseVisualStyleBackColor = false;
             // 
@@ -762,9 +762,9 @@
             this.buttonTable27.FlatAppearance.BorderSize = 0;
             this.buttonTable27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable27.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable27.Location = new System.Drawing.Point(329, 408);
+            this.buttonTable27.Location = new System.Drawing.Point(305, 408);
             this.buttonTable27.Name = "buttonTable27";
-            this.buttonTable27.Size = new System.Drawing.Size(119, 77);
+            this.buttonTable27.Size = new System.Drawing.Size(107, 77);
             this.buttonTable27.TabIndex = 6;
             this.buttonTable27.UseVisualStyleBackColor = false;
             // 
@@ -775,7 +775,7 @@
             this.buttonTableNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTableNext.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTableNext.ForeColor = System.Drawing.Color.Black;
-            this.buttonTableNext.Location = new System.Drawing.Point(827, 76);
+            this.buttonTableNext.Location = new System.Drawing.Point(754, 76);
             this.buttonTableNext.Name = "buttonTableNext";
             this.buttonTableNext.Size = new System.Drawing.Size(65, 409);
             this.buttonTableNext.TabIndex = 5;
@@ -789,7 +789,7 @@
             this.buttonTableGroupPageNext.FlatAppearance.BorderSize = 0;
             this.buttonTableGroupPageNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTableGroupPageNext.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTableGroupPageNext.Location = new System.Drawing.Point(827, 8);
+            this.buttonTableGroupPageNext.Location = new System.Drawing.Point(754, 8);
             this.buttonTableGroupPageNext.Name = "buttonTableGroupPageNext";
             this.buttonTableGroupPageNext.Size = new System.Drawing.Size(65, 62);
             this.buttonTableGroupPageNext.TabIndex = 4;
@@ -845,10 +845,10 @@
             this.tabControlSales.Controls.Add(this.tabPageBilledOut);
             this.tabControlSales.Controls.Add(this.tabPageCollected);
             this.tabControlSales.Font = new System.Drawing.Font("Segoe UI", 13F);
-            this.tabControlSales.Location = new System.Drawing.Point(918, 6);
+            this.tabControlSales.Location = new System.Drawing.Point(846, 6);
             this.tabControlSales.Name = "tabControlSales";
             this.tabControlSales.SelectedIndex = 0;
-            this.tabControlSales.Size = new System.Drawing.Size(470, 561);
+            this.tabControlSales.Size = new System.Drawing.Size(542, 561);
             this.tabControlSales.TabIndex = 21;
             this.tabControlSales.SelectedIndexChanged += new System.EventHandler(this.tabControlSales_SelectedIndexChanged);
             // 
@@ -858,7 +858,7 @@
             this.tabPageOpen.Location = new System.Drawing.Point(4, 39);
             this.tabPageOpen.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageOpen.Name = "tabPageOpen";
-            this.tabPageOpen.Size = new System.Drawing.Size(462, 518);
+            this.tabPageOpen.Size = new System.Drawing.Size(534, 518);
             this.tabPageOpen.TabIndex = 0;
             this.tabPageOpen.Text = "Open";
             this.tabPageOpen.UseVisualStyleBackColor = true;
@@ -876,7 +876,7 @@
             this.dataGridViewOpenSalesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewOpenSalesList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 13F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -925,7 +925,7 @@
             this.dataGridViewOpenSalesList.RowTemplate.ReadOnly = true;
             this.dataGridViewOpenSalesList.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewOpenSalesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewOpenSalesList.Size = new System.Drawing.Size(462, 518);
+            this.dataGridViewOpenSalesList.Size = new System.Drawing.Size(534, 518);
             this.dataGridViewOpenSalesList.TabIndex = 8;
             this.dataGridViewOpenSalesList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOpenSalesList_CellClick);
             // 
@@ -1071,7 +1071,7 @@
             this.tabPageBilledOut.Location = new System.Drawing.Point(4, 39);
             this.tabPageBilledOut.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageBilledOut.Name = "tabPageBilledOut";
-            this.tabPageBilledOut.Size = new System.Drawing.Size(462, 518);
+            this.tabPageBilledOut.Size = new System.Drawing.Size(534, 518);
             this.tabPageBilledOut.TabIndex = 1;
             this.tabPageBilledOut.Text = "Billed Out";
             this.tabPageBilledOut.UseVisualStyleBackColor = true;
@@ -1089,7 +1089,7 @@
             this.dataGridViewBilledOutSalesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewBilledOutSalesList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 13F);
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F);
             dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -1138,7 +1138,7 @@
             this.dataGridViewBilledOutSalesList.RowTemplate.ReadOnly = true;
             this.dataGridViewBilledOutSalesList.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewBilledOutSalesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewBilledOutSalesList.Size = new System.Drawing.Size(462, 518);
+            this.dataGridViewBilledOutSalesList.Size = new System.Drawing.Size(534, 518);
             this.dataGridViewBilledOutSalesList.TabIndex = 9;
             this.dataGridViewBilledOutSalesList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBilledOutSalesList_CellClick);
             // 
@@ -1284,7 +1284,7 @@
             this.tabPageCollected.Location = new System.Drawing.Point(4, 39);
             this.tabPageCollected.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageCollected.Name = "tabPageCollected";
-            this.tabPageCollected.Size = new System.Drawing.Size(462, 518);
+            this.tabPageCollected.Size = new System.Drawing.Size(534, 518);
             this.tabPageCollected.TabIndex = 2;
             this.tabPageCollected.Text = "Collected";
             this.tabPageCollected.UseVisualStyleBackColor = true;
@@ -1302,7 +1302,7 @@
             this.dataGridViewCollectedSalesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewCollectedSalesList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 13F);
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 11F);
             dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -1351,9 +1351,73 @@
             this.dataGridViewCollectedSalesList.RowTemplate.ReadOnly = true;
             this.dataGridViewCollectedSalesList.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewCollectedSalesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCollectedSalesList.Size = new System.Drawing.Size(462, 518);
+            this.dataGridViewCollectedSalesList.Size = new System.Drawing.Size(534, 518);
             this.dataGridViewCollectedSalesList.TabIndex = 10;
             this.dataGridViewCollectedSalesList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCollectedSalesList_CellClick);
+            // 
+            // comboBoxTerminal
+            // 
+            this.comboBoxTerminal.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.comboBoxTerminal.FormattingEnabled = true;
+            this.comboBoxTerminal.Location = new System.Drawing.Point(174, 5);
+            this.comboBoxTerminal.Name = "comboBoxTerminal";
+            this.comboBoxTerminal.Size = new System.Drawing.Size(174, 36);
+            this.comboBoxTerminal.TabIndex = 7;
+            this.comboBoxTerminal.SelectedIndexChanged += new System.EventHandler(this.comboBoxTerminal_SelectedIndexChanged);
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.textBoxLastChange);
+            this.panel4.Controls.Add(this.labelLastChange);
+            this.panel4.Location = new System.Drawing.Point(846, 573);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(542, 53);
+            this.panel4.TabIndex = 22;
+            // 
+            // textBoxLastChange
+            // 
+            this.textBoxLastChange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxLastChange.BackColor = System.Drawing.Color.White;
+            this.textBoxLastChange.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxLastChange.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.textBoxLastChange.ForeColor = System.Drawing.Color.Black;
+            this.textBoxLastChange.Location = new System.Drawing.Point(142, 8);
+            this.textBoxLastChange.Name = "textBoxLastChange";
+            this.textBoxLastChange.ReadOnly = true;
+            this.textBoxLastChange.Size = new System.Drawing.Size(388, 34);
+            this.textBoxLastChange.TabIndex = 17;
+            this.textBoxLastChange.Text = "0.00";
+            this.textBoxLastChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // labelLastChange
+            // 
+            this.labelLastChange.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelLastChange.AutoSize = true;
+            this.labelLastChange.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.labelLastChange.ForeColor = System.Drawing.Color.Black;
+            this.labelLastChange.Location = new System.Drawing.Point(12, 14);
+            this.labelLastChange.Name = "labelLastChange";
+            this.labelLastChange.Size = new System.Drawing.Size(124, 25);
+            this.labelLastChange.TabIndex = 16;
+            this.labelLastChange.Text = "Last Change:";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.comboBoxTerminal);
+            this.panel3.Controls.Add(this.tabControlSales);
+            this.panel3.Controls.Add(this.dateTimePickerSalesDate);
+            this.panel3.Controls.Add(this.panel2);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.ForeColor = System.Drawing.Color.White;
+            this.panel3.Location = new System.Drawing.Point(0, 63);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1400, 638);
+            this.panel3.TabIndex = 15;
             // 
             // tabPageCollectedColumnEdit
             // 
@@ -1491,70 +1555,6 @@
             this.tabPageCollectedColumnSpace.HeaderText = "";
             this.tabPageCollectedColumnSpace.Name = "tabPageCollectedColumnSpace";
             this.tabPageCollectedColumnSpace.ReadOnly = true;
-            // 
-            // comboBoxTerminal
-            // 
-            this.comboBoxTerminal.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.comboBoxTerminal.FormattingEnabled = true;
-            this.comboBoxTerminal.Location = new System.Drawing.Point(174, 5);
-            this.comboBoxTerminal.Name = "comboBoxTerminal";
-            this.comboBoxTerminal.Size = new System.Drawing.Size(174, 36);
-            this.comboBoxTerminal.TabIndex = 7;
-            this.comboBoxTerminal.SelectedIndexChanged += new System.EventHandler(this.comboBoxTerminal_SelectedIndexChanged);
-            // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.textBoxLastChange);
-            this.panel4.Controls.Add(this.labelLastChange);
-            this.panel4.Location = new System.Drawing.Point(918, 573);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(470, 53);
-            this.panel4.TabIndex = 22;
-            // 
-            // textBoxLastChange
-            // 
-            this.textBoxLastChange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxLastChange.BackColor = System.Drawing.Color.White;
-            this.textBoxLastChange.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxLastChange.Font = new System.Drawing.Font("Segoe UI", 15F);
-            this.textBoxLastChange.ForeColor = System.Drawing.Color.Black;
-            this.textBoxLastChange.Location = new System.Drawing.Point(142, 8);
-            this.textBoxLastChange.Name = "textBoxLastChange";
-            this.textBoxLastChange.ReadOnly = true;
-            this.textBoxLastChange.Size = new System.Drawing.Size(316, 34);
-            this.textBoxLastChange.TabIndex = 17;
-            this.textBoxLastChange.Text = "0.00";
-            this.textBoxLastChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // labelLastChange
-            // 
-            this.labelLastChange.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelLastChange.AutoSize = true;
-            this.labelLastChange.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.labelLastChange.ForeColor = System.Drawing.Color.Black;
-            this.labelLastChange.Location = new System.Drawing.Point(12, 14);
-            this.labelLastChange.Name = "labelLastChange";
-            this.labelLastChange.Size = new System.Drawing.Size(124, 25);
-            this.labelLastChange.TabIndex = 16;
-            this.labelLastChange.Text = "Last Change:";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.panel4);
-            this.panel3.Controls.Add(this.comboBoxTerminal);
-            this.panel3.Controls.Add(this.tabControlSales);
-            this.panel3.Controls.Add(this.dateTimePickerSalesDate);
-            this.panel3.Controls.Add(this.panel2);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.ForeColor = System.Drawing.Color.White;
-            this.panel3.Location = new System.Drawing.Point(0, 63);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1400, 638);
-            this.panel3.TabIndex = 15;
             // 
             // TrnPOSTouchForm
             // 

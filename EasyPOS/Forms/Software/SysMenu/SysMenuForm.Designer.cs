@@ -323,14 +323,14 @@
             this.buttonInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonInventory.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.buttonInventory.ForeColor = System.Drawing.Color.White;
-            this.buttonInventory.ImageIndex = 3;
+            this.buttonInventory.ImageIndex = 6;
             this.buttonInventory.ImageList = this.imageListMenuIcons;
             this.buttonInventory.Location = new System.Drawing.Point(478, 266);
             this.buttonInventory.Name = "buttonInventory";
             this.buttonInventory.Padding = new System.Windows.Forms.Padding(10);
             this.buttonInventory.Size = new System.Drawing.Size(227, 121);
             this.buttonInventory.TabIndex = 10;
-            this.buttonInventory.Text = "\r\nInventory";
+            this.buttonInventory.Text = "\r\nInventory Report";
             this.buttonInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonInventory.UseVisualStyleBackColor = false;
             this.buttonInventory.Click += new System.EventHandler(this.buttonInventory_Click);

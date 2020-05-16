@@ -125,7 +125,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label5.Location = new System.Drawing.Point(12, 110);
+            this.label5.Location = new System.Drawing.Point(12, 94);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(165, 28);
             this.label5.TabIndex = 18;
@@ -135,9 +135,9 @@
             // 
             this.comboBoxTenderSalesCustomer.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.comboBoxTenderSalesCustomer.FormattingEnabled = true;
-            this.comboBoxTenderSalesCustomer.Location = new System.Drawing.Point(209, 65);
+            this.comboBoxTenderSalesCustomer.Location = new System.Drawing.Point(183, 49);
             this.comboBoxTenderSalesCustomer.Name = "comboBoxTenderSalesCustomer";
-            this.comboBoxTenderSalesCustomer.Size = new System.Drawing.Size(341, 36);
+            this.comboBoxTenderSalesCustomer.Size = new System.Drawing.Size(367, 36);
             this.comboBoxTenderSalesCustomer.TabIndex = 17;
             this.comboBoxTenderSalesCustomer.TabStop = false;
             this.comboBoxTenderSalesCustomer.SelectedIndexChanged += new System.EventHandler(this.comboBoxTenderSalesCustomer_SelectedIndexChanged);
@@ -145,10 +145,10 @@
             // textBoxTenderSalesRewardAvailable
             // 
             this.textBoxTenderSalesRewardAvailable.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxTenderSalesRewardAvailable.Location = new System.Drawing.Point(209, 107);
+            this.textBoxTenderSalesRewardAvailable.Location = new System.Drawing.Point(183, 91);
             this.textBoxTenderSalesRewardAvailable.Name = "textBoxTenderSalesRewardAvailable";
             this.textBoxTenderSalesRewardAvailable.ReadOnly = true;
-            this.textBoxTenderSalesRewardAvailable.Size = new System.Drawing.Size(341, 34);
+            this.textBoxTenderSalesRewardAvailable.Size = new System.Drawing.Size(367, 34);
             this.textBoxTenderSalesRewardAvailable.TabIndex = 15;
             this.textBoxTenderSalesRewardAvailable.TabStop = false;
             this.textBoxTenderSalesRewardAvailable.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -157,7 +157,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label2.Location = new System.Drawing.Point(12, 68);
+            this.label2.Location = new System.Drawing.Point(77, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 28);
             this.label2.TabIndex = 16;
@@ -170,7 +170,7 @@
             this.textBoxCustomerCode.BackColor = System.Drawing.Color.White;
             this.textBoxCustomerCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxCustomerCode.Font = new System.Drawing.Font("Segoe UI Semibold", 13.2F, System.Drawing.FontStyle.Bold);
-            this.textBoxCustomerCode.Location = new System.Drawing.Point(12, 14);
+            this.textBoxCustomerCode.Location = new System.Drawing.Point(12, 6);
             this.textBoxCustomerCode.Name = "textBoxCustomerCode";
             this.textBoxCustomerCode.Size = new System.Drawing.Size(538, 37);
             this.textBoxCustomerCode.TabIndex = 0;
@@ -181,9 +181,9 @@
             // 
             this.comboBoxTenderSalesTerms.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.comboBoxTenderSalesTerms.FormattingEnabled = true;
-            this.comboBoxTenderSalesTerms.Location = new System.Drawing.Point(209, 147);
+            this.comboBoxTenderSalesTerms.Location = new System.Drawing.Point(183, 131);
             this.comboBoxTenderSalesTerms.Name = "comboBoxTenderSalesTerms";
-            this.comboBoxTenderSalesTerms.Size = new System.Drawing.Size(341, 36);
+            this.comboBoxTenderSalesTerms.Size = new System.Drawing.Size(367, 36);
             this.comboBoxTenderSalesTerms.TabIndex = 21;
             this.comboBoxTenderSalesTerms.TabStop = false;
             // 
@@ -191,7 +191,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label3.Location = new System.Drawing.Point(12, 150);
+            this.label3.Location = new System.Drawing.Point(111, 134);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 28);
             this.label3.TabIndex = 20;
@@ -200,10 +200,10 @@
             // textBoxTenderSalesRemarks
             // 
             this.textBoxTenderSalesRemarks.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxTenderSalesRemarks.Location = new System.Drawing.Point(209, 191);
+            this.textBoxTenderSalesRemarks.Location = new System.Drawing.Point(183, 175);
             this.textBoxTenderSalesRemarks.Multiline = true;
             this.textBoxTenderSalesRemarks.Name = "textBoxTenderSalesRemarks";
-            this.textBoxTenderSalesRemarks.Size = new System.Drawing.Size(341, 121);
+            this.textBoxTenderSalesRemarks.Size = new System.Drawing.Size(367, 121);
             this.textBoxTenderSalesRemarks.TabIndex = 22;
             this.textBoxTenderSalesRemarks.TabStop = false;
             // 
@@ -211,7 +211,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label4.Location = new System.Drawing.Point(12, 194);
+            this.label4.Location = new System.Drawing.Point(88, 178);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 28);
             this.label4.TabIndex = 23;
@@ -221,9 +221,9 @@
             // 
             this.comboBoxTenderSalesUsers.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.comboBoxTenderSalesUsers.FormattingEnabled = true;
-            this.comboBoxTenderSalesUsers.Location = new System.Drawing.Point(209, 318);
+            this.comboBoxTenderSalesUsers.Location = new System.Drawing.Point(183, 302);
             this.comboBoxTenderSalesUsers.Name = "comboBoxTenderSalesUsers";
-            this.comboBoxTenderSalesUsers.Size = new System.Drawing.Size(341, 36);
+            this.comboBoxTenderSalesUsers.Size = new System.Drawing.Size(367, 36);
             this.comboBoxTenderSalesUsers.TabIndex = 25;
             this.comboBoxTenderSalesUsers.TabStop = false;
             // 
@@ -231,7 +231,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label6.Location = new System.Drawing.Point(7, 321);
+            this.label6.Location = new System.Drawing.Point(59, 305);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(118, 28);
             this.label6.TabIndex = 24;
@@ -253,14 +253,14 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 63);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(562, 364);
+            this.panel2.Size = new System.Drawing.Size(562, 348);
             this.panel2.TabIndex = 26;
             // 
             // TrnPOSTenderSalesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(562, 427);
+            this.ClientSize = new System.Drawing.Size(562, 411);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
