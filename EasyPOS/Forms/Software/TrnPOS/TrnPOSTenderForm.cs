@@ -289,13 +289,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
         // ===============================================
         // Stock Withdrawal Report (Copied) To be modified
         // ===============================================
-        public List<Entities.RepSalesReportTrnCollectionEntity> StockWithdrawalReport(Int32 salesId)
+        public List<Entities.RepSalesReportCollectionSummaryReportEntity> StockWithdrawalReport(Int32 salesId)
         {
             Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
 
             var stockWithdrawalReports = from d in db.TrnCollections
                                          where d.SalesId == salesId
-                                         select new Entities.RepSalesReportTrnCollectionEntity
+                                         select new Entities.RepSalesReportCollectionSummaryReportEntity
                                          {
                                              Id = d.Id,
                                              SalesId = d.SalesId,

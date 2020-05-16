@@ -20,7 +20,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
         public Int32 filterTerminalId;
         public String filterTerminal = "";
         public DateTime filterDate;
-        public Entities.RepZReadingReportEntity zReadingReportEntity;
+        public Entities.RepPOSReportZReadingReportEntity zReadingReportEntity;
 
         public RepZReadingReportForm(Forms.Software.RepPOSReport.RepPOSReportForm POSReportForm, Int32 terminalId, DateTime date)
         {
@@ -71,7 +71,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
         {
             Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
 
-            Entities.RepZReadingReportEntity repZReadingReportEntity = new Entities.RepZReadingReportEntity()
+            Entities.RepPOSReportZReadingReportEntity repZReadingReportEntity = new Entities.RepPOSReportZReadingReportEntity()
             {
                 Date = "",
                 TotalGrossSales = 0,

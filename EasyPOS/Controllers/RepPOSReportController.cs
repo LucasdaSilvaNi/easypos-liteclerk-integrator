@@ -128,16 +128,16 @@ namespace EasyPOS.Controllers
         // =======
         // E Sales
         // =======
-        public Entities.RepZReadingReportEntity ZReadingESalesDataSource(Int32 terminalId, DateTime date)
+        public Entities.RepPOSReportZReadingReportEntity ZReadingESalesDataSource(Int32 terminalId, DateTime date)
         {
-            Entities.RepZReadingReportEntity zReadingReportEntity;
+            Entities.RepPOSReportZReadingReportEntity zReadingReportEntity;
 
             Int32 filterTerminalId = terminalId;
             DateTime filterDate = date;
 
             Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
 
-            Entities.RepZReadingReportEntity repZReadingReportEntity = new Entities.RepZReadingReportEntity()
+            Entities.RepPOSReportZReadingReportEntity repZReadingReportEntity = new Entities.RepPOSReportZReadingReportEntity()
             {
                 Terminal = "",
                 Date = "",

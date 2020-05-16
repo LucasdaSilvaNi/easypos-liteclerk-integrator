@@ -20,7 +20,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
         public Int32 filterTerminalId;
         public DateTime filterDate;
         public Int32 filterSalesAgentId;
-        public Entities.RepXReadingReportEntity xReadingReportEntity;
+        public Entities.RepPOSReportXReadingReportEntity xReadingReportEntity;
 
         public RepXReadingReportForm(Forms.Software.RepPOSReport.RepPOSReportForm POSReportForm, Int32 terminalId, DateTime date, Int32 salesAgentId)
         {
@@ -73,7 +73,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
         {
             Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
 
-            Entities.RepXReadingReportEntity repXReadingReportEntity = new Entities.RepXReadingReportEntity()
+            Entities.RepPOSReportXReadingReportEntity repXReadingReportEntity = new Entities.RepPOSReportXReadingReportEntity()
             {
                 SalesAgent = "",
                 Date = "",

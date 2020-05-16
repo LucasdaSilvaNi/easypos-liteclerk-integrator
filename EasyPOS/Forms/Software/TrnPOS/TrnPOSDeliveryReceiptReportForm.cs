@@ -19,7 +19,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public Boolean isDeliveryReceipt;
         public Boolean isDirectPrint;
 
-        public TrnPOSDeliveryReceiptReportForm(String filePath, List<Entities.RepSalesReportTrnCollectionEntity> collectionLists, Boolean filterIsDeliveryReceipt, Boolean filterIsDirectPrint)
+        public TrnPOSDeliveryReceiptReportForm(String filePath, List<Entities.RepSalesReportCollectionSummaryReportEntity> collectionLists, Boolean filterIsDeliveryReceipt, Boolean filterIsDirectPrint)
         {
             InitializeComponent();
             isDeliveryReceipt = filterIsDeliveryReceipt;
@@ -28,7 +28,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             PrintStockWithdrawalReport(collectionLists);
         }
 
-        public void PrintStockWithdrawalReport(List<Entities.RepSalesReportTrnCollectionEntity> collectionLists)
+        public void PrintStockWithdrawalReport(List<Entities.RepSalesReportCollectionSummaryReportEntity> collectionLists)
         {
             try
             {

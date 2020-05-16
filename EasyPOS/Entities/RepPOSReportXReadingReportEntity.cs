@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.Entities
 {
-    public class RepZReadingReportEntity
+    public class RepPOSReportXReadingReportEntity
     {
-        public String Terminal { get; set; }
+        public String SalesAgent { get; set; }
         public String Date { get; set; }
         public Decimal TotalGrossSales { get; set; }
         public Decimal TotalRegularDiscount { get; set; }
@@ -31,10 +31,7 @@ namespace EasyPOS.Entities
         public Decimal TotalNumberOfTransactions { get; set; }
         public Decimal TotalNumberOfSKU { get; set; }
         public Decimal TotalQuantity { get; set; }
-        public Decimal GrossSalesTotalPreviousReading { get; set; }
-        public Decimal GrossSalesRunningTotal { get; set; }
-        public Decimal NetSalesTotalPreviousReading { get; set; }
-        public Decimal NetSalesRunningTotal { get; set; }
-        public String ZReadingCounter { get; set; }
+        public Decimal TotalPreviousReading { get; set; }
+        public Decimal RunningTotal { get; set; }
     }
 }

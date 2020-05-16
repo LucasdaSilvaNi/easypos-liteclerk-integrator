@@ -338,10 +338,10 @@
     <Compile Include="Entities\RepRemitanceReportEntity.cs" />
     <Compile Include="Entities\RepSalesReportSalesDetailReportEntity.cs" />
     <Compile Include="Entities\RepSalesReportTopSellingItemsReportEntity.cs" />
-    <Compile Include="Entities\RepSalesReportTrnCollectionEntity.cs" />
-    <Compile Include="Entities\RepSalesReportTrnSalesEntity.cs" />
-    <Compile Include="Entities\RepXReadingReportEntity.cs" />
-    <Compile Include="Entities\RepZReadingReportEntity.cs" />
+    <Compile Include="Entities\RepSalesReportCollectionSummaryReportEntity.cs" />
+    <Compile Include="Entities\RepSalesReportSalesSummaryReportEntity.cs" />
+    <Compile Include="Entities\RepPOSReportXReadingReportEntity.cs" />
+    <Compile Include="Entities\RepPOSReportZReadingReportEntity.cs" />
     <Compile Include="Entities\SysAuditTrailEntity.cs" />
     <Compile Include="Entities\SysConnectionStringEntity.cs" />
     <Compile Include="Entities\SysCurrentEntity.cs" />
