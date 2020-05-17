@@ -36,6 +36,11 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.buttonAddTable = new System.Windows.Forms.Button();
             this.dataGridViewTableList = new System.Windows.Forms.DataGridView();
+            this.ColumnTableListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnTableListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnTableListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTableListTableCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTableListTableGroupId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.buttonTableListPageListFirst = new System.Windows.Forms.Button();
             this.buttonTableListPageListPrevious = new System.Windows.Forms.Button();
@@ -50,11 +55,6 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonUnlock = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ColumnTableListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnTableListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnTableListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTableListTableCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTableListTableGroupId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -153,6 +153,48 @@
             this.dataGridViewTableList.TabStop = false;
             this.dataGridViewTableList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTableList_CellClick);
             // 
+            // ColumnTableListButtonEdit
+            // 
+            this.ColumnTableListButtonEdit.DataPropertyName = "ColumnTableListButtonEdit";
+            this.ColumnTableListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnTableListButtonEdit.HeaderText = "";
+            this.ColumnTableListButtonEdit.Name = "ColumnTableListButtonEdit";
+            this.ColumnTableListButtonEdit.ReadOnly = true;
+            this.ColumnTableListButtonEdit.Width = 70;
+            // 
+            // ColumnTableListButtonDelete
+            // 
+            this.ColumnTableListButtonDelete.DataPropertyName = "ColumnTableListButtonDelete";
+            this.ColumnTableListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnTableListButtonDelete.HeaderText = "";
+            this.ColumnTableListButtonDelete.Name = "ColumnTableListButtonDelete";
+            this.ColumnTableListButtonDelete.ReadOnly = true;
+            this.ColumnTableListButtonDelete.Width = 70;
+            // 
+            // ColumnTableListId
+            // 
+            this.ColumnTableListId.DataPropertyName = "ColumnTableListId";
+            this.ColumnTableListId.HeaderText = "Id";
+            this.ColumnTableListId.Name = "ColumnTableListId";
+            this.ColumnTableListId.ReadOnly = true;
+            this.ColumnTableListId.Visible = false;
+            // 
+            // ColumnTableListTableCode
+            // 
+            this.ColumnTableListTableCode.DataPropertyName = "ColumnTableListTableCode";
+            this.ColumnTableListTableCode.HeaderText = "Table Code";
+            this.ColumnTableListTableCode.Name = "ColumnTableListTableCode";
+            this.ColumnTableListTableCode.ReadOnly = true;
+            this.ColumnTableListTableCode.Width = 300;
+            // 
+            // ColumnTableListTableGroupId
+            // 
+            this.ColumnTableListTableGroupId.DataPropertyName = "ColumnTableListTableGroupId";
+            this.ColumnTableListTableGroupId.HeaderText = "Table Group Id";
+            this.ColumnTableListTableGroupId.Name = "ColumnTableListTableGroupId";
+            this.ColumnTableListTableGroupId.ReadOnly = true;
+            this.ColumnTableListTableGroupId.Visible = false;
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
@@ -174,7 +216,7 @@
             this.buttonTableListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonTableListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTableListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonTableListPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonTableListPageListFirst.Location = new System.Drawing.Point(12, 11);
             this.buttonTableListPageListFirst.Name = "buttonTableListPageListFirst";
             this.buttonTableListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonTableListPageListFirst.TabIndex = 23;
@@ -190,7 +232,7 @@
             this.buttonTableListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonTableListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTableListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonTableListPageListPrevious.Location = new System.Drawing.Point(100, 9);
+            this.buttonTableListPageListPrevious.Location = new System.Drawing.Point(100, 11);
             this.buttonTableListPageListPrevious.Name = "buttonTableListPageListPrevious";
             this.buttonTableListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonTableListPageListPrevious.TabIndex = 24;
@@ -205,7 +247,7 @@
             this.buttonTableListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonTableListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTableListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonTableListPageListNext.Location = new System.Drawing.Point(263, 9);
+            this.buttonTableListPageListNext.Location = new System.Drawing.Point(263, 11);
             this.buttonTableListPageListNext.Name = "buttonTableListPageListNext";
             this.buttonTableListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonTableListPageListNext.TabIndex = 26;
@@ -220,7 +262,7 @@
             this.buttonTableListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonTableListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTableListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonTableListPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonTableListPageListLast.Location = new System.Drawing.Point(348, 11);
             this.buttonTableListPageListLast.Name = "buttonTableListPageListLast";
             this.buttonTableListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonTableListPageListLast.TabIndex = 26;
@@ -235,7 +277,7 @@
             this.textBoxTableListPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxTableListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxTableListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxTableListPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxTableListPageNumber.Location = new System.Drawing.Point(188, 16);
             this.textBoxTableListPageNumber.Name = "textBoxTableListPageNumber";
             this.textBoxTableListPageNumber.ReadOnly = true;
             this.textBoxTableListPageNumber.Size = new System.Drawing.Size(69, 20);
@@ -353,48 +395,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1400, 63);
             this.panel1.TabIndex = 7;
-            // 
-            // ColumnTableListButtonEdit
-            // 
-            this.ColumnTableListButtonEdit.DataPropertyName = "ColumnTableListButtonEdit";
-            this.ColumnTableListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnTableListButtonEdit.HeaderText = "";
-            this.ColumnTableListButtonEdit.Name = "ColumnTableListButtonEdit";
-            this.ColumnTableListButtonEdit.ReadOnly = true;
-            this.ColumnTableListButtonEdit.Width = 70;
-            // 
-            // ColumnTableListButtonDelete
-            // 
-            this.ColumnTableListButtonDelete.DataPropertyName = "ColumnTableListButtonDelete";
-            this.ColumnTableListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnTableListButtonDelete.HeaderText = "";
-            this.ColumnTableListButtonDelete.Name = "ColumnTableListButtonDelete";
-            this.ColumnTableListButtonDelete.ReadOnly = true;
-            this.ColumnTableListButtonDelete.Width = 70;
-            // 
-            // ColumnTableListId
-            // 
-            this.ColumnTableListId.DataPropertyName = "ColumnTableListId";
-            this.ColumnTableListId.HeaderText = "Id";
-            this.ColumnTableListId.Name = "ColumnTableListId";
-            this.ColumnTableListId.ReadOnly = true;
-            this.ColumnTableListId.Visible = false;
-            // 
-            // ColumnTableListTableCode
-            // 
-            this.ColumnTableListTableCode.DataPropertyName = "ColumnTableListTableCode";
-            this.ColumnTableListTableCode.HeaderText = "Table Code";
-            this.ColumnTableListTableCode.Name = "ColumnTableListTableCode";
-            this.ColumnTableListTableCode.ReadOnly = true;
-            this.ColumnTableListTableCode.Width = 300;
-            // 
-            // ColumnTableListTableGroupId
-            // 
-            this.ColumnTableListTableGroupId.DataPropertyName = "ColumnTableListTableGroupId";
-            this.ColumnTableListTableGroupId.HeaderText = "Table Group Id";
-            this.ColumnTableListTableGroupId.Name = "ColumnTableListTableGroupId";
-            this.ColumnTableListTableGroupId.ReadOnly = true;
-            this.ColumnTableListTableGroupId.Visible = false;
             // 
             // pictureBox1
             // 

@@ -157,7 +157,7 @@
             this.buttonItemGroupListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemGroupListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemGroupListPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonItemGroupListPageListFirst.Location = new System.Drawing.Point(12, 11);
             this.buttonItemGroupListPageListFirst.Name = "buttonItemGroupListPageListFirst";
             this.buttonItemGroupListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonItemGroupListPageListFirst.TabIndex = 13;
@@ -173,7 +173,7 @@
             this.buttonItemGroupListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemGroupListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemGroupListPageListPrevious.Location = new System.Drawing.Point(100, 9);
+            this.buttonItemGroupListPageListPrevious.Location = new System.Drawing.Point(100, 11);
             this.buttonItemGroupListPageListPrevious.Name = "buttonItemGroupListPageListPrevious";
             this.buttonItemGroupListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonItemGroupListPageListPrevious.TabIndex = 14;
@@ -188,7 +188,7 @@
             this.buttonItemGroupListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemGroupListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemGroupListPageListNext.Location = new System.Drawing.Point(263, 9);
+            this.buttonItemGroupListPageListNext.Location = new System.Drawing.Point(263, 11);
             this.buttonItemGroupListPageListNext.Name = "buttonItemGroupListPageListNext";
             this.buttonItemGroupListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonItemGroupListPageListNext.TabIndex = 15;
@@ -203,7 +203,7 @@
             this.buttonItemGroupListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemGroupListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemGroupListPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonItemGroupListPageListLast.Location = new System.Drawing.Point(348, 11);
             this.buttonItemGroupListPageListLast.Name = "buttonItemGroupListPageListLast";
             this.buttonItemGroupListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonItemGroupListPageListLast.TabIndex = 16;
@@ -218,7 +218,7 @@
             this.textBoxItemGroupListPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxItemGroupListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxItemGroupListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxItemGroupListPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxItemGroupListPageNumber.Location = new System.Drawing.Point(188, 16);
             this.textBoxItemGroupListPageNumber.Name = "textBoxItemGroupListPageNumber";
             this.textBoxItemGroupListPageNumber.ReadOnly = true;
             this.textBoxItemGroupListPageNumber.Size = new System.Drawing.Size(69, 20);

@@ -453,7 +453,7 @@
             this.buttonStockInLineListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonStockInLineListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockInLineListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockInLineListPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonStockInLineListPageListFirst.Location = new System.Drawing.Point(12, 11);
             this.buttonStockInLineListPageListFirst.Name = "buttonStockInLineListPageListFirst";
             this.buttonStockInLineListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonStockInLineListPageListFirst.TabIndex = 13;
@@ -469,7 +469,7 @@
             this.buttonStockInLineListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonStockInLineListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockInLineListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockInLineListPageListPrevious.Location = new System.Drawing.Point(100, 9);
+            this.buttonStockInLineListPageListPrevious.Location = new System.Drawing.Point(100, 11);
             this.buttonStockInLineListPageListPrevious.Name = "buttonStockInLineListPageListPrevious";
             this.buttonStockInLineListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonStockInLineListPageListPrevious.TabIndex = 14;
@@ -484,7 +484,7 @@
             this.buttonStockInLineListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonStockInLineListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockInLineListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockInLineListPageListNext.Location = new System.Drawing.Point(263, 9);
+            this.buttonStockInLineListPageListNext.Location = new System.Drawing.Point(263, 11);
             this.buttonStockInLineListPageListNext.Name = "buttonStockInLineListPageListNext";
             this.buttonStockInLineListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonStockInLineListPageListNext.TabIndex = 15;
@@ -499,7 +499,7 @@
             this.buttonStockInLineListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonStockInLineListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockInLineListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockInLineListPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonStockInLineListPageListLast.Location = new System.Drawing.Point(348, 11);
             this.buttonStockInLineListPageListLast.Name = "buttonStockInLineListPageListLast";
             this.buttonStockInLineListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonStockInLineListPageListLast.TabIndex = 16;
@@ -514,7 +514,7 @@
             this.textBoxStockInLineListPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxStockInLineListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxStockInLineListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxStockInLineListPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxStockInLineListPageNumber.Location = new System.Drawing.Point(188, 16);
             this.textBoxStockInLineListPageNumber.Name = "textBoxStockInLineListPageNumber";
             this.textBoxStockInLineListPageNumber.ReadOnly = true;
             this.textBoxStockInLineListPageNumber.Size = new System.Drawing.Size(69, 20);

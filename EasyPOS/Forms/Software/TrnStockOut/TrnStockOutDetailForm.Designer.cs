@@ -444,7 +444,7 @@
             this.buttonStockOutLineListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonStockOutLineListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockOutLineListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockOutLineListPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonStockOutLineListPageListFirst.Location = new System.Drawing.Point(12, 11);
             this.buttonStockOutLineListPageListFirst.Name = "buttonStockOutLineListPageListFirst";
             this.buttonStockOutLineListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonStockOutLineListPageListFirst.TabIndex = 13;
@@ -460,7 +460,7 @@
             this.buttonStockOutLineListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonStockOutLineListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockOutLineListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockOutLineListPageListPrevious.Location = new System.Drawing.Point(100, 9);
+            this.buttonStockOutLineListPageListPrevious.Location = new System.Drawing.Point(100, 11);
             this.buttonStockOutLineListPageListPrevious.Name = "buttonStockOutLineListPageListPrevious";
             this.buttonStockOutLineListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonStockOutLineListPageListPrevious.TabIndex = 14;
@@ -475,7 +475,7 @@
             this.buttonStockOutLineListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonStockOutLineListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockOutLineListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockOutLineListPageListNext.Location = new System.Drawing.Point(263, 9);
+            this.buttonStockOutLineListPageListNext.Location = new System.Drawing.Point(263, 11);
             this.buttonStockOutLineListPageListNext.Name = "buttonStockOutLineListPageListNext";
             this.buttonStockOutLineListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonStockOutLineListPageListNext.TabIndex = 15;
@@ -490,7 +490,7 @@
             this.buttonStockOutLineListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonStockOutLineListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockOutLineListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockOutLineListPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonStockOutLineListPageListLast.Location = new System.Drawing.Point(348, 11);
             this.buttonStockOutLineListPageListLast.Name = "buttonStockOutLineListPageListLast";
             this.buttonStockOutLineListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonStockOutLineListPageListLast.TabIndex = 16;
@@ -505,7 +505,7 @@
             this.textBoxStockOutLineListPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxStockOutLineListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxStockOutLineListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxStockOutLineListPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxStockOutLineListPageNumber.Location = new System.Drawing.Point(188, 16);
             this.textBoxStockOutLineListPageNumber.Name = "textBoxStockOutLineListPageNumber";
             this.textBoxStockOutLineListPageNumber.ReadOnly = true;
             this.textBoxStockOutLineListPageNumber.Size = new System.Drawing.Size(69, 20);

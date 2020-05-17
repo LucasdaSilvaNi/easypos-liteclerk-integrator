@@ -38,6 +38,7 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonUnlock = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridViewUserFormList = new System.Windows.Forms.DataGridView();
             this.ColumnUserFormListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnUserFormListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -58,7 +59,6 @@
             this.ColumnUserFormListCanSplit = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColumnUserFormListCanCancel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColumnUserFormListCanReturn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.buttonCopyUseRights = new System.Windows.Forms.Button();
             this.buttonAddUserForm = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -77,8 +77,8 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserFormList)).BeginInit();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserFormList)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -182,6 +182,18 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1400, 637);
             this.panel2.TabIndex = 6;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.Control;
+            this.panel5.Controls.Add(this.dataGridViewUserFormList);
+            this.panel5.Controls.Add(this.buttonCopyUseRights);
+            this.panel5.Controls.Add(this.buttonAddUserForm);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 119);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1400, 465);
+            this.panel5.TabIndex = 28;
             // 
             // dataGridViewUserFormList
             // 
@@ -415,18 +427,6 @@
             this.ColumnUserFormListCanReturn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.ColumnUserFormListCanReturn.Width = 80;
             // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.SystemColors.Control;
-            this.panel5.Controls.Add(this.dataGridViewUserFormList);
-            this.panel5.Controls.Add(this.buttonCopyUseRights);
-            this.panel5.Controls.Add(this.buttonAddUserForm);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(0, 119);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1400, 465);
-            this.panel5.TabIndex = 28;
-            // 
             // buttonCopyUseRights
             // 
             this.buttonCopyUseRights.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -484,7 +484,7 @@
             this.buttonUserFormListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonUserFormListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUserFormListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonUserFormListPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonUserFormListPageListFirst.Location = new System.Drawing.Point(12, 11);
             this.buttonUserFormListPageListFirst.Name = "buttonUserFormListPageListFirst";
             this.buttonUserFormListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonUserFormListPageListFirst.TabIndex = 25;
@@ -500,7 +500,7 @@
             this.buttonUserFormListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonUserFormListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUserFormListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonUserFormListPageListPrevious.Location = new System.Drawing.Point(100, 9);
+            this.buttonUserFormListPageListPrevious.Location = new System.Drawing.Point(100, 11);
             this.buttonUserFormListPageListPrevious.Name = "buttonUserFormListPageListPrevious";
             this.buttonUserFormListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonUserFormListPageListPrevious.TabIndex = 26;
@@ -515,7 +515,7 @@
             this.buttonUserFormListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonUserFormListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUserFormListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonUserFormListPageListNext.Location = new System.Drawing.Point(263, 9);
+            this.buttonUserFormListPageListNext.Location = new System.Drawing.Point(263, 11);
             this.buttonUserFormListPageListNext.Name = "buttonUserFormListPageListNext";
             this.buttonUserFormListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonUserFormListPageListNext.TabIndex = 28;
@@ -530,7 +530,7 @@
             this.buttonUserFormListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonUserFormListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUserFormListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonUserFormListPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonUserFormListPageListLast.Location = new System.Drawing.Point(348, 11);
             this.buttonUserFormListPageListLast.Name = "buttonUserFormListPageListLast";
             this.buttonUserFormListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonUserFormListPageListLast.TabIndex = 29;
@@ -545,7 +545,7 @@
             this.textBoxUserFormListPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxUserFormListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxUserFormListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxUserFormListPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxUserFormListPageNumber.Location = new System.Drawing.Point(188, 16);
             this.textBoxUserFormListPageNumber.Name = "textBoxUserFormListPageNumber";
             this.textBoxUserFormListPageNumber.ReadOnly = true;
             this.textBoxUserFormListPageNumber.Size = new System.Drawing.Size(69, 20);
@@ -643,8 +643,8 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserFormList)).EndInit();
             this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserFormList)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);

@@ -159,7 +159,7 @@
             this.buttonDiscountListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonDiscountListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDiscountListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonDiscountListPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonDiscountListPageListFirst.Location = new System.Drawing.Point(12, 11);
             this.buttonDiscountListPageListFirst.Name = "buttonDiscountListPageListFirst";
             this.buttonDiscountListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonDiscountListPageListFirst.TabIndex = 13;
@@ -175,7 +175,7 @@
             this.buttonDiscountListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonDiscountListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDiscountListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonDiscountListPageListPrevious.Location = new System.Drawing.Point(100, 9);
+            this.buttonDiscountListPageListPrevious.Location = new System.Drawing.Point(100, 11);
             this.buttonDiscountListPageListPrevious.Name = "buttonDiscountListPageListPrevious";
             this.buttonDiscountListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonDiscountListPageListPrevious.TabIndex = 14;
@@ -190,7 +190,7 @@
             this.buttonDiscountListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonDiscountListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDiscountListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonDiscountListPageListNext.Location = new System.Drawing.Point(263, 9);
+            this.buttonDiscountListPageListNext.Location = new System.Drawing.Point(263, 11);
             this.buttonDiscountListPageListNext.Name = "buttonDiscountListPageListNext";
             this.buttonDiscountListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonDiscountListPageListNext.TabIndex = 15;
@@ -205,7 +205,7 @@
             this.buttonDiscountListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonDiscountListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDiscountListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonDiscountListPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonDiscountListPageListLast.Location = new System.Drawing.Point(348, 11);
             this.buttonDiscountListPageListLast.Name = "buttonDiscountListPageListLast";
             this.buttonDiscountListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonDiscountListPageListLast.TabIndex = 16;
@@ -220,7 +220,7 @@
             this.textBoxDiscountListPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxDiscountListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxDiscountListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxDiscountListPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxDiscountListPageNumber.Location = new System.Drawing.Point(188, 16);
             this.textBoxDiscountListPageNumber.Name = "textBoxDiscountListPageNumber";
             this.textBoxDiscountListPageNumber.ReadOnly = true;
             this.textBoxDiscountListPageNumber.Size = new System.Drawing.Size(69, 20);

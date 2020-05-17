@@ -104,7 +104,7 @@
             this.buttonDisbursementListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonDisbursementListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDisbursementListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonDisbursementListPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonDisbursementListPageListLast.Location = new System.Drawing.Point(348, 11);
             this.buttonDisbursementListPageListLast.Name = "buttonDisbursementListPageListLast";
             this.buttonDisbursementListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonDisbursementListPageListLast.TabIndex = 16;
@@ -118,7 +118,7 @@
             this.textBoxDisbursementListPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxDisbursementListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxDisbursementListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxDisbursementListPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxDisbursementListPageNumber.Location = new System.Drawing.Point(188, 16);
             this.textBoxDisbursementListPageNumber.Name = "textBoxDisbursementListPageNumber";
             this.textBoxDisbursementListPageNumber.ReadOnly = true;
             this.textBoxDisbursementListPageNumber.Size = new System.Drawing.Size(69, 20);
@@ -246,7 +246,7 @@
             this.buttonDisbursementListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonDisbursementListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDisbursementListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonDisbursementListPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonDisbursementListPageListFirst.Location = new System.Drawing.Point(12, 11);
             this.buttonDisbursementListPageListFirst.Name = "buttonDisbursementListPageListFirst";
             this.buttonDisbursementListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonDisbursementListPageListFirst.TabIndex = 13;
@@ -261,7 +261,7 @@
             this.buttonDisbursementListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonDisbursementListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDisbursementListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonDisbursementListPageListPrevious.Location = new System.Drawing.Point(100, 9);
+            this.buttonDisbursementListPageListPrevious.Location = new System.Drawing.Point(100, 11);
             this.buttonDisbursementListPageListPrevious.Name = "buttonDisbursementListPageListPrevious";
             this.buttonDisbursementListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonDisbursementListPageListPrevious.TabIndex = 14;
@@ -275,7 +275,7 @@
             this.buttonDisbursementListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonDisbursementListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDisbursementListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonDisbursementListPageListNext.Location = new System.Drawing.Point(263, 9);
+            this.buttonDisbursementListPageListNext.Location = new System.Drawing.Point(263, 11);
             this.buttonDisbursementListPageListNext.Name = "buttonDisbursementListPageListNext";
             this.buttonDisbursementListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonDisbursementListPageListNext.TabIndex = 15;

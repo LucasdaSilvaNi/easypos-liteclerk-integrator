@@ -34,6 +34,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.buttonSearchItem = new System.Windows.Forms.Button();
             this.dataGridViewItemGroupItemList = new System.Windows.Forms.DataGridView();
             this.ColumnItemGroupItemListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnItemGroupItemListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -60,7 +61,6 @@
             this.buttonUnlock = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.buttonSearchItem = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -101,6 +101,24 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1400, 465);
             this.panel5.TabIndex = 29;
+            // 
+            // buttonSearchItem
+            // 
+            this.buttonSearchItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSearchItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonSearchItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
+            this.buttonSearchItem.FlatAppearance.BorderSize = 0;
+            this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
+            this.buttonSearchItem.Location = new System.Drawing.Point(1206, 6);
+            this.buttonSearchItem.Name = "buttonSearchItem";
+            this.buttonSearchItem.Size = new System.Drawing.Size(182, 40);
+            this.buttonSearchItem.TabIndex = 9;
+            this.buttonSearchItem.TabStop = false;
+            this.buttonSearchItem.Text = "Search Item";
+            this.buttonSearchItem.UseVisualStyleBackColor = false;
+            this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
             // 
             // dataGridViewItemGroupItemList
             // 
@@ -212,7 +230,7 @@
             this.buttonItemGroupItemListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItemListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemGroupItemListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemGroupItemListPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonItemGroupItemListPageListFirst.Location = new System.Drawing.Point(12, 11);
             this.buttonItemGroupItemListPageListFirst.Name = "buttonItemGroupItemListPageListFirst";
             this.buttonItemGroupItemListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonItemGroupItemListPageListFirst.TabIndex = 23;
@@ -228,7 +246,7 @@
             this.buttonItemGroupItemListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItemListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemGroupItemListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemGroupItemListPageListPrevious.Location = new System.Drawing.Point(100, 9);
+            this.buttonItemGroupItemListPageListPrevious.Location = new System.Drawing.Point(100, 11);
             this.buttonItemGroupItemListPageListPrevious.Name = "buttonItemGroupItemListPageListPrevious";
             this.buttonItemGroupItemListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonItemGroupItemListPageListPrevious.TabIndex = 24;
@@ -243,7 +261,7 @@
             this.buttonItemGroupItemListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItemListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemGroupItemListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemGroupItemListPageListNext.Location = new System.Drawing.Point(263, 9);
+            this.buttonItemGroupItemListPageListNext.Location = new System.Drawing.Point(263, 11);
             this.buttonItemGroupItemListPageListNext.Name = "buttonItemGroupItemListPageListNext";
             this.buttonItemGroupItemListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonItemGroupItemListPageListNext.TabIndex = 26;
@@ -258,7 +276,7 @@
             this.buttonItemGroupItemListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItemListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemGroupItemListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemGroupItemListPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonItemGroupItemListPageListLast.Location = new System.Drawing.Point(348, 11);
             this.buttonItemGroupItemListPageListLast.Name = "buttonItemGroupItemListPageListLast";
             this.buttonItemGroupItemListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonItemGroupItemListPageListLast.TabIndex = 26;
@@ -273,7 +291,7 @@
             this.textBoxItemGroupItemListPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxItemGroupItemListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxItemGroupItemListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxItemGroupItemListPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxItemGroupItemListPageNumber.Location = new System.Drawing.Point(188, 16);
             this.textBoxItemGroupItemListPageNumber.Name = "textBoxItemGroupItemListPageNumber";
             this.textBoxItemGroupItemListPageNumber.ReadOnly = true;
             this.textBoxItemGroupItemListPageNumber.Size = new System.Drawing.Size(69, 20);
@@ -441,24 +459,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
-            // 
-            // buttonSearchItem
-            // 
-            this.buttonSearchItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSearchItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonSearchItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
-            this.buttonSearchItem.FlatAppearance.BorderSize = 0;
-            this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
-            this.buttonSearchItem.Location = new System.Drawing.Point(1206, 6);
-            this.buttonSearchItem.Name = "buttonSearchItem";
-            this.buttonSearchItem.Size = new System.Drawing.Size(182, 40);
-            this.buttonSearchItem.TabIndex = 9;
-            this.buttonSearchItem.TabStop = false;
-            this.buttonSearchItem.Text = "Search Item";
-            this.buttonSearchItem.UseVisualStyleBackColor = false;
-            this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
             // 
             // MstItemGroupDetailForm
             // 

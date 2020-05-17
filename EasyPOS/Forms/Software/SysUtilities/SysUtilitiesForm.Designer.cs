@@ -37,6 +37,9 @@
             this.buttonAuditTrailListPageListLast = new System.Windows.Forms.Button();
             this.textBoxAuditTrailListPageNumber = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.buttonView = new System.Windows.Forms.Button();
             this.comboBoxUserFilter = new System.Windows.Forms.ComboBox();
             this.dateTimePickerSysAuditTrailListEndDateFilter = new System.Windows.Forms.DateTimePicker();
@@ -81,9 +84,6 @@
             this.ColumnItemListSpace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxItemListFilter = new System.Windows.Forms.TextBox();
             this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuditTrailList)).BeginInit();
@@ -119,7 +119,7 @@
             this.buttonAuditTrailListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonAuditTrailListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAuditTrailListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonAuditTrailListPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonAuditTrailListPageListFirst.Location = new System.Drawing.Point(12, 11);
             this.buttonAuditTrailListPageListFirst.Name = "buttonAuditTrailListPageListFirst";
             this.buttonAuditTrailListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonAuditTrailListPageListFirst.TabIndex = 13;
@@ -135,7 +135,7 @@
             this.buttonAuditTrailListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonAuditTrailListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAuditTrailListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonAuditTrailListPageListPrevious.Location = new System.Drawing.Point(100, 9);
+            this.buttonAuditTrailListPageListPrevious.Location = new System.Drawing.Point(100, 11);
             this.buttonAuditTrailListPageListPrevious.Name = "buttonAuditTrailListPageListPrevious";
             this.buttonAuditTrailListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonAuditTrailListPageListPrevious.TabIndex = 14;
@@ -150,7 +150,7 @@
             this.buttonAuditTrailListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonAuditTrailListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAuditTrailListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonAuditTrailListPageListNext.Location = new System.Drawing.Point(263, 9);
+            this.buttonAuditTrailListPageListNext.Location = new System.Drawing.Point(263, 11);
             this.buttonAuditTrailListPageListNext.Name = "buttonAuditTrailListPageListNext";
             this.buttonAuditTrailListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonAuditTrailListPageListNext.TabIndex = 15;
@@ -165,7 +165,7 @@
             this.buttonAuditTrailListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonAuditTrailListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAuditTrailListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonAuditTrailListPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonAuditTrailListPageListLast.Location = new System.Drawing.Point(348, 11);
             this.buttonAuditTrailListPageListLast.Name = "buttonAuditTrailListPageListLast";
             this.buttonAuditTrailListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonAuditTrailListPageListLast.TabIndex = 16;
@@ -180,7 +180,7 @@
             this.textBoxAuditTrailListPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxAuditTrailListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxAuditTrailListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxAuditTrailListPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxAuditTrailListPageNumber.Location = new System.Drawing.Point(188, 16);
             this.textBoxAuditTrailListPageNumber.Name = "textBoxAuditTrailListPageNumber";
             this.textBoxAuditTrailListPageNumber.ReadOnly = true;
             this.textBoxAuditTrailListPageNumber.Size = new System.Drawing.Size(69, 20);
@@ -205,6 +205,36 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1386, 595);
             this.panel2.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 7F);
+            this.label4.Location = new System.Drawing.Point(298, 6);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(33, 15);
+            this.label4.TabIndex = 25;
+            this.label4.Text = "User:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 7F);
+            this.label3.Location = new System.Drawing.Point(148, 6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 15);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "End Date:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 7F);
+            this.label2.Location = new System.Drawing.Point(1, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 15);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Start Date:";
             // 
             // buttonView
             // 
@@ -479,7 +509,7 @@
             this.buttonItemListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonItemListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemListPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonItemListPageListFirst.Location = new System.Drawing.Point(12, 11);
             this.buttonItemListPageListFirst.Name = "buttonItemListPageListFirst";
             this.buttonItemListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonItemListPageListFirst.TabIndex = 13;
@@ -495,7 +525,7 @@
             this.buttonItemListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonItemListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemListPageListPrevious.Location = new System.Drawing.Point(100, 9);
+            this.buttonItemListPageListPrevious.Location = new System.Drawing.Point(100, 11);
             this.buttonItemListPageListPrevious.Name = "buttonItemListPageListPrevious";
             this.buttonItemListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonItemListPageListPrevious.TabIndex = 14;
@@ -510,7 +540,7 @@
             this.buttonItemListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonItemListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemListPageListNext.Location = new System.Drawing.Point(263, 9);
+            this.buttonItemListPageListNext.Location = new System.Drawing.Point(263, 11);
             this.buttonItemListPageListNext.Name = "buttonItemListPageListNext";
             this.buttonItemListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonItemListPageListNext.TabIndex = 15;
@@ -525,7 +555,7 @@
             this.buttonItemListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonItemListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemListPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonItemListPageListLast.Location = new System.Drawing.Point(348, 11);
             this.buttonItemListPageListLast.Name = "buttonItemListPageListLast";
             this.buttonItemListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonItemListPageListLast.TabIndex = 16;
@@ -540,7 +570,7 @@
             this.textBoxItemListPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxItemListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxItemListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxItemListPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxItemListPageNumber.Location = new System.Drawing.Point(188, 16);
             this.textBoxItemListPageNumber.Name = "textBoxItemListPageNumber";
             this.textBoxItemListPageNumber.ReadOnly = true;
             this.textBoxItemListPageNumber.Size = new System.Drawing.Size(69, 20);
@@ -688,36 +718,6 @@
             this.textBoxItemListFilter.TabIndex = 8;
             this.textBoxItemListFilter.TabStop = false;
             this.textBoxItemListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxItemListFilter_KeyDown);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 7F);
-            this.label2.Location = new System.Drawing.Point(1, 6);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 15);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "Start Date:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 7F);
-            this.label3.Location = new System.Drawing.Point(148, 6);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 15);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "End Date:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 7F);
-            this.label4.Location = new System.Drawing.Point(298, 6);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 15);
-            this.label4.TabIndex = 25;
-            this.label4.Text = "User:";
             // 
             // SysUtilitiesForm
             // 

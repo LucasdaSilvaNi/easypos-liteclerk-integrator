@@ -160,7 +160,7 @@
             this.buttonCustomerListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonCustomerListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCustomerListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonCustomerListPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonCustomerListPageListFirst.Location = new System.Drawing.Point(12, 11);
             this.buttonCustomerListPageListFirst.Name = "buttonCustomerListPageListFirst";
             this.buttonCustomerListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonCustomerListPageListFirst.TabIndex = 13;
@@ -176,7 +176,7 @@
             this.buttonCustomerListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonCustomerListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCustomerListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonCustomerListPageListPrevious.Location = new System.Drawing.Point(100, 9);
+            this.buttonCustomerListPageListPrevious.Location = new System.Drawing.Point(100, 11);
             this.buttonCustomerListPageListPrevious.Name = "buttonCustomerListPageListPrevious";
             this.buttonCustomerListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonCustomerListPageListPrevious.TabIndex = 14;
@@ -191,7 +191,7 @@
             this.buttonCustomerListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonCustomerListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCustomerListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonCustomerListPageListNext.Location = new System.Drawing.Point(263, 9);
+            this.buttonCustomerListPageListNext.Location = new System.Drawing.Point(263, 11);
             this.buttonCustomerListPageListNext.Name = "buttonCustomerListPageListNext";
             this.buttonCustomerListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonCustomerListPageListNext.TabIndex = 15;
@@ -206,7 +206,7 @@
             this.buttonCustomerListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonCustomerListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCustomerListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonCustomerListPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonCustomerListPageListLast.Location = new System.Drawing.Point(348, 11);
             this.buttonCustomerListPageListLast.Name = "buttonCustomerListPageListLast";
             this.buttonCustomerListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonCustomerListPageListLast.TabIndex = 16;
@@ -221,7 +221,7 @@
             this.textBoxCustomerListPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxCustomerListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxCustomerListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxCustomerListPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxCustomerListPageNumber.Location = new System.Drawing.Point(188, 16);
             this.textBoxCustomerListPageNumber.Name = "textBoxCustomerListPageNumber";
             this.textBoxCustomerListPageNumber.ReadOnly = true;
             this.textBoxCustomerListPageNumber.Size = new System.Drawing.Size(69, 20);

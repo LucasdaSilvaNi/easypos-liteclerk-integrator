@@ -79,7 +79,7 @@
             this.buttonStockCountListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonStockCountListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockCountListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockCountListPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonStockCountListPageListFirst.Location = new System.Drawing.Point(12, 11);
             this.buttonStockCountListPageListFirst.Name = "buttonStockCountListPageListFirst";
             this.buttonStockCountListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonStockCountListPageListFirst.TabIndex = 13;
@@ -95,7 +95,7 @@
             this.buttonStockCountListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonStockCountListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockCountListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockCountListPageListPrevious.Location = new System.Drawing.Point(100, 9);
+            this.buttonStockCountListPageListPrevious.Location = new System.Drawing.Point(100, 11);
             this.buttonStockCountListPageListPrevious.Name = "buttonStockCountListPageListPrevious";
             this.buttonStockCountListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonStockCountListPageListPrevious.TabIndex = 14;
@@ -110,7 +110,7 @@
             this.buttonStockCountListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonStockCountListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockCountListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockCountListPageListNext.Location = new System.Drawing.Point(263, 9);
+            this.buttonStockCountListPageListNext.Location = new System.Drawing.Point(263, 11);
             this.buttonStockCountListPageListNext.Name = "buttonStockCountListPageListNext";
             this.buttonStockCountListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonStockCountListPageListNext.TabIndex = 15;
@@ -125,7 +125,7 @@
             this.buttonStockCountListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonStockCountListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockCountListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockCountListPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonStockCountListPageListLast.Location = new System.Drawing.Point(348, 11);
             this.buttonStockCountListPageListLast.Name = "buttonStockCountListPageListLast";
             this.buttonStockCountListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonStockCountListPageListLast.TabIndex = 16;
@@ -140,7 +140,7 @@
             this.textBoxStockCountListPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxStockCountListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxStockCountListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxStockCountListPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxStockCountListPageNumber.Location = new System.Drawing.Point(188, 16);
             this.textBoxStockCountListPageNumber.Name = "textBoxStockCountListPageNumber";
             this.textBoxStockCountListPageNumber.ReadOnly = true;
             this.textBoxStockCountListPageNumber.Size = new System.Drawing.Size(69, 20);
