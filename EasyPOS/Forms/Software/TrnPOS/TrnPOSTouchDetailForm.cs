@@ -325,7 +325,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         MessageBox.Show("Item not found.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -643,6 +642,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 dataGridViewSalesLineList.Columns[0].Visible = false;
                 dataGridViewSalesLineList.Columns[1].Visible = false;
 
+                for (int i = 0; i < itemGroupItemNoOfButtons; i++)
+                {
+                    itemGroupItemButtons[i].Enabled = false;
+                }
+
                 trnPOSTouchForm.UpdateSalesListGridDataSource();
             }
             else
@@ -667,6 +671,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 dataGridViewSalesLineList.Columns[0].Visible = true;
                 dataGridViewSalesLineList.Columns[1].Visible = true;
+
+                for (int i = 0; i < itemGroupItemNoOfButtons; i++)
+                {
+                    itemGroupItemButtons[i].Enabled = true;
+                }
 
                 trnPOSTouchForm.UpdateSalesListGridDataSource();
             }

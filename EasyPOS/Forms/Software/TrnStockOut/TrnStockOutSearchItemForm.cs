@@ -9,28 +9,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EasyPOS.Forms.Software.TrnStockIn
+namespace EasyPOS.Forms.Software.TrnStockOut
 {
-    public partial class TrnSearchItemForm : Form
+    public partial class TrnStockOutSearchItemForm : Form
     {
-        public TrnStockInDetailForm trnStockInDetailForm;
-        public Entities.TrnStockInEntity trnStockInEntity;
+        public TrnStockOutDetailForm trnStockOutDetailForm;
+        public Entities.TrnStockOutEntity trnStockOutEntity;
 
-        public static List<Entities.DgvTrnStockInSearchItemListEntity> searchItemListData = new List<Entities.DgvTrnStockInSearchItemListEntity>();
+        public static List<Entities.DgvTrnStockOutSearchItemListEntity> searchItemListData = new List<Entities.DgvTrnStockOutSearchItemListEntity>();
         public static Int32 pageNumber = 1;
         public static Int32 pageSize = 50;
-        public PagedList<Entities.DgvTrnStockInSearchItemListEntity> searchItemListPageList = new PagedList<Entities.DgvTrnStockInSearchItemListEntity>(searchItemListData, pageNumber, pageSize);
+        public PagedList<Entities.DgvTrnStockOutSearchItemListEntity> searchItemListPageList = new PagedList<Entities.DgvTrnStockOutSearchItemListEntity>(searchItemListData, pageNumber, pageSize);
         public BindingSource searchItemListDataSource = new BindingSource();
 
-        public TrnSearchItemForm(TrnStockInDetailForm stockInDetailForm, Entities.TrnStockInEntity stockInEntity)
+        public TrnStockOutSearchItemForm(TrnStockOutDetailForm stockOutDetailForm, Entities.TrnStockOutEntity stockOutEntity)
         {
             InitializeComponent();
 
-            trnStockInDetailForm = stockInDetailForm;
-            trnStockInEntity = stockInEntity;
+            trnStockOutDetailForm = stockOutDetailForm;
+            trnStockOutEntity = stockOutEntity;
 
             CreateSearchItemListDataGridView();
             textBoxSearchItemListFilter.Focus();
+            textBoxSearchItemListFilter.SelectAll();
         }
 
         public void UpdateSearchItemListDataSource()
@@ -40,11 +41,11 @@ namespace EasyPOS.Forms.Software.TrnStockIn
 
         public async void SetSearchItemListDataSourceAsync()
         {
-            List<Entities.DgvTrnStockInSearchItemListEntity> getSearchItemListData = await GetSearchItemListDataTask();
+            List<Entities.DgvTrnStockOutSearchItemListEntity> getSearchItemListData = await GetSearchItemListDataTask();
             if (getSearchItemListData.Any())
             {
                 searchItemListData = getSearchItemListData;
-                searchItemListPageList = new PagedList<Entities.DgvTrnStockInSearchItemListEntity>(searchItemListData, pageNumber, pageSize);
+                searchItemListPageList = new PagedList<Entities.DgvTrnStockOutSearchItemListEntity>(searchItemListData, pageNumber, pageSize);
 
                 if (searchItemListPageList.PageCount == 1)
                 {
@@ -87,22 +88,22 @@ namespace EasyPOS.Forms.Software.TrnStockIn
 
                 pageNumber = 1;
 
-                searchItemListData = new List<Entities.DgvTrnStockInSearchItemListEntity>();
+                searchItemListData = new List<Entities.DgvTrnStockOutSearchItemListEntity>();
                 searchItemListDataSource.Clear();
                 textBoxSearchItemListPageNumber.Text = "1 / 1";
             }
         }
 
-        public Task<List<Entities.DgvTrnStockInSearchItemListEntity>> GetSearchItemListDataTask()
+        public Task<List<Entities.DgvTrnStockOutSearchItemListEntity>> GetSearchItemListDataTask()
         {
             String filter = textBoxSearchItemListFilter.Text;
-            Controllers.TrnStockInLineController trnStockInLineController = new Controllers.TrnStockInLineController();
+            Controllers.TrnStockOutLineController trnStockOutLineController = new Controllers.TrnStockOutLineController();
 
-            List<Entities.MstItemEntity> listSearchItem = trnStockInLineController.ListSearchItem(filter);
+            List<Entities.MstItemEntity> listSearchItem = trnStockOutLineController.ListSearchItem(filter);
             if (listSearchItem.Any())
             {
                 var items = from d in listSearchItem
-                            select new Entities.DgvTrnStockInSearchItemListEntity
+                            select new Entities.DgvTrnStockOutSearchItemListEntity
                             {
                                 ColumnSearchItemListId = d.Id,
                                 ColumnSearchItemListBarCode = d.BarCode,
@@ -122,7 +123,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             }
             else
             {
-                return Task.FromResult(new List<Entities.DgvTrnStockInSearchItemListEntity>());
+                return Task.FromResult(new List<Entities.DgvTrnStockOutSearchItemListEntity>());
             }
         }
 
@@ -147,17 +148,17 @@ namespace EasyPOS.Forms.Software.TrnStockIn
         {
             if (dataGridViewSearchItemList.CurrentCell.ColumnIndex == dataGridViewSearchItemList.Columns["ColumnSearchItemListButtonPick"].Index)
             {
-                var stockInId = trnStockInEntity.Id;
+                var stockOutId = trnStockOutEntity.Id;
                 var itemId = Convert.ToInt32(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[dataGridViewSearchItemList.Columns["ColumnSearchItemListId"].Index].Value);
                 var itemDescription = dataGridViewSearchItemList.Rows[e.RowIndex].Cells[dataGridViewSearchItemList.Columns["ColumnSearchItemListDescription"].Index].Value.ToString();
                 var unitId = Convert.ToInt32(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[dataGridViewSearchItemList.Columns["ColumnSearchItemListUnitId"].Index].Value);
                 var unit = dataGridViewSearchItemList.Rows[e.RowIndex].Cells[dataGridViewSearchItemList.Columns["ColumnSearchItemListUnit"].Index].Value.ToString();
                 var price = Convert.ToDecimal(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[dataGridViewSearchItemList.Columns["ColumnSearchItemListPrice"].Index].Value);
 
-                Entities.TrnStockInLineEntity trnStockInLineEntity = new Entities.TrnStockInLineEntity()
+                Entities.TrnStockOutLineEntity trnStockOutLineEntity = new Entities.TrnStockOutLineEntity()
                 {
                     Id = 0,
-                    StockInId = stockInId,
+                    StockOutId = stockOutId,
                     ItemId = itemId,
                     ItemDescription = itemDescription,
                     UnitId = unitId,
@@ -165,15 +166,12 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                     Quantity = 1,
                     Cost = 0,
                     Amount = 0,
-                    ExpiryDate = "",
-                    LotNumber = "",
                     AssetAccountId = 0,
-                    AssetAccount = "",
-                    Price = price
+                    AssetAccount = ""
                 };
 
-                TrnStockInLineItemDetailForm trnStockInDetailStockInLineItemDetailForm = new TrnStockInLineItemDetailForm(trnStockInDetailForm, trnStockInLineEntity);
-                trnStockInDetailStockInLineItemDetailForm.ShowDialog();
+                TrnStockOutLineItemDetailForm trnStockOutDetailStockOutLineItemDetailForm = new TrnStockOutLineItemDetailForm(trnStockOutDetailForm, trnStockOutLineEntity);
+                trnStockOutDetailStockOutLineItemDetailForm.ShowDialog();
             }
         }
 
@@ -189,7 +187,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
 
         private void buttonSearchItemListPageListFirst_Click(object sender, EventArgs e)
         {
-            searchItemListPageList = new PagedList<Entities.DgvTrnStockInSearchItemListEntity>(searchItemListData, 1, pageSize);
+            searchItemListPageList = new PagedList<Entities.DgvTrnStockOutSearchItemListEntity>(searchItemListData, 1, pageSize);
             searchItemListDataSource.DataSource = searchItemListPageList;
 
             buttonSearchItemListPageListFirst.Enabled = false;
@@ -205,7 +203,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
         {
             if (searchItemListPageList.HasPreviousPage == true)
             {
-                searchItemListPageList = new PagedList<Entities.DgvTrnStockInSearchItemListEntity>(searchItemListData, --pageNumber, pageSize);
+                searchItemListPageList = new PagedList<Entities.DgvTrnStockOutSearchItemListEntity>(searchItemListData, --pageNumber, pageSize);
                 searchItemListDataSource.DataSource = searchItemListPageList;
             }
 
@@ -225,7 +223,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
         {
             if (searchItemListPageList.HasNextPage == true)
             {
-                searchItemListPageList = new PagedList<Entities.DgvTrnStockInSearchItemListEntity>(searchItemListData, ++pageNumber, pageSize);
+                searchItemListPageList = new PagedList<Entities.DgvTrnStockOutSearchItemListEntity>(searchItemListData, ++pageNumber, pageSize);
                 searchItemListDataSource.DataSource = searchItemListPageList;
             }
 
@@ -243,7 +241,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
 
         private void buttonSearchItemListPageListLast_Click(object sender, EventArgs e)
         {
-            searchItemListPageList = new PagedList<Entities.DgvTrnStockInSearchItemListEntity>(searchItemListData, searchItemListPageList.PageCount, pageSize);
+            searchItemListPageList = new PagedList<Entities.DgvTrnStockOutSearchItemListEntity>(searchItemListData, searchItemListPageList.PageCount, pageSize);
             searchItemListDataSource.DataSource = searchItemListPageList;
 
             buttonSearchItemListPageListFirst.Enabled = true;

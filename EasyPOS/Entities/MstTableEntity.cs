@@ -12,7 +12,7 @@ namespace EasyPOS.Entities
         public String TableCode { get; set; }
         public Int32 TableGroupId { get; set; }
         public String TableGroup { get; set; }
-        public String TopLocation { get; set; }
-        public String LeftLocation { get; set; }
+        public Int32? TopLocation { get; set; }
+        public Int32? LeftLocation { get; set; }
     }
 }

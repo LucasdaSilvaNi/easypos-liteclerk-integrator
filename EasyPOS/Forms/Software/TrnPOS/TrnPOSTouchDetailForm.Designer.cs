@@ -42,12 +42,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonLock = new System.Windows.Forms.Button();
             this.buttonUnlock = new System.Windows.Forms.Button();
-            this.buttonSearchItem = new System.Windows.Forms.Button();
             this.buttonDiscount = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonTender = new System.Windows.Forms.Button();
+            this.buttonSearchItem = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.labelCustomer = new System.Windows.Forms.Label();
@@ -103,7 +103,6 @@
             this.buttonItemGroupItemPrevious = new System.Windows.Forms.Button();
             this.buttonItemGroupPrevious = new System.Windows.Forms.Button();
             this.dataGridViewSalesLineList = new System.Windows.Forms.DataGridView();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.ColumnSalesLineEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnSalesLineDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnSalesLineId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -135,6 +134,7 @@
             this.ColumnSalesLinePrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLinePrice2LessTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLinePriceSplitPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -194,24 +194,6 @@
             this.buttonUnlock.Text = "Unlock";
             this.buttonUnlock.UseVisualStyleBackColor = false;
             this.buttonUnlock.Click += new System.EventHandler(this.buttonUnlock_Click);
-            // 
-            // buttonSearchItem
-            // 
-            this.buttonSearchItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSearchItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonSearchItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
-            this.buttonSearchItem.FlatAppearance.BorderSize = 0;
-            this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
-            this.buttonSearchItem.Location = new System.Drawing.Point(1206, 6);
-            this.buttonSearchItem.Name = "buttonSearchItem";
-            this.buttonSearchItem.Size = new System.Drawing.Size(181, 40);
-            this.buttonSearchItem.TabIndex = 8;
-            this.buttonSearchItem.TabStop = false;
-            this.buttonSearchItem.Text = "Search Item";
-            this.buttonSearchItem.UseVisualStyleBackColor = false;
-            this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
             // 
             // buttonDiscount
             // 
@@ -287,6 +269,24 @@
             this.buttonTender.Text = "Tender";
             this.buttonTender.UseVisualStyleBackColor = false;
             this.buttonTender.Click += new System.EventHandler(this.buttonTender_Click);
+            // 
+            // buttonSearchItem
+            // 
+            this.buttonSearchItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSearchItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonSearchItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
+            this.buttonSearchItem.FlatAppearance.BorderSize = 0;
+            this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
+            this.buttonSearchItem.Location = new System.Drawing.Point(1206, 6);
+            this.buttonSearchItem.Name = "buttonSearchItem";
+            this.buttonSearchItem.Size = new System.Drawing.Size(181, 40);
+            this.buttonSearchItem.TabIndex = 8;
+            this.buttonSearchItem.TabStop = false;
+            this.buttonSearchItem.Text = "Search Item";
+            this.buttonSearchItem.UseVisualStyleBackColor = false;
+            this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
             // 
             // panel2
             // 
@@ -515,10 +515,11 @@
             this.buttonItemGroupItem28.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem28.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem28.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem28.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem28.Location = new System.Drawing.Point(418, 408);
             this.buttonItemGroupItem28.Name = "buttonItemGroupItem28";
-            this.buttonItemGroupItem28.Size = new System.Drawing.Size(106, 77);
+            this.buttonItemGroupItem28.Size = new System.Drawing.Size(107, 77);
             this.buttonItemGroupItem28.TabIndex = 49;
             this.buttonItemGroupItem28.UseVisualStyleBackColor = false;
             // 
@@ -527,10 +528,11 @@
             this.buttonItemGroupItem29.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem29.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem29.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem29.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem29.Location = new System.Drawing.Point(530, 408);
             this.buttonItemGroupItem29.Name = "buttonItemGroupItem29";
-            this.buttonItemGroupItem29.Size = new System.Drawing.Size(106, 77);
+            this.buttonItemGroupItem29.Size = new System.Drawing.Size(107, 77);
             this.buttonItemGroupItem29.TabIndex = 48;
             this.buttonItemGroupItem29.UseVisualStyleBackColor = false;
             // 
@@ -539,6 +541,7 @@
             this.buttonItemGroupItem30.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem30.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem30.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem30.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem30.Location = new System.Drawing.Point(642, 408);
             this.buttonItemGroupItem30.Name = "buttonItemGroupItem30";
@@ -551,6 +554,7 @@
             this.buttonItemGroupItem25.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem25.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem25.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem25.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem25.Location = new System.Drawing.Point(79, 408);
             this.buttonItemGroupItem25.Name = "buttonItemGroupItem25";
@@ -563,6 +567,7 @@
             this.buttonItemGroupItem26.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem26.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem26.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem26.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem26.Location = new System.Drawing.Point(192, 408);
             this.buttonItemGroupItem26.Name = "buttonItemGroupItem26";
@@ -575,6 +580,7 @@
             this.buttonItemGroupItem27.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem27.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem27.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem27.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem27.Location = new System.Drawing.Point(305, 408);
             this.buttonItemGroupItem27.Name = "buttonItemGroupItem27";
@@ -671,6 +677,7 @@
             this.buttonItemGroupItem4.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem4.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem4.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem4.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem4.Location = new System.Drawing.Point(418, 76);
             this.buttonItemGroupItem4.Name = "buttonItemGroupItem4";
@@ -683,6 +690,7 @@
             this.buttonItemGroupItem5.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem5.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem5.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem5.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem5.Location = new System.Drawing.Point(530, 76);
             this.buttonItemGroupItem5.Name = "buttonItemGroupItem5";
@@ -695,6 +703,7 @@
             this.buttonItemGroupItem6.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem6.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem6.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem6.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem6.Location = new System.Drawing.Point(642, 76);
             this.buttonItemGroupItem6.Name = "buttonItemGroupItem6";
@@ -707,6 +716,7 @@
             this.buttonItemGroupItem10.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem10.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem10.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem10.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem10.Location = new System.Drawing.Point(417, 159);
             this.buttonItemGroupItem10.Name = "buttonItemGroupItem10";
@@ -719,10 +729,11 @@
             this.buttonItemGroupItem11.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem11.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem11.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem11.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem11.Location = new System.Drawing.Point(530, 159);
             this.buttonItemGroupItem11.Name = "buttonItemGroupItem11";
-            this.buttonItemGroupItem11.Size = new System.Drawing.Size(106, 77);
+            this.buttonItemGroupItem11.Size = new System.Drawing.Size(107, 77);
             this.buttonItemGroupItem11.TabIndex = 28;
             this.buttonItemGroupItem11.UseVisualStyleBackColor = false;
             // 
@@ -731,6 +742,7 @@
             this.buttonItemGroupItem12.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem12.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem12.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem12.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem12.Location = new System.Drawing.Point(642, 159);
             this.buttonItemGroupItem12.Name = "buttonItemGroupItem12";
@@ -743,6 +755,7 @@
             this.buttonItemGroupItem16.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem16.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem16.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem16.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem16.Location = new System.Drawing.Point(417, 242);
             this.buttonItemGroupItem16.Name = "buttonItemGroupItem16";
@@ -755,10 +768,11 @@
             this.buttonItemGroupItem17.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem17.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem17.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem17.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem17.Location = new System.Drawing.Point(530, 242);
             this.buttonItemGroupItem17.Name = "buttonItemGroupItem17";
-            this.buttonItemGroupItem17.Size = new System.Drawing.Size(106, 77);
+            this.buttonItemGroupItem17.Size = new System.Drawing.Size(107, 77);
             this.buttonItemGroupItem17.TabIndex = 25;
             this.buttonItemGroupItem17.UseVisualStyleBackColor = false;
             // 
@@ -767,6 +781,7 @@
             this.buttonItemGroupItem18.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem18.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem18.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem18.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem18.Location = new System.Drawing.Point(642, 242);
             this.buttonItemGroupItem18.Name = "buttonItemGroupItem18";
@@ -779,6 +794,7 @@
             this.buttonItemGroupItem1.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem1.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem1.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem1.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem1.Location = new System.Drawing.Point(79, 76);
             this.buttonItemGroupItem1.Name = "buttonItemGroupItem1";
@@ -791,6 +807,7 @@
             this.buttonItemGroupItem2.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem2.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem2.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem2.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem2.Location = new System.Drawing.Point(192, 76);
             this.buttonItemGroupItem2.Name = "buttonItemGroupItem2";
@@ -803,6 +820,7 @@
             this.buttonItemGroupItem3.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem3.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem3.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem3.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem3.Location = new System.Drawing.Point(305, 76);
             this.buttonItemGroupItem3.Name = "buttonItemGroupItem3";
@@ -815,6 +833,7 @@
             this.buttonItemGroupItem7.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem7.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem7.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem7.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem7.Location = new System.Drawing.Point(79, 159);
             this.buttonItemGroupItem7.Name = "buttonItemGroupItem7";
@@ -827,6 +846,7 @@
             this.buttonItemGroupItem8.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem8.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem8.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem8.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem8.Location = new System.Drawing.Point(192, 159);
             this.buttonItemGroupItem8.Name = "buttonItemGroupItem8";
@@ -839,6 +859,7 @@
             this.buttonItemGroupItem9.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem9.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem9.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem9.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem9.Location = new System.Drawing.Point(305, 159);
             this.buttonItemGroupItem9.Name = "buttonItemGroupItem9";
@@ -851,6 +872,7 @@
             this.buttonItemGroupItem13.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem13.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem13.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem13.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem13.Location = new System.Drawing.Point(79, 242);
             this.buttonItemGroupItem13.Name = "buttonItemGroupItem13";
@@ -863,6 +885,7 @@
             this.buttonItemGroupItem14.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem14.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem14.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem14.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem14.Location = new System.Drawing.Point(192, 242);
             this.buttonItemGroupItem14.Name = "buttonItemGroupItem14";
@@ -875,6 +898,7 @@
             this.buttonItemGroupItem15.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem15.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem15.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem15.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem15.Location = new System.Drawing.Point(305, 242);
             this.buttonItemGroupItem15.Name = "buttonItemGroupItem15";
@@ -887,10 +911,11 @@
             this.buttonItemGroupItem22.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem22.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem22.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem22.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem22.Location = new System.Drawing.Point(418, 325);
             this.buttonItemGroupItem22.Name = "buttonItemGroupItem22";
-            this.buttonItemGroupItem22.Size = new System.Drawing.Size(106, 77);
+            this.buttonItemGroupItem22.Size = new System.Drawing.Size(107, 77);
             this.buttonItemGroupItem22.TabIndex = 11;
             this.buttonItemGroupItem22.UseVisualStyleBackColor = false;
             // 
@@ -899,10 +924,11 @@
             this.buttonItemGroupItem23.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem23.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem23.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem23.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem23.Location = new System.Drawing.Point(530, 325);
             this.buttonItemGroupItem23.Name = "buttonItemGroupItem23";
-            this.buttonItemGroupItem23.Size = new System.Drawing.Size(106, 77);
+            this.buttonItemGroupItem23.Size = new System.Drawing.Size(107, 77);
             this.buttonItemGroupItem23.TabIndex = 10;
             this.buttonItemGroupItem23.UseVisualStyleBackColor = false;
             // 
@@ -911,6 +937,7 @@
             this.buttonItemGroupItem24.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem24.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem24.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem24.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem24.Location = new System.Drawing.Point(642, 325);
             this.buttonItemGroupItem24.Name = "buttonItemGroupItem24";
@@ -923,6 +950,7 @@
             this.buttonItemGroupItem19.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem19.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem19.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem19.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem19.Location = new System.Drawing.Point(79, 325);
             this.buttonItemGroupItem19.Name = "buttonItemGroupItem19";
@@ -935,6 +963,7 @@
             this.buttonItemGroupItem20.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem20.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem20.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem20.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem20.Location = new System.Drawing.Point(192, 325);
             this.buttonItemGroupItem20.Name = "buttonItemGroupItem20";
@@ -947,6 +976,7 @@
             this.buttonItemGroupItem21.BackColor = System.Drawing.SystemColors.Control;
             this.buttonItemGroupItem21.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItem21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItem21.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonItemGroupItem21.ForeColor = System.Drawing.Color.Black;
             this.buttonItemGroupItem21.Location = new System.Drawing.Point(305, 325);
             this.buttonItemGroupItem21.Name = "buttonItemGroupItem21";
@@ -960,7 +990,7 @@
             this.buttonItemGroupItemNext.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItemNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemGroupItemNext.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonItemGroupItemNext.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItemNext.ForeColor = System.Drawing.Color.White;
             this.buttonItemGroupItemNext.Location = new System.Drawing.Point(755, 76);
             this.buttonItemGroupItemNext.Name = "buttonItemGroupItemNext";
             this.buttonItemGroupItemNext.Size = new System.Drawing.Size(65, 409);
@@ -975,6 +1005,7 @@
             this.buttonItemGroupNext.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemGroupNext.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonItemGroupNext.ForeColor = System.Drawing.Color.White;
             this.buttonItemGroupNext.Location = new System.Drawing.Point(755, 8);
             this.buttonItemGroupNext.Name = "buttonItemGroupNext";
             this.buttonItemGroupNext.Size = new System.Drawing.Size(65, 62);
@@ -989,7 +1020,7 @@
             this.buttonItemGroupItemPrevious.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupItemPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemGroupItemPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonItemGroupItemPrevious.ForeColor = System.Drawing.Color.Black;
+            this.buttonItemGroupItemPrevious.ForeColor = System.Drawing.Color.White;
             this.buttonItemGroupItemPrevious.Location = new System.Drawing.Point(8, 76);
             this.buttonItemGroupItemPrevious.Name = "buttonItemGroupItemPrevious";
             this.buttonItemGroupItemPrevious.Size = new System.Drawing.Size(65, 409);
@@ -1004,6 +1035,7 @@
             this.buttonItemGroupPrevious.FlatAppearance.BorderSize = 0;
             this.buttonItemGroupPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemGroupPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonItemGroupPrevious.ForeColor = System.Drawing.Color.White;
             this.buttonItemGroupPrevious.Location = new System.Drawing.Point(8, 8);
             this.buttonItemGroupPrevious.Name = "buttonItemGroupPrevious";
             this.buttonItemGroupPrevious.Size = new System.Drawing.Size(65, 62);
@@ -1066,25 +1098,13 @@
             this.dataGridViewSalesLineList.MultiSelect = false;
             this.dataGridViewSalesLineList.Name = "dataGridViewSalesLineList";
             this.dataGridViewSalesLineList.ReadOnly = true;
+            this.dataGridViewSalesLineList.RowHeadersVisible = false;
             this.dataGridViewSalesLineList.RowTemplate.Height = 24;
             this.dataGridViewSalesLineList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSalesLineList.Size = new System.Drawing.Size(537, 487);
             this.dataGridViewSalesLineList.TabIndex = 24;
             this.dataGridViewSalesLineList.TabStop = false;
             this.dataGridViewSalesLineList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesLineList_CellClick);
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.panel3);
-            this.panel4.Controls.Add(this.dataGridViewSalesLineList);
-            this.panel4.Controls.Add(this.buttonSearchItem);
-            this.panel4.Controls.Add(this.buttonBarcode);
-            this.panel4.Controls.Add(this.textBoxBarcode);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 150);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1400, 551);
-            this.panel4.TabIndex = 25;
             // 
             // ColumnSalesLineEdit
             // 
@@ -1315,6 +1335,19 @@
             this.ColumnSalesLinePriceSplitPercentage.Name = "ColumnSalesLinePriceSplitPercentage";
             this.ColumnSalesLinePriceSplitPercentage.ReadOnly = true;
             this.ColumnSalesLinePriceSplitPercentage.Visible = false;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.panel3);
+            this.panel4.Controls.Add(this.dataGridViewSalesLineList);
+            this.panel4.Controls.Add(this.buttonSearchItem);
+            this.panel4.Controls.Add(this.buttonBarcode);
+            this.panel4.Controls.Add(this.textBoxBarcode);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 150);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1400, 551);
+            this.panel4.TabIndex = 25;
             // 
             // TrnPOSTouchDetailForm
             // 

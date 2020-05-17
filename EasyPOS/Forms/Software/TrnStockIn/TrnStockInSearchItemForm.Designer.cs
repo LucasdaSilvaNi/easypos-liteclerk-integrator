@@ -1,6 +1,6 @@
-﻿namespace EasyPOS.Forms.Software.TrnStockOut
+﻿namespace EasyPOS.Forms.Software.TrnStockIn
 {
-    partial class TrnSearchItemForm
+    partial class TrnStockInSearchItemForm
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnSearchItemForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnStockInSearchItemForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -79,7 +79,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Stock_Out;
+            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Stock_In;
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(48, 40);
@@ -110,7 +110,7 @@
             this.buttonClose.Location = new System.Drawing.Point(982, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 20;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
@@ -277,11 +277,9 @@
             // 
             // textBoxSearchItemListFilter
             // 
-            this.textBoxSearchItemListFilter.AcceptsTab = true;
             this.textBoxSearchItemListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSearchItemListFilter.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxSearchItemListFilter.HideSelection = false;
             this.textBoxSearchItemListFilter.Location = new System.Drawing.Point(12, 6);
             this.textBoxSearchItemListFilter.Name = "textBoxSearchItemListFilter";
             this.textBoxSearchItemListFilter.Size = new System.Drawing.Size(1058, 30);

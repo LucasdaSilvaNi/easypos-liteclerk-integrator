@@ -456,7 +456,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
 
         private void buttonSearchItem_Click(object sender, EventArgs e)
         {
-            TrnSearchItemForm trnStockInDetailSearchItemForm = new TrnSearchItemForm(this, trnStockInEntity);
+            TrnStockInSearchItemForm trnStockInDetailSearchItemForm = new TrnStockInSearchItemForm(this, trnStockInEntity);
             trnStockInDetailSearchItemForm.ShowDialog();
         }
 

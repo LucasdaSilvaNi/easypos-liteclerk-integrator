@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,12 @@ namespace EasyPOS.Forms.Software.MstItemGroup
         public MstItemGroupListForm mstItemGroupListForm;
         public Entities.MstItemGroupEntity mstItemGroupEntity;
 
+        public static List<Entities.DgvMstItemGroupItemListEntity> itemGroupItemData = new List<Entities.DgvMstItemGroupItemListEntity>();
+        public static Int32 itemGroupItemPageNumber = 1;
+        public static Int32 itemGroupItemPageSize = 50;
+        public PagedList<Entities.DgvMstItemGroupItemListEntity> itemGroupItemPageList = new PagedList<Entities.DgvMstItemGroupItemListEntity>(itemGroupItemData, itemGroupItemPageNumber, itemGroupItemPageSize);
+        public BindingSource itemGroupItemDataSource = new BindingSource();
+
         public MstItemGroupDetailForm(SysSoftwareForm softwareForm, MstItemGroupListForm itemListForm, Entities.MstItemGroupEntity itemEntity)
         {
             InitializeComponent();
@@ -33,6 +40,21 @@ namespace EasyPOS.Forms.Software.MstItemGroup
                 mstItemGroupListForm = itemListForm;
                 mstItemGroupEntity = itemEntity;
 
+                if (sysUserRights.GetUserRights().CanAdd == false)
+                {
+                    buttonSearchItem.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanEdit == false)
+                {
+                    dataGridViewItemGroupItemList.Columns[0].Visible = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanDelete == false)
+                {
+                    dataGridViewItemGroupItemList.Columns[1].Visible = false;
+                }
+
                 GetItemGroupDetail();
                 textBoxItemGroup.Focus();
             }
@@ -44,6 +66,8 @@ namespace EasyPOS.Forms.Software.MstItemGroup
             textBoxItemGroupImagePath.Text = mstItemGroupEntity.ImagePath;
             textBoxKitchenReport.Text = mstItemGroupEntity.KitchenReport;
             UpdateComponents(mstItemGroupEntity.IsLocked);
+
+            CreateItemGroupItemListDataGridView();
         }
 
         public void UpdateComponents(Boolean isLocked)
@@ -64,6 +88,33 @@ namespace EasyPOS.Forms.Software.MstItemGroup
             else
             {
                 buttonUnlock.Enabled = isLocked;
+            }
+
+            if (sysUserRights.GetUserRights().CanAdd == false)
+            {
+                buttonSearchItem.Enabled = false;
+            }
+            else
+            {
+                buttonSearchItem.Enabled = !isLocked;
+            }
+
+            if (sysUserRights.GetUserRights().CanEdit == false)
+            {
+                dataGridViewItemGroupItemList.Columns[0].Visible = false;
+            }
+            else
+            {
+                dataGridViewItemGroupItemList.Columns[0].Visible = !isLocked;
+            }
+
+            if (sysUserRights.GetUserRights().CanDelete == false)
+            {
+                dataGridViewItemGroupItemList.Columns[1].Visible = false;
+            }
+            else
+            {
+                dataGridViewItemGroupItemList.Columns[1].Visible = !isLocked;
             }
 
             textBoxItemGroup.Enabled = !isLocked;
@@ -116,6 +167,247 @@ namespace EasyPOS.Forms.Software.MstItemGroup
         private void buttonClose_Click(object sender, EventArgs e)
         {
             sysSoftwareForm.RemoveTabPage();
+        }
+
+
+        public void UpdateItemGroupItemListDataSource()
+        {
+            SetItemGroupItemListDataSourceAsync();
+        }
+
+        public async void SetItemGroupItemListDataSourceAsync()
+        {
+            List<Entities.DgvMstItemGroupItemListEntity> getItemGroupItemListData = await GetItemGroupItemListDataTask();
+            if (getItemGroupItemListData.Any())
+            {
+                itemGroupItemData = getItemGroupItemListData;
+                itemGroupItemPageList = new PagedList<Entities.DgvMstItemGroupItemListEntity>(itemGroupItemData, itemGroupItemPageNumber, itemGroupItemPageSize);
+
+                if (itemGroupItemPageList.PageCount == 1)
+                {
+                    buttonItemGroupItemListPageListFirst.Enabled = false;
+                    buttonItemGroupItemListPageListPrevious.Enabled = false;
+                    buttonItemGroupItemListPageListNext.Enabled = false;
+                    buttonItemGroupItemListPageListLast.Enabled = false;
+                }
+                else if (itemGroupItemPageNumber == 1)
+                {
+                    buttonItemGroupItemListPageListFirst.Enabled = false;
+                    buttonItemGroupItemListPageListPrevious.Enabled = false;
+                    buttonItemGroupItemListPageListNext.Enabled = true;
+                    buttonItemGroupItemListPageListLast.Enabled = true;
+                }
+                else if (itemGroupItemPageNumber == itemGroupItemPageList.PageCount)
+                {
+                    buttonItemGroupItemListPageListFirst.Enabled = true;
+                    buttonItemGroupItemListPageListPrevious.Enabled = true;
+                    buttonItemGroupItemListPageListNext.Enabled = false;
+                    buttonItemGroupItemListPageListLast.Enabled = false;
+                }
+                else
+                {
+                    buttonItemGroupItemListPageListFirst.Enabled = true;
+                    buttonItemGroupItemListPageListPrevious.Enabled = true;
+                    buttonItemGroupItemListPageListNext.Enabled = true;
+                    buttonItemGroupItemListPageListLast.Enabled = true;
+                }
+
+                textBoxItemGroupItemListPageNumber.Text = itemGroupItemPageNumber + " / " + itemGroupItemPageList.PageCount;
+                itemGroupItemDataSource.DataSource = itemGroupItemPageList;
+            }
+            else
+            {
+                buttonItemGroupItemListPageListFirst.Enabled = false;
+                buttonItemGroupItemListPageListPrevious.Enabled = false;
+                buttonItemGroupItemListPageListNext.Enabled = false;
+                buttonItemGroupItemListPageListLast.Enabled = false;
+
+                itemGroupItemPageNumber = 1;
+
+                itemGroupItemData = new List<Entities.DgvMstItemGroupItemListEntity>();
+                itemGroupItemDataSource.Clear();
+                textBoxItemGroupItemListPageNumber.Text = "1 / 1";
+            }
+        }
+
+        public Task<List<Entities.DgvMstItemGroupItemListEntity>> GetItemGroupItemListDataTask()
+        {
+            Controllers.MstItemGroupItemController trnItemGroupItemController = new Controllers.MstItemGroupItemController();
+
+            List<Entities.MstItemGroupItemEntity> listItemGroupItem = trnItemGroupItemController.ListItemGroupItem(mstItemGroupEntity.Id);
+            if (listItemGroupItem.Any())
+            {
+                var items = from d in listItemGroupItem
+                            select new Entities.DgvMstItemGroupItemListEntity
+                            {
+                                ColumnItemGroupItemListButtonEdit = "Edit",
+                                ColumnItemGroupItemListButtonDelete = "Delete",
+                                ColumnItemGroupItemListId = d.Id,
+                                ColumnItemGroupItemListItemId = d.ItemId,
+                                ColumnItemGroupItemListItemDescription = d.ItemDescription,
+                                ColumnItemGroupItemListItemGroupId = d.ItemGroupId
+                            };
+
+                return Task.FromResult(items.ToList());
+            }
+            else
+            {
+                return Task.FromResult(new List<Entities.DgvMstItemGroupItemListEntity>());
+            }
+        }
+
+        public void CreateItemGroupItemListDataGridView()
+        {
+            UpdateItemGroupItemListDataSource();
+
+            dataGridViewItemGroupItemList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewItemGroupItemList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewItemGroupItemList.Columns[0].DefaultCellStyle.ForeColor = Color.White;
+
+            dataGridViewItemGroupItemList.Columns[1].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#F34F1C");
+            dataGridViewItemGroupItemList.Columns[1].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#F34F1C");
+            dataGridViewItemGroupItemList.Columns[1].DefaultCellStyle.ForeColor = Color.White;
+
+            dataGridViewItemGroupItemList.DataSource = itemGroupItemDataSource;
+        }
+
+        public void GetItemGroupItemListCurrentSelectedCell(Int32 rowIndex)
+        {
+
+        }
+
+        private void dataGridViewItemGroupItemList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                GetItemGroupItemListCurrentSelectedCell(e.RowIndex);
+            }
+
+            if (e.RowIndex > -1 && dataGridViewItemGroupItemList.CurrentCell.ColumnIndex == dataGridViewItemGroupItemList.Columns["ColumnItemGroupItemListButtonEdit"].Index)
+            {
+                var id = Convert.ToInt32(dataGridViewItemGroupItemList.Rows[e.RowIndex].Cells[dataGridViewItemGroupItemList.Columns["ColumnItemGroupItemListId"].Index].Value);
+                var itemId = Convert.ToInt32(dataGridViewItemGroupItemList.Rows[e.RowIndex].Cells[dataGridViewItemGroupItemList.Columns["ColumnItemGroupItemListItemId"].Index].Value);
+                var itemDescription = dataGridViewItemGroupItemList.Rows[e.RowIndex].Cells[dataGridViewItemGroupItemList.Columns["ColumnItemGroupItemListItemDescription"].Index].Value.ToString();
+                var itemGroupId = Convert.ToInt32(dataGridViewItemGroupItemList.Rows[e.RowIndex].Cells[dataGridViewItemGroupItemList.Columns["ColumnItemGroupItemListItemGroupId"].Index].Value);
+
+                Entities.MstItemGroupItemEntity mstItemGroupItemEntity = new Entities.MstItemGroupItemEntity()
+                {
+                    Id = id,
+                    ItemId = itemId,
+                    Barcode = "",
+                    ItemDescription = itemDescription,
+                    Alias = "",
+                    ItemGroupId = itemGroupId
+                };
+
+                MstItemGroupSearchItemForm mstItemGroupSearchItemForm = new MstItemGroupSearchItemForm(this, mstItemGroupItemEntity);
+                mstItemGroupSearchItemForm.ShowDialog();
+            }
+
+            if (e.RowIndex > -1 && dataGridViewItemGroupItemList.CurrentCell.ColumnIndex == dataGridViewItemGroupItemList.Columns["ColumnItemGroupItemListButtonDelete"].Index)
+            {
+                DialogResult deleteDialogResult = MessageBox.Show("Delete Item?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (deleteDialogResult == DialogResult.Yes)
+                {
+                    var id = Convert.ToInt32(dataGridViewItemGroupItemList.Rows[e.RowIndex].Cells[dataGridViewItemGroupItemList.Columns["ColumnItemGroupItemListId"].Index].Value);
+
+                    Controllers.MstItemGroupItemController trnItemGroupItemController = new Controllers.MstItemGroupItemController();
+                    String[] deleteItemGroupItem = trnItemGroupItemController.DeleteItemGroupItem(id);
+                    if (deleteItemGroupItem[1].Equals("0") == false)
+                    {
+                        itemGroupItemPageNumber = 1;
+                        UpdateItemGroupItemListDataSource();
+                    }
+                    else
+                    {
+                        MessageBox.Show(deleteItemGroupItem[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void buttonItemGroupItemListPageListFirst_Click(object sender, EventArgs e)
+        {
+            itemGroupItemPageList = new PagedList<Entities.DgvMstItemGroupItemListEntity>(itemGroupItemData, 1, itemGroupItemPageSize);
+            itemGroupItemDataSource.DataSource = itemGroupItemPageList;
+
+            buttonItemGroupItemListPageListFirst.Enabled = false;
+            buttonItemGroupItemListPageListPrevious.Enabled = false;
+            buttonItemGroupItemListPageListNext.Enabled = true;
+            buttonItemGroupItemListPageListLast.Enabled = true;
+
+            itemGroupItemPageNumber = 1;
+            textBoxItemGroupItemListPageNumber.Text = itemGroupItemPageNumber + " / " + itemGroupItemPageList.PageCount;
+        }
+
+        private void buttonItemGroupItemListPageListPrevious_Click(object sender, EventArgs e)
+        {
+            if (itemGroupItemPageList.HasPreviousPage == true)
+            {
+                itemGroupItemPageList = new PagedList<Entities.DgvMstItemGroupItemListEntity>(itemGroupItemData, --itemGroupItemPageNumber, itemGroupItemPageSize);
+                itemGroupItemDataSource.DataSource = itemGroupItemPageList;
+            }
+
+            buttonItemGroupItemListPageListNext.Enabled = true;
+            buttonItemGroupItemListPageListLast.Enabled = true;
+
+            if (itemGroupItemPageNumber == 1)
+            {
+                buttonItemGroupItemListPageListFirst.Enabled = false;
+                buttonItemGroupItemListPageListPrevious.Enabled = false;
+            }
+
+            textBoxItemGroupItemListPageNumber.Text = itemGroupItemPageNumber + " / " + itemGroupItemPageList.PageCount;
+        }
+
+        private void buttonItemGroupItemListPageListNext_Click(object sender, EventArgs e)
+        {
+            if (itemGroupItemPageList.HasNextPage == true)
+            {
+                itemGroupItemPageList = new PagedList<Entities.DgvMstItemGroupItemListEntity>(itemGroupItemData, ++itemGroupItemPageNumber, itemGroupItemPageSize);
+                itemGroupItemDataSource.DataSource = itemGroupItemPageList;
+            }
+
+            buttonItemGroupItemListPageListFirst.Enabled = true;
+            buttonItemGroupItemListPageListPrevious.Enabled = true;
+
+            if (itemGroupItemPageNumber == itemGroupItemPageList.PageCount)
+            {
+                buttonItemGroupItemListPageListNext.Enabled = false;
+                buttonItemGroupItemListPageListLast.Enabled = false;
+            }
+
+            textBoxItemGroupItemListPageNumber.Text = itemGroupItemPageNumber + " / " + itemGroupItemPageList.PageCount;
+        }
+
+        private void buttonItemGroupItemListPageListLast_Click(object sender, EventArgs e)
+        {
+            itemGroupItemPageList = new PagedList<Entities.DgvMstItemGroupItemListEntity>(itemGroupItemData, itemGroupItemPageList.PageCount, itemGroupItemPageSize);
+            itemGroupItemDataSource.DataSource = itemGroupItemPageList;
+
+            buttonItemGroupItemListPageListFirst.Enabled = true;
+            buttonItemGroupItemListPageListPrevious.Enabled = true;
+            buttonItemGroupItemListPageListNext.Enabled = false;
+            buttonItemGroupItemListPageListLast.Enabled = false;
+
+            itemGroupItemPageNumber = itemGroupItemPageList.PageCount;
+            textBoxItemGroupItemListPageNumber.Text = itemGroupItemPageNumber + " / " + itemGroupItemPageList.PageCount;
+        }
+
+        private void buttonSearchItem_Click(object sender, EventArgs e)
+        {
+            Entities.MstItemGroupItemEntity mstItemGroupItemEntity = new Entities.MstItemGroupItemEntity()
+            {
+                Id = 0,
+                ItemId = 0,
+                Barcode = "",
+                ItemDescription = "",
+                Alias = "",
+                ItemGroupId = mstItemGroupEntity.Id
+            };
+
+            MstItemGroupSearchItemForm mstItemGroupSearchItemForm = new MstItemGroupSearchItemForm(this, mstItemGroupItemEntity);
+            mstItemGroupSearchItemForm.ShowDialog();
         }
     }
 }

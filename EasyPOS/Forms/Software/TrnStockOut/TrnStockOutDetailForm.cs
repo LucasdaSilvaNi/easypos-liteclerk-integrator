@@ -444,7 +444,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
 
         private void buttonSearchItem_Click(object sender, EventArgs e)
         {
-            TrnSearchItemForm trnStockOutDetailSearchItemForm = new TrnSearchItemForm(this, trnStockOutEntity);
+            TrnStockOutSearchItemForm trnStockOutDetailSearchItemForm = new TrnStockOutSearchItemForm(this, trnStockOutEntity);
             trnStockOutDetailSearchItemForm.ShowDialog();
         }
 

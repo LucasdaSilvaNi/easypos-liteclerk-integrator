@@ -205,6 +205,7 @@
     <Compile Include="Controllers\MstItemComponentController.cs" />
     <Compile Include="Controllers\MstItemController.cs" />
     <Compile Include="Controllers\MstItemGroupController.cs" />
+    <Compile Include="Controllers\MstTableController.cs" />
     <Compile Include="Controllers\MstItemPriceController.cs" />
     <Compile Include="Controllers\MstPayTypeController.cs" />
     <Compile Include="Controllers\MstPeriodController.cs" />
@@ -214,6 +215,7 @@
     <Compile Include="Controllers\MstTerminalController.cs" />
     <Compile Include="Controllers\MstUnitController.cs" />
     <Compile Include="Controllers\MstUserController.cs" />
+    <Compile Include="Controllers\MstItemGroupItemController.cs" />
     <Compile Include="Controllers\MstUserFormController.cs" />
     <Compile Include="Controllers\RepInventoryReportController.cs" />
     <Compile Include="Controllers\RepPOSReportController.cs" />
@@ -264,6 +266,9 @@
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransfer.cs" />
     <Compile Include="EasyFISIntegration\Entities\ISPOSTrnStockTransferItem.cs" />
     <Compile Include="Entities\DgvMstDiscountingListEntity.cs" />
+    <Compile Include="Entities\DgvMstItemGroupItemListEntity.cs" />
+    <Compile Include="Entities\DgvMstItemGroupSearchItemListEntity.cs" />
+    <Compile Include="Entities\DgvMstTableListEntity.cs" />
     <Compile Include="Entities\DgvRepSalesReportTopSellingItemsReportListEntity.cs" />
     <Compile Include="Entities\DgvMstTableGroupListEntity.cs" />
     <Compile Include="Entities\DgvMstItemGroupListEntity.cs" />
@@ -401,6 +406,12 @@
     <Compile Include="Forms\Software\MstItemGroup\MstItemGroupListForm.Designer.cs">
       <DependentUpon>MstItemGroupListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\MstItemGroup\MstItemGroupSearchItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\MstItemGroup\MstItemGroupSearchItemForm.Designer.cs">
+      <DependentUpon>MstItemGroupSearchItemForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\MstItem\MstItemDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -436,6 +447,12 @@
     </Compile>
     <Compile Include="Forms\Software\MstTableGroup\MstTableGroupListForm.Designer.cs">
       <DependentUpon>MstTableGroupListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\MstTableGroup\MstTableDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\MstTableGroup\MstTableDetailForm.Designer.cs">
+      <DependentUpon>MstTableDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\MstUser\MstUserDetailForm.cs">
       <SubType>Form</SubType>
@@ -767,11 +784,11 @@
     <Compile Include="Forms\Software\TrnStockIn\TrnStockInDetailForm.Designer.cs">
       <DependentUpon>TrnStockInDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnStockIn\TrnSearchItemForm.cs">
+    <Compile Include="Forms\Software\TrnStockIn\TrnStockInSearchItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnStockIn\TrnSearchItemForm.Designer.cs">
-      <DependentUpon>TrnSearchItemForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnStockIn\TrnStockInSearchItemForm.Designer.cs">
+      <DependentUpon>TrnStockInSearchItemForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\TrnStockIn\TrnStockInLineItemDetailForm.cs">
       <SubType>Form</SubType>
@@ -791,11 +808,11 @@
     <Compile Include="Forms\Software\TrnStockCount\TrnStockCountDetailForm.Designer.cs">
       <DependentUpon>TrnStockCountDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnStockCount\TrnSearchItemForm.cs">
+    <Compile Include="Forms\Software\TrnStockCount\TrnStockCountSearchItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnStockCount\TrnSearchItemForm.Designer.cs">
-      <DependentUpon>TrnSearchItemForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnStockCount\TrnStockCountSearchItemForm.Designer.cs">
+      <DependentUpon>TrnStockCountSearchItemForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\TrnStockCount\TrnStockCountLineItemDetailForm.cs">
       <SubType>Form</SubType>
@@ -815,11 +832,11 @@
     <Compile Include="Forms\Software\TrnStockOut\TrnStockOutLineItemDetailForm.Designer.cs">
       <DependentUpon>TrnStockOutLineItemDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnStockOut\TrnSearchItemForm.cs">
+    <Compile Include="Forms\Software\TrnStockOut\TrnStockOutSearchItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnStockOut\TrnSearchItemForm.Designer.cs">
-      <DependentUpon>TrnSearchItemForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnStockOut\TrnStockOutSearchItemForm.Designer.cs">
+      <DependentUpon>TrnStockOutSearchItemForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\TrnStockOut\TrnStockOutDetailForm.cs">
       <SubType>Form</SubType>
@@ -880,6 +897,9 @@
     <EmbeddedResource Include="Forms\Software\MstItemGroup\MstItemGroupListForm.resx">
       <DependentUpon>MstItemGroupListForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\MstItemGroup\MstItemGroupSearchItemForm.resx">
+      <DependentUpon>MstItemGroupSearchItemForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstItem\MstItemDetailForm.resx">
       <DependentUpon>MstItemDetailForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -894,6 +914,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstTableGroup\MstTableGroupListForm.resx">
       <DependentUpon>MstTableGroupListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\MstTableGroup\MstTableDetailForm.resx">
+      <DependentUpon>MstTableDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstUser\MstUserDetailForm.resx">
       <DependentUpon>MstUserDetailForm.cs</DependentUpon>
@@ -1036,8 +1059,8 @@
     <EmbeddedResource Include="Forms\Software\TrnStockIn\TrnStockInDetailForm.resx">
       <DependentUpon>TrnStockInDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnStockIn\TrnSearchItemForm.resx">
-      <DependentUpon>TrnSearchItemForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnStockIn\TrnStockInSearchItemForm.resx">
+      <DependentUpon>TrnStockInSearchItemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnStockIn\TrnStockInLineItemDetailForm.resx">
       <DependentUpon>TrnStockInLineItemDetailForm.cs</DependentUpon>
@@ -1048,8 +1071,8 @@
     <EmbeddedResource Include="Forms\Software\TrnStockCount\TrnStockCountDetailForm.resx">
       <DependentUpon>TrnStockCountDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnStockCount\TrnSearchItemForm.resx">
-      <DependentUpon>TrnSearchItemForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnStockCount\TrnStockCountSearchItemForm.resx">
+      <DependentUpon>TrnStockCountSearchItemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnStockCount\TrnStockCountLineItemDetailForm.resx">
       <DependentUpon>TrnStockCountLineItemDetailForm.cs</DependentUpon>
@@ -1060,8 +1083,8 @@
     <EmbeddedResource Include="Forms\Software\TrnStockOut\TrnStockOutLineItemDetailForm.resx">
       <DependentUpon>TrnStockOutLineItemDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnStockOut\TrnSearchItemForm.resx">
-      <DependentUpon>TrnSearchItemForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnStockOut\TrnStockOutSearchItemForm.resx">
+      <DependentUpon>TrnStockOutSearchItemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnStockOut\TrnStockOutDetailForm.resx">
       <DependentUpon>TrnStockOutDetailForm.cs</DependentUpon>
@@ -1192,6 +1215,7 @@
     <Content Include="Resources\Images\POSTouchIcons\changeTable.png" />
     <Content Include="Resources\Images\POSTouchIcons\delivery.png" />
     <Content Include="Resources\Images\POSTouchIcons\editOrder.png" />
+    <None Include="Resources\Images\POSTouchIcons\itemGroup.png" />
     <Content Include="Resources\Images\POSTouchIcons\print.png" />
     <Content Include="Resources\Images\POSTouchIcons\printBills.png" />
     <Content Include="Resources\Images\POSTouchIcons\scanQRCode.png" />

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.TrnStockCount
 {
-    public partial class TrnSearchItemForm : Form
+    public partial class TrnStockCountSearchItemForm : Form
     {
         public TrnStockCountDetailForm trnStockCountDetailForm;
         public Entities.TrnStockCountEntity trnStockCountEntity;
@@ -22,7 +22,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
         public PagedList<Entities.DgvTrnStockCountSearchItemListEntity> searchItemListPageList = new PagedList<Entities.DgvTrnStockCountSearchItemListEntity>(searchItemListData, pageNumber, pageSize);
         public BindingSource searchItemListDataSource = new BindingSource();
 
-        public TrnSearchItemForm(TrnStockCountDetailForm stockOutDetailForm, Entities.TrnStockCountEntity stockOutEntity)
+        public TrnStockCountSearchItemForm(TrnStockCountDetailForm stockOutDetailForm, Entities.TrnStockCountEntity stockOutEntity)
         {
             InitializeComponent();
 

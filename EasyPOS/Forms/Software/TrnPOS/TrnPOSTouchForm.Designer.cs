@@ -292,9 +292,9 @@
             this.buttonDelivery.ForeColor = System.Drawing.Color.White;
             this.buttonDelivery.ImageIndex = 0;
             this.buttonDelivery.ImageList = this.imageListPOSTouch;
-            this.buttonDelivery.Location = new System.Drawing.Point(418, 491);
+            this.buttonDelivery.Location = new System.Drawing.Point(417, 491);
             this.buttonDelivery.Name = "buttonDelivery";
-            this.buttonDelivery.Size = new System.Drawing.Size(401, 82);
+            this.buttonDelivery.Size = new System.Drawing.Size(402, 82);
             this.buttonDelivery.TabIndex = 45;
             this.buttonDelivery.Text = "\r\nDelivery";
             this.buttonDelivery.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -413,6 +413,7 @@
             this.buttonTable4.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable4.FlatAppearance.BorderSize = 0;
             this.buttonTable4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable4.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable4.ForeColor = System.Drawing.Color.Black;
             this.buttonTable4.Location = new System.Drawing.Point(417, 76);
             this.buttonTable4.Name = "buttonTable4";
@@ -425,6 +426,7 @@
             this.buttonTable5.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable5.FlatAppearance.BorderSize = 0;
             this.buttonTable5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable5.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable5.ForeColor = System.Drawing.Color.Black;
             this.buttonTable5.Location = new System.Drawing.Point(529, 76);
             this.buttonTable5.Name = "buttonTable5";
@@ -437,6 +439,7 @@
             this.buttonTable6.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable6.FlatAppearance.BorderSize = 0;
             this.buttonTable6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable6.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable6.ForeColor = System.Drawing.Color.Black;
             this.buttonTable6.Location = new System.Drawing.Point(641, 76);
             this.buttonTable6.Name = "buttonTable6";
@@ -449,6 +452,7 @@
             this.buttonTable10.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable10.FlatAppearance.BorderSize = 0;
             this.buttonTable10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable10.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable10.ForeColor = System.Drawing.Color.Black;
             this.buttonTable10.Location = new System.Drawing.Point(417, 159);
             this.buttonTable10.Name = "buttonTable10";
@@ -461,6 +465,7 @@
             this.buttonTable11.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable11.FlatAppearance.BorderSize = 0;
             this.buttonTable11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable11.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable11.ForeColor = System.Drawing.Color.Black;
             this.buttonTable11.Location = new System.Drawing.Point(529, 159);
             this.buttonTable11.Name = "buttonTable11";
@@ -473,6 +478,7 @@
             this.buttonTable12.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable12.FlatAppearance.BorderSize = 0;
             this.buttonTable12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable12.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable12.ForeColor = System.Drawing.Color.Black;
             this.buttonTable12.Location = new System.Drawing.Point(641, 159);
             this.buttonTable12.Name = "buttonTable12";
@@ -485,8 +491,9 @@
             this.buttonTable16.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable16.FlatAppearance.BorderSize = 0;
             this.buttonTable16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable16.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable16.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable16.Location = new System.Drawing.Point(416, 242);
+            this.buttonTable16.Location = new System.Drawing.Point(417, 242);
             this.buttonTable16.Name = "buttonTable16";
             this.buttonTable16.Size = new System.Drawing.Size(107, 77);
             this.buttonTable16.TabIndex = 29;
@@ -497,10 +504,11 @@
             this.buttonTable17.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable17.FlatAppearance.BorderSize = 0;
             this.buttonTable17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable17.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable17.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable17.Location = new System.Drawing.Point(529, 242);
+            this.buttonTable17.Location = new System.Drawing.Point(530, 242);
             this.buttonTable17.Name = "buttonTable17";
-            this.buttonTable17.Size = new System.Drawing.Size(106, 77);
+            this.buttonTable17.Size = new System.Drawing.Size(107, 77);
             this.buttonTable17.TabIndex = 28;
             this.buttonTable17.UseVisualStyleBackColor = false;
             // 
@@ -509,8 +517,9 @@
             this.buttonTable18.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable18.FlatAppearance.BorderSize = 0;
             this.buttonTable18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable18.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable18.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable18.Location = new System.Drawing.Point(641, 242);
+            this.buttonTable18.Location = new System.Drawing.Point(642, 242);
             this.buttonTable18.Name = "buttonTable18";
             this.buttonTable18.Size = new System.Drawing.Size(107, 77);
             this.buttonTable18.TabIndex = 27;
@@ -521,8 +530,9 @@
             this.buttonTable22.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable22.FlatAppearance.BorderSize = 0;
             this.buttonTable22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable22.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable22.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable22.Location = new System.Drawing.Point(416, 325);
+            this.buttonTable22.Location = new System.Drawing.Point(417, 325);
             this.buttonTable22.Name = "buttonTable22";
             this.buttonTable22.Size = new System.Drawing.Size(107, 77);
             this.buttonTable22.TabIndex = 26;
@@ -533,10 +543,11 @@
             this.buttonTable23.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable23.FlatAppearance.BorderSize = 0;
             this.buttonTable23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable23.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable23.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable23.Location = new System.Drawing.Point(529, 325);
+            this.buttonTable23.Location = new System.Drawing.Point(530, 325);
             this.buttonTable23.Name = "buttonTable23";
-            this.buttonTable23.Size = new System.Drawing.Size(106, 77);
+            this.buttonTable23.Size = new System.Drawing.Size(107, 77);
             this.buttonTable23.TabIndex = 25;
             this.buttonTable23.UseVisualStyleBackColor = false;
             // 
@@ -545,8 +556,9 @@
             this.buttonTable24.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable24.FlatAppearance.BorderSize = 0;
             this.buttonTable24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable24.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable24.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable24.Location = new System.Drawing.Point(641, 325);
+            this.buttonTable24.Location = new System.Drawing.Point(642, 325);
             this.buttonTable24.Name = "buttonTable24";
             this.buttonTable24.Size = new System.Drawing.Size(107, 77);
             this.buttonTable24.TabIndex = 24;
@@ -557,6 +569,7 @@
             this.buttonTable1.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable1.FlatAppearance.BorderSize = 0;
             this.buttonTable1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable1.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable1.ForeColor = System.Drawing.Color.Black;
             this.buttonTable1.Location = new System.Drawing.Point(79, 76);
             this.buttonTable1.Name = "buttonTable1";
@@ -569,6 +582,7 @@
             this.buttonTable2.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable2.FlatAppearance.BorderSize = 0;
             this.buttonTable2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable2.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable2.ForeColor = System.Drawing.Color.Black;
             this.buttonTable2.Location = new System.Drawing.Point(192, 76);
             this.buttonTable2.Name = "buttonTable2";
@@ -581,6 +595,7 @@
             this.buttonTable3.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable3.FlatAppearance.BorderSize = 0;
             this.buttonTable3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable3.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable3.ForeColor = System.Drawing.Color.Black;
             this.buttonTable3.Location = new System.Drawing.Point(305, 76);
             this.buttonTable3.Name = "buttonTable3";
@@ -593,6 +608,7 @@
             this.buttonTable7.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable7.FlatAppearance.BorderSize = 0;
             this.buttonTable7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable7.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable7.ForeColor = System.Drawing.Color.Black;
             this.buttonTable7.Location = new System.Drawing.Point(79, 159);
             this.buttonTable7.Name = "buttonTable7";
@@ -605,6 +621,7 @@
             this.buttonTable8.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable8.FlatAppearance.BorderSize = 0;
             this.buttonTable8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable8.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable8.ForeColor = System.Drawing.Color.Black;
             this.buttonTable8.Location = new System.Drawing.Point(192, 159);
             this.buttonTable8.Name = "buttonTable8";
@@ -617,6 +634,7 @@
             this.buttonTable9.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable9.FlatAppearance.BorderSize = 0;
             this.buttonTable9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable9.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable9.ForeColor = System.Drawing.Color.Black;
             this.buttonTable9.Location = new System.Drawing.Point(305, 159);
             this.buttonTable9.Name = "buttonTable9";
@@ -629,6 +647,7 @@
             this.buttonTable13.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable13.FlatAppearance.BorderSize = 0;
             this.buttonTable13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable13.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable13.ForeColor = System.Drawing.Color.Black;
             this.buttonTable13.Location = new System.Drawing.Point(79, 242);
             this.buttonTable13.Name = "buttonTable13";
@@ -641,6 +660,7 @@
             this.buttonTable14.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable14.FlatAppearance.BorderSize = 0;
             this.buttonTable14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable14.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable14.ForeColor = System.Drawing.Color.Black;
             this.buttonTable14.Location = new System.Drawing.Point(192, 242);
             this.buttonTable14.Name = "buttonTable14";
@@ -653,6 +673,7 @@
             this.buttonTable15.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable15.FlatAppearance.BorderSize = 0;
             this.buttonTable15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable15.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable15.ForeColor = System.Drawing.Color.Black;
             this.buttonTable15.Location = new System.Drawing.Point(305, 242);
             this.buttonTable15.Name = "buttonTable15";
@@ -665,6 +686,7 @@
             this.buttonTable19.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable19.FlatAppearance.BorderSize = 0;
             this.buttonTable19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable19.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable19.ForeColor = System.Drawing.Color.Black;
             this.buttonTable19.Location = new System.Drawing.Point(79, 325);
             this.buttonTable19.Name = "buttonTable19";
@@ -677,6 +699,7 @@
             this.buttonTable20.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable20.FlatAppearance.BorderSize = 0;
             this.buttonTable20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable20.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable20.ForeColor = System.Drawing.Color.Black;
             this.buttonTable20.Location = new System.Drawing.Point(192, 325);
             this.buttonTable20.Name = "buttonTable20";
@@ -689,6 +712,7 @@
             this.buttonTable21.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable21.FlatAppearance.BorderSize = 0;
             this.buttonTable21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable21.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable21.ForeColor = System.Drawing.Color.Black;
             this.buttonTable21.Location = new System.Drawing.Point(305, 325);
             this.buttonTable21.Name = "buttonTable21";
@@ -701,10 +725,11 @@
             this.buttonTable28.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable28.FlatAppearance.BorderSize = 0;
             this.buttonTable28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable28.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable28.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable28.Location = new System.Drawing.Point(417, 408);
+            this.buttonTable28.Location = new System.Drawing.Point(418, 408);
             this.buttonTable28.Name = "buttonTable28";
-            this.buttonTable28.Size = new System.Drawing.Size(106, 77);
+            this.buttonTable28.Size = new System.Drawing.Size(107, 77);
             this.buttonTable28.TabIndex = 11;
             this.buttonTable28.UseVisualStyleBackColor = false;
             // 
@@ -713,10 +738,11 @@
             this.buttonTable29.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable29.FlatAppearance.BorderSize = 0;
             this.buttonTable29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable29.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable29.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable29.Location = new System.Drawing.Point(529, 408);
+            this.buttonTable29.Location = new System.Drawing.Point(530, 408);
             this.buttonTable29.Name = "buttonTable29";
-            this.buttonTable29.Size = new System.Drawing.Size(106, 77);
+            this.buttonTable29.Size = new System.Drawing.Size(107, 77);
             this.buttonTable29.TabIndex = 10;
             this.buttonTable29.UseVisualStyleBackColor = false;
             // 
@@ -725,8 +751,9 @@
             this.buttonTable30.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable30.FlatAppearance.BorderSize = 0;
             this.buttonTable30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable30.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable30.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable30.Location = new System.Drawing.Point(641, 408);
+            this.buttonTable30.Location = new System.Drawing.Point(642, 408);
             this.buttonTable30.Name = "buttonTable30";
             this.buttonTable30.Size = new System.Drawing.Size(107, 77);
             this.buttonTable30.TabIndex = 9;
@@ -737,6 +764,7 @@
             this.buttonTable25.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable25.FlatAppearance.BorderSize = 0;
             this.buttonTable25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable25.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable25.ForeColor = System.Drawing.Color.Black;
             this.buttonTable25.Location = new System.Drawing.Point(79, 408);
             this.buttonTable25.Name = "buttonTable25";
@@ -749,6 +777,7 @@
             this.buttonTable26.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable26.FlatAppearance.BorderSize = 0;
             this.buttonTable26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable26.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable26.ForeColor = System.Drawing.Color.Black;
             this.buttonTable26.Location = new System.Drawing.Point(192, 408);
             this.buttonTable26.Name = "buttonTable26";
@@ -761,6 +790,7 @@
             this.buttonTable27.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTable27.FlatAppearance.BorderSize = 0;
             this.buttonTable27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTable27.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable27.ForeColor = System.Drawing.Color.Black;
             this.buttonTable27.Location = new System.Drawing.Point(305, 408);
             this.buttonTable27.Name = "buttonTable27";
@@ -803,7 +833,7 @@
             this.buttonTablePrevious.FlatAppearance.BorderSize = 0;
             this.buttonTablePrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTablePrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTablePrevious.ForeColor = System.Drawing.Color.Black;
+            this.buttonTablePrevious.ForeColor = System.Drawing.Color.White;
             this.buttonTablePrevious.Location = new System.Drawing.Point(8, 76);
             this.buttonTablePrevious.Name = "buttonTablePrevious";
             this.buttonTablePrevious.Size = new System.Drawing.Size(65, 409);
@@ -1064,6 +1094,7 @@
             this.TabPageColumnSpace.HeaderText = "";
             this.TabPageColumnSpace.Name = "TabPageColumnSpace";
             this.TabPageColumnSpace.ReadOnly = true;
+            this.TabPageColumnSpace.Visible = false;
             // 
             // tabPageBilledOut
             // 
@@ -1277,6 +1308,7 @@
             this.tabPageBilledOutColumnSpace.HeaderText = "";
             this.tabPageBilledOutColumnSpace.Name = "tabPageBilledOutColumnSpace";
             this.tabPageBilledOutColumnSpace.ReadOnly = true;
+            this.tabPageBilledOutColumnSpace.Visible = false;
             // 
             // tabPageCollected
             // 
@@ -1546,7 +1578,7 @@
             this.tabPageCollectedColumnIsCancelled.HeaderText = "C";
             this.tabPageCollectedColumnIsCancelled.Name = "tabPageCollectedColumnIsCancelled";
             this.tabPageCollectedColumnIsCancelled.ReadOnly = true;
-            this.tabPageCollectedColumnIsCancelled.Width = 30;
+            this.tabPageCollectedColumnIsCancelled.Width = 50;
             // 
             // tabPageCollectedColumnSpace
             // 
@@ -1555,6 +1587,7 @@
             this.tabPageCollectedColumnSpace.HeaderText = "";
             this.tabPageCollectedColumnSpace.Name = "tabPageCollectedColumnSpace";
             this.tabPageCollectedColumnSpace.ReadOnly = true;
+            this.tabPageCollectedColumnSpace.Visible = false;
             // 
             // TrnPOSTouchForm
             // 

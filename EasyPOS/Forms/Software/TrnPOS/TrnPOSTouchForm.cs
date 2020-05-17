@@ -35,6 +35,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         private const int tableNoOfButtons = 30;
         private int tablePages;
         private int tablePage = 1;
+        Button[] tableButtons;
 
         public TrnPOSTouchForm(SysSoftwareForm softwareForm)
         {
@@ -71,6 +72,44 @@ namespace EasyPOS.Forms.Software.TrnPOS
             Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();
             listTableGroups = trnSalesController.ListTableGroup();
             tableGroupPages = listTableGroups.Count();
+
+            tableButtons = new Button[] {
+                    buttonTable1,
+                    buttonTable2,
+                    buttonTable3,
+                    buttonTable4,
+                    buttonTable5,
+                    buttonTable6,
+                    buttonTable7,
+                    buttonTable8,
+                    buttonTable9,
+                    buttonTable10,
+                    buttonTable11,
+                    buttonTable12,
+                    buttonTable13,
+                    buttonTable14,
+                    buttonTable15,
+                    buttonTable16,
+                    buttonTable17,
+                    buttonTable18,
+                    buttonTable19,
+                    buttonTable20,
+                    buttonTable21,
+                    buttonTable22,
+                    buttonTable23,
+                    buttonTable24,
+                    buttonTable25,
+                    buttonTable26,
+                    buttonTable27,
+                    buttonTable28,
+                    buttonTable29,
+                    buttonTable30
+                };
+
+            for (int i = 0; i < tableNoOfButtons; i++)
+            {
+                tableButtons[i].Click += new EventHandler(buttonTable_Click);
+            }
 
             FillTableGroup();
         }
@@ -122,39 +161,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 listTables = trnSalesController.ListTable(tableGroupId);
                 tablePages = listTables.Count();
 
-                Button[] tableButtons = new Button[] {
-                    buttonTable1,
-                    buttonTable2,
-                    buttonTable3,
-                    buttonTable4,
-                    buttonTable5,
-                    buttonTable6,
-                    buttonTable7,
-                    buttonTable8,
-                    buttonTable9,
-                    buttonTable10,
-                    buttonTable11,
-                    buttonTable12,
-                    buttonTable13,
-                    buttonTable14,
-                    buttonTable15,
-                    buttonTable16,
-                    buttonTable17,
-                    buttonTable18,
-                    buttonTable19,
-                    buttonTable20,
-                    buttonTable21,
-                    buttonTable22,
-                    buttonTable23,
-                    buttonTable24,
-                    buttonTable25,
-                    buttonTable26,
-                    buttonTable27,
-                    buttonTable28,
-                    buttonTable29,
-                    buttonTable30
-                };
-
                 for (int i = 0; i < tableNoOfButtons; i++)
                 {
                     tableToolTip.SetToolTip(tableButtons[i], "");
@@ -166,9 +172,35 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 {
                     for (int i = 0; i < listTablePage.Count(); i++)
                     {
-                        tableToolTip.SetToolTip(tableButtons[i], listTablePage[i].Id.ToString());
+                        tableToolTip.SetToolTip(tableButtons[i], listTablePage[i].TableCode.ToString());
                         tableButtons[i].Text = listTablePage[i].TableCode;
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonTable_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Button b = sender as Button;
+                String tableCode = tableToolTip.GetToolTip(b);
+
+                Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
+                String[] addSales = trnPOSSalesController.AddSales(tableCode);
+
+                if (addSales[1].Equals("0") == false)
+                {
+                    sysSoftwareForm.AddTabPagePOSTouchSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(addSales[1])));
+                    UpdateSalesListGridDataSource();
+                }
+                else
+                {
+                    MessageBox.Show(addSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)

@@ -11,7 +11,8 @@ namespace EasyPOS.Entities
         public Int32 Id { get; set; }
         public Int32 ItemId { get; set; }
         public String Barcode { get; set; }
+        public String ItemDescription { get; set; }
         public String Alias { get; set; }
-        public String ItemGroupId { get; set; }
+        public Int32 ItemGroupId { get; set; }
     }
 }

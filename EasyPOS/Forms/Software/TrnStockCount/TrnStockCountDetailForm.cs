@@ -421,7 +421,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
 
         private void buttonSearchItem_Click(object sender, EventArgs e)
         {
-            TrnSearchItemForm trnStockCountDetailSearchItemForm = new TrnSearchItemForm(this, trnStockCountEntity);
+            TrnStockCountSearchItemForm trnStockCountDetailSearchItemForm = new TrnStockCountSearchItemForm(this, trnStockCountEntity);
             trnStockCountDetailSearchItemForm.ShowDialog();
         }
 

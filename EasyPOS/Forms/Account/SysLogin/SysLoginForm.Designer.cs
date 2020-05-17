@@ -46,10 +46,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -62,7 +66,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(594, 63);
+            this.panel1.Size = new System.Drawing.Size(579, 63);
             this.panel1.TabIndex = 4;
             // 
             // pictureBox1
@@ -97,7 +101,7 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(494, 12);
+            this.buttonClose.Location = new System.Drawing.Point(479, 12);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(88, 40);
             this.buttonClose.TabIndex = 1;
@@ -116,7 +120,7 @@
             this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogin.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogin.ForeColor = System.Drawing.Color.White;
-            this.buttonLogin.Location = new System.Drawing.Point(400, 12);
+            this.buttonLogin.Location = new System.Drawing.Point(385, 12);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(88, 40);
             this.buttonLogin.TabIndex = 0;
@@ -129,9 +133,9 @@
             this.textBoxUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxUsername.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxUsername.Location = new System.Drawing.Point(196, 183);
+            this.textBoxUsername.Location = new System.Drawing.Point(186, 24);
             this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(312, 34);
+            this.textBoxUsername.Size = new System.Drawing.Size(287, 34);
             this.textBoxUsername.TabIndex = 12;
             this.textBoxUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxUsername_KeyDown);
             // 
@@ -139,7 +143,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label6.Location = new System.Drawing.Point(87, 186);
+            this.label6.Location = new System.Drawing.Point(77, 27);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(103, 28);
             this.label6.TabIndex = 11;
@@ -150,10 +154,10 @@
             this.textBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPassword.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxPassword.Location = new System.Drawing.Point(196, 223);
+            this.textBoxPassword.Location = new System.Drawing.Point(186, 64);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '•';
-            this.textBoxPassword.Size = new System.Drawing.Size(312, 34);
+            this.textBoxPassword.Size = new System.Drawing.Size(287, 34);
             this.textBoxPassword.TabIndex = 13;
             this.textBoxPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyDown);
             // 
@@ -161,7 +165,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label7.Location = new System.Drawing.Point(93, 226);
+            this.label7.Location = new System.Drawing.Point(83, 67);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(97, 28);
             this.label7.TabIndex = 14;
@@ -174,16 +178,16 @@
             this.dateTimePickerLoginDate.CalendarFont = new System.Drawing.Font("Segoe UI", 12F);
             this.dateTimePickerLoginDate.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.dateTimePickerLoginDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerLoginDate.Location = new System.Drawing.Point(196, 122);
+            this.dateTimePickerLoginDate.Location = new System.Drawing.Point(186, 45);
             this.dateTimePickerLoginDate.Name = "dateTimePickerLoginDate";
-            this.dateTimePickerLoginDate.Size = new System.Drawing.Size(312, 34);
+            this.dateTimePickerLoginDate.Size = new System.Drawing.Size(287, 34);
             this.dateTimePickerLoginDate.TabIndex = 15;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label8.Location = new System.Drawing.Point(79, 125);
+            this.label8.Location = new System.Drawing.Point(69, 48);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(111, 28);
             this.label8.TabIndex = 16;
@@ -193,7 +197,7 @@
             // 
             this.radioButtonSystemDate.AutoSize = true;
             this.radioButtonSystemDate.Checked = true;
-            this.radioButtonSystemDate.Location = new System.Drawing.Point(196, 89);
+            this.radioButtonSystemDate.Location = new System.Drawing.Point(186, 12);
             this.radioButtonSystemDate.Name = "radioButtonSystemDate";
             this.radioButtonSystemDate.Size = new System.Drawing.Size(126, 27);
             this.radioButtonSystemDate.TabIndex = 20;
@@ -205,7 +209,7 @@
             // radioButtonLoginDate
             // 
             this.radioButtonLoginDate.AutoSize = true;
-            this.radioButtonLoginDate.Location = new System.Drawing.Point(328, 89);
+            this.radioButtonLoginDate.Location = new System.Drawing.Point(318, 12);
             this.radioButtonLoginDate.Name = "radioButtonLoginDate";
             this.radioButtonLoginDate.Size = new System.Drawing.Size(114, 27);
             this.radioButtonLoginDate.TabIndex = 19;
@@ -220,9 +224,9 @@
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 306);
+            this.panel2.Location = new System.Drawing.Point(0, 281);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(594, 57);
+            this.panel2.Size = new System.Drawing.Size(579, 57);
             this.panel2.TabIndex = 21;
             // 
             // label2
@@ -261,20 +265,39 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Support: Easyfis Corporation (032) 234 0787";
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.radioButtonSystemDate);
+            this.panel3.Controls.Add(this.dateTimePickerLoginDate);
+            this.panel3.Controls.Add(this.label8);
+            this.panel3.Controls.Add(this.radioButtonLoginDate);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 63);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(579, 94);
+            this.panel3.TabIndex = 22;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.textBoxUsername);
+            this.panel4.Controls.Add(this.label6);
+            this.panel4.Controls.Add(this.textBoxPassword);
+            this.panel4.Controls.Add(this.label7);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 157);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(579, 124);
+            this.panel4.TabIndex = 23;
+            // 
             // SysLoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(594, 363);
+            this.ClientSize = new System.Drawing.Size(579, 338);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.radioButtonSystemDate);
-            this.Controls.Add(this.radioButtonLoginDate);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.dateTimePickerLoginDate);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBoxPassword);
-            this.Controls.Add(this.textBoxUsername);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -291,8 +314,11 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -315,5 +341,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
     }
 }

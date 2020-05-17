@@ -28,16 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MstItemGroupDetailForm));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.dataGridViewItemGroupItemList = new System.Windows.Forms.DataGridView();
+            this.ColumnItemGroupItemListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnItemGroupItemListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnItemGroupItemListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemGroupItemListItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemGroupItemListItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemGroupItemListItemGroupId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.buttonStockInLineListPageListFirst = new System.Windows.Forms.Button();
-            this.buttonStockInLineListPageListPrevious = new System.Windows.Forms.Button();
-            this.buttonStockInLineListPageListNext = new System.Windows.Forms.Button();
-            this.buttonStockInLineListPageListLast = new System.Windows.Forms.Button();
-            this.textBoxStockInLineListPageNumber = new System.Windows.Forms.TextBox();
+            this.buttonItemGroupItemListPageListFirst = new System.Windows.Forms.Button();
+            this.buttonItemGroupItemListPageListPrevious = new System.Windows.Forms.Button();
+            this.buttonItemGroupItemListPageListNext = new System.Windows.Forms.Button();
+            this.buttonItemGroupItemListPageListLast = new System.Windows.Forms.Button();
+            this.textBoxItemGroupItemListPageNumber = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.textBoxKitchenReport = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,23 +59,17 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonUnlock = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.buttonSearchItem = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItemGroupItemList)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
             // 
             // panel2
             // 
@@ -79,6 +82,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.panel7);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -87,91 +91,195 @@
             this.panel3.Size = new System.Drawing.Size(1400, 637);
             this.panel3.TabIndex = 9;
             // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.Control;
+            this.panel5.Controls.Add(this.buttonSearchItem);
+            this.panel5.Controls.Add(this.dataGridViewItemGroupItemList);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 119);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1400, 465);
+            this.panel5.TabIndex = 29;
+            // 
+            // dataGridViewItemGroupItemList
+            // 
+            this.dataGridViewItemGroupItemList.AllowUserToAddRows = false;
+            this.dataGridViewItemGroupItemList.AllowUserToDeleteRows = false;
+            this.dataGridViewItemGroupItemList.AllowUserToResizeRows = false;
+            this.dataGridViewItemGroupItemList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewItemGroupItemList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewItemGroupItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewItemGroupItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewItemGroupItemList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnItemGroupItemListButtonEdit,
+            this.ColumnItemGroupItemListButtonDelete,
+            this.ColumnItemGroupItemListId,
+            this.ColumnItemGroupItemListItemId,
+            this.ColumnItemGroupItemListItemDescription,
+            this.ColumnItemGroupItemListItemGroupId});
+            this.dataGridViewItemGroupItemList.Location = new System.Drawing.Point(12, 52);
+            this.dataGridViewItemGroupItemList.MultiSelect = false;
+            this.dataGridViewItemGroupItemList.Name = "dataGridViewItemGroupItemList";
+            this.dataGridViewItemGroupItemList.ReadOnly = true;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.dataGridViewItemGroupItemList.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewItemGroupItemList.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.dataGridViewItemGroupItemList.RowTemplate.Height = 24;
+            this.dataGridViewItemGroupItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewItemGroupItemList.Size = new System.Drawing.Size(1376, 407);
+            this.dataGridViewItemGroupItemList.TabIndex = 1;
+            this.dataGridViewItemGroupItemList.TabStop = false;
+            this.dataGridViewItemGroupItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItemGroupItemList_CellClick);
+            // 
+            // ColumnItemGroupItemListButtonEdit
+            // 
+            this.ColumnItemGroupItemListButtonEdit.DataPropertyName = "ColumnItemGroupItemListButtonEdit";
+            this.ColumnItemGroupItemListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnItemGroupItemListButtonEdit.HeaderText = "";
+            this.ColumnItemGroupItemListButtonEdit.Name = "ColumnItemGroupItemListButtonEdit";
+            this.ColumnItemGroupItemListButtonEdit.ReadOnly = true;
+            this.ColumnItemGroupItemListButtonEdit.Width = 70;
+            // 
+            // ColumnItemGroupItemListButtonDelete
+            // 
+            this.ColumnItemGroupItemListButtonDelete.DataPropertyName = "ColumnItemGroupItemListButtonDelete";
+            this.ColumnItemGroupItemListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnItemGroupItemListButtonDelete.HeaderText = "";
+            this.ColumnItemGroupItemListButtonDelete.Name = "ColumnItemGroupItemListButtonDelete";
+            this.ColumnItemGroupItemListButtonDelete.ReadOnly = true;
+            this.ColumnItemGroupItemListButtonDelete.Width = 70;
+            // 
+            // ColumnItemGroupItemListId
+            // 
+            this.ColumnItemGroupItemListId.DataPropertyName = "ColumnItemGroupItemListId";
+            this.ColumnItemGroupItemListId.HeaderText = "Id";
+            this.ColumnItemGroupItemListId.Name = "ColumnItemGroupItemListId";
+            this.ColumnItemGroupItemListId.ReadOnly = true;
+            this.ColumnItemGroupItemListId.Visible = false;
+            // 
+            // ColumnItemGroupItemListItemId
+            // 
+            this.ColumnItemGroupItemListItemId.DataPropertyName = "ColumnItemGroupItemListItemId";
+            this.ColumnItemGroupItemListItemId.HeaderText = "Item Id";
+            this.ColumnItemGroupItemListItemId.Name = "ColumnItemGroupItemListItemId";
+            this.ColumnItemGroupItemListItemId.ReadOnly = true;
+            this.ColumnItemGroupItemListItemId.Visible = false;
+            // 
+            // ColumnItemGroupItemListItemDescription
+            // 
+            this.ColumnItemGroupItemListItemDescription.DataPropertyName = "ColumnItemGroupItemListItemDescription";
+            this.ColumnItemGroupItemListItemDescription.HeaderText = "Item Description";
+            this.ColumnItemGroupItemListItemDescription.Name = "ColumnItemGroupItemListItemDescription";
+            this.ColumnItemGroupItemListItemDescription.ReadOnly = true;
+            this.ColumnItemGroupItemListItemDescription.Width = 300;
+            // 
+            // ColumnItemGroupItemListItemGroupId
+            // 
+            this.ColumnItemGroupItemListItemGroupId.DataPropertyName = "ColumnItemGroupItemListItemGroupId";
+            this.ColumnItemGroupItemListItemGroupId.HeaderText = "Item Group Id";
+            this.ColumnItemGroupItemListItemGroupId.Name = "ColumnItemGroupItemListItemGroupId";
+            this.ColumnItemGroupItemListItemGroupId.ReadOnly = true;
+            this.ColumnItemGroupItemListItemGroupId.Visible = false;
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.buttonStockInLineListPageListFirst);
-            this.panel4.Controls.Add(this.buttonStockInLineListPageListPrevious);
-            this.panel4.Controls.Add(this.buttonStockInLineListPageListNext);
-            this.panel4.Controls.Add(this.buttonStockInLineListPageListLast);
-            this.panel4.Controls.Add(this.textBoxStockInLineListPageNumber);
+            this.panel4.Controls.Add(this.buttonItemGroupItemListPageListFirst);
+            this.panel4.Controls.Add(this.buttonItemGroupItemListPageListPrevious);
+            this.panel4.Controls.Add(this.buttonItemGroupItemListPageListNext);
+            this.panel4.Controls.Add(this.buttonItemGroupItemListPageListLast);
+            this.panel4.Controls.Add(this.textBoxItemGroupItemListPageNumber);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 584);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1400, 53);
             this.panel4.TabIndex = 25;
             // 
-            // buttonStockInLineListPageListFirst
+            // buttonItemGroupItemListPageListFirst
             // 
-            this.buttonStockInLineListPageListFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonStockInLineListPageListFirst.Enabled = false;
-            this.buttonStockInLineListPageListFirst.FlatAppearance.BorderSize = 0;
-            this.buttonStockInLineListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStockInLineListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockInLineListPageListFirst.Location = new System.Drawing.Point(12, 9);
-            this.buttonStockInLineListPageListFirst.Name = "buttonStockInLineListPageListFirst";
-            this.buttonStockInLineListPageListFirst.Size = new System.Drawing.Size(82, 32);
-            this.buttonStockInLineListPageListFirst.TabIndex = 23;
-            this.buttonStockInLineListPageListFirst.TabStop = false;
-            this.buttonStockInLineListPageListFirst.Text = "First";
-            this.buttonStockInLineListPageListFirst.UseVisualStyleBackColor = false;
+            this.buttonItemGroupItemListPageListFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonItemGroupItemListPageListFirst.Enabled = false;
+            this.buttonItemGroupItemListPageListFirst.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItemListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItemListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonItemGroupItemListPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonItemGroupItemListPageListFirst.Name = "buttonItemGroupItemListPageListFirst";
+            this.buttonItemGroupItemListPageListFirst.Size = new System.Drawing.Size(82, 32);
+            this.buttonItemGroupItemListPageListFirst.TabIndex = 23;
+            this.buttonItemGroupItemListPageListFirst.TabStop = false;
+            this.buttonItemGroupItemListPageListFirst.Text = "First";
+            this.buttonItemGroupItemListPageListFirst.UseVisualStyleBackColor = false;
+            this.buttonItemGroupItemListPageListFirst.Click += new System.EventHandler(this.buttonItemGroupItemListPageListFirst_Click);
             // 
-            // buttonStockInLineListPageListPrevious
+            // buttonItemGroupItemListPageListPrevious
             // 
-            this.buttonStockInLineListPageListPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonStockInLineListPageListPrevious.Enabled = false;
-            this.buttonStockInLineListPageListPrevious.FlatAppearance.BorderSize = 0;
-            this.buttonStockInLineListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStockInLineListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockInLineListPageListPrevious.Location = new System.Drawing.Point(100, 9);
-            this.buttonStockInLineListPageListPrevious.Name = "buttonStockInLineListPageListPrevious";
-            this.buttonStockInLineListPageListPrevious.Size = new System.Drawing.Size(82, 32);
-            this.buttonStockInLineListPageListPrevious.TabIndex = 24;
-            this.buttonStockInLineListPageListPrevious.TabStop = false;
-            this.buttonStockInLineListPageListPrevious.Text = "Previous";
-            this.buttonStockInLineListPageListPrevious.UseVisualStyleBackColor = false;
+            this.buttonItemGroupItemListPageListPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonItemGroupItemListPageListPrevious.Enabled = false;
+            this.buttonItemGroupItemListPageListPrevious.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItemListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItemListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonItemGroupItemListPageListPrevious.Location = new System.Drawing.Point(100, 9);
+            this.buttonItemGroupItemListPageListPrevious.Name = "buttonItemGroupItemListPageListPrevious";
+            this.buttonItemGroupItemListPageListPrevious.Size = new System.Drawing.Size(82, 32);
+            this.buttonItemGroupItemListPageListPrevious.TabIndex = 24;
+            this.buttonItemGroupItemListPageListPrevious.TabStop = false;
+            this.buttonItemGroupItemListPageListPrevious.Text = "Previous";
+            this.buttonItemGroupItemListPageListPrevious.UseVisualStyleBackColor = false;
+            this.buttonItemGroupItemListPageListPrevious.Click += new System.EventHandler(this.buttonItemGroupItemListPageListPrevious_Click);
             // 
-            // buttonStockInLineListPageListNext
+            // buttonItemGroupItemListPageListNext
             // 
-            this.buttonStockInLineListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonStockInLineListPageListNext.FlatAppearance.BorderSize = 0;
-            this.buttonStockInLineListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStockInLineListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockInLineListPageListNext.Location = new System.Drawing.Point(263, 9);
-            this.buttonStockInLineListPageListNext.Name = "buttonStockInLineListPageListNext";
-            this.buttonStockInLineListPageListNext.Size = new System.Drawing.Size(82, 32);
-            this.buttonStockInLineListPageListNext.TabIndex = 26;
-            this.buttonStockInLineListPageListNext.TabStop = false;
-            this.buttonStockInLineListPageListNext.Text = "Next";
-            this.buttonStockInLineListPageListNext.UseVisualStyleBackColor = false;
+            this.buttonItemGroupItemListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonItemGroupItemListPageListNext.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItemListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItemListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonItemGroupItemListPageListNext.Location = new System.Drawing.Point(263, 9);
+            this.buttonItemGroupItemListPageListNext.Name = "buttonItemGroupItemListPageListNext";
+            this.buttonItemGroupItemListPageListNext.Size = new System.Drawing.Size(82, 32);
+            this.buttonItemGroupItemListPageListNext.TabIndex = 26;
+            this.buttonItemGroupItemListPageListNext.TabStop = false;
+            this.buttonItemGroupItemListPageListNext.Text = "Next";
+            this.buttonItemGroupItemListPageListNext.UseVisualStyleBackColor = false;
+            this.buttonItemGroupItemListPageListNext.Click += new System.EventHandler(this.buttonItemGroupItemListPageListNext_Click);
             // 
-            // buttonStockInLineListPageListLast
+            // buttonItemGroupItemListPageListLast
             // 
-            this.buttonStockInLineListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonStockInLineListPageListLast.FlatAppearance.BorderSize = 0;
-            this.buttonStockInLineListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStockInLineListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockInLineListPageListLast.Location = new System.Drawing.Point(348, 9);
-            this.buttonStockInLineListPageListLast.Name = "buttonStockInLineListPageListLast";
-            this.buttonStockInLineListPageListLast.Size = new System.Drawing.Size(82, 32);
-            this.buttonStockInLineListPageListLast.TabIndex = 26;
-            this.buttonStockInLineListPageListLast.TabStop = false;
-            this.buttonStockInLineListPageListLast.Text = "Last";
-            this.buttonStockInLineListPageListLast.UseVisualStyleBackColor = false;
+            this.buttonItemGroupItemListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonItemGroupItemListPageListLast.FlatAppearance.BorderSize = 0;
+            this.buttonItemGroupItemListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonItemGroupItemListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonItemGroupItemListPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonItemGroupItemListPageListLast.Name = "buttonItemGroupItemListPageListLast";
+            this.buttonItemGroupItemListPageListLast.Size = new System.Drawing.Size(82, 32);
+            this.buttonItemGroupItemListPageListLast.TabIndex = 26;
+            this.buttonItemGroupItemListPageListLast.TabStop = false;
+            this.buttonItemGroupItemListPageListLast.Text = "Last";
+            this.buttonItemGroupItemListPageListLast.UseVisualStyleBackColor = false;
+            this.buttonItemGroupItemListPageListLast.Click += new System.EventHandler(this.buttonItemGroupItemListPageListLast_Click);
             // 
-            // textBoxStockInLineListPageNumber
+            // textBoxItemGroupItemListPageNumber
             // 
-            this.textBoxStockInLineListPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxStockInLineListPageNumber.BackColor = System.Drawing.Color.White;
-            this.textBoxStockInLineListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxStockInLineListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxStockInLineListPageNumber.Location = new System.Drawing.Point(188, 14);
-            this.textBoxStockInLineListPageNumber.Name = "textBoxStockInLineListPageNumber";
-            this.textBoxStockInLineListPageNumber.ReadOnly = true;
-            this.textBoxStockInLineListPageNumber.Size = new System.Drawing.Size(69, 20);
-            this.textBoxStockInLineListPageNumber.TabIndex = 25;
-            this.textBoxStockInLineListPageNumber.TabStop = false;
-            this.textBoxStockInLineListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxItemGroupItemListPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBoxItemGroupItemListPageNumber.BackColor = System.Drawing.Color.White;
+            this.textBoxItemGroupItemListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxItemGroupItemListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textBoxItemGroupItemListPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxItemGroupItemListPageNumber.Name = "textBoxItemGroupItemListPageNumber";
+            this.textBoxItemGroupItemListPageNumber.ReadOnly = true;
+            this.textBoxItemGroupItemListPageNumber.Size = new System.Drawing.Size(69, 20);
+            this.textBoxItemGroupItemListPageNumber.TabIndex = 25;
+            this.textBoxItemGroupItemListPageNumber.TabStop = false;
+            this.textBoxItemGroupItemListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel7
             // 
@@ -196,7 +304,6 @@
             this.textBoxKitchenReport.Name = "textBoxKitchenReport";
             this.textBoxKitchenReport.Size = new System.Drawing.Size(196, 30);
             this.textBoxKitchenReport.TabIndex = 10;
-            this.textBoxKitchenReport.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
             // 
@@ -325,6 +432,34 @@
             this.panel1.Size = new System.Drawing.Size(1400, 63);
             this.panel1.TabIndex = 7;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // buttonSearchItem
+            // 
+            this.buttonSearchItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSearchItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonSearchItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
+            this.buttonSearchItem.FlatAppearance.BorderSize = 0;
+            this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
+            this.buttonSearchItem.Location = new System.Drawing.Point(1206, 6);
+            this.buttonSearchItem.Name = "buttonSearchItem";
+            this.buttonSearchItem.Size = new System.Drawing.Size(182, 40);
+            this.buttonSearchItem.TabIndex = 9;
+            this.buttonSearchItem.TabStop = false;
+            this.buttonSearchItem.Text = "Search Item";
+            this.buttonSearchItem.UseVisualStyleBackColor = false;
+            this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
+            // 
             // MstItemGroupDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -332,20 +467,23 @@
             this.ClientSize = new System.Drawing.Size(1400, 700);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MstItemGroupDetailForm";
             this.Text = "MstItemDetailForm";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItemGroupItemList)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -361,11 +499,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button buttonStockInLineListPageListFirst;
-        private System.Windows.Forms.Button buttonStockInLineListPageListPrevious;
-        private System.Windows.Forms.Button buttonStockInLineListPageListNext;
-        private System.Windows.Forms.Button buttonStockInLineListPageListLast;
-        private System.Windows.Forms.TextBox textBoxStockInLineListPageNumber;
+        private System.Windows.Forms.Button buttonItemGroupItemListPageListFirst;
+        private System.Windows.Forms.Button buttonItemGroupItemListPageListPrevious;
+        private System.Windows.Forms.Button buttonItemGroupItemListPageListNext;
+        private System.Windows.Forms.Button buttonItemGroupItemListPageListLast;
+        private System.Windows.Forms.TextBox textBoxItemGroupItemListPageNumber;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
@@ -373,5 +511,14 @@
         private System.Windows.Forms.TextBox textBoxItemGroupImagePath;
         private System.Windows.Forms.TextBox textBoxKitchenReport;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.DataGridView dataGridViewItemGroupItemList;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnItemGroupItemListButtonEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnItemGroupItemListButtonDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemGroupItemListId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemGroupItemListItemId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemGroupItemListItemDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemGroupItemListItemGroupId;
+        private System.Windows.Forms.Button buttonSearchItem;
     }
 }
