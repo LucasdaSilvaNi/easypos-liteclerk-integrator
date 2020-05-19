@@ -240,7 +240,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(221, 20);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Easy POS Version: 1.20200411";
+            this.label2.Text = "Easy POS Version: 1.20200518";
             // 
             // pictureBox2
             // 
