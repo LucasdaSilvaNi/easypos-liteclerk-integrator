@@ -13,7 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>D:\Easypos_Setup\</PublishUrl>
+    <PublishUrl>C:\Users\Developer\Desktop\Setup\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>9</ApplicationRevision>
+    <ApplicationRevision>10</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -269,6 +269,7 @@
     <Compile Include="Entities\DgvMstItemGroupItemListEntity.cs" />
     <Compile Include="Entities\DgvMstItemGroupSearchItemListEntity.cs" />
     <Compile Include="Entities\DgvMstTableListEntity.cs" />
+    <Compile Include="Entities\DgvRepInventoryStockCardListEntity.cs" />
     <Compile Include="Entities\DgvRepSalesReportTopSellingItemsReportListEntity.cs" />
     <Compile Include="Entities\DgvMstTableGroupListEntity.cs" />
     <Compile Include="Entities\DgvMstItemGroupListEntity.cs" />
@@ -334,6 +335,7 @@
     <Compile Include="Entities\MstTerminalEntity.cs" />
     <Compile Include="Entities\MstUnitEntity.cs" />
     <Compile Include="Entities\MstUserEntity.cs" />
+    <Compile Include="Entities\RepInventoryReportStockCardEntity.cs" />
     <Compile Include="Entities\RepSalesReportCollectionDetailReportEntity.cs" />
     <Compile Include="Entities\RepInventoryReportEntity.cs" />
     <Compile Include="Entities\RepInventoryReportStockCountDetailReportEntity.cs" />
@@ -483,6 +485,12 @@
     </Compile>
     <Compile Include="Forms\Software\RepInventoryReport\RepInventoryForm.Designer.cs">
       <DependentUpon>RepInventoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepInventoryReport\RepStockCardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepInventoryReport\RepStockCardForm.Designer.cs">
+      <DependentUpon>RepStockCardForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportForm.cs">
       <SubType>Form</SubType>
@@ -932,6 +940,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepInventoryForm.resx">
       <DependentUpon>RepInventoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepStockCardForm.resx">
+      <DependentUpon>RepStockCardForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepInventoryReportForm.resx">
       <DependentUpon>RepInventoryReportForm.cs</DependentUpon>

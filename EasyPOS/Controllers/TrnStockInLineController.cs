@@ -47,10 +47,10 @@ namespace EasyPOS.Controllers
         public List<Entities.MstItemEntity> ListSearchItem(String filter)
         {
             var items = from d in db.MstItems
-                        where d.BarCode.Contains(filter)
-                        && d.IsInventory == true
+                        where d.IsInventory == true 
+                        && (d.BarCode.Contains(filter)
                         || d.ItemDescription.Contains(filter)
-                        || d.GenericName.Contains(filter)
+                        || d.GenericName.Contains(filter))
                         select new Entities.MstItemEntity
                         {
                             Id = d.Id,

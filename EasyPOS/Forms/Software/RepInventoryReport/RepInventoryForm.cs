@@ -19,6 +19,19 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
         {
             InitializeComponent();
             sysSoftwareForm = softwareForm;
+
+            GetItemList();
+        }
+
+        public void GetItemList()
+        {
+            Controllers.RepInventoryReportController repInventoryReportController = new Controllers.RepInventoryReportController();
+            if (repInventoryReportController.DropdownListItem().Any())
+            {
+                comboBoxItem.DataSource = repInventoryReportController.DropdownListItem();
+                comboBoxItem.ValueMember = "Id";
+                comboBoxItem.DisplayMember = "ItemDescription";
+            }
         }
 
         private void listBoxSalesReport_SelectedIndexChanged(object sender, EventArgs e)
@@ -33,6 +46,17 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         dateTimePickerStartDate.Visible = true;
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
+                        labelItem.Visible = false;
+                        comboBoxItem.Visible = false;
+                        dateTimePickerStartDate.Focus();
+                        break;
+                    case "Stock Card":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+                        labelItem.Visible = true;
+                        comboBoxItem.Visible = true;
                         dateTimePickerStartDate.Focus();
                         break;
                     case "Stock In Detail Report":
@@ -40,6 +64,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         dateTimePickerStartDate.Visible = true;
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
+                        labelItem.Visible = false;
+                        comboBoxItem.Visible = false;
                         dateTimePickerStartDate.Focus();
                         break;
                     case "Stock Out Detail Report":
@@ -47,6 +73,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         dateTimePickerStartDate.Visible = true;
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
+                        labelItem.Visible = false;
+                        comboBoxItem.Visible = false;
                         dateTimePickerStartDate.Focus();
                         break;
                     case "Stock Count Detail Report":
@@ -54,6 +82,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         dateTimePickerStartDate.Visible = true;
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
+                        labelItem.Visible = false;
+                        comboBoxItem.Visible = false;
                         dateTimePickerStartDate.Focus();
                         break;
                     default:
@@ -61,6 +91,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         dateTimePickerStartDate.Visible = false;
                         labelEndDate.Visible = false;
                         dateTimePickerEndDate.Visible = false;
+                        labelItem.Visible = false;
+                        comboBoxItem.Visible = false;
                         break;
                 }
             }
@@ -89,6 +121,25 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                             {
                                 RepInventoryReportForm repInventoryReportInventoryReport = new RepInventoryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
                                 repInventoryReportInventoryReport.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        break;
+                    case "Stock Card":
+                        sysUserRights = new Modules.SysUserRightsModule("RepInventoryStockCard");
+                        if (sysUserRights.GetUserRights() == null)
+                        {
+                            MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            if (sysUserRights.GetUserRights().CanView == true)
+                            {
+                                RepStockCardForm repStockCardForm = new RepStockCardForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxItem.SelectedValue));
+                                repStockCardForm.ShowDialog();
                             }
                             else
                             {

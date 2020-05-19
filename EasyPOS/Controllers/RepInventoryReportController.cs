@@ -13,6 +13,24 @@ namespace EasyPOS.Controllers
         // ============
         public Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
 
+        // ======================
+        // Dropdown List Item
+        // ======================
+        public List<Entities.MstItemEntity> DropdownListItem()
+        {
+            var items = from d in db.MstItems
+                        where d.IsInventory == true
+                        && d.IsLocked == true
+                        select new Entities.MstItemEntity
+                        {
+                            Id = d.Id,
+                            BarCode = d.BarCode,
+                            ItemDescription = d.ItemDescription
+                        };
+
+            return items.ToList();
+        }
+
         // ================
         // Inventory Report
         // ================
@@ -82,7 +100,7 @@ namespace EasyPOS.Controllers
                         {
                             beginningSoldComponentInventories.Add(new Entities.RepInventoryReportEntity()
                             {
-                                Document = "Cur",
+                                Document = "Beg",
                                 Id = "Beg-Sold-Component" + itemComponent.Id,
                                 InventoryDate = beginningSoldComponent.TrnSale.SalesDate,
                                 ItemDescription = itemComponent.MstItem1.ItemDescription,
@@ -256,6 +274,235 @@ namespace EasyPOS.Controllers
             else
             {
                 return new List<Entities.RepInventoryReportEntity>();
+            }
+        }
+
+        // ==========
+        // Stock Card
+        // ==========
+        public List<Entities.RepInventoryReportStockCardEntity> StockCardReport(DateTime startDate, DateTime endDate, Int32 itemId, String filter)
+        {
+            List<Entities.RepInventoryReportStockCardEntity> newRepInventoryReportStockCardEntity = new List<Entities.RepInventoryReportStockCardEntity>();
+
+            var beginningInInventories = from d in db.TrnStockInLines
+                                         where d.TrnStockIn.IsLocked == true
+                                         && d.TrnStockIn.StockInDate < startDate.Date
+                                         && d.ItemId == itemId
+                                         && d.MstItem.IsInventory == true
+                                         && d.MstItem.IsLocked == true
+                                         select new Entities.RepInventoryReportStockCardEntity
+                                         {
+                                             Document = "Beginning Balance",
+                                             InventoryDate = startDate.Date,
+                                             BeginningQuantity = d.Quantity,
+                                             InQuantity = 0,
+                                             OutQuantity = 0,
+                                             EndingQuantity = 0
+                                         };
+
+            var beginningSoldInventories = from d in db.TrnSalesLines
+                                           where d.TrnSale.IsLocked == true
+                                           && d.TrnSale.IsCancelled == false
+                                           && d.TrnSale.SalesDate < startDate.Date
+                                           && d.ItemId == itemId
+                                           && d.MstItem.IsInventory == true
+                                           && d.MstItem.IsLocked == true
+                                           select new Entities.RepInventoryReportStockCardEntity
+                                           {
+                                               Document = "Beginning Balance",
+                                               InventoryDate = startDate.Date,
+                                               BeginningQuantity = d.Quantity * -1,
+                                               InQuantity = 0,
+                                               OutQuantity = 0,
+                                               EndingQuantity = 0
+                                           };
+
+            List<Entities.RepInventoryReportStockCardEntity> beginningSoldComponentInventories = new List<Entities.RepInventoryReportStockCardEntity>();
+
+            var beginningSoldComponents = from d in db.TrnSalesLines
+                                          where d.TrnSale.IsLocked == true
+                                          && d.TrnSale.IsCancelled == false
+                                          && d.TrnSale.SalesDate < startDate.Date
+                                          && d.MstItem.IsInventory == false
+                                          && d.MstItem.MstItemComponents.Any() == true
+                                          && d.MstItem.IsLocked == true
+                                          select d;
+
+            if (beginningSoldComponents.ToList().Any() == true)
+            {
+                foreach (var beginningSoldComponent in beginningSoldComponents.ToList())
+                {
+                    var itemComponents = from d in beginningSoldComponent.MstItem.MstItemComponents.ToList()
+                                         where d.ComponentItemId == itemId
+                                         select d;
+
+                    if (itemComponents.Any() == true)
+                    {
+                        foreach (var itemComponent in itemComponents.ToList())
+                        {
+                            beginningSoldComponentInventories.Add(new Entities.RepInventoryReportStockCardEntity()
+                            {
+                                Document = "Beginning Balance",
+                                InventoryDate = startDate.Date,
+                                BeginningQuantity = (itemComponent.Quantity * beginningSoldComponent.Quantity) * -1,
+                                InQuantity = 0,
+                                OutQuantity = 0,
+                                EndingQuantity = 0
+                            });
+                        }
+                    }
+                }
+            }
+
+            var beginningOutInventories = from d in db.TrnStockOutLines
+                                          where d.TrnStockOut.IsLocked == true
+                                          && d.TrnStockOut.StockOutDate < startDate.Date
+                                          && d.ItemId == itemId
+                                          && d.MstItem.IsInventory == true
+                                          && d.MstItem.IsLocked == true
+                                          select new Entities.RepInventoryReportStockCardEntity
+                                          {
+                                              Document = "Beginning Balance",
+                                              InventoryDate = startDate.Date,
+                                              BeginningQuantity = d.Quantity * -1,
+                                              InQuantity = 0,
+                                              OutQuantity = 0,
+                                              EndingQuantity = 0
+                                          };
+
+            var unionBeginningInventories = beginningInInventories.ToList().Union(beginningSoldInventories.ToList()).Union(beginningSoldComponentInventories.ToList()).Union(beginningOutInventories.ToList());
+
+            var currentInInventories = from d in db.TrnStockInLines
+                                       where d.TrnStockIn.IsLocked == true
+                                       && d.TrnStockIn.StockInDate >= startDate.Date
+                                       && d.TrnStockIn.StockInDate <= endDate.Date
+                                       && d.ItemId == itemId
+                                       && d.MstItem.IsInventory == true
+                                       && d.MstItem.IsLocked == true
+                                       select new Entities.RepInventoryReportStockCardEntity
+                                       {
+                                           Document = "IN-" + d.TrnStockIn.StockInNumber,
+                                           InventoryDate = d.TrnStockIn.StockInDate,
+                                           BeginningQuantity = 0,
+                                           InQuantity = d.Quantity,
+                                           OutQuantity = 0,
+                                           EndingQuantity = d.Quantity
+                                       };
+
+            var currentSoldInventories = from d in db.TrnSalesLines
+                                         where d.TrnSale.IsLocked == true
+                                         && d.TrnSale.IsCancelled == false
+                                         && d.TrnSale.SalesDate >= startDate.Date
+                                         && d.TrnSale.SalesDate <= endDate.Date
+                                         && d.ItemId == itemId
+                                         && d.MstItem.IsInventory == true
+                                         && d.MstItem.IsLocked == true
+                                         select new Entities.RepInventoryReportStockCardEntity
+                                         {
+                                             Document = "SOLD-" + d.TrnSale.SalesNumber,
+                                             InventoryDate = d.TrnSale.SalesDate,
+                                             BeginningQuantity = 0,
+                                             InQuantity = 0,
+                                             OutQuantity = d.Quantity,
+                                             EndingQuantity = d.Quantity * -1
+                                         };
+
+            List<Entities.RepInventoryReportStockCardEntity> currentSoldComponentInventories = new List<Entities.RepInventoryReportStockCardEntity>();
+
+            var currentSoldComponents = from d in db.TrnSalesLines
+                                        where d.TrnSale.IsLocked == true
+                                        && d.TrnSale.IsCancelled == false
+                                        && d.TrnSale.SalesDate >= startDate.Date
+                                        && d.TrnSale.SalesDate <= endDate.Date
+                                        && d.MstItem.IsInventory == false
+                                        && d.MstItem.MstItemComponents.Any() == true
+                                        && d.MstItem.IsLocked == true
+                                        select d;
+
+            if (currentSoldComponents.ToList().Any() == true)
+            {
+                foreach (var currentSoldComponent in currentSoldComponents.ToList())
+                {
+                    var itemComponents = from d in currentSoldComponent.MstItem.MstItemComponents.ToList()
+                                         where d.ComponentItemId == itemId
+                                         select d;
+
+                    if (itemComponents.Any() == true)
+                    {
+                        foreach (var itemComponent in itemComponents.ToList())
+                        {
+                            currentSoldComponentInventories.Add(new Entities.RepInventoryReportStockCardEntity()
+                            {
+                                Document = "SOLD-" + currentSoldComponent.TrnSale.SalesNumber,
+                                InventoryDate = currentSoldComponent.TrnSale.SalesDate,
+                                BeginningQuantity = 0,
+                                InQuantity = 0,
+                                OutQuantity = itemComponent.Quantity * currentSoldComponent.Quantity,
+                                EndingQuantity = (itemComponent.Quantity * currentSoldComponent.Quantity) * -1,
+                            });
+                        }
+                    }
+                }
+            }
+
+            var currentOutInventories = from d in db.TrnStockOutLines
+                                        where d.TrnStockOut.IsLocked == true
+                                        && d.TrnStockOut.StockOutDate >= startDate.Date
+                                        && d.TrnStockOut.StockOutDate <= endDate.Date
+                                        && d.ItemId == itemId
+                                        && d.MstItem.IsInventory == true
+                                        && d.MstItem.IsLocked == true
+                                        select new Entities.RepInventoryReportStockCardEntity
+                                        {
+                                            Document = "OUT-" + d.TrnStockOut.StockOutNumber,
+                                            InventoryDate = d.TrnStockOut.StockOutDate,
+                                            BeginningQuantity = 0,
+                                            InQuantity = 0,
+                                            OutQuantity = d.Quantity,
+                                            EndingQuantity = d.Quantity * -1,
+                                        };
+
+            var unionCurrentInventories = currentInInventories.ToList().Union(currentSoldInventories.ToList()).Union(currentSoldComponentInventories.ToList()).Union(currentOutInventories.ToList());
+
+            if (unionBeginningInventories.ToList().Any())
+            {
+                var groupBeginningInventories = from d in unionBeginningInventories.ToList()
+                                                group d by new
+                                                {
+                                                    d.Document,
+                                                    d.InventoryDate
+                                                } into g
+                                                select new Entities.RepInventoryReportStockCardEntity
+                                                {
+                                                    Document = g.Key.Document,
+                                                    InventoryDate = g.Key.InventoryDate,
+                                                    BeginningQuantity = g.Sum(s => s.BeginningQuantity),
+                                                    InQuantity = g.Sum(s => s.InQuantity),
+                                                    OutQuantity = g.Sum(s => s.OutQuantity),
+                                                    EndingQuantity = g.Sum(s => s.BeginningQuantity),
+                                                };
+
+                var unionInventories = groupBeginningInventories.ToList().Union(unionCurrentInventories.ToList());
+                if (unionInventories.Any())
+                {
+                    return unionInventories.Where(d => d.Document.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.InventoryDate).ToList();
+                }
+                else
+                {
+                    return new List<Entities.RepInventoryReportStockCardEntity>();
+                }
+            }
+            else
+            {
+                var unionInventories = unionBeginningInventories.ToList().Union(unionCurrentInventories.ToList());
+                if (unionInventories.Any())
+                {
+                    return unionInventories.Where(d => d.Document.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.InventoryDate).ToList();
+                }
+                else
+                {
+                    return new List<Entities.RepInventoryReportStockCardEntity>();
+                }
             }
         }
 

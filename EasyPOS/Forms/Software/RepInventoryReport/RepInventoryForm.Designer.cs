@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepInventoryForm));
             this.listBoxInventoryReport = new System.Windows.Forms.ListBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
-            this.labelTerminal = new System.Windows.Forms.Label();
             this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
             this.labelStartDate = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -45,6 +43,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
+            this.labelItem = new System.Windows.Forms.Label();
+            this.comboBoxItem = new System.Windows.Forms.ComboBox();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -60,6 +60,7 @@
             this.listBoxInventoryReport.ItemHeight = 23;
             this.listBoxInventoryReport.Items.AddRange(new object[] {
             "Inventory Report",
+            "Stock Card",
             "",
             "Stock In Detail Report",
             "Stock Out Detail Report",
@@ -72,8 +73,8 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.comboBoxTerminal);
-            this.panel4.Controls.Add(this.labelTerminal);
+            this.panel4.Controls.Add(this.comboBoxItem);
+            this.panel4.Controls.Add(this.labelItem);
             this.panel4.Controls.Add(this.dateTimePickerStartDate);
             this.panel4.Controls.Add(this.labelStartDate);
             this.panel4.Controls.Add(this.panel2);
@@ -85,26 +86,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1400, 637);
             this.panel4.TabIndex = 10;
-            // 
-            // comboBoxTerminal
-            // 
-            this.comboBoxTerminal.FormattingEnabled = true;
-            this.comboBoxTerminal.Location = new System.Drawing.Point(502, 136);
-            this.comboBoxTerminal.Name = "comboBoxTerminal";
-            this.comboBoxTerminal.Size = new System.Drawing.Size(220, 31);
-            this.comboBoxTerminal.TabIndex = 2;
-            this.comboBoxTerminal.Visible = false;
-            // 
-            // labelTerminal
-            // 
-            this.labelTerminal.AutoSize = true;
-            this.labelTerminal.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelTerminal.Location = new System.Drawing.Point(409, 137);
-            this.labelTerminal.Name = "labelTerminal";
-            this.labelTerminal.Size = new System.Drawing.Size(74, 23);
-            this.labelTerminal.TabIndex = 25;
-            this.labelTerminal.Text = "Terminal";
-            this.labelTerminal.Visible = false;
             // 
             // dateTimePickerStartDate
             // 
@@ -172,7 +153,7 @@
             // 
             this.labelEndDate.AutoSize = true;
             this.labelEndDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelEndDate.Location = new System.Drawing.Point(409, 101);
+            this.labelEndDate.Location = new System.Drawing.Point(415, 101);
             this.labelEndDate.Name = "labelEndDate";
             this.labelEndDate.Size = new System.Drawing.Size(80, 23);
             this.labelEndDate.TabIndex = 18;
@@ -250,6 +231,26 @@
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_OnClick);
             // 
+            // labelItem
+            // 
+            this.labelItem.AutoSize = true;
+            this.labelItem.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.labelItem.Location = new System.Drawing.Point(450, 139);
+            this.labelItem.Name = "labelItem";
+            this.labelItem.Size = new System.Drawing.Size(45, 23);
+            this.labelItem.TabIndex = 25;
+            this.labelItem.Text = "Item";
+            this.labelItem.Visible = false;
+            // 
+            // comboBoxItem
+            // 
+            this.comboBoxItem.FormattingEnabled = true;
+            this.comboBoxItem.Location = new System.Drawing.Point(502, 136);
+            this.comboBoxItem.Name = "comboBoxItem";
+            this.comboBoxItem.Size = new System.Drawing.Size(464, 31);
+            this.comboBoxItem.TabIndex = 2;
+            this.comboBoxItem.Visible = false;
+            // 
             // RepInventoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -278,8 +279,6 @@
 
         private System.Windows.Forms.ListBox listBoxInventoryReport;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.ComboBox comboBoxTerminal;
-        private System.Windows.Forms.Label labelTerminal;
         private System.Windows.Forms.DateTimePicker dateTimePickerStartDate;
         private System.Windows.Forms.Label labelStartDate;
         private System.Windows.Forms.Panel panel2;
@@ -292,5 +291,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonClose;
+        private System.Windows.Forms.ComboBox comboBoxItem;
+        private System.Windows.Forms.Label labelItem;
     }
 }
