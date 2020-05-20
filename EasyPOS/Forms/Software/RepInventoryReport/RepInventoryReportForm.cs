@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -204,6 +207,69 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             if (e.KeyCode == Keys.Enter)
             {
                 GetInventoryReportDataSource(textBoxFilter.Text);
+            }
+        }
+
+        private void buttonGenerateCSV_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = folderBrowserDialogGenerateCSV.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    StringBuilder csv = new StringBuilder();
+                    String[] header = {
+                        "Item Description",
+                        "Unit",
+                        "Beginning Quantity",
+                        "In Quantity",
+                        "Out Quantity",
+                        "Ending Quantity",
+                        "Count Quantity",
+                        "Variance Quantity",
+                        "Cost",
+                        "Amount"
+                    };
+
+                    csv.AppendLine(String.Join(",", header));
+
+                    if (inventoryReportList.Any())
+                    {
+                        foreach (var inventoryReport in inventoryReportList)
+                        {
+                            String[] data = {
+                              inventoryReport.ColumnItemDescription,
+                              inventoryReport.ColumnUnit,
+                              inventoryReport.ColumnBegQuantity,
+                              inventoryReport.ColumnInQuantity,
+                              inventoryReport.ColumnOutQuantity,
+                              inventoryReport.ColumnEndingQuantity,
+                              inventoryReport.ColumnStockCount,
+                              inventoryReport.ColumnVariance,
+                              inventoryReport.ColumnCost,
+                              inventoryReport.ColumnAmount
+                            };
+
+                            csv.AppendLine(String.Join(",", data));
+                        }
+                    }
+
+                    String executingUser = WindowsIdentity.GetCurrent().Name;
+
+                    DirectorySecurity securityRules = new DirectorySecurity();
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.Read, AccessControlType.Allow));
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
+
+                    DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\InventoryReport_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+
+                    MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
