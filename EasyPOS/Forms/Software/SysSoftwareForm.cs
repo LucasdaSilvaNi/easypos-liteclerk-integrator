@@ -68,6 +68,7 @@ namespace EasyPOS.Forms.Software
         public TabPage tabPageSystemTables = new TabPage { Name = "tabPageSystemTables", Text = "System - System Tables" };
         public TabPage tabPageSystemUtilities = new TabPage { Name = "tabPageSystemUtilities", Text = "System - Utilities" };
         public TabPage tabPageSettings = new TabPage { Name = "tabPageSettings", Text = "Settings" };
+        public TabPage tabPageKitchenDisplay = new TabPage { Name = "tabPageKitchenDisplay", Text = "Kitchen Display" };
 
         public MstItem.MstItemListForm mstItemListForm = null;
         public MstItem.MstItemDetailForm mstItemDetailForm = null;
@@ -100,6 +101,7 @@ namespace EasyPOS.Forms.Software
         public SysUtilities.SysUtilitiesForm sysUtilitiesListForm = null;
         public SysSystemTables.SysSystemTablesForm sysSystemTablesForm = null;
         public SysSettings.SysSettingsForm sysSettingsForm = null;
+        public SysKitchenDisplay.SysKitchenDisplayForm sysKitchenDisplayForm = null;
 
         public void InitializeDefaultForm()
         {
@@ -860,6 +862,30 @@ namespace EasyPOS.Forms.Software
             }
         }
 
+        public void AddTabPageKitchenDisplay()
+        {
+            tabPageKitchenDisplay.Controls.Remove(sysKitchenDisplayForm);
+
+            sysKitchenDisplayForm = new SysKitchenDisplay.SysKitchenDisplayForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageKitchenDisplay.Controls.Add(sysKitchenDisplayForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageKitchenDisplay) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageKitchenDisplay);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageKitchenDisplay);
+                tabControlSoftware.SelectTab(tabPageKitchenDisplay);
+            }
+        }
+
         public void RemoveTabPage()
         {
             tabControlSoftware.TabPages.Remove(tabControlSoftware.SelectedTab);
@@ -874,7 +900,7 @@ namespace EasyPOS.Forms.Software
 
         private void tabControlSoftware_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void buttonOpenSidebarMenu_Click(object sender, EventArgs e)
@@ -987,6 +1013,11 @@ namespace EasyPOS.Forms.Software
         private void toolStripMenuItemItemGroup_Click(object sender, EventArgs e)
         {
             AddTabPageItemGroupList();
+        }
+
+        private void toolStripMenuItemKitchenDisplay_Click(object sender, EventArgs e)
+        {
+            AddTabPageKitchenDisplay();
         }
     }
 }

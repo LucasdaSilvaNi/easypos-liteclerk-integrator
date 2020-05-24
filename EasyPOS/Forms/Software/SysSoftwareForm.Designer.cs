@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SysSoftwareForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonOpenSidebarMenu = new System.Windows.Forms.Button();
@@ -53,6 +52,8 @@
             this.toolStripMenuItemRestaurant = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemTabeGroup = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemItemGroup = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItemKitchenDisplay = new System.Windows.Forms.ToolStripMenuItem();
             this.activityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pOSToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,14 +72,15 @@
             this.remittanceReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inventoryReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.tabControlSoftware.SuspendLayout();
             this.panelSidebarMenu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -105,16 +107,6 @@
             this.label1.Size = new System.Drawing.Size(221, 20);
             this.label1.TabIndex = 4;
             this.label1.Text = "Easy POS Version: 1.20200518";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.easypos1;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(66, 43);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // label4
             // 
@@ -311,7 +303,9 @@
             // 
             this.toolStripMenuItemRestaurant.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemTabeGroup,
-            this.toolStripMenuItemItemGroup});
+            this.toolStripMenuItemItemGroup,
+            this.toolStripSeparator4,
+            this.toolStripMenuItemKitchenDisplay});
             this.toolStripMenuItemRestaurant.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.toolStripMenuItemRestaurant.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemRestaurant.Image")));
             this.toolStripMenuItemRestaurant.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -325,7 +319,7 @@
             // 
             this.toolStripMenuItemTabeGroup.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemTabeGroup.Image")));
             this.toolStripMenuItemTabeGroup.Name = "toolStripMenuItemTabeGroup";
-            this.toolStripMenuItemTabeGroup.Size = new System.Drawing.Size(178, 28);
+            this.toolStripMenuItemTabeGroup.Size = new System.Drawing.Size(216, 28);
             this.toolStripMenuItemTabeGroup.Text = "Table Group";
             this.toolStripMenuItemTabeGroup.Click += new System.EventHandler(this.toolStripMenuItemTabeGroup_Click);
             // 
@@ -333,9 +327,22 @@
             // 
             this.toolStripMenuItemItemGroup.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemItemGroup.Image")));
             this.toolStripMenuItemItemGroup.Name = "toolStripMenuItemItemGroup";
-            this.toolStripMenuItemItemGroup.Size = new System.Drawing.Size(178, 28);
+            this.toolStripMenuItemItemGroup.Size = new System.Drawing.Size(216, 28);
             this.toolStripMenuItemItemGroup.Text = "Item Group";
             this.toolStripMenuItemItemGroup.Click += new System.EventHandler(this.toolStripMenuItemItemGroup_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(213, 6);
+            // 
+            // toolStripMenuItemKitchenDisplay
+            // 
+            this.toolStripMenuItemKitchenDisplay.Image = global::EasyPOS.Properties.Resources.Kitchen;
+            this.toolStripMenuItemKitchenDisplay.Name = "toolStripMenuItemKitchenDisplay";
+            this.toolStripMenuItemKitchenDisplay.Size = new System.Drawing.Size(216, 28);
+            this.toolStripMenuItemKitchenDisplay.Text = "Kitchen Display";
+            this.toolStripMenuItemKitchenDisplay.Click += new System.EventHandler(this.toolStripMenuItemKitchenDisplay_Click);
             // 
             // activityToolStripMenuItem
             // 
@@ -507,6 +514,16 @@
             this.settingsToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.easypos1;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(66, 43);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // SysSoftwareForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -525,7 +542,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SysSoftwareForm_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -535,6 +551,7 @@
             this.panelSidebarMenu.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -582,5 +599,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRestaurant;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemItemGroup;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemTabeGroup;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemKitchenDisplay;
     }
 }

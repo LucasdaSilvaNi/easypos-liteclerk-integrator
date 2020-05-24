@@ -582,6 +582,12 @@
     <Compile Include="Forms\Software\RepSalesReport\RepCollectionDetailFacepayReportForm.designer.cs">
       <DependentUpon>RepCollectionDetailFacepayReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\SysKitchenDisplay\SysKitchenDisplayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\SysKitchenDisplay\SysKitchenDisplayForm.Designer.cs">
+      <DependentUpon>SysKitchenDisplayForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnPOSDeliveryReceiptReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -986,6 +992,9 @@
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepCollectionDetailFacepayReportForm.resx">
       <DependentUpon>RepCollectionDetailFacepayReportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\SysKitchenDisplay\SysKitchenDisplayForm.resx">
+      <DependentUpon>SysKitchenDisplayForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSDeliveryReceiptReportForm.resx">
       <DependentUpon>TrnPOSDeliveryReceiptReportForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1206,6 +1215,7 @@
     <None Include="Resources\Images\Icons\easypos.jpg" />
     <Content Include="Resources\Images\Icons\Inventory.png" />
     <Content Include="Resources\Images\Icons\Item.png" />
+    <Content Include="Resources\Images\Icons\Kitchen.png" />
     <Content Include="Resources\Images\Icons\POS Touch.png" />
     <Content Include="Resources\Images\Icons\POS.png" />
     <Content Include="Resources\Images\Icons\Reports.png" />

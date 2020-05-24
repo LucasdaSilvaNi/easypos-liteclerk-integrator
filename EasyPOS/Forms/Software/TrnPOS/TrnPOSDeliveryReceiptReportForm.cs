@@ -188,12 +188,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
             Paragraph line = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0F, 100.0F, BaseColor.BLACK, Element.ALIGN_MIDDLE, 7F)));
 
             String documentTitle = systemCurrent.ORPrintTitle;
-            String date = DateTime.Today.ToShortDateString();
-            String terminal = collection.FirstOrDefault().MstTerminal.Terminal;
-            String term = collection.FirstOrDefault().MstCustomer.MstTerm.Term;
-            String user = collection.FirstOrDefault().TrnSale.MstUser.UserName;
-            String dueDate = collection.FirstOrDefault().CollectionDate.AddDays(Convert.ToDouble(collection.FirstOrDefault().MstCustomer.MstTerm.NumberOfDays)).Date.ToShortDateString();
             String deliveryDate = collection.FirstOrDefault().CollectionDate.ToShortDateString();
+            String term = collection.FirstOrDefault().MstCustomer.MstTerm.Term;
+            String dueDate = collection.FirstOrDefault().CollectionDate.AddDays(Convert.ToDouble(collection.FirstOrDefault().MstCustomer.MstTerm.NumberOfDays)).Date.ToShortDateString();
+            String terminal = collection.FirstOrDefault().MstTerminal.Terminal;
+            String user = collection.FirstOrDefault().TrnSale.MstUser.UserName;
 
             String customer = collection.FirstOrDefault().MstCustomer.Customer;
             String address = collection.FirstOrDefault().MstCustomer.Address;
@@ -201,14 +200,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
             String ORFooter = systemCurrent.ReceiptFooter;
 
             PdfPTable tableHeader = new PdfPTable(4);
-            tableHeader.SetWidths(new float[] { 27f, 65f, 35f, 50f });
+            tableHeader.SetWidths(new float[] { 35f, 65f, 25f, 50f });
             tableHeader.DefaultCell.Border = 0;
             tableHeader.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
             tableHeader.AddCell(new PdfPCell(new Phrase(documentTitle, fontTimesNewRoman14Bold)) { Colspan = 3, Border = 0, Padding = 3f, PaddingBottom = 0f });
             tableHeader.AddCell(new PdfPCell(new Phrase("No.: " + collection.FirstOrDefault().CollectionNumber, fontTimesNewRoman10Bold)) { HorizontalAlignment = 2, Border = 0, PaddingRight = 3f, PaddingTop = 5f, PaddingBottom = 0f });
             tableHeader.AddCell(new PdfPCell(new Phrase(line)) { Border = 0, Colspan = 4, PaddingBottom = -5f, PaddingLeft = 0f, PaddingRight = 0f });
-            tableHeader.AddCell(new PdfPCell(new Phrase("Date: ", fontTimesNewRoman09Bold)) { Border = 0, Padding = 1f });
-            tableHeader.AddCell(new PdfPCell(new Phrase(date, fontTimesNewRoman09)) { Border = 0, Padding = 1f });
+            tableHeader.AddCell(new PdfPCell(new Phrase("Delivery Date: ", fontTimesNewRoman09Bold)) { Border = 0, Padding = 1f });
+            tableHeader.AddCell(new PdfPCell(new Phrase(deliveryDate, fontTimesNewRoman09)) { Border = 0, Padding = 1f });
             tableHeader.AddCell(new PdfPCell(new Phrase("Terminal: ", fontTimesNewRoman09Bold)) { Border = 0, Padding = 1f });
             tableHeader.AddCell(new PdfPCell(new Phrase(terminal, fontTimesNewRoman09)) { Border = 0, Padding = 1f });
             tableHeader.AddCell(new PdfPCell(new Phrase("Term: ", fontTimesNewRoman09Bold)) { Border = 0, Padding = 1f });
@@ -217,8 +216,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             tableHeader.AddCell(new PdfPCell(new Phrase(user, fontTimesNewRoman09)) { Border = 0, Padding = 1f });
             tableHeader.AddCell(new PdfPCell(new Phrase("Due Date: ", fontTimesNewRoman09Bold)) { Border = 0, Padding = 1f });
             tableHeader.AddCell(new PdfPCell(new Phrase(dueDate, fontTimesNewRoman09)) { Border = 0, Padding = 1f });
-            tableHeader.AddCell(new PdfPCell(new Phrase("Delivery Date: ", fontTimesNewRoman09Bold)) { Border = 0, Padding = 1f });
-            tableHeader.AddCell(new PdfPCell(new Phrase(deliveryDate, fontTimesNewRoman09)) { Border = 0, Padding = 1f });
+            tableHeader.AddCell(new PdfPCell(new Phrase("", fontTimesNewRoman09Bold)) { Colspan = 2, Border = 0, Padding = 1f });
             tableHeader.AddCell(new PdfPCell(new Phrase(line)) { Border = 0, Colspan = 4, PaddingBottom = -5f, PaddingLeft = 0f, PaddingRight = 0f });
             tableHeader.AddCell(new PdfPCell(new Phrase(customer, fontTimesNewRoman10Bold)) { Border = 0, Colspan = 4, Padding = 1f });
 
