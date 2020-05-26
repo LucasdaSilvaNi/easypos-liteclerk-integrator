@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 
 namespace EasyPOS.Controllers
 {
@@ -587,6 +590,191 @@ namespace EasyPOS.Controllers
             }
 
             return isDiscountVATExempt;
+        }
+
+        // ==============
+        // Download Items
+        // ==============
+        public String[] DownloadItems(Int32 salesId, String salesOrderNumber)
+        {
+            try
+            {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
+                var sales = from d in db.TrnSales
+                            where d.Id == salesId
+                            select d;
+
+                if (sales.Any() == false)
+                {
+                    return new String[] { "Sales transaction not found.", "0" };
+                }
+
+                String apiUrlHost = "www.easyfis.com";
+                String remarks = "NA";
+
+                // ============
+                // Http Request
+                // ============
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://" + apiUrlHost + "/api/mobileSalesOrder/salesOrder/detail/bySONumber/" + salesOrderNumber);
+                httpWebRequest.Method = "GET";
+                httpWebRequest.Accept = "application/json";
+
+                // ================
+                // Process Response
+                // ================
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    JavaScriptSerializer js = new JavaScriptSerializer();
+                    Entities.MobTrnSalesOrderEntity salesOrder = (Entities.MobTrnSalesOrderEntity)js.Deserialize(result, typeof(Entities.MobTrnSalesOrderEntity));
+
+                    List<Data.TrnSalesLine> newSalesLines = new List<Data.TrnSalesLine>();
+                    if (salesOrder != null)
+                    {
+                        if (salesOrder.ListSalesOrderItems.Any())
+                        {
+                            remarks = "Order No.: " + salesOrderNumber;
+
+                            var salesLines = from d in db.TrnSalesLines
+                                             where d.SalesId == salesId
+                                             select d;
+
+                            if (salesLines.Any())
+                            {
+                                db.TrnSalesLines.DeleteAllOnSubmit(salesLines);
+                                db.SubmitChanges();
+                            }
+
+                            foreach (var salesOrderItem in salesOrder.ListSalesOrderItems.ToList())
+                            {
+                                var item = from d in db.MstItems where d.BarCode == salesOrderItem.ItemCode select d;
+                                if (item.Any() == false)
+                                {
+                                    return new String[] { "Item not found.", "0" };
+                                }
+
+                                if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == "False")
+                                {
+                                    if (item.FirstOrDefault().IsInventory == true)
+                                    {
+                                        if (item.FirstOrDefault().OnhandQuantity <= 0)
+                                        {
+                                            return new String[] { "Item " + item.FirstOrDefault().ItemDescription + " has negative inventory", "0" };
+                                        }
+                                        else
+                                        {
+                                            if (item.FirstOrDefault().OnhandQuantity < salesOrderItem.Quantity)
+                                            {
+                                                return new String[] { "Item " + item.FirstOrDefault().ItemDescription + " has negative inventory", "0" };
+                                            }
+                                        }
+                                    }
+                                }
+
+                                Int32 discountId = 0;
+
+                                var discount = from d in db.MstDiscounts where d.Discount == salesOrderItem.Discount select d;
+                                if (discount.Any() == false)
+                                {
+                                    var variableDiscount = from d in db.MstDiscounts
+                                                           where d.Discount == "Variable Discount"
+                                                           select d;
+
+                                    if (variableDiscount.Any())
+                                    {
+                                        discountId = variableDiscount.FirstOrDefault().Id;
+                                    }
+                                    else
+                                    {
+                                        return new String[] { "Varialbe discount not found.", "0" };
+                                    }
+                                }
+                                else
+                                {
+                                    discountId = discount.FirstOrDefault().Id;
+                                }
+
+                                var tax = from d in db.MstTaxes where d.Id == item.FirstOrDefault().OutTaxId select d;
+                                if (tax.Any() == false)
+                                {
+                                    return new String[] { "Tax not found.", "0" };
+                                }
+
+                                Decimal taxAmount = 0;
+                                if (tax.FirstOrDefault().Rate > 0)
+                                {
+                                    taxAmount = (salesOrderItem.Price * salesOrderItem.Quantity) / (1 + (tax.FirstOrDefault().Rate / 100)) * (tax.FirstOrDefault().Rate / 100);
+                                }
+
+                                newSalesLines.Add(new Data.TrnSalesLine
+                                {
+                                    SalesId = salesId,
+                                    ItemId = item.FirstOrDefault().Id,
+                                    UnitId = item.FirstOrDefault().UnitId,
+                                    Price = salesOrderItem.Price,
+                                    DiscountId = discountId,
+                                    DiscountRate = salesOrderItem.DiscountRate,
+                                    DiscountAmount = salesOrderItem.DiscountAmount,
+                                    NetPrice = salesOrderItem.NetPrice,
+                                    Quantity = salesOrderItem.Quantity,
+                                    Amount = salesOrderItem.Amount,
+                                    TaxId = tax.FirstOrDefault().Id,
+                                    TaxRate = tax.FirstOrDefault().Rate,
+                                    TaxAmount = taxAmount,
+                                    SalesAccountId = 159,
+                                    AssetAccountId = 255,
+                                    CostAccountId = 238,
+                                    TaxAccountId = 87,
+                                    SalesLineTimeStamp = DateTime.Now.Date,
+                                    UserId = currentUserLogin.FirstOrDefault().Id,
+                                    Preparation = "",
+                                    Price1 = 0,
+                                    Price2 = 0,
+                                    Price2LessTax = 0,
+                                    PriceSplitPercentage = 0,
+                                });
+                            }
+                        }
+
+                        db.TrnSalesLines.InsertAllOnSubmit(newSalesLines);
+                        db.SubmitChanges();
+
+                        String newObject = Modules.SysAuditTrailModule.GetObjectString(newSalesLines);
+
+                        Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                        {
+                            UserId = currentUserLogin.FirstOrDefault().Id,
+                            AuditDate = DateTime.Now,
+                            TableInformation = "TrnSalesLine",
+                            RecordInformation = "",
+                            FormInformation = newObject,
+                            ActionInformation = "AddSalesLine"
+                        };
+                        Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
+                        var updateSales = sales.FirstOrDefault();
+                        updateSales.Remarks = remarks;
+                        updateSales.Amount = sales.FirstOrDefault().TrnSalesLines.Any() ? sales.FirstOrDefault().TrnSalesLines.Sum(d => d.Amount) : 0;
+                        db.SubmitChanges();
+
+                        return new String[] { "", "1" };
+                    }
+                    else
+                    {
+                        return new String[] { "Order not fouond or empty items.", "0" };
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
         }
     }
 }

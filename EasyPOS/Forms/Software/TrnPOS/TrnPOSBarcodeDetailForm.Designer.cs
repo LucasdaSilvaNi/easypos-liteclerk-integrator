@@ -88,6 +88,7 @@
             this.textBoxBarcode = new System.Windows.Forms.TextBox();
             this.buttonBarcode = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonDownload = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -580,7 +581,7 @@
             this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
-            this.buttonSearchItem.Location = new System.Drawing.Point(1206, 6);
+            this.buttonSearchItem.Location = new System.Drawing.Point(1019, 6);
             this.buttonSearchItem.Name = "buttonSearchItem";
             this.buttonSearchItem.Size = new System.Drawing.Size(181, 40);
             this.buttonSearchItem.TabIndex = 5;
@@ -596,7 +597,7 @@
             this.textBoxBarcode.Font = new System.Drawing.Font("Segoe UI Semibold", 13.3F, System.Drawing.FontStyle.Bold);
             this.textBoxBarcode.Location = new System.Drawing.Point(149, 7);
             this.textBoxBarcode.Name = "textBoxBarcode";
-            this.textBoxBarcode.Size = new System.Drawing.Size(1051, 37);
+            this.textBoxBarcode.Size = new System.Drawing.Size(864, 37);
             this.textBoxBarcode.TabIndex = 0;
             this.textBoxBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarcode_KeyDown);
             // 
@@ -620,6 +621,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
+            this.panel3.Controls.Add(this.buttonDownload);
             this.panel3.Controls.Add(this.buttonBarcode);
             this.panel3.Controls.Add(this.dataGridViewSalesLineList);
             this.panel3.Controls.Add(this.buttonSearchItem);
@@ -629,6 +631,24 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1400, 527);
             this.panel3.TabIndex = 7;
+            // 
+            // buttonDownload
+            // 
+            this.buttonDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDownload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonDownload.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
+            this.buttonDownload.FlatAppearance.BorderSize = 0;
+            this.buttonDownload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDownload.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.buttonDownload.ForeColor = System.Drawing.Color.White;
+            this.buttonDownload.Location = new System.Drawing.Point(1206, 6);
+            this.buttonDownload.Name = "buttonDownload";
+            this.buttonDownload.Size = new System.Drawing.Size(181, 40);
+            this.buttonDownload.TabIndex = 7;
+            this.buttonDownload.TabStop = false;
+            this.buttonDownload.Text = "Download";
+            this.buttonDownload.UseVisualStyleBackColor = false;
+            this.buttonDownload.Click += new System.EventHandler(this.buttonDownload_Click);
             // 
             // TrnPOSBarcodeDetailForm
             // 
@@ -709,5 +729,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2LessTax;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePriceSplitPercentage;
+        private System.Windows.Forms.Button buttonDownload;
     }
 }

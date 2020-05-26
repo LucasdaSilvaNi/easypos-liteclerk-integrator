@@ -364,5 +364,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
             TrnPOSDiscountForm trnSalesDetailDiscountForm = new TrnPOSDiscountForm(this, null);
             trnSalesDetailDiscountForm.ShowDialog();
         }
+
+        private void buttonDownload_Click(object sender, EventArgs e)
+        {
+            TrnPOSDownloadItemsForm trnPOSDownloadItemsForm = new TrnPOSDownloadItemsForm(sysSoftwareForm, this, null, trnSalesEntity.Id);
+            trnPOSDownloadItemsForm.ShowDialog();
+        }
     }
 }
