@@ -827,5 +827,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 FillItemGroupItem(itemGroupId);
             }
         }
+
+        private void buttonDownload_Click(object sender, EventArgs e)
+        {
+            TrnPOSDownloadItemsForm TrnPOSDownloadItemsForm = new TrnPOSDownloadItemsForm(sysSoftwareForm, null, this, trnSalesEntity.Id);
+            TrnPOSDownloadItemsForm.ShowDialog();
+        }
     }
 }

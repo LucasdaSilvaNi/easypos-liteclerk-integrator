@@ -37,6 +37,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
+            DownloadOrder();
+        }
+
+        public void DownloadOrder()
+        {
             String salesOrderNumber = textBoxSalesOrderNumber.Text;
 
             DialogResult downloadItemsDialogResult = MessageBox.Show("Download Items? ", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -57,6 +62,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                     if (trnPOSTouchDetailForm != null)
                     {
+                        trnPOSTouchDetailForm.GetSalesLineList();
                         Close();
                     }
                 }
@@ -64,6 +70,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 {
                     MessageBox.Show(downloadSalesLine[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void textBoxSalesOrderNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                DownloadOrder();
             }
         }
     }

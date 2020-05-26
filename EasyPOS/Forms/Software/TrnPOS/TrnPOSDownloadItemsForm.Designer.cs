@@ -119,6 +119,7 @@
             this.textBoxSalesOrderNumber.Name = "textBoxSalesOrderNumber";
             this.textBoxSalesOrderNumber.Size = new System.Drawing.Size(656, 34);
             this.textBoxSalesOrderNumber.TabIndex = 32;
+            this.textBoxSalesOrderNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSalesOrderNumber_KeyDown);
             // 
             // label13
             // 
