@@ -163,6 +163,28 @@ namespace EasyPOS.Controllers
                     lockItemGroup.IsLocked = true;
                     db.SubmitChanges();
 
+                    var itemGroupItems = from d in db.MstItemGroupItems
+                                         where d.ItemGroupId == id
+                                         select d;
+
+                    if (itemGroupItems.Any())
+                    {
+                        foreach (var itemGroupItem in itemGroupItems)
+                        {
+                            var item = from d in db.MstItems
+                                       where d.Id == itemGroupItem.ItemId
+                                       select d;
+
+                            if (item.Any())
+                            {
+                                var updateItemKitchenReport = item.FirstOrDefault();
+                                updateItemKitchenReport.DefaultKitchenReport = objItemGroup.KitchenReport;
+
+                                db.SubmitChanges();
+                            }
+                        }
+                    }
+
                     String newObject = Modules.SysAuditTrailModule.GetObjectString(itemGroup.FirstOrDefault());
 
                     Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
@@ -220,6 +242,28 @@ namespace EasyPOS.Controllers
                     unlockItemGroup.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
                     unlockItemGroup.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
+
+                    var itemGroupItems = from d in db.MstItemGroupItems
+                                         where d.ItemGroupId == id
+                                         select d;
+
+                    if (itemGroupItems.Any())
+                    {
+                        foreach (var itemGroupItem in itemGroupItems)
+                        {
+                            var item = from d in db.MstItems
+                                       where d.Id == itemGroupItem.ItemId
+                                       select d;
+
+                            if (item.Any())
+                            {
+                                var updateItemKitchenReport = item.FirstOrDefault();
+                                updateItemKitchenReport.DefaultKitchenReport = "";
+
+                                db.SubmitChanges();
+                            }
+                        }
+                    }
 
                     String newObject = Modules.SysAuditTrailModule.GetObjectString(itemGroup.FirstOrDefault());
 

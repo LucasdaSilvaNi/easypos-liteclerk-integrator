@@ -30,10 +30,11 @@ namespace EasyPOS.Controllers
         public List<Entities.SysKitchenItemEntity> ListKitchenItems(String kitchen)
         {
             var salesLines = from d in db.TrnSalesLines
-                             where d.MstItem.MstItemGroupItems.FirstOrDefault().MstItemGroup.KitchenReport == kitchen
+                             where d.MstItem.DefaultKitchenReport == kitchen
+                             group d by d.MstItem.ItemDescription into g
                              select new Entities.SysKitchenItemEntity
                              {
-                                 ItemDescription = d.MstItem.ItemDescription
+                                 ItemDescription = g.Key
                              };
 
             return salesLines.OrderBy(d => d.ItemDescription).ToList();

@@ -22,14 +22,13 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
         public BindingSource dataCollectedSalesListSource = new BindingSource();
 
         private List<Entities.SysKitchenEntity> listKitchens = new List<Entities.SysKitchenEntity>();
-        private ToolTip kitchenToolTip = new ToolTip();
         private const int kitchenNoOfButtons = 10;
         private int kitchenPages;
         private int kitchenPage = 1;
         private String selectedKitchen;
+        Button[] kitchenButtons;
 
         private List<Entities.SysKitchenItemEntity> listKitchenItems = new List<Entities.SysKitchenItemEntity>();
-        private ToolTip kitchenItemToolTip = new ToolTip();
         private const int kitchenItemNoOfButtons = 60;
         private int kitchenItemPages;
         private int kitchenItemPage = 1;
@@ -51,9 +50,23 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
 
             sysSoftwareForm = softwareForm;
 
-            Controllers.SysKitchenController sysKitchenController = new Controllers.SysKitchenController();
-            listKitchens = sysKitchenController.ListKitchen();
-            kitchenPages = listKitchens.Count();
+            kitchenButtons = new Button[] {
+                    buttonKitchen1,
+                    buttonKitchen2,
+                    buttonKitchen3,
+                    buttonKitchen4,
+                    buttonKitchen5,
+                    buttonKitchen6,
+                    buttonKitchen7,
+                    buttonKitchen8,
+                    buttonKitchen9,
+                    buttonKitchen10
+                };
+
+            for (int i = 0; i < kitchenNoOfButtons; i++)
+            {
+                kitchenButtons[i].Click += new EventHandler(buttonKitchen_Click);
+            }
 
             kitchenItemButtons = new Button[] {
                     buttonKitchenItem1,
@@ -123,6 +136,10 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
                 kitchenItemButtons[i].Click += new EventHandler(buttonKitchenItem_Click);
             }
 
+            Controllers.SysKitchenController sysKitchenController = new Controllers.SysKitchenController();
+            listKitchens = sysKitchenController.ListKitchen();
+            kitchenPages = listKitchens.Count();
+
             FillKitchen();
         }
 
@@ -130,24 +147,6 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
         {
             try
             {
-                Button[] kitchenButtons = new Button[] {
-                    buttonKitchen1,
-                    buttonKitchen2,
-                    buttonKitchen3,
-                    buttonKitchen4,
-                    buttonKitchen5,
-                    buttonKitchen6,
-                    buttonKitchen7,
-                    buttonKitchen8,
-                    buttonKitchen9,
-                    buttonKitchen10
-                };
-
-                for (int i = 0; i < kitchenNoOfButtons; i++)
-                {
-                    kitchenButtons[i].Click += new EventHandler(buttonKitchen_Click);
-                }
-
                 for (int i = 0; i < kitchenNoOfButtons; i++)
                 {
                     kitchenButtons[i].Text = "";
@@ -183,7 +182,6 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
 
                 for (int i = 0; i < kitchenItemNoOfButtons; i++)
                 {
-                    kitchenItemToolTip.SetToolTip(kitchenItemButtons[i], "");
                     kitchenItemButtons[i].Text = "";
                 }
 
@@ -211,7 +209,7 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
 
                 kitchenItemPage = 1;
 
-                if (kitchenToolTip.GetToolTip(buttonKitchen5) != "")
+                if (kitchen != "")
                 {
                     FillKitchenItem(kitchen);
                 }
@@ -227,7 +225,7 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
             try
             {
                 Button b = sender as Button;
-                String kitchenItemCode = kitchenItemToolTip.GetToolTip(b);
+                String kitchenItem = b.Text;
 
             }
             catch (Exception ex)
@@ -255,7 +253,7 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
 
         public void GetTerminalList()
         {
-            
+
         }
 
         private void buttonKitchenPagePrevious_Click(object sender, EventArgs e)
