@@ -221,6 +221,7 @@
     <Compile Include="Controllers\RepPOSReportController.cs" />
     <Compile Include="Controllers\RepSalesReportController.cs" />
     <Compile Include="Controllers\SysAuditTrailController.cs" />
+    <Compile Include="Controllers\SysKitchenController.cs" />
     <Compile Include="Controllers\SysLoginController.cs" />
     <Compile Include="Controllers\IntCloudSettingsController.cs" />
     <Compile Include="Controllers\SysCurrentController.cs" />
@@ -327,6 +328,7 @@
     <Compile Include="Entities\MstItemGroupItemEntity.cs" />
     <Compile Include="Entities\MstItemInventoryEntity.cs" />
     <Compile Include="Entities\MstItemPriceEntity.cs" />
+    <Compile Include="Entities\SysKitchenEntity.cs" />
     <Compile Include="Entities\MstPayTypeEntity.cs" />
     <Compile Include="Entities\MstPeriodEntity.cs" />
     <Compile Include="Entities\MstSupplierEntity.cs" />
@@ -355,6 +357,7 @@
     <Compile Include="Entities\SysConnectionStringEntity.cs" />
     <Compile Include="Entities\SysCurrentEntity.cs" />
     <Compile Include="Entities\SysFormEntity.cs" />
+    <Compile Include="Entities\SysKitchenItemEntity.cs" />
     <Compile Include="Entities\SysUserRightsEntity.cs" />
     <Compile Include="Entities\TrnCollectionEntity.cs" />
     <Compile Include="Entities\TrnCollectionLineEntity.cs" />

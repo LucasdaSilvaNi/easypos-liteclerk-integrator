@@ -332,7 +332,17 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // Remittance Number
             // =================
             String remittanceNumberLabel = "Remittance No.";
-            String remittanceNumberData = remittanceNumber;
+            String remittanceNumberData = "";
+
+            if (String.IsNullOrEmpty(remittanceNumber))
+            {
+                remittanceNumberData = ".";
+            }
+            else
+            {
+                remittanceNumberData = remittanceNumber;
+            }
+
             graphics.DrawString(remittanceNumberLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(remittanceNumberData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(remittanceNumberData, fontArial8Regular).Height;

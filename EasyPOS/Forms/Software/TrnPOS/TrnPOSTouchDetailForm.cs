@@ -88,6 +88,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 {
                     buttonBarcode.Enabled = false;
                     buttonSearchItem.Enabled = false;
+                    buttonDownload.Enabled = false;
                 }
                 else
                 {
@@ -95,11 +96,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     {
                         buttonBarcode.Enabled = false;
                         buttonSearchItem.Enabled = false;
+                        buttonDownload.Enabled = false;
                     }
                     else
                     {
                         buttonBarcode.Enabled = true;
                         buttonSearchItem.Enabled = true;
+                        buttonDownload.Enabled = true;
                     }
                 }
 
@@ -639,6 +642,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 buttonBarcode.Enabled = false;
                 buttonSearchItem.Enabled = false;
+                buttonDownload.Enabled = false;
                 textBoxBarcode.Enabled = false;
 
                 dataGridViewSalesLineList.Columns[0].Visible = false;
@@ -669,6 +673,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 buttonBarcode.Enabled = true;
                 buttonSearchItem.Enabled = true;
+                buttonDownload.Enabled = true;
                 textBoxBarcode.Enabled = true;
 
                 dataGridViewSalesLineList.Columns[0].Visible = true;

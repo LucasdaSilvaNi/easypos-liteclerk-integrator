@@ -21,19 +21,19 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
         public BindingSource dataBilledOutSalesListSource = new BindingSource();
         public BindingSource dataCollectedSalesListSource = new BindingSource();
 
-        private List<Entities.MstTableGroupEntity> listTableGroups = new List<Entities.MstTableGroupEntity>();
-        private ToolTip tableGroupToolTip = new ToolTip();
-        private const int tableGroupNoOfButtons = 6;
-        private int tableGroupPages;
-        private int tableGroupPage = 1;
-        private Int32 selectedTableGroupId;
+        private List<Entities.SysKitchenEntity> listKitchens = new List<Entities.SysKitchenEntity>();
+        private ToolTip kitchenToolTip = new ToolTip();
+        private const int kitchenNoOfButtons = 10;
+        private int kitchenPages;
+        private int kitchenPage = 1;
+        private String selectedKitchen;
 
-        private List<Entities.MstTableEntity> listTables = new List<Entities.MstTableEntity>();
-        private ToolTip tableToolTip = new ToolTip();
-        private const int tableNoOfButtons = 30;
-        private int tablePages;
-        private int tablePage = 1;
-        Button[] tableButtons;
+        private List<Entities.SysKitchenItemEntity> listKitchenItems = new List<Entities.SysKitchenItemEntity>();
+        private ToolTip kitchenItemToolTip = new ToolTip();
+        private const int kitchenItemNoOfButtons = 60;
+        private int kitchenItemPages;
+        private int kitchenItemPage = 1;
+        Button[] kitchenItemButtons;
 
         public SysKitchenDisplayForm(SysSoftwareForm softwareForm)
         {
@@ -51,82 +51,119 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
 
             sysSoftwareForm = softwareForm;
 
-            Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();
-            listTableGroups = trnSalesController.ListTableGroup();
-            tableGroupPages = listTableGroups.Count();
+            Controllers.SysKitchenController sysKitchenController = new Controllers.SysKitchenController();
+            listKitchens = sysKitchenController.ListKitchen();
+            kitchenPages = listKitchens.Count();
 
-            tableButtons = new Button[] {
-                    buttonTable1,
-                    buttonTable2,
-                    buttonTable3,
-                    buttonTable4,
-                    buttonTable5,
-                    buttonTable6,
-                    buttonTable7,
-                    buttonTable8,
-                    buttonTable9,
-                    buttonTable10,
-                    buttonTable11,
-                    buttonTable12,
-                    buttonTable13,
-                    buttonTable14,
-                    buttonTable15,
-                    buttonTable16,
-                    buttonTable17,
-                    buttonTable18,
-                    buttonTable19,
-                    buttonTable20,
-                    buttonTable21,
-                    buttonTable22,
-                    buttonTable23,
-                    buttonTable24,
-                    buttonTable25,
-                    buttonTable26,
-                    buttonTable27,
-                    buttonTable28,
-                    buttonTable29,
-                    buttonTable30
+            kitchenItemButtons = new Button[] {
+                    buttonKitchenItem1,
+                    buttonKitchenItem2,
+                    buttonKitchenItem3,
+                    buttonKitchenItem4,
+                    buttonKitchenItem5,
+                    buttonKitchenItem6,
+                    buttonKitchenItem7,
+                    buttonKitchenItem8,
+                    buttonKitchenItem9,
+                    buttonKitchenItem10,
+                    buttonKitchenItem11,
+                    buttonKitchenItem12,
+                    buttonKitchenItem13,
+                    buttonKitchenItem14,
+                    buttonKitchenItem15,
+                    buttonKitchenItem16,
+                    buttonKitchenItem17,
+                    buttonKitchenItem18,
+                    buttonKitchenItem19,
+                    buttonKitchenItem20,
+                    buttonKitchenItem21,
+                    buttonKitchenItem22,
+                    buttonKitchenItem23,
+                    buttonKitchenItem24,
+                    buttonKitchenItem25,
+                    buttonKitchenItem26,
+                    buttonKitchenItem27,
+                    buttonKitchenItem28,
+                    buttonKitchenItem29,
+                    buttonKitchenItem30,
+                    buttonKitchenItem31,
+                    buttonKitchenItem32,
+                    buttonKitchenItem33,
+                    buttonKitchenItem34,
+                    buttonKitchenItem35,
+                    buttonKitchenItem36,
+                    buttonKitchenItem37,
+                    buttonKitchenItem38,
+                    buttonKitchenItem39,
+                    buttonKitchenItem40,
+                    buttonKitchenItem41,
+                    buttonKitchenItem42,
+                    buttonKitchenItem43,
+                    buttonKitchenItem44,
+                    buttonKitchenItem45,
+                    buttonKitchenItem46,
+                    buttonKitchenItem47,
+                    buttonKitchenItem48,
+                    buttonKitchenItem49,
+                    buttonKitchenItem50,
+                    buttonKitchenItem51,
+                    buttonKitchenItem52,
+                    buttonKitchenItem53,
+                    buttonKitchenItem54,
+                    buttonKitchenItem55,
+                    buttonKitchenItem56,
+                    buttonKitchenItem57,
+                    buttonKitchenItem58,
+                    buttonKitchenItem59,
+                    buttonKitchenItem60
                 };
 
-            for (int i = 0; i < tableNoOfButtons; i++)
+            for (int i = 0; i < kitchenItemNoOfButtons; i++)
             {
-                tableButtons[i].Click += new EventHandler(buttonTable_Click);
+                kitchenItemButtons[i].Click += new EventHandler(buttonKitchenItem_Click);
             }
 
-            FillTableGroup();
+            FillKitchen();
         }
 
-        private void FillTableGroup()
+        private void FillKitchen()
         {
             try
             {
-                Button[] tableGroupButtons = new Button[] {
-                    buttonTableGroup1,
-                    buttonTableGroup2,
-                    buttonTableGroup3,
-                    buttonTableGroup4,
-                    buttonTableGroup5,
-                    buttonTableGroup6
+                Button[] kitchenButtons = new Button[] {
+                    buttonKitchen1,
+                    buttonKitchen2,
+                    buttonKitchen3,
+                    buttonKitchen4,
+                    buttonKitchen5,
+                    buttonKitchen6,
+                    buttonKitchen7,
+                    buttonKitchen8,
+                    buttonKitchen9,
+                    buttonKitchen10
                 };
 
-                //for (int i = 0; i < tableGroupNoOfButtons; i++)
-                //{
-                //    tableGroupToolTip.SetToolTip(tableGroupButtons[i], "");
-                //    tableGroupButtons[i].Text = "";
-                //}
+                for (int i = 0; i < kitchenNoOfButtons; i++)
+                {
+                    kitchenButtons[i].Click += new EventHandler(buttonKitchen_Click);
+                }
 
-                //var listTableGroupPage = listTableGroups.Skip((tableGroupPage - 1) * tableGroupNoOfButtons).Take(tableGroupNoOfButtons).ToList();
-                //if (listTableGroupPage.Any())
-                //{
-                //    for (int i = 0; i < listTableGroupPage.Count(); i++)
-                //    {
-                //        tableGroupToolTip.SetToolTip(tableGroupButtons[i], listTableGroupPage[i].Id.ToString());
-                //        tableGroupButtons[i].Text = listTableGroupPage[i].TableGroup;
-                //    }
-                //}
+                for (int i = 0; i < kitchenNoOfButtons; i++)
+                {
+                    kitchenButtons[i].Text = "";
+                }
 
-                //selectedTableGroupId = listTableGroupPage[0].Id;
-                FillTable(selectedTableGroupId);
+                var listKitchenPage = listKitchens.Skip((kitchenPage - 1) * kitchenNoOfButtons).Take(kitchenNoOfButtons).ToList();
+                if (listKitchenPage.Any())
+                {
+                    for (int i = 0; i < listKitchenPage.Count(); i++)
+                    {
+                        kitchenButtons[i].Text = listKitchenPage[i].Kitchen;
+                    }
+                }
+
+                selectedKitchen = listKitchenPage[0].Kitchen;
+                FillKitchenItem(selectedKitchen);
             }
             catch (Exception ex)
             {
@@ -134,30 +171,30 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
             }
         }
 
-        private void FillTable(Int32 tableGroupId)
+        private void FillKitchenItem(String kitchen)
         {
             try
             {
-                //Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();
 
-                //listTables = trnSalesController.ListTable(tableGroupId);
-                //tablePages = listTables.Count();
+                Controllers.SysKitchenController sysKitchenController = new Controllers.SysKitchenController();
 
-                //for (int i = 0; i < tableNoOfButtons; i++)
-                //{
-                //    tableToolTip.SetToolTip(tableButtons[i], "");
-                //    tableButtons[i].Text = "";
-                //}
+                listKitchenItems = sysKitchenController.ListKitchenItems(kitchen);
+                kitchenItemPages = listKitchenItems.Count();
 
-                //var listTablePage = listTables.Skip((tablePage - 1) * tableNoOfButtons).Take(tableNoOfButtons).ToList();
-                //if (listTablePage.Any())
-                //{
-                //    for (int i = 0; i < listTablePage.Count(); i++)
-                //    {
-                //        tableToolTip.SetToolTip(tableButtons[i], listTablePage[i].TableCode.ToString());
-                //        tableButtons[i].Text = listTablePage[i].TableCode;
-                //    }
-                //}
+                for (int i = 0; i < kitchenItemNoOfButtons; i++)
+                {
+                    kitchenItemToolTip.SetToolTip(kitchenItemButtons[i], "");
+                    kitchenItemButtons[i].Text = "";
+                }
+
+                var listKitchenItemPage = listKitchenItems.Skip((kitchenItemPage - 1) * kitchenItemNoOfButtons).Take(kitchenItemNoOfButtons).ToList();
+                if (listKitchenItemPage.Any())
+                {
+                    for (int i = 0; i < listKitchenItemPage.Count(); i++)
+                    {
+                        kitchenItemButtons[i].Text = listKitchenItemPage[i].ItemDescription;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -165,25 +202,33 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
             }
         }
 
-        private void buttonTable_Click(object sender, EventArgs e)
+        private void buttonKitchen_Click(object sender, EventArgs e)
         {
             try
             {
                 Button b = sender as Button;
-                String tableCode = tableToolTip.GetToolTip(b);
+                String kitchen = b.Text;
 
-                //Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-                //String[] addSales = trnPOSSalesController.AddSales(tableCode);
+                kitchenItemPage = 1;
 
-                //if (addSales[1].Equals("0") == false)
-                //{
-                //    sysSoftwareForm.AddTabPagePOSTouchSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(addSales[1])));
-                //    UpdateSalesListGridDataSource();
-                //}
-                //else
-                //{
-                //    MessageBox.Show(addSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
+                if (kitchenToolTip.GetToolTip(buttonKitchen5) != "")
+                {
+                    FillKitchenItem(kitchen);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonKitchenItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Button b = sender as Button;
+                String kitchenItemCode = kitchenItemToolTip.GetToolTip(b);
+
             }
             catch (Exception ex)
             {
@@ -213,142 +258,70 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
             
         }
 
-        private void buttonTableGroupPagePrevious_Click(object sender, EventArgs e)
+        private void buttonKitchenPagePrevious_Click(object sender, EventArgs e)
         {
-            tableGroupPage--;
-            if (tableGroupPage == 0)
+            kitchenPage--;
+            if (kitchenPage == 0)
             {
-                tableGroupPage = 1;
+                kitchenPage = 1;
             }
 
-            tablePage = 1;
+            kitchenItemPage = 1;
 
-            FillTableGroup();
+            FillKitchen();
         }
 
-        private void buttonTableGroupPageNext_Click(object sender, EventArgs e)
+        private void buttonKitchenPageNext_Click(object sender, EventArgs e)
         {
-            tableGroupPage++;
+            kitchenPage++;
 
-            Int32 modulosPage = tableGroupPages % tableGroupNoOfButtons;
-            Int32 maximumNoOfPages = (tableGroupPages - modulosPage) / tableGroupNoOfButtons;
+            Int32 modulosPage = kitchenPages % kitchenNoOfButtons;
+            Int32 maximumNoOfPages = (kitchenPages - modulosPage) / kitchenNoOfButtons;
 
             if (modulosPage > 0)
             {
                 maximumNoOfPages += 1;
             }
 
-            if (tableGroupPage > maximumNoOfPages)
+            if (kitchenPage > maximumNoOfPages)
             {
-                tableGroupPage = maximumNoOfPages;
+                kitchenPage = maximumNoOfPages;
             }
 
-            tablePage = 1;
+            kitchenItemPage = 1;
 
-            FillTableGroup();
+            FillKitchen();
         }
 
-        private void buttonTableGroup1_Click(object sender, EventArgs e)
+        private void buttonKitchenItemPrevious_Click(object sender, EventArgs e)
         {
-            tablePage = 1;
-
-            if (tableGroupToolTip.GetToolTip(buttonTableGroup1) != "")
+            kitchenItemPage--;
+            if (kitchenItemPage == 0)
             {
-                Int32 tableGroupId = Convert.ToInt32(tableGroupToolTip.GetToolTip(buttonTableGroup1));
-                selectedTableGroupId = tableGroupId;
-                FillTable(tableGroupId);
-            }
-        }
-
-        private void buttonTableGroup2_Click(object sender, EventArgs e)
-        {
-            tablePage = 1;
-
-            if (tableGroupToolTip.GetToolTip(buttonTableGroup2) != "")
-            {
-                Int32 tableGroupId = Convert.ToInt32(tableGroupToolTip.GetToolTip(buttonTableGroup2));
-                selectedTableGroupId = tableGroupId;
-                FillTable(tableGroupId);
-            }
-        }
-
-        private void buttonTableGroup3_Click(object sender, EventArgs e)
-        {
-            tablePage = 1;
-
-            if (tableGroupToolTip.GetToolTip(buttonTableGroup3) != "")
-            {
-                Int32 tableGroupId = Convert.ToInt32(tableGroupToolTip.GetToolTip(buttonTableGroup3));
-                selectedTableGroupId = tableGroupId;
-                FillTable(tableGroupId);
-            }
-        }
-
-        private void buttonTableGroup4_Click(object sender, EventArgs e)
-        {
-            tablePage = 1;
-
-            if (tableGroupToolTip.GetToolTip(buttonTableGroup4) != "")
-            {
-                Int32 tableGroupId = Convert.ToInt32(tableGroupToolTip.GetToolTip(buttonTableGroup4));
-                selectedTableGroupId = tableGroupId;
-                FillTable(tableGroupId);
-            }
-        }
-
-        private void buttonTableGroup5_Click(object sender, EventArgs e)
-        {
-            tablePage = 1;
-
-            if (tableGroupToolTip.GetToolTip(buttonTableGroup5) != "")
-            {
-                Int32 tableGroupId = Convert.ToInt32(tableGroupToolTip.GetToolTip(buttonTableGroup5));
-                selectedTableGroupId = tableGroupId;
-                FillTable(tableGroupId);
-            }
-        }
-
-        private void buttonTableGroup6_Click(object sender, EventArgs e)
-        {
-            tablePage = 1;
-
-            if (tableGroupToolTip.GetToolTip(buttonTableGroup5) != "")
-            {
-                Int32 tableGroupId = Convert.ToInt32(tableGroupToolTip.GetToolTip(buttonTableGroup5));
-                selectedTableGroupId = tableGroupId;
-                FillTable(tableGroupId);
-            }
-        }
-
-        private void buttonTablePrevious_Click(object sender, EventArgs e)
-        {
-            tablePage--;
-            if (tablePage == 0)
-            {
-                tablePage = 1;
+                kitchenItemPage = 1;
             }
 
-            FillTable(selectedTableGroupId);
+            FillKitchenItem(selectedKitchen);
         }
 
-        private void buttonTableNext_Click(object sender, EventArgs e)
+        private void buttonKitchenItemNext_Click(object sender, EventArgs e)
         {
-            tablePage++;
+            kitchenItemPage++;
 
-            Int32 modulosPage = tablePages % tableNoOfButtons;
-            Int32 maximumNoOfPages = (tablePages - modulosPage) / tableNoOfButtons;
+            Int32 modulosPage = kitchenItemPages % kitchenItemNoOfButtons;
+            Int32 maximumNoOfPages = (kitchenItemPages - modulosPage) / kitchenItemNoOfButtons;
 
             if (modulosPage > 0)
             {
                 maximumNoOfPages += 1;
             }
 
-            if (tablePage > maximumNoOfPages)
+            if (kitchenItemPage > maximumNoOfPages)
             {
-                tablePage = maximumNoOfPages;
+                kitchenItemPage = maximumNoOfPages;
             }
 
-            FillTable(selectedTableGroupId);
+            FillKitchenItem(selectedKitchen);
         }
     }
 }
