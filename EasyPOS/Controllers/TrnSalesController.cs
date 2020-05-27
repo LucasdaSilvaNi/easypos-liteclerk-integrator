@@ -227,7 +227,7 @@ namespace EasyPOS.Controllers
         // =========
         // Add Sales 
         // =========
-        public String[] AddSales(String tableCode)
+        public String[] AddSales(String tableCode, Int32 customerId)
         {
             try
             {
@@ -258,10 +258,10 @@ namespace EasyPOS.Controllers
                     tableId = table.FirstOrDefault().Id;
                 }
 
-                var walkinCustomer = from d in db.MstCustomers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().WalkinCustomerId) select d;
-                if (walkinCustomer.Any() == false)
+                var customer = from d in db.MstCustomers where d.Id == customerId select d;
+                if (customer.Any() == false)
                 {
-                    return new String[] { "Walk-In customer not found.", "0" };
+                    return new String[] { "Customer not found.", "0" };
                 }
 
                 var terminal = from d in db.MstTerminals where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId) select d;
@@ -312,9 +312,9 @@ namespace EasyPOS.Controllers
                     CollectionNumber = null,
                     Amount = 0,
                     TableId = tableId,
-                    CustomerId = walkinCustomer.FirstOrDefault().Id,
-                    AccountId = walkinCustomer.FirstOrDefault().AccountId,
-                    TermId = walkinCustomer.FirstOrDefault().TermId,
+                    CustomerId = customer.FirstOrDefault().Id,
+                    AccountId = customer.FirstOrDefault().AccountId,
+                    TermId = customer.FirstOrDefault().TermId,
                     DiscountId = null,
                     SeniorCitizenId = "",
                     SeniorCitizenName = "",
@@ -682,7 +682,10 @@ namespace EasyPOS.Controllers
                                 Id = d.Id,
                                 Customer = d.Customer,
                                 TermId = d.TermId,
-                                CustomerCode = d.CustomerCode
+                                CustomerCode = d.CustomerCode,
+                                ContactNumber = d.ContactNumber,
+                                ContactPerson = d.ContactPerson,
+                                Address = d.Address
                             };
 
             return customers.OrderBy(d => d.Customer).ToList();

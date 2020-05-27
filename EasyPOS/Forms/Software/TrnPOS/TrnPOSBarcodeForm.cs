@@ -98,8 +98,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         public void newSales()
         {
+            Int32 customerId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().WalkinCustomerId);
+
             Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-            String[] addSales = trnPOSSalesController.AddSales("");
+            String[] addSales = trnPOSSalesController.AddSales("", customerId);
             if (addSales[1].Equals("0") == false)
             {
                 sysSoftwareForm.AddTabPagePOSSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(addSales[1])));

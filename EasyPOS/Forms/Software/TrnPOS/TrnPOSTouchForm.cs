@@ -185,13 +185,19 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonTable_Click(object sender, EventArgs e)
         {
+            Button b = sender as Button;
+            String tableCode = tableToolTip.GetToolTip(b);
+
+            Int32 customerId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().WalkinCustomerId);
+            NewSales(tableCode, customerId);
+        }
+
+        public void NewSales(String tableCode, Int32 customerId)
+        {
             try
             {
-                Button b = sender as Button;
-                String tableCode = tableToolTip.GetToolTip(b);
-
                 Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-                String[] addSales = trnPOSSalesController.AddSales(tableCode);
+                String[] addSales = trnPOSSalesController.AddSales(tableCode, customerId);
 
                 if (addSales[1].Equals("0") == false)
                 {
@@ -221,8 +227,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         public void NewWalkInSales()
         {
+            Int32 customerId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().WalkinCustomerId);
+
             Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-            String[] addSales = trnPOSSalesController.AddSales("Walk-in");
+            String[] addSales = trnPOSSalesController.AddSales("Walk-in", customerId);
             if (addSales[1].Equals("0") == false)
             {
                 sysSoftwareForm.AddTabPagePOSTouchSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(addSales[1])));
@@ -430,7 +438,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonDelivery_Click(object sender, EventArgs e)
         {
-
+            TrnPOSDeliveryCustomerInformation trnPOSDeliveryCustomerInformation = new TrnPOSDeliveryCustomerInformation(this);
+            trnPOSDeliveryCustomerInformation.ShowDialog();
         }
 
         private void buttonTableGroupPagePrevious_Click(object sender, EventArgs e)
