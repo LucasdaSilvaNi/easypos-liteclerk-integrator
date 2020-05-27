@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MstItemGroupDetailForm));
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -49,7 +49,6 @@
             this.buttonItemGroupItemListPageListLast = new System.Windows.Forms.Button();
             this.textBoxItemGroupItemListPageNumber = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.textBoxKitchenReport = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxItemGroupImagePath = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -61,6 +60,7 @@
             this.buttonUnlock = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.comboBoxItemGroupKitchens = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -129,14 +129,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewItemGroupItemList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewItemGroupItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewItemGroupItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewItemGroupItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewItemGroupItemList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnItemGroupItemListButtonEdit,
@@ -149,8 +149,8 @@
             this.dataGridViewItemGroupItemList.MultiSelect = false;
             this.dataGridViewItemGroupItemList.Name = "dataGridViewItemGroupItemList";
             this.dataGridViewItemGroupItemList.ReadOnly = true;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.dataGridViewItemGroupItemList.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.dataGridViewItemGroupItemList.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewItemGroupItemList.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.dataGridViewItemGroupItemList.RowTemplate.Height = 24;
             this.dataGridViewItemGroupItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -302,7 +302,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel7.Controls.Add(this.textBoxKitchenReport);
+            this.panel7.Controls.Add(this.comboBoxItemGroupKitchens);
             this.panel7.Controls.Add(this.label3);
             this.panel7.Controls.Add(this.textBoxItemGroupImagePath);
             this.panel7.Controls.Add(this.label4);
@@ -314,14 +314,6 @@
             this.panel7.Padding = new System.Windows.Forms.Padding(10);
             this.panel7.Size = new System.Drawing.Size(1400, 119);
             this.panel7.TabIndex = 0;
-            // 
-            // textBoxKitchenReport
-            // 
-            this.textBoxKitchenReport.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxKitchenReport.Location = new System.Drawing.Point(146, 78);
-            this.textBoxKitchenReport.Name = "textBoxKitchenReport";
-            this.textBoxKitchenReport.Size = new System.Drawing.Size(196, 30);
-            this.textBoxKitchenReport.TabIndex = 10;
             // 
             // label3
             // 
@@ -460,6 +452,14 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // comboBoxItemGroupKitchens
+            // 
+            this.comboBoxItemGroupKitchens.FormattingEnabled = true;
+            this.comboBoxItemGroupKitchens.Location = new System.Drawing.Point(146, 78);
+            this.comboBoxItemGroupKitchens.Name = "comboBoxItemGroupKitchens";
+            this.comboBoxItemGroupKitchens.Size = new System.Drawing.Size(277, 31);
+            this.comboBoxItemGroupKitchens.TabIndex = 10;
+            // 
             // MstItemGroupDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -509,7 +509,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxItemGroup;
         private System.Windows.Forms.TextBox textBoxItemGroupImagePath;
-        private System.Windows.Forms.TextBox textBoxKitchenReport;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.DataGridView dataGridViewItemGroupItemList;
@@ -520,5 +519,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemGroupItemListItemDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemGroupItemListItemGroupId;
         private System.Windows.Forms.Button buttonSearchItem;
+        private System.Windows.Forms.ComboBox comboBoxItemGroupKitchens;
     }
 }

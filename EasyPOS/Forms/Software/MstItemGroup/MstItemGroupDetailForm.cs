@@ -25,6 +25,8 @@ namespace EasyPOS.Forms.Software.MstItemGroup
         public PagedList<Entities.DgvMstItemGroupItemListEntity> itemGroupItemPageList = new PagedList<Entities.DgvMstItemGroupItemListEntity>(itemGroupItemData, itemGroupItemPageNumber, itemGroupItemPageSize);
         public BindingSource itemGroupItemDataSource = new BindingSource();
 
+        public List<String> kitchens;
+
         public MstItemGroupDetailForm(SysSoftwareForm softwareForm, MstItemGroupListForm itemListForm, Entities.MstItemGroupEntity itemEntity)
         {
             InitializeComponent();
@@ -55,6 +57,14 @@ namespace EasyPOS.Forms.Software.MstItemGroup
                     dataGridViewItemGroupItemList.Columns[1].Visible = false;
                 }
 
+                kitchens = new List<String>();
+                for (Int32 i = 1; i <= 10; i++)
+                {
+                    kitchens.Add("Kitchen " + i);
+                }
+
+                comboBoxItemGroupKitchens.DataSource = kitchens;
+
                 GetItemGroupDetail();
                 textBoxItemGroup.Focus();
             }
@@ -64,7 +74,7 @@ namespace EasyPOS.Forms.Software.MstItemGroup
         {
             textBoxItemGroup.Text = mstItemGroupEntity.ItemGroup;
             textBoxItemGroupImagePath.Text = mstItemGroupEntity.ImagePath;
-            textBoxKitchenReport.Text = mstItemGroupEntity.KitchenReport;
+            comboBoxItemGroupKitchens.Text = mstItemGroupEntity.KitchenReport;
             UpdateComponents(mstItemGroupEntity.IsLocked);
 
             CreateItemGroupItemListDataGridView();
@@ -119,31 +129,38 @@ namespace EasyPOS.Forms.Software.MstItemGroup
 
             textBoxItemGroup.Enabled = !isLocked;
             textBoxItemGroupImagePath.Enabled = !isLocked;
-            textBoxKitchenReport.Enabled = !isLocked;
+            comboBoxItemGroupKitchens.Enabled = !isLocked;
             textBoxItemGroup.Focus();
         }
 
         private void buttonLock_Click(object sender, EventArgs e)
         {
-            Controllers.MstItemGroupController mstItemGroupController = new Controllers.MstItemGroupController();
-
-            Entities.MstItemGroupEntity newItemGroupEntity = new Entities.MstItemGroupEntity()
+            if (kitchens.Contains(comboBoxItemGroupKitchens.Text) == false)
             {
-                ItemGroup = textBoxItemGroup.Text,
-                ImagePath = textBoxItemGroupImagePath.Text,
-                KitchenReport = textBoxKitchenReport.Text
-            };
-
-            String[] lockItemGroup = mstItemGroupController.LockItemGroup(mstItemGroupEntity.Id, newItemGroupEntity);
-            if (lockItemGroup[1].Equals("0") == false)
-            {
-                UpdateComponents(true);
-                mstItemGroupListForm.UpdateItemGroupListDataSource();
+                MessageBox.Show("Invalid kitchen report!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                UpdateComponents(false);
-                MessageBox.Show(lockItemGroup[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Controllers.MstItemGroupController mstItemGroupController = new Controllers.MstItemGroupController();
+
+                Entities.MstItemGroupEntity newItemGroupEntity = new Entities.MstItemGroupEntity()
+                {
+                    ItemGroup = textBoxItemGroup.Text,
+                    ImagePath = textBoxItemGroupImagePath.Text,
+                    KitchenReport = comboBoxItemGroupKitchens.Text
+                };
+
+                String[] lockItemGroup = mstItemGroupController.LockItemGroup(mstItemGroupEntity.Id, newItemGroupEntity);
+                if (lockItemGroup[1].Equals("0") == false)
+                {
+                    UpdateComponents(true);
+                    mstItemGroupListForm.UpdateItemGroupListDataSource();
+                }
+                else
+                {
+                    UpdateComponents(false);
+                    MessageBox.Show(lockItemGroup[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

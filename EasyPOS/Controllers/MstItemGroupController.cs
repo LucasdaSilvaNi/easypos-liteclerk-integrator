@@ -96,7 +96,7 @@ namespace EasyPOS.Controllers
                 {
                     ItemGroup = "",
                     ImagePath = "",
-                    KitchenReport = "",
+                    KitchenReport = "Kitchen 1",
                     EntryUserId = currentUserLogin.FirstOrDefault().Id,
                     EntryDateTime = DateTime.Now,
                     UpdateUserId = currentUserLogin.FirstOrDefault().Id,
