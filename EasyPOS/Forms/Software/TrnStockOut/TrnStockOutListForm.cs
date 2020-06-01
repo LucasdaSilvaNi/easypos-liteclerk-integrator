@@ -220,7 +220,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
 
             if (e.RowIndex > -1 && dataGridViewStockOutList.CurrentCell.ColumnIndex == dataGridViewStockOutList.Columns["ColumnStockOutListButtonDelete"].Index)
             {
-                Boolean isLocked = Convert.ToBoolean(dataGridViewStockOutList.Rows[e.RowIndex].Cells[6].Value);
+                Boolean isLocked = Convert.ToBoolean(dataGridViewStockOutList.Rows[e.RowIndex].Cells[7].Value);
 
                 if (isLocked == true)
                 {
