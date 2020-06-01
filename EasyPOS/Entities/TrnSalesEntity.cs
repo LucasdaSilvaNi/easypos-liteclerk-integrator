@@ -18,6 +18,7 @@ namespace EasyPOS.Entities
         public Decimal Amount { get; set; }
         public Int32? TableId { get; set; }
         public Int32 CustomerId { get; set; }
+        public String CustomerCode { get; set; }
         public String Customer { get; set; }
         public Int32 AccountId { get; set; }
         public Int32 TermId { get; set; }

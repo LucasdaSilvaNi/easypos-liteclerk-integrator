@@ -69,7 +69,7 @@
             this.panel3.Controls.Add(this.textBoxStockOutListPageNumber);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 468);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1096, 42);
             this.panel3.TabIndex = 21;
@@ -82,7 +82,7 @@
             this.buttonStockOutListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockOutListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonStockOutListPageListFirst.Location = new System.Drawing.Point(10, 9);
-            this.buttonStockOutListPageListFirst.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonStockOutListPageListFirst.Margin = new System.Windows.Forms.Padding(2);
             this.buttonStockOutListPageListFirst.Name = "buttonStockOutListPageListFirst";
             this.buttonStockOutListPageListFirst.Size = new System.Drawing.Size(66, 26);
             this.buttonStockOutListPageListFirst.TabIndex = 13;
@@ -98,7 +98,7 @@
             this.buttonStockOutListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockOutListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonStockOutListPageListPrevious.Location = new System.Drawing.Point(80, 9);
-            this.buttonStockOutListPageListPrevious.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonStockOutListPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.buttonStockOutListPageListPrevious.Name = "buttonStockOutListPageListPrevious";
             this.buttonStockOutListPageListPrevious.Size = new System.Drawing.Size(66, 26);
             this.buttonStockOutListPageListPrevious.TabIndex = 14;
@@ -113,7 +113,7 @@
             this.buttonStockOutListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockOutListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonStockOutListPageListNext.Location = new System.Drawing.Point(210, 9);
-            this.buttonStockOutListPageListNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonStockOutListPageListNext.Margin = new System.Windows.Forms.Padding(2);
             this.buttonStockOutListPageListNext.Name = "buttonStockOutListPageListNext";
             this.buttonStockOutListPageListNext.Size = new System.Drawing.Size(66, 26);
             this.buttonStockOutListPageListNext.TabIndex = 15;
@@ -128,7 +128,7 @@
             this.buttonStockOutListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockOutListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonStockOutListPageListLast.Location = new System.Drawing.Point(278, 9);
-            this.buttonStockOutListPageListLast.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonStockOutListPageListLast.Margin = new System.Windows.Forms.Padding(2);
             this.buttonStockOutListPageListLast.Name = "buttonStockOutListPageListLast";
             this.buttonStockOutListPageListLast.Size = new System.Drawing.Size(66, 26);
             this.buttonStockOutListPageListLast.TabIndex = 16;
@@ -143,7 +143,7 @@
             this.textBoxStockOutListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxStockOutListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.textBoxStockOutListPageNumber.Location = new System.Drawing.Point(150, 13);
-            this.textBoxStockOutListPageNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxStockOutListPageNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxStockOutListPageNumber.Name = "textBoxStockOutListPageNumber";
             this.textBoxStockOutListPageNumber.ReadOnly = true;
             this.textBoxStockOutListPageNumber.Size = new System.Drawing.Size(55, 16);
@@ -158,7 +158,7 @@
             this.panel2.Controls.Add(this.textBoxStockOutListFilter);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 50);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1096, 510);
             this.panel2.TabIndex = 9;
@@ -167,7 +167,7 @@
             // 
             this.dateTimePickerStockOutListFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerStockOutListFilter.Location = new System.Drawing.Point(10, 5);
-            this.dateTimePickerStockOutListFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerStockOutListFilter.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerStockOutListFilter.Name = "dateTimePickerStockOutListFilter";
             this.dateTimePickerStockOutListFilter.Size = new System.Drawing.Size(114, 26);
             this.dateTimePickerStockOutListFilter.TabIndex = 22;
@@ -193,7 +193,7 @@
             this.ColumnStockOutListRemarks,
             this.ColumnStockOutListIsLocked});
             this.dataGridViewStockOutList.Location = new System.Drawing.Point(10, 34);
-            this.dataGridViewStockOutList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewStockOutList.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewStockOutList.MultiSelect = false;
             this.dataGridViewStockOutList.Name = "dataGridViewStockOutList";
             this.dataGridViewStockOutList.ReadOnly = true;
@@ -208,7 +208,7 @@
             this.textBoxStockOutListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxStockOutListFilter.Location = new System.Drawing.Point(127, 5);
-            this.textBoxStockOutListFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxStockOutListFilter.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxStockOutListFilter.Name = "textBoxStockOutListFilter";
             this.textBoxStockOutListFilter.Size = new System.Drawing.Size(960, 26);
             this.textBoxStockOutListFilter.TabIndex = 19;
@@ -223,7 +223,7 @@
             this.panel1.Controls.Add(this.buttonAdd);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1096, 50);
             this.panel1.TabIndex = 8;
@@ -232,7 +232,7 @@
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Stock_Out;
             this.pictureBox1.Location = new System.Drawing.Point(10, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(38, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -260,7 +260,7 @@
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
             this.buttonClose.Location = new System.Drawing.Point(1016, 10);
-            this.buttonClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(70, 32);
             this.buttonClose.TabIndex = 1;
@@ -278,7 +278,7 @@
             this.buttonAdd.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAdd.ForeColor = System.Drawing.Color.White;
             this.buttonAdd.Location = new System.Drawing.Point(941, 10);
-            this.buttonAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(70, 32);
             this.buttonAdd.TabIndex = 0;
@@ -318,6 +318,7 @@
             this.ColumnStockOutListStockOutDate.HeaderText = "Stock-Out Date";
             this.ColumnStockOutListStockOutDate.Name = "ColumnStockOutListStockOutDate";
             this.ColumnStockOutListStockOutDate.ReadOnly = true;
+            this.ColumnStockOutListStockOutDate.Visible = false;
             this.ColumnStockOutListStockOutDate.Width = 95;
             // 
             // ColumnStockOutListStockOutNumber

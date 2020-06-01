@@ -1,4 +1,5 @@
-﻿using OpenCvSharp.CPlusPlus;
+﻿using EasyPOS.Data;
+using OpenCvSharp.CPlusPlus;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,8 +19,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
     {
         public SysSoftwareForm sysSoftwareForm;
 
-        public TrnPOSBarcodeForm trnSalesListForm;
-        public TrnPOSBarcodeDetailForm trnSalesDetailForm;
+        public TrnPOSBarcodeForm trnPOSBarcodeForm;
+        public TrnPOSBarcodeDetailForm trnPOSBarcodeDetailForm;
 
         public TrnPOSTouchForm trnPOSTouchForm;
         public TrnPOSTouchDetailForm trnPOSTouchDetailForm;
@@ -27,14 +28,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public Entities.TrnSalesEntity trnSalesEntity;
         public String collectionNumber = "";
 
-        public TrnPOSTenderForm(SysSoftwareForm softwareForm, TrnPOSBarcodeForm salesListForm, TrnPOSBarcodeDetailForm salesDetailForm, TrnPOSTouchForm POSTouchForm, TrnPOSTouchDetailForm POSTouchDetailForm, Entities.TrnSalesEntity salesEntity)
+        public TrnPOSTenderForm(SysSoftwareForm softwareForm, TrnPOSBarcodeForm POSBarcodeForm, TrnPOSBarcodeDetailForm POSBarcodeDetailForm, TrnPOSTouchForm POSTouchForm, TrnPOSTouchDetailForm POSTouchDetailForm, Entities.TrnSalesEntity salesEntity)
         {
             InitializeComponent();
 
             sysSoftwareForm = softwareForm;
 
-            trnSalesListForm = salesListForm;
-            trnSalesDetailForm = salesDetailForm;
+            trnPOSBarcodeForm = POSBarcodeForm;
+            trnPOSBarcodeDetailForm = POSBarcodeDetailForm;
 
             trnPOSTouchForm = POSTouchForm;
             trnPOSTouchDetailForm = POSTouchDetailForm;
@@ -49,7 +50,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
             textBoxTotalSalesAmount.Text = trnSalesEntity.Amount.ToString("#,##0.00");
             labelInvoiceNumber.Text = trnSalesEntity.SalesNumber;
             labelInvoiceDate.Text = trnSalesEntity.SalesDate;
+            labelCustomerCode.Text = trnSalesEntity.CustomerCode;
             labelCustomer.Text = trnSalesEntity.Customer;
+            labelRemarks.Text = trnSalesEntity.Remarks;
 
             GetPayTypeList();
         }
@@ -223,21 +226,21 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         Close();
                     }
 
-                    if (trnSalesDetailForm != null)
+                    if (trnPOSBarcodeDetailForm != null)
                     {
-                        trnSalesDetailForm.Close();
+                        trnPOSBarcodeDetailForm.Close();
                         sysSoftwareForm.RemoveTabPage();
 
-                        if (trnSalesListForm != null)
+                        if (trnPOSBarcodeForm != null)
                         {
-                            trnSalesDetailForm.trnSalesListForm.newSales();
+                            trnPOSBarcodeDetailForm.trnSalesListForm.newSales();
                         }
                     }
                     else
                     {
-                        if (trnSalesListForm != null)
+                        if (trnPOSBarcodeForm != null)
                         {
-                            trnSalesListForm.UpdateSalesListGridDataSource();
+                            trnPOSBarcodeForm.UpdateSalesListGridDataSource();
                         }
                     }
 
@@ -406,7 +409,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonSales_Click(object sender, EventArgs e)
         {
-            TrnPOSTenderSalesForm trnSalesDetailTenderSalesForm = new TrnPOSTenderSalesForm(trnSalesDetailForm, this, trnSalesEntity);
+            TrnPOSTenderSalesForm trnSalesDetailTenderSalesForm = new TrnPOSTenderSalesForm(trnPOSBarcodeForm, trnPOSBarcodeDetailForm, trnPOSTouchForm, trnPOSTouchDetailForm, this, trnSalesEntity);
             trnSalesDetailTenderSalesForm.ShowDialog();
         }
 

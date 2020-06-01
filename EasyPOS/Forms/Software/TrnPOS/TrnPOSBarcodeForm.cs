@@ -239,6 +239,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                   ColumnSalesDate = d.SalesDate,
                                   ColumnSalesNumber = d.SalesNumber,
                                   ColumnRececiptInvoiceNumber = d.CollectionNumber,
+                                  ColumnCustomerCode = d.CustomerCode,
                                   ColumnCustomer = d.Customer,
                                   ColumnSalesAgent = d.SalesAgentUserName,
                                   ColumnAmount = d.Amount.ToString("#,##0.00"),
@@ -516,10 +517,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             Entities.TrnSalesEntity newSalesEntity = new Entities.TrnSalesEntity
                             {
                                 Id = Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value),
-                                Amount = Convert.ToDecimal(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[9].Value),
+                                Amount = Convert.ToDecimal(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[10].Value),
                                 SalesNumber = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[5].Value.ToString(),
                                 SalesDate = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[4].Value.ToString(),
-                                Customer = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[7].Value.ToString()
+                                CustomerCode = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[7].Value.ToString(),
+                                Customer = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[8].Value.ToString(),
+                                Remarks = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[16].Value.ToString(),
                             };
 
                             String line1 = Modules.SysCurrentModule.GetCurrentSettings().CustomerDisplayFirstLineMessage;

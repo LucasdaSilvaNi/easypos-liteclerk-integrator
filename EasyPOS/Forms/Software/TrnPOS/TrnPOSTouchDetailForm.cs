@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyPOS.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -342,7 +343,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
             textBoxTotalSalesAmount.Text = trnSalesEntity.Amount.ToString("#,##0.00");
             labelInvoiceNumber.Text = trnSalesEntity.SalesNumber;
             labelInvoiceDate.Text = trnSalesEntity.SalesDate;
+            labelCustomerCode.Text = trnSalesEntity.CustomerCode;
             labelCustomer.Text = trnSalesEntity.Customer;
+            labelRemarks.Text = trnSalesEntity.Remarks;
         }
 
         private void buttonSearchItem_Click(object sender, EventArgs e)
@@ -368,7 +371,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     SalesNumber = trnSalesEntity.SalesNumber,
                     SalesDate = trnSalesEntity.SalesDate,
                     CustomerId = trnSalesEntity.CustomerId,
-                    Customer = trnSalesEntity.Customer
+                    CustomerCode = trnSalesEntity.CustomerCode,
+                    Customer = trnSalesEntity.Customer,
+                    Remarks = trnSalesEntity.Remarks
                 };
 
                 TrnPOSTenderForm trnSalesDetailTenderForm = new TrnPOSTenderForm(sysSoftwareForm, null, null, trnPOSTouchForm, this, newSalesEntity);

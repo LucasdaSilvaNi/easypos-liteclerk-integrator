@@ -85,6 +85,7 @@
             this.ColumnSalesDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnRececiptInvoiceNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCustomerCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -115,7 +116,7 @@
             this.panel1.Controls.Add(this.buttonSales);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1096, 50);
             this.panel1.TabIndex = 3;
@@ -130,7 +131,7 @@
             this.buttonTender.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTender.ForeColor = System.Drawing.Color.White;
             this.buttonTender.Location = new System.Drawing.Point(715, 10);
-            this.buttonTender.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonTender.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTender.Name = "buttonTender";
             this.buttonTender.Size = new System.Drawing.Size(70, 32);
             this.buttonTender.TabIndex = 6;
@@ -148,7 +149,7 @@
             this.buttonReprint.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonReprint.ForeColor = System.Drawing.Color.White;
             this.buttonReprint.Location = new System.Drawing.Point(790, 10);
-            this.buttonReprint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonReprint.Margin = new System.Windows.Forms.Padding(2);
             this.buttonReprint.Name = "buttonReprint";
             this.buttonReprint.Size = new System.Drawing.Size(70, 32);
             this.buttonReprint.TabIndex = 5;
@@ -166,7 +167,7 @@
             this.buttonCancel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancel.ForeColor = System.Drawing.Color.White;
             this.buttonCancel.Location = new System.Drawing.Point(866, 10);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(70, 32);
             this.buttonCancel.TabIndex = 4;
@@ -178,7 +179,7 @@
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.POS;
             this.pictureBox1.Location = new System.Drawing.Point(10, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(38, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -206,7 +207,7 @@
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
             this.buttonClose.Location = new System.Drawing.Point(1016, 10);
-            this.buttonClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(70, 32);
             this.buttonClose.TabIndex = 1;
@@ -224,7 +225,7 @@
             this.buttonSales.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSales.ForeColor = System.Drawing.Color.White;
             this.buttonSales.Location = new System.Drawing.Point(941, 10);
-            this.buttonSales.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSales.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSales.Name = "buttonSales";
             this.buttonSales.Size = new System.Drawing.Size(70, 32);
             this.buttonSales.TabIndex = 0;
@@ -250,6 +251,7 @@
             this.ColumnSalesDate,
             this.ColumnSalesNumber,
             this.ColumnRececiptInvoiceNumber,
+            this.ColumnCustomerCode,
             this.ColumnCustomer,
             this.ColumnSalesAgent,
             this.ColumnAmount,
@@ -260,7 +262,7 @@
             this.ColumnSpace,
             this.ColumnTable});
             this.dataGridViewSalesList.Location = new System.Drawing.Point(10, 34);
-            this.dataGridViewSalesList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewSalesList.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewSalesList.MultiSelect = false;
             this.dataGridViewSalesList.Name = "dataGridViewSalesList";
             this.dataGridViewSalesList.ReadOnly = true;
@@ -289,7 +291,7 @@
             this.panel2.Controls.Add(this.labelTerminal);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Location = new System.Drawing.Point(715, 5);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(371, 118);
             this.panel2.TabIndex = 5;
@@ -451,7 +453,7 @@
             this.dataGridViewSalesLineItemDisplay.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewSalesLineItemDisplay.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dataGridViewSalesLineItemDisplay.Location = new System.Drawing.Point(715, 128);
-            this.dataGridViewSalesLineItemDisplay.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewSalesLineItemDisplay.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewSalesLineItemDisplay.Name = "dataGridViewSalesLineItemDisplay";
             this.dataGridViewSalesLineItemDisplay.ReadOnly = true;
             this.dataGridViewSalesLineItemDisplay.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -497,7 +499,7 @@
             // 
             this.dateTimePickerSalesDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerSalesDate.Location = new System.Drawing.Point(10, 5);
-            this.dateTimePickerSalesDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerSalesDate.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerSalesDate.Name = "dateTimePickerSalesDate";
             this.dateTimePickerSalesDate.Size = new System.Drawing.Size(121, 26);
             this.dateTimePickerSalesDate.TabIndex = 6;
@@ -508,7 +510,7 @@
             this.textBoxSalesListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSalesListFilter.Location = new System.Drawing.Point(278, 5);
-            this.textBoxSalesListFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxSalesListFilter.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesListFilter.Name = "textBoxSalesListFilter";
             this.textBoxSalesListFilter.Size = new System.Drawing.Size(428, 26);
             this.textBoxSalesListFilter.TabIndex = 7;
@@ -519,7 +521,7 @@
             this.comboBoxTerminal.Font = new System.Drawing.Font("Segoe UI", 9.8F);
             this.comboBoxTerminal.FormattingEnabled = true;
             this.comboBoxTerminal.Location = new System.Drawing.Point(134, 5);
-            this.comboBoxTerminal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxTerminal.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxTerminal.Name = "comboBoxTerminal";
             this.comboBoxTerminal.Size = new System.Drawing.Size(140, 25);
             this.comboBoxTerminal.TabIndex = 0;
@@ -538,7 +540,7 @@
             this.buttonSalesListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonSalesListPageListFirst.Location = new System.Drawing.Point(10, 9);
-            this.buttonSalesListPageListFirst.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSalesListPageListFirst.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSalesListPageListFirst.Name = "buttonSalesListPageListFirst";
             this.buttonSalesListPageListFirst.Size = new System.Drawing.Size(66, 26);
             this.buttonSalesListPageListFirst.TabIndex = 8;
@@ -554,7 +556,7 @@
             this.buttonSalesListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonSalesListPageListPrevious.Location = new System.Drawing.Point(80, 9);
-            this.buttonSalesListPageListPrevious.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSalesListPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSalesListPageListPrevious.Name = "buttonSalesListPageListPrevious";
             this.buttonSalesListPageListPrevious.Size = new System.Drawing.Size(66, 26);
             this.buttonSalesListPageListPrevious.TabIndex = 9;
@@ -569,7 +571,7 @@
             this.buttonSalesListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonSalesListPageListNext.Location = new System.Drawing.Point(210, 9);
-            this.buttonSalesListPageListNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSalesListPageListNext.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSalesListPageListNext.Name = "buttonSalesListPageListNext";
             this.buttonSalesListPageListNext.Size = new System.Drawing.Size(66, 26);
             this.buttonSalesListPageListNext.TabIndex = 10;
@@ -584,7 +586,7 @@
             this.buttonSalesListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonSalesListPageListLast.Location = new System.Drawing.Point(278, 9);
-            this.buttonSalesListPageListLast.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSalesListPageListLast.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSalesListPageListLast.Name = "buttonSalesListPageListLast";
             this.buttonSalesListPageListLast.Size = new System.Drawing.Size(66, 26);
             this.buttonSalesListPageListLast.TabIndex = 11;
@@ -599,7 +601,7 @@
             this.textBoxPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.textBoxPageNumber.Location = new System.Drawing.Point(150, 13);
-            this.textBoxPageNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxPageNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxPageNumber.Name = "textBoxPageNumber";
             this.textBoxPageNumber.ReadOnly = true;
             this.textBoxPageNumber.Size = new System.Drawing.Size(55, 16);
@@ -615,7 +617,7 @@
             this.buttonAutoRefresh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.buttonAutoRefresh.ForeColor = System.Drawing.Color.White;
             this.buttonAutoRefresh.Location = new System.Drawing.Point(648, 9);
-            this.buttonAutoRefresh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonAutoRefresh.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAutoRefresh.Name = "buttonAutoRefresh";
             this.buttonAutoRefresh.Size = new System.Drawing.Size(58, 26);
             this.buttonAutoRefresh.TabIndex = 13;
@@ -636,7 +638,7 @@
             this.panel3.Controls.Add(this.dateTimePickerSalesDate);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 50);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1096, 510);
             this.panel3.TabIndex = 14;
@@ -654,7 +656,7 @@
             this.panel4.Controls.Add(this.textBoxPageNumber);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 468);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1096, 42);
             this.panel4.TabIndex = 19;
@@ -667,7 +669,7 @@
             this.textBoxLastChange.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.textBoxLastChange.ForeColor = System.Drawing.Color.Black;
             this.textBoxLastChange.Location = new System.Drawing.Point(815, 6);
-            this.textBoxLastChange.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxLastChange.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxLastChange.Name = "textBoxLastChange";
             this.textBoxLastChange.ReadOnly = true;
             this.textBoxLastChange.Size = new System.Drawing.Size(271, 27);
@@ -723,6 +725,7 @@
             this.ColumnTerminal.HeaderText = "Terminal";
             this.ColumnTerminal.Name = "ColumnTerminal";
             this.ColumnTerminal.ReadOnly = true;
+            this.ColumnTerminal.Visible = false;
             this.ColumnTerminal.Width = 70;
             // 
             // ColumnSalesDate
@@ -733,6 +736,7 @@
             this.ColumnSalesDate.HeaderText = "Order Date";
             this.ColumnSalesDate.Name = "ColumnSalesDate";
             this.ColumnSalesDate.ReadOnly = true;
+            this.ColumnSalesDate.Visible = false;
             this.ColumnSalesDate.Width = 95;
             // 
             // ColumnSalesNumber
@@ -748,6 +752,13 @@
             this.ColumnRececiptInvoiceNumber.HeaderText = "Receipt / Invoice No.";
             this.ColumnRececiptInvoiceNumber.Name = "ColumnRececiptInvoiceNumber";
             this.ColumnRececiptInvoiceNumber.ReadOnly = true;
+            // 
+            // ColumnCustomerCode
+            // 
+            this.ColumnCustomerCode.DataPropertyName = "ColumnCustomerCode";
+            this.ColumnCustomerCode.HeaderText = "Customer Code";
+            this.ColumnCustomerCode.Name = "ColumnCustomerCode";
+            this.ColumnCustomerCode.ReadOnly = true;
             // 
             // ColumnCustomer
             // 
@@ -906,6 +917,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRececiptInvoiceNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCustomerCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCustomer;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesAgent;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAmount;

@@ -12,17 +12,28 @@ namespace EasyPOS.Forms.Software.TrnPOS
 {
     public partial class TrnPOSTenderSalesForm : Form
     {
-        public TrnPOSBarcodeDetailForm trnSalesDetailForm;
+        public TrnPOSBarcodeForm trnPOSBarcodeForm;
+        public TrnPOSBarcodeDetailForm trnPOSBarcodeDetailForm;
+
+        public TrnPOSTouchForm trnPOSTouchForm;
+        public TrnPOSTouchDetailForm trnPOSTouchDetailForm;
+
         public TrnPOSTenderForm trnSalesDetailTenderForm;
         public Entities.TrnSalesEntity trnSalesEntity;
 
+        public String customerCode = "";
         public String customerName = "";
 
-        public TrnPOSTenderSalesForm(TrnPOSBarcodeDetailForm salesDetailForm, TrnPOSTenderForm salesDetailTenderForm, Entities.TrnSalesEntity salesEntity)
+        public TrnPOSTenderSalesForm(TrnPOSBarcodeForm POSBarcodeForm, TrnPOSBarcodeDetailForm POSBarcodeDetailForm, TrnPOSTouchForm POSTouchForm, TrnPOSTouchDetailForm POSTouchDetailForm, TrnPOSTenderForm salesDetailTenderForm, Entities.TrnSalesEntity salesEntity)
         {
             InitializeComponent();
 
-            trnSalesDetailForm = salesDetailForm;
+            trnPOSBarcodeForm = POSBarcodeForm;
+            trnPOSBarcodeDetailForm = POSBarcodeDetailForm;
+
+            trnPOSTouchForm = POSTouchForm;
+            trnPOSTouchDetailForm = POSTouchDetailForm;
+
             trnSalesDetailTenderForm = salesDetailTenderForm;
             trnSalesEntity = salesEntity;
 
@@ -86,6 +97,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             var selectedItemCustomer = (Entities.MstCustomerEntity)comboBoxTenderSalesCustomer.SelectedItem;
             if (selectedItemCustomer != null)
             {
+                customerCode = selectedItemCustomer.CustomerCode;
                 customerName = selectedItemCustomer.Customer;
                 textBoxTenderSalesRewardAvailable.Text = selectedItemCustomer.AvailableReward.ToString("#,##0.00");
                 comboBoxTenderSalesTerms.SelectedValue = selectedItemCustomer.TermId;
@@ -106,18 +118,39 @@ namespace EasyPOS.Forms.Software.TrnPOS
             String[] updateSales = trnPOSSalesController.TenderUpdateSales(trnSalesEntity.Id, newSalesEntity);
             if (updateSales[1].Equals("0") == false)
             {
-                if (trnSalesDetailForm != null)
-                {
-                    trnSalesDetailTenderForm.trnSalesEntity.Customer = customerName;
-                    trnSalesDetailTenderForm.GetSalesDetail();
+                trnSalesDetailTenderForm.trnSalesEntity.CustomerCode = customerCode;
+                trnSalesDetailTenderForm.trnSalesEntity.Customer = customerName;
+                trnSalesDetailTenderForm.trnSalesEntity.Remarks = newSalesEntity.Remarks;
+                trnSalesDetailTenderForm.GetSalesDetail();
 
-                    trnSalesDetailForm.trnSalesEntity.Customer = customerName;
-                    trnSalesDetailForm.GetSalesDetail();
+                if (trnPOSBarcodeDetailForm != null)
+                {
+                    trnPOSBarcodeDetailForm.trnSalesEntity.CustomerCode = customerCode;
+                    trnPOSBarcodeDetailForm.trnSalesEntity.Customer = customerName;
+                    trnPOSBarcodeDetailForm.trnSalesEntity.Remarks = newSalesEntity.Remarks;
+                    trnPOSBarcodeDetailForm.GetSalesDetail();
                 }
                 else
                 {
-                    trnSalesDetailTenderForm.trnSalesEntity.Customer = customerName;
-                    trnSalesDetailTenderForm.GetSalesDetail();
+                    if (trnPOSBarcodeForm != null)
+                    {
+                        trnPOSBarcodeForm.UpdateSalesListGridDataSource();
+                    }
+                }
+
+                if (trnPOSTouchDetailForm != null)
+                {
+                    trnPOSTouchDetailForm.trnSalesEntity.CustomerCode = customerCode;
+                    trnPOSTouchDetailForm.trnSalesEntity.Customer = customerName;
+                    trnPOSTouchDetailForm.trnSalesEntity.Remarks = newSalesEntity.Remarks;
+                    trnPOSTouchDetailForm.GetSalesDetail();
+                }
+                else
+                {
+                    if (trnPOSTouchForm != null)
+                    {
+                        trnPOSTouchForm.UpdateSalesListGridDataSource();
+                    }
                 }
 
                 Close();

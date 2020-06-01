@@ -371,6 +371,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                   ColumnSalesDate = d.SalesDate,
                                   ColumnSalesNumber = d.SalesNumber,
                                   ColumnRececiptInvoiceNumber = d.CollectionNumber,
+                                  ColumnCustomerCode = d.CustomerCode,
                                   ColumnCustomer = d.Customer,
                                   ColumnSalesAgent = d.SalesAgentUserName,
                                   ColumnTable = d.Table,
@@ -378,7 +379,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                   ColumnIsLocked = d.IsLocked,
                                   ColumnIsTendered = d.IsTendered,
                                   ColumnIsCancelled = d.IsCancelled,
-                                  ColumnSpace = ""
+                                  ColumnSpace = "",
+                                  ColumnRemarks = d.Remarks
                               };
 
                     rowList = row.ToList();

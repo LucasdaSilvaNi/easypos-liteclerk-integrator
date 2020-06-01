@@ -113,6 +113,7 @@ namespace EasyPOS.Controllers
                         where d.SalesDate == dateTime
                         && d.TerminalId == terminalId
                         && (d.SalesNumber.Contains(filter)
+                        || d.MstCustomer.CustomerCode.Contains(filter)
                         || d.MstCustomer.Customer.Contains(filter)
                         || d.MstUser5.UserName.Contains(filter)
                         || d.Remarks.Contains(filter))
@@ -128,6 +129,7 @@ namespace EasyPOS.Controllers
                             Amount = d.Amount,
                             TableId = d.TableId,
                             CustomerId = d.CustomerId,
+                            CustomerCode = d.MstCustomer.CustomerCode,
                             Customer = d.MstCustomer.Customer,
                             AccountId = d.AccountId,
                             TermId = d.TermId,
@@ -186,6 +188,7 @@ namespace EasyPOS.Controllers
                             Amount = d.Amount,
                             TableId = d.TableId,
                             CustomerId = d.CustomerId,
+                            CustomerCode = d.MstCustomer.CustomerCode,
                             Customer = d.MstCustomer.Customer,
                             AccountId = d.AccountId,
                             TermId = d.TermId,

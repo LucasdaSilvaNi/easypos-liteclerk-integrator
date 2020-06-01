@@ -38,6 +38,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dateTimePickerStockCountListFilter = new System.Windows.Forms.DateTimePicker();
             this.dataGridViewStockCountList = new System.Windows.Forms.DataGridView();
+            this.textBoxStockCountListFilter = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonClose = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
             this.ColumnStockCountListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnStockCountListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnStockCountListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,12 +51,6 @@
             this.ColumnStockCountListStockCountNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockCountListRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockCountListIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.textBoxStockCountListFilter = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonClose = new System.Windows.Forms.Button();
-            this.buttonAdd = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStockCountList)).BeginInit();
@@ -67,9 +67,10 @@
             this.panel3.Controls.Add(this.buttonStockCountListPageListLast);
             this.panel3.Controls.Add(this.textBoxStockCountListPageNumber);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 584);
+            this.panel3.Location = new System.Drawing.Point(0, 468);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1400, 53);
+            this.panel3.Size = new System.Drawing.Size(1096, 42);
             this.panel3.TabIndex = 21;
             // 
             // buttonStockCountListPageListFirst
@@ -79,9 +80,10 @@
             this.buttonStockCountListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonStockCountListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockCountListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockCountListPageListFirst.Location = new System.Drawing.Point(12, 11);
+            this.buttonStockCountListPageListFirst.Location = new System.Drawing.Point(10, 9);
+            this.buttonStockCountListPageListFirst.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonStockCountListPageListFirst.Name = "buttonStockCountListPageListFirst";
-            this.buttonStockCountListPageListFirst.Size = new System.Drawing.Size(82, 32);
+            this.buttonStockCountListPageListFirst.Size = new System.Drawing.Size(66, 26);
             this.buttonStockCountListPageListFirst.TabIndex = 13;
             this.buttonStockCountListPageListFirst.TabStop = false;
             this.buttonStockCountListPageListFirst.Text = "First";
@@ -95,9 +97,10 @@
             this.buttonStockCountListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonStockCountListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockCountListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockCountListPageListPrevious.Location = new System.Drawing.Point(100, 11);
+            this.buttonStockCountListPageListPrevious.Location = new System.Drawing.Point(80, 9);
+            this.buttonStockCountListPageListPrevious.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonStockCountListPageListPrevious.Name = "buttonStockCountListPageListPrevious";
-            this.buttonStockCountListPageListPrevious.Size = new System.Drawing.Size(82, 32);
+            this.buttonStockCountListPageListPrevious.Size = new System.Drawing.Size(66, 26);
             this.buttonStockCountListPageListPrevious.TabIndex = 14;
             this.buttonStockCountListPageListPrevious.TabStop = false;
             this.buttonStockCountListPageListPrevious.Text = "Previous";
@@ -110,9 +113,10 @@
             this.buttonStockCountListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonStockCountListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockCountListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockCountListPageListNext.Location = new System.Drawing.Point(263, 11);
+            this.buttonStockCountListPageListNext.Location = new System.Drawing.Point(210, 9);
+            this.buttonStockCountListPageListNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonStockCountListPageListNext.Name = "buttonStockCountListPageListNext";
-            this.buttonStockCountListPageListNext.Size = new System.Drawing.Size(82, 32);
+            this.buttonStockCountListPageListNext.Size = new System.Drawing.Size(66, 26);
             this.buttonStockCountListPageListNext.TabIndex = 15;
             this.buttonStockCountListPageListNext.TabStop = false;
             this.buttonStockCountListPageListNext.Text = "Next";
@@ -125,9 +129,10 @@
             this.buttonStockCountListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonStockCountListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockCountListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonStockCountListPageListLast.Location = new System.Drawing.Point(348, 11);
+            this.buttonStockCountListPageListLast.Location = new System.Drawing.Point(278, 9);
+            this.buttonStockCountListPageListLast.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonStockCountListPageListLast.Name = "buttonStockCountListPageListLast";
-            this.buttonStockCountListPageListLast.Size = new System.Drawing.Size(82, 32);
+            this.buttonStockCountListPageListLast.Size = new System.Drawing.Size(66, 26);
             this.buttonStockCountListPageListLast.TabIndex = 16;
             this.buttonStockCountListPageListLast.TabStop = false;
             this.buttonStockCountListPageListLast.Text = "Last";
@@ -140,10 +145,11 @@
             this.textBoxStockCountListPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxStockCountListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxStockCountListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxStockCountListPageNumber.Location = new System.Drawing.Point(188, 16);
+            this.textBoxStockCountListPageNumber.Location = new System.Drawing.Point(150, 13);
+            this.textBoxStockCountListPageNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxStockCountListPageNumber.Name = "textBoxStockCountListPageNumber";
             this.textBoxStockCountListPageNumber.ReadOnly = true;
-            this.textBoxStockCountListPageNumber.Size = new System.Drawing.Size(69, 20);
+            this.textBoxStockCountListPageNumber.Size = new System.Drawing.Size(55, 16);
             this.textBoxStockCountListPageNumber.TabIndex = 17;
             this.textBoxStockCountListPageNumber.TabStop = false;
             this.textBoxStockCountListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -155,17 +161,19 @@
             this.panel2.Controls.Add(this.dataGridViewStockCountList);
             this.panel2.Controls.Add(this.textBoxStockCountListFilter);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 63);
+            this.panel2.Location = new System.Drawing.Point(0, 50);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1400, 637);
+            this.panel2.Size = new System.Drawing.Size(1096, 510);
             this.panel2.TabIndex = 9;
             // 
             // dateTimePickerStockCountListFilter
             // 
             this.dateTimePickerStockCountListFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerStockCountListFilter.Location = new System.Drawing.Point(12, 6);
+            this.dateTimePickerStockCountListFilter.Location = new System.Drawing.Point(10, 5);
+            this.dateTimePickerStockCountListFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePickerStockCountListFilter.Name = "dateTimePickerStockCountListFilter";
-            this.dateTimePickerStockCountListFilter.Size = new System.Drawing.Size(141, 30);
+            this.dateTimePickerStockCountListFilter.Size = new System.Drawing.Size(114, 26);
             this.dateTimePickerStockCountListFilter.TabIndex = 0;
             this.dateTimePickerStockCountListFilter.TabStop = false;
             this.dateTimePickerStockCountListFilter.ValueChanged += new System.EventHandler(this.dateTimePickerStockCountListFilter_ValueChanged);
@@ -188,15 +196,102 @@
             this.ColumnStockCountListStockCountNumber,
             this.ColumnStockCountListRemarks,
             this.ColumnStockCountListIsLocked});
-            this.dataGridViewStockCountList.Location = new System.Drawing.Point(12, 42);
+            this.dataGridViewStockCountList.Location = new System.Drawing.Point(10, 34);
+            this.dataGridViewStockCountList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridViewStockCountList.MultiSelect = false;
             this.dataGridViewStockCountList.Name = "dataGridViewStockCountList";
             this.dataGridViewStockCountList.ReadOnly = true;
             this.dataGridViewStockCountList.RowTemplate.Height = 24;
             this.dataGridViewStockCountList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewStockCountList.Size = new System.Drawing.Size(1376, 536);
+            this.dataGridViewStockCountList.Size = new System.Drawing.Size(1077, 429);
             this.dataGridViewStockCountList.TabIndex = 20;
             this.dataGridViewStockCountList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStockCountList_CellClick);
+            // 
+            // textBoxStockCountListFilter
+            // 
+            this.textBoxStockCountListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxStockCountListFilter.Location = new System.Drawing.Point(127, 5);
+            this.textBoxStockCountListFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxStockCountListFilter.Name = "textBoxStockCountListFilter";
+            this.textBoxStockCountListFilter.Size = new System.Drawing.Size(960, 26);
+            this.textBoxStockCountListFilter.TabIndex = 1;
+            this.textBoxStockCountListFilter.TabStop = false;
+            this.textBoxStockCountListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxStockCountListFilter_KeyDown);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.buttonClose);
+            this.panel1.Controls.Add(this.buttonAdd);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1096, 50);
+            this.panel1.TabIndex = 8;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Stock_Count;
+            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(50, 14);
+            this.label1.Margin = new System.Windows.Forms.Padding(0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(166, 28);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Stock-Count List";
+            // 
+            // buttonClose
+            // 
+            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(79)))), ((int)(((byte)(28)))));
+            this.buttonClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(79)))), ((int)(((byte)(28)))));
+            this.buttonClose.FlatAppearance.BorderSize = 0;
+            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonClose.ForeColor = System.Drawing.Color.White;
+            this.buttonClose.Location = new System.Drawing.Point(1016, 10);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(70, 32);
+            this.buttonClose.TabIndex = 21;
+            this.buttonClose.TabStop = false;
+            this.buttonClose.Text = "Close";
+            this.buttonClose.UseVisualStyleBackColor = false;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonAdd.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonAdd.FlatAppearance.BorderSize = 0;
+            this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAdd.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAdd.ForeColor = System.Drawing.Color.White;
+            this.buttonAdd.Location = new System.Drawing.Point(941, 10);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(70, 32);
+            this.buttonAdd.TabIndex = 20;
+            this.buttonAdd.TabStop = false;
+            this.buttonAdd.Text = "Add";
+            this.buttonAdd.UseVisualStyleBackColor = false;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // ColumnStockCountListButtonEdit
             // 
@@ -230,6 +325,7 @@
             this.ColumnStockCountListStockCountDate.HeaderText = "Stock-Count Date";
             this.ColumnStockCountListStockCountDate.Name = "ColumnStockCountListStockCountDate";
             this.ColumnStockCountListStockCountDate.ReadOnly = true;
+            this.ColumnStockCountListStockCountDate.Visible = false;
             this.ColumnStockCountListStockCountDate.Width = 95;
             // 
             // ColumnStockCountListStockCountNumber
@@ -255,98 +351,17 @@
             this.ColumnStockCountListIsLocked.ReadOnly = true;
             this.ColumnStockCountListIsLocked.Width = 35;
             // 
-            // textBoxStockCountListFilter
-            // 
-            this.textBoxStockCountListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxStockCountListFilter.Location = new System.Drawing.Point(159, 6);
-            this.textBoxStockCountListFilter.Name = "textBoxStockCountListFilter";
-            this.textBoxStockCountListFilter.Size = new System.Drawing.Size(1229, 30);
-            this.textBoxStockCountListFilter.TabIndex = 1;
-            this.textBoxStockCountListFilter.TabStop = false;
-            this.textBoxStockCountListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxStockCountListFilter_KeyDown);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.buttonClose);
-            this.panel1.Controls.Add(this.buttonAdd);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1400, 63);
-            this.panel1.TabIndex = 8;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Stock_Count;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(63, 17);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(207, 35);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Stock-Count List";
-            // 
-            // buttonClose
-            // 
-            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(79)))), ((int)(((byte)(28)))));
-            this.buttonClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(79)))), ((int)(((byte)(28)))));
-            this.buttonClose.FlatAppearance.BorderSize = 0;
-            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(1300, 12);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(88, 40);
-            this.buttonClose.TabIndex = 21;
-            this.buttonClose.TabStop = false;
-            this.buttonClose.Text = "Close";
-            this.buttonClose.UseVisualStyleBackColor = false;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
-            // 
-            // buttonAdd
-            // 
-            this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonAdd.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonAdd.FlatAppearance.BorderSize = 0;
-            this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAdd.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdd.ForeColor = System.Drawing.Color.White;
-            this.buttonAdd.Location = new System.Drawing.Point(1206, 12);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(88, 40);
-            this.buttonAdd.TabIndex = 20;
-            this.buttonAdd.TabStop = false;
-            this.buttonAdd.Text = "Add";
-            this.buttonAdd.UseVisualStyleBackColor = false;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
-            // 
             // TrnStockCountListForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1400, 700);
+            this.ClientSize = new System.Drawing.Size(1096, 560);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "TrnStockCountListForm";
             this.Text = "TrnStockOutList";
             this.panel3.ResumeLayout(false);
