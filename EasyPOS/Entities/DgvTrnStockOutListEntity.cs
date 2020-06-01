@@ -13,6 +13,7 @@ namespace EasyPOS.Entities
         public Int32 ColumnStockOutListId { get; set; }
         public String ColumnStockOutListStockOutDate { get; set; }
         public String ColumnStockOutListStockOutNumber { get; set; }
+        public String ColumnStockOutListManualStockOutNumber { get; set; }
         public String ColumnStockOutListRemarks { get; set; }
         public Boolean ColumnStockOutListIsLocked { get; set; }
     }

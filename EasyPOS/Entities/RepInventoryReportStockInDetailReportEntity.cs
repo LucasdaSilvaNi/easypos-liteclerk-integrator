@@ -11,6 +11,7 @@ namespace EasyPOS.Entities
         public Int32 Id { get; set; }
         public String StockInDate { get; set; }
         public String StockInNumber { get; set; }
+        public String ManualStockInNumber { get; set; }
         public String Remarks { get; set; }
         public Boolean IsReturn { get; set; }
         public String Item { get; set; }

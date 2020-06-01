@@ -138,6 +138,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                                 ColumnStockInListId = d.Id,
                                 ColumnStockInListStockInDate = d.StockInDate,
                                 ColumnStockInListStockInNumber = d.StockInNumber,
+                                ColumnStockInListManualStockInNumber = d.ManualStockInNumber,
                                 ColumnStockInListSupplier = d.Supplier,
                                 ColumnStockInListRemarks = d.Remarks,
                                 ColumnStockInListIsLocked = d.IsLocked

@@ -50,6 +50,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                           {
                               ColumnStockOutDate = d.StockOutDate,
                               ColumnStockOutNumber = d.StockOutNumber,
+                              ColumnManualStockOutNumber = d.ManualStockOutNumber,
                               ColumnRemarks = d.Remarks,
                               ColumnItem = d.Item,
                               ColumnUnit = d.Item,
@@ -204,7 +205,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 if (dialogResult == DialogResult.OK)
                 {
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "StockOutDate", "StockOutNumber", "Remarks", "Item", "Unit", "Quantity", "Cost", "Amount"};
+                    String[] header = { "StockOutDate", "StockOutNumber", "ManualStockOutNumber", "Remarks", "Item", "Unit", "Quantity", "Cost", "Amount"};
                     csv.AppendLine(String.Join(",", header));
 
                     if (stockOutDetailReportList.Any())
@@ -213,6 +214,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         {
                             String[] data = {stockOutDetail.ColumnStockOutDate,
                               stockOutDetail.ColumnStockOutNumber,
+                              stockOutDetail.ColumnManualStockOutNumber,
                               stockOutDetail.ColumnRemarks,
                               stockOutDetail.ColumnItem.Replace("," , " "),
                               stockOutDetail.ColumnUnit,

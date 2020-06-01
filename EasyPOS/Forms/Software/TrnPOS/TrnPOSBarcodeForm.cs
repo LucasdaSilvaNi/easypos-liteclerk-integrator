@@ -245,6 +245,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                   ColumnIsLocked = d.IsLocked,
                                   ColumnIsTendered = d.IsTendered,
                                   ColumnIsCancelled = d.IsCancelled,
+                                  ColumnRemarks = d.Remarks,
                                   ColumnSpace = "",
                                   ColumnTable = d.Table
                               };

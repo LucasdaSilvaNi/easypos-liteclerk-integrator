@@ -83,6 +83,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
         {
             UpdateComponents(trnStockOutEntity.IsLocked);
 
+            textBoxManualStockOutNumber.Text = trnStockOutEntity.ManualStockOutNumber;
             textBoxStockOutNumber.Text = trnStockOutEntity.StockOutNumber;
             dateTimePickerStockOutDate.Value = Convert.ToDateTime(trnStockOutEntity.StockOutDate);
             comboBoxAccount.SelectedValue = trnStockOutEntity.AccountId;
@@ -137,6 +138,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                 textBoxBarcode.Enabled = !isLocked;
             }
 
+            textBoxManualStockOutNumber.Enabled = !isLocked;
             dateTimePickerStockOutDate.Enabled = !isLocked;
             comboBoxAccount.Enabled = !isLocked;
             textBoxRemarks.Enabled = !isLocked;
@@ -154,6 +156,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
 
             Entities.TrnStockOutEntity newStockOutEntity = new Entities.TrnStockOutEntity()
             {
+                ManualStockOutNumber = textBoxManualStockOutNumber.Text,
                 StockOutDate = dateTimePickerStockOutDate.Value.Date.ToShortDateString(),
                 AccountId = Convert.ToInt32(comboBoxAccount.SelectedValue),
                 Remarks = textBoxRemarks.Text,

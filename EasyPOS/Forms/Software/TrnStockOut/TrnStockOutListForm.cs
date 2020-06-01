@@ -138,6 +138,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                                 ColumnStockOutListId = d.Id,
                                 ColumnStockOutListStockOutDate = d.StockOutDate,
                                 ColumnStockOutListStockOutNumber = d.StockOutNumber,
+                                ColumnStockOutListManualStockOutNumber = d.ManualStockOutNumber,
                                 ColumnStockOutListRemarks = d.Remarks,
                                 ColumnStockOutListIsLocked = d.IsLocked
                             };

@@ -36,13 +36,15 @@ namespace EasyPOS.Controllers
         {
             var stockOuts = from d in db.TrnStockOuts
                             where d.StockOutDate == dateFilter
-                            && d.StockOutNumber.Contains(filter)
+                            && (d.StockOutNumber.Contains(filter)
+                            || d.ManualStockOutNumber.Contains(filter))
                             select new Entities.TrnStockOutEntity
                             {
                                 Id = d.Id,
                                 PeriodId = d.PeriodId,
                                 StockOutDate = d.StockOutDate.ToShortDateString(),
                                 StockOutNumber = d.StockOutNumber,
+                                ManualStockOutNumber = d.ManualStockOutNumber,
                                 AccountId = d.AccountId,
                                 Account = d.MstAccount.Account,
                                 Remarks = d.Remarks,
@@ -72,6 +74,7 @@ namespace EasyPOS.Controllers
                                PeriodId = d.PeriodId,
                                StockOutDate = d.StockOutDate.ToShortDateString(),
                                StockOutNumber = d.StockOutNumber,
+                               ManualStockOutNumber = d.ManualStockOutNumber,
                                AccountId = d.AccountId,
                                Account = d.MstAccount.Account,
                                Remarks = d.Remarks,
@@ -162,6 +165,7 @@ namespace EasyPOS.Controllers
                     PeriodId = period.FirstOrDefault().Id,
                     StockOutDate = currentDate,
                     StockOutNumber = stockOutNumber,
+                    ManualStockOutNumber = null,
                     AccountId = account.FirstOrDefault().Id,
                     Remarks = "",
                     PreparedBy = currentUserLogin.FirstOrDefault().Id,
@@ -292,6 +296,7 @@ namespace EasyPOS.Controllers
                     String oldObject = Modules.SysAuditTrailModule.GetObjectString(stockOut.FirstOrDefault());
 
                     var lockStockOut = stockOut.FirstOrDefault();
+                    lockStockOut.ManualStockOutNumber = objStockOut.ManualStockOutNumber;
                     lockStockOut.AccountId = objStockOut.AccountId;
                     lockStockOut.Remarks = objStockOut.Remarks;
                     lockStockOut.CheckedBy = objStockOut.CheckedBy;

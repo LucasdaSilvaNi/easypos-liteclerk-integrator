@@ -10,6 +10,7 @@ namespace EasyPOS.Entities
     {
         public String ColumnStockOutDate { get; set; }
         public String ColumnStockOutNumber { get; set; }
+        public String ColumnManualStockOutNumber { get; set; }
         public String ColumnRemarks { get; set; }
         public String ColumnItem { get; set; }
         public String ColumnUnit { get; set; }

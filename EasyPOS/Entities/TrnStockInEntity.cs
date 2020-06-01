@@ -12,6 +12,7 @@ namespace EasyPOS.Entities
         public Int32 PeriodId { get; set; }
         public String StockInDate { get; set; }
         public String StockInNumber { get; set; }
+        public String ManualStockInNumber { get; set; }
         public Int32 SupplierId { get; set; }
         public String Supplier { get; set; }
         public String Remarks { get; set; }

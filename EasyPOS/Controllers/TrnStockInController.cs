@@ -36,13 +36,15 @@ namespace EasyPOS.Controllers
         {
             var stockIns = from d in db.TrnStockIns
                            where d.StockInDate == dateFilter
-                           && d.StockInNumber.Contains(filter)
+                           && (d.StockInNumber.Contains(filter)
+                           || d.ManualStockInNumber.Contains(filter))
                            select new Entities.TrnStockInEntity
                            {
                                Id = d.Id,
                                PeriodId = d.PeriodId,
                                StockInDate = d.StockInDate.ToShortDateString(),
                                StockInNumber = d.StockInNumber,
+                               ManualStockInNumber = d.ManualStockInNumber,
                                SupplierId = d.SupplierId,
                                Supplier = d.MstSupplier.Supplier,
                                Remarks = d.Remarks,
@@ -79,6 +81,7 @@ namespace EasyPOS.Controllers
                               PeriodId = d.PeriodId,
                               StockInDate = d.StockInDate.ToShortDateString(),
                               StockInNumber = d.StockInNumber,
+                              ManualStockInNumber = d.ManualStockInNumber,
                               SupplierId = d.SupplierId,
                               Supplier = d.MstSupplier.Supplier,
                               Remarks = d.Remarks,
@@ -176,6 +179,7 @@ namespace EasyPOS.Controllers
                     PeriodId = period.FirstOrDefault().Id,
                     StockInDate = currentDate,
                     StockInNumber = stockInNumber,
+                    ManualStockInNumber = null,
                     SupplierId = supplier.FirstOrDefault().Id,
                     Remarks = "",
                     IsReturn = false,
@@ -274,6 +278,7 @@ namespace EasyPOS.Controllers
                     String oldObject = Modules.SysAuditTrailModule.GetObjectString(stockIn.FirstOrDefault());
 
                     var lockStockIn = stockIn.FirstOrDefault();
+                    lockStockIn.ManualStockInNumber = objStockIn.ManualStockInNumber;
                     lockStockIn.StockInDate = Convert.ToDateTime(objStockIn.StockInDate);
                     lockStockIn.SupplierId = objStockIn.SupplierId;
                     lockStockIn.Remarks = objStockIn.Remarks;

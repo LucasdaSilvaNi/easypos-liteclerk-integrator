@@ -114,7 +114,8 @@ namespace EasyPOS.Controllers
                         && d.TerminalId == terminalId
                         && (d.SalesNumber.Contains(filter)
                         || d.MstCustomer.Customer.Contains(filter)
-                        || d.MstUser5.UserName.Contains(filter))
+                        || d.MstUser5.UserName.Contains(filter)
+                        || d.Remarks.Contains(filter))
                         select new Entities.TrnSalesEntity
                         {
                             Id = d.Id,

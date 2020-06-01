@@ -8120,7 +8120,7 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstTableGroup_MstTable", Storage="_MstTableGroup", ThisKey="TableGroupId", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstTableGroup_MstTable", Storage="_MstTableGroup", ThisKey="TableGroupId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public MstTableGroup MstTableGroup
 		{
 			get
@@ -22068,6 +22068,8 @@ namespace EasyPOS.Data
 		
 		private string _StockInNumber;
 		
+		private string _ManualStockInNumber;
+		
 		private int _SupplierId;
 		
 		private string _Remarks;
@@ -22138,6 +22140,8 @@ namespace EasyPOS.Data
     partial void OnStockInDateChanged();
     partial void OnStockInNumberChanging(string value);
     partial void OnStockInNumberChanged();
+    partial void OnManualStockInNumberChanging(string value);
+    partial void OnManualStockInNumberChanged();
     partial void OnSupplierIdChanging(int value);
     partial void OnSupplierIdChanged();
     partial void OnRemarksChanging(string value);
@@ -22269,6 +22273,26 @@ namespace EasyPOS.Data
 					this._StockInNumber = value;
 					this.SendPropertyChanged("StockInNumber");
 					this.OnStockInNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ManualStockInNumber", DbType="NVarChar(250)")]
+		public string ManualStockInNumber
+		{
+			get
+			{
+				return this._ManualStockInNumber;
+			}
+			set
+			{
+				if ((this._ManualStockInNumber != value))
+				{
+					this.OnManualStockInNumberChanging(value);
+					this.SendPropertyChanging();
+					this._ManualStockInNumber = value;
+					this.SendPropertyChanged("ManualStockInNumber");
+					this.OnManualStockInNumberChanged();
 				}
 			}
 		}
@@ -23550,6 +23574,8 @@ namespace EasyPOS.Data
 		
 		private string _StockOutNumber;
 		
+		private string _ManualStockOutNumber;
+		
 		private int _AccountId;
 		
 		private string _Remarks;
@@ -23600,6 +23626,8 @@ namespace EasyPOS.Data
     partial void OnStockOutDateChanged();
     partial void OnStockOutNumberChanging(string value);
     partial void OnStockOutNumberChanged();
+    partial void OnManualStockOutNumberChanging(string value);
+    partial void OnManualStockOutNumberChanged();
     partial void OnAccountIdChanging(int value);
     partial void OnAccountIdChanged();
     partial void OnRemarksChanging(string value);
@@ -23716,6 +23744,26 @@ namespace EasyPOS.Data
 					this._StockOutNumber = value;
 					this.SendPropertyChanged("StockOutNumber");
 					this.OnStockOutNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ManualStockOutNumber", DbType="NVarChar(250)")]
+		public string ManualStockOutNumber
+		{
+			get
+			{
+				return this._ManualStockOutNumber;
+			}
+			set
+			{
+				if ((this._ManualStockOutNumber != value))
+				{
+					this.OnManualStockOutNumberChanging(value);
+					this.SendPropertyChanging();
+					this._ManualStockOutNumber = value;
+					this.SendPropertyChanged("ManualStockOutNumber");
+					this.OnManualStockOutNumberChanged();
 				}
 			}
 		}
