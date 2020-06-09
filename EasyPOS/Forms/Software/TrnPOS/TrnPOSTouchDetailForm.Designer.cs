@@ -30,15 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSTouchDetailForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonDownload = new System.Windows.Forms.Button();
             this.buttonLock = new System.Windows.Forms.Button();
@@ -50,6 +50,7 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonTender = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBoxTotalSalesAmount = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.labelCustomerCode = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -60,7 +61,6 @@
             this.labelInvoiceDate = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.labelInvoiceNumber = new System.Windows.Forms.Label();
-            this.textBoxTotalSalesAmount = new System.Windows.Forms.TextBox();
             this.buttonBarcode = new System.Windows.Forms.Button();
             this.textBoxBarcode = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -343,6 +343,23 @@
             this.panel2.Size = new System.Drawing.Size(1096, 58);
             this.panel2.TabIndex = 5;
             // 
+            // textBoxTotalSalesAmount
+            // 
+            this.textBoxTotalSalesAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxTotalSalesAmount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBoxTotalSalesAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxTotalSalesAmount.Font = new System.Drawing.Font("Segoe UI Semibold", 35F, System.Drawing.FontStyle.Bold);
+            this.textBoxTotalSalesAmount.ForeColor = System.Drawing.Color.White;
+            this.textBoxTotalSalesAmount.Location = new System.Drawing.Point(710, -5);
+            this.textBoxTotalSalesAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxTotalSalesAmount.Name = "textBoxTotalSalesAmount";
+            this.textBoxTotalSalesAmount.ReadOnly = true;
+            this.textBoxTotalSalesAmount.Size = new System.Drawing.Size(375, 63);
+            this.textBoxTotalSalesAmount.TabIndex = 1;
+            this.textBoxTotalSalesAmount.TabStop = false;
+            this.textBoxTotalSalesAmount.Text = "0.00";
+            this.textBoxTotalSalesAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -459,23 +476,6 @@
             this.labelInvoiceNumber.Size = new System.Drawing.Size(77, 15);
             this.labelInvoiceNumber.TabIndex = 6;
             this.labelInvoiceNumber.Text = "0000000000";
-            // 
-            // textBoxTotalSalesAmount
-            // 
-            this.textBoxTotalSalesAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxTotalSalesAmount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBoxTotalSalesAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxTotalSalesAmount.Font = new System.Drawing.Font("Segoe UI Semibold", 35F, System.Drawing.FontStyle.Bold);
-            this.textBoxTotalSalesAmount.ForeColor = System.Drawing.Color.White;
-            this.textBoxTotalSalesAmount.Location = new System.Drawing.Point(710, -5);
-            this.textBoxTotalSalesAmount.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxTotalSalesAmount.Name = "textBoxTotalSalesAmount";
-            this.textBoxTotalSalesAmount.ReadOnly = true;
-            this.textBoxTotalSalesAmount.Size = new System.Drawing.Size(375, 63);
-            this.textBoxTotalSalesAmount.TabIndex = 1;
-            this.textBoxTotalSalesAmount.TabStop = false;
-            this.textBoxTotalSalesAmount.Text = "0.00";
-            this.textBoxTotalSalesAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // buttonBarcode
             // 
@@ -1193,14 +1193,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewSalesLineList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle37.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle37.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            dataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSalesLineList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSalesLineList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewSalesLineList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSalesLineList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnSalesLineEdit,
@@ -1309,8 +1309,8 @@
             // 
             // ColumnSalesLinePrice
             // 
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLinePrice.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLinePrice.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnSalesLinePrice.HeaderText = "Price";
             this.ColumnSalesLinePrice.Name = "ColumnSalesLinePrice";
             this.ColumnSalesLinePrice.ReadOnly = true;
@@ -1331,8 +1331,8 @@
             // 
             // ColumnSalesLineDiscountRate
             // 
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineDiscountRate.DefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineDiscountRate.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnSalesLineDiscountRate.HeaderText = "Discount %";
             this.ColumnSalesLineDiscountRate.Name = "ColumnSalesLineDiscountRate";
             this.ColumnSalesLineDiscountRate.ReadOnly = true;
@@ -1340,32 +1340,32 @@
             // 
             // ColumnSalesLineDiscountAmount
             // 
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineDiscountAmount.DefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineDiscountAmount.DefaultCellStyle = dataGridViewCellStyle4;
             this.ColumnSalesLineDiscountAmount.HeaderText = "Discount";
             this.ColumnSalesLineDiscountAmount.Name = "ColumnSalesLineDiscountAmount";
             this.ColumnSalesLineDiscountAmount.ReadOnly = true;
             // 
             // ColumnSalesLineNetPrice
             // 
-            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineNetPrice.DefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineNetPrice.DefaultCellStyle = dataGridViewCellStyle5;
             this.ColumnSalesLineNetPrice.HeaderText = "Net Price";
             this.ColumnSalesLineNetPrice.Name = "ColumnSalesLineNetPrice";
             this.ColumnSalesLineNetPrice.ReadOnly = true;
             // 
             // ColumnSalesLineQuantity
             // 
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineQuantity.DefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineQuantity.DefaultCellStyle = dataGridViewCellStyle6;
             this.ColumnSalesLineQuantity.HeaderText = "Quantity";
             this.ColumnSalesLineQuantity.Name = "ColumnSalesLineQuantity";
             this.ColumnSalesLineQuantity.ReadOnly = true;
             // 
             // ColumnSalesLineAmount
             // 
-            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineAmount.DefaultCellStyle = dataGridViewCellStyle43;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineAmount.DefaultCellStyle = dataGridViewCellStyle7;
             this.ColumnSalesLineAmount.HeaderText = "Amount";
             this.ColumnSalesLineAmount.Name = "ColumnSalesLineAmount";
             this.ColumnSalesLineAmount.ReadOnly = true;
@@ -1386,16 +1386,16 @@
             // 
             // ColumnSalesLineTaxRate
             // 
-            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineTaxRate.DefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineTaxRate.DefaultCellStyle = dataGridViewCellStyle8;
             this.ColumnSalesLineTaxRate.HeaderText = "Tax %";
             this.ColumnSalesLineTaxRate.Name = "ColumnSalesLineTaxRate";
             this.ColumnSalesLineTaxRate.ReadOnly = true;
             // 
             // ColumnSalesLineTaxAmount
             // 
-            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineTaxAmount.DefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineTaxAmount.DefaultCellStyle = dataGridViewCellStyle9;
             this.ColumnSalesLineTaxAmount.HeaderText = "Tax";
             this.ColumnSalesLineTaxAmount.Name = "ColumnSalesLineTaxAmount";
             this.ColumnSalesLineTaxAmount.ReadOnly = true;

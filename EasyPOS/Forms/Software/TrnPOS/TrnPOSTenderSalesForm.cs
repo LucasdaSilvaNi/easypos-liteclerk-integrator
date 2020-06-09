@@ -67,8 +67,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 comboBoxTenderSalesCustomer.ValueMember = "Id";
                 comboBoxTenderSalesCustomer.DisplayMember = "Customer";
 
-                comboBoxTenderSalesCustomer.SelectedValue = trnSalesEntity.CustomerId;
-
                 GetUserList();
             }
         }
@@ -85,6 +83,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 var currentUserId = Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId;
                 comboBoxTenderSalesUsers.SelectedValue = Convert.ToInt32(currentUserId);
             }
+
+            comboBoxTenderSalesCustomer.SelectedValue = trnSalesEntity.CustomerId;
         }
 
         private void comboBoxTenderSalesCustomer_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,6 +101,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 customerName = selectedItemCustomer.Customer;
                 textBoxTenderSalesRewardAvailable.Text = selectedItemCustomer.AvailableReward.ToString("#,##0.00");
                 comboBoxTenderSalesTerms.SelectedValue = selectedItemCustomer.TermId;
+                textBoxCustomerCode2.Text = selectedItemCustomer.CustomerCode;
             }
         }
 

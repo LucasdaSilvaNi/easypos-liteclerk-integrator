@@ -357,6 +357,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 labelTransactionDate.Text = "";
                 labelInvoiceNumber.Text = "";
                 labelReceiptInvoiceNumber.Text = "";
+                labelCustomerCode.Text = "";
                 labelCustomer.Text = "";
                 labelPreparedBy.Text = "";
             }
@@ -373,8 +374,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
 
                 labelReceiptInvoiceNumber.Text = receiptInvoiceNumber;
-                labelCustomer.Text = dataGridViewSalesList.Rows[rowIndex].Cells[7].Value.ToString();
-                labelPreparedBy.Text = dataGridViewSalesList.Rows[rowIndex].Cells[8].Value.ToString();
+                labelCustomerCode.Text = dataGridViewSalesList.Rows[rowIndex].Cells[7].Value.ToString();
+                labelCustomer.Text = dataGridViewSalesList.Rows[rowIndex].Cells[8].Value.ToString();
+                labelPreparedBy.Text = dataGridViewSalesList.Rows[rowIndex].Cells[9].Value.ToString();
 
                 Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
                 if (trnPOSSalesLineController.ListSalesLine(Convert.ToInt32(dataGridViewSalesList.Rows[rowIndex].Cells[2].Value)).Any())

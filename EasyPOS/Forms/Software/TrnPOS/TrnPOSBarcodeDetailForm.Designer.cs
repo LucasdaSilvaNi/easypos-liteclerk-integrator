@@ -45,13 +45,17 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonTender = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBoxTotalSalesAmount = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.labelRemarks = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelCustomerCode = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.labelCustomer = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.labelInvoiceDate = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.labelInvoiceNumber = new System.Windows.Forms.Label();
-            this.textBoxTotalSalesAmount = new System.Windows.Forms.TextBox();
             this.dataGridViewSalesLineList = new System.Windows.Forms.DataGridView();
             this.ColumnSalesLineEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnSalesLineDelete = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -89,10 +93,6 @@
             this.buttonBarcode = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonDownload = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.labelCustomerCode = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.labelRemarks = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -215,6 +215,70 @@
             this.panel2.Size = new System.Drawing.Size(1096, 74);
             this.panel2.TabIndex = 4;
             // 
+            // textBoxTotalSalesAmount
+            // 
+            this.textBoxTotalSalesAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxTotalSalesAmount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBoxTotalSalesAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxTotalSalesAmount.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textBoxTotalSalesAmount.Font = new System.Drawing.Font("Segoe UI Semibold", 40F, System.Drawing.FontStyle.Bold);
+            this.textBoxTotalSalesAmount.ForeColor = System.Drawing.Color.White;
+            this.textBoxTotalSalesAmount.Location = new System.Drawing.Point(647, -3);
+            this.textBoxTotalSalesAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxTotalSalesAmount.Name = "textBoxTotalSalesAmount";
+            this.textBoxTotalSalesAmount.ReadOnly = true;
+            this.textBoxTotalSalesAmount.Size = new System.Drawing.Size(438, 71);
+            this.textBoxTotalSalesAmount.TabIndex = 1;
+            this.textBoxTotalSalesAmount.TabStop = false;
+            this.textBoxTotalSalesAmount.Text = "0.00";
+            this.textBoxTotalSalesAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label7.Location = new System.Drawing.Point(11, 44);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 19);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Remarks:";
+            // 
+            // labelRemarks
+            // 
+            this.labelRemarks.AutoSize = true;
+            this.labelRemarks.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.labelRemarks.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.labelRemarks.Location = new System.Drawing.Point(96, 44);
+            this.labelRemarks.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelRemarks.Name = "labelRemarks";
+            this.labelRemarks.Size = new System.Drawing.Size(0, 19);
+            this.labelRemarks.TabIndex = 14;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label2.Location = new System.Drawing.Point(204, 6);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 19);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Code:";
+            // 
+            // labelCustomerCode
+            // 
+            this.labelCustomerCode.AutoSize = true;
+            this.labelCustomerCode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.labelCustomerCode.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.labelCustomerCode.Location = new System.Drawing.Point(281, 6);
+            this.labelCustomerCode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelCustomerCode.Name = "labelCustomerCode";
+            this.labelCustomerCode.Size = new System.Drawing.Size(0, 19);
+            this.labelCustomerCode.TabIndex = 12;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -285,24 +349,6 @@
             this.labelInvoiceNumber.Size = new System.Drawing.Size(89, 19);
             this.labelInvoiceNumber.TabIndex = 6;
             this.labelInvoiceNumber.Text = "0000000000";
-            // 
-            // textBoxTotalSalesAmount
-            // 
-            this.textBoxTotalSalesAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxTotalSalesAmount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBoxTotalSalesAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxTotalSalesAmount.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBoxTotalSalesAmount.Font = new System.Drawing.Font("Segoe UI Semibold", 40F, System.Drawing.FontStyle.Bold);
-            this.textBoxTotalSalesAmount.ForeColor = System.Drawing.Color.White;
-            this.textBoxTotalSalesAmount.Location = new System.Drawing.Point(647, -3);
-            this.textBoxTotalSalesAmount.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxTotalSalesAmount.Name = "textBoxTotalSalesAmount";
-            this.textBoxTotalSalesAmount.ReadOnly = true;
-            this.textBoxTotalSalesAmount.Size = new System.Drawing.Size(438, 71);
-            this.textBoxTotalSalesAmount.TabIndex = 1;
-            this.textBoxTotalSalesAmount.TabStop = false;
-            this.textBoxTotalSalesAmount.Text = "0.00";
-            this.textBoxTotalSalesAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // dataGridViewSalesLineList
             // 
@@ -680,52 +726,6 @@
             this.buttonDownload.Text = "Download";
             this.buttonDownload.UseVisualStyleBackColor = false;
             this.buttonDownload.Click += new System.EventHandler(this.buttonDownload_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label2.Location = new System.Drawing.Point(204, 6);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 19);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Code:";
-            // 
-            // labelCustomerCode
-            // 
-            this.labelCustomerCode.AutoSize = true;
-            this.labelCustomerCode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.labelCustomerCode.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelCustomerCode.Location = new System.Drawing.Point(281, 6);
-            this.labelCustomerCode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelCustomerCode.Name = "labelCustomerCode";
-            this.labelCustomerCode.Size = new System.Drawing.Size(0, 19);
-            this.labelCustomerCode.TabIndex = 12;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label7.Location = new System.Drawing.Point(11, 44);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 19);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Remarks:";
-            // 
-            // labelRemarks
-            // 
-            this.labelRemarks.AutoSize = true;
-            this.labelRemarks.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.labelRemarks.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelRemarks.Location = new System.Drawing.Point(96, 44);
-            this.labelRemarks.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelRemarks.Name = "labelRemarks";
-            this.labelRemarks.Size = new System.Drawing.Size(0, 19);
-            this.labelRemarks.TabIndex = 14;
             // 
             // TrnPOSBarcodeDetailForm
             // 
