@@ -220,7 +220,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             String customerCode = "";
                             if (sales.ColumnCustomerCode != null)
                             {
-                                customerCode = sales.ColumnCustomerCode.Replace(",", " ");
+                                customerCode = sales.ColumnCustomerCode.Replace(",", "");
                             }
 
                             String[] data = {
@@ -228,11 +228,11 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                 sales.ColumnSalesDate,
                                 sales.ColumnSalesNumber,
                                 customerCode,
-                                sales.ColumnCustomer.Replace("," , " "),
-                                sales.ColumnTerm,
-                                sales.ColumnRemarks,
-                                sales.ColumnPreparedByUserName,
-                                sales.ColumnAmount,
+                                sales.ColumnCustomer.Replace("," , ""),
+                                sales.ColumnTerm.Replace("," , ""),
+                                sales.ColumnRemarks.Replace("," , ""),
+                                sales.ColumnPreparedByUserName.Replace("," , ""),
+                                sales.ColumnAmount.Replace("," , ""),
                             };
 
                             csv.AppendLine(String.Join(",", data));

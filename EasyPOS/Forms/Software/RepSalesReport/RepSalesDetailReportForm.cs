@@ -228,26 +228,27 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             String customerCode = "";
                             if (salesDetail.ColumnCustomerCode != null)
                             {
-                                customerCode = salesDetail.ColumnCustomerCode.Replace(",", " ");
+                                customerCode = salesDetail.ColumnCustomerCode.Replace(",", "");
                             }
 
-                            String[] data = {salesDetail.ColumnTerminal,
-                                            salesDetail.ColumnDate,
-                                            salesDetail.ColumnSalesNumber,
-                                            customerCode,
-                                            salesDetail.ColumnCustomer.Replace("," , " "),
-                                            salesDetail.ColumnItemCode,
-                                            salesDetail.ColumnItemDescription.Replace("," , " "),
-                                            salesDetail.ColumnItemCategory.Replace("," , " "),
-                                            salesDetail.ColumnUnit,
-                                            salesDetail.ColumnPrice,
-                                            salesDetail.ColumnDiscountAmount.Replace("," , ""),
-                                            salesDetail.ColumnNetPrice.Replace("," , ""),
-                                            salesDetail.ColumnQuantity.Replace("," , ""),
-                                            salesDetail.ColumnAmount.Replace("," , ""),
-                                            salesDetail.ColumnTax,
-                                            salesDetail.ColumnTaxRate.Replace("," , ""),
-                                            salesDetail.ColumnTaxAmount.Replace("," , ""),
+                            String[] data = {
+                                salesDetail.ColumnTerminal,
+                                salesDetail.ColumnDate,
+                                salesDetail.ColumnSalesNumber,
+                                customerCode,
+                                salesDetail.ColumnCustomer.Replace("," , ""),
+                                salesDetail.ColumnItemCode.Replace("," , ""),
+                                salesDetail.ColumnItemDescription.Replace("," , ""),
+                                salesDetail.ColumnItemCategory.Replace("," , ""),
+                                salesDetail.ColumnUnit.Replace("," , ""),
+                                salesDetail.ColumnPrice.Replace("," , ""),
+                                salesDetail.ColumnDiscountAmount.Replace("," , ""),
+                                salesDetail.ColumnNetPrice.Replace("," , ""),
+                                salesDetail.ColumnQuantity.Replace("," , ""),
+                                salesDetail.ColumnAmount.Replace("," , ""),
+                                salesDetail.ColumnTax.Replace("," , ""),
+                                salesDetail.ColumnTaxRate.Replace("," , ""),
+                                salesDetail.ColumnTaxAmount.Replace("," , "")
                             };
                             csv.AppendLine(String.Join(",", data));
                         }
