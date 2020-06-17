@@ -285,7 +285,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.SystemColors.Control;
+            this.panel6.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel6.Controls.Add(this.textBoxCompanyName);
             this.panel6.Controls.Add(this.textBoxInvoiceFooter);
             this.panel6.Controls.Add(this.label4);
@@ -425,7 +425,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.SystemColors.Control;
+            this.panel5.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel5.Controls.Add(this.comboBoxCollectionReport);
             this.panel5.Controls.Add(this.comboBoxPOSType);
             this.panel5.Controls.Add(this.checkBoxAllowNegativeInventory);
@@ -559,7 +559,7 @@
             this.checkBoxActivateAuditTrail.AutoSize = true;
             this.checkBoxActivateAuditTrail.Enabled = false;
             this.checkBoxActivateAuditTrail.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxActivateAuditTrail.Location = new System.Drawing.Point(668, 370);
+            this.checkBoxActivateAuditTrail.Location = new System.Drawing.Point(668, 399);
             this.checkBoxActivateAuditTrail.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxActivateAuditTrail.Name = "checkBoxActivateAuditTrail";
             this.checkBoxActivateAuditTrail.Size = new System.Drawing.Size(142, 23);
@@ -586,7 +586,7 @@
             this.textBoxZReadingFooter.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxZReadingFooter.Multiline = true;
             this.textBoxZReadingFooter.Name = "textBoxZReadingFooter";
-            this.textBoxZReadingFooter.Size = new System.Drawing.Size(349, 89);
+            this.textBoxZReadingFooter.Size = new System.Drawing.Size(349, 118);
             this.textBoxZReadingFooter.TabIndex = 26;
             // 
             // textBoxLicenseCode
@@ -596,6 +596,7 @@
             this.textBoxLicenseCode.Location = new System.Drawing.Point(138, 37);
             this.textBoxLicenseCode.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxLicenseCode.Name = "textBoxLicenseCode";
+            this.textBoxLicenseCode.ReadOnly = true;
             this.textBoxLicenseCode.Size = new System.Drawing.Size(326, 26);
             this.textBoxLicenseCode.TabIndex = 6;
             // 
@@ -964,7 +965,7 @@
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.SystemColors.Control;
+            this.panel7.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel7.Controls.Add(this.textBoxTIN);
             this.panel7.Controls.Add(this.textBoxAccreditationNo);
             this.panel7.Controls.Add(this.label15);
@@ -1099,7 +1100,7 @@
             // 
             // panel8
             // 
-            this.panel8.BackColor = System.Drawing.SystemColors.Control;
+            this.panel8.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel8.Controls.Add(this.label34);
             this.panel8.Controls.Add(this.textBoxEasypayAPIURL);
             this.panel8.Controls.Add(this.label43);
@@ -1118,7 +1119,7 @@
             // 
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(117, 10);
+            this.label34.Location = new System.Drawing.Point(88, 10);
             this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(90, 19);
@@ -1129,7 +1130,7 @@
             // 
             this.textBoxEasypayAPIURL.Enabled = false;
             this.textBoxEasypayAPIURL.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEasypayAPIURL.Location = new System.Drawing.Point(211, 7);
+            this.textBoxEasypayAPIURL.Location = new System.Drawing.Point(182, 7);
             this.textBoxEasypayAPIURL.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxEasypayAPIURL.Name = "textBoxEasypayAPIURL";
             this.textBoxEasypayAPIURL.Size = new System.Drawing.Size(316, 26);
@@ -1139,7 +1140,7 @@
             // 
             this.label43.AutoSize = true;
             this.label43.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.Location = new System.Drawing.Point(80, 39);
+            this.label43.Location = new System.Drawing.Point(51, 39);
             this.label43.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(127, 19);
@@ -1150,7 +1151,7 @@
             // 
             this.textBoxEasypayDefaultUsername.Enabled = false;
             this.textBoxEasypayDefaultUsername.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEasypayDefaultUsername.Location = new System.Drawing.Point(211, 36);
+            this.textBoxEasypayDefaultUsername.Location = new System.Drawing.Point(182, 36);
             this.textBoxEasypayDefaultUsername.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxEasypayDefaultUsername.Name = "textBoxEasypayDefaultUsername";
             this.textBoxEasypayDefaultUsername.Size = new System.Drawing.Size(217, 26);
@@ -1160,7 +1161,7 @@
             // 
             this.textBoxEasypayMotherCardNumber.Enabled = false;
             this.textBoxEasypayMotherCardNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEasypayMotherCardNumber.Location = new System.Drawing.Point(211, 93);
+            this.textBoxEasypayMotherCardNumber.Location = new System.Drawing.Point(182, 93);
             this.textBoxEasypayMotherCardNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxEasypayMotherCardNumber.Name = "textBoxEasypayMotherCardNumber";
             this.textBoxEasypayMotherCardNumber.Size = new System.Drawing.Size(217, 26);
@@ -1170,7 +1171,7 @@
             // 
             this.label42.AutoSize = true;
             this.label42.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.Location = new System.Drawing.Point(84, 68);
+            this.label42.Location = new System.Drawing.Point(55, 68);
             this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(123, 19);
@@ -1184,15 +1185,15 @@
             this.label41.Location = new System.Drawing.Point(9, 96);
             this.label41.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(198, 19);
+            this.label41.Size = new System.Drawing.Size(169, 19);
             this.label41.TabIndex = 68;
-            this.label41.Text = "Easypay Mother Card Number:";
+            this.label41.Text = "Easypay Mother Card No.:";
             // 
             // textBoxEasypayDefaultPassword
             // 
             this.textBoxEasypayDefaultPassword.Enabled = false;
             this.textBoxEasypayDefaultPassword.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEasypayDefaultPassword.Location = new System.Drawing.Point(211, 65);
+            this.textBoxEasypayDefaultPassword.Location = new System.Drawing.Point(182, 65);
             this.textBoxEasypayDefaultPassword.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxEasypayDefaultPassword.Name = "textBoxEasypayDefaultPassword";
             this.textBoxEasypayDefaultPassword.PasswordChar = '•';
@@ -1246,7 +1247,7 @@
             this.btnStopIntegration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStopIntegration.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStopIntegration.ForeColor = System.Drawing.Color.White;
-            this.btnStopIntegration.Location = new System.Drawing.Point(359, 194);
+            this.btnStopIntegration.Location = new System.Drawing.Point(359, 189);
             this.btnStopIntegration.Margin = new System.Windows.Forms.Padding(2);
             this.btnStopIntegration.Name = "btnStopIntegration";
             this.btnStopIntegration.Size = new System.Drawing.Size(74, 32);
@@ -1280,7 +1281,7 @@
             this.btnStartIntegration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStartIntegration.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStartIntegration.ForeColor = System.Drawing.Color.White;
-            this.btnStartIntegration.Location = new System.Drawing.Point(280, 194);
+            this.btnStartIntegration.Location = new System.Drawing.Point(280, 189);
             this.btnStartIntegration.Margin = new System.Windows.Forms.Padding(2);
             this.btnStartIntegration.Name = "btnStartIntegration";
             this.btnStartIntegration.Size = new System.Drawing.Size(74, 32);
@@ -1291,7 +1292,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.Control;
+            this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel3.Controls.Add(this.label11);
             this.panel3.Controls.Add(this.cbxUseItemPrice);
             this.panel3.Controls.Add(this.label10);
@@ -1305,7 +1306,7 @@
             this.panel3.Location = new System.Drawing.Point(5, 39);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(428, 151);
+            this.panel3.Size = new System.Drawing.Size(428, 146);
             this.panel3.TabIndex = 23;
             // 
             // label11

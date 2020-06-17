@@ -65,9 +65,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Location = new System.Drawing.Point(398, 6);
+            this.panel3.Location = new System.Drawing.Point(318, 5);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(990, 38);
+            this.panel3.Size = new System.Drawing.Size(768, 30);
             this.panel3.TabIndex = 0;
             // 
             // label2
@@ -75,9 +76,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(9, 7);
+            this.label2.Location = new System.Drawing.Point(7, 6);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 23);
+            this.label2.Size = new System.Drawing.Size(49, 19);
             this.label2.TabIndex = 0;
             this.label2.Text = "Filters";
             // 
@@ -87,9 +89,10 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.listBoxPOSReport);
-            this.panel2.Location = new System.Drawing.Point(12, 6);
+            this.panel2.Location = new System.Drawing.Point(10, 5);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(380, 556);
+            this.panel2.Size = new System.Drawing.Size(304, 445);
             this.panel2.TabIndex = 22;
             // 
             // listBoxPOSReport
@@ -97,7 +100,7 @@
             this.listBoxPOSReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBoxPOSReport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxPOSReport.FormattingEnabled = true;
-            this.listBoxPOSReport.ItemHeight = 23;
+            this.listBoxPOSReport.ItemHeight = 19;
             this.listBoxPOSReport.Items.AddRange(new object[] {
             "Z Reading Report",
             "X Reading Report",
@@ -107,8 +110,9 @@
             "",
             "Collection Register (collectionregister.csv)"});
             this.listBoxPOSReport.Location = new System.Drawing.Point(0, 0);
+            this.listBoxPOSReport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBoxPOSReport.Name = "listBoxPOSReport";
-            this.listBoxPOSReport.Size = new System.Drawing.Size(380, 556);
+            this.listBoxPOSReport.Size = new System.Drawing.Size(304, 445);
             this.listBoxPOSReport.TabIndex = 4;
             this.listBoxPOSReport.SelectedIndexChanged += new System.EventHandler(this.listBoxPOSReport_SelectedIndexChanged);
             // 
@@ -127,17 +131,19 @@
             this.panel4.Controls.Add(this.comboBoxUser);
             this.panel4.Controls.Add(this.comboBoxTerminal);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 63);
+            this.panel4.Location = new System.Drawing.Point(0, 50);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1400, 637);
+            this.panel4.Size = new System.Drawing.Size(1096, 510);
             this.panel4.TabIndex = 6;
             // 
             // dateTimePickerStartDate
             // 
             this.dateTimePickerStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerStartDate.Location = new System.Drawing.Point(500, 170);
+            this.dateTimePickerStartDate.Location = new System.Drawing.Point(403, 132);
+            this.dateTimePickerStartDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
-            this.dateTimePickerStartDate.Size = new System.Drawing.Size(220, 30);
+            this.dateTimePickerStartDate.Size = new System.Drawing.Size(177, 26);
             this.dateTimePickerStartDate.TabIndex = 3;
             this.dateTimePickerStartDate.Visible = false;
             // 
@@ -145,19 +151,21 @@
             // 
             this.labelStartDate.AutoSize = true;
             this.labelStartDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelStartDate.Location = new System.Drawing.Point(407, 173);
+            this.labelStartDate.Location = new System.Drawing.Point(325, 134);
+            this.labelStartDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelStartDate.Name = "labelStartDate";
-            this.labelStartDate.Size = new System.Drawing.Size(86, 23);
+            this.labelStartDate.Size = new System.Drawing.Size(74, 19);
             this.labelStartDate.TabIndex = 27;
-            this.labelStartDate.Text = "Start Date";
+            this.labelStartDate.Text = "Start Date:";
             this.labelStartDate.Visible = false;
             // 
             // dateTimePickerEndDate
             // 
             this.dateTimePickerEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerEndDate.Location = new System.Drawing.Point(500, 209);
+            this.dateTimePickerEndDate.Location = new System.Drawing.Point(403, 163);
+            this.dateTimePickerEndDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
-            this.dateTimePickerEndDate.Size = new System.Drawing.Size(220, 30);
+            this.dateTimePickerEndDate.Size = new System.Drawing.Size(177, 26);
             this.dateTimePickerEndDate.TabIndex = 4;
             this.dateTimePickerEndDate.Visible = false;
             // 
@@ -165,19 +173,21 @@
             // 
             this.labelEndDate.AutoSize = true;
             this.labelEndDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelEndDate.Location = new System.Drawing.Point(407, 213);
+            this.labelEndDate.Location = new System.Drawing.Point(331, 166);
+            this.labelEndDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelEndDate.Name = "labelEndDate";
-            this.labelEndDate.Size = new System.Drawing.Size(80, 23);
+            this.labelEndDate.Size = new System.Drawing.Size(68, 19);
             this.labelEndDate.TabIndex = 25;
-            this.labelEndDate.Text = "End Date";
+            this.labelEndDate.Text = "End Date:";
             this.labelEndDate.Visible = false;
             // 
             // dateTimePickerDate
             // 
             this.dateTimePickerDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDate.Location = new System.Drawing.Point(500, 97);
+            this.dateTimePickerDate.Location = new System.Drawing.Point(403, 74);
+            this.dateTimePickerDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePickerDate.Name = "dateTimePickerDate";
-            this.dateTimePickerDate.Size = new System.Drawing.Size(220, 30);
+            this.dateTimePickerDate.Size = new System.Drawing.Size(177, 26);
             this.dateTimePickerDate.TabIndex = 1;
             this.dateTimePickerDate.Visible = false;
             // 
@@ -185,9 +195,10 @@
             // 
             this.labelUser.AutoSize = true;
             this.labelUser.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelUser.Location = new System.Drawing.Point(407, 136);
+            this.labelUser.Location = new System.Drawing.Point(359, 105);
+            this.labelUser.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelUser.Name = "labelUser";
-            this.labelUser.Size = new System.Drawing.Size(48, 23);
+            this.labelUser.Size = new System.Drawing.Size(40, 19);
             this.labelUser.TabIndex = 20;
             this.labelUser.Text = "User:";
             this.labelUser.Visible = false;
@@ -196,9 +207,10 @@
             // 
             this.labelTerminal.AutoSize = true;
             this.labelTerminal.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelTerminal.Location = new System.Drawing.Point(407, 63);
+            this.labelTerminal.Location = new System.Drawing.Point(336, 46);
+            this.labelTerminal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTerminal.Name = "labelTerminal";
-            this.labelTerminal.Size = new System.Drawing.Size(78, 23);
+            this.labelTerminal.Size = new System.Drawing.Size(63, 19);
             this.labelTerminal.TabIndex = 16;
             this.labelTerminal.Text = "Terminal:";
             this.labelTerminal.Visible = false;
@@ -207,9 +219,10 @@
             // 
             this.labelDate.AutoSize = true;
             this.labelDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelDate.Location = new System.Drawing.Point(407, 100);
+            this.labelDate.Location = new System.Drawing.Point(358, 76);
+            this.labelDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelDate.Name = "labelDate";
-            this.labelDate.Size = new System.Drawing.Size(50, 23);
+            this.labelDate.Size = new System.Drawing.Size(41, 19);
             this.labelDate.TabIndex = 18;
             this.labelDate.Text = "Date:";
             this.labelDate.Visible = false;
@@ -218,9 +231,10 @@
             // 
             this.comboBoxUser.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxUser.FormattingEnabled = true;
-            this.comboBoxUser.Location = new System.Drawing.Point(500, 133);
+            this.comboBoxUser.Location = new System.Drawing.Point(403, 102);
+            this.comboBoxUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxUser.Name = "comboBoxUser";
-            this.comboBoxUser.Size = new System.Drawing.Size(220, 31);
+            this.comboBoxUser.Size = new System.Drawing.Size(336, 27);
             this.comboBoxUser.TabIndex = 2;
             this.comboBoxUser.Visible = false;
             // 
@@ -228,9 +242,10 @@
             // 
             this.comboBoxTerminal.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxTerminal.FormattingEnabled = true;
-            this.comboBoxTerminal.Location = new System.Drawing.Point(500, 60);
+            this.comboBoxTerminal.Location = new System.Drawing.Point(403, 44);
+            this.comboBoxTerminal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxTerminal.Name = "comboBoxTerminal";
-            this.comboBoxTerminal.Size = new System.Drawing.Size(220, 31);
+            this.comboBoxTerminal.Size = new System.Drawing.Size(177, 27);
             this.comboBoxTerminal.TabIndex = 0;
             this.comboBoxTerminal.Visible = false;
             // 
@@ -243,9 +258,10 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(1300, 12);
+            this.buttonClose.Location = new System.Drawing.Point(1016, 10);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(88, 40);
+            this.buttonClose.Size = new System.Drawing.Size(70, 32);
             this.buttonClose.TabIndex = 1;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
@@ -255,19 +271,20 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(63, 17);
+            this.label1.Location = new System.Drawing.Point(50, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 35);
+            this.label1.Size = new System.Drawing.Size(121, 28);
             this.label1.TabIndex = 2;
             this.label1.Text = "POS Report";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Reports;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
+            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -281,9 +298,10 @@
             this.buttonView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonView.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonView.ForeColor = System.Drawing.Color.White;
-            this.buttonView.Location = new System.Drawing.Point(1206, 12);
+            this.buttonView.Location = new System.Drawing.Point(941, 10);
+            this.buttonView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonView.Name = "buttonView";
-            this.buttonView.Size = new System.Drawing.Size(88, 40);
+            this.buttonView.Size = new System.Drawing.Size(70, 32);
             this.buttonView.TabIndex = 5;
             this.buttonView.TabStop = false;
             this.buttonView.Text = "View";
@@ -299,21 +317,22 @@
             this.panel1.Controls.Add(this.buttonClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1400, 63);
+            this.panel1.Size = new System.Drawing.Size(1096, 50);
             this.panel1.TabIndex = 3;
             // 
             // RepPOSReportForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1400, 700);
+            this.ClientSize = new System.Drawing.Size(1096, 560);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "RepPOSReportForm";
             this.Text = "POS Report";
             this.panel3.ResumeLayout(false);
