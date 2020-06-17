@@ -34,7 +34,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             sysSoftwareForm = softwareForm;
 
             String currentDate = DateTime.Today.ToShortDateString() + "\t\t";
-            if (Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == "True")
+            if (Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == true)
             {
                 currentDate = Modules.SysCurrentModule.GetCurrentSettings().CurrentDate + "\t\t";
             }

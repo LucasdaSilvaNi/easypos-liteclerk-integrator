@@ -463,7 +463,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
             {
                 Controllers.TrnStockOutLineController trnPOSStockOutLineController = new Controllers.TrnStockOutLineController();
 
-                if (Modules.SysCurrentModule.GetCurrentSettings().IsBarcodeQuantityAlwaysOne == "True")
+                if (Modules.SysCurrentModule.GetCurrentSettings().IsBarcodeQuantityAlwaysOne == true)
                 {
                     trnPOSStockOutLineController.BarcodeStockOutLine(trnStockOutEntity.Id, textBoxBarcode.Text);
                     UpdateStockOutLineListDataSource();

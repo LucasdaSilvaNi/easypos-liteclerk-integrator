@@ -125,7 +125,7 @@ namespace EasyPOS.Controllers
                     return new String[] { "Item not found.", "0" };
                 }
 
-                if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == "False")
+                if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == false)
                 {
                     if (item.FirstOrDefault().IsInventory == true)
                     {
@@ -206,7 +206,7 @@ namespace EasyPOS.Controllers
                         return new String[] { "Stock-Out transaction not found.", "0" };
                     }
 
-                    if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == "False")
+                    if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == false)
                     {
                         if (stockOutLine.FirstOrDefault().MstItem.IsInventory == true)
                         {

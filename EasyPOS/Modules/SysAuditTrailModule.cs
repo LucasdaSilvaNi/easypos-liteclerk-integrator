@@ -26,7 +26,7 @@ namespace EasyPOS.Modules
                 var currentUser = from d in db.MstUsers where d.Id == objAuditTrail.UserId select d;
                 if (currentUser.Any())
                 {
-                    if (SysCurrentModule.GetCurrentSettings().ActivateAuditTrail == "True")
+                    if (SysCurrentModule.GetCurrentSettings().ActivateAuditTrail == true)
                     {
                         Data.SysAuditTrail newAuditTrail = new Data.SysAuditTrail
                         {

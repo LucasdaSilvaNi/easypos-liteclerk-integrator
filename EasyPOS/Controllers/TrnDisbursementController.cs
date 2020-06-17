@@ -258,7 +258,7 @@ namespace EasyPOS.Controllers
                 }
 
                 DateTime currentDate = DateTime.Today;
-                if (Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == "True")
+                if (Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == true)
                 {
                     currentDate = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate);
                 }

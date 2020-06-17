@@ -217,7 +217,7 @@ namespace EasyPOS.Controllers
                     return new String[] { "Item not found.", "0" };
                 }
 
-                if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == "False")
+                if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == false)
                 {
                     if (item.FirstOrDefault().IsInventory == true)
                     {
@@ -361,7 +361,7 @@ namespace EasyPOS.Controllers
                         return new String[] { "User not found.", "0" };
                     }
 
-                    if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == "False")
+                    if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == false)
                     {
                         if (salesLine.FirstOrDefault().MstItem.IsInventory == true)
                         {
@@ -659,7 +659,7 @@ namespace EasyPOS.Controllers
                                     return new String[] { "Item not found.", "0" };
                                 }
 
-                                if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == "False")
+                                if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == false)
                                 {
                                     if (item.FirstOrDefault().IsInventory == true)
                                     {

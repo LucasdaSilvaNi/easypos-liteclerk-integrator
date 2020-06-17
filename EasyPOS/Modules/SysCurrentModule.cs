@@ -30,7 +30,7 @@ namespace EasyPOS.Modules
         // ===============================
         // Update Current Settings - Login
         // ===============================
-        public static void UpdateCurrentSettingsLogin(String currentUserId, String userName, String loginDate, Boolean IsLoginDate)
+        public static void UpdateCurrentSettingsLogin(Int32 currentUserId, String userName, String loginDate, Boolean IsLoginDate)
         {
             var currentSettings = GetCurrentSettings();
 
@@ -84,7 +84,7 @@ namespace EasyPOS.Modules
                 FacepayImagePath = currentSettings.FacepayImagePath,
                 POSType = currentSettings.POSType,
                 AllowNegativeInventory = currentSettings.AllowNegativeInventory,
-                IsLoginDate = IsLoginDate.ToString()
+                IsLoginDate = IsLoginDate
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);

@@ -20,15 +20,15 @@ namespace EasyPOS.Modules
             {
                 if (serialPort == null)
                 {
-                    if (SysCurrentModule.GetCurrentSettings().WithCustomerDisplay == "True")
+                    if (SysCurrentModule.GetCurrentSettings().WithCustomerDisplay == true)
                     {
                         String port = SysCurrentModule.GetCurrentSettings().CustomerDisplayPort;
-                        String baudRate = SysCurrentModule.GetCurrentSettings().CustomerDisplayBaudRate;
+                        Int32 baudRate = SysCurrentModule.GetCurrentSettings().CustomerDisplayBaudRate;
 
                         var portExists = SerialPort.GetPortNames().Any(x => x == port);
                         if (portExists)
                         {
-                            serialPort = new SerialPort(port, Convert.ToInt32(baudRate), Parity.None, 8, StopBits.One);
+                            serialPort = new SerialPort(port, baudRate, Parity.None, 8, StopBits.One);
                             serialPort.Open();
                         }
                     }

@@ -184,6 +184,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -376,6 +377,12 @@
     </Compile>
     <Compile Include="Forms\Account\SysLogin\SysLoginForm.Designer.cs">
       <DependentUpon>SysLoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\License\SysLincense\SysLicenseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\License\SysLincense\SysLicenseForm.Designer.cs">
+      <DependentUpon>SysLicenseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\MstCustomer\MstCustomerDetailForm.cs">
       <SubType>Form</SubType>
@@ -888,6 +895,7 @@
       <DependentUpon>IndexForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Modules\SysAuditTrailModule.cs" />
+    <Compile Include="Modules\SysLicenseModule.cs" />
     <Compile Include="Modules\SysSerialPortModule.cs" />
     <Compile Include="Modules\SysUserRightsModule.cs" />
     <Compile Include="Modules\TrnInventoryModule.cs" />
@@ -913,6 +921,9 @@
     <Compile Include="Forms\Software\RepPOSReport\RepZReadingReportForm.Designer.cs">
       <DependentUpon>RepZReadingReportForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\License\SysLincense\SysLicenseForm.resx">
+      <DependentUpon>SysLicenseForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstCustomer\MstCustomerDetailForm.resx">
       <DependentUpon>MstCustomerDetailForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1239,6 +1250,7 @@
     <Content Include="Resources\Images\Icons\Inventory.png" />
     <Content Include="Resources\Images\Icons\Item.png" />
     <Content Include="Resources\Images\Icons\Kitchen.png" />
+    <Content Include="Resources\Images\Icons\License.png" />
     <Content Include="Resources\Images\Icons\POS Touch.png" />
     <Content Include="Resources\Images\Icons\POS.png" />
     <Content Include="Resources\Images\Icons\Reports.png" />

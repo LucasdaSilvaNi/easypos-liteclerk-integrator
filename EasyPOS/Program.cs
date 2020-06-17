@@ -16,9 +16,21 @@ namespace EasyPOS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Forms.Software.SysSoftwareForm());
-            Application.Run(new Forms.Account.SysLogin.SysLoginForm());
-            //Application.Run(new Reports.RepDeliveryReceiptReportForm(288431, 1011071, false));
+
+            String licenseCode = Modules.SysCurrentModule.GetCurrentSettings().LicenseCode;
+
+            if (String.IsNullOrEmpty(licenseCode) == true)
+            {
+                Application.Run(new Forms.License.SysLicense.SysLicenseForm());
+            }
+            else if (Modules.SysLicenseModule.DecryptLicenseCodeToSerialNumber(licenseCode) == Modules.SysLicenseModule.GetSerialNumber())
+            {
+                Application.Run(new Forms.Account.SysLogin.SysLoginForm());
+            }
+            else
+            {
+                Application.Run(new Forms.License.SysLicense.SysLicenseForm());
+            }
         }
     }
 }

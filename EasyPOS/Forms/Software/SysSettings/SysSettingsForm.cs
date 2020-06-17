@@ -334,7 +334,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxIsBarcodeQuantityAlwaysOne.Checked = Convert.ToBoolean(sysCurrent.IsBarcodeQuantityAlwaysOne);
                 checkBoxWithCustomerDisplay.Checked = Convert.ToBoolean(sysCurrent.WithCustomerDisplay);
                 textBoxCustomerDisplayPort.Text = sysCurrent.CustomerDisplayPort;
-                textBoxCustomerDisplayBaudRate.Text = sysCurrent.CustomerDisplayBaudRate;
+                textBoxCustomerDisplayBaudRate.Text = sysCurrent.CustomerDisplayBaudRate.ToString();
                 textBoxCustomerDisplayFirstLineMessage.Text = sysCurrent.CustomerDisplayFirstLineMessage;
                 textBoxCustomerDisplayIfCounterClosedMessage.Text = sysCurrent.CustomerDisplayIfCounterClosedMessage;
                 textBoxCollectionReport.Text = sysCurrent.CollectionReport;
@@ -374,18 +374,18 @@ namespace EasyPOS.Forms.Software.SysSettings
                 CurrentVersion = textBoxCurrentVersion.Text,
                 CurrentDeveloper = textBoxCurrentDeveloper.Text,
                 CurrentSupport = textBoxCurrentSupport.Text,
-                CurrentPeriodId = comboBoxCurrentPeriod.SelectedValue != null ? comboBoxCurrentPeriod.SelectedValue.ToString() : "0",
+                CurrentPeriodId = Convert.ToInt32(comboBoxCurrentPeriod.SelectedValue != null ? comboBoxCurrentPeriod.SelectedValue : 0),
                 CurrentDate = currentSettings.CurrentDate,
-                TerminalId = comboBoxTerminal.SelectedValue != null ? comboBoxTerminal.SelectedValue.ToString() : "0",
-                WalkinCustomerId = comboBoxWalkinCustomer.SelectedValue != null ? comboBoxWalkinCustomer.SelectedValue.ToString() : "0",
-                DefaultDiscountId = comboBoxDefaultDiscount.SelectedValue != null ? comboBoxDefaultDiscount.SelectedValue.ToString() : "0",
-                ReturnSupplierId = comboBoxReturnSupplier.SelectedValue != null ? comboBoxReturnSupplier.SelectedValue.ToString() : "0",
+                TerminalId = Convert.ToInt32(comboBoxTerminal.SelectedValue != null ? comboBoxTerminal.SelectedValue : 0),
+                WalkinCustomerId = Convert.ToInt32(comboBoxWalkinCustomer.SelectedValue != null ? comboBoxWalkinCustomer.SelectedValue : 0),
+                DefaultDiscountId = Convert.ToInt32(comboBoxDefaultDiscount.SelectedValue != null ? comboBoxDefaultDiscount.SelectedValue : 0),
+                ReturnSupplierId = Convert.ToInt32(comboBoxReturnSupplier.SelectedValue != null ? comboBoxReturnSupplier.SelectedValue : 0),
                 ORPrintTitle = textBoxORPrintTitle.Text,
-                IsTenderPrint = checkBoxIsTenderPrint.Checked.ToString(),
-                IsBarcodeQuantityAlwaysOne = checkBoxIsBarcodeQuantityAlwaysOne.Checked.ToString(),
-                WithCustomerDisplay = checkBoxWithCustomerDisplay.Checked.ToString(),
+                IsTenderPrint = checkBoxIsTenderPrint.Checked,
+                IsBarcodeQuantityAlwaysOne = checkBoxIsBarcodeQuantityAlwaysOne.Checked,
+                WithCustomerDisplay = checkBoxWithCustomerDisplay.Checked,
                 CustomerDisplayPort = textBoxCustomerDisplayPort.Text,
-                CustomerDisplayBaudRate = textBoxCustomerDisplayBaudRate.Text,
+                CustomerDisplayBaudRate = Convert.ToInt32(textBoxCustomerDisplayBaudRate.Text),
                 CustomerDisplayFirstLineMessage = textBoxCustomerDisplayFirstLineMessage.Text,
                 CustomerDisplayIfCounterClosedMessage = textBoxCustomerDisplayIfCounterClosedMessage.Text,
                 CollectionReport = textBoxCollectionReport.Text,
@@ -394,10 +394,10 @@ namespace EasyPOS.Forms.Software.SysSettings
                 EasypayDefaultUsername = textBoxEasypayDefaultUsername.Text,
                 EasypayDefaultPassword = textBoxEasypayDefaultPassword.Text,
                 EasypayMotherCardNumber = textBoxEasypayMotherCardNumber.Text,
-                ActivateAuditTrail = checkBoxActivateAuditTrail.Checked.ToString(),
+                ActivateAuditTrail = checkBoxActivateAuditTrail.Checked,
                 FacepayImagePath = currentSettings.FacepayImagePath,
                 POSType = textBoxPOSType.Text,
-                AllowNegativeInventory = checkBoxAllowNegativeInventory.Checked.ToString(),
+                AllowNegativeInventory = checkBoxAllowNegativeInventory.Checked,
                 IsLoginDate = currentSettings.IsLoginDate
             };
 
@@ -415,7 +415,7 @@ namespace EasyPOS.Forms.Software.SysSettings
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl1.SelectedTab.Name == "System Current") { textBoxCompanyName.Focus(); }
-            if (tabControl1.SelectedTab.Name == "Cloud Settings") { dtpIntegrationDate.Focus(); }
+            if (tabControl1.SelectedTab.Name == "Easyfis Integration") { dtpIntegrationDate.Focus(); }
         }
     }
 }

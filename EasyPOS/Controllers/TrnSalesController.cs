@@ -302,7 +302,7 @@ namespace EasyPOS.Controllers
                 }
 
                 DateTime currentDate = DateTime.Today;
-                if (Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == "True")
+                if (Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == true)
                 {
                     currentDate = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate);
                 }
@@ -408,7 +408,7 @@ namespace EasyPOS.Controllers
                 }
                 else
                 {
-                    if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == "False")
+                    if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == false)
                     {
                         Boolean isNegativeInventory = false;
                         String negativeInventoryItem = "";
@@ -519,7 +519,7 @@ namespace EasyPOS.Controllers
                 }
 
                 DateTime currentDate = DateTime.Today;
-                if (Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == "True")
+                if (Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == true)
                 {
                     currentDate = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate);
                 }
@@ -1205,7 +1205,7 @@ namespace EasyPOS.Controllers
 
                 if (sales.Any())
                 {
-                    if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == "False")
+                    if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == false)
                     {
                         Boolean isNegativeInventory = false;
                         String negativeInventoryItem = "";

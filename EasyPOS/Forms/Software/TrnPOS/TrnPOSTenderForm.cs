@@ -194,7 +194,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 String[] tenderSales = trnPOSSalesController.TenderSales(trnSalesEntity.Id, newCollection);
                 if (tenderSales[1].Equals("0") == false)
                 {
-                    if (Modules.SysCurrentModule.GetCurrentSettings().IsTenderPrint == "True")
+                    if (Modules.SysCurrentModule.GetCurrentSettings().IsTenderPrint == true)
                     {
                         DialogResult tenderPrinterReadyDialogResult = MessageBox.Show("Is printer ready?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (tenderPrinterReadyDialogResult == DialogResult.Yes)
