@@ -16,6 +16,8 @@ namespace EasyPOS.Forms.License.SysLicense
         {
             InitializeComponent();
             GetSerialNumber();
+
+            textBoxLicenseCode.Focus();
         }
 
         public void GetSerialNumber()
@@ -36,6 +38,8 @@ namespace EasyPOS.Forms.License.SysLicense
             {
                 if (Modules.SysLicenseModule.DecryptLicenseCodeToSerialNumber(textBoxLicenseCode.Text) == Modules.SysLicenseModule.GetSerialNumber())
                 {
+                    Modules.SysCurrentModule.UpdateCurrentSettingsLicenseCode(textBoxLicenseCode.Text);
+
                     Hide();
 
                     Account.SysLogin.SysLoginForm sysLoginForm = new Account.SysLogin.SysLoginForm();
@@ -64,6 +68,14 @@ namespace EasyPOS.Forms.License.SysLicense
         private void SysLicenseForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void textBoxLicenseCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                VerifyLicenseCode();
+            }
         }
     }
 }

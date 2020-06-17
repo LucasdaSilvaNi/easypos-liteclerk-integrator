@@ -189,18 +189,25 @@ namespace EasyPOS.Forms.Software.SysSettings
 
         private void btnStartIntegration_Click(object sender, EventArgs e)
         {
-            isIntegrationStarted = true;
-
-            btnStartIntegration.Enabled = false;
-            btnStopIntegration.Enabled = true;
-
-            dtpIntegrationDate.Enabled = false;
-
-            logMessages("Started! \r\n\nTime Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n\r\n\n");
-
-            if (backgroundWorkerEasyfisIntegration.IsBusy != true)
+            if (buttonLock.Enabled == true)
             {
-                backgroundWorkerEasyfisIntegration.RunWorkerAsync();
+                MessageBox.Show("Please lock the settings first.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                isIntegrationStarted = true;
+
+                btnStartIntegration.Enabled = false;
+                btnStopIntegration.Enabled = true;
+
+                dtpIntegrationDate.Enabled = false;
+
+                logMessages("Started! \r\n\nTime Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n\r\n\n");
+
+                if (backgroundWorkerEasyfisIntegration.IsBusy != true)
+                {
+                    backgroundWorkerEasyfisIntegration.RunWorkerAsync();
+                }
             }
         }
 
@@ -248,13 +255,19 @@ namespace EasyPOS.Forms.Software.SysSettings
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            sysSoftwareForm.RemoveTabPage();
+            if (isIntegrationStarted == true)
+            {
+                MessageBox.Show("Please stop the integration first.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                sysSoftwareForm.RemoveTabPage();
+            }
         }
 
         // ==========
         // SysCurrent 
         // ==========
-
         public void GetComboBoxDropDownList()
         {
             Controllers.SysCurrentController sysSettingsController = new Controllers.SysCurrentController();
@@ -299,6 +312,24 @@ namespace EasyPOS.Forms.Software.SysSettings
                 comboBoxReturnSupplier.ValueMember = "Id";
                 comboBoxReturnSupplier.DisplayMember = "Supplier";
             }
+
+            List<String> collectionReports = new List<String>
+            {
+                "Official Receipt",
+                "Delivery Receipt",
+                "Withdrawal Slip"
+            };
+
+            comboBoxCollectionReport.DataSource = collectionReports;
+
+            List<String> posTypes = new List<String>
+            {
+                "POS Barcode",
+                "POS Touch"
+            };
+
+            comboBoxPOSType.DataSource = posTypes;
+
             getSysCurrentDetail();
         }
 
@@ -337,20 +368,29 @@ namespace EasyPOS.Forms.Software.SysSettings
                 textBoxCustomerDisplayBaudRate.Text = sysCurrent.CustomerDisplayBaudRate.ToString();
                 textBoxCustomerDisplayFirstLineMessage.Text = sysCurrent.CustomerDisplayFirstLineMessage;
                 textBoxCustomerDisplayIfCounterClosedMessage.Text = sysCurrent.CustomerDisplayIfCounterClosedMessage;
-                textBoxCollectionReport.Text = sysCurrent.CollectionReport;
+                comboBoxCollectionReport.Text = sysCurrent.CollectionReport;
                 textBoxZReadingFooter.Text = sysCurrent.ZReadingFooter;
                 textBoxEasypayAPIURL.Text = sysCurrent.EasypayAPIURL;
                 textBoxEasypayDefaultUsername.Text = sysCurrent.EasypayDefaultUsername;
                 textBoxEasypayDefaultPassword.Text = sysCurrent.EasypayDefaultPassword;
                 textBoxEasypayMotherCardNumber.Text = sysCurrent.EasypayMotherCardNumber;
                 checkBoxActivateAuditTrail.Checked = Convert.ToBoolean(sysCurrent.ActivateAuditTrail);
-                textBoxPOSType.Text = sysCurrent.POSType;
+                comboBoxPOSType.Text = sysCurrent.POSType;
                 checkBoxAllowNegativeInventory.Checked = Convert.ToBoolean(sysCurrent.AllowNegativeInventory);
             }
         }
 
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (tabControl1.SelectedTab.Name == "System Current") { textBoxCompanyName.Focus(); }
+            if (tabControl1.SelectedTab.Name == "Easyfis Integration") { dtpIntegrationDate.Focus(); }
+        }
+
+        private void buttonLock_Click(object sender, EventArgs e)
+        {
+            buttonLock.Enabled = false;
+            buttonUnlock.Enabled = true;
+
             var currentSettings = Modules.SysCurrentModule.GetCurrentSettings();
 
             Controllers.SysCurrentController sysSettingsController = new Controllers.SysCurrentController();
@@ -388,7 +428,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 CustomerDisplayBaudRate = Convert.ToInt32(textBoxCustomerDisplayBaudRate.Text),
                 CustomerDisplayFirstLineMessage = textBoxCustomerDisplayFirstLineMessage.Text,
                 CustomerDisplayIfCounterClosedMessage = textBoxCustomerDisplayIfCounterClosedMessage.Text,
-                CollectionReport = textBoxCollectionReport.Text,
+                CollectionReport = comboBoxCollectionReport.Text,
                 ZReadingFooter = textBoxZReadingFooter.Text,
                 EasypayAPIURL = textBoxEasypayAPIURL.Text,
                 EasypayDefaultUsername = textBoxEasypayDefaultUsername.Text,
@@ -396,7 +436,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 EasypayMotherCardNumber = textBoxEasypayMotherCardNumber.Text,
                 ActivateAuditTrail = checkBoxActivateAuditTrail.Checked,
                 FacepayImagePath = currentSettings.FacepayImagePath,
-                POSType = textBoxPOSType.Text,
+                POSType = comboBoxPOSType.Text,
                 AllowNegativeInventory = checkBoxAllowNegativeInventory.Checked,
                 IsLoginDate = currentSettings.IsLoginDate
             };
@@ -404,7 +444,43 @@ namespace EasyPOS.Forms.Software.SysSettings
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);
             if (saveSysCurrent[1].Equals("0") == false)
             {
-                MessageBox.Show("SysCurrent Save", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                textBoxCompanyName.Enabled = false;
+                textBoxAddress.Enabled = false;
+                textBoxContactNo.Enabled = false;
+                textBoxTIN.Enabled = false;
+                textBoxAccreditationNo.Enabled = false;
+                textBoxSerialNo.Enabled = false;
+                textBoxPermitNo.Enabled = false;
+                textBoxMachineNo.Enabled = false;
+                textBoxReceiptFooter.Enabled = false;
+                textBoxInvoiceFooter.Enabled = false;
+                textBoxLicenseCode.Enabled = false;
+                textBoxTenantOf.Enabled = false;
+                textBoxCurrentVersion.Enabled = false;
+                textBoxCurrentDeveloper.Enabled = false;
+                textBoxCurrentSupport.Enabled = false;
+                comboBoxCurrentPeriod.Enabled = false;
+                comboBoxTerminal.Enabled = false;
+                comboBoxWalkinCustomer.Enabled = false;
+                comboBoxDefaultDiscount.Enabled = false;
+                comboBoxReturnSupplier.Enabled = false;
+                textBoxORPrintTitle.Enabled = false;
+                checkBoxIsTenderPrint.Enabled = false;
+                checkBoxIsBarcodeQuantityAlwaysOne.Enabled = false;
+                checkBoxWithCustomerDisplay.Enabled = false;
+                textBoxCustomerDisplayPort.Enabled = false;
+                textBoxCustomerDisplayBaudRate.Enabled = false;
+                textBoxCustomerDisplayFirstLineMessage.Enabled = false;
+                textBoxCustomerDisplayIfCounterClosedMessage.Enabled = false;
+                comboBoxCollectionReport.Enabled = false;
+                textBoxZReadingFooter.Enabled = false;
+                textBoxEasypayAPIURL.Enabled = false;
+                textBoxEasypayDefaultUsername.Enabled = false;
+                textBoxEasypayDefaultPassword.Enabled = false;
+                textBoxEasypayMotherCardNumber.Enabled = false;
+                checkBoxActivateAuditTrail.Enabled = false;
+                comboBoxPOSType.Enabled = false;
+                checkBoxAllowNegativeInventory.Enabled = false;
             }
             else
             {
@@ -412,10 +488,95 @@ namespace EasyPOS.Forms.Software.SysSettings
             }
         }
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        private void buttonUnlock_Click(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedTab.Name == "System Current") { textBoxCompanyName.Focus(); }
-            if (tabControl1.SelectedTab.Name == "Easyfis Integration") { dtpIntegrationDate.Focus(); }
+            if (isIntegrationStarted == true)
+            {
+                MessageBox.Show("Please stop the integration first.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                buttonLock.Enabled = true;
+                buttonUnlock.Enabled = false;
+
+                textBoxCompanyName.Enabled = true;
+                textBoxAddress.Enabled = true;
+                textBoxContactNo.Enabled = true;
+                textBoxTIN.Enabled = true;
+                textBoxAccreditationNo.Enabled = true;
+                textBoxSerialNo.Enabled = true;
+                textBoxPermitNo.Enabled = true;
+                textBoxMachineNo.Enabled = true;
+                textBoxReceiptFooter.Enabled = true;
+                textBoxInvoiceFooter.Enabled = true;
+                textBoxLicenseCode.Enabled = true;
+                textBoxTenantOf.Enabled = true;
+                textBoxCurrentVersion.Enabled = true;
+                textBoxCurrentDeveloper.Enabled = true;
+                textBoxCurrentSupport.Enabled = true;
+                comboBoxCurrentPeriod.Enabled = true;
+                comboBoxTerminal.Enabled = true;
+                comboBoxWalkinCustomer.Enabled = true;
+                comboBoxDefaultDiscount.Enabled = true;
+                comboBoxReturnSupplier.Enabled = true;
+                textBoxORPrintTitle.Enabled = true;
+                checkBoxIsTenderPrint.Enabled = true;
+                checkBoxIsBarcodeQuantityAlwaysOne.Enabled = true;
+                checkBoxWithCustomerDisplay.Enabled = true;
+
+                if (checkBoxWithCustomerDisplay.Checked == true)
+                {
+                    textBoxCustomerDisplayPort.Enabled = true;
+                    textBoxCustomerDisplayBaudRate.Enabled = true;
+                    textBoxCustomerDisplayFirstLineMessage.Enabled = true;
+                    textBoxCustomerDisplayIfCounterClosedMessage.Enabled = true;
+                }
+                else
+                {
+                    textBoxCustomerDisplayPort.Enabled = false;
+                    textBoxCustomerDisplayBaudRate.Enabled = false;
+                    textBoxCustomerDisplayFirstLineMessage.Enabled = false;
+                    textBoxCustomerDisplayIfCounterClosedMessage.Enabled = false;
+                }
+
+                comboBoxCollectionReport.Enabled = true;
+                textBoxZReadingFooter.Enabled = true;
+                textBoxEasypayAPIURL.Enabled = true;
+                textBoxEasypayDefaultUsername.Enabled = true;
+                textBoxEasypayDefaultPassword.Enabled = true;
+                textBoxEasypayMotherCardNumber.Enabled = true;
+                checkBoxActivateAuditTrail.Enabled = true;
+                comboBoxPOSType.Enabled = true;
+                checkBoxAllowNegativeInventory.Enabled = true;
+            }
+        }
+
+        private void checkBoxWithCustomerDisplay_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxWithCustomerDisplay.Checked == true)
+            {
+                if (buttonLock.Enabled == true)
+                {
+                    textBoxCustomerDisplayPort.Enabled = true;
+                    textBoxCustomerDisplayBaudRate.Enabled = true;
+                    textBoxCustomerDisplayFirstLineMessage.Enabled = true;
+                    textBoxCustomerDisplayIfCounterClosedMessage.Enabled = true;
+                }
+                else
+                {
+                    textBoxCustomerDisplayPort.Enabled = false;
+                    textBoxCustomerDisplayBaudRate.Enabled = false;
+                    textBoxCustomerDisplayFirstLineMessage.Enabled = false;
+                    textBoxCustomerDisplayIfCounterClosedMessage.Enabled = false;
+                }
+            }
+            else
+            {
+                textBoxCustomerDisplayPort.Enabled = false;
+                textBoxCustomerDisplayBaudRate.Enabled = false;
+                textBoxCustomerDisplayFirstLineMessage.Enabled = false;
+                textBoxCustomerDisplayIfCounterClosedMessage.Enabled = false;
+            }
         }
     }
 }

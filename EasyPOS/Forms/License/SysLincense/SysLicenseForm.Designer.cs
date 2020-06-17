@@ -42,8 +42,8 @@
             this.textBoxLicenseCode = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.textBoxSerialNumber = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -104,6 +104,7 @@
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(70, 32);
             this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -124,6 +125,7 @@
             this.buttonLicense.Name = "buttonLicense";
             this.buttonLicense.Size = new System.Drawing.Size(70, 32);
             this.buttonLicense.TabIndex = 0;
+            this.buttonLicense.TabStop = false;
             this.buttonLicense.Text = "OK";
             this.buttonLicense.UseVisualStyleBackColor = false;
             this.buttonLicense.Click += new System.EventHandler(this.buttonOK_Click);
@@ -202,6 +204,7 @@
             this.textBoxLicenseCode.Name = "textBoxLicenseCode";
             this.textBoxLicenseCode.Size = new System.Drawing.Size(421, 29);
             this.textBoxLicenseCode.TabIndex = 14;
+            this.textBoxLicenseCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxLicenseCode_KeyDown);
             // 
             // label6
             // 
@@ -225,17 +228,6 @@
             this.panel3.Size = new System.Drawing.Size(443, 82);
             this.panel3.TabIndex = 22;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label3.Location = new System.Drawing.Point(164, 12);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 21);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Serial Number:";
-            // 
             // textBoxSerialNumber
             // 
             this.textBoxSerialNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -247,7 +239,19 @@
             this.textBoxSerialNumber.ReadOnly = true;
             this.textBoxSerialNumber.Size = new System.Drawing.Size(420, 31);
             this.textBoxSerialNumber.TabIndex = 0;
+            this.textBoxSerialNumber.TabStop = false;
             this.textBoxSerialNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label3.Location = new System.Drawing.Point(164, 12);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(114, 21);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Serial Number:";
             // 
             // SysLicenseForm
             // 

@@ -16,6 +16,8 @@ namespace EasyPOS.Forms.Account.SysLogin
         {
             InitializeComponent();
             dateTimePickerLoginDate.Enabled = false;
+
+            textBoxUsername.Focus();
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

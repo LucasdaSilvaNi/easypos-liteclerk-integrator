@@ -57,7 +57,7 @@ namespace EasyPOS.Modules
                 TenantOf = currentSettings.TenantOf,
                 CurrentUserId = currentUserId,
                 CurrentUserName = userName,
-                CurrentVersion = currentSettings.CurrentDate,
+                CurrentVersion = currentSettings.CurrentVersion,
                 CurrentDeveloper = currentSettings.CurrentDeveloper,
                 CurrentSupport = currentSettings.CurrentSupport,
                 CurrentPeriodId = currentSettings.CurrentPeriodId,
@@ -115,7 +115,7 @@ namespace EasyPOS.Modules
                 TenantOf = objSysCurrentEntity.TenantOf,
                 CurrentUserId = currentSettings.CurrentUserId,
                 CurrentUserName = currentSettings.CurrentUserName,
-                CurrentVersion = objSysCurrentEntity.CurrentDate,
+                CurrentVersion = objSysCurrentEntity.CurrentVersion,
                 CurrentDeveloper = objSysCurrentEntity.CurrentDeveloper,
                 CurrentSupport = objSysCurrentEntity.CurrentSupport,
                 CurrentPeriodId = objSysCurrentEntity.CurrentPeriodId,
@@ -140,12 +140,71 @@ namespace EasyPOS.Modules
                 EasypayMotherCardNumber = objSysCurrentEntity.EasypayMotherCardNumber,
                 ActivateAuditTrail = objSysCurrentEntity.ActivateAuditTrail,
                 FacepayImagePath = currentSettings.FacepayImagePath,
+                POSType = objSysCurrentEntity.POSType,
+                AllowNegativeInventory = objSysCurrentEntity.AllowNegativeInventory,
+                IsLoginDate = currentSettings.IsLoginDate
+            };
+
+            String newJson = new JavaScriptSerializer().Serialize(newSysCurrentEntities);
+            File.WriteAllText(path, newJson);
+        }
+
+
+        // ======================================
+        // Update Current Settings - License Code
+        // ======================================
+        public static void UpdateCurrentSettingsLicenseCode(String licenseCode)
+        {
+            var currentSettings = GetCurrentSettings();
+            
+            Entities.SysCurrentEntity newEntities = new Entities.SysCurrentEntity()
+            {
+                CompanyName = currentSettings.CompanyName,
+                Address = currentSettings.Address,
+                ContactNo = currentSettings.ContactNo,
+                TIN = currentSettings.TIN,
+                AccreditationNo = currentSettings.AccreditationNo,
+                SerialNo = currentSettings.SerialNo,
+                PermitNo = currentSettings.PermitNo,
+                MachineNo = currentSettings.MachineNo,
+                DeclareRate = currentSettings.DeclareRate,
+                ReceiptFooter = currentSettings.ReceiptFooter,
+                InvoiceFooter = currentSettings.InvoiceFooter,
+                LicenseCode = licenseCode,
+                TenantOf = currentSettings.TenantOf,
+                CurrentUserId = currentSettings.CurrentUserId,
+                CurrentUserName = currentSettings.CurrentUserName,
+                CurrentVersion = currentSettings.CurrentVersion,
+                CurrentDeveloper = currentSettings.CurrentDeveloper,
+                CurrentSupport = currentSettings.CurrentSupport,
+                CurrentPeriodId = currentSettings.CurrentPeriodId,
+                CurrentDate = currentSettings.CurrentDate,
+                TerminalId = currentSettings.TerminalId,
+                WalkinCustomerId = currentSettings.WalkinCustomerId,
+                DefaultDiscountId = currentSettings.DefaultDiscountId,
+                ReturnSupplierId = currentSettings.ReturnSupplierId,
+                ORPrintTitle = currentSettings.ORPrintTitle,
+                IsTenderPrint = currentSettings.IsTenderPrint,
+                IsBarcodeQuantityAlwaysOne = currentSettings.IsBarcodeQuantityAlwaysOne,
+                WithCustomerDisplay = currentSettings.WithCustomerDisplay,
+                CustomerDisplayPort = currentSettings.CustomerDisplayPort,
+                CustomerDisplayBaudRate = currentSettings.CustomerDisplayBaudRate,
+                CustomerDisplayFirstLineMessage = currentSettings.CustomerDisplayFirstLineMessage,
+                CustomerDisplayIfCounterClosedMessage = currentSettings.CustomerDisplayIfCounterClosedMessage,
+                CollectionReport = currentSettings.CollectionReport,
+                ZReadingFooter = currentSettings.ZReadingFooter,
+                EasypayAPIURL = currentSettings.EasypayAPIURL,
+                EasypayDefaultUsername = currentSettings.EasypayDefaultUsername,
+                EasypayDefaultPassword = currentSettings.EasypayDefaultPassword,
+                EasypayMotherCardNumber = currentSettings.EasypayMotherCardNumber,
+                ActivateAuditTrail = currentSettings.ActivateAuditTrail,
+                FacepayImagePath = currentSettings.FacepayImagePath,
                 POSType = currentSettings.POSType,
                 AllowNegativeInventory = currentSettings.AllowNegativeInventory,
                 IsLoginDate = currentSettings.IsLoginDate
             };
 
-            String newJson = new JavaScriptSerializer().Serialize(newSysCurrentEntities);
+            String newJson = new JavaScriptSerializer().Serialize(newEntities);
             File.WriteAllText(path, newJson);
         }
     }
