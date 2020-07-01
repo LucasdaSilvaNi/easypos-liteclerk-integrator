@@ -1529,6 +1529,16 @@ namespace EasyPOS.Controllers
 
                 if (objStockInLines.Any())
                 {
+                    var account = from d in db.MstAccounts
+                                  where d.Account.Equals("Inventory")
+                                  && d.IsLocked == true
+                                  select d;
+
+                    if (account.Any() == false)
+                    {
+                        return new String[] { "Asset account not found.", "0" };
+                    }
+
                     List<Data.TrnStockInLine> newStockInLines = new List<Data.TrnStockInLine>();
 
                     foreach (var objStockInLine in objStockInLines)
@@ -1541,27 +1551,25 @@ namespace EasyPOS.Controllers
 
                         if (item.Any())
                         {
-                            var account = from d in db.MstAccounts
-                                          where d.Account.Equals("Inventory")
-                                          && d.IsLocked == true
-                                          select d;
+                            var currentItem = item.FirstOrDefault();
 
-                            if (account.Any())
+                            Int32 itemId = currentItem.Id;
+                            Int32 unitId = currentItem.UnitId;
+                            Decimal cost = currentItem.Cost;
+
+                            newStockInLines.Add(new Data.TrnStockInLine
                             {
-                                newStockInLines.Add(new Data.TrnStockInLine
-                                {
-                                    StockInId = newStockIn.Id,
-                                    ItemId = objStockInLine.ItemId,
-                                    UnitId = item.FirstOrDefault().UnitId,
-                                    Quantity = objStockInLine.Quantity,
-                                    Cost = Convert.ToDecimal(objStockInLine.Price),
-                                    Amount = objStockInLine.Amount,
-                                    ExpiryDate = null,
-                                    LotNumber = null,
-                                    AssetAccountId = account.FirstOrDefault().Id,
-                                    Price = objStockInLine.Price
-                                });
-                            }
+                                StockInId = newStockIn.Id,
+                                ItemId = itemId,
+                                UnitId = unitId,
+                                Quantity = objStockInLine.Quantity,
+                                Cost = cost,
+                                Amount = cost * objStockInLine.Quantity,
+                                ExpiryDate = null,
+                                LotNumber = null,
+                                AssetAccountId = account.FirstOrDefault().Id,
+                                Price = objStockInLine.Price
+                            });
                         }
                     }
 

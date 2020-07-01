@@ -59,6 +59,7 @@
             this.ColumnReturnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnReturnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnReturnPickItem = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnReturnUnpickItem = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnReturnReturnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -332,6 +333,7 @@
             this.ColumnReturnQuantity,
             this.ColumnReturnAmount,
             this.ColumnReturnPickItem,
+            this.ColumnReturnUnpickItem,
             this.ColumnReturnReturnQuantity});
             this.dataGridViewReturnItems.Location = new System.Drawing.Point(10, 70);
             this.dataGridViewReturnItems.Margin = new System.Windows.Forms.Padding(2);
@@ -367,6 +369,7 @@
             this.ColumnReturnUnit.HeaderText = "Unit";
             this.ColumnReturnUnit.Name = "ColumnReturnUnit";
             this.ColumnReturnUnit.ReadOnly = true;
+            this.ColumnReturnUnit.Width = 70;
             // 
             // ColumnReturnPrice
             // 
@@ -399,10 +402,18 @@
             // 
             this.ColumnReturnPickItem.DataPropertyName = "ColumnReturnPickItem";
             this.ColumnReturnPickItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnReturnPickItem.HeaderText = "Pick";
+            this.ColumnReturnPickItem.HeaderText = "";
             this.ColumnReturnPickItem.Name = "ColumnReturnPickItem";
             this.ColumnReturnPickItem.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ColumnReturnPickItem.Width = 70;
+            // 
+            // ColumnReturnUnpickItem
+            // 
+            this.ColumnReturnUnpickItem.DataPropertyName = "ColumnReturnUnpickItem";
+            this.ColumnReturnUnpickItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnReturnUnpickItem.HeaderText = "";
+            this.ColumnReturnUnpickItem.Name = "ColumnReturnUnpickItem";
+            this.ColumnReturnUnpickItem.Width = 70;
             // 
             // ColumnReturnReturnQuantity
             // 
@@ -468,6 +479,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnReturnQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnReturnAmount;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnReturnPickItem;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnReturnUnpickItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnReturnReturnQuantity;
     }
 }

@@ -117,7 +117,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                        ColumnReturnQuantity = d.Quantity.ToString("#,##0.00"),
                                        ColumnReturnAmount = d.Amount.ToString("#,##0.00"),
                                        ColumnReturnPickItem = "Pick",
-                                       ColumnReturnReturnQuantity = d.Quantity.ToString("#,##0.00"),
+                                       ColumnReturnUnpickItem = "Unpick",
+                                       ColumnReturnReturnQuantity = "0.00",
                                    };
 
                 return Task.FromResult(returnItemss.ToList());
@@ -135,6 +136,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             dataGridViewReturnItems.Columns[6].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewReturnItems.Columns[6].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewReturnItems.Columns[6].DefaultCellStyle.ForeColor = Color.White;
+
+            dataGridViewReturnItems.Columns[7].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#F34F1C");
+            dataGridViewReturnItems.Columns[7].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#F34F1C");
+            dataGridViewReturnItems.Columns[7].DefaultCellStyle.ForeColor = Color.White;
 
             dataGridViewReturnItems.DataSource = returnDataSource;
         }
@@ -221,14 +226,21 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             if (e.RowIndex > -1 && dataGridViewReturnItems.CurrentCell.ColumnIndex == dataGridViewReturnItems.Columns["ColumnReturnPickItem"].Index)
             {
-                TrnPOSReturnPickQuantity trnPOSReturnPickQuantity = new TrnPOSReturnPickQuantity(this);
+                Decimal quantity = Convert.ToDecimal(dataGridViewReturnItems.Rows[dataGridViewReturnItems.CurrentCell.RowIndex].Cells[dataGridViewReturnItems.Columns["ColumnReturnQuantity"].Index].Value);
+
+                TrnPOSReturnPickQuantity trnPOSReturnPickQuantity = new TrnPOSReturnPickQuantity(this, quantity);
                 trnPOSReturnPickQuantity.ShowDialog();
+            }
+
+            if (e.RowIndex > -1 && dataGridViewReturnItems.CurrentCell.ColumnIndex == dataGridViewReturnItems.Columns["ColumnReturnUnpickItem"].Index)
+            {
+                UpdateReturnQuantity(0);
             }
         }
 
         public void UpdateReturnQuantity(Decimal quantity)
         {
-            dataGridViewReturnItems.Rows[dataGridViewReturnItems.CurrentCell.RowIndex].Cells[dataGridViewReturnItems.Columns["ColumnReturnReturnQuantity"].Index].Value = quantity;
+            dataGridViewReturnItems.Rows[dataGridViewReturnItems.CurrentCell.RowIndex].Cells[dataGridViewReturnItems.Columns["ColumnReturnReturnQuantity"].Index].Value = quantity.ToString("#,##0.00");
         }
 
         private void buttonReturn_Click(object sender, EventArgs e)
@@ -249,10 +261,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             ItemId = Convert.ToInt32(row.Cells["ColumnReturnItemId"].Value),
                             ItemDescription = "",
                             UnitId = 0,
-                            Unit = row.Cells["ColumnReturnUnit"].Value.ToString(),
+                            Unit = "",
                             Quantity = Convert.ToDecimal(row.Cells["ColumnReturnReturnQuantity"].Value),
                             Cost = 0,
-                            Amount = Convert.ToDecimal(row.Cells["ColumnReturnAmount"].Value),
+                            Amount = 0,
                             ExpiryDate = "",
                             LotNumber = "",
                             AssetAccountId = 0,
@@ -268,10 +280,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     Int32 collectionId = trnSalesController.GetCurrentCollection(textBoxReturnORNumber.Text).Id;
                     Int32 salesId = Convert.ToInt32(trnSalesController.GetCurrentCollection(textBoxReturnORNumber.Text).SalesId);
 
-                    trnSalesController.ReturnSalesItems(collectionId, salesId, newStockInLines);
-
-                    MessageBox.Show("Items were successfully returned.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Close();
+                    String[] returnSalesItems = trnSalesController.ReturnSalesItems(collectionId, salesId, newStockInLines);
+                    if (returnSalesItems[1].Equals("0") == false)
+                    {
+                        MessageBox.Show("Items were successfully returned.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show(returnSalesItems[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -292,6 +310,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 if (trnSalesController.GetCurrentCollection(textBoxReturnORNumber.Text) != null)
                 {
                     textBoxReturnSalesNumber.Text = trnSalesController.GetCurrentCollection(textBoxReturnORNumber.Text).SalesNumber;
+                }
+                else
+                {
+                    textBoxReturnSalesNumber.Text = "";
                 }
             }
         }

@@ -15,6 +15,7 @@ namespace EasyPOS.Entities
         public String ColumnReturnQuantity { get; set; }
         public String ColumnReturnAmount { get; set; }
         public String ColumnReturnPickItem { get; set; }
+        public String ColumnReturnUnpickItem { get; set; }
         public String ColumnReturnReturnQuantity { get; set; }
     }
 }

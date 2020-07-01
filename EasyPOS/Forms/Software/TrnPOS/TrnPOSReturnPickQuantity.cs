@@ -14,11 +14,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
     {
         public TrnPOSReturn trnPOSReturn;
 
-        public TrnPOSReturnPickQuantity(TrnPOSReturn POSReturn)
+        public TrnPOSReturnPickQuantity(TrnPOSReturn POSReturn, Decimal defaultQuantity)
         {
             InitializeComponent();
 
-            textBoxReturnQuantity.Text = "0.00";
+            textBoxReturnQuantity.Text = defaultQuantity.ToString("#,##0.00");
             trnPOSReturn = POSReturn;
         }
 
@@ -57,6 +57,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 Close();
             }
+        }
+
+        private void textBoxReturnQuantity_Leave(object sender, EventArgs e)
+        {
+            textBoxReturnQuantity.Text = Convert.ToDecimal(textBoxReturnQuantity.Text).ToString("#,##0.00");
         }
     }
 }
