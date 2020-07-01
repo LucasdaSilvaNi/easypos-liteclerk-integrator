@@ -289,6 +289,7 @@
     <Compile Include="Entities\DgvMstItemListEntity.cs" />
     <Compile Include="Entities\DgvRepSalesReportSalesDetailReportListEntity.cs" />
     <Compile Include="Entities\DgvTrnSalesLineListEntity.cs" />
+    <Compile Include="Entities\DgvTrnSalesReturnEntity.cs" />
     <Compile Include="Entities\DgvTrnSalesSearchItemListEntity.cs" />
     <Compile Include="Entities\DgvTrnSalesTenderPayTypeListEntity.cs" />
     <Compile Include="Entities\DgvTrnSalesListEntity.cs" />
@@ -600,6 +601,12 @@
     <Compile Include="Forms\Software\SysKitchenDisplay\SysKitchenDisplayForm.Designer.cs">
       <DependentUpon>SysKitchenDisplayForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSReturnPickQuantity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSReturnPickQuantity.Designer.cs">
+      <DependentUpon>TrnPOSReturnPickQuantity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnPOSDownloadItemsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -719,6 +726,12 @@
     </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnPOSDeliveryCustomerInformation.Designer.cs">
       <DependentUpon>TrnPOSDeliveryCustomerInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSReturn.Designer.cs">
+      <DependentUpon>TrnPOSReturn.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchActivityForm.cs">
       <SubType>Form</SubType>
@@ -1023,6 +1036,9 @@
     <EmbeddedResource Include="Forms\Software\SysKitchenDisplay\SysKitchenDisplayForm.resx">
       <DependentUpon>SysKitchenDisplayForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSReturnPickQuantity.resx">
+      <DependentUpon>TrnPOSReturnPickQuantity.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSDownloadItemsForm.resx">
       <DependentUpon>TrnPOSDownloadItemsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1076,6 +1092,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSDeliveryCustomerInformation.resx">
       <DependentUpon>TrnPOSDeliveryCustomerInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSReturn.resx">
+      <DependentUpon>TrnPOSReturn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTouchActivityForm.resx">
       <DependentUpon>TrnPOSTouchActivityForm.cs</DependentUpon>

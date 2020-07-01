@@ -1373,5 +1373,224 @@ namespace EasyPOS.Controllers
 
             return itemGroupItems.OrderBy(d => d.Alias).ToList();
         }
+
+        // ======================
+        // Get Sales Return Items
+        // ======================
+        public List<Entities.TrnSalesLineEntity> ListReturnSalesItems(String ORNumber)
+        {
+            var collection = from d in db.TrnCollections
+                             where d.CollectionNumber == ORNumber
+                             && d.SalesId != null
+                             && d.IsLocked == true
+                             && d.IsCancelled == false
+                             select d;
+
+            if (collection.Any())
+            {
+                var salesLines = from d in db.TrnSalesLines
+                                 where d.SalesId == collection.FirstOrDefault().SalesId
+                                 group d by new
+                                 {
+                                     d.ItemId,
+                                     d.MstItem.ItemDescription,
+                                     d.MstItem.MstUnit.Unit,
+                                     d.Price,
+                                 } into g
+                                 select new Entities.TrnSalesLineEntity
+                                 {
+                                     ItemId = g.Key.ItemId,
+                                     ItemDescription = g.Key.ItemDescription,
+                                     Unit = g.Key.Unit,
+                                     Price = g.Key.Price,
+                                     Quantity = g.Sum(s => s.Quantity),
+                                     Amount = g.Sum(s => s.Amount)
+                                 };
+
+                return salesLines.ToList();
+            }
+            else
+            {
+                return new List<Entities.TrnSalesLineEntity>();
+            }
+        }
+
+        // =============================
+        // Get Sales Return Sales Number
+        // =============================
+        public Entities.TrnCollectionEntity GetCurrentCollection(String ORNumber)
+        {
+            var collection = from d in db.TrnCollections
+                             where d.CollectionNumber == ORNumber
+                             && d.SalesId != null
+                             select new Entities.TrnCollectionEntity
+                             {
+                                 Id = d.Id,
+                                 SalesId = d.SalesId,
+                                 SalesNumber = d.TrnSale.SalesNumber
+                             };
+
+            if (collection.Any())
+            {
+                return collection.FirstOrDefault();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        // ====================
+        // Return (Add Stock-In
+        // ====================
+        public String[] ReturnSalesItems(Int32 collectionId, Int32 salesId, List<Entities.TrnStockInLineEntity> objStockInLines)
+        {
+            try
+            {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
+                var period = from d in db.MstPeriods select d;
+                if (period.Any() == false)
+                {
+                    return new String[] { "Periods not found.", "0" };
+                }
+
+                var supplier = from d in db.MstSuppliers select d;
+                if (supplier.Any() == false)
+                {
+                    return new String[] { "Supplier not found.", "0" };
+                }
+
+                DateTime currentDate = DateTime.Today;
+                if (Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == true)
+                {
+                    currentDate = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate);
+                }
+
+                var collection = from d in db.TrnCollections
+                                 where d.Id == collectionId
+                                 && d.IsLocked == true
+                                 && d.IsCancelled == false
+                                 select d;
+
+                if (collection.Any() == false)
+                {
+                    return new String[] { "Collection not found.", "0" };
+                }
+
+                var sales = from d in db.TrnSales
+                            where d.Id == salesId
+                            && d.IsLocked == true
+                            && d.IsCancelled == false
+                            select d;
+
+                if (sales.Any() == false)
+                {
+                    return new String[] { "Sales not found.", "0" };
+                }
+
+                String stockInNumber = "0000000001";
+                var lastStockIn = from d in db.TrnStockIns.OrderByDescending(d => d.Id) select d;
+                if (lastStockIn.Any())
+                {
+                    Int32 newStockInNumber = Convert.ToInt32(lastStockIn.FirstOrDefault().StockInNumber) + 1;
+                    stockInNumber = FillLeadingZeroes(newStockInNumber, 10);
+                }
+
+                Data.TrnStockIn newStockIn = new Data.TrnStockIn()
+                {
+                    PeriodId = period.FirstOrDefault().Id,
+                    StockInDate = currentDate,
+                    StockInNumber = stockInNumber,
+                    ManualStockInNumber = stockInNumber,
+                    SupplierId = supplier.FirstOrDefault().Id,
+                    Remarks = "",
+                    IsReturn = true,
+                    CollectionId = collectionId,
+                    PurchaseOrderId = null,
+                    PreparedBy = currentUserLogin.FirstOrDefault().Id,
+                    CheckedBy = currentUserLogin.FirstOrDefault().Id,
+                    ApprovedBy = currentUserLogin.FirstOrDefault().Id,
+                    SalesId = salesId,
+                    PostCode = null,
+                    IsLocked = true,
+                    EntryUserId = currentUserLogin.FirstOrDefault().Id,
+                    EntryDateTime = DateTime.Now,
+                    UpdateUserId = currentUserLogin.FirstOrDefault().Id,
+                    UpdateDateTime = DateTime.Now
+                };
+
+                db.TrnStockIns.InsertOnSubmit(newStockIn);
+                db.SubmitChanges();
+
+                if (objStockInLines.Any())
+                {
+                    List<Data.TrnStockInLine> newStockInLines = new List<Data.TrnStockInLine>();
+
+                    foreach (var objStockInLine in objStockInLines)
+                    {
+                        var item = from d in db.MstItems
+                                   where d.Id == objStockInLine.ItemId
+                                   && d.IsInventory == true
+                                   && d.IsLocked == true
+                                   select d;
+
+                        if (item.Any())
+                        {
+                            var account = from d in db.MstAccounts
+                                          where d.Account.Equals("Inventory")
+                                          && d.IsLocked == true
+                                          select d;
+
+                            if (account.Any())
+                            {
+                                newStockInLines.Add(new Data.TrnStockInLine
+                                {
+                                    StockInId = newStockIn.Id,
+                                    ItemId = objStockInLine.ItemId,
+                                    UnitId = item.FirstOrDefault().UnitId,
+                                    Quantity = objStockInLine.Quantity,
+                                    Cost = Convert.ToDecimal(objStockInLine.Price),
+                                    Amount = objStockInLine.Amount,
+                                    ExpiryDate = null,
+                                    LotNumber = null,
+                                    AssetAccountId = account.FirstOrDefault().Id,
+                                    Price = objStockInLine.Price
+                                });
+                            }
+                        }
+                    }
+
+                    db.TrnStockInLines.InsertAllOnSubmit(newStockInLines);
+                    db.SubmitChanges();
+                }
+
+                Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
+                trnInventoryModule.UpdateStockInInventory(newStockIn.Id);
+
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(newStockIn);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "TrnStockIn",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "ReturnSalesItems"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
+                return new String[] { "", newStockIn.Id.ToString() };
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
     }
 }
