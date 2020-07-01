@@ -184,6 +184,8 @@ namespace EasyPOS.Forms.Software.RepPOSReport
         {
             if (listBoxPOSReport.SelectedItem != null)
             {
+                Decimal declareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
+
                 String selectedItem = listBoxPOSReport.SelectedItem.ToString();
                 switch (selectedItem)
                 {
@@ -328,11 +330,11 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                             }
 
                                             writer.Write("---------------------------------------------------------\n");
-                                            writer.Write("Total Sales: \t\t\t\t\t" + totalSales.ToString("#,#00.00"));
+                                            writer.Write("Total Sales: \t\t\t\t\t" + (totalSales * declareRate).ToString("#,#00.00"));
                                             writer.Write("\n");
                                             writer.Write("Total No. of Item(s): \t\t\t\t" + totalNumberOfItems.ToString("#,#00.00"));
                                             writer.Write("\n");
-                                            writer.Write("Total Discount: \t\t\t\t" + totalDiscount.ToString("#,#00.00"));
+                                            writer.Write("Total Discount: \t\t\t\t" + (totalDiscount * declareRate).ToString("#,#00.00"));
                                             writer.Write("\n");
                                             writer.Write("---------------------------------------------------------\n");
                                         }
@@ -341,7 +343,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                         {
                                             foreach (var collectionLine in repPOSReportController.ListCollectionLines(Convert.ToInt32(collection.Id)))
                                             {
-                                                writer.Write(collectionLine.PayType + ": \t\t\t\t\t\t" + collectionLine.Amount.ToString("#,##0.00"));
+                                                writer.Write(collectionLine.PayType + ": \t\t\t\t\t\t" + (collectionLine.Amount * declareRate).ToString("#,##0.00"));
                                                 writer.Write("\n");
                                             }
                                         }
@@ -349,15 +351,15 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                         writer.Write("---------------------------------------------------------\n");
                                         writer.Write("VAT ANALYSIS\n");
 
-                                        writer.Write("VAT Sales: \t\t\t\t\t" + VATSales.ToString("#,#00.00"));
+                                        writer.Write("VAT Sales: \t\t\t\t\t" + (VATSales * declareRate).ToString("#,#00.00"));
                                         writer.Write("\n");
-                                        writer.Write("VAT Amount: \t\t\t\t\t" + VATAmount.ToString("#,#00.00"));
+                                        writer.Write("VAT Amount: \t\t\t\t\t" + (VATAmount * declareRate).ToString("#,#00.00"));
                                         writer.Write("\n");
-                                        writer.Write("Non-VAT: \t\t\t\t\t" + NonVAT.ToString("#,#00.00"));
+                                        writer.Write("Non-VAT: \t\t\t\t\t" + (NonVAT * declareRate).ToString("#,#00.00"));
                                         writer.Write("\n");
-                                        writer.Write("VAT Exempt: \t\t\t\t\t" + VATExempt.ToString("#,#00.00"));
+                                        writer.Write("VAT Exempt: \t\t\t\t\t" + (VATExempt * declareRate).ToString("#,#00.00"));
                                         writer.Write("\n");
-                                        writer.Write("VAT Zero Rated: \t\t\t\t" + VATZeroRated.ToString("#,#00.00"));
+                                        writer.Write("VAT Zero Rated: \t\t\t\t" + (VATZeroRated * declareRate).ToString("#,#00.00"));
                                         writer.Write("\n");
 
                                         writer.Write("---------------------------------------------------------\n");
@@ -425,28 +427,28 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                     String[] data = {
                                         objData.Terminal,
                                         date.ToShortDateString(),
-                                        objData.TotalGrossSales.ToString("#,##0.00").Replace("," , ""),
-                                        objData.TotalRegularDiscount.ToString("#,##0.00").Replace("," , ""),
-                                        objData.TotalSeniorDiscount.ToString("#,##0.00").Replace("," , ""),
-                                        objData.TotalPWDDiscount.ToString("#,##0.00").Replace("," , ""),
-                                        objData.TotalSalesReturn.ToString("#,##0.00").Replace("," , ""),
-                                        objData.TotalNetSales.ToString("#,##0.00").Replace("," , ""),
-                                        objData.TotalCollection.ToString("#,##0.00").Replace("," , ""),
-                                        objData.TotalVATSales.ToString("#,##0.00").Replace("," , ""),
-                                        objData.TotalVATAmount.ToString("#,##0.00").Replace("," , ""),
-                                        objData.TotalNonVAT.ToString("#,##0.00").Replace("," , ""),
-                                        objData.TotalVATExempt.ToString("#,##0.00").Replace("," , ""),
-                                        objData.TotalVATZeroRated.ToString("#,##0.00").Replace("," , ""),
+                                        (objData.TotalGrossSales * declareRate).ToString("#,##0.00").Replace("," , ""),
+                                        (objData.TotalRegularDiscount * declareRate).ToString("#,##0.00").Replace("," , ""),
+                                        (objData.TotalSeniorDiscount * declareRate).ToString("#,##0.00").Replace("," , ""),
+                                        (objData.TotalPWDDiscount * declareRate).ToString("#,##0.00").Replace("," , ""),
+                                        (objData.TotalSalesReturn * declareRate).ToString("#,##0.00").Replace("," , ""),
+                                        (objData.TotalNetSales * declareRate).ToString("#,##0.00").Replace("," , ""),
+                                        (objData.TotalCollection * declareRate).ToString("#,##0.00").Replace("," , ""),
+                                        (objData.TotalVATSales * declareRate).ToString("#,##0.00").Replace("," , ""),
+                                        (objData.TotalVATAmount * declareRate).ToString("#,##0.00").Replace("," , ""),
+                                        (objData.TotalNonVAT * declareRate).ToString("#,##0.00").Replace("," , ""),
+                                        (objData.TotalVATExempt * declareRate).ToString("#,##0.00").Replace("," , ""),
+                                        (objData.TotalVATZeroRated * declareRate).ToString("#,##0.00").Replace("," , ""),
                                         objData.CounterIdStart,
                                         objData.CounterIdEnd,
                                         objData.TotalCancelledTrnsactionCount.ToString("#,##0.00").Replace("," , ""),
-                                        objData.TotalCancelledAmount.ToString("#,##0.00").Replace("," , ""),
-                                        objData.GrossSalesTotalPreviousReading.ToString("#,##0.00").Replace("," , ""),
-                                        objData.TotalGrossSales.ToString("#,##0.00").Replace("," , ""),
-                                        objData.GrossSalesRunningTotal.ToString("#,##0.00").Replace("," , ""),
-                                        objData.NetSalesTotalPreviousReading.ToString("#,##0.00").Replace("," , ""),
-                                        objData.TotalNetSales.ToString("#,##0.00").Replace("," , ""),
-                                        objData.NetSalesRunningTotal.ToString("#,##0.00").Replace("," , ""),
+                                        (objData.TotalCancelledAmount * declareRate).ToString("#,##0.00").Replace("," , ""),
+                                        (objData.GrossSalesTotalPreviousReading * declareRate).ToString("#,##0.00").Replace("," , ""),
+                                        (objData.TotalGrossSales * declareRate).ToString("#,##0.00").Replace("," , ""),
+                                        (objData.GrossSalesRunningTotal * declareRate).ToString("#,##0.00").Replace("," , ""),
+                                        (objData.NetSalesTotalPreviousReading * declareRate).ToString("#,##0.00").Replace("," , ""),
+                                        (objData.TotalNetSales * declareRate).ToString("#,##0.00").Replace("," , ""),
+                                        (objData.NetSalesRunningTotal * declareRate).ToString("#,##0.00").Replace("," , ""),
                                         objData.ZReadingCounter
                                     };
                                     csv.AppendLine(String.Join(",", data));
@@ -503,12 +505,12 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                         collectionRegister.CollectionNumber,
                                         customerCode,
                                         collectionRegister.Customer.Replace("," , ""),
-                                        collectionRegister.Amount.ToString("#,#00.00").Replace("," , ""),
-                                        collectionRegister.VATSales.ToString("#,#00.00").Replace("," , ""),
-                                        collectionRegister.VATAmount.ToString("#,#00.00").Replace("," , ""),
-                                        collectionRegister.NonVAT.ToString("#,#00.00").Replace("," , ""),
-                                        collectionRegister.VATExempt.ToString("#,#00.00").Replace("," , ""),
-                                        collectionRegister.VATZeroRated.ToString("#,#00.00").Replace("," , ""),
+                                        (collectionRegister.Amount * declareRate).ToString("#,#00.00").Replace("," , ""),
+                                        (collectionRegister.VATSales * declareRate).ToString("#,#00.00").Replace("," , ""),
+                                        (collectionRegister.VATAmount * declareRate).ToString("#,#00.00").Replace("," , ""),
+                                        (collectionRegister.NonVAT * declareRate).ToString("#,#00.00").Replace("," , ""),
+                                        (collectionRegister.VATExempt * declareRate).ToString("#,#00.00").Replace("," , ""),
+                                        (collectionRegister.VATZeroRated * declareRate).ToString("#,#00.00").Replace("," , ""),
                                     };
                                     csv.AppendLine(String.Join(",", data));
                                 }

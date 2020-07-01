@@ -303,6 +303,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
         private void printDocumentZReadingReport_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             var dataSource = zReadingReportEntity;
+            Decimal declareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
 
             // =============
             // Font Settings
@@ -404,12 +405,12 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             Point firstLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
             graphics.DrawLine(blackPen, firstLineFirstPoint, firstLineSecondPoint);
 
-            Decimal totalGrossSales = dataSource.TotalGrossSales;
-            Decimal totalRegularDiscount = dataSource.TotalRegularDiscount;
-            Decimal totalSeniorDiscount = dataSource.TotalSeniorDiscount;
-            Decimal totalPWDDiscount = dataSource.TotalPWDDiscount;
-            Decimal totalSalesReturn = dataSource.TotalSalesReturn;
-            Decimal totalNetSales = dataSource.TotalNetSales;
+            Decimal totalGrossSales = dataSource.TotalGrossSales * declareRate;
+            Decimal totalRegularDiscount = dataSource.TotalRegularDiscount * declareRate;
+            Decimal totalSeniorDiscount = dataSource.TotalSeniorDiscount * declareRate;
+            Decimal totalPWDDiscount = dataSource.TotalPWDDiscount * declareRate;
+            Decimal totalSalesReturn = dataSource.TotalSalesReturn * declareRate;
+            Decimal totalNetSales = dataSource.TotalNetSales * declareRate;
 
             // ===========
             // Gross Sales
@@ -480,7 +481,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                     // Collection Lines
                     // ================
                     String collectionLineLabel = collectionLine.PayType;
-                    String collectionLineData = collectionLine.Amount.ToString("#,##0.00");
+                    String collectionLineData = (collectionLine.Amount * declareRate).ToString("#,##0.00");
                     graphics.DrawString(collectionLineLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                     graphics.DrawString(collectionLineData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                     y += graphics.MeasureString(collectionLineData, fontArial8Regular).Height;
@@ -494,7 +495,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
             }
 
-            Decimal totalCollection = dataSource.TotalCollection;
+            Decimal totalCollection = dataSource.TotalCollection * declareRate;
 
             // ================
             // Total Collection
@@ -523,12 +524,12 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             Point forthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
             graphics.DrawLine(blackPen, forthLineFirstPoint, forthLineSecondPoint);
 
-            Decimal totalVATSales = dataSource.TotalVATSales;
-            Decimal totalVATAmount = dataSource.TotalVATAmount;
-            Decimal totalNonVAT = dataSource.TotalNonVAT;
-            Decimal totalVATExclusive = dataSource.TotalVATExclusive;
-            Decimal totalVATExempt = dataSource.TotalVATExempt;
-            Decimal totalVATZeroRated = dataSource.TotalVATZeroRated;
+            Decimal totalVATSales = dataSource.TotalVATSales * declareRate;
+            Decimal totalVATAmount = dataSource.TotalVATAmount * declareRate;
+            Decimal totalNonVAT = dataSource.TotalNonVAT * declareRate;
+            Decimal totalVATExclusive = dataSource.TotalVATExclusive * declareRate;
+            Decimal totalVATExempt = dataSource.TotalVATExempt * declareRate;
+            Decimal totalVATZeroRated = dataSource.TotalVATZeroRated * declareRate;
 
             String vatSalesLabel = "\nVAT Sales";
             String totalVatSalesData = "\n" + totalVATSales.ToString("#,##0.00");
@@ -596,7 +597,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             graphics.DrawLine(blackPen, sixthLineFirstPoint, sixthLineSecondPoint);
 
             Decimal totalCancelledTrnsactionCount = dataSource.TotalCancelledTrnsactionCount;
-            Decimal totalCancelledAmount = dataSource.TotalCancelledAmount;
+            Decimal totalCancelledAmount = dataSource.TotalCancelledAmount * declareRate;
 
             String totalCancelledTrnsactionCountLabel = "\nCancelled Tx.";
             String totalCancelledTrnsactionCountData = "\n" + totalCancelledTrnsactionCount.ToString("#,##0");
@@ -649,8 +650,8 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             graphics.DrawString("\nAccumulated Gross Sales (Net of VAT)", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             y += graphics.MeasureString("\nAccumulated Gross Sales (Net of VAT)", fontArial8Regular).Height;
 
-            Decimal grossSalesTotalPreviousReading = dataSource.GrossSalesTotalPreviousReading;
-            Decimal grossSalesRunningTotal = dataSource.GrossSalesRunningTotal;
+            Decimal grossSalesTotalPreviousReading = dataSource.GrossSalesTotalPreviousReading * declareRate;
+            Decimal grossSalesRunningTotal = dataSource.GrossSalesRunningTotal * declareRate;
 
             String grossSalesTotalPreviousReadingLabel = "\nPrevious Reading";
             String grossSalesTotalPreviousReadingData = "\n" + grossSalesTotalPreviousReading.ToString("#,##0.00");
@@ -678,8 +679,8 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             graphics.DrawString("\nAccumulated Net Sales", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             y += graphics.MeasureString("\nAccumulated Net Sales", fontArial8Regular).Height;
 
-            Decimal netSalesTotalPreviousReading = dataSource.NetSalesTotalPreviousReading;
-            Decimal netSalesRunningTotal = dataSource.NetSalesRunningTotal;
+            Decimal netSalesTotalPreviousReading = dataSource.NetSalesTotalPreviousReading * declareRate;
+            Decimal netSalesRunningTotal = dataSource.NetSalesRunningTotal * declareRate;
 
             String netSalesTotalPreviousReadingLabel = "\nPrevious Reading";
             String netSalesTotalPreviousReadingData = "\n" + netSalesTotalPreviousReading.ToString("#,##0.00");
