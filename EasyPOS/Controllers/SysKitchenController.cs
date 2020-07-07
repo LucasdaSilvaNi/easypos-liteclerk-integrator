@@ -18,26 +18,76 @@ namespace EasyPOS.Controllers
         // =============
         public List<Entities.SysKitchenEntity> ListKitchen()
         {
-            List<Entities.SysKitchenEntity> kitchens = new List<Entities.SysKitchenEntity>();
-            for (Int32 i = 1; i <= 10; i++)
+            List<Entities.SysKitchenEntity> kitchens = new List<Entities.SysKitchenEntity>()
             {
-                kitchens.Add(new Entities.SysKitchenEntity { Kitchen = "Kitchen " + i });
-            }
+                new Entities.SysKitchenEntity { Kitchen = "Main Course Kitchen" },
+                new Entities.SysKitchenEntity { Kitchen = "Beverages" },
+                new Entities.SysKitchenEntity { Kitchen = "Barbecue Station" }
+            };
 
             return kitchens;
         }
 
-        public List<Entities.SysKitchenItemEntity> ListKitchenItems(String kitchen)
+        public List<Entities.SysKitchenItemEntity> ListKitchenItems(String kitchen, DateTime salesDate)
         {
             var salesLines = from d in db.TrnSalesLines
                              where d.MstItem.DefaultKitchenReport == kitchen
-                             group d by d.MstItem.ItemDescription into g
+                             && d.TrnSale.SalesDate == salesDate
+                             && d.TrnSale.IsLocked == true
+                             && d.TrnSale.IsTendered == false
+                             && d.TrnSale.IsCancelled == false
+                             && d.TrnSale.IsDispatched == false
+                             group d by new
+                             {
+                                 d.SalesId,
+                                 d.TrnSale.ManualInvoiceNumber,
+                                 d.MstItem.BarCode,
+                                 d.MstItem.ItemDescription,
+                                 d.MstItem.MstUnit.Unit,
+                                 d.IsPrepared
+                             } into g
                              select new Entities.SysKitchenItemEntity
                              {
-                                 ItemDescription = g.Key
+                                 SalesId = g.Key.SalesId,
+                                 OrderNumber = g.Key.ManualInvoiceNumber,
+                                 BarCode = g.Key.BarCode,
+                                 ItemDescription = g.Key.ItemDescription,
+                                 Unit = g.Key.Unit,
+                                 IsPrepared = g.Key.IsPrepared,
+                                 Quantity = g.Sum(d => d.Quantity)
                              };
 
             return salesLines.OrderBy(d => d.ItemDescription).ToList();
+        }
+
+        public String[] DonePrepareItem(Int32 salesId, String itemBarcode)
+        {
+            try
+            {
+                var salesLines = from d in db.TrnSalesLines
+                                 where d.SalesId == salesId
+                                 && d.MstItem.BarCode == itemBarcode
+                                 select d;
+
+                if (salesLines.Any())
+                {
+                    foreach (var salesLine in salesLines)
+                    {
+                        salesLine.IsPrepared = true;
+                        db.SubmitChanges();
+                    }
+
+                    return new String[] { "", "1" };
+                }
+                else
+                {
+                    return new String[] { "Sales not found.", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
         }
     }
 }

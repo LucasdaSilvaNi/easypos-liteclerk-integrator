@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -36,15 +40,28 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SysDispatchStationForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.dataGridViewSalesList = new System.Windows.Forms.DataGridView();
+            this.ColumnButtonDispatch = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnManualSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCustomerAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNumberOfItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnIsTendered = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnIsCancelled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnIsDispatched = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnPrepared = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSpace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelDeliveryMan = new System.Windows.Forms.Label();
             this.labelCustomerName = new System.Windows.Forms.Label();
@@ -67,40 +84,23 @@
             this.buttonSalesListPageListLast = new System.Windows.Forms.Button();
             this.textBoxPageNumber = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.buttonDeliveredOrders = new System.Windows.Forms.Button();
-            this.imageListDispatchStation = new System.Windows.Forms.ImageList(this.components);
-            this.buttonDispatchedOrders = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.buttonNewOrders = new System.Windows.Forms.Button();
+            this.imageListDispatchStation = new System.Windows.Forms.ImageList(this.components);
+            this.buttonDeliveredOrders = new System.Windows.Forms.Button();
+            this.buttonDispatchedOrders = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.buttonAutoRefresh = new System.Windows.Forms.Button();
             this.textBoxTimeOrdered = new System.Windows.Forms.TextBox();
             this.labelLastChange = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.ColumnButtonDispatch = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnManualSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCustomerAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnNumberOfItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnIsTendered = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnIsCancelled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnIsDispatched = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnPrepared = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSpace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesList)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesLineItemDisplay)).BeginInit();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -195,6 +195,158 @@
             this.dataGridViewSalesList.Size = new System.Drawing.Size(696, 337);
             this.dataGridViewSalesList.TabIndex = 4;
             this.dataGridViewSalesList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesList_CellClick);
+            // 
+            // ColumnButtonDispatch
+            // 
+            this.ColumnButtonDispatch.DataPropertyName = "ColumnButtonDispatch";
+            this.ColumnButtonDispatch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnButtonDispatch.HeaderText = "";
+            this.ColumnButtonDispatch.Name = "ColumnButtonDispatch";
+            this.ColumnButtonDispatch.ReadOnly = true;
+            this.ColumnButtonDispatch.Width = 80;
+            // 
+            // ColumnId
+            // 
+            this.ColumnId.DataPropertyName = "ColumnId";
+            this.ColumnId.HeaderText = "Id";
+            this.ColumnId.Name = "ColumnId";
+            this.ColumnId.ReadOnly = true;
+            this.ColumnId.Visible = false;
+            // 
+            // ColumnTerminal
+            // 
+            this.ColumnTerminal.DataPropertyName = "ColumnTerminal";
+            this.ColumnTerminal.HeaderText = "Terminal";
+            this.ColumnTerminal.Name = "ColumnTerminal";
+            this.ColumnTerminal.ReadOnly = true;
+            this.ColumnTerminal.Visible = false;
+            this.ColumnTerminal.Width = 70;
+            // 
+            // ColumnSalesDate
+            // 
+            this.ColumnSalesDate.DataPropertyName = "ColumnSalesDate";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesDate.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColumnSalesDate.HeaderText = "Order Date";
+            this.ColumnSalesDate.Name = "ColumnSalesDate";
+            this.ColumnSalesDate.ReadOnly = true;
+            this.ColumnSalesDate.Visible = false;
+            this.ColumnSalesDate.Width = 95;
+            // 
+            // ColumnSalesNumber
+            // 
+            this.ColumnSalesNumber.DataPropertyName = "ColumnSalesNumber";
+            this.ColumnSalesNumber.HeaderText = "Order No.";
+            this.ColumnSalesNumber.Name = "ColumnSalesNumber";
+            this.ColumnSalesNumber.ReadOnly = true;
+            // 
+            // ColumnManualSalesNumber
+            // 
+            this.ColumnManualSalesNumber.DataPropertyName = "ColumnManualSalesNumber";
+            this.ColumnManualSalesNumber.HeaderText = "Manual Orde No.";
+            this.ColumnManualSalesNumber.Name = "ColumnManualSalesNumber";
+            this.ColumnManualSalesNumber.ReadOnly = true;
+            // 
+            // ColumnCustomer
+            // 
+            this.ColumnCustomer.DataPropertyName = "ColumnCustomer";
+            this.ColumnCustomer.HeaderText = "Customer";
+            this.ColumnCustomer.Name = "ColumnCustomer";
+            this.ColumnCustomer.ReadOnly = true;
+            this.ColumnCustomer.Width = 130;
+            // 
+            // ColumnCustomerAddress
+            // 
+            this.ColumnCustomerAddress.DataPropertyName = "ColumnCustomerAddress";
+            this.ColumnCustomerAddress.HeaderText = "Address";
+            this.ColumnCustomerAddress.Name = "ColumnCustomerAddress";
+            this.ColumnCustomerAddress.ReadOnly = true;
+            this.ColumnCustomerAddress.Visible = false;
+            // 
+            // ColumnDelivery
+            // 
+            this.ColumnDelivery.DataPropertyName = "ColumnDelivery";
+            this.ColumnDelivery.HeaderText = "Delivery";
+            this.ColumnDelivery.Name = "ColumnDelivery";
+            this.ColumnDelivery.ReadOnly = true;
+            this.ColumnDelivery.Width = 130;
+            // 
+            // ColumnNumberOfItems
+            // 
+            this.ColumnNumberOfItems.DataPropertyName = "ColumnNumberOfItems";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnNumberOfItems.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnNumberOfItems.HeaderText = "No. of Items";
+            this.ColumnNumberOfItems.Name = "ColumnNumberOfItems";
+            this.ColumnNumberOfItems.ReadOnly = true;
+            // 
+            // ColumnIsLocked
+            // 
+            this.ColumnIsLocked.DataPropertyName = "ColumnIsLocked";
+            this.ColumnIsLocked.HeaderText = "L";
+            this.ColumnIsLocked.Name = "ColumnIsLocked";
+            this.ColumnIsLocked.ReadOnly = true;
+            this.ColumnIsLocked.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnIsLocked.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnIsLocked.Visible = false;
+            this.ColumnIsLocked.Width = 35;
+            // 
+            // ColumnIsTendered
+            // 
+            this.ColumnIsTendered.DataPropertyName = "ColumnIsTendered";
+            this.ColumnIsTendered.HeaderText = "T";
+            this.ColumnIsTendered.Name = "ColumnIsTendered";
+            this.ColumnIsTendered.ReadOnly = true;
+            this.ColumnIsTendered.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnIsTendered.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnIsTendered.Visible = false;
+            this.ColumnIsTendered.Width = 35;
+            // 
+            // ColumnIsCancelled
+            // 
+            this.ColumnIsCancelled.DataPropertyName = "ColumnIsCancelled";
+            this.ColumnIsCancelled.HeaderText = "C";
+            this.ColumnIsCancelled.Name = "ColumnIsCancelled";
+            this.ColumnIsCancelled.ReadOnly = true;
+            this.ColumnIsCancelled.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnIsCancelled.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnIsCancelled.Visible = false;
+            this.ColumnIsCancelled.Width = 35;
+            // 
+            // ColumnIsDispatched
+            // 
+            this.ColumnIsDispatched.DataPropertyName = "ColumnIsDispatched";
+            this.ColumnIsDispatched.HeaderText = "D";
+            this.ColumnIsDispatched.Name = "ColumnIsDispatched";
+            this.ColumnIsDispatched.ReadOnly = true;
+            this.ColumnIsDispatched.Visible = false;
+            this.ColumnIsDispatched.Width = 35;
+            // 
+            // ColumnPrepared
+            // 
+            this.ColumnPrepared.DataPropertyName = "ColumnPrepared";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnPrepared.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnPrepared.HeaderText = "Prepared";
+            this.ColumnPrepared.Name = "ColumnPrepared";
+            this.ColumnPrepared.ReadOnly = true;
+            // 
+            // ColumnStatus
+            // 
+            this.ColumnStatus.DataPropertyName = "ColumnStatus";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnStatus.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColumnStatus.HeaderText = "Status";
+            this.ColumnStatus.Name = "ColumnStatus";
+            this.ColumnStatus.ReadOnly = true;
+            // 
+            // ColumnSpace
+            // 
+            this.ColumnSpace.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnSpace.DataPropertyName = "ColumnSpace";
+            this.ColumnSpace.HeaderText = "";
+            this.ColumnSpace.Name = "ColumnSpace";
+            this.ColumnSpace.ReadOnly = true;
             // 
             // panel2
             // 
@@ -487,55 +639,18 @@
             this.panel3.Size = new System.Drawing.Size(1096, 510);
             this.panel3.TabIndex = 14;
             // 
-            // buttonDeliveredOrders
+            // panel5
             // 
-            this.buttonDeliveredOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonDeliveredOrders.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonDeliveredOrders.FlatAppearance.BorderSize = 0;
-            this.buttonDeliveredOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDeliveredOrders.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.buttonDeliveredOrders.ForeColor = System.Drawing.Color.White;
-            this.buttonDeliveredOrders.ImageIndex = 2;
-            this.buttonDeliveredOrders.ImageList = this.imageListDispatchStation;
-            this.buttonDeliveredOrders.Location = new System.Drawing.Point(302, 1);
-            this.buttonDeliveredOrders.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDeliveredOrders.Name = "buttonDeliveredOrders";
-            this.buttonDeliveredOrders.Padding = new System.Windows.Forms.Padding(8);
-            this.buttonDeliveredOrders.Size = new System.Drawing.Size(150, 84);
-            this.buttonDeliveredOrders.TabIndex = 22;
-            this.buttonDeliveredOrders.Text = "\r\nDelivered";
-            this.buttonDeliveredOrders.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.buttonDeliveredOrders.UseVisualStyleBackColor = false;
-            this.buttonDeliveredOrders.Click += new System.EventHandler(this.buttonDeliveredOrders_Click);
-            // 
-            // imageListDispatchStation
-            // 
-            this.imageListDispatchStation.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListDispatchStation.ImageStream")));
-            this.imageListDispatchStation.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListDispatchStation.Images.SetKeyName(0, "Dispatch.png");
-            this.imageListDispatchStation.Images.SetKeyName(1, "Orders.png");
-            this.imageListDispatchStation.Images.SetKeyName(2, "Deliver.png");
-            // 
-            // buttonDispatchedOrders
-            // 
-            this.buttonDispatchedOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonDispatchedOrders.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonDispatchedOrders.FlatAppearance.BorderSize = 0;
-            this.buttonDispatchedOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDispatchedOrders.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.buttonDispatchedOrders.ForeColor = System.Drawing.Color.White;
-            this.buttonDispatchedOrders.ImageIndex = 0;
-            this.buttonDispatchedOrders.ImageList = this.imageListDispatchStation;
-            this.buttonDispatchedOrders.Location = new System.Drawing.Point(151, 1);
-            this.buttonDispatchedOrders.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDispatchedOrders.Name = "buttonDispatchedOrders";
-            this.buttonDispatchedOrders.Padding = new System.Windows.Forms.Padding(8);
-            this.buttonDispatchedOrders.Size = new System.Drawing.Size(150, 84);
-            this.buttonDispatchedOrders.TabIndex = 21;
-            this.buttonDispatchedOrders.Text = "\r\nDispatched";
-            this.buttonDispatchedOrders.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.buttonDispatchedOrders.UseVisualStyleBackColor = false;
-            this.buttonDispatchedOrders.Click += new System.EventHandler(this.buttonDispatchedOrders_Click);
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.panel5.Controls.Add(this.buttonNewOrders);
+            this.panel5.Controls.Add(this.buttonDeliveredOrders);
+            this.panel5.Controls.Add(this.buttonDispatchedOrders);
+            this.panel5.Location = new System.Drawing.Point(10, 5);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(696, 86);
+            this.panel5.TabIndex = 23;
             // 
             // buttonNewOrders
             // 
@@ -557,6 +672,56 @@
             this.buttonNewOrders.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonNewOrders.UseVisualStyleBackColor = false;
             this.buttonNewOrders.Click += new System.EventHandler(this.buttonNewOrders_Click);
+            // 
+            // imageListDispatchStation
+            // 
+            this.imageListDispatchStation.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListDispatchStation.ImageStream")));
+            this.imageListDispatchStation.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListDispatchStation.Images.SetKeyName(0, "Dispatch.png");
+            this.imageListDispatchStation.Images.SetKeyName(1, "Orders.png");
+            this.imageListDispatchStation.Images.SetKeyName(2, "Deliver.png");
+            // 
+            // buttonDeliveredOrders
+            // 
+            this.buttonDeliveredOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonDeliveredOrders.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonDeliveredOrders.FlatAppearance.BorderSize = 0;
+            this.buttonDeliveredOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeliveredOrders.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonDeliveredOrders.ForeColor = System.Drawing.Color.White;
+            this.buttonDeliveredOrders.ImageIndex = 2;
+            this.buttonDeliveredOrders.ImageList = this.imageListDispatchStation;
+            this.buttonDeliveredOrders.Location = new System.Drawing.Point(302, 1);
+            this.buttonDeliveredOrders.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDeliveredOrders.Name = "buttonDeliveredOrders";
+            this.buttonDeliveredOrders.Padding = new System.Windows.Forms.Padding(8);
+            this.buttonDeliveredOrders.Size = new System.Drawing.Size(150, 84);
+            this.buttonDeliveredOrders.TabIndex = 22;
+            this.buttonDeliveredOrders.Text = "\r\nDelivered";
+            this.buttonDeliveredOrders.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonDeliveredOrders.UseVisualStyleBackColor = false;
+            this.buttonDeliveredOrders.Click += new System.EventHandler(this.buttonDeliveredOrders_Click);
+            // 
+            // buttonDispatchedOrders
+            // 
+            this.buttonDispatchedOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonDispatchedOrders.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonDispatchedOrders.FlatAppearance.BorderSize = 0;
+            this.buttonDispatchedOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDispatchedOrders.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonDispatchedOrders.ForeColor = System.Drawing.Color.White;
+            this.buttonDispatchedOrders.ImageIndex = 0;
+            this.buttonDispatchedOrders.ImageList = this.imageListDispatchStation;
+            this.buttonDispatchedOrders.Location = new System.Drawing.Point(151, 1);
+            this.buttonDispatchedOrders.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDispatchedOrders.Name = "buttonDispatchedOrders";
+            this.buttonDispatchedOrders.Padding = new System.Windows.Forms.Padding(8);
+            this.buttonDispatchedOrders.Size = new System.Drawing.Size(150, 84);
+            this.buttonDispatchedOrders.TabIndex = 21;
+            this.buttonDispatchedOrders.Text = "\r\nDispatched";
+            this.buttonDispatchedOrders.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonDispatchedOrders.UseVisualStyleBackColor = false;
+            this.buttonDispatchedOrders.Click += new System.EventHandler(this.buttonDispatchedOrders_Click);
             // 
             // panel4
             // 
@@ -624,171 +789,6 @@
             this.labelLastChange.TabIndex = 16;
             this.labelLastChange.Text = "Time Ordered:";
             // 
-            // panel5
-            // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.panel5.Controls.Add(this.buttonNewOrders);
-            this.panel5.Controls.Add(this.buttonDeliveredOrders);
-            this.panel5.Controls.Add(this.buttonDispatchedOrders);
-            this.panel5.Location = new System.Drawing.Point(10, 5);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(696, 86);
-            this.panel5.TabIndex = 23;
-            // 
-            // ColumnButtonDispatch
-            // 
-            this.ColumnButtonDispatch.DataPropertyName = "ColumnButtonDispatch";
-            this.ColumnButtonDispatch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnButtonDispatch.HeaderText = "";
-            this.ColumnButtonDispatch.Name = "ColumnButtonDispatch";
-            this.ColumnButtonDispatch.ReadOnly = true;
-            this.ColumnButtonDispatch.Width = 80;
-            // 
-            // ColumnId
-            // 
-            this.ColumnId.DataPropertyName = "ColumnId";
-            this.ColumnId.HeaderText = "Id";
-            this.ColumnId.Name = "ColumnId";
-            this.ColumnId.ReadOnly = true;
-            this.ColumnId.Visible = false;
-            // 
-            // ColumnTerminal
-            // 
-            this.ColumnTerminal.DataPropertyName = "ColumnTerminal";
-            this.ColumnTerminal.HeaderText = "Terminal";
-            this.ColumnTerminal.Name = "ColumnTerminal";
-            this.ColumnTerminal.ReadOnly = true;
-            this.ColumnTerminal.Visible = false;
-            this.ColumnTerminal.Width = 70;
-            // 
-            // ColumnSalesDate
-            // 
-            this.ColumnSalesDate.DataPropertyName = "ColumnSalesDate";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesDate.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColumnSalesDate.HeaderText = "Order Date";
-            this.ColumnSalesDate.Name = "ColumnSalesDate";
-            this.ColumnSalesDate.ReadOnly = true;
-            this.ColumnSalesDate.Visible = false;
-            this.ColumnSalesDate.Width = 95;
-            // 
-            // ColumnSalesNumber
-            // 
-            this.ColumnSalesNumber.DataPropertyName = "ColumnSalesNumber";
-            this.ColumnSalesNumber.HeaderText = "Order No.";
-            this.ColumnSalesNumber.Name = "ColumnSalesNumber";
-            this.ColumnSalesNumber.ReadOnly = true;
-            // 
-            // ColumnManualSalesNumber
-            // 
-            this.ColumnManualSalesNumber.DataPropertyName = "ColumnManualSalesNumber";
-            this.ColumnManualSalesNumber.HeaderText = "Manual Orde No.";
-            this.ColumnManualSalesNumber.Name = "ColumnManualSalesNumber";
-            this.ColumnManualSalesNumber.ReadOnly = true;
-            // 
-            // ColumnCustomer
-            // 
-            this.ColumnCustomer.DataPropertyName = "ColumnCustomer";
-            this.ColumnCustomer.HeaderText = "Customer";
-            this.ColumnCustomer.Name = "ColumnCustomer";
-            this.ColumnCustomer.ReadOnly = true;
-            this.ColumnCustomer.Width = 130;
-            // 
-            // ColumnCustomerAddress
-            // 
-            this.ColumnCustomerAddress.DataPropertyName = "ColumnCustomerAddress";
-            this.ColumnCustomerAddress.HeaderText = "Address";
-            this.ColumnCustomerAddress.Name = "ColumnCustomerAddress";
-            this.ColumnCustomerAddress.ReadOnly = true;
-            this.ColumnCustomerAddress.Visible = false;
-            // 
-            // ColumnDelivery
-            // 
-            this.ColumnDelivery.DataPropertyName = "ColumnDelivery";
-            this.ColumnDelivery.HeaderText = "Delivery";
-            this.ColumnDelivery.Name = "ColumnDelivery";
-            this.ColumnDelivery.ReadOnly = true;
-            this.ColumnDelivery.Width = 130;
-            // 
-            // ColumnNumberOfItems
-            // 
-            this.ColumnNumberOfItems.DataPropertyName = "ColumnNumberOfItems";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnNumberOfItems.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnNumberOfItems.HeaderText = "No. of Items";
-            this.ColumnNumberOfItems.Name = "ColumnNumberOfItems";
-            this.ColumnNumberOfItems.ReadOnly = true;
-            // 
-            // ColumnIsLocked
-            // 
-            this.ColumnIsLocked.DataPropertyName = "ColumnIsLocked";
-            this.ColumnIsLocked.HeaderText = "L";
-            this.ColumnIsLocked.Name = "ColumnIsLocked";
-            this.ColumnIsLocked.ReadOnly = true;
-            this.ColumnIsLocked.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnIsLocked.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColumnIsLocked.Visible = false;
-            this.ColumnIsLocked.Width = 35;
-            // 
-            // ColumnIsTendered
-            // 
-            this.ColumnIsTendered.DataPropertyName = "ColumnIsTendered";
-            this.ColumnIsTendered.HeaderText = "T";
-            this.ColumnIsTendered.Name = "ColumnIsTendered";
-            this.ColumnIsTendered.ReadOnly = true;
-            this.ColumnIsTendered.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnIsTendered.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColumnIsTendered.Visible = false;
-            this.ColumnIsTendered.Width = 35;
-            // 
-            // ColumnIsCancelled
-            // 
-            this.ColumnIsCancelled.DataPropertyName = "ColumnIsCancelled";
-            this.ColumnIsCancelled.HeaderText = "C";
-            this.ColumnIsCancelled.Name = "ColumnIsCancelled";
-            this.ColumnIsCancelled.ReadOnly = true;
-            this.ColumnIsCancelled.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnIsCancelled.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColumnIsCancelled.Visible = false;
-            this.ColumnIsCancelled.Width = 35;
-            // 
-            // ColumnIsDispatched
-            // 
-            this.ColumnIsDispatched.DataPropertyName = "ColumnIsDispatched";
-            this.ColumnIsDispatched.HeaderText = "D";
-            this.ColumnIsDispatched.Name = "ColumnIsDispatched";
-            this.ColumnIsDispatched.ReadOnly = true;
-            this.ColumnIsDispatched.Visible = false;
-            this.ColumnIsDispatched.Width = 35;
-            // 
-            // ColumnPrepared
-            // 
-            this.ColumnPrepared.DataPropertyName = "ColumnPrepared";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnPrepared.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnPrepared.HeaderText = "Prepared";
-            this.ColumnPrepared.Name = "ColumnPrepared";
-            this.ColumnPrepared.ReadOnly = true;
-            // 
-            // ColumnStatus
-            // 
-            this.ColumnStatus.DataPropertyName = "ColumnStatus";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnStatus.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ColumnStatus.HeaderText = "Status";
-            this.ColumnStatus.Name = "ColumnStatus";
-            this.ColumnStatus.ReadOnly = true;
-            // 
-            // ColumnSpace
-            // 
-            this.ColumnSpace.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnSpace.DataPropertyName = "ColumnSpace";
-            this.ColumnSpace.HeaderText = "";
-            this.ColumnSpace.Name = "ColumnSpace";
-            this.ColumnSpace.ReadOnly = true;
-            // 
             // SysDispatchStationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -811,9 +811,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesLineItemDisplay)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -57,11 +57,12 @@ namespace EasyPOS.Forms.Software.MstItemGroup
                     dataGridViewItemGroupItemList.Columns[1].Visible = false;
                 }
 
-                kitchens = new List<String>();
-                for (Int32 i = 1; i <= 10; i++)
+                kitchens = new List<String>
                 {
-                    kitchens.Add("Kitchen " + i);
-                }
+                    "Main Course Kitchen",
+                    "Beverages",
+                    "Barbecue Station"
+                };
 
                 comboBoxItemGroupKitchens.DataSource = kitchens;
 

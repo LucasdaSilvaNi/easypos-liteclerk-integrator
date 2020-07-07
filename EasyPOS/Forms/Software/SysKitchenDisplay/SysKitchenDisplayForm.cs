@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyPOS.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,14 +23,16 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
         public BindingSource dataCollectedSalesListSource = new BindingSource();
 
         private List<Entities.SysKitchenEntity> listKitchens = new List<Entities.SysKitchenEntity>();
-        private const int kitchenNoOfButtons = 10;
+        private const int kitchenNoOfButtons = 5;
         private int kitchenPages;
         private int kitchenPage = 1;
         private String selectedKitchen;
         Button[] kitchenButtons;
 
         private List<Entities.SysKitchenItemEntity> listKitchenItems = new List<Entities.SysKitchenItemEntity>();
-        private const int kitchenItemNoOfButtons = 60;
+        private ToolTip kitchenItemToolTip = new ToolTip();
+        private ToolTip kitchenItemToolTip2 = new ToolTip();
+        private const int kitchenItemNoOfButtons = 20;
         private int kitchenItemPages;
         private int kitchenItemPage = 1;
         Button[] kitchenItemButtons;
@@ -51,85 +54,42 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
             sysSoftwareForm = softwareForm;
 
             kitchenButtons = new Button[] {
-                    buttonKitchen1,
-                    buttonKitchen2,
-                    buttonKitchen3,
-                    buttonKitchen4,
-                    buttonKitchen5,
-                    buttonKitchen6,
-                    buttonKitchen7,
-                    buttonKitchen8,
-                    buttonKitchen9,
-                    buttonKitchen10
-                };
+                buttonKitchen1,
+                buttonKitchen2,
+                buttonKitchen3,
+                buttonKitchen4,
+                buttonKitchen5
+            };
 
             for (int i = 0; i < kitchenNoOfButtons; i++)
             {
                 kitchenButtons[i].Click += new EventHandler(buttonKitchen_Click);
             }
 
+            buttonKitchen1.BackColor = ColorTranslator.FromHtml("#7fbc00");
+
             kitchenItemButtons = new Button[] {
-                    buttonKitchenItem1,
-                    buttonKitchenItem2,
-                    buttonKitchenItem3,
-                    buttonKitchenItem4,
-                    buttonKitchenItem5,
-                    buttonKitchenItem6,
-                    buttonKitchenItem7,
-                    buttonKitchenItem8,
-                    buttonKitchenItem9,
-                    buttonKitchenItem10,
-                    buttonKitchenItem11,
-                    buttonKitchenItem12,
-                    buttonKitchenItem13,
-                    buttonKitchenItem14,
-                    buttonKitchenItem15,
-                    buttonKitchenItem16,
-                    buttonKitchenItem17,
-                    buttonKitchenItem18,
-                    buttonKitchenItem19,
-                    buttonKitchenItem20,
-                    buttonKitchenItem21,
-                    buttonKitchenItem22,
-                    buttonKitchenItem23,
-                    buttonKitchenItem24,
-                    buttonKitchenItem25,
-                    buttonKitchenItem26,
-                    buttonKitchenItem27,
-                    buttonKitchenItem28,
-                    buttonKitchenItem29,
-                    buttonKitchenItem30,
-                    buttonKitchenItem31,
-                    buttonKitchenItem32,
-                    buttonKitchenItem33,
-                    buttonKitchenItem34,
-                    buttonKitchenItem35,
-                    buttonKitchenItem36,
-                    buttonKitchenItem37,
-                    buttonKitchenItem38,
-                    buttonKitchenItem39,
-                    buttonKitchenItem40,
-                    buttonKitchenItem41,
-                    buttonKitchenItem42,
-                    buttonKitchenItem43,
-                    buttonKitchenItem44,
-                    buttonKitchenItem45,
-                    buttonKitchenItem46,
-                    buttonKitchenItem47,
-                    buttonKitchenItem48,
-                    buttonKitchenItem49,
-                    buttonKitchenItem50,
-                    buttonKitchenItem51,
-                    buttonKitchenItem52,
-                    buttonKitchenItem53,
-                    buttonKitchenItem54,
-                    buttonKitchenItem55,
-                    buttonKitchenItem56,
-                    buttonKitchenItem57,
-                    buttonKitchenItem58,
-                    buttonKitchenItem59,
-                    buttonKitchenItem60
-                };
+                buttonKitchenItem1,
+                buttonKitchenItem2,
+                buttonKitchenItem3,
+                buttonKitchenItem4,
+                buttonKitchenItem5,
+                buttonKitchenItem6,
+                buttonKitchenItem7,
+                buttonKitchenItem8,
+                buttonKitchenItem9,
+                buttonKitchenItem10,
+                buttonKitchenItem11,
+                buttonKitchenItem12,
+                buttonKitchenItem13,
+                buttonKitchenItem14,
+                buttonKitchenItem15,
+                buttonKitchenItem16,
+                buttonKitchenItem17,
+                buttonKitchenItem18,
+                buttonKitchenItem19,
+                buttonKitchenItem20
+            };
 
             for (int i = 0; i < kitchenItemNoOfButtons; i++)
             {
@@ -174,15 +134,21 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
         {
             try
             {
-
+                DateTime salesDate = dateTimePickerSalesDate.Value.Date;
                 Controllers.SysKitchenController sysKitchenController = new Controllers.SysKitchenController();
 
-                listKitchenItems = sysKitchenController.ListKitchenItems(kitchen);
+                listKitchenItems = sysKitchenController.ListKitchenItems(kitchen, salesDate);
                 kitchenItemPages = listKitchenItems.Count();
 
                 for (int i = 0; i < kitchenItemNoOfButtons; i++)
                 {
+                    kitchenItemToolTip.SetToolTip(kitchenItemButtons[i], "");
+                    kitchenItemToolTip2.SetToolTip(kitchenItemButtons[i], "");
+
                     kitchenItemButtons[i].Text = "";
+
+                    kitchenItemButtons[i].BackColor = SystemColors.Control;
+                    kitchenItemButtons[i].ForeColor = Color.Black;
                 }
 
                 var listKitchenItemPage = listKitchenItems.Skip((kitchenItemPage - 1) * kitchenItemNoOfButtons).Take(kitchenItemNoOfButtons).ToList();
@@ -190,7 +156,23 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
                 {
                     for (int i = 0; i < listKitchenItemPage.Count(); i++)
                     {
-                        kitchenItemButtons[i].Text = listKitchenItemPage[i].ItemDescription;
+                        kitchenItemToolTip.SetToolTip(kitchenItemButtons[i], listKitchenItemPage[i].SalesId.ToString());
+                        kitchenItemToolTip2.SetToolTip(kitchenItemButtons[i], listKitchenItemPage[i].BarCode.ToString());
+
+                        if (listKitchenItemPage[i].IsPrepared == true)
+                        {
+                            kitchenItemButtons[i].BackColor = ColorTranslator.FromHtml("#F25022");
+                            kitchenItemButtons[i].ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            kitchenItemButtons[i].BackColor = SystemColors.Control;
+                            kitchenItemButtons[i].ForeColor = Color.Black;
+                        }
+
+                        kitchenItemButtons[i].Text = listKitchenItemPage[i].OrderNumber + "\n"
+                            + listKitchenItemPage[i].ItemDescription + "\n"
+                            + listKitchenItemPage[i].Quantity.ToString("#,##0.00") + " " + listKitchenItemPage[i].Unit;
                     }
                 }
             }
@@ -204,8 +186,16 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
         {
             try
             {
+                buttonKitchen1.BackColor = ColorTranslator.FromHtml("#01A6F0");
+                buttonKitchen2.BackColor = ColorTranslator.FromHtml("#01A6F0");
+                buttonKitchen3.BackColor = ColorTranslator.FromHtml("#01A6F0");
+                buttonKitchen4.BackColor = ColorTranslator.FromHtml("#01A6F0");
+                buttonKitchen5.BackColor = ColorTranslator.FromHtml("#01A6F0");
+
                 Button b = sender as Button;
                 String kitchen = b.Text;
+
+                b.BackColor = ColorTranslator.FromHtml("#7fbc00");
 
                 kitchenItemPage = 1;
 
@@ -227,6 +217,26 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
                 Button b = sender as Button;
                 String kitchenItem = b.Text;
 
+                String salesId = kitchenItemToolTip.GetToolTip(b);
+                String barcode = kitchenItemToolTip2.GetToolTip(b);
+
+                if (String.IsNullOrEmpty(salesId) == false && String.IsNullOrEmpty(barcode) == false)
+                {
+                    DialogResult doneDialogResult = MessageBox.Show("Done Item?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (doneDialogResult == DialogResult.Yes)
+                    {
+                        Controllers.SysKitchenController sysKitchenController = new Controllers.SysKitchenController();
+                        String[] donePrepareItems = sysKitchenController.DonePrepareItem(Convert.ToInt32(salesId), barcode);
+                        if (donePrepareItems[1].Equals("0") == false)
+                        {
+                            FillKitchenItem(selectedKitchen);
+                        }
+                        else
+                        {
+                            MessageBox.Show(donePrepareItems[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
