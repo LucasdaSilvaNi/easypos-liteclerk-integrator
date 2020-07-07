@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EasyPOS.EasyFISIntegration.Entities
 {
-    public class ISPOSTrnCollection
+    public class EasyPOSTrnCollection
     {
         public String SIDate { get; set; }
         public String BranchCode { get; set; }
@@ -13,6 +13,6 @@ namespace EasyPOS.EasyFISIntegration.Entities
         public String DocumentReference { get; set; }
         public String ManualSINumber { get; set; }
         public String Remarks { get; set; }
-        public List<ISPOSTrnCollectionLines> ListPOSIntegrationTrnSalesInvoiceItem { get; set; }
+        public List<EasyPOSTrnCollectionLines> ListPOSIntegrationTrnSalesInvoiceItem { get; set; }
     }
 }

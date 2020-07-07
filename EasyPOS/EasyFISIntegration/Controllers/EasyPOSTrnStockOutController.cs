@@ -9,7 +9,7 @@ using System.Web.Script.Serialization;
 
 namespace EasyPOS.EasyFISIntegration.Controllers
 {
-    class ISPOSTrnStockTransferOutController
+    class EasyPOSTrnStockOutController
     {
         // ====
         // Data
@@ -22,7 +22,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
         // ===========
         // Constructor
         // ===========
-        public ISPOSTrnStockTransferOutController(Forms.Software.SysSettings.SysSettingsForm form, String actDate)
+        public EasyPOSTrnStockOutController(Forms.Software.SysSettings.SysSettingsForm form, String actDate)
         {
             sysSettingsForm = form;
             activityDate = actDate;
@@ -44,28 +44,28 @@ namespace EasyPOS.EasyFISIntegration.Controllers
             return result;
         }
 
-        // ========================
-        // Sync Stock Transfer - OT
-        // ========================
-        public async void SyncStockTransferOT(String apiUrlHost, String toBranchCode)
+        // ==============
+        // Sync Stock Out
+        // ==============
+        public async void SyncStockOut(String apiUrlHost, String branchCode)
         {
-            await GetStockTransferOT(apiUrlHost, toBranchCode);
+            await GetStockOut(apiUrlHost, branchCode);
         }
 
-        // =======================
-        // Get Stock Transfer - OT
-        // =======================
-        public Task GetStockTransferOT(String apiUrlHost, String fromBranchCode)
+        // =============
+        // Get Stock Out
+        // =============
+        public Task GetStockOut(String apiUrlHost, String branchCode)
         {
             try
             {
                 DateTime dateTimeToday = DateTime.Now;
-                String stockTransferDate = Convert.ToDateTime(activityDate).ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
+                String stockOutDate = Convert.ToDateTime(activityDate).ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
 
                 // ============
                 // Http Request
                 // ============
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://" + apiUrlHost + "/api/get/POSIntegration/stockTransferItems/OT/" + stockTransferDate + "/" + fromBranchCode);
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://" + apiUrlHost + "/api/get/POSIntegration/stockOut/" + stockOutDate + "/" + branchCode);
                 httpWebRequest.Method = "GET";
                 httpWebRequest.Accept = "application/json";
 
@@ -77,16 +77,16 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                 {
                     var result = streamReader.ReadToEnd();
                     JavaScriptSerializer js = new JavaScriptSerializer();
-                    List<Entities.ISPOSTrnStockTransfer> stockTransferLists = (List<Entities.ISPOSTrnStockTransfer>)js.Deserialize(result, typeof(List<Entities.ISPOSTrnStockTransfer>));
+                    List<Entities.EasyPOSTrnStockOut> stockOuts = (List<Entities.EasyPOSTrnStockOut>)js.Deserialize(result, typeof(List<Entities.EasyPOSTrnStockOut>));
 
-                    if (stockTransferLists.Any())
+                    if (stockOuts.Any())
                     {
-                        foreach (var stockTransfer in stockTransferLists)
+                        foreach (var stockOut in stockOuts)
                         {
-                            var currentStockOut = from d in posdb.TrnStockOuts where d.Remarks.Equals("ST-" + stockTransfer.BranchCode + "-" + stockTransfer.STNumber) && d.TrnStockOutLines.Count() > 0 && d.IsLocked == true select d;
+                            var currentStockOut = from d in posdb.TrnStockOuts where d.Remarks.Equals("OT-" + stockOut.BranchCode + "-" + stockOut.OTNumber) && d.TrnStockOutLines.Count() > 0 && d.IsLocked == true select d;
                             if (!currentStockOut.Any())
                             {
-                                sysSettingsForm.logMessages("Saving Stock Transfer (OT): ST-" + stockTransfer.BranchCode + "-" + stockTransfer.STNumber + "\r\n\n");
+                                sysSettingsForm.logMessages("Saving Stock Out: OT-" + stockOut.BranchCode + "-" + stockOut.OTNumber + "\r\n\n");
 
                                 var defaultPeriod = from d in posdb.MstPeriods select d;
                                 var defaultSettings = from d in posdb.IntCloudSettings select d;
@@ -99,18 +99,16 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                     stockOutNumber = FillLeadingZeroes(newStockOutNumber, 10);
                                 }
 
-                                var accounts = from d in posdb.MstAccounts
-                                               select d;
-
+                                var accounts = from d in posdb.MstAccounts select d;
                                 if (accounts.Any())
                                 {
                                     Data.TrnStockOut newStockOut = new Data.TrnStockOut
                                     {
                                         PeriodId = defaultPeriod.FirstOrDefault().Id,
-                                        StockOutDate = Convert.ToDateTime(stockTransfer.STDate),
+                                        StockOutDate = Convert.ToDateTime(stockOut.OTDate),
                                         StockOutNumber = stockOutNumber,
                                         AccountId = accounts.FirstOrDefault().Id,
-                                        Remarks = "ST-" + stockTransfer.BranchCode + "-" + stockTransfer.STNumber,
+                                        Remarks = "OT-" + stockOut.BranchCode + "-" + stockOut.OTNumber,
                                         PreparedBy = defaultSettings.FirstOrDefault().PostUserId,
                                         CheckedBy = defaultSettings.FirstOrDefault().PostUserId,
                                         ApprovedBy = defaultSettings.FirstOrDefault().PostUserId,
@@ -124,9 +122,9 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                     posdb.TrnStockOuts.InsertOnSubmit(newStockOut);
                                     posdb.SubmitChanges();
 
-                                    if (stockTransfer.ListPOSIntegrationTrnStockTransferItem.Any())
+                                    if (stockOut.ListPOSIntegrationTrnStockOutItem.Any())
                                     {
-                                        foreach (var item in stockTransfer.ListPOSIntegrationTrnStockTransferItem.ToList())
+                                        foreach (var item in stockOut.ListPOSIntegrationTrnStockOutItem.ToList())
                                         {
                                             var currentItem = from d in posdb.MstItems where d.BarCode.Equals(item.ItemCode) && d.MstUnit.Unit.Equals(item.Unit) select d;
                                             if (currentItem.Any())
@@ -160,7 +158,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                 }
                                 else
                                 {
-                                    sysSettingsForm.logMessages("Cannot Save Stock Transfer (OT): ST-" + stockTransfer.BranchCode + "-" + stockTransfer.STNumber + "\r\n\n");
+                                    sysSettingsForm.logMessages("Cannot Save Stock Out: OT - " + stockOut.BranchCode + " - " + stockOut.OTNumber + "\r\n\n");
                                     sysSettingsForm.logMessages("Empty Accounts!" + "\r\n\n");
                                     sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                     sysSettingsForm.logMessages("\r\n\n");
@@ -174,7 +172,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
             }
             catch (Exception e)
             {
-                sysSettingsForm.logMessages("Stock Transfer (Out) Error: " + e.Message + "\r\n\n");
+                sysSettingsForm.logMessages("Stock-Out Error: " + e.Message + "\r\n\n");
                 sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                 sysSettingsForm.logMessages("\r\n\n");
 

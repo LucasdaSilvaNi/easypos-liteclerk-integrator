@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EasyPOS.EasyFISIntegration.Entities
 {
-    public class ISPOSTrnStockTransfer
+    public class EasyPOSTrnStockTransfer
     {
         public String BranchCode { get; set; }
         public String Branch { get; set; }
@@ -11,6 +11,6 @@ namespace EasyPOS.EasyFISIntegration.Entities
         public String STDate { get; set; }
         public String ToBranch { get; set; }
         public String ToBranchCode { get; set; }
-        public List<ISPOSTrnStockTransferItem> ListPOSIntegrationTrnStockTransferItem { get; set; }
+        public List<EasyPOSTrnStockTransferItem> ListPOSIntegrationTrnStockTransferItem { get; set; }
     }
 }

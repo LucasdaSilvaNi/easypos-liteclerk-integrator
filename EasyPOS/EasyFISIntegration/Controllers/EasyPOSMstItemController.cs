@@ -9,7 +9,7 @@ using System.Web.Script.Serialization;
 
 namespace EasyPOS.EasyFISIntegration.Controllers
 {
-    class ISPOSMstItemController
+    class EasyPOSMstItemController
     {
         // ====
         // Data
@@ -22,7 +22,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
         // ===========
         // Constructor
         // ===========
-        public ISPOSMstItemController(Forms.Software.SysSettings.SysSettingsForm form, String actDate)
+        public EasyPOSMstItemController(Forms.Software.SysSettings.SysSettingsForm form, String actDate)
         {
             sysSettingsForm = form;
             activityDate = actDate;
@@ -77,7 +77,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                 {
                     var result = streamReader.ReadToEnd();
                     JavaScriptSerializer js = new JavaScriptSerializer();
-                    List<Entities.ISPOSMstItem> itemLists = (List<Entities.ISPOSMstItem>)js.Deserialize(result, typeof(List<Entities.ISPOSMstItem>));
+                    List<Entities.EasyPOSMstItem> itemLists = (List<Entities.EasyPOSMstItem>)js.Deserialize(result, typeof(List<Entities.EasyPOSMstItem>));
 
                     if (itemLists.Any())
                     {

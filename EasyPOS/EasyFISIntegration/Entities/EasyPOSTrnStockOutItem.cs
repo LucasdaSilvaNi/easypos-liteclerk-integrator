@@ -2,7 +2,7 @@
 
 namespace EasyPOS.EasyFISIntegration.Entities
 {
-    public class ISPOSTrnStockOutItem
+    public class EasyPOSTrnStockOutItem
     {
         public Int32 OTId { get; set; }
         public String ItemCode { get; set; }

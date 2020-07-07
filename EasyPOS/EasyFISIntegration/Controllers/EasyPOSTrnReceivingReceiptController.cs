@@ -9,7 +9,7 @@ using System.Web.Script.Serialization;
 
 namespace EasyPOS.EasyFISIntegration.Controllers
 {
-    class ISPOSTrnStockOutController
+    class EasyPOSTrnReceivingReceiptController
     {
         // ====
         // Data
@@ -22,7 +22,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
         // ===========
         // Constructor
         // ===========
-        public ISPOSTrnStockOutController(Forms.Software.SysSettings.SysSettingsForm form, String actDate)
+        public EasyPOSTrnReceivingReceiptController(Forms.Software.SysSettings.SysSettingsForm form, String actDate)
         {
             sysSettingsForm = form;
             activityDate = actDate;
@@ -44,28 +44,28 @@ namespace EasyPOS.EasyFISIntegration.Controllers
             return result;
         }
 
-        // ==============
-        // Sync Stock Out
-        // ==============
-        public async void SyncStockOut(String apiUrlHost, String branchCode)
+        // ======================
+        // Sync Receiving Receipt
+        // ======================
+        public async void SyncReceivingReceipt(String apiUrlHost, String branchCode)
         {
-            await GetStockOut(apiUrlHost, branchCode);
+            await GetReceivingReceipt(apiUrlHost, branchCode);
         }
 
-        // =============
-        // Get Stock Out
-        // =============
-        public Task GetStockOut(String apiUrlHost, String branchCode)
+        // =====================
+        // Get Receiving Receipt
+        // =====================
+        public Task GetReceivingReceipt(String apiUrlHost, String branchCode)
         {
             try
             {
                 DateTime dateTimeToday = DateTime.Now;
-                String stockOutDate = Convert.ToDateTime(activityDate).ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
+                String receivingReceiptDate = Convert.ToDateTime(activityDate).ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
 
                 // ============
                 // Http Request
                 // ============
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://" + apiUrlHost + "/api/get/POSIntegration/stockOut/" + stockOutDate + "/" + branchCode);
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://" + apiUrlHost + "/api/get/POSIntegration/receivingReceipt/" + receivingReceiptDate + "/" + branchCode);
                 httpWebRequest.Method = "GET";
                 httpWebRequest.Accept = "application/json";
 
@@ -77,38 +77,38 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                 {
                     var result = streamReader.ReadToEnd();
                     JavaScriptSerializer js = new JavaScriptSerializer();
-                    List<Entities.ISPOSTrnStockOut> stockOuts = (List<Entities.ISPOSTrnStockOut>)js.Deserialize(result, typeof(List<Entities.ISPOSTrnStockOut>));
+                    List<Entities.EasyPOSTrnReceivingReceipt> receivingReceipts = (List<Entities.EasyPOSTrnReceivingReceipt>)js.Deserialize(result, typeof(List<Entities.EasyPOSTrnReceivingReceipt>));
 
-                    if (stockOuts.Any())
+                    if (receivingReceipts.Any())
                     {
-                        foreach (var stockOut in stockOuts)
+                        foreach (var receivingReceipt in receivingReceipts)
                         {
-                            var currentStockOut = from d in posdb.TrnStockOuts where d.Remarks.Equals("OT-" + stockOut.BranchCode + "-" + stockOut.OTNumber) && d.TrnStockOutLines.Count() > 0 && d.IsLocked == true select d;
-                            if (!currentStockOut.Any())
+                            if (receivingReceipt.ListPOSIntegrationTrnReceivingReceiptItem.Any())
                             {
-                                sysSettingsForm.logMessages("Saving Stock Out: OT-" + stockOut.BranchCode + "-" + stockOut.OTNumber + "\r\n\n");
-
-                                var defaultPeriod = from d in posdb.MstPeriods select d;
-                                var defaultSettings = from d in posdb.IntCloudSettings select d;
-
-                                String stockOutNumber = "0000000001";
-                                var lastStockOut = from d in posdb.TrnStockOuts.OrderByDescending(d => d.Id) select d;
-                                if (lastStockOut.Any())
+                                var currentStockIn = from d in posdb.TrnStockIns where d.Remarks.Equals("RR-" + receivingReceipt.BranchCode + "-" + receivingReceipt.RRNumber) && d.TrnStockInLines.Count() > 0 && d.IsLocked == true select d;
+                                if (!currentStockIn.Any())
                                 {
-                                    Int32 newStockOutNumber = Convert.ToInt32(lastStockOut.FirstOrDefault().StockOutNumber) + 1;
-                                    stockOutNumber = FillLeadingZeroes(newStockOutNumber, 10);
-                                }
+                                    sysSettingsForm.logMessages("Saving Stock In: RR-" + receivingReceipt.BranchCode + "-" + receivingReceipt.RRNumber + "\r\n\n");
 
-                                var accounts = from d in posdb.MstAccounts select d;
-                                if (accounts.Any())
-                                {
-                                    Data.TrnStockOut newStockOut = new Data.TrnStockOut
+                                    var defaultPeriod = from d in posdb.MstPeriods select d;
+                                    var defaultSettings = from d in posdb.IntCloudSettings select d;
+
+                                    String stockInNumber = "0000000001";
+                                    var lastStockIn = from d in posdb.TrnStockIns.OrderByDescending(d => d.Id) select d;
+                                    if (lastStockIn.Any())
+                                    {
+                                        Int32 newStockInNumber = Convert.ToInt32(lastStockIn.FirstOrDefault().StockInNumber) + 1;
+                                        stockInNumber = FillLeadingZeroes(newStockInNumber, 10);
+                                    }
+
+                                    Data.TrnStockIn newStockIn = new Data.TrnStockIn
                                     {
                                         PeriodId = defaultPeriod.FirstOrDefault().Id,
-                                        StockOutDate = Convert.ToDateTime(stockOut.OTDate),
-                                        StockOutNumber = stockOutNumber,
-                                        AccountId = accounts.FirstOrDefault().Id,
-                                        Remarks = "OT-" + stockOut.BranchCode + "-" + stockOut.OTNumber,
+                                        StockInDate = Convert.ToDateTime(receivingReceipt.RRDate),
+                                        StockInNumber = stockInNumber,
+                                        SupplierId = defaultSettings.FirstOrDefault().PostSupplierId,
+                                        Remarks = "RR-" + receivingReceipt.BranchCode + "-" + receivingReceipt.RRNumber,
+                                        IsReturn = false,
                                         PreparedBy = defaultSettings.FirstOrDefault().PostUserId,
                                         CheckedBy = defaultSettings.FirstOrDefault().PostUserId,
                                         ApprovedBy = defaultSettings.FirstOrDefault().PostUserId,
@@ -116,34 +116,37 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                         EntryUserId = defaultSettings.FirstOrDefault().PostUserId,
                                         EntryDateTime = DateTime.Now,
                                         UpdateUserId = defaultSettings.FirstOrDefault().PostUserId,
-                                        UpdateDateTime = DateTime.Now,
+                                        UpdateDateTime = DateTime.Now
                                     };
 
-                                    posdb.TrnStockOuts.InsertOnSubmit(newStockOut);
+                                    posdb.TrnStockIns.InsertOnSubmit(newStockIn);
                                     posdb.SubmitChanges();
 
-                                    if (stockOut.ListPOSIntegrationTrnStockOutItem.Any())
+                                    if (receivingReceipt.ListPOSIntegrationTrnReceivingReceiptItem.Any())
                                     {
-                                        foreach (var item in stockOut.ListPOSIntegrationTrnStockOutItem.ToList())
+                                        foreach (var item in receivingReceipt.ListPOSIntegrationTrnReceivingReceiptItem.ToList())
                                         {
                                             var currentItem = from d in posdb.MstItems where d.BarCode.Equals(item.ItemCode) && d.MstUnit.Unit.Equals(item.Unit) select d;
                                             if (currentItem.Any())
                                             {
-                                                Data.TrnStockOutLine newStockOutLine = new Data.TrnStockOutLine
+                                                Data.TrnStockInLine newStockInLine = new Data.TrnStockInLine
                                                 {
-                                                    StockOutId = newStockOut.Id,
+                                                    StockInId = newStockIn.Id,
                                                     ItemId = currentItem.FirstOrDefault().Id,
                                                     UnitId = currentItem.FirstOrDefault().UnitId,
                                                     Quantity = item.Quantity,
                                                     Cost = item.Cost,
                                                     Amount = item.Amount,
+                                                    ExpiryDate = currentItem.FirstOrDefault().ExpiryDate,
+                                                    LotNumber = currentItem.FirstOrDefault().LotNumber,
                                                     AssetAccountId = currentItem.FirstOrDefault().AssetAccountId,
+                                                    Price = currentItem.FirstOrDefault().Price
                                                 };
 
-                                                posdb.TrnStockOutLines.InsertOnSubmit(newStockOutLine);
+                                                posdb.TrnStockInLines.InsertOnSubmit(newStockInLine);
 
                                                 var updateItem = currentItem.FirstOrDefault();
-                                                updateItem.OnhandQuantity = currentItem.FirstOrDefault().OnhandQuantity - Convert.ToDecimal(item.Quantity);
+                                                updateItem.OnhandQuantity = currentItem.FirstOrDefault().OnhandQuantity + Convert.ToDecimal(item.Quantity);
 
                                                 posdb.SubmitChanges();
 
@@ -156,13 +159,6 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                     sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                     sysSettingsForm.logMessages("\r\n\n");
                                 }
-                                else
-                                {
-                                    sysSettingsForm.logMessages("Cannot Save Stock Out: OT - " + stockOut.BranchCode + " - " + stockOut.OTNumber + "\r\n\n");
-                                    sysSettingsForm.logMessages("Empty Accounts!" + "\r\n\n");
-                                    sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
-                                    sysSettingsForm.logMessages("\r\n\n");
-                                }
                             }
                         }
                     }
@@ -172,7 +168,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
             }
             catch (Exception e)
             {
-                sysSettingsForm.logMessages("Stock-Out Error: " + e.Message + "\r\n\n");
+                sysSettingsForm.logMessages("Receiving Receipt Error: " + e.Message + "\r\n\n");
                 sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                 sysSettingsForm.logMessages("\r\n\n");
 

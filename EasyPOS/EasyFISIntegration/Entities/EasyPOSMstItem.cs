@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.EasyFISIntegration.Entities
 {
-    class ISPOSMstItem
+    class EasyPOSMstItem
     {
         public String ManualArticleCode { get; set; }
         public String Article { get; set; }
@@ -17,6 +17,6 @@ namespace EasyPOS.EasyFISIntegration.Entities
         public Boolean IsInventory { get; set; }
         public String Particulars { get; set; }
         public String OutputTax { get; set; }
-        public List<ISPOSMstItemPrice> ListItemPrice { get; set; }
+        public List<EasyPOSMstItemPrice> ListItemPrice { get; set; }
     }
 }

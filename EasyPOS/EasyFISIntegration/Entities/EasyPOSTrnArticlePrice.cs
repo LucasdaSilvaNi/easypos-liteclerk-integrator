@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.EasyFISIntegration.Entities
 {
-    class ISPOSTrnArticlePrice
+    class EasyPOSTrnArticlePrice
     {
         public String BranchCode { get; set; }
         public String IPNumber { get; set; }

@@ -9,7 +9,7 @@ using System.Web.Script.Serialization;
 
 namespace EasyPOS.EasyFISIntegration.Controllers
 {
-    class ISPOSTrnCollectionController
+    class EasyPOSTrnCollectionController
     {
         // ====
         // Data
@@ -20,7 +20,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
         // ===========
         // Constructor
         // ===========
-        public ISPOSTrnCollectionController(Forms.Software.SysSettings.SysSettingsForm form)
+        public EasyPOSTrnCollectionController(Forms.Software.SysSettings.SysSettingsForm form)
         {
             sysSettingsForm = form;
         }
@@ -40,10 +40,16 @@ namespace EasyPOS.EasyFISIntegration.Controllers
         {
             try
             {
-                var collections = from d in posdb.TrnCollections where d.SalesId != null && d.PostCode == null && d.IsLocked == true select d;
+                var collections = from d in posdb.TrnCollections 
+                                  where d.SalesId != null 
+                                  && d.PostCode == null 
+                                  && d.IsLocked == true 
+                                  select d;
+
                 if (collections.Any())
                 {
                     var collection = collections.FirstOrDefault();
+                    Int32 collectionId = collection.Id;
 
                     var listPayTypes = new List<String>();
                     if (collection.TrnCollectionLines.Any())
@@ -58,11 +64,11 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                     }
 
                     String[] payTypes = listPayTypes.ToArray();
-                    List<Entities.ISPOSTrnCollectionLines> listCollectionLines = new List<Entities.ISPOSTrnCollectionLines>();
+                    List<Entities.EasyPOSTrnCollectionLines> listCollectionLines = new List<Entities.EasyPOSTrnCollectionLines>();
 
                     foreach (var salesLine in collection.TrnSale.TrnSalesLines)
                     {
-                        listCollectionLines.Add(new Entities.ISPOSTrnCollectionLines()
+                        listCollectionLines.Add(new Entities.EasyPOSTrnCollectionLines()
                         {
                             ItemManualArticleCode = salesLine.MstItem.BarCode,
                             Particulars = salesLine.MstItem.ItemDescription,
@@ -78,7 +84,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                         });
                     }
 
-                    var collectionData = new Entities.ISPOSTrnCollection()
+                    var collectionData = new Entities.EasyPOSTrnCollection()
                     {
                         SIDate = collection.CollectionDate.ToShortDateString(),
                         BranchCode = branchCode,
@@ -95,7 +101,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
 
                     sysSettingsForm.logMessages("Sending Collection: " + collectionData.DocumentReference + "\r\n\n");
                     sysSettingsForm.logMessages("Amount: " + collectionData.ListPOSIntegrationTrnSalesInvoiceItem.Sum(d => d.Amount).ToString("#,##0.00") + "\r\n\n");
-                    SendCollection(apiUrlHost, json);
+                    SendCollection(apiUrlHost, json, collectionId);
                 }
 
                 return Task.FromResult("");
@@ -113,7 +119,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
         // ===============
         // Send Collection
         // ===============
-        public void SendCollection(String apiUrlHost, String json)
+        public void SendCollection(String apiUrlHost, String json, Int32 collectionId)
         {
             try
             {
@@ -129,7 +135,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                 // ====
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
-                    Entities.ISPOSTrnCollection collection = new JavaScriptSerializer().Deserialize<Entities.ISPOSTrnCollection>(json);
+                    Entities.EasyPOSTrnCollection collection = new JavaScriptSerializer().Deserialize<Entities.EasyPOSTrnCollection>(json);
                     streamWriter.Write(new JavaScriptSerializer().Serialize(collection));
                 }
 
@@ -142,8 +148,10 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                     var result = streamReader.ReadToEnd();
                     if (result != null)
                     {
-                        Entities.ISPOSTrnCollection collection = new JavaScriptSerializer().Deserialize<Entities.ISPOSTrnCollection>(json);
-                        var currentCollection = from d in posdb.TrnCollections where d.CollectionNumber.Equals(collection.DocumentReference) select d;
+                        var currentCollection = from d in posdb.TrnCollections 
+                                                where d.Id == collectionId
+                                                select d;
+
                         if (currentCollection.Any())
                         {
                             var updateCollection = currentCollection.FirstOrDefault();

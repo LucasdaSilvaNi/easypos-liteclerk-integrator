@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace EasyPOS.EasyFISIntegration.Entities
 {
-    public class ISPOSTrnCollectionLines
+    class EasyPOSTrnSalesOrderItem
     {
-        public String ItemManualArticleCode { get; set; }
-        public String Particulars { get; set; }
+        public Int32 SOId { get; set; }
+        public String ItemBarcode { get; set; }
         public String Unit { get; set; }
+        public String Particulars { get; set; }
         public Decimal Quantity { get; set; }
         public Decimal Price { get; set; }
         public String Discount { get; set; }

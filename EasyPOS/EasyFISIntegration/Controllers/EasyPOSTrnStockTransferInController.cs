@@ -9,7 +9,7 @@ using System.Web.Script.Serialization;
 
 namespace EasyPOS.EasyFISIntegration.Controllers
 {
-    class ISPOSTrnStockInController
+    class EasyPOSTrnStockTransferInController
     {
         // ====
         // Data
@@ -22,7 +22,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
         // ===========
         // Constructor
         // ===========
-        public ISPOSTrnStockInController(Forms.Software.SysSettings.SysSettingsForm form, String actDate)
+        public EasyPOSTrnStockTransferInController(Forms.Software.SysSettings.SysSettingsForm form, String actDate)
         {
             sysSettingsForm = form;
             activityDate = actDate;
@@ -44,28 +44,28 @@ namespace EasyPOS.EasyFISIntegration.Controllers
             return result;
         }
 
-        // =============
-        // Sync Stock In
-        // =============
-        public async void SyncStockIn(String apiUrlHost, String branchCode)
+        // ========================
+        // Sync Stock Transfer - IN
+        // ========================
+        public async void SyncStockTransferIN(String apiUrlHost, String toBranchCode)
         {
-            await GetStockIn(apiUrlHost, branchCode);
+            await GetStockTransferIN(apiUrlHost, toBranchCode);
         }
 
-        // ============
-        // Get Stock In
-        // ============
-        public Task GetStockIn(String apiUrlHost, String branchCode)
+        // =======================
+        // Get Stock Transfer - IN
+        // =======================
+        public Task GetStockTransferIN(String apiUrlHost, String toBranchCode)
         {
             try
             {
                 DateTime dateTimeToday = DateTime.Now;
-                String stockInDate = Convert.ToDateTime(activityDate).ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
+                String stockTransferDate = Convert.ToDateTime(activityDate).ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
 
                 // ============
                 // Http Request
                 // ============
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://" + apiUrlHost + "/api/get/POSIntegration/stockIn/" + stockInDate + "/" + branchCode);
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://" + apiUrlHost + "/api/get/POSIntegration/stockTransferItems/IN/" + stockTransferDate + "/" + toBranchCode);
                 httpWebRequest.Method = "GET";
                 httpWebRequest.Accept = "application/json";
 
@@ -77,16 +77,16 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                 {
                     var result = streamReader.ReadToEnd();
                     JavaScriptSerializer js = new JavaScriptSerializer();
-                    List<Entities.ISPOSTrnStockIn> stockInLists = (List<Entities.ISPOSTrnStockIn>)js.Deserialize(result, typeof(List<Entities.ISPOSTrnStockIn>));
+                    List<Entities.EasyPOSTrnStockTransfer> stockTransferLists = (List<Entities.EasyPOSTrnStockTransfer>)js.Deserialize(result, typeof(List<Entities.EasyPOSTrnStockTransfer>));
 
-                    if (stockInLists.Any())
+                    if (stockTransferLists.Any())
                     {
-                        foreach (var stockIn in stockInLists)
+                        foreach (var stockTransfer in stockTransferLists)
                         {
-                            var currentStockIn = from d in posdb.TrnStockIns where d.Remarks.Equals("IN-" + stockIn.BranchCode + "-" + stockIn.INNumber) && d.TrnStockInLines.Count() > 0 && d.IsLocked == true select d;
+                            var currentStockIn = from d in posdb.TrnStockIns where d.Remarks.Equals("ST-" + stockTransfer.BranchCode + "-" + stockTransfer.STNumber) && d.TrnStockInLines.Count() > 0 && d.IsLocked == true select d;
                             if (!currentStockIn.Any())
                             {
-                                sysSettingsForm.logMessages("Saving Stock In: IN-" + stockIn.BranchCode + "-" + stockIn.INNumber + "\r\n\n");
+                                sysSettingsForm.logMessages("Saving Stock Transfer (IN): ST-" + stockTransfer.BranchCode + "-" + stockTransfer.STNumber + "\r\n\n");
 
                                 var defaultPeriod = from d in posdb.MstPeriods select d;
                                 var defaultSettings = from d in posdb.IntCloudSettings select d;
@@ -102,10 +102,10 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                 Data.TrnStockIn newStockIn = new Data.TrnStockIn
                                 {
                                     PeriodId = defaultPeriod.FirstOrDefault().Id,
-                                    StockInDate = Convert.ToDateTime(stockIn.INDate),
+                                    StockInDate = Convert.ToDateTime(stockTransfer.STDate),
                                     StockInNumber = stockInNumber,
                                     SupplierId = defaultSettings.FirstOrDefault().PostSupplierId,
-                                    Remarks = "IN-" + stockIn.BranchCode + "-" + stockIn.INNumber,
+                                    Remarks = "ST-" + stockTransfer.BranchCode + "-" + stockTransfer.STNumber,
                                     IsReturn = false,
                                     PreparedBy = defaultSettings.FirstOrDefault().PostUserId,
                                     CheckedBy = defaultSettings.FirstOrDefault().PostUserId,
@@ -120,9 +120,9 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                 posdb.TrnStockIns.InsertOnSubmit(newStockIn);
                                 posdb.SubmitChanges();
 
-                                if (stockIn.ListPOSIntegrationTrnStockInItem.Any())
+                                if (stockTransfer.ListPOSIntegrationTrnStockTransferItem.Any())
                                 {
-                                    foreach (var item in stockIn.ListPOSIntegrationTrnStockInItem.ToList())
+                                    foreach (var item in stockTransfer.ListPOSIntegrationTrnStockTransferItem.ToList())
                                     {
                                         var currentItem = from d in posdb.MstItems where d.BarCode.Equals(item.ItemCode) && d.MstUnit.Unit.Equals(item.Unit) select d;
                                         if (currentItem.Any())
@@ -165,7 +165,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
             }
             catch (Exception e)
             {
-                sysSettingsForm.logMessages("Stock-In Error: " + e.Message + "\r\n\n");
+                sysSettingsForm.logMessages("Stock Transfer (In) Error: " + e.Message + "\r\n\n");
                 sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                 sysSettingsForm.logMessages("\r\n\n");
 

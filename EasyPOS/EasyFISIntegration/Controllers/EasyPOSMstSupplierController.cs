@@ -9,7 +9,7 @@ using System.Web.Script.Serialization;
 
 namespace EasyPOS.EasyFISIntegration.Controllers
 {
-    class ISPOSMstCustomerController
+    class EasyPOSMstSupplierController
     {
         // ====
         // Data
@@ -22,24 +22,24 @@ namespace EasyPOS.EasyFISIntegration.Controllers
         // ===========
         // Constructor
         // ===========
-        public ISPOSMstCustomerController(Forms.Software.SysSettings.SysSettingsForm form, String actDate)
+        public EasyPOSMstSupplierController(Forms.Software.SysSettings.SysSettingsForm form, String actDate)
         {
             sysSettingsForm = form;
             activityDate = actDate;
         }
 
         // =============
-        // Sync Customer
+        // Sync Supplier
         // =============
-        public async void SyncCustomer(String apiUrlHost)
+        public async void SyncSupplier(String apiUrlHost)
         {
-            await GetCustomer(apiUrlHost);
+            await GetSupplier(apiUrlHost);
         }
 
         // ============
-        // Get Customer
+        // Get Supplier
         // ============
-        public Task GetCustomer(String apiUrlHost)
+        public Task GetSupplier(String apiUrlHost)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                 // ============
                 // Http Request
                 // ============
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://" + apiUrlHost + "/api/get/POSIntegration/customer/" + currentDate);
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://" + apiUrlHost + "/api/get/POSIntegration/supplier/" + currentDate);
                 httpWebRequest.Method = "GET";
                 httpWebRequest.Accept = "application/json";
 
@@ -61,26 +61,25 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                 {
                     var result = streamReader.ReadToEnd();
                     JavaScriptSerializer js = new JavaScriptSerializer();
+                    List<Entities.EasyPOSMstSupplier> supplierLists = (List<Entities.EasyPOSMstSupplier>)js.Deserialize(result, typeof(List<Entities.EasyPOSMstSupplier>));
 
-                    List<Entities.ISPOSMstCustomer> customerLists = (List<Entities.ISPOSMstCustomer>)js.Deserialize(result, typeof(List<Entities.ISPOSMstCustomer>));
-
-                    if (customerLists.Any())
+                    if (supplierLists.Any())
                     {
-                        foreach (var customer in customerLists)
+                        foreach (var supplier in supplierLists)
                         {
-                            var terms = from d in posdb.MstTerms where d.Term.Equals(customer.Term) select d;
+                            var terms = from d in posdb.MstTerms where d.Term.Equals(supplier.Term) select d;
                             if (terms.Any())
                             {
                                 var defaultSettings = from d in posdb.IntCloudSettings select d;
 
-                                var currentCustomer = from d in posdb.MstCustomers where d.CustomerCode.Equals(customer.ManualArticleCode) && d.CustomerCode != null && d.IsLocked == true select d;
-                                if (currentCustomer.Any())
+                                var currentSupplier = from d in posdb.MstSuppliers where d.Supplier.Equals(supplier.Article) && d.IsLocked == true select d;
+                                if (currentSupplier.Any())
                                 {
                                     Boolean foundChanges = false;
 
                                     if (!foundChanges)
                                     {
-                                        if (!currentCustomer.FirstOrDefault().Customer.Equals(customer.Article))
+                                        if (!currentSupplier.FirstOrDefault().Supplier.Equals(supplier.Article))
                                         {
                                             foundChanges = true;
                                         }
@@ -88,7 +87,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
 
                                     if (!foundChanges)
                                     {
-                                        if (!currentCustomer.FirstOrDefault().Address.Equals(customer.Address))
+                                        if (!currentSupplier.FirstOrDefault().Address.Equals(supplier.Address))
                                         {
                                             foundChanges = true;
                                         }
@@ -96,7 +95,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
 
                                     if (!foundChanges)
                                     {
-                                        if (!currentCustomer.FirstOrDefault().ContactPerson.Equals(customer.ContactPerson))
+                                        if (!currentSupplier.FirstOrDefault().CellphoneNumber.Equals(supplier.ContactNumber))
                                         {
                                             foundChanges = true;
                                         }
@@ -104,7 +103,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
 
                                     if (!foundChanges)
                                     {
-                                        if (!currentCustomer.FirstOrDefault().ContactNumber.Equals(customer.ContactNumber))
+                                        if (!currentSupplier.FirstOrDefault().MstTerm.Term.Equals(supplier.Term))
                                         {
                                             foundChanges = true;
                                         }
@@ -112,23 +111,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
 
                                     if (!foundChanges)
                                     {
-                                        if (!currentCustomer.FirstOrDefault().MstTerm.Term.Equals(customer.Term))
-                                        {
-                                            foundChanges = true;
-                                        }
-                                    }
-
-                                    if (!foundChanges)
-                                    {
-                                        if (!currentCustomer.FirstOrDefault().TIN.Equals(customer.TaxNumber))
-                                        {
-                                            foundChanges = true;
-                                        }
-                                    }
-
-                                    if (!foundChanges)
-                                    {
-                                        if (Convert.ToDecimal(currentCustomer.FirstOrDefault().CreditLimit) != Convert.ToDecimal(customer.CreditLimit))
+                                        if (!currentSupplier.FirstOrDefault().TIN.Equals(supplier.TaxNumber))
                                         {
                                             foundChanges = true;
                                         }
@@ -136,20 +119,17 @@ namespace EasyPOS.EasyFISIntegration.Controllers
 
                                     if (foundChanges)
                                     {
-                                        sysSettingsForm.logMessages("Updating Customer: " + currentCustomer.FirstOrDefault().Customer + "\r\n\n");
-                                        sysSettingsForm.logMessages("Customer Code: " + currentCustomer.FirstOrDefault().CustomerCode + "\r\n\n");
+                                        sysSettingsForm.logMessages("Updating Supplier: " + currentSupplier.FirstOrDefault().Supplier + "\r\n\n");
+                                        sysSettingsForm.logMessages("Contact No.: " + currentSupplier.FirstOrDefault().CellphoneNumber + "\r\n\n");
 
-                                        var updateCustomer = currentCustomer.FirstOrDefault();
-                                        updateCustomer.Customer = customer.Article;
-                                        updateCustomer.Address = customer.Address;
-                                        updateCustomer.ContactPerson = customer.ContactPerson;
-                                        updateCustomer.ContactNumber = customer.ContactNumber;
-                                        updateCustomer.CreditLimit = customer.CreditLimit;
-                                        updateCustomer.TermId = terms.FirstOrDefault().Id;
-                                        updateCustomer.TIN = customer.TaxNumber;
-                                        updateCustomer.UpdateUserId = defaultSettings.FirstOrDefault().PostUserId;
-                                        updateCustomer.UpdateDateTime = DateTime.Now;
-                                        updateCustomer.CustomerCode = customer.ManualArticleCode;
+                                        var updateSupplier = currentSupplier.FirstOrDefault();
+                                        updateSupplier.Supplier = supplier.Article;
+                                        updateSupplier.Address = supplier.Address;
+                                        updateSupplier.CellphoneNumber = supplier.ContactNumber;
+                                        updateSupplier.TermId = terms.FirstOrDefault().Id;
+                                        updateSupplier.TIN = supplier.TaxNumber;
+                                        updateSupplier.UpdateUserId = defaultSettings.FirstOrDefault().PostUserId;
+                                        updateSupplier.UpdateDateTime = DateTime.Now;
                                         posdb.SubmitChanges();
 
                                         sysSettingsForm.logMessages("Update Successful!" + "\r\n\n");
@@ -159,32 +139,27 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                 }
                                 else
                                 {
-                                    sysSettingsForm.logMessages("New Customer: " + customer.Article + "\r\n\n");
-                                    sysSettingsForm.logMessages("Customer Code: " + customer.ManualArticleCode + "\r\n\n");
+                                    sysSettingsForm.logMessages("Saving Supplier: " + supplier.Article + "\r\n\n");
+                                    sysSettingsForm.logMessages("Contact No.: " + supplier.ContactNumber + "\r\n\n");
 
-                                    Data.MstCustomer newCustomer = new Data.MstCustomer
+                                    Data.MstSupplier newSupplier = new Data.MstSupplier
                                     {
-                                        Customer = customer.Article,
-                                        Address = customer.Address,
-                                        ContactPerson = customer.ContactPerson,
-                                        ContactNumber = customer.ContactNumber,
-                                        CreditLimit = customer.CreditLimit,
+                                        Supplier = supplier.Article,
+                                        Address = supplier.Address,
+                                        TelephoneNumber = "NA",
+                                        CellphoneNumber = supplier.ContactNumber,
+                                        FaxNumber = "NA",
                                         TermId = terms.FirstOrDefault().Id,
-                                        TIN = customer.TaxNumber,
-                                        WithReward = false,
-                                        RewardNumber = null,
-                                        RewardConversion = 4,
-                                        AccountId = 64,
+                                        TIN = supplier.TaxNumber,
+                                        AccountId = 254,
                                         EntryUserId = defaultSettings.FirstOrDefault().PostUserId,
                                         EntryDateTime = DateTime.Now,
                                         UpdateUserId = defaultSettings.FirstOrDefault().PostUserId,
                                         UpdateDateTime = DateTime.Now,
                                         IsLocked = true,
-                                        DefaultPriceDescription = null,
-                                        CustomerCode = customer.ManualArticleCode,
                                     };
 
-                                    posdb.MstCustomers.InsertOnSubmit(newCustomer);
+                                    posdb.MstSuppliers.InsertOnSubmit(newSupplier);
                                     posdb.SubmitChanges();
 
                                     sysSettingsForm.logMessages("Save Successful!" + "\r\n\n");
@@ -194,7 +169,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                             }
                             else
                             {
-                                sysSettingsForm.logMessages("Cannot Save Customer: " + customer.Article + "\r\n\n");
+                                sysSettingsForm.logMessages("Cannot Save Supplier: " + supplier.Article + "\r\n\n");
                                 sysSettingsForm.logMessages("Term Mismatch!" + "\r\n\n");
                                 sysSettingsForm.logMessages("Save Failed!" + "\r\n\n");
                                 sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
@@ -208,7 +183,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
             }
             catch (Exception e)
             {
-                sysSettingsForm.logMessages("Customer Error: " + e.Message + "\r\n\n");
+                sysSettingsForm.logMessages("Supplier Error: " + e.Message + "\r\n\n");
                 sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                 sysSettingsForm.logMessages("\r\n\n");
 
