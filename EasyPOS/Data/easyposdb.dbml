@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="easypos" Class="easyposdbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=easypos;Persist Security Info=True;User ID=sa" SettingsObjectName="EasyPOS.Properties.Settings" SettingsPropertyName="easyposConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=easypos;Persist Security Info=True;User ID=sa" SettingsObjectName="EasyPOS.Properties.Settings" SettingsPropertyName="easyposConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.IntCloudSettings" Member="IntCloudSettings">
     <Type Name="IntCloudSetting">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -751,6 +751,8 @@
       <Column Name="IsLocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="IsTendered" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="IsCancelled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDispatched" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Delivery" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="PaidAmount" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
       <Column Name="CreditAmount" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
       <Column Name="DebitAmount" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
@@ -823,6 +825,7 @@
       <Column Name="SalesLineTimeStamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Preparation" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="IsPrepared" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Price1" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
       <Column Name="Price2" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
       <Column Name="Price2LessTax" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />

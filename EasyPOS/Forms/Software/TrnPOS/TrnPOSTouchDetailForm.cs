@@ -183,6 +183,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
             for (int i = 0; i < itemGroupItemNoOfButtons; i++)
             {
                 itemGroupItemButtons[i].Click += new EventHandler(buttonItemGroupItem_Click);
+
+                if (trnSalesEntity.IsLocked == true)
+                {
+                    itemGroupItemButtons[i].Enabled = false;
+                } 
+                else
+                {
+                    itemGroupItemButtons[i].Enabled = true;
+                }
             }
 
             FillItemGroup();

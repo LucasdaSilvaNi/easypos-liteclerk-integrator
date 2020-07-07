@@ -162,7 +162,7 @@ namespace EasyPOS.Data
     #endregion
 		
 		public easyposdbDataContext() : 
-				base(global::EasyPOS.Properties.Settings.Default.easyposConnectionString, mappingSource)
+				base(global::EasyPOS.Properties.Settings.Default.easyposConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -18178,6 +18178,10 @@ namespace EasyPOS.Data
 		
 		private bool _IsCancelled;
 		
+		private bool _IsDispatched;
+		
+		private string _Delivery;
+		
 		private decimal _PaidAmount;
 		
 		private decimal _CreditAmount;
@@ -18286,6 +18290,10 @@ namespace EasyPOS.Data
     partial void OnIsTenderedChanged();
     partial void OnIsCancelledChanging(bool value);
     partial void OnIsCancelledChanged();
+    partial void OnIsDispatchedChanging(bool value);
+    partial void OnIsDispatchedChanged();
+    partial void OnDeliveryChanging(string value);
+    partial void OnDeliveryChanged();
     partial void OnPaidAmountChanging(decimal value);
     partial void OnPaidAmountChanged();
     partial void OnCreditAmountChanging(decimal value);
@@ -18847,6 +18855,46 @@ namespace EasyPOS.Data
 					this._IsCancelled = value;
 					this.SendPropertyChanged("IsCancelled");
 					this.OnIsCancelledChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsDispatched", DbType="Bit NOT NULL")]
+		public bool IsDispatched
+		{
+			get
+			{
+				return this._IsDispatched;
+			}
+			set
+			{
+				if ((this._IsDispatched != value))
+				{
+					this.OnIsDispatchedChanging(value);
+					this.SendPropertyChanging();
+					this._IsDispatched = value;
+					this.SendPropertyChanged("IsDispatched");
+					this.OnIsDispatchedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Delivery", DbType="NVarChar(255)")]
+		public string Delivery
+		{
+			get
+			{
+				return this._Delivery;
+			}
+			set
+			{
+				if ((this._Delivery != value))
+				{
+					this.OnDeliveryChanging(value);
+					this.SendPropertyChanging();
+					this._Delivery = value;
+					this.SendPropertyChanged("Delivery");
+					this.OnDeliveryChanged();
 				}
 			}
 		}
@@ -20101,6 +20149,8 @@ namespace EasyPOS.Data
 		
 		private string _Preparation;
 		
+		private System.Nullable<bool> _IsPrepared;
+		
 		private decimal _Price1;
 		
 		private decimal _Price2;
@@ -20175,6 +20225,8 @@ namespace EasyPOS.Data
     partial void OnUserIdChanged();
     partial void OnPreparationChanging(string value);
     partial void OnPreparationChanged();
+    partial void OnIsPreparedChanging(System.Nullable<bool> value);
+    partial void OnIsPreparedChanged();
     partial void OnPrice1Changing(decimal value);
     partial void OnPrice1Changed();
     partial void OnPrice2Changing(decimal value);
@@ -20656,6 +20708,26 @@ namespace EasyPOS.Data
 					this._Preparation = value;
 					this.SendPropertyChanged("Preparation");
 					this.OnPreparationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsPrepared", DbType="Bit")]
+		public System.Nullable<bool> IsPrepared
+		{
+			get
+			{
+				return this._IsPrepared;
+			}
+			set
+			{
+				if ((this._IsPrepared != value))
+				{
+					this.OnIsPreparedChanging(value);
+					this.SendPropertyChanging();
+					this._IsPrepared = value;
+					this.SendPropertyChanged("IsPrepared");
+					this.OnIsPreparedChanged();
 				}
 			}
 		}

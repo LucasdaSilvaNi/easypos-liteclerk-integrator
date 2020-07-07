@@ -112,13 +112,13 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                         foreach (var salesOrder in salesOrderLists)
                         {
                             var currentSales = from d in posdb.TrnSales
-                                               where d.ManualInvoiceNumber == salesOrder.ManualSONumber
+                                               where d.ManualInvoiceNumber == "SO-" + salesOrder.BranchCode + "-" + salesOrder.ManualSONumber
                                                && d.IsLocked == true
                                                select d;
 
                             if (!currentSales.Any())
                             {
-                                sysSettingsForm.logMessages("Saving Sales Order: SO-" + salesOrder.BranchCode + "-" + salesOrder.SONumber + "\r\n\n");
+                                sysSettingsForm.logMessages("Saving Sales Order: SO-" + salesOrder.BranchCode + "-" + salesOrder.ManualSONumber + "\r\n\n");
 
                                 var customer = from d in posdb.MstCustomers
                                                where d.CustomerCode == salesOrder.CustomerCode
@@ -139,7 +139,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                         PeriodId = period.FirstOrDefault().Id,
                                         SalesDate = Convert.ToDateTime(salesOrder.SODate),
                                         SalesNumber = salesNumber,
-                                        ManualInvoiceNumber = salesOrder.ManualSONumber,
+                                        ManualInvoiceNumber = "SO-" + salesOrder.BranchCode + "-" + salesOrder.ManualSONumber,
                                         CollectionNumber = null,
                                         Amount = 0,
                                         TableId = null,
@@ -159,6 +159,8 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                         IsLocked = false,
                                         IsTendered = false,
                                         IsCancelled = false,
+                                        IsDispatched = false,
+                                        Delivery = "",
                                         PaidAmount = 0,
                                         CreditAmount = 0,
                                         DebitAmount = 0,
@@ -174,9 +176,11 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                     posdb.TrnSales.InsertOnSubmit(newSales);
                                     posdb.SubmitChanges();
 
-                                    if (salesOrder.ListPOSIntegrationTrnSalesOrderItems.Any())
+                                    Decimal amount = 0;
+
+                                    if (salesOrder.POSIntegrationTrnSalesOrderItems.Any())
                                     {
-                                        foreach (var item in salesOrder.ListPOSIntegrationTrnSalesOrderItems.ToList())
+                                        foreach (var item in salesOrder.POSIntegrationTrnSalesOrderItems.ToList())
                                         {
                                             var currentItem = from d in posdb.MstItems
                                                               where d.BarCode.Equals(item.ItemBarcode)
@@ -238,9 +242,10 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                                         AssetAccountId = 255,
                                                         CostAccountId = 238,
                                                         TaxAccountId = 87,
-                                                        SalesLineTimeStamp = DateTime.Now.Date,
+                                                        SalesLineTimeStamp = DateTime.Now,
                                                         UserId = user.FirstOrDefault().Id,
                                                         Preparation = "",
+                                                        IsPrepared = false,
                                                         Price1 = 0,
                                                         Price2 = 0,
                                                         Price2LessTax = 0,
@@ -250,10 +255,25 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                                     posdb.TrnSalesLines.InsertOnSubmit(newSalesLine);
                                                     posdb.SubmitChanges();
 
+                                                    amount += item.Amount;
+
                                                     sysSettingsForm.logMessages(" > " + currentItem.FirstOrDefault().ItemDescription + " * " + item.Quantity.ToString("#,##0.00") + "\r\n\n");
                                                 }
                                             }
                                         }
+                                    }
+
+                                    var sales = from d in posdb.TrnSales
+                                                where d.Id == newSales.Id
+                                                select d;
+
+                                    if (sales.Any())
+                                    {
+                                        var updateSales = sales.FirstOrDefault();
+                                        updateSales.IsLocked = true;
+                                        updateSales.Amount = amount;
+
+                                        posdb.SubmitChanges();
                                     }
 
                                     sysSettingsForm.logMessages("Save Successful!" + "\r\n\n");

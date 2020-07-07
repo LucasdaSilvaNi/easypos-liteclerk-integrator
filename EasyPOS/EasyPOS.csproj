@@ -279,6 +279,7 @@
     <Compile Include="Entities\DgvMstTableGroupListEntity.cs" />
     <Compile Include="Entities\DgvMstItemGroupListEntity.cs" />
     <Compile Include="Entities\DgvMstItemComponentListEntity.cs" />
+    <Compile Include="Entities\DgvSysDispatchStationSalesListEntity.cs" />
     <Compile Include="Entities\DgvTrnSalesItemPriceListEntity.cs" />
     <Compile Include="Entities\DgvRepSalesReportCollectionDetailReportListEntity.cs" />
     <Compile Include="Entities\DgvRepSalesReportCollectionSummaryReportEntityList.cs" />
@@ -597,6 +598,12 @@
     </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepCollectionDetailFacepayReportForm.designer.cs">
       <DependentUpon>RepCollectionDetailFacepayReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\SysDispatchStation\SysDispatchStationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\SysDispatchStation\SysDispatchStationForm.Designer.cs">
+      <DependentUpon>SysDispatchStationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\SysKitchenDisplay\SysKitchenDisplayForm.cs">
       <SubType>Form</SubType>
@@ -1036,6 +1043,9 @@
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepCollectionDetailFacepayReportForm.resx">
       <DependentUpon>RepCollectionDetailFacepayReportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\SysDispatchStation\SysDispatchStationForm.resx">
+      <DependentUpon>SysDispatchStationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\SysKitchenDisplay\SysKitchenDisplayForm.resx">
       <DependentUpon>SysKitchenDisplayForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1276,6 +1286,7 @@
     <Content Include="Resources\Images\Icons\POS Touch.png" />
     <Content Include="Resources\Images\Icons\POS.png" />
     <Content Include="Resources\Images\Icons\Reports.png" />
+    <Content Include="Resources\Images\Icons\Dispatch.png" />
     <Content Include="Resources\Images\Icons\Settings.png" />
     <Content Include="Resources\Images\Icons\Stock Count.png" />
     <Content Include="Resources\Images\Icons\Utilities.png" />

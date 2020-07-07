@@ -15,6 +15,6 @@ namespace EasyPOS.EasyFISIntegration.Entities
         public String DocumentReference { get; set; }
         public String CustomerCode { get; set; }
         public String Remarks { get; set; }
-        public List<EasyPOSTrnSalesOrderItem> ListPOSIntegrationTrnSalesOrderItems { get; set; }
+        public List<EasyPOSTrnSalesOrderItem> POSIntegrationTrnSalesOrderItems { get; set; }
     }
 }

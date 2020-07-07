@@ -280,14 +280,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             if (e.RowIndex > -1 && dataGridViewSalesList.CurrentCell.ColumnIndex == dataGridViewSalesList.Columns["ColumnEdit"].Index)
             {
-                Boolean isLocked = Convert.ToBoolean(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnIsLocked"].Index].Value);
                 Boolean isTendered = Convert.ToBoolean(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnIsTendered"].Index].Value);
-
-                if (isLocked == true)
-                {
-                    MessageBox.Show("Already locked.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else if (isTendered == true)
+                
+                if (isTendered == true)
                 {
                     MessageBox.Show("Already tendered.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -494,16 +489,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 if (dataGridViewSalesList.CurrentCell.RowIndex != -1)
                 {
-                    Boolean isLocked = Convert.ToBoolean(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnIsLocked"].Index].Value);
                     Boolean isTendered = Convert.ToBoolean(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnIsTendered"].Index].Value);
 
                     if (isTendered == true)
                     {
                         MessageBox.Show("Already tendered.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else if (isLocked == true)
-                    {
-                        MessageBox.Show("Already locked.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -574,34 +564,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         }
                         else
                         {
-                            //DialogResult cancelDialogResult = MessageBox.Show("Reprint Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                            //if (cancelDialogResult == DialogResult.Yes)
-                            //{
-                            //    Int32 salesId = Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value);
-
-                            //    Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-                            //    Int32 collectionId = trnPOSSalesController.GetCollectionId(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value));
-                            //    if (collectionId != 0)
-                            //    {
-                            //        if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Official Receipt")
-                            //        {
-                            //            new Reports.RepOfficialReceiptReportForm(salesId, collectionId, true);
-                            //        }
-                            //        else if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Delivery Receipt")
-                            //        {
-                            //            new Reports.RepDeliveryReceiptReportForm(salesId, collectionId, false, "", "", false);
-                            //        }
-                            //        else
-                            //        {
-
-                            //        }
-                            //    }
-                            //    else
-                            //    {
-                            //        MessageBox.Show("No collection.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            //    }
-                            //}
-
                             Int32 salesId = Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value);
 
                             Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();

@@ -47,13 +47,14 @@ namespace EasyPOS.Controllers
                                  AssetAccountId = d.AssetAccountId,
                                  CostAccountId = d.CostAccountId,
                                  TaxAccountId = d.TaxAccountId,
-                                 SalesLineTimeStamp = d.SalesLineTimeStamp.ToShortDateString(),
+                                 SalesLineTimeStamp = d.SalesLineTimeStamp.ToShortTimeString(),
                                  UserId = d.UserId,
                                  Preparation = d.Preparation,
+                                 IsPrepared = d.IsPrepared,
                                  Price1 = d.Price1,
                                  Price2 = d.Price2,
                                  Price2LessTax = d.Price2LessTax,
-                                 PriceSplitPercentage = d.PriceSplitPercentage,
+                                 PriceSplitPercentage = d.PriceSplitPercentage
                              };
 
             return salesLines.OrderByDescending(d => d.Id).ToList();
@@ -90,9 +91,10 @@ namespace EasyPOS.Controllers
                                  AssetAccountId = d.AssetAccountId,
                                  CostAccountId = d.CostAccountId,
                                  TaxAccountId = d.TaxAccountId,
-                                 SalesLineTimeStamp = d.SalesLineTimeStamp.ToShortDateString(),
+                                 SalesLineTimeStamp = d.SalesLineTimeStamp.ToShortTimeString(),
                                  UserId = d.UserId,
                                  Preparation = d.Preparation,
+                                 IsPrepared = d.IsPrepared,
                                  Price1 = d.Price1,
                                  Price2 = d.Price2,
                                  Price2LessTax = d.Price2LessTax,
@@ -272,13 +274,14 @@ namespace EasyPOS.Controllers
                     AssetAccountId = 255,
                     CostAccountId = 238,
                     TaxAccountId = 87,
-                    SalesLineTimeStamp = DateTime.Now.Date,
+                    SalesLineTimeStamp = DateTime.Now,
                     UserId = user.FirstOrDefault().Id,
                     Preparation = objSalesLine.Preparation,
+                    IsPrepared = false,
                     Price1 = 0,
                     Price2 = 0,
                     Price2LessTax = 0,
-                    PriceSplitPercentage = 0,
+                    PriceSplitPercentage = 0
                 };
 
                 db.TrnSalesLines.InsertOnSubmit(newSaleLine);
@@ -392,7 +395,7 @@ namespace EasyPOS.Controllers
                     updateSalesLine.TaxId = objSalesLine.TaxId;
                     updateSalesLine.TaxRate = objSalesLine.TaxRate;
                     updateSalesLine.TaxAmount = objSalesLine.TaxAmount;
-                    updateSalesLine.SalesLineTimeStamp = DateTime.Now.Date;
+                    updateSalesLine.SalesLineTimeStamp = DateTime.Now;
                     updateSalesLine.UserId = user.FirstOrDefault().Id;
                     updateSalesLine.Preparation = objSalesLine.Preparation;
                     db.SubmitChanges();
@@ -549,9 +552,10 @@ namespace EasyPOS.Controllers
                     AssetAccountId = 255,
                     CostAccountId = 238,
                     TaxAccountId = 87,
-                    SalesLineTimeStamp = DateTime.Now.Date,
+                    SalesLineTimeStamp = DateTime.Now,
                     UserId = user.FirstOrDefault().Id,
                     Preparation = "NA",
+                    IsPrepared = false,
                     Price1 = 0,
                     Price2 = 0,
                     Price2LessTax = 0,
@@ -731,9 +735,10 @@ namespace EasyPOS.Controllers
                                     AssetAccountId = 255,
                                     CostAccountId = 238,
                                     TaxAccountId = 87,
-                                    SalesLineTimeStamp = DateTime.Now.Date,
+                                    SalesLineTimeStamp = DateTime.Now,
                                     UserId = currentUserLogin.FirstOrDefault().Id,
                                     Preparation = "",
+                                    IsPrepared = false,
                                     Price1 = 0,
                                     Price2 = 0,
                                     Price2LessTax = 0,

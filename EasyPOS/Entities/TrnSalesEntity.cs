@@ -20,6 +20,7 @@ namespace EasyPOS.Entities
         public Int32 CustomerId { get; set; }
         public String CustomerCode { get; set; }
         public String Customer { get; set; }
+        public String CustomerAddress { get; set; }
         public Int32 AccountId { get; set; }
         public Int32 TermId { get; set; }
         public String Term { get; set; }
@@ -41,6 +42,8 @@ namespace EasyPOS.Entities
         public Boolean IsLocked { get; set; }
         public Boolean IsTendered { get; set; }
         public Boolean IsCancelled { get; set; }
+        public Boolean IsDispatched { get; set; }
+        public String Delivery { get; set; }
         public Decimal PaidAmount { get; set; }
         public Decimal CreditAmount { get; set; }
         public Decimal DebitAmount { get; set; }
@@ -54,5 +57,8 @@ namespace EasyPOS.Entities
         public Int32? Pax { get; set; }
         public Int32 TableStatus { get; set; }
         public String Table { get; set; }
+        public Decimal NumberOfItems { get; set; }
+        public Decimal NumberOfItemsPrepared { get; set; }
+        public Decimal NumberOfItemsStatus { get; set; }
     }
 }

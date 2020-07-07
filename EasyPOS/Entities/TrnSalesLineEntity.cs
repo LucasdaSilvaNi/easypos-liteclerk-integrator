@@ -33,6 +33,7 @@ namespace EasyPOS.Entities
         public String SalesLineTimeStamp { get; set; }
         public Int32? UserId { get; set; }
         public String Preparation { get; set; }
+        public Boolean? IsPrepared { get; set; }
         public Decimal Price1 { get; set; }
         public Decimal Price2 { get; set; }
         public Decimal Price2LessTax { get; set; }
