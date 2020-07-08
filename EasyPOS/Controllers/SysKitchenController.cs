@@ -31,7 +31,8 @@ namespace EasyPOS.Controllers
         public List<Entities.SysKitchenItemEntity> ListKitchenItems(String kitchen, DateTime salesDate)
         {
             var salesLines = from d in db.TrnSalesLines
-                             where d.MstItem.DefaultKitchenReport == kitchen
+                             where d.IsPrepared == false 
+                             && d.MstItem.DefaultKitchenReport == kitchen
                              && d.TrnSale.SalesDate == salesDate
                              && d.TrnSale.IsLocked == true
                              && d.TrnSale.IsTendered == false
@@ -57,7 +58,7 @@ namespace EasyPOS.Controllers
                                  Quantity = g.Sum(d => d.Quantity)
                              };
 
-            return salesLines.OrderBy(d => d.ItemDescription).ToList();
+            return salesLines.ToList();
         }
 
         public String[] DonePrepareItem(Int32 salesId, String itemBarcode)

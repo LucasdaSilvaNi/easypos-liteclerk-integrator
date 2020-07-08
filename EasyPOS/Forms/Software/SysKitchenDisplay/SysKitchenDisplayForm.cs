@@ -46,10 +46,6 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
             {
                 MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else
-            {
-                GetTerminalList();
-            }
 
             sysSoftwareForm = softwareForm;
 
@@ -154,6 +150,8 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
                 var listKitchenItemPage = listKitchenItems.Skip((kitchenItemPage - 1) * kitchenItemNoOfButtons).Take(kitchenItemNoOfButtons).ToList();
                 if (listKitchenItemPage.Any())
                 {
+                    Int32 Number = 1;
+
                     for (int i = 0; i < listKitchenItemPage.Count(); i++)
                     {
                         kitchenItemToolTip.SetToolTip(kitchenItemButtons[i], listKitchenItemPage[i].SalesId.ToString());
@@ -170,9 +168,12 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
                             kitchenItemButtons[i].ForeColor = Color.Black;
                         }
 
-                        kitchenItemButtons[i].Text = listKitchenItemPage[i].OrderNumber + "\n"
+                        kitchenItemButtons[i].Text = "No. " + Number.ToString() + "\n"
+                            + listKitchenItemPage[i].OrderNumber + "\n"
                             + listKitchenItemPage[i].ItemDescription + "\n"
                             + listKitchenItemPage[i].Quantity.ToString("#,##0.00") + " " + listKitchenItemPage[i].Unit;
+
+                        Number += 1;
                     }
                 }
             }
@@ -186,11 +187,10 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
         {
             try
             {
-                buttonKitchen1.BackColor = ColorTranslator.FromHtml("#01A6F0");
-                buttonKitchen2.BackColor = ColorTranslator.FromHtml("#01A6F0");
-                buttonKitchen3.BackColor = ColorTranslator.FromHtml("#01A6F0");
-                buttonKitchen4.BackColor = ColorTranslator.FromHtml("#01A6F0");
-                buttonKitchen5.BackColor = ColorTranslator.FromHtml("#01A6F0");
+                for (int i = 0; i < kitchenNoOfButtons; i++)
+                {
+                    kitchenButtons[i].BackColor = ColorTranslator.FromHtml("#01A6F0");
+                }
 
                 Button b = sender as Button;
                 String kitchen = b.Text;
@@ -214,8 +214,17 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
         {
             try
             {
+                for (int i = 0; i < kitchenItemNoOfButtons; i++)
+                {
+                    kitchenItemButtons[i].BackColor = SystemColors.Control;
+                    kitchenItemButtons[i].ForeColor = Color.Black;
+                }
+
                 Button b = sender as Button;
                 String kitchenItem = b.Text;
+
+                b.BackColor = ColorTranslator.FromHtml("#F25022");
+                b.ForeColor = Color.White;
 
                 String salesId = kitchenItemToolTip.GetToolTip(b);
                 String barcode = kitchenItemToolTip2.GetToolTip(b);
@@ -227,6 +236,7 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
                     {
                         Controllers.SysKitchenController sysKitchenController = new Controllers.SysKitchenController();
                         String[] donePrepareItems = sysKitchenController.DonePrepareItem(Convert.ToInt32(salesId), barcode);
+
                         if (donePrepareItems[1].Equals("0") == false)
                         {
                             FillKitchenItem(selectedKitchen);
@@ -259,11 +269,6 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
             {
                 MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        public void GetTerminalList()
-        {
-
         }
 
         private void buttonKitchenPagePrevious_Click(object sender, EventArgs e)
