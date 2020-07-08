@@ -91,7 +91,12 @@ namespace EasyPOS.Entities
 
     public class SysDelivery
     {
-        public String branch_id { get; set; }
+        public SysDeliveryOrder delivery { get; set; }
+    }
+
+    public class SysDeliveryOrder
+    {
+        public String branch_code { get; set; }
         public String order_id { get; set; }
         public String total { get; set; }
         public String driver_id { get; set; }

@@ -112,8 +112,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                         foreach (var salesOrder in salesOrderLists)
                         {
                             var currentSales = from d in posdb.TrnSales
-                                               where d.ManualInvoiceNumber == "SO-" + salesOrder.BranchCode + "-" + salesOrder.ManualSONumber
-                                               && d.IsLocked == true
+                                               where d.ManualInvoiceNumber == salesOrder.DocumentReference
                                                select d;
 
                             if (!currentSales.Any())

@@ -1900,7 +1900,7 @@ namespace EasyPOS.Controllers
                 // ============
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://api.mirkadu.com/easydelivery/deliveries/" + documentReference + "/ready");
                 httpWebRequest.ContentType = "application/json";
-                httpWebRequest.Method = "POST";
+                httpWebRequest.Method = "PATCH";
 
                 // ====
                 // Data
@@ -2000,15 +2000,27 @@ namespace EasyPOS.Controllers
 
                     var cloudSettings = from d in db.IntCloudSettings select d;
 
-                    var deliveryData = new Entities.SysDelivery()
-                    {
-                        branch_id = cloudSettings.FirstOrDefault().BranchCode,
-                        order_id = sales.FirstOrDefault().ManualInvoiceNumber,
-                        total = sales.FirstOrDefault().Amount.ToString(),
-                        driver_id = driverId
-                    };
+                    var updatedSales = from d in db.TrnSales
+                                       where d.Id == salesId
+                                       select d;
 
-                    EasyShopDeliveryRequest(deliveryData);
+                    if (updatedSales.Any())
+                    {
+                        var deliverOrder = new Entities.SysDeliveryOrder()
+                        {
+                            branch_code = cloudSettings.FirstOrDefault().BranchCode,
+                            order_id = updatedSales.FirstOrDefault().ManualInvoiceNumber,
+                            total = updatedSales.FirstOrDefault().Amount.ToString(),
+                            driver_id = driverId
+                        };
+
+                        var deliveryData = new Entities.SysDelivery()
+                        {
+                            delivery = deliverOrder
+                        };
+
+                        EasyShopDeliveryRequest(deliveryData);
+                    }
 
                     return new String[] { "", "1" };
                 }
@@ -2030,12 +2042,17 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                var deliverOrder = new Entities.SysDeliveryOrder()
+                {
+                    branch_code = objDelivery.delivery.branch_code,
+                    order_id = objDelivery.delivery.order_id,
+                    total = objDelivery.delivery.total,
+                    driver_id = objDelivery.delivery.driver_id
+                };
+
                 var deliveryData = new Entities.SysDelivery()
                 {
-                    branch_id = objDelivery.branch_id,
-                    order_id = objDelivery.order_id,
-                    total = objDelivery.total,
-                    driver_id = objDelivery.driver_id
+                    delivery = deliverOrder
                 };
 
                 String json = new JavaScriptSerializer().Serialize(deliveryData);
@@ -2073,7 +2090,7 @@ namespace EasyPOS.Controllers
             {
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://api.mirkadu.com/easyorder/orders/" + documentReference + "/paid");
                 httpWebRequest.ContentType = "application/json";
-                httpWebRequest.Method = "POST";
+                httpWebRequest.Method = "PATCH";
 
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
