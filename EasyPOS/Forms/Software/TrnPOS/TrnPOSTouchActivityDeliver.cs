@@ -35,7 +35,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             if (trnPOSSalesController.DropdownListDriver().Any())
             {
                 comboBoxDeliveredBy.DataSource = trnPOSSalesController.DropdownListDriver();
-                comboBoxDeliveredBy.ValueMember = "FullName";
+                comboBoxDeliveredBy.ValueMember = "Id";
                 comboBoxDeliveredBy.DisplayMember = "FullName";
             }
         }
@@ -52,6 +52,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         public void AssignDeliveryMan()
         {
+            Int32 driverId = Convert.ToInt32(comboBoxDeliveredBy.SelectedValue);
             String driverName = comboBoxDeliveredBy.Text;
 
             DialogResult assignDriverDialogResult = MessageBox.Show("Assign Driver? ", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -59,13 +60,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();
 
-                String[] assignDriver = trnSalesController.AssignDriverSales(salesId, driverName);
+                String[] assignDriver = trnSalesController.AssignDriverSales(salesId, driverName, driverId.ToString());
                 if (assignDriver[1].Equals("0") == false)
                 {
                     MessageBox.Show("Assign Successful.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     trnPOSTouchForm.UpdateSalesListGridDataSource();
                     trnPOSTouchActivityForm.Close();
+
+                    Close();
                 }
                 else
                 {

@@ -140,18 +140,18 @@
             // textBoxRemarks
             // 
             this.textBoxRemarks.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxRemarks.Location = new System.Drawing.Point(10, 145);
+            this.textBoxRemarks.Location = new System.Drawing.Point(10, 136);
             this.textBoxRemarks.Multiline = true;
             this.textBoxRemarks.Name = "textBoxRemarks";
             this.textBoxRemarks.ReadOnly = true;
-            this.textBoxRemarks.Size = new System.Drawing.Size(460, 224);
+            this.textBoxRemarks.Size = new System.Drawing.Size(460, 233);
             this.textBoxRemarks.TabIndex = 35;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label2.Location = new System.Drawing.Point(11, 121);
+            this.label2.Location = new System.Drawing.Point(11, 112);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 21);

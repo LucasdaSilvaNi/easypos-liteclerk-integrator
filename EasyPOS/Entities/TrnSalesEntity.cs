@@ -85,6 +85,15 @@ namespace EasyPOS.Entities
 
     public class SysDriver
     {
+        public Int32 Id { get; set; }
         public String FullName { get; set; }
+    }
+
+    public class SysDelivery
+    {
+        public String branch_id { get; set; }
+        public String order_id { get; set; }
+        public String total { get; set; }
+        public String driver_id { get; set; }
     }
 }

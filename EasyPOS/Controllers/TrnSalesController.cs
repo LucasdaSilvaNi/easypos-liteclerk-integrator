@@ -680,6 +680,8 @@ namespace EasyPOS.Controllers
                 };
                 Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail3);
 
+                EasyShopAlreadyPaid(currentSales.FirstOrDefault().ManualInvoiceNumber);
+
                 return new String[] { "", newCollection.Id.ToString() };
             }
             catch (Exception e)
@@ -1871,6 +1873,8 @@ namespace EasyPOS.Controllers
                     updateSales.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
 
+                    EasyShopReadyForDispatchRequest(sales.FirstOrDefault().ManualInvoiceNumber);
+
                     return new String[] { "", "1" };
                 }
                 else
@@ -1881,6 +1885,48 @@ namespace EasyPOS.Controllers
             catch (Exception e)
             {
                 return new String[] { e.Message, "0" };
+            }
+        }
+
+        // ============================
+        // Inform EasyShop for Dispatch
+        // ============================
+        public void EasyShopReadyForDispatchRequest(String documentReference)
+        {
+            try
+            {
+                // ============
+                // Http Request
+                // ============
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://api.mirkadu.com/easydelivery/deliveries/" + documentReference + "/ready");
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "POST";
+
+                // ====
+                // Data
+                // ====
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                {
+
+                }
+
+                // ================
+                // Process response
+                // ================
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    if (result != null)
+                    {
+
+                    }
+                }
+            }
+            catch (WebException we)
+            {
+                var resp = new StreamReader(we.Response.GetResponseStream()).ReadToEnd();
+                throw new Exception(resp.Replace("\"", ""));
             }
         }
 
@@ -1915,6 +1961,7 @@ namespace EasyPOS.Controllers
                         var listDrivers = from d in driver.data
                                           select new Entities.SysDriver
                                           {
+                                              Id = d.attributes.id,
                                               FullName = d.attributes != null ? d.attributes.first_name + " " + d.attributes.last_name : ""
                                           };
 
@@ -1929,7 +1976,7 @@ namespace EasyPOS.Controllers
         // ===================
         // Assign Driver Sales
         // ===================
-        public String[] AssignDriverSales(Int32 salesId, String driverName)
+        public String[] AssignDriverSales(Int32 salesId, String driverName, String driverId)
         {
             try
             {
@@ -1951,6 +1998,18 @@ namespace EasyPOS.Controllers
                     updateSales.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
 
+                    var cloudSettings = from d in db.IntCloudSettings select d;
+
+                    var deliveryData = new Entities.SysDelivery()
+                    {
+                        branch_id = cloudSettings.FirstOrDefault().BranchCode,
+                        order_id = sales.FirstOrDefault().ManualInvoiceNumber,
+                        total = sales.FirstOrDefault().Amount.ToString(),
+                        driver_id = driverId
+                    };
+
+                    EasyShopDeliveryRequest(deliveryData);
+
                     return new String[] { "", "1" };
                 }
                 else
@@ -1961,6 +2020,80 @@ namespace EasyPOS.Controllers
             catch (Exception e)
             {
                 return new String[] { e.Message, "0" };
+            }
+        }
+
+        // ====================================
+        // Inform EasyShop for Delivery Request
+        // ====================================
+        public void EasyShopDeliveryRequest(Entities.SysDelivery objDelivery)
+        {
+            try
+            {
+                var deliveryData = new Entities.SysDelivery()
+                {
+                    branch_id = objDelivery.branch_id,
+                    order_id = objDelivery.order_id,
+                    total = objDelivery.total,
+                    driver_id = objDelivery.driver_id
+                };
+
+                String json = new JavaScriptSerializer().Serialize(deliveryData);
+
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://api.mirkadu.com/easydelivery/deliveries");
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "POST";
+
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                {
+                    Entities.SysDelivery delivery = new JavaScriptSerializer().Deserialize<Entities.SysDelivery>(json);
+                    streamWriter.Write(new JavaScriptSerializer().Serialize(delivery));
+                }
+
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    if (result != null)
+                    {
+
+                    }
+                }
+            }
+            catch (WebException we)
+            {
+                var resp = new StreamReader(we.Response.GetResponseStream()).ReadToEnd();
+                throw new Exception(resp.Replace("\"", ""));
+            }
+        }
+
+        public void EasyShopAlreadyPaid(String documentReference)
+        {
+            try
+            {
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://api.mirkadu.com/easyorder/orders/" + documentReference + "/paid");
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "POST";
+
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                {
+
+                }
+
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    if (result != null)
+                    {
+
+                    }
+                }
+            }
+            catch (WebException we)
+            {
+                var resp = new StreamReader(we.Response.GetResponseStream()).ReadToEnd();
+                throw new Exception(resp.Replace("\"", ""));
             }
         }
     }

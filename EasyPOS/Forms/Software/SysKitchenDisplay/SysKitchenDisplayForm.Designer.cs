@@ -43,6 +43,7 @@
             this.buttonKitchenItem20 = new System.Windows.Forms.Button();
             this.buttonKitchen4 = new System.Windows.Forms.Button();
             this.buttonKitchen1 = new System.Windows.Forms.Button();
+            this.imageListKitchenDisplay = new System.Windows.Forms.ImageList(this.components);
             this.buttonKitchen2 = new System.Windows.Forms.Button();
             this.buttonKitchen3 = new System.Windows.Forms.Button();
             this.buttonKitchenItem4 = new System.Windows.Forms.Button();
@@ -66,7 +67,8 @@
             this.buttonKitchenItemPrevious = new System.Windows.Forms.Button();
             this.buttonKitchenPagePrevious = new System.Windows.Forms.Button();
             this.dateTimePickerSalesDate = new System.Windows.Forms.DateTimePicker();
-            this.imageListKitchenDisplay = new System.Windows.Forms.ImageList(this.components);
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -128,6 +130,8 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.panel5);
+            this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.panel2);
             this.panel3.Controls.Add(this.dateTimePickerSalesDate);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -276,6 +280,14 @@
             this.buttonKitchen1.Text = "Main Course Kitchen";
             this.buttonKitchen1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonKitchen1.UseVisualStyleBackColor = false;
+            // 
+            // imageListKitchenDisplay
+            // 
+            this.imageListKitchenDisplay.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListKitchenDisplay.ImageStream")));
+            this.imageListKitchenDisplay.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListKitchenDisplay.Images.SetKeyName(0, "Barbeque.png");
+            this.imageListKitchenDisplay.Images.SetKeyName(1, "Beverages.png");
+            this.imageListKitchenDisplay.Images.SetKeyName(2, "KitchenMain.png");
             // 
             // buttonKitchen2
             // 
@@ -607,13 +619,26 @@
             this.dateTimePickerSalesDate.Size = new System.Drawing.Size(126, 29);
             this.dateTimePickerSalesDate.TabIndex = 9;
             // 
-            // imageListKitchenDisplay
+            // panel4
             // 
-            this.imageListKitchenDisplay.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListKitchenDisplay.ImageStream")));
-            this.imageListKitchenDisplay.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListKitchenDisplay.Images.SetKeyName(0, "Barbeque.png");
-            this.imageListKitchenDisplay.Images.SetKeyName(1, "Beverages.png");
-            this.imageListKitchenDisplay.Images.SetKeyName(2, "KitchenMain.png");
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Location = new System.Drawing.Point(1044, 37);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(42, 470);
+            this.panel4.TabIndex = 22;
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Location = new System.Drawing.Point(10, 488);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1029, 19);
+            this.panel5.TabIndex = 23;
             // 
             // SysKitchenDisplayForm
             // 
@@ -677,5 +702,7 @@
         private System.Windows.Forms.Button buttonKitchenItemPrevious;
         private System.Windows.Forms.Button buttonKitchenPagePrevious;
         private System.Windows.Forms.ImageList imageListKitchenDisplay;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
     }
 }

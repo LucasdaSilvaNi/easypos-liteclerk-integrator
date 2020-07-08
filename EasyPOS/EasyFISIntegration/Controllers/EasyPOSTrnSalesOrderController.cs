@@ -139,7 +139,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                         PeriodId = period.FirstOrDefault().Id,
                                         SalesDate = Convert.ToDateTime(salesOrder.SODate),
                                         SalesNumber = salesNumber,
-                                        ManualInvoiceNumber = "SO-" + salesOrder.BranchCode + "-" + salesOrder.ManualSONumber,
+                                        ManualInvoiceNumber = salesOrder.DocumentReference,
                                         CollectionNumber = null,
                                         Amount = 0,
                                         TableId = null,
