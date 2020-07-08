@@ -27,10 +27,24 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             labelInvoiceNumber.Text = trnSalesEntity.SalesNumber;
 
+            Boolean isLocked = trnSalesEntity.IsLocked;
             Boolean isCanclled = trnSalesEntity.IsCancelled;
             Boolean isTendered = trnSalesEntity.IsTendered;
 
-            if (isCanclled == true)
+            if (isLocked == true)
+            {
+                buttonDeliver.Enabled = false;
+            }
+            else if (isTendered == true)
+            {
+                buttonEditOrder.Enabled = false;
+                buttonBillOut.Enabled = false;
+                buttonPrintPartialBill.Enabled = false;
+                buttonSplitMergeBill.Enabled = false;
+                buttonTender.Enabled = false;
+                buttonDeliver.Enabled = false;
+            }
+            else if (isCanclled == true)
             {
                 buttonEditOrder.Enabled = false;
                 buttonBillOut.Enabled = false;
@@ -38,21 +52,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 buttonSplitMergeBill.Enabled = false;
                 buttonTender.Enabled = false;
                 buttonCancel.Enabled = false;
+                buttonDeliver.Enabled = false;
             }
             else
             {
-                if (isTendered == true)
-                {
-                    buttonEditOrder.Enabled = false;
-                    buttonBillOut.Enabled = false;
-                    buttonPrintPartialBill.Enabled = false;
-                    buttonSplitMergeBill.Enabled = false;
-                    buttonTender.Enabled = false;
-                }
-                else
-                {
-                    buttonCancel.Enabled = false;
-                }
+                buttonCancel.Enabled = false;
             }
         }
 
@@ -130,6 +134,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     trnSalesListCancelRemarksForm.ShowDialog();
                 }
             }
+        }
+
+        private void buttonDeliver_Click(object sender, EventArgs e)
+        {
+            TrnPOSTouchActivityDeliver trnPOSTouchActivityDeliver = new TrnPOSTouchActivityDeliver(trnPOSTouchForm, this, trnSalesEntity.Id, trnSalesEntity.Remarks);
+            trnPOSTouchActivityDeliver.ShowDialog();
         }
     }
 }

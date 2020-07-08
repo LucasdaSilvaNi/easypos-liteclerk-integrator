@@ -61,4 +61,30 @@ namespace EasyPOS.Entities
         public Decimal NumberOfItemsPrepared { get; set; }
         public Decimal NumberOfItemsStatus { get; set; }
     }
+
+    public class SysDeliverDriver
+    {
+        public List<SysDeliverDriverData> data { get; set; }
+    }
+
+    public class SysDeliverDriverData
+    {
+        public Int32 id { get; set; }
+        public String type { get; set; }
+        public SysDeliverDriverAttributes attributes { get; set; }
+    }
+    public class SysDeliverDriverAttributes
+    {
+        public Int32 id { get; set; }
+        public Int32? uuid { get; set; }
+        public String first_name { get; set; }
+        public String last_name { get; set; }
+        public String status { get; set; }
+        public String gender { get; set; }
+    }
+
+    public class SysDriver
+    {
+        public String FullName { get; set; }
+    }
 }

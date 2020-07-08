@@ -150,7 +150,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                         SeniorCitizenId = "",
                                         SeniorCitizenName = "",
                                         SeniorCitizenAge = null,
-                                        Remarks = "",
+                                        Remarks = salesOrder.Remarks,
                                         SalesAgent = user.FirstOrDefault().Id,
                                         TerminalId = terminal.FirstOrDefault().Id,
                                         PreparedBy = user.FirstOrDefault().Id,
@@ -270,7 +270,6 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                     if (sales.Any())
                                     {
                                         var updateSales = sales.FirstOrDefault();
-                                        updateSales.IsLocked = true;
                                         updateSales.Amount = amount;
 
                                         posdb.SubmitChanges();

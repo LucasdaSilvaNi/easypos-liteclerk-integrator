@@ -611,6 +611,12 @@
     <Compile Include="Forms\Software\SysKitchenDisplay\SysKitchenDisplayForm.Designer.cs">
       <DependentUpon>SysKitchenDisplayForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchActivityDeliver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchActivityDeliver.Designer.cs">
+      <DependentUpon>TrnPOSTouchActivityDeliver.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnPOSReturnPickQuantity.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1049,6 +1055,9 @@
     <EmbeddedResource Include="Forms\Software\SysKitchenDisplay\SysKitchenDisplayForm.resx">
       <DependentUpon>SysKitchenDisplayForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTouchActivityDeliver.resx">
+      <DependentUpon>TrnPOSTouchActivityDeliver.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSReturnPickQuantity.resx">
       <DependentUpon>TrnPOSReturnPickQuantity.cs</DependentUpon>
     </EmbeddedResource>
@@ -1276,6 +1285,7 @@
     <Content Include="Resources\Images\Company\easycloud.jpg" />
     <Content Include="Resources\Images\Customers\sonnets.png" />
     <Content Include="Resources\Images\Icons\Customer.png" />
+    <None Include="Resources\Images\Icons\DeliveryMan.png" />
     <Content Include="Resources\Images\Icons\Disbursement.png" />
     <Content Include="Resources\Images\Icons\Discounting.png" />
     <None Include="Resources\Images\Icons\easypos.jpg" />

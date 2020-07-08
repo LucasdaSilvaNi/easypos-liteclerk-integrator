@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 
 namespace EasyPOS.Controllers
 {
@@ -1864,6 +1867,86 @@ namespace EasyPOS.Controllers
 
                     var updateSales = sales.FirstOrDefault();
                     updateSales.IsDispatched = true;
+                    updateSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
+                    updateSales.UpdateDateTime = DateTime.Now;
+                    db.SubmitChanges();
+
+                    return new String[] { "", "1" };
+                }
+                else
+                {
+                    return new String[] { "Sales not found.", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
+        // ====================
+        // Dropdown List Driver
+        // ====================
+        public List<Entities.SysDriver> DropdownListDriver()
+        {
+            List<Entities.SysDriver> drivers = new List<Entities.SysDriver>();
+
+            // ============
+            // Http Request
+            // ============
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://api.mirkadu.com/easydelivery/drivers");
+            httpWebRequest.Method = "GET";
+            httpWebRequest.Accept = "application/json";
+
+            // ================
+            // Process Response
+            // ================
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                Entities.SysDeliverDriver driver = (Entities.SysDeliverDriver)js.Deserialize(result, typeof(Entities.SysDeliverDriver));
+
+                if (driver != null)
+                {
+                    if (driver.data.Any())
+                    {
+                        var listDrivers = from d in driver.data
+                                          select new Entities.SysDriver
+                                          {
+                                              FullName = d.attributes != null ? d.attributes.first_name + " " + d.attributes.last_name : ""
+                                          };
+
+                        drivers = listDrivers.ToList();
+                    }
+                }
+            }
+
+            return drivers;
+        }
+
+        // ===================
+        // Assign Driver Sales
+        // ===================
+        public String[] AssignDriverSales(Int32 salesId, String driverName)
+        {
+            try
+            {
+                var sales = from d in db.TrnSales
+                            where d.Id == salesId
+                            select d;
+
+                if (sales.Any())
+                {
+                    if (sales.FirstOrDefault().IsLocked == true)
+                    {
+                        return new String[] { "Already locked.", "0" };
+                    }
+
+                    var updateSales = sales.FirstOrDefault();
+                    updateSales.Delivery = driverName;
+                    updateSales.IsLocked = true;
                     updateSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
                     updateSales.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
