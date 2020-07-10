@@ -192,7 +192,7 @@ namespace EasyPOS.Forms.Software.SysDispatchStation
                                   ColumnIsCancelled = d.IsCancelled,
                                   ColumnIsDispatched = d.IsDispatched,
                                   ColumnPrepared = d.NumberOfItemsPrepared.ToString("#,##0.00"),
-                                  ColumnStatus = d.NumberOfItemsStatus.ToString("#,##0.00"),
+                                  ColumnStatus = d.Status,
                                   ColumnSpace = ""
                               };
 

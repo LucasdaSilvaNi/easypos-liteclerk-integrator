@@ -1688,7 +1688,7 @@ namespace EasyPOS.Controllers
                                 TableStatus = d.TableStatus,
                                 NumberOfItems = d.TrnSalesLines.Any() ? d.TrnSalesLines.Count() : 0,
                                 NumberOfItemsPrepared = d.TrnSalesLines.Any() ? d.TrnSalesLines.Where(i => i.IsPrepared == true).Count() : 0,
-                                NumberOfItemsStatus = d.TrnSalesLines.Any() ? d.TrnSalesLines.Count() - d.TrnSalesLines.Where(i => i.IsPrepared == true).Count() : 0
+                                Status = d.TrnSalesLines.Any() ? d.TrnSalesLines.Count() - d.TrnSalesLines.Where(i => i.IsPrepared == true).Count() == 0 ? "Ready for Dispatch" : "Preparing" : ""
                             };
 
                 return sales.OrderByDescending(d => d.Id).ToList();
@@ -1759,7 +1759,7 @@ namespace EasyPOS.Controllers
                                 TableStatus = d.TableStatus,
                                 NumberOfItems = d.TrnSalesLines.Any() ? d.TrnSalesLines.Count() : 0,
                                 NumberOfItemsPrepared = d.TrnSalesLines.Any() ? d.TrnSalesLines.Where(i => i.IsPrepared == true).Count() : 0,
-                                NumberOfItemsStatus = d.TrnSalesLines.Any() ? d.TrnSalesLines.Count() - d.TrnSalesLines.Where(i => i.IsPrepared == true).Count() : 0
+                                Status = "To be delivered"
                             };
 
                 return sales.OrderByDescending(d => d.Id).ToList();
@@ -1830,7 +1830,7 @@ namespace EasyPOS.Controllers
                                 TableStatus = d.TableStatus,
                                 NumberOfItems = d.TrnSalesLines.Any() ? d.TrnSalesLines.Count() : 0,
                                 NumberOfItemsPrepared = d.TrnSalesLines.Any() ? d.TrnSalesLines.Where(i => i.IsPrepared == true).Count() : 0,
-                                NumberOfItemsStatus = d.TrnSalesLines.Any() ? d.TrnSalesLines.Count() - d.TrnSalesLines.Where(i => i.IsPrepared == true).Count() : 0
+                                Status = "Paid and Delivered"
                             };
 
                 return sales.OrderByDescending(d => d.Id).ToList();

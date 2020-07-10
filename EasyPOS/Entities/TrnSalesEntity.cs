@@ -59,7 +59,7 @@ namespace EasyPOS.Entities
         public String Table { get; set; }
         public Decimal NumberOfItems { get; set; }
         public Decimal NumberOfItemsPrepared { get; set; }
-        public Decimal NumberOfItemsStatus { get; set; }
+        public String Status { get; set; }
     }
 
     public class SysDeliverDriver
