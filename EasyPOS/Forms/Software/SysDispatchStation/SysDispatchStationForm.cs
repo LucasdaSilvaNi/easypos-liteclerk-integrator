@@ -184,14 +184,14 @@ namespace EasyPOS.Forms.Software.SysDispatchStation
                                   ColumnSalesNumber = d.SalesNumber,
                                   ColumnManualSalesNumber = d.ManualInvoiceNumber,
                                   ColumnCustomer = d.Customer,
-                                  ColumnCustomerAddress = d.CustomerAddress,
+                                  ColumnCustomerAddress = d.Remarks,
                                   ColumnDelivery = d.Delivery,
-                                  ColumnNumberOfItems = d.NumberOfItems.ToString("#,##0.00"),
+                                  ColumnNumberOfItems = d.NumberOfItems.ToString("#,##0"),
                                   ColumnIsLocked = d.IsLocked,
                                   ColumnIsTendered = d.IsTendered,
                                   ColumnIsCancelled = d.IsCancelled,
                                   ColumnIsDispatched = d.IsDispatched,
-                                  ColumnPrepared = d.NumberOfItemsPrepared.ToString("#,##0.00"),
+                                  ColumnPrepared = d.NumberOfItemsPrepared.ToString("#,##0"),
                                   ColumnStatus = d.Status,
                                   ColumnSpace = ""
                               };

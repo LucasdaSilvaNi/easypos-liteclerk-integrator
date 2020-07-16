@@ -90,5 +90,39 @@ namespace EasyPOS.Controllers
                 return new String[] { e.Message, "0" };
             }
         }
+
+        public List<Entities.SysKitchenItemEntity> ListKitchenPreparedItems(String kitchen, DateTime salesDate)
+        {
+            var salesLines = from d in db.TrnSalesLines
+                             where d.IsPrepared == true
+                             && d.MstItem.DefaultKitchenReport == kitchen
+                             && d.TrnSale.SalesDate == salesDate
+                             && d.TrnSale.IsLocked == true
+                             && d.TrnSale.IsTendered == false
+                             && d.TrnSale.IsCancelled == false
+                             && d.TrnSale.IsDispatched == false
+                             group d by new
+                             {
+                                 d.SalesId,
+                                 d.TrnSale.ManualInvoiceNumber,
+                                 d.MstItem.BarCode,
+                                 d.MstItem.ItemDescription,
+                                 d.MstItem.MstUnit.Unit,
+                                 d.IsPrepared
+                             } into g
+                             select new Entities.SysKitchenItemEntity
+                             {
+                                 SalesId = g.Key.SalesId,
+                                 OrderNumber = g.Key.ManualInvoiceNumber,
+                                 BarCode = g.Key.BarCode,
+                                 ItemDescription = g.Key.ItemDescription,
+                                 Unit = g.Key.Unit,
+                                 IsPrepared = g.Key.IsPrepared,
+                                 Quantity = g.Sum(d => d.Quantity)
+                             };
+
+            return salesLines.ToList();
+        }
+
     }
 }

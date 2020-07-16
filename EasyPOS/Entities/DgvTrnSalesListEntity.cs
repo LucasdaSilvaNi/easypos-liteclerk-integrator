@@ -14,10 +14,12 @@ namespace EasyPOS.Entities
         public String ColumnTerminal { get; set; }
         public String ColumnSalesDate { get; set; }
         public String ColumnSalesNumber { get; set; }
+        public String ColumnManualSalesNumber { get; set; }
         public String ColumnRececiptInvoiceNumber { get; set; }
         public String ColumnCustomerCode { get; set; }
         public String ColumnCustomer { get; set; }
         public String ColumnSalesAgent { get; set; }
+        public String ColumnDelivery { get; set; }
         public String ColumnAmount { get; set; }
         public String ColumnSpace { get; set; }
         public Boolean ColumnIsLocked { get; set; }

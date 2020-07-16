@@ -50,11 +50,20 @@ namespace EasyPOS.Controllers
         // ==============
         // POS List Sales 
         // ==============
-        public List<Entities.TrnSalesEntity> POSTTouchListSales(DateTime dateTime, Int32 terminalId)
+        public List<Entities.TrnSalesEntity> POSTTouchListSales(DateTime dateTime, Int32 terminalId, String filter)
         {
             var sales = from d in db.TrnSales
                         where d.SalesDate == dateTime
                         && d.TerminalId == terminalId
+                        && (d.SalesNumber.Contains(filter)
+                        || d.ManualInvoiceNumber.Contains(filter)
+                        || d.CollectionNumber.Contains(filter)
+                        || d.MstTable.TableCode.Contains(filter)
+                        || d.MstCustomer.CustomerCode.Contains(filter)
+                        || d.MstCustomer.Customer.Contains(filter)
+                        || d.MstUser5.UserName.Contains(filter)
+                        || d.Remarks.Contains(filter)
+                        || d.Delivery.Contains(filter))
                         select new Entities.TrnSalesEntity
                         {
                             Id = d.Id,
@@ -1923,10 +1932,9 @@ namespace EasyPOS.Controllers
                     }
                 }
             }
-            catch (WebException we)
+            catch (Exception ex)
             {
-                var resp = new StreamReader(we.Response.GetResponseStream()).ReadToEnd();
-                throw new Exception(resp.Replace("\"", ""));
+                throw new Exception(ex.Message);
             }
         }
 
@@ -2077,10 +2085,9 @@ namespace EasyPOS.Controllers
                     }
                 }
             }
-            catch (WebException we)
+            catch (Exception ex)
             {
-                var resp = new StreamReader(we.Response.GetResponseStream()).ReadToEnd();
-                throw new Exception(resp.Replace("\"", ""));
+                throw new Exception(ex.Message);
             }
         }
 
@@ -2107,10 +2114,253 @@ namespace EasyPOS.Controllers
                     }
                 }
             }
-            catch (WebException we)
+            catch (Exception ex)
             {
-                var resp = new StreamReader(we.Response.GetResponseStream()).ReadToEnd();
-                throw new Exception(resp.Replace("\"", ""));
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public String[] TenderAllSales(List<Int32> salesIds)
+        {
+            try
+            {
+                if (salesIds.Any())
+                {
+                    foreach (var salesId in salesIds)
+                    {
+                        var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                        if (currentUserLogin.Any() == false)
+                        {
+                            return new String[] { "Current login user not found.", "0" };
+                        }
+
+                        var currentSales = from d in db.TrnSales
+                                           where d.Id == salesId
+                                           && d.IsTendered == false
+                                           select d;
+
+                        if (!currentSales.Any())
+                        {
+                            return new String[] { "Sales not found.", "0" };
+                        }
+
+                        if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == false)
+                        {
+                            Boolean isNegativeInventory = false;
+                            String negativeInventoryItem = "";
+
+                            if (currentSales.FirstOrDefault().TrnSalesLines.Where(d => d.MstItem.IsInventory == true).Any())
+                            {
+                                var groupedSalesLines = from d in currentSales.FirstOrDefault().TrnSalesLines.Where(d => d.MstItem.IsInventory == true)
+                                                        group d by d.MstItem into g
+                                                        select g;
+
+                                foreach (var salesLine in groupedSalesLines.ToList())
+                                {
+                                    negativeInventoryItem = salesLine.Key.ItemDescription;
+
+                                    if (salesLine.Key.OnhandQuantity <= 0)
+                                    {
+                                        isNegativeInventory = true;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        if (salesLine.Key.OnhandQuantity < salesLine.Sum(d => d.Quantity))
+                                        {
+                                            isNegativeInventory = true;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (isNegativeInventory == true)
+                            {
+                                return new String[] { "Negative inventory item found. " + negativeInventoryItem, "0" };
+                            }
+
+                            Boolean isNegativeInventoryComponent = false;
+                            String negativeInventoryComponentItem = "";
+
+                            if (currentSales.FirstOrDefault().TrnSalesLines.Where(d => d.MstItem.IsInventory == false).Any())
+                            {
+                                var groupedSalesLines = from d in currentSales.FirstOrDefault().TrnSalesLines.Where(d => d.MstItem.IsInventory == false)
+                                                        group d by d.MstItem into g
+                                                        select g;
+
+                                foreach (var salesLine in groupedSalesLines.ToList())
+                                {
+                                    if (salesLine.Key.MstItemComponents.Any())
+                                    {
+                                        foreach (var component in salesLine.Key.MstItemComponents)
+                                        {
+                                            negativeInventoryComponentItem = component.MstItem1.ItemDescription;
+
+                                            if (component.MstItem1.OnhandQuantity <= 0)
+                                            {
+                                                isNegativeInventoryComponent = true;
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                if (component.MstItem1.OnhandQuantity < (salesLine.Sum(d => d.Quantity) * component.Quantity))
+                                                {
+                                                    isNegativeInventoryComponent = true;
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (isNegativeInventoryComponent == true)
+                            {
+                                return new String[] { "Negative inventory component item found. " + negativeInventoryComponentItem, "0" };
+                            }
+                        }
+
+                        var collectedSales = from d in db.TrnCollections
+                                             where d.SalesId == salesId
+                                             && d.IsLocked == true
+                                             select d;
+
+                        if (collectedSales.Any())
+                        {
+                            return new String[] { "Sales already collected.", "0" };
+                        }
+
+                        String collectionNumber = "0000000001";
+                        var lastCollection = from d in db.TrnCollections.OrderByDescending(d => d.Id)
+                                             where d.TerminalId == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId)
+                                             select d;
+
+                        if (lastCollection.Any())
+                        {
+                            Int32 newCollectionNumber = Convert.ToInt32(lastCollection.FirstOrDefault().CollectionNumber) + 1;
+                            collectionNumber = FillLeadingZeroes(newCollectionNumber, 10);
+                        }
+
+                        DateTime currentDate = DateTime.Today;
+                        if (Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == true)
+                        {
+                            currentDate = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate);
+                        }
+
+                        Data.TrnCollection newCollection = new Data.TrnCollection
+                        {
+                            PeriodId = currentSales.FirstOrDefault().PeriodId,
+                            CollectionDate = currentDate,
+                            CollectionNumber = collectionNumber,
+                            TerminalId = currentSales.FirstOrDefault().TerminalId,
+                            ManualORNumber = currentSales.FirstOrDefault().MstTerminal.Terminal + "-" + collectionNumber,
+                            CustomerId = currentSales.FirstOrDefault().CustomerId,
+                            Remarks = currentSales.FirstOrDefault().Remarks,
+                            SalesId = currentSales.FirstOrDefault().Id,
+                            SalesBalanceAmount = currentSales.FirstOrDefault().BalanceAmount,
+                            Amount = 0,
+                            TenderAmount = currentSales.FirstOrDefault().Amount,
+                            ChangeAmount = 0,
+                            PreparedBy = currentUserLogin.FirstOrDefault().Id,
+                            CheckedBy = currentUserLogin.FirstOrDefault().Id,
+                            ApprovedBy = currentUserLogin.FirstOrDefault().Id,
+                            IsCancelled = false,
+                            PostCode = null,
+                            IsLocked = false,
+                            EntryUserId = currentUserLogin.FirstOrDefault().Id,
+                            EntryDateTime = DateTime.Now,
+                            UpdateUserId = currentUserLogin.FirstOrDefault().Id,
+                            UpdateDateTime = DateTime.Now
+                        };
+
+                        db.TrnCollections.InsertOnSubmit(newCollection);
+                        db.SubmitChanges();
+
+                        var payType = from d in db.MstPayTypes
+                                      where d.PayTypeCode == "Cash"
+                                      select d;
+
+                        if (!payType.Any())
+                        {
+                            return new String[] { "Pay type cash not found.", "0" };
+                        }
+
+                        Data.TrnCollectionLine newCollectionLine = new Data.TrnCollectionLine()
+                        {
+                            CollectionId = newCollection.Id,
+                            Amount = currentSales.FirstOrDefault().Amount,
+                            PayTypeId = payType.FirstOrDefault().Id,
+                            CheckNumber = "NA",
+                            CheckDate = null,
+                            CheckBank = "NA",
+                            CreditCardVerificationCode = "NA",
+                            CreditCardNumber = "NA",
+                            CreditCardType = "NA",
+                            CreditCardBank = "NA",
+                            GiftCertificateNumber = "NA",
+                            OtherInformation = "NA",
+                            StockInId = null,
+                            AccountId = Convert.ToInt32(payType.FirstOrDefault().AccountId),
+                            CreditCardReferenceNumber = "NA",
+                            CreditCardHolderName = "NA",
+                            CreditCardExpiry = "NA",
+                        };
+
+                        db.TrnCollectionLines.InsertOnSubmit(newCollectionLine);
+                        db.SubmitChanges();
+
+                        Decimal salesAmount = currentSales.FirstOrDefault().Amount;
+                        Decimal paidAmount = 0;
+
+                        var collection = from d in db.TrnCollections
+                                         where d.Id == newCollection.Id
+                                         select d;
+
+                        if (collection.Any())
+                        {
+                            Decimal totalCollectionLineAmount = 0;
+                            var collectionLines = from d in db.TrnCollectionLines
+                                                  where d.CollectionId == collection.FirstOrDefault().Id
+                                                  select d;
+
+                            if (collectionLines.Any())
+                            {
+                                totalCollectionLineAmount = collectionLines.Sum(d => d.Amount);
+                            }
+
+                            var lockCollection = collection.FirstOrDefault();
+                            lockCollection.Amount = totalCollectionLineAmount - collection.FirstOrDefault().ChangeAmount;
+                            lockCollection.IsLocked = true;
+                            db.SubmitChanges();
+
+                            paidAmount = totalCollectionLineAmount;
+                        }
+
+                        var lockSales = currentSales.FirstOrDefault();
+                        lockSales.CollectionNumber = collection.FirstOrDefault().CollectionNumber;
+                        lockSales.PaidAmount = paidAmount;
+                        lockSales.BalanceAmount = salesAmount - paidAmount;
+                        lockSales.IsLocked = true;
+                        lockSales.IsTendered = true;
+                        lockSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
+                        lockSales.UpdateDateTime = DateTime.Now;
+                        db.SubmitChanges();
+
+                        Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
+                        trnInventoryModule.UpdateSalesInventory(salesId);
+                    }
+
+                    return new String[] { "", "1" };
+                } 
+                else
+                {
+                    return new String[] { "Empty Sales!", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
             }
         }
     }

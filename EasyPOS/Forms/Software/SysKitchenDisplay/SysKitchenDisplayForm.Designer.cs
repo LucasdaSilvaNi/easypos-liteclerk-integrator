@@ -30,11 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SysKitchenDisplayForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonKitchen5 = new System.Windows.Forms.Button();
             this.buttonKitchenItem5 = new System.Windows.Forms.Button();
@@ -67,12 +72,16 @@
             this.buttonKitchenItemPrevious = new System.Windows.Forms.Button();
             this.buttonKitchenPagePrevious = new System.Windows.Forms.Button();
             this.dateTimePickerSalesDate = new System.Windows.Forms.DateTimePicker();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.buttonRefresh = new System.Windows.Forms.Button();
+            this.dataGridViewDoneItemDisplay = new System.Windows.Forms.DataGridView();
+            this.ColumnDoneItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDoneItemDisplay)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -130,7 +139,7 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.panel5);
+            this.panel3.Controls.Add(this.buttonRefresh);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.panel2);
             this.panel3.Controls.Add(this.dateTimePickerSalesDate);
@@ -141,6 +150,18 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1096, 510);
             this.panel3.TabIndex = 15;
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.dataGridViewDoneItemDisplay);
+            this.panel4.Location = new System.Drawing.Point(963, 37);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(123, 470);
+            this.panel4.TabIndex = 22;
             // 
             // panel2
             // 
@@ -175,11 +196,11 @@
             this.panel2.Controls.Add(this.buttonKitchenPageNext);
             this.panel2.Controls.Add(this.buttonKitchenItemPrevious);
             this.panel2.Controls.Add(this.buttonKitchenPagePrevious);
-            this.panel2.Location = new System.Drawing.Point(10, 37);
+            this.panel2.Location = new System.Drawing.Point(10, 4);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(4);
-            this.panel2.Size = new System.Drawing.Size(1029, 447);
+            this.panel2.Size = new System.Drawing.Size(948, 474);
             this.panel2.TabIndex = 21;
             // 
             // buttonKitchen5
@@ -188,10 +209,10 @@
             this.buttonKitchen5.FlatAppearance.BorderSize = 0;
             this.buttonKitchen5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchen5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonKitchen5.Location = new System.Drawing.Point(776, 6);
+            this.buttonKitchen5.Location = new System.Drawing.Point(711, 6);
             this.buttonKitchen5.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchen5.Name = "buttonKitchen5";
-            this.buttonKitchen5.Size = new System.Drawing.Size(168, 72);
+            this.buttonKitchen5.Size = new System.Drawing.Size(152, 87);
             this.buttonKitchen5.TabIndex = 47;
             this.buttonKitchen5.UseVisualStyleBackColor = false;
             // 
@@ -202,10 +223,10 @@
             this.buttonKitchenItem5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItem5.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem5.ForeColor = System.Drawing.Color.Black;
-            this.buttonKitchenItem5.Location = new System.Drawing.Point(776, 82);
+            this.buttonKitchenItem5.Location = new System.Drawing.Point(711, 97);
             this.buttonKitchenItem5.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItem5.Name = "buttonKitchenItem5";
-            this.buttonKitchenItem5.Size = new System.Drawing.Size(168, 86);
+            this.buttonKitchenItem5.Size = new System.Drawing.Size(152, 89);
             this.buttonKitchenItem5.TabIndex = 46;
             this.buttonKitchenItem5.UseVisualStyleBackColor = false;
             // 
@@ -216,10 +237,10 @@
             this.buttonKitchenItem10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItem10.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem10.ForeColor = System.Drawing.Color.Black;
-            this.buttonKitchenItem10.Location = new System.Drawing.Point(776, 172);
+            this.buttonKitchenItem10.Location = new System.Drawing.Point(711, 190);
             this.buttonKitchenItem10.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItem10.Name = "buttonKitchenItem10";
-            this.buttonKitchenItem10.Size = new System.Drawing.Size(168, 86);
+            this.buttonKitchenItem10.Size = new System.Drawing.Size(152, 89);
             this.buttonKitchenItem10.TabIndex = 45;
             this.buttonKitchenItem10.UseVisualStyleBackColor = false;
             // 
@@ -230,10 +251,10 @@
             this.buttonKitchenItem15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItem15.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem15.ForeColor = System.Drawing.Color.Black;
-            this.buttonKitchenItem15.Location = new System.Drawing.Point(776, 262);
+            this.buttonKitchenItem15.Location = new System.Drawing.Point(711, 283);
             this.buttonKitchenItem15.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItem15.Name = "buttonKitchenItem15";
-            this.buttonKitchenItem15.Size = new System.Drawing.Size(168, 86);
+            this.buttonKitchenItem15.Size = new System.Drawing.Size(152, 89);
             this.buttonKitchenItem15.TabIndex = 44;
             this.buttonKitchenItem15.UseVisualStyleBackColor = false;
             // 
@@ -244,10 +265,10 @@
             this.buttonKitchenItem20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItem20.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem20.ForeColor = System.Drawing.Color.Black;
-            this.buttonKitchenItem20.Location = new System.Drawing.Point(776, 352);
+            this.buttonKitchenItem20.Location = new System.Drawing.Point(711, 376);
             this.buttonKitchenItem20.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItem20.Name = "buttonKitchenItem20";
-            this.buttonKitchenItem20.Size = new System.Drawing.Size(168, 86);
+            this.buttonKitchenItem20.Size = new System.Drawing.Size(152, 89);
             this.buttonKitchenItem20.TabIndex = 43;
             this.buttonKitchenItem20.UseVisualStyleBackColor = false;
             // 
@@ -257,10 +278,10 @@
             this.buttonKitchen4.FlatAppearance.BorderSize = 0;
             this.buttonKitchen4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchen4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonKitchen4.Location = new System.Drawing.Point(604, 6);
+            this.buttonKitchen4.Location = new System.Drawing.Point(555, 6);
             this.buttonKitchen4.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchen4.Name = "buttonKitchen4";
-            this.buttonKitchen4.Size = new System.Drawing.Size(168, 72);
+            this.buttonKitchen4.Size = new System.Drawing.Size(152, 87);
             this.buttonKitchen4.TabIndex = 41;
             this.buttonKitchen4.UseVisualStyleBackColor = false;
             // 
@@ -275,7 +296,7 @@
             this.buttonKitchen1.Location = new System.Drawing.Point(84, 6);
             this.buttonKitchen1.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchen1.Name = "buttonKitchen1";
-            this.buttonKitchen1.Size = new System.Drawing.Size(169, 72);
+            this.buttonKitchen1.Size = new System.Drawing.Size(153, 87);
             this.buttonKitchen1.TabIndex = 38;
             this.buttonKitchen1.Text = "Main Course Kitchen";
             this.buttonKitchen1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -297,10 +318,10 @@
             this.buttonKitchen2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonKitchen2.ImageKey = "Beverages.png";
             this.buttonKitchen2.ImageList = this.imageListKitchenDisplay;
-            this.buttonKitchen2.Location = new System.Drawing.Point(257, 6);
+            this.buttonKitchen2.Location = new System.Drawing.Point(241, 6);
             this.buttonKitchen2.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchen2.Name = "buttonKitchen2";
-            this.buttonKitchen2.Size = new System.Drawing.Size(169, 72);
+            this.buttonKitchen2.Size = new System.Drawing.Size(153, 87);
             this.buttonKitchen2.TabIndex = 37;
             this.buttonKitchen2.Text = "Beverages";
             this.buttonKitchen2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -314,10 +335,10 @@
             this.buttonKitchen3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonKitchen3.ImageKey = "Barbeque.png";
             this.buttonKitchen3.ImageList = this.imageListKitchenDisplay;
-            this.buttonKitchen3.Location = new System.Drawing.Point(430, 6);
+            this.buttonKitchen3.Location = new System.Drawing.Point(398, 6);
             this.buttonKitchen3.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchen3.Name = "buttonKitchen3";
-            this.buttonKitchen3.Size = new System.Drawing.Size(169, 72);
+            this.buttonKitchen3.Size = new System.Drawing.Size(153, 87);
             this.buttonKitchen3.TabIndex = 36;
             this.buttonKitchen3.Text = "Barbeque Station";
             this.buttonKitchen3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -330,10 +351,10 @@
             this.buttonKitchenItem4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItem4.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem4.ForeColor = System.Drawing.Color.Black;
-            this.buttonKitchenItem4.Location = new System.Drawing.Point(604, 82);
+            this.buttonKitchenItem4.Location = new System.Drawing.Point(555, 97);
             this.buttonKitchenItem4.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItem4.Name = "buttonKitchenItem4";
-            this.buttonKitchenItem4.Size = new System.Drawing.Size(168, 86);
+            this.buttonKitchenItem4.Size = new System.Drawing.Size(152, 89);
             this.buttonKitchenItem4.TabIndex = 35;
             this.buttonKitchenItem4.UseVisualStyleBackColor = false;
             // 
@@ -344,10 +365,10 @@
             this.buttonKitchenItem9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItem9.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem9.ForeColor = System.Drawing.Color.Black;
-            this.buttonKitchenItem9.Location = new System.Drawing.Point(604, 172);
+            this.buttonKitchenItem9.Location = new System.Drawing.Point(555, 190);
             this.buttonKitchenItem9.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItem9.Name = "buttonKitchenItem9";
-            this.buttonKitchenItem9.Size = new System.Drawing.Size(168, 86);
+            this.buttonKitchenItem9.Size = new System.Drawing.Size(152, 89);
             this.buttonKitchenItem9.TabIndex = 32;
             this.buttonKitchenItem9.UseVisualStyleBackColor = false;
             // 
@@ -358,10 +379,10 @@
             this.buttonKitchenItem14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItem14.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem14.ForeColor = System.Drawing.Color.Black;
-            this.buttonKitchenItem14.Location = new System.Drawing.Point(604, 262);
+            this.buttonKitchenItem14.Location = new System.Drawing.Point(555, 283);
             this.buttonKitchenItem14.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItem14.Name = "buttonKitchenItem14";
-            this.buttonKitchenItem14.Size = new System.Drawing.Size(168, 86);
+            this.buttonKitchenItem14.Size = new System.Drawing.Size(152, 89);
             this.buttonKitchenItem14.TabIndex = 29;
             this.buttonKitchenItem14.UseVisualStyleBackColor = false;
             // 
@@ -372,10 +393,10 @@
             this.buttonKitchenItem19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItem19.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem19.ForeColor = System.Drawing.Color.Black;
-            this.buttonKitchenItem19.Location = new System.Drawing.Point(604, 352);
+            this.buttonKitchenItem19.Location = new System.Drawing.Point(555, 376);
             this.buttonKitchenItem19.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItem19.Name = "buttonKitchenItem19";
-            this.buttonKitchenItem19.Size = new System.Drawing.Size(168, 86);
+            this.buttonKitchenItem19.Size = new System.Drawing.Size(152, 89);
             this.buttonKitchenItem19.TabIndex = 26;
             this.buttonKitchenItem19.UseVisualStyleBackColor = false;
             // 
@@ -386,10 +407,10 @@
             this.buttonKitchenItem1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItem1.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem1.ForeColor = System.Drawing.Color.Black;
-            this.buttonKitchenItem1.Location = new System.Drawing.Point(84, 82);
+            this.buttonKitchenItem1.Location = new System.Drawing.Point(84, 97);
             this.buttonKitchenItem1.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItem1.Name = "buttonKitchenItem1";
-            this.buttonKitchenItem1.Size = new System.Drawing.Size(169, 86);
+            this.buttonKitchenItem1.Size = new System.Drawing.Size(153, 89);
             this.buttonKitchenItem1.TabIndex = 23;
             this.buttonKitchenItem1.UseVisualStyleBackColor = false;
             // 
@@ -400,10 +421,10 @@
             this.buttonKitchenItem2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItem2.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem2.ForeColor = System.Drawing.Color.Black;
-            this.buttonKitchenItem2.Location = new System.Drawing.Point(257, 82);
+            this.buttonKitchenItem2.Location = new System.Drawing.Point(241, 97);
             this.buttonKitchenItem2.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItem2.Name = "buttonKitchenItem2";
-            this.buttonKitchenItem2.Size = new System.Drawing.Size(169, 86);
+            this.buttonKitchenItem2.Size = new System.Drawing.Size(153, 89);
             this.buttonKitchenItem2.TabIndex = 22;
             this.buttonKitchenItem2.UseVisualStyleBackColor = false;
             // 
@@ -414,10 +435,10 @@
             this.buttonKitchenItem3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItem3.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem3.ForeColor = System.Drawing.Color.Black;
-            this.buttonKitchenItem3.Location = new System.Drawing.Point(430, 82);
+            this.buttonKitchenItem3.Location = new System.Drawing.Point(398, 97);
             this.buttonKitchenItem3.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItem3.Name = "buttonKitchenItem3";
-            this.buttonKitchenItem3.Size = new System.Drawing.Size(169, 86);
+            this.buttonKitchenItem3.Size = new System.Drawing.Size(153, 89);
             this.buttonKitchenItem3.TabIndex = 21;
             this.buttonKitchenItem3.UseVisualStyleBackColor = false;
             // 
@@ -428,10 +449,10 @@
             this.buttonKitchenItem6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItem6.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem6.ForeColor = System.Drawing.Color.Black;
-            this.buttonKitchenItem6.Location = new System.Drawing.Point(84, 172);
+            this.buttonKitchenItem6.Location = new System.Drawing.Point(84, 190);
             this.buttonKitchenItem6.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItem6.Name = "buttonKitchenItem6";
-            this.buttonKitchenItem6.Size = new System.Drawing.Size(169, 86);
+            this.buttonKitchenItem6.Size = new System.Drawing.Size(153, 89);
             this.buttonKitchenItem6.TabIndex = 20;
             this.buttonKitchenItem6.UseVisualStyleBackColor = false;
             // 
@@ -442,10 +463,10 @@
             this.buttonKitchenItem7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItem7.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem7.ForeColor = System.Drawing.Color.Black;
-            this.buttonKitchenItem7.Location = new System.Drawing.Point(257, 172);
+            this.buttonKitchenItem7.Location = new System.Drawing.Point(241, 190);
             this.buttonKitchenItem7.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItem7.Name = "buttonKitchenItem7";
-            this.buttonKitchenItem7.Size = new System.Drawing.Size(169, 86);
+            this.buttonKitchenItem7.Size = new System.Drawing.Size(153, 89);
             this.buttonKitchenItem7.TabIndex = 19;
             this.buttonKitchenItem7.UseVisualStyleBackColor = false;
             // 
@@ -456,10 +477,10 @@
             this.buttonKitchenItem8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItem8.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem8.ForeColor = System.Drawing.Color.Black;
-            this.buttonKitchenItem8.Location = new System.Drawing.Point(430, 172);
+            this.buttonKitchenItem8.Location = new System.Drawing.Point(398, 190);
             this.buttonKitchenItem8.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItem8.Name = "buttonKitchenItem8";
-            this.buttonKitchenItem8.Size = new System.Drawing.Size(169, 86);
+            this.buttonKitchenItem8.Size = new System.Drawing.Size(153, 89);
             this.buttonKitchenItem8.TabIndex = 18;
             this.buttonKitchenItem8.UseVisualStyleBackColor = false;
             // 
@@ -470,10 +491,10 @@
             this.buttonKitchenItem11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItem11.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem11.ForeColor = System.Drawing.Color.Black;
-            this.buttonKitchenItem11.Location = new System.Drawing.Point(84, 262);
+            this.buttonKitchenItem11.Location = new System.Drawing.Point(84, 283);
             this.buttonKitchenItem11.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItem11.Name = "buttonKitchenItem11";
-            this.buttonKitchenItem11.Size = new System.Drawing.Size(169, 86);
+            this.buttonKitchenItem11.Size = new System.Drawing.Size(153, 89);
             this.buttonKitchenItem11.TabIndex = 17;
             this.buttonKitchenItem11.UseVisualStyleBackColor = false;
             // 
@@ -484,10 +505,10 @@
             this.buttonKitchenItem12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItem12.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem12.ForeColor = System.Drawing.Color.Black;
-            this.buttonKitchenItem12.Location = new System.Drawing.Point(257, 262);
+            this.buttonKitchenItem12.Location = new System.Drawing.Point(241, 283);
             this.buttonKitchenItem12.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItem12.Name = "buttonKitchenItem12";
-            this.buttonKitchenItem12.Size = new System.Drawing.Size(169, 86);
+            this.buttonKitchenItem12.Size = new System.Drawing.Size(153, 89);
             this.buttonKitchenItem12.TabIndex = 16;
             this.buttonKitchenItem12.UseVisualStyleBackColor = false;
             // 
@@ -498,10 +519,10 @@
             this.buttonKitchenItem13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItem13.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem13.ForeColor = System.Drawing.Color.Black;
-            this.buttonKitchenItem13.Location = new System.Drawing.Point(430, 262);
+            this.buttonKitchenItem13.Location = new System.Drawing.Point(398, 283);
             this.buttonKitchenItem13.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItem13.Name = "buttonKitchenItem13";
-            this.buttonKitchenItem13.Size = new System.Drawing.Size(169, 86);
+            this.buttonKitchenItem13.Size = new System.Drawing.Size(153, 89);
             this.buttonKitchenItem13.TabIndex = 15;
             this.buttonKitchenItem13.UseVisualStyleBackColor = false;
             // 
@@ -512,10 +533,10 @@
             this.buttonKitchenItem16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItem16.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem16.ForeColor = System.Drawing.Color.Black;
-            this.buttonKitchenItem16.Location = new System.Drawing.Point(84, 352);
+            this.buttonKitchenItem16.Location = new System.Drawing.Point(84, 376);
             this.buttonKitchenItem16.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItem16.Name = "buttonKitchenItem16";
-            this.buttonKitchenItem16.Size = new System.Drawing.Size(169, 86);
+            this.buttonKitchenItem16.Size = new System.Drawing.Size(153, 89);
             this.buttonKitchenItem16.TabIndex = 14;
             this.buttonKitchenItem16.UseVisualStyleBackColor = false;
             // 
@@ -526,10 +547,10 @@
             this.buttonKitchenItem17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItem17.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem17.ForeColor = System.Drawing.Color.Black;
-            this.buttonKitchenItem17.Location = new System.Drawing.Point(257, 352);
+            this.buttonKitchenItem17.Location = new System.Drawing.Point(241, 376);
             this.buttonKitchenItem17.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItem17.Name = "buttonKitchenItem17";
-            this.buttonKitchenItem17.Size = new System.Drawing.Size(169, 86);
+            this.buttonKitchenItem17.Size = new System.Drawing.Size(153, 89);
             this.buttonKitchenItem17.TabIndex = 13;
             this.buttonKitchenItem17.UseVisualStyleBackColor = false;
             // 
@@ -540,10 +561,10 @@
             this.buttonKitchenItem18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItem18.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem18.ForeColor = System.Drawing.Color.Black;
-            this.buttonKitchenItem18.Location = new System.Drawing.Point(430, 352);
+            this.buttonKitchenItem18.Location = new System.Drawing.Point(398, 376);
             this.buttonKitchenItem18.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItem18.Name = "buttonKitchenItem18";
-            this.buttonKitchenItem18.Size = new System.Drawing.Size(169, 86);
+            this.buttonKitchenItem18.Size = new System.Drawing.Size(153, 89);
             this.buttonKitchenItem18.TabIndex = 12;
             this.buttonKitchenItem18.UseVisualStyleBackColor = false;
             // 
@@ -554,10 +575,10 @@
             this.buttonKitchenItemNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItemNext.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonKitchenItemNext.ForeColor = System.Drawing.Color.White;
-            this.buttonKitchenItemNext.Location = new System.Drawing.Point(948, 82);
+            this.buttonKitchenItemNext.Location = new System.Drawing.Point(867, 97);
             this.buttonKitchenItemNext.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItemNext.Name = "buttonKitchenItemNext";
-            this.buttonKitchenItemNext.Size = new System.Drawing.Size(74, 356);
+            this.buttonKitchenItemNext.Size = new System.Drawing.Size(74, 371);
             this.buttonKitchenItemNext.TabIndex = 5;
             this.buttonKitchenItemNext.Text = ">";
             this.buttonKitchenItemNext.UseVisualStyleBackColor = false;
@@ -569,10 +590,10 @@
             this.buttonKitchenPageNext.FlatAppearance.BorderSize = 0;
             this.buttonKitchenPageNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenPageNext.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonKitchenPageNext.Location = new System.Drawing.Point(948, 6);
+            this.buttonKitchenPageNext.Location = new System.Drawing.Point(867, 6);
             this.buttonKitchenPageNext.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenPageNext.Name = "buttonKitchenPageNext";
-            this.buttonKitchenPageNext.Size = new System.Drawing.Size(74, 72);
+            this.buttonKitchenPageNext.Size = new System.Drawing.Size(74, 87);
             this.buttonKitchenPageNext.TabIndex = 4;
             this.buttonKitchenPageNext.Text = ">";
             this.buttonKitchenPageNext.UseVisualStyleBackColor = false;
@@ -585,10 +606,10 @@
             this.buttonKitchenItemPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKitchenItemPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonKitchenItemPrevious.ForeColor = System.Drawing.Color.White;
-            this.buttonKitchenItemPrevious.Location = new System.Drawing.Point(6, 82);
+            this.buttonKitchenItemPrevious.Location = new System.Drawing.Point(6, 97);
             this.buttonKitchenItemPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItemPrevious.Name = "buttonKitchenItemPrevious";
-            this.buttonKitchenItemPrevious.Size = new System.Drawing.Size(74, 356);
+            this.buttonKitchenItemPrevious.Size = new System.Drawing.Size(74, 368);
             this.buttonKitchenItemPrevious.TabIndex = 1;
             this.buttonKitchenItemPrevious.Text = "<";
             this.buttonKitchenItemPrevious.UseVisualStyleBackColor = false;
@@ -603,7 +624,7 @@
             this.buttonKitchenPagePrevious.Location = new System.Drawing.Point(6, 6);
             this.buttonKitchenPagePrevious.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenPagePrevious.Name = "buttonKitchenPagePrevious";
-            this.buttonKitchenPagePrevious.Size = new System.Drawing.Size(74, 72);
+            this.buttonKitchenPagePrevious.Size = new System.Drawing.Size(74, 87);
             this.buttonKitchenPagePrevious.TabIndex = 0;
             this.buttonKitchenPagePrevious.Text = "<";
             this.buttonKitchenPagePrevious.UseVisualStyleBackColor = false;
@@ -611,34 +632,96 @@
             // 
             // dateTimePickerSalesDate
             // 
+            this.dateTimePickerSalesDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePickerSalesDate.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.dateTimePickerSalesDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerSalesDate.Location = new System.Drawing.Point(10, 5);
+            this.dateTimePickerSalesDate.Location = new System.Drawing.Point(962, 4);
             this.dateTimePickerSalesDate.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerSalesDate.Name = "dateTimePickerSalesDate";
-            this.dateTimePickerSalesDate.Size = new System.Drawing.Size(126, 29);
+            this.dateTimePickerSalesDate.Size = new System.Drawing.Size(123, 29);
             this.dateTimePickerSalesDate.TabIndex = 9;
+            this.dateTimePickerSalesDate.ValueChanged += new System.EventHandler(this.dateTimePickerSalesDate_ValueChanged);
             // 
-            // panel4
+            // buttonRefresh
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Location = new System.Drawing.Point(1044, 37);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(42, 470);
-            this.panel4.TabIndex = 22;
-            // 
-            // panel5
-            // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.buttonRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Location = new System.Drawing.Point(10, 488);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1029, 19);
-            this.panel5.TabIndex = 23;
+            this.buttonRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonRefresh.FlatAppearance.BorderSize = 0;
+            this.buttonRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRefresh.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.buttonRefresh.ForeColor = System.Drawing.Color.White;
+            this.buttonRefresh.Location = new System.Drawing.Point(10, 482);
+            this.buttonRefresh.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(948, 25);
+            this.buttonRefresh.TabIndex = 48;
+            this.buttonRefresh.Text = "Refresh";
+            this.buttonRefresh.UseVisualStyleBackColor = false;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
+            // 
+            // dataGridViewDoneItemDisplay
+            // 
+            this.dataGridViewDoneItemDisplay.AllowUserToAddRows = false;
+            this.dataGridViewDoneItemDisplay.AllowUserToDeleteRows = false;
+            this.dataGridViewDoneItemDisplay.AllowUserToResizeColumns = false;
+            this.dataGridViewDoneItemDisplay.AllowUserToResizeRows = false;
+            this.dataGridViewDoneItemDisplay.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewDoneItemDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewDoneItemDisplay.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridViewDoneItemDisplay.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDoneItemDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewDoneItemDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewDoneItemDisplay.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnDoneItems,
+            this.ColumnQuantity});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDoneItemDisplay.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewDoneItemDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewDoneItemDisplay.GridColor = System.Drawing.SystemColors.ControlLight;
+            this.dataGridViewDoneItemDisplay.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewDoneItemDisplay.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewDoneItemDisplay.Name = "dataGridViewDoneItemDisplay";
+            this.dataGridViewDoneItemDisplay.ReadOnly = true;
+            this.dataGridViewDoneItemDisplay.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDoneItemDisplay.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewDoneItemDisplay.RowHeadersVisible = false;
+            this.dataGridViewDoneItemDisplay.RowTemplate.Height = 45;
+            this.dataGridViewDoneItemDisplay.RowTemplate.ReadOnly = true;
+            this.dataGridViewDoneItemDisplay.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewDoneItemDisplay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewDoneItemDisplay.Size = new System.Drawing.Size(123, 470);
+            this.dataGridViewDoneItemDisplay.TabIndex = 9;
+            // 
+            // ColumnDoneItems
+            // 
+            this.ColumnDoneItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnDoneItems.DataPropertyName = "ColumnDoneItems";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.ColumnDoneItems.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnDoneItems.HeaderText = "Done Items";
+            this.ColumnDoneItems.Name = "ColumnDoneItems";
+            this.ColumnDoneItems.ReadOnly = true;
+            // 
+            // ColumnQuantity
+            // 
+            this.ColumnQuantity.DataPropertyName = "ColumnQuantity";
+            this.ColumnQuantity.HeaderText = "Qty.";
+            this.ColumnQuantity.Name = "ColumnQuantity";
+            this.ColumnQuantity.ReadOnly = true;
             // 
             // SysKitchenDisplayForm
             // 
@@ -658,7 +741,9 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDoneItemDisplay)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -703,6 +788,9 @@
         private System.Windows.Forms.Button buttonKitchenPagePrevious;
         private System.Windows.Forms.ImageList imageListKitchenDisplay;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button buttonRefresh;
+        private System.Windows.Forms.DataGridView dataGridViewDoneItemDisplay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDoneItems;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuantity;
     }
 }

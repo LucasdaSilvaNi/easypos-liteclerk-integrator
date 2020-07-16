@@ -248,7 +248,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                   ColumnIsCancelled = d.IsCancelled,
                                   ColumnRemarks = d.Remarks,
                                   ColumnSpace = "",
-                                  ColumnTable = d.Table
+                                  ColumnTable = d.Table,
+                                  ColumnManualSalesNumber = d.ManualInvoiceNumber,
+                                  ColumnDelivery = d.Delivery
                               };
 
                     rowList = row.ToList();
@@ -281,7 +283,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             if (e.RowIndex > -1 && dataGridViewSalesList.CurrentCell.ColumnIndex == dataGridViewSalesList.Columns["ColumnEdit"].Index)
             {
                 Boolean isTendered = Convert.ToBoolean(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnIsTendered"].Index].Value);
-                
+
                 if (isTendered == true)
                 {
                     MessageBox.Show("Already tendered.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -289,13 +291,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 else
                 {
                     Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-                    if (trnPOSSalesController.IsSalesTendered(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value)) == true)
+                    if (trnPOSSalesController.IsSalesTendered(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnId"].Index].Value)) == true)
                     {
                         MessageBox.Show("Already tendered.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        sysSoftwareForm.AddTabPagePOSSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value)));
+                        sysSoftwareForm.AddTabPagePOSSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnId"].Index].Value)));
                     }
                 }
             }
@@ -316,7 +318,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 else
                 {
                     Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-                    if (trnPOSSalesController.IsSalesTendered(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value)) == true)
+                    if (trnPOSSalesController.IsSalesTendered(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnId"].Index].Value)) == true)
                     {
                         MessageBox.Show("Already tendered.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -325,7 +327,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         DialogResult deleteDialogResult = MessageBox.Show("Delete Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (deleteDialogResult == DialogResult.Yes)
                         {
-                            String[] deleteSales = trnPOSSalesController.DeleteSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[2].Value));
+                            String[] deleteSales = trnPOSSalesController.DeleteSales(Convert.ToInt32(dataGridViewSalesList.Rows[e.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnId"].Index].Value));
                             if (deleteSales[1].Equals("0") == false)
                             {
                                 pageNumber = 1;
@@ -358,25 +360,25 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
             else
             {
-                labelTerminal.Text = dataGridViewSalesList.Rows[rowIndex].Cells[3].Value.ToString();
-                labelTransactionDate.Text = dataGridViewSalesList.Rows[rowIndex].Cells[4].Value.ToString();
-                labelInvoiceNumber.Text = dataGridViewSalesList.Rows[rowIndex].Cells[5].Value.ToString();
+                labelTerminal.Text = dataGridViewSalesList.Rows[rowIndex].Cells[dataGridViewSalesList.Columns["ColumnTerminal"].Index].Value.ToString();
+                labelTransactionDate.Text = dataGridViewSalesList.Rows[rowIndex].Cells[dataGridViewSalesList.Columns["ColumnSalesDate"].Index].Value.ToString();
+                labelInvoiceNumber.Text = dataGridViewSalesList.Rows[rowIndex].Cells[dataGridViewSalesList.Columns["ColumnSalesNumber"].Index].Value.ToString();
 
                 String receiptInvoiceNumber = "";
-                if (dataGridViewSalesList.Rows[rowIndex].Cells[6].Value != null)
+                if (dataGridViewSalesList.Rows[rowIndex].Cells[dataGridViewSalesList.Columns["ColumnRececiptInvoiceNumber"].Index].Value != null)
                 {
-                    receiptInvoiceNumber = dataGridViewSalesList.Rows[rowIndex].Cells[6].Value.ToString();
+                    receiptInvoiceNumber = dataGridViewSalesList.Rows[rowIndex].Cells[dataGridViewSalesList.Columns["ColumnRececiptInvoiceNumber"].Index].Value.ToString();
                 }
 
                 labelReceiptInvoiceNumber.Text = receiptInvoiceNumber;
-                labelCustomerCode.Text = dataGridViewSalesList.Rows[rowIndex].Cells[7].Value.ToString();
-                labelCustomer.Text = dataGridViewSalesList.Rows[rowIndex].Cells[8].Value.ToString();
-                labelPreparedBy.Text = dataGridViewSalesList.Rows[rowIndex].Cells[9].Value.ToString();
+                labelCustomerCode.Text = dataGridViewSalesList.Rows[rowIndex].Cells[dataGridViewSalesList.Columns["ColumnCustomerCode"].Index].Value.ToString();
+                labelCustomer.Text = dataGridViewSalesList.Rows[rowIndex].Cells[dataGridViewSalesList.Columns["ColumnCustomer"].Index].Value.ToString();
+                labelPreparedBy.Text = dataGridViewSalesList.Rows[rowIndex].Cells[dataGridViewSalesList.Columns["ColumnSalesAgent"].Index].Value.ToString();
 
                 Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
-                if (trnPOSSalesLineController.ListSalesLine(Convert.ToInt32(dataGridViewSalesList.Rows[rowIndex].Cells[2].Value)).Any())
+                if (trnPOSSalesLineController.ListSalesLine(Convert.ToInt32(dataGridViewSalesList.Rows[rowIndex].Cells[dataGridViewSalesList.Columns["ColumnId"].Index].Value)).Any())
                 {
-                    var groupedSalesLineItems = from d in trnPOSSalesLineController.ListSalesLine(Convert.ToInt32(dataGridViewSalesList.Rows[rowIndex].Cells[2].Value))
+                    var groupedSalesLineItems = from d in trnPOSSalesLineController.ListSalesLine(Convert.ToInt32(dataGridViewSalesList.Rows[rowIndex].Cells[dataGridViewSalesList.Columns["ColumnId"].Index].Value))
                                                 group d by new
                                                 {
                                                     d.ItemDescription,
@@ -438,9 +440,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                 {
                                     Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
 
-                                    if (trnPOSSalesController.CanCancelCollection(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value)))
+                                    if (trnPOSSalesController.CanCancelCollection(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnId"].Index].Value)))
                                     {
-                                        String[] cancelSales = trnPOSSalesController.CancelSales(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value), cancelRemarks);
+                                        String[] cancelSales = trnPOSSalesController.CancelSales(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnId"].Index].Value), cancelRemarks);
                                         if (cancelSales[1].Equals("0") == false)
                                         {
                                             String collectionNumber = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnRececiptInvoiceNumber"].Index].Value.ToString();
@@ -498,7 +500,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     else
                     {
                         Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-                        if (trnPOSSalesController.IsSalesTendered(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value)) == true)
+                        if (trnPOSSalesController.IsSalesTendered(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnId"].Index].Value)) == true)
                         {
                             MessageBox.Show("Already tendered.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -508,13 +510,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                             Entities.TrnSalesEntity newSalesEntity = new Entities.TrnSalesEntity
                             {
-                                Id = Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value),
-                                Amount = Convert.ToDecimal(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[10].Value),
-                                SalesNumber = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[5].Value.ToString(),
-                                SalesDate = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[4].Value.ToString(),
-                                CustomerCode = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[7].Value.ToString(),
-                                Customer = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[8].Value.ToString(),
-                                Remarks = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[16].Value.ToString(),
+                                Id = Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnId"].Index].Value),
+                                Amount = Convert.ToDecimal(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnAmount"].Index].Value),
+                                SalesNumber = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnSalesNumber"].Index].Value.ToString(),
+                                SalesDate = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnSalesDate"].Index].Value.ToString(),
+                                CustomerCode = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnCustomerCode"].Index].Value.ToString(),
+                                Customer = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnCustomer"].Index].Value.ToString(),
+                                Remarks = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnRemarks"].Index].Value.ToString()
                             };
 
                             String line1 = Modules.SysCurrentModule.GetCurrentSettings().CustomerDisplayFirstLineMessage;
@@ -564,10 +566,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         }
                         else
                         {
-                            Int32 salesId = Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value);
+                            Int32 salesId = Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnId"].Index].Value);
 
                             Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-                            Int32 collectionId = trnPOSSalesController.GetCollectionId(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value));
+                            Int32 collectionId = trnPOSSalesController.GetCollectionId(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnId"].Index].Value));
                             if (collectionId != 0)
                             {
                                 TrnPOSReprintForm trnSalesListReprintForm = new TrnPOSReprintForm(sysSoftwareForm, salesId, collectionId);

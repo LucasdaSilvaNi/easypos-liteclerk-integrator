@@ -118,7 +118,9 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
                 }
 
                 selectedKitchen = listKitchenPage[0].Kitchen;
+
                 FillKitchenItem(selectedKitchen);
+                GetDoneItems();
             }
             catch (Exception ex)
             {
@@ -195,6 +197,8 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
                 Button b = sender as Button;
                 String kitchen = b.Text;
 
+                selectedKitchen = kitchen;
+
                 b.BackColor = ColorTranslator.FromHtml("#7fbc00");
 
                 kitchenItemPage = 1;
@@ -202,6 +206,7 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
                 if (kitchen != "")
                 {
                     FillKitchenItem(kitchen);
+                    GetDoneItems();
                 }
             }
             catch (Exception ex)
@@ -240,6 +245,7 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
                         if (donePrepareItems[1].Equals("0") == false)
                         {
                             FillKitchenItem(selectedKitchen);
+                            GetDoneItems();
                         }
                         else
                         {
@@ -335,6 +341,44 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
             }
 
             FillKitchenItem(selectedKitchen);
+        }
+
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            FillKitchenItem(selectedKitchen);
+            GetDoneItems();
+        }
+
+        public void GetDoneItems()
+        {
+            DateTime salesDate = dateTimePickerSalesDate.Value.Date;
+
+            dataGridViewDoneItemDisplay.Rows.Clear();
+            dataGridViewDoneItemDisplay.Refresh();
+
+            Controllers.SysKitchenController sysKitchenController = new Controllers.SysKitchenController();
+            if (sysKitchenController.ListKitchenPreparedItems(selectedKitchen, salesDate).Any())
+            {
+                var doneItems = sysKitchenController.ListKitchenPreparedItems(selectedKitchen, salesDate).ToList();
+                if (doneItems.Any())
+                {
+                    string nl = Environment.NewLine;
+
+                    foreach (var doneItem in doneItems)
+                    {
+                        dataGridViewDoneItemDisplay.Rows.Add(
+                            doneItem.OrderNumber + nl + doneItem.ItemDescription,
+                            doneItem.Quantity.ToString("#,##0")
+                        );
+                    }
+                }
+            }
+        }
+
+        private void dateTimePickerSalesDate_ValueChanged(object sender, EventArgs e)
+        {
+            FillKitchenItem(selectedKitchen);
+            GetDoneItems();
         }
     }
 }

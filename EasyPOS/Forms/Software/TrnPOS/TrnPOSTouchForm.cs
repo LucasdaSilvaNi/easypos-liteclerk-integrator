@@ -292,8 +292,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             DateTime salesDate = dateTimePickerSalesDate.Value.Date;
             Int32 terminalId = Convert.ToInt32(comboBoxTerminal.SelectedValue);
+            String filter = textBoxFilter.Text;
 
-            GetSalesListDataAsync(salesDate, terminalId, "");
+            GetSalesListDataAsync(salesDate, terminalId, filter);
 
             Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
             textBoxLastChange.Text = trnPOSSalesController.GetLastChange(Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId)).ToString("#,##0.00");
@@ -306,40 +307,52 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 if (tabControlSales.SelectedTab == tabPageOpen)
                 {
+                    buttonTenderAll.Enabled = true;
+
                     var openSales = from d in salesList where d.ColumnIsLocked == false select d;
                     if (openSales.Any())
                     {
                         dataOpenSalesListSource.DataSource = openSales;
+                        textBoxTotalAmount.Text = openSales.Sum(d => Convert.ToDecimal(d.ColumnAmount)).ToString("#,##0.00");
                     }
                     else
                     {
                         dataOpenSalesListSource.Clear();
+                        textBoxTotalAmount.Text = (0).ToString("#,##0.00");
                     }
                 }
 
                 if (tabControlSales.SelectedTab == tabPageBilledOut)
                 {
+                    buttonTenderAll.Enabled = true;
+
                     var billedOutSales = from d in salesList where d.ColumnIsLocked == true && d.ColumnIsTendered == false select d;
                     if (billedOutSales.Any())
                     {
                         dataBilledOutSalesListSource.DataSource = billedOutSales;
+                        textBoxTotalAmount.Text = billedOutSales.Sum(d => Convert.ToDecimal(d.ColumnAmount)).ToString("#,##0.00");
                     }
                     else
                     {
                         dataBilledOutSalesListSource.Clear();
+                        textBoxTotalAmount.Text = (0).ToString("#,##0.00");
                     }
                 }
 
                 if (tabControlSales.SelectedTab == tabPageCollected)
                 {
+                    buttonTenderAll.Enabled = false;
+
                     var collectedSales = from d in salesList where d.ColumnIsTendered == true select d;
                     if (collectedSales.Any())
                     {
                         dataCollectedSalesListSource.DataSource = collectedSales;
+                        textBoxTotalAmount.Text = collectedSales.Sum(d => Convert.ToDecimal(d.ColumnAmount)).ToString("#,##0.00");
                     }
                     else
                     {
                         dataCollectedSalesListSource.Clear();
+                        textBoxTotalAmount.Text = (0).ToString("#,##0.00");
                     }
                 }
             }
@@ -358,7 +371,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 List<Entities.DgvTrnSalesListEntity> rowList = new List<Entities.DgvTrnSalesListEntity>();
 
                 Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-                var salesList = trnPOSSalesController.POSTTouchListSales(salesDate, terminalId);
+                var salesList = trnPOSSalesController.POSTTouchListSales(salesDate, terminalId, filter);
                 if (salesList.Any())
                 {
                     var row = from d in salesList
@@ -370,17 +383,19 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                   ColumnTerminal = d.Terminal,
                                   ColumnSalesDate = d.SalesDate,
                                   ColumnSalesNumber = d.SalesNumber,
+                                  ColumnManualSalesNumber = d.ManualInvoiceNumber,
                                   ColumnRececiptInvoiceNumber = d.CollectionNumber,
                                   ColumnCustomerCode = d.CustomerCode,
                                   ColumnCustomer = d.Customer,
                                   ColumnSalesAgent = d.SalesAgentUserName,
                                   ColumnTable = d.Table,
-                                  ColumnAmount = d.Amount.ToString("#,##0.00"),
                                   ColumnIsLocked = d.IsLocked,
                                   ColumnIsTendered = d.IsTendered,
                                   ColumnIsCancelled = d.IsCancelled,
                                   ColumnSpace = "",
-                                  ColumnRemarks = d.Remarks
+                                  ColumnRemarks = d.Remarks,
+                                  ColumnAmount = d.Amount.ToString("#,##0.00"),
+                                  ColumnDelivery = d.Delivery,
                               };
 
                     rowList = row.ToList();
@@ -390,8 +405,76 @@ namespace EasyPOS.Forms.Software.TrnPOS
             });
         }
 
+        public void ArrangeColumns()
+        {
+            dataGridViewOpenSalesList.AutoGenerateColumns = false;
+            dataGridViewOpenSalesList.Columns["TabPageOpenColumnEdit"].DisplayIndex = 0;
+            dataGridViewOpenSalesList.Columns["TabPageOpenColumnDelete"].DisplayIndex = 1;
+            dataGridViewOpenSalesList.Columns["TabPageOpenColumnId"].DisplayIndex = 2;
+            dataGridViewOpenSalesList.Columns["TabPageOpenColumnTerminal"].DisplayIndex = 3;
+            dataGridViewOpenSalesList.Columns["TabPageOpenColumnSalesDate"].DisplayIndex = 4;
+            dataGridViewOpenSalesList.Columns["TabPageOpenColumnSalesNumber"].DisplayIndex = 5;
+            dataGridViewOpenSalesList.Columns["TabPageOpenColumnManualSalesNumber"].DisplayIndex = 6;
+            dataGridViewOpenSalesList.Columns["TabPageOpenColumnRececiptInvoiceNumber"].DisplayIndex = 7;
+            dataGridViewOpenSalesList.Columns["TabPageOpenColumnCustomerCode"].DisplayIndex = 8;
+            dataGridViewOpenSalesList.Columns["TabPageOpenColumnCustomer"].DisplayIndex = 9;
+            dataGridViewOpenSalesList.Columns["TabPageOpenColumnSalesAgent"].DisplayIndex = 10;
+            dataGridViewOpenSalesList.Columns["TabPageOpenColumnTable"].DisplayIndex = 11;
+            dataGridViewOpenSalesList.Columns["TabPageOpenColumnIsLocked"].DisplayIndex = 12;
+            dataGridViewOpenSalesList.Columns["TabPageOpenColumnIsTendered"].DisplayIndex = 13;
+            dataGridViewOpenSalesList.Columns["TabPageOpenColumnIsCancelled"].DisplayIndex = 14;
+            dataGridViewOpenSalesList.Columns["TabPageOpenColumnRemarks"].DisplayIndex = 15;
+            dataGridViewOpenSalesList.Columns["TabPageOpenColumnDelivery"].DisplayIndex = 16;
+            dataGridViewOpenSalesList.Columns["TabPageOpenColumnAmount"].DisplayIndex = 17;
+            dataGridViewOpenSalesList.Columns["TabPageOpenColumnSpace"].DisplayIndex = 18;
+
+            dataGridViewBilledOutSalesList.AutoGenerateColumns = false;
+            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnEdit"].DisplayIndex = 0;
+            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnDelete"].DisplayIndex = 1;
+            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnId"].DisplayIndex = 2;
+            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnTerminal"].DisplayIndex = 3;
+            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnSalesDate"].DisplayIndex = 4;
+            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnSalesNumber"].DisplayIndex = 5;
+            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnManualSalesNumber"].DisplayIndex = 6;
+            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnInvoiceNumber"].DisplayIndex = 7;
+            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnCustomerCode"].DisplayIndex = 8;
+            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnCustomer"].DisplayIndex = 9;
+            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnSalesAgent"].DisplayIndex = 10;
+            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnTable"].DisplayIndex = 11;
+            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnIsLocked"].DisplayIndex = 12;
+            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnIsTendered"].DisplayIndex = 13;
+            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnIsCancelled"].DisplayIndex = 14;
+            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnRemarks"].DisplayIndex = 15;
+            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnDelivery"].DisplayIndex = 16;
+            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnAmount"].DisplayIndex = 17;
+            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnSpace"].DisplayIndex = 18;
+
+            dataGridViewCollectedSalesList.AutoGenerateColumns = false;
+            dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnEdit"].DisplayIndex = 0;
+            dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnDelete"].DisplayIndex = 1;
+            dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnId"].DisplayIndex = 2;
+            dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnTerminal"].DisplayIndex = 3;
+            dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnSalesDate"].DisplayIndex = 4;
+            dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnSalesNumber"].DisplayIndex = 5;
+            dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnManualSalesNumber"].DisplayIndex = 6;
+            dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnCollectionNumber"].DisplayIndex = 7;
+            dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnCustomerCode"].DisplayIndex = 8;
+            dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnCustomer"].DisplayIndex = 9;
+            dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnSalesAgent"].DisplayIndex = 10;
+            dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnTable"].DisplayIndex = 11;
+            dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnIsLocked"].DisplayIndex = 12;
+            dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnIsTendered"].DisplayIndex = 13;
+            dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnIsCancelled"].DisplayIndex = 14;
+            dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnRemarks"].DisplayIndex = 15;
+            dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnDelivery"].DisplayIndex = 16;
+            dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnAmount"].DisplayIndex = 17;
+            dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnSpace"].DisplayIndex = 18;
+        }
+
         public void CreateSalesListDataGrid()
         {
+            ArrangeColumns();
+
             dataGridViewOpenSalesList.DataSource = dataOpenSalesListSource;
             dataGridViewBilledOutSalesList.DataSource = dataBilledOutSalesListSource;
             dataGridViewCollectedSalesList.DataSource = dataCollectedSalesListSource;
@@ -580,6 +663,65 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
 
             FillTable(selectedTableGroupId);
+        }
+
+        private void textBoxFilter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                UpdateSalesListGridDataSource();
+            }
+        }
+
+        private void buttonTenderAll_Click(object sender, EventArgs e)
+        {
+            DialogResult deleteDialogResult = MessageBox.Show("Are you sure you want to tender all sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (deleteDialogResult == DialogResult.Yes)
+            {
+                Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
+
+                if (tabControlSales.SelectedTab == tabPageOpen)
+                {
+                    List<Int32> salesIds = new List<Int32>();
+                    foreach (DataGridViewRow row in dataGridViewOpenSalesList.Rows)
+                    {
+                        var salesId = Convert.ToInt32(row.Cells[dataGridViewOpenSalesList.Columns["TabPageOpenColumnId"].Index].Value);
+                        salesIds.Add(salesId);
+                    }
+
+                    String[] tenderAllSales = trnPOSSalesController.TenderAllSales(salesIds);
+                    if (tenderAllSales[1].Equals("0") == false)
+                    {
+                        MessageBox.Show("Tender successful.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        UpdateSalesListGridDataSource();
+                    }
+                    else
+                    {
+                        MessageBox.Show(tenderAllSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                if (tabControlSales.SelectedTab == tabPageBilledOut)
+                {
+                    List<Int32> salesIds = new List<Int32>();
+                    foreach (DataGridViewRow row in dataGridViewBilledOutSalesList.Rows)
+                    {
+                        var salesId = Convert.ToInt32(row.Cells[dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnId"].Index].Value);
+                        salesIds.Add(salesId);
+                    }
+
+                    String[] tenderAllSales = trnPOSSalesController.TenderAllSales(salesIds);
+                    if (tenderAllSales[1].Equals("0") == false)
+                    {
+                        MessageBox.Show("Tender successful.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        UpdateSalesListGridDataSource();
+                    }
+                    else
+                    {
+                        MessageBox.Show(tenderAllSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }
