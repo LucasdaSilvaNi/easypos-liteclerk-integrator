@@ -29,17 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SysKitchenDisplayForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SysKitchenDisplayForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonRefresh = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.dataGridViewDoneItemDisplay = new System.Windows.Forms.DataGridView();
+            this.ColumnDoneItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonKitchen5 = new System.Windows.Forms.Button();
             this.buttonKitchenItem5 = new System.Windows.Forms.Button();
@@ -72,16 +76,12 @@
             this.buttonKitchenItemPrevious = new System.Windows.Forms.Button();
             this.buttonKitchenPagePrevious = new System.Windows.Forms.Button();
             this.dateTimePickerSalesDate = new System.Windows.Forms.DateTimePicker();
-            this.buttonRefresh = new System.Windows.Forms.Button();
-            this.dataGridViewDoneItemDisplay = new System.Windows.Forms.DataGridView();
-            this.ColumnDoneItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDoneItemDisplay)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -151,6 +151,24 @@
             this.panel3.Size = new System.Drawing.Size(1096, 510);
             this.panel3.TabIndex = 15;
             // 
+            // buttonRefresh
+            // 
+            this.buttonRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonRefresh.FlatAppearance.BorderSize = 0;
+            this.buttonRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRefresh.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.buttonRefresh.ForeColor = System.Drawing.Color.White;
+            this.buttonRefresh.Location = new System.Drawing.Point(10, 480);
+            this.buttonRefresh.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(948, 27);
+            this.buttonRefresh.TabIndex = 48;
+            this.buttonRefresh.Text = "Refresh";
+            this.buttonRefresh.UseVisualStyleBackColor = false;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
+            // 
             // panel4
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -162,6 +180,68 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(123, 470);
             this.panel4.TabIndex = 22;
+            // 
+            // dataGridViewDoneItemDisplay
+            // 
+            this.dataGridViewDoneItemDisplay.AllowUserToAddRows = false;
+            this.dataGridViewDoneItemDisplay.AllowUserToDeleteRows = false;
+            this.dataGridViewDoneItemDisplay.AllowUserToResizeColumns = false;
+            this.dataGridViewDoneItemDisplay.AllowUserToResizeRows = false;
+            this.dataGridViewDoneItemDisplay.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewDoneItemDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewDoneItemDisplay.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridViewDoneItemDisplay.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDoneItemDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewDoneItemDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewDoneItemDisplay.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnDoneItems,
+            this.ColumnQuantity});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDoneItemDisplay.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewDoneItemDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewDoneItemDisplay.GridColor = System.Drawing.SystemColors.ControlLight;
+            this.dataGridViewDoneItemDisplay.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewDoneItemDisplay.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewDoneItemDisplay.Name = "dataGridViewDoneItemDisplay";
+            this.dataGridViewDoneItemDisplay.ReadOnly = true;
+            this.dataGridViewDoneItemDisplay.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDoneItemDisplay.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewDoneItemDisplay.RowHeadersVisible = false;
+            this.dataGridViewDoneItemDisplay.RowTemplate.Height = 45;
+            this.dataGridViewDoneItemDisplay.RowTemplate.ReadOnly = true;
+            this.dataGridViewDoneItemDisplay.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewDoneItemDisplay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewDoneItemDisplay.Size = new System.Drawing.Size(123, 470);
+            this.dataGridViewDoneItemDisplay.TabIndex = 9;
+            // 
+            // ColumnDoneItems
+            // 
+            this.ColumnDoneItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnDoneItems.DataPropertyName = "ColumnDoneItems";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.ColumnDoneItems.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnDoneItems.HeaderText = "Done Items";
+            this.ColumnDoneItems.Name = "ColumnDoneItems";
+            this.ColumnDoneItems.ReadOnly = true;
+            // 
+            // ColumnQuantity
+            // 
+            this.ColumnQuantity.DataPropertyName = "ColumnQuantity";
+            this.ColumnQuantity.HeaderText = "Qty.";
+            this.ColumnQuantity.Name = "ColumnQuantity";
+            this.ColumnQuantity.ReadOnly = true;
             // 
             // panel2
             // 
@@ -200,7 +280,7 @@
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(4);
-            this.panel2.Size = new System.Drawing.Size(948, 474);
+            this.panel2.Size = new System.Drawing.Size(948, 472);
             this.panel2.TabIndex = 21;
             // 
             // buttonKitchen5
@@ -578,7 +658,7 @@
             this.buttonKitchenItemNext.Location = new System.Drawing.Point(867, 97);
             this.buttonKitchenItemNext.Margin = new System.Windows.Forms.Padding(2);
             this.buttonKitchenItemNext.Name = "buttonKitchenItemNext";
-            this.buttonKitchenItemNext.Size = new System.Drawing.Size(74, 371);
+            this.buttonKitchenItemNext.Size = new System.Drawing.Size(74, 368);
             this.buttonKitchenItemNext.TabIndex = 5;
             this.buttonKitchenItemNext.Text = ">";
             this.buttonKitchenItemNext.UseVisualStyleBackColor = false;
@@ -643,86 +723,6 @@
             this.dateTimePickerSalesDate.TabIndex = 9;
             this.dateTimePickerSalesDate.ValueChanged += new System.EventHandler(this.dateTimePickerSalesDate_ValueChanged);
             // 
-            // buttonRefresh
-            // 
-            this.buttonRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonRefresh.FlatAppearance.BorderSize = 0;
-            this.buttonRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRefresh.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.buttonRefresh.ForeColor = System.Drawing.Color.White;
-            this.buttonRefresh.Location = new System.Drawing.Point(10, 482);
-            this.buttonRefresh.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(948, 25);
-            this.buttonRefresh.TabIndex = 48;
-            this.buttonRefresh.Text = "Refresh";
-            this.buttonRefresh.UseVisualStyleBackColor = false;
-            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
-            // 
-            // dataGridViewDoneItemDisplay
-            // 
-            this.dataGridViewDoneItemDisplay.AllowUserToAddRows = false;
-            this.dataGridViewDoneItemDisplay.AllowUserToDeleteRows = false;
-            this.dataGridViewDoneItemDisplay.AllowUserToResizeColumns = false;
-            this.dataGridViewDoneItemDisplay.AllowUserToResizeRows = false;
-            this.dataGridViewDoneItemDisplay.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewDoneItemDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewDoneItemDisplay.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridViewDoneItemDisplay.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewDoneItemDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewDoneItemDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewDoneItemDisplay.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnDoneItems,
-            this.ColumnQuantity});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewDoneItemDisplay.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewDoneItemDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewDoneItemDisplay.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.dataGridViewDoneItemDisplay.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewDoneItemDisplay.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridViewDoneItemDisplay.Name = "dataGridViewDoneItemDisplay";
-            this.dataGridViewDoneItemDisplay.ReadOnly = true;
-            this.dataGridViewDoneItemDisplay.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewDoneItemDisplay.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewDoneItemDisplay.RowHeadersVisible = false;
-            this.dataGridViewDoneItemDisplay.RowTemplate.Height = 45;
-            this.dataGridViewDoneItemDisplay.RowTemplate.ReadOnly = true;
-            this.dataGridViewDoneItemDisplay.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewDoneItemDisplay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewDoneItemDisplay.Size = new System.Drawing.Size(123, 470);
-            this.dataGridViewDoneItemDisplay.TabIndex = 9;
-            // 
-            // ColumnDoneItems
-            // 
-            this.ColumnDoneItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnDoneItems.DataPropertyName = "ColumnDoneItems";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.ColumnDoneItems.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnDoneItems.HeaderText = "Done Items";
-            this.ColumnDoneItems.Name = "ColumnDoneItems";
-            this.ColumnDoneItems.ReadOnly = true;
-            // 
-            // ColumnQuantity
-            // 
-            this.ColumnQuantity.DataPropertyName = "ColumnQuantity";
-            this.ColumnQuantity.HeaderText = "Qty.";
-            this.ColumnQuantity.Name = "ColumnQuantity";
-            this.ColumnQuantity.ReadOnly = true;
-            // 
             // SysKitchenDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -742,8 +742,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDoneItemDisplay)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
