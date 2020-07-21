@@ -1895,7 +1895,7 @@ namespace EasyPOS.Controllers
             }
             catch (Exception e)
             {
-                return new String[] { e.Message, "0" };
+                return new String[] { "", "1" };
             }
         }
 
@@ -2354,7 +2354,7 @@ namespace EasyPOS.Controllers
                     }
 
                     return new String[] { "", "1" };
-                } 
+                }
                 else
                 {
                     return new String[] { "Empty Sales!", "0" };

@@ -16,15 +16,17 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
     public partial class RepRemittanceReportForm : Form
     {
         private Modules.SysUserRightsModule sysUserRights;
-
         public RepRemittanceForm repRemittanceReportForm;
+
         public Int32 filterTerminalId;
-        public DateTime filterDate;
+        public DateTime filterStartDate;
+        public DateTime filterEndDate;
         public Int32 filterUserId;
-        public String filterRemittanceNumber;
+        public String filterDisbursementNumber;
+
         public Entities.RepRemitanceReportEntity remitanceReportEntity;
 
-        public RepRemittanceReportForm(RepRemittanceForm remittanceReportForm, DateTime date, Int32 terminalId, Int32 userId, String remittanceNumber)
+        public RepRemittanceReportForm(RepRemittanceForm remittanceReportForm, DateTime startDate, DateTime endDate, Int32 terminalId, Int32 userId, String disbursementNumber)
         {
             InitializeComponent();
 
@@ -44,15 +46,14 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
 
             repRemittanceReportForm = remittanceReportForm;
 
-            filterDate = date;
+            filterStartDate = startDate;
+            filterEndDate = endDate;
             filterTerminalId = terminalId;
             filterUserId = userId;
-            filterRemittanceNumber = remittanceNumber;
+            filterDisbursementNumber = disbursementNumber;
 
             printDocumentRemittanceReport.DefaultPageSettings.PaperSize = new PaperSize("Remittance Report", 255, 1000);
             RemittanceReportDataSource();
-
-
         }
 
         private void buttonPrint_Click(object sender, EventArgs e)
@@ -81,11 +82,14 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
 
             Entities.RepRemitanceReportEntity repRemitanceReportEntity = new Entities.RepRemitanceReportEntity()
             {
-                RemittanceNumber = "",
-                RemittanceDate = "",
                 Terminal = "",
                 PreparedBy = "",
-                Remarks = "",
+                RemittanceDate = filterStartDate.ToShortDateString(),
+                CollectionLines = new List<Entities.TrnCollectionLineEntity>(),
+                Disbursements = new List<Entities.TrnDisbursementEntity>(),
+                DisbursementNumber = "0000000000",
+                DisbursementType = "NA",
+                PayType = "NA",
                 Amount1000 = 0,
                 Amount500 = 0,
                 Amount200 = 0,
@@ -99,76 +103,103 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                 Amount010 = 0,
                 Amount005 = 0,
                 Amount001 = 0,
-                Total = 0,
-                CollectionLines = new List<Entities.TrnCollectionLineEntity>()
+                RemittedAmount = 0,
+                CashCollectedAmount = 0,
+                CashInOutAmount = 0,
+                OverShortAmount = 0,
             };
 
-
-
-            var remittance = from d in db.TrnDisbursements
-                             where d.DisbursementDate == filterDate
-                             && d.TerminalId == filterTerminalId
-                             && d.PreparedBy == filterUserId
-                             && d.DisbursementNumber == filterRemittanceNumber
-                             && d.MstPayType.PayType.Equals("Cash")
-                             select d;
-
-            decimal collectionChange = 0;
-            var currentCollections = from d in db.TrnCollections
-                                     where d.TerminalId == filterTerminalId
-                                     && d.CollectionDate == filterDate
-                                     && d.PreparedBy == filterUserId
-                                     && d.IsLocked == true
-                                     && d.IsCancelled == false
-                                     select d;
-
-            if (currentCollections.Any())
-            {
-                collectionChange = currentCollections.Sum(d => d.ChangeAmount);
-            }
-
-
-            var currentCollectionLines = from d in db.TrnCollectionLines
-                                         where d.TrnCollection.TerminalId == filterTerminalId
-                                         && d.TrnCollection.CollectionDate == filterDate
-                                         && d.TrnCollection.PreparedBy == filterUserId
-                                         && d.TrnCollection.IsLocked == true
-                                         && d.TrnCollection.IsCancelled == false
-                                         group d by new
-                                         {
-                                             d.MstPayType.PayType,
-                                         } into g
-                                         select new
-                                         {
-                                             g.Key.PayType,
-                                             TotalAmount = g.Sum(s => s.Amount),
-                                             //TotalAmount = g.Sum(s => s.MstPayType.PayType.Equals("Cash") ? s.Amount - s.TrnCollection.ChangeAmount : s.Amount),
-                                             TotalChangeAmount = g.Sum(s => s.TrnCollection.ChangeAmount)
-                                         };
-
-            repRemitanceReportEntity.RemittanceNumber = filterRemittanceNumber;
-            repRemitanceReportEntity.RemittanceDate = filterDate.ToShortDateString();
-
-            var terminal = from d in db.MstTerminals
-                           where d.Id == filterTerminalId
-                           select d;
+            var terminal = from d in db.MstTerminals where d.Id == filterTerminalId select d;
             if (terminal.Any())
             {
                 repRemitanceReportEntity.Terminal = terminal.FirstOrDefault().Terminal;
             }
 
-            var preparedBy = from d in db.MstUsers
-                             where d.Id == filterUserId
-                             select d;
+            var preparedBy = from d in db.MstUsers where d.Id == filterUserId select d;
             if (preparedBy.Any())
             {
                 repRemitanceReportEntity.PreparedBy = preparedBy.FirstOrDefault().FullName;
             }
 
+            var collectionLines = from d in db.TrnCollectionLines
+                                  where d.TrnCollection.TerminalId == filterTerminalId
+                                  && d.TrnCollection.CollectionDate >= filterStartDate
+                                  && d.TrnCollection.CollectionDate <= filterStartDate
+                                  && d.TrnCollection.PreparedBy == filterUserId
+                                  && d.TrnCollection.IsLocked == true
+                                  && d.TrnCollection.IsCancelled == false
+                                  && d.MstPayType.PayType.Equals("Cash")
+                                  group d by new
+                                  {
+                                      d.MstPayType.PayType,
+                                  } into g
+                                  select new
+                                  {
+                                      g.Key.PayType,
+                                      TotalAmount = g.Sum(s => s.Amount)
+                                  };
+
+            repRemitanceReportEntity.RemittanceDate = filterStartDate.ToShortDateString();
+
+            if (collectionLines.Any())
+            {
+                foreach (var collectionLine in collectionLines)
+                {
+                    repRemitanceReportEntity.CollectionLines.Add(new Entities.TrnCollectionLineEntity()
+                    {
+                        PayType = collectionLine.PayType,
+                        Amount = collectionLine.TotalAmount
+                    });
+                }
+
+                repRemitanceReportEntity.CashCollectedAmount = collectionLines.Sum(d => d.TotalAmount);
+            }
+
+            var cashInOuts = from d in db.TrnDisbursements
+                             where d.TerminalId == filterTerminalId
+                             && d.DisbursementDate >= filterStartDate
+                             && d.DisbursementDate <= filterStartDate
+                             && d.PreparedBy == filterUserId
+                             && d.DisbursementType == "CREDIT"
+                             && d.MstPayType.PayType.Equals("Cash")
+                             group d by new
+                             {
+                                 d.MstPayType.PayType,
+                             } into g
+                             select new
+                             {
+                                 g.Key.PayType,
+                                 TotalAmount = g.Sum(s => s.Amount)
+                             };
+
+            if (cashInOuts.Any())
+            {
+                foreach (var cashInOut in cashInOuts)
+                {
+                    repRemitanceReportEntity.Disbursements.Add(new Entities.TrnDisbursementEntity()
+                    {
+                        PayType = cashInOut.PayType,
+                        Amount = cashInOut.TotalAmount
+                    });
+                }
+
+                repRemitanceReportEntity.CashInOutAmount = cashInOuts.Sum(d => d.TotalAmount);
+            }
+
+            var remittance = from d in db.TrnDisbursements
+                             where d.TerminalId == filterTerminalId
+                             && d.PreparedBy == filterUserId
+                             && d.DisbursementNumber == filterDisbursementNumber
+                             && d.DisbursementType == "DEBIT"
+                             && d.MstPayType.PayType.Equals("Cash")
+                             && d.IsLocked == true
+                             select d;
+
             if (remittance.Any())
             {
-
-                repRemitanceReportEntity.Remarks = remittance.FirstOrDefault().Remarks;
+                repRemitanceReportEntity.DisbursementNumber = remittance.FirstOrDefault().DisbursementNumber;
+                repRemitanceReportEntity.DisbursementType = remittance.FirstOrDefault().DisbursementType;
+                repRemitanceReportEntity.PayType = remittance.FirstOrDefault().MstPayType.PayType;
                 repRemitanceReportEntity.Amount1000 = remittance.FirstOrDefault().Amount1000 != null ? remittance.FirstOrDefault().Amount1000 : 0;
                 repRemitanceReportEntity.Amount500 = remittance.FirstOrDefault().Amount500 != null ? remittance.FirstOrDefault().Amount500 : 0;
                 repRemitanceReportEntity.Amount200 = remittance.FirstOrDefault().Amount200 != null ? remittance.FirstOrDefault().Amount200 : 0;
@@ -183,44 +214,27 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                 repRemitanceReportEntity.Amount005 = remittance.FirstOrDefault().Amount005 != null ? remittance.FirstOrDefault().Amount005 : 0;
                 repRemitanceReportEntity.Amount001 = remittance.FirstOrDefault().Amount001 != null ? remittance.FirstOrDefault().Amount001 : 0;
 
-                Decimal totalRemittanceAmount = 0;
+                Decimal totalRemittedAmount = 0;
 
-                totalRemittanceAmount = (1000 * (decimal)repRemitanceReportEntity.Amount1000)
-                    + (500 * (decimal)repRemitanceReportEntity.Amount500)
-                    + (200 * (decimal)repRemitanceReportEntity.Amount200)
-                    + (100 * (decimal)repRemitanceReportEntity.Amount100)
-                    + (50 * (decimal)repRemitanceReportEntity.Amount50)
-                    + (20 * (decimal)repRemitanceReportEntity.Amount20)
-                    + (10 * (decimal)repRemitanceReportEntity.Amount10)
-                    + (5 * (decimal)repRemitanceReportEntity.Amount5)
-                    + (1 * (decimal)repRemitanceReportEntity.Amount1)
-                    + (0.25m * (decimal)repRemitanceReportEntity.Amount025)
-                    + (0.10m * (decimal)repRemitanceReportEntity.Amount010)
-                    + (0.05m * (decimal)repRemitanceReportEntity.Amount005)
-                    + (0.01m * (decimal)repRemitanceReportEntity.Amount001);
+                totalRemittedAmount = (1000 * (decimal)repRemitanceReportEntity.Amount1000)
+                                    + (500 * (decimal)repRemitanceReportEntity.Amount500)
+                                    + (200 * (decimal)repRemitanceReportEntity.Amount200)
+                                    + (100 * (decimal)repRemitanceReportEntity.Amount100)
+                                    + (50 * (decimal)repRemitanceReportEntity.Amount50)
+                                    + (20 * (decimal)repRemitanceReportEntity.Amount20)
+                                    + (10 * (decimal)repRemitanceReportEntity.Amount10)
+                                    + (5 * (decimal)repRemitanceReportEntity.Amount5)
+                                    + (1 * (decimal)repRemitanceReportEntity.Amount1)
+                                    + (0.25m * (decimal)repRemitanceReportEntity.Amount025)
+                                    + (0.10m * (decimal)repRemitanceReportEntity.Amount010)
+                                    + (0.05m * (decimal)repRemitanceReportEntity.Amount005)
+                                    + (0.01m * (decimal)repRemitanceReportEntity.Amount001);
 
-                repRemitanceReportEntity.Total = totalRemittanceAmount - collectionChange;
-
-
+                repRemitanceReportEntity.RemittedAmount = totalRemittedAmount;
             }
-            if (currentCollectionLines.Any())
-            {
-                foreach (var collectionLine in currentCollectionLines)
-                {
-                    Decimal amount = collectionLine.TotalAmount;
-                    if (collectionLine.PayType.Equals("Cash"))
-                    {
-                        amount = collectionLine.TotalAmount - collectionLine.TotalChangeAmount;
-                    }
 
-                    repRemitanceReportEntity.CollectionLines.Add(new Entities.TrnCollectionLineEntity()
-                    {
-                        PayType = collectionLine.PayType,
-                        Amount = amount
-                    });
-                }
-                repRemitanceReportEntity.TotalCollection = currentCollections.Sum(d => d.Amount);
-            }
+            repRemitanceReportEntity.OverShortAmount = (repRemitanceReportEntity.RemittedAmount + repRemitanceReportEntity.CashInOutAmount) - repRemitanceReportEntity.CashCollectedAmount;
+
             remitanceReportEntity = repRemitanceReportEntity;
         }
 
@@ -279,32 +293,238 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             graphics.DrawString(companyAddress, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
 
-            // ======================
-            // Z Reading Report Title
-            // ======================
-            String zReadingReportTitle = "Remittance Report";
-            graphics.DrawString(zReadingReportTitle, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += graphics.MeasureString(zReadingReportTitle, fontArial8Regular).Height;
+            // =======================
+            // Remittance Report Title
+            // =======================
+            String remittanceReportTitle = "Remittance Report";
+            graphics.DrawString(remittanceReportTitle, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            y += graphics.MeasureString(remittanceReportTitle, fontArial8Bold).Height;
 
             // ====
             // Date 
             // ====
-            String collectionDateText = DateTime.Today.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
+            String collectionDateText = "From " + filterStartDate.ToShortDateString() + " To " + filterEndDate.ToShortDateString();
             graphics.DrawString(collectionDateText, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             y += graphics.MeasureString(collectionDateText, fontArial8Regular).Height;
 
             // ========
-            // 1st Line
+            // Terminal 
             // ========
-            Point firstLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-            Point firstLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-            graphics.DrawLine(blackPen, firstLineFirstPoint, firstLineSecondPoint);
+            String terminal = "Terminal: " + dataSource.Terminal;
+            graphics.DrawString(terminal, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            y += graphics.MeasureString(terminal, fontArial8Regular).Height;
 
-            String rimittanceDate = dataSource.RemittanceDate;
-            String remittanceNumber = dataSource.RemittanceNumber;
-            String terminal = dataSource.Terminal;
-            String preparedBy = dataSource.PreparedBy;
-            String remarks = dataSource.Remarks;
+            // ===========
+            // Prepared By 
+            // ===========
+            String preparedBy = "Prepared By: " + dataSource.PreparedBy;
+            graphics.DrawString(preparedBy, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            y += graphics.MeasureString(preparedBy, fontArial8Regular).Height;
+
+            //// ========
+            //// 1st Line
+            //// ========
+            //Point firstLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            //Point firstLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            //graphics.DrawLine(blackPen, firstLineFirstPoint, firstLineSecondPoint);
+
+            // ========
+            // 2nd Line
+            // ========
+            Point secondLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            Point secondLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            graphics.DrawLine(blackPen, secondLineFirstPoint, secondLineSecondPoint);
+
+            // ================
+            // Collection Title
+            // ================
+            String collectionTitle = "\nCollection";
+            graphics.DrawString(collectionTitle, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            y += graphics.MeasureString(collectionTitle, fontArial8Bold).Height;
+
+            // ========
+            // 3rd Line
+            // ========
+            Point thirdLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            Point thirdLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
+
+            // ==============================
+            // Collection Pay Type and Amount
+            // ==============================
+            String collectionPayTypeLabel = "\nPay Type";
+            String collectionAmountLabel = "\nReceived Amount";
+            graphics.DrawString(collectionPayTypeLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(collectionAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(collectionAmountLabel, fontArial8Bold).Height;
+
+            if (dataSource.CollectionLines.Any())
+            {
+                foreach (var collectionLine in dataSource.CollectionLines)
+                {
+                    // ================
+                    // Collection Lines
+                    // ================
+                    String collectionLineLabel = collectionLine.PayType;
+                    String collectionLineData = collectionLine.Amount.ToString("#,##0.00");
+                    graphics.DrawString(collectionLineLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                    graphics.DrawString(collectionLineData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                    y += graphics.MeasureString(collectionLineData, fontArial8Regular).Height;
+                }
+            }
+            else
+            {
+                // ================
+                // Collection Lines
+                // ================
+                String collectionLineLabel = "Cash";
+                String collectionLineData = "0.00";
+                graphics.DrawString(collectionLineLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(collectionLineData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(collectionLineData, fontArial8Regular).Height;
+            }
+
+            // ================
+            // Collection Lines
+            // ================
+            String totalCollectionLineLabel = "Cash Collected";
+            String totalCollectionLineData = dataSource.CashCollectedAmount.ToString("#,##0.00");
+            graphics.DrawString(totalCollectionLineLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(totalCollectionLineData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(totalCollectionLineData, fontArial8Bold).Height;
+
+            // =========
+            // 4rth Line
+            // =========
+            Point forthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            Point forthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            graphics.DrawLine(blackPen, forthLineFirstPoint, forthLineSecondPoint);
+
+            // ==================
+            // Disbursement Title
+            // ==================
+            String disbursementTitle = "\nCash In / Out";
+            graphics.DrawString(disbursementTitle, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            y += graphics.MeasureString(disbursementTitle, fontArial8Bold).Height;
+
+            // ========
+            // 5th Line
+            // ========
+            Point fifthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            Point fifthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            graphics.DrawLine(blackPen, fifthLineFirstPoint, fifthLineSecondPoint);
+
+            // ================================
+            // Disbursement Pay Type and Amount
+            // ================================
+            String disbursementPayTypeLabel = "\nPay Type";
+            String disbursementAmountLabel = "\nAmount";
+            graphics.DrawString(disbursementPayTypeLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(disbursementAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(disbursementAmountLabel, fontArial8Bold).Height;
+
+            if (dataSource.Disbursements.Any())
+            {
+                foreach (var disbursement in dataSource.Disbursements)
+                {
+                    // ============
+                    // Disbursement
+                    // ============
+                    String disbursementLabel = disbursement.PayType;
+                    String disbursementData = disbursement.Amount.ToString("#,##0.00");
+                    graphics.DrawString(disbursementLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                    graphics.DrawString(disbursementData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                    y += graphics.MeasureString(disbursementData, fontArial8Regular).Height;
+                }
+            }
+            else
+            {
+                // ============
+                // Disbursement
+                // ============
+                String disbursementLabel = "Cash";
+                String disbursementData = "0.00";
+                graphics.DrawString(disbursementLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(disbursementData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(disbursementData, fontArial8Regular).Height;
+            }
+
+            // ============
+            // Disbursement
+            // ============
+            String disbursementTotalAmountLabel = "Cash In / Out";
+            String disbursementTotalAmountData = dataSource.CashInOutAmount.ToString("#,##0.00");
+            graphics.DrawString(disbursementTotalAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(disbursementTotalAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(disbursementTotalAmountData, fontArial8Bold).Height;
+
+            // ========
+            // 6th Line
+            // ========
+            Point sixthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            Point sixthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            graphics.DrawLine(blackPen, sixthLineFirstPoint, sixthLineSecondPoint);
+
+            // ===================
+            // Disbursement Number
+            // ===================
+            String disbursementNumberLabel = "\nDisbursement Number";
+            String disbursementNumberData = "\n" + dataSource.DisbursementNumber;
+            graphics.DrawString(disbursementNumberLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(disbursementNumberData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(disbursementNumberData, fontArial8Regular).Height;
+
+            // =================
+            // Disbursement Date
+            // =================
+            String disbursementDateLabel = "Disbursement Date";
+            String disbursementDateData = dataSource.RemittanceDate;
+            graphics.DrawString(disbursementDateLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(disbursementDateData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(disbursementDateData, fontArial8Regular).Height;
+
+            // =================
+            // Disbursement Type
+            // =================
+            String disbursementTypeLabel = "Disbursement Type";
+            String disbursementTypeData = dataSource.DisbursementType;
+            graphics.DrawString(disbursementTypeLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(disbursementTypeData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(disbursementTypeData, fontArial8Regular).Height;
+
+            // ========
+            // Pay Type
+            // ========
+            String payTypeLabel = "Pay Type";
+            String payTypeData = dataSource.PayType;
+            graphics.DrawString(payTypeLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(payTypeData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(payTypeData, fontArial8Regular).Height;
+
+            // ========
+            // 7th Line
+            // ========
+            Point seventhLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            Point seventhLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            graphics.DrawLine(blackPen, seventhLineFirstPoint, seventhLineSecondPoint);
+
+            // =========================
+            // Amount Denomination Title
+            // =========================
+            String amountDenominationTitle = "\nAmount Denomination";
+            graphics.DrawString(amountDenominationTitle, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            y += graphics.MeasureString(amountDenominationTitle, fontArial8Bold).Height;
+
+            // ========
+            // 8th Line
+            // ========
+            Point eightLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            Point eightLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            graphics.DrawLine(blackPen, eightLineFirstPoint, eightLineSecondPoint);
+
+            // ==================
+            // Decimal Conversion
+            // ==================
             Decimal amount1000 = Convert.ToDecimal(dataSource.Amount1000);
             Decimal amount500 = Convert.ToDecimal(dataSource.Amount500);
             Decimal amount200 = Convert.ToDecimal(dataSource.Amount200);
@@ -317,66 +537,10 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             Decimal amount010 = Convert.ToDecimal(dataSource.Amount010);
             Decimal amount005 = Convert.ToDecimal(dataSource.Amount005);
             Decimal amount001 = Convert.ToDecimal(dataSource.Amount001);
-            Decimal totalAmount = Convert.ToDecimal(dataSource.Total);
-
-            // ===============
-            // Remittance Date
-            // ===============
-            String remittanceDateLabel = "\nDate";
-            String remittanceDateData = "\n" + rimittanceDate;
-            graphics.DrawString(remittanceDateLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            graphics.DrawString(remittanceDateData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-            y += graphics.MeasureString(remittanceDateData, fontArial8Regular).Height;
-
-            // =================
-            // Remittance Number
-            // =================
-            String remittanceNumberLabel = "Remittance No.";
-            String remittanceNumberData = "";
-
-            if (String.IsNullOrEmpty(remittanceNumber))
-            {
-                remittanceNumberData = ".";
-            }
-            else
-            {
-                remittanceNumberData = remittanceNumber;
-            }
-
-            graphics.DrawString(remittanceNumberLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            graphics.DrawString(remittanceNumberData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-            y += graphics.MeasureString(remittanceNumberData, fontArial8Regular).Height;
-
-            // =================
-            // Remittance Number
-            // =================
-            String terminalLabel = "Terminal";
-            String terminalData = terminal;
-            graphics.DrawString(terminalLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            graphics.DrawString(terminalData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-            y += graphics.MeasureString(terminalData, fontArial8Regular).Height;
-
-            // =================
-            // Remittance Number
-            // =================
-            String preparedByLabel = "Prepared By";
-            String preparedByData = preparedBy;
-            graphics.DrawString(preparedByLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            graphics.DrawString(preparedByData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-            y += graphics.MeasureString(preparedByData, fontArial8Regular).Height;
-
-            // =======
-            // Remarks
-            // =======
-            String remarksLabel = "Remarks\n";
-            String remarksData = remarks + "\n";
-            graphics.DrawString(remarksLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            graphics.DrawString(remarksData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-            y += graphics.MeasureString(remarksData, fontArial8Regular).Height;
-
-            Point secondLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-            Point secondLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-            graphics.DrawLine(blackPen, secondLineFirstPoint, secondLineSecondPoint);
+            Decimal remittedAmount = Convert.ToDecimal(dataSource.RemittedAmount);
+            Decimal cashCollectedAmount = Convert.ToDecimal(dataSource.CashCollectedAmount);
+            Decimal cashInOutAmount = Convert.ToDecimal(dataSource.CashInOutAmount);
+            Decimal overShortAmount = Convert.ToDecimal(dataSource.OverShortAmount);
 
             // ==========
             // Amount1000
@@ -480,81 +644,71 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // ==========
             // Amount 001
             // ==========
-            String amount001Label = "Amount 001\n\n";
-            String amount001Data = amount001.ToString("#,##0.00") + "\n\n";
+            String amount001Label = "Amount 001";
+            String amount001Data = amount001.ToString("#,##0.00");
             graphics.DrawString(amount001Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount001Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount001Data, fontArial8Regular).Height;
 
-            Point thirdLineFirstPoint = new Point(0, Convert.ToInt32(y) - 7);
-            Point thirdLineSecondPoint = new Point(500, Convert.ToInt32(y) - 7);
-            graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
-            // ============
-            // Total Amount
-            // ============
-            String totalAmountLabel = "Total Amount\n\n";
-            String totalAmountData = totalAmount.ToString("#,##0.00") + "\n\n";
-            graphics.DrawString(totalAmountLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            graphics.DrawString(totalAmountData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-            y += graphics.MeasureString(totalAmountData, fontArial8Regular).Height;
-
             // ========
-            // 2nd Line
+            // 9th Line
             // ========
-            Point forthLineFirstPoint = new Point(0, Convert.ToInt32(y) - 7);
-            Point forthLineSecondPoint = new Point(500, Convert.ToInt32(y) - 7);
-            graphics.DrawLine(blackPen, forthLineFirstPoint, forthLineSecondPoint);
+            Point ninethLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            Point ninethLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            graphics.DrawLine(blackPen, ninethLineFirstPoint, ninethLineSecondPoint);
 
-            if (dataSource.CollectionLines.Any())
-            {
-                foreach (var collectionLine in dataSource.CollectionLines)
-                {
-                    // ================
-                    // Collection Lines
-                    // ================
-                    String collectionLineLabel = collectionLine.PayType;
-                    String collectionLineData = collectionLine.Amount.ToString("#,##0.00");
-                    graphics.DrawString(collectionLineLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    graphics.DrawString(collectionLineData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                    y += graphics.MeasureString(collectionLineData, fontArial8Regular).Height;
-                }
-
-                // ========
-                // 3rd Line
-                // ========
-                Point fifthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point fifthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, fifthLineFirstPoint, fifthLineSecondPoint);
-            }
-
-            Decimal totalCollection = dataSource.TotalCollection;
+            // ===============
+            // Remitted Amount
+            // ===============
+            String remittedAmountLabel = "\nRemitted Cash";
+            String remittedAmountData = "\n" + remittedAmount.ToString("#,##0.00");
+            graphics.DrawString(remittedAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(remittedAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(remittedAmountData, fontArial8Bold).Height;
 
             // ================
-            // Total Collection
+            // Collected Amount
             // ================
-            if (dataSource.CollectionLines.Any())
+            String cashCollectedAmountLabel = "Cash Collected";
+            String cashCollectedAmountData = cashCollectedAmount.ToString("#,##0.00");
+            graphics.DrawString(cashCollectedAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(cashCollectedAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(cashCollectedAmountData, fontArial8Bold).Height;
+
+            // ==================
+            // Cash In/Out Amount
+            // ==================
+            String cashInOutAmountLabel = "Cash In / Out";
+            String cashInOutAmountData = cashInOutAmount.ToString("#,##0.00");
+            graphics.DrawString(cashInOutAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(cashInOutAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(cashInOutAmountData, fontArial8Bold).Height;
+
+            String overOrShort = "";
+            if (overShortAmount < 0)
             {
-                String totalCollectionLabel = "\nTotal Collection";
-                String totalCollectionData = "\n" + totalCollection.ToString("#,##0.00");
-                graphics.DrawString(totalCollectionLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalCollectionData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalCollectionData, fontArial8Regular).Height;
+                overOrShort = "Short";
             }
             else
             {
-                String totalCollectionLabel = "Total Collection";
-                String totalCollectionData = totalCollection.ToString("#,##0.00");
-                graphics.DrawString(totalCollectionLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalCollectionData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalCollectionData, fontArial8Regular).Height;
+                overOrShort = "Over";
             }
 
-            // ========
-            // 4th Line
-            // ========
-            Point sixthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-            Point sixthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-            graphics.DrawLine(blackPen, sixthLineFirstPoint, sixthLineSecondPoint);
+            // =================
+            // Over Short Amount
+            // =================
+            String overShortAmountLabel = overOrShort;
+            String overShortAmountData = overShortAmount.ToString("#,##0.00");
+            graphics.DrawString(overShortAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(overShortAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(overShortAmountData, fontArial8Bold).Height;
+
+            // =========
+            // 13th Line
+            // =========
+            Point thirheenthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            Point thirtheenthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            graphics.DrawLine(blackPen, thirheenthLineFirstPoint, thirtheenthLineSecondPoint);
         }
     }
 }

@@ -30,10 +30,10 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
 
         public void GetTerminalList()
         {
-            Controllers.RepPOSReportController repPOSReportController = new Controllers.RepPOSReportController();
-            if (repPOSReportController.DropdownListTerminal().Any())
+            Controllers.RepRemittanceReportController repRemittanceReportController = new Controllers.RepRemittanceReportController();
+            if (repRemittanceReportController.DropdownListTerminal().Any())
             {
-                comboBoxTerminal.DataSource = repPOSReportController.DropdownListTerminal();
+                comboBoxTerminal.DataSource = repRemittanceReportController.DropdownListTerminal();
                 comboBoxTerminal.ValueMember = "Id";
                 comboBoxTerminal.DisplayMember = "Terminal";
 
@@ -43,12 +43,34 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
 
         public void GetUserList()
         {
-            Controllers.RepPOSReportController repPOSReportController = new Controllers.RepPOSReportController();
-            if (repPOSReportController.DropdownListUser().Any())
+            Controllers.RepRemittanceReportController repRemittanceReportController = new Controllers.RepRemittanceReportController();
+            if (repRemittanceReportController.DropdownListUser().Any())
             {
-                comboBoxUser.DataSource = repPOSReportController.DropdownListUser();
+                comboBoxUser.DataSource = repRemittanceReportController.DropdownListUser();
                 comboBoxUser.ValueMember = "Id";
                 comboBoxUser.DisplayMember = "FullName";
+            }
+
+            GetRemittanceNumberList();
+        }
+
+        public void GetRemittanceNumberList()
+        {
+            Int32 terminalId = Convert.ToInt32(comboBoxTerminal.SelectedValue);
+            Int32 userId = Convert.ToInt32(comboBoxUser.SelectedValue);
+
+            Controllers.RepRemittanceReportController repRemittanceReportController = new Controllers.RepRemittanceReportController();
+            if (repRemittanceReportController.DropdownListRemittanceNumber(terminalId, userId).Any())
+            {
+                comboBoxRemittanceNumber.DataSource = repRemittanceReportController.DropdownListRemittanceNumber(terminalId, userId);
+                comboBoxRemittanceNumber.ValueMember = "DisbursementNumber";
+                comboBoxRemittanceNumber.DisplayMember = "DisbursementNumber";
+            }
+            else
+            {
+                comboBoxRemittanceNumber.DataSource = null;
+                comboBoxRemittanceNumber.ValueMember = "DisbursementNumber";
+                comboBoxRemittanceNumber.DisplayMember = "DisbursementNumber";
             }
         }
 
@@ -62,22 +84,26 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                     case "Remittance Report":
                         labelTerminal.Visible = true;
                         comboBoxTerminal.Visible = true;
-                        dateTimePickerDate.Visible = true;
-                        labelDate.Visible = true;
+                        dateTimePickerStartDateFilter.Visible = true;
+                        labelStartDate.Visible = true;
+                        dateTimePickerEndDateFilter.Visible = true;
+                        labelEndDate.Visible = true;
                         comboBoxUser.Visible = true;
                         labelUser.Visible = true;
-                        textBoxRemittanceNumber.Visible = true;
+                        comboBoxRemittanceNumber.Visible = true;
                         labelRemittanceNumber.Visible = true;
                         comboBoxTerminal.Focus();
                         break;
                     default:
                         labelTerminal.Visible = false;
                         comboBoxTerminal.Visible = false;
-                        dateTimePickerDate.Visible = false;
-                        labelDate.Visible = false;
+                        dateTimePickerStartDateFilter.Visible = false;
+                        labelStartDate.Visible = false;
+                        dateTimePickerEndDateFilter.Visible = true;
+                        labelEndDate.Visible = true;
                         comboBoxUser.Visible = false;
                         labelUser.Visible = false;
-                        textBoxRemittanceNumber.Visible = false;
+                        comboBoxRemittanceNumber.Visible = false;
                         labelRemittanceNumber.Visible = false;
                         break;
                 }
@@ -105,7 +131,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                         {
                             if (sysUserRights.GetUserRights().CanView == true)
                             {
-                                RepRemittanceReportForm repRemittanceReportRemittanceReport = new RepRemittanceReportForm(this, dateTimePickerDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxUser.SelectedValue), textBoxRemittanceNumber.Text);
+                                RepRemittanceReportForm repRemittanceReportRemittanceReport = new RepRemittanceReportForm(this, dateTimePickerStartDateFilter.Value.Date, dateTimePickerEndDateFilter.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxUser.SelectedValue), comboBoxRemittanceNumber.Text);
                                 repRemittanceReportRemittanceReport.ShowDialog();
                             }
                             else
@@ -129,6 +155,11 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
         private void buttonClose_OnClick(object sender, EventArgs e)
         {
             sysSoftwareForm.RemoveTabPage();
+        }
+
+        private void comboBoxTerminal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetRemittanceNumberList();
         }
     }
 }

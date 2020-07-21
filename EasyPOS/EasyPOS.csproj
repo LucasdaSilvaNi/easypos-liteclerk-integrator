@@ -220,6 +220,7 @@
     <Compile Include="Controllers\MstUserFormController.cs" />
     <Compile Include="Controllers\RepInventoryReportController.cs" />
     <Compile Include="Controllers\RepPOSReportController.cs" />
+    <Compile Include="Controllers\RepRemittanceReportController.cs" />
     <Compile Include="Controllers\RepSalesReportController.cs" />
     <Compile Include="Controllers\SysAuditTrailController.cs" />
     <Compile Include="Controllers\SysKitchenController.cs" />

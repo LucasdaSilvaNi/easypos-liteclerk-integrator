@@ -35,18 +35,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.comboBoxRemittanceNumber = new System.Windows.Forms.ComboBox();
             this.labelRemittanceNumber = new System.Windows.Forms.Label();
-            this.textBoxRemittanceNumber = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.listBoxRemittanceReport = new System.Windows.Forms.ListBox();
-            this.dateTimePickerDate = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerStartDateFilter = new System.Windows.Forms.DateTimePicker();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.labelUser = new System.Windows.Forms.Label();
             this.labelTerminal = new System.Windows.Forms.Label();
-            this.labelDate = new System.Windows.Forms.Label();
+            this.labelStartDate = new System.Windows.Forms.Label();
             this.comboBoxUser = new System.Windows.Forms.ComboBox();
             this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
+            this.dateTimePickerEndDateFilter = new System.Windows.Forms.DateTimePicker();
+            this.labelEndDate = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
@@ -129,14 +131,16 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.dateTimePickerEndDateFilter);
+            this.panel4.Controls.Add(this.labelEndDate);
+            this.panel4.Controls.Add(this.comboBoxRemittanceNumber);
             this.panel4.Controls.Add(this.labelRemittanceNumber);
-            this.panel4.Controls.Add(this.textBoxRemittanceNumber);
             this.panel4.Controls.Add(this.panel2);
-            this.panel4.Controls.Add(this.dateTimePickerDate);
+            this.panel4.Controls.Add(this.dateTimePickerStartDateFilter);
             this.panel4.Controls.Add(this.panel3);
             this.panel4.Controls.Add(this.labelUser);
             this.panel4.Controls.Add(this.labelTerminal);
-            this.panel4.Controls.Add(this.labelDate);
+            this.panel4.Controls.Add(this.labelStartDate);
             this.panel4.Controls.Add(this.comboBoxUser);
             this.panel4.Controls.Add(this.comboBoxTerminal);
             this.panel4.Controls.Add(this.panel1);
@@ -148,26 +152,28 @@
             this.panel4.TabIndex = 8;
             this.panel4.TabStop = true;
             // 
+            // comboBoxRemittanceNumber
+            // 
+            this.comboBoxRemittanceNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxRemittanceNumber.FormattingEnabled = true;
+            this.comboBoxRemittanceNumber.Location = new System.Drawing.Point(436, 215);
+            this.comboBoxRemittanceNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxRemittanceNumber.Name = "comboBoxRemittanceNumber";
+            this.comboBoxRemittanceNumber.Size = new System.Drawing.Size(177, 27);
+            this.comboBoxRemittanceNumber.TabIndex = 33;
+            this.comboBoxRemittanceNumber.Visible = false;
+            // 
             // labelRemittanceNumber
             // 
             this.labelRemittanceNumber.AutoSize = true;
             this.labelRemittanceNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelRemittanceNumber.Location = new System.Drawing.Point(325, 186);
+            this.labelRemittanceNumber.Location = new System.Drawing.Point(325, 218);
             this.labelRemittanceNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelRemittanceNumber.Name = "labelRemittanceNumber";
             this.labelRemittanceNumber.Size = new System.Drawing.Size(105, 19);
             this.labelRemittanceNumber.TabIndex = 32;
             this.labelRemittanceNumber.Text = "Remittance No.:";
             this.labelRemittanceNumber.Visible = false;
-            // 
-            // textBoxRemittanceNumber
-            // 
-            this.textBoxRemittanceNumber.Location = new System.Drawing.Point(436, 183);
-            this.textBoxRemittanceNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxRemittanceNumber.Name = "textBoxRemittanceNumber";
-            this.textBoxRemittanceNumber.Size = new System.Drawing.Size(177, 26);
-            this.textBoxRemittanceNumber.TabIndex = 3;
-            this.textBoxRemittanceNumber.Visible = false;
             // 
             // panel2
             // 
@@ -196,15 +202,15 @@
             this.listBoxRemittanceReport.TabIndex = 4;
             this.listBoxRemittanceReport.SelectedIndexChanged += new System.EventHandler(this.listBoxRemittanceReport_SelectedIndexChanged);
             // 
-            // dateTimePickerDate
+            // dateTimePickerStartDateFilter
             // 
-            this.dateTimePickerDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDate.Location = new System.Drawing.Point(436, 124);
-            this.dateTimePickerDate.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePickerDate.Name = "dateTimePickerDate";
-            this.dateTimePickerDate.Size = new System.Drawing.Size(177, 26);
-            this.dateTimePickerDate.TabIndex = 1;
-            this.dateTimePickerDate.Visible = false;
+            this.dateTimePickerStartDateFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerStartDateFilter.Location = new System.Drawing.Point(436, 124);
+            this.dateTimePickerStartDateFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePickerStartDateFilter.Name = "dateTimePickerStartDateFilter";
+            this.dateTimePickerStartDateFilter.Size = new System.Drawing.Size(177, 26);
+            this.dateTimePickerStartDateFilter.TabIndex = 1;
+            this.dateTimePickerStartDateFilter.Visible = false;
             // 
             // panel3
             // 
@@ -234,7 +240,7 @@
             // 
             this.labelUser.AutoSize = true;
             this.labelUser.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelUser.Location = new System.Drawing.Point(390, 155);
+            this.labelUser.Location = new System.Drawing.Point(390, 186);
             this.labelUser.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelUser.Name = "labelUser";
             this.labelUser.Size = new System.Drawing.Size(40, 19);
@@ -254,23 +260,23 @@
             this.labelTerminal.Text = "Terminal:";
             this.labelTerminal.Visible = false;
             // 
-            // labelDate
+            // labelStartDate
             // 
-            this.labelDate.AutoSize = true;
-            this.labelDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelDate.Location = new System.Drawing.Point(389, 126);
-            this.labelDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelDate.Name = "labelDate";
-            this.labelDate.Size = new System.Drawing.Size(41, 19);
-            this.labelDate.TabIndex = 26;
-            this.labelDate.Text = "Date:";
-            this.labelDate.Visible = false;
+            this.labelStartDate.AutoSize = true;
+            this.labelStartDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.labelStartDate.Location = new System.Drawing.Point(356, 126);
+            this.labelStartDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelStartDate.Name = "labelStartDate";
+            this.labelStartDate.Size = new System.Drawing.Size(74, 19);
+            this.labelStartDate.TabIndex = 26;
+            this.labelStartDate.Text = "Start Date:";
+            this.labelStartDate.Visible = false;
             // 
             // comboBoxUser
             // 
             this.comboBoxUser.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxUser.FormattingEnabled = true;
-            this.comboBoxUser.Location = new System.Drawing.Point(436, 153);
+            this.comboBoxUser.Location = new System.Drawing.Point(436, 184);
             this.comboBoxUser.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxUser.Name = "comboBoxUser";
             this.comboBoxUser.Size = new System.Drawing.Size(336, 27);
@@ -287,6 +293,29 @@
             this.comboBoxTerminal.Size = new System.Drawing.Size(177, 27);
             this.comboBoxTerminal.TabIndex = 0;
             this.comboBoxTerminal.Visible = false;
+            this.comboBoxTerminal.SelectedIndexChanged += new System.EventHandler(this.comboBoxTerminal_SelectedIndexChanged);
+            // 
+            // dateTimePickerEndDateFilter
+            // 
+            this.dateTimePickerEndDateFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerEndDateFilter.Location = new System.Drawing.Point(436, 154);
+            this.dateTimePickerEndDateFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePickerEndDateFilter.Name = "dateTimePickerEndDateFilter";
+            this.dateTimePickerEndDateFilter.Size = new System.Drawing.Size(177, 26);
+            this.dateTimePickerEndDateFilter.TabIndex = 34;
+            this.dateTimePickerEndDateFilter.Visible = false;
+            // 
+            // labelEndDate
+            // 
+            this.labelEndDate.AutoSize = true;
+            this.labelEndDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.labelEndDate.Location = new System.Drawing.Point(362, 156);
+            this.labelEndDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelEndDate.Name = "labelEndDate";
+            this.labelEndDate.Size = new System.Drawing.Size(68, 19);
+            this.labelEndDate.TabIndex = 35;
+            this.labelEndDate.Text = "End Date:";
+            this.labelEndDate.Visible = false;
             // 
             // RepRemittanceForm
             // 
@@ -321,15 +350,17 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ListBox listBoxRemittanceReport;
-        private System.Windows.Forms.DateTimePicker dateTimePickerDate;
+        private System.Windows.Forms.DateTimePicker dateTimePickerStartDateFilter;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelUser;
         private System.Windows.Forms.Label labelTerminal;
-        private System.Windows.Forms.Label labelDate;
+        private System.Windows.Forms.Label labelStartDate;
         private System.Windows.Forms.ComboBox comboBoxUser;
         private System.Windows.Forms.ComboBox comboBoxTerminal;
         private System.Windows.Forms.Label labelRemittanceNumber;
-        private System.Windows.Forms.TextBox textBoxRemittanceNumber;
+        private System.Windows.Forms.ComboBox comboBoxRemittanceNumber;
+        private System.Windows.Forms.DateTimePicker dateTimePickerEndDateFilter;
+        private System.Windows.Forms.Label labelEndDate;
     }
 }
