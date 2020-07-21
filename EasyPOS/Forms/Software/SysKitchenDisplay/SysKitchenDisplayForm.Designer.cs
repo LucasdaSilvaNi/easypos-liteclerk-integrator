@@ -30,9 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SysKitchenDisplayForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -187,26 +188,29 @@
             this.dataGridViewDoneItemDisplay.AllowUserToDeleteRows = false;
             this.dataGridViewDoneItemDisplay.AllowUserToResizeColumns = false;
             this.dataGridViewDoneItemDisplay.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.dataGridViewDoneItemDisplay.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewDoneItemDisplay.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewDoneItemDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewDoneItemDisplay.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewDoneItemDisplay.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewDoneItemDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDoneItemDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewDoneItemDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDoneItemDisplay.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnDoneItems,
             this.ColumnQuantity});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewDoneItemDisplay.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDoneItemDisplay.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewDoneItemDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewDoneItemDisplay.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dataGridViewDoneItemDisplay.Location = new System.Drawing.Point(0, 0);
@@ -214,11 +218,13 @@
             this.dataGridViewDoneItemDisplay.Name = "dataGridViewDoneItemDisplay";
             this.dataGridViewDoneItemDisplay.ReadOnly = true;
             this.dataGridViewDoneItemDisplay.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewDoneItemDisplay.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDoneItemDisplay.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewDoneItemDisplay.RowHeadersVisible = false;
+            this.dataGridViewDoneItemDisplay.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.SystemColors.ControlText;
             this.dataGridViewDoneItemDisplay.RowTemplate.Height = 45;
             this.dataGridViewDoneItemDisplay.RowTemplate.ReadOnly = true;
             this.dataGridViewDoneItemDisplay.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -230,8 +236,8 @@
             // 
             this.ColumnDoneItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ColumnDoneItems.DataPropertyName = "ColumnDoneItems";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.ColumnDoneItems.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.ColumnDoneItems.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnDoneItems.HeaderText = "Done Items";
             this.ColumnDoneItems.Name = "ColumnDoneItems";
             this.ColumnDoneItems.ReadOnly = true;

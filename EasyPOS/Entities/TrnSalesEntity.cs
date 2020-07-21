@@ -76,7 +76,7 @@ namespace EasyPOS.Entities
     public class SysDeliverDriverAttributes
     {
         public Int32 id { get; set; }
-        public Int32? uuid { get; set; }
+        public String uuid { get; set; }
         public String first_name { get; set; }
         public String last_name { get; set; }
         public String status { get; set; }

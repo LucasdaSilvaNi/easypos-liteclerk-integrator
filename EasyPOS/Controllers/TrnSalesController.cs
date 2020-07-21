@@ -1876,13 +1876,15 @@ namespace EasyPOS.Controllers
                         }
                     }
 
+                    String manualInvoiceNumber = sales.FirstOrDefault().ManualInvoiceNumber;
+
                     var updateSales = sales.FirstOrDefault();
                     updateSales.IsDispatched = true;
                     updateSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
                     updateSales.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
 
-                    EasyShopReadyForDispatchRequest(sales.FirstOrDefault().ManualInvoiceNumber);
+                    EasyShopReadyForDispatchRequest(manualInvoiceNumber);
 
                     return new String[] { "", "1" };
                 }
