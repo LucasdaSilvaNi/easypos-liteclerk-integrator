@@ -198,6 +198,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             if (remittance.Any())
             {
                 repRemitanceReportEntity.DisbursementNumber = remittance.FirstOrDefault().DisbursementNumber;
+                repRemitanceReportEntity.RemittanceDate = remittance.FirstOrDefault().DisbursementDate.ToShortDateString();
                 repRemitanceReportEntity.DisbursementType = remittance.FirstOrDefault().DisbursementType;
                 repRemitanceReportEntity.PayType = remittance.FirstOrDefault().MstPayType.PayType;
                 repRemitanceReportEntity.Amount1000 = remittance.FirstOrDefault().Amount1000 != null ? remittance.FirstOrDefault().Amount1000 : 0;

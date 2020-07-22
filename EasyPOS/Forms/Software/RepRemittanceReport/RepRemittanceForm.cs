@@ -131,8 +131,15 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                         {
                             if (sysUserRights.GetUserRights().CanView == true)
                             {
-                                RepRemittanceReportForm repRemittanceReportRemittanceReport = new RepRemittanceReportForm(this, dateTimePickerStartDateFilter.Value.Date, dateTimePickerEndDateFilter.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxUser.SelectedValue), comboBoxRemittanceNumber.Text);
-                                repRemittanceReportRemittanceReport.ShowDialog();
+                                if (comboBoxRemittanceNumber.SelectedValue == null)
+                                {
+                                    MessageBox.Show("Please provide disbursement number.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    RepRemittanceReportForm repRemittanceReportRemittanceReport = new RepRemittanceReportForm(this, dateTimePickerStartDateFilter.Value.Date, dateTimePickerEndDateFilter.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxUser.SelectedValue), comboBoxRemittanceNumber.Text);
+                                    repRemittanceReportRemittanceReport.ShowDialog();
+                                }
                             }
                             else
                             {
