@@ -689,7 +689,7 @@ namespace EasyPOS.Controllers
                 };
                 Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail3);
 
-                EasyShopAlreadyPaid(currentSales.FirstOrDefault().ManualInvoiceNumber);
+                //EasyShopAlreadyPaid(currentSales.FirstOrDefault().ManualInvoiceNumber);
 
                 return new String[] { "", newCollection.Id.ToString() };
             }
@@ -1468,7 +1468,7 @@ namespace EasyPOS.Controllers
         // ====================
         // Return (Add Stock-In
         // ====================
-        public String[] ReturnSalesItems(Int32 collectionId, Int32 salesId, List<Entities.TrnStockInLineEntity> objStockInLines)
+        public String[] ReturnSalesItems(Int32 currentSalesId, Int32 collectionId, Int32 salesId, List<Entities.TrnSalesLineEntity> objSalesLines)
         {
             try
             {
@@ -1478,22 +1478,10 @@ namespace EasyPOS.Controllers
                     return new String[] { "Current login user not found.", "0" };
                 }
 
-                var period = from d in db.MstPeriods select d;
-                if (period.Any() == false)
+                var discount = from d in db.MstDiscounts where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().DefaultDiscountId) select d;
+                if (discount.Any() == false)
                 {
-                    return new String[] { "Periods not found.", "0" };
-                }
-
-                var supplier = from d in db.MstSuppliers select d;
-                if (supplier.Any() == false)
-                {
-                    return new String[] { "Supplier not found.", "0" };
-                }
-
-                DateTime currentDate = DateTime.Today;
-                if (Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == true)
-                {
-                    currentDate = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate);
+                    return new String[] { "Discount not found.", "0" };
                 }
 
                 var collection = from d in db.TrnCollections
@@ -1518,107 +1506,75 @@ namespace EasyPOS.Controllers
                     return new String[] { "Sales not found.", "0" };
                 }
 
-                String stockInNumber = "0000000001";
-                var lastStockIn = from d in db.TrnStockIns.OrderByDescending(d => d.Id) select d;
-                if (lastStockIn.Any())
+
+
+                List<Data.TrnSalesLine> newSalesLines = new List<Data.TrnSalesLine>();
+                if (objSalesLines.Any())
                 {
-                    Int32 newStockInNumber = Convert.ToInt32(lastStockIn.FirstOrDefault().StockInNumber) + 1;
-                    stockInNumber = FillLeadingZeroes(newStockInNumber, 10);
-                }
-
-                Data.TrnStockIn newStockIn = new Data.TrnStockIn()
-                {
-                    PeriodId = period.FirstOrDefault().Id,
-                    StockInDate = currentDate,
-                    StockInNumber = stockInNumber,
-                    ManualStockInNumber = stockInNumber,
-                    SupplierId = supplier.FirstOrDefault().Id,
-                    Remarks = "",
-                    IsReturn = true,
-                    CollectionId = collectionId,
-                    PurchaseOrderId = null,
-                    PreparedBy = currentUserLogin.FirstOrDefault().Id,
-                    CheckedBy = currentUserLogin.FirstOrDefault().Id,
-                    ApprovedBy = currentUserLogin.FirstOrDefault().Id,
-                    SalesId = salesId,
-                    PostCode = null,
-                    IsLocked = true,
-                    EntryUserId = currentUserLogin.FirstOrDefault().Id,
-                    EntryDateTime = DateTime.Now,
-                    UpdateUserId = currentUserLogin.FirstOrDefault().Id,
-                    UpdateDateTime = DateTime.Now
-                };
-
-                db.TrnStockIns.InsertOnSubmit(newStockIn);
-                db.SubmitChanges();
-
-                if (objStockInLines.Any())
-                {
-                    var account = from d in db.MstAccounts
-                                  where d.Account.Equals("Inventory")
-                                  && d.IsLocked == true
-                                  select d;
-
-                    if (account.Any() == false)
-                    {
-                        return new String[] { "Asset account not found.", "0" };
-                    }
-
-                    List<Data.TrnStockInLine> newStockInLines = new List<Data.TrnStockInLine>();
-
-                    foreach (var objStockInLine in objStockInLines)
+                    foreach (var objSalesLine in objSalesLines)
                     {
                         var item = from d in db.MstItems
-                                   where d.Id == objStockInLine.ItemId
-                                   && d.IsInventory == true
-                                   && d.IsLocked == true
+                                   where d.Id == objSalesLine.ItemId
                                    select d;
 
                         if (item.Any())
                         {
-                            var currentItem = item.FirstOrDefault();
+                            Decimal negativeQuantity = objSalesLine.Quantity * -1;
 
-                            Int32 itemId = currentItem.Id;
-                            Int32 unitId = currentItem.UnitId;
-                            Decimal cost = currentItem.Cost;
+                            Decimal discountAmount = objSalesLine.Price * (discount.FirstOrDefault().DiscountRate / 100);
+                            Decimal netPrice = objSalesLine.Price - discountAmount;
+                            Decimal amount = netPrice * negativeQuantity;
+                            Decimal taxAmount = amount * (item.FirstOrDefault().MstTax1.Rate / 100);
 
-                            newStockInLines.Add(new Data.TrnStockInLine
+                            newSalesLines.Add(new Data.TrnSalesLine
                             {
-                                StockInId = newStockIn.Id,
-                                ItemId = itemId,
-                                UnitId = unitId,
-                                Quantity = objStockInLine.Quantity,
-                                Cost = cost,
-                                Amount = cost * objStockInLine.Quantity,
-                                ExpiryDate = null,
-                                LotNumber = null,
-                                AssetAccountId = account.FirstOrDefault().Id,
-                                Price = objStockInLine.Price
+                                SalesId = currentSalesId,
+                                ItemId = item.FirstOrDefault().Id,
+                                UnitId = item.FirstOrDefault().UnitId,
+                                Price = objSalesLine.Price,
+                                DiscountId = discount.FirstOrDefault().Id,
+                                DiscountRate = discount.FirstOrDefault().DiscountRate,
+                                DiscountAmount = discountAmount,
+                                NetPrice = netPrice,
+                                Quantity = negativeQuantity,
+                                Amount = amount,
+                                TaxId = item.FirstOrDefault().OutTaxId,
+                                TaxRate = item.FirstOrDefault().MstTax1.Rate,
+                                TaxAmount = taxAmount,
+                                SalesAccountId = 159,
+                                AssetAccountId = 255,
+                                CostAccountId = 238,
+                                TaxAccountId = 87,
+                                SalesLineTimeStamp = DateTime.Now,
+                                UserId = currentUserLogin.FirstOrDefault().Id,
+                                Preparation = "NA",
+                                IsPrepared = false,
+                                Price1 = 0,
+                                Price2 = 0,
+                                Price2LessTax = 0,
+                                PriceSplitPercentage = 0,
                             });
                         }
                     }
 
-                    db.TrnStockInLines.InsertAllOnSubmit(newStockInLines);
+                    db.TrnSalesLines.InsertAllOnSubmit(newSalesLines);
                     db.SubmitChanges();
                 }
 
-                Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
-                trnInventoryModule.UpdateStockInInventory(newStockIn.Id);
-
-                String newObject = Modules.SysAuditTrailModule.GetObjectString(newStockIn);
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(newSalesLines);
 
                 Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
                 {
                     UserId = currentUserLogin.FirstOrDefault().Id,
                     AuditDate = DateTime.Now,
-                    TableInformation = "TrnStockIn",
+                    TableInformation = "TrnSalesLine",
                     RecordInformation = "",
                     FormInformation = newObject,
                     ActionInformation = "ReturnSalesItems"
                 };
                 Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
-                return new String[] { "", newStockIn.Id.ToString() };
+                return new String[] { "", "1" };
             }
             catch (Exception e)
             {
@@ -1884,7 +1840,7 @@ namespace EasyPOS.Controllers
                     updateSales.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
 
-                    EasyShopReadyForDispatchRequest(manualInvoiceNumber);
+                    //EasyShopReadyForDispatchRequest(manualInvoiceNumber);
 
                     return new String[] { "", "1" };
                 }
@@ -2029,7 +1985,7 @@ namespace EasyPOS.Controllers
                             delivery = deliverOrder
                         };
 
-                        EasyShopDeliveryRequest(deliveryData);
+                        //EasyShopDeliveryRequest(deliveryData);
                     }
 
                     return new String[] { "", "1" };

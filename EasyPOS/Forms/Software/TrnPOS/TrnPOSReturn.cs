@@ -14,6 +14,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
     public partial class TrnPOSReturn : Form
     {
         TrnPOSBarcodeDetailForm trnPOSBarcodeDetailForm;
+        TrnPOSTouchDetailForm trnPOSTouchDetailForm;
 
         public static Int32 pageNumber = 1;
         public static Int32 pageSize = 50;
@@ -22,11 +23,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public PagedList<Entities.DgvTrnSalesReturnEntity> returnPageList = new PagedList<Entities.DgvTrnSalesReturnEntity>(returnData, pageNumber, pageSize);
         public BindingSource returnDataSource = new BindingSource();
 
-        public TrnPOSReturn(TrnPOSBarcodeDetailForm POSBarcodeDetailForm)
+        public TrnPOSReturn(TrnPOSBarcodeDetailForm POSBarcodeDetailForm, TrnPOSTouchDetailForm POSTouchDetailForm)
         {
             InitializeComponent();
 
             trnPOSBarcodeDetailForm = POSBarcodeDetailForm;
+            trnPOSTouchDetailForm = POSTouchDetailForm;
+
             LoadReturnItems();
         }
 
@@ -248,28 +251,41 @@ namespace EasyPOS.Forms.Software.TrnPOS
             DialogResult deleteDialogResult = MessageBox.Show("Return these items?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (deleteDialogResult == DialogResult.Yes)
             {
-                List<Entities.TrnStockInLineEntity> newStockInLines = new List<Entities.TrnStockInLineEntity>();
+                List<Entities.TrnSalesLineEntity> newStockInLines = new List<Entities.TrnSalesLineEntity>();
 
                 foreach (DataGridViewRow row in dataGridViewReturnItems.Rows)
                 {
                     if (Convert.ToDecimal(row.Cells["ColumnReturnReturnQuantity"].Value) > 0)
                     {
-                        newStockInLines.Add(new Entities.TrnStockInLineEntity()
+                        newStockInLines.Add(new Entities.TrnSalesLineEntity()
                         {
                             Id = 0,
-                            StockInId = 0,
+                            SalesId = 0,
                             ItemId = Convert.ToInt32(row.Cells["ColumnReturnItemId"].Value),
-                            ItemDescription = "",
                             UnitId = 0,
                             Unit = "",
-                            Quantity = Convert.ToDecimal(row.Cells["ColumnReturnReturnQuantity"].Value),
-                            Cost = 0,
-                            Amount = 0,
-                            ExpiryDate = "",
-                            LotNumber = "",
-                            AssetAccountId = 0,
-                            AssetAccount = "",
                             Price = Convert.ToDecimal(row.Cells["ColumnReturnPrice"].Value),
+                            DiscountId = 0,
+                            DiscountRate = 0,
+                            DiscountAmount = 0,
+                            NetPrice = 0,
+                            Quantity = Convert.ToDecimal(row.Cells["ColumnReturnReturnQuantity"].Value),
+                            Amount = 0,
+                            TaxId = 0,
+                            TaxRate = 0,
+                            TaxAmount = 0,
+                            SalesAccountId = 159,
+                            AssetAccountId = 255,
+                            CostAccountId = 238,
+                            TaxAccountId = 87,
+                            SalesLineTimeStamp = "",
+                            UserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId),
+                            Preparation = "NA",
+                            IsPrepared = false,
+                            Price1 = 0,
+                            Price2 = 0,
+                            Price2LessTax = 0,
+                            PriceSplitPercentage = 0,
                         });
                     }
                 }
@@ -277,13 +293,36 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();
                 if (trnSalesController.GetCurrentCollection(textBoxReturnORNumber.Text) != null)
                 {
+                    Int32 currentSalesId = 0;
+
+                    if (trnPOSBarcodeDetailForm != null)
+                    {
+                        currentSalesId = trnPOSBarcodeDetailForm.trnSalesEntity.Id;
+                    }
+
+                    if (trnPOSTouchDetailForm != null)
+                    {
+                        currentSalesId = trnPOSTouchDetailForm.trnSalesEntity.Id;
+                    }
+
                     Int32 collectionId = trnSalesController.GetCurrentCollection(textBoxReturnORNumber.Text).Id;
                     Int32 salesId = Convert.ToInt32(trnSalesController.GetCurrentCollection(textBoxReturnORNumber.Text).SalesId);
 
-                    String[] returnSalesItems = trnSalesController.ReturnSalesItems(collectionId, salesId, newStockInLines);
+                    String[] returnSalesItems = trnSalesController.ReturnSalesItems(currentSalesId, collectionId, salesId, newStockInLines);
                     if (returnSalesItems[1].Equals("0") == false)
                     {
                         MessageBox.Show("Items were successfully returned.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        if (trnPOSBarcodeDetailForm != null)
+                        {
+                            trnPOSBarcodeDetailForm.GetSalesLineList();
+                        }
+
+                        if (trnPOSTouchDetailForm != null)
+                        {
+                            trnPOSTouchDetailForm.GetSalesLineList();
+                        }
+
                         Close();
                     }
                     else

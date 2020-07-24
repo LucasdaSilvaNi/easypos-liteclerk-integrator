@@ -377,7 +377,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonReturn_Click(object sender, EventArgs e)
         {
-            TrnPOSReturn trnPOSReturn = new TrnPOSReturn(this);
+            TrnPOSReturn trnPOSReturn = new TrnPOSReturn(this, null);
             trnPOSReturn.ShowDialog();
         }
     }
