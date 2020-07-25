@@ -21,8 +21,9 @@ namespace EasyPOS.Entities
         public Int32 TerminalId { get; set; }
         public String Terminal { get; set; }
         public String Remarks { get; set; }
-        public Boolean IsReturn { get; set; }
-        public Int32? SalesReturnSalesId { get; set; }
+        public Boolean IsRefund { get; set; }
+        public Int32? RefundSalesId { get; set; }
+        public String RefundSalesNumber { get; set; }
         public Int32? StockInId { get; set; }
         public Int32 PreparedBy { get; set; }
         public Int32 CheckedBy { get; set; }

@@ -612,6 +612,12 @@
     <Compile Include="Forms\Software\SysKitchenDisplay\SysKitchenDisplayForm.Designer.cs">
       <DependentUpon>SysKitchenDisplayForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnDisbursement\TrnRefundForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnDisbursement\TrnRefundForm.Designer.cs">
+      <DependentUpon>TrnRefundForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchActivityDeliver.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1056,6 +1062,9 @@
     <EmbeddedResource Include="Forms\Software\SysKitchenDisplay\SysKitchenDisplayForm.resx">
       <DependentUpon>SysKitchenDisplayForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnDisbursement\TrnRefundForm.resx">
+      <DependentUpon>TrnRefundForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTouchActivityDeliver.resx">
       <DependentUpon>TrnPOSTouchActivityDeliver.cs</DependentUpon>
     </EmbeddedResource>
@@ -1197,9 +1206,6 @@
     <EmbeddedResource Include="Forms\Software\RepPOSReport\RepZReadingReportForm.resx">
       <DependentUpon>RepZReadingReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Data\easyposdb.dbml.layout">
-      <DependentUpon>easyposdb.dbml</DependentUpon>
-    </None>
     <EmbeddedResource Include="Forms\Account\SysLogin\SysLoginForm.resx">
       <DependentUpon>SysLoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1250,6 +1256,9 @@
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>easyposdb.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Data\easyposdb.dbml.layout">
+      <DependentUpon>easyposdb.dbml</DependentUpon>
     </None>
     <None Include="libOpenCvSharpExtern.so" />
     <None Include="OpenCvSharp.Blob.dll.config" />

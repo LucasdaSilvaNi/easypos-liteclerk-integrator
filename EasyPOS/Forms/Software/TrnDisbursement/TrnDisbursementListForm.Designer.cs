@@ -53,6 +53,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.buttonRefund = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDisbursementList)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -67,9 +68,9 @@
             this.label1.Location = new System.Drawing.Point(50, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(175, 28);
+            this.label1.Size = new System.Drawing.Size(163, 28);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Cash In / Out List";
+            this.label1.Text = "Cash In/Out List";
             // 
             // buttonClose
             // 
@@ -208,7 +209,7 @@
             // ColumnDisbursementListDisbursementDate
             // 
             this.ColumnDisbursementListDisbursementDate.DataPropertyName = "ColumnDisbursementListDisbursementDate";
-            this.ColumnDisbursementListDisbursementDate.HeaderText = "Remittance Date";
+            this.ColumnDisbursementListDisbursementDate.HeaderText = "Cash In/Out Date";
             this.ColumnDisbursementListDisbursementDate.Name = "ColumnDisbursementListDisbursementDate";
             this.ColumnDisbursementListDisbursementDate.ReadOnly = true;
             this.ColumnDisbursementListDisbursementDate.Visible = false;
@@ -217,7 +218,7 @@
             // ColumnDisbursementListDisbursementNumber
             // 
             this.ColumnDisbursementListDisbursementNumber.DataPropertyName = "ColumnDisbursementListDisbursementNumber";
-            this.ColumnDisbursementListDisbursementNumber.HeaderText = "Remittance No.";
+            this.ColumnDisbursementListDisbursementNumber.HeaderText = "Cash In/Out No.";
             this.ColumnDisbursementListDisbursementNumber.Name = "ColumnDisbursementListDisbursementNumber";
             this.ColumnDisbursementListDisbursementNumber.ReadOnly = true;
             // 
@@ -337,6 +338,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.buttonRefund);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.buttonClose);
@@ -358,6 +360,25 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            // 
+            // buttonRefund
+            // 
+            this.buttonRefund.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonRefund.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonRefund.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonRefund.FlatAppearance.BorderSize = 0;
+            this.buttonRefund.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRefund.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRefund.ForeColor = System.Drawing.Color.White;
+            this.buttonRefund.Location = new System.Drawing.Point(867, 10);
+            this.buttonRefund.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonRefund.Name = "buttonRefund";
+            this.buttonRefund.Size = new System.Drawing.Size(70, 32);
+            this.buttonRefund.TabIndex = 25;
+            this.buttonRefund.TabStop = false;
+            this.buttonRefund.Text = "Refund";
+            this.buttonRefund.UseVisualStyleBackColor = false;
+            this.buttonRefund.Click += new System.EventHandler(this.buttonRefund_Click);
             // 
             // TrnDisbursementListForm
             // 
@@ -409,5 +430,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDisbursementListSupplier;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDisbursementListRemarks;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnDisbursementListIsLocked;
+        private System.Windows.Forms.Button buttonRefund;
     }
 }

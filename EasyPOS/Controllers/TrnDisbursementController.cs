@@ -52,8 +52,9 @@ namespace EasyPOS.Controllers
                                     TerminalId = d.TerminalId,
                                     Terminal = d.MstTerminal.Terminal,
                                     Remarks = d.Remarks,
-                                    IsReturn = d.IsReturn,
-                                    SalesReturnSalesId = d.SalesReturnSalesId,
+                                    IsRefund = d.IsRefund,
+                                    RefundSalesId = d.RefundSalesId,
+                                    RefundSalesNumber = d.TrnSale.SalesNumber,
                                     StockInId = d.StockInId,
                                     PreparedBy = d.PreparedBy,
                                     CheckedBy = d.CheckedBy,
@@ -104,8 +105,9 @@ namespace EasyPOS.Controllers
                                    TerminalId = d.TerminalId,
                                    Terminal = d.MstTerminal.Terminal,
                                    Remarks = d.Remarks,
-                                   IsReturn = d.IsReturn,
-                                   SalesReturnSalesId = d.SalesReturnSalesId,
+                                   IsRefund = d.IsRefund,
+                                   RefundSalesId = d.RefundSalesId,
+                                   RefundSalesNumber = d.TrnSale.SalesNumber,
                                    StockInId = d.StockInId,
                                    PreparedBy = d.PreparedBy,
                                    CheckedBy = d.CheckedBy,
@@ -284,8 +286,8 @@ namespace EasyPOS.Controllers
                     PayTypeId = payType.FirstOrDefault().Id,
                     TerminalId = terminal.FirstOrDefault().Id,
                     Remarks = "",
-                    IsReturn = false,
-                    SalesReturnSalesId = null,
+                    IsRefund = false,
+                    RefundSalesId = null,
                     StockInId = null,
                     PreparedBy = currentUserLogin.FirstOrDefault().Id,
                     CheckedBy = currentUserLogin.FirstOrDefault().Id,
@@ -399,6 +401,30 @@ namespace EasyPOS.Controllers
                         return new String[] { "Already locked.", "0" };
                     }
 
+                    Int32? refundSalesId = null;
+                    if (objDisbursement.IsRefund == true)
+                    {
+                        var sales = from d in db.TrnSales
+                                    where d.SalesNumber == objDisbursement.RefundSalesNumber
+                                    && d.IsLocked == true
+                                    && d.IsReturned == true
+                                    && d.ReturnApplication == "Return"
+                                    select d;
+
+                        if (sales.Any() == false)
+                        {
+                            return new String[] { "Sales not found.", "0" };
+                        }
+
+                        refundSalesId = sales.FirstOrDefault().Id;
+
+                        var updateSales = sales.FirstOrDefault();
+                        updateSales.ReturnApplication = "Refund";
+                        updateSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
+                        updateSales.UpdateDateTime = DateTime.Now;
+                        db.SubmitChanges();
+                    }
+
                     String oldObject = Modules.SysAuditTrailModule.GetObjectString(disbursement.FirstOrDefault());
 
                     var lockDisbursement = disbursement.FirstOrDefault();
@@ -406,9 +432,8 @@ namespace EasyPOS.Controllers
                     lockDisbursement.PayTypeId = payType.FirstOrDefault().Id;
                     lockDisbursement.Remarks = objDisbursement.Remarks;
                     lockDisbursement.Amount = objDisbursement.Amount;
-                    lockDisbursement.IsReturn = objDisbursement.IsReturn;
-                    lockDisbursement.SalesReturnSalesId = objDisbursement.SalesReturnSalesId;
-                    lockDisbursement.StockInId = stockInId;
+                    lockDisbursement.IsRefund = objDisbursement.IsRefund;
+                    lockDisbursement.RefundSalesId = refundSalesId;
                     lockDisbursement.CheckedBy = objDisbursement.CheckedBy;
                     lockDisbursement.ApprovedBy = objDisbursement.ApprovedBy;
                     lockDisbursement.IsLocked = true;
@@ -478,6 +503,23 @@ namespace EasyPOS.Controllers
                     if (disbursement.FirstOrDefault().IsLocked == false)
                     {
                         return new String[] { "Already unlocked.", "0" };
+                    }
+
+                    if (disbursement.FirstOrDefault().IsRefund == true && disbursement.FirstOrDefault().RefundSalesId != null)
+                    {
+                        var sales = from d in db.TrnSales
+                                    where d.Id == disbursement.FirstOrDefault().RefundSalesId
+                                    && d.IsLocked == true
+                                    && d.IsReturned == true
+                                    && d.ReturnApplication == "Refund"
+                                    select d;
+
+                        if (sales.Any())
+                        {
+                            var updateSales = sales.FirstOrDefault();
+                            updateSales.ReturnApplication = "Return";
+                            db.SubmitChanges();
+                        }
                     }
 
                     String oldObject = Modules.SysAuditTrailModule.GetObjectString(disbursement.FirstOrDefault());
@@ -568,5 +610,158 @@ namespace EasyPOS.Controllers
                 return new String[] { e.Message, "0" };
             }
         }
+
+        // ===========================
+        // Get Sales Detail for Refund
+        // ===========================
+        public Entities.TrnSalesEntity GetSalesDetail(String orderReturnNumber)
+        {
+            var sale = from d in db.TrnSales
+                       where d.SalesNumber == orderReturnNumber
+                       && d.IsLocked == true
+                       && d.IsReturned == true
+                       && d.ReturnApplication == "Return"
+                       select new Entities.TrnSalesEntity
+                       {
+                           Id = d.Id,
+                           Customer = d.MstCustomer.Customer,
+                           Amount = d.Amount
+                       };
+
+            return sale.FirstOrDefault();
+        }
+
+        // ======
+        // Refund
+        // ======
+        public String[] Refund(Entities.TrnDisbursementEntity objDisbursement)
+        {
+            try
+            {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
+                var period = from d in db.MstPeriods select d;
+                if (period.Any() == false)
+                {
+                    return new String[] { "Periods not found.", "0" };
+                }
+
+                var account = from d in db.MstAccounts select d;
+                if (account.Any() == false)
+                {
+                    return new String[] { "Account not found.", "0" };
+                }
+
+                var payType = from d in db.MstPayTypes
+                              where d.PayType == "Cash"
+                              select d;
+
+                if (payType.Any() == false)
+                {
+                    return new String[] { "Pay type cash not found.", "0" };
+                }
+
+                var terminal = from d in db.MstTerminals where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId) select d;
+                if (terminal.Any() == false)
+                {
+                    return new String[] { "Terminal not found.", "0" };
+                }
+
+                DateTime currentDate = DateTime.Today;
+                if (Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == true)
+                {
+                    currentDate = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate);
+                }
+
+                var sales = from d in db.TrnSales
+                            where d.Id == objDisbursement.RefundSalesId
+                            && d.IsLocked == true
+                            && d.IsReturned == true
+                            && d.ReturnApplication == "Return"
+                            select d;
+
+                if (sales.Any() == false)
+                {
+                    return new String[] { "Sales not found.", "0" };
+                }
+
+                String disbursementNumber = "0000000001";
+                var lastDisbursement = from d in db.TrnDisbursements.OrderByDescending(d => d.Id) select d;
+                if (lastDisbursement.Any())
+                {
+                    Int32 newDisbursementNumber = Convert.ToInt32(lastDisbursement.FirstOrDefault().DisbursementNumber) + 1;
+                    disbursementNumber = FillLeadingZeroes(newDisbursementNumber, 10);
+                }
+
+                Data.TrnDisbursement newDisbursement = new Data.TrnDisbursement()
+                {
+                    PeriodId = period.FirstOrDefault().Id,
+                    DisbursementDate = currentDate,
+                    DisbursementNumber = disbursementNumber,
+                    DisbursementType = "CREDIT",
+                    AccountId = account.FirstOrDefault().Id,
+                    Amount = sales.FirstOrDefault().Amount * -1,
+                    PayTypeId = payType.FirstOrDefault().Id,
+                    TerminalId = terminal.FirstOrDefault().Id,
+                    Remarks = "Refund",
+                    IsRefund = true,
+                    RefundSalesId = sales.FirstOrDefault().Id,
+                    StockInId = null,
+                    PreparedBy = currentUserLogin.FirstOrDefault().Id,
+                    CheckedBy = currentUserLogin.FirstOrDefault().Id,
+                    ApprovedBy = currentUserLogin.FirstOrDefault().Id,
+                    IsLocked = true,
+                    EntryUserId = currentUserLogin.FirstOrDefault().Id,
+                    EntryDateTime = DateTime.Now,
+                    UpdateUserId = currentUserLogin.FirstOrDefault().Id,
+                    UpdateDateTime = DateTime.Now,
+                    Amount1000 = null,
+                    Amount500 = null,
+                    Amount200 = null,
+                    Amount100 = null,
+                    Amount50 = null,
+                    Amount20 = null,
+                    Amount10 = null,
+                    Amount5 = null,
+                    Amount1 = null,
+                    Amount025 = null,
+                    Amount010 = null,
+                    Amount005 = null,
+                    Amount001 = null,
+                    Payee = sales.FirstOrDefault().MstCustomer.Customer
+                };
+
+                db.TrnDisbursements.InsertOnSubmit(newDisbursement);
+                db.SubmitChanges();
+
+                var updateSales = sales.FirstOrDefault();
+                updateSales.ReturnApplication = "Refund";
+                db.SubmitChanges();
+
+                String newObject = Modules.SysAuditTrailModule.GetObjectString(newDisbursement);
+
+                Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                {
+                    UserId = currentUserLogin.FirstOrDefault().Id,
+                    AuditDate = DateTime.Now,
+                    TableInformation = "TrnDisbursement",
+                    RecordInformation = "",
+                    FormInformation = newObject,
+                    ActionInformation = "AddDisbursement"
+                };
+                Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+
+                return new String[] { "", newDisbursement.Id.ToString() };
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
     }
 }

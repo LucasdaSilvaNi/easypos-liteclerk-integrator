@@ -316,5 +316,11 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             pageNumber = itemListPageList.PageCount;
             textBoxDisbursementListPageNumber.Text = pageNumber + " / " + itemListPageList.PageCount;
         }
+
+        private void buttonRefund_Click(object sender, EventArgs e)
+        {
+            TrnRefundForm trnRefundForm = new TrnRefundForm(this);
+            trnRefundForm.ShowDialog();
+        }
     }
 }

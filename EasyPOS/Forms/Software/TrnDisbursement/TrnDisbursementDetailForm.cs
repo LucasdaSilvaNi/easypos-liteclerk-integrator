@@ -86,19 +86,6 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
                 comboBoxAccount.DisplayMember = "Account";
             }
 
-            GetReturnStockInNumber();
-        }
-
-        public void GetReturnStockInNumber()
-        {
-            Controllers.TrnDisbursementController trnDisbursementController = new Controllers.TrnDisbursementController();
-            if (trnDisbursementController.DropdownListDisbursementReturnStockIn().Any())
-            {
-                comboBoxReturnStockInNumber.DataSource = trnDisbursementController.DropdownListDisbursementReturnStockIn();
-                comboBoxReturnStockInNumber.ValueMember = "Id";
-                comboBoxReturnStockInNumber.DisplayMember = "StockInNumber";
-            }
-
             GetUsers();
         }
 
@@ -134,8 +121,8 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             textBoxPayee.Text = trnDisbursementEntity.Payee;
             textBoxAmount.Text = trnDisbursementEntity.Amount.ToString("#,##0.00");
             textBoxRemarks.Text = trnDisbursementEntity.Remarks;
-            checkBoxReturn.Checked = trnDisbursementEntity.IsReturn;
-            comboBoxReturnStockInNumber.SelectedValue = trnDisbursementEntity.StockInId;
+            checkBoxReturn.Checked = trnDisbursementEntity.IsRefund;
+            textBoxSalesReturnNumber.Text = trnDisbursementEntity.RefundSalesNumber;
             comboBoxPreparedBy.SelectedValue = trnDisbursementEntity.PreparedBy;
             comboBoxCheckedBy.SelectedValue = trnDisbursementEntity.CheckedBy;
             comboBoxApprovedBy.SelectedValue = trnDisbursementEntity.ApprovedBy;
@@ -194,18 +181,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             textBoxAmount.Enabled = !isLocked;
             textBoxRemarks.Enabled = !isLocked;
             checkBoxReturn.Enabled = !isLocked;
-
-            if (trnDisbursementEntity.IsReturn == false)
-            {
-                comboBoxReturnStockInNumber.Enabled = false;
-            }
-            else
-            {
-                comboBoxReturnStockInNumber.Enabled = !isLocked;
-            }
-
-            comboBoxCheckedBy.Enabled = !isLocked;
-            comboBoxApprovedBy.Enabled = !isLocked;
+            textBoxSalesReturnNumber.Enabled = !isLocked;
             textBoxAmountDenominationXP1000.Enabled = !isLocked;
             textBoxAmountDenominationXP500.Enabled = !isLocked;
             textBoxAmountDenominationXP200.Enabled = !isLocked;
@@ -219,6 +195,8 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             textBoxAmountDenominationXC10.Enabled = !isLocked;
             textBoxAmountDenominationXC5.Enabled = !isLocked;
             textBoxAmountDenominationXC1.Enabled = !isLocked;
+            comboBoxCheckedBy.Enabled = !isLocked;
+            comboBoxApprovedBy.Enabled = !isLocked;
             comboBoxTerminal.Focus();
         }
 
@@ -236,8 +214,10 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
                 PayTypeId = Convert.ToInt32(comboBoxPayType.SelectedValue),
                 TerminalId = Convert.ToInt32(comboBoxTerminal.SelectedValue),
                 Remarks = textBoxRemarks.Text,
-                IsReturn = checkBoxReturn.Checked,
-                StockInId = Convert.ToInt32(comboBoxReturnStockInNumber.SelectedValue),
+                IsRefund = checkBoxReturn.Checked,
+                RefundSalesId = 0,
+                RefundSalesNumber = textBoxSalesReturnNumber.Text,
+                StockInId = null,
                 CheckedBy = Convert.ToInt32(comboBoxCheckedBy.SelectedValue),
                 ApprovedBy = Convert.ToInt32(comboBoxApprovedBy.SelectedValue),
                 Amount1000 = Convert.ToDecimal(textBoxAmountDenominationXP1000.Text),
@@ -296,14 +276,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
 
         private void checkBoxReturn_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxReturn.Checked)
-            {
-                comboBoxReturnStockInNumber.Enabled = true;
-            }
-            else
-            {
-                comboBoxReturnStockInNumber.Enabled = false;
-            }
+
         }
 
         private void textBoxAmount_KeyPress(object sender, KeyPressEventArgs e)
@@ -326,39 +299,39 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
 
         private void textBoxAmount_Leave(object sender, EventArgs e)
         {
-            Decimal P1000 = Convert.ToDecimal(textBoxAmountDenominationXP1000.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP1000.Text) * 1000 : 0;
-            Decimal P500 = Convert.ToDecimal(textBoxAmountDenominationXP500.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP500.Text) * 500 : 0;
-            Decimal P200 = Convert.ToDecimal(textBoxAmountDenominationXP200.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP200.Text) * 200 : 0;
-            Decimal P100 = Convert.ToDecimal(textBoxAmountDenominationXP100.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP100.Text) * 100 : 0;
-            Decimal P50 = Convert.ToDecimal(textBoxAmountDenominationXP50.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP50.Text) * 50 : 0;
-            Decimal P20 = Convert.ToDecimal(textBoxAmountDenominationXP20.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP20.Text) * 20 : 0;
-            Decimal P10 = Convert.ToDecimal(textBoxAmountDenominationXP10.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP10.Text) * 10 : 0;
-            Decimal P5 = Convert.ToDecimal(textBoxAmountDenominationXP5.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP5.Text) * 5 : 0;
-            Decimal P1 = Convert.ToDecimal(textBoxAmountDenominationXP1.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP1.Text) * 1 : 0;
-            Decimal C25 = Convert.ToDecimal(textBoxAmountDenominationXC25.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXC25.Text) * Convert.ToDecimal(1m / 4m) : 0;
-            Decimal C10 = Convert.ToDecimal(textBoxAmountDenominationXC10.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXC10.Text) * Convert.ToDecimal(1m / 10m) : 0;
-            Decimal C5 = Convert.ToDecimal(textBoxAmountDenominationXC5.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXC5.Text) * Convert.ToDecimal(1m / 20m) : 0;
-            Decimal C1 = Convert.ToDecimal(textBoxAmountDenominationXC1.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXC1.Text) * Convert.ToDecimal(1m / 100m) : 0;
-            Decimal totalAmount = P1000 + P500 + P200 + P100 + P50 + P20 + P10 + P5 + P1 + C25 + C10 + C5 + C1;
+            //Decimal P1000 = Convert.ToDecimal(textBoxAmountDenominationXP1000.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP1000.Text) * 1000 : 0;
+            //Decimal P500 = Convert.ToDecimal(textBoxAmountDenominationXP500.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP500.Text) * 500 : 0;
+            //Decimal P200 = Convert.ToDecimal(textBoxAmountDenominationXP200.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP200.Text) * 200 : 0;
+            //Decimal P100 = Convert.ToDecimal(textBoxAmountDenominationXP100.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP100.Text) * 100 : 0;
+            //Decimal P50 = Convert.ToDecimal(textBoxAmountDenominationXP50.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP50.Text) * 50 : 0;
+            //Decimal P20 = Convert.ToDecimal(textBoxAmountDenominationXP20.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP20.Text) * 20 : 0;
+            //Decimal P10 = Convert.ToDecimal(textBoxAmountDenominationXP10.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP10.Text) * 10 : 0;
+            //Decimal P5 = Convert.ToDecimal(textBoxAmountDenominationXP5.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP5.Text) * 5 : 0;
+            //Decimal P1 = Convert.ToDecimal(textBoxAmountDenominationXP1.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXP1.Text) * 1 : 0;
+            //Decimal C25 = Convert.ToDecimal(textBoxAmountDenominationXC25.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXC25.Text) * Convert.ToDecimal(1m / 4m) : 0;
+            //Decimal C10 = Convert.ToDecimal(textBoxAmountDenominationXC10.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXC10.Text) * Convert.ToDecimal(1m / 10m) : 0;
+            //Decimal C5 = Convert.ToDecimal(textBoxAmountDenominationXC5.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXC5.Text) * Convert.ToDecimal(1m / 20m) : 0;
+            //Decimal C1 = Convert.ToDecimal(textBoxAmountDenominationXC1.Text) > 0 ? Convert.ToDecimal(textBoxAmountDenominationXC1.Text) * Convert.ToDecimal(1m / 100m) : 0;
+            //Decimal totalAmount = P1000 + P500 + P200 + P100 + P50 + P20 + P10 + P5 + P1 + C25 + C10 + C5 + C1;
 
-            if (totalAmount != Convert.ToDecimal(textBoxAmount.Text))
-            {
-                textBoxAmountDenominationXP1000.Text = "0";
-                textBoxAmountDenominationXP500.Text = "0";
-                textBoxAmountDenominationXP200.Text = "0";
-                textBoxAmountDenominationXP100.Text = "0";
-                textBoxAmountDenominationXP50.Text = "0";
-                textBoxAmountDenominationXP20.Text = "0";
-                textBoxAmountDenominationXP10.Text = "0";
-                textBoxAmountDenominationXP5.Text = "0";
-                textBoxAmountDenominationXP1.Text = "0";
-                textBoxAmountDenominationXC25.Text = "0";
-                textBoxAmountDenominationXC10.Text = "0";
-                textBoxAmountDenominationXC5.Text = "0";
-                textBoxAmountDenominationXC1.Text = "0";
+            //if (totalAmount != Convert.ToDecimal(textBoxAmount.Text))
+            //{
+            //    textBoxAmountDenominationXP1000.Text = "0";
+            //    textBoxAmountDenominationXP500.Text = "0";
+            //    textBoxAmountDenominationXP200.Text = "0";
+            //    textBoxAmountDenominationXP100.Text = "0";
+            //    textBoxAmountDenominationXP50.Text = "0";
+            //    textBoxAmountDenominationXP20.Text = "0";
+            //    textBoxAmountDenominationXP10.Text = "0";
+            //    textBoxAmountDenominationXP5.Text = "0";
+            //    textBoxAmountDenominationXP1.Text = "0";
+            //    textBoxAmountDenominationXC25.Text = "0";
+            //    textBoxAmountDenominationXC10.Text = "0";
+            //    textBoxAmountDenominationXC5.Text = "0";
+            //    textBoxAmountDenominationXC1.Text = "0";
 
-                textBoxAmount.Text = Convert.ToDecimal(textBoxAmount.Text).ToString("#,##0.00");
-            }
+            //    textBoxAmount.Text = Convert.ToDecimal(textBoxAmount.Text).ToString("#,##0.00");
+            //}
         }
 
         private void textBoxAmountDenomination_Leave(object sender, EventArgs e)
