@@ -158,6 +158,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 foreach (DataGridViewRow row in dataGridViewTenderPayType.Rows)
                 {
+                    Int32? salesReturnSalesId = null;
+                    if (String.IsNullOrEmpty(row.Cells[6].Value.ToString()) == false)
+                    {
+                        salesReturnSalesId = Convert.ToInt32(row.Cells[6].Value);
+                    }
+
                     if (Convert.ToDecimal(row.Cells[4].Value) > 0)
                     {
                         listCollectionLine.Add(new Entities.TrnCollectionLineEntity()
@@ -173,6 +179,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             CreditCardBank = "NA",
                             GiftCertificateNumber = "NA",
                             OtherInformation = row.Cells[4].Value.ToString(),
+                            SalesReturnSalesId = salesReturnSalesId,
                             CreditCardReferenceNumber = "NA",
                             CreditCardHolderName = "NA",
                             CreditCardExpiry = "NA"
@@ -205,10 +212,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             }
                             else if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Delivery Receipt")
                             {
-                                //new Reports.RepDeliveryReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]), false, "");
-
                                 new TrnPOSDeliveryReceiptReportForm("", StockWithdrawalReport(trnSalesEntity.Id), true, true);
-                                //MessageBox.Show("Generate PDF Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
@@ -360,6 +364,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         objPayTypeList.PayType,
                         "#",
                         "0.00",
+                        "",
                         ""
                     );
                 }
@@ -459,8 +464,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
                 else if (payTypeCode == "EXCHANGE")
                 {
-                    dataGridViewTenderPayType.CurrentRow.Cells[4].Value = trnSalesEntity.Amount.ToString("#,##0.00");
-                    ComputeAmount();
+                    TrnPOSTenderExchangeInformation trnPOSTenderExchangeInformation = new TrnPOSTenderExchangeInformation(this, dataGridViewTenderPayType);
+                    trnPOSTenderExchangeInformation.ShowDialog();
                 }
                 else
                 {

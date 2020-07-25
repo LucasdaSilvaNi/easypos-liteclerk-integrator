@@ -852,6 +852,12 @@
     <Compile Include="Forms\Software\TrnPOS\TrnPOSReprintForm.Designer.cs">
       <DependentUpon>TrnPOSReprintForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderExchangeInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderExchangeInformation.Designer.cs">
+      <DependentUpon>TrnPOSTenderExchangeInformation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnStockIn\TrnStockInDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1160,6 +1166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSReprintForm.resx">
       <DependentUpon>TrnPOSReprintForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTenderExchangeInformation.resx">
+      <DependentUpon>TrnPOSTenderExchangeInformation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnStockIn\TrnStockInDetailForm.resx">
       <DependentUpon>TrnStockInDetailForm.cs</DependentUpon>

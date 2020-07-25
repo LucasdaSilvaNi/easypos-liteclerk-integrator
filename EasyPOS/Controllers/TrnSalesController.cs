@@ -2383,5 +2383,26 @@ namespace EasyPOS.Controllers
                 return new String[] { e.Message, "0" };
             }
         }
+
+        // =============================
+        // Get Sales Detail for Exchange
+        // =============================
+        public Entities.TrnSalesEntity GetExchangeSalesDetail(String orderReturnNumber)
+        {
+            var sale = from d in db.TrnSales
+                       where d.SalesNumber == orderReturnNumber
+                       && d.IsLocked == true
+                       && d.IsReturned == true
+                       && d.ReturnApplication == "Return"
+                       select new Entities.TrnSalesEntity
+                       {
+                           Id = d.Id,
+                           SalesNumber = d.SalesNumber,
+                           Customer = d.MstCustomer.Customer,
+                           Amount = d.Amount
+                       };
+
+            return sale.FirstOrDefault();
+        }
     }
 }

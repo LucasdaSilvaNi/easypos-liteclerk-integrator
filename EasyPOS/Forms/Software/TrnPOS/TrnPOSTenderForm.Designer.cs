@@ -45,6 +45,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBoxTotalSalesAmount = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.labelRemarks = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -55,7 +56,6 @@
             this.labelInvoiceDate = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.labelInvoiceNumber = new System.Windows.Forms.Label();
-            this.textBoxTotalSalesAmount = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridViewTenderPayType = new System.Windows.Forms.DataGridView();
             this.ColumnTenderListPayTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +64,7 @@
             this.ColumnTenderListNumpad = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnTenderListPayTypeAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTenderListPayTypeOtherInformation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTenderListPayTypeSalesReturnSalesId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -265,6 +266,23 @@
             this.panel2.Size = new System.Drawing.Size(748, 61);
             this.panel2.TabIndex = 7;
             // 
+            // textBoxTotalSalesAmount
+            // 
+            this.textBoxTotalSalesAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxTotalSalesAmount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBoxTotalSalesAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxTotalSalesAmount.Font = new System.Drawing.Font("Segoe UI Semibold", 35F, System.Drawing.FontStyle.Bold);
+            this.textBoxTotalSalesAmount.ForeColor = System.Drawing.Color.White;
+            this.textBoxTotalSalesAmount.Location = new System.Drawing.Point(426, -3);
+            this.textBoxTotalSalesAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxTotalSalesAmount.Name = "textBoxTotalSalesAmount";
+            this.textBoxTotalSalesAmount.ReadOnly = true;
+            this.textBoxTotalSalesAmount.Size = new System.Drawing.Size(311, 63);
+            this.textBoxTotalSalesAmount.TabIndex = 1;
+            this.textBoxTotalSalesAmount.TabStop = false;
+            this.textBoxTotalSalesAmount.Text = "0.00";
+            this.textBoxTotalSalesAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -382,23 +400,6 @@
             this.labelInvoiceNumber.TabIndex = 6;
             this.labelInvoiceNumber.Text = "0000000000";
             // 
-            // textBoxTotalSalesAmount
-            // 
-            this.textBoxTotalSalesAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxTotalSalesAmount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBoxTotalSalesAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxTotalSalesAmount.Font = new System.Drawing.Font("Segoe UI Semibold", 35F, System.Drawing.FontStyle.Bold);
-            this.textBoxTotalSalesAmount.ForeColor = System.Drawing.Color.White;
-            this.textBoxTotalSalesAmount.Location = new System.Drawing.Point(426, -3);
-            this.textBoxTotalSalesAmount.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxTotalSalesAmount.Name = "textBoxTotalSalesAmount";
-            this.textBoxTotalSalesAmount.ReadOnly = true;
-            this.textBoxTotalSalesAmount.Size = new System.Drawing.Size(311, 63);
-            this.textBoxTotalSalesAmount.TabIndex = 1;
-            this.textBoxTotalSalesAmount.TabStop = false;
-            this.textBoxTotalSalesAmount.Text = "0.00";
-            this.textBoxTotalSalesAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.dataGridViewTenderPayType);
@@ -434,7 +435,8 @@
             this.ColumnTenderListPayTypePayType,
             this.ColumnTenderListNumpad,
             this.ColumnTenderListPayTypeAmount,
-            this.ColumnTenderListPayTypeOtherInformation});
+            this.ColumnTenderListPayTypeOtherInformation,
+            this.ColumnTenderListPayTypeSalesReturnSalesId});
             this.dataGridViewTenderPayType.Location = new System.Drawing.Point(10, 5);
             this.dataGridViewTenderPayType.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewTenderPayType.MultiSelect = false;
@@ -500,6 +502,12 @@
             this.ColumnTenderListPayTypeOtherInformation.Name = "ColumnTenderListPayTypeOtherInformation";
             this.ColumnTenderListPayTypeOtherInformation.Visible = false;
             // 
+            // ColumnTenderListPayTypeSalesReturnSalesId
+            // 
+            this.ColumnTenderListPayTypeSalesReturnSalesId.HeaderText = "Sales Return Sales Id";
+            this.ColumnTenderListPayTypeSalesReturnSalesId.Name = "ColumnTenderListPayTypeSalesReturnSalesId";
+            this.ColumnTenderListPayTypeSalesReturnSalesId.Visible = false;
+            // 
             // TrnPOSTenderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -554,15 +562,16 @@
         private System.Windows.Forms.Button buttonSales;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridView dataGridViewTenderPayType;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label labelRemarks;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelCustomerCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypePayTypeCode;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnTenderListPayTypePayType;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnTenderListNumpad;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeOtherInformation;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label labelRemarks;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label labelCustomerCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeSalesReturnSalesId;
     }
 }
