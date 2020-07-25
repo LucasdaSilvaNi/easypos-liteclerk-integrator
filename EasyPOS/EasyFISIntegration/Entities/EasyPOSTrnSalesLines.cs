@@ -2,7 +2,7 @@
 
 namespace EasyPOS.EasyFISIntegration.Entities
 {
-    public class EasyPOSTrnCollectionLines
+    public class EasyPOSTrnSalesLines
     {
         public String ItemManualArticleCode { get; set; }
         public String Particulars { get; set; }

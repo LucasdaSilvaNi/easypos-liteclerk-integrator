@@ -457,6 +457,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     dataGridViewTenderPayType.CurrentRow.Cells[4].Value = trnSalesEntity.Amount.ToString("#,##0.00");
                     ComputeAmount();
                 }
+                else if (payTypeCode == "EXCHANGE")
+                {
+                    dataGridViewTenderPayType.CurrentRow.Cells[4].Value = trnSalesEntity.Amount.ToString("#,##0.00");
+                    ComputeAmount();
+                }
                 else
                 {
                     TrnPOSTenderMoreInformationForm trnSalesDetailTenderMoreInfoForm = new TrnPOSTenderMoreInformationForm(this, dataGridViewTenderPayType);

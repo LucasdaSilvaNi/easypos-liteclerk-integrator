@@ -154,8 +154,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                                                     {
                                                         Task taskCollection = Task.Run(() =>
                                                         {
-                                                            EasyFISIntegration.Controllers.EasyPOSTrnCollectionController objTrnCollection = new EasyFISIntegration.Controllers.EasyPOSTrnCollectionController(this);
-                                                            objTrnCollection.SyncCollection(apiUrlHost, branchCode, userCode);
+                                                            EasyFISIntegration.Controllers.EasyPOSTrnSalesController objTrnCollection = new EasyFISIntegration.Controllers.EasyPOSTrnSalesController(this);
+                                                            objTrnCollection.SyncSales(apiUrlHost, branchCode, userCode);
                                                         });
                                                         taskCollection.Wait();
 

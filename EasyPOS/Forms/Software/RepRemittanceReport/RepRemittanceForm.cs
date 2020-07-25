@@ -168,5 +168,10 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
         {
             GetRemittanceNumberList();
         }
+
+        private void comboBoxUser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetRemittanceNumberList();
+        }
     }
 }

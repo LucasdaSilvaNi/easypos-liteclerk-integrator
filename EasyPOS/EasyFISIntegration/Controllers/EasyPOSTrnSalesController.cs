@@ -9,50 +9,49 @@ using System.Web.Script.Serialization;
 
 namespace EasyPOS.EasyFISIntegration.Controllers
 {
-    class EasyPOSTrnSalesReturnController
+    class EasyPOSTrnSalesController
     {
         // ====
         // Data
         // ====
         private Data.easyposdbDataContext posdb = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
-
         public Forms.Software.SysSettings.SysSettingsForm sysSettingsForm;
 
         // ===========
         // Constructor
         // ===========
-        public EasyPOSTrnSalesReturnController(Forms.Software.SysSettings.SysSettingsForm form)
+        public EasyPOSTrnSalesController(Forms.Software.SysSettings.SysSettingsForm form)
         {
             sysSettingsForm = form;
         }
 
-        // =================
-        // Sync Sales Return
-        // =================
-        public async void SyncSalesReturn(String apiUrlHost, String branchCode, String userCode)
+        // ==========
+        // Sync Sales
+        // ==========
+        public async void SyncSales(String apiUrlHost, String branchCode, String userCode)
         {
-            await GetSalesReturn(apiUrlHost, branchCode, userCode);
+            await GetSales(apiUrlHost, branchCode, userCode);
         }
 
-        // ================
-        // Get Sales Return
-        // ================
-        public Task GetSalesReturn(String apiUrlHost, String branchCode, String userCode)
+        // =========
+        // Get Sales
+        // =========
+        public Task GetSales(String apiUrlHost, String branchCode, String userCode)
         {
             try
             {
-                var salesReturn = from d in posdb.TrnSales
-                                  where d.IsLocked == true
-                                  && d.IsTendered == false
-                                  && d.IsCancelled == false
-                                  && d.IsReturned == true
-                                  && d.PostCode == null
-                                  select d;
+                var sales = from d in posdb.TrnSales
+                            where d.IsLocked == true
+                            && d.IsTendered == true
+                            && d.IsCancelled == false
+                            && d.IsReturned == false
+                            && d.PostCode == null
+                            select d;
 
-                if (salesReturn.Any())
+                if (sales.Any())
                 {
                     List<Entities.EasyPOSTrnSalesLines> listSalesLines = new List<Entities.EasyPOSTrnSalesLines>();
-                    foreach (var salesLine in salesReturn.FirstOrDefault().TrnSalesLines)
+                    foreach (var salesLine in sales.FirstOrDefault().TrnSalesLines)
                     {
                         listSalesLines.Add(new Entities.EasyPOSTrnSalesLines()
                         {
@@ -70,36 +69,57 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                         });
                     }
 
+                    String payTypes = "";
+                    var collection = from d in posdb.TrnCollections
+                                     where d.SalesId == sales.FirstOrDefault().Id
+                                     select d;
+
+                    if (collection.Any())
+                    {
+                        if (collection.FirstOrDefault().TrnCollectionLines.Any())
+                        {
+                            foreach (var collectionLine in collection.FirstOrDefault().TrnCollectionLines)
+                            {
+                                if (collectionLine.Amount > 0)
+                                {
+                                    payTypes += "\n" + collectionLine.MstPayType.PayType + ": " + collectionLine.Amount.ToString("#,##0.00");
+                                }
+                            }
+                        }
+                    }
+
                     var salesData = new Entities.EasyPOSTrnSales()
                     {
-                        SIDate = salesReturn.FirstOrDefault().SalesDate.ToShortDateString(),
+                        SIDate = sales.FirstOrDefault().SalesDate.ToShortDateString(),
                         BranchCode = branchCode,
-                        CustomerManualArticleCode = salesReturn.FirstOrDefault().MstCustomer.CustomerCode,
+                        CustomerManualArticleCode = sales.FirstOrDefault().MstCustomer.CustomerCode,
                         CreatedBy = userCode,
-                        Term = salesReturn.FirstOrDefault().MstTerm.Term,
-                        DocumentReference = "",
-                        ManualSINumber = "RT-" + salesReturn.FirstOrDefault().SalesNumber,
+                        Term = sales.FirstOrDefault().MstTerm.Term,
+                        DocumentReference = "OR-" + sales.FirstOrDefault().CollectionNumber,
+                        ManualSINumber = "SI-" + sales.FirstOrDefault().SalesNumber,
                         Remarks = "From EasyPOS \n"
-                                + "\nTerminal: " + salesReturn.FirstOrDefault().MstTerminal.Terminal
-                                + "\nUser: " + salesReturn.FirstOrDefault().MstUser.UserName,
+                                + "\nTerminal: " + sales.FirstOrDefault().MstTerminal.Terminal
+                                + "\nUser: " + sales.FirstOrDefault().MstUser.UserName 
+                                + payTypes,
                         ListPOSIntegrationTrnSalesInvoiceItem = listSalesLines.ToList()
                     };
 
                     String json = new JavaScriptSerializer().Serialize(salesData);
 
-                    sysSettingsForm.logMessages("Sending Sales Return...\r\n\n");
-                    sysSettingsForm.logMessages("Sales Return Number: " + salesData.ManualSINumber + "\r\n\n");
-                    sysSettingsForm.logMessages("Sales Return Date: " + salesData.SIDate + "\r\n\n");
+                    sysSettingsForm.logMessages("Sending Sales...\r\n\n");
+                    sysSettingsForm.logMessages("Sales Number: " + salesData.ManualSINumber + "\r\n\n");
+                    sysSettingsForm.logMessages("Sales Date: " + salesData.SIDate + "\r\n\n");
+                    sysSettingsForm.logMessages("OR Number: " + salesData.DocumentReference + "\r\n\n");
                     sysSettingsForm.logMessages("Amount: " + salesData.ListPOSIntegrationTrnSalesInvoiceItem.Sum(d => d.Amount).ToString("#,##0.00") + "\r\n\n");
 
-                    SendSalesReturn(apiUrlHost, json, salesReturn.FirstOrDefault().Id);
+                    SendSales(apiUrlHost, json, sales.FirstOrDefault().Id);
                 }
 
                 return Task.FromResult("");
             }
             catch (Exception e)
             {
-                sysSettingsForm.logMessages("Sales Return Error: " + e.Message + "\r\n\n");
+                sysSettingsForm.logMessages("Sales Error: " + e.Message + "\r\n\n");
                 sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                 sysSettingsForm.logMessages("\r\n\n");
 
@@ -107,10 +127,10 @@ namespace EasyPOS.EasyFISIntegration.Controllers
             }
         }
 
-        // =================
-        // Send Sales Return
-        // =================
-        public void SendSalesReturn(String apiUrlHost, String json, Int32 salesReturnId)
+        // ==========
+        // Send Sales
+        // ==========
+        public void SendSales(String apiUrlHost, String json, Int32 salesId)
         {
             try
             {
@@ -131,7 +151,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                 }
 
                 // ================
-                // Process response
+                // Process Response
                 // ================
                 var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
@@ -140,7 +160,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                     if (result != null)
                     {
                         var sales = from d in posdb.TrnSales
-                                    where d.Id == salesReturnId
+                                    where d.Id == salesId
                                     select d;
 
                         if (sales.Any())

@@ -36,7 +36,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSReturn));
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonReturn = new System.Windows.Forms.Button();
-            this.buttonRefund = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
@@ -72,7 +71,6 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.buttonReturn);
-            this.panel1.Controls.Add(this.buttonRefund);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.buttonClose);
@@ -92,7 +90,7 @@
             this.buttonReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReturn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonReturn.ForeColor = System.Drawing.Color.White;
-            this.buttonReturn.Location = new System.Drawing.Point(668, 10);
+            this.buttonReturn.Location = new System.Drawing.Point(751, 10);
             this.buttonReturn.Margin = new System.Windows.Forms.Padding(2);
             this.buttonReturn.Name = "buttonReturn";
             this.buttonReturn.Size = new System.Drawing.Size(77, 32);
@@ -101,25 +99,6 @@
             this.buttonReturn.Text = "Return";
             this.buttonReturn.UseVisualStyleBackColor = false;
             this.buttonReturn.Click += new System.EventHandler(this.buttonReturn_Click);
-            // 
-            // buttonRefund
-            // 
-            this.buttonRefund.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonRefund.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonRefund.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonRefund.FlatAppearance.BorderSize = 0;
-            this.buttonRefund.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRefund.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRefund.ForeColor = System.Drawing.Color.White;
-            this.buttonRefund.Location = new System.Drawing.Point(750, 10);
-            this.buttonRefund.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonRefund.Name = "buttonRefund";
-            this.buttonRefund.Size = new System.Drawing.Size(77, 32);
-            this.buttonRefund.TabIndex = 6;
-            this.buttonRefund.TabStop = false;
-            this.buttonRefund.Text = "Refund";
-            this.buttonRefund.UseVisualStyleBackColor = false;
-            this.buttonRefund.Click += new System.EventHandler(this.buttonRefund_Click);
             // 
             // pictureBox1
             // 
@@ -466,7 +445,6 @@
         private System.Windows.Forms.Button buttonReturnPageListNext;
         private System.Windows.Forms.Button buttonReturnPageListLast;
         private System.Windows.Forms.TextBox textBoxReturnPageNumber;
-        private System.Windows.Forms.Button buttonRefund;
         private System.Windows.Forms.Button buttonReturn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxReturnSalesNumber;

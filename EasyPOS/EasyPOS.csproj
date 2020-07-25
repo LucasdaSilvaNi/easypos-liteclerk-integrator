@@ -245,7 +245,7 @@
     <Compile Include="EasyFISIntegration\Controllers\EasyPOSMstCustomerController.cs" />
     <Compile Include="EasyFISIntegration\Controllers\EasyPOSMstItemController.cs" />
     <Compile Include="EasyFISIntegration\Controllers\EasyPOSMstSupplierController.cs" />
-    <Compile Include="EasyFISIntegration\Controllers\EasyPOSTrnCollectionController.cs" />
+    <Compile Include="EasyFISIntegration\Controllers\EasyPOSTrnSalesController.cs" />
     <Compile Include="EasyFISIntegration\Controllers\EasyPOSTrnItemPriceController.cs" />
     <Compile Include="EasyFISIntegration\Controllers\EasyPOSTrnReceivingReceiptController.cs" />
     <Compile Include="EasyFISIntegration\Controllers\EasyPOSTrnSalesOrderController.cs" />
@@ -259,8 +259,8 @@
     <Compile Include="EasyFISIntegration\Entities\EasyPOSMstItemPrice.cs" />
     <Compile Include="EasyFISIntegration\Entities\EasyPOSMstSupplier.cs" />
     <Compile Include="EasyFISIntegration\Entities\EasyPOSTrnArticlePrice.cs" />
-    <Compile Include="EasyFISIntegration\Entities\EasyPOSTrnCollection.cs" />
-    <Compile Include="EasyFISIntegration\Entities\EasyPOSTrnCollectionLines.cs" />
+    <Compile Include="EasyFISIntegration\Entities\EasyPOSTrnSales.cs" />
+    <Compile Include="EasyFISIntegration\Entities\EasyPOSTrnSalesLines.cs" />
     <Compile Include="EasyFISIntegration\Entities\EasyPOSTrnReceivingReceipt.cs" />
     <Compile Include="EasyFISIntegration\Entities\EasyPOSTrnReceivingReceiptItem.cs" />
     <Compile Include="EasyFISIntegration\Entities\EasyPOSTrnSalesOrder.cs" />
