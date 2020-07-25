@@ -30,6 +30,5 @@ namespace EasyPOS.Entities
         public Int32 UpdateUserId { get; set; }
         public String UpdateDateTime { get; set; }
         public Int32? SalesId { get; set; }
-        public String PostCode { get; set; }
     }
 }

@@ -158,7 +158,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Decimal totalVATSales = 0;
                 Decimal totalVATAmount = 0;
                 Decimal totalNonVATSales = 0;
-                Decimal totalVATExclusive = 0;
+                //Decimal totalVATExclusive = 0;
                 Decimal totalVATExempt = 0;
                 Decimal totalVATZeroRated = 0;
                 Decimal totalNumberOfItems = 0;

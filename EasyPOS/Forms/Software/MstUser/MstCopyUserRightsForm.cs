@@ -12,14 +12,13 @@ namespace EasyPOS.Forms.Software.MstUser
 {
     public partial class MstCopyUserRightsForm : Form
     {
-        private Modules.SysUserRightsModule sysUserRights;
-
         public MstUserDetailForm mstUserDetailForm;
         public Int32 userId;
 
         public MstCopyUserRightsForm(MstUserDetailForm userDetailForm, Int32 currentUserId)
         {
             InitializeComponent();
+
             mstUserDetailForm = userDetailForm;
             userId = currentUserId;
             //sysUserRights = new Modules.SysUserRightsModule("SysTables");

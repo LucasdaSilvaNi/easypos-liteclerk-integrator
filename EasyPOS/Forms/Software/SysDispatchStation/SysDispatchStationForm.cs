@@ -185,7 +185,7 @@ namespace EasyPOS.Forms.Software.SysDispatchStation
                                   ColumnManualSalesNumber = d.ManualInvoiceNumber,
                                   ColumnCustomer = d.Customer,
                                   ColumnCustomerAddress = d.Remarks,
-                                  ColumnDelivery = d.Delivery,
+                                  ColumnDelivery = d.DeliveryDriver,
                                   ColumnNumberOfItems = d.NumberOfItems.ToString("#,##0"),
                                   ColumnIsLocked = d.IsLocked,
                                   ColumnIsTendered = d.IsTendered,

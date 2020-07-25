@@ -223,6 +223,7 @@
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="ItemId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ItemGroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Show" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="MstItem_MstItemGroupItem" Member="MstItem" ThisKey="ItemId" OtherKey="Id" Type="MstItem" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="MstItemGroup_MstItemGroupItem" Member="MstItemGroup" ThisKey="ItemGroupId" OtherKey="Id" Type="MstItemGroup" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
@@ -525,7 +526,6 @@
       <Column Name="CheckedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ApprovedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="IsCancelled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="PostCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="IsLocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="EntryUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="EntryDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
@@ -560,6 +560,7 @@
       <Column Name="CreditCardBank" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="GiftCertificateNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="OtherInformation" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SalesReturnSalesId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="StockInId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="AccountId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CreditCardReferenceNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -568,6 +569,7 @@
       <Association Name="MstAccount_TrnCollectionLine" Member="MstAccount" ThisKey="AccountId" OtherKey="Id" Type="MstAccount" IsForeignKey="true" />
       <Association Name="MstPayType_TrnCollectionLine" Member="MstPayType" ThisKey="PayTypeId" OtherKey="Id" Type="MstPayType" IsForeignKey="true" />
       <Association Name="TrnCollection_TrnCollectionLine" Member="TrnCollection" ThisKey="CollectionId" OtherKey="Id" Type="TrnCollection" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="TrnSale_TrnCollectionLine" Member="TrnSale" ThisKey="SalesReturnSalesId" OtherKey="Id" Type="TrnSale" IsForeignKey="true" />
       <Association Name="TrnStockIn_TrnCollectionLine" Member="TrnStockIn" ThisKey="StockInId" OtherKey="Id" Type="TrnStockIn" IsForeignKey="true" />
     </Type>
   </Table>
@@ -623,6 +625,7 @@
       <Column Name="TerminalId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="IsReturn" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SalesReturnSalesId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="StockInId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PreparedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CheckedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -701,7 +704,6 @@
       <Column Name="UpdateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="RequestedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="TrnPurchaseOrder_TrnPurchaseOrderLine" Member="TrnPurchaseOrderLines" ThisKey="Id" OtherKey="PurchaseOrderId" Type="TrnPurchaseOrderLine" />
-      <Association Name="TrnPurchaseOrder_TrnStockIn" Member="TrnStockIns" ThisKey="Id" OtherKey="PurchaseOrderId" Type="TrnStockIn" />
       <Association Name="MstPeriod_TrnPurchaseOrder" Member="MstPeriod" ThisKey="PeriodId" OtherKey="Id" Type="MstPeriod" IsForeignKey="true" />
       <Association Name="MstSupplier_TrnPurchaseOrder" Member="MstSupplier" ThisKey="SupplierId" OtherKey="Id" Type="MstSupplier" IsForeignKey="true" />
       <Association Name="MstUser_TrnPurchaseOrder" Member="MstUser" ThisKey="PreparedBy" OtherKey="Id" Type="MstUser" IsForeignKey="true" />
@@ -735,6 +737,7 @@
       <Column Name="CollectionNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
       <Column Name="TableId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TableStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CustomerId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="AccountId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TermId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -745,6 +748,8 @@
       <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="SalesAgent" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TerminalId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeliveryDriver" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="PreparedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CheckedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ApprovedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -752,7 +757,8 @@
       <Column Name="IsTendered" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="IsCancelled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="IsDispatched" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Delivery" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="IsReturned" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ReturnApplication" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="PaidAmount" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
       <Column Name="CreditAmount" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
       <Column Name="DebitAmount" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
@@ -762,9 +768,10 @@
       <Column Name="UpdateUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="UpdateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="Pax" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TableStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PostCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="TrnSale_SysSalesLocked" Member="SysSalesLockeds" ThisKey="Id" OtherKey="SalesId" Type="SysSalesLocked" />
       <Association Name="TrnSale_TrnCollection" Member="TrnCollections" ThisKey="Id" OtherKey="SalesId" Type="TrnCollection" />
+      <Association Name="TrnSale_TrnCollectionLine" Member="TrnCollectionLines" ThisKey="Id" OtherKey="SalesReturnSalesId" Type="TrnCollectionLine" />
       <Association Name="TrnSale_TrnDebitCreditMemoLine" Member="TrnDebitCreditMemoLines" ThisKey="Id" OtherKey="SalesId" Type="TrnDebitCreditMemoLine" />
       <Association Name="TrnSale_TrnJournal" Member="TrnJournals" ThisKey="Id" OtherKey="SalesId" Type="TrnJournal" />
       <Association Name="TrnSale_TrnSalesLine" Member="TrnSalesLines" ThisKey="Id" OtherKey="SalesId" Type="TrnSalesLine" />
@@ -895,13 +902,12 @@
       <Column Name="PreparedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CheckedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ApprovedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="SalesId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PostCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="IsLocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="EntryUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="EntryDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="UpdateUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="UpdateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SalesId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="TrnStockIn_TrnCollectionLine" Member="TrnCollectionLines" ThisKey="Id" OtherKey="StockInId" Type="TrnCollectionLine" />
       <Association Name="TrnStockIn_TrnDisbursement" Member="TrnDisbursements" ThisKey="Id" OtherKey="StockInId" Type="TrnDisbursement" />
       <Association Name="TrnStockIn_TrnJournal" Member="TrnJournals" ThisKey="Id" OtherKey="StockInId" Type="TrnJournal" />
@@ -914,7 +920,6 @@
       <Association Name="MstUser_TrnStockIn3" Member="MstUser3" ThisKey="EntryUserId" OtherKey="Id" Type="MstUser" IsForeignKey="true" />
       <Association Name="MstUser_TrnStockIn4" Member="MstUser4" ThisKey="UpdateUserId" OtherKey="Id" Type="MstUser" IsForeignKey="true" />
       <Association Name="TrnCollection_TrnStockIn" Member="TrnCollection" ThisKey="CollectionId" OtherKey="Id" Type="TrnCollection" IsForeignKey="true" />
-      <Association Name="TrnPurchaseOrder_TrnStockIn" Member="TrnPurchaseOrder" ThisKey="PurchaseOrderId" OtherKey="Id" Type="TrnPurchaseOrder" IsForeignKey="true" />
       <Association Name="TrnSale_TrnStockIn" Member="TrnSale" ThisKey="SalesId" OtherKey="Id" Type="TrnSale" IsForeignKey="true" />
     </Type>
   </Table>

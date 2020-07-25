@@ -42,7 +42,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
             {
                 var collections = from d in posdb.TrnCollections 
                                   where d.SalesId != null 
-                                  && d.PostCode == null 
+                                  //&& d.PostCode == null 
                                   && d.IsLocked == true 
                                   select d;
 
@@ -155,7 +155,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                         if (currentCollection.Any())
                         {
                             var updateCollection = currentCollection.FirstOrDefault();
-                            updateCollection.PostCode = result.Replace("\"", "");
+                            //updateCollection.PostCode = result.Replace("\"", "");
                             posdb.SubmitChanges();
                         }
 

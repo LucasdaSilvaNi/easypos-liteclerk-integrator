@@ -28,14 +28,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             labelInvoiceNumber.Text = trnSalesEntity.SalesNumber;
 
             Boolean isLocked = trnSalesEntity.IsLocked;
-            Boolean isCanclled = trnSalesEntity.IsCancelled;
             Boolean isTendered = trnSalesEntity.IsTendered;
+            Boolean isCanclled = trnSalesEntity.IsCancelled;
 
-            if (isLocked == true)
-            {
-                buttonDeliver.Enabled = false;
-            }
-            else if (isTendered == true)
+            if (isLocked == true && isTendered == true && isCanclled == false)
             {
                 buttonEditOrder.Enabled = false;
                 buttonBillOut.Enabled = false;
@@ -44,7 +40,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 buttonTender.Enabled = false;
                 buttonDeliver.Enabled = false;
             }
-            else if (isCanclled == true)
+            else if (isLocked == true && isTendered == true && isCanclled == true)
             {
                 buttonEditOrder.Enabled = false;
                 buttonBillOut.Enabled = false;
@@ -53,6 +49,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 buttonTender.Enabled = false;
                 buttonCancel.Enabled = false;
                 buttonDeliver.Enabled = false;
+            }
+            else if (isLocked == true)
+            {
+                buttonDeliver.Enabled = false;
+                buttonCancel.Enabled = false;
             }
             else
             {

@@ -306,9 +306,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     }
 
                     Int32 collectionId = trnSalesController.GetCurrentCollection(textBoxReturnORNumber.Text).Id;
-                    Int32 salesId = Convert.ToInt32(trnSalesController.GetCurrentCollection(textBoxReturnORNumber.Text).SalesId);
 
-                    String[] returnSalesItems = trnSalesController.ReturnSalesItems(currentSalesId, collectionId, salesId, newStockInLines);
+                    String[] returnSalesItems = trnSalesController.ReturnSalesItems(currentSalesId, collectionId, newStockInLines);
                     if (returnSalesItems[1].Equals("0") == false)
                     {
                         MessageBox.Show("Items were successfully returned.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);

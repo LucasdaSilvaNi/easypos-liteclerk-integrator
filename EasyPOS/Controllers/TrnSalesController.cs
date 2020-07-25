@@ -63,7 +63,7 @@ namespace EasyPOS.Controllers
                         || d.MstCustomer.Customer.Contains(filter)
                         || d.MstUser5.UserName.Contains(filter)
                         || d.Remarks.Contains(filter)
-                        || d.Delivery.Contains(filter))
+                        || d.DeliveryDriver.Contains(filter))
                         select new Entities.TrnSalesEntity
                         {
                             Id = d.Id,
@@ -76,9 +76,11 @@ namespace EasyPOS.Controllers
                             Amount = d.Amount,
                             TableId = d.TableId,
                             Table = d.TableId != null ? d.MstTable.TableCode : "",
+                            TableStatus = d.TableStatus,
                             CustomerId = d.CustomerId,
                             CustomerCode = d.MstCustomer.CustomerCode,
                             Customer = d.MstCustomer.Customer,
+                            CustomerAddress = d.MstCustomer.Address,
                             AccountId = d.AccountId,
                             TermId = d.TermId,
                             Term = d.MstTerm.Term,
@@ -91,6 +93,8 @@ namespace EasyPOS.Controllers
                             SalesAgentUserName = d.SalesAgent != null ? d.MstUser5.UserName : "",
                             TerminalId = d.TerminalId,
                             Terminal = d.MstTerminal.Terminal,
+                            DeliveryId = d.DeliveryId,
+                            DeliveryDriver = d.DeliveryDriver,
                             PreparedBy = d.PreparedBy,
                             PreparedByUserName = d.MstUser.FullName,
                             CheckedBy = d.CheckedBy,
@@ -101,7 +105,8 @@ namespace EasyPOS.Controllers
                             IsTendered = d.IsTendered,
                             IsCancelled = d.IsCancelled,
                             IsDispatched = d.IsDispatched,
-                            Delivery = d.Delivery,
+                            IsReturned = d.IsReturned,
+                            ReturnApplication = d.ReturnApplication,
                             PaidAmount = d.PaidAmount,
                             CreditAmount = d.CreditAmount,
                             DebitAmount = d.DebitAmount,
@@ -113,7 +118,7 @@ namespace EasyPOS.Controllers
                             UpdatedUserName = d.MstUser4.FullName,
                             UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
                             Pax = d.Pax,
-                            TableStatus = d.TableStatus
+                            PostCode = d.PostCode
                         };
 
             return sales.OrderByDescending(d => d.Id).ToList();
@@ -144,9 +149,11 @@ namespace EasyPOS.Controllers
                             Amount = d.Amount,
                             TableId = d.TableId,
                             Table = d.TableId != null ? d.MstTable.TableCode : "",
+                            TableStatus = d.TableStatus,
                             CustomerId = d.CustomerId,
                             CustomerCode = d.MstCustomer.CustomerCode,
                             Customer = d.MstCustomer.Customer,
+                            CustomerAddress = d.MstCustomer.Address,
                             AccountId = d.AccountId,
                             TermId = d.TermId,
                             Term = d.MstTerm.Term,
@@ -159,6 +166,8 @@ namespace EasyPOS.Controllers
                             SalesAgentUserName = d.SalesAgent != null ? d.MstUser5.UserName : "",
                             TerminalId = d.TerminalId,
                             Terminal = d.MstTerminal.Terminal,
+                            DeliveryId = d.DeliveryId,
+                            DeliveryDriver = d.DeliveryDriver,
                             PreparedBy = d.PreparedBy,
                             PreparedByUserName = d.MstUser.FullName,
                             CheckedBy = d.CheckedBy,
@@ -169,7 +178,8 @@ namespace EasyPOS.Controllers
                             IsTendered = d.IsTendered,
                             IsCancelled = d.IsCancelled,
                             IsDispatched = d.IsDispatched,
-                            Delivery = d.Delivery,
+                            IsReturned = d.IsReturned,
+                            ReturnApplication = d.ReturnApplication,
                             PaidAmount = d.PaidAmount,
                             CreditAmount = d.CreditAmount,
                             DebitAmount = d.DebitAmount,
@@ -181,7 +191,7 @@ namespace EasyPOS.Controllers
                             UpdatedUserName = d.MstUser4.FullName,
                             UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
                             Pax = d.Pax,
-                            TableStatus = d.TableStatus,
+                            PostCode = d.PostCode
                         };
 
             return sales.OrderByDescending(d => d.Id).ToList();
@@ -206,9 +216,11 @@ namespace EasyPOS.Controllers
                             Amount = d.Amount,
                             TableId = d.TableId,
                             Table = d.TableId != null ? d.MstTable.TableCode : "",
+                            TableStatus = d.TableStatus,
                             CustomerId = d.CustomerId,
                             CustomerCode = d.MstCustomer.CustomerCode,
                             Customer = d.MstCustomer.Customer,
+                            CustomerAddress = d.MstCustomer.Address,
                             AccountId = d.AccountId,
                             TermId = d.TermId,
                             Term = d.MstTerm.Term,
@@ -221,6 +233,8 @@ namespace EasyPOS.Controllers
                             SalesAgentUserName = d.SalesAgent != null ? d.MstUser5.UserName : "",
                             TerminalId = d.TerminalId,
                             Terminal = d.MstTerminal.Terminal,
+                            DeliveryId = d.DeliveryId,
+                            DeliveryDriver = d.DeliveryDriver,
                             PreparedBy = d.PreparedBy,
                             PreparedByUserName = d.MstUser.FullName,
                             CheckedBy = d.CheckedBy,
@@ -231,7 +245,8 @@ namespace EasyPOS.Controllers
                             IsTendered = d.IsTendered,
                             IsCancelled = d.IsCancelled,
                             IsDispatched = d.IsDispatched,
-                            Delivery = d.Delivery,
+                            IsReturned = d.IsReturned,
+                            ReturnApplication = d.ReturnApplication,
                             PaidAmount = d.PaidAmount,
                             CreditAmount = d.CreditAmount,
                             DebitAmount = d.DebitAmount,
@@ -243,7 +258,7 @@ namespace EasyPOS.Controllers
                             UpdatedUserName = d.MstUser4.FullName,
                             UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
                             Pax = d.Pax,
-                            TableStatus = d.TableStatus,
+                            PostCode = d.PostCode
                         };
 
             return sales.FirstOrDefault();
@@ -337,6 +352,7 @@ namespace EasyPOS.Controllers
                     CollectionNumber = null,
                     Amount = 0,
                     TableId = tableId,
+                    TableStatus = 0,
                     CustomerId = customer.FirstOrDefault().Id,
                     AccountId = customer.FirstOrDefault().AccountId,
                     TermId = customer.FirstOrDefault().TermId,
@@ -347,6 +363,8 @@ namespace EasyPOS.Controllers
                     Remarks = "",
                     SalesAgent = user.FirstOrDefault().Id,
                     TerminalId = terminal.FirstOrDefault().Id,
+                    DeliveryId = null,
+                    DeliveryDriver = "",
                     PreparedBy = user.FirstOrDefault().Id,
                     CheckedBy = user.FirstOrDefault().Id,
                     ApprovedBy = user.FirstOrDefault().Id,
@@ -354,7 +372,8 @@ namespace EasyPOS.Controllers
                     IsTendered = false,
                     IsCancelled = false,
                     IsDispatched = false,
-                    Delivery = "",
+                    IsReturned = false,
+                    ReturnApplication = "",
                     PaidAmount = 0,
                     CreditAmount = 0,
                     DebitAmount = 0,
@@ -364,7 +383,7 @@ namespace EasyPOS.Controllers
                     UpdateUserId = user.FirstOrDefault().Id,
                     UpdateDateTime = DateTime.Now,
                     Pax = null,
-                    TableStatus = 0,
+                    PostCode = null
                 };
 
                 db.TrnSales.InsertOnSubmit(newSales);
@@ -565,7 +584,6 @@ namespace EasyPOS.Controllers
                     CheckedBy = user.FirstOrDefault().Id,
                     ApprovedBy = user.FirstOrDefault().Id,
                     IsCancelled = false,
-                    PostCode = null,
                     IsLocked = false,
                     EntryUserId = user.FirstOrDefault().Id,
                     EntryDateTime = DateTime.Now,
@@ -621,6 +639,7 @@ namespace EasyPOS.Controllers
                                 CreditCardBank = collectionLine.CreditCardBank,
                                 GiftCertificateNumber = collectionLine.GiftCertificateNumber,
                                 OtherInformation = collectionLine.OtherInformation,
+                                SalesReturnSalesId = collectionLine.SalesReturnSalesId,
                                 StockInId = null,
                                 AccountId = Convert.ToInt32(payType.FirstOrDefault().AccountId),
                                 CreditCardReferenceNumber = collectionLine.CreditCardReferenceNumber,
@@ -1273,6 +1292,9 @@ namespace EasyPOS.Controllers
                     updateSales.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
 
+                    Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
+                    trnInventoryModule.UpdateSalesInventory(salesId);
+
                     return new String[] { "", "1" };
                 }
                 else
@@ -1304,6 +1326,9 @@ namespace EasyPOS.Controllers
                     updateSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
                     updateSales.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
+
+                    Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
+                    trnInventoryModule.UpdateSalesInventory(salesId);
 
                     return new String[] { "", "1" };
                 }
@@ -1465,10 +1490,10 @@ namespace EasyPOS.Controllers
             }
         }
 
-        // ====================
-        // Return (Add Stock-In
-        // ====================
-        public String[] ReturnSalesItems(Int32 currentSalesId, Int32 collectionId, Int32 salesId, List<Entities.TrnSalesLineEntity> objSalesLines)
+        // ============
+        // Sales Return
+        // ============
+        public String[] ReturnSalesItems(Int32 currentSalesId, Int32 collectionId, List<Entities.TrnSalesLineEntity> objSalesLines)
         {
             try
             {
@@ -1496,7 +1521,7 @@ namespace EasyPOS.Controllers
                 }
 
                 var sales = from d in db.TrnSales
-                            where d.Id == salesId
+                            where d.Id == collection.FirstOrDefault().SalesId
                             && d.IsLocked == true
                             && d.IsCancelled == false
                             select d;
@@ -1506,7 +1531,7 @@ namespace EasyPOS.Controllers
                     return new String[] { "Sales not found.", "0" };
                 }
 
-
+                Decimal totalAmount = 0;
 
                 List<Data.TrnSalesLine> newSalesLines = new List<Data.TrnSalesLine>();
                 if (objSalesLines.Any())
@@ -1554,11 +1579,33 @@ namespace EasyPOS.Controllers
                                 Price2LessTax = 0,
                                 PriceSplitPercentage = 0,
                             });
+
+                            totalAmount += amount;
                         }
                     }
 
                     db.TrnSalesLines.InsertAllOnSubmit(newSalesLines);
                     db.SubmitChanges();
+                }
+
+                var currentSales = from d in db.TrnSales
+                                   where d.Id == currentSalesId
+                                   select d;
+
+                if (currentSales.Any())
+                {
+                    var updateSales = currentSales.FirstOrDefault();
+                    updateSales.Amount = totalAmount;
+                    updateSales.Remarks = "Return from customer.";
+                    updateSales.IsReturned = true;
+                    updateSales.ReturnApplication = "Return";
+                    updateSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
+                    updateSales.UpdateDateTime = DateTime.Now;
+                    db.SubmitChanges();
+                }
+                else
+                {
+                    return new String[] { "Current sales not found.", "0" };
                 }
 
                 String newObject = Modules.SysAuditTrailModule.GetObjectString(newSalesLines);
@@ -1599,7 +1646,7 @@ namespace EasyPOS.Controllers
                             && (d.SalesNumber.Contains(filter)
                             || d.ManualInvoiceNumber.Contains(filter)
                             || d.MstCustomer.Customer.Contains(filter)
-                            || d.Delivery.Contains(filter))
+                            || d.DeliveryDriver.Contains(filter))
                             select new Entities.TrnSalesEntity
                             {
                                 Id = d.Id,
@@ -1612,6 +1659,7 @@ namespace EasyPOS.Controllers
                                 Amount = d.Amount,
                                 TableId = d.TableId,
                                 Table = d.TableId != null ? d.MstTable.TableCode : "",
+                                TableStatus = d.TableStatus,
                                 CustomerId = d.CustomerId,
                                 CustomerCode = d.MstCustomer.CustomerCode,
                                 Customer = d.MstCustomer.Customer,
@@ -1628,6 +1676,8 @@ namespace EasyPOS.Controllers
                                 SalesAgentUserName = d.SalesAgent != null ? d.MstUser5.UserName : "",
                                 TerminalId = d.TerminalId,
                                 Terminal = d.MstTerminal.Terminal,
+                                DeliveryId = d.DeliveryId,
+                                DeliveryDriver = d.DeliveryDriver != null ? d.DeliveryDriver : "",
                                 PreparedBy = d.PreparedBy,
                                 PreparedByUserName = d.MstUser.FullName,
                                 CheckedBy = d.CheckedBy,
@@ -1638,7 +1688,8 @@ namespace EasyPOS.Controllers
                                 IsTendered = d.IsTendered,
                                 IsCancelled = d.IsCancelled,
                                 IsDispatched = d.IsDispatched,
-                                Delivery = d.Delivery != null ? d.Delivery : "",
+                                IsReturned = d.IsReturned,
+                                ReturnApplication = d.ReturnApplication,
                                 PaidAmount = d.PaidAmount,
                                 CreditAmount = d.CreditAmount,
                                 DebitAmount = d.DebitAmount,
@@ -1650,7 +1701,6 @@ namespace EasyPOS.Controllers
                                 UpdatedUserName = d.MstUser4.FullName,
                                 UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
                                 Pax = d.Pax,
-                                TableStatus = d.TableStatus,
                                 NumberOfItems = d.TrnSalesLines.Any() ? d.TrnSalesLines.Count() : 0,
                                 NumberOfItemsPrepared = d.TrnSalesLines.Any() ? d.TrnSalesLines.Where(i => i.IsPrepared == true).Count() : 0,
                                 Status = d.TrnSalesLines.Any() ? d.TrnSalesLines.Count() - d.TrnSalesLines.Where(i => i.IsPrepared == true).Count() == 0 ? "Ready for Dispatch" : "Preparing" : ""
@@ -1670,7 +1720,7 @@ namespace EasyPOS.Controllers
                             && (d.SalesNumber.Contains(filter)
                             || d.ManualInvoiceNumber.Contains(filter)
                             || d.MstCustomer.Customer.Contains(filter)
-                            || d.Delivery.Contains(filter))
+                            || d.DeliveryDriver.Contains(filter))
                             select new Entities.TrnSalesEntity
                             {
                                 Id = d.Id,
@@ -1683,6 +1733,7 @@ namespace EasyPOS.Controllers
                                 Amount = d.Amount,
                                 TableId = d.TableId,
                                 Table = d.TableId != null ? d.MstTable.TableCode : "",
+                                TableStatus = d.TableStatus,
                                 CustomerId = d.CustomerId,
                                 CustomerCode = d.MstCustomer.CustomerCode,
                                 Customer = d.MstCustomer.Customer,
@@ -1699,6 +1750,8 @@ namespace EasyPOS.Controllers
                                 SalesAgentUserName = d.SalesAgent != null ? d.MstUser5.UserName : "",
                                 TerminalId = d.TerminalId,
                                 Terminal = d.MstTerminal.Terminal,
+                                DeliveryId = d.DeliveryId,
+                                DeliveryDriver = d.DeliveryDriver != null ? d.DeliveryDriver : "",
                                 PreparedBy = d.PreparedBy,
                                 PreparedByUserName = d.MstUser.FullName,
                                 CheckedBy = d.CheckedBy,
@@ -1709,7 +1762,8 @@ namespace EasyPOS.Controllers
                                 IsTendered = d.IsTendered,
                                 IsCancelled = d.IsCancelled,
                                 IsDispatched = d.IsDispatched,
-                                Delivery = d.Delivery != null ? d.Delivery : "",
+                                IsReturned = d.IsReturned,
+                                ReturnApplication = d.ReturnApplication,
                                 PaidAmount = d.PaidAmount,
                                 CreditAmount = d.CreditAmount,
                                 DebitAmount = d.DebitAmount,
@@ -1721,7 +1775,6 @@ namespace EasyPOS.Controllers
                                 UpdatedUserName = d.MstUser4.FullName,
                                 UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
                                 Pax = d.Pax,
-                                TableStatus = d.TableStatus,
                                 NumberOfItems = d.TrnSalesLines.Any() ? d.TrnSalesLines.Count() : 0,
                                 NumberOfItemsPrepared = d.TrnSalesLines.Any() ? d.TrnSalesLines.Where(i => i.IsPrepared == true).Count() : 0,
                                 Status = "To be delivered"
@@ -1741,7 +1794,7 @@ namespace EasyPOS.Controllers
                             && (d.SalesNumber.Contains(filter)
                             || d.ManualInvoiceNumber.Contains(filter)
                             || d.MstCustomer.Customer.Contains(filter)
-                            || d.Delivery.Contains(filter))
+                            || d.DeliveryDriver.Contains(filter))
                             select new Entities.TrnSalesEntity
                             {
                                 Id = d.Id,
@@ -1754,6 +1807,7 @@ namespace EasyPOS.Controllers
                                 Amount = d.Amount,
                                 TableId = d.TableId,
                                 Table = d.TableId != null ? d.MstTable.TableCode : "",
+                                TableStatus = d.TableStatus,
                                 CustomerId = d.CustomerId,
                                 CustomerCode = d.MstCustomer.CustomerCode,
                                 Customer = d.MstCustomer.Customer,
@@ -1770,6 +1824,8 @@ namespace EasyPOS.Controllers
                                 SalesAgentUserName = d.SalesAgent != null ? d.MstUser5.UserName : "",
                                 TerminalId = d.TerminalId,
                                 Terminal = d.MstTerminal.Terminal,
+                                DeliveryId = d.DeliveryId,
+                                DeliveryDriver = d.DeliveryDriver != null ? d.DeliveryDriver : "",
                                 PreparedBy = d.PreparedBy,
                                 PreparedByUserName = d.MstUser.FullName,
                                 CheckedBy = d.CheckedBy,
@@ -1780,7 +1836,8 @@ namespace EasyPOS.Controllers
                                 IsTendered = d.IsTendered,
                                 IsCancelled = d.IsCancelled,
                                 IsDispatched = d.IsDispatched,
-                                Delivery = d.Delivery != null ? d.Delivery : "",
+                                IsReturned = d.IsReturned,
+                                ReturnApplication = d.ReturnApplication,
                                 PaidAmount = d.PaidAmount,
                                 CreditAmount = d.CreditAmount,
                                 DebitAmount = d.DebitAmount,
@@ -1792,7 +1849,6 @@ namespace EasyPOS.Controllers
                                 UpdatedUserName = d.MstUser4.FullName,
                                 UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
                                 Pax = d.Pax,
-                                TableStatus = d.TableStatus,
                                 NumberOfItems = d.TrnSalesLines.Any() ? d.TrnSalesLines.Count() : 0,
                                 NumberOfItemsPrepared = d.TrnSalesLines.Any() ? d.TrnSalesLines.Where(i => i.IsPrepared == true).Count() : 0,
                                 Status = "Paid and Delivered"
@@ -1858,14 +1914,14 @@ namespace EasyPOS.Controllers
         // ============================
         // Inform EasyShop for Dispatch
         // ============================
-        public void EasyShopReadyForDispatchRequest(String documentReference)
+        public void EasyShopReadyForDispatchRequest(Int32 deliveryId)
         {
             try
             {
                 // ============
                 // Http Request
                 // ============
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://api.mirkadu.com/easydelivery/deliveries/" + documentReference + "/ready");
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://api.mirkadu.com/easydelivery/deliveries/" + deliveryId + "/ready");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "PATCH";
 
@@ -1958,7 +2014,7 @@ namespace EasyPOS.Controllers
                     }
 
                     var updateSales = sales.FirstOrDefault();
-                    updateSales.Delivery = driverName;
+                    updateSales.DeliveryDriver = driverName;
                     updateSales.IsLocked = true;
                     updateSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
                     updateSales.UpdateDateTime = DateTime.Now;
@@ -2049,6 +2105,9 @@ namespace EasyPOS.Controllers
             }
         }
 
+        // ================================
+        // Inform EasyShop for Already Paid
+        // ================================
         public void EasyShopAlreadyPaid(String documentReference)
         {
             try
@@ -2078,6 +2137,9 @@ namespace EasyPOS.Controllers
             }
         }
 
+        // ================
+        // Tender All Sales
+        // ================
         public String[] TenderAllSales(List<Int32> salesIds)
         {
             try
@@ -2224,7 +2286,6 @@ namespace EasyPOS.Controllers
                             CheckedBy = currentUserLogin.FirstOrDefault().Id,
                             ApprovedBy = currentUserLogin.FirstOrDefault().Id,
                             IsCancelled = false,
-                            PostCode = null,
                             IsLocked = false,
                             EntryUserId = currentUserLogin.FirstOrDefault().Id,
                             EntryDateTime = DateTime.Now,
@@ -2258,6 +2319,7 @@ namespace EasyPOS.Controllers
                             CreditCardBank = "NA",
                             GiftCertificateNumber = "NA",
                             OtherInformation = "NA",
+                            SalesReturnSalesId = null,
                             StockInId = null,
                             AccountId = Convert.ToInt32(payType.FirstOrDefault().AccountId),
                             CreditCardReferenceNumber = "NA",

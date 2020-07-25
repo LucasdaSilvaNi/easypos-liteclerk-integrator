@@ -250,7 +250,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                   ColumnSpace = "",
                                   ColumnTable = d.Table,
                                   ColumnManualSalesNumber = d.ManualInvoiceNumber,
-                                  ColumnDelivery = d.Delivery
+                                  ColumnDelivery = d.DeliveryDriver
                               };
 
                     rowList = row.ToList();

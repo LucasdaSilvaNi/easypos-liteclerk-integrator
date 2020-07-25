@@ -146,7 +146,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 else
                 {
                     buttonTender.Enabled = false;
-                    //MessageBox.Show(invalidTenderMessage, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(invalidTenderMessage, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

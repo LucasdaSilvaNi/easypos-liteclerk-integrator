@@ -395,7 +395,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                   ColumnSpace = "",
                                   ColumnRemarks = d.Remarks,
                                   ColumnAmount = d.Amount.ToString("#,##0.00"),
-                                  ColumnDelivery = d.Delivery,
+                                  ColumnDelivery = d.DeliveryDriver,
                               };
 
                     rowList = row.ToList();

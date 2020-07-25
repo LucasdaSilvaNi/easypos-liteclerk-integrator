@@ -159,7 +159,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                         IsTendered = false,
                                         IsCancelled = false,
                                         IsDispatched = false,
-                                        Delivery = "",
+                                        DeliveryDriver = "",
                                         PaidAmount = 0,
                                         CreditAmount = 0,
                                         DebitAmount = 0,

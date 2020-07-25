@@ -17,6 +17,8 @@ namespace EasyPOS.Entities
         public String CollectionNumber { get; set; }
         public Decimal Amount { get; set; }
         public Int32? TableId { get; set; }
+        public String Table { get; set; }
+        public Int32 TableStatus { get; set; }
         public Int32 CustomerId { get; set; }
         public String CustomerCode { get; set; }
         public String Customer { get; set; }
@@ -33,6 +35,8 @@ namespace EasyPOS.Entities
         public String SalesAgentUserName { get; set; }
         public Int32 TerminalId { get; set; }
         public String Terminal { get; set; }
+        public Int32? DeliveryId { get; set; }
+        public String DeliveryDriver { get; set; }
         public Int32 PreparedBy { get; set; }
         public String PreparedByUserName { get; set; }
         public Int32 CheckedBy { get; set; }
@@ -43,7 +47,8 @@ namespace EasyPOS.Entities
         public Boolean IsTendered { get; set; }
         public Boolean IsCancelled { get; set; }
         public Boolean IsDispatched { get; set; }
-        public String Delivery { get; set; }
+        public Boolean IsReturned { get; set; }
+        public String ReturnApplication { get; set; }
         public Decimal PaidAmount { get; set; }
         public Decimal CreditAmount { get; set; }
         public Decimal DebitAmount { get; set; }
@@ -55,8 +60,7 @@ namespace EasyPOS.Entities
         public String UpdatedUserName { get; set; }
         public String UpdateDateTime { get; set; }
         public Int32? Pax { get; set; }
-        public Int32 TableStatus { get; set; }
-        public String Table { get; set; }
+        public String PostCode { get; set; }
         public Decimal NumberOfItems { get; set; }
         public Decimal NumberOfItemsPrepared { get; set; }
         public String Status { get; set; }

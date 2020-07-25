@@ -29,7 +29,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             Modules.SysSerialPortModule.OpenSerialPort();
 
-
             sysUserRights = new Modules.SysUserRightsModule("TrnSalesDetail");
             if (sysUserRights.GetUserRights() == null)
             {
@@ -37,23 +36,139 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
             else
             {
-                if (sysUserRights.GetUserRights().CanTender == false)
+                if (sysUserRights.GetUserRights().CanLock == true)
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        buttonLock.Enabled = false;
+                    }
+                    else
+                    {
+                        buttonLock.Enabled = true;
+                    }
+                }
+                else
+                {
+                    buttonLock.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanUnlock == true)
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        buttonUnlock.Enabled = true;
+                    }
+                    else
+                    {
+                        buttonUnlock.Enabled = false;
+                    }
+                }
+                else
+                {
+                    buttonUnlock.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanReturn == true)
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        buttonReturn.Enabled = false;
+                    }
+                    else
+                    {
+                        buttonReturn.Enabled = true;
+                    }
+                }
+                else
+                {
+                    buttonReturn.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanDiscount == true)
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        buttonDiscount.Enabled = false;
+                    }
+                    else
+                    {
+                        buttonDiscount.Enabled = true;
+                    }
+                }
+                else
+                {
+                    buttonDiscount.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanTender == true)
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        buttonTender.Enabled = true;
+                    }
+                    else
+                    {
+                        buttonTender.Enabled = false;
+                    }
+                }
+                else
                 {
                     buttonTender.Enabled = false;
                 }
 
-                if (sysUserRights.GetUserRights().CanTender == false)
+                if (sysUserRights.GetUserRights().CanAdd == true)
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        buttonBarcode.Enabled = false;
+                        textBoxBarcode.Enabled = false;
+                        buttonSearchItem.Enabled = false;
+                        buttonDownload.Enabled = false;
+                    }
+                    else
+                    {
+                        buttonBarcode.Enabled = true;
+                        textBoxBarcode.Enabled = true;
+                        buttonSearchItem.Enabled = true;
+                        buttonDownload.Enabled = true;
+                    }
+                }
+                else
                 {
                     buttonBarcode.Enabled = false;
+                    textBoxBarcode.Enabled = false;
                     buttonSearchItem.Enabled = false;
+                    buttonDownload.Enabled = false;
                 }
 
-                if (sysUserRights.GetUserRights().CanEdit == false)
+                if (sysUserRights.GetUserRights().CanEdit == true)
                 {
-                    dataGridViewSalesLineList.Columns[0].Visible = false;
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        dataGridViewSalesLineList.Columns[0].Visible = false;
+                    }
+                    else
+                    {
+                        dataGridViewSalesLineList.Columns[0].Visible = true;
+                    }
+                }
+                else
+                {
+                    dataGridViewSalesLineList.Columns[0].Visible = true;
                 }
 
-                if (sysUserRights.GetUserRights().CanDelete == false)
+                if (sysUserRights.GetUserRights().CanDelete == true)
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        dataGridViewSalesLineList.Columns[1].Visible = false;
+                    }
+                    else
+                    {
+                        dataGridViewSalesLineList.Columns[1].Visible = true;
+                    }
+                }
+                else
                 {
                     dataGridViewSalesLineList.Columns[1].Visible = false;
                 }
@@ -61,7 +176,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 GetSalesDetail();
                 GetSalesLineList();
             }
-
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -379,6 +493,60 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             TrnPOSReturn trnPOSReturn = new TrnPOSReturn(this, null);
             trnPOSReturn.ShowDialog();
+        }
+
+        private void buttonLock_Click(object sender, EventArgs e)
+        {
+            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
+            String[] lockSales = trnPOSSalesController.LockSales(trnSalesEntity.Id);
+            if (lockSales[1].Equals("0") == false)
+            {
+                buttonSearchItem.Enabled = false;
+                buttonDownload.Enabled = false;
+                buttonLock.Enabled = false;
+                buttonUnlock.Enabled = true;
+                buttonReturn.Enabled = false;
+                buttonDiscount.Enabled = false;
+                buttonTender.Enabled = true;
+                buttonBarcode.Enabled = false;
+                textBoxBarcode.Enabled = false;
+
+                dataGridViewSalesLineList.Columns[0].Visible = false;
+                dataGridViewSalesLineList.Columns[1].Visible = false;
+
+                trnSalesListForm.UpdateSalesListGridDataSource();
+            }
+            else
+            {
+                MessageBox.Show(lockSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonUnlock_Click(object sender, EventArgs e)
+        {
+            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
+            String[] lockSales = trnPOSSalesController.UnlockSales(trnSalesEntity.Id);
+            if (lockSales[1].Equals("0") == false)
+            {
+                buttonSearchItem.Enabled = true;
+                buttonDownload.Enabled = true;
+                buttonLock.Enabled = true;
+                buttonUnlock.Enabled = false;
+                buttonReturn.Enabled = true;
+                buttonDiscount.Enabled = true;
+                buttonTender.Enabled = false;
+                buttonBarcode.Enabled = true;
+                textBoxBarcode.Enabled = true;
+
+                dataGridViewSalesLineList.Columns[0].Visible = true;
+                dataGridViewSalesLineList.Columns[1].Visible = true;
+
+                trnSalesListForm.UpdateSalesListGridDataSource();
+            }
+            else
+            {
+                MessageBox.Show(lockSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -53,6 +53,7 @@ namespace EasyPOS.Controllers
                                     Terminal = d.MstTerminal.Terminal,
                                     Remarks = d.Remarks,
                                     IsReturn = d.IsReturn,
+                                    SalesReturnSalesId = d.SalesReturnSalesId,
                                     StockInId = d.StockInId,
                                     PreparedBy = d.PreparedBy,
                                     CheckedBy = d.CheckedBy,
@@ -104,6 +105,7 @@ namespace EasyPOS.Controllers
                                    Terminal = d.MstTerminal.Terminal,
                                    Remarks = d.Remarks,
                                    IsReturn = d.IsReturn,
+                                   SalesReturnSalesId = d.SalesReturnSalesId,
                                    StockInId = d.StockInId,
                                    PreparedBy = d.PreparedBy,
                                    CheckedBy = d.CheckedBy,
@@ -283,6 +285,7 @@ namespace EasyPOS.Controllers
                     TerminalId = terminal.FirstOrDefault().Id,
                     Remarks = "",
                     IsReturn = false,
+                    SalesReturnSalesId = null,
                     StockInId = null,
                     PreparedBy = currentUserLogin.FirstOrDefault().Id,
                     CheckedBy = currentUserLogin.FirstOrDefault().Id,
@@ -404,6 +407,7 @@ namespace EasyPOS.Controllers
                     lockDisbursement.Remarks = objDisbursement.Remarks;
                     lockDisbursement.Amount = objDisbursement.Amount;
                     lockDisbursement.IsReturn = objDisbursement.IsReturn;
+                    lockDisbursement.SalesReturnSalesId = objDisbursement.SalesReturnSalesId;
                     lockDisbursement.StockInId = stockInId;
                     lockDisbursement.CheckedBy = objDisbursement.CheckedBy;
                     lockDisbursement.ApprovedBy = objDisbursement.ApprovedBy;

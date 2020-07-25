@@ -61,8 +61,7 @@ namespace EasyPOS.Controllers
                                EntryDateTime = d.EntryDateTime.ToShortDateString(),
                                UpdateUserId = d.UpdateUserId,
                                UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
-                               SalesId = d.SalesId,
-                               PostCode = d.PostCode
+                               SalesId = d.SalesId
                            };
 
             return stockIns.OrderByDescending(d => d.Id).ToList();
@@ -98,8 +97,7 @@ namespace EasyPOS.Controllers
                               EntryDateTime = d.EntryDateTime.ToShortDateString(),
                               UpdateUserId = d.UpdateUserId,
                               UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
-                              SalesId = d.SalesId,
-                              PostCode = d.PostCode
+                              SalesId = d.SalesId
                           };
 
             return stockIn.FirstOrDefault();
@@ -189,7 +187,6 @@ namespace EasyPOS.Controllers
                     CheckedBy = currentUserLogin.FirstOrDefault().Id,
                     ApprovedBy = currentUserLogin.FirstOrDefault().Id,
                     SalesId = null,
-                    PostCode = null,
                     IsLocked = false,
                     EntryUserId = currentUserLogin.FirstOrDefault().Id,
                     EntryDateTime = DateTime.Now,

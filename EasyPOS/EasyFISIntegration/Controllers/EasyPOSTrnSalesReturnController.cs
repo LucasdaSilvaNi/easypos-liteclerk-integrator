@@ -44,7 +44,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                 var stockIns = from d in posdb.TrnStockIns
                                where d.IsReturn == true
                                && d.CollectionId != null
-                               && d.PostCode == null
+                               //&& d.PostCode == null
                                && d.IsLocked == true
                                && d.TrnStockInLines.Any() == true
                                select d;
@@ -146,7 +146,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                         if (stockIns.Any())
                         {
                             var stockIn = stockIns.FirstOrDefault();
-                            stockIn.PostCode = result.Replace("\"", "");
+                            //stockIn.PostCode = result.Replace("\"", "");
                             posdb.SubmitChanges();
                         }
 

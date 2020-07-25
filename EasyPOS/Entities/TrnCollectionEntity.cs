@@ -33,7 +33,6 @@ namespace EasyPOS.Entities
         public Int32 ApprovedBy { get; set; }
         public String ApprovedByUserName { get; set; }
         public Boolean IsCancelled { get; set; }
-        public String PostCode { get; set; }
         public Boolean IsLocked { get; set; }
         public Int32 EntryUserId { get; set; }
         public String EntryUserName { get; set; }
