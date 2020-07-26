@@ -68,7 +68,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         mstDataGridViewTenderPayType.CurrentRow.Cells[2].Value = payType;
                         mstDataGridViewTenderPayType.CurrentRow.Cells[4].Value = amount.ToString("#,##0.00");
                         mstDataGridViewTenderPayType.CurrentRow.Cells[5].Value = otherInformation;
-                        mstDataGridViewTenderPayType.CurrentRow.Cells[6].Value = "";
+                        mstDataGridViewTenderPayType.CurrentRow.Cells[6].Value = null;
+                        mstDataGridViewTenderPayType.CurrentRow.Cells[7].Value = "";
                     }
 
                     mstDataGridViewTenderPayType.Refresh();

@@ -15,7 +15,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public TrnPOSTenderForm trnPOSTenderForm;
         public DataGridView mstDataGridViewTenderPayType;
 
-        public Int32 salesId = 0;
+        public Int32? salesId = null;
+        public String salesNumber = "";
 
         public TrnPOSTenderExchangeInformation(TrnPOSTenderForm POSTenderForm, DataGridView dataGridViewTenderPayType)
         {
@@ -23,6 +24,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             trnPOSTenderForm = POSTenderForm;
             mstDataGridViewTenderPayType = dataGridViewTenderPayType;
+
+            textBoxOrderReturnNumber.Text = mstDataGridViewTenderPayType.CurrentRow.Cells[7].Value.ToString();
+            textBoxAmount.Text = (Convert.ToDecimal(mstDataGridViewTenderPayType.CurrentRow.Cells[4].Value) * -1).ToString("#,##0.00");
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -48,7 +52,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         String payTypeCode = mstDataGridViewTenderPayType.CurrentRow.Cells[1].Value.ToString();
                         String payType = mstDataGridViewTenderPayType.CurrentRow.Cells[2].Value.ToString();
                         Decimal amount = Convert.ToDecimal(textBoxAmount.Text) * -1;
-                        String otherInformation = "Easypay Payment " + DateTime.Now.ToLongDateString();
+                        String otherInformation = "Exchange for Order no. " + salesNumber;
 
                         mstDataGridViewTenderPayType.CurrentRow.Cells[0].Value = id;
                         mstDataGridViewTenderPayType.CurrentRow.Cells[1].Value = payTypeCode;
@@ -56,6 +60,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         mstDataGridViewTenderPayType.CurrentRow.Cells[4].Value = amount.ToString("#,##0.00");
                         mstDataGridViewTenderPayType.CurrentRow.Cells[5].Value = otherInformation;
                         mstDataGridViewTenderPayType.CurrentRow.Cells[6].Value = salesId;
+                        mstDataGridViewTenderPayType.CurrentRow.Cells[7].Value = salesNumber;
                     }
 
                     mstDataGridViewTenderPayType.Refresh();
@@ -85,11 +90,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 var currentSales = trnSalesController.GetExchangeSalesDetail(textBoxOrderReturnNumber.Text);
 
                 salesId = currentSales.Id;
+                salesNumber = currentSales.SalesNumber;
                 textBoxAmount.Text = currentSales.Amount.ToString("#,##0.00");
             }
             else
             {
-                salesId = 0;
+                salesId = null;
+                salesNumber = "";
                 textBoxAmount.Text = "0.00";
             }
         }

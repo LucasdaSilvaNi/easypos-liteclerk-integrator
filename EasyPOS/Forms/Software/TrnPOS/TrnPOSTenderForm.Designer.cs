@@ -65,6 +65,7 @@
             this.ColumnTenderListPayTypeAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTenderListPayTypeOtherInformation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTenderListPayTypeSalesReturnSalesId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTenderListPayTypeSalesReturnSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -436,7 +437,8 @@
             this.ColumnTenderListNumpad,
             this.ColumnTenderListPayTypeAmount,
             this.ColumnTenderListPayTypeOtherInformation,
-            this.ColumnTenderListPayTypeSalesReturnSalesId});
+            this.ColumnTenderListPayTypeSalesReturnSalesId,
+            this.ColumnTenderListPayTypeSalesReturnSalesNumber});
             this.dataGridViewTenderPayType.Location = new System.Drawing.Point(10, 5);
             this.dataGridViewTenderPayType.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewTenderPayType.MultiSelect = false;
@@ -508,6 +510,12 @@
             this.ColumnTenderListPayTypeSalesReturnSalesId.Name = "ColumnTenderListPayTypeSalesReturnSalesId";
             this.ColumnTenderListPayTypeSalesReturnSalesId.Visible = false;
             // 
+            // ColumnTenderListPayTypeSalesReturnSalesNumber
+            // 
+            this.ColumnTenderListPayTypeSalesReturnSalesNumber.HeaderText = "Sales Return Sales No.";
+            this.ColumnTenderListPayTypeSalesReturnSalesNumber.Name = "ColumnTenderListPayTypeSalesReturnSalesNumber";
+            this.ColumnTenderListPayTypeSalesReturnSalesNumber.Visible = false;
+            // 
             // TrnPOSTenderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -573,5 +581,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeOtherInformation;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeSalesReturnSalesId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeSalesReturnSalesNumber;
     }
 }

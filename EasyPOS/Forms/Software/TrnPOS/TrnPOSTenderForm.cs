@@ -159,7 +159,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 foreach (DataGridViewRow row in dataGridViewTenderPayType.Rows)
                 {
                     Int32? salesReturnSalesId = null;
-                    if (String.IsNullOrEmpty(row.Cells[6].Value.ToString()) == false)
+                    if (row.Cells[6].Value != null)
                     {
                         salesReturnSalesId = Convert.ToInt32(row.Cells[6].Value);
                     }
@@ -365,6 +365,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         "#",
                         "0.00",
                         "",
+                        null,
                         ""
                     );
                 }
@@ -382,6 +383,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 {
                     Decimal amount = Convert.ToDecimal(dataGridViewTenderPayType.CurrentCell.Value);
                     dataGridViewTenderPayType.CurrentCell.Value = amount.ToString("#,##0.00");
+
+                    if (dataGridViewTenderPayType.CurrentRow.Cells[1].Value.ToString() == "EXCHANGE")
+                    {
+                        if (dataGridViewTenderPayType.CurrentRow.Cells[4].Value.ToString() == "0.00")
+                        {
+                            dataGridViewTenderPayType.CurrentRow.Cells[6].Value = null;
+                            dataGridViewTenderPayType.CurrentRow.Cells[7].Value = "";
+                        }
+                    }
                 }
 
                 ComputeAmount();
@@ -410,6 +420,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             Decimal changeAmount = totalTenderAmount - Convert.ToDecimal(textBoxTotalSalesAmount.Text);
             textBoxChangeAmount.Text = changeAmount.ToString("#,##0.00");
+
+            buttonTender.Enabled = true;
         }
 
         private void buttonSales_Click(object sender, EventArgs e)
