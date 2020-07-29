@@ -276,6 +276,7 @@
     <Compile Include="Entities\DgvMstItemGroupSearchItemListEntity.cs" />
     <Compile Include="Entities\DgvMstTableListEntity.cs" />
     <Compile Include="Entities\DgvRepInventoryStockCardListEntity.cs" />
+    <Compile Include="Entities\DgvRepSalesReportSalesReturnDetailReportListEntity.cs" />
     <Compile Include="Entities\DgvRepSalesReportTopSellingItemsReportListEntity.cs" />
     <Compile Include="Entities\DgvMstTableGroupListEntity.cs" />
     <Compile Include="Entities\DgvMstItemGroupListEntity.cs" />
@@ -335,6 +336,7 @@
     <Compile Include="Entities\MstItemGroupItemEntity.cs" />
     <Compile Include="Entities\MstItemInventoryEntity.cs" />
     <Compile Include="Entities\MstItemPriceEntity.cs" />
+    <Compile Include="Entities\RepSalesReportSalesReturnDetailReportEntity.cs" />
     <Compile Include="Entities\SysKitchenEntity.cs" />
     <Compile Include="Entities\MstPayTypeEntity.cs" />
     <Compile Include="Entities\MstPeriodEntity.cs" />
@@ -564,6 +566,12 @@
     <Compile Include="Forms\Software\RepSalesReport\RepCollectionSummaryReport.Designer.cs">
       <DependentUpon>RepCollectionSummaryReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesReturnDetailReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesReturnDetailReportForm.Designer.cs">
+      <DependentUpon>RepSalesReturnDetailReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepSalesReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -617,6 +625,18 @@
     </Compile>
     <Compile Include="Forms\Software\TrnDisbursement\TrnRefundForm.Designer.cs">
       <DependentUpon>TrnRefundForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSSalesOrderReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSSalesOrderReportForm.Designer.cs">
+      <DependentUpon>TrnPOSSalesOrderReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSReturnReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSReturnReportForm.Designer.cs">
+      <DependentUpon>TrnPOSReturnReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchActivityDeliver.cs">
       <SubType>Form</SubType>
@@ -1044,6 +1064,9 @@
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepCollectionSummaryReport.resx">
       <DependentUpon>RepCollectionSummaryReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReturnDetailReportForm.resx">
+      <DependentUpon>RepSalesReturnDetailReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReportForm.resx">
       <DependentUpon>RepSalesReportForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1070,6 +1093,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnDisbursement\TrnRefundForm.resx">
       <DependentUpon>TrnRefundForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSSalesOrderReportForm.resx">
+      <DependentUpon>TrnPOSSalesOrderReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSReturnReportForm.resx">
+      <DependentUpon>TrnPOSReturnReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTouchActivityDeliver.resx">
       <DependentUpon>TrnPOSTouchActivityDeliver.cs</DependentUpon>

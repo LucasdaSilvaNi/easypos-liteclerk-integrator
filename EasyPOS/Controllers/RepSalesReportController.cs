@@ -251,5 +251,43 @@ namespace EasyPOS.Controllers
 
             return topSellingItems.OrderByDescending(d => d.Quantity).ToList();
         }
+
+        // ==========================
+        // Sales Return Detail Report
+        // ==========================
+        public List<Entities.RepSalesReportSalesReturnDetailReportEntity> SalesReturnDetailReport(DateTime startDate, DateTime endDate, Int32 terminalId)
+        {
+            var salesLines = from d in db.TrnSalesLines
+                             where d.TrnSale.SalesDate >= startDate
+                             && d.TrnSale.SalesDate <= endDate
+                             && d.TrnSale.TerminalId == terminalId
+                             && d.TrnSale.IsLocked == true
+                             && d.TrnSale.IsCancelled == false
+                             && d.TrnSale.IsReturned == true
+                             && d.TrnSale.IsTendered == false
+                             select new Entities.RepSalesReportSalesReturnDetailReportEntity
+                             {
+                                 Id = d.Id,
+                                 Terminal = d.TrnSale.MstTerminal.Terminal,
+                                 Date = d.TrnSale.SalesDate.ToShortDateString(),
+                                 SalesReturnNumber = d.TrnSale.SalesNumber,
+                                 CustomerCode = d.TrnSale.MstCustomer.CustomerCode,
+                                 Customer = d.TrnSale.MstCustomer.Customer,
+                                 ItemCode = d.MstItem.ItemCode,
+                                 ItemDescription = d.MstItem.ItemDescription,
+                                 ItemCategory = d.MstItem.Category,
+                                 Quantity = d.Quantity,
+                                 Unit = d.MstUnit.Unit,
+                                 Price = d.Price,
+                                 Discount = d.MstDiscount.Discount,
+                                 NetPrice = d.NetPrice,
+                                 Amount = d.Amount,
+                                 Tax = d.MstTax.Tax,
+                                 TaxRate = d.TaxRate,
+                                 TaxAmount = d.TaxAmount
+                             };
+
+            return salesLines.ToList();
+        }
     }
 }

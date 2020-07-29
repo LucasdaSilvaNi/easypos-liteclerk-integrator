@@ -102,18 +102,27 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 if (sysUserRights.GetUserRights().CanTender == true)
                 {
-                    if (trnSalesEntity.IsLocked == true)
-                    {
-                        buttonTender.Enabled = true;
-                    }
-                    else
-                    {
-                        buttonTender.Enabled = false;
-                    }
+                    buttonTender.Enabled = true;
                 }
                 else
                 {
                     buttonTender.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanPrint == true)
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        buttonPrint.Enabled = true;
+                    }
+                    else
+                    {
+                        buttonPrint.Enabled = false;
+                    }
+                }
+                else
+                {
+                    buttonPrint.Enabled = false;
                 }
 
                 if (sysUserRights.GetUserRights().CanAdd == true)
@@ -503,11 +512,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 buttonSearchItem.Enabled = false;
                 buttonDownload.Enabled = false;
+                buttonPrint.Enabled = true;
                 buttonLock.Enabled = false;
                 buttonUnlock.Enabled = true;
                 buttonReturn.Enabled = false;
                 buttonDiscount.Enabled = false;
-                buttonTender.Enabled = true;
                 buttonBarcode.Enabled = false;
                 textBoxBarcode.Enabled = false;
 
@@ -530,11 +539,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 buttonSearchItem.Enabled = true;
                 buttonDownload.Enabled = true;
+                buttonPrint.Enabled = false;
                 buttonLock.Enabled = true;
                 buttonUnlock.Enabled = false;
                 buttonReturn.Enabled = true;
                 buttonDiscount.Enabled = true;
-                buttonTender.Enabled = false;
                 buttonBarcode.Enabled = true;
                 textBoxBarcode.Enabled = true;
 
@@ -546,6 +555,18 @@ namespace EasyPOS.Forms.Software.TrnPOS
             else
             {
                 MessageBox.Show(lockSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonPrint_Click(object sender, EventArgs e)
+        {
+            if (trnSalesEntity.IsReturned == true)
+            {
+                new TrnPOSReturnReportForm(trnSalesEntity.Id);
+            }
+            else
+            {
+                new TrnPOSSalesOrderReportForm(trnSalesEntity.Id);
             }
         }
     }

@@ -82,6 +82,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                         Remarks = "From EasyPOS \n"
                                 + "\nTerminal: " + salesReturn.FirstOrDefault().MstTerminal.Terminal
                                 + "\nUser: " + salesReturn.FirstOrDefault().MstUser.UserName,
+                        ManualSONumber = salesReturn.FirstOrDefault().ManualInvoiceNumber,
                         ListPOSIntegrationTrnSalesInvoiceItem = listSalesLines.ToList()
                     };
 

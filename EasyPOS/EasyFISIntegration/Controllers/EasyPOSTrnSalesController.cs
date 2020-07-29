@@ -101,6 +101,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                 + "\nTerminal: " + sales.FirstOrDefault().MstTerminal.Terminal
                                 + "\nUser: " + sales.FirstOrDefault().MstUser.UserName 
                                 + payTypes,
+                        ManualSONumber = sales.FirstOrDefault().ManualInvoiceNumber,
                         ListPOSIntegrationTrnSalesInvoiceItem = listSalesLines.ToList()
                     };
 

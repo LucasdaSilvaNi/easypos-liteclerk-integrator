@@ -251,13 +251,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
             DialogResult deleteDialogResult = MessageBox.Show("Return these items?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (deleteDialogResult == DialogResult.Yes)
             {
-                List<Entities.TrnSalesLineEntity> newStockInLines = new List<Entities.TrnSalesLineEntity>();
+                List<Entities.TrnSalesLineEntity> newSalesLines = new List<Entities.TrnSalesLineEntity>();
 
                 foreach (DataGridViewRow row in dataGridViewReturnItems.Rows)
                 {
                     if (Convert.ToDecimal(row.Cells["ColumnReturnReturnQuantity"].Value) > 0)
                     {
-                        newStockInLines.Add(new Entities.TrnSalesLineEntity()
+                        newSalesLines.Add(new Entities.TrnSalesLineEntity()
                         {
                             Id = 0,
                             SalesId = 0,
@@ -307,18 +307,26 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                     Int32 collectionId = trnSalesController.GetCurrentCollection(textBoxReturnORNumber.Text).Id;
 
-                    String[] returnSalesItems = trnSalesController.ReturnSalesItems(currentSalesId, collectionId, newStockInLines);
+                    String[] returnSalesItems = trnSalesController.ReturnSalesItems(currentSalesId, collectionId, newSalesLines);
                     if (returnSalesItems[1].Equals("0") == false)
                     {
                         MessageBox.Show("Items were successfully returned.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         if (trnPOSBarcodeDetailForm != null)
                         {
+                            trnPOSBarcodeDetailForm.trnSalesEntity.IsReturned = true;
+                            trnPOSBarcodeDetailForm.trnSalesEntity.Remarks = "Return from customer.";
+                            trnPOSBarcodeDetailForm.trnSalesEntity.IsReturned = true;
+                            trnPOSBarcodeDetailForm.trnSalesEntity.ReturnApplication = "Return";
                             trnPOSBarcodeDetailForm.GetSalesLineList();
                         }
 
                         if (trnPOSTouchDetailForm != null)
                         {
+                            trnPOSTouchDetailForm.trnSalesEntity.IsReturned = true;
+                            trnPOSTouchDetailForm.trnSalesEntity.Remarks = "Return from customer.";
+                            trnPOSTouchDetailForm.trnSalesEntity.IsReturned = true;
+                            trnPOSTouchDetailForm.trnSalesEntity.ReturnApplication = "Return";
                             trnPOSTouchDetailForm.GetSalesLineList();
                         }
 
