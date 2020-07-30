@@ -46,7 +46,7 @@ namespace EasyPOS.Controllers
         // =================================
         // Dropdown List - Remittance Number
         // =================================
-        public List<Entities.TrnDisbursementEntity> DropdownListRemittanceNumber(Int32 terminalId,  Int32 userId)
+        public List<Entities.TrnDisbursementEntity> DropdownListRemittanceNumber(Int32 terminalId, Int32 userId)
         {
             var disbursements = from d in db.TrnDisbursements
                                 where d.TerminalId == terminalId
@@ -61,5 +61,31 @@ namespace EasyPOS.Controllers
 
             return disbursements.ToList();
         }
+
+        // =========================
+        // Remittance Summary Report
+        // =========================
+        public List<Entities.RepRemitanceReportCashInOutSummaryReportEntity> DisbursementSummaryReport(DateTime startDate, DateTime endDate, Int32 terminalId)
+        {
+            var cashInOuts = from d in db.TrnDisbursements.OrderByDescending(d => d.Id)
+                             where d.DisbursementDate >= startDate
+                             && d.DisbursementDate <= endDate
+                             && d.TerminalId == terminalId
+                             && d.IsLocked == true
+                             select new Entities.RepRemitanceReportCashInOutSummaryReportEntity
+                             {
+                                 Id = d.Id,
+                                 DisbursementDate = d.DisbursementDate.ToShortDateString(),
+                                 DisbursementNumber = d.DisbursementNumber,
+                                 DisbursementType = d.DisbursementType,
+                                 Remarks = d.Remarks,
+                                 PayType = d.MstPayType.PayType,
+                                 User = d.MstUser.UserName,
+                                 Amount = d.Amount
+                             };
+
+            return cashInOuts.OrderByDescending(d => d.Id).ToList();
+        }
+
     }
 }

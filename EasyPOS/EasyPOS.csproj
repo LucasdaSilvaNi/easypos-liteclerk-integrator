@@ -275,6 +275,7 @@
     <Compile Include="Entities\DgvMstItemGroupItemListEntity.cs" />
     <Compile Include="Entities\DgvMstItemGroupSearchItemListEntity.cs" />
     <Compile Include="Entities\DgvMstTableListEntity.cs" />
+    <Compile Include="Entities\DgvRepRemittanceReportCashInOutSummaryReportListEntity.cs" />
     <Compile Include="Entities\DgvRepInventoryStockCardListEntity.cs" />
     <Compile Include="Entities\DgvRepSalesReportSalesReturnDetailReportListEntity.cs" />
     <Compile Include="Entities\DgvRepSalesReportTopSellingItemsReportListEntity.cs" />
@@ -336,6 +337,7 @@
     <Compile Include="Entities\MstItemGroupItemEntity.cs" />
     <Compile Include="Entities\MstItemInventoryEntity.cs" />
     <Compile Include="Entities\MstItemPriceEntity.cs" />
+    <Compile Include="Entities\RepRemitanceReportCashInOutSummaryReportEntity.cs" />
     <Compile Include="Entities\RepSalesReportSalesReturnDetailReportEntity.cs" />
     <Compile Include="Entities\SysKitchenEntity.cs" />
     <Compile Include="Entities\MstPayTypeEntity.cs" />
@@ -553,6 +555,12 @@
     </Compile>
     <Compile Include="Forms\Software\RepRemittanceReport\RepRemittanceReportForm.Designer.cs">
       <DependentUpon>RepRemittanceReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepRemittanceReport\RepCashInOutSummaryReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepRemittanceReport\RepCashInOutSummaryReportForm.Designer.cs">
+      <DependentUpon>RepCashInOutSummaryReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepCollectionDetailReportForm.cs">
       <SubType>Form</SubType>
@@ -1075,6 +1083,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepRemittanceReport\RepRemittanceReportForm.resx">
       <DependentUpon>RepRemittanceReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepRemittanceReport\RepCashInOutSummaryReportForm.resx">
+      <DependentUpon>RepCashInOutSummaryReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepCollectionDetailReportForm.resx">
       <DependentUpon>RepCollectionDetailReportForm.cs</DependentUpon>

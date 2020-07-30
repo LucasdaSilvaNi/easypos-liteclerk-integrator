@@ -453,7 +453,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // ============
             // Disbursement
             // ============
-            String disbursementTotalAmountLabel = "Cash In / Out";
+            String disbursementTotalAmountLabel = "Cash In/Out";
             String disbursementTotalAmountData = dataSource.CashInOutAmount.ToString("#,##0.00");
             graphics.DrawString(disbursementTotalAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(disbursementTotalAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
@@ -469,7 +469,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // ===================
             // Disbursement Number
             // ===================
-            String disbursementNumberLabel = "\nDisbursement Number";
+            String disbursementNumberLabel = "\nCash In/Out Number";
             String disbursementNumberData = "\n" + dataSource.DisbursementNumber;
             graphics.DrawString(disbursementNumberLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(disbursementNumberData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
@@ -478,7 +478,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // =================
             // Disbursement Date
             // =================
-            String disbursementDateLabel = "Disbursement Date";
+            String disbursementDateLabel = "Cash In/Out Date";
             String disbursementDateData = dataSource.RemittanceDate;
             graphics.DrawString(disbursementDateLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(disbursementDateData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
@@ -487,7 +487,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // =================
             // Disbursement Type
             // =================
-            String disbursementTypeLabel = "Disbursement Type";
+            String disbursementTypeLabel = "Cash In/Out Type";
             String disbursementTypeData = dataSource.DisbursementType;
             graphics.DrawString(disbursementTypeLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(disbursementTypeData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
@@ -679,7 +679,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // ==================
             // Cash In/Out Amount
             // ==================
-            String cashInOutAmountLabel = "Cash In / Out";
+            String cashInOutAmountLabel = "Cash In/Out";
             String cashInOutAmountData = cashInOutAmount.ToString("#,##0.00");
             graphics.DrawString(cashInOutAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(cashInOutAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);

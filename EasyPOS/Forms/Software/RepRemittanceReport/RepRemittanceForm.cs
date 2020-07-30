@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyPOS.Forms.Software.RepSalesReport;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -94,6 +95,19 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                         labelRemittanceNumber.Visible = true;
                         comboBoxTerminal.Focus();
                         break;
+                    case "Cash In/Out Summary Report":
+                        labelTerminal.Visible = true;
+                        comboBoxTerminal.Visible = true;
+                        dateTimePickerStartDateFilter.Visible = true;
+                        labelStartDate.Visible = true;
+                        dateTimePickerEndDateFilter.Visible = true;
+                        labelEndDate.Visible = true;
+                        comboBoxUser.Visible = false;
+                        labelUser.Visible = false;
+                        comboBoxRemittanceNumber.Visible = false;
+                        labelRemittanceNumber.Visible = false;
+                        comboBoxTerminal.Focus();
+                        break;
                     default:
                         labelTerminal.Visible = false;
                         comboBoxTerminal.Visible = false;
@@ -147,9 +161,27 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                             }
                         }
                         break;
+                    case "Cash In/Out Summary Report":
+                        sysUserRights = new Modules.SysUserRightsModule("RepDisbursementRemittance");
+                        if (sysUserRights.GetUserRights() == null)
+                        {
+                            MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            if (sysUserRights.GetUserRights().CanView == true)
+                            {
+                                RepCashInOutSummaryReportForm repCashInOutSummaryReportForm = new RepCashInOutSummaryReportForm(dateTimePickerStartDateFilter.Value.Date, dateTimePickerEndDateFilter.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
+                                repCashInOutSummaryReportForm.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        break;
                     default:
                         MessageBox.Show("Please select a report.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                         break;
                 }
             }

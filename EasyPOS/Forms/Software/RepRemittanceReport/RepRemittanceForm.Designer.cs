@@ -216,7 +216,9 @@
             this.listBoxRemittanceReport.FormattingEnabled = true;
             this.listBoxRemittanceReport.ItemHeight = 19;
             this.listBoxRemittanceReport.Items.AddRange(new object[] {
-            "Remittance Report"});
+            "Remittance Report",
+            "",
+            "Cash In/Out Summary Report"});
             this.listBoxRemittanceReport.Location = new System.Drawing.Point(0, 0);
             this.listBoxRemittanceReport.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxRemittanceReport.Name = "listBoxRemittanceReport";
