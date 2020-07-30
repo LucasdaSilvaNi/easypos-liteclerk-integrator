@@ -119,7 +119,8 @@ namespace EasyPOS.EasyFISIntegration.Controllers
 
                                     if (foundChanges)
                                     {
-                                        sysSettingsForm.logMessages("Updating Supplier: " + currentSupplier.FirstOrDefault().Supplier + "\r\n\n");
+                                        sysSettingsForm.logMessages("Updating Supplier...\r\n\n");
+                                        sysSettingsForm.logMessages("Supplier: " + currentSupplier.FirstOrDefault().Supplier + "\r\n\n");
                                         sysSettingsForm.logMessages("Contact No.: " + currentSupplier.FirstOrDefault().CellphoneNumber + "\r\n\n");
 
                                         var updateSupplier = currentSupplier.FirstOrDefault();
@@ -132,14 +133,15 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                         updateSupplier.UpdateDateTime = DateTime.Now;
                                         posdb.SubmitChanges();
 
-                                        sysSettingsForm.logMessages("Update Successful!" + "\r\n\n");
+                                        sysSettingsForm.logMessages("Update Successful!\r\n\n");
                                         sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                         sysSettingsForm.logMessages("\r\n\n");
                                     }
                                 }
                                 else
                                 {
-                                    sysSettingsForm.logMessages("Saving Supplier: " + supplier.Article + "\r\n\n");
+                                    sysSettingsForm.logMessages("Saving Supplier...\r\n\n");
+                                    sysSettingsForm.logMessages("Supplier: " + supplier.Article + "\r\n\n");
                                     sysSettingsForm.logMessages("Contact No.: " + supplier.ContactNumber + "\r\n\n");
 
                                     Data.MstSupplier newSupplier = new Data.MstSupplier
@@ -162,16 +164,17 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                     posdb.MstSuppliers.InsertOnSubmit(newSupplier);
                                     posdb.SubmitChanges();
 
-                                    sysSettingsForm.logMessages("Save Successful!" + "\r\n\n");
+                                    sysSettingsForm.logMessages("Save Successful!\r\n\n");
                                     sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                     sysSettingsForm.logMessages("\r\n\n");
                                 }
                             }
                             else
                             {
-                                sysSettingsForm.logMessages("Cannot Save Supplier: " + supplier.Article + "\r\n\n");
-                                sysSettingsForm.logMessages("Term Mismatch!" + "\r\n\n");
-                                sysSettingsForm.logMessages("Save Failed!" + "\r\n\n");
+                                sysSettingsForm.logMessages("Supplier Integration Failed!\r\n\n");
+                                sysSettingsForm.logMessages("Supplier: " + supplier.Article + "\r\n\n");
+                                sysSettingsForm.logMessages("Contact No.: " + supplier.ContactNumber + "\r\n\n");
+                                sysSettingsForm.logMessages("Error: Term Mismatch.\r\n\n");
                                 sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                 sysSettingsForm.logMessages("\r\n\n");
                             }
@@ -183,7 +186,8 @@ namespace EasyPOS.EasyFISIntegration.Controllers
             }
             catch (Exception e)
             {
-                sysSettingsForm.logMessages("Supplier Error: " + e.Message + "\r\n\n");
+                sysSettingsForm.logMessages("Supplier Integration Failed!\r\n\n");
+                sysSettingsForm.logMessages("Error: " + e.Message + "\r\n\n");
                 sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                 sysSettingsForm.logMessages("\r\n\n");
 

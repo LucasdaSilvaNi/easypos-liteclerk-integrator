@@ -136,8 +136,9 @@ namespace EasyPOS.EasyFISIntegration.Controllers
 
                                     if (foundChanges)
                                     {
-                                        sysSettingsForm.logMessages("Updating Customer: " + currentCustomer.FirstOrDefault().Customer + "\r\n\n");
+                                        sysSettingsForm.logMessages("Updating Customer...\r\n\n");
                                         sysSettingsForm.logMessages("Customer Code: " + currentCustomer.FirstOrDefault().CustomerCode + "\r\n\n");
+                                        sysSettingsForm.logMessages("Customer: " + currentCustomer.FirstOrDefault().Customer + "\r\n\n");
 
                                         var updateCustomer = currentCustomer.FirstOrDefault();
                                         updateCustomer.Customer = customer.Article;
@@ -152,15 +153,16 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                         updateCustomer.CustomerCode = customer.ManualArticleCode;
                                         posdb.SubmitChanges();
 
-                                        sysSettingsForm.logMessages("Update Successful!" + "\r\n\n");
+                                        sysSettingsForm.logMessages("Update Successful!\r\n\n");
                                         sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                         sysSettingsForm.logMessages("\r\n\n");
                                     }
                                 }
                                 else
                                 {
-                                    sysSettingsForm.logMessages("New Customer: " + customer.Article + "\r\n\n");
+                                    sysSettingsForm.logMessages("Saving Customer...\r\n\n");
                                     sysSettingsForm.logMessages("Customer Code: " + customer.ManualArticleCode + "\r\n\n");
+                                    sysSettingsForm.logMessages("Customer: " + customer.Article + "\r\n\n");
 
                                     Data.MstCustomer newCustomer = new Data.MstCustomer
                                     {
@@ -187,16 +189,17 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                     posdb.MstCustomers.InsertOnSubmit(newCustomer);
                                     posdb.SubmitChanges();
 
-                                    sysSettingsForm.logMessages("Save Successful!" + "\r\n\n");
+                                    sysSettingsForm.logMessages("Save Successful!\r\n\n");
                                     sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                     sysSettingsForm.logMessages("\r\n\n");
                                 }
                             }
                             else
                             {
-                                sysSettingsForm.logMessages("Cannot Save Customer: " + customer.Article + "\r\n\n");
-                                sysSettingsForm.logMessages("Term Mismatch!" + "\r\n\n");
-                                sysSettingsForm.logMessages("Save Failed!" + "\r\n\n");
+                                sysSettingsForm.logMessages("Customer Integration Failed!\r\n\n");
+                                sysSettingsForm.logMessages("Customer Code: " + customer.ManualArticleCode + "\r\n\n");
+                                sysSettingsForm.logMessages("Customer: " + customer.Article + "\r\n\n");
+                                sysSettingsForm.logMessages("Error: Term Mismatch.\r\n\n");
                                 sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                 sysSettingsForm.logMessages("\r\n\n");
                             }
@@ -208,7 +211,8 @@ namespace EasyPOS.EasyFISIntegration.Controllers
             }
             catch (Exception e)
             {
-                sysSettingsForm.logMessages("Customer Error: " + e.Message + "\r\n\n");
+                sysSettingsForm.logMessages("Customer Integration Failed!\r\n\n");
+                sysSettingsForm.logMessages("Error: " + e.Message + "\r\n\n");
                 sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                 sysSettingsForm.logMessages("\r\n\n");
 

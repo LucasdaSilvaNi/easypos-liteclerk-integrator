@@ -121,7 +121,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             textBoxPayee.Text = trnDisbursementEntity.Payee;
             textBoxAmount.Text = trnDisbursementEntity.Amount.ToString("#,##0.00");
             textBoxRemarks.Text = trnDisbursementEntity.Remarks;
-            checkBoxReturn.Checked = trnDisbursementEntity.IsRefund;
+            checkBoxRefund.Checked = trnDisbursementEntity.IsRefund;
             textBoxSalesReturnNumber.Text = trnDisbursementEntity.RefundSalesNumber;
             comboBoxPreparedBy.SelectedValue = trnDisbursementEntity.PreparedBy;
             comboBoxCheckedBy.SelectedValue = trnDisbursementEntity.CheckedBy;
@@ -180,7 +180,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             textBoxPayee.Enabled = !isLocked;
             textBoxAmount.Enabled = !isLocked;
             textBoxRemarks.Enabled = !isLocked;
-            checkBoxReturn.Enabled = !isLocked;
+            checkBoxRefund.Enabled = !isLocked;
             textBoxSalesReturnNumber.Enabled = !isLocked;
             textBoxAmountDenominationXP1000.Enabled = !isLocked;
             textBoxAmountDenominationXP500.Enabled = !isLocked;
@@ -214,7 +214,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
                 PayTypeId = Convert.ToInt32(comboBoxPayType.SelectedValue),
                 TerminalId = Convert.ToInt32(comboBoxTerminal.SelectedValue),
                 Remarks = textBoxRemarks.Text,
-                IsRefund = checkBoxReturn.Checked,
+                IsRefund = checkBoxRefund.Checked,
                 RefundSalesId = 0,
                 RefundSalesNumber = textBoxSalesReturnNumber.Text,
                 StockInId = null,

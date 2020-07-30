@@ -117,7 +117,8 @@ namespace EasyPOS.EasyFISIntegration.Controllers
 
                             if (!currentSales.Any())
                             {
-                                sysSettingsForm.logMessages("Saving Sales Order: SO-" + salesOrder.BranchCode + "-" + salesOrder.ManualSONumber + "\r\n\n");
+                                sysSettingsForm.logMessages("Saving Sales Order...\r\n\n");
+                                sysSettingsForm.logMessages("SO Number: SO-" + salesOrder.BranchCode + "-" + salesOrder.ManualSONumber + "\r\n\n");
 
                                 var customer = from d in posdb.MstCustomers
                                                where d.CustomerCode == salesOrder.CustomerCode
@@ -274,15 +275,14 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                         posdb.SubmitChanges();
                                     }
 
-                                    sysSettingsForm.logMessages("Save Successful!" + "\r\n\n");
+                                    sysSettingsForm.logMessages("Save Successful!\r\n\n");
                                     sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                     sysSettingsForm.logMessages("\r\n\n");
                                 }
                                 else
                                 {
-                                    sysSettingsForm.logMessages("Cannot Save Sales Order: SO-" + salesOrder.BranchCode + "-" + salesOrder.SONumber + "\r\n\n");
-                                    sysSettingsForm.logMessages("Customer not found!" + "\r\n\n");
-                                    sysSettingsForm.logMessages("Save Failed!" + "\r\n\n");
+                                    sysSettingsForm.logMessages("Save Failed!\r\n\n");
+                                    sysSettingsForm.logMessages("Error: Customer Not found.\r\n\n");
                                     sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                     sysSettingsForm.logMessages("\r\n\n");
                                 }
@@ -295,7 +295,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
             }
             catch (Exception e)
             {
-                sysSettingsForm.logMessages("Stock-In Error: " + e.Message + "\r\n\n");
+                sysSettingsForm.logMessages("Sales Order Error: " + e.Message + "\r\n\n");
                 sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                 sysSettingsForm.logMessages("\r\n\n");
 

@@ -1,6 +1,6 @@
 ﻿namespace EasyPOS.Forms.Software.TrnPOS
 {
-    partial class TrnPOSTenderExchangeInformation
+    partial class TrnPOSTenderCheckInformation
     {
         /// <summary>
         /// Required designer variable.
@@ -28,17 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSTenderExchangeInformation));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSTenderCheckInformation));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonOK = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dateTimePickerCheckDate = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxCheckBank = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.textBoxAmount = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxOrderReturnNumber = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxCheckNumber = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -76,9 +80,9 @@
             this.label1.Location = new System.Drawing.Point(50, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(221, 28);
+            this.label1.Size = new System.Drawing.Size(187, 28);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Exchange Information";
+            this.label1.Text = "Check Information";
             // 
             // buttonClose
             // 
@@ -120,78 +124,123 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.dateTimePickerCheckDate);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.textBoxCheckBank);
+            this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.textBoxAmount);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.textBoxOrderReturnNumber);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.textBoxCheckNumber);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 50);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(484, 82);
+            this.panel2.Size = new System.Drawing.Size(484, 145);
             this.panel2.TabIndex = 9;
+            // 
+            // dateTimePickerCheckDate
+            // 
+            this.dateTimePickerCheckDate.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.dateTimePickerCheckDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerCheckDate.Location = new System.Drawing.Point(135, 40);
+            this.dateTimePickerCheckDate.Name = "dateTimePickerCheckDate";
+            this.dateTimePickerCheckDate.Size = new System.Drawing.Size(141, 29);
+            this.dateTimePickerCheckDate.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label5.Location = new System.Drawing.Point(84, 76);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 21);
+            this.label5.TabIndex = 39;
+            this.label5.Text = "Bank:";
+            // 
+            // textBoxCheckBank
+            // 
+            this.textBoxCheckBank.AcceptsTab = true;
+            this.textBoxCheckBank.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.textBoxCheckBank.HideSelection = false;
+            this.textBoxCheckBank.Location = new System.Drawing.Point(135, 73);
+            this.textBoxCheckBank.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxCheckBank.Name = "textBoxCheckBank";
+            this.textBoxCheckBank.Size = new System.Drawing.Size(339, 29);
+            this.textBoxCheckBank.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label3.Location = new System.Drawing.Point(40, 43);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(91, 21);
+            this.label3.TabIndex = 35;
+            this.label3.Text = "Check Date:";
             // 
             // textBoxAmount
             // 
             this.textBoxAmount.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxAmount.Location = new System.Drawing.Point(145, 41);
+            this.textBoxAmount.Location = new System.Drawing.Point(135, 106);
             this.textBoxAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxAmount.Name = "textBoxAmount";
-            this.textBoxAmount.ReadOnly = true;
-            this.textBoxAmount.Size = new System.Drawing.Size(254, 29);
-            this.textBoxAmount.TabIndex = 1;
-            this.textBoxAmount.TabStop = false;
+            this.textBoxAmount.Size = new System.Drawing.Size(264, 29);
+            this.textBoxAmount.TabIndex = 3;
             this.textBoxAmount.Text = "0.00";
             this.textBoxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAmount_KeyPress);
+            this.textBoxAmount.Leave += new System.EventHandler(this.textBoxAmount_Leave);
             // 
-            // label9
+            // label6
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label9.Location = new System.Drawing.Point(72, 44);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 21);
-            this.label9.TabIndex = 23;
-            this.label9.Text = "Amount:";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label6.Location = new System.Drawing.Point(62, 109);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(69, 21);
+            this.label6.TabIndex = 33;
+            this.label6.Text = "Amount:";
             // 
-            // label2
+            // label7
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label2.Location = new System.Drawing.Point(11, 11);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 21);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Order Return No.";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label7.Location = new System.Drawing.Point(14, 10);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(117, 21);
+            this.label7.TabIndex = 32;
+            this.label7.Text = "Check Number:";
             // 
-            // textBoxOrderReturnNumber
+            // textBoxCheckNumber
             // 
-            this.textBoxOrderReturnNumber.AcceptsTab = true;
-            this.textBoxOrderReturnNumber.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxOrderReturnNumber.HideSelection = false;
-            this.textBoxOrderReturnNumber.Location = new System.Drawing.Point(145, 8);
-            this.textBoxOrderReturnNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxOrderReturnNumber.Name = "textBoxOrderReturnNumber";
-            this.textBoxOrderReturnNumber.Size = new System.Drawing.Size(329, 29);
-            this.textBoxOrderReturnNumber.TabIndex = 0;
-            this.textBoxOrderReturnNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxOrderReturnNumber_KeyDown);
+            this.textBoxCheckNumber.AcceptsTab = true;
+            this.textBoxCheckNumber.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.textBoxCheckNumber.HideSelection = false;
+            this.textBoxCheckNumber.Location = new System.Drawing.Point(135, 7);
+            this.textBoxCheckNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxCheckNumber.Name = "textBoxCheckNumber";
+            this.textBoxCheckNumber.Size = new System.Drawing.Size(339, 29);
+            this.textBoxCheckNumber.TabIndex = 0;
             // 
-            // TrnPOSTenderExchangeInformation
+            // TrnPOSTenderCheckInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(484, 132);
+            this.ClientSize = new System.Drawing.Size(484, 195);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.Name = "TrnPOSTenderExchangeInformation";
+            this.Name = "TrnPOSTenderCheckInformation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Exchange Information";
+            this.Text = "Check Information";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -209,9 +258,13 @@
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBoxOrderReturnNumber;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBoxCheckBank;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxAmount;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBoxCheckNumber;
+        private System.Windows.Forms.DateTimePicker dateTimePickerCheckDate;
     }
 }

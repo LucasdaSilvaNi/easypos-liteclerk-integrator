@@ -93,13 +93,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Decimal nonCashAmount = 0;
                 Decimal changeAmount = Convert.ToDecimal(textBoxChangeAmount.Text);
 
-                var cashPayType = from d in payTypes where d.Code.Equals("Cash") == true select d;
+                var cashPayType = from d in payTypes where d.Code.Equals("CASH") == true select d;
                 if (cashPayType.Any())
                 {
                     cashAmount = cashPayType.FirstOrDefault().Amount;
                 }
 
-                var nonCashPayType = from d in payTypes where d.Code.Equals("Cash") == false select d;
+                var nonCashPayType = from d in payTypes where d.Code.Equals("CASH") == false select d;
                 if (nonCashPayType.Any())
                 {
                     nonCashAmount = nonCashPayType.Sum(d => d.Amount);
@@ -166,23 +166,29 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                     if (Convert.ToDecimal(row.Cells[4].Value) > 0)
                     {
+                        String checkDate = null;
+                        if (row.Cells[9].Value != null)
+                        {
+                            checkDate = row.Cells[9].Value.ToString();
+                        }
+
                         listCollectionLine.Add(new Entities.TrnCollectionLineEntity()
                         {
                             Amount = Convert.ToDecimal(row.Cells[4].Value),
                             PayTypeId = Convert.ToInt32(row.Cells[0].Value),
-                            CheckNumber = "NA",
-                            CheckDate = null,
-                            CheckBank = "NA",
-                            CreditCardVerificationCode = "NA",
-                            CreditCardNumber = "NA",
-                            CreditCardType = "NA",
-                            CreditCardBank = "NA",
-                            GiftCertificateNumber = "NA",
-                            OtherInformation = row.Cells[4].Value.ToString(),
+                            CheckNumber = row.Cells[8].Value != null ? row.Cells[8].Value.ToString() : "NA",
+                            CheckDate = checkDate,
+                            CheckBank = row.Cells[10].Value != null ? row.Cells[10].Value.ToString() : "NA",
+                            CreditCardVerificationCode = row.Cells[11].Value != null ? row.Cells[11].Value.ToString() : "NA",
+                            CreditCardNumber = row.Cells[14].Value != null ? row.Cells[14].Value.ToString() : "NA",
+                            CreditCardType = row.Cells[15].Value != null ? row.Cells[15].Value.ToString() : "NA",
+                            CreditCardBank = row.Cells[16].Value != null ? row.Cells[16].Value.ToString() : "NA",
+                            GiftCertificateNumber = row.Cells[18].Value != null ? row.Cells[18].Value.ToString() : "NA",
+                            OtherInformation = row.Cells[5].Value != null ? row.Cells[5].Value.ToString() : "NA",
                             SalesReturnSalesId = salesReturnSalesId,
-                            CreditCardReferenceNumber = "NA",
-                            CreditCardHolderName = "NA",
-                            CreditCardExpiry = "NA"
+                            CreditCardReferenceNumber = row.Cells[12].Value != null ? row.Cells[12].Value.ToString() : "NA",
+                            CreditCardHolderName = row.Cells[13].Value != null ? row.Cells[13].Value.ToString() : "NA",
+                            CreditCardExpiry = row.Cells[17].Value != null ? row.Cells[17].Value.ToString() : "NA"
                         });
                     }
                 }
@@ -434,39 +440,27 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             if (e.RowIndex > -1 && dataGridViewTenderPayType.CurrentCell.ColumnIndex == dataGridViewTenderPayType.Columns["ColumnTenderListPayTypePayType"].Index)
             {
+                Decimal totalTenderAmount = 0;
+
+                if (dataGridViewTenderPayType.Rows.Count > 0)
+                {
+                    foreach (DataGridViewRow row in dataGridViewTenderPayType.Rows)
+                    {
+                        totalTenderAmount += Convert.ToDecimal(row.Cells[4].Value);
+                    }
+                }
+
+                Decimal payAmount = trnSalesEntity.Amount - totalTenderAmount;
+
                 String payTypeCode = dataGridViewTenderPayType.Rows[dataGridViewTenderPayType.CurrentCell.RowIndex].Cells[dataGridViewTenderPayType.Columns["ColumnTenderListPayTypePayTypeCode"].Index].Value.ToString();
                 if (payTypeCode == "EASYPAY")
                 {
-                    Decimal totalTenderAmount = 0;
-
-                    if (dataGridViewTenderPayType.Rows.Count > 0)
-                    {
-                        foreach (DataGridViewRow row in dataGridViewTenderPayType.Rows)
-                        {
-                            totalTenderAmount += Convert.ToDecimal(row.Cells[4].Value);
-                        }
-                    }
-
-                    Decimal easypayAmount = trnSalesEntity.Amount - totalTenderAmount;
-
-                    TrnPOSTenderEasypayInformationForm trnSalesDetailTenderEasypayInformationForm = new TrnPOSTenderEasypayInformationForm(this, dataGridViewTenderPayType, easypayAmount);
+                    TrnPOSTenderEasypayInformationForm trnSalesDetailTenderEasypayInformationForm = new TrnPOSTenderEasypayInformationForm(this, dataGridViewTenderPayType, payAmount);
                     trnSalesDetailTenderEasypayInformationForm.ShowDialog();
                 }
                 else if (payTypeCode == "FACEPAY")
                 {
-                    Decimal totalTenderAmount = 0;
-
-                    if (dataGridViewTenderPayType.Rows.Count > 0)
-                    {
-                        foreach (DataGridViewRow row in dataGridViewTenderPayType.Rows)
-                        {
-                            totalTenderAmount += Convert.ToDecimal(row.Cells[4].Value);
-                        }
-                    }
-
-                    Decimal facepayAmount = trnSalesEntity.Amount - totalTenderAmount;
-
-                    TrnPOSTenderFacepayCameraForm trnSalesDetailTenderFacepayCameraForm = new TrnPOSTenderFacepayCameraForm(this, dataGridViewTenderPayType, facepayAmount);
+                    TrnPOSTenderFacepayCameraForm trnSalesDetailTenderFacepayCameraForm = new TrnPOSTenderFacepayCameraForm(this, dataGridViewTenderPayType, payAmount);
                     trnSalesDetailTenderFacepayCameraForm.ShowDialog();
                 }
                 else if (payTypeCode == "CHARGE")
@@ -479,9 +473,24 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     TrnPOSTenderExchangeInformation trnPOSTenderExchangeInformation = new TrnPOSTenderExchangeInformation(this, dataGridViewTenderPayType);
                     trnPOSTenderExchangeInformation.ShowDialog();
                 }
+                else if (payTypeCode == "CREDITCARD")
+                {
+                    TrnPOSTenderCreditCardInformation trnPOSTenderCreditCardInformation = new TrnPOSTenderCreditCardInformation(this, dataGridViewTenderPayType, payAmount);
+                    trnPOSTenderCreditCardInformation.ShowDialog();
+                }
+                else if (payTypeCode == "CHECK")
+                {
+                    TrnPOSTenderCheckInformation trnPOSTenderCheckInformation = new TrnPOSTenderCheckInformation(this, dataGridViewTenderPayType, payAmount);
+                    trnPOSTenderCheckInformation.ShowDialog();
+                }
+                else if (payTypeCode == "GIFTCERTIFICATE")
+                {
+                    TrnPOSTenderGiftCertificateInformation trnPOSTenderGiftCertificateInformation = new TrnPOSTenderGiftCertificateInformation(this, dataGridViewTenderPayType, payAmount);
+                    trnPOSTenderGiftCertificateInformation.ShowDialog();
+                }
                 else
                 {
-                    TrnPOSTenderMoreInformationForm trnSalesDetailTenderMoreInfoForm = new TrnPOSTenderMoreInformationForm(this, dataGridViewTenderPayType);
+                    TrnPOSTenderOtherInformationForm trnSalesDetailTenderMoreInfoForm = new TrnPOSTenderOtherInformationForm(this, dataGridViewTenderPayType);
                     trnSalesDetailTenderMoreInfoForm.ShowDialog();
                 }
             }

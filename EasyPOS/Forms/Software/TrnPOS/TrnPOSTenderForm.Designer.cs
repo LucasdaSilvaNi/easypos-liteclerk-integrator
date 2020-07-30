@@ -66,6 +66,17 @@
             this.ColumnTenderListPayTypeOtherInformation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTenderListPayTypeSalesReturnSalesId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTenderListPayTypeSalesReturnSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTenderListPayTypeCheckNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTenderListPayTypeCheckDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTenderListPayTypeCheckBank = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTenderListPayTypeCreditCardVerificationCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTenderListPayTypeCreditCardReferenceNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTenderListPayTypeCreditCardHolder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTenderListPayTypeCreditCardNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTenderListPayTypeCreditCardType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTenderListPayTypeCreditCardBank = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTenderListPayTypeCreditCardExpiry = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTenderListPayTypeGiftCertificateNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -438,7 +449,18 @@
             this.ColumnTenderListPayTypeAmount,
             this.ColumnTenderListPayTypeOtherInformation,
             this.ColumnTenderListPayTypeSalesReturnSalesId,
-            this.ColumnTenderListPayTypeSalesReturnSalesNumber});
+            this.ColumnTenderListPayTypeSalesReturnSalesNumber,
+            this.ColumnTenderListPayTypeCheckNumber,
+            this.ColumnTenderListPayTypeCheckDate,
+            this.ColumnTenderListPayTypeCheckBank,
+            this.ColumnTenderListPayTypeCreditCardVerificationCode,
+            this.ColumnTenderListPayTypeCreditCardReferenceNumber,
+            this.ColumnTenderListPayTypeCreditCardHolder,
+            this.ColumnTenderListPayTypeCreditCardNumber,
+            this.ColumnTenderListPayTypeCreditCardType,
+            this.ColumnTenderListPayTypeCreditCardBank,
+            this.ColumnTenderListPayTypeCreditCardExpiry,
+            this.ColumnTenderListPayTypeGiftCertificateNumber});
             this.dataGridViewTenderPayType.Location = new System.Drawing.Point(10, 5);
             this.dataGridViewTenderPayType.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewTenderPayType.MultiSelect = false;
@@ -516,6 +538,72 @@
             this.ColumnTenderListPayTypeSalesReturnSalesNumber.Name = "ColumnTenderListPayTypeSalesReturnSalesNumber";
             this.ColumnTenderListPayTypeSalesReturnSalesNumber.Visible = false;
             // 
+            // ColumnTenderListPayTypeCheckNumber
+            // 
+            this.ColumnTenderListPayTypeCheckNumber.HeaderText = "Check Number";
+            this.ColumnTenderListPayTypeCheckNumber.Name = "ColumnTenderListPayTypeCheckNumber";
+            this.ColumnTenderListPayTypeCheckNumber.Visible = false;
+            // 
+            // ColumnTenderListPayTypeCheckDate
+            // 
+            this.ColumnTenderListPayTypeCheckDate.HeaderText = "Check Date";
+            this.ColumnTenderListPayTypeCheckDate.Name = "ColumnTenderListPayTypeCheckDate";
+            this.ColumnTenderListPayTypeCheckDate.Visible = false;
+            // 
+            // ColumnTenderListPayTypeCheckBank
+            // 
+            this.ColumnTenderListPayTypeCheckBank.HeaderText = "Check Bank";
+            this.ColumnTenderListPayTypeCheckBank.Name = "ColumnTenderListPayTypeCheckBank";
+            this.ColumnTenderListPayTypeCheckBank.Visible = false;
+            // 
+            // ColumnTenderListPayTypeCreditCardVerificationCode
+            // 
+            this.ColumnTenderListPayTypeCreditCardVerificationCode.HeaderText = "Credit Card Verification Code";
+            this.ColumnTenderListPayTypeCreditCardVerificationCode.Name = "ColumnTenderListPayTypeCreditCardVerificationCode";
+            this.ColumnTenderListPayTypeCreditCardVerificationCode.Visible = false;
+            // 
+            // ColumnTenderListPayTypeCreditCardReferenceNumber
+            // 
+            this.ColumnTenderListPayTypeCreditCardReferenceNumber.HeaderText = "Credit Card Reference Number";
+            this.ColumnTenderListPayTypeCreditCardReferenceNumber.Name = "ColumnTenderListPayTypeCreditCardReferenceNumber";
+            this.ColumnTenderListPayTypeCreditCardReferenceNumber.Visible = false;
+            // 
+            // ColumnTenderListPayTypeCreditCardHolder
+            // 
+            this.ColumnTenderListPayTypeCreditCardHolder.HeaderText = "Credit Card Holder";
+            this.ColumnTenderListPayTypeCreditCardHolder.Name = "ColumnTenderListPayTypeCreditCardHolder";
+            this.ColumnTenderListPayTypeCreditCardHolder.Visible = false;
+            // 
+            // ColumnTenderListPayTypeCreditCardNumber
+            // 
+            this.ColumnTenderListPayTypeCreditCardNumber.HeaderText = "Credit Card Number";
+            this.ColumnTenderListPayTypeCreditCardNumber.Name = "ColumnTenderListPayTypeCreditCardNumber";
+            this.ColumnTenderListPayTypeCreditCardNumber.Visible = false;
+            // 
+            // ColumnTenderListPayTypeCreditCardType
+            // 
+            this.ColumnTenderListPayTypeCreditCardType.HeaderText = "Credit Card Type";
+            this.ColumnTenderListPayTypeCreditCardType.Name = "ColumnTenderListPayTypeCreditCardType";
+            this.ColumnTenderListPayTypeCreditCardType.Visible = false;
+            // 
+            // ColumnTenderListPayTypeCreditCardBank
+            // 
+            this.ColumnTenderListPayTypeCreditCardBank.HeaderText = "Credit Card Bank";
+            this.ColumnTenderListPayTypeCreditCardBank.Name = "ColumnTenderListPayTypeCreditCardBank";
+            this.ColumnTenderListPayTypeCreditCardBank.Visible = false;
+            // 
+            // ColumnTenderListPayTypeCreditCardExpiry
+            // 
+            this.ColumnTenderListPayTypeCreditCardExpiry.HeaderText = "Credit Card Expiry";
+            this.ColumnTenderListPayTypeCreditCardExpiry.Name = "ColumnTenderListPayTypeCreditCardExpiry";
+            this.ColumnTenderListPayTypeCreditCardExpiry.Visible = false;
+            // 
+            // ColumnTenderListPayTypeGiftCertificateNumber
+            // 
+            this.ColumnTenderListPayTypeGiftCertificateNumber.HeaderText = "Gift Certificate Number";
+            this.ColumnTenderListPayTypeGiftCertificateNumber.Name = "ColumnTenderListPayTypeGiftCertificateNumber";
+            this.ColumnTenderListPayTypeGiftCertificateNumber.Visible = false;
+            // 
             // TrnPOSTenderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -582,5 +670,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeOtherInformation;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeSalesReturnSalesId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeSalesReturnSalesNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeCheckNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeCheckDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeCheckBank;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeCreditCardVerificationCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeCreditCardReferenceNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeCreditCardHolder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeCreditCardNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeCreditCardType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeCreditCardBank;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeCreditCardExpiry;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderListPayTypeGiftCertificateNumber;
     }
 }

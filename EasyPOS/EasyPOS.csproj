@@ -638,6 +638,24 @@
     <Compile Include="Forms\Software\TrnPOS\TrnPOSReturnReportForm.Designer.cs">
       <DependentUpon>TrnPOSReturnReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderGiftCertificateInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderGiftCertificateInformation.Designer.cs">
+      <DependentUpon>TrnPOSTenderGiftCertificateInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderCheckInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderCheckInformation.Designer.cs">
+      <DependentUpon>TrnPOSTenderCheckInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderCreditCardInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderCreditCardInformation.Designer.cs">
+      <DependentUpon>TrnPOSTenderCreditCardInformation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchActivityDeliver.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -842,11 +860,11 @@
     <Compile Include="Forms\Software\TrnPOS\TrnPOSDiscountForm.Designer.cs">
       <DependentUpon>TrnPOSDiscountForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderMoreInformationForm.cs">
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderOtherInformationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderMoreInformationForm.Designer.cs">
-      <DependentUpon>TrnPOSTenderMoreInformationForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderOtherInformationForm.Designer.cs">
+      <DependentUpon>TrnPOSTenderOtherInformationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderSalesForm.cs">
       <SubType>Form</SubType>
@@ -1100,6 +1118,15 @@
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSReturnReportForm.resx">
       <DependentUpon>TrnPOSReturnReportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTenderGiftCertificateInformation.resx">
+      <DependentUpon>TrnPOSTenderGiftCertificateInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTenderCheckInformation.resx">
+      <DependentUpon>TrnPOSTenderCheckInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTenderCreditCardInformation.resx">
+      <DependentUpon>TrnPOSTenderCreditCardInformation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTouchActivityDeliver.resx">
       <DependentUpon>TrnPOSTouchActivityDeliver.cs</DependentUpon>
     </EmbeddedResource>
@@ -1184,8 +1211,8 @@
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSDiscountForm.resx">
       <DependentUpon>TrnPOSDiscountForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTenderMoreInformationForm.resx">
-      <DependentUpon>TrnPOSTenderMoreInformationForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTenderOtherInformationForm.resx">
+      <DependentUpon>TrnPOSTenderOtherInformationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTenderSalesForm.resx">
       <DependentUpon>TrnPOSTenderSalesForm.cs</DependentUpon>

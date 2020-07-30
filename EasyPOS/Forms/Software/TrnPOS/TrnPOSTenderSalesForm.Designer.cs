@@ -40,14 +40,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxCustomerCode = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxCustomerCode2 = new System.Windows.Forms.TextBox();
             this.comboBoxTenderSalesUsers = new System.Windows.Forms.ComboBox();
             this.textBoxTenderSalesRemarks = new System.Windows.Forms.TextBox();
             this.comboBoxTenderSalesTerms = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBoxCustomerCode2 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -62,16 +62,16 @@
             this.panel1.Controls.Add(this.buttonSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(450, 50);
+            this.panel1.Size = new System.Drawing.Size(484, 50);
             this.panel1.TabIndex = 4;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.POS;
             this.pictureBox1.Location = new System.Drawing.Point(10, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(38, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -98,8 +98,8 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(370, 10);
-            this.buttonClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonClose.Location = new System.Drawing.Point(404, 10);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(70, 32);
             this.buttonClose.TabIndex = 1;
@@ -117,8 +117,8 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(294, 10);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSave.Location = new System.Drawing.Point(328, 10);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(70, 32);
             this.buttonSave.TabIndex = 1;
@@ -143,9 +143,9 @@
             this.comboBoxTenderSalesCustomer.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.comboBoxTenderSalesCustomer.FormattingEnabled = true;
             this.comboBoxTenderSalesCustomer.Location = new System.Drawing.Point(146, 73);
-            this.comboBoxTenderSalesCustomer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxTenderSalesCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxTenderSalesCustomer.Name = "comboBoxTenderSalesCustomer";
-            this.comboBoxTenderSalesCustomer.Size = new System.Drawing.Size(294, 29);
+            this.comboBoxTenderSalesCustomer.Size = new System.Drawing.Size(328, 29);
             this.comboBoxTenderSalesCustomer.TabIndex = 17;
             this.comboBoxTenderSalesCustomer.TabStop = false;
             this.comboBoxTenderSalesCustomer.SelectedIndexChanged += new System.EventHandler(this.comboBoxTenderSalesCustomer_SelectedIndexChanged);
@@ -154,10 +154,10 @@
             // 
             this.textBoxTenderSalesRewardAvailable.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxTenderSalesRewardAvailable.Location = new System.Drawing.Point(146, 107);
-            this.textBoxTenderSalesRewardAvailable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxTenderSalesRewardAvailable.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTenderSalesRewardAvailable.Name = "textBoxTenderSalesRewardAvailable";
             this.textBoxTenderSalesRewardAvailable.ReadOnly = true;
-            this.textBoxTenderSalesRewardAvailable.Size = new System.Drawing.Size(294, 29);
+            this.textBoxTenderSalesRewardAvailable.Size = new System.Drawing.Size(328, 29);
             this.textBoxTenderSalesRewardAvailable.TabIndex = 15;
             this.textBoxTenderSalesRewardAvailable.TabStop = false;
             this.textBoxTenderSalesRewardAvailable.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -181,9 +181,9 @@
             this.textBoxCustomerCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxCustomerCode.Font = new System.Drawing.Font("Segoe UI Semibold", 13.2F, System.Drawing.FontStyle.Bold);
             this.textBoxCustomerCode.Location = new System.Drawing.Point(10, 5);
-            this.textBoxCustomerCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxCustomerCode.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCustomerCode.Name = "textBoxCustomerCode";
-            this.textBoxCustomerCode.Size = new System.Drawing.Size(431, 31);
+            this.textBoxCustomerCode.Size = new System.Drawing.Size(464, 31);
             this.textBoxCustomerCode.TabIndex = 0;
             this.textBoxCustomerCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxCustomerCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxCustomerCode_KeyDown);
@@ -205,19 +205,41 @@
             this.panel2.Controls.Add(this.label6);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 50);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(450, 314);
+            this.panel2.Size = new System.Drawing.Size(484, 314);
             this.panel2.TabIndex = 26;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label7.Location = new System.Drawing.Point(20, 42);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(121, 21);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "Customer Code:";
+            // 
+            // textBoxCustomerCode2
+            // 
+            this.textBoxCustomerCode2.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.textBoxCustomerCode2.Location = new System.Drawing.Point(146, 40);
+            this.textBoxCustomerCode2.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxCustomerCode2.Name = "textBoxCustomerCode2";
+            this.textBoxCustomerCode2.ReadOnly = true;
+            this.textBoxCustomerCode2.Size = new System.Drawing.Size(328, 29);
+            this.textBoxCustomerCode2.TabIndex = 26;
+            this.textBoxCustomerCode2.TabStop = false;
             // 
             // comboBoxTenderSalesUsers
             // 
             this.comboBoxTenderSalesUsers.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.comboBoxTenderSalesUsers.FormattingEnabled = true;
             this.comboBoxTenderSalesUsers.Location = new System.Drawing.Point(146, 276);
-            this.comboBoxTenderSalesUsers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxTenderSalesUsers.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxTenderSalesUsers.Name = "comboBoxTenderSalesUsers";
-            this.comboBoxTenderSalesUsers.Size = new System.Drawing.Size(294, 29);
+            this.comboBoxTenderSalesUsers.Size = new System.Drawing.Size(328, 29);
             this.comboBoxTenderSalesUsers.TabIndex = 25;
             this.comboBoxTenderSalesUsers.TabStop = false;
             // 
@@ -225,10 +247,10 @@
             // 
             this.textBoxTenderSalesRemarks.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxTenderSalesRemarks.Location = new System.Drawing.Point(146, 174);
-            this.textBoxTenderSalesRemarks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxTenderSalesRemarks.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTenderSalesRemarks.Multiline = true;
             this.textBoxTenderSalesRemarks.Name = "textBoxTenderSalesRemarks";
-            this.textBoxTenderSalesRemarks.Size = new System.Drawing.Size(294, 98);
+            this.textBoxTenderSalesRemarks.Size = new System.Drawing.Size(328, 98);
             this.textBoxTenderSalesRemarks.TabIndex = 22;
             this.textBoxTenderSalesRemarks.TabStop = false;
             // 
@@ -237,9 +259,9 @@
             this.comboBoxTenderSalesTerms.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.comboBoxTenderSalesTerms.FormattingEnabled = true;
             this.comboBoxTenderSalesTerms.Location = new System.Drawing.Point(146, 139);
-            this.comboBoxTenderSalesTerms.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxTenderSalesTerms.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxTenderSalesTerms.Name = "comboBoxTenderSalesTerms";
-            this.comboBoxTenderSalesTerms.Size = new System.Drawing.Size(294, 29);
+            this.comboBoxTenderSalesTerms.Size = new System.Drawing.Size(328, 29);
             this.comboBoxTenderSalesTerms.TabIndex = 21;
             this.comboBoxTenderSalesTerms.TabStop = false;
             // 
@@ -276,33 +298,11 @@
             this.label6.TabIndex = 24;
             this.label6.Text = "Sales Agent:";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label7.Location = new System.Drawing.Point(20, 42);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(121, 21);
-            this.label7.TabIndex = 27;
-            this.label7.Text = "Customer Code:";
-            // 
-            // textBoxCustomerCode2
-            // 
-            this.textBoxCustomerCode2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxCustomerCode2.Location = new System.Drawing.Point(146, 40);
-            this.textBoxCustomerCode2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxCustomerCode2.Name = "textBoxCustomerCode2";
-            this.textBoxCustomerCode2.ReadOnly = true;
-            this.textBoxCustomerCode2.Size = new System.Drawing.Size(294, 29);
-            this.textBoxCustomerCode2.TabIndex = 26;
-            this.textBoxCustomerCode2.TabStop = false;
-            // 
             // TrnPOSTenderSalesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(450, 364);
+            this.ClientSize = new System.Drawing.Size(484, 364);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);

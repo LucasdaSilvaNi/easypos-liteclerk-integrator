@@ -2297,7 +2297,7 @@ namespace EasyPOS.Controllers
                         db.SubmitChanges();
 
                         var payType = from d in db.MstPayTypes
-                                      where d.PayTypeCode == "Cash"
+                                      where d.PayTypeCode == "CASH"
                                       select d;
 
                         if (!payType.Any())

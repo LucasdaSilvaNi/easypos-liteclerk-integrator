@@ -10,23 +10,19 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.TrnPOS
 {
-    public partial class TrnPOSTenderExchangeInformation : Form
+    public partial class TrnPOSTenderCheckInformation : Form
     {
         public TrnPOSTenderForm trnPOSTenderForm;
         public DataGridView mstDataGridViewTenderPayType;
 
-        public Int32? salesId = null;
-        public String salesNumber = "";
-
-        public TrnPOSTenderExchangeInformation(TrnPOSTenderForm POSTenderForm, DataGridView dataGridViewTenderPayType)
+        public TrnPOSTenderCheckInformation(TrnPOSTenderForm POSTenderForm, DataGridView dataGridViewTenderPayType, Decimal totalSalesAmount)
         {
             InitializeComponent();
 
             trnPOSTenderForm = POSTenderForm;
             mstDataGridViewTenderPayType = dataGridViewTenderPayType;
 
-            textBoxOrderReturnNumber.Text = mstDataGridViewTenderPayType.CurrentRow.Cells[7].Value.ToString();
-            textBoxAmount.Text = (Convert.ToDecimal(mstDataGridViewTenderPayType.CurrentRow.Cells[4].Value) * -1).ToString("#,##0.00");
+            textBoxAmount.Text = totalSalesAmount.ToString("#,##0.00");
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -36,14 +32,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            ExchangePay();
+            CheckPay();
         }
 
-        public void ExchangePay()
+        public void CheckPay()
         {
             try
             {
-                Decimal currentAmount = Convert.ToDecimal(textBoxAmount.Text) * -1;
+                Decimal currentAmount = Convert.ToDecimal(textBoxAmount.Text);
                 if (currentAmount >= 0)
                 {
                     if (mstDataGridViewTenderPayType.Rows.Contains(mstDataGridViewTenderPayType.CurrentRow))
@@ -51,19 +47,22 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         Int32 id = Convert.ToInt32(mstDataGridViewTenderPayType.CurrentRow.Cells[0].Value);
                         String payTypeCode = mstDataGridViewTenderPayType.CurrentRow.Cells[1].Value.ToString();
                         String payType = mstDataGridViewTenderPayType.CurrentRow.Cells[2].Value.ToString();
-                        Decimal amount = Convert.ToDecimal(textBoxAmount.Text) * -1;
-                        String otherInformation = "Exchange Payment for Order no. " + salesNumber + " " + DateTime.Now.ToLongDateString();
+                        Decimal amount = Convert.ToDecimal(textBoxAmount.Text);
+                        String otherInformation = "Check Payment " + DateTime.Now.ToLongDateString();
+                        String checkNumber = textBoxCheckNumber.Text;
+                        String checkDate = dateTimePickerCheckDate.Value.ToShortDateString();
+                        String checkBank = textBoxCheckBank.Text;
 
                         mstDataGridViewTenderPayType.CurrentRow.Cells[0].Value = id;
                         mstDataGridViewTenderPayType.CurrentRow.Cells[1].Value = payTypeCode;
                         mstDataGridViewTenderPayType.CurrentRow.Cells[2].Value = payType;
                         mstDataGridViewTenderPayType.CurrentRow.Cells[4].Value = amount.ToString("#,##0.00");
                         mstDataGridViewTenderPayType.CurrentRow.Cells[5].Value = otherInformation;
-                        mstDataGridViewTenderPayType.CurrentRow.Cells[6].Value = salesId;
-                        mstDataGridViewTenderPayType.CurrentRow.Cells[7].Value = salesNumber;
-                        mstDataGridViewTenderPayType.CurrentRow.Cells[8].Value = "NA";
-                        mstDataGridViewTenderPayType.CurrentRow.Cells[9].Value = null;
-                        mstDataGridViewTenderPayType.CurrentRow.Cells[10].Value = "NA";
+                        mstDataGridViewTenderPayType.CurrentRow.Cells[6].Value = null;
+                        mstDataGridViewTenderPayType.CurrentRow.Cells[7].Value = "";
+                        mstDataGridViewTenderPayType.CurrentRow.Cells[8].Value = checkNumber;
+                        mstDataGridViewTenderPayType.CurrentRow.Cells[9].Value = checkDate;
+                        mstDataGridViewTenderPayType.CurrentRow.Cells[10].Value = checkBank;
                         mstDataGridViewTenderPayType.CurrentRow.Cells[11].Value = "NA";
                         mstDataGridViewTenderPayType.CurrentRow.Cells[12].Value = "NA";
                         mstDataGridViewTenderPayType.CurrentRow.Cells[13].Value = "NA";
@@ -93,31 +92,22 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
         }
 
-        public void GetSalesDetail()
+        private void textBoxAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();
-            if (trnSalesController.GetExchangeSalesDetail(textBoxOrderReturnNumber.Text) != null)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
-                var currentSales = trnSalesController.GetExchangeSalesDetail(textBoxOrderReturnNumber.Text);
-
-                salesId = currentSales.Id;
-                salesNumber = currentSales.SalesNumber;
-                textBoxAmount.Text = currentSales.Amount.ToString("#,##0.00");
+                e.Handled = true;
             }
-            else
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
-                salesId = null;
-                salesNumber = "";
-                textBoxAmount.Text = "0.00";
+                e.Handled = true;
             }
         }
 
-        private void textBoxOrderReturnNumber_KeyDown(object sender, KeyEventArgs e)
+        private void textBoxAmount_Leave(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                GetSalesDetail();
-            }
+            textBoxAmount.Text = Convert.ToDecimal(textBoxAmount.Text).ToString("#,##0.00");
         }
     }
 }

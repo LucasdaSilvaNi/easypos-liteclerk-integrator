@@ -211,8 +211,9 @@ namespace EasyPOS.EasyFISIntegration.Controllers
 
                                             if (foundChanges)
                                             {
-                                                sysSettingsForm.logMessages("Updating Item: " + currentItem.FirstOrDefault().ItemDescription + "\r\n\n");
+                                                sysSettingsForm.logMessages("Updating Item...\r\n\n");
                                                 sysSettingsForm.logMessages("Barcode: " + currentItem.FirstOrDefault().BarCode + "\r\n\n");
+                                                sysSettingsForm.logMessages("Item Description: " + currentItem.FirstOrDefault().ItemDescription + "\r\n\n");
 
                                                 var updateItem = currentItem.FirstOrDefault();
                                                 updateItem.BarCode = item.ManualArticleCode;
@@ -258,15 +259,16 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                                     }
                                                 }
 
-                                                sysSettingsForm.logMessages("Update Successful!" + "\r\n\n");
+                                                sysSettingsForm.logMessages("Update Successful!\r\n\n");
                                                 sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                                 sysSettingsForm.logMessages("\r\n\n");
                                             }
                                         }
                                         else
                                         {
-                                            sysSettingsForm.logMessages("Saving Item: " + item.Article + "\r\n\n");
+                                            sysSettingsForm.logMessages("Saving Item...\r\n\n");
                                             sysSettingsForm.logMessages("Barcode: " + item.ManualArticleCode + "\r\n\n");
+                                            sysSettingsForm.logMessages("Item Description: " + item.Article + "\r\n\n");
 
                                             var itemCode = "0000000001";
                                             var lastItem = from d in posdb.MstItems.OrderByDescending(d => d.Id) select d;
@@ -331,34 +333,37 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                                 posdb.SubmitChanges();
                                             }
 
-                                            sysSettingsForm.logMessages("Save Successful!" + "\r\n\n");
+                                            sysSettingsForm.logMessages("Save Successful!\r\n\n");
                                             sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                             sysSettingsForm.logMessages("\r\n\n");
                                         }
                                     }
                                     else
                                     {
-                                        sysSettingsForm.logMessages("Cannot Save Item: " + item.Article + "\r\n\n");
-                                        sysSettingsForm.logMessages("Empty Supplier!" + "\r\n\n");
-                                        sysSettingsForm.logMessages("Save Failed!" + "\r\n\n");
+                                        sysSettingsForm.logMessages("Item Integration Failed!\r\n\n");
+                                        sysSettingsForm.logMessages("Barcode: " + item.ManualArticleCode + "\r\n\n");
+                                        sysSettingsForm.logMessages("Item Description: " + item.Article + "\r\n\n");
+                                        sysSettingsForm.logMessages("Error: Default Supplier is Empty.\r\n\n");
                                         sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                         sysSettingsForm.logMessages("\r\n\n");
                                     }
                                 }
                                 else
                                 {
-                                    sysSettingsForm.logMessages("Cannot Save Item: " + item.Article + "\r\n\n");
-                                    sysSettingsForm.logMessages("Output Tax Mismatch!" + "\r\n\n");
-                                    sysSettingsForm.logMessages("Save Failed!" + "\r\n\n");
+                                    sysSettingsForm.logMessages("Item Integration Failed!\r\n\n");
+                                    sysSettingsForm.logMessages("Barcode: " + item.ManualArticleCode + "\r\n\n");
+                                    sysSettingsForm.logMessages("Item Description: " + item.Article + "\r\n\n");
+                                    sysSettingsForm.logMessages("Error: Output Tax Mismatch.\r\n\n");
                                     sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                     sysSettingsForm.logMessages("\r\n\n");
                                 }
                             }
                             else
                             {
-                                sysSettingsForm.logMessages("Cannot Save Item: " + item.Article + "\r\n\n");
-                                sysSettingsForm.logMessages("Unit Mismatch!" + "\r\n\n");
-                                sysSettingsForm.logMessages("Save Failed!" + "\r\n\n");
+                                sysSettingsForm.logMessages("Item Integration Failed!\r\n\n");
+                                sysSettingsForm.logMessages("Barcode: " + item.ManualArticleCode + "\r\n\n");
+                                sysSettingsForm.logMessages("Item Description: " + item.Article + "\r\n\n");
+                                sysSettingsForm.logMessages("Error: Unit Mismatch.\r\n\n");
                                 sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                 sysSettingsForm.logMessages("\r\n\n");
                             }
@@ -370,7 +375,8 @@ namespace EasyPOS.EasyFISIntegration.Controllers
             }
             catch (Exception e)
             {
-                sysSettingsForm.logMessages("Item Error: " + e.Message + "\r\n\n");
+                sysSettingsForm.logMessages("Item Integration Failed!\r\n\n");
+                sysSettingsForm.logMessages("Error: " + e.Message + "\r\n\n");
                 sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                 sysSettingsForm.logMessages("\r\n\n");
 

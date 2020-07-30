@@ -139,6 +139,9 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
                                 ColumnDisbursementListId = d.Id,
                                 ColumnDisbursementListDisbursementDate = d.DisbursementDate,
                                 ColumnDisbursementListDisbursementNumber = d.DisbursementNumber,
+                                ColumnDisbursementListDisbursementType = d.DisbursementType,
+                                ColumnDisbursementListPayType = d.PayType,
+                                ColumnDisbursementListPayee = d.Payee,
                                 ColumnDisbursementListAmount = d.Amount.ToString("#,##0.00"),
                                 ColumnDisbursementListRemarks = d.Remarks,
                                 ColumnDisbursementListIsLocked = d.IsLocked
@@ -221,7 +224,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
 
             if (e.RowIndex > -1 && dataGridViewDisbursementList.CurrentCell.ColumnIndex == dataGridViewDisbursementList.Columns["ColumnDisbursementListButtonDelete"].Index)
             {
-                Boolean isLocked = Convert.ToBoolean(dataGridViewDisbursementList.Rows[e.RowIndex].Cells[7].Value);
+                Boolean isLocked = Convert.ToBoolean(dataGridViewDisbursementList.Rows[e.RowIndex].Cells[dataGridViewDisbursementList.Columns["ColumnDisbursementListIsLocked"].Index].Value);
 
                 if (isLocked == true)
                 {

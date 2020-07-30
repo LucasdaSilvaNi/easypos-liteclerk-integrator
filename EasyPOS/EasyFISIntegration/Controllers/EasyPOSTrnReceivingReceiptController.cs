@@ -85,10 +85,15 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                         {
                             if (receivingReceipt.ListPOSIntegrationTrnReceivingReceiptItem.Any())
                             {
-                                var currentStockIn = from d in posdb.TrnStockIns where d.Remarks.Equals("RR-" + receivingReceipt.BranchCode + "-" + receivingReceipt.RRNumber) && d.TrnStockInLines.Count() > 0 && d.IsLocked == true select d;
+                                var currentStockIn = from d in posdb.TrnStockIns
+                                                     where d.Remarks == "RR-" + receivingReceipt.BranchCode + "-" + receivingReceipt.RRNumber
+                                                     && d.IsLocked == true
+                                                     select d;
+
                                 if (!currentStockIn.Any())
                                 {
-                                    sysSettingsForm.logMessages("Saving Stock In: RR-" + receivingReceipt.BranchCode + "-" + receivingReceipt.RRNumber + "\r\n\n");
+                                    sysSettingsForm.logMessages("Saving Receiving Receipt (Stock-In)...\r\n\n");
+                                    sysSettingsForm.logMessages("RR Number: RR-" + receivingReceipt.BranchCode + "-" + receivingReceipt.RRNumber + "\r\n\n");
 
                                     var defaultPeriod = from d in posdb.MstPeriods select d;
                                     var defaultSettings = from d in posdb.IntCloudSettings select d;
@@ -106,12 +111,15 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                         PeriodId = defaultPeriod.FirstOrDefault().Id,
                                         StockInDate = Convert.ToDateTime(receivingReceipt.RRDate),
                                         StockInNumber = stockInNumber,
+                                        ManualStockInNumber = null,
                                         SupplierId = defaultSettings.FirstOrDefault().PostSupplierId,
                                         Remarks = "RR-" + receivingReceipt.BranchCode + "-" + receivingReceipt.RRNumber,
                                         IsReturn = false,
+                                        CollectionId = null,
                                         PreparedBy = defaultSettings.FirstOrDefault().PostUserId,
                                         CheckedBy = defaultSettings.FirstOrDefault().PostUserId,
                                         ApprovedBy = defaultSettings.FirstOrDefault().PostUserId,
+                                        SalesId = null,
                                         IsLocked = true,
                                         EntryUserId = defaultSettings.FirstOrDefault().PostUserId,
                                         EntryDateTime = DateTime.Now,
@@ -155,7 +163,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                         }
                                     }
 
-                                    sysSettingsForm.logMessages("Save Successful!" + "\r\n\n");
+                                    sysSettingsForm.logMessages("Save Successful!\r\n\n");
                                     sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                     sysSettingsForm.logMessages("\r\n\n");
                                 }
@@ -168,7 +176,8 @@ namespace EasyPOS.EasyFISIntegration.Controllers
             }
             catch (Exception e)
             {
-                sysSettingsForm.logMessages("Receiving Receipt Error: " + e.Message + "\r\n\n");
+                sysSettingsForm.logMessages("Receiving Receipt Integration Failed!\r\n\n");
+                sysSettingsForm.logMessages("Error: " + e.Message + "\r\n\n");
                 sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                 sysSettingsForm.logMessages("\r\n\n");
 

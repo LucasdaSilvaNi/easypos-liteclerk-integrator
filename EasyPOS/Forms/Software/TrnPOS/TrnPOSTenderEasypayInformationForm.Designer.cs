@@ -69,16 +69,18 @@
             this.panel1.Controls.Add(this.buttonPay);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(630, 63);
+            this.panel1.Size = new System.Drawing.Size(484, 50);
             this.panel1.TabIndex = 5;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.POS;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
+            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -87,12 +89,12 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(63, 17);
+            this.label1.Location = new System.Drawing.Point(50, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(162, 35);
+            this.label1.Size = new System.Drawing.Size(207, 28);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Easypay Info";
+            this.label1.Text = "Easypay Information";
             // 
             // buttonClose
             // 
@@ -103,9 +105,10 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(530, 12);
+            this.buttonClose.Location = new System.Drawing.Point(404, 10);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(88, 40);
+            this.buttonClose.Size = new System.Drawing.Size(70, 32);
             this.buttonClose.TabIndex = 21;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
@@ -121,9 +124,10 @@
             this.buttonPay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPay.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPay.ForeColor = System.Drawing.Color.White;
-            this.buttonPay.Location = new System.Drawing.Point(436, 12);
+            this.buttonPay.Location = new System.Drawing.Point(329, 10);
+            this.buttonPay.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPay.Name = "buttonPay";
-            this.buttonPay.Size = new System.Drawing.Size(88, 40);
+            this.buttonPay.Size = new System.Drawing.Size(70, 32);
             this.buttonPay.TabIndex = 20;
             this.buttonPay.TabStop = false;
             this.buttonPay.Text = "Pay";
@@ -144,18 +148,20 @@
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 63);
+            this.panel2.Location = new System.Drawing.Point(0, 50);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(630, 368);
+            this.panel2.Size = new System.Drawing.Size(484, 301);
             this.panel2.TabIndex = 6;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.Controls.Add(this.textBoxTappedCardNumber);
-            this.panel5.Location = new System.Drawing.Point(0, 89);
+            this.panel5.Location = new System.Drawing.Point(0, 71);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(630, 48);
+            this.panel5.Size = new System.Drawing.Size(484, 38);
             this.panel5.TabIndex = 41;
             // 
             // textBoxTappedCardNumber
@@ -163,10 +169,11 @@
             this.textBoxTappedCardNumber.BackColor = System.Drawing.Color.White;
             this.textBoxTappedCardNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxTappedCardNumber.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxTappedCardNumber.Location = new System.Drawing.Point(12, 10);
+            this.textBoxTappedCardNumber.Location = new System.Drawing.Point(10, 8);
+            this.textBoxTappedCardNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTappedCardNumber.Name = "textBoxTappedCardNumber";
             this.textBoxTappedCardNumber.PasswordChar = '•';
-            this.textBoxTappedCardNumber.Size = new System.Drawing.Size(606, 27);
+            this.textBoxTappedCardNumber.Size = new System.Drawing.Size(465, 22);
             this.textBoxTappedCardNumber.TabIndex = 0;
             this.textBoxTappedCardNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxTappedCardNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxTappedCardAmount_KeyDown);
@@ -178,9 +185,10 @@
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Controls.Add(this.labelConnectionStatus);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 303);
+            this.panel4.Location = new System.Drawing.Point(0, 249);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(630, 65);
+            this.panel4.Size = new System.Drawing.Size(484, 52);
             this.panel4.TabIndex = 40;
             // 
             // label5
@@ -188,18 +196,20 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(8, 9);
+            this.label5.Location = new System.Drawing.Point(6, 7);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(124, 19);
+            this.label5.Size = new System.Drawing.Size(105, 13);
             this.label5.TabIndex = 3;
             this.label5.Text = "Connection Status:";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::EasyPOS.Properties.Resources.easypay;
-            this.pictureBox2.Location = new System.Drawing.Point(481, 7);
+            this.pictureBox2.Location = new System.Drawing.Point(385, 6);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(147, 49);
+            this.pictureBox2.Size = new System.Drawing.Size(88, 39);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
@@ -209,19 +219,21 @@
             this.labelConnectionStatus.AutoSize = true;
             this.labelConnectionStatus.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.labelConnectionStatus.ForeColor = System.Drawing.Color.Lime;
-            this.labelConnectionStatus.Location = new System.Drawing.Point(8, 31);
+            this.labelConnectionStatus.Location = new System.Drawing.Point(6, 25);
+            this.labelConnectionStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelConnectionStatus.Name = "labelConnectionStatus";
-            this.labelConnectionStatus.Size = new System.Drawing.Size(93, 23);
+            this.labelConnectionStatus.Size = new System.Drawing.Size(75, 19);
             this.labelConnectionStatus.TabIndex = 0;
             this.labelConnectionStatus.Text = "Connected";
             // 
             // textBoxEndingBalance
             // 
             this.textBoxEndingBalance.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxEndingBalance.Location = new System.Drawing.Point(188, 263);
+            this.textBoxEndingBalance.Location = new System.Drawing.Point(150, 212);
+            this.textBoxEndingBalance.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxEndingBalance.Name = "textBoxEndingBalance";
             this.textBoxEndingBalance.ReadOnly = true;
-            this.textBoxEndingBalance.Size = new System.Drawing.Size(430, 34);
+            this.textBoxEndingBalance.Size = new System.Drawing.Size(323, 29);
             this.textBoxEndingBalance.TabIndex = 39;
             this.textBoxEndingBalance.TabStop = false;
             this.textBoxEndingBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -229,10 +241,11 @@
             // textBoxAmountCharge
             // 
             this.textBoxAmountCharge.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxAmountCharge.Location = new System.Drawing.Point(188, 223);
+            this.textBoxAmountCharge.Location = new System.Drawing.Point(150, 180);
+            this.textBoxAmountCharge.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxAmountCharge.Name = "textBoxAmountCharge";
             this.textBoxAmountCharge.ReadOnly = true;
-            this.textBoxAmountCharge.Size = new System.Drawing.Size(430, 34);
+            this.textBoxAmountCharge.Size = new System.Drawing.Size(323, 29);
             this.textBoxAmountCharge.TabIndex = 38;
             this.textBoxAmountCharge.TabStop = false;
             this.textBoxAmountCharge.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -241,9 +254,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label4.Location = new System.Drawing.Point(34, 266);
+            this.label4.Location = new System.Drawing.Point(27, 215);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(148, 28);
+            this.label4.Size = new System.Drawing.Size(118, 21);
             this.label4.TabIndex = 37;
             this.label4.Text = "Ending Balance:";
             // 
@@ -251,19 +265,21 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label3.Location = new System.Drawing.Point(28, 226);
+            this.label3.Location = new System.Drawing.Point(22, 183);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(154, 28);
+            this.label3.Size = new System.Drawing.Size(123, 21);
             this.label3.TabIndex = 36;
             this.label3.Text = "Amount Charge:";
             // 
             // textBoxBeginningBalance
             // 
             this.textBoxBeginningBalance.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxBeginningBalance.Location = new System.Drawing.Point(188, 183);
+            this.textBoxBeginningBalance.Location = new System.Drawing.Point(150, 148);
+            this.textBoxBeginningBalance.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxBeginningBalance.Name = "textBoxBeginningBalance";
             this.textBoxBeginningBalance.ReadOnly = true;
-            this.textBoxBeginningBalance.Size = new System.Drawing.Size(430, 34);
+            this.textBoxBeginningBalance.Size = new System.Drawing.Size(323, 29);
             this.textBoxBeginningBalance.TabIndex = 35;
             this.textBoxBeginningBalance.TabStop = false;
             this.textBoxBeginningBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -272,19 +288,21 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label2.Location = new System.Drawing.Point(7, 186);
+            this.label2.Location = new System.Drawing.Point(6, 151);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(175, 28);
+            this.label2.Size = new System.Drawing.Size(140, 21);
             this.label2.TabIndex = 34;
             this.label2.Text = "Beginning Balance:";
             // 
             // textBoxCustomer
             // 
             this.textBoxCustomer.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxCustomer.Location = new System.Drawing.Point(188, 143);
+            this.textBoxCustomer.Location = new System.Drawing.Point(150, 116);
+            this.textBoxCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCustomer.Name = "textBoxCustomer";
             this.textBoxCustomer.ReadOnly = true;
-            this.textBoxCustomer.Size = new System.Drawing.Size(430, 34);
+            this.textBoxCustomer.Size = new System.Drawing.Size(323, 29);
             this.textBoxCustomer.TabIndex = 33;
             this.textBoxCustomer.TabStop = false;
             // 
@@ -292,9 +310,10 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label13.Location = new System.Drawing.Point(82, 146);
+            this.label13.Location = new System.Drawing.Point(66, 119);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(100, 28);
+            this.label13.Size = new System.Drawing.Size(81, 21);
             this.label13.TabIndex = 32;
             this.label13.Text = "Customer:";
             // 
@@ -304,8 +323,9 @@
             this.panel3.Controls.Add(this.textBoxTotalSalesAmount);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(630, 83);
+            this.panel3.Size = new System.Drawing.Size(484, 66);
             this.panel3.TabIndex = 8;
             // 
             // textBoxTotalSalesAmount
@@ -315,10 +335,11 @@
             this.textBoxTotalSalesAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxTotalSalesAmount.Font = new System.Drawing.Font("Segoe UI Semibold", 30F, System.Drawing.FontStyle.Bold);
             this.textBoxTotalSalesAmount.ForeColor = System.Drawing.Color.White;
-            this.textBoxTotalSalesAmount.Location = new System.Drawing.Point(12, 6);
+            this.textBoxTotalSalesAmount.Location = new System.Drawing.Point(-10, 5);
+            this.textBoxTotalSalesAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTotalSalesAmount.Name = "textBoxTotalSalesAmount";
             this.textBoxTotalSalesAmount.ReadOnly = true;
-            this.textBoxTotalSalesAmount.Size = new System.Drawing.Size(606, 67);
+            this.textBoxTotalSalesAmount.Size = new System.Drawing.Size(485, 54);
             this.textBoxTotalSalesAmount.TabIndex = 1;
             this.textBoxTotalSalesAmount.TabStop = false;
             this.textBoxTotalSalesAmount.Text = "0.00";
@@ -326,14 +347,15 @@
             // 
             // TrnPOSTenderEasypayInformationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(630, 431);
+            this.ClientSize = new System.Drawing.Size(484, 351);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "TrnPOSTenderEasypayInformationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -83,10 +83,15 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                     {
                         foreach (var stockIn in stockInLists)
                         {
-                            var currentStockIn = from d in posdb.TrnStockIns where d.Remarks.Equals("IN-" + stockIn.BranchCode + "-" + stockIn.INNumber) && d.TrnStockInLines.Count() > 0 && d.IsLocked == true select d;
+                            var currentStockIn = from d in posdb.TrnStockIns
+                                                 where d.Remarks == "IN-" + stockIn.BranchCode + "-" + stockIn.INNumber
+                                                 && d.IsLocked == true
+                                                 select d;
+
                             if (!currentStockIn.Any())
                             {
-                                sysSettingsForm.logMessages("Saving Stock In: IN-" + stockIn.BranchCode + "-" + stockIn.INNumber + "\r\n\n");
+                                sysSettingsForm.logMessages("Saving Stock-In...\r\n\n");
+                                sysSettingsForm.logMessages("IN Number: IN-" + stockIn.BranchCode + "-" + stockIn.INNumber + "\r\n\n");
 
                                 var defaultPeriod = from d in posdb.MstPeriods select d;
                                 var defaultSettings = from d in posdb.IntCloudSettings select d;
@@ -104,12 +109,15 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                     PeriodId = defaultPeriod.FirstOrDefault().Id,
                                     StockInDate = Convert.ToDateTime(stockIn.INDate),
                                     StockInNumber = stockInNumber,
+                                    ManualStockInNumber = null,
                                     SupplierId = defaultSettings.FirstOrDefault().PostSupplierId,
                                     Remarks = "IN-" + stockIn.BranchCode + "-" + stockIn.INNumber,
                                     IsReturn = false,
+                                    CollectionId = null,
                                     PreparedBy = defaultSettings.FirstOrDefault().PostUserId,
                                     CheckedBy = defaultSettings.FirstOrDefault().PostUserId,
                                     ApprovedBy = defaultSettings.FirstOrDefault().PostUserId,
+                                    SalesId = null,
                                     IsLocked = true,
                                     EntryUserId = defaultSettings.FirstOrDefault().PostUserId,
                                     EntryDateTime = DateTime.Now,
@@ -153,7 +161,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                     }
                                 }
 
-                                sysSettingsForm.logMessages("Save Successful!" + "\r\n\n");
+                                sysSettingsForm.logMessages("Save Successful!\r\n\n");
                                 sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                 sysSettingsForm.logMessages("\r\n\n");
                             }
@@ -165,7 +173,8 @@ namespace EasyPOS.EasyFISIntegration.Controllers
             }
             catch (Exception e)
             {
-                sysSettingsForm.logMessages("Stock-In Error: " + e.Message + "\r\n\n");
+                sysSettingsForm.logMessages("Stock-In Integration Failed!\r\n\n");
+                sysSettingsForm.logMessages("Error: " + e.Message + "\r\n\n");
                 sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                 sysSettingsForm.logMessages("\r\n\n");
 

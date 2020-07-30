@@ -1,6 +1,6 @@
 ﻿namespace EasyPOS.Forms.Software.TrnPOS
 {
-    partial class TrnPOSTenderMoreInformationForm
+    partial class TrnPOSTenderOtherInformationForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSTenderMoreInformationForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSTenderOtherInformationForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,16 +51,18 @@
             this.panel1.Controls.Add(this.buttonSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(680, 63);
+            this.panel1.Size = new System.Drawing.Size(484, 50);
             this.panel1.TabIndex = 4;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.POS;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
+            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -69,12 +71,12 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(63, 17);
+            this.label1.Location = new System.Drawing.Point(50, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 35);
+            this.label1.Size = new System.Drawing.Size(185, 28);
             this.label1.TabIndex = 2;
-            this.label1.Text = "More Info";
+            this.label1.Text = "Other Information";
             // 
             // buttonClose
             // 
@@ -85,9 +87,10 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(580, 12);
+            this.buttonClose.Location = new System.Drawing.Point(404, 10);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(88, 40);
+            this.buttonClose.Size = new System.Drawing.Size(70, 32);
             this.buttonClose.TabIndex = 1;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
@@ -103,12 +106,13 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(486, 12);
+            this.buttonSave.Location = new System.Drawing.Point(329, 10);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(88, 40);
+            this.buttonSave.Size = new System.Drawing.Size(70, 32);
             this.buttonSave.TabIndex = 1;
             this.buttonSave.TabStop = false;
-            this.buttonSave.Text = "Save";
+            this.buttonSave.Text = "OK";
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
@@ -117,9 +121,10 @@
             this.panel2.Controls.Add(this.textBoxCollectionLineOtherInformation);
             this.panel2.Controls.Add(this.label13);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 63);
+            this.panel2.Location = new System.Drawing.Point(0, 50);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(680, 232);
+            this.panel2.Size = new System.Drawing.Size(484, 186);
             this.panel2.TabIndex = 5;
             // 
             // textBoxCollectionLineOtherInformation
@@ -127,36 +132,38 @@
             this.textBoxCollectionLineOtherInformation.AcceptsTab = true;
             this.textBoxCollectionLineOtherInformation.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxCollectionLineOtherInformation.HideSelection = false;
-            this.textBoxCollectionLineOtherInformation.Location = new System.Drawing.Point(12, 34);
+            this.textBoxCollectionLineOtherInformation.Location = new System.Drawing.Point(10, 27);
+            this.textBoxCollectionLineOtherInformation.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCollectionLineOtherInformation.Multiline = true;
             this.textBoxCollectionLineOtherInformation.Name = "textBoxCollectionLineOtherInformation";
-            this.textBoxCollectionLineOtherInformation.Size = new System.Drawing.Size(656, 186);
+            this.textBoxCollectionLineOtherInformation.Size = new System.Drawing.Size(464, 150);
             this.textBoxCollectionLineOtherInformation.TabIndex = 0;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label13.Location = new System.Drawing.Point(7, 3);
+            this.label13.Location = new System.Drawing.Point(6, 2);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(174, 28);
+            this.label13.Size = new System.Drawing.Size(139, 21);
             this.label13.TabIndex = 31;
             this.label13.Text = "Other Information:";
             // 
-            // TrnPOSTenderMoreInformationForm
+            // TrnPOSTenderOtherInformationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(680, 295);
+            this.ClientSize = new System.Drawing.Size(484, 236);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "TrnPOSTenderMoreInformationForm";
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Name = "TrnPOSTenderOtherInformationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "More Info";
+            this.Text = "Other Information";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TrnSalesDetailTenderMoreInfoForm_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -83,10 +83,15 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                     {
                         foreach (var stockOut in stockOuts)
                         {
-                            var currentStockOut = from d in posdb.TrnStockOuts where d.Remarks.Equals("OT-" + stockOut.BranchCode + "-" + stockOut.OTNumber) && d.TrnStockOutLines.Count() > 0 && d.IsLocked == true select d;
+                            var currentStockOut = from d in posdb.TrnStockOuts
+                                                  where d.Remarks == "OT-" + stockOut.BranchCode + "-" + stockOut.OTNumber
+                                                  && d.IsLocked == true
+                                                  select d;
+
                             if (!currentStockOut.Any())
                             {
-                                sysSettingsForm.logMessages("Saving Stock Out: OT-" + stockOut.BranchCode + "-" + stockOut.OTNumber + "\r\n\n");
+                                sysSettingsForm.logMessages("Saving Stock-Out...\r\n\n");
+                                sysSettingsForm.logMessages("OT Number: OT-" + stockOut.BranchCode + "-" + stockOut.OTNumber + "\r\n\n");
 
                                 var defaultPeriod = from d in posdb.MstPeriods select d;
                                 var defaultSettings = from d in posdb.IntCloudSettings select d;
@@ -107,6 +112,7 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                         PeriodId = defaultPeriod.FirstOrDefault().Id,
                                         StockOutDate = Convert.ToDateTime(stockOut.OTDate),
                                         StockOutNumber = stockOutNumber,
+                                        ManualStockOutNumber = null,
                                         AccountId = accounts.FirstOrDefault().Id,
                                         Remarks = "OT-" + stockOut.BranchCode + "-" + stockOut.OTNumber,
                                         PreparedBy = defaultSettings.FirstOrDefault().PostUserId,
@@ -152,14 +158,14 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                         }
                                     }
 
-                                    sysSettingsForm.logMessages("Save Successful!" + "\r\n\n");
+                                    sysSettingsForm.logMessages("Save Successful!\r\n\n");
                                     sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                     sysSettingsForm.logMessages("\r\n\n");
                                 }
                                 else
                                 {
-                                    sysSettingsForm.logMessages("Cannot Save Stock Out: OT - " + stockOut.BranchCode + " - " + stockOut.OTNumber + "\r\n\n");
-                                    sysSettingsForm.logMessages("Empty Accounts!" + "\r\n\n");
+                                    sysSettingsForm.logMessages("Save Failed!\r\n\n");
+                                    sysSettingsForm.logMessages("Error: Default Account is Empty.\r\n\n");
                                     sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                     sysSettingsForm.logMessages("\r\n\n");
                                 }
@@ -172,7 +178,8 @@ namespace EasyPOS.EasyFISIntegration.Controllers
             }
             catch (Exception e)
             {
-                sysSettingsForm.logMessages("Stock-Out Error: " + e.Message + "\r\n\n");
+                sysSettingsForm.logMessages("Stock-Out Integration Failed!\r\n\n");
+                sysSettingsForm.logMessages("Error: " + e.Message + "\r\n\n");
                 sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                 sysSettingsForm.logMessages("\r\n\n");
 

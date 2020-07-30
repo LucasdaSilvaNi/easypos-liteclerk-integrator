@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.TrnPOS
 {
-    public partial class TrnPOSTenderMoreInformationForm : Form
+    public partial class TrnPOSTenderOtherInformationForm : Form
     {
         public TrnPOSTenderForm trnSalesDetailTenderForm;
         public DataGridView mstDataGridViewTenderPayType;
 
-        public TrnPOSTenderMoreInformationForm(TrnPOSTenderForm salesDetailTenderForm, DataGridView dataGridViewTenderPayType)
+        public TrnPOSTenderOtherInformationForm(TrnPOSTenderForm salesDetailTenderForm, DataGridView dataGridViewTenderPayType)
         {
             InitializeComponent();
 
@@ -49,6 +49,17 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 mstDataGridViewTenderPayType.CurrentRow.Cells[5].Value = otherInformation;
                 mstDataGridViewTenderPayType.CurrentRow.Cells[6].Value = null;
                 mstDataGridViewTenderPayType.CurrentRow.Cells[7].Value = "";
+                mstDataGridViewTenderPayType.CurrentRow.Cells[8].Value = "NA";
+                mstDataGridViewTenderPayType.CurrentRow.Cells[9].Value = null;
+                mstDataGridViewTenderPayType.CurrentRow.Cells[10].Value = "NA";
+                mstDataGridViewTenderPayType.CurrentRow.Cells[11].Value = "NA";
+                mstDataGridViewTenderPayType.CurrentRow.Cells[12].Value = "NA";
+                mstDataGridViewTenderPayType.CurrentRow.Cells[13].Value = "NA";
+                mstDataGridViewTenderPayType.CurrentRow.Cells[14].Value = "NA";
+                mstDataGridViewTenderPayType.CurrentRow.Cells[15].Value = "NA";
+                mstDataGridViewTenderPayType.CurrentRow.Cells[16].Value = "NA";
+                mstDataGridViewTenderPayType.CurrentRow.Cells[17].Value = "NA";
+                mstDataGridViewTenderPayType.CurrentRow.Cells[18].Value = "NA";
             }
 
             mstDataGridViewTenderPayType.Refresh();

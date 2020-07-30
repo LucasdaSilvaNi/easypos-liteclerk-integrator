@@ -71,7 +71,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.checkBoxReturn = new System.Windows.Forms.CheckBox();
+            this.checkBoxRefund = new System.Windows.Forms.CheckBox();
             this.label17 = new System.Windows.Forms.Label();
             this.textBoxRemarks = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -273,7 +273,7 @@
             this.panel4.Controls.Add(this.label9);
             this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.label18);
-            this.panel4.Controls.Add(this.checkBoxReturn);
+            this.panel4.Controls.Add(this.checkBoxRefund);
             this.panel4.Controls.Add(this.label17);
             this.panel4.Controls.Add(this.textBoxRemarks);
             this.panel4.Controls.Add(this.label16);
@@ -677,30 +677,30 @@
             this.label18.TabIndex = 39;
             this.label18.Text = "Order Return No.:";
             // 
-            // checkBoxReturn
+            // checkBoxRefund
             // 
-            this.checkBoxReturn.AutoSize = true;
-            this.checkBoxReturn.Enabled = false;
-            this.checkBoxReturn.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxReturn.Location = new System.Drawing.Point(155, 371);
-            this.checkBoxReturn.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxReturn.Name = "checkBoxReturn";
-            this.checkBoxReturn.Size = new System.Drawing.Size(32, 23);
-            this.checkBoxReturn.TabIndex = 9;
-            this.checkBoxReturn.Text = " ";
-            this.checkBoxReturn.UseVisualStyleBackColor = true;
-            this.checkBoxReturn.CheckedChanged += new System.EventHandler(this.checkBoxReturn_CheckedChanged);
+            this.checkBoxRefund.AutoSize = true;
+            this.checkBoxRefund.Enabled = false;
+            this.checkBoxRefund.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.checkBoxRefund.Location = new System.Drawing.Point(155, 371);
+            this.checkBoxRefund.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxRefund.Name = "checkBoxRefund";
+            this.checkBoxRefund.Size = new System.Drawing.Size(32, 23);
+            this.checkBoxRefund.TabIndex = 9;
+            this.checkBoxRefund.Text = " ";
+            this.checkBoxRefund.UseVisualStyleBackColor = true;
+            this.checkBoxRefund.CheckedChanged += new System.EventHandler(this.checkBoxReturn_CheckedChanged);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label17.Location = new System.Drawing.Point(84, 372);
+            this.label17.Location = new System.Drawing.Point(82, 372);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(67, 19);
+            this.label17.Size = new System.Drawing.Size(69, 19);
             this.label17.TabIndex = 36;
-            this.label17.Text = "Is Return:";
+            this.label17.Text = "Is Refund:";
             // 
             // textBoxRemarks
             // 
@@ -1014,7 +1014,7 @@
         private System.Windows.Forms.TextBox textBoxRemarks;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.CheckBox checkBoxReturn;
+        private System.Windows.Forms.CheckBox checkBoxRefund;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;

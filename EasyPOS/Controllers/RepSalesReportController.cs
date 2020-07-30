@@ -157,7 +157,7 @@ namespace EasyPOS.Controllers
                                       Customer = d.TrnCollection.MstCustomer.Customer,
                                       SalesNumber = d.TrnCollection.TrnSale.SalesNumber,
                                       PayType = d.MstPayType.PayType,
-                                      Amount = d.TrnCollection.IsCancelled == true ? 0 : d.MstPayType.PayType.Equals("Cash") ? d.Amount - d.TrnCollection.ChangeAmount : d.Amount,
+                                      Amount = d.TrnCollection.IsCancelled == true ? 0 : d.MstPayType.PayTypeCode.Equals("CASH") ? d.Amount - d.TrnCollection.ChangeAmount : d.Amount,
                                       CheckNumber = d.CheckNumber,
                                       CheckDate = d.CheckDate.ToString(),
                                       CheckBank = d.CheckBank,

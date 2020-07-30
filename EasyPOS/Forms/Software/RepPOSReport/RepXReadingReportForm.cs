@@ -137,10 +137,12 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                          && d.TrnCollection.IsCancelled == false
                                          group d by new
                                          {
+                                             d.MstPayType.PayTypeCode,
                                              d.MstPayType.PayType,
                                          } into g
                                          select new
                                          {
+                                             g.Key.PayTypeCode,
                                              g.Key.PayType,
                                              TotalAmount = g.Sum(s => s.Amount),
                                              TotalChangeAmount = g.Sum(s => s.TrnCollection.ChangeAmount)
@@ -191,7 +193,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 foreach (var collectionLine in currentCollectionLines)
                 {
                     Decimal amount = collectionLine.TotalAmount;
-                    if (collectionLine.PayType.Equals("Cash"))
+                    if (collectionLine.PayTypeCode.Equals("CASH"))
                     {
                         amount = collectionLine.TotalAmount - collectionLine.TotalChangeAmount;
                     }

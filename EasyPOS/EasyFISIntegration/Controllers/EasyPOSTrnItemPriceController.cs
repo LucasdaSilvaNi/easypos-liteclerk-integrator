@@ -73,8 +73,8 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                 var currentItemPrice = from d in posdb.MstItemPrices where d.ItemId == currentItem.FirstOrDefault().Id && d.PriceDescription.Equals("IP-" + itemPrice.BranchCode + "-" + itemPrice.IPNumber + " (" + itemPrice.IPDate + ")") select d;
                                 if (!currentItemPrice.Any())
                                 {
-                                    sysSettingsForm.logMessages("Saving Item Price: IP-" + itemPrice.BranchCode + "-" + itemPrice.IPNumber + " (" + itemPrice.IPDate + ")" + "\r\n\n");
-                                    sysSettingsForm.logMessages("Current Item: " + currentItem.FirstOrDefault().ItemDescription + "\r\n\n");
+                                    sysSettingsForm.logMessages("Saving Item Price...\r\n\n");
+                                    sysSettingsForm.logMessages("IP Number (Price Description): " + "IP - " + itemPrice.BranchCode + " - " + itemPrice.IPNumber + "(" + itemPrice.IPDate + ")\r\n\n");
 
                                     Data.MstItemPrice newPrice = new Data.MstItemPrice()
                                     {
@@ -90,16 +90,16 @@ namespace EasyPOS.EasyFISIntegration.Controllers
                                     updateCurrentItem.Price = itemPrice.Price;
                                     posdb.SubmitChanges();
 
-                                    sysSettingsForm.logMessages("Save Successful!" + "\r\n\n");
+                                    sysSettingsForm.logMessages("Save Successful!\r\n\n");
                                     sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                     sysSettingsForm.logMessages("\r\n\n");
                                 }
                             }
                             else
                             {
-                                sysSettingsForm.logMessages("Cannot Save Item Price: IP-" + itemPrice.BranchCode + "-" + itemPrice.IPNumber + " (" + itemPrice.IPDate + ")" + "..." + "\r\n\n");
-                                sysSettingsForm.logMessages("Price: " + itemPrice.Price + "\r\n\n");
-                                sysSettingsForm.logMessages("Item Not Found!" + "\r\n\n");
+                                sysSettingsForm.logMessages("Item Price Integration Failed!\r\n\n");
+                                sysSettingsForm.logMessages("IP Number (Price Description): " + "IP - " + itemPrice.BranchCode + " - " + itemPrice.IPNumber + "(" + itemPrice.IPDate + ")\r\n\n");
+                                sysSettingsForm.logMessages("Error: Item Description Not Found.\r\n\n");
                                 sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                                 sysSettingsForm.logMessages("\r\n\n");
                             }
@@ -111,7 +111,8 @@ namespace EasyPOS.EasyFISIntegration.Controllers
             }
             catch (Exception e)
             {
-                sysSettingsForm.logMessages("Item Price Error: " + e.Message + "\r\n\n");
+                sysSettingsForm.logMessages("Item Price Integration Failed!\r\n\n");
+                sysSettingsForm.logMessages("Error: " + e.Message + "\r\n\n");
                 sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
                 sysSettingsForm.logMessages("\r\n\n");
 

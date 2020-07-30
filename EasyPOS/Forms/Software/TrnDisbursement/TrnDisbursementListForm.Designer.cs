@@ -37,14 +37,6 @@
             this.textBoxDisbursementListPageNumber = new System.Windows.Forms.TextBox();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.dataGridViewDisbursementList = new System.Windows.Forms.DataGridView();
-            this.ColumnDisbursementListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnDisbursementListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnDisbursementListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDisbursementListDisbursementDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDisbursementListDisbursementNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDisbursementListSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDisbursementListRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDisbursementListIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.buttonDisbursementListPageListFirst = new System.Windows.Forms.Button();
             this.buttonDisbursementListPageListPrevious = new System.Windows.Forms.Button();
             this.buttonDisbursementListPageListNext = new System.Windows.Forms.Button();
@@ -52,8 +44,19 @@
             this.textBoxDisbursementListFilter = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonRefund = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ColumnDisbursementListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnDisbursementListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnDisbursementListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDisbursementListDisbursementDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDisbursementListDisbursementNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDisbursementListDisbursementType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDisbursementListPayType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDisbursementListPayee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDisbursementListAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDisbursementListRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDisbursementListIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDisbursementList)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -166,7 +169,10 @@
             this.ColumnDisbursementListId,
             this.ColumnDisbursementListDisbursementDate,
             this.ColumnDisbursementListDisbursementNumber,
-            this.ColumnDisbursementListSupplier,
+            this.ColumnDisbursementListDisbursementType,
+            this.ColumnDisbursementListPayType,
+            this.ColumnDisbursementListPayee,
+            this.ColumnDisbursementListAmount,
             this.ColumnDisbursementListRemarks,
             this.ColumnDisbursementListIsLocked});
             this.dataGridViewDisbursementList.Location = new System.Drawing.Point(10, 34);
@@ -179,74 +185,6 @@
             this.dataGridViewDisbursementList.Size = new System.Drawing.Size(1077, 429);
             this.dataGridViewDisbursementList.TabIndex = 20;
             this.dataGridViewDisbursementList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDisbursementList_CellClick);
-            // 
-            // ColumnDisbursementListButtonEdit
-            // 
-            this.ColumnDisbursementListButtonEdit.DataPropertyName = "ColumnDisbursementListButtonEdit";
-            this.ColumnDisbursementListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnDisbursementListButtonEdit.HeaderText = "";
-            this.ColumnDisbursementListButtonEdit.Name = "ColumnDisbursementListButtonEdit";
-            this.ColumnDisbursementListButtonEdit.ReadOnly = true;
-            this.ColumnDisbursementListButtonEdit.Width = 70;
-            // 
-            // ColumnDisbursementListButtonDelete
-            // 
-            this.ColumnDisbursementListButtonDelete.DataPropertyName = "ColumnDisbursementListButtonDelete";
-            this.ColumnDisbursementListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnDisbursementListButtonDelete.HeaderText = "";
-            this.ColumnDisbursementListButtonDelete.Name = "ColumnDisbursementListButtonDelete";
-            this.ColumnDisbursementListButtonDelete.ReadOnly = true;
-            this.ColumnDisbursementListButtonDelete.Width = 70;
-            // 
-            // ColumnDisbursementListId
-            // 
-            this.ColumnDisbursementListId.DataPropertyName = "ColumnDisbursementListId";
-            this.ColumnDisbursementListId.HeaderText = "Id";
-            this.ColumnDisbursementListId.Name = "ColumnDisbursementListId";
-            this.ColumnDisbursementListId.ReadOnly = true;
-            this.ColumnDisbursementListId.Visible = false;
-            // 
-            // ColumnDisbursementListDisbursementDate
-            // 
-            this.ColumnDisbursementListDisbursementDate.DataPropertyName = "ColumnDisbursementListDisbursementDate";
-            this.ColumnDisbursementListDisbursementDate.HeaderText = "Cash In/Out Date";
-            this.ColumnDisbursementListDisbursementDate.Name = "ColumnDisbursementListDisbursementDate";
-            this.ColumnDisbursementListDisbursementDate.ReadOnly = true;
-            this.ColumnDisbursementListDisbursementDate.Visible = false;
-            this.ColumnDisbursementListDisbursementDate.Width = 95;
-            // 
-            // ColumnDisbursementListDisbursementNumber
-            // 
-            this.ColumnDisbursementListDisbursementNumber.DataPropertyName = "ColumnDisbursementListDisbursementNumber";
-            this.ColumnDisbursementListDisbursementNumber.HeaderText = "Cash In/Out No.";
-            this.ColumnDisbursementListDisbursementNumber.Name = "ColumnDisbursementListDisbursementNumber";
-            this.ColumnDisbursementListDisbursementNumber.ReadOnly = true;
-            // 
-            // ColumnDisbursementListSupplier
-            // 
-            this.ColumnDisbursementListSupplier.DataPropertyName = "ColumnDisbursementListAmount";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnDisbursementListSupplier.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColumnDisbursementListSupplier.HeaderText = "Amount";
-            this.ColumnDisbursementListSupplier.Name = "ColumnDisbursementListSupplier";
-            this.ColumnDisbursementListSupplier.ReadOnly = true;
-            this.ColumnDisbursementListSupplier.Width = 200;
-            // 
-            // ColumnDisbursementListRemarks
-            // 
-            this.ColumnDisbursementListRemarks.DataPropertyName = "ColumnDisbursementListRemarks";
-            this.ColumnDisbursementListRemarks.HeaderText = "Remarks";
-            this.ColumnDisbursementListRemarks.Name = "ColumnDisbursementListRemarks";
-            this.ColumnDisbursementListRemarks.ReadOnly = true;
-            this.ColumnDisbursementListRemarks.Width = 300;
-            // 
-            // ColumnDisbursementListIsLocked
-            // 
-            this.ColumnDisbursementListIsLocked.DataPropertyName = "ColumnDisbursementListIsLocked";
-            this.ColumnDisbursementListIsLocked.HeaderText = "L";
-            this.ColumnDisbursementListIsLocked.Name = "ColumnDisbursementListIsLocked";
-            this.ColumnDisbursementListIsLocked.ReadOnly = true;
-            this.ColumnDisbursementListIsLocked.Width = 35;
             // 
             // buttonDisbursementListPageListFirst
             // 
@@ -350,17 +288,6 @@
             this.panel1.Size = new System.Drawing.Size(1096, 50);
             this.panel1.TabIndex = 8;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Disbursement;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
             // buttonRefund
             // 
             this.buttonRefund.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -379,6 +306,108 @@
             this.buttonRefund.Text = "Refund";
             this.buttonRefund.UseVisualStyleBackColor = false;
             this.buttonRefund.Click += new System.EventHandler(this.buttonRefund_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Disbursement;
+            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // ColumnDisbursementListButtonEdit
+            // 
+            this.ColumnDisbursementListButtonEdit.DataPropertyName = "ColumnDisbursementListButtonEdit";
+            this.ColumnDisbursementListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnDisbursementListButtonEdit.HeaderText = "";
+            this.ColumnDisbursementListButtonEdit.Name = "ColumnDisbursementListButtonEdit";
+            this.ColumnDisbursementListButtonEdit.ReadOnly = true;
+            this.ColumnDisbursementListButtonEdit.Width = 70;
+            // 
+            // ColumnDisbursementListButtonDelete
+            // 
+            this.ColumnDisbursementListButtonDelete.DataPropertyName = "ColumnDisbursementListButtonDelete";
+            this.ColumnDisbursementListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnDisbursementListButtonDelete.HeaderText = "";
+            this.ColumnDisbursementListButtonDelete.Name = "ColumnDisbursementListButtonDelete";
+            this.ColumnDisbursementListButtonDelete.ReadOnly = true;
+            this.ColumnDisbursementListButtonDelete.Width = 70;
+            // 
+            // ColumnDisbursementListId
+            // 
+            this.ColumnDisbursementListId.DataPropertyName = "ColumnDisbursementListId";
+            this.ColumnDisbursementListId.HeaderText = "Id";
+            this.ColumnDisbursementListId.Name = "ColumnDisbursementListId";
+            this.ColumnDisbursementListId.ReadOnly = true;
+            this.ColumnDisbursementListId.Visible = false;
+            // 
+            // ColumnDisbursementListDisbursementDate
+            // 
+            this.ColumnDisbursementListDisbursementDate.DataPropertyName = "ColumnDisbursementListDisbursementDate";
+            this.ColumnDisbursementListDisbursementDate.HeaderText = "Cash In/Out Date";
+            this.ColumnDisbursementListDisbursementDate.Name = "ColumnDisbursementListDisbursementDate";
+            this.ColumnDisbursementListDisbursementDate.ReadOnly = true;
+            this.ColumnDisbursementListDisbursementDate.Visible = false;
+            this.ColumnDisbursementListDisbursementDate.Width = 95;
+            // 
+            // ColumnDisbursementListDisbursementNumber
+            // 
+            this.ColumnDisbursementListDisbursementNumber.DataPropertyName = "ColumnDisbursementListDisbursementNumber";
+            this.ColumnDisbursementListDisbursementNumber.HeaderText = "Cash In/Out No.";
+            this.ColumnDisbursementListDisbursementNumber.Name = "ColumnDisbursementListDisbursementNumber";
+            this.ColumnDisbursementListDisbursementNumber.ReadOnly = true;
+            // 
+            // ColumnDisbursementListDisbursementType
+            // 
+            this.ColumnDisbursementListDisbursementType.DataPropertyName = "ColumnDisbursementListDisbursementType";
+            this.ColumnDisbursementListDisbursementType.HeaderText = "Type";
+            this.ColumnDisbursementListDisbursementType.Name = "ColumnDisbursementListDisbursementType";
+            this.ColumnDisbursementListDisbursementType.ReadOnly = true;
+            // 
+            // ColumnDisbursementListPayType
+            // 
+            this.ColumnDisbursementListPayType.DataPropertyName = "ColumnDisbursementListPayType";
+            this.ColumnDisbursementListPayType.HeaderText = "Pay Type";
+            this.ColumnDisbursementListPayType.Name = "ColumnDisbursementListPayType";
+            this.ColumnDisbursementListPayType.ReadOnly = true;
+            this.ColumnDisbursementListPayType.Width = 120;
+            // 
+            // ColumnDisbursementListPayee
+            // 
+            this.ColumnDisbursementListPayee.DataPropertyName = "ColumnDisbursementListPayee";
+            this.ColumnDisbursementListPayee.HeaderText = "Payee";
+            this.ColumnDisbursementListPayee.Name = "ColumnDisbursementListPayee";
+            this.ColumnDisbursementListPayee.ReadOnly = true;
+            this.ColumnDisbursementListPayee.Width = 200;
+            // 
+            // ColumnDisbursementListAmount
+            // 
+            this.ColumnDisbursementListAmount.DataPropertyName = "ColumnDisbursementListAmount";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnDisbursementListAmount.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColumnDisbursementListAmount.HeaderText = "Amount";
+            this.ColumnDisbursementListAmount.Name = "ColumnDisbursementListAmount";
+            this.ColumnDisbursementListAmount.ReadOnly = true;
+            this.ColumnDisbursementListAmount.Width = 120;
+            // 
+            // ColumnDisbursementListRemarks
+            // 
+            this.ColumnDisbursementListRemarks.DataPropertyName = "ColumnDisbursementListRemarks";
+            this.ColumnDisbursementListRemarks.HeaderText = "Remarks";
+            this.ColumnDisbursementListRemarks.Name = "ColumnDisbursementListRemarks";
+            this.ColumnDisbursementListRemarks.ReadOnly = true;
+            this.ColumnDisbursementListRemarks.Width = 300;
+            // 
+            // ColumnDisbursementListIsLocked
+            // 
+            this.ColumnDisbursementListIsLocked.DataPropertyName = "ColumnDisbursementListIsLocked";
+            this.ColumnDisbursementListIsLocked.HeaderText = "L";
+            this.ColumnDisbursementListIsLocked.Name = "ColumnDisbursementListIsLocked";
+            this.ColumnDisbursementListIsLocked.ReadOnly = true;
+            this.ColumnDisbursementListIsLocked.Width = 35;
             // 
             // TrnDisbursementListForm
             // 
@@ -422,14 +451,17 @@
         private System.Windows.Forms.TextBox textBoxDisbursementListFilter;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button buttonRefund;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnDisbursementListButtonEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnDisbursementListButtonDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDisbursementListId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDisbursementListDisbursementDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDisbursementListDisbursementNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDisbursementListSupplier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDisbursementListDisbursementType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDisbursementListPayType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDisbursementListPayee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDisbursementListAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDisbursementListRemarks;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnDisbursementListIsLocked;
-        private System.Windows.Forms.Button buttonRefund;
     }
 }
