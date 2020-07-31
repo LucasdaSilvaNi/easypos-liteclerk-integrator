@@ -1040,8 +1040,7 @@ namespace EasyPOS.Controllers
         public List<Entities.MstDiscountEntity> DropdownListDiscount()
         {
             var discounts = from d in db.MstDiscounts
-                            where d.Id != 3
-                            && d.IsLocked == true
+                            where d.IsLocked == true
                             select new Entities.MstDiscountEntity
                             {
                                 Id = d.Id,
@@ -1055,7 +1054,7 @@ namespace EasyPOS.Controllers
         // ==============
         // Discount Sales
         // ==============
-        public String[] DiscountSales(Int32 salesId, Entities.TrnSalesEntity objSalesEntity)
+        public String[] DiscountSales(Int32 salesId, Entities.TrnSalesEntity objSalesEntity, Int32? itemId)
         {
             try
             {
@@ -1074,20 +1073,23 @@ namespace EasyPOS.Controllers
                     updateSales.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
 
-                    Decimal discountRate = 0;
+                    Decimal discountRate = objSalesEntity.DiscountRate;
 
                     var discount = from d in db.MstDiscounts
                                    where d.Id == objSalesEntity.DiscountId
                                    select d;
 
-                    if (discount.Any())
-                    {
-                        discountRate = discount.FirstOrDefault().DiscountRate;
-                    }
+                    IQueryable<Data.TrnSalesLine> salesLines = from d in db.TrnSalesLines
+                                                               where d.SalesId == salesId
+                                                               select d;
 
-                    var salesLines = from d in db.TrnSalesLines
+                    if (itemId != null)
+                    {
+                        salesLines = from d in db.TrnSalesLines
                                      where d.SalesId == salesId
+                                     && d.ItemId == itemId
                                      select d;
+                    }
 
                     if (salesLines.Any())
                     {

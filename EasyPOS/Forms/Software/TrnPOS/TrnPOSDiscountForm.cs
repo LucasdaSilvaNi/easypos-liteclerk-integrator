@@ -12,15 +12,42 @@ namespace EasyPOS.Forms.Software.TrnPOS
 {
     public partial class TrnPOSDiscountForm : Form
     {
-        public TrnPOSBarcodeDetailForm trnSalesDetailForm;
+        public TrnPOSBarcodeDetailForm trnPOSBarcodeDetailForm;
         public TrnPOSTouchDetailForm trnPOSTouchDetailForm;
+        public Decimal salesAmount = 0;
+        List<Entities.TrnSalesLineEntity> listSalesLines = new List<Entities.TrnSalesLineEntity>();
 
-        public TrnPOSDiscountForm(TrnPOSBarcodeDetailForm salesDetailForm, TrnPOSTouchDetailForm POSTouchDetailForm)
+        public TrnPOSDiscountForm(TrnPOSBarcodeDetailForm salesDetailForm, TrnPOSTouchDetailForm POSTouchDetailForm, Decimal amount, List<Entities.TrnSalesLineEntity> salesLines)
         {
             InitializeComponent();
 
-            trnSalesDetailForm = salesDetailForm;
+            trnPOSBarcodeDetailForm = salesDetailForm;
             trnPOSTouchDetailForm = POSTouchDetailForm;
+            salesAmount = amount;
+            listSalesLines = salesLines;
+
+            textBoxTotalSalesAmount.Text = salesAmount.ToString("#,##0.00");
+            textBoxDiscountRate.Text = "0";
+            textBoxDiscountAmount.Text = "0.00";
+
+            GetSalesLine();
+        }
+
+        public void GetSalesLine()
+        {
+            if (listSalesLines.Any())
+            {
+                comboBoxItem.DataSource = listSalesLines;
+                comboBoxItem.ValueMember = "ItemId";
+                comboBoxItem.DisplayMember = "ItemDescription";
+            }
+
+            comboBoxItem.SelectedItem = null;
+            comboBoxItem.SelectedIndex = -1;
+            if (comboBoxItem.SelectedIndex == -1)
+            {
+                textBoxTotalSalesAmount.Text = salesAmount.ToString("#,##0.00");
+            }
 
             GetDiscount();
         }
@@ -33,6 +60,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 comboBoxDiscount.DataSource = trnSalesController.DropdownListDiscount();
                 comboBoxDiscount.ValueMember = "Id";
                 comboBoxDiscount.DisplayMember = "Discount";
+
+                comboBoxDiscount.SelectedValue = Modules.SysCurrentModule.GetCurrentSettings().DefaultDiscountId;
 
                 GetSalesDiscountInformation();
             }
@@ -47,12 +76,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
             String seniorCitizenName = "";
             String seniorCitizenAge = "";
 
-            if (trnSalesDetailForm != null)
+            if (trnPOSBarcodeDetailForm != null)
             {
-                discountId = trnSalesController.DiscountDetailSales(trnSalesDetailForm.trnSalesEntity.Id).DiscountId;
-                seniorCitizenID = trnSalesController.DiscountDetailSales(trnSalesDetailForm.trnSalesEntity.Id).SeniorCitizenId;
-                seniorCitizenName = trnSalesController.DiscountDetailSales(trnSalesDetailForm.trnSalesEntity.Id).SeniorCitizenName;
-                seniorCitizenAge = trnSalesController.DiscountDetailSales(trnSalesDetailForm.trnSalesEntity.Id).SeniorCitizenAge.ToString();
+                discountId = trnSalesController.DiscountDetailSales(trnPOSBarcodeDetailForm.trnSalesEntity.Id).DiscountId;
+                seniorCitizenID = trnSalesController.DiscountDetailSales(trnPOSBarcodeDetailForm.trnSalesEntity.Id).SeniorCitizenId;
+                seniorCitizenName = trnSalesController.DiscountDetailSales(trnPOSBarcodeDetailForm.trnSalesEntity.Id).SeniorCitizenName;
+                seniorCitizenAge = trnSalesController.DiscountDetailSales(trnPOSBarcodeDetailForm.trnSalesEntity.Id).SeniorCitizenAge.ToString();
             }
 
             if (trnPOSTouchDetailForm != null)
@@ -79,6 +108,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         private void buttonSave_Click(object sender, EventArgs e)
         {
             Int32 discountId = Convert.ToInt32(comboBoxDiscount.SelectedValue);
+            Decimal discountRate = Convert.ToDecimal(textBoxDiscountRate.Text);
             String seniorCitizenID = textBoxSeniorCitizenID.Text;
             String seniorCitizenName = textBoxSeniorCitizenName.Text;
             Int32 seniorCitizenAge = Convert.ToInt32(textBoxSeniorCitizenAge.Text);
@@ -86,6 +116,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             Entities.TrnSalesEntity salesEntity = new Entities.TrnSalesEntity()
             {
                 DiscountId = discountId,
+                DiscountRate = discountRate,
                 SeniorCitizenId = seniorCitizenID,
                 SeniorCitizenName = seniorCitizenName,
                 SeniorCitizenAge = seniorCitizenAge
@@ -95,22 +126,28 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             String[] discountSales = new String[2];
 
-            if (trnSalesDetailForm != null)
+            Int32? itemId = null;
+            if (comboBoxItem.SelectedIndex > -1)
             {
-                discountSales = trnSalesController.DiscountSales(trnSalesDetailForm.trnSalesEntity.Id, salesEntity);
+                itemId = Convert.ToInt32(comboBoxItem.SelectedValue);
+            }
+
+            if (trnPOSBarcodeDetailForm != null)
+            {
+                discountSales = trnSalesController.DiscountSales(trnPOSBarcodeDetailForm.trnSalesEntity.Id, salesEntity, itemId);
             }
 
             if (trnPOSTouchDetailForm != null)
             {
-                discountSales = trnSalesController.DiscountSales(trnPOSTouchDetailForm.trnSalesEntity.Id, salesEntity);
+                discountSales = trnSalesController.DiscountSales(trnPOSTouchDetailForm.trnSalesEntity.Id, salesEntity, itemId);
             }
 
             if (discountSales[1].Equals("0") == false)
             {
-                if (trnSalesDetailForm != null)
+                if (trnPOSBarcodeDetailForm != null)
                 {
-                    trnSalesDetailForm.trnSalesEntity.DiscountId = discountId;
-                    trnSalesDetailForm.GetSalesLineList();
+                    trnPOSBarcodeDetailForm.trnSalesEntity.DiscountId = discountId;
+                    trnPOSBarcodeDetailForm.GetSalesLineList();
                 }
 
                 if (trnPOSTouchDetailForm != null)
@@ -155,6 +192,19 @@ namespace EasyPOS.Forms.Software.TrnPOS
             var selectedItemDiscount = (Entities.MstDiscountEntity)comboBoxDiscount.SelectedItem;
             if (selectedItemDiscount != null)
             {
+                textBoxDiscountRate.Text = selectedItemDiscount.DiscountRate.ToString("#,##0.00");
+
+                if (selectedItemDiscount.Id == 3)
+                {
+                    textBoxDiscountRate.Enabled = true;
+                    textBoxDiscountAmount.Enabled = true;
+                }
+                else
+                {
+                    textBoxDiscountRate.Enabled = false;
+                    textBoxDiscountAmount.Enabled = false;
+                }
+
                 if (selectedItemDiscount.Id == 7 || selectedItemDiscount.Id == 16)
                 {
                     textBoxSeniorCitizenID.Enabled = true;
@@ -171,6 +221,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     textBoxSeniorCitizenName.Text = String.Empty;
                     textBoxSeniorCitizenAge.Text = "0";
                 }
+
+                ComputeDiscountAmount();
             }
         }
 
@@ -183,6 +235,127 @@ namespace EasyPOS.Forms.Software.TrnPOS
             else
             {
                 textBoxSeniorCitizenAge.Text = Convert.ToDecimal(textBoxSeniorCitizenAge.Text).ToString("#,##0");
+            }
+        }
+
+        private void textBoxDiscountRate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxDiscountRate_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBoxDiscountRate.Text))
+            {
+                textBoxDiscountRate.Text = "0.00";
+            }
+            else
+            {
+                ComputeDiscountAmount();
+                textBoxDiscountRate.Text = Convert.ToDecimal(textBoxDiscountRate.Text).ToString();
+            }
+        }
+
+        private void textBoxDiscountAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxDiscountAmount_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBoxDiscountRate.Text))
+            {
+                textBoxDiscountAmount.Text = "0.00";
+            }
+            else
+            {
+                ComputeDiscountRate();
+                textBoxDiscountAmount.Text = Convert.ToDecimal(textBoxDiscountAmount.Text).ToString("#,##0.00");
+            }
+        }
+
+        public void ComputeDiscountRate()
+        {
+            Decimal discountAmount = Convert.ToDecimal(textBoxDiscountAmount.Text);
+            Decimal discountRate = (discountAmount / Convert.ToDecimal(textBoxTotalSalesAmount.Text)) * 100;
+            textBoxDiscountRate.Text = discountRate.ToString();
+        }
+
+        public void ComputeDiscountAmount()
+        {
+            Decimal discountRate = Convert.ToDecimal(textBoxDiscountRate.Text);
+            Decimal discountAmount = Convert.ToDecimal(textBoxTotalSalesAmount.Text) * (discountRate / 100);
+            textBoxDiscountAmount.Text = discountAmount.ToString("#,##0.00");
+        }
+
+        private void comboBoxItem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxItem.SelectedItem == null)
+            {
+                return;
+            }
+
+            var selectedItem = (Entities.TrnSalesLineEntity)comboBoxItem.SelectedItem;
+            if (selectedItem != null)
+            {
+                Decimal amount = selectedItem.Amount;
+                textBoxTotalSalesAmount.Text = amount.ToString("#,##0.00");
+
+                ComputeDiscountAmount();
+            }
+            else
+            {
+                textBoxTotalSalesAmount.Text = salesAmount.ToString("#,##0.00");
+                ComputeDiscountAmount();
+            }
+
+            if (comboBoxItem.SelectedIndex == -1)
+            {
+                textBoxTotalSalesAmount.Text = salesAmount.ToString("#,##0.00");
+                ComputeDiscountAmount();
+            }
+        }
+
+        private void comboBoxItem_Leave(object sender, EventArgs e)
+        {
+            if (comboBoxItem.SelectedIndex == -1)
+            {
+                textBoxTotalSalesAmount.Text = salesAmount.ToString("#,##0.00");
+                ComputeDiscountAmount();
+            }
+        }
+
+        private void comboBoxItem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (comboBoxItem.SelectedIndex == -1)
+            {
+                textBoxTotalSalesAmount.Text = salesAmount.ToString("#,##0.00");
+                ComputeDiscountAmount();
+            }
+        }
+
+        private void comboBoxItem_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (comboBoxItem.SelectedIndex == -1)
+            {
+                textBoxTotalSalesAmount.Text = salesAmount.ToString("#,##0.00");
+                ComputeDiscountAmount();
             }
         }
     }

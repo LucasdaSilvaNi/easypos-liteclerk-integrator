@@ -488,8 +488,104 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonDiscount_Click(object sender, EventArgs e)
         {
-            TrnPOSDiscountForm trnSalesDetailDiscountForm = new TrnPOSDiscountForm(this, null);
-            trnSalesDetailDiscountForm.ShowDialog();
+            Decimal salesAmount = 0;
+            List<Entities.TrnSalesLineEntity> listSalesLine = new List<Entities.TrnSalesLineEntity>();
+
+            foreach (DataGridViewRow row in dataGridViewSalesLineList.Rows)
+            {
+                Decimal price = Convert.ToDecimal(row.Cells[dataGridViewSalesLineList.Columns["ColumnSalesLinePrice"].Index].Value);
+                Decimal quantity = Convert.ToDecimal(row.Cells[dataGridViewSalesLineList.Columns["ColumnSalesLineQuantity"].Index].Value);
+
+                salesAmount += price * quantity;
+
+                Int32 ItemId = Convert.ToInt32(row.Cells[4].Value);
+                String ItemDescription = row.Cells[5].Value.ToString();
+                Decimal Price = Convert.ToDecimal(row.Cells[8].Value);
+                Decimal Quantity = Convert.ToDecimal(row.Cells[14].Value);
+
+                listSalesLine.Add(new Entities.TrnSalesLineEntity()
+                {
+                    Id = 0,
+                    SalesId = 0,
+                    ItemId = ItemId,
+                    ItemDescription = ItemDescription,
+                    UnitId = 0,
+                    Unit = "",
+                    Price = Price,
+                    DiscountId = 0,
+                    Discount = "",
+                    DiscountRate = 0,
+                    DiscountAmount = 0,
+                    NetPrice = 0,
+                    Quantity = Quantity,
+                    Amount = 0,
+                    TaxId = 0,
+                    Tax = "",
+                    TaxRate = 0,
+                    TaxAmount = 0,
+                    SalesAccountId = 159,
+                    AssetAccountId = 255,
+                    CostAccountId = 238,
+                    TaxAccountId = 87,
+                    SalesLineTimeStamp = DateTime.Now.Date.ToShortDateString(),
+                    UserId = 0,
+                    Preparation = "NA",
+                    Price1 = 0,
+                    Price2 = 0,
+                    Price2LessTax = 0,
+                    PriceSplitPercentage = 0
+                });
+            }
+
+            if (listSalesLine.Any())
+            {
+                var groupedSalesLine = from d in listSalesLine.ToList()
+                                       group d by new
+                                       {
+                                           d.ItemId,
+                                           d.ItemDescription
+                                       } into g
+                                       select new Entities.TrnSalesLineEntity()
+                                       {
+                                           Id = 0,
+                                           SalesId = 0,
+                                           ItemId = g.Key.ItemId,
+                                           ItemDescription = g.Key.ItemDescription,
+                                           UnitId = 0,
+                                           Unit = "",
+                                           Price = 0,
+                                           DiscountId = 0,
+                                           Discount = "",
+                                           DiscountRate = 0,
+                                           DiscountAmount = 0,
+                                           NetPrice = 0,
+                                           Quantity = 1,
+                                           Amount = g.Sum(i => i.Price * i.Quantity),
+                                           TaxId = 0,
+                                           Tax = "",
+                                           TaxRate = 0,
+                                           TaxAmount = 0,
+                                           SalesAccountId = 159,
+                                           AssetAccountId = 255,
+                                           CostAccountId = 238,
+                                           TaxAccountId = 87,
+                                           SalesLineTimeStamp = DateTime.Now.Date.ToShortDateString(),
+                                           UserId = 0,
+                                           Preparation = "NA",
+                                           Price1 = 0,
+                                           Price2 = 0,
+                                           Price2LessTax = 0,
+                                           PriceSplitPercentage = 0
+                                       };
+
+                TrnPOSDiscountForm trnSalesDetailDiscountForm = new TrnPOSDiscountForm(this, null, salesAmount, groupedSalesLine.ToList());
+                trnSalesDetailDiscountForm.ShowDialog();
+            }
+            else
+            {
+                TrnPOSDiscountForm trnSalesDetailDiscountForm = new TrnPOSDiscountForm(this, null, salesAmount, new List<Entities.TrnSalesLineEntity>());
+                trnSalesDetailDiscountForm.ShowDialog();
+            }
         }
 
         private void buttonDownload_Click(object sender, EventArgs e)
