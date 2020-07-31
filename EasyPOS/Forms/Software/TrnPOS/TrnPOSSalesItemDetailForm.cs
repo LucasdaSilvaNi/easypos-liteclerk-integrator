@@ -100,6 +100,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             textBoxSalesLineUnit.Text = trnSalesLineEntity.Unit;
             textBoxSalesLinePrice.Text = trnSalesLineEntity.Price.ToString("#,##0.00");
             comboBoxSalesLineDiscount.SelectedValue = trnSalesLineEntity.DiscountId;
+            textBoxSalesLineDiscountRate.Text = trnSalesLineEntity.DiscountRate.ToString();
             textBoxSalesLineDiscountAmount.Text = trnSalesLineEntity.DiscountAmount.ToString("#,##0.00");
             textBoxSalesLineNetPrice.Text = trnSalesLineEntity.NetPrice.ToString("#,##0.00");
             textBoxSalesLineAmount.Text = trnSalesLineEntity.Amount.ToString("#,##0.00");
@@ -232,7 +233,21 @@ namespace EasyPOS.Forms.Software.TrnPOS
             var selectedItemDiscount = (Entities.MstDiscountEntity)comboBoxSalesLineDiscount.SelectedItem;
             if (selectedItemDiscount != null)
             {
-                textBoxSalesLineDiscountRate.Text = selectedItemDiscount.DiscountRate.ToString("#,##0.00");
+                if (selectedItemDiscount.Id == 3)
+                {
+                    textBoxSalesLineDiscountRate.ReadOnly = false;
+                    textBoxSalesLineDiscountAmount.ReadOnly = false;
+
+                    textBoxSalesLineDiscountRate.Text = trnSalesLineEntity.DiscountRate.ToString();
+                }
+                else
+                {
+                    textBoxSalesLineDiscountRate.ReadOnly = true;
+                    textBoxSalesLineDiscountAmount.ReadOnly = true;
+
+                    textBoxSalesLineDiscountRate.Text = selectedItemDiscount.DiscountRate.ToString("#,##0.00");
+                }
+
                 ComputeAmount();
             }
         }
@@ -321,6 +336,78 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             textBoxSalesLinePrice.Text = price.ToString("#,##0.00");
             ComputeAmount();
+        }
+
+        private void textBoxSalesLineDiscountRate_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBoxSalesLineDiscountRate.Text))
+            {
+                textBoxSalesLineDiscountRate.Text = "0";
+            }
+            else
+            {
+                ComputeAmount();
+                textBoxSalesLineDiscountRate.Text = Convert.ToDecimal(textBoxSalesLineDiscountRate.Text).ToString();
+            }
+        }
+
+        private void textBoxSalesLineDiscountAmount_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBoxSalesLineDiscountAmount.Text))
+            {
+                textBoxSalesLineDiscountAmount.Text = "0.00";
+            }
+            else
+            {
+                ComputeDiscountRate();
+                textBoxSalesLineDiscountAmount.Text = Convert.ToDecimal(textBoxSalesLineDiscountAmount.Text).ToString();
+            }
+        }
+
+        public void ComputeDiscountRate()
+        {
+            Decimal discountAmount = Convert.ToDecimal(textBoxSalesLineDiscountAmount.Text);
+            if (discountAmount > 0)
+            {
+                Decimal quantity = Convert.ToDecimal(textBoxSalesLineQuantity.Text);
+                Decimal price = Convert.ToDecimal(textBoxSalesLinePrice.Text);
+                Decimal amount = quantity * price;
+
+                Decimal discountRate = (discountAmount / amount) * 100;
+                textBoxSalesLineDiscountRate.Text = discountRate.ToString();
+                ComputeAmount();
+            }
+            else
+            {
+                textBoxSalesLineDiscountRate.Text = "0";
+                ComputeAmount();
+            }
+        }
+
+        private void textBoxSalesLineDiscountRate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxSalesLineDiscountAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

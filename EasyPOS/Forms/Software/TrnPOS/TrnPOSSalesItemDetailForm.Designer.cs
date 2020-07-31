@@ -74,7 +74,7 @@
             this.panel1.Controls.Add(this.buttonClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(688, 50);
             this.panel1.TabIndex = 5;
@@ -89,7 +89,7 @@
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
             this.buttonSave.Location = new System.Drawing.Point(533, 10);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(70, 32);
             this.buttonSave.TabIndex = 20;
@@ -102,7 +102,7 @@
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.POS;
             this.pictureBox1.Location = new System.Drawing.Point(10, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(38, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -130,7 +130,7 @@
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
             this.buttonClose.Location = new System.Drawing.Point(608, 10);
-            this.buttonClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(70, 32);
             this.buttonClose.TabIndex = 20;
@@ -147,7 +147,7 @@
             this.textBoxItemDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxItemDescription.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.textBoxItemDescription.Location = new System.Drawing.Point(10, 5);
-            this.textBoxItemDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxItemDescription.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxItemDescription.Name = "textBoxItemDescription";
             this.textBoxItemDescription.ReadOnly = true;
             this.textBoxItemDescription.Size = new System.Drawing.Size(669, 32);
@@ -172,7 +172,7 @@
             this.textBoxSalesLineQuantity.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSalesLineQuantity.HideSelection = false;
             this.textBoxSalesLineQuantity.Location = new System.Drawing.Point(146, 42);
-            this.textBoxSalesLineQuantity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxSalesLineQuantity.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineQuantity.Name = "textBoxSalesLineQuantity";
             this.textBoxSalesLineQuantity.Size = new System.Drawing.Size(216, 29);
             this.textBoxSalesLineQuantity.TabIndex = 0;
@@ -186,7 +186,7 @@
             // 
             this.textBoxSalesLineUnit.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSalesLineUnit.Location = new System.Drawing.Point(146, 74);
-            this.textBoxSalesLineUnit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxSalesLineUnit.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineUnit.Name = "textBoxSalesLineUnit";
             this.textBoxSalesLineUnit.ReadOnly = true;
             this.textBoxSalesLineUnit.Size = new System.Drawing.Size(216, 29);
@@ -210,7 +210,7 @@
             this.textBoxSalesLinePrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Underline);
             this.textBoxSalesLinePrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(238)))));
             this.textBoxSalesLinePrice.Location = new System.Drawing.Point(146, 106);
-            this.textBoxSalesLinePrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxSalesLinePrice.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLinePrice.Name = "textBoxSalesLinePrice";
             this.textBoxSalesLinePrice.ReadOnly = true;
             this.textBoxSalesLinePrice.Size = new System.Drawing.Size(216, 29);
@@ -235,7 +235,7 @@
             this.comboBoxSalesLineDiscount.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.comboBoxSalesLineDiscount.FormattingEnabled = true;
             this.comboBoxSalesLineDiscount.Location = new System.Drawing.Point(146, 138);
-            this.comboBoxSalesLineDiscount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxSalesLineDiscount.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxSalesLineDiscount.Name = "comboBoxSalesLineDiscount";
             this.comboBoxSalesLineDiscount.Size = new System.Drawing.Size(216, 29);
             this.comboBoxSalesLineDiscount.TabIndex = 4;
@@ -256,13 +256,15 @@
             // 
             this.textBoxSalesLineDiscountRate.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSalesLineDiscountRate.Location = new System.Drawing.Point(146, 171);
-            this.textBoxSalesLineDiscountRate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxSalesLineDiscountRate.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineDiscountRate.Name = "textBoxSalesLineDiscountRate";
             this.textBoxSalesLineDiscountRate.ReadOnly = true;
             this.textBoxSalesLineDiscountRate.Size = new System.Drawing.Size(216, 29);
             this.textBoxSalesLineDiscountRate.TabIndex = 5;
             this.textBoxSalesLineDiscountRate.TabStop = false;
             this.textBoxSalesLineDiscountRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxSalesLineDiscountRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSalesLineDiscountRate_KeyPress);
+            this.textBoxSalesLineDiscountRate.Leave += new System.EventHandler(this.textBoxSalesLineDiscountRate_Leave);
             // 
             // label6
             // 
@@ -279,13 +281,15 @@
             // 
             this.textBoxSalesLineDiscountAmount.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSalesLineDiscountAmount.Location = new System.Drawing.Point(146, 203);
-            this.textBoxSalesLineDiscountAmount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxSalesLineDiscountAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineDiscountAmount.Name = "textBoxSalesLineDiscountAmount";
             this.textBoxSalesLineDiscountAmount.ReadOnly = true;
             this.textBoxSalesLineDiscountAmount.Size = new System.Drawing.Size(216, 29);
             this.textBoxSalesLineDiscountAmount.TabIndex = 6;
             this.textBoxSalesLineDiscountAmount.TabStop = false;
             this.textBoxSalesLineDiscountAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxSalesLineDiscountAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSalesLineDiscountAmount_KeyPress);
+            this.textBoxSalesLineDiscountAmount.Leave += new System.EventHandler(this.textBoxSalesLineDiscountAmount_Leave);
             // 
             // label7
             // 
@@ -302,7 +306,7 @@
             // 
             this.textBoxSalesLineNetPrice.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSalesLineNetPrice.Location = new System.Drawing.Point(146, 235);
-            this.textBoxSalesLineNetPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxSalesLineNetPrice.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineNetPrice.Name = "textBoxSalesLineNetPrice";
             this.textBoxSalesLineNetPrice.ReadOnly = true;
             this.textBoxSalesLineNetPrice.Size = new System.Drawing.Size(216, 29);
@@ -325,7 +329,7 @@
             // 
             this.textBoxSalesLineAmount.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSalesLineAmount.Location = new System.Drawing.Point(146, 267);
-            this.textBoxSalesLineAmount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxSalesLineAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineAmount.Name = "textBoxSalesLineAmount";
             this.textBoxSalesLineAmount.ReadOnly = true;
             this.textBoxSalesLineAmount.Size = new System.Drawing.Size(216, 29);
@@ -348,7 +352,7 @@
             // 
             this.textBoxSalesLineVAT.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSalesLineVAT.Location = new System.Drawing.Point(146, 299);
-            this.textBoxSalesLineVAT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxSalesLineVAT.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineVAT.Name = "textBoxSalesLineVAT";
             this.textBoxSalesLineVAT.ReadOnly = true;
             this.textBoxSalesLineVAT.Size = new System.Drawing.Size(216, 29);
@@ -370,7 +374,7 @@
             // 
             this.textBoxSalesLineVATRate.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSalesLineVATRate.Location = new System.Drawing.Point(146, 331);
-            this.textBoxSalesLineVATRate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxSalesLineVATRate.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineVATRate.Name = "textBoxSalesLineVATRate";
             this.textBoxSalesLineVATRate.ReadOnly = true;
             this.textBoxSalesLineVATRate.Size = new System.Drawing.Size(216, 29);
@@ -393,7 +397,7 @@
             // 
             this.textBoxSalesLineVATAmount.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSalesLineVATAmount.Location = new System.Drawing.Point(146, 363);
-            this.textBoxSalesLineVATAmount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxSalesLineVATAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineVATAmount.Name = "textBoxSalesLineVATAmount";
             this.textBoxSalesLineVATAmount.ReadOnly = true;
             this.textBoxSalesLineVATAmount.Size = new System.Drawing.Size(216, 29);
@@ -416,7 +420,7 @@
             // 
             this.textBoxSalesLineRemarks.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxSalesLineRemarks.Location = new System.Drawing.Point(366, 74);
-            this.textBoxSalesLineRemarks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxSalesLineRemarks.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineRemarks.Multiline = true;
             this.textBoxSalesLineRemarks.Name = "textBoxSalesLineRemarks";
             this.textBoxSalesLineRemarks.Size = new System.Drawing.Size(314, 318);
@@ -463,7 +467,7 @@
             this.panel2.Controls.Add(this.label8);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 50);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(688, 400);
             this.panel2.TabIndex = 31;
