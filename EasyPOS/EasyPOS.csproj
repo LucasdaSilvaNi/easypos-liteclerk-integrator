@@ -664,6 +664,12 @@
     <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderCreditCardInformation.Designer.cs">
       <DependentUpon>TrnPOSTenderCreditCardInformation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSLockSalesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSLockSalesForm.Designer.cs">
+      <DependentUpon>TrnPOSLockSalesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchActivityDeliver.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1137,6 +1143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTenderCreditCardInformation.resx">
       <DependentUpon>TrnPOSTenderCreditCardInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSLockSalesForm.resx">
+      <DependentUpon>TrnPOSLockSalesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTouchActivityDeliver.resx">
       <DependentUpon>TrnPOSTouchActivityDeliver.cs</DependentUpon>

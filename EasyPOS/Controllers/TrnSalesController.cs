@@ -1241,7 +1241,7 @@ namespace EasyPOS.Controllers
         // ==========
         // Lock Sales
         // ==========
-        public String[] LockSales(Int32 salesId)
+        public String[] LockSales(Int32 salesId, Entities.TrnSalesEntity objSales)
         {
             try
             {
@@ -1288,10 +1288,14 @@ namespace EasyPOS.Controllers
                         }
                     }
 
-                    var updateSales = sales.FirstOrDefault();
-                    updateSales.IsLocked = true;
-                    updateSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
-                    updateSales.UpdateDateTime = DateTime.Now;
+                    var lockSales = sales.FirstOrDefault();
+                    lockSales.CustomerId = objSales.CustomerId;
+                    lockSales.TermId = objSales.TermId;
+                    lockSales.Remarks = objSales.Remarks;
+                    lockSales.SalesAgent = objSales.SalesAgent;
+                    lockSales.IsLocked = true;
+                    lockSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
+                    lockSales.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
 
                     Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();

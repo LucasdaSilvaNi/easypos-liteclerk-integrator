@@ -796,36 +796,33 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
         }
 
+        public void LockComponents(Boolean isLocked)
+        {
+            buttonSearchItem.Enabled = !isLocked;
+            buttonDownload.Enabled = !isLocked;
+            buttonPrint.Enabled = isLocked;
+            buttonLock.Enabled = !isLocked;
+            buttonUnlock.Enabled = isLocked;
+            buttonReturn.Enabled = !isLocked;
+            buttonDiscount.Enabled = !isLocked;
+            buttonBarcode.Enabled = !isLocked;
+            textBoxBarcode.Enabled = !isLocked;
+
+            dataGridViewSalesLineList.Columns[0].Visible = !isLocked;
+            dataGridViewSalesLineList.Columns[1].Visible = !isLocked;
+
+            for (int i = 0; i < itemGroupItemNoOfButtons; i++)
+            {
+                itemGroupItemButtons[i].Enabled = !isLocked;
+            }
+
+            trnPOSTouchForm.UpdateSalesListGridDataSource();
+        }
+
         private void buttonLock_Click(object sender, EventArgs e)
         {
-            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-            String[] lockSales = trnPOSSalesController.LockSales(trnSalesEntity.Id);
-            if (lockSales[1].Equals("0") == false)
-            {
-                buttonSearchItem.Enabled = false;
-                buttonDownload.Enabled = false;
-                buttonPrint.Enabled = true;
-                buttonLock.Enabled = false;
-                buttonUnlock.Enabled = true;
-                buttonReturn.Enabled = false;
-                buttonDiscount.Enabled = false;
-                buttonBarcode.Enabled = false;
-                textBoxBarcode.Enabled = false;
-
-                dataGridViewSalesLineList.Columns[0].Visible = false;
-                dataGridViewSalesLineList.Columns[1].Visible = false;
-
-                for (int i = 0; i < itemGroupItemNoOfButtons; i++)
-                {
-                    itemGroupItemButtons[i].Enabled = false;
-                }
-
-                trnPOSTouchForm.UpdateSalesListGridDataSource();
-            }
-            else
-            {
-                MessageBox.Show(lockSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            TrnPOSLockSalesForm trnPOSLockSalesForm = new TrnPOSLockSalesForm(null, this, trnSalesEntity);
+            trnPOSLockSalesForm.ShowDialog();
         }
 
         private void buttonUnlock_Click(object sender, EventArgs e)
@@ -834,25 +831,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             String[] lockSales = trnPOSSalesController.UnlockSales(trnSalesEntity.Id);
             if (lockSales[1].Equals("0") == false)
             {
-                buttonSearchItem.Enabled = true;
-                buttonDownload.Enabled = true;
-                buttonPrint.Enabled = false;
-                buttonLock.Enabled = true;
-                buttonUnlock.Enabled = false;
-                buttonReturn.Enabled = true;
-                buttonDiscount.Enabled = true;
-                buttonBarcode.Enabled = true;
-                textBoxBarcode.Enabled = true;
-
-                dataGridViewSalesLineList.Columns[0].Visible = true;
-                dataGridViewSalesLineList.Columns[1].Visible = true;
-
-                for (int i = 0; i < itemGroupItemNoOfButtons; i++)
-                {
-                    itemGroupItemButtons[i].Enabled = true;
-                }
-
-                trnPOSTouchForm.UpdateSalesListGridDataSource();
+                LockComponents(false);
             }
             else
             {
