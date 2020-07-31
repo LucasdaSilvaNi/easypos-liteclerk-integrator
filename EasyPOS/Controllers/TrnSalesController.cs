@@ -1593,6 +1593,10 @@ namespace EasyPOS.Controllers
                     db.TrnSalesLines.InsertAllOnSubmit(newSalesLines);
                     db.SubmitChanges();
                 }
+                else
+                {
+                    return new String[] { "There are no items to return.", "0" };
+                }
 
                 var currentSales = from d in db.TrnSales
                                    where d.Id == currentSalesId

@@ -18,6 +18,9 @@ namespace EasyPOS.Forms.License.SysLicense
             GetSerialNumber();
 
             textBoxLicenseCode.Focus();
+
+            labelVersion.Text = "EasyPOS Version: " + Modules.SysCurrentModule.GetCurrentSettings().CurrentVersion;
+            labelSupport.Text = "Support: Easyfis Corporation " + Modules.SysCurrentModule.GetCurrentSettings().CurrentSupport;
         }
 
         public void GetSerialNumber()

@@ -248,50 +248,50 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonReturn_Click(object sender, EventArgs e)
         {
-            DialogResult deleteDialogResult = MessageBox.Show("Return these items?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (deleteDialogResult == DialogResult.Yes)
+            List<Entities.TrnSalesLineEntity> newSalesLines = new List<Entities.TrnSalesLineEntity>();
+            
+            foreach (DataGridViewRow row in dataGridViewReturnItems.Rows)
             {
-                List<Entities.TrnSalesLineEntity> newSalesLines = new List<Entities.TrnSalesLineEntity>();
-
-                foreach (DataGridViewRow row in dataGridViewReturnItems.Rows)
+                if (Convert.ToDecimal(row.Cells["ColumnReturnReturnQuantity"].Value) > 0)
                 {
-                    if (Convert.ToDecimal(row.Cells["ColumnReturnReturnQuantity"].Value) > 0)
+                    newSalesLines.Add(new Entities.TrnSalesLineEntity()
                     {
-                        newSalesLines.Add(new Entities.TrnSalesLineEntity()
-                        {
-                            Id = 0,
-                            SalesId = 0,
-                            ItemId = Convert.ToInt32(row.Cells["ColumnReturnItemId"].Value),
-                            UnitId = 0,
-                            Unit = "",
-                            Price = Convert.ToDecimal(row.Cells["ColumnReturnPrice"].Value),
-                            DiscountId = 0,
-                            DiscountRate = 0,
-                            DiscountAmount = 0,
-                            NetPrice = 0,
-                            Quantity = Convert.ToDecimal(row.Cells["ColumnReturnReturnQuantity"].Value),
-                            Amount = 0,
-                            TaxId = 0,
-                            TaxRate = 0,
-                            TaxAmount = 0,
-                            SalesAccountId = 159,
-                            AssetAccountId = 255,
-                            CostAccountId = 238,
-                            TaxAccountId = 87,
-                            SalesLineTimeStamp = "",
-                            UserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId),
-                            Preparation = "NA",
-                            IsPrepared = false,
-                            Price1 = 0,
-                            Price2 = 0,
-                            Price2LessTax = 0,
-                            PriceSplitPercentage = 0,
-                        });
-                    }
+                        Id = 0,
+                        SalesId = 0,
+                        ItemId = Convert.ToInt32(row.Cells["ColumnReturnItemId"].Value),
+                        UnitId = 0,
+                        Unit = "",
+                        Price = Convert.ToDecimal(row.Cells["ColumnReturnPrice"].Value),
+                        DiscountId = 0,
+                        DiscountRate = 0,
+                        DiscountAmount = 0,
+                        NetPrice = 0,
+                        Quantity = Convert.ToDecimal(row.Cells["ColumnReturnReturnQuantity"].Value),
+                        Amount = 0,
+                        TaxId = 0,
+                        TaxRate = 0,
+                        TaxAmount = 0,
+                        SalesAccountId = 159,
+                        AssetAccountId = 255,
+                        CostAccountId = 238,
+                        TaxAccountId = 87,
+                        SalesLineTimeStamp = "",
+                        UserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId),
+                        Preparation = "NA",
+                        IsPrepared = false,
+                        Price1 = 0,
+                        Price2 = 0,
+                        Price2LessTax = 0,
+                        PriceSplitPercentage = 0,
+                    });
                 }
+            }
 
-                Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();
-                if (trnSalesController.GetCurrentCollection(textBoxReturnORNumber.Text) != null)
+            Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();
+            if (trnSalesController.GetCurrentCollection(textBoxReturnORNumber.Text) != null)
+            {
+                DialogResult deleteDialogResult = MessageBox.Show("Return these items?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (deleteDialogResult == DialogResult.Yes)
                 {
                     Int32 currentSalesId = 0;
 
@@ -337,6 +337,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         MessageBox.Show(returnSalesItems[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Invalid OR Number.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

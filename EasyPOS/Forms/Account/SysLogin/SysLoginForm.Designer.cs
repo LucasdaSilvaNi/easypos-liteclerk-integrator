@@ -43,9 +43,9 @@
             this.radioButtonSystemDate = new System.Windows.Forms.RadioButton();
             this.radioButtonLoginDate = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelVersion = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelSupport = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -215,6 +215,7 @@
             this.radioButtonSystemDate.Name = "radioButtonSystemDate";
             this.radioButtonSystemDate.Size = new System.Drawing.Size(104, 23);
             this.radioButtonSystemDate.TabIndex = 2;
+            this.radioButtonSystemDate.TabStop = true;
             this.radioButtonSystemDate.Text = "System Date";
             this.radioButtonSystemDate.UseVisualStyleBackColor = true;
             this.radioButtonSystemDate.CheckedChanged += new System.EventHandler(this.radioButtonSystemDate_CheckedChanged);
@@ -234,9 +235,9 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.labelVersion);
             this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.labelSupport);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 224);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
@@ -244,19 +245,19 @@
             this.panel2.Size = new System.Drawing.Size(463, 46);
             this.panel2.TabIndex = 11;
             // 
-            // label2
+            // labelVersion
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelVersion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(67, 8);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(172, 15);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Easy POS Version: 1.20200518";
+            this.labelVersion.AutoSize = true;
+            this.labelVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.labelVersion.ForeColor = System.Drawing.Color.White;
+            this.labelVersion.Location = new System.Drawing.Point(67, 8);
+            this.labelVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(172, 15);
+            this.labelVersion.TabIndex = 9;
+            this.labelVersion.Text = "Easy POS Version: 1.20200518";
             // 
             // pictureBox2
             // 
@@ -269,19 +270,19 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
-            // label4
+            // labelSupport
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelSupport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(67, 24);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(250, 15);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Support: Easyfis Corporation (032) 234 0787";
+            this.labelSupport.AutoSize = true;
+            this.labelSupport.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.labelSupport.ForeColor = System.Drawing.Color.White;
+            this.labelSupport.Location = new System.Drawing.Point(67, 24);
+            this.labelSupport.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSupport.Name = "labelSupport";
+            this.labelSupport.Size = new System.Drawing.Size(250, 15);
+            this.labelSupport.TabIndex = 10;
+            this.labelSupport.Text = "Support: Easyfis Corporation (032) 234 0787";
             // 
             // panel3
             // 
@@ -358,9 +359,9 @@
         private System.Windows.Forms.RadioButton radioButtonSystemDate;
         private System.Windows.Forms.RadioButton radioButtonLoginDate;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelVersion;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelSupport;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
     }

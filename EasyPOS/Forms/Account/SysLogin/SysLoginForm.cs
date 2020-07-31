@@ -18,6 +18,9 @@ namespace EasyPOS.Forms.Account.SysLogin
             dateTimePickerLoginDate.Enabled = false;
 
             textBoxUsername.Focus();
+
+            labelVersion.Text = "EasyPOS Version: " + Modules.SysCurrentModule.GetCurrentSettings().CurrentVersion;
+            labelSupport.Text = "Support: Easyfis Corporation " + Modules.SysCurrentModule.GetCurrentSettings().CurrentSupport;
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
