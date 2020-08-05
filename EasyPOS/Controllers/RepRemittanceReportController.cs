@@ -51,7 +51,7 @@ namespace EasyPOS.Controllers
             var disbursements = from d in db.TrnDisbursements
                                 where d.TerminalId == terminalId
                                 && d.PreparedBy == userId
-                                && d.DisbursementType == "DEBIT"
+                                && d.DisbursementType == "CREDIT"
                                 && d.IsLocked == true
                                 select new Entities.TrnDisbursementEntity
                                 {
@@ -86,6 +86,5 @@ namespace EasyPOS.Controllers
 
             return cashInOuts.OrderByDescending(d => d.Id).ToList();
         }
-
     }
 }

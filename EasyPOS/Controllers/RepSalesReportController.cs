@@ -54,7 +54,6 @@ namespace EasyPOS.Controllers
                         && d.TerminalId == terminalId
                         && d.IsLocked == true
                         && d.IsCancelled == false
-                        && d.IsReturned == false
                         select new Entities.RepSalesReportSalesSummaryReportEntity
                         {
                             Id = d.Id,
@@ -83,7 +82,6 @@ namespace EasyPOS.Controllers
                              && d.TrnSale.TerminalId == terminalId
                              && d.TrnSale.IsLocked == true
                              && d.TrnSale.IsCancelled == false
-                             && d.TrnSale.IsReturned == false
                              select new Entities.RepSalesReportSalesDetailReportEntity
                              {
                                  Id = d.Id,
@@ -229,7 +227,6 @@ namespace EasyPOS.Controllers
                                   && d.TrnSale.SalesDate <= endDate
                                   && d.TrnSale.IsLocked == true
                                   && d.TrnSale.IsCancelled == false
-                                  && d.TrnSale.IsReturned == false
                                   group d by new
                                   {
                                       d.MstItem.ItemCode,

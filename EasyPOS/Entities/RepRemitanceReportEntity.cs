@@ -32,7 +32,8 @@ namespace EasyPOS.Entities
         public Decimal? Amount001 { get; set; }
         public Decimal RemittedAmount { get; set; }
         public Decimal CashCollectedAmount { get; set; }
-        public Decimal CashInOutAmount { get; set; }
+        public Decimal CashInAmount { get; set; }
+        public Decimal CashOutAmount { get; set; }
         public Decimal OverShortAmount { get; set; }
     }
 }

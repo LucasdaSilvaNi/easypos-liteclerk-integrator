@@ -41,7 +41,6 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                 {
                     buttonPrint.Enabled = false;
                 }
-
             }
 
             repRemittanceReportForm = remittanceReportForm;
@@ -105,7 +104,8 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                 Amount001 = 0,
                 RemittedAmount = 0,
                 CashCollectedAmount = 0,
-                CashInOutAmount = 0,
+                CashInAmount = 0,
+                CashOutAmount = 0,
                 OverShortAmount = 0,
             };
 
@@ -128,7 +128,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                                   && d.TrnCollection.PreparedBy == filterUserId
                                   && d.TrnCollection.IsLocked == true
                                   && d.TrnCollection.IsCancelled == false
-                                  && d.MstPayType.PayType.Equals("Cash")
+                                  && d.MstPayType.PayTypeCode == "CASH"
                                   group d by new
                                   {
                                       d.MstPayType.PayType,
@@ -155,43 +155,76 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                 repRemitanceReportEntity.CashCollectedAmount = collectionLines.Sum(d => d.TotalAmount);
             }
 
-            var cashInOuts = from d in db.TrnDisbursements
-                             where d.TerminalId == filterTerminalId
-                             && d.DisbursementDate >= filterStartDate
-                             && d.DisbursementDate <= filterStartDate
-                             && d.PreparedBy == filterUserId
-                             && d.DisbursementType == "CREDIT"
-                             && d.MstPayType.PayType.Equals("Cash")
-                             group d by new
-                             {
-                                 d.MstPayType.PayType,
-                             } into g
-                             select new
-                             {
-                                 g.Key.PayType,
-                                 TotalAmount = g.Sum(s => s.Amount)
-                             };
+            var cashIns = from d in db.TrnDisbursements
+                          where d.DisbursementNumber != filterDisbursementNumber
+                          && d.TerminalId == filterTerminalId
+                          && d.DisbursementDate >= filterStartDate
+                          && d.DisbursementDate <= filterStartDate
+                          && d.PreparedBy == filterUserId
+                          && d.DisbursementType == "DEBIT"
+                          && d.MstPayType.PayTypeCode == "CASH"
+                          group d by new
+                          {
+                              d.MstPayType.PayType,
+                          } into g
+                          select new
+                          {
+                              g.Key.PayType,
+                              TotalAmount = g.Sum(s => s.Amount)
+                          };
 
-            if (cashInOuts.Any())
+            if (cashIns.Any())
             {
-                foreach (var cashInOut in cashInOuts)
+                foreach (var cashIn in cashIns)
                 {
                     repRemitanceReportEntity.Disbursements.Add(new Entities.TrnDisbursementEntity()
                     {
-                        PayType = cashInOut.PayType,
-                        Amount = cashInOut.TotalAmount
+                        PayType = cashIn.PayType,
+                        Amount = cashIn.TotalAmount
                     });
                 }
 
-                repRemitanceReportEntity.CashInOutAmount = cashInOuts.Sum(d => d.TotalAmount);
+                repRemitanceReportEntity.CashInAmount = cashIns.Sum(d => d.TotalAmount);
+            }
+
+            var cashOuts = from d in db.TrnDisbursements
+                           where d.DisbursementNumber != filterDisbursementNumber
+                           && d.TerminalId == filterTerminalId
+                           && d.DisbursementDate >= filterStartDate
+                           && d.DisbursementDate <= filterStartDate
+                           && d.PreparedBy == filterUserId
+                           && d.DisbursementType == "CREDIT"
+                           && d.MstPayType.PayTypeCode == "CASH"
+                           group d by new
+                           {
+                               d.MstPayType.PayType,
+                           } into g
+                           select new
+                           {
+                               g.Key.PayType,
+                               TotalAmount = g.Sum(s => s.Amount)
+                           };
+
+            if (cashOuts.Any())
+            {
+                foreach (var cashOut in cashOuts)
+                {
+                    repRemitanceReportEntity.Disbursements.Add(new Entities.TrnDisbursementEntity()
+                    {
+                        PayType = cashOut.PayType,
+                        Amount = cashOut.TotalAmount
+                    });
+                }
+
+                repRemitanceReportEntity.CashOutAmount = cashOuts.Sum(d => d.TotalAmount);
             }
 
             var remittance = from d in db.TrnDisbursements
                              where d.TerminalId == filterTerminalId
                              && d.PreparedBy == filterUserId
                              && d.DisbursementNumber == filterDisbursementNumber
-                             && d.DisbursementType == "DEBIT"
-                             && d.MstPayType.PayType.Equals("Cash")
+                             && d.DisbursementType == "CREDIT"
+                             && d.MstPayType.PayTypeCode == "CASH"
                              && d.IsLocked == true
                              select d;
 
@@ -234,7 +267,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                 repRemitanceReportEntity.RemittedAmount = totalRemittedAmount;
             }
 
-            repRemitanceReportEntity.OverShortAmount = (repRemitanceReportEntity.RemittedAmount + repRemitanceReportEntity.CashInOutAmount) - repRemitanceReportEntity.CashCollectedAmount;
+            repRemitanceReportEntity.OverShortAmount = repRemitanceReportEntity.RemittedAmount - (repRemitanceReportEntity.CashCollectedAmount + (repRemitanceReportEntity.CashInAmount - repRemitanceReportEntity.CashOutAmount));
 
             remitanceReportEntity = repRemitanceReportEntity;
         }
@@ -450,14 +483,23 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                 y += graphics.MeasureString(disbursementData, fontArial8Regular).Height;
             }
 
-            // ============
-            // Disbursement
-            // ============
-            String disbursementTotalAmountLabel = "Cash In/Out";
-            String disbursementTotalAmountData = dataSource.CashInOutAmount.ToString("#,##0.00");
-            graphics.DrawString(disbursementTotalAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            graphics.DrawString(disbursementTotalAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-            y += graphics.MeasureString(disbursementTotalAmountData, fontArial8Bold).Height;
+            // =======
+            // Cash In
+            // =======
+            String disbursementTotalCashInLabel = "Cash In";
+            String disbursementTotalCashInData = dataSource.CashInAmount.ToString("#,##0.00");
+            graphics.DrawString(disbursementTotalCashInLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(disbursementTotalCashInData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(disbursementTotalCashInData, fontArial8Bold).Height;
+
+            // ========
+            // Cash Out
+            // ========
+            String disbursementTotalCashOutLabel = "Cash Out";
+            String disbursementTotalCashOutData = dataSource.CashOutAmount.ToString("#,##0.00");
+            graphics.DrawString(disbursementTotalCashOutLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(disbursementTotalCashOutData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(disbursementTotalCashOutData, fontArial8Bold).Height;
 
             // ========
             // 6th Line
@@ -540,7 +582,8 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             Decimal amount001 = Convert.ToDecimal(dataSource.Amount001);
             Decimal remittedAmount = Convert.ToDecimal(dataSource.RemittedAmount);
             Decimal cashCollectedAmount = Convert.ToDecimal(dataSource.CashCollectedAmount);
-            Decimal cashInOutAmount = Convert.ToDecimal(dataSource.CashInOutAmount);
+            Decimal cashInAmount = Convert.ToDecimal(dataSource.CashInAmount);
+            Decimal cashOutAmount = Convert.ToDecimal(dataSource.CashOutAmount);
             Decimal overShortAmount = Convert.ToDecimal(dataSource.OverShortAmount);
 
             // ==========
@@ -676,33 +719,48 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             graphics.DrawString(cashCollectedAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(cashCollectedAmountData, fontArial8Bold).Height;
 
-            // ==================
-            // Cash In/Out Amount
-            // ==================
-            String cashInOutAmountLabel = "Cash In/Out";
-            String cashInOutAmountData = cashInOutAmount.ToString("#,##0.00");
+            // ================
+            // Cash In - Amount
+            // ================
+            String cashInAmountLabel = "Cash In";
+            String cashInAmountData = cashInAmount.ToString("#,##0.00");
+            graphics.DrawString(cashInAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(cashInAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(cashInAmountData, fontArial8Bold).Height;
+
+            // =================
+            // Cash Out - Amount
+            // =================
+            String cashInOutAmountLabel = "Cash Out";
+            String cashInOutAmountData = cashOutAmount.ToString("#,##0.00");
             graphics.DrawString(cashInOutAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(cashInOutAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(cashInOutAmountData, fontArial8Bold).Height;
 
-            String overOrShort = "";
+            // ====================
+            // Over or Short Amount
+            // ====================
+            String overShortAmountLabel = "";
             if (overShortAmount < 0)
             {
-                overOrShort = "Short";
+                overShortAmountLabel = "Short";
+            }
+            else if (overShortAmount == 0)
+            {
+                overShortAmountLabel = "";
             }
             else
             {
-                overOrShort = "Over";
+                overShortAmountLabel = "Over";
             }
 
-            // =================
-            // Over Short Amount
-            // =================
-            String overShortAmountLabel = overOrShort;
-            String overShortAmountData = overShortAmount.ToString("#,##0.00");
-            graphics.DrawString(overShortAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            graphics.DrawString(overShortAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-            y += graphics.MeasureString(overShortAmountData, fontArial8Bold).Height;
+            if (String.IsNullOrEmpty(overShortAmountLabel) == false)
+            {
+                String overShortAmountData = overShortAmount.ToString("#,##0.00");
+                graphics.DrawString(overShortAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(overShortAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(overShortAmountData, fontArial8Bold).Height;
+            }
 
             // =========
             // 13th Line
