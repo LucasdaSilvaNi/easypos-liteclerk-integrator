@@ -46,17 +46,20 @@ namespace EasyPOS.Controllers
         // =================================
         // Dropdown List - Remittance Number
         // =================================
-        public List<Entities.TrnDisbursementEntity> DropdownListRemittanceNumber(Int32 terminalId, Int32 userId)
+        public List<Entities.TrnDisbursementEntity> DropdownListRemittanceNumber(Int32 terminalId, Int32 userId, DateTime startDate, DateTime endDate)
         {
             var disbursements = from d in db.TrnDisbursements
                                 where d.TerminalId == terminalId
+                                && d.DisbursementDate >= startDate.Date
+                                && d.DisbursementDate <= endDate.Date
                                 && d.PreparedBy == userId
                                 && d.DisbursementType == "CREDIT"
+                                && d.MstPayType.PayTypeCode == "CASH"
                                 && d.IsLocked == true
                                 select new Entities.TrnDisbursementEntity
                                 {
                                     Id = d.Id,
-                                    DisbursementNumber = d.DisbursementNumber
+                                    DisbursementNumber = d.DisbursementNumber + " - " + d.Remarks
                                 };
 
             return disbursements.ToList();
@@ -68,8 +71,8 @@ namespace EasyPOS.Controllers
         public List<Entities.RepRemitanceReportCashInOutSummaryReportEntity> DisbursementSummaryReport(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
             var cashInOuts = from d in db.TrnDisbursements.OrderByDescending(d => d.Id)
-                             where d.DisbursementDate >= startDate
-                             && d.DisbursementDate <= endDate
+                             where d.DisbursementDate >= startDate.Date
+                             && d.DisbursementDate <= endDate.Date
                              && d.TerminalId == terminalId
                              && d.IsLocked == true
                              select new Entities.RepRemitanceReportCashInOutSummaryReportEntity

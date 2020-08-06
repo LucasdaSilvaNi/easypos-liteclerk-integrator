@@ -513,8 +513,8 @@ namespace EasyPOS.Controllers
         {
             var stockInDetails = from d in db.TrnStockInLines
                                  where d.TrnStockIn.IsLocked == true
-                                       && d.TrnStockIn.StockInDate >= startDate
-                                       && d.TrnStockIn.StockInDate <= endDate
+                                       && d.TrnStockIn.StockInDate >= startDate.Date
+                                       && d.TrnStockIn.StockInDate <= endDate.Date
                                  select new Entities.RepInventoryReportStockInDetailReportEntity
                                  {
                                      Id = d.Id,
@@ -543,8 +543,8 @@ namespace EasyPOS.Controllers
         {
             var stockOutDetails = from d in db.TrnStockOutLines
                                   where d.TrnStockOut.IsLocked == true
-                                        && d.TrnStockOut.StockOutDate >= startDate
-                                        && d.TrnStockOut.StockOutDate <= endDate
+                                        && d.TrnStockOut.StockOutDate >= startDate.Date
+                                        && d.TrnStockOut.StockOutDate <= endDate.Date
                                   select new Entities.RepInventoryReportStockOutDetailEntity
                                   {
                                       Id = d.Id,
@@ -567,8 +567,8 @@ namespace EasyPOS.Controllers
         public List<Entities.RepInventoryReportStockCountDetailReportEntity> StockCountDetailReport(DateTime startDate, DateTime endDate)
         {
             var stockCountDetails = from d in db.TrnStockCountLines
-                                    where d.TrnStockCount.StockCountDate >= startDate
-                                          && d.TrnStockCount.StockCountDate <= endDate
+                                    where d.TrnStockCount.StockCountDate >= startDate.Date
+                                          && d.TrnStockCount.StockCountDate <= endDate.Date
                                     select new Entities.RepInventoryReportStockCountDetailReportEntity
                                     {
                                         Id = d.Id,

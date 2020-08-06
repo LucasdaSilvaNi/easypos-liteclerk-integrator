@@ -161,6 +161,7 @@
             this.dateTimePickerEndDateFilter.Size = new System.Drawing.Size(177, 26);
             this.dateTimePickerEndDateFilter.TabIndex = 34;
             this.dateTimePickerEndDateFilter.Visible = false;
+            this.dateTimePickerEndDateFilter.ValueChanged += new System.EventHandler(this.dateTimePickerEndDateFilter_ValueChanged);
             // 
             // labelEndDate
             // 
@@ -228,6 +229,7 @@
             // 
             // dateTimePickerStartDateFilter
             // 
+            this.dateTimePickerStartDateFilter.Checked = false;
             this.dateTimePickerStartDateFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerStartDateFilter.Location = new System.Drawing.Point(436, 124);
             this.dateTimePickerStartDateFilter.Margin = new System.Windows.Forms.Padding(2);
@@ -235,6 +237,7 @@
             this.dateTimePickerStartDateFilter.Size = new System.Drawing.Size(177, 26);
             this.dateTimePickerStartDateFilter.TabIndex = 1;
             this.dateTimePickerStartDateFilter.Visible = false;
+            this.dateTimePickerStartDateFilter.ValueChanged += new System.EventHandler(this.dateTimePickerStartDateFilter_ValueChanged);
             // 
             // panel3
             // 

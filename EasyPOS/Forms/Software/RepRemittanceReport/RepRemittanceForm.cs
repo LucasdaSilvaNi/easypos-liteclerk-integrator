@@ -59,18 +59,20 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
         {
             Int32 terminalId = Convert.ToInt32(comboBoxTerminal.SelectedValue);
             Int32 userId = Convert.ToInt32(comboBoxUser.SelectedValue);
+            DateTime startDate = dateTimePickerStartDateFilter.Value.Date;
+            DateTime endDate = dateTimePickerEndDateFilter.Value.Date;
 
             Controllers.RepRemittanceReportController repRemittanceReportController = new Controllers.RepRemittanceReportController();
-            if (repRemittanceReportController.DropdownListRemittanceNumber(terminalId, userId).Any())
+            if (repRemittanceReportController.DropdownListRemittanceNumber(terminalId, userId, startDate, endDate).Any())
             {
-                comboBoxRemittanceNumber.DataSource = repRemittanceReportController.DropdownListRemittanceNumber(terminalId, userId);
-                comboBoxRemittanceNumber.ValueMember = "DisbursementNumber";
+                comboBoxRemittanceNumber.DataSource = repRemittanceReportController.DropdownListRemittanceNumber(terminalId, userId, startDate, endDate);
+                comboBoxRemittanceNumber.ValueMember = "Id";
                 comboBoxRemittanceNumber.DisplayMember = "DisbursementNumber";
             }
             else
             {
                 comboBoxRemittanceNumber.DataSource = null;
-                comboBoxRemittanceNumber.ValueMember = "DisbursementNumber";
+                comboBoxRemittanceNumber.ValueMember = "Id";
                 comboBoxRemittanceNumber.DisplayMember = "DisbursementNumber";
             }
         }
@@ -151,7 +153,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                                 }
                                 else
                                 {
-                                    RepRemittanceReportForm repRemittanceReportRemittanceReport = new RepRemittanceReportForm(this, dateTimePickerStartDateFilter.Value.Date, dateTimePickerEndDateFilter.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxUser.SelectedValue), comboBoxRemittanceNumber.Text);
+                                    RepRemittanceReportForm repRemittanceReportRemittanceReport = new RepRemittanceReportForm(this, dateTimePickerStartDateFilter.Value.Date, dateTimePickerEndDateFilter.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxUser.SelectedValue), Convert.ToInt32(comboBoxRemittanceNumber.SelectedValue));
                                     repRemittanceReportRemittanceReport.ShowDialog();
                                 }
                             }
@@ -202,6 +204,16 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
         }
 
         private void comboBoxUser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetRemittanceNumberList();
+        }
+
+        private void dateTimePickerStartDateFilter_ValueChanged(object sender, EventArgs e)
+        {
+            GetRemittanceNumberList();
+        }
+
+        private void dateTimePickerEndDateFilter_ValueChanged(object sender, EventArgs e)
         {
             GetRemittanceNumberList();
         }

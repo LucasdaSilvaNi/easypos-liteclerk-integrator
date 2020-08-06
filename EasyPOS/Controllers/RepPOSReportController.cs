@@ -49,8 +49,8 @@ namespace EasyPOS.Controllers
         public List<Entities.TrnCollectionEntity> ListCollections(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
             var collections = from d in db.TrnCollections.OrderByDescending(d => d.Id)
-                              where d.CollectionDate >= startDate
-                              && d.CollectionDate <= endDate
+                              where d.CollectionDate >= startDate.Date
+                              && d.CollectionDate <= endDate.Date
                               && d.TerminalId == terminalId
                               && d.IsLocked == true
                               select new Entities.TrnCollectionEntity
@@ -101,8 +101,8 @@ namespace EasyPOS.Controllers
         public List<Entities.TrnCollectionEntity> ListCollectionRegister(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
             var collections = from d in db.TrnCollections.OrderByDescending(d => d.Id)
-                              where d.CollectionDate >= startDate
-                              && d.CollectionDate <= endDate
+                              where d.CollectionDate >= startDate.Date
+                              && d.CollectionDate <= endDate.Date
                               && d.TerminalId == terminalId
                               && d.SalesId != null
                               && d.IsLocked == true
@@ -177,14 +177,14 @@ namespace EasyPOS.Controllers
 
             var currentCollections = from d in db.TrnCollections
                                      where d.TerminalId == filterTerminalId
-                                     && d.CollectionDate == filterDate
+                                     && d.CollectionDate == filterDate.Date
                                      && d.IsLocked == true
                                      && d.IsCancelled == false
                                      select d;
 
             var currentCollectionLines = from d in db.TrnCollectionLines
                                          where d.TrnCollection.TerminalId == filterTerminalId
-                                         && d.TrnCollection.CollectionDate == filterDate
+                                         && d.TrnCollection.CollectionDate == filterDate.Date
                                          && d.TrnCollection.IsLocked == true
                                          && d.TrnCollection.IsCancelled == false
                                          group d by new
@@ -296,7 +296,7 @@ namespace EasyPOS.Controllers
 
                 var counterCollections = from d in db.TrnCollections
                                          where d.TerminalId == filterTerminalId
-                                         && d.CollectionDate == filterDate
+                                         && d.CollectionDate == filterDate.Date
                                          && d.IsLocked == true
                                          select d;
 
@@ -326,7 +326,7 @@ namespace EasyPOS.Controllers
 
             var grossSalesPreviousCollections = from d in db.TrnCollections
                                                 where d.TerminalId == filterTerminalId
-                                                && d.CollectionDate < filterDate
+                                                && d.CollectionDate < filterDate.Date
                                                 && d.IsLocked == true
                                                 && d.IsCancelled == false
                                                 && d.SalesId != null
@@ -345,7 +345,7 @@ namespace EasyPOS.Controllers
 
             var netSalesPreviousCollections = from d in db.TrnCollections
                                               where d.TerminalId == filterTerminalId
-                                              && d.CollectionDate < filterDate
+                                              && d.CollectionDate < filterDate.Date
                                               && d.IsLocked == true
                                               && d.IsCancelled == false
                                               select d;
@@ -362,7 +362,7 @@ namespace EasyPOS.Controllers
 
             if (firstCollection.Any())
             {
-                Double totalDays = (filterDate - firstCollection.FirstOrDefault().CollectionDate).TotalDays + 1;
+                Double totalDays = (filterDate.Date - firstCollection.FirstOrDefault().CollectionDate).TotalDays + 1;
                 repZReadingReportEntity.ZReadingCounter = totalDays.ToString("#,##0");
             }
 

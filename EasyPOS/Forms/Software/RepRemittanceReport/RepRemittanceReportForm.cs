@@ -22,11 +22,11 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
         public DateTime filterStartDate;
         public DateTime filterEndDate;
         public Int32 filterUserId;
-        public String filterDisbursementNumber;
+        public Int32 filterDisbursementId;
 
         public Entities.RepRemitanceReportEntity remitanceReportEntity;
 
-        public RepRemittanceReportForm(RepRemittanceForm remittanceReportForm, DateTime startDate, DateTime endDate, Int32 terminalId, Int32 userId, String disbursementNumber)
+        public RepRemittanceReportForm(RepRemittanceForm remittanceReportForm, DateTime startDate, DateTime endDate, Int32 terminalId, Int32 userId, Int32 disbursementId)
         {
             InitializeComponent();
 
@@ -49,7 +49,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             filterEndDate = endDate;
             filterTerminalId = terminalId;
             filterUserId = userId;
-            filterDisbursementNumber = disbursementNumber;
+            filterDisbursementId = disbursementId;
 
             printDocumentRemittanceReport.DefaultPageSettings.PaperSize = new PaperSize("Remittance Report", 255, 1000);
             RemittanceReportDataSource();
@@ -83,7 +83,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             {
                 Terminal = "",
                 PreparedBy = "",
-                RemittanceDate = filterStartDate.ToShortDateString(),
+                RemittanceDate = DateTime.Today.ToShortDateString(),
                 CollectionLines = new List<Entities.TrnCollectionLineEntity>(),
                 Disbursements = new List<Entities.TrnDisbursementEntity>(),
                 DisbursementNumber = "0000000000",
@@ -124,11 +124,9 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             var collectionLines = from d in db.TrnCollectionLines
                                   where d.TrnCollection.TerminalId == filterTerminalId
                                   && d.TrnCollection.CollectionDate >= filterStartDate
-                                  && d.TrnCollection.CollectionDate <= filterStartDate
+                                  && d.TrnCollection.CollectionDate <= filterEndDate
                                   && d.TrnCollection.PreparedBy == filterUserId
                                   && d.TrnCollection.IsLocked == true
-                                  && d.TrnCollection.IsCancelled == false
-                                  && d.MstPayType.PayTypeCode == "CASH"
                                   group d by new
                                   {
                                       d.MstPayType.PayType,
@@ -136,10 +134,8 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                                   select new
                                   {
                                       g.Key.PayType,
-                                      TotalAmount = g.Sum(s => s.Amount)
+                                      Amount = g.Sum(s => s.TrnCollection.IsCancelled == true ? 0 : s.MstPayType.PayTypeCode.Equals("CASH") ? s.Amount - s.TrnCollection.ChangeAmount : s.Amount)
                                   };
-
-            repRemitanceReportEntity.RemittanceDate = filterStartDate.ToShortDateString();
 
             if (collectionLines.Any())
             {
@@ -148,18 +144,18 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                     repRemitanceReportEntity.CollectionLines.Add(new Entities.TrnCollectionLineEntity()
                     {
                         PayType = collectionLine.PayType,
-                        Amount = collectionLine.TotalAmount
+                        Amount = collectionLine.Amount
                     });
                 }
 
-                repRemitanceReportEntity.CashCollectedAmount = collectionLines.Sum(d => d.TotalAmount);
+                repRemitanceReportEntity.CashCollectedAmount = collectionLines.Sum(d => d.Amount);
             }
 
             var cashIns = from d in db.TrnDisbursements
-                          where d.DisbursementNumber != filterDisbursementNumber
+                          where d.Id != filterDisbursementId
                           && d.TerminalId == filterTerminalId
                           && d.DisbursementDate >= filterStartDate
-                          && d.DisbursementDate <= filterStartDate
+                          && d.DisbursementDate <= filterEndDate
                           && d.PreparedBy == filterUserId
                           && d.DisbursementType == "DEBIT"
                           && d.MstPayType.PayTypeCode == "CASH"
@@ -170,7 +166,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                           select new
                           {
                               g.Key.PayType,
-                              TotalAmount = g.Sum(s => s.Amount)
+                              Amount = g.Sum(s => s.Amount)
                           };
 
             if (cashIns.Any())
@@ -180,18 +176,18 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                     repRemitanceReportEntity.Disbursements.Add(new Entities.TrnDisbursementEntity()
                     {
                         PayType = cashIn.PayType,
-                        Amount = cashIn.TotalAmount
+                        Amount = cashIn.Amount
                     });
                 }
 
-                repRemitanceReportEntity.CashInAmount = cashIns.Sum(d => d.TotalAmount);
+                repRemitanceReportEntity.CashInAmount = cashIns.Sum(d => d.Amount);
             }
 
             var cashOuts = from d in db.TrnDisbursements
-                           where d.DisbursementNumber != filterDisbursementNumber
+                           where d.Id != filterDisbursementId
                            && d.TerminalId == filterTerminalId
                            && d.DisbursementDate >= filterStartDate
-                           && d.DisbursementDate <= filterStartDate
+                           && d.DisbursementDate <= filterEndDate
                            && d.PreparedBy == filterUserId
                            && d.DisbursementType == "CREDIT"
                            && d.MstPayType.PayTypeCode == "CASH"
@@ -202,7 +198,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                            select new
                            {
                                g.Key.PayType,
-                               TotalAmount = g.Sum(s => s.Amount)
+                               Amount = g.Sum(s => s.Amount)
                            };
 
             if (cashOuts.Any())
@@ -212,17 +208,19 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                     repRemitanceReportEntity.Disbursements.Add(new Entities.TrnDisbursementEntity()
                     {
                         PayType = cashOut.PayType,
-                        Amount = cashOut.TotalAmount
+                        Amount = cashOut.Amount
                     });
                 }
 
-                repRemitanceReportEntity.CashOutAmount = cashOuts.Sum(d => d.TotalAmount);
+                repRemitanceReportEntity.CashOutAmount = cashOuts.Sum(d => d.Amount);
             }
 
             var remittance = from d in db.TrnDisbursements
-                             where d.TerminalId == filterTerminalId
+                             where d.Id == filterDisbursementId
+                             && d.TerminalId == filterTerminalId
+                             && d.DisbursementDate >= filterStartDate
+                             && d.DisbursementDate <= filterEndDate
                              && d.PreparedBy == filterUserId
-                             && d.DisbursementNumber == filterDisbursementNumber
                              && d.DisbursementType == "CREDIT"
                              && d.MstPayType.PayTypeCode == "CASH"
                              && d.IsLocked == true
@@ -437,7 +435,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // ==================
             // Disbursement Title
             // ==================
-            String disbursementTitle = "\nCash In / Out";
+            String disbursementTitle = "\nCash In/Out";
             graphics.DrawString(disbursementTitle, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             y += graphics.MeasureString(disbursementTitle, fontArial8Bold).Height;
 
