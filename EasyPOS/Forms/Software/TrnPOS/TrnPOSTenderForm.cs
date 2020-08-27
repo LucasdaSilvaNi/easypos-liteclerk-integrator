@@ -455,7 +455,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 String payTypeCode = dataGridViewTenderPayType.Rows[dataGridViewTenderPayType.CurrentCell.RowIndex].Cells[dataGridViewTenderPayType.Columns["ColumnTenderListPayTypePayTypeCode"].Index].Value.ToString();
                 if (payTypeCode == "EASYPAY")
                 {
-                    TrnPOSTenderEasypayInformationForm trnSalesDetailTenderEasypayInformationForm = new TrnPOSTenderEasypayInformationForm(this, dataGridViewTenderPayType, payAmount);
+                    TrnPOSTenderEasypayInformationForm trnSalesDetailTenderEasypayInformationForm = new TrnPOSTenderEasypayInformationForm(this, dataGridViewTenderPayType, payAmount, trnSalesEntity.Id);
                     trnSalesDetailTenderEasypayInformationForm.ShowDialog();
                 }
                 else if (payTypeCode == "FACEPAY")

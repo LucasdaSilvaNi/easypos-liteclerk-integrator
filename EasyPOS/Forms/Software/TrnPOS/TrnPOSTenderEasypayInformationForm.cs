@@ -21,7 +21,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public TrnPOSTenderForm trnSalesDetailTenderForm;
         public DataGridView mstDataGridViewTenderPayType;
 
-        public TrnPOSTenderEasypayInformationForm(TrnPOSTenderForm salesDetailTenderForm, DataGridView dataGridViewTenderPayType, Decimal totalSalesAmount)
+        public Int32 trnSalesId = 0;
+
+        public TrnPOSTenderEasypayInformationForm(TrnPOSTenderForm salesDetailTenderForm, DataGridView dataGridViewTenderPayType, Decimal totalSalesAmount, Int32 salesId)
         {
             InitializeComponent();
 
@@ -35,6 +37,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             textBoxEndingBalance.Text = Convert.ToDecimal(totalSalesAmount * -1).ToString("#,##0.00");
 
             buttonPay.Enabled = false;
+
+            trnSalesId = salesId;
 
             CheckConnection();
         }
@@ -177,7 +181,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         SourceCardNumber = textBoxTappedCardNumber.Text,
                         DestinationCardNumber = systemCurrent.EasypayMotherCardNumber,
                         Amount = Convert.ToDecimal(textBoxAmountCharge.Text),
-                        Particulars = DateTime.Now.ToLongDateString()
+                        Particulars = "Sales Id - " + trnSalesId.ToString()
                     };
 
                     String json = new JavaScriptSerializer().Serialize(cardDetails);
@@ -192,7 +196,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     var result = streamReader.ReadToEnd();
                     if (result != null)
                     {
-                        Pay();
+                        if (Convert.ToInt32(result) > 0)
+                        {
+                            Pay(Convert.ToInt32(result), textBoxTappedCardNumber.Text);
+                        }
                     }
                 }
             }
@@ -202,7 +209,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
         }
 
-        public void Pay()
+        public void Pay(Int32 creditLedgerId, String cardNumber)
         {
             try
             {
@@ -215,7 +222,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         String payTypeCode = mstDataGridViewTenderPayType.CurrentRow.Cells[1].Value.ToString();
                         String payType = mstDataGridViewTenderPayType.CurrentRow.Cells[2].Value.ToString();
                         Decimal amount = Convert.ToDecimal(textBoxAmountCharge.Text);
-                        String otherInformation = "Easypay Payment " + DateTime.Now.ToLongDateString();
+                        String otherInformation = "Easypay - " + creditLedgerId + " - " + cardNumber;
 
                         mstDataGridViewTenderPayType.CurrentRow.Cells[0].Value = id;
                         mstDataGridViewTenderPayType.CurrentRow.Cells[1].Value = payTypeCode;

@@ -340,6 +340,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     Int32 TaxId = detailItem.OutTaxId;
                     String Tax = detailItem.OutTax;
                     Decimal TaxRate = detailItem.OutTaxRate;
+                    Decimal TaxAmount = detailItem.Price / (1 + (TaxRate / 100)) * (TaxRate / 100);
                     Int32 UnitId = detailItem.UnitId;
                     String Unit = detailItem.Unit;
                     Decimal Price = detailItem.Price;
@@ -365,7 +366,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         TaxId = TaxId,
                         Tax = Tax,
                         TaxRate = TaxRate,
-                        TaxAmount = 0,
+                        TaxAmount = TaxAmount,
                         SalesAccountId = 159,
                         AssetAccountId = 255,
                         CostAccountId = 238,
