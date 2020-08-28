@@ -89,6 +89,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                 DisbursementNumber = "0000000000",
                 DisbursementType = "NA",
                 PayType = "NA",
+                TotalCollection = 0,
                 Amount1000 = 0,
                 Amount500 = 0,
                 Amount200 = 0,
@@ -129,10 +130,12 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                                   && d.TrnCollection.IsLocked == true
                                   group d by new
                                   {
+                                      d.MstPayType.PayTypeCode,
                                       d.MstPayType.PayType,
                                   } into g
                                   select new
                                   {
+                                      g.Key.PayTypeCode,
                                       g.Key.PayType,
                                       Amount = g.Sum(s => s.TrnCollection.IsCancelled == true ? 0 : s.MstPayType.PayTypeCode.Equals("CASH") ? s.Amount - s.TrnCollection.ChangeAmount : s.Amount)
                                   };
@@ -148,7 +151,8 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                     });
                 }
 
-                repRemitanceReportEntity.CashCollectedAmount = collectionLines.Sum(d => d.Amount);
+                repRemitanceReportEntity.TotalCollection = collectionLines.Sum(d => d.Amount);
+                repRemitanceReportEntity.CashCollectedAmount = collectionLines.Where(d => d.PayTypeCode == "CASH").Sum(d => d.Amount);
             }
 
             var cashIns = from d in db.TrnDisbursements
@@ -419,8 +423,8 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // ================
             // Collection Lines
             // ================
-            String totalCollectionLineLabel = "Cash Collected";
-            String totalCollectionLineData = dataSource.CashCollectedAmount.ToString("#,##0.00");
+            String totalCollectionLineLabel = "Total Collection";
+            String totalCollectionLineData = dataSource.TotalCollection.ToString("#,##0.00");
             graphics.DrawString(totalCollectionLineLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(totalCollectionLineData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(totalCollectionLineData, fontArial8Bold).Height;

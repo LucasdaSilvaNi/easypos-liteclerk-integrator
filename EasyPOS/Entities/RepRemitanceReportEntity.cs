@@ -17,6 +17,7 @@ namespace EasyPOS.Entities
         public String DisbursementNumber { get; set; }
         public String DisbursementType { get; set; }
         public String PayType { get; set; }
+        public Decimal TotalCollection { get; set; }
         public Decimal? Amount1000 { get; set; }
         public Decimal? Amount500 { get; set; }
         public Decimal? Amount200 { get; set; }
