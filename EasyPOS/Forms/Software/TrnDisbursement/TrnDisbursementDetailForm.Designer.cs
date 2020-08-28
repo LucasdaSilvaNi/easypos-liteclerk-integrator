@@ -928,6 +928,7 @@
             // 
             // comboBoxTerminal
             // 
+            this.comboBoxTerminal.Enabled = false;
             this.comboBoxTerminal.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxTerminal.FormattingEnabled = true;
             this.comboBoxTerminal.Location = new System.Drawing.Point(155, 37);

@@ -577,6 +577,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             Decimal amount50 = Convert.ToDecimal(dataSource.Amount50);
             Decimal amount20 = Convert.ToDecimal(dataSource.Amount20);
             Decimal amount10 = Convert.ToDecimal(dataSource.Amount10);
+            Decimal amount5 = Convert.ToDecimal(dataSource.Amount5);
             Decimal amount1 = Convert.ToDecimal(dataSource.Amount1);
             Decimal amount025 = Convert.ToDecimal(dataSource.Amount025);
             Decimal amount010 = Convert.ToDecimal(dataSource.Amount010);
@@ -591,8 +592,8 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // ==========
             // Amount1000
             // ==========
-            String amount1000Label = "\nAmount 1000";
-            String amount1000Data = "\n" + amount1000.ToString("#,##0.00");
+            String amount1000Label = "\nAmount 1,000.00 x " + amount1000.ToString("#,##0");
+            String amount1000Data = "\n" + Convert.ToDecimal(amount1000 * 1000).ToString("#,##0.00");
             graphics.DrawString(amount1000Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount1000Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount1000Data, fontArial8Regular).Height;
@@ -600,8 +601,8 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // ==========
             // Amount500
             // ==========
-            String amount500Label = "Amount 500";
-            String amount500Data = amount500.ToString("#,##0.00");
+            String amount500Label = "Amount 500.00 x " + amount500.ToString("#,##0");
+            String amount500Data = Convert.ToDecimal(amount500 * 500).ToString("#,##0.00");
             graphics.DrawString(amount500Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount500Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount500Data, fontArial8Regular).Height;
@@ -609,8 +610,8 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // =========
             // Amount200
             // =========
-            String amount200Label = "Amount 200";
-            String amount200Data = amount200.ToString("#,##0.00");
+            String amount200Label = "Amount 200.00 x " + amount200.ToString("#,##0");
+            String amount200Data = Convert.ToDecimal(amount200 * 200).ToString("#,##0.00");
             graphics.DrawString(amount200Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount200Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount200Data, fontArial8Regular).Height;
@@ -618,8 +619,8 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // =========
             // Amount100
             // =========
-            String amount100Label = "Amount 100";
-            String amount100Data = amount100.ToString("#,##0.00");
+            String amount100Label = "Amount 100.00 x " + amount100.ToString("#,##0");
+            String amount100Data = Convert.ToDecimal(amount100 * 100).ToString("#,##0.00");
             graphics.DrawString(amount100Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount100Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount100Data, fontArial8Regular).Height;
@@ -627,8 +628,8 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // ========
             // Amount50
             // ========
-            String amount50Label = "Amount 50";
-            String amount50Data = amount50.ToString("#,##0.00");
+            String amount50Label = "Amount 50.00 x " + amount50.ToString("#,##0");
+            String amount50Data = Convert.ToDecimal(amount50 * 50).ToString("#,##0.00");
             graphics.DrawString(amount50Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount50Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount50Data, fontArial8Regular).Height;
@@ -636,8 +637,8 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // ========
             // Amount20
             // ========
-            String amount20Label = "Amount 20";
-            String amount20Data = amount20.ToString("#,##0.00");
+            String amount20Label = "Amount 20.00 x " + amount20.ToString("#,##0");
+            String amount20Data = Convert.ToDecimal(amount20 * 20).ToString("#,##0.00");
             graphics.DrawString(amount20Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount20Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount20Data, fontArial8Regular).Height;
@@ -645,17 +646,26 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // ========
             // Amount10
             // ========
-            String amount10Label = "Amount 10";
-            String amount10Data = amount10.ToString("#,##0.00");
+            String amount10Label = "Amount 10.00 x " + amount10.ToString("#,##0");
+            String amount10Data = Convert.ToDecimal(amount10 * 10).ToString("#,##0.00");
             graphics.DrawString(amount10Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount10Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount10Data, fontArial8Regular).Height;
 
-            // =======
-            // Amount1
-            // =======
-            String amount1Label = "Amount 1";
-            String amount1Data = amount1.ToString("#,##0.00");
+            // ========
+            // Amount 5
+            // ========
+            String amount5Label = "Amount 5.00 x " + amount5.ToString("#,##0");
+            String amount5Data = Convert.ToDecimal(amount5 * 5).ToString("#,##0.00");
+            graphics.DrawString(amount5Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(amount5Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(amount5Data, fontArial8Regular).Height;
+
+            // ========
+            // Amount 1
+            // ========
+            String amount1Label = "Amount 1.00 x " + amount1.ToString("#,##0");
+            String amount1Data = Convert.ToDecimal(amount1 * 1).ToString("#,##0");
             graphics.DrawString(amount1Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount1Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount1Data, fontArial8Regular).Height;
@@ -663,8 +673,8 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // ==========
             // Amount 025
             // ==========
-            String amount025Label = "Amount 025";
-            String amount025Data = amount025.ToString("#,##0.00");
+            String amount025Label = "Amount 0.25 x " + amount025.ToString("#,##0");
+            String amount025Data = Convert.ToDecimal(amount1 * 0.25m).ToString("#,##0.00");
             graphics.DrawString(amount025Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount025Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount025Data, fontArial8Regular).Height;
@@ -672,7 +682,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // ==========
             // Amount 010
             // ==========
-            String amount010Label = "Amount 010";
+            String amount010Label = "Amount 0.10 x " + amount010.ToString("#,##0");
             String amount010Data = amount010.ToString("#,##0.00");
             graphics.DrawString(amount010Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount010Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
@@ -681,8 +691,8 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // ==========
             // Amount 005
             // ==========
-            String amount005Label = "Amount 005";
-            String amount005Data = amount005.ToString("#,##0.00");
+            String amount005Label = "Amount 0.05 x " + amount005.ToString("#,##0");
+            String amount005Data = Convert.ToDecimal(amount1 * 0.05m).ToString("#,##0.00");
             graphics.DrawString(amount005Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount005Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount005Data, fontArial8Regular).Height;
@@ -690,8 +700,8 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // ==========
             // Amount 001
             // ==========
-            String amount001Label = "Amount 001";
-            String amount001Data = amount001.ToString("#,##0.00");
+            String amount001Label = "Amount 0.01 x " + amount001.ToString("#,##0");
+            String amount001Data = Convert.ToDecimal(amount1 * 0.01m).ToString("#,##0.00");
             graphics.DrawString(amount001Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(amount001Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(amount001Data, fontArial8Regular).Height;

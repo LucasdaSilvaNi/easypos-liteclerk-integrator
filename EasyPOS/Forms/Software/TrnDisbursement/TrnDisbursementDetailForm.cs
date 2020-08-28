@@ -172,7 +172,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
                 buttonPrint.Enabled = isLocked;
             }
 
-            comboBoxTerminal.Enabled = !isLocked;
+            //comboBoxTerminal.Enabled = !isLocked;
             dateTimePickerRemittanceDate.Enabled = !isLocked;
             comboBoxRemittanceType.Enabled = !isLocked;
             comboBoxPayType.Enabled = !isLocked;

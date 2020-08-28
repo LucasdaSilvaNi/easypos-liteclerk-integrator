@@ -115,8 +115,8 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                         comboBoxTerminal.Visible = false;
                         dateTimePickerStartDateFilter.Visible = false;
                         labelStartDate.Visible = false;
-                        dateTimePickerEndDateFilter.Visible = true;
-                        labelEndDate.Visible = true;
+                        dateTimePickerEndDateFilter.Visible = false;
+                        labelEndDate.Visible = false;
                         comboBoxUser.Visible = false;
                         labelUser.Visible = false;
                         comboBoxRemittanceNumber.Visible = false;
