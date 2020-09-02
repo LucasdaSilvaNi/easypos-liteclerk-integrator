@@ -77,7 +77,7 @@
             this.panel1.Controls.Add(this.buttonClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1109, 50);
             this.panel1.TabIndex = 5;
@@ -92,7 +92,7 @@
             this.buttonLock.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLock.ForeColor = System.Drawing.Color.White;
             this.buttonLock.Location = new System.Drawing.Point(879, 10);
-            this.buttonLock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonLock.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLock.Name = "buttonLock";
             this.buttonLock.Size = new System.Drawing.Size(70, 32);
             this.buttonLock.TabIndex = 6;
@@ -111,7 +111,7 @@
             this.buttonUnlock.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonUnlock.ForeColor = System.Drawing.Color.White;
             this.buttonUnlock.Location = new System.Drawing.Point(954, 10);
-            this.buttonUnlock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonUnlock.Margin = new System.Windows.Forms.Padding(2);
             this.buttonUnlock.Name = "buttonUnlock";
             this.buttonUnlock.Size = new System.Drawing.Size(70, 32);
             this.buttonUnlock.TabIndex = 5;
@@ -124,7 +124,7 @@
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Customer;
             this.pictureBox1.Location = new System.Drawing.Point(10, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(38, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -152,7 +152,7 @@
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
             this.buttonClose.Location = new System.Drawing.Point(1029, 10);
-            this.buttonClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(70, 32);
             this.buttonClose.TabIndex = 1;
@@ -192,9 +192,9 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 50);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.panel2.Padding = new System.Windows.Forms.Padding(8);
             this.panel2.Size = new System.Drawing.Size(1109, 510);
             this.panel2.TabIndex = 6;
             // 
@@ -202,7 +202,7 @@
             // 
             this.textBoxDefaultPrice.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxDefaultPrice.Location = new System.Drawing.Point(143, 410);
-            this.textBoxDefaultPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxDefaultPrice.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxDefaultPrice.Name = "textBoxDefaultPrice";
             this.textBoxDefaultPrice.Size = new System.Drawing.Size(172, 26);
             this.textBoxDefaultPrice.TabIndex = 12;
@@ -223,7 +223,7 @@
             this.textBoxAvailableReward.Enabled = false;
             this.textBoxAvailableReward.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxAvailableReward.Location = new System.Drawing.Point(143, 382);
-            this.textBoxAvailableReward.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxAvailableReward.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxAvailableReward.Name = "textBoxAvailableReward";
             this.textBoxAvailableReward.Size = new System.Drawing.Size(172, 26);
             this.textBoxAvailableReward.TabIndex = 11;
@@ -256,7 +256,7 @@
             // 
             this.textBoxRewardConversion.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxRewardConversion.Location = new System.Drawing.Point(143, 353);
-            this.textBoxRewardConversion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxRewardConversion.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxRewardConversion.Name = "textBoxRewardConversion";
             this.textBoxRewardConversion.Size = new System.Drawing.Size(172, 26);
             this.textBoxRewardConversion.TabIndex = 10;
@@ -278,7 +278,7 @@
             // 
             this.textBoxRewardNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxRewardNumber.Location = new System.Drawing.Point(143, 324);
-            this.textBoxRewardNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxRewardNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxRewardNumber.Name = "textBoxRewardNumber";
             this.textBoxRewardNumber.Size = new System.Drawing.Size(172, 26);
             this.textBoxRewardNumber.TabIndex = 9;
@@ -288,7 +288,7 @@
             this.checkBoxWithReward.AutoSize = true;
             this.checkBoxWithReward.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.checkBoxWithReward.Location = new System.Drawing.Point(143, 298);
-            this.checkBoxWithReward.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxWithReward.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxWithReward.Name = "checkBoxWithReward";
             this.checkBoxWithReward.Size = new System.Drawing.Size(32, 23);
             this.checkBoxWithReward.TabIndex = 8;
@@ -321,7 +321,7 @@
             // 
             this.textBoxTIN.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxTIN.Location = new System.Drawing.Point(143, 269);
-            this.textBoxTIN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxTIN.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTIN.Name = "textBoxTIN";
             this.textBoxTIN.Size = new System.Drawing.Size(172, 26);
             this.textBoxTIN.TabIndex = 7;
@@ -331,7 +331,7 @@
             this.comboBoxTerm.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxTerm.FormattingEnabled = true;
             this.comboBoxTerm.Location = new System.Drawing.Point(143, 239);
-            this.comboBoxTerm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxTerm.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxTerm.Name = "comboBoxTerm";
             this.comboBoxTerm.Size = new System.Drawing.Size(172, 27);
             this.comboBoxTerm.TabIndex = 6;
@@ -362,7 +362,7 @@
             // 
             this.textBoxCreditLimit.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxCreditLimit.Location = new System.Drawing.Point(143, 210);
-            this.textBoxCreditLimit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxCreditLimit.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCreditLimit.Name = "textBoxCreditLimit";
             this.textBoxCreditLimit.Size = new System.Drawing.Size(172, 26);
             this.textBoxCreditLimit.TabIndex = 5;
@@ -384,7 +384,7 @@
             // 
             this.textBoxContactNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxContactNumber.Location = new System.Drawing.Point(143, 182);
-            this.textBoxContactNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxContactNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxContactNumber.Name = "textBoxContactNumber";
             this.textBoxContactNumber.Size = new System.Drawing.Size(172, 26);
             this.textBoxContactNumber.TabIndex = 4;
@@ -404,7 +404,7 @@
             // 
             this.textBoxContactPerson.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxContactPerson.Location = new System.Drawing.Point(143, 153);
-            this.textBoxContactPerson.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxContactPerson.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxContactPerson.Name = "textBoxContactPerson";
             this.textBoxContactPerson.Size = new System.Drawing.Size(228, 26);
             this.textBoxContactPerson.TabIndex = 3;
@@ -424,7 +424,7 @@
             // 
             this.textBoxAddress.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxAddress.Location = new System.Drawing.Point(143, 66);
-            this.textBoxAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxAddress.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxAddress.Multiline = true;
             this.textBoxAddress.Name = "textBoxAddress";
             this.textBoxAddress.Size = new System.Drawing.Size(328, 82);
@@ -445,7 +445,7 @@
             // 
             this.textBoxCustomer.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxCustomer.Location = new System.Drawing.Point(143, 38);
-            this.textBoxCustomer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCustomer.Name = "textBoxCustomer";
             this.textBoxCustomer.Size = new System.Drawing.Size(228, 26);
             this.textBoxCustomer.TabIndex = 1;
@@ -454,7 +454,7 @@
             // 
             this.textBoxCustomerCode.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxCustomerCode.Location = new System.Drawing.Point(143, 9);
-            this.textBoxCustomerCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxCustomerCode.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCustomerCode.Name = "textBoxCustomerCode";
             this.textBoxCustomerCode.Size = new System.Drawing.Size(172, 26);
             this.textBoxCustomerCode.TabIndex = 0;

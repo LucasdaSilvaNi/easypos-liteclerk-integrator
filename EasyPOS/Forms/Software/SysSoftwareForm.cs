@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -929,7 +930,15 @@ namespace EasyPOS.Forms.Software
 
         private void tabControlSoftware_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (tabControlSoftware.SelectedTab == tabPageCustomerList)
+            {
+                mstCustomerListForm.Focus();
+            }
 
+            if (tabControlSoftware.SelectedTab == tabPageCustomerDetail)
+            {
+                mstCustomerDetailForm.Focus();
+            }
         }
 
         private void buttonOpenSidebarMenu_Click(object sender, EventArgs e)

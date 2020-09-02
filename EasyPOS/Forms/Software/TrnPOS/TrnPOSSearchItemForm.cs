@@ -25,6 +25,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             trnSalesEntity = salesEntity;
 
+            dataGridViewSearchItemList.Focus();
+
             GetSearchItemList();
         }
 
@@ -134,6 +136,89 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(trnSalesDetailForm, trnPOSTouchDetailForm, trnSalesLineEntity);
                 trnSalesDetailSalesItemDetailForm.ShowDialog();
             }
+        }
+
+        private void dataGridViewSearchItemList_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dataGridViewSearchItemList.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                Int32 ItemId = Convert.ToInt32(dataGridViewSearchItemList.Rows[dataGridViewSearchItemList.CurrentCell.RowIndex].Cells[0].Value);
+                Int32 SalesId = trnSalesEntity.Id;
+                String ItemDescription = dataGridViewSearchItemList.Rows[dataGridViewSearchItemList.CurrentCell.RowIndex].Cells[2].Value.ToString();
+                Int32 TaxId = Convert.ToInt32(dataGridViewSearchItemList.Rows[dataGridViewSearchItemList.CurrentCell.RowIndex].Cells[4].Value);
+                String Tax = dataGridViewSearchItemList.Rows[dataGridViewSearchItemList.CurrentCell.RowIndex].Cells[5].Value.ToString();
+                Decimal TaxRate = Convert.ToDecimal(dataGridViewSearchItemList.Rows[dataGridViewSearchItemList.CurrentCell.RowIndex].Cells[6].Value);
+                Int32 UnitId = Convert.ToInt32(dataGridViewSearchItemList.Rows[dataGridViewSearchItemList.CurrentCell.RowIndex].Cells[7].Value);
+                String Unit = dataGridViewSearchItemList.Rows[dataGridViewSearchItemList.CurrentCell.RowIndex].Cells[8].Value.ToString();
+                Decimal Price = Convert.ToDecimal(dataGridViewSearchItemList.Rows[dataGridViewSearchItemList.CurrentCell.RowIndex].Cells[9].Value);
+                Int32 DiscountId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().DefaultDiscountId);
+                Int32 UserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
+
+                Decimal TaxAmount = 0;
+                if (TaxRate > 0)
+                {
+                    TaxAmount = (Price / (1 + (TaxRate / 100))) * (TaxRate / 100);
+                }
+
+                Entities.TrnSalesLineEntity trnSalesLineEntity = new Entities.TrnSalesLineEntity()
+                {
+                    Id = 0,
+                    SalesId = SalesId,
+                    ItemId = ItemId,
+                    ItemDescription = ItemDescription,
+                    UnitId = UnitId,
+                    Unit = Unit,
+                    Price = Price,
+                    DiscountId = DiscountId,
+                    Discount = "",
+                    DiscountRate = 0,
+                    DiscountAmount = 0,
+                    NetPrice = Price,
+                    Quantity = 1,
+                    Amount = Price,
+                    TaxId = TaxId,
+                    Tax = Tax,
+                    TaxRate = TaxRate,
+                    TaxAmount = TaxAmount,
+                    SalesAccountId = 159,
+                    AssetAccountId = 255,
+                    CostAccountId = 238,
+                    TaxAccountId = 87,
+                    SalesLineTimeStamp = DateTime.Now.Date.ToShortDateString(),
+                    UserId = UserId,
+                    Preparation = "NA",
+                    Price1 = 0,
+                    Price2 = 0,
+                    Price2LessTax = 0,
+                    PriceSplitPercentage = 0
+                };
+
+                TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(trnSalesDetailForm, trnPOSTouchDetailForm, trnSalesLineEntity);
+                trnSalesDetailSalesItemDetailForm.ShowDialog();
+            }
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Escape:
+                    {
+                        Close();
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }

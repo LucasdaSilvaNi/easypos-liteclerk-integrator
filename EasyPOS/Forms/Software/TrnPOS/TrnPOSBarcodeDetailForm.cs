@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
@@ -648,6 +649,119 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 new TrnPOSSalesOrderReportForm(trnSalesEntity.Id);
             }
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F2:
+                    {
+                        if (buttonPrint.Enabled == true)
+                        {
+                            buttonPrint.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                case Keys.F3:
+                    {
+                        if (buttonLock.Enabled == true)
+                        {
+                            buttonLock.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                case Keys.F4:
+                    {
+                        if (buttonUnlock.Enabled == true)
+                        {
+                            buttonUnlock.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                case Keys.F5:
+                    {
+                        if (buttonReturn.Enabled == true)
+                        {
+                            buttonReturn.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                case Keys.F6:
+                    {
+                        if (buttonDiscount.Enabled == true)
+                        {
+                            buttonDiscount.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                case Keys.F7:
+                    {
+                        if (buttonTender.Enabled == true)
+                        {
+                            buttonTender.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                case Keys.F8:
+                    {
+                        if (buttonBarcode.Enabled == true)
+                        {
+                            buttonBarcode.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                case Keys.F9:
+                    {
+                        if (buttonSearchItem.Enabled == true)
+                        {
+                            buttonSearchItem.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                case Keys.F10:
+                    {
+                        if (buttonDownload.Enabled == true)
+                        {
+                            buttonDownload.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                case Keys.Escape:
+                    {
+                        if (buttonClose.Enabled == true)
+                        {
+                            buttonClose.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }

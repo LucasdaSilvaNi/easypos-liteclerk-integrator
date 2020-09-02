@@ -134,13 +134,13 @@
             this.buttonPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPrint.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPrint.ForeColor = System.Drawing.Color.White;
-            this.buttonPrint.Location = new System.Drawing.Point(553, 10);
+            this.buttonPrint.Location = new System.Drawing.Point(307, 10);
             this.buttonPrint.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPrint.Name = "buttonPrint";
-            this.buttonPrint.Size = new System.Drawing.Size(70, 32);
+            this.buttonPrint.Size = new System.Drawing.Size(104, 32);
             this.buttonPrint.TabIndex = 9;
             this.buttonPrint.TabStop = false;
-            this.buttonPrint.Text = "Print";
+            this.buttonPrint.Text = "F2 - Print";
             this.buttonPrint.UseVisualStyleBackColor = false;
             this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
             // 
@@ -153,13 +153,13 @@
             this.buttonLock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLock.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLock.ForeColor = System.Drawing.Color.White;
-            this.buttonLock.Location = new System.Drawing.Point(628, 10);
+            this.buttonLock.Location = new System.Drawing.Point(415, 10);
             this.buttonLock.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLock.Name = "buttonLock";
-            this.buttonLock.Size = new System.Drawing.Size(70, 32);
+            this.buttonLock.Size = new System.Drawing.Size(100, 32);
             this.buttonLock.TabIndex = 8;
             this.buttonLock.TabStop = false;
-            this.buttonLock.Text = "Lock";
+            this.buttonLock.Text = "F3 - Lock";
             this.buttonLock.UseVisualStyleBackColor = false;
             this.buttonLock.Click += new System.EventHandler(this.buttonLock_Click);
             // 
@@ -172,13 +172,13 @@
             this.buttonUnlock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUnlock.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonUnlock.ForeColor = System.Drawing.Color.White;
-            this.buttonUnlock.Location = new System.Drawing.Point(703, 10);
+            this.buttonUnlock.Location = new System.Drawing.Point(519, 10);
             this.buttonUnlock.Margin = new System.Windows.Forms.Padding(2);
             this.buttonUnlock.Name = "buttonUnlock";
-            this.buttonUnlock.Size = new System.Drawing.Size(70, 32);
+            this.buttonUnlock.Size = new System.Drawing.Size(109, 32);
             this.buttonUnlock.TabIndex = 7;
             this.buttonUnlock.TabStop = false;
-            this.buttonUnlock.Text = "Unlock";
+            this.buttonUnlock.Text = "F4 - Unlock";
             this.buttonUnlock.UseVisualStyleBackColor = false;
             this.buttonUnlock.Click += new System.EventHandler(this.buttonUnlock_Click);
             // 
@@ -191,13 +191,13 @@
             this.buttonReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReturn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonReturn.ForeColor = System.Drawing.Color.White;
-            this.buttonReturn.Location = new System.Drawing.Point(777, 10);
+            this.buttonReturn.Location = new System.Drawing.Point(632, 10);
             this.buttonReturn.Margin = new System.Windows.Forms.Padding(2);
             this.buttonReturn.Name = "buttonReturn";
-            this.buttonReturn.Size = new System.Drawing.Size(77, 32);
+            this.buttonReturn.Size = new System.Drawing.Size(108, 32);
             this.buttonReturn.TabIndex = 5;
             this.buttonReturn.TabStop = false;
-            this.buttonReturn.Text = "Return";
+            this.buttonReturn.Text = "F5 - Return";
             this.buttonReturn.UseVisualStyleBackColor = false;
             this.buttonReturn.Click += new System.EventHandler(this.buttonReturn_Click);
             // 
@@ -210,13 +210,13 @@
             this.buttonDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDiscount.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDiscount.ForeColor = System.Drawing.Color.White;
-            this.buttonDiscount.Location = new System.Drawing.Point(859, 10);
+            this.buttonDiscount.Location = new System.Drawing.Point(744, 10);
             this.buttonDiscount.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDiscount.Name = "buttonDiscount";
-            this.buttonDiscount.Size = new System.Drawing.Size(77, 32);
+            this.buttonDiscount.Size = new System.Drawing.Size(116, 32);
             this.buttonDiscount.TabIndex = 4;
             this.buttonDiscount.TabStop = false;
-            this.buttonDiscount.Text = "Discount";
+            this.buttonDiscount.Text = "F6 - Discount";
             this.buttonDiscount.UseVisualStyleBackColor = false;
             this.buttonDiscount.Click += new System.EventHandler(this.buttonDiscount_Click);
             // 
@@ -251,13 +251,13 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(1016, 10);
+            this.buttonClose.Location = new System.Drawing.Point(977, 10);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(70, 32);
+            this.buttonClose.Size = new System.Drawing.Size(109, 32);
             this.buttonClose.TabIndex = 1;
             this.buttonClose.TabStop = false;
-            this.buttonClose.Text = "Close";
+            this.buttonClose.Text = "Esc - Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
@@ -270,13 +270,13 @@
             this.buttonTender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTender.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTender.ForeColor = System.Drawing.Color.White;
-            this.buttonTender.Location = new System.Drawing.Point(941, 10);
+            this.buttonTender.Location = new System.Drawing.Point(864, 10);
             this.buttonTender.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTender.Name = "buttonTender";
-            this.buttonTender.Size = new System.Drawing.Size(70, 32);
+            this.buttonTender.Size = new System.Drawing.Size(109, 32);
             this.buttonTender.TabIndex = 1;
             this.buttonTender.TabStop = false;
-            this.buttonTender.Text = "Tender";
+            this.buttonTender.Text = "F7 - Tender";
             this.buttonTender.UseVisualStyleBackColor = false;
             this.buttonTender.Click += new System.EventHandler(this.buttonTender_Click);
             // 
@@ -758,7 +758,7 @@
             this.buttonSearchItem.Size = new System.Drawing.Size(159, 32);
             this.buttonSearchItem.TabIndex = 5;
             this.buttonSearchItem.TabStop = false;
-            this.buttonSearchItem.Text = "Search Item";
+            this.buttonSearchItem.Text = "F9 - Search Item";
             this.buttonSearchItem.UseVisualStyleBackColor = false;
             this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
             // 
@@ -788,7 +788,7 @@
             this.buttonBarcode.Size = new System.Drawing.Size(120, 32);
             this.buttonBarcode.TabIndex = 6;
             this.buttonBarcode.TabStop = false;
-            this.buttonBarcode.Text = "Barcode";
+            this.buttonBarcode.Text = "F8 - Barcode";
             this.buttonBarcode.UseVisualStyleBackColor = false;
             this.buttonBarcode.Click += new System.EventHandler(this.buttonBarcode_Click);
             // 
@@ -822,7 +822,7 @@
             this.buttonDownload.Size = new System.Drawing.Size(145, 32);
             this.buttonDownload.TabIndex = 7;
             this.buttonDownload.TabStop = false;
-            this.buttonDownload.Text = "Download";
+            this.buttonDownload.Text = "F10 - Download";
             this.buttonDownload.UseVisualStyleBackColor = false;
             this.buttonDownload.Click += new System.EventHandler(this.buttonDownload_Click);
             // 
@@ -837,6 +837,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.Name = "TrnPOSBarcodeDetailForm";
             this.Text = "Sales Detail";

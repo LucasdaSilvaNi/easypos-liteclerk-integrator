@@ -66,16 +66,18 @@
             this.panel1.Controls.Add(this.buttonClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1082, 63);
+            this.panel1.Size = new System.Drawing.Size(866, 50);
             this.panel1.TabIndex = 4;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.POS;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
+            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -84,10 +86,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(63, 17);
+            this.label1.Location = new System.Drawing.Point(50, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 35);
+            this.label1.Size = new System.Drawing.Size(124, 28);
             this.label1.TabIndex = 2;
             this.label1.Text = "Search Item";
             // 
@@ -100,11 +102,13 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(982, 12);
+            this.buttonClose.Location = new System.Drawing.Point(748, 10);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(88, 40);
+            this.buttonClose.Size = new System.Drawing.Size(109, 32);
             this.buttonClose.TabIndex = 1;
-            this.buttonClose.Text = "Close";
+            this.buttonClose.TabStop = false;
+            this.buttonClose.Text = "Esc - Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
@@ -112,10 +116,12 @@
             // 
             this.textBoxFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxFilter.Location = new System.Drawing.Point(12, 6);
+            this.textBoxFilter.Location = new System.Drawing.Point(10, 5);
+            this.textBoxFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxFilter.Name = "textBoxFilter";
-            this.textBoxFilter.Size = new System.Drawing.Size(1058, 30);
+            this.textBoxFilter.Size = new System.Drawing.Size(847, 26);
             this.textBoxFilter.TabIndex = 5;
+            this.textBoxFilter.TabStop = false;
             this.textBoxFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxFilter_KeyDown);
             // 
             // dataGridViewSearchItemList
@@ -142,15 +148,17 @@
             this.ColumnSearchItemOnHandQuantity,
             this.ColumnSearchItemIsInventory,
             this.ColumnSearchItemButtonPick});
-            this.dataGridViewSearchItemList.Location = new System.Drawing.Point(12, 42);
+            this.dataGridViewSearchItemList.Location = new System.Drawing.Point(10, 34);
+            this.dataGridViewSearchItemList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridViewSearchItemList.MultiSelect = false;
             this.dataGridViewSearchItemList.Name = "dataGridViewSearchItemList";
             this.dataGridViewSearchItemList.ReadOnly = true;
             this.dataGridViewSearchItemList.RowTemplate.Height = 24;
             this.dataGridViewSearchItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSearchItemList.Size = new System.Drawing.Size(1058, 436);
-            this.dataGridViewSearchItemList.TabIndex = 6;
+            this.dataGridViewSearchItemList.Size = new System.Drawing.Size(846, 349);
+            this.dataGridViewSearchItemList.TabIndex = 0;
             this.dataGridViewSearchItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSearchItemList_CellClick);
+            this.dataGridViewSearchItemList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewSearchItemList_KeyDown);
             // 
             // ColumnSearchItemId
             // 
@@ -231,7 +239,7 @@
             this.ColumnSearchItemOnHandQuantity.HeaderText = "On Hand Qty.";
             this.ColumnSearchItemOnHandQuantity.Name = "ColumnSearchItemOnHandQuantity";
             this.ColumnSearchItemOnHandQuantity.ReadOnly = true;
-            this.ColumnSearchItemOnHandQuantity.Width = 144;
+            this.ColumnSearchItemOnHandQuantity.Width = 120;
             // 
             // ColumnSearchItemIsInventory
             // 
@@ -259,22 +267,23 @@
             this.panel2.Controls.Add(this.textBoxFilter);
             this.panel2.Controls.Add(this.dataGridViewSearchItemList);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 63);
+            this.panel2.Location = new System.Drawing.Point(0, 50);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1082, 490);
+            this.panel2.Size = new System.Drawing.Size(866, 392);
             this.panel2.TabIndex = 7;
             // 
             // TrnPOSSearchItemForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1082, 553);
+            this.ClientSize = new System.Drawing.Size(866, 442);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MaximizeBox = false;
             this.Name = "TrnPOSSearchItemForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -409,5 +409,33 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 e.Handled = true;
             }
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Enter:
+                    {
+                        if (buttonSave.Enabled == true)
+                        {
+                            buttonSave.PerformClick();
+                            Close();
+                        }
+
+                        break;
+                    }
+                case Keys.Escape:
+                    {
+                        Close();
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }

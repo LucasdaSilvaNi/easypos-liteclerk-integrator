@@ -692,5 +692,68 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 buttonAutoRefresh.ForeColor = Color.White;
             }
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F2:
+                    {
+                        if (buttonTender.Enabled == true)
+                        {
+                            buttonTender.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                case Keys.F3:
+                    {
+                        if (buttonReprint.Enabled == true)
+                        {
+                            buttonReprint.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                case Keys.F4:
+                    {
+                        if (buttonCancel.Enabled == true)
+                        {
+                            buttonCancel.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                case Keys.F5:
+                    {
+                        if (buttonSales.Enabled == true)
+                        {
+                            buttonSales.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                case Keys.Escape:
+                    {
+                        if (buttonClose.Enabled == true)
+                        {
+                            buttonClose.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }
