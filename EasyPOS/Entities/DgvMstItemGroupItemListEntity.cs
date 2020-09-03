@@ -14,5 +14,7 @@ namespace EasyPOS.Entities
         public Int32 ColumnItemGroupItemListItemId { get; set; }
         public String ColumnItemGroupItemListItemDescription { get; set; }
         public Int32 ColumnItemGroupItemListItemGroupId { get; set; }
+        public Boolean ColumnItemGroupItemListShow { get; set; }
+
     }
 }

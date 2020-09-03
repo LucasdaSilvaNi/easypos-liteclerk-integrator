@@ -1419,6 +1419,7 @@ namespace EasyPOS.Controllers
         {
             var itemGroupItems = from d in db.MstItemGroupItems
                                  where d.ItemGroupId == itemGroupId
+                                 && d.Show == true
                                  select new Entities.MstItemGroupItemEntity
                                  {
                                      Id = d.Id,

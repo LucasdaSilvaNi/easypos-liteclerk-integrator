@@ -28,6 +28,7 @@ namespace EasyPOS.Controllers
                                      ItemDescription = d.MstItem.ItemDescription,
                                      Alias = d.MstItem.Alias,
                                      ItemGroupId = d.ItemGroupId,
+                                     Show = d.Show
                                  };
 
             return itemGroupItems.OrderByDescending(d => d.Id).ToList();
@@ -96,7 +97,8 @@ namespace EasyPOS.Controllers
                 Data.MstItemGroupItem newItemGroupItem = new Data.MstItemGroupItem
                 {
                     ItemId = objItemGroupItem.ItemId,
-                    ItemGroupId = objItemGroupItem.ItemGroupId
+                    ItemGroupId = objItemGroupItem.ItemGroupId,
+                    Show = objItemGroupItem.Show
                 };
 
                 db.MstItemGroupItems.InsertOnSubmit(newItemGroupItem);
@@ -156,6 +158,7 @@ namespace EasyPOS.Controllers
 
                     var updateItemGroupItem = itemGroupItem.FirstOrDefault();
                     updateItemGroupItem.ItemId = objItemGroupItem.ItemId;
+                    updateItemGroupItem.Show = objItemGroupItem.Show;
                     db.SubmitChanges();
 
                     String newObject = Modules.SysAuditTrailModule.GetObjectString(itemGroupItem.FirstOrDefault());

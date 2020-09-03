@@ -14,5 +14,6 @@ namespace EasyPOS.Entities
         public String ItemDescription { get; set; }
         public String Alias { get; set; }
         public Int32 ItemGroupId { get; set; }
+        public Boolean? Show { get; set; }
     }
 }

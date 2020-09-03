@@ -113,10 +113,12 @@ namespace EasyPOS.Forms.Software.MstItemGroup
             if (sysUserRights.GetUserRights().CanEdit == false)
             {
                 dataGridViewItemGroupItemList.Columns[0].Visible = false;
+                dataGridViewItemGroupItemList.Columns[6].ReadOnly = true;
             }
             else
             {
                 dataGridViewItemGroupItemList.Columns[0].Visible = !isLocked;
+                dataGridViewItemGroupItemList.Columns[6].ReadOnly = isLocked;
             }
 
             if (sysUserRights.GetUserRights().CanDelete == false)
@@ -151,7 +153,18 @@ namespace EasyPOS.Forms.Software.MstItemGroup
                     KitchenReport = comboBoxItemGroupKitchens.Text
                 };
 
-                String[] lockItemGroup = mstItemGroupController.LockItemGroup(mstItemGroupEntity.Id, newItemGroupEntity);
+                List<Entities.MstItemGroupItemEntity> obItemGroupItem = new List<Entities.MstItemGroupItemEntity>();
+
+                foreach (DataGridViewRow row in dataGridViewItemGroupItemList.Rows)
+                {
+                    obItemGroupItem.Add(new Entities.MstItemGroupItemEntity()
+                    {
+                        Id = Convert.ToInt32(row.Cells[2].Value),
+                        Show = Convert.ToBoolean(row.Cells[6].Value)
+                    });
+                }
+
+                String[] lockItemGroup = mstItemGroupController.LockItemGroup(mstItemGroupEntity.Id, newItemGroupEntity, obItemGroupItem);
                 if (lockItemGroup[1].Equals("0") == false)
                 {
                     UpdateComponents(true);
@@ -263,7 +276,8 @@ namespace EasyPOS.Forms.Software.MstItemGroup
                                 ColumnItemGroupItemListId = d.Id,
                                 ColumnItemGroupItemListItemId = d.ItemId,
                                 ColumnItemGroupItemListItemDescription = d.ItemDescription,
-                                ColumnItemGroupItemListItemGroupId = d.ItemGroupId
+                                ColumnItemGroupItemListItemGroupId = d.ItemGroupId,
+                                ColumnItemGroupItemListShow = d.Show != null ? Convert.ToBoolean(d.Show) : false
                             };
 
                 return Task.FromResult(items.ToList());

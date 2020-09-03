@@ -131,7 +131,7 @@ namespace EasyPOS.Controllers
         // ===============
         // Lock Item Group
         // ===============
-        public String[] LockItemGroup(Int32 id, Entities.MstItemGroupEntity objItemGroup)
+        public String[] LockItemGroup(Int32 id, Entities.MstItemGroupEntity objItemGroup, List<Entities.MstItemGroupItemEntity> objItemGroupItems)
         {
             try
             {
@@ -183,6 +183,24 @@ namespace EasyPOS.Controllers
                                 db.SubmitChanges();
                             }
                         }
+                    }
+
+                    if (objItemGroupItems.Any())
+                    {
+                        foreach (var objItemGroupItem in objItemGroupItems)
+                        {
+                            var itemGroupItem = from d in db.MstItemGroupItems
+                                                where d.Id == objItemGroupItem.Id
+                                                select d;
+
+                            if (itemGroupItem.Any())
+                            {
+                                var updateShow = itemGroupItem.FirstOrDefault();
+                                updateShow.Show = objItemGroupItem.Show;
+                            }
+                        }
+
+                        db.SubmitChanges();
                     }
 
                     String newObject = Modules.SysAuditTrailModule.GetObjectString(itemGroup.FirstOrDefault());

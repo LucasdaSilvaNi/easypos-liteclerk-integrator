@@ -320,10 +320,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void textBoxSalesLineQuantity_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                SaveSalesLine();
-            }
+            //if (e.KeyCode == Keys.Enter)
+            //{
+            //    SaveSalesLine();
+            //}
         }
 
         private void textBoxSalesLinePrice_Click(object sender, EventArgs e)
