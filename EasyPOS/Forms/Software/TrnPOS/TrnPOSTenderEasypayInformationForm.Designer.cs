@@ -71,7 +71,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(484, 50);
+            this.panel1.Size = new System.Drawing.Size(565, 50);
             this.panel1.TabIndex = 5;
             // 
             // pictureBox1
@@ -105,13 +105,13 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(404, 10);
+            this.buttonClose.Location = new System.Drawing.Point(446, 10);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(70, 32);
+            this.buttonClose.Size = new System.Drawing.Size(109, 32);
             this.buttonClose.TabIndex = 21;
             this.buttonClose.TabStop = false;
-            this.buttonClose.Text = "Close";
+            this.buttonClose.Text = "Esc - Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
@@ -124,13 +124,13 @@
             this.buttonPay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPay.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPay.ForeColor = System.Drawing.Color.White;
-            this.buttonPay.Location = new System.Drawing.Point(329, 10);
+            this.buttonPay.Location = new System.Drawing.Point(330, 10);
             this.buttonPay.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPay.Name = "buttonPay";
-            this.buttonPay.Size = new System.Drawing.Size(70, 32);
+            this.buttonPay.Size = new System.Drawing.Size(112, 32);
             this.buttonPay.TabIndex = 20;
             this.buttonPay.TabStop = false;
-            this.buttonPay.Text = "Pay";
+            this.buttonPay.Text = "Ent - Pay";
             this.buttonPay.UseVisualStyleBackColor = false;
             this.buttonPay.Click += new System.EventHandler(this.buttonPay_Click);
             // 
@@ -151,7 +151,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 50);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(484, 301);
+            this.panel2.Size = new System.Drawing.Size(565, 301);
             this.panel2.TabIndex = 6;
             // 
             // panel5
@@ -161,7 +161,7 @@
             this.panel5.Location = new System.Drawing.Point(0, 71);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(484, 38);
+            this.panel5.Size = new System.Drawing.Size(565, 38);
             this.panel5.TabIndex = 41;
             // 
             // textBoxTappedCardNumber
@@ -188,7 +188,7 @@
             this.panel4.Location = new System.Drawing.Point(0, 249);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(484, 52);
+            this.panel4.Size = new System.Drawing.Size(565, 52);
             this.panel4.TabIndex = 40;
             // 
             // label5
@@ -206,7 +206,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::EasyPOS.Properties.Resources.easypay;
-            this.pictureBox2.Location = new System.Drawing.Point(385, 6);
+            this.pictureBox2.Location = new System.Drawing.Point(467, 6);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(88, 39);
@@ -233,7 +233,7 @@
             this.textBoxEndingBalance.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxEndingBalance.Name = "textBoxEndingBalance";
             this.textBoxEndingBalance.ReadOnly = true;
-            this.textBoxEndingBalance.Size = new System.Drawing.Size(323, 29);
+            this.textBoxEndingBalance.Size = new System.Drawing.Size(405, 29);
             this.textBoxEndingBalance.TabIndex = 39;
             this.textBoxEndingBalance.TabStop = false;
             this.textBoxEndingBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -245,7 +245,7 @@
             this.textBoxAmountCharge.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxAmountCharge.Name = "textBoxAmountCharge";
             this.textBoxAmountCharge.ReadOnly = true;
-            this.textBoxAmountCharge.Size = new System.Drawing.Size(323, 29);
+            this.textBoxAmountCharge.Size = new System.Drawing.Size(405, 29);
             this.textBoxAmountCharge.TabIndex = 38;
             this.textBoxAmountCharge.TabStop = false;
             this.textBoxAmountCharge.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -279,7 +279,7 @@
             this.textBoxBeginningBalance.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxBeginningBalance.Name = "textBoxBeginningBalance";
             this.textBoxBeginningBalance.ReadOnly = true;
-            this.textBoxBeginningBalance.Size = new System.Drawing.Size(323, 29);
+            this.textBoxBeginningBalance.Size = new System.Drawing.Size(405, 29);
             this.textBoxBeginningBalance.TabIndex = 35;
             this.textBoxBeginningBalance.TabStop = false;
             this.textBoxBeginningBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -302,7 +302,7 @@
             this.textBoxCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCustomer.Name = "textBoxCustomer";
             this.textBoxCustomer.ReadOnly = true;
-            this.textBoxCustomer.Size = new System.Drawing.Size(323, 29);
+            this.textBoxCustomer.Size = new System.Drawing.Size(405, 29);
             this.textBoxCustomer.TabIndex = 33;
             this.textBoxCustomer.TabStop = false;
             // 
@@ -325,7 +325,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(484, 66);
+            this.panel3.Size = new System.Drawing.Size(565, 66);
             this.panel3.TabIndex = 8;
             // 
             // textBoxTotalSalesAmount
@@ -335,7 +335,7 @@
             this.textBoxTotalSalesAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxTotalSalesAmount.Font = new System.Drawing.Font("Segoe UI Semibold", 30F, System.Drawing.FontStyle.Bold);
             this.textBoxTotalSalesAmount.ForeColor = System.Drawing.Color.White;
-            this.textBoxTotalSalesAmount.Location = new System.Drawing.Point(-10, 5);
+            this.textBoxTotalSalesAmount.Location = new System.Drawing.Point(71, 5);
             this.textBoxTotalSalesAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTotalSalesAmount.Name = "textBoxTotalSalesAmount";
             this.textBoxTotalSalesAmount.ReadOnly = true;
@@ -349,7 +349,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(484, 351);
+            this.ClientSize = new System.Drawing.Size(565, 351);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);

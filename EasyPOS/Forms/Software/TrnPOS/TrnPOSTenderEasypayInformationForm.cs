@@ -296,5 +296,33 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Enter:
+                    {
+                        if (buttonPay.Enabled == true)
+                        {
+                            buttonPay.PerformClick();
+                            Close();
+                        }
+
+                        break;
+                    }
+                case Keys.Escape:
+                    {
+                        Close();
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }

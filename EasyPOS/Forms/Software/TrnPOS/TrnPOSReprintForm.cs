@@ -84,5 +84,58 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             return stockWithdrawalReports.ToList();
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F2:
+                    {
+                        if (buttonOfficialReceipt.Enabled == true)
+                        {
+                            buttonOfficialReceipt.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                case Keys.F3:
+                    {
+                        if (buttonDeliveryReceipt.Enabled == true)
+                        {
+                            buttonDeliveryReceipt.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                case Keys.F4:
+                    {
+                        if (buttonWithdrawalSlip.Enabled == true)
+                        {
+                            buttonWithdrawalSlip.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                case Keys.Escape:
+                    {
+                        if (buttonClose.Enabled == true)
+                        {
+                            buttonClose.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }

@@ -55,7 +55,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(484, 50);
+            this.panel1.Size = new System.Drawing.Size(582, 50);
             this.panel1.TabIndex = 8;
             // 
             // pictureBox1
@@ -89,13 +89,13 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(404, 10);
+            this.buttonClose.Location = new System.Drawing.Point(462, 10);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(70, 32);
+            this.buttonClose.Size = new System.Drawing.Size(109, 32);
             this.buttonClose.TabIndex = 1;
             this.buttonClose.TabStop = false;
-            this.buttonClose.Text = "Close";
+            this.buttonClose.Text = "Esc - Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
@@ -108,13 +108,13 @@
             this.buttonOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOK.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOK.ForeColor = System.Drawing.Color.White;
-            this.buttonOK.Location = new System.Drawing.Point(329, 10);
+            this.buttonOK.Location = new System.Drawing.Point(346, 10);
             this.buttonOK.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(70, 32);
+            this.buttonOK.Size = new System.Drawing.Size(112, 32);
             this.buttonOK.TabIndex = 0;
             this.buttonOK.TabStop = false;
-            this.buttonOK.Text = "OK";
+            this.buttonOK.Text = "Ent - OK";
             this.buttonOK.UseVisualStyleBackColor = false;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
@@ -128,7 +128,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 50);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(484, 79);
+            this.panel2.Size = new System.Drawing.Size(582, 79);
             this.panel2.TabIndex = 9;
             // 
             // textBoxAmount
@@ -137,7 +137,7 @@
             this.textBoxAmount.Location = new System.Drawing.Point(192, 40);
             this.textBoxAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxAmount.Name = "textBoxAmount";
-            this.textBoxAmount.Size = new System.Drawing.Size(207, 29);
+            this.textBoxAmount.Size = new System.Drawing.Size(266, 29);
             this.textBoxAmount.TabIndex = 1;
             this.textBoxAmount.Text = "0.00";
             this.textBoxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -173,14 +173,14 @@
             this.textBoxGiftCertificateNumber.Location = new System.Drawing.Point(192, 7);
             this.textBoxGiftCertificateNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxGiftCertificateNumber.Name = "textBoxGiftCertificateNumber";
-            this.textBoxGiftCertificateNumber.Size = new System.Drawing.Size(282, 29);
+            this.textBoxGiftCertificateNumber.Size = new System.Drawing.Size(379, 29);
             this.textBoxGiftCertificateNumber.TabIndex = 0;
             // 
             // TrnPOSTenderGiftCertificateInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(484, 129);
+            this.ClientSize = new System.Drawing.Size(582, 129);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

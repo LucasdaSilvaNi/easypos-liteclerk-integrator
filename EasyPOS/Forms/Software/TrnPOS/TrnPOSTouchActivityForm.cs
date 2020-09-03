@@ -142,5 +142,93 @@ namespace EasyPOS.Forms.Software.TrnPOS
             TrnPOSTouchActivityDeliver trnPOSTouchActivityDeliver = new TrnPOSTouchActivityDeliver(trnPOSTouchForm, this, trnSalesEntity.Id, trnSalesEntity.Remarks);
             trnPOSTouchActivityDeliver.ShowDialog();
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F2:
+                    {
+                        if (buttonEditOrder.Enabled == true)
+                        {
+                            buttonEditOrder.PerformClick();
+                            Close();
+                        }
+
+                        break;
+                    }
+                case Keys.F3:
+                    {
+                        if (buttonBillOut.Enabled == true)
+                        {
+                            buttonBillOut.PerformClick();
+                            Close();
+                        }
+
+                        break;
+                    }
+                case Keys.F4:
+                    {
+                        if (buttonTender.Enabled == true)
+                        {
+                            buttonTender.PerformClick();
+                            Close();
+                        }
+
+                        break;
+                    }
+                case Keys.F5:
+                    {
+                        if (buttonCancel.Enabled == true)
+                        {
+                            buttonCancel.PerformClick();
+                            Close();
+                        }
+
+                        break;
+                    }
+                case Keys.F6:
+                    {
+                        if (buttonDeliver.Enabled == true)
+                        {
+                            buttonDeliver.PerformClick();
+                            Close();
+                        }
+
+                        break;
+                    }
+                case Keys.F7:
+                    {
+                        if (buttonPrintPartialBill.Enabled == true)
+                        {
+                            buttonPrintPartialBill.PerformClick();
+                            Close();
+                        }
+
+                        break;
+                    }
+                case Keys.F8:
+                    {
+                        if (buttonSplitMergeBill.Enabled == true)
+                        {
+                            buttonSplitMergeBill.PerformClick();
+                            Close();
+                        }
+
+                        break;
+                    }
+                case Keys.Escape:
+                    {
+                        Close();
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }

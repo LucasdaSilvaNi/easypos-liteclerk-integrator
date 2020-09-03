@@ -111,13 +111,13 @@
             this.buttonSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSales.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSales.ForeColor = System.Drawing.Color.White;
-            this.buttonSales.Location = new System.Drawing.Point(553, 10);
+            this.buttonSales.Location = new System.Drawing.Point(433, 10);
             this.buttonSales.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSales.Name = "buttonSales";
-            this.buttonSales.Size = new System.Drawing.Size(70, 32);
+            this.buttonSales.Size = new System.Drawing.Size(112, 32);
             this.buttonSales.TabIndex = 4;
             this.buttonSales.TabStop = false;
-            this.buttonSales.Text = "Sales";
+            this.buttonSales.Text = "F2 - Sales";
             this.buttonSales.UseVisualStyleBackColor = false;
             this.buttonSales.Click += new System.EventHandler(this.buttonSales_Click);
             // 
@@ -152,13 +152,13 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(703, 10);
+            this.buttonClose.Location = new System.Drawing.Point(665, 10);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(70, 32);
+            this.buttonClose.Size = new System.Drawing.Size(109, 32);
             this.buttonClose.TabIndex = 1;
             this.buttonClose.TabStop = false;
-            this.buttonClose.Text = "Close";
+            this.buttonClose.Text = "Esc - Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
@@ -171,13 +171,13 @@
             this.buttonTender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTender.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTender.ForeColor = System.Drawing.Color.White;
-            this.buttonTender.Location = new System.Drawing.Point(628, 10);
+            this.buttonTender.Location = new System.Drawing.Point(549, 10);
             this.buttonTender.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTender.Name = "buttonTender";
-            this.buttonTender.Size = new System.Drawing.Size(70, 32);
+            this.buttonTender.Size = new System.Drawing.Size(112, 32);
             this.buttonTender.TabIndex = 1;
             this.buttonTender.TabStop = false;
-            this.buttonTender.Text = "Tender";
+            this.buttonTender.Text = "F3 - Tender";
             this.buttonTender.UseVisualStyleBackColor = false;
             this.buttonTender.Click += new System.EventHandler(this.buttonTender_Click);
             // 

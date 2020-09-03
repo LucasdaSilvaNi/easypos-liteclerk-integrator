@@ -506,5 +506,43 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             Modules.SysSerialPortModule.CloseSerialPort();
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F2:
+                    {
+                        if (buttonSales.Enabled == true)
+                        {
+                            buttonSales.PerformClick();
+                            Close();
+                        }
+
+                        break;
+                    }
+                case Keys.F3:
+                    {
+                        if (buttonTender.Enabled == true)
+                        {
+                            buttonTender.PerformClick();
+                            Close();
+                        }
+
+                        break;
+                    }
+                case Keys.Escape:
+                    {
+                        Close();
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }

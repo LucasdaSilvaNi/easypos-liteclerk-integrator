@@ -30,6 +30,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             trnSalesDetailSalesItemDetailForm = salesDetailSalesItemDetailForm;
             trnSalesLineEntity = salesLineEntity;
 
+            dataGridViewItemPriceList.Focus();
+
             LoadItemPrice();
         }
 
@@ -219,6 +221,45 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
 
             if (e.RowIndex > -1 && dataGridViewItemPriceList.CurrentCell.ColumnIndex == dataGridViewItemPriceList.Columns["ColumnItemPriceListButtonPick"].Index)
+            {
+                Decimal price = Convert.ToDecimal(dataGridViewItemPriceList.Rows[dataGridViewItemPriceList.CurrentCell.RowIndex].Cells[dataGridViewItemPriceList.Columns["ColumnItemPriceListPrice"].Index].Value);
+                trnSalesDetailSalesItemDetailForm.UpdatePrice(price);
+
+                Close();
+            }
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Escape:
+                    {
+                        if (buttonClose.Enabled == true)
+                        {
+                            buttonClose.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void dataGridViewItemPriceList_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dataGridViewItemPriceList.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
+            if (e.KeyCode == Keys.Enter)
             {
                 Decimal price = Convert.ToDecimal(dataGridViewItemPriceList.Rows[dataGridViewItemPriceList.CurrentCell.RowIndex].Cells[dataGridViewItemPriceList.Columns["ColumnItemPriceListPrice"].Index].Value);
                 trnSalesDetailSalesItemDetailForm.UpdatePrice(price);

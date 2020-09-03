@@ -109,5 +109,33 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             textBoxAmount.Text = Convert.ToDecimal(textBoxAmount.Text).ToString("#,##0.00");
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Enter:
+                    {
+                        if (buttonOK.Enabled == true)
+                        {
+                            buttonOK.PerformClick();
+                            Close();
+                        }
+
+                        break;
+                    }
+                case Keys.Escape:
+                    {
+                        Close();
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }

@@ -200,48 +200,5 @@ namespace EasyPOS.Forms.Software.MstCustomer
                 e.Handled = true;
             }
         }
-
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            switch (keyData)
-            {
-                case Keys.F2:
-                    {
-                        if (buttonLock.Enabled == true)
-                        {
-                            buttonLock.PerformClick();
-                            Focus();
-                        }
-
-                        break;
-                    }
-                case Keys.F3:
-                    {
-                        if (buttonUnlock.Enabled == true)
-                        {
-                            buttonUnlock.PerformClick();
-                            Focus();
-                        }
-
-                        break;
-                    }
-                case Keys.Escape:
-                    {
-                        if (buttonClose.Enabled == true)
-                        {
-                            buttonClose.PerformClick();
-                            Focus();
-                        }
-
-                        break;
-                    }
-                default:
-                    {
-                        break;
-                    }
-            }
-
-            return base.ProcessCmdKey(ref msg, keyData);
-        }
     }
 }

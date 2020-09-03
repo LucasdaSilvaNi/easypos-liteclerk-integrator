@@ -67,7 +67,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(484, 50);
+            this.panel1.Size = new System.Drawing.Size(574, 50);
             this.panel1.TabIndex = 8;
             // 
             // pictureBox1
@@ -101,13 +101,13 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(404, 10);
+            this.buttonClose.Location = new System.Drawing.Point(455, 10);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(70, 32);
+            this.buttonClose.Size = new System.Drawing.Size(109, 32);
             this.buttonClose.TabIndex = 1;
             this.buttonClose.TabStop = false;
-            this.buttonClose.Text = "Close";
+            this.buttonClose.Text = "Esc - Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
@@ -120,13 +120,13 @@
             this.buttonOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOK.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOK.ForeColor = System.Drawing.Color.White;
-            this.buttonOK.Location = new System.Drawing.Point(329, 10);
+            this.buttonOK.Location = new System.Drawing.Point(339, 10);
             this.buttonOK.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(70, 32);
+            this.buttonOK.Size = new System.Drawing.Size(112, 32);
             this.buttonOK.TabIndex = 0;
             this.buttonOK.TabStop = false;
-            this.buttonOK.Text = "OK";
+            this.buttonOK.Text = "Ent - OK";
             this.buttonOK.UseVisualStyleBackColor = false;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
@@ -152,7 +152,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 50);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(484, 278);
+            this.panel2.Size = new System.Drawing.Size(574, 278);
             this.panel2.TabIndex = 9;
             // 
             // comboBoxCreditCardType
@@ -161,7 +161,7 @@
             this.comboBoxCreditCardType.FormattingEnabled = true;
             this.comboBoxCreditCardType.Location = new System.Drawing.Point(156, 139);
             this.comboBoxCreditCardType.Name = "comboBoxCreditCardType";
-            this.comboBoxCreditCardType.Size = new System.Drawing.Size(187, 29);
+            this.comboBoxCreditCardType.Size = new System.Drawing.Size(295, 29);
             this.comboBoxCreditCardType.TabIndex = 4;
             // 
             // label9
@@ -183,7 +183,7 @@
             this.textBoxCreditCardExpiry.Location = new System.Drawing.Point(156, 205);
             this.textBoxCreditCardExpiry.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCreditCardExpiry.Name = "textBoxCreditCardExpiry";
-            this.textBoxCreditCardExpiry.Size = new System.Drawing.Size(318, 29);
+            this.textBoxCreditCardExpiry.Size = new System.Drawing.Size(407, 29);
             this.textBoxCreditCardExpiry.TabIndex = 6;
             // 
             // label8
@@ -205,7 +205,7 @@
             this.textBoxCreditCardHolder.Location = new System.Drawing.Point(156, 73);
             this.textBoxCreditCardHolder.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCreditCardHolder.Name = "textBoxCreditCardHolder";
-            this.textBoxCreditCardHolder.Size = new System.Drawing.Size(318, 29);
+            this.textBoxCreditCardHolder.Size = new System.Drawing.Size(407, 29);
             this.textBoxCreditCardHolder.TabIndex = 2;
             // 
             // label2
@@ -227,7 +227,7 @@
             this.textBoxReferenceNumber.Location = new System.Drawing.Point(156, 40);
             this.textBoxReferenceNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxReferenceNumber.Name = "textBoxReferenceNumber";
-            this.textBoxReferenceNumber.Size = new System.Drawing.Size(318, 29);
+            this.textBoxReferenceNumber.Size = new System.Drawing.Size(407, 29);
             this.textBoxReferenceNumber.TabIndex = 1;
             // 
             // label5
@@ -249,7 +249,7 @@
             this.textBoxCreditCardBank.Location = new System.Drawing.Point(156, 172);
             this.textBoxCreditCardBank.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCreditCardBank.Name = "textBoxCreditCardBank";
-            this.textBoxCreditCardBank.Size = new System.Drawing.Size(318, 29);
+            this.textBoxCreditCardBank.Size = new System.Drawing.Size(407, 29);
             this.textBoxCreditCardBank.TabIndex = 5;
             // 
             // label4
@@ -282,7 +282,7 @@
             this.textBoxCreditCardNumber.Location = new System.Drawing.Point(156, 106);
             this.textBoxCreditCardNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCreditCardNumber.Name = "textBoxCreditCardNumber";
-            this.textBoxCreditCardNumber.Size = new System.Drawing.Size(318, 29);
+            this.textBoxCreditCardNumber.Size = new System.Drawing.Size(407, 29);
             this.textBoxCreditCardNumber.TabIndex = 3;
             // 
             // textBoxAmount
@@ -291,7 +291,7 @@
             this.textBoxAmount.Location = new System.Drawing.Point(156, 238);
             this.textBoxAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxAmount.Name = "textBoxAmount";
-            this.textBoxAmount.Size = new System.Drawing.Size(243, 29);
+            this.textBoxAmount.Size = new System.Drawing.Size(295, 29);
             this.textBoxAmount.TabIndex = 7;
             this.textBoxAmount.Text = "0.00";
             this.textBoxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -328,14 +328,14 @@
             this.textBoxVerificationCode.Location = new System.Drawing.Point(156, 7);
             this.textBoxVerificationCode.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxVerificationCode.Name = "textBoxVerificationCode";
-            this.textBoxVerificationCode.Size = new System.Drawing.Size(318, 29);
+            this.textBoxVerificationCode.Size = new System.Drawing.Size(407, 29);
             this.textBoxVerificationCode.TabIndex = 0;
             // 
             // TrnPOSTenderCreditCardInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(484, 328);
+            this.ClientSize = new System.Drawing.Size(574, 328);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

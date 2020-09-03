@@ -249,7 +249,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         private void buttonReturn_Click(object sender, EventArgs e)
         {
             List<Entities.TrnSalesLineEntity> newSalesLines = new List<Entities.TrnSalesLineEntity>();
-            
+
             foreach (DataGridViewRow row in dataGridViewReturnItems.Rows)
             {
                 if (Convert.ToDecimal(row.Cells["ColumnReturnReturnQuantity"].Value) > 0)
@@ -366,6 +366,39 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     textBoxReturnSalesNumber.Text = "";
                 }
             }
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F2:
+                    {
+                        if (buttonReturn.Enabled == true)
+                        {
+                            buttonReturn.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                case Keys.Escape:
+                    {
+                        if (buttonClose.Enabled == true)
+                        {
+                            buttonClose.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }

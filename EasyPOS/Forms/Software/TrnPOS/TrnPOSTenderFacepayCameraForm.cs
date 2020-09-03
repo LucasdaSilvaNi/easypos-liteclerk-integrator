@@ -270,5 +270,43 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             OpenCamera();
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F2:
+                    {
+                        if (buttonOpen.Enabled == true)
+                        {
+                            buttonOpen.PerformClick();
+                            Close();
+                        }
+
+                        break;
+                    }
+                case Keys.Enter:
+                    {
+                        if (buttonPay.Enabled == true)
+                        {
+                            buttonPay.PerformClick();
+                            Close();
+                        }
+
+                        break;
+                    }
+                case Keys.Escape:
+                    {
+                        Close();
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }

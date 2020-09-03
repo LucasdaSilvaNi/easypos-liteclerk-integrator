@@ -63,5 +63,38 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             textBoxReturnQuantity.Text = Convert.ToDecimal(textBoxReturnQuantity.Text).ToString("#,##0.00");
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Enter:
+                    {
+                        if (buttonOK.Enabled == true)
+                        {
+                            buttonOK.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                case Keys.Escape:
+                    {
+                        if (buttonClose.Enabled == true)
+                        {
+                            buttonClose.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }
