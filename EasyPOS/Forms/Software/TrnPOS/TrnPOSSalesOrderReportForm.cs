@@ -268,6 +268,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Point forthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
                 Point forthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
                 graphics.DrawLine(blackPen, forthLineFirstPoint, forthLineSecondPoint);
+
+                String salesInvoiceFooter = "\n" + systemCurrent.InvoiceFooter;
+                graphics.DrawString(salesInvoiceFooter, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                y += graphics.MeasureString(salesInvoiceFooter, fontArial8Regular).Height;
             }
 
             String space = "\n\n\n\n\n\n\n\n\n\n.";

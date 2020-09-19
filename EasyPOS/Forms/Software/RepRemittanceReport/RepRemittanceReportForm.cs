@@ -269,7 +269,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                 repRemitanceReportEntity.RemittedAmount = totalRemittedAmount;
             }
 
-            repRemitanceReportEntity.OverShortAmount = repRemitanceReportEntity.RemittedAmount - (repRemitanceReportEntity.CashCollectedAmount + (repRemitanceReportEntity.CashInAmount - repRemitanceReportEntity.CashOutAmount));
+            repRemitanceReportEntity.OverShortAmount = repRemitanceReportEntity.RemittedAmount - repRemitanceReportEntity.CashCollectedAmount - (repRemitanceReportEntity.CashInAmount + repRemitanceReportEntity.CashOutAmount);
 
             remitanceReportEntity = repRemitanceReportEntity;
         }

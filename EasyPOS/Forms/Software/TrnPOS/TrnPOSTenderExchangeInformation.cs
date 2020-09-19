@@ -124,7 +124,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             switch (keyData)
             {
-                case Keys.Enter:
+                case Keys.F2:
                     {
                         if (buttonOK.Enabled == true)
                         {

@@ -114,7 +114,7 @@
             this.buttonOK.Size = new System.Drawing.Size(112, 32);
             this.buttonOK.TabIndex = 0;
             this.buttonOK.TabStop = false;
-            this.buttonOK.Text = "Ent - OK";
+            this.buttonOK.Text = "F2- OK";
             this.buttonOK.UseVisualStyleBackColor = false;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
