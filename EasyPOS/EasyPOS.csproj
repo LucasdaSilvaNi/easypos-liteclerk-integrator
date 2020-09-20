@@ -988,6 +988,8 @@
     <Compile Include="IndexForm.Designer.cs">
       <DependentUpon>IndexForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LiteclerkIntegration\Controllers\LiteclerkTrnPOSController.cs" />
+    <Compile Include="LiteclerkIntegration\Entities\LiteclerkTrnPOS.cs" />
     <Compile Include="Modules\SysAuditTrailModule.cs" />
     <Compile Include="Modules\SysLicenseModule.cs" />
     <Compile Include="Modules\SysSerialPortModule.cs" />

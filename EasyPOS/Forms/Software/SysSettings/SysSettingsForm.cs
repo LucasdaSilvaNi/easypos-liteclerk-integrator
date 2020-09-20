@@ -69,116 +69,119 @@ namespace EasyPOS.Forms.Software.SysSettings
                     var userCode = cloudSettings.UserCode;
                     var useItemPrice = cloudSettings.UseItemPrice;
 
-                    Task taskCustomer = Task.Run(() =>
+                    if (cloudSettings.Application == "Easyfis")
                     {
-                        EasyFISIntegration.Controllers.EasyPOSMstCustomerController objMstCustomer = new EasyFISIntegration.Controllers.EasyPOSMstCustomerController(this, dtpIntegrationDate.Text);
-                        objMstCustomer.SyncCustomer(apiUrlHost);
-                    });
-                    taskCustomer.Wait();
-
-                    if (taskCustomer.IsCompleted)
-                    {
-                        Task taskSupplier = Task.Run(() =>
+                        Task taskCustomer = Task.Run(() =>
                         {
-                            EasyFISIntegration.Controllers.EasyPOSMstSupplierController objMstSupplier = new EasyFISIntegration.Controllers.EasyPOSMstSupplierController(this, dtpIntegrationDate.Text);
-                            objMstSupplier.SyncSupplier(apiUrlHost);
+                            EasyFISIntegration.Controllers.EasyPOSMstCustomerController objMstCustomer = new EasyFISIntegration.Controllers.EasyPOSMstCustomerController(this, dtpIntegrationDate.Text);
+                            objMstCustomer.SyncCustomer(apiUrlHost);
                         });
-                        taskSupplier.Wait();
+                        taskCustomer.Wait();
 
-                        if (taskSupplier.IsCompleted)
+                        if (taskCustomer.IsCompleted)
                         {
-                            Task taskItem = Task.Run(() =>
+                            Task taskSupplier = Task.Run(() =>
                             {
-                                EasyFISIntegration.Controllers.EasyPOSMstItemController objMstItem = new EasyFISIntegration.Controllers.EasyPOSMstItemController(this, dtpIntegrationDate.Text);
-                                objMstItem.SyncItem(apiUrlHost);
+                                EasyFISIntegration.Controllers.EasyPOSMstSupplierController objMstSupplier = new EasyFISIntegration.Controllers.EasyPOSMstSupplierController(this, dtpIntegrationDate.Text);
+                                objMstSupplier.SyncSupplier(apiUrlHost);
                             });
-                            taskItem.Wait();
+                            taskSupplier.Wait();
 
-                            if (taskItem.IsCompleted)
+                            if (taskSupplier.IsCompleted)
                             {
-                                Task taskReceivingReceipt = Task.Run(() =>
+                                Task taskItem = Task.Run(() =>
                                 {
-                                    EasyFISIntegration.Controllers.EasyPOSTrnReceivingReceiptController objTrnReceivingReceipt = new EasyFISIntegration.Controllers.EasyPOSTrnReceivingReceiptController(this, dtpIntegrationDate.Text);
-                                    objTrnReceivingReceipt.SyncReceivingReceipt(apiUrlHost, branchCode);
+                                    EasyFISIntegration.Controllers.EasyPOSMstItemController objMstItem = new EasyFISIntegration.Controllers.EasyPOSMstItemController(this, dtpIntegrationDate.Text);
+                                    objMstItem.SyncItem(apiUrlHost);
                                 });
-                                taskReceivingReceipt.Wait();
+                                taskItem.Wait();
 
-                                if (taskReceivingReceipt.IsCompleted)
+                                if (taskItem.IsCompleted)
                                 {
-                                    Task taskStockIn = Task.Run(() =>
+                                    Task taskReceivingReceipt = Task.Run(() =>
                                     {
-                                        EasyFISIntegration.Controllers.EasyPOSTrnStockInController objTrnStockIn = new EasyFISIntegration.Controllers.EasyPOSTrnStockInController(this, dtpIntegrationDate.Text);
-                                        objTrnStockIn.SyncStockIn(apiUrlHost, branchCode);
+                                        EasyFISIntegration.Controllers.EasyPOSTrnReceivingReceiptController objTrnReceivingReceipt = new EasyFISIntegration.Controllers.EasyPOSTrnReceivingReceiptController(this, dtpIntegrationDate.Text);
+                                        objTrnReceivingReceipt.SyncReceivingReceipt(apiUrlHost, branchCode);
                                     });
-                                    taskStockIn.Wait();
+                                    taskReceivingReceipt.Wait();
 
-                                    if (taskStockIn.IsCompleted)
+                                    if (taskReceivingReceipt.IsCompleted)
                                     {
-                                        Task taskStockOut = Task.Run(() =>
+                                        Task taskStockIn = Task.Run(() =>
                                         {
-                                            EasyFISIntegration.Controllers.EasyPOSTrnStockOutController objTrnStockOut = new EasyFISIntegration.Controllers.EasyPOSTrnStockOutController(this, dtpIntegrationDate.Text);
-                                            objTrnStockOut.SyncStockOut(apiUrlHost, branchCode);
-
+                                            EasyFISIntegration.Controllers.EasyPOSTrnStockInController objTrnStockIn = new EasyFISIntegration.Controllers.EasyPOSTrnStockInController(this, dtpIntegrationDate.Text);
+                                            objTrnStockIn.SyncStockIn(apiUrlHost, branchCode);
                                         });
-                                        taskStockOut.Wait();
+                                        taskStockIn.Wait();
 
-                                        if (taskStockOut.IsCompleted)
+                                        if (taskStockIn.IsCompleted)
                                         {
-                                            Task taskStockTransferIn = Task.Run(() =>
+                                            Task taskStockOut = Task.Run(() =>
                                             {
-                                                EasyFISIntegration.Controllers.EasyPOSTrnStockTransferInController objTrnStockTransferIn = new EasyFISIntegration.Controllers.EasyPOSTrnStockTransferInController(this, dtpIntegrationDate.Text);
-                                                objTrnStockTransferIn.SyncStockTransferIN(apiUrlHost, branchCode);
+                                                EasyFISIntegration.Controllers.EasyPOSTrnStockOutController objTrnStockOut = new EasyFISIntegration.Controllers.EasyPOSTrnStockOutController(this, dtpIntegrationDate.Text);
+                                                objTrnStockOut.SyncStockOut(apiUrlHost, branchCode);
 
                                             });
-                                            taskStockTransferIn.Wait();
+                                            taskStockOut.Wait();
 
-                                            if (taskStockTransferIn.IsCompleted)
+                                            if (taskStockOut.IsCompleted)
                                             {
-                                                Task taskStockTransferOut = Task.Run(() =>
+                                                Task taskStockTransferIn = Task.Run(() =>
                                                 {
-                                                    EasyFISIntegration.Controllers.EasyPOSTrnStockTransferOutController objTrnStockTransferOut = new EasyFISIntegration.Controllers.EasyPOSTrnStockTransferOutController(this, dtpIntegrationDate.Text);
-                                                    objTrnStockTransferOut.SyncStockTransferOT(apiUrlHost, branchCode);
+                                                    EasyFISIntegration.Controllers.EasyPOSTrnStockTransferInController objTrnStockTransferIn = new EasyFISIntegration.Controllers.EasyPOSTrnStockTransferInController(this, dtpIntegrationDate.Text);
+                                                    objTrnStockTransferIn.SyncStockTransferIN(apiUrlHost, branchCode);
+
                                                 });
-                                                taskStockTransferOut.Wait();
+                                                taskStockTransferIn.Wait();
 
-                                                if (taskStockTransferOut.IsCompleted)
+                                                if (taskStockTransferIn.IsCompleted)
                                                 {
-                                                    Task taskSalesOrder = Task.Run(() =>
+                                                    Task taskStockTransferOut = Task.Run(() =>
                                                     {
-                                                        EasyFISIntegration.Controllers.EasyPOSTrnSalesOrderController objTrnSalesOrder = new EasyFISIntegration.Controllers.EasyPOSTrnSalesOrderController(this, dtpIntegrationDate.Text);
-                                                        objTrnSalesOrder.SyncSalesOrder(apiUrlHost, branchCode);
+                                                        EasyFISIntegration.Controllers.EasyPOSTrnStockTransferOutController objTrnStockTransferOut = new EasyFISIntegration.Controllers.EasyPOSTrnStockTransferOutController(this, dtpIntegrationDate.Text);
+                                                        objTrnStockTransferOut.SyncStockTransferOT(apiUrlHost, branchCode);
                                                     });
-                                                    taskSalesOrder.Wait();
+                                                    taskStockTransferOut.Wait();
 
-                                                    if (taskSalesOrder.IsCompleted)
+                                                    if (taskStockTransferOut.IsCompleted)
                                                     {
-                                                        Task taskCollection = Task.Run(() =>
+                                                        Task taskSalesOrder = Task.Run(() =>
                                                         {
-                                                            EasyFISIntegration.Controllers.EasyPOSTrnSalesController objTrnCollection = new EasyFISIntegration.Controllers.EasyPOSTrnSalesController(this);
-                                                            objTrnCollection.SyncSales(apiUrlHost, branchCode, userCode);
+                                                            EasyFISIntegration.Controllers.EasyPOSTrnSalesOrderController objTrnSalesOrder = new EasyFISIntegration.Controllers.EasyPOSTrnSalesOrderController(this, dtpIntegrationDate.Text);
+                                                            objTrnSalesOrder.SyncSalesOrder(apiUrlHost, branchCode);
                                                         });
-                                                        taskCollection.Wait();
+                                                        taskSalesOrder.Wait();
 
-                                                        if (taskCollection.IsCompleted)
+                                                        if (taskSalesOrder.IsCompleted)
                                                         {
-                                                            Task taskSalesReturn = Task.Run(() =>
+                                                            Task taskCollection = Task.Run(() =>
                                                             {
-                                                                EasyFISIntegration.Controllers.EasyPOSTrnSalesReturnController objTrnSalesReturn = new EasyFISIntegration.Controllers.EasyPOSTrnSalesReturnController(this);
-                                                                objTrnSalesReturn.SyncSalesReturn(apiUrlHost, branchCode, userCode);
+                                                                EasyFISIntegration.Controllers.EasyPOSTrnSalesController objTrnCollection = new EasyFISIntegration.Controllers.EasyPOSTrnSalesController(this);
+                                                                objTrnCollection.SyncSales(apiUrlHost, branchCode, userCode);
                                                             });
-                                                            taskSalesReturn.Wait();
+                                                            taskCollection.Wait();
 
-                                                            if (useItemPrice)
+                                                            if (taskCollection.IsCompleted)
                                                             {
-                                                                if (taskSalesReturn.IsCompleted)
+                                                                Task taskSalesReturn = Task.Run(() =>
                                                                 {
-                                                                    Task taskItemPrice = Task.Run(() =>
-                                                                    {
-                                                                        EasyFISIntegration.Controllers.EasyPOSTrnItemPriceController objTrnItemPrice = new EasyFISIntegration.Controllers.EasyPOSTrnItemPriceController(this, dtpIntegrationDate.Text);
-                                                                        objTrnItemPrice.SyncItemPrice(apiUrlHost, branchCode);
+                                                                    EasyFISIntegration.Controllers.EasyPOSTrnSalesReturnController objTrnSalesReturn = new EasyFISIntegration.Controllers.EasyPOSTrnSalesReturnController(this);
+                                                                    objTrnSalesReturn.SyncSalesReturn(apiUrlHost, branchCode, userCode);
+                                                                });
+                                                                taskSalesReturn.Wait();
 
-                                                                    });
-                                                                    taskItemPrice.Wait();
+                                                                if (useItemPrice)
+                                                                {
+                                                                    if (taskSalesReturn.IsCompleted)
+                                                                    {
+                                                                        Task taskItemPrice = Task.Run(() =>
+                                                                        {
+                                                                            EasyFISIntegration.Controllers.EasyPOSTrnItemPriceController objTrnItemPrice = new EasyFISIntegration.Controllers.EasyPOSTrnItemPriceController(this, dtpIntegrationDate.Text);
+                                                                            objTrnItemPrice.SyncItemPrice(apiUrlHost, branchCode);
+
+                                                                        });
+                                                                        taskItemPrice.Wait();
+                                                                    }
                                                                 }
                                                             }
                                                         }
@@ -190,6 +193,16 @@ namespace EasyPOS.Forms.Software.SysSettings
                                 }
                             }
                         }
+                    }
+
+                    if (cloudSettings.Application == "Liteclerk")
+                    {
+                        Task taskLiteclerkSales = Task.Run(() =>
+                        {
+                            LiteclerkIntegration.Controllers.LiteclerkTrnPOSController objLiteclerkSales = new LiteclerkIntegration.Controllers.LiteclerkTrnPOSController(this);
+                            objLiteclerkSales.SyncSales(apiUrlHost, branchCode, userCode);
+                        });
+                        taskLiteclerkSales.Wait();
                     }
                 }
 

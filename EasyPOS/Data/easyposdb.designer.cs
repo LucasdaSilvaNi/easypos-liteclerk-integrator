@@ -558,6 +558,8 @@ namespace EasyPOS.Data
 		
 		private string _LogFileLocation;
 		
+		private string _Application;
+		
 		private EntityRef<MstSupplier> _MstSupplier;
 		
 		private EntityRef<MstUser> _MstUser;
@@ -582,6 +584,8 @@ namespace EasyPOS.Data
     partial void OnDomainChanged();
     partial void OnLogFileLocationChanging(string value);
     partial void OnLogFileLocationChanged();
+    partial void OnApplicationChanging(string value);
+    partial void OnApplicationChanged();
     #endregion
 		
 		public IntCloudSetting()
@@ -755,6 +759,26 @@ namespace EasyPOS.Data
 					this._LogFileLocation = value;
 					this.SendPropertyChanged("LogFileLocation");
 					this.OnLogFileLocationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Application", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string Application
+		{
+			get
+			{
+				return this._Application;
+			}
+			set
+			{
+				if ((this._Application != value))
+				{
+					this.OnApplicationChanging(value);
+					this.SendPropertyChanging();
+					this._Application = value;
+					this.SendPropertyChanged("Application");
+					this.OnApplicationChanged();
 				}
 			}
 		}

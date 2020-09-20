@@ -28,7 +28,8 @@ namespace EasyPOS.Controllers
                                     PostSupplierId = d.PostSupplierId,
                                     UseItemPrice = d.UseItemPrice,
                                     Domain = d.Domain,
-                                    LogFileLocation = d.LogFileLocation
+                                    LogFileLocation = d.LogFileLocation,
+                                    Application = d.Application
                                 };
 
             return cloudSettings.FirstOrDefault();

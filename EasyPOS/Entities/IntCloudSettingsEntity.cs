@@ -16,5 +16,6 @@ namespace EasyPOS.Entities
         public Boolean UseItemPrice { get; set; }
         public String Domain { get; set; }
         public String LogFileLocation { get; set; }
+        public String Application { get; set; }
     }
 }
