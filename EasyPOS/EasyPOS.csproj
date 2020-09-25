@@ -988,8 +988,28 @@
     <Compile Include="IndexForm.Designer.cs">
       <DependentUpon>IndexForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LiteclerkIntegration\Controllers\LiteclerkTrnPOSController.cs" />
-    <Compile Include="LiteclerkIntegration\Entities\LiteclerkTrnPOS.cs" />
+    <Compile Include="LiteclerkIntegration\Controllers\LiteclerkMstArticleCustomerController.cs" />
+    <Compile Include="LiteclerkIntegration\Controllers\LiteclerkMstArticleItemController.cs" />
+    <Compile Include="LiteclerkIntegration\Controllers\LiteclerkMstArticleSupplierController.cs" />
+    <Compile Include="LiteclerkIntegration\Controllers\LiteclerkTrnPointOfSaleController.cs" />
+    <Compile Include="LiteclerkIntegration\Controllers\LiteclerkTrnSalesOrderController.cs" />
+    <Compile Include="LiteclerkIntegration\Controllers\LiteclerkTrnStockInController.cs" />
+    <Compile Include="LiteclerkIntegration\Entities\LiteclerkMstArticle.cs" />
+    <Compile Include="LiteclerkIntegration\Entities\LiteclerkMstArticleCustomer.cs" />
+    <Compile Include="LiteclerkIntegration\Entities\LiteclerkMstArticleItem.cs" />
+    <Compile Include="LiteclerkIntegration\Entities\LiteclerkMstArticleItemPrice.cs" />
+    <Compile Include="LiteclerkIntegration\Entities\LiteclerkMstArticleSupplier.cs" />
+    <Compile Include="LiteclerkIntegration\Entities\LiteclerkMstCompany.cs" />
+    <Compile Include="LiteclerkIntegration\Entities\LiteclerkMstCompanyBranch.cs" />
+    <Compile Include="LiteclerkIntegration\Entities\LiteclerkMstDiscount.cs" />
+    <Compile Include="LiteclerkIntegration\Entities\LiteclerkMstTax.cs" />
+    <Compile Include="LiteclerkIntegration\Entities\LiteclerkMstTerm.cs" />
+    <Compile Include="LiteclerkIntegration\Entities\LiteclerkMstUnit.cs" />
+    <Compile Include="LiteclerkIntegration\Entities\LiteclerkTrnSalesOrder.cs" />
+    <Compile Include="LiteclerkIntegration\Entities\LiteclerkTrnSalesOrderItem.cs" />
+    <Compile Include="LiteclerkIntegration\Entities\LiteclerkTrnStockIn.cs" />
+    <Compile Include="LiteclerkIntegration\Entities\LiteclerkTrnPointOfSale.cs" />
+    <Compile Include="LiteclerkIntegration\Entities\LiteclerkTrnStockInItem.cs" />
     <Compile Include="Modules\SysAuditTrailModule.cs" />
     <Compile Include="Modules\SysLicenseModule.cs" />
     <Compile Include="Modules\SysSerialPortModule.cs" />

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyPOS.LiteclerkIntegration.Entities
 {
-    class LiteclerkTrnPOS
+    class LiteclerkTrnPointOfSale
     {
         public String BranchCode { get; set; }
         public String TerminalCode { get; set; }

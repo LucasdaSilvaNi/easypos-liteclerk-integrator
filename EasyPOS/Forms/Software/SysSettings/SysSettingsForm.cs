@@ -197,12 +197,52 @@ namespace EasyPOS.Forms.Software.SysSettings
 
                     if (cloudSettings.Application == "Liteclerk")
                     {
-                        Task taskLiteclerkSales = Task.Run(() =>
+                        Task taskLiteclerkCustomer = Task.Run(() =>
                         {
-                            LiteclerkIntegration.Controllers.LiteclerkTrnPOSController objLiteclerkSales = new LiteclerkIntegration.Controllers.LiteclerkTrnPOSController(this);
-                            objLiteclerkSales.SyncSales(apiUrlHost, branchCode, userCode);
+                            LiteclerkIntegration.Controllers.LiteclerkMstArticleCustomerController objLiteclerkCustomer = new LiteclerkIntegration.Controllers.LiteclerkMstArticleCustomerController(this, dtpIntegrationDate.Text);
+                            objLiteclerkCustomer.SyncCustomer(apiUrlHost);
                         });
-                        taskLiteclerkSales.Wait();
+                        taskLiteclerkCustomer.Wait();
+
+                        if (taskLiteclerkCustomer.IsCompleted)
+                        {
+                            Task taskLiteclerkSupplier = Task.Run(() =>
+                            {
+                                LiteclerkIntegration.Controllers.LiteclerkMstArticleSupplierController objLiteclerkSupplier = new LiteclerkIntegration.Controllers.LiteclerkMstArticleSupplierController(this, dtpIntegrationDate.Text);
+                                objLiteclerkSupplier.SyncSupplier(apiUrlHost);
+                            });
+                            taskLiteclerkSupplier.Wait();
+
+                            if (taskLiteclerkSupplier.IsCompleted)
+                            {
+                                Task taskLiteclerkItem = Task.Run(() =>
+                                {
+                                    LiteclerkIntegration.Controllers.LiteclerkMstArticleItemController objLiteclerkItem = new LiteclerkIntegration.Controllers.LiteclerkMstArticleItemController(this, dtpIntegrationDate.Text);
+                                    objLiteclerkItem.SyncItem(apiUrlHost);
+                                });
+                                taskLiteclerkItem.Wait();
+
+                                if (taskLiteclerkItem.IsCompleted)
+                                {
+                                    Task taskLiteclerkStockIn = Task.Run(() =>
+                                    {
+                                        LiteclerkIntegration.Controllers.LiteclerkTrnStockInController objLiteclerkStockIn = new LiteclerkIntegration.Controllers.LiteclerkTrnStockInController(this, dtpIntegrationDate.Text);
+                                        objLiteclerkStockIn.SyncStockIn(apiUrlHost, branchCode);
+                                    });
+                                    taskLiteclerkStockIn.Wait();
+
+                                    if (taskLiteclerkStockIn.IsCompleted)
+                                    {
+                                        Task taskLiteclerkSales = Task.Run(() =>
+                                        {
+                                            LiteclerkIntegration.Controllers.LiteclerkTrnPointOfSaleController objLiteclerkSales = new LiteclerkIntegration.Controllers.LiteclerkTrnPointOfSaleController(this);
+                                            objLiteclerkSales.SyncSales(apiUrlHost, branchCode, userCode);
+                                        });
+                                        taskLiteclerkSales.Wait();
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
 

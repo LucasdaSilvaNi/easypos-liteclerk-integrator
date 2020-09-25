@@ -9,7 +9,7 @@ using System.Web.Script.Serialization;
 
 namespace EasyPOS.LiteclerkIntegration.Controllers
 {
-    class LiteclerkTrnPOSController
+    class LiteclerkTrnPointOfSaleController
     {
         // ====
         // Data
@@ -20,7 +20,7 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
         // ===========
         // Constructor
         // ===========
-        public LiteclerkTrnPOSController(Forms.Software.SysSettings.SysSettingsForm form)
+        public LiteclerkTrnPointOfSaleController(Forms.Software.SysSettings.SysSettingsForm form)
         {
             sysSettingsForm = form;
         }
@@ -50,10 +50,10 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
 
                 if (sales.Any())
                 {
-                    List<Entities.LiteclerkTrnPOS> listPOSSales = new List<Entities.LiteclerkTrnPOS>();
+                    List<Entities.LiteclerkTrnPointOfSale> listPOSSales = new List<Entities.LiteclerkTrnPointOfSale>();
                     foreach (var salesLine in sales.FirstOrDefault().TrnSalesLines)
                     {
-                        listPOSSales.Add(new Entities.LiteclerkTrnPOS()
+                        listPOSSales.Add(new Entities.LiteclerkTrnPointOfSale()
                         {
                             BranchCode = branchCode,
                             TerminalCode = salesLine.TrnSale.MstTerminal.Terminal,
@@ -106,12 +106,12 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
         {
             try
             {
-                System.Net.ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+                ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
                 // ============
                 // Http Request
                 // ============
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://" + apiUrlHost + "/api/TrnPointOfSaleAPI/add");
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://" + apiUrlHost + "/api/EasyPOSTrnPointOfSaleAPI/add");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
                 httpWebRequest.Accept = "*/*";
@@ -121,7 +121,7 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
                 // ====
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
-                    List<Entities.LiteclerkTrnPOS> POSSales = new JavaScriptSerializer().Deserialize<List<Entities.LiteclerkTrnPOS>>(json);
+                    List<Entities.LiteclerkTrnPointOfSale> POSSales = new JavaScriptSerializer().Deserialize<List<Entities.LiteclerkTrnPointOfSale>>(json);
                     streamWriter.Write(new JavaScriptSerializer().Serialize(POSSales));
                 }
 
