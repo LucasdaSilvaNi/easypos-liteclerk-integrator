@@ -214,7 +214,7 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
                                                 }
 
                                                 var tax = from d in posdb.MstTaxes
-                                                          where d.Tax == item.Item.SIVAT.ManualCode
+                                                          where d.Code == item.Item.SIVAT.ManualCode
                                                           select d;
 
                                                 if (tax.Any())

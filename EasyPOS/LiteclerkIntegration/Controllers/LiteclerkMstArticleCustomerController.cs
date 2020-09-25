@@ -114,7 +114,7 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
 
                                     if (!foundChanges)
                                     {
-                                        if (!currentCustomer.FirstOrDefault().MstTerm.Term.Equals(customer.Term))
+                                        if (!currentCustomer.FirstOrDefault().MstTerm.Term.Equals(customer.Term.ManualCode))
                                         {
                                             foundChanges = true;
                                         }

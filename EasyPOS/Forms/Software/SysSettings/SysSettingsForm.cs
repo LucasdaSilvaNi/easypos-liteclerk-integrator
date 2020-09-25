@@ -233,12 +233,22 @@ namespace EasyPOS.Forms.Software.SysSettings
 
                                     if (taskLiteclerkStockIn.IsCompleted)
                                     {
-                                        Task taskLiteclerkSales = Task.Run(() =>
+                                        Task taskLiteclerkSalesOrder = Task.Run(() =>
                                         {
-                                            LiteclerkIntegration.Controllers.LiteclerkTrnPointOfSaleController objLiteclerkSales = new LiteclerkIntegration.Controllers.LiteclerkTrnPointOfSaleController(this);
-                                            objLiteclerkSales.SyncSales(apiUrlHost, branchCode, userCode);
+                                            LiteclerkIntegration.Controllers.LiteclerkTrnSalesOrderController objLiteclerkSalesOrder = new LiteclerkIntegration.Controllers.LiteclerkTrnSalesOrderController(this, dtpIntegrationDate.Text);
+                                            objLiteclerkSalesOrder.SyncSalesOrder(apiUrlHost, branchCode);
                                         });
-                                        taskLiteclerkSales.Wait();
+                                        taskLiteclerkSalesOrder.Wait();
+
+                                        if (taskLiteclerkSalesOrder.IsCompleted)
+                                        {
+                                            Task taskLiteclerkSales = Task.Run(() =>
+                                            {
+                                                LiteclerkIntegration.Controllers.LiteclerkTrnPointOfSaleController objLiteclerkSales = new LiteclerkIntegration.Controllers.LiteclerkTrnPointOfSaleController(this);
+                                                objLiteclerkSales.SyncSales(apiUrlHost, branchCode, userCode);
+                                            });
+                                            taskLiteclerkSales.Wait();
+                                        }
                                     }
                                 }
                             }

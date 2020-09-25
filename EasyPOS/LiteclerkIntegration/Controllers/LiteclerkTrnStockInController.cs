@@ -134,7 +134,7 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
                                 {
                                     foreach (var item in stockIn.StockInItems.ToList())
                                     {
-                                        var currentItem = from d in posdb.MstItems where d.BarCode.Equals(item.Item.BarCode) && d.MstUnit.Unit.Equals(item.Unit) select d;
+                                        var currentItem = from d in posdb.MstItems where d.BarCode.Equals(item.Item.BarCode) && d.MstUnit.Unit.Equals(item.Unit.ManualCode) select d;
                                         if (currentItem.Any())
                                         {
                                             Data.TrnStockInLine newStockInLine = new Data.TrnStockInLine

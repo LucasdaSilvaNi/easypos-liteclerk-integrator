@@ -88,7 +88,7 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
                             var units = from d in posdb.MstUnits where d.Unit.Equals(item.Unit.ManualCode) select d;
                             if (units.Any())
                             {
-                                var taxes = from d in posdb.MstTaxes where d.Tax.Equals(item.SIVAT.ManualCode) select d;
+                                var taxes = from d in posdb.MstTaxes where d.Code.Equals(item.SIVAT.ManualCode) select d;
                                 if (taxes.Any())
                                 {
                                     var supplier = from d in posdb.MstSuppliers select d;
@@ -185,7 +185,7 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
                                                 {
                                                     if (item.ArticleItemPrices.Any())
                                                     {
-                                                        var posItemPrices = from d in posdb.MstItemPrices where d.MstItem.BarCode.Equals(item.ArticleManualCode) select d;
+                                                        var posItemPrices = from d in posdb.MstItemPrices where d.MstItem.BarCode.Equals(item.BarCode) select d;
                                                         if (posItemPrices.Any())
                                                         {
                                                             if (item.ArticleItemPrices.Count() == posItemPrices.Count())
@@ -218,7 +218,7 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
                                                 sysSettingsForm.logMessages("Item Description: " + currentItem.FirstOrDefault().ItemDescription + "\r\n\n");
 
                                                 var updateItem = currentItem.FirstOrDefault();
-                                                updateItem.BarCode = item.ArticleManualCode;
+                                                updateItem.BarCode = item.BarCode;
                                                 updateItem.ItemDescription = item.Description;
                                                 updateItem.Alias = item.Description;
                                                 updateItem.GenericName = item.Description;
@@ -283,7 +283,7 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
                                             Data.MstItem newItem = new Data.MstItem
                                             {
                                                 ItemCode = itemCode,
-                                                BarCode = item.ArticleManualCode,
+                                                BarCode = item.BarCode,
                                                 ItemDescription = item.Description,
                                                 Alias = item.Description,
                                                 GenericName = item.Description,
