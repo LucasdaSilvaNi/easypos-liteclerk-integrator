@@ -152,7 +152,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                 }
 
                 repRemitanceReportEntity.TotalCollection = collectionLines.Sum(d => d.Amount);
-                repRemitanceReportEntity.CashCollectedAmount = collectionLines.Where(d => d.PayTypeCode == "CASH").Sum(d => d.Amount);
+                repRemitanceReportEntity.CashCollectedAmount = collectionLines.Where(d => d.PayTypeCode == "CASH").Any() ? collectionLines.Where(d => d.PayTypeCode == "CASH").Sum(d => d.Amount) : 0;
             }
 
             var cashIns = from d in db.TrnDisbursements
@@ -753,17 +753,17 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // Over or Short Amount
             // ====================
             String overShortAmountLabel = "";
-            if (overShortAmount < 0)
+            if (overShortAmount > 0)
+            {
+                overShortAmountLabel = "Over";
+            }
+            else if (overShortAmount < 0)
             {
                 overShortAmountLabel = "Short";
             }
-            else if (overShortAmount == 0)
-            {
-                overShortAmountLabel = "";
-            }
             else
             {
-                overShortAmountLabel = "Over";
+                overShortAmountLabel = "";
             }
 
             if (String.IsNullOrEmpty(overShortAmountLabel) == false)

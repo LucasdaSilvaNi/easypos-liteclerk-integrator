@@ -1,6 +1,6 @@
-﻿namespace EasyPOS.Forms.Software.TrnStockIn
+﻿namespace EasyPOS.Forms.Software.TrnStockCount
 {
-    partial class TrnStockInDetailReportForm
+    partial class TrnStockCountDetailReportForm
     {
         /// <summary>
         /// Required designer variable.
@@ -41,7 +41,7 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Exporting PDF File...";
             // 
-            // TrnStockInDetailReportForm
+            // TrnStockCountDetailReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -51,7 +51,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "TrnStockInDetailReportForm";
+            this.Name = "TrnStockCountDetailReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stock In Detail Report";
             this.ResumeLayout(false);

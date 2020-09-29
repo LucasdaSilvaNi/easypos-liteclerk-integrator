@@ -42,7 +42,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
 
                 GetAccountList();
             }
-            
+
         }
 
         public void GetAccountList()
@@ -194,7 +194,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
-
+            new TrnStockOutDetailReportForm(trnStockOutEntity.Id);
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

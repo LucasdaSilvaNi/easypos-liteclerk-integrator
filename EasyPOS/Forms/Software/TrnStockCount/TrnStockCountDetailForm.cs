@@ -174,7 +174,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
-
+            new TrnStockCountDetailReportForm(trnStockCountEntity.Id);
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

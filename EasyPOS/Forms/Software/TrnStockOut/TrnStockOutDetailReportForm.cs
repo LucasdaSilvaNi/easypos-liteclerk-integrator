@@ -12,21 +12,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EasyPOS.Forms.Software.TrnStockIn
+namespace EasyPOS.Forms.Software.TrnStockOut
 {
-    public partial class TrnStockInDetailReportForm : Form
+    public partial class TrnStockOutDetailReportForm : Form
     {
-        Int32 _stockInId = 0;
+        Int32 _stockOutId = 0;
 
-        public TrnStockInDetailReportForm(Int32 stockInId)
+        public TrnStockOutDetailReportForm(Int32 stockOutId)
         {
             InitializeComponent();
 
-            _stockInId = stockInId;
-            PrintStockInDetailReport();
+            _stockOutId = stockOutId;
+            PrintStockOutDetailReport();
         }
 
-        public void PrintStockInDetailReport()
+        public void PrintStockOutDetailReport()
         {
             try
             {
@@ -40,7 +40,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
 
                 Paragraph line = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.5F, 100.0F, BaseColor.DARK_GRAY, Element.ALIGN_MIDDLE, 10F)));
 
-                var fileName = "StockInDetailReport" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                var fileName = "StockOutDetailReport" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
                 var currentUser = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
 
                 var systemCurrent = Modules.SysCurrentModule.GetCurrentSettings();
@@ -49,15 +49,15 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                 document.SetMargins(30f, 30f, 127f, 30f);
 
                 PdfWriter pdfWriter = PdfWriter.GetInstance(document, new FileStream(fileName, FileMode.Create));
-                pdfWriter.PageEvent = new StockInDetailReportHeaderFooter(_stockInId);
+                pdfWriter.PageEvent = new StockOutDetailReportHeaderFooter(_stockOutId);
 
                 document.Open();
 
-                var stockInLines = from d in db.TrnStockInLines
-                                   where d.StockInId == _stockInId
-                                   select d;
+                var stockOutLines = from d in db.TrnStockOutLines
+                                    where d.StockOutId == _stockOutId
+                                    select d;
 
-                if (stockInLines.Any())
+                if (stockOutLines.Any())
                 {
                     PdfPTable tableItem = new PdfPTable(5);
                     tableItem.SetWidths(new float[] { 70f, 30f, 30f, 30f, 30f });
@@ -65,15 +65,15 @@ namespace EasyPOS.Forms.Software.TrnStockIn
 
                     Decimal totalAmount = 0;
 
-                    foreach (var stockInLine in stockInLines)
+                    foreach (var stockOutLine in stockOutLines)
                     {
-                        tableItem.AddCell(new PdfPCell(new Phrase(stockInLine.MstItem.ItemDescription, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableItem.AddCell(new PdfPCell(new Phrase(stockInLine.Quantity.ToString("#,##0.00"), fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f, HorizontalAlignment = 2 });
-                        tableItem.AddCell(new PdfPCell(new Phrase(stockInLine.MstItem.MstUnit.Unit, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableItem.AddCell(new PdfPCell(new Phrase(stockInLine.Cost.ToString("#,##0.00"), fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f, HorizontalAlignment = 2 });
-                        tableItem.AddCell(new PdfPCell(new Phrase(stockInLine.Amount.ToString("#,##0.00"), fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f, HorizontalAlignment = 2 });
+                        tableItem.AddCell(new PdfPCell(new Phrase(stockOutLine.MstItem.ItemDescription, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                        tableItem.AddCell(new PdfPCell(new Phrase(stockOutLine.Quantity.ToString("#,##0.00"), fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f, HorizontalAlignment = 2 });
+                        tableItem.AddCell(new PdfPCell(new Phrase(stockOutLine.MstItem.MstUnit.Unit, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                        tableItem.AddCell(new PdfPCell(new Phrase(stockOutLine.Cost.ToString("#,##0.00"), fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f, HorizontalAlignment = 2 });
+                        tableItem.AddCell(new PdfPCell(new Phrase(stockOutLine.Amount.ToString("#,##0.00"), fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f, HorizontalAlignment = 2 });
 
-                        totalAmount += stockInLine.Amount;
+                        totalAmount += stockOutLine.Amount;
                     }
 
                     tableItem.AddCell(new PdfPCell(new Phrase(line)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = -5f, Colspan = 5 });
@@ -90,9 +90,9 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                     tableUsers.AddCell(new PdfPCell(new Phrase(" ")) { PaddingBottom = 30f });
                     tableUsers.AddCell(new PdfPCell(new Phrase(" ")) { PaddingBottom = 30f });
                     tableUsers.AddCell(new PdfPCell(new Phrase(" ")) { PaddingBottom = 30f });
-                    tableUsers.AddCell(new PdfPCell(new Phrase(stockInLines.FirstOrDefault().TrnStockIn.MstUser.FullName, fontTimesNewRoman11)) { HorizontalAlignment = 1, PaddingTop = 5f, PaddingBottom = 9f, PaddingLeft = 5f, PaddingRight = 5f });
-                    tableUsers.AddCell(new PdfPCell(new Phrase(stockInLines.FirstOrDefault().TrnStockIn.MstUser1.FullName, fontTimesNewRoman11)) { HorizontalAlignment = 1, PaddingTop = 5f, PaddingBottom = 9f, PaddingLeft = 5f, PaddingRight = 5f });
-                    tableUsers.AddCell(new PdfPCell(new Phrase(stockInLines.FirstOrDefault().TrnStockIn.MstUser2.FullName, fontTimesNewRoman11)) { HorizontalAlignment = 1, PaddingTop = 5f, PaddingBottom = 9f, PaddingLeft = 5f, PaddingRight = 5f });
+                    tableUsers.AddCell(new PdfPCell(new Phrase(stockOutLines.FirstOrDefault().TrnStockOut.MstUser.FullName, fontTimesNewRoman11)) { HorizontalAlignment = 1, PaddingTop = 5f, PaddingBottom = 9f, PaddingLeft = 5f, PaddingRight = 5f });
+                    tableUsers.AddCell(new PdfPCell(new Phrase(stockOutLines.FirstOrDefault().TrnStockOut.MstUser1.FullName, fontTimesNewRoman11)) { HorizontalAlignment = 1, PaddingTop = 5f, PaddingBottom = 9f, PaddingLeft = 5f, PaddingRight = 5f });
+                    tableUsers.AddCell(new PdfPCell(new Phrase(stockOutLines.FirstOrDefault().TrnStockOut.MstUser2.FullName, fontTimesNewRoman11)) { HorizontalAlignment = 1, PaddingTop = 5f, PaddingBottom = 9f, PaddingLeft = 5f, PaddingRight = 5f });
                     document.Add(tableUsers);
 
                     document.Close();
@@ -123,14 +123,14 @@ namespace EasyPOS.Forms.Software.TrnStockIn
         }
     }
 
-    class StockInDetailReportHeaderFooter : PdfPageEventHelper
+    class StockOutDetailReportHeaderFooter : PdfPageEventHelper
     {
-        public Int32 _stockInId = 0;
+        public Int32 _stockOutId = 0;
         public Data.easyposdbDataContext db;
 
-        public StockInDetailReportHeaderFooter(Int32 stockInId)
+        public StockOutDetailReportHeaderFooter(Int32 stockOutId)
         {
-            _stockInId = stockInId;
+            _stockOutId = stockOutId;
             db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
         }
 
@@ -147,18 +147,17 @@ namespace EasyPOS.Forms.Software.TrnStockIn
 
             var systemCurrent = Modules.SysCurrentModule.GetCurrentSettings();
 
-            var stockIn = from d in db.TrnStockIns
-                          where d.Id == _stockInId
-                          select d;
+            var stockOut = from d in db.TrnStockOuts
+                           where d.Id == _stockOutId
+                           select d;
 
             String companyName = systemCurrent.CompanyName;
-            String documentTitle = "Stock In";
+            String documentTitle = "Stock Out";
 
-            String stockInNumber = stockIn.FirstOrDefault().StockInNumber;
-            String stockInDate = stockIn.FirstOrDefault().StockInDate.ToShortDateString();
-            String manualStockInNumber = stockIn.FirstOrDefault().ManualStockInNumber;
-            String supplier = stockIn.FirstOrDefault().MstSupplier.Supplier;
-            String remarks = stockIn.FirstOrDefault().Remarks;
+            String stockOutNumber = stockOut.FirstOrDefault().StockOutNumber;
+            String stockOutDate = stockOut.FirstOrDefault().StockOutDate.ToShortDateString();
+            String manualStockOutNumber = stockOut.FirstOrDefault().ManualStockOutNumber;
+            String remarks = stockOut.FirstOrDefault().Remarks;
 
             PdfPTable tableHeader = new PdfPTable(4);
             tableHeader.SetWidths(new float[] { 20f, 30f, 20f, 50f });
@@ -167,15 +166,15 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             tableHeader.AddCell(new PdfPCell(new Phrase(companyName, fontTimesNewRoman14Bold)) { Colspan = 2, Border = PdfPCell.BOTTOM_BORDER, Padding = 3f, PaddingBottom = 5f });
             tableHeader.AddCell(new PdfPCell(new Phrase(documentTitle, fontTimesNewRoman14Bold)) { HorizontalAlignment = 2, Colspan = 2, Border = PdfPCell.BOTTOM_BORDER, Padding = 3f, PaddingBottom = 5f });
 
-            tableHeader.AddCell(new PdfPCell(new Phrase("Stock-In No.: ", fontTimesNewRoman11Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
-            tableHeader.AddCell(new PdfPCell(new Phrase(stockInNumber, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
+            tableHeader.AddCell(new PdfPCell(new Phrase("Stock-Out No.: ", fontTimesNewRoman11Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
+            tableHeader.AddCell(new PdfPCell(new Phrase(stockOutNumber, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
             tableHeader.AddCell(new PdfPCell(new Phrase("Manual No.: ", fontTimesNewRoman11Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
-            tableHeader.AddCell(new PdfPCell(new Phrase(manualStockInNumber, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
+            tableHeader.AddCell(new PdfPCell(new Phrase(manualStockOutNumber, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
 
-            tableHeader.AddCell(new PdfPCell(new Phrase("Stock-In Date: ", fontTimesNewRoman11Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
-            tableHeader.AddCell(new PdfPCell(new Phrase(stockInDate, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
-            tableHeader.AddCell(new PdfPCell(new Phrase("Supplier: ", fontTimesNewRoman11Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
-            tableHeader.AddCell(new PdfPCell(new Phrase(supplier, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
+            tableHeader.AddCell(new PdfPCell(new Phrase("Stock-Out Date: ", fontTimesNewRoman11Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
+            tableHeader.AddCell(new PdfPCell(new Phrase(stockOutDate, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
+            tableHeader.AddCell(new PdfPCell(new Phrase("", fontTimesNewRoman11Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
+            tableHeader.AddCell(new PdfPCell(new Phrase("", fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
 
             tableHeader.AddCell(new PdfPCell(new Phrase("Remarks: ", fontTimesNewRoman11Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
             tableHeader.AddCell(new PdfPCell(new Phrase(remarks, fontTimesNewRoman11)) { Colspan = 3, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
