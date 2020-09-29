@@ -134,6 +134,9 @@
             this.txtBranchCode = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.checkBoxEnableEasyShopIntegration = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -149,6 +152,8 @@
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -262,6 +267,7 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -1423,6 +1429,40 @@
             this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
             this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
             // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.panel4);
+            this.tabPage6.Location = new System.Drawing.Point(4, 28);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(1101, 478);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "EasyShop Integration";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel4.Controls.Add(this.checkBoxEnableEasyShopIntegration);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1095, 472);
+            this.panel4.TabIndex = 1;
+            // 
+            // checkBoxEnableEasyShopIntegration
+            // 
+            this.checkBoxEnableEasyShopIntegration.AutoSize = true;
+            this.checkBoxEnableEasyShopIntegration.Enabled = false;
+            this.checkBoxEnableEasyShopIntegration.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxEnableEasyShopIntegration.Location = new System.Drawing.Point(9, 9);
+            this.checkBoxEnableEasyShopIntegration.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxEnableEasyShopIntegration.Name = "checkBoxEnableEasyShopIntegration";
+            this.checkBoxEnableEasyShopIntegration.Size = new System.Drawing.Size(68, 23);
+            this.checkBoxEnableEasyShopIntegration.TabIndex = 63;
+            this.checkBoxEnableEasyShopIntegration.Text = "Enable";
+            this.checkBoxEnableEasyShopIntegration.UseVisualStyleBackColor = true;
+            // 
             // SysSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1457,6 +1497,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.tabPage6.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1568,5 +1611,8 @@
         private System.Windows.Forms.ComboBox comboBoxCollectionReport;
         private System.Windows.Forms.ComboBox comboBoxPOSType;
         private System.Windows.Forms.Button buttonUnlock;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.CheckBox checkBoxEnableEasyShopIntegration;
     }
 }

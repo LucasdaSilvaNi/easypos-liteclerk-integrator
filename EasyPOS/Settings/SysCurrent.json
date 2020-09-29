@@ -1,7 +1,7 @@
 ﻿{
   "CompanyName": "Easyfis Corporation",
-  "Address": "Unit 1023 City Soho Bldg., B. Rodriguez St. Guadalupe, Cebu City Philippines 6000",
-  "ContactNo": "(032) 234-0787",
+  "Address": "Cebu City",
+  "ContactNo": "(032) 000-0000",
   "TIN": "000-000-000-000",
   "AccreditationNo": "000000000000",
   "SerialNo": "000000000000",
@@ -41,5 +41,6 @@
   "FacepayImagePath": "D:\\Facepay",
   "POSType": "POS Barcode",
   "AllowNegativeInventory": true,
-  "IsLoginDate": true
+  "IsLoginDate": true,
+  "EnableEasyShopIntegration": false
 }

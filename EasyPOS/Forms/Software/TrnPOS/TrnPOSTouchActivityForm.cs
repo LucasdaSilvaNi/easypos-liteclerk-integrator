@@ -139,8 +139,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonDeliver_Click(object sender, EventArgs e)
         {
-            TrnPOSTouchActivityDeliver trnPOSTouchActivityDeliver = new TrnPOSTouchActivityDeliver(trnPOSTouchForm, this, trnSalesEntity.Id, trnSalesEntity.Remarks);
-            trnPOSTouchActivityDeliver.ShowDialog();
+            if (Modules.SysCurrentModule.GetCurrentSettings().EnableEasyShopIntegration == true)
+            {
+                TrnPOSTouchActivityDeliver trnPOSTouchActivityDeliver = new TrnPOSTouchActivityDeliver(trnPOSTouchForm, this, trnSalesEntity.Id, trnSalesEntity.Remarks);
+                trnPOSTouchActivityDeliver.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Easyshop Integration is not enabled.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

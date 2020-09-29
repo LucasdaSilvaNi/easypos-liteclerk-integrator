@@ -84,7 +84,8 @@ namespace EasyPOS.Modules
                 FacepayImagePath = currentSettings.FacepayImagePath,
                 POSType = currentSettings.POSType,
                 AllowNegativeInventory = currentSettings.AllowNegativeInventory,
-                IsLoginDate = IsLoginDate
+                IsLoginDate = IsLoginDate,
+                EnableEasyShopIntegration = currentSettings.EnableEasyShopIntegration
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);
@@ -142,7 +143,8 @@ namespace EasyPOS.Modules
                 FacepayImagePath = currentSettings.FacepayImagePath,
                 POSType = objSysCurrentEntity.POSType,
                 AllowNegativeInventory = objSysCurrentEntity.AllowNegativeInventory,
-                IsLoginDate = currentSettings.IsLoginDate
+                IsLoginDate = currentSettings.IsLoginDate,
+                EnableEasyShopIntegration = objSysCurrentEntity.EnableEasyShopIntegration
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newSysCurrentEntities);
@@ -201,7 +203,8 @@ namespace EasyPOS.Modules
                 FacepayImagePath = currentSettings.FacepayImagePath,
                 POSType = currentSettings.POSType,
                 AllowNegativeInventory = currentSettings.AllowNegativeInventory,
-                IsLoginDate = currentSettings.IsLoginDate
+                IsLoginDate = currentSettings.IsLoginDate,
+                EnableEasyShopIntegration = currentSettings.EnableEasyShopIntegration
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);

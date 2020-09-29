@@ -51,5 +51,6 @@ namespace EasyPOS.Entities
         public String POSType { get; set; }
         public Boolean AllowNegativeInventory { get; set; }
         public Boolean IsLoginDate { get; set; }
+        public Boolean EnableEasyShopIntegration { get; set; }
     }
 }

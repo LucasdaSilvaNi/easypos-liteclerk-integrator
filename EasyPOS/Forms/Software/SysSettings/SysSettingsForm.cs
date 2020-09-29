@@ -450,6 +450,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxActivateAuditTrail.Checked = Convert.ToBoolean(sysCurrent.ActivateAuditTrail);
                 comboBoxPOSType.Text = sysCurrent.POSType;
                 checkBoxAllowNegativeInventory.Checked = Convert.ToBoolean(sysCurrent.AllowNegativeInventory);
+                checkBoxEnableEasyShopIntegration.Checked = Convert.ToBoolean(sysCurrent.EnableEasyShopIntegration);
             }
         }
 
@@ -511,7 +512,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 FacepayImagePath = currentSettings.FacepayImagePath,
                 POSType = comboBoxPOSType.Text,
                 AllowNegativeInventory = checkBoxAllowNegativeInventory.Checked,
-                IsLoginDate = currentSettings.IsLoginDate
+                IsLoginDate = currentSettings.IsLoginDate,
+                EnableEasyShopIntegration = checkBoxEnableEasyShopIntegration.Checked
             };
 
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);
@@ -554,6 +556,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxActivateAuditTrail.Enabled = false;
                 comboBoxPOSType.Enabled = false;
                 checkBoxAllowNegativeInventory.Enabled = false;
+                checkBoxEnableEasyShopIntegration.Enabled = false;
             }
             else
             {
@@ -621,6 +624,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxActivateAuditTrail.Enabled = true;
                 comboBoxPOSType.Enabled = true;
                 checkBoxAllowNegativeInventory.Enabled = true;
+                checkBoxEnableEasyShopIntegration.Enabled = true;
             }
         }
 

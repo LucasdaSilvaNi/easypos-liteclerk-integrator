@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -708,7 +710,10 @@ namespace EasyPOS.Controllers
                 };
                 Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail3);
 
-                //EasyShopAlreadyPaid(currentSales.FirstOrDefault().ManualInvoiceNumber);
+                if (Modules.SysCurrentModule.GetCurrentSettings().EnableEasyShopIntegration == true)
+                {
+                    EasyShopAlreadyPaid(currentSales.FirstOrDefault().ManualInvoiceNumber);
+                }
 
                 return new String[] { "", newCollection.Id.ToString() };
             }
@@ -1907,7 +1912,13 @@ namespace EasyPOS.Controllers
                     updateSales.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
 
-                    //EasyShopReadyForDispatchRequest(manualInvoiceNumber);
+                    if (Modules.SysCurrentModule.GetCurrentSettings().EnableEasyShopIntegration == true)
+                    {
+                        if (sales.FirstOrDefault().DeliveryId != null)
+                        {
+                            EasyShopReadyForDispatchRequest(Convert.ToInt32(sales.FirstOrDefault().DeliveryId));
+                        }
+                    }
 
                     return new String[] { "", "1" };
                 }
@@ -2052,7 +2063,10 @@ namespace EasyPOS.Controllers
                             delivery = deliverOrder
                         };
 
-                        //EasyShopDeliveryRequest(deliveryData);
+                        if (Modules.SysCurrentModule.GetCurrentSettings().EnableEasyShopIntegration == true)
+                        {
+                            EasyShopDeliveryRequest(deliveryData, salesId);
+                        }
                     }
 
                     return new String[] { "", "1" };
@@ -2071,7 +2085,7 @@ namespace EasyPOS.Controllers
         // ====================================
         // Inform EasyShop for Delivery Request
         // ====================================
-        public void EasyShopDeliveryRequest(Entities.SysDelivery objDelivery)
+        public void EasyShopDeliveryRequest(Entities.SysDelivery objDelivery, Int32 salesId)
         {
             try
             {
@@ -2106,7 +2120,33 @@ namespace EasyPOS.Controllers
                     var result = streamReader.ReadToEnd();
                     if (result != null)
                     {
+                        var definition = new
+                        {
+                            deliveries = new
+                            {
+                                data = new
+                                {
+                                    id = 0
+                                }
+                            }
+                        };
 
+                        String jsonResult = result;
+                        var dataReturn = JsonConvert.DeserializeAnonymousType(jsonResult, definition);
+
+                        Int32 deliverId = Convert.ToInt32(dataReturn.deliveries.data.id);
+
+                        var sales = from d in db.TrnSales
+                                    where d.Id == salesId
+                                    select d;
+
+                        if (sales.Any())
+                        {
+                            var updateDelivery = sales.FirstOrDefault();
+                            updateDelivery.DeliveryId = deliverId;
+
+                            db.SubmitChanges();
+                        }
                     }
                 }
             }
