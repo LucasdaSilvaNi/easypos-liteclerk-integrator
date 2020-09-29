@@ -466,6 +466,17 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Point ninethLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
                 graphics.DrawLine(blackPen, ninethLineFirstPoint, ninethLineSecondPoint);
 
+                String remarks = "\nRemarks: \n\n " + collections.FirstOrDefault().TrnSale.Remarks;
+                graphics.DrawString(remarks, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                y += graphics.MeasureString(remarks, fontArial8Regular).Height;
+
+                // =========
+                // 10th Line
+                // =========
+                Point tenthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point tenthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, tenthLineFirstPoint, tenthLineSecondPoint);
+
                 String receiptFooter = "\n" + systemCurrent.ReceiptFooter;
                 graphics.DrawString(receiptFooter, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
                 y += graphics.MeasureString(receiptFooter, fontArial8Regular).Height;

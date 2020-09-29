@@ -107,7 +107,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // =================
             // Sales Order Title
             // =================
-            String officialReceiptTitle = "S A L E S   O R D E R";
+            String officialReceiptTitle = "O R D E R   S L I P";
             graphics.DrawString(officialReceiptTitle, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             y += graphics.MeasureString(officialReceiptTitle, fontArial8Regular).Height;
 
@@ -251,23 +251,34 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Point thirdLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
                 graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
 
+                String remarks = "\nRemarks: \n\n " + salesLines.FirstOrDefault().TrnSale.Remarks;
+                graphics.DrawString(remarks, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                y += graphics.MeasureString(remarks, fontArial8Regular).Height;
+
+                // ========
+                // 4th Line
+                // ========
+                Point forththLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point forthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, forththLineFirstPoint, forthLineSecondPoint);
+
                 // =======
                 // Cashier
                 // =======
                 String cashier = sales.FirstOrDefault().MstUser5.UserName;
 
-                String cashierLabel = "\nCashier";
+                String cashierLabel = "\nTeller";
                 String cashierUserData = "\n" + cashier;
                 graphics.DrawString(cashierLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(cashierUserData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(cashierUserData, fontArial8Regular).Height;
 
                 // ========
-                // 4th Line
+                // 5th Line
                 // ========
-                Point forthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point forthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, forthLineFirstPoint, forthLineSecondPoint);
+                Point fifthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point fifthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, fifthLineFirstPoint, fifthLineSecondPoint);
 
                 String salesInvoiceFooter = "\n" + systemCurrent.InvoiceFooter;
                 graphics.DrawString(salesInvoiceFooter, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);

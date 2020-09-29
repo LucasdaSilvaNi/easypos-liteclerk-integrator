@@ -148,7 +148,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                              TotalChangeAmount = g.Sum(s => s.TrnCollection.ChangeAmount)
                                          };
 
-            if (salesLines.Any() && currentCollectionLines.Any())
+            if (salesLines.Any() && currentCollectionLines.ToList().Any())
             {
                 var grossSales = salesLines.Where(d => d.Quantity > 0);
                 if (grossSales.Any())
