@@ -51,7 +51,7 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
                 // ============
                 // Http Request
                 // ============
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://" + apiUrlHost + "/api/EasyPOSMstArticleSupplierAPI/list/locked/byUpdatedDateTime/" + currentDate);
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://" + apiUrlHost + "/api/EasyPOSMstArticleSupplierAPI/list/locked/byUpdatedDateTime/" + currentDate);
                 httpWebRequest.Method = "GET";
                 httpWebRequest.Accept = "application/json";
 

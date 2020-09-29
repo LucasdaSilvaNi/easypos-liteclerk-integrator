@@ -111,7 +111,7 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
                 // ============
                 // Http Request
                 // ============
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://" + apiUrlHost + "/api/EasyPOSTrnPointOfSaleAPI/add");
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://" + apiUrlHost + "/api/EasyPOSTrnPointOfSaleAPI/add");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
                 httpWebRequest.Accept = "*/*";
