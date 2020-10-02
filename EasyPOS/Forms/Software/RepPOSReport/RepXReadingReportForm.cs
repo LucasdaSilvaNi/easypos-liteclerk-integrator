@@ -153,9 +153,9 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 var grossSales = salesLines.Where(d => d.Quantity > 0);
                 if (grossSales.Any())
                 {
-                    repXReadingReportEntity.TotalGrossSales = grossSales.Sum(d => d.MstTax.Code == "EXEMPTVAT" ? d.MstItem.MstTax1.Rate > 0 ? (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) :
-                                                                 (d.Quantity * d.Price) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) :
-                                                                 (d.Quantity * d.Price) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)));
+                    repXReadingReportEntity.TotalGrossSales = grossSales.Sum(d => d.MstTax.Code == "EXEMPTVAT" ? d.MstTax.Rate > 0 ? (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) :
+                                                              (d.Quantity * d.Price) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) :
+                                                              (d.Quantity * d.Price) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)));
                 }
 
                 var regularDiscounts = salesLines.Where(d => d.Quantity > 0
@@ -181,13 +181,15 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 var salesReturns = salesLines.Where(d => d.Quantity < 0);
                 if (salesReturns.Any())
                 {
-                    repXReadingReportEntity.TotalSalesReturn = salesReturns.Sum(d => d.Amount);
+                    repXReadingReportEntity.TotalSalesReturn = salesReturns.Sum(d => d.MstTax.Code == "EXEMPTVAT" ? d.MstTax.Rate > 0 ? (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) :
+                                                              (d.Quantity * d.Price) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) :
+                                                              (d.Quantity * d.Price) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)));
                 }
 
                 var netSales = salesLines.Where(d => d.Quantity > 0);
                 if (netSales.Any())
                 {
-                    repXReadingReportEntity.TotalNetSales = repXReadingReportEntity.TotalGrossSales - repXReadingReportEntity.TotalRegularDiscount - repXReadingReportEntity.TotalSeniorDiscount - repXReadingReportEntity.TotalPWDDiscount;
+                    repXReadingReportEntity.TotalNetSales = (repXReadingReportEntity.TotalGrossSales + repXReadingReportEntity.TotalSalesReturn) - repXReadingReportEntity.TotalRegularDiscount - repXReadingReportEntity.TotalSeniorDiscount - repXReadingReportEntity.TotalPWDDiscount;
                 }
 
                 foreach (var collectionLine in currentCollectionLines)
@@ -207,10 +209,10 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                 repXReadingReportEntity.TotalCollection = currentCollections.Sum(d => d.Amount);
 
-                var VATSales = salesLines.Where(d => d.MstTax.Code.Equals("VAT") == true);
+                var VATSales = salesLines.Where(d => d.MstTax.Code.Equals("VAT") == true && d.Quantity > 0);
                 if (VATSales.Any())
                 {
-                    repXReadingReportEntity.TotalVATSales = VATSales.Sum(d => (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)));
+                    repXReadingReportEntity.TotalVATSales = VATSales.Sum(d => (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100))) + repXReadingReportEntity.TotalSalesReturn;
                 }
 
                 repXReadingReportEntity.TotalVATAmount = salesLines.Sum(d => d.TaxAmount);
@@ -218,25 +220,26 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 var nonVATSales = salesLines.Where(d => d.MstTax.Code.Equals("NONVAT") == true);
                 if (nonVATSales.Any())
                 {
-                    repXReadingReportEntity.TotalNonVAT = nonVATSales.Sum(d => d.Price * d.Quantity);
+                    repXReadingReportEntity.TotalNonVAT = nonVATSales.Where(d => d.Quantity > 0).Sum(d => d.Price * d.Quantity) + repXReadingReportEntity.TotalSalesReturn;
                 }
 
-                var VATExempts = salesLines.Where(d => d.MstTax.Code.Equals("EXEMPTVAT") == true);
+                var VATExempts = salesLines.Where(d => d.MstTax.Code.Equals("EXEMPTVAT") == true && d.Quantity > 0);
                 if (VATExempts.Any())
                 {
-                    repXReadingReportEntity.TotalVATExempt = VATExempts.Sum(d => d.MstItem.MstTax1.Rate > 0 ? (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : d.Price * d.Quantity);
+                    repXReadingReportEntity.TotalVATExempt = VATExempts.Sum(d => d.MstTax.Rate > 0 ? (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) : d.Price * d.Quantity) + repXReadingReportEntity.TotalSalesReturn;
                 }
 
-                var VATZeroRateds = salesLines.Where(d => d.MstTax.Code.Equals("ZEROVAT") == true);
+                var VATZeroRateds = salesLines.Where(d => d.MstTax.Code.Equals("ZEROVAT") == true && d.Quantity > 0);
                 if (VATZeroRateds.Any())
                 {
-                    repXReadingReportEntity.TotalVATZeroRated = VATZeroRateds.Sum(d => d.Amount);
+                    repXReadingReportEntity.TotalVATZeroRated = VATZeroRateds.Sum(d => d.Amount) + repXReadingReportEntity.TotalSalesReturn;
                 }
 
                 var counterCollections = from d in db.TrnCollections
                                          where d.TerminalId == filterTerminalId
                                          && d.CollectionDate == filterDate
                                          && d.IsLocked == true
+                                         && d.PreparedBy == filterSalesAgentId
                                          select d;
 
                 if (counterCollections.Any())

@@ -1443,6 +1443,7 @@ namespace EasyPOS.Controllers
         {
             var collection = from d in db.TrnCollections
                              where d.CollectionNumber == ORNumber
+                             && d.TerminalId == Modules.SysCurrentModule.GetCurrentSettings().TerminalId
                              && d.SalesId != null
                              && d.IsLocked == true
                              && d.IsCancelled == false
@@ -1943,7 +1944,7 @@ namespace EasyPOS.Controllers
                 // ============
                 // Http Request
                 // ============
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://api.mirkadu.com/easydelivery/deliveries/" + deliveryId + "/ready");
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://api.fiestatogo.com.ph/easydelivery/deliveries/" + deliveryId + "/ready");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "PATCH";
 
@@ -1984,7 +1985,7 @@ namespace EasyPOS.Controllers
             // ============
             // Http Request
             // ============
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://api.mirkadu.com/easydelivery/drivers");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://api.fiestatogo.com.ph/easydelivery/drivers");
             httpWebRequest.Method = "GET";
             httpWebRequest.Accept = "application/json";
 
@@ -2104,7 +2105,7 @@ namespace EasyPOS.Controllers
 
                 String json = new JavaScriptSerializer().Serialize(deliveryData);
 
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://api.mirkadu.com/easydelivery/deliveries");
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://api.fiestatogo.com.ph/easydelivery/deliveries");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
 
@@ -2163,7 +2164,7 @@ namespace EasyPOS.Controllers
         {
             try
             {
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://api.mirkadu.com/easyorder/orders/" + documentReference + "/paid");
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://api.fiestatogo.com.ph/easyorder/orders/" + documentReference + "/paid");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "PATCH";
 

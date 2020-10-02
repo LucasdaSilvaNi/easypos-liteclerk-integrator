@@ -755,5 +755,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
+        private void dataGridViewSalesList_SelectionChanged(object sender, EventArgs e)
+        {
+            CurrentSelectedCell(dataGridViewSalesList.CurrentCell.RowIndex);
+        }
     }
 }

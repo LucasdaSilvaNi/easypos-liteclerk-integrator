@@ -400,7 +400,23 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     }
                 }
 
-                ComputeAmount();
+                Decimal totalTenderAmount = 0;
+
+                if (dataGridViewTenderPayType.Rows.Count > 0)
+                {
+                    foreach (DataGridViewRow row in dataGridViewTenderPayType.Rows)
+                    {
+                        totalTenderAmount += Convert.ToDecimal(row.Cells[4].Value);
+                    }
+                }
+
+                textBoxTenderAmount.Text = totalTenderAmount.ToString("#,##0.00");
+
+                Decimal changeAmount = totalTenderAmount - Convert.ToDecimal(textBoxTotalSalesAmount.Text);
+                textBoxChangeAmount.Text = changeAmount.ToString("#,##0.00");
+
+                buttonTender.Enabled = true;
+
                 TenderSales();
             }
             catch (Exception ex)

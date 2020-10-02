@@ -278,6 +278,7 @@
             this.dataGridViewSalesList.Size = new System.Drawing.Size(696, 429);
             this.dataGridViewSalesList.TabIndex = 4;
             this.dataGridViewSalesList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesList_CellClick);
+            this.dataGridViewSalesList.SelectionChanged += new System.EventHandler(this.dataGridViewSalesList_SelectionChanged);
             // 
             // ColumnEdit
             // 
