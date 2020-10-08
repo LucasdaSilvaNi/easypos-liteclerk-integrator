@@ -93,7 +93,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonSales_Click(object sender, EventArgs e)
         {
-            newSales();
+            if (Modules.SysCurrentModule.GetCurrentSettings().PromptLoginSales == true)
+            {
+                Account.SysLogin.SysLoginForm login = new Account.SysLogin.SysLoginForm(this, null);
+                login.ShowDialog();
+            }
+            else
+            {
+                newSales();
+            }
         }
 
         public void newSales()

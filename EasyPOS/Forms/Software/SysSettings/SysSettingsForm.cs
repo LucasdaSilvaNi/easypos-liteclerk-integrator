@@ -451,6 +451,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 comboBoxPOSType.Text = sysCurrent.POSType;
                 checkBoxAllowNegativeInventory.Checked = Convert.ToBoolean(sysCurrent.AllowNegativeInventory);
                 checkBoxEnableEasyShopIntegration.Checked = Convert.ToBoolean(sysCurrent.EnableEasyShopIntegration);
+                checkBoxPromptLoginSales.Checked = Convert.ToBoolean(sysCurrent.PromptLoginSales);
             }
         }
 
@@ -513,7 +514,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 POSType = comboBoxPOSType.Text,
                 AllowNegativeInventory = checkBoxAllowNegativeInventory.Checked,
                 IsLoginDate = currentSettings.IsLoginDate,
-                EnableEasyShopIntegration = checkBoxEnableEasyShopIntegration.Checked
+                EnableEasyShopIntegration = checkBoxEnableEasyShopIntegration.Checked,
+                PromptLoginSales = checkBoxPromptLoginSales.Checked
             };
 
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);
@@ -557,6 +559,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 comboBoxPOSType.Enabled = false;
                 checkBoxAllowNegativeInventory.Enabled = false;
                 checkBoxEnableEasyShopIntegration.Enabled = false;
+                checkBoxPromptLoginSales.Enabled = false;
             }
             else
             {
@@ -625,6 +628,11 @@ namespace EasyPOS.Forms.Software.SysSettings
                 comboBoxPOSType.Enabled = true;
                 checkBoxAllowNegativeInventory.Enabled = true;
                 checkBoxEnableEasyShopIntegration.Enabled = true;
+                checkBoxPromptLoginSales.Enabled = true;
+
+
+
+
             }
         }
 

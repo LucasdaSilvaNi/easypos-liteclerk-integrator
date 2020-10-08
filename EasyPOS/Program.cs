@@ -25,7 +25,7 @@ namespace EasyPOS
             }
             else if (Modules.SysLicenseModule.DecryptLicenseCodeToSerialNumber(licenseCode) == Modules.SysLicenseModule.GetSerialNumber())
             {
-                Application.Run(new Forms.Account.SysLogin.SysLoginForm());
+                Application.Run(new Forms.Account.SysLogin.SysLoginForm(null,null));
             }
             else
             {

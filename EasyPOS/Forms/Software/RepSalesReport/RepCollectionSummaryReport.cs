@@ -59,7 +59,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                               ColumnRemarks = d.Remarks,
                               ColumnPreparedBy = d.PreparedByUserName,
                               ColumnIsCancelled = d.IsCancelled,
-                              ColumnAmount = d.Amount.ToString("#,##0.00")
+                              ColumnAmount = d.Amount.ToString("#,##0.00"),
+                              ColumnEntryDateTime = d.EntryDateTime
                           };
 
                 totalAmount = collectionList.Sum(d => d.Amount);
@@ -235,6 +236,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                         collection.ColumnPreparedBy,
                                         collection.ColumnIsCancelled.ToString(),
                                         collection.ColumnAmount.Replace("," , ""),
+                                        collection.ColumnEntryDateTime,
                             };
 
                             csv.AppendLine(String.Join(",", data));

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyPOS.Forms.Software.TrnPOS;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,10 @@ namespace EasyPOS.Forms.Account.SysLogin
 {
     public partial class SysLoginForm : Form
     {
-        public SysLoginForm()
+        public TrnPOSBarcodeForm _trnPOSBarcodeForm;
+        public TrnPOSTouchForm _trnPOSTouchForm;
+
+        public SysLoginForm(TrnPOSBarcodeForm trnPOSBarcodeForm, TrnPOSTouchForm trnPOSTouchForm)
         {
             InitializeComponent();
             dateTimePickerLoginDate.Enabled = false;
@@ -21,16 +25,47 @@ namespace EasyPOS.Forms.Account.SysLogin
 
             labelVersion.Text = "EasyPOS Version: " + Modules.SysCurrentModule.GetCurrentSettings().CurrentVersion;
             labelSupport.Text = "Support: Easyfis Corporation " + Modules.SysCurrentModule.GetCurrentSettings().CurrentSupport;
+
+            _trnPOSBarcodeForm = trnPOSBarcodeForm;
+            _trnPOSTouchForm = trnPOSTouchForm;
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            if (_trnPOSTouchForm != null || _trnPOSBarcodeForm != null)
+            {
+                if (Modules.SysCurrentModule.GetCurrentSettings().PromptLoginSales == false)
+                {
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    Hide();
+                }
+            }
+            else
+            {
+                Environment.Exit(0);
+            }
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             Login();
+        }
+        private bool CheckFormOpened(string name)
+        {
+            FormCollection fc = Application.OpenForms;
+
+            foreach (Form frm in fc)
+            {
+                if (frm.Name == name)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public void Login()
@@ -40,10 +75,33 @@ namespace EasyPOS.Forms.Account.SysLogin
             String[] login = sysLoginController.Login(textBoxUsername.Text, textBoxPassword.Text, dateTimePickerLoginDate.Value.ToShortDateString(), radioButtonLoginDate.Checked);
             if (login[1].Equals("0") == false)
             {
-                Hide();
+                if (Modules.SysCurrentModule.GetCurrentSettings().PromptLoginSales == false)
+                {
+                    Software.SysSoftwareForm sysSoftwareForm = new Software.SysSoftwareForm();
+                    sysSoftwareForm.Show();
+                }
+                else
+                {
+                    Hide();
 
-                Software.SysSoftwareForm sysSoftwareForm = new Software.SysSoftwareForm();
-                sysSoftwareForm.Show();
+                    if (CheckFormOpened("SysSoftwareForm") == false)
+                    {
+                        Software.SysSoftwareForm sysSoftwareForm = new Software.SysSoftwareForm();
+                        sysSoftwareForm.Show();
+                    }
+                    else
+                    {
+                        if (_trnPOSTouchForm != null)
+                        {
+                            _trnPOSTouchForm.NewWalkInSales();
+                        }
+
+                        if (_trnPOSBarcodeForm != null)
+                        {
+                            _trnPOSBarcodeForm.newSales();
+                        }
+                    }
+                }
             }
             else
             {
@@ -69,7 +127,17 @@ namespace EasyPOS.Forms.Account.SysLogin
 
         private void SysLoginForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Environment.Exit(0);
+            if (_trnPOSTouchForm != null || _trnPOSBarcodeForm != null)
+            {
+                if (Modules.SysCurrentModule.GetCurrentSettings().PromptLoginSales == false)
+                {
+                    Environment.Exit(0);
+                }
+            }
+            else
+            {
+                Environment.Exit(0);
+            }
         }
 
         private void radioButtonSystemDate_CheckedChanged(object sender, EventArgs e)

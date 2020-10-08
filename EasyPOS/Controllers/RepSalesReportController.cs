@@ -65,7 +65,9 @@ namespace EasyPOS.Controllers
                             Term = d.MstTerm.Term,
                             Remarks = d.Remarks,
                             PreparedByUserName = d.MstUser.FullName,
-                            Amount = d.Amount
+                            Amount = d.Amount,
+                            EntryDateTime = d.EntryDateTime.ToShortTimeString()
+                            
                         };
 
             return sales.OrderByDescending(d => d.Id).ToList();
@@ -129,7 +131,8 @@ namespace EasyPOS.Controllers
                                   Remarks = d.Remarks,
                                   PreparedByUserName = d.MstUser.UserName,
                                   IsCancelled = d.IsCancelled,
-                                  Amount = d.IsCancelled == true ? 0 : d.Amount
+                                  Amount = d.IsCancelled == true ? 0 : d.Amount,
+                                  EntryDateTime = d.EntryDateTime.ToShortTimeString()
                               };
 
             return collections.ToList();

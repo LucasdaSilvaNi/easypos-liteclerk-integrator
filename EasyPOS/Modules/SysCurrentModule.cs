@@ -85,7 +85,8 @@ namespace EasyPOS.Modules
                 POSType = currentSettings.POSType,
                 AllowNegativeInventory = currentSettings.AllowNegativeInventory,
                 IsLoginDate = IsLoginDate,
-                EnableEasyShopIntegration = currentSettings.EnableEasyShopIntegration
+                EnableEasyShopIntegration = currentSettings.EnableEasyShopIntegration,
+                PromptLoginSales = currentSettings.PromptLoginSales
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);
@@ -144,7 +145,8 @@ namespace EasyPOS.Modules
                 POSType = objSysCurrentEntity.POSType,
                 AllowNegativeInventory = objSysCurrentEntity.AllowNegativeInventory,
                 IsLoginDate = currentSettings.IsLoginDate,
-                EnableEasyShopIntegration = objSysCurrentEntity.EnableEasyShopIntegration
+                EnableEasyShopIntegration = objSysCurrentEntity.EnableEasyShopIntegration,
+                PromptLoginSales = objSysCurrentEntity.PromptLoginSales
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newSysCurrentEntities);
@@ -204,7 +206,8 @@ namespace EasyPOS.Modules
                 POSType = currentSettings.POSType,
                 AllowNegativeInventory = currentSettings.AllowNegativeInventory,
                 IsLoginDate = currentSettings.IsLoginDate,
-                EnableEasyShopIntegration = currentSettings.EnableEasyShopIntegration
+                EnableEasyShopIntegration = currentSettings.EnableEasyShopIntegration,
+                PromptLoginSales = currentSettings.PromptLoginSales
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);

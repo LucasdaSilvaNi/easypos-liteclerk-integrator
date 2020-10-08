@@ -51,6 +51,7 @@
             this.textBoxReceiptFooter = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.checkBoxPromptLoginSales = new System.Windows.Forms.CheckBox();
             this.comboBoxCollectionReport = new System.Windows.Forms.ComboBox();
             this.comboBoxPOSType = new System.Windows.Forms.ComboBox();
             this.checkBoxAllowNegativeInventory = new System.Windows.Forms.CheckBox();
@@ -133,10 +134,10 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtBranchCode = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.checkBoxEnableEasyShopIntegration = new System.Windows.Forms.CheckBox();
+            this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -432,6 +433,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel5.Controls.Add(this.checkBoxPromptLoginSales);
             this.panel5.Controls.Add(this.comboBoxCollectionReport);
             this.panel5.Controls.Add(this.comboBoxPOSType);
             this.panel5.Controls.Add(this.checkBoxAllowNegativeInventory);
@@ -480,6 +482,17 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1095, 472);
             this.panel5.TabIndex = 34;
+            // 
+            // checkBoxPromptLoginSales
+            // 
+            this.checkBoxPromptLoginSales.AutoSize = true;
+            this.checkBoxPromptLoginSales.Enabled = false;
+            this.checkBoxPromptLoginSales.Location = new System.Drawing.Point(668, 426);
+            this.checkBoxPromptLoginSales.Name = "checkBoxPromptLoginSales";
+            this.checkBoxPromptLoginSales.Size = new System.Drawing.Size(146, 23);
+            this.checkBoxPromptLoginSales.TabIndex = 80;
+            this.checkBoxPromptLoginSales.Text = "Prompt Login Sales";
+            this.checkBoxPromptLoginSales.UseVisualStyleBackColor = true;
             // 
             // comboBoxCollectionReport
             // 
@@ -1423,12 +1436,6 @@
             this.label8.TabIndex = 17;
             this.label8.Text = "Date:";
             // 
-            // backgroundWorkerEasyfisIntegration
-            // 
-            this.backgroundWorkerEasyfisIntegration.WorkerReportsProgress = true;
-            this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
-            this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
-            // 
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.panel4);
@@ -1462,6 +1469,12 @@
             this.checkBoxEnableEasyShopIntegration.TabIndex = 63;
             this.checkBoxEnableEasyShopIntegration.Text = "Enable";
             this.checkBoxEnableEasyShopIntegration.UseVisualStyleBackColor = true;
+            // 
+            // backgroundWorkerEasyfisIntegration
+            // 
+            this.backgroundWorkerEasyfisIntegration.WorkerReportsProgress = true;
+            this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
+            this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
             // 
             // SysSettingsForm
             // 
@@ -1614,5 +1627,6 @@
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.CheckBox checkBoxEnableEasyShopIntegration;
+        private System.Windows.Forms.CheckBox checkBoxPromptLoginSales;
     }
 }

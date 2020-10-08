@@ -45,7 +45,7 @@ namespace EasyPOS.Forms.License.SysLicense
 
                     Hide();
 
-                    Account.SysLogin.SysLoginForm sysLoginForm = new Account.SysLogin.SysLoginForm();
+                    Account.SysLogin.SysLoginForm sysLoginForm = new Account.SysLogin.SysLoginForm(null,null);
                     sysLoginForm.Show();
                 }
                 else

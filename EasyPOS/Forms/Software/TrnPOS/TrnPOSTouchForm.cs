@@ -222,7 +222,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonWalkIn_Click(object sender, EventArgs e)
         {
-            NewWalkInSales();
+            if (Modules.SysCurrentModule.GetCurrentSettings().PromptLoginSales == true)
+            {
+                Account.SysLogin.SysLoginForm login = new Account.SysLogin.SysLoginForm(null,this);
+                login.ShowDialog();
+            }
+            else 
+            {
+                NewWalkInSales();
+            }
+            
         }
 
         public void NewWalkInSales()

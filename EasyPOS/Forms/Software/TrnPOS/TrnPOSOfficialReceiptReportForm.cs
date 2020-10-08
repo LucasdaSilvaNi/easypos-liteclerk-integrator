@@ -333,7 +333,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 String changelabel = "Change";
                 String changeAmount = change.ToString("#,##0.00");
                 graphics.DrawString(changelabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(changeAmount, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                graphics.DrawString(changeAmount, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(changeAmount, fontArial8Regular).Height;
 
                 // ========
