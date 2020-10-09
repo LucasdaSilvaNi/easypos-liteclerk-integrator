@@ -43,8 +43,8 @@
             this.buttonUserListPageListFirst = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.ColumnUserListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnUserListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnUserListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnUserListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnUserListUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnUserListFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -150,8 +150,8 @@
             this.dataGridViewUserList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewUserList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewUserList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnUserListButtonDelete,
             this.ColumnUserListButtonEdit,
+            this.ColumnUserListButtonDelete,
             this.ColumnUserListId,
             this.ColumnUserListUserName,
             this.ColumnUserListFullName,
@@ -270,15 +270,6 @@
             this.panel3.Size = new System.Drawing.Size(1096, 42);
             this.panel3.TabIndex = 18;
             // 
-            // ColumnUserListButtonDelete
-            // 
-            this.ColumnUserListButtonDelete.DataPropertyName = "ColumnUserListButtonDelete";
-            this.ColumnUserListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnUserListButtonDelete.HeaderText = "";
-            this.ColumnUserListButtonDelete.Name = "ColumnUserListButtonDelete";
-            this.ColumnUserListButtonDelete.ReadOnly = true;
-            this.ColumnUserListButtonDelete.Width = 70;
-            // 
             // ColumnUserListButtonEdit
             // 
             this.ColumnUserListButtonEdit.DataPropertyName = "ColumnUserListButtonEdit";
@@ -287,6 +278,15 @@
             this.ColumnUserListButtonEdit.Name = "ColumnUserListButtonEdit";
             this.ColumnUserListButtonEdit.ReadOnly = true;
             this.ColumnUserListButtonEdit.Width = 70;
+            // 
+            // ColumnUserListButtonDelete
+            // 
+            this.ColumnUserListButtonDelete.DataPropertyName = "ColumnUserListButtonDelete";
+            this.ColumnUserListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnUserListButtonDelete.HeaderText = "";
+            this.ColumnUserListButtonDelete.Name = "ColumnUserListButtonDelete";
+            this.ColumnUserListButtonDelete.ReadOnly = true;
+            this.ColumnUserListButtonDelete.Width = 70;
             // 
             // ColumnUserListId
             // 
@@ -361,8 +361,8 @@
         private System.Windows.Forms.Button buttonUserListPageListFirst;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnUserListButtonDelete;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnUserListButtonEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnUserListButtonDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUserListId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUserListUserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUserListFullName;
