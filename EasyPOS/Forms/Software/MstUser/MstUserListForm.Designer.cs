@@ -43,12 +43,11 @@
             this.buttonUserListPageListFirst = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.ColumnUserListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnUserListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnUserListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnUserListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnUserListUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnUserListFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnUserListCardNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnUserListIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -151,12 +150,11 @@
             this.dataGridViewUserList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewUserList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewUserList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnUserListButtonEdit,
             this.ColumnUserListButtonDelete,
+            this.ColumnUserListButtonEdit,
             this.ColumnUserListId,
             this.ColumnUserListUserName,
             this.ColumnUserListFullName,
-            this.ColumnUserListCardNumber,
             this.ColumnUserListIsLocked});
             this.dataGridViewUserList.Location = new System.Drawing.Point(10, 34);
             this.dataGridViewUserList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -272,15 +270,6 @@
             this.panel3.Size = new System.Drawing.Size(1096, 42);
             this.panel3.TabIndex = 18;
             // 
-            // ColumnUserListButtonEdit
-            // 
-            this.ColumnUserListButtonEdit.DataPropertyName = "ColumnUserListButtonEdit";
-            this.ColumnUserListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnUserListButtonEdit.HeaderText = "";
-            this.ColumnUserListButtonEdit.Name = "ColumnUserListButtonEdit";
-            this.ColumnUserListButtonEdit.ReadOnly = true;
-            this.ColumnUserListButtonEdit.Width = 70;
-            // 
             // ColumnUserListButtonDelete
             // 
             this.ColumnUserListButtonDelete.DataPropertyName = "ColumnUserListButtonDelete";
@@ -289,6 +278,15 @@
             this.ColumnUserListButtonDelete.Name = "ColumnUserListButtonDelete";
             this.ColumnUserListButtonDelete.ReadOnly = true;
             this.ColumnUserListButtonDelete.Width = 70;
+            // 
+            // ColumnUserListButtonEdit
+            // 
+            this.ColumnUserListButtonEdit.DataPropertyName = "ColumnUserListButtonEdit";
+            this.ColumnUserListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnUserListButtonEdit.HeaderText = "";
+            this.ColumnUserListButtonEdit.Name = "ColumnUserListButtonEdit";
+            this.ColumnUserListButtonEdit.ReadOnly = true;
+            this.ColumnUserListButtonEdit.Width = 70;
             // 
             // ColumnUserListId
             // 
@@ -313,14 +311,6 @@
             this.ColumnUserListFullName.Name = "ColumnUserListFullName";
             this.ColumnUserListFullName.ReadOnly = true;
             this.ColumnUserListFullName.Width = 250;
-            // 
-            // ColumnUserListCardNumber
-            // 
-            this.ColumnUserListCardNumber.DataPropertyName = "ColumnUserListCardNumber";
-            this.ColumnUserListCardNumber.HeaderText = "User Card Number";
-            this.ColumnUserListCardNumber.Name = "ColumnUserListCardNumber";
-            this.ColumnUserListCardNumber.ReadOnly = true;
-            this.ColumnUserListCardNumber.Width = 250;
             // 
             // ColumnUserListIsLocked
             // 
@@ -371,12 +361,11 @@
         private System.Windows.Forms.Button buttonUserListPageListFirst;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnUserListButtonEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnUserListButtonDelete;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnUserListButtonEdit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUserListId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUserListUserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUserListFullName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUserListCardNumber;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnUserListIsLocked;
     }
 }
