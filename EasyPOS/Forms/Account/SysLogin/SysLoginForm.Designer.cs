@@ -140,7 +140,7 @@
             this.textBoxUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxUsername.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxUsername.Location = new System.Drawing.Point(149, 36);
+            this.textBoxUsername.Location = new System.Drawing.Point(149, 52);
             this.textBoxUsername.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(230, 29);
@@ -151,7 +151,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label6.Location = new System.Drawing.Point(59, 39);
+            this.label6.Location = new System.Drawing.Point(59, 55);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 21);
@@ -163,7 +163,7 @@
             this.textBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPassword.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxPassword.Location = new System.Drawing.Point(149, 70);
+            this.textBoxPassword.Location = new System.Drawing.Point(149, 86);
             this.textBoxPassword.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '•';
@@ -175,7 +175,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label7.Location = new System.Drawing.Point(64, 73);
+            this.label7.Location = new System.Drawing.Point(64, 89);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 21);
@@ -240,7 +240,7 @@
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.labelSupport);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 224);
+            this.panel2.Location = new System.Drawing.Point(0, 252);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(463, 46);
@@ -308,7 +308,7 @@
             this.panel4.Location = new System.Drawing.Point(0, 111);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(463, 118);
+            this.panel4.Size = new System.Drawing.Size(463, 143);
             this.panel4.TabIndex = 12;
             // 
             // textBoxUserCardNumber
@@ -316,18 +316,20 @@
             this.textBoxUserCardNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxUserCardNumber.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxUserCardNumber.Location = new System.Drawing.Point(2, 4);
+            this.textBoxUserCardNumber.Location = new System.Drawing.Point(0, 12);
             this.textBoxUserCardNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxUserCardNumber.Name = "textBoxUserCardNumber";
-            this.textBoxUserCardNumber.Size = new System.Drawing.Size(459, 29);
+            this.textBoxUserCardNumber.PasswordChar = '•';
+            this.textBoxUserCardNumber.Size = new System.Drawing.Size(463, 29);
             this.textBoxUserCardNumber.TabIndex = 0;
+            this.textBoxUserCardNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxUserCardNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxUserCardNumber_KeyDown);
             // 
             // SysLoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(463, 270);
+            this.ClientSize = new System.Drawing.Size(463, 298);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);

@@ -72,6 +72,7 @@ namespace EasyPOS.Forms.Software.MstUser
             textBoxFullName.Text = mstUserEntity.FullName;
             textBoxUserName.Text = mstUserEntity.UserName;
             textBoxPassword.Text = mstUserEntity.Password;
+            textBoxUserCardNumber.Text = mstUserEntity.UserCardNumber;
 
             CreateUserFormListDataGridView();
         }
@@ -117,7 +118,7 @@ namespace EasyPOS.Forms.Software.MstUser
                 UserName = textBoxUserName.Text,
                 Password = textBoxPassword.Text,
                 FullName = textBoxFullName.Text,
-                UserCardNumber = "NA"
+                UserCardNumber = textBoxUserCardNumber.Text,
             };
 
             String[] lockUser = mstUserController.LockUser(mstUserEntity.Id, newUserEntity);

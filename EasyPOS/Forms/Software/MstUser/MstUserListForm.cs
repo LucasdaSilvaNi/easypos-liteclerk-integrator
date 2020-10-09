@@ -128,6 +128,7 @@ namespace EasyPOS.Forms.Software.MstUser
                                 ColumnUserListId = d.Id,
                                 ColumnUserListUserName = d.UserName,
                                 ColumnUserListFullName = d.FullName,
+                                ColumnUserListCardNumber = d.UserCardNumber,
                                 ColumnUserListIsLocked = d.IsLocked
                             };
 
