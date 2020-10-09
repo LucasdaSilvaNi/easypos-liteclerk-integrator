@@ -72,7 +72,7 @@ namespace EasyPOS.Forms.Account.SysLogin
         {
             Controllers.SysLoginController sysLoginController = new Controllers.SysLoginController();
 
-            String[] login = sysLoginController.Login(textBoxUsername.Text, textBoxPassword.Text, dateTimePickerLoginDate.Value.ToShortDateString(), radioButtonLoginDate.Checked);
+            String[] login = sysLoginController.Login(textBoxUserCardNumber.Text,textBoxUsername.Text, textBoxPassword.Text, dateTimePickerLoginDate.Value.ToShortDateString(), radioButtonLoginDate.Checked);
             if (login[1].Equals("0") == false)
             {
                 if (Modules.SysCurrentModule.GetCurrentSettings().PromptLoginSales == false)
@@ -109,6 +109,14 @@ namespace EasyPOS.Forms.Account.SysLogin
             }
         }
 
+
+        private void textBoxUserCardNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Login();
+            }
+        }
         private void textBoxUsername_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

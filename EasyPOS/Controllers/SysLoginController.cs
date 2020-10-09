@@ -16,13 +16,14 @@ namespace EasyPOS.Controllers
         // =====
         // Login
         // =====
-        public String[] Login(String username, String password, String loginDate, Boolean isLoginDate)
+        public String[] Login(String userCardNumber, String username, String password, String loginDate, Boolean isLoginDate)
         {
             try
             {
                 var currentUser = from d in db.MstUsers
                                   where d.UserName.Equals(username)
                                   && d.Password.Equals(password)
+                                  || d.UserCardNumber.Equals(userCardNumber)
                                   select d;
 
                 if (currentUser.Any())
