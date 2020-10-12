@@ -291,7 +291,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 repZReadingReportEntity.NetSalesRunningTotal = repZReadingReportEntity.TotalNetSales + repZReadingReportEntity.NetSalesTotalPreviousReading;
             }
 
-            var firstCollection = from d in db.TrnCollections.OrderByDescending(d => d.Id)
+            var firstCollection = from d in db.TrnCollections
                                   where d.IsLocked == true
                                   select d;
 
