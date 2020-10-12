@@ -120,7 +120,7 @@
             this.textBoxFilter.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxFilter.Name = "textBoxFilter";
             this.textBoxFilter.Size = new System.Drawing.Size(847, 26);
-            this.textBoxFilter.TabIndex = 1;
+            this.textBoxFilter.TabIndex = 0;
             this.textBoxFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxFilter_KeyDown);
             // 
             // dataGridViewSearchItemList
@@ -155,7 +155,7 @@
             this.dataGridViewSearchItemList.RowTemplate.Height = 24;
             this.dataGridViewSearchItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSearchItemList.Size = new System.Drawing.Size(846, 349);
-            this.dataGridViewSearchItemList.TabIndex = 0;
+            this.dataGridViewSearchItemList.TabIndex = 1;
             this.dataGridViewSearchItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSearchItemList_CellClick);
             this.dataGridViewSearchItemList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewSearchItemList_KeyDown);
             // 
