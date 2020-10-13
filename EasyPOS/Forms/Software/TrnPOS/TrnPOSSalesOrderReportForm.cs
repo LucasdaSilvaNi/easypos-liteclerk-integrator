@@ -285,7 +285,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 y += graphics.MeasureString(salesInvoiceFooter, fontArial8Regular).Height;
             }
 
-            String space = "\n\n\n\n\n\n\n\n\n\n.";
+            String space = "\n\n\n\n\n\n\n\n\n.";
             graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
         }
     }

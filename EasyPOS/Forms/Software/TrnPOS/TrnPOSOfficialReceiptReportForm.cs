@@ -59,8 +59,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
             StringFormat drawFormatLeft = new StringFormat { Alignment = StringAlignment.Near };
             StringFormat drawFormatRight = new StringFormat { Alignment = StringAlignment.Far };
 
-            float x = 5, y = 5;
+            float x =5, y = 5;
             float width = 245.0F, height = 0F;
+
 
             // ==============
             // Tools Settings
@@ -89,7 +90,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // ===============
             // Company Address
             // ===============
-            String companyAddress = systemCurrent.Address;
+
+            string companyAddress = systemCurrent.Address;
+
+            float adjuctHeight = 1;
+            if(companyAddress.Length>43)
+            {
+                adjuctHeight = 2;
+            }
+
             graphics.DrawString(companyAddress, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
 
@@ -98,7 +107,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // ==========
             String TINNumber = systemCurrent.TIN;
             graphics.DrawString("TIN: " + TINNumber, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
+            y += (graphics.MeasureString(companyAddress, fontArial8Regular).Height* adjuctHeight);
 
             // =============
             // Serial Number
