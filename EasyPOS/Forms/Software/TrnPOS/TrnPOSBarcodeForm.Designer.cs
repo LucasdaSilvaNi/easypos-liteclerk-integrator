@@ -123,7 +123,7 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1096, 50);
-            this.panel1.TabIndex = 3;
+            this.panel1.TabIndex = 25;
             // 
             // buttonTender
             // 
@@ -138,7 +138,7 @@
             this.buttonTender.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTender.Name = "buttonTender";
             this.buttonTender.Size = new System.Drawing.Size(107, 32);
-            this.buttonTender.TabIndex = 6;
+            this.buttonTender.TabIndex = 3;
             this.buttonTender.Text = "F2 - Tender";
             this.buttonTender.UseVisualStyleBackColor = false;
             this.buttonTender.Click += new System.EventHandler(this.buttonTender_Click);
@@ -156,7 +156,7 @@
             this.buttonReprint.Margin = new System.Windows.Forms.Padding(2);
             this.buttonReprint.Name = "buttonReprint";
             this.buttonReprint.Size = new System.Drawing.Size(120, 32);
-            this.buttonReprint.TabIndex = 5;
+            this.buttonReprint.TabIndex = 4;
             this.buttonReprint.Text = "F3 - Reprint";
             this.buttonReprint.UseVisualStyleBackColor = false;
             this.buttonReprint.Click += new System.EventHandler(this.buttonReprint_Click);
@@ -174,7 +174,7 @@
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(115, 32);
-            this.buttonCancel.TabIndex = 4;
+            this.buttonCancel.TabIndex = 5;
             this.buttonCancel.Text = "F4 - Cancel";
             this.buttonCancel.UseVisualStyleBackColor = false;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -198,7 +198,7 @@
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 28);
-            this.label1.TabIndex = 2;
+            this.label1.TabIndex = 16;
             this.label1.Text = "Sales";
             // 
             // buttonClose
@@ -214,7 +214,7 @@
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(109, 32);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 7;
             this.buttonClose.Text = "Esc - Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
@@ -232,7 +232,7 @@
             this.buttonSales.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSales.Name = "buttonSales";
             this.buttonSales.Size = new System.Drawing.Size(106, 32);
-            this.buttonSales.TabIndex = 0;
+            this.buttonSales.TabIndex = 6;
             this.buttonSales.Text = "F5 - Sales";
             this.buttonSales.UseVisualStyleBackColor = false;
             this.buttonSales.Click += new System.EventHandler(this.buttonSales_Click);
@@ -276,8 +276,9 @@
             this.dataGridViewSalesList.RowTemplate.Height = 35;
             this.dataGridViewSalesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSalesList.Size = new System.Drawing.Size(696, 429);
-            this.dataGridViewSalesList.TabIndex = 4;
+            this.dataGridViewSalesList.TabIndex = 1;
             this.dataGridViewSalesList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesList_CellClick);
+            this.dataGridViewSalesList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesList_CellContentClick);
             this.dataGridViewSalesList.SelectionChanged += new System.EventHandler(this.dataGridViewSalesList_SelectionChanged);
             // 
             // ColumnEdit
@@ -469,7 +470,7 @@
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(371, 132);
-            this.panel2.TabIndex = 5;
+            this.panel2.TabIndex = 17;
             // 
             // label8
             // 
@@ -479,7 +480,7 @@
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(95, 15);
-            this.label8.TabIndex = 12;
+            this.label8.TabIndex = 23;
             this.label8.Text = "Customer Code:";
             // 
             // labelCustomerCode
@@ -500,7 +501,7 @@
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(127, 15);
-            this.label7.TabIndex = 10;
+            this.label7.TabIndex = 22;
             this.label7.Text = "Receipt / Invoice No.:";
             // 
             // labelReceiptInvoiceNumber
@@ -521,7 +522,7 @@
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 15);
-            this.label6.TabIndex = 8;
+            this.label6.TabIndex = 24;
             this.label6.Text = "Customer:";
             // 
             // labelCustomer
@@ -542,7 +543,7 @@
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 15);
-            this.label4.TabIndex = 2;
+            this.label4.TabIndex = 25;
             this.label4.Text = "Order Taker:";
             // 
             // label2
@@ -553,7 +554,7 @@
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 15);
-            this.label2.TabIndex = 0;
+            this.label2.TabIndex = 21;
             this.label2.Text = "Order No.:";
             // 
             // labelTransactionDate
@@ -574,7 +575,7 @@
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 15);
-            this.label3.TabIndex = 1;
+            this.label3.TabIndex = 19;
             this.label3.Text = "Terminal:";
             // 
             // labelInvoiceNumber
@@ -615,7 +616,7 @@
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 15);
-            this.label5.TabIndex = 3;
+            this.label5.TabIndex = 20;
             this.label5.Text = "Order Date:";
             // 
             // dataGridViewSalesLineItemDisplay
@@ -663,7 +664,7 @@
             this.dataGridViewSalesLineItemDisplay.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewSalesLineItemDisplay.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSalesLineItemDisplay.Size = new System.Drawing.Size(371, 322);
-            this.dataGridViewSalesLineItemDisplay.TabIndex = 8;
+            this.dataGridViewSalesLineItemDisplay.TabIndex = 18;
             // 
             // ColumnSalesLineItemQuantity
             // 
@@ -698,7 +699,7 @@
             this.dateTimePickerSalesDate.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerSalesDate.Name = "dateTimePickerSalesDate";
             this.dateTimePickerSalesDate.Size = new System.Drawing.Size(121, 26);
-            this.dateTimePickerSalesDate.TabIndex = 6;
+            this.dateTimePickerSalesDate.TabIndex = 8;
             this.dateTimePickerSalesDate.ValueChanged += new System.EventHandler(this.dateTimePickerSalesDate_ValueChanged);
             // 
             // textBoxSalesListFilter
@@ -709,7 +710,7 @@
             this.textBoxSalesListFilter.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesListFilter.Name = "textBoxSalesListFilter";
             this.textBoxSalesListFilter.Size = new System.Drawing.Size(428, 26);
-            this.textBoxSalesListFilter.TabIndex = 7;
+            this.textBoxSalesListFilter.TabIndex = 0;
             this.textBoxSalesListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSalesListFilter_KeyDown);
             // 
             // comboBoxTerminal
@@ -720,7 +721,7 @@
             this.comboBoxTerminal.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxTerminal.Name = "comboBoxTerminal";
             this.comboBoxTerminal.Size = new System.Drawing.Size(140, 25);
-            this.comboBoxTerminal.TabIndex = 0;
+            this.comboBoxTerminal.TabIndex = 9;
             this.comboBoxTerminal.SelectedIndexChanged += new System.EventHandler(this.comboBoxTerminal_SelectedIndexChanged);
             // 
             // timerRefreshSalesListGrid
@@ -739,7 +740,7 @@
             this.buttonSalesListPageListFirst.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSalesListPageListFirst.Name = "buttonSalesListPageListFirst";
             this.buttonSalesListPageListFirst.Size = new System.Drawing.Size(66, 26);
-            this.buttonSalesListPageListFirst.TabIndex = 8;
+            this.buttonSalesListPageListFirst.TabIndex = 10;
             this.buttonSalesListPageListFirst.Text = "First";
             this.buttonSalesListPageListFirst.UseVisualStyleBackColor = false;
             this.buttonSalesListPageListFirst.Click += new System.EventHandler(this.buttonSalesListPageListFirst_Click);
@@ -755,7 +756,7 @@
             this.buttonSalesListPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSalesListPageListPrevious.Name = "buttonSalesListPageListPrevious";
             this.buttonSalesListPageListPrevious.Size = new System.Drawing.Size(66, 26);
-            this.buttonSalesListPageListPrevious.TabIndex = 9;
+            this.buttonSalesListPageListPrevious.TabIndex = 11;
             this.buttonSalesListPageListPrevious.Text = "Previous";
             this.buttonSalesListPageListPrevious.UseVisualStyleBackColor = false;
             this.buttonSalesListPageListPrevious.Click += new System.EventHandler(this.buttonSalesListPageListPrevious_Click);
@@ -770,7 +771,7 @@
             this.buttonSalesListPageListNext.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSalesListPageListNext.Name = "buttonSalesListPageListNext";
             this.buttonSalesListPageListNext.Size = new System.Drawing.Size(66, 26);
-            this.buttonSalesListPageListNext.TabIndex = 10;
+            this.buttonSalesListPageListNext.TabIndex = 12;
             this.buttonSalesListPageListNext.Text = "Next";
             this.buttonSalesListPageListNext.UseVisualStyleBackColor = false;
             this.buttonSalesListPageListNext.Click += new System.EventHandler(this.buttonSalesListPageListNext_Click);
@@ -785,7 +786,7 @@
             this.buttonSalesListPageListLast.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSalesListPageListLast.Name = "buttonSalesListPageListLast";
             this.buttonSalesListPageListLast.Size = new System.Drawing.Size(66, 26);
-            this.buttonSalesListPageListLast.TabIndex = 11;
+            this.buttonSalesListPageListLast.TabIndex = 13;
             this.buttonSalesListPageListLast.Text = "Last";
             this.buttonSalesListPageListLast.UseVisualStyleBackColor = false;
             this.buttonSalesListPageListLast.Click += new System.EventHandler(this.buttonSalesListPageListLast_Click);
@@ -816,7 +817,7 @@
             this.buttonAutoRefresh.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAutoRefresh.Name = "buttonAutoRefresh";
             this.buttonAutoRefresh.Size = new System.Drawing.Size(58, 26);
-            this.buttonAutoRefresh.TabIndex = 13;
+            this.buttonAutoRefresh.TabIndex = 14;
             this.buttonAutoRefresh.TabStop = false;
             this.buttonAutoRefresh.Text = "Start";
             this.buttonAutoRefresh.UseVisualStyleBackColor = false;

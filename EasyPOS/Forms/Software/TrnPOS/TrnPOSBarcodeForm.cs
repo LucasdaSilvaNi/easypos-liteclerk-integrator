@@ -768,5 +768,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             CurrentSelectedCell(dataGridViewSalesList.CurrentCell.RowIndex);
         }
+
+        private void dataGridViewSalesList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
