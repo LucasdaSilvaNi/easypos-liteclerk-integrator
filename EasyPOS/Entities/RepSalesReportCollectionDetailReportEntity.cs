@@ -17,9 +17,12 @@ namespace EasyPOS.Entities
         public String ManualORNumber { get; set; }
         public String CustomerCode { get; set; }
         public String Customer { get; set; }
+        public Decimal ChangeAmount { get; set; }
+        public Boolean IsCancelled { get; set; }
         public String SalesNumber { get; set; }
         public Decimal Amount { get; set; }
         public Int32 PayTypeId { get; set; }
+        public String PayTypeCode { get; set; }
         public String PayType { get; set; }
         public String CheckNumber { get; set; }
         public String CheckDate { get; set; }
