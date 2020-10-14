@@ -131,7 +131,7 @@ namespace EasyPOS.Controllers
                                   Remarks = d.Remarks,
                                   PreparedByUserName = d.MstUser.UserName,
                                   IsCancelled = d.IsCancelled,
-                                  Amount = d.IsCancelled == true ? 0 : d.Amount,
+                                  Amount = d.Amount,
                                   EntryDateTime = d.EntryDateTime.ToShortTimeString()
                               };
 
@@ -156,9 +156,12 @@ namespace EasyPOS.Controllers
                                       CollectionNumber = d.TrnCollection.CollectionNumber,
                                       CustomerCode = d.TrnCollection.MstCustomer.CustomerCode,
                                       Customer = d.TrnCollection.MstCustomer.Customer,
+                                      ChangeAmount = d.TrnCollection.ChangeAmount,
+                                      IsCancelled = d.TrnCollection.IsCancelled,
                                       SalesNumber = d.TrnCollection.TrnSale.SalesNumber,
+                                      PayTypeCode = d.MstPayType.PayTypeCode,
                                       PayType = d.MstPayType.PayType,
-                                      Amount = d.TrnCollection.IsCancelled == true ? 0 : d.MstPayType.PayTypeCode.Equals("CASH") ? d.Amount - d.TrnCollection.ChangeAmount : d.Amount,
+                                      Amount = d.Amount,
                                       CheckNumber = d.CheckNumber,
                                       CheckDate = d.CheckDate.ToString(),
                                       CheckBank = d.CheckBank,

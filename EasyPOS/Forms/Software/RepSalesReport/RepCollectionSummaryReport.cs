@@ -59,11 +59,11 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                               ColumnRemarks = d.Remarks,
                               ColumnPreparedBy = d.PreparedByUserName,
                               ColumnIsCancelled = d.IsCancelled,
-                              ColumnAmount = d.Amount.ToString("#,##0.00"),
+                              ColumnAmount = d.IsCancelled == true ? "0" : d.Amount.ToString("#,##0.00"),
                               ColumnEntryDateTime = d.EntryDateTime
                           };
 
-                totalAmount = collectionList.Sum(d => d.Amount);
+                totalAmount = collectionList.Where(d => d.IsCancelled == false).Sum(d => d.Amount);
 
                 textBoxTotalAmount.Text = totalAmount.ToString("#,##0.00");
 
@@ -213,7 +213,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     DateTime endDate = dateEnd;
 
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Terminal", "Collection Date", "Collection Number", "Customer Code", "Customer", "Sales Number", "Remarks",  "PreparedBy",  "Cancelled", "Amount"};
+                    String[] header = { "Terminal", "Collection Date", "Collection Number", "Customer Code", "Customer", "Sales Number", "Remarks", "PreparedBy", "Cancelled", "Amount" };
                     csv.AppendLine(String.Join(",", header));
 
                     if (collectionList.Any())

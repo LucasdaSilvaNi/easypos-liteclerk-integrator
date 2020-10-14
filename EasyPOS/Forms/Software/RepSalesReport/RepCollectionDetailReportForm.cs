@@ -47,7 +47,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             Controllers.RepSalesReportController repSalesReportController = new Controllers.RepSalesReportController();
 
             var collectionDetailList = repSalesReportController.CollectionDetailReport(startDate, endDate, terminalId);
-            if (collectionDetailList.OrderByDescending(d => d.Id).Any())
+            if (collectionDetailList.Any())
             {
                 Decimal totalAmount = 0;
                 var row = from d in collectionDetailList
@@ -60,7 +60,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                               ColumnCustomer = d.Customer,
                               ColumnSalesNumber = d.SalesNumber,
                               ColumnPayType = d.PayType,
-                              ColumnAmount = d.Amount.ToString("#,##0.00"),
+                              ColumnAmount = d.IsCancelled == true ? "0" : d.PayTypeCode.Equals("CASH") ? (d.Amount - d.ChangeAmount).ToString("#,##0.00") : d.Amount.ToString("#,##0.00"),
                               ColumnCheckNumber = d.CheckNumber,
                               ColumnCheckDate = d.CheckDate,
                               ColumnCheckBank = d.CheckBank,
@@ -68,7 +68,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                               ColumnPhoto = Directory.Exists(facepayImagePath) == true ? File.Exists(facepayImagePath + "\\" + d.CollectionNumber + ".jpeg") == true ? Image.FromFile(facepayImagePath + "\\" + d.CollectionNumber + ".jpeg") : null : null
                           };
 
-                totalAmount = collectionDetailList.Sum(d => d.Amount);
+                totalAmount = collectionDetailList.Sum(d => d.IsCancelled == true ? 0 : d.PayTypeCode.Equals("CASH") ? d.Amount - d.ChangeAmount : d.Amount);
 
                 textBoxTotalAmount.Text = totalAmount.ToString("#,##0.00");
 
