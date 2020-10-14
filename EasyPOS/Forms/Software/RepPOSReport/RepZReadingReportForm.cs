@@ -42,9 +42,16 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             repPOSReportForm = POSReportForm;
             filterTerminalId = terminalId;
             filterDate = date;
-
-            printDocumentZReadingReport.DefaultPageSettings.PaperSize = new PaperSize("Z Reading Report", 255, 1000);
-            ZReadingDataSource();
+            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+            {
+                printDocumentZReadingReport.DefaultPageSettings.PaperSize = new PaperSize("Z Reading Report", 255, 1000);
+                ZReadingDataSource();
+            }
+            else
+            {
+                printDocumentZReadingReport.DefaultPageSettings.PaperSize = new PaperSize("Z Reading Report", 270, 1000);
+                ZReadingDataSource();
+            }
         }
 
         private void buttonPrint_Click(object sender, EventArgs e)
@@ -326,8 +333,18 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             StringFormat drawFormatLeft = new StringFormat { Alignment = StringAlignment.Near };
             StringFormat drawFormatRight = new StringFormat { Alignment = StringAlignment.Far };
 
-            float x = 5, y = 5;
-            float width = 245.0F, height = 0F;
+            float x, y;
+            float width, height;
+            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+            {
+                x = 5; y = 5;
+                width = 245.0F; height = 0F;
+            }
+            else
+            {
+                x = 5; y = 5;
+                width = 260.0F; height = 0F;
+            }
 
             // ==============
             // Tools Settings
@@ -357,8 +374,15 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             // Company Address
             // ===============
             String companyAddress = systemCurrent.Address;
+
+            float adjuctHeight = 1;
+            if (companyAddress.Length > 43)
+            {
+                adjuctHeight = 2;
+            }
+
             graphics.DrawString(companyAddress, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
+            y += (graphics.MeasureString(companyAddress, fontArial8Regular).Height * adjuctHeight);
 
             // ==========
             // TIN Number

@@ -21,8 +21,17 @@ namespace EasyPOS.Forms.Software.TrnPOS
             InitializeComponent();
             trnSalesId = salesId;
 
-            printDocumentReturnReport.DefaultPageSettings.PaperSize = new PaperSize("Return Report", 255, 1000);
-            printDocumentReturnReport.Print();
+            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+            {
+                printDocumentReturnReport.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 255, 1000);
+                printDocumentReturnReport.Print();
+
+            }
+            else
+            {
+                printDocumentReturnReport.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 270, 1000);
+                printDocumentReturnReport.Print();
+            }
         }
 
         private void printDocumentReturnReport_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
@@ -48,10 +57,20 @@ namespace EasyPOS.Forms.Software.TrnPOS
             StringFormat drawFormatCenter = new StringFormat { Alignment = StringAlignment.Center };
             StringFormat drawFormatLeft = new StringFormat { Alignment = StringAlignment.Near };
             StringFormat drawFormatRight = new StringFormat { Alignment = StringAlignment.Far };
-
-            float x = 5, y = 5;
-            float width = 245.0F, height = 0F;
-
+           
+            float x, y;
+            float width, height;
+            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+            {
+                x = 5; y = 5;
+                width = 245.0F; height = 0F;
+            }
+            else
+            {
+                x = 5; y = 5;
+                width = 260.0F; height = 0F;
+            }
+            
             // ==============
             // Tools Settings
             // ==============
@@ -79,9 +98,17 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // ===============
             // Company Address
             // ===============
+
             String companyAddress = systemCurrent.Address;
+
+            float adjuctHeight = 1;
+            if (companyAddress.Length > 43)
+            {
+                adjuctHeight = 2;
+            }
+
             graphics.DrawString(companyAddress, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
+            y += (graphics.MeasureString(companyAddress, fontArial8Regular).Height* adjuctHeight);
 
             // ==========
             // TIN Number
@@ -216,7 +243,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                 Size = new Size(150, ((int)graphics.MeasureString(itemData, fontArial8Regular, 150, StringFormat.GenericTypographic).Height))
                             };
                             graphics.DrawString(itemData, fontArial8Regular, Brushes.Black, itemDataRectangle, drawFormatLeft);
-                            graphics.DrawString(itemAmountData, fontArial8Regular, drawBrush, new RectangleF(x, y, 245.0F, height), drawFormatRight);
+                            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+                            {
+                                graphics.DrawString(itemAmountData, fontArial8Regular, drawBrush, new RectangleF(x, y, 245.0F, height), drawFormatRight);
+                            }
+                            else
+                            {
+                                graphics.DrawString(itemAmountData, fontArial8Regular, drawBrush, new RectangleF(x, y, 255.0F, height), drawFormatRight);
+                            }
                             y += itemDataRectangle.Size.Height + 3.0F;
                         }
                     }
@@ -285,8 +319,17 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 y += graphics.MeasureString(salesInvoiceFooter, fontArial8Regular).Height;
             }
 
-            String space = "\n\n\n\n\n\n\n\n\n.";
-            graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+            {
+                String space = "\n\n\n\n\n\n\n\n\n\n.";
+                graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            }
+            else
+            {
+                String space = "\n\n\n.";
+                graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            }
+                
         }
     }
 }

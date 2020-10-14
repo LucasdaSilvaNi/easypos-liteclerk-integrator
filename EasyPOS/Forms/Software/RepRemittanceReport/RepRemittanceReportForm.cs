@@ -51,8 +51,16 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             filterUserId = userId;
             filterDisbursementId = disbursementId;
 
-            printDocumentRemittanceReport.DefaultPageSettings.PaperSize = new PaperSize("Remittance Report", 255, 1000);
-            RemittanceReportDataSource();
+            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+            {
+                printDocumentRemittanceReport.DefaultPageSettings.PaperSize = new PaperSize("Remittance Report", 255, 1000);
+                RemittanceReportDataSource();
+            }
+            else
+            {
+                printDocumentRemittanceReport.DefaultPageSettings.PaperSize = new PaperSize("Remittance Report", 270, 1000);
+                RemittanceReportDataSource();
+            }
         }
 
         private void buttonPrint_Click(object sender, EventArgs e)
@@ -295,8 +303,18 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             StringFormat drawFormatLeft = new StringFormat { Alignment = StringAlignment.Near };
             StringFormat drawFormatRight = new StringFormat { Alignment = StringAlignment.Far };
 
-            float x = 5, y = 5;
-            float width = 245.0F, height = 0F;
+            float x, y;
+            float width, height;
+            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+            {
+                x = 5; y = 5;
+                width = 245.0F; height = 0F;
+            }
+            else
+            {
+                x = 5; y = 5;
+                width = 260.0F; height = 0F;
+            }
 
             // ==============
             // Tools Settings
@@ -326,8 +344,15 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // Company Address
             // ===============
             String companyAddress = systemCurrent.Address;
+
+            float adjuctHeight = 1;
+            if (companyAddress.Length > 43)
+            {
+                adjuctHeight = 2;
+            }
+
             graphics.DrawString(companyAddress, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
+            y += (graphics.MeasureString(companyAddress, fontArial8Regular).Height * adjuctHeight);
 
             // =======================
             // Remittance Report Title

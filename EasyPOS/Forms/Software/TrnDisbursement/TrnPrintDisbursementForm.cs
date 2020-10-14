@@ -21,9 +21,16 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             InitializeComponent();
 
             trnDisbursementId = disbursementId;
-
-            printDocumentOfficialReceipt.DefaultPageSettings.PaperSize = new PaperSize("Disbursement Report", 255, 1000);
-            printDocumentOfficialReceipt.Print();
+            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+            {
+                printDocumentOfficialReceipt.DefaultPageSettings.PaperSize = new PaperSize("Disbursement Report", 255, 1000);
+                printDocumentOfficialReceipt.Print();
+            }
+            else
+            {
+                printDocumentOfficialReceipt.DefaultPageSettings.PaperSize = new PaperSize("Disbursement Report", 270, 1000);
+                printDocumentOfficialReceipt.Print();
+            }
         }
 
         private void printDocumentOfficialReceipt_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
@@ -54,8 +61,18 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             StringFormat drawFormatLeft = new StringFormat { Alignment = StringAlignment.Near };
             StringFormat drawFormatRight = new StringFormat { Alignment = StringAlignment.Far };
 
-            float x = 5, y = 5;
-            float width = 245.0F, height = 0F;
+            float x, y;
+            float width, height;
+            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+            {
+                x = 5; y = 5;
+                width = 245.0F; height = 0F;
+            }
+            else
+            {
+                x = 5; y = 5;
+                width = 260.0F; height = 0F;
+            }
 
             // ==============
             // Tools Settings

@@ -43,5 +43,6 @@
   "AllowNegativeInventory": true,
   "IsLoginDate": true,
   "EnableEasyShopIntegration": false,
-  "PromptLoginSales": true
+  "PromptLoginSales": true,
+  "PrinterType": "Dot Matrix Printer"
 }

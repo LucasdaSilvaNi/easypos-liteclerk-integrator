@@ -30,9 +30,16 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             filterTerminalId = terminalId;
             filterDate = date;
             filterSalesAgentId = salesAgentId;
-
-            printDocumentXReadingReport.DefaultPageSettings.PaperSize = new PaperSize("X Reading Report", 255, 1000);
-            XReadingDataSource();
+            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+            {
+                printDocumentXReadingReport.DefaultPageSettings.PaperSize = new PaperSize("X Reading Report", 255, 1000);
+                XReadingDataSource();
+            }
+            else
+            {
+                printDocumentXReadingReport.DefaultPageSettings.PaperSize = new PaperSize("X Reading Report", 270, 1000);
+                XReadingDataSource();
+            }
 
             sysUserRights = new Modules.SysUserRightsModule("RepPOS (X Reading)");
             if (sysUserRights.GetUserRights() == null)
@@ -306,8 +313,18 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             StringFormat drawFormatLeft = new StringFormat { Alignment = StringAlignment.Near };
             StringFormat drawFormatRight = new StringFormat { Alignment = StringAlignment.Far };
 
-            float x = 5, y = 5;
-            float width = 245.0F, height = 0F;
+            float x, y;
+            float width, height;
+            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+            {
+                x = 5; y = 5;
+                width = 245.0F; height = 0F;
+            }
+            else
+            {
+                x = 5; y = 5;
+                width = 260.0F; height = 0F;
+            }
 
             // ==============
             // Tools Settings
@@ -337,8 +354,15 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             // Company Address
             // ===============
             String companyAddress = systemCurrent.Address;
+           
+            float adjuctHeight = 1;
+            if (companyAddress.Length > 43)
+            {
+                adjuctHeight = 2;
+            }
+
             graphics.DrawString(companyAddress, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
+            y += (graphics.MeasureString(companyAddress, fontArial8Regular).Height * adjuctHeight);
 
             // ======================
             // X Reading Report Title

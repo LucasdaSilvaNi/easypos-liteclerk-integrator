@@ -138,6 +138,10 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.checkBoxEnableEasyShopIntegration = new System.Windows.Forms.CheckBox();
             this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.comboBoxPrinterType = new System.Windows.Forms.ComboBox();
+            this.label45 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -155,6 +159,8 @@
             this.panel3.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -269,6 +275,7 @@
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -1476,6 +1483,50 @@
             this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
             this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
             // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.panel9);
+            this.tabPage7.Location = new System.Drawing.Point(4, 28);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(1101, 478);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "Printer Settings";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel9.Controls.Add(this.comboBoxPrinterType);
+            this.panel9.Controls.Add(this.label45);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(3, 3);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1095, 472);
+            this.panel9.TabIndex = 35;
+            // 
+            // comboBoxPrinterType
+            // 
+            this.comboBoxPrinterType.Enabled = false;
+            this.comboBoxPrinterType.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxPrinterType.FormattingEnabled = true;
+            this.comboBoxPrinterType.Location = new System.Drawing.Point(138, 7);
+            this.comboBoxPrinterType.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxPrinterType.Name = "comboBoxPrinterType";
+            this.comboBoxPrinterType.Size = new System.Drawing.Size(199, 27);
+            this.comboBoxPrinterType.TabIndex = 5;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Location = new System.Drawing.Point(49, 10);
+            this.label45.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(85, 19);
+            this.label45.TabIndex = 79;
+            this.label45.Text = "Printer Type:";
+            // 
             // SysSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1513,6 +1564,9 @@
             this.tabPage6.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.tabPage7.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1628,5 +1682,9 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.CheckBox checkBoxEnableEasyShopIntegration;
         private System.Windows.Forms.CheckBox checkBoxPromptLoginSales;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.ComboBox comboBoxPrinterType;
+        private System.Windows.Forms.Label label45;
     }
 }

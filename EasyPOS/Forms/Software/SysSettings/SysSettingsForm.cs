@@ -403,6 +403,14 @@ namespace EasyPOS.Forms.Software.SysSettings
 
             comboBoxPOSType.DataSource = posTypes;
 
+            List<String> printerType = new List<String>
+            {
+                "Dot Matrix Printer",
+                "Thermal Printer"
+            };
+
+            comboBoxPrinterType.DataSource = printerType;
+
             getSysCurrentDetail();
         }
 
@@ -452,6 +460,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxAllowNegativeInventory.Checked = Convert.ToBoolean(sysCurrent.AllowNegativeInventory);
                 checkBoxEnableEasyShopIntegration.Checked = Convert.ToBoolean(sysCurrent.EnableEasyShopIntegration);
                 checkBoxPromptLoginSales.Checked = Convert.ToBoolean(sysCurrent.PromptLoginSales);
+                comboBoxPrinterType.Text = sysCurrent.PrinterType;
             }
         }
 
@@ -515,7 +524,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 AllowNegativeInventory = checkBoxAllowNegativeInventory.Checked,
                 IsLoginDate = currentSettings.IsLoginDate,
                 EnableEasyShopIntegration = checkBoxEnableEasyShopIntegration.Checked,
-                PromptLoginSales = checkBoxPromptLoginSales.Checked
+                PromptLoginSales = checkBoxPromptLoginSales.Checked,
+                PrinterType = comboBoxPrinterType.Text
             };
 
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);
@@ -560,6 +570,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxAllowNegativeInventory.Enabled = false;
                 checkBoxEnableEasyShopIntegration.Enabled = false;
                 checkBoxPromptLoginSales.Enabled = false;
+                comboBoxPrinterType.Enabled = false;
             }
             else
             {
@@ -629,6 +640,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxAllowNegativeInventory.Enabled = true;
                 checkBoxEnableEasyShopIntegration.Enabled = true;
                 checkBoxPromptLoginSales.Enabled = true;
+                comboBoxPrinterType.Enabled = true;
 
 
 
