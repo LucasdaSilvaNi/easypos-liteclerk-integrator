@@ -178,11 +178,17 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 {
                     repZReadingReportEntity.TotalPWDDiscount = PWDDiscounts.Sum(d => d.DiscountAmount * d.Quantity);
                 }
+                var salesReturnLines = from d in db.TrnSalesLines
+                                       where d.TrnSale.TerminalId == filterTerminalId
+                                       && d.TrnSale.SalesDate == filterDate
+                                       && d.TrnSale.IsLocked == true
+                                       && d.TrnSale.IsCancelled == false
+                                       && d.Quantity < 0
+                                       select d;
 
-                var salesReturns = salesLines.Where(d => d.Quantity < 0);
-                if (salesReturns.Any())
+                if (salesReturnLines.Any())
                 {
-                    repZReadingReportEntity.TotalSalesReturn = salesReturns.Sum(d => d.MstTax.Code == "EXEMPTVAT" ? d.MstTax.Rate > 0 ? (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) :
+                    repZReadingReportEntity.TotalSalesReturn = salesReturnLines.Sum(d => d.MstTax.Code == "EXEMPTVAT" ? d.MstTax.Rate > 0 ? (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) :
                                                               (d.Quantity * d.Price) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) :
                                                               (d.Quantity * d.Price) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)));
                 }
