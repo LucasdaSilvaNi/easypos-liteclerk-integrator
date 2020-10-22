@@ -74,6 +74,10 @@ namespace EasyPOS.Forms.Software
         public TabPage tabPageSettings = new TabPage { Name = "tabPageSettings", Text = "Settings" };
         public TabPage tabPageKitchenDisplay = new TabPage { Name = "tabPageKitchenDisplay", Text = "Kitchen Display" };
         public TabPage tabPageDispatchStation = new TabPage { Name = "tabPageDispatchStation", Text = "Dispatch Station" };
+        public TabPage tabPagePurchaseOrderList = new TabPage { Name = "tabPagePurchaseOrderList", Text = "Purchase Order List" };
+        public TabPage tabPagePurchaseOrderDetail = new TabPage { Name = "tabPagePurchaseOrderDetail", Text = "Purchase Order Detail" };
+
+
 
         public MstItem.MstItemListForm mstItemListForm = null;
         public MstItem.MstItemDetailForm mstItemDetailForm = null;
@@ -108,6 +112,8 @@ namespace EasyPOS.Forms.Software
         public SysSettings.SysSettingsForm sysSettingsForm = null;
         public SysKitchenDisplay.SysKitchenDisplayForm sysKitchenDisplayForm = null;
         public SysDispatchStation.SysDispatchStationForm sysDispatchStationForm = null;
+        public TrnPurchaseOrder.TrnPurchaseOrderListForm trnPurchaseOrderListForm = null;
+        public TrnPurchaseOrder.TrnPurchaseOrderDetailForm trnPurchaseOrderDetailForm = null;
 
         public void InitializeDefaultForm()
         {
@@ -916,6 +922,53 @@ namespace EasyPOS.Forms.Software
             }
         }
 
+        public void AddTabPagePurchaseOrderList()
+        {
+            tabPagePurchaseOrderList.Controls.Remove(trnPurchaseOrderListForm);
+
+            trnPurchaseOrderListForm = new TrnPurchaseOrder.TrnPurchaseOrderListForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPagePurchaseOrderList.Controls.Add(trnPurchaseOrderListForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPagePurchaseOrderList) == true)
+            {
+                tabControlSoftware.SelectTab(tabPagePurchaseOrderList);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPagePurchaseOrderList);
+                tabControlSoftware.SelectTab(tabPagePurchaseOrderList);
+            }
+        }
+        public void AddTabPagePurchaseOrderDetail(TrnPurchaseOrder.TrnPurchaseOrderListForm purchaseOrderListForm, Entities.TrnPurchaseOrderEntity purchaseOrderEntity)
+        {
+            tabPagePurchaseOrderDetail.Controls.Remove(trnPurchaseOrderDetailForm);
+
+            trnPurchaseOrderDetailForm = new TrnPurchaseOrder.TrnPurchaseOrderDetailForm(this, purchaseOrderListForm, purchaseOrderEntity)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPagePurchaseOrderDetail.Controls.Add(trnPurchaseOrderDetailForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPagePurchaseOrderDetail) == true)
+            {
+                tabControlSoftware.SelectTab(tabPagePurchaseOrderDetail);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPagePurchaseOrderDetail);
+                tabControlSoftware.SelectTab(tabPagePurchaseOrderDetail);
+            }
+        }
+
         public void RemoveTabPage()
         {
             tabControlSoftware.TabPages.Remove(tabControlSoftware.SelectedTab);
@@ -1061,6 +1114,11 @@ namespace EasyPOS.Forms.Software
         private void toolStripMenuItemDispatchStation_Click(object sender, EventArgs e)
         {
             AddTabPageDispatchStation();
+        }
+
+        private void purchaseOrderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTabPagePurchaseOrderList();
         }
     }
 }

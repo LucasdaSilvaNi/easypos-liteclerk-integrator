@@ -34,6 +34,15 @@
             this.buttonStockInListPageListPrevious = new System.Windows.Forms.Button();
             this.buttonStockInListPageListNext = new System.Windows.Forms.Button();
             this.dataGridViewStockInList = new System.Windows.Forms.DataGridView();
+            this.ColumnStockInListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnStockInListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnStockInListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockInListStockInDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockInListStockInNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockInListManualStockInNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockInListSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockInListRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockInListIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.buttonStockInListPageListLast = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBoxStockInListPageNumber = new System.Windows.Forms.TextBox();
@@ -44,15 +53,6 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ColumnStockInListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnStockInListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnStockInListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockInListStockInDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockInListStockInNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockInListManualStockInNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockInListSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockInListRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockInListIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStockInList)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -138,16 +138,90 @@
             this.ColumnStockInListSupplier,
             this.ColumnStockInListRemarks,
             this.ColumnStockInListIsLocked});
-            this.dataGridViewStockInList.Location = new System.Drawing.Point(10, 34);
+            this.dataGridViewStockInList.Location = new System.Drawing.Point(10, 32);
             this.dataGridViewStockInList.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewStockInList.MultiSelect = false;
             this.dataGridViewStockInList.Name = "dataGridViewStockInList";
             this.dataGridViewStockInList.ReadOnly = true;
             this.dataGridViewStockInList.RowTemplate.Height = 24;
             this.dataGridViewStockInList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewStockInList.Size = new System.Drawing.Size(1077, 429);
+            this.dataGridViewStockInList.Size = new System.Drawing.Size(1077, 432);
             this.dataGridViewStockInList.TabIndex = 20;
             this.dataGridViewStockInList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStockInList_CellClick);
+            // 
+            // ColumnStockInListButtonEdit
+            // 
+            this.ColumnStockInListButtonEdit.DataPropertyName = "ColumnStockInListButtonEdit";
+            this.ColumnStockInListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnStockInListButtonEdit.HeaderText = "";
+            this.ColumnStockInListButtonEdit.Name = "ColumnStockInListButtonEdit";
+            this.ColumnStockInListButtonEdit.ReadOnly = true;
+            this.ColumnStockInListButtonEdit.Width = 70;
+            // 
+            // ColumnStockInListButtonDelete
+            // 
+            this.ColumnStockInListButtonDelete.DataPropertyName = "ColumnStockInListButtonDelete";
+            this.ColumnStockInListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnStockInListButtonDelete.HeaderText = "";
+            this.ColumnStockInListButtonDelete.Name = "ColumnStockInListButtonDelete";
+            this.ColumnStockInListButtonDelete.ReadOnly = true;
+            this.ColumnStockInListButtonDelete.Width = 70;
+            // 
+            // ColumnStockInListId
+            // 
+            this.ColumnStockInListId.DataPropertyName = "ColumnStockInListId";
+            this.ColumnStockInListId.HeaderText = "Id";
+            this.ColumnStockInListId.Name = "ColumnStockInListId";
+            this.ColumnStockInListId.ReadOnly = true;
+            this.ColumnStockInListId.Visible = false;
+            // 
+            // ColumnStockInListStockInDate
+            // 
+            this.ColumnStockInListStockInDate.DataPropertyName = "ColumnStockInListStockInDate";
+            this.ColumnStockInListStockInDate.HeaderText = "Stock-In Date";
+            this.ColumnStockInListStockInDate.Name = "ColumnStockInListStockInDate";
+            this.ColumnStockInListStockInDate.ReadOnly = true;
+            this.ColumnStockInListStockInDate.Visible = false;
+            this.ColumnStockInListStockInDate.Width = 95;
+            // 
+            // ColumnStockInListStockInNumber
+            // 
+            this.ColumnStockInListStockInNumber.DataPropertyName = "ColumnStockInListStockInNumber";
+            this.ColumnStockInListStockInNumber.HeaderText = "Stock-In No.";
+            this.ColumnStockInListStockInNumber.Name = "ColumnStockInListStockInNumber";
+            this.ColumnStockInListStockInNumber.ReadOnly = true;
+            // 
+            // ColumnStockInListManualStockInNumber
+            // 
+            this.ColumnStockInListManualStockInNumber.DataPropertyName = "ColumnStockInListManualStockInNumber";
+            this.ColumnStockInListManualStockInNumber.HeaderText = "Manual Stock-In No.";
+            this.ColumnStockInListManualStockInNumber.Name = "ColumnStockInListManualStockInNumber";
+            this.ColumnStockInListManualStockInNumber.ReadOnly = true;
+            this.ColumnStockInListManualStockInNumber.Width = 150;
+            // 
+            // ColumnStockInListSupplier
+            // 
+            this.ColumnStockInListSupplier.DataPropertyName = "ColumnStockInListSupplier";
+            this.ColumnStockInListSupplier.HeaderText = "Supplier";
+            this.ColumnStockInListSupplier.Name = "ColumnStockInListSupplier";
+            this.ColumnStockInListSupplier.ReadOnly = true;
+            this.ColumnStockInListSupplier.Width = 200;
+            // 
+            // ColumnStockInListRemarks
+            // 
+            this.ColumnStockInListRemarks.DataPropertyName = "ColumnStockInListRemarks";
+            this.ColumnStockInListRemarks.HeaderText = "Remarks";
+            this.ColumnStockInListRemarks.Name = "ColumnStockInListRemarks";
+            this.ColumnStockInListRemarks.ReadOnly = true;
+            this.ColumnStockInListRemarks.Width = 300;
+            // 
+            // ColumnStockInListIsLocked
+            // 
+            this.ColumnStockInListIsLocked.DataPropertyName = "ColumnStockInListIsLocked";
+            this.ColumnStockInListIsLocked.HeaderText = "L";
+            this.ColumnStockInListIsLocked.Name = "ColumnStockInListIsLocked";
+            this.ColumnStockInListIsLocked.ReadOnly = true;
+            this.ColumnStockInListIsLocked.Width = 35;
             // 
             // buttonStockInListPageListLast
             // 
@@ -289,80 +363,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1096, 50);
             this.panel1.TabIndex = 6;
-            // 
-            // ColumnStockInListButtonEdit
-            // 
-            this.ColumnStockInListButtonEdit.DataPropertyName = "ColumnStockInListButtonEdit";
-            this.ColumnStockInListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnStockInListButtonEdit.HeaderText = "";
-            this.ColumnStockInListButtonEdit.Name = "ColumnStockInListButtonEdit";
-            this.ColumnStockInListButtonEdit.ReadOnly = true;
-            this.ColumnStockInListButtonEdit.Width = 70;
-            // 
-            // ColumnStockInListButtonDelete
-            // 
-            this.ColumnStockInListButtonDelete.DataPropertyName = "ColumnStockInListButtonDelete";
-            this.ColumnStockInListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnStockInListButtonDelete.HeaderText = "";
-            this.ColumnStockInListButtonDelete.Name = "ColumnStockInListButtonDelete";
-            this.ColumnStockInListButtonDelete.ReadOnly = true;
-            this.ColumnStockInListButtonDelete.Width = 70;
-            // 
-            // ColumnStockInListId
-            // 
-            this.ColumnStockInListId.DataPropertyName = "ColumnStockInListId";
-            this.ColumnStockInListId.HeaderText = "Id";
-            this.ColumnStockInListId.Name = "ColumnStockInListId";
-            this.ColumnStockInListId.ReadOnly = true;
-            this.ColumnStockInListId.Visible = false;
-            // 
-            // ColumnStockInListStockInDate
-            // 
-            this.ColumnStockInListStockInDate.DataPropertyName = "ColumnStockInListStockInDate";
-            this.ColumnStockInListStockInDate.HeaderText = "Stock-In Date";
-            this.ColumnStockInListStockInDate.Name = "ColumnStockInListStockInDate";
-            this.ColumnStockInListStockInDate.ReadOnly = true;
-            this.ColumnStockInListStockInDate.Visible = false;
-            this.ColumnStockInListStockInDate.Width = 95;
-            // 
-            // ColumnStockInListStockInNumber
-            // 
-            this.ColumnStockInListStockInNumber.DataPropertyName = "ColumnStockInListStockInNumber";
-            this.ColumnStockInListStockInNumber.HeaderText = "Stock-In No.";
-            this.ColumnStockInListStockInNumber.Name = "ColumnStockInListStockInNumber";
-            this.ColumnStockInListStockInNumber.ReadOnly = true;
-            // 
-            // ColumnStockInListManualStockInNumber
-            // 
-            this.ColumnStockInListManualStockInNumber.DataPropertyName = "ColumnStockInListManualStockInNumber";
-            this.ColumnStockInListManualStockInNumber.HeaderText = "Manual Stock-In No.";
-            this.ColumnStockInListManualStockInNumber.Name = "ColumnStockInListManualStockInNumber";
-            this.ColumnStockInListManualStockInNumber.ReadOnly = true;
-            this.ColumnStockInListManualStockInNumber.Width = 150;
-            // 
-            // ColumnStockInListSupplier
-            // 
-            this.ColumnStockInListSupplier.DataPropertyName = "ColumnStockInListSupplier";
-            this.ColumnStockInListSupplier.HeaderText = "Supplier";
-            this.ColumnStockInListSupplier.Name = "ColumnStockInListSupplier";
-            this.ColumnStockInListSupplier.ReadOnly = true;
-            this.ColumnStockInListSupplier.Width = 200;
-            // 
-            // ColumnStockInListRemarks
-            // 
-            this.ColumnStockInListRemarks.DataPropertyName = "ColumnStockInListRemarks";
-            this.ColumnStockInListRemarks.HeaderText = "Remarks";
-            this.ColumnStockInListRemarks.Name = "ColumnStockInListRemarks";
-            this.ColumnStockInListRemarks.ReadOnly = true;
-            this.ColumnStockInListRemarks.Width = 300;
-            // 
-            // ColumnStockInListIsLocked
-            // 
-            this.ColumnStockInListIsLocked.DataPropertyName = "ColumnStockInListIsLocked";
-            this.ColumnStockInListIsLocked.HeaderText = "L";
-            this.ColumnStockInListIsLocked.Name = "ColumnStockInListIsLocked";
-            this.ColumnStockInListIsLocked.ReadOnly = true;
-            this.ColumnStockInListIsLocked.Width = 35;
             // 
             // TrnStockInListForm
             // 

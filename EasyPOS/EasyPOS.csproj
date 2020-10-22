@@ -229,6 +229,8 @@
     <Compile Include="Controllers\SysCurrentController.cs" />
     <Compile Include="Controllers\SysSoftwareController.cs" />
     <Compile Include="Controllers\TrnDisbursementController.cs" />
+    <Compile Include="Controllers\TrnPurchaseOrderController.cs" />
+    <Compile Include="Controllers\TrnPurchaseOrderLineController.cs" />
     <Compile Include="Controllers\TrnSalesController.cs" />
     <Compile Include="Controllers\TrnSalesLineController.cs" />
     <Compile Include="Controllers\TrnStockCountController.cs" />
@@ -283,6 +285,9 @@
     <Compile Include="Entities\DgvMstItemGroupListEntity.cs" />
     <Compile Include="Entities\DgvMstItemComponentListEntity.cs" />
     <Compile Include="Entities\DgvSysDispatchStationSalesListEntity.cs" />
+    <Compile Include="Entities\DgvTrnPurchaseOrderLineListEntity.cs" />
+    <Compile Include="Entities\DgvTrnPurchaseOrderListEntity.cs" />
+    <Compile Include="Entities\DgvTrnPurchaseOrderSearchItemListEntity.cs" />
     <Compile Include="Entities\DgvTrnSalesItemPriceListEntity.cs" />
     <Compile Include="Entities\DgvRepSalesReportCollectionDetailReportListEntity.cs" />
     <Compile Include="Entities\DgvRepSalesReportCollectionSummaryReportEntityList.cs" />
@@ -373,6 +378,8 @@
     <Compile Include="Entities\TrnCollectionEntity.cs" />
     <Compile Include="Entities\TrnCollectionLineEntity.cs" />
     <Compile Include="Entities\TrnDisbursementEntity.cs" />
+    <Compile Include="Entities\TrnPurchaseOrderEntity.cs" />
+    <Compile Include="Entities\TrnPurchaseOrderLineEntity.cs" />
     <Compile Include="Entities\TrnSalesEntity.cs" />
     <Compile Include="Entities\TrnSalesLineEntity.cs" />
     <Compile Include="Entities\TrnStockCountEntity.cs" />
@@ -910,6 +917,36 @@
     <Compile Include="Forms\Software\TrnPOS\TrnPOSTenderExchangeInformation.Designer.cs">
       <DependentUpon>TrnPOSTenderExchangeInformation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnPurchaseOrder\TrnPurchaseOrderDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPurchaseOrder\TrnPurchaseOrderDetailForm.Designer.cs">
+      <DependentUpon>TrnPurchaseOrderDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPurchaseOrder\TrnPurchaseOrderDetailReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPurchaseOrder\TrnPurchaseOrderDetailReportForm.Designer.cs">
+      <DependentUpon>TrnPurchaseOrderDetailReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPurchaseOrder\TrnPurchaseOrderLineItemDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPurchaseOrder\TrnPurchaseOrderLineItemDetailForm.Designer.cs">
+      <DependentUpon>TrnPurchaseOrderLineItemDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPurchaseOrder\TrnPurchaseOrderListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPurchaseOrder\TrnPurchaseOrderListForm.Designer.cs">
+      <DependentUpon>TrnPurchaseOrderListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPurchaseOrder\TrnPurchaseOrderSearchItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPurchaseOrder\TrnPurchaseOrderSearchItemForm.Designer.cs">
+      <DependentUpon>TrnPurchaseOrderSearchItemForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnStockCount\TrnStockCountDetailReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1286,6 +1323,21 @@
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTenderExchangeInformation.resx">
       <DependentUpon>TrnPOSTenderExchangeInformation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPurchaseOrder\TrnPurchaseOrderDetailForm.resx">
+      <DependentUpon>TrnPurchaseOrderDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPurchaseOrder\TrnPurchaseOrderDetailReportForm.resx">
+      <DependentUpon>TrnPurchaseOrderDetailReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPurchaseOrder\TrnPurchaseOrderLineItemDetailForm.resx">
+      <DependentUpon>TrnPurchaseOrderLineItemDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPurchaseOrder\TrnPurchaseOrderListForm.resx">
+      <DependentUpon>TrnPurchaseOrderListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPurchaseOrder\TrnPurchaseOrderSearchItemForm.resx">
+      <DependentUpon>TrnPurchaseOrderSearchItemForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnStockCount\TrnStockCountDetailReportForm.resx">
       <DependentUpon>TrnStockCountDetailReportForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1439,6 +1491,7 @@
     <Content Include="Resources\Images\Icons\License.png" />
     <Content Include="Resources\Images\Icons\POS Touch.png" />
     <Content Include="Resources\Images\Icons\POS.png" />
+    <Content Include="Resources\Images\Icons\PurchaseOrder.png" />
     <Content Include="Resources\Images\Icons\Reports.png" />
     <Content Include="Resources\Images\Icons\Dispatch.png" />
     <Content Include="Resources\Images\Icons\Settings.png" />
