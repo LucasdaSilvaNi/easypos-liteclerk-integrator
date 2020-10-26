@@ -192,6 +192,7 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
                                             if (currentItem.Any())
                                             {
                                                 Int32 discountId = 0;
+                                                Decimal discountRate = 0;
 
                                                 var discount = from d in posdb.MstDiscounts
                                                                where d.Discount == item.Discount.ManualCode
@@ -206,11 +207,13 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
                                                     if (variableDiscount.Any())
                                                     {
                                                         discountId = variableDiscount.FirstOrDefault().Id;
+                                                        discountRate = variableDiscount.FirstOrDefault().DiscountRate;
                                                     }
                                                 }
                                                 else
                                                 {
                                                     discountId = discount.FirstOrDefault().Id;
+                                                    discountRate = discount.FirstOrDefault().DiscountRate;
                                                 }
 
                                                 var tax = from d in posdb.MstTaxes
@@ -231,8 +234,8 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
                                                         ItemId = currentItem.FirstOrDefault().Id,
                                                         UnitId = currentItem.FirstOrDefault().UnitId,
                                                         Price = item.Price,
-                                                        DiscountId = discount.FirstOrDefault().Id,
-                                                        DiscountRate = discount.FirstOrDefault().DiscountRate,
+                                                        DiscountId = discountId,
+                                                        DiscountRate = discountRate,
                                                         DiscountAmount = item.DiscountAmount,
                                                         NetPrice = item.NetPrice,
                                                         Quantity = item.Quantity,
