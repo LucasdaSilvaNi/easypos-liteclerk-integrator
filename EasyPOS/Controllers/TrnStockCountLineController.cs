@@ -25,6 +25,7 @@ namespace EasyPOS.Controllers
                                       Id = d.Id,
                                       StockCountId = d.StockCountId,
                                       ItemId = d.ItemId,
+                                      ItemBarcode = d.MstItem.BarCode,
                                       ItemDescription = d.MstItem.ItemDescription,
                                       UnitId = d.UnitId,
                                       Unit = d.MstUnit.Unit,
@@ -329,6 +330,80 @@ namespace EasyPOS.Controllers
                 Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                 return new String[] { "", "1" };
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+        // ====================
+        // Import Stock-Count Line
+        // ====================
+        public String[] ImportStockCountLine (List<Entities.TrnStockCountLineEntity> objStockCountLines)
+        {
+            try
+            {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+                if(objStockCountLines.Any())
+                {
+                    foreach(var objStockCountLine in objStockCountLines)
+                    {
+                        var stockCount = from d in db.TrnStockCounts
+                                         where d.Id == objStockCountLine.StockCountId
+                                         select d;
+
+                        if (stockCount.Any() == false)
+                        {
+                            return new String[] { "Stock-Count transaction not found.", "0" };
+                        }
+
+                        var item = from d in db.MstItems
+                                   where d.BarCode == objStockCountLine.ItemBarcode
+                                   && d.IsInventory == true
+                                   && d.IsLocked == true
+                                   select d;
+
+                        if (item.Any() == false)
+                        {
+                            return new String[] { "Item not found.", "0" };
+                        }
+
+                        Data.TrnStockCountLine newStockCountLine = new Data.TrnStockCountLine
+                        {
+                            StockCountId = objStockCountLine.StockCountId,
+                            ItemId = item.FirstOrDefault().Id,
+                            UnitId = item.FirstOrDefault().UnitId,
+                            Quantity = objStockCountLine.Quantity,
+                            Cost = objStockCountLine.Cost,
+                            Amount = objStockCountLine.Amount
+                        };
+
+                        db.TrnStockCountLines.InsertOnSubmit(newStockCountLine);
+                        db.SubmitChanges();
+
+                        String newObject = Modules.SysAuditTrailModule.GetObjectString(newStockCountLine);
+
+                        Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                        {
+                            UserId = currentUserLogin.FirstOrDefault().Id,
+                            AuditDate = DateTime.Now,
+                            TableInformation = "TrnStockCountLine",
+                            RecordInformation = "",
+                            FormInformation = newObject,
+                            ActionInformation = "AddStockCountLine"
+                        };
+                        Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+                    }
+                    return new String[] { "", "1" };
+                }
+                else
+                {
+                    return new String[] { "Data source is empty.", "0" };
+                }
             }
             catch (Exception e)
             {

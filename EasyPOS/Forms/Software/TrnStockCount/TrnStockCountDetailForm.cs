@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -257,6 +260,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
                                 ColumnStockCountLineListId = d.Id,
                                 ColumnStockCountLineListStockCountId = d.StockCountId,
                                 ColumnStockCountLineListItemId = d.ItemId,
+                                ColumnStockCountLineListItemBarcode = d.ItemBarcode,
                                 ColumnStockCountLineListItemDescription = d.ItemDescription,
                                 ColumnStockCountLineListUnitId = d.UnitId,
                                 ColumnStockCountLineListUnit = d.Unit,
@@ -507,6 +511,71 @@ namespace EasyPOS.Forms.Software.TrnStockCount
                     MessageBox.Show(postStockCount[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void buttonExport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = folderBrowserDialogGenerateCSV.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    StringBuilder csv = new StringBuilder();
+                    String[] header = {
+                        "Barcode",
+                        "Item Description",
+                        "Unit",
+                        "Quantity",
+                        "Cost",
+                        "Amount",
+                    };
+
+                    csv.AppendLine(String.Join(",", header));
+
+                    if (stockOutLineData.Any())
+                    {
+                        foreach (var stockOutLine in stockOutLineData)
+                        {
+                            String[] data = {
+                              stockOutLine.ColumnStockCountLineListItemBarcode,
+                              stockOutLine.ColumnStockCountLineListItemDescription,
+                              stockOutLine.ColumnStockCountLineListUnit,
+                              stockOutLine.ColumnStockCountLineListQuantity,
+                              stockOutLine.ColumnStockCountLineListCost,
+                              stockOutLine.ColumnStockCountLineListAmount 
+                            };
+
+                            csv.AppendLine(String.Join(",", data));
+                        }
+                    }
+
+                    String executingUser = WindowsIdentity.GetCurrent().Name;
+
+                    DirectorySecurity securityRules = new DirectorySecurity();
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.Read, AccessControlType.Allow));
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
+
+                    DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\StockCountLine_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+
+                    MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dataGridViewStockCountLineList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void buttonImport_Click(object sender, EventArgs e)
+        {
+            TrnStockCountLineDetailImportForm stockCountDetailImportForm = new TrnStockCountLineDetailImportForm(this);
+            stockCountDetailImportForm.ShowDialog();
         }
     }
 }

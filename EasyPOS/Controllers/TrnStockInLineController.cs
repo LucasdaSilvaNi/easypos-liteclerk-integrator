@@ -25,6 +25,7 @@ namespace EasyPOS.Controllers
                                    Id = d.Id,
                                    StockInId = d.StockInId,
                                    ItemId = d.ItemId,
+                                   ItemBarcode = d.MstItem.BarCode,
                                    ItemDescription = d.MstItem.ItemDescription,
                                    UnitId = d.UnitId,
                                    Unit = d.MstUnit.Unit,
@@ -47,7 +48,7 @@ namespace EasyPOS.Controllers
         public List<Entities.MstItemEntity> ListSearchItem(String filter)
         {
             var items = from d in db.MstItems
-                        where d.IsInventory == true 
+                        where d.IsInventory == true
                         && (d.BarCode.Contains(filter)
                         || d.ItemDescription.Contains(filter)
                         || d.GenericName.Contains(filter))
@@ -383,5 +384,103 @@ namespace EasyPOS.Controllers
                 return new String[] { e.Message, "0" };
             }
         }
+
+        // ====================
+        // Import Stock-In Line
+        // ====================
+        public String[] ImportStockInLine(List<Entities.TrnStockInLineEntity> objStockInLines)
+        {
+            try
+            {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
+                if (objStockInLines.Any())
+                {
+                    foreach (var objStockInLine in objStockInLines)
+                    {
+                        var stockIn = from d in db.TrnStockIns
+                                      where d.Id == objStockInLine.StockInId
+                                      select d;
+
+                        if (stockIn.Any() == false)
+                        {
+                            return new String[] { "Stock-In transaction not found.", "0" };
+                        }
+
+                        var item = from d in db.MstItems
+                                   where d.BarCode == objStockInLine.ItemBarcode
+                                   && d.IsInventory == true
+                                   && d.IsLocked == true
+                                   select d;
+
+                        if (item.Any() == false)
+                        {
+                            return new String[] { "Item not found.", "0" };
+                        }
+
+                        var account = from d in db.MstAccounts
+                                      where d.Account.Equals("Inventory")
+                                      && d.IsLocked == true
+                                      select d;
+
+                        if (account.Any() == false)
+                        {
+                            return new String[] { "Account not found.", "0" };
+                        }
+
+                        DateTime? expiryDate = null;
+                        if (String.IsNullOrEmpty(objStockInLine.ExpiryDate) == false)
+                        {
+                            expiryDate = Convert.ToDateTime(objStockInLine.ExpiryDate);
+                        }
+
+                        Data.TrnStockInLine newStockInLine = new Data.TrnStockInLine
+                        {
+                            StockInId = objStockInLine.StockInId,
+                            ItemId = item.FirstOrDefault().Id,
+                            UnitId = item.FirstOrDefault().UnitId,
+                            Quantity = objStockInLine.Quantity,
+                            Cost = objStockInLine.Cost,
+                            Amount = objStockInLine.Amount,
+                            ExpiryDate = expiryDate,
+                            LotNumber = "NA",
+                            AssetAccountId = account.FirstOrDefault().Id,
+                            Price = objStockInLine.Price
+                        };
+
+                        db.TrnStockInLines.InsertOnSubmit(newStockInLine);
+                        db.SubmitChanges();
+
+                        String newObject = Modules.SysAuditTrailModule.GetObjectString(newStockInLine);
+
+                        Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                        {
+                            UserId = currentUserLogin.FirstOrDefault().Id,
+                            AuditDate = DateTime.Now,
+                            TableInformation = "TrnStockInLine",
+                            RecordInformation = "",
+                            FormInformation = newObject,
+                            ActionInformation = "AddStockInLine"
+                        };
+                        Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+                    }
+
+                    return new String[] { "", "1" };
+                }
+                else
+                {
+                    return new String[] { "Data source is empty.", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
     }
 }

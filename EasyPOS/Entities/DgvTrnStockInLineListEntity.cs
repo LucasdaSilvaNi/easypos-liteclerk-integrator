@@ -13,6 +13,7 @@ namespace EasyPOS.Entities
         public Int32 ColumnStockInLineListStockInId { get; set; }
         public Int32 ColumnStockInLineListItemId { get; set; }
         public Int32 ColumnStockInLineListId { get; set; }
+        public String ColumnStockInLineListItemBarcode { get; set; }
         public String ColumnStockInLineListItemDescription { get; set; }
         public Int32 ColumnStockInLineListUnitId { get; set; }
         public String ColumnStockInLineListUnit { get; set; }

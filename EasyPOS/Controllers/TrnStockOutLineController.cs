@@ -25,6 +25,7 @@ namespace EasyPOS.Controllers
                                     Id = d.Id,
                                     StockOutId = d.StockOutId,
                                     ItemId = d.ItemId,
+                                    ItemBarcode = d.MstItem.BarCode,
                                     ItemDescription = d.MstItem.ItemDescription,
                                     UnitId = d.UnitId,
                                     Unit = d.MstUnit.Unit,
@@ -369,6 +370,101 @@ namespace EasyPOS.Controllers
                 Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
 
                 return new String[] { "", "1" };
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
+        // ==================
+        // Import Stock-Out Line
+        // ==================
+        public String[] ImportStockOutLine (List<Entities.TrnStockOutLineEntity> objStockOutLines)
+        {
+            try
+            {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
+                if(objStockOutLines.Any())
+                {
+                    foreach(var objStockOutLine in objStockOutLines)
+                    {
+                        var stockOut = from d in db.TrnStockOuts
+                                       where d.Id == objStockOutLine.StockOutId
+                                       select d;
+
+                        if (stockOut.Any() == false)
+                        {
+                            return new String[] { "Stock-Out transaction not found.", "0" };
+                        }
+
+                        var item = from d in db.MstItems
+                                   where d.BarCode == objStockOutLine.ItemBarcode
+                                   && d.IsInventory == true
+                                   && d.IsLocked == true
+                                   select d;
+
+                        if (item.Any() == false)
+                        {
+                            return new String[] { "Item not found.", "0" };
+                        }
+
+                        if (Modules.SysCurrentModule.GetCurrentSettings().AllowNegativeInventory == false)
+                        {
+                            if (item.FirstOrDefault().IsInventory == true)
+                            {
+                                if (item.FirstOrDefault().OnhandQuantity <= 0)
+                                {
+                                    return new String[] { "Item " + item.FirstOrDefault().ItemDescription + " has negative inventory", "0" };
+                                }
+                                else
+                                {
+                                    if (item.FirstOrDefault().OnhandQuantity < objStockOutLine.Quantity)
+                                    {
+                                        return new String[] { "Item " + item.FirstOrDefault().ItemDescription + " has negative inventory", "0" };
+                                    }
+                                }
+                            }
+                        }
+
+                        Data.TrnStockOutLine newStockOutLine = new Data.TrnStockOutLine
+                        {
+                            StockOutId = objStockOutLine.StockOutId,
+                            ItemId = item.FirstOrDefault().Id,
+                            UnitId = item.FirstOrDefault().UnitId,
+                            Quantity = objStockOutLine.Quantity,
+                            Cost = objStockOutLine.Cost,
+                            Amount = objStockOutLine.Amount,
+                            AssetAccountId = item.FirstOrDefault().AssetAccountId
+                        };
+
+                        db.TrnStockOutLines.InsertOnSubmit(newStockOutLine);
+                        db.SubmitChanges();
+
+                        String newObject = Modules.SysAuditTrailModule.GetObjectString(newStockOutLine);
+
+                        Entities.SysAuditTrailEntity newAuditTrail = new Entities.SysAuditTrailEntity()
+                        {
+                            UserId = currentUserLogin.FirstOrDefault().Id,
+                            AuditDate = DateTime.Now,
+                            TableInformation = "TrnStockOutLine",
+                            RecordInformation = "",
+                            FormInformation = newObject,
+                            ActionInformation = "AddStockOutLine"
+                        };
+                        Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail);
+                    }
+                    return new String[] { "", "1" };
+                }
+                else
+                {
+                    return new String[] { "Data source is empty.", "0" };
+                }
             }
             catch (Exception e)
             {
