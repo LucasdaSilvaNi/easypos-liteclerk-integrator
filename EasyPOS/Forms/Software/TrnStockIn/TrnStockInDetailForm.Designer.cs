@@ -75,11 +75,18 @@
             this.buttonExport = new System.Windows.Forms.Button();
             this.buttonImport = new System.Windows.Forms.Button();
             this.dataGridViewStockInLineList = new System.Windows.Forms.DataGridView();
+            this.textBoxBarcode = new System.Windows.Forms.TextBox();
+            this.buttonBarcode = new System.Windows.Forms.Button();
+            this.buttonSearchItem = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.openFileDialogImportCSV = new System.Windows.Forms.OpenFileDialog();
+            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
             this.ColumnStockInLineListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnStockInLineListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnStockInLineListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockInLineListStockInId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockInLineListItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockInLineListItemBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockInLineListItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockInLineListUnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockInLineListUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,12 +98,6 @@
             this.ColumnStockInLineListAssetAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockInLineListAssetAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockInLineListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBoxBarcode = new System.Windows.Forms.TextBox();
-            this.buttonBarcode = new System.Windows.Forms.Button();
-            this.buttonSearchItem = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -636,6 +637,7 @@
             this.buttonImport.TabStop = false;
             this.buttonImport.Text = "Import";
             this.buttonImport.UseVisualStyleBackColor = false;
+            this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
             // 
             // dataGridViewStockInLineList
             // 
@@ -661,6 +663,7 @@
             this.ColumnStockInLineListId,
             this.ColumnStockInLineListStockInId,
             this.ColumnStockInLineListItemId,
+            this.ColumnStockInLineListItemBarcode,
             this.ColumnStockInLineListItemDescription,
             this.ColumnStockInLineListUnitId,
             this.ColumnStockInLineListUnit,
@@ -686,6 +689,72 @@
             this.dataGridViewStockInLineList.TabIndex = 1;
             this.dataGridViewStockInLineList.TabStop = false;
             this.dataGridViewStockInLineList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStockInLineList_CellClick);
+            // 
+            // textBoxBarcode
+            // 
+            this.textBoxBarcode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxBarcode.Font = new System.Drawing.Font("Segoe UI Semibold", 13.3F, System.Drawing.FontStyle.Bold);
+            this.textBoxBarcode.Location = new System.Drawing.Point(181, 6);
+            this.textBoxBarcode.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxBarcode.Name = "textBoxBarcode";
+            this.textBoxBarcode.Size = new System.Drawing.Size(608, 31);
+            this.textBoxBarcode.TabIndex = 11;
+            this.textBoxBarcode.TabStop = false;
+            this.textBoxBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarcode_KeyDown);
+            // 
+            // buttonBarcode
+            // 
+            this.buttonBarcode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonBarcode.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
+            this.buttonBarcode.FlatAppearance.BorderSize = 0;
+            this.buttonBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBarcode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.buttonBarcode.ForeColor = System.Drawing.Color.White;
+            this.buttonBarcode.Location = new System.Drawing.Point(10, 5);
+            this.buttonBarcode.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonBarcode.Name = "buttonBarcode";
+            this.buttonBarcode.Size = new System.Drawing.Size(167, 32);
+            this.buttonBarcode.TabIndex = 9;
+            this.buttonBarcode.TabStop = false;
+            this.buttonBarcode.Text = "Barcode";
+            this.buttonBarcode.UseVisualStyleBackColor = false;
+            this.buttonBarcode.Click += new System.EventHandler(this.buttonBarcode_Click);
+            // 
+            // buttonSearchItem
+            // 
+            this.buttonSearchItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSearchItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonSearchItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
+            this.buttonSearchItem.FlatAppearance.BorderSize = 0;
+            this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
+            this.buttonSearchItem.Location = new System.Drawing.Point(941, 5);
+            this.buttonSearchItem.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSearchItem.Name = "buttonSearchItem";
+            this.buttonSearchItem.Size = new System.Drawing.Size(146, 32);
+            this.buttonSearchItem.TabIndex = 8;
+            this.buttonSearchItem.TabStop = false;
+            this.buttonSearchItem.Text = "Search Item";
+            this.buttonSearchItem.UseVisualStyleBackColor = false;
+            this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel5);
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 50);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1096, 510);
+            this.panel2.TabIndex = 8;
+            // 
+            // openFileDialogImportCSV
+            // 
+            this.openFileDialogImportCSV.FileName = "openFileDialogImport";
             // 
             // ColumnStockInLineListButtonEdit
             // 
@@ -728,6 +797,14 @@
             this.ColumnStockInLineListItemId.Name = "ColumnStockInLineListItemId";
             this.ColumnStockInLineListItemId.ReadOnly = true;
             this.ColumnStockInLineListItemId.Visible = false;
+            // 
+            // ColumnStockInLineListItemBarcode
+            // 
+            this.ColumnStockInLineListItemBarcode.DataPropertyName = "ColumnStockInLineListItemBarcode";
+            this.ColumnStockInLineListItemBarcode.HeaderText = "Item Barcode";
+            this.ColumnStockInLineListItemBarcode.Name = "ColumnStockInLineListItemBarcode";
+            this.ColumnStockInLineListItemBarcode.ReadOnly = true;
+            this.ColumnStockInLineListItemBarcode.Visible = false;
             // 
             // ColumnStockInLineListItemDescription
             // 
@@ -819,72 +896,6 @@
             this.ColumnStockInLineListPrice.Name = "ColumnStockInLineListPrice";
             this.ColumnStockInLineListPrice.ReadOnly = true;
             // 
-            // textBoxBarcode
-            // 
-            this.textBoxBarcode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxBarcode.Font = new System.Drawing.Font("Segoe UI Semibold", 13.3F, System.Drawing.FontStyle.Bold);
-            this.textBoxBarcode.Location = new System.Drawing.Point(181, 6);
-            this.textBoxBarcode.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxBarcode.Name = "textBoxBarcode";
-            this.textBoxBarcode.Size = new System.Drawing.Size(608, 31);
-            this.textBoxBarcode.TabIndex = 11;
-            this.textBoxBarcode.TabStop = false;
-            this.textBoxBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarcode_KeyDown);
-            // 
-            // buttonBarcode
-            // 
-            this.buttonBarcode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonBarcode.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
-            this.buttonBarcode.FlatAppearance.BorderSize = 0;
-            this.buttonBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBarcode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.buttonBarcode.ForeColor = System.Drawing.Color.White;
-            this.buttonBarcode.Location = new System.Drawing.Point(10, 5);
-            this.buttonBarcode.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonBarcode.Name = "buttonBarcode";
-            this.buttonBarcode.Size = new System.Drawing.Size(167, 32);
-            this.buttonBarcode.TabIndex = 9;
-            this.buttonBarcode.TabStop = false;
-            this.buttonBarcode.Text = "Barcode";
-            this.buttonBarcode.UseVisualStyleBackColor = false;
-            this.buttonBarcode.Click += new System.EventHandler(this.buttonBarcode_Click);
-            // 
-            // buttonSearchItem
-            // 
-            this.buttonSearchItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSearchItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonSearchItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
-            this.buttonSearchItem.FlatAppearance.BorderSize = 0;
-            this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
-            this.buttonSearchItem.Location = new System.Drawing.Point(941, 5);
-            this.buttonSearchItem.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonSearchItem.Name = "buttonSearchItem";
-            this.buttonSearchItem.Size = new System.Drawing.Size(146, 32);
-            this.buttonSearchItem.TabIndex = 8;
-            this.buttonSearchItem.TabStop = false;
-            this.buttonSearchItem.Text = "Search Item";
-            this.buttonSearchItem.UseVisualStyleBackColor = false;
-            this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.panel5);
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 50);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1096, 510);
-            this.panel2.TabIndex = 8;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialogImport";
-            // 
             // TrnStockInDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -954,13 +965,20 @@
         private System.Windows.Forms.TextBox textBoxBarcode;
         private System.Windows.Forms.Button buttonBarcode;
         private System.Windows.Forms.Button buttonSearchItem;
-        private System.Windows.Forms.DataGridView dataGridViewStockInLineList;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxManualStockInNumber;
+        private System.Windows.Forms.Button buttonExport;
+        private System.Windows.Forms.Button buttonImport;
+        private System.Windows.Forms.OpenFileDialog openFileDialogImportCSV;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
+        private System.Windows.Forms.DataGridView dataGridViewStockInLineList;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnStockInLineListButtonEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnStockInLineListButtonDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockInLineListId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockInLineListStockInId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockInLineListItemId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockInLineListItemBarcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockInLineListItemDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockInLineListUnitId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockInLineListUnit;
@@ -972,11 +990,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockInLineListAssetAccountId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockInLineListAssetAccount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockInLineListPrice;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxManualStockInNumber;
-        private System.Windows.Forms.Button buttonExport;
-        private System.Windows.Forms.Button buttonImport;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
     }
 }

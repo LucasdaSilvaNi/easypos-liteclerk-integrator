@@ -215,19 +215,12 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                 {
                     StringBuilder csv = new StringBuilder();
                     String[] header = {
-                        "Id",
-                        "StockInId",
-                        "ItemId",
+                        "Barcode",
                         "Item Description",
-                        "UnitId",
                         "Unit",
                         "Quantity",
                         "Cost",
                         "Amount",
-                        "ExpiryDate",
-                        "LotNumber",
-                        "AssetAccountId",
-                        "AssetAccount",
                         "Price"
                     };
 
@@ -238,19 +231,12 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                         foreach (var stockInLine in stockInLineData)
                         {
                             String[] data = {
-                                stockInLine.ColumnStockInLineListId.ToString() ,
-                              stockInLine.ColumnStockInLineListStockInId.ToString(),
-                              stockInLine.ColumnStockInLineListItemId.ToString() ,
-                              stockInLine.ColumnStockInLineListItemDescription ,
-                              stockInLine.ColumnStockInLineListUnitId.ToString() ,
-                              stockInLine.ColumnStockInLineListUnit ,
+                              stockInLine.ColumnStockInLineListItemBarcode,
+                              stockInLine.ColumnStockInLineListItemDescription,
+                              stockInLine.ColumnStockInLineListUnit,
                               stockInLine.ColumnStockInLineListQuantity,
-                              stockInLine.ColumnStockInLineListCost ,
-                              stockInLine.ColumnStockInLineListAmount ,
-                              stockInLine.ColumnStockInLineListExpiryDate,
-                              stockInLine.ColumnStockInLineListLotNumber,
-                              stockInLine.ColumnStockInLineListAssetAccountId.ToString(),
-                              stockInLine.ColumnStockInLineListAssetAccount,
+                              stockInLine.ColumnStockInLineListCost,
+                              stockInLine.ColumnStockInLineListAmount,
                               stockInLine.ColumnStockInLineListPrice.ToString(),
 
                             };
@@ -351,6 +337,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                                 ColumnStockInLineListId = d.Id,
                                 ColumnStockInLineListStockInId = d.StockInId,
                                 ColumnStockInLineListItemId = d.ItemId,
+                                ColumnStockInLineListItemBarcode = d.ItemBarcode,
                                 ColumnStockInLineListItemDescription = d.ItemDescription,
                                 ColumnStockInLineListUnitId = d.UnitId,
                                 ColumnStockInLineListUnit = d.Unit,
@@ -594,6 +581,10 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             }
         }
 
-       
+        private void buttonImport_Click(object sender, EventArgs e)
+        {
+            TrnStockInLineDetailImportForm stockInDetailImportForm = new TrnStockInLineDetailImportForm(this);
+            stockInDetailImportForm.ShowDialog();
+        }
     }
 }
