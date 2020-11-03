@@ -43,20 +43,9 @@
             this.buttonPrint = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.buttonExport = new System.Windows.Forms.Button();
+            this.buttonImport = new System.Windows.Forms.Button();
             this.dataGridViewStockOutLineList = new System.Windows.Forms.DataGridView();
-            this.ColumnStockOutLineListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnStockOutLineListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnStockOutLineListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockOutLineListStockOutId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockOutLineListItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockOutLineListItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockOutLineListUnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockOutLineListUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockOutLineListQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockOutLineListCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockOutLineListAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockOutLineListAssetAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockOutLineListAssetAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxBarcode = new System.Windows.Forms.TextBox();
             this.buttonBarcode = new System.Windows.Forms.Button();
             this.buttonSearchItem = new System.Windows.Forms.Button();
@@ -83,9 +72,21 @@
             this.comboBoxAccount = new System.Windows.Forms.ComboBox();
             this.dateTimePickerStockOutDate = new System.Windows.Forms.DateTimePicker();
             this.textBoxStockOutNumber = new System.Windows.Forms.TextBox();
-            this.buttonImport = new System.Windows.Forms.Button();
-            this.buttonExport = new System.Windows.Forms.Button();
             this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
+            this.ColumnStockOutLineListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnStockOutLineListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnStockOutLineListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockOutLineListStockOutId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockOutLineListItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockOutLineListItemBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockOutLineListItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockOutLineListUnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockOutLineListUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockOutLineListQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockOutLineListCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockOutLineListAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockOutLineListAssetAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockOutLineListAssetAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -237,6 +238,44 @@
             this.panel5.Size = new System.Drawing.Size(1096, 273);
             this.panel5.TabIndex = 28;
             // 
+            // buttonExport
+            // 
+            this.buttonExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonExport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonExport.FlatAppearance.BorderSize = 0;
+            this.buttonExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExport.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExport.ForeColor = System.Drawing.Color.White;
+            this.buttonExport.Location = new System.Drawing.Point(867, 5);
+            this.buttonExport.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonExport.Name = "buttonExport";
+            this.buttonExport.Size = new System.Drawing.Size(70, 32);
+            this.buttonExport.TabIndex = 26;
+            this.buttonExport.TabStop = false;
+            this.buttonExport.Text = "Export";
+            this.buttonExport.UseVisualStyleBackColor = false;
+            this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
+            // 
+            // buttonImport
+            // 
+            this.buttonImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonImport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonImport.FlatAppearance.BorderSize = 0;
+            this.buttonImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonImport.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonImport.ForeColor = System.Drawing.Color.White;
+            this.buttonImport.Location = new System.Drawing.Point(793, 5);
+            this.buttonImport.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonImport.Name = "buttonImport";
+            this.buttonImport.Size = new System.Drawing.Size(70, 32);
+            this.buttonImport.TabIndex = 25;
+            this.buttonImport.TabStop = false;
+            this.buttonImport.Text = "Import";
+            this.buttonImport.UseVisualStyleBackColor = false;
+            this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
+            // 
             // dataGridViewStockOutLineList
             // 
             this.dataGridViewStockOutLineList.AllowUserToAddRows = false;
@@ -261,6 +300,7 @@
             this.ColumnStockOutLineListId,
             this.ColumnStockOutLineListStockOutId,
             this.ColumnStockOutLineListItemId,
+            this.ColumnStockOutLineListItemBarcode,
             this.ColumnStockOutLineListItemDescription,
             this.ColumnStockOutLineListUnitId,
             this.ColumnStockOutLineListUnit,
@@ -283,114 +323,6 @@
             this.dataGridViewStockOutLineList.TabIndex = 2;
             this.dataGridViewStockOutLineList.TabStop = false;
             this.dataGridViewStockOutLineList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStockOutLineList_CellClick);
-            // 
-            // ColumnStockOutLineListButtonEdit
-            // 
-            this.ColumnStockOutLineListButtonEdit.DataPropertyName = "ColumnStockOutLineListButtonEdit";
-            this.ColumnStockOutLineListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnStockOutLineListButtonEdit.HeaderText = "";
-            this.ColumnStockOutLineListButtonEdit.Name = "ColumnStockOutLineListButtonEdit";
-            this.ColumnStockOutLineListButtonEdit.ReadOnly = true;
-            this.ColumnStockOutLineListButtonEdit.Width = 70;
-            // 
-            // ColumnStockOutLineListButtonDelete
-            // 
-            this.ColumnStockOutLineListButtonDelete.DataPropertyName = "ColumnStockOutLineListButtonDelete";
-            this.ColumnStockOutLineListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnStockOutLineListButtonDelete.HeaderText = "";
-            this.ColumnStockOutLineListButtonDelete.Name = "ColumnStockOutLineListButtonDelete";
-            this.ColumnStockOutLineListButtonDelete.ReadOnly = true;
-            this.ColumnStockOutLineListButtonDelete.Width = 70;
-            // 
-            // ColumnStockOutLineListId
-            // 
-            this.ColumnStockOutLineListId.DataPropertyName = "ColumnStockOutLineListId";
-            this.ColumnStockOutLineListId.HeaderText = "Id";
-            this.ColumnStockOutLineListId.Name = "ColumnStockOutLineListId";
-            this.ColumnStockOutLineListId.ReadOnly = true;
-            this.ColumnStockOutLineListId.Visible = false;
-            // 
-            // ColumnStockOutLineListStockOutId
-            // 
-            this.ColumnStockOutLineListStockOutId.DataPropertyName = "ColumnStockOutLineListStockOutId";
-            this.ColumnStockOutLineListStockOutId.HeaderText = "Stock-Out Id";
-            this.ColumnStockOutLineListStockOutId.Name = "ColumnStockOutLineListStockOutId";
-            this.ColumnStockOutLineListStockOutId.ReadOnly = true;
-            this.ColumnStockOutLineListStockOutId.Visible = false;
-            // 
-            // ColumnStockOutLineListItemId
-            // 
-            this.ColumnStockOutLineListItemId.DataPropertyName = "ColumnStockOutLineListItemId";
-            this.ColumnStockOutLineListItemId.HeaderText = "Item Id";
-            this.ColumnStockOutLineListItemId.Name = "ColumnStockOutLineListItemId";
-            this.ColumnStockOutLineListItemId.ReadOnly = true;
-            this.ColumnStockOutLineListItemId.Visible = false;
-            // 
-            // ColumnStockOutLineListItemDescription
-            // 
-            this.ColumnStockOutLineListItemDescription.DataPropertyName = "ColumnStockOutLineListItemDescription";
-            this.ColumnStockOutLineListItemDescription.HeaderText = "Item Description";
-            this.ColumnStockOutLineListItemDescription.Name = "ColumnStockOutLineListItemDescription";
-            this.ColumnStockOutLineListItemDescription.ReadOnly = true;
-            this.ColumnStockOutLineListItemDescription.Width = 200;
-            // 
-            // ColumnStockOutLineListUnitId
-            // 
-            this.ColumnStockOutLineListUnitId.DataPropertyName = "ColumnStockOutLineListUnitId";
-            this.ColumnStockOutLineListUnitId.HeaderText = "Unit Id";
-            this.ColumnStockOutLineListUnitId.Name = "ColumnStockOutLineListUnitId";
-            this.ColumnStockOutLineListUnitId.ReadOnly = true;
-            this.ColumnStockOutLineListUnitId.Visible = false;
-            // 
-            // ColumnStockOutLineListUnit
-            // 
-            this.ColumnStockOutLineListUnit.DataPropertyName = "ColumnStockOutLineListUnit";
-            this.ColumnStockOutLineListUnit.HeaderText = "Unit";
-            this.ColumnStockOutLineListUnit.Name = "ColumnStockOutLineListUnit";
-            this.ColumnStockOutLineListUnit.ReadOnly = true;
-            // 
-            // ColumnStockOutLineListQuantity
-            // 
-            this.ColumnStockOutLineListQuantity.DataPropertyName = "ColumnStockOutLineListQuantity";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnStockOutLineListQuantity.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnStockOutLineListQuantity.HeaderText = "Quantity";
-            this.ColumnStockOutLineListQuantity.Name = "ColumnStockOutLineListQuantity";
-            this.ColumnStockOutLineListQuantity.ReadOnly = true;
-            // 
-            // ColumnStockOutLineListCost
-            // 
-            this.ColumnStockOutLineListCost.DataPropertyName = "ColumnStockOutLineListCost";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnStockOutLineListCost.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnStockOutLineListCost.HeaderText = "Cost";
-            this.ColumnStockOutLineListCost.Name = "ColumnStockOutLineListCost";
-            this.ColumnStockOutLineListCost.ReadOnly = true;
-            // 
-            // ColumnStockOutLineListAmount
-            // 
-            this.ColumnStockOutLineListAmount.DataPropertyName = "ColumnStockOutLineListAmount";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnStockOutLineListAmount.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ColumnStockOutLineListAmount.HeaderText = "Amount";
-            this.ColumnStockOutLineListAmount.Name = "ColumnStockOutLineListAmount";
-            this.ColumnStockOutLineListAmount.ReadOnly = true;
-            // 
-            // ColumnStockOutLineListAssetAccountId
-            // 
-            this.ColumnStockOutLineListAssetAccountId.DataPropertyName = "ColumnStockOutLineListAssetAccountId";
-            this.ColumnStockOutLineListAssetAccountId.HeaderText = "Asset Account Id";
-            this.ColumnStockOutLineListAssetAccountId.Name = "ColumnStockOutLineListAssetAccountId";
-            this.ColumnStockOutLineListAssetAccountId.ReadOnly = true;
-            this.ColumnStockOutLineListAssetAccountId.Visible = false;
-            // 
-            // ColumnStockOutLineListAssetAccount
-            // 
-            this.ColumnStockOutLineListAssetAccount.DataPropertyName = "ColumnStockOutLineListAssetAccount";
-            this.ColumnStockOutLineListAssetAccount.HeaderText = "Asset Account";
-            this.ColumnStockOutLineListAssetAccount.Name = "ColumnStockOutLineListAssetAccount";
-            this.ColumnStockOutLineListAssetAccount.ReadOnly = true;
-            this.ColumnStockOutLineListAssetAccount.Visible = false;
             // 
             // textBoxBarcode
             // 
@@ -734,42 +666,121 @@
             this.textBoxStockOutNumber.Size = new System.Drawing.Size(158, 26);
             this.textBoxStockOutNumber.TabIndex = 0;
             // 
-            // buttonImport
+            // ColumnStockOutLineListButtonEdit
             // 
-            this.buttonImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonImport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonImport.FlatAppearance.BorderSize = 0;
-            this.buttonImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonImport.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonImport.ForeColor = System.Drawing.Color.White;
-            this.buttonImport.Location = new System.Drawing.Point(793, 5);
-            this.buttonImport.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonImport.Name = "buttonImport";
-            this.buttonImport.Size = new System.Drawing.Size(70, 32);
-            this.buttonImport.TabIndex = 25;
-            this.buttonImport.TabStop = false;
-            this.buttonImport.Text = "Import";
-            this.buttonImport.UseVisualStyleBackColor = false;
+            this.ColumnStockOutLineListButtonEdit.DataPropertyName = "ColumnStockOutLineListButtonEdit";
+            this.ColumnStockOutLineListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnStockOutLineListButtonEdit.HeaderText = "";
+            this.ColumnStockOutLineListButtonEdit.Name = "ColumnStockOutLineListButtonEdit";
+            this.ColumnStockOutLineListButtonEdit.ReadOnly = true;
+            this.ColumnStockOutLineListButtonEdit.Width = 70;
             // 
-            // buttonExport
+            // ColumnStockOutLineListButtonDelete
             // 
-            this.buttonExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonExport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonExport.FlatAppearance.BorderSize = 0;
-            this.buttonExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonExport.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonExport.ForeColor = System.Drawing.Color.White;
-            this.buttonExport.Location = new System.Drawing.Point(867, 5);
-            this.buttonExport.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonExport.Name = "buttonExport";
-            this.buttonExport.Size = new System.Drawing.Size(70, 32);
-            this.buttonExport.TabIndex = 26;
-            this.buttonExport.TabStop = false;
-            this.buttonExport.Text = "Export";
-            this.buttonExport.UseVisualStyleBackColor = false;
-            this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
+            this.ColumnStockOutLineListButtonDelete.DataPropertyName = "ColumnStockOutLineListButtonDelete";
+            this.ColumnStockOutLineListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnStockOutLineListButtonDelete.HeaderText = "";
+            this.ColumnStockOutLineListButtonDelete.Name = "ColumnStockOutLineListButtonDelete";
+            this.ColumnStockOutLineListButtonDelete.ReadOnly = true;
+            this.ColumnStockOutLineListButtonDelete.Width = 70;
+            // 
+            // ColumnStockOutLineListId
+            // 
+            this.ColumnStockOutLineListId.DataPropertyName = "ColumnStockOutLineListId";
+            this.ColumnStockOutLineListId.HeaderText = "Id";
+            this.ColumnStockOutLineListId.Name = "ColumnStockOutLineListId";
+            this.ColumnStockOutLineListId.ReadOnly = true;
+            this.ColumnStockOutLineListId.Visible = false;
+            // 
+            // ColumnStockOutLineListStockOutId
+            // 
+            this.ColumnStockOutLineListStockOutId.DataPropertyName = "ColumnStockOutLineListStockOutId";
+            this.ColumnStockOutLineListStockOutId.HeaderText = "Stock-Out Id";
+            this.ColumnStockOutLineListStockOutId.Name = "ColumnStockOutLineListStockOutId";
+            this.ColumnStockOutLineListStockOutId.ReadOnly = true;
+            this.ColumnStockOutLineListStockOutId.Visible = false;
+            // 
+            // ColumnStockOutLineListItemId
+            // 
+            this.ColumnStockOutLineListItemId.DataPropertyName = "ColumnStockOutLineListItemId";
+            this.ColumnStockOutLineListItemId.HeaderText = "Item Id";
+            this.ColumnStockOutLineListItemId.Name = "ColumnStockOutLineListItemId";
+            this.ColumnStockOutLineListItemId.ReadOnly = true;
+            this.ColumnStockOutLineListItemId.Visible = false;
+            // 
+            // ColumnStockOutLineListItemBarcode
+            // 
+            this.ColumnStockOutLineListItemBarcode.DataPropertyName = "ColumnStockOutLineListItemBarcode";
+            this.ColumnStockOutLineListItemBarcode.HeaderText = "Barcode";
+            this.ColumnStockOutLineListItemBarcode.Name = "ColumnStockOutLineListItemBarcode";
+            this.ColumnStockOutLineListItemBarcode.ReadOnly = true;
+            this.ColumnStockOutLineListItemBarcode.Visible = false;
+            // 
+            // ColumnStockOutLineListItemDescription
+            // 
+            this.ColumnStockOutLineListItemDescription.DataPropertyName = "ColumnStockOutLineListItemDescription";
+            this.ColumnStockOutLineListItemDescription.HeaderText = "Item Description";
+            this.ColumnStockOutLineListItemDescription.Name = "ColumnStockOutLineListItemDescription";
+            this.ColumnStockOutLineListItemDescription.ReadOnly = true;
+            this.ColumnStockOutLineListItemDescription.Width = 200;
+            // 
+            // ColumnStockOutLineListUnitId
+            // 
+            this.ColumnStockOutLineListUnitId.DataPropertyName = "ColumnStockOutLineListUnitId";
+            this.ColumnStockOutLineListUnitId.HeaderText = "Unit Id";
+            this.ColumnStockOutLineListUnitId.Name = "ColumnStockOutLineListUnitId";
+            this.ColumnStockOutLineListUnitId.ReadOnly = true;
+            this.ColumnStockOutLineListUnitId.Visible = false;
+            // 
+            // ColumnStockOutLineListUnit
+            // 
+            this.ColumnStockOutLineListUnit.DataPropertyName = "ColumnStockOutLineListUnit";
+            this.ColumnStockOutLineListUnit.HeaderText = "Unit";
+            this.ColumnStockOutLineListUnit.Name = "ColumnStockOutLineListUnit";
+            this.ColumnStockOutLineListUnit.ReadOnly = true;
+            // 
+            // ColumnStockOutLineListQuantity
+            // 
+            this.ColumnStockOutLineListQuantity.DataPropertyName = "ColumnStockOutLineListQuantity";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnStockOutLineListQuantity.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnStockOutLineListQuantity.HeaderText = "Quantity";
+            this.ColumnStockOutLineListQuantity.Name = "ColumnStockOutLineListQuantity";
+            this.ColumnStockOutLineListQuantity.ReadOnly = true;
+            // 
+            // ColumnStockOutLineListCost
+            // 
+            this.ColumnStockOutLineListCost.DataPropertyName = "ColumnStockOutLineListCost";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnStockOutLineListCost.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnStockOutLineListCost.HeaderText = "Cost";
+            this.ColumnStockOutLineListCost.Name = "ColumnStockOutLineListCost";
+            this.ColumnStockOutLineListCost.ReadOnly = true;
+            // 
+            // ColumnStockOutLineListAmount
+            // 
+            this.ColumnStockOutLineListAmount.DataPropertyName = "ColumnStockOutLineListAmount";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnStockOutLineListAmount.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColumnStockOutLineListAmount.HeaderText = "Amount";
+            this.ColumnStockOutLineListAmount.Name = "ColumnStockOutLineListAmount";
+            this.ColumnStockOutLineListAmount.ReadOnly = true;
+            // 
+            // ColumnStockOutLineListAssetAccountId
+            // 
+            this.ColumnStockOutLineListAssetAccountId.DataPropertyName = "ColumnStockOutLineListAssetAccountId";
+            this.ColumnStockOutLineListAssetAccountId.HeaderText = "Asset Account Id";
+            this.ColumnStockOutLineListAssetAccountId.Name = "ColumnStockOutLineListAssetAccountId";
+            this.ColumnStockOutLineListAssetAccountId.ReadOnly = true;
+            this.ColumnStockOutLineListAssetAccountId.Visible = false;
+            // 
+            // ColumnStockOutLineListAssetAccount
+            // 
+            this.ColumnStockOutLineListAssetAccount.DataPropertyName = "ColumnStockOutLineListAssetAccount";
+            this.ColumnStockOutLineListAssetAccount.HeaderText = "Asset Account";
+            this.ColumnStockOutLineListAssetAccount.Name = "ColumnStockOutLineListAssetAccount";
+            this.ColumnStockOutLineListAssetAccount.ReadOnly = true;
+            this.ColumnStockOutLineListAssetAccount.Visible = false;
             // 
             // TrnStockOutDetailForm
             // 
@@ -835,11 +846,17 @@
         private System.Windows.Forms.Button buttonBarcode;
         private System.Windows.Forms.Button buttonSearchItem;
         private System.Windows.Forms.DataGridView dataGridViewStockOutLineList;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxManualStockOutNumber;
+        private System.Windows.Forms.Button buttonImport;
+        private System.Windows.Forms.Button buttonExport;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnStockOutLineListButtonEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnStockOutLineListButtonDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutLineListId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutLineListStockOutId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutLineListItemId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutLineListItemBarcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutLineListItemDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutLineListUnitId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutLineListUnit;
@@ -848,10 +865,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutLineListAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutLineListAssetAccountId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutLineListAssetAccount;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxManualStockOutNumber;
-        private System.Windows.Forms.Button buttonImport;
-        private System.Windows.Forms.Button buttonExport;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
     }
 }

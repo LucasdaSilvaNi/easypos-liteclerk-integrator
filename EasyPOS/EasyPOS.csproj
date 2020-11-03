@@ -1025,6 +1025,12 @@
     <Compile Include="Forms\Software\TrnStockOut\TrnStockOutDetailReportForm.Designer.cs">
       <DependentUpon>TrnStockOutDetailReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnStockOut\TrnStockOutLineDetailImportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnStockOut\TrnStockOutLineDetailImportForm.Designer.cs">
+      <DependentUpon>TrnStockOutLineDetailImportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnStockOut\TrnStockOutLineItemDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1385,6 +1391,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnStockOut\TrnStockOutDetailReportForm.resx">
       <DependentUpon>TrnStockOutDetailReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnStockOut\TrnStockOutLineDetailImportForm.resx">
+      <DependentUpon>TrnStockOutLineDetailImportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnStockOut\TrnStockOutLineItemDetailForm.resx">
       <DependentUpon>TrnStockOutLineItemDetailForm.cs</DependentUpon>

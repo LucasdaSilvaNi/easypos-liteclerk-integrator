@@ -279,6 +279,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                                 ColumnStockOutLineListButtonDelete = "Delete",
                                 ColumnStockOutLineListId = d.Id,
                                 ColumnStockOutLineListStockOutId = d.StockOutId,
+                                ColumnStockOutLineListItemBarcode = d.ItemBarcode,
                                 ColumnStockOutLineListItemId = d.ItemId,
                                 ColumnStockOutLineListItemDescription = d.ItemDescription,
                                 ColumnStockOutLineListUnitId = d.UnitId,
@@ -481,7 +482,6 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                         var itemDescription = detailItem.ItemDescription;
                         var unitId = detailItem.UnitId;
                         var unit = detailItem.Unit;
-                        var price = detailItem.Price;
 
                         Entities.TrnStockOutLineEntity trnStockOutLineEntity = new Entities.TrnStockOutLineEntity()
                         {
@@ -520,17 +520,12 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                 {
                     StringBuilder csv = new StringBuilder();
                     String[] header = {
-                        "Id",
-                        "StockInId",
-                        "ItemId",
+                        "Barcode",
                         "Item Description",
-                        "UnitId",
                         "Unit",
                         "Quantity",
                         "Cost",
-                        "Amount",
-                        "AssetAccountId",
-                        "AssetAccount",
+                        "Amount"
                     };
 
                     csv.AppendLine(String.Join(",", header));
@@ -540,17 +535,12 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                         foreach (var stockOutLine in stockOutLineData)
                         {
                             String[] data = {
-                              stockOutLine.ColumnStockOutLineListId .ToString(),
-                              stockOutLine.ColumnStockOutLineListStockOutId .ToString() ,
-                              stockOutLine.ColumnStockOutLineListItemId .ToString() ,
-                              stockOutLine.ColumnStockOutLineListItemDescription  ,
-                              stockOutLine.ColumnStockOutLineListUnitId .ToString() ,
-                              stockOutLine.ColumnStockOutLineListUnit  ,
-                              stockOutLine.ColumnStockOutLineListQuantity ,
-                              stockOutLine.ColumnStockOutLineListCost  ,
-                              stockOutLine.ColumnStockOutLineListAmount  ,
-                              stockOutLine.ColumnStockOutLineListAssetAccountId.ToString() ,
-                              stockOutLine.ColumnStockOutLineListAssetAccount.ToString() ,
+                              stockOutLine.ColumnStockOutLineListItemBarcode,
+                              stockOutLine.ColumnStockOutLineListItemDescription,
+                              stockOutLine.ColumnStockOutLineListUnit,
+                              stockOutLine.ColumnStockOutLineListQuantity,
+                              stockOutLine.ColumnStockOutLineListCost,
+                              stockOutLine.ColumnStockOutLineListAmount,
                             };
 
                             csv.AppendLine(String.Join(",", data));
@@ -573,6 +563,12 @@ namespace EasyPOS.Forms.Software.TrnStockOut
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void buttonImport_Click(object sender, EventArgs e)
+        {
+            TrnStockOutLineDetailImportForm stockOutDetailImportForm = new TrnStockOutLineDetailImportForm(this);
+            stockOutDetailImportForm.ShowDialog();
         }
     }
 }
