@@ -80,6 +80,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
             Entities.RepPOSReportZReadingReportEntity repZReadingReportEntity = new Entities.RepPOSReportZReadingReportEntity()
             {
+                Terminal = "",
                 Date = "",
                 TotalGrossSales = 0,
                 TotalRegularDiscount = 0,
@@ -88,6 +89,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 TotalSalesReturn = 0,
                 TotalNetSales = 0,
                 CollectionLines = new List<Entities.TrnCollectionLineEntity>(),
+                TotalRefund = 0,
                 TotalCollection = 0,
                 TotalVATSales = 0,
                 TotalVATAmount = 0,
@@ -120,17 +122,12 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 filterTerminal = terminal.FirstOrDefault().Terminal;
             }
 
-            var salesLines = from d in db.TrnSalesLines
-                             where d.TrnSale.TrnCollections.Where(s => s.TerminalId == filterTerminalId && s.CollectionDate == filterDate && s.IsLocked == true && s.IsCancelled == false).Count() > 0
-                             && d.TrnSale.IsReturned == false
-                             select d;
-
             var currentCollections = from d in db.TrnCollections
                                      where d.TerminalId == filterTerminalId
                                      && d.CollectionDate == filterDate
                                      && d.IsLocked == true
                                      && d.IsCancelled == false
-                                     && d.TrnSale.IsReturned == false
+                                     && d.SalesId != null
                                      select d;
 
             var currentCollectionLines = from d in db.TrnCollectionLines
@@ -152,56 +149,160 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                              TotalChangeAmount = g.Sum(s => s.TrnCollection.ChangeAmount)
                                          };
 
-            if (salesLines.Any() && currentCollectionLines.ToList().Any())
+            if (currentCollections.Any() && currentCollectionLines.ToList().Any())
             {
-                var grossSales = salesLines.Where(d => d.Quantity > 0);
-                if (grossSales.Any())
+                var disbursmenet = from d in db.TrnDisbursements
+                                   where d.TerminalId == filterTerminalId
+                                   && d.DisbursementDate == filterDate
+                                   && d.IsLocked == true
+                                   && d.IsRefund == true
+                                   && d.RefundSalesId != null
+                                   select d;
+
+                if (disbursmenet.Any())
                 {
-                    repZReadingReportEntity.TotalGrossSales = grossSales.Sum(d => d.MstTax.Code == "EXEMPTVAT" ? d.MstTax.Rate > 0 ? (d.NetPrice * d.Quantity) - ((d.NetPrice * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) :
-                                                              (d.Quantity * d.NetPrice) - ((d.NetPrice * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) :
-                                                              (d.Quantity * d.Price) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)));
+                    repZReadingReportEntity.TotalRefund = disbursmenet.Sum(d => d.Amount);
                 }
 
-                var regularDiscounts = salesLines.Where(d => d.Quantity > 0
-                                                             && d.MstDiscount.Discount.Equals("Senior Citizen Discount") == false
-                                                             && d.MstDiscount.Discount.Equals("PWD") == false);
-                if (regularDiscounts.Any())
+                Decimal totalGrossSales = 0;
+                Decimal totalRegularDiscount = 0;
+                Decimal totalSeniorCitizenDiscount = 0;
+                Decimal totalPWDDiscount = 0;
+                Decimal totalSalesReturn = 0;
+                Decimal totalVATSales = 0;
+                Decimal totalVATAmount = 0;
+                Decimal totalNonVATSales = 0;
+                Decimal totalVATExemptSales = 0;
+                Decimal totalVATZeroRatedSales = 0;
+                Decimal totalNoOfSKUs = 0;
+                Decimal totalQUantity = 0;
+
+                foreach (var currentCollection in currentCollections)
                 {
-                    repZReadingReportEntity.TotalRegularDiscount = regularDiscounts.Sum(d => d.DiscountAmount * d.Quantity);
+                    var sales = from d in db.TrnSales
+                                where d.Id == currentCollection.SalesId
+                                select d;
+
+                    if (sales.Any())
+                    {
+                        var salesLines = sales.FirstOrDefault().TrnSalesLines.Where(d => d.Quantity > 0 && d.TrnSale.IsReturned == false);
+
+                        Decimal salesLineTotalGrossSales = 0;
+                        Decimal salesLineTotalRegularDiscount = 0;
+                        Decimal salesLineTotalSeniorCitizenDiscount = 0;
+                        Decimal salesLineTotalPWDDiscount = 0;
+                        Decimal salesLineTotalVATSales = 0;
+                        Decimal salesLineTotalVATAmount = 0;
+                        Decimal salesLineTotalNonVATSales = 0;
+                        Decimal salesLineTotalVATExemptSales = 0;
+                        Decimal salesLineTotalVATZeroRatedSales = 0;
+
+                        if (salesLines.Any())
+                        {
+                            totalNoOfSKUs += salesLines.Count();
+                            totalQUantity += salesLines.Sum(d => d.Quantity);
+
+                            foreach (var salesLine in salesLines)
+                            {
+                                if (salesLine.MstTax.Code == "EXEMPTVAT")
+                                {
+                                    if (salesLine.MstItem.MstTax.Rate > 0)
+                                    {
+                                        salesLineTotalGrossSales += (salesLine.Price * salesLine.Quantity) - ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstItem.MstTax.Rate / 100)) * (salesLine.MstItem.MstTax.Rate / 100));
+                                    }
+                                    else
+                                    {
+                                        salesLineTotalGrossSales += salesLine.Price * salesLine.Quantity;
+                                    }
+                                }
+                                else
+                                {
+                                    salesLineTotalGrossSales += (salesLine.Price * salesLine.Quantity) - ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstTax.Rate / 100)) * (salesLine.MstTax.Rate / 100));
+                                }
+
+                                if (salesLine.MstDiscount.Discount != "Senior Citizen Discount" && salesLine.MstDiscount.Discount != "PWD")
+                                {
+                                    salesLineTotalRegularDiscount += salesLine.DiscountAmount * salesLine.Quantity;
+                                }
+
+                                if (salesLine.MstDiscount.Discount == "Senior Citizen Discount")
+                                {
+                                    salesLineTotalSeniorCitizenDiscount += salesLine.DiscountAmount * salesLine.Quantity;
+                                }
+
+                                if (salesLine.MstDiscount.Discount == "PWD")
+                                {
+                                    salesLineTotalPWDDiscount += salesLine.DiscountAmount * salesLine.Quantity;
+                                }
+
+                                if (salesLine.MstTax.Code.Equals("VAT"))
+                                {
+                                    salesLineTotalVATSales += salesLine.Amount - (salesLine.Amount / (1 + (salesLine.MstTax.Rate / 100)) * (salesLine.MstTax.Rate / 100));
+                                }
+
+                                salesLineTotalVATAmount += salesLine.TaxAmount;
+
+                                if (salesLine.MstTax.Code.Equals("NONVAT"))
+                                {
+                                    salesLineTotalNonVATSales += salesLine.Amount;
+                                }
+
+                                if (salesLine.MstTax.Code.Equals("EXEMPTVAT"))
+                                {
+                                    salesLineTotalVATExemptSales += salesLine.Amount;
+                                }
+
+                                if (salesLine.MstTax.Code.Equals("ZEROVAT"))
+                                {
+                                    salesLineTotalVATZeroRatedSales += salesLine.Amount;
+                                }
+                            }
+                        }
+
+                        totalGrossSales += salesLineTotalGrossSales;
+                        totalRegularDiscount += salesLineTotalRegularDiscount;
+                        totalSeniorCitizenDiscount += salesLineTotalSeniorCitizenDiscount;
+                        totalPWDDiscount += salesLineTotalPWDDiscount;
+                        totalVATSales += salesLineTotalVATSales;
+                        totalVATAmount += salesLineTotalVATAmount;
+                        totalNonVATSales += salesLineTotalNonVATSales;
+                        totalVATExemptSales += salesLineTotalVATExemptSales;
+                        totalVATZeroRatedSales += salesLineTotalVATZeroRatedSales;
+                    }
                 }
 
-                var seniorDiscounts = salesLines.Where(d => d.Quantity > 0 && d.MstDiscount.Discount.Equals("Senior Citizen Discount") == true);
-                if (seniorDiscounts.Any())
-                {
-                    repZReadingReportEntity.TotalSeniorDiscount = seniorDiscounts.Sum(d => d.DiscountAmount * d.Quantity);
-                }
+                totalVATSales -= repZReadingReportEntity.TotalRefund;
 
-                var PWDDiscounts = salesLines.Where(d => d.Quantity > 0 && d.MstDiscount.Discount.Equals("PWD") == true);
-                if (PWDDiscounts.Any())
-                {
-                    repZReadingReportEntity.TotalPWDDiscount = PWDDiscounts.Sum(d => d.DiscountAmount * d.Quantity);
-                }
+                Decimal salesReturnLineTotalAmount = 0;
 
                 var salesReturnLines = from d in db.TrnSalesLines
-                                       where d.TrnSale.TerminalId == filterTerminalId
+                                       where d.Quantity < 0
                                        && d.TrnSale.SalesDate == filterDate
                                        && d.TrnSale.IsLocked == true
                                        && d.TrnSale.IsCancelled == false
-                                       && d.Quantity < 0
+                                       && d.TrnSale.IsReturned == true
                                        select d;
 
                 if (salesReturnLines.Any())
                 {
-                    repZReadingReportEntity.TotalSalesReturn = salesReturnLines.Sum(d => d.MstTax.Code == "EXEMPTVAT" ? d.MstTax.Rate > 0 ? (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) :
-                                                              (d.Quantity * d.Price) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) :
-                                                              (d.Quantity * d.Price) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)));
+                    foreach (var salesReturnLine in salesReturnLines)
+                    {
+                        salesReturnLineTotalAmount += salesReturnLine.Amount;
+                    }
                 }
 
-                var netSales = salesLines.Where(d => d.Quantity > 0);
-                if (netSales.Any())
-                {
-                    repZReadingReportEntity.TotalNetSales = (repZReadingReportEntity.TotalGrossSales + repZReadingReportEntity.TotalSalesReturn) - repZReadingReportEntity.TotalRegularDiscount - repZReadingReportEntity.TotalSeniorDiscount - repZReadingReportEntity.TotalPWDDiscount;
-                }
+                totalSalesReturn += salesReturnLineTotalAmount * -1;
+
+                repZReadingReportEntity.TotalGrossSales = totalGrossSales;
+                repZReadingReportEntity.TotalRegularDiscount = totalRegularDiscount;
+                repZReadingReportEntity.TotalSeniorDiscount = totalSeniorCitizenDiscount;
+                repZReadingReportEntity.TotalPWDDiscount = totalPWDDiscount;
+                repZReadingReportEntity.TotalSalesReturn = totalSalesReturn;
+                repZReadingReportEntity.TotalNetSales = totalGrossSales -
+                                                        totalRegularDiscount -
+                                                        totalSeniorCitizenDiscount -
+                                                        totalPWDDiscount -
+                                                        totalSalesReturn;
 
                 foreach (var collectionLine in currentCollectionLines)
                 {
@@ -218,33 +319,11 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                     });
                 }
 
-                repZReadingReportEntity.TotalCollection = currentCollections.Sum(d => d.Amount);
-
-                var VATSales = salesLines.Where(d => d.MstTax.Code.Equals("VAT") == true && d.Quantity > 0);
-                if (VATSales.Any())
-                {
-                    repZReadingReportEntity.TotalVATSales = VATSales.Sum(d => (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)));
-                }
-
-                repZReadingReportEntity.TotalVATAmount = salesLines.Sum(d => d.TaxAmount);
-
-                var nonVATSales = salesLines.Where(d => d.MstTax.Code.Equals("NONVAT") == true);
-                if (nonVATSales.Any())
-                {
-                    repZReadingReportEntity.TotalNonVAT = nonVATSales.Where(d => d.Quantity > 0).Sum(d => d.Price * d.Quantity);
-                }
-
-                var VATExempts = salesLines.Where(d => d.MstTax.Code.Equals("EXEMPTVAT") == true && d.Quantity > 0);
-                if (VATExempts.Any())
-                {
-                    repZReadingReportEntity.TotalVATExempt = VATExempts.Sum(d => d.MstTax.Rate > 0 ? (d.NetPrice * d.Quantity) - ((d.NetPrice * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) : d.NetPrice * d.Quantity);
-                }
-
-                var VATZeroRateds = salesLines.Where(d => d.MstTax.Code.Equals("ZEROVAT") == true && d.Quantity > 0);
-                if (VATZeroRateds.Any())
-                {
-                    repZReadingReportEntity.TotalVATZeroRated = VATZeroRateds.Sum(d => d.Amount);
-                }
+                repZReadingReportEntity.TotalCollection = currentCollections.Sum(d => d.Amount) - repZReadingReportEntity.TotalRefund;
+                repZReadingReportEntity.TotalVATSales = totalVATSales;
+                repZReadingReportEntity.TotalVATAmount = totalVATAmount;
+                repZReadingReportEntity.TotalNonVAT = totalNonVATSales;
+                repZReadingReportEntity.TotalVATExempt = totalVATExemptSales;
 
                 var counterCollections = from d in db.TrnCollections
                                          where d.TerminalId == filterTerminalId
@@ -259,8 +338,8 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 }
 
                 repZReadingReportEntity.TotalNumberOfTransactions = currentCollections.Count();
-                repZReadingReportEntity.TotalNumberOfSKU = salesLines.Count();
-                repZReadingReportEntity.TotalQuantity = salesLines.Sum(d => d.Quantity);
+                repZReadingReportEntity.TotalNumberOfSKU = totalNoOfSKUs;
+                repZReadingReportEntity.TotalQuantity = totalQUantity;
             }
 
             var currentCancelledCollections = from d in db.TrnCollections
@@ -288,9 +367,8 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             {
                 repZReadingReportEntity.GrossSalesTotalPreviousReading = grossSalesPreviousCollections.Sum(d => d.TrnSale.TrnSalesLines.Any() ?
                                                                          d.TrnSale.TrnSalesLines.Sum(s => s.MstTax.Code == "EXEMPTVAT" ?
-                                                                         s.MstItem.MstTax1.Rate > 0 ? (s.Price * s.Quantity) - ((s.Price * s.Quantity) / (1 + (s.MstItem.MstTax1.Rate / 100)) * (s.MstItem.MstTax1.Rate / 100)) :
-                                                                         (s.Quantity * s.Price) - ((s.Price * s.Quantity) / (1 + (s.MstTax.Rate / 100)) * (s.MstTax.Rate / 100)) :
-                                                                         (s.Quantity * s.Price) - ((s.Price * s.Quantity) / (1 + (s.MstTax.Rate / 100)) * (s.MstTax.Rate / 100))) : 0);
+                                                                         s.MstItem.MstTax.Rate > 0 ? (s.Price * s.Quantity) - ((s.Price * s.Quantity) / (1 + (s.MstItem.MstTax.Rate / 100)) * (s.MstItem.MstTax.Rate / 100)) :
+                                                                         (s.Quantity * s.Price) : (s.Quantity * s.Price) - ((s.Price * s.Quantity) / (1 + (s.MstTax.Rate / 100)) * (s.MstTax.Rate / 100))) : 0);
 
                 repZReadingReportEntity.GrossSalesRunningTotal = repZReadingReportEntity.TotalGrossSales + repZReadingReportEntity.GrossSalesTotalPreviousReading;
             }
@@ -533,27 +611,42 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
             }
 
-            Decimal totalCollection = dataSource.TotalCollection * declareRate;
+            Decimal totalRefund = dataSource.TotalRefund * declareRate;
 
             // ================
             // Total Collection
             // ================
             if (dataSource.CollectionLines.Any())
             {
-                String totalCollectionLabel = "\nTotal Collection";
-                String totalCollectionData = "\n" + totalCollection.ToString("#,##0.00");
-                graphics.DrawString(totalCollectionLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalCollectionData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalCollectionData, fontArial8Regular).Height;
+                String totalRefundLabel = "\nRefund";
+                String totalRefundData = "\n" + totalRefund.ToString("#,##0.00");
+                graphics.DrawString(totalRefundLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalRefundData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalRefundData, fontArial8Regular).Height;
             }
             else
             {
-                String totalCollectionLabel = "Total Collection";
-                String totalCollectionData = totalCollection.ToString("#,##0.00");
-                graphics.DrawString(totalCollectionLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalCollectionData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalCollectionData, fontArial8Regular).Height;
+                String totalRefundLabel = "Refund";
+                String totalRefundData = totalRefund.ToString("#,##0.00");
+                graphics.DrawString(totalRefundLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalRefundData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalRefundData, fontArial8Regular).Height;
             }
+
+            // ========
+            // 3rd Line
+            // ========
+            Point thirdLineFirstPoint2 = new Point(0, Convert.ToInt32(y) + 5);
+            Point thirdLineSecondPoint2 = new Point(500, Convert.ToInt32(y) + 5);
+            graphics.DrawLine(blackPen, thirdLineFirstPoint2, thirdLineSecondPoint2);
+
+            Decimal totalCollection = dataSource.TotalCollection * declareRate;
+
+            String totalCollectionLabel = "\nTotal Collection";
+            String totalCollectionData = "\n" + totalCollection.ToString("#,##0.00");
+            graphics.DrawString(totalCollectionLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(totalCollectionData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(totalCollectionData, fontArial8Regular).Height;
 
             // ========
             // 4th Line
@@ -586,12 +679,6 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             graphics.DrawString(totalNonVATLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(totalNonVATAmount, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(totalNonVATAmount, fontArial8Regular).Height;
-
-            //String totalVATExclusiveLabel = "VAT Exclusive";
-            //String totalVATExclusiveData = totalVATExclusive.ToString("#,##0.00");
-            //graphics.DrawString(totalVATExclusiveLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            //graphics.DrawString(totalVATExclusiveData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-            //y += graphics.MeasureString(totalVATExclusiveData, fontArial8Regular).Height;
 
             String totalVATExemptLabel = "VAT Exempt";
             String totalVATExemptData = totalVATExempt.ToString("#,##0.00");

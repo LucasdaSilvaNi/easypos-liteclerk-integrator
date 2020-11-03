@@ -1142,7 +1142,7 @@ namespace EasyPOS.Controllers
                                     discountAmount = price * (discountRate / 100);
                                     netPrice = price - discountAmount;
                                     amount = netPrice * quantity;
-                                    taxAmount = (price * quantity) / (1 + (taxRate / 100)) * (taxRate / 100);
+                                    taxAmount = amount / (1 + (taxRate / 100)) * (taxRate / 100);
                                 }
                                 else
                                 {

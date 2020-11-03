@@ -17,6 +17,7 @@ namespace EasyPOS.Entities
         public Decimal TotalSalesReturn { get; set; }
         public Decimal TotalNetSales { get; set; }
         public List<TrnCollectionLineEntity> CollectionLines { get; set; }
+        public Decimal TotalRefund { get; set; }
         public Decimal TotalCollection { get; set; }
         public Decimal TotalVATSales { get; set; }
         public Decimal TotalVATAmount { get; set; }
