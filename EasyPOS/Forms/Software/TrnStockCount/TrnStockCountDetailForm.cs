@@ -260,6 +260,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
                                 ColumnStockCountLineListId = d.Id,
                                 ColumnStockCountLineListStockCountId = d.StockCountId,
                                 ColumnStockCountLineListItemId = d.ItemId,
+                                ColumnStockCountLineListItemBarcode = d.ItemBarcode,
                                 ColumnStockCountLineListItemDescription = d.ItemDescription,
                                 ColumnStockCountLineListUnitId = d.UnitId,
                                 ColumnStockCountLineListUnit = d.Unit,
@@ -521,11 +522,8 @@ namespace EasyPOS.Forms.Software.TrnStockCount
                 {
                     StringBuilder csv = new StringBuilder();
                     String[] header = {
-                        "Id",
-                        "Stock Count Id",
-                        "ItemId",
+                        "Barcode",
                         "Item Description",
-                        "UnitId",
                         "Unit",
                         "Quantity",
                         "Cost",
@@ -539,11 +537,8 @@ namespace EasyPOS.Forms.Software.TrnStockCount
                         foreach (var stockOutLine in stockOutLineData)
                         {
                             String[] data = {
-                                stockOutLine.ColumnStockCountLineListId.ToString(),
-                              stockOutLine.ColumnStockCountLineListStockCountId.ToString(),
-                              stockOutLine.ColumnStockCountLineListItemId.ToString(),
+                              stockOutLine.ColumnStockCountLineListItemBarcode,
                               stockOutLine.ColumnStockCountLineListItemDescription,
-                              stockOutLine.ColumnStockCountLineListUnitId.ToString(),
                               stockOutLine.ColumnStockCountLineListUnit,
                               stockOutLine.ColumnStockCountLineListQuantity,
                               stockOutLine.ColumnStockCountLineListCost,
@@ -570,6 +565,17 @@ namespace EasyPOS.Forms.Software.TrnStockCount
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dataGridViewStockCountLineList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void buttonImport_Click(object sender, EventArgs e)
+        {
+            TrnStockCountLineDetailImportForm stockCountDetailImportForm = new TrnStockCountLineDetailImportForm(this);
+            stockCountDetailImportForm.ShowDialog();
         }
     }
 }

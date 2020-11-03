@@ -959,6 +959,12 @@
     <Compile Include="Forms\Software\TrnStockCount\TrnStockCountDetailReportForm.Designer.cs">
       <DependentUpon>TrnStockCountDetailReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnStockCount\TrnStockCountLineDetailImportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnStockCount\TrnStockCountLineDetailImportForm.Designer.cs">
+      <DependentUpon>TrnStockCountLineDetailImportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnStockIn\TrnStockInDetailReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1358,6 +1364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnStockCount\TrnStockCountDetailReportForm.resx">
       <DependentUpon>TrnStockCountDetailReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnStockCount\TrnStockCountLineDetailImportForm.resx">
+      <DependentUpon>TrnStockCountLineDetailImportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnStockIn\TrnStockInDetailForm.resx">
       <DependentUpon>TrnStockInDetailForm.cs</DependentUpon>
