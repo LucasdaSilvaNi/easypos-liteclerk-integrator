@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -505,6 +508,70 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                 }
 
                 textBoxBarcode.SelectAll();
+            }
+        }
+
+        private void buttonExport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = folderBrowserDialogGenerateCSV.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    StringBuilder csv = new StringBuilder();
+                    String[] header = {
+                        "Id",
+                        "StockInId",
+                        "ItemId",
+                        "Item Description",
+                        "UnitId",
+                        "Unit",
+                        "Quantity",
+                        "Cost",
+                        "Amount",
+                        "AssetAccountId",
+                        "AssetAccount",
+                    };
+
+                    csv.AppendLine(String.Join(",", header));
+
+                    if (stockOutLineData.Any())
+                    {
+                        foreach (var stockOutLine in stockOutLineData)
+                        {
+                            String[] data = {
+                              stockOutLine.ColumnStockOutLineListId .ToString(),
+                              stockOutLine.ColumnStockOutLineListStockOutId .ToString() ,
+                              stockOutLine.ColumnStockOutLineListItemId .ToString() ,
+                              stockOutLine.ColumnStockOutLineListItemDescription  ,
+                              stockOutLine.ColumnStockOutLineListUnitId .ToString() ,
+                              stockOutLine.ColumnStockOutLineListUnit  ,
+                              stockOutLine.ColumnStockOutLineListQuantity ,
+                              stockOutLine.ColumnStockOutLineListCost  ,
+                              stockOutLine.ColumnStockOutLineListAmount  ,
+                              stockOutLine.ColumnStockOutLineListAssetAccountId.ToString() ,
+                              stockOutLine.ColumnStockOutLineListAssetAccount.ToString() ,
+                            };
+
+                            csv.AppendLine(String.Join(",", data));
+                        }
+                    }
+
+                    String executingUser = WindowsIdentity.GetCurrent().Name;
+
+                    DirectorySecurity securityRules = new DirectorySecurity();
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.Read, AccessControlType.Allow));
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
+
+                    DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\StockOutLine_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+
+                    MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

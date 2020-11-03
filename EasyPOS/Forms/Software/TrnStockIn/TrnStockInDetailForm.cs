@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -203,8 +206,76 @@ namespace EasyPOS.Forms.Software.TrnStockIn
         {
             sysSoftwareForm.RemoveTabPage();
         }
+        private void buttonExport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = folderBrowserDialogGenerateCSV.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    StringBuilder csv = new StringBuilder();
+                    String[] header = {
+                        "Id",
+                        "StockInId",
+                        "ItemId",
+                        "Item Description",
+                        "UnitId",
+                        "Unit",
+                        "Quantity",
+                        "Cost",
+                        "Amount",
+                        "ExpiryDate",
+                        "LotNumber",
+                        "AssetAccountId",
+                        "AssetAccount",
+                        "Price"
+                    };
 
+                    csv.AppendLine(String.Join(",", header));
 
+                    if (stockInLineData.Any())
+                    {
+                        foreach (var stockInLine in stockInLineData)
+                        {
+                            String[] data = {
+                                stockInLine.ColumnStockInLineListId.ToString() ,
+                              stockInLine.ColumnStockInLineListStockInId.ToString(),
+                              stockInLine.ColumnStockInLineListItemId.ToString() ,
+                              stockInLine.ColumnStockInLineListItemDescription ,
+                              stockInLine.ColumnStockInLineListUnitId.ToString() ,
+                              stockInLine.ColumnStockInLineListUnit ,
+                              stockInLine.ColumnStockInLineListQuantity,
+                              stockInLine.ColumnStockInLineListCost ,
+                              stockInLine.ColumnStockInLineListAmount ,
+                              stockInLine.ColumnStockInLineListExpiryDate,
+                              stockInLine.ColumnStockInLineListLotNumber,
+                              stockInLine.ColumnStockInLineListAssetAccountId.ToString(),
+                              stockInLine.ColumnStockInLineListAssetAccount,
+                              stockInLine.ColumnStockInLineListPrice.ToString(),
+
+                            };
+
+                            csv.AppendLine(String.Join(",", data));
+                        }
+                    }
+
+                    String executingUser = WindowsIdentity.GetCurrent().Name;
+
+                    DirectorySecurity securityRules = new DirectorySecurity();
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.Read, AccessControlType.Allow));
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
+
+                    DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\StockInLine_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+
+                    MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         public void UpdateStockInLineListDataSource()
         {
             SetStockInLineListDataSourceAsync();
@@ -522,5 +593,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                 textBoxBarcode.SelectAll();
             }
         }
+
+       
     }
 }

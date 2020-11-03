@@ -72,6 +72,8 @@
             this.buttonStockInLineListPageListLast = new System.Windows.Forms.Button();
             this.textBoxStockInLineListPageNumber = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.buttonExport = new System.Windows.Forms.Button();
+            this.buttonImport = new System.Windows.Forms.Button();
             this.dataGridViewStockInLineList = new System.Windows.Forms.DataGridView();
             this.ColumnStockInLineListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnStockInLineListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -93,6 +95,8 @@
             this.buttonBarcode = new System.Windows.Forms.Button();
             this.buttonSearchItem = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -583,6 +587,8 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.Control;
+            this.panel5.Controls.Add(this.buttonExport);
+            this.panel5.Controls.Add(this.buttonImport);
             this.panel5.Controls.Add(this.dataGridViewStockInLineList);
             this.panel5.Controls.Add(this.textBoxBarcode);
             this.panel5.Controls.Add(this.buttonBarcode);
@@ -593,6 +599,43 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1096, 273);
             this.panel5.TabIndex = 26;
+            // 
+            // buttonExport
+            // 
+            this.buttonExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonExport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonExport.FlatAppearance.BorderSize = 0;
+            this.buttonExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExport.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExport.ForeColor = System.Drawing.Color.White;
+            this.buttonExport.Location = new System.Drawing.Point(867, 5);
+            this.buttonExport.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonExport.Name = "buttonExport";
+            this.buttonExport.Size = new System.Drawing.Size(70, 32);
+            this.buttonExport.TabIndex = 25;
+            this.buttonExport.TabStop = false;
+            this.buttonExport.Text = "Export";
+            this.buttonExport.UseVisualStyleBackColor = false;
+            this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
+            // 
+            // buttonImport
+            // 
+            this.buttonImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonImport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonImport.FlatAppearance.BorderSize = 0;
+            this.buttonImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonImport.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonImport.ForeColor = System.Drawing.Color.White;
+            this.buttonImport.Location = new System.Drawing.Point(793, 5);
+            this.buttonImport.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonImport.Name = "buttonImport";
+            this.buttonImport.Size = new System.Drawing.Size(70, 32);
+            this.buttonImport.TabIndex = 24;
+            this.buttonImport.TabStop = false;
+            this.buttonImport.Text = "Import";
+            this.buttonImport.UseVisualStyleBackColor = false;
             // 
             // dataGridViewStockInLineList
             // 
@@ -784,7 +827,7 @@
             this.textBoxBarcode.Location = new System.Drawing.Point(181, 6);
             this.textBoxBarcode.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxBarcode.Name = "textBoxBarcode";
-            this.textBoxBarcode.Size = new System.Drawing.Size(755, 31);
+            this.textBoxBarcode.Size = new System.Drawing.Size(608, 31);
             this.textBoxBarcode.TabIndex = 11;
             this.textBoxBarcode.TabStop = false;
             this.textBoxBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarcode_KeyDown);
@@ -837,6 +880,10 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1096, 510);
             this.panel2.TabIndex = 8;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialogImport";
             // 
             // TrnStockInDetailForm
             // 
@@ -927,5 +974,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockInLineListPrice;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxManualStockInNumber;
+        private System.Windows.Forms.Button buttonExport;
+        private System.Windows.Forms.Button buttonImport;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
     }
 }
