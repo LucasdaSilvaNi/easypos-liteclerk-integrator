@@ -35,18 +35,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonReprint = new System.Windows.Forms.Button();
+            this.imageListPOSTouchBIllOut = new System.Windows.Forms.ImageList(this.components);
             this.buttonDeliver = new System.Windows.Forms.Button();
             this.imageListPOSTouchOthers = new System.Windows.Forms.ImageList(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelInvoiceNumber = new System.Windows.Forms.Label();
             this.buttonTender = new System.Windows.Forms.Button();
             this.buttonBillOut = new System.Windows.Forms.Button();
-            this.imageListPOSTouchBIllOut = new System.Windows.Forms.ImageList(this.components);
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSplitMergeBill = new System.Windows.Forms.Button();
             this.buttonPrintPartialBill = new System.Windows.Forms.Button();
             this.buttonEditOrder = new System.Windows.Forms.Button();
             this.imageListPOSTouchEditOrder = new System.Windows.Forms.ImageList(this.components);
+            this.printDialogReprintOR = new System.Windows.Forms.PrintDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -110,6 +112,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.panel2.Controls.Add(this.buttonReprint);
             this.panel2.Controls.Add(this.buttonDeliver);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.buttonTender);
@@ -124,6 +127,34 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(803, 378);
             this.panel2.TabIndex = 6;
+            // 
+            // buttonReprint
+            // 
+            this.buttonReprint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonReprint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonReprint.FlatAppearance.BorderSize = 0;
+            this.buttonReprint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonReprint.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonReprint.ForeColor = System.Drawing.Color.White;
+            this.buttonReprint.ImageIndex = 0;
+            this.buttonReprint.ImageList = this.imageListPOSTouchBIllOut;
+            this.buttonReprint.Location = new System.Drawing.Point(271, 155);
+            this.buttonReprint.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonReprint.Name = "buttonReprint";
+            this.buttonReprint.Padding = new System.Windows.Forms.Padding(8);
+            this.buttonReprint.Size = new System.Drawing.Size(258, 105);
+            this.buttonReprint.TabIndex = 10;
+            this.buttonReprint.Text = " \r\nF5 -Reprint";
+            this.buttonReprint.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.buttonReprint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonReprint.UseVisualStyleBackColor = false;
+            this.buttonReprint.Click += new System.EventHandler(this.buttonReprint_Click);
+            // 
+            // imageListPOSTouchBIllOut
+            // 
+            this.imageListPOSTouchBIllOut.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListPOSTouchBIllOut.ImageStream")));
+            this.imageListPOSTouchBIllOut.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListPOSTouchBIllOut.Images.SetKeyName(0, "print.png");
             // 
             // buttonDeliver
             // 
@@ -141,7 +172,7 @@
             this.buttonDeliver.Padding = new System.Windows.Forms.Padding(8);
             this.buttonDeliver.Size = new System.Drawing.Size(258, 105);
             this.buttonDeliver.TabIndex = 9;
-            this.buttonDeliver.Text = "\r\nF6 - Deliver";
+            this.buttonDeliver.Text = "\r\nF7 - Deliver";
             this.buttonDeliver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonDeliver.UseVisualStyleBackColor = false;
             this.buttonDeliver.Click += new System.EventHandler(this.buttonDeliver_Click);
@@ -213,18 +244,12 @@
             this.buttonBillOut.Margin = new System.Windows.Forms.Padding(2);
             this.buttonBillOut.Name = "buttonBillOut";
             this.buttonBillOut.Padding = new System.Windows.Forms.Padding(8);
-            this.buttonBillOut.Size = new System.Drawing.Size(258, 214);
+            this.buttonBillOut.Size = new System.Drawing.Size(258, 105);
             this.buttonBillOut.TabIndex = 6;
             this.buttonBillOut.Text = " \r\nF3 -Bill Out";
             this.buttonBillOut.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonBillOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonBillOut.UseVisualStyleBackColor = false;
-            // 
-            // imageListPOSTouchBIllOut
-            // 
-            this.imageListPOSTouchBIllOut.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListPOSTouchBIllOut.ImageStream")));
-            this.imageListPOSTouchBIllOut.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListPOSTouchBIllOut.Images.SetKeyName(0, "print.png");
             // 
             // buttonCancel
             // 
@@ -242,7 +267,7 @@
             this.buttonCancel.Padding = new System.Windows.Forms.Padding(8);
             this.buttonCancel.Size = new System.Drawing.Size(258, 105);
             this.buttonCancel.TabIndex = 4;
-            this.buttonCancel.Text = "\r\nF5 - Cancel";
+            this.buttonCancel.Text = "\r\nF6 - Cancel";
             this.buttonCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonCancel.UseVisualStyleBackColor = false;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -263,7 +288,7 @@
             this.buttonSplitMergeBill.Padding = new System.Windows.Forms.Padding(8);
             this.buttonSplitMergeBill.Size = new System.Drawing.Size(258, 105);
             this.buttonSplitMergeBill.TabIndex = 3;
-            this.buttonSplitMergeBill.Text = "\r\nF8 - Split/Merge Bill";
+            this.buttonSplitMergeBill.Text = "\r\nF9 - Split/Merge Bill";
             this.buttonSplitMergeBill.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonSplitMergeBill.UseVisualStyleBackColor = false;
             // 
@@ -283,7 +308,7 @@
             this.buttonPrintPartialBill.Padding = new System.Windows.Forms.Padding(8);
             this.buttonPrintPartialBill.Size = new System.Drawing.Size(257, 105);
             this.buttonPrintPartialBill.TabIndex = 2;
-            this.buttonPrintPartialBill.Text = "\r\nF7 - Print Partial Bill";
+            this.buttonPrintPartialBill.Text = "\r\nF8 - Print Partial Bill";
             this.buttonPrintPartialBill.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonPrintPartialBill.UseVisualStyleBackColor = false;
             // 
@@ -319,6 +344,10 @@
             this.imageListPOSTouchEditOrder.Images.SetKeyName(3, "printBills.png");
             this.imageListPOSTouchEditOrder.Images.SetKeyName(4, "splitMergeBill.png");
             this.imageListPOSTouchEditOrder.Images.SetKeyName(5, "tender.png");
+            // 
+            // printDialogReprintOR
+            // 
+            this.printDialogReprintOR.UseEXDialog = true;
             // 
             // TrnPOSTouchActivityForm
             // 
@@ -363,5 +392,7 @@
         private System.Windows.Forms.ImageList imageListPOSTouchBIllOut;
         private System.Windows.Forms.ImageList imageListPOSTouchOthers;
         private System.Windows.Forms.Button buttonDeliver;
+        private System.Windows.Forms.Button buttonReprint;
+        private System.Windows.Forms.PrintDialog printDialogReprintOR;
     }
 }

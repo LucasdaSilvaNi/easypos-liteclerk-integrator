@@ -186,6 +186,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     }
                 case Keys.F5:
                     {
+                        if (buttonReprint.Enabled == true)
+                        {
+                            buttonReprint.PerformClick();
+                            Close();
+                        }
+
+                        break;
+                    }
+                case Keys.F6:
+                    {
                         if (buttonCancel.Enabled == true)
                         {
                             buttonCancel.PerformClick();
@@ -194,7 +204,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                         break;
                     }
-                case Keys.F6:
+                case Keys.F7:
                     {
                         if (buttonDeliver.Enabled == true)
                         {
@@ -204,7 +214,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                         break;
                     }
-                case Keys.F7:
+                case Keys.F8:
                     {
                         if (buttonPrintPartialBill.Enabled == true)
                         {
@@ -214,7 +224,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                         break;
                     }
-                case Keys.F8:
+                case Keys.F9:
                     {
                         if (buttonSplitMergeBill.Enabled == true)
                         {
@@ -236,6 +246,52 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void buttonReprint_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Boolean isLocked = trnSalesEntity.IsLocked;
+                Boolean isTendered = trnSalesEntity.IsTendered;
+
+                if (isTendered != true)
+                {
+                    MessageBox.Show("Not tendered.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (isLocked != true)
+                {
+                    MessageBox.Show("Not locked.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    DialogResult cancelDialogResult = MessageBox.Show("Reprint Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (cancelDialogResult == DialogResult.Yes)
+                    {
+                        DialogResult printDialogResult = printDialogReprintOR.ShowDialog();
+                        if (printDialogResult == DialogResult.OK)
+                        {
+                            Int32 salesId = Convert.ToInt32(trnSalesEntity.Id);
+                            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
+                            Int32 collectionId = trnPOSSalesController.GetCollectionId(trnSalesEntity.Id);
+                            if (collectionId != 0)
+                            {
+                                new TrnPOSOfficialReceiptReportForm(salesId, collectionId, true, printDialogReprintOR.PrinterSettings.PrinterName);
+                                Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No collection.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+            }
+            
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

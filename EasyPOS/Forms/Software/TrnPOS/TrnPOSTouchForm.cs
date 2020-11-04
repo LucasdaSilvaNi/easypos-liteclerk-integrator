@@ -495,7 +495,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();
                 Entities.TrnSalesEntity salesEntity = trnSalesController.DetailSales(Convert.ToInt32(dataGridViewOpenSalesList.Rows[dataGridViewOpenSalesList.CurrentCell.RowIndex].Cells[dataGridViewOpenSalesList.Columns["TabPageOpenColumnId"].Index].Value));
-
                 trnPOSTouchActivityForm = new TrnPOSTouchActivityForm(sysSoftwareForm, this, salesEntity);
                 trnPOSTouchActivityForm.ShowDialog();
             }

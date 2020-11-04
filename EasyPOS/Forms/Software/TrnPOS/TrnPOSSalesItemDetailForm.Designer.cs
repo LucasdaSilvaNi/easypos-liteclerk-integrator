@@ -434,9 +434,9 @@
             this.label13.Location = new System.Drawing.Point(366, 44);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(74, 21);
+            this.label13.Size = new System.Drawing.Size(169, 21);
             this.label13.TabIndex = 29;
-            this.label13.Text = "Remarks:";
+            this.label13.Text = "Remarks / Preparation:";
             // 
             // panel2
             // 

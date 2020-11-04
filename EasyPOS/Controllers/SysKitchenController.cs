@@ -35,7 +35,6 @@ namespace EasyPOS.Controllers
                              && d.MstItem.DefaultKitchenReport == kitchen
                              && d.TrnSale.SalesDate == salesDate
                              && d.TrnSale.IsLocked == true
-                             && d.TrnSale.IsTendered == false
                              && d.TrnSale.IsCancelled == false
                              && d.TrnSale.IsDispatched == false
                              group d by new
@@ -98,7 +97,6 @@ namespace EasyPOS.Controllers
                              && d.MstItem.DefaultKitchenReport == kitchen
                              && d.TrnSale.SalesDate == salesDate
                              && d.TrnSale.IsLocked == true
-                             && d.TrnSale.IsTendered == false
                              && d.TrnSale.IsCancelled == false
                              && d.TrnSale.IsDispatched == false
                              group d by new
