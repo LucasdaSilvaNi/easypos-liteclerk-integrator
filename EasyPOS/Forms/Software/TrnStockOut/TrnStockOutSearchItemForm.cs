@@ -109,6 +109,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                                 ColumnSearchItemListBarCode = d.BarCode,
                                 ColumnSearchItemListDescription = d.ItemDescription,
                                 ColumnSearchItemListGenericName = d.GenericName,
+                                ColumnSearchItemListCost = d.Cost.ToString("#,##0.00"),
                                 ColumnSearchItemListOutTaxId = d.OutTaxId,
                                 ColumnSearchItemListOutTax = d.OutTax,
                                 ColumnSearchItemListOutTaxRate = d.OutTaxRate.ToString("#,##0.00"),
@@ -131,9 +132,9 @@ namespace EasyPOS.Forms.Software.TrnStockOut
         {
             UpdateSearchItemListDataSource();
 
-            dataGridViewSearchItemList.Columns[11].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
-            dataGridViewSearchItemList.Columns[11].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
-            dataGridViewSearchItemList.Columns[11].DefaultCellStyle.ForeColor = Color.White;
+            dataGridViewSearchItemList.Columns[12].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewSearchItemList.Columns[12].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewSearchItemList.Columns[12].DefaultCellStyle.ForeColor = Color.White;
 
             dataGridViewSearchItemList.DataSource = searchItemListDataSource;
         }
@@ -151,6 +152,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                 var stockOutId = trnStockOutEntity.Id;
                 var itemId = Convert.ToInt32(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[dataGridViewSearchItemList.Columns["ColumnSearchItemListId"].Index].Value);
                 var itemDescription = dataGridViewSearchItemList.Rows[e.RowIndex].Cells[dataGridViewSearchItemList.Columns["ColumnSearchItemListDescription"].Index].Value.ToString();
+                var cost = Convert.ToDecimal(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[dataGridViewSearchItemList.Columns["ColumnSearchItemListCost"].Index].Value);
                 var unitId = Convert.ToInt32(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[dataGridViewSearchItemList.Columns["ColumnSearchItemListUnitId"].Index].Value);
                 var unit = dataGridViewSearchItemList.Rows[e.RowIndex].Cells[dataGridViewSearchItemList.Columns["ColumnSearchItemListUnit"].Index].Value.ToString();
                 var price = Convert.ToDecimal(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[dataGridViewSearchItemList.Columns["ColumnSearchItemListPrice"].Index].Value);
@@ -164,7 +166,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                     UnitId = unitId,
                     Unit = unit,
                     Quantity = 1,
-                    Cost = 0,
+                    Cost = cost,
                     Amount = 0,
                     AssetAccountId = 0,
                     AssetAccount = ""
