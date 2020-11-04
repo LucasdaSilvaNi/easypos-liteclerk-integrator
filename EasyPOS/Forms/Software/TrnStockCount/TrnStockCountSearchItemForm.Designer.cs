@@ -38,18 +38,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.dataGridViewSearchItemList = new System.Windows.Forms.DataGridView();
-            this.ColumnSearchItemListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListBarCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListGenericName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListOutTaxId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListOutTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListOutTaxRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListUnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListOnhandQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSearchItemListButtonPick = new System.Windows.Forms.DataGridViewButtonColumn();
             this.textBoxSearchItemListFilter = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonSearchItemListPageListFirst = new System.Windows.Forms.Button();
@@ -58,6 +46,19 @@
             this.buttonSearchItemListPageListLast = new System.Windows.Forms.Button();
             this.textBoxSearchItemListPageNumber = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ColumnSearchItemListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListBarCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListGenericName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListOutTaxId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListOutTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListOutTaxRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListUnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListOnhandQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSearchItemListButtonPick = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchItemList)).BeginInit();
@@ -73,16 +74,18 @@
             this.panel1.Controls.Add(this.buttonClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1082, 63);
+            this.panel1.Size = new System.Drawing.Size(866, 50);
             this.panel1.TabIndex = 9;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Stock_Count;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
+            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -91,10 +94,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(63, 17);
+            this.label1.Location = new System.Drawing.Point(50, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 35);
+            this.label1.Size = new System.Drawing.Size(124, 28);
             this.label1.TabIndex = 2;
             this.label1.Text = "Search Item";
             // 
@@ -107,9 +110,10 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(982, 12);
+            this.buttonClose.Location = new System.Drawing.Point(786, 10);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(88, 40);
+            this.buttonClose.Size = new System.Drawing.Size(70, 32);
             this.buttonClose.TabIndex = 20;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
@@ -139,6 +143,7 @@
             this.ColumnSearchItemListBarCode,
             this.ColumnSearchItemListDescription,
             this.ColumnSearchItemListGenericName,
+            this.ColumnSearchItemListCost,
             this.ColumnSearchItemListOutTaxId,
             this.ColumnSearchItemListOutTax,
             this.ColumnSearchItemListOutTaxRate,
@@ -155,7 +160,8 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewSearchItemList.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewSearchItemList.Location = new System.Drawing.Point(12, 42);
+            this.dataGridViewSearchItemList.Location = new System.Drawing.Point(10, 34);
+            this.dataGridViewSearchItemList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridViewSearchItemList.MultiSelect = false;
             this.dataGridViewSearchItemList.Name = "dataGridViewSearchItemList";
             this.dataGridViewSearchItemList.ReadOnly = true;
@@ -169,9 +175,131 @@
             this.dataGridViewSearchItemList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewSearchItemList.RowTemplate.Height = 24;
             this.dataGridViewSearchItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSearchItemList.Size = new System.Drawing.Size(1058, 439);
+            this.dataGridViewSearchItemList.Size = new System.Drawing.Size(846, 351);
             this.dataGridViewSearchItemList.TabIndex = 6;
             this.dataGridViewSearchItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSearchItemList_CellClick);
+            // 
+            // textBoxSearchItemListFilter
+            // 
+            this.textBoxSearchItemListFilter.AcceptsTab = true;
+            this.textBoxSearchItemListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSearchItemListFilter.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxSearchItemListFilter.HideSelection = false;
+            this.textBoxSearchItemListFilter.Location = new System.Drawing.Point(10, 5);
+            this.textBoxSearchItemListFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxSearchItemListFilter.Name = "textBoxSearchItemListFilter";
+            this.textBoxSearchItemListFilter.Size = new System.Drawing.Size(847, 26);
+            this.textBoxSearchItemListFilter.TabIndex = 0;
+            this.textBoxSearchItemListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSearchItemListFilter_KeyDown);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.buttonSearchItemListPageListFirst);
+            this.panel3.Controls.Add(this.buttonSearchItemListPageListPrevious);
+            this.panel3.Controls.Add(this.buttonSearchItemListPageListNext);
+            this.panel3.Controls.Add(this.buttonSearchItemListPageListLast);
+            this.panel3.Controls.Add(this.textBoxSearchItemListPageNumber);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 390);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(866, 42);
+            this.panel3.TabIndex = 19;
+            // 
+            // buttonSearchItemListPageListFirst
+            // 
+            this.buttonSearchItemListPageListFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonSearchItemListPageListFirst.Enabled = false;
+            this.buttonSearchItemListPageListFirst.FlatAppearance.BorderSize = 0;
+            this.buttonSearchItemListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchItemListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonSearchItemListPageListFirst.Location = new System.Drawing.Point(10, 7);
+            this.buttonSearchItemListPageListFirst.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSearchItemListPageListFirst.Name = "buttonSearchItemListPageListFirst";
+            this.buttonSearchItemListPageListFirst.Size = new System.Drawing.Size(66, 26);
+            this.buttonSearchItemListPageListFirst.TabIndex = 13;
+            this.buttonSearchItemListPageListFirst.TabStop = false;
+            this.buttonSearchItemListPageListFirst.Text = "First";
+            this.buttonSearchItemListPageListFirst.UseVisualStyleBackColor = false;
+            this.buttonSearchItemListPageListFirst.Click += new System.EventHandler(this.buttonSearchItemListPageListFirst_Click);
+            // 
+            // buttonSearchItemListPageListPrevious
+            // 
+            this.buttonSearchItemListPageListPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonSearchItemListPageListPrevious.Enabled = false;
+            this.buttonSearchItemListPageListPrevious.FlatAppearance.BorderSize = 0;
+            this.buttonSearchItemListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchItemListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonSearchItemListPageListPrevious.Location = new System.Drawing.Point(80, 7);
+            this.buttonSearchItemListPageListPrevious.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSearchItemListPageListPrevious.Name = "buttonSearchItemListPageListPrevious";
+            this.buttonSearchItemListPageListPrevious.Size = new System.Drawing.Size(66, 26);
+            this.buttonSearchItemListPageListPrevious.TabIndex = 14;
+            this.buttonSearchItemListPageListPrevious.TabStop = false;
+            this.buttonSearchItemListPageListPrevious.Text = "Previous";
+            this.buttonSearchItemListPageListPrevious.UseVisualStyleBackColor = false;
+            this.buttonSearchItemListPageListPrevious.Click += new System.EventHandler(this.buttonSearchItemListPageListPrevious_Click);
+            // 
+            // buttonSearchItemListPageListNext
+            // 
+            this.buttonSearchItemListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonSearchItemListPageListNext.FlatAppearance.BorderSize = 0;
+            this.buttonSearchItemListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchItemListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonSearchItemListPageListNext.Location = new System.Drawing.Point(210, 7);
+            this.buttonSearchItemListPageListNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSearchItemListPageListNext.Name = "buttonSearchItemListPageListNext";
+            this.buttonSearchItemListPageListNext.Size = new System.Drawing.Size(66, 26);
+            this.buttonSearchItemListPageListNext.TabIndex = 15;
+            this.buttonSearchItemListPageListNext.TabStop = false;
+            this.buttonSearchItemListPageListNext.Text = "Next";
+            this.buttonSearchItemListPageListNext.UseVisualStyleBackColor = false;
+            this.buttonSearchItemListPageListNext.Click += new System.EventHandler(this.buttonSearchItemListPageListNext_Click);
+            // 
+            // buttonSearchItemListPageListLast
+            // 
+            this.buttonSearchItemListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonSearchItemListPageListLast.FlatAppearance.BorderSize = 0;
+            this.buttonSearchItemListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchItemListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonSearchItemListPageListLast.Location = new System.Drawing.Point(278, 7);
+            this.buttonSearchItemListPageListLast.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSearchItemListPageListLast.Name = "buttonSearchItemListPageListLast";
+            this.buttonSearchItemListPageListLast.Size = new System.Drawing.Size(66, 26);
+            this.buttonSearchItemListPageListLast.TabIndex = 16;
+            this.buttonSearchItemListPageListLast.TabStop = false;
+            this.buttonSearchItemListPageListLast.Text = "Last";
+            this.buttonSearchItemListPageListLast.UseVisualStyleBackColor = false;
+            this.buttonSearchItemListPageListLast.Click += new System.EventHandler(this.buttonSearchItemListPageListLast_Click);
+            // 
+            // textBoxSearchItemListPageNumber
+            // 
+            this.textBoxSearchItemListPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBoxSearchItemListPageNumber.BackColor = System.Drawing.Color.White;
+            this.textBoxSearchItemListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxSearchItemListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textBoxSearchItemListPageNumber.Location = new System.Drawing.Point(150, 11);
+            this.textBoxSearchItemListPageNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxSearchItemListPageNumber.Name = "textBoxSearchItemListPageNumber";
+            this.textBoxSearchItemListPageNumber.ReadOnly = true;
+            this.textBoxSearchItemListPageNumber.Size = new System.Drawing.Size(55, 16);
+            this.textBoxSearchItemListPageNumber.TabIndex = 17;
+            this.textBoxSearchItemListPageNumber.TabStop = false;
+            this.textBoxSearchItemListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.textBoxSearchItemListFilter);
+            this.panel2.Controls.Add(this.dataGridViewSearchItemList);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 50);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(866, 432);
+            this.panel2.TabIndex = 10;
             // 
             // ColumnSearchItemListId
             // 
@@ -204,6 +332,13 @@
             this.ColumnSearchItemListGenericName.HeaderText = "Generic Name";
             this.ColumnSearchItemListGenericName.Name = "ColumnSearchItemListGenericName";
             this.ColumnSearchItemListGenericName.ReadOnly = true;
+            // 
+            // ColumnSearchItemListCost
+            // 
+            this.ColumnSearchItemListCost.DataPropertyName = "ColumnSearchItemListCost";
+            this.ColumnSearchItemListCost.HeaderText = "Cost";
+            this.ColumnSearchItemListCost.Name = "ColumnSearchItemListCost";
+            this.ColumnSearchItemListCost.ReadOnly = true;
             // 
             // ColumnSearchItemListOutTaxId
             // 
@@ -262,7 +397,7 @@
             this.ColumnSearchItemListOnhandQuantity.HeaderText = "On Hand Qty.";
             this.ColumnSearchItemListOnhandQuantity.Name = "ColumnSearchItemListOnhandQuantity";
             this.ColumnSearchItemListOnhandQuantity.ReadOnly = true;
-            this.ColumnSearchItemListOnhandQuantity.Width = 144;
+            this.ColumnSearchItemListOnhandQuantity.Width = 120;
             // 
             // ColumnSearchItemListButtonPick
             // 
@@ -275,130 +410,17 @@
             this.ColumnSearchItemListButtonPick.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.ColumnSearchItemListButtonPick.Width = 70;
             // 
-            // textBoxSearchItemListFilter
+            // TrnStockCountSearchItemForm
             // 
-            this.textBoxSearchItemListFilter.AcceptsTab = true;
-            this.textBoxSearchItemListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSearchItemListFilter.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxSearchItemListFilter.HideSelection = false;
-            this.textBoxSearchItemListFilter.Location = new System.Drawing.Point(12, 6);
-            this.textBoxSearchItemListFilter.Name = "textBoxSearchItemListFilter";
-            this.textBoxSearchItemListFilter.Size = new System.Drawing.Size(1058, 30);
-            this.textBoxSearchItemListFilter.TabIndex = 0;
-            this.textBoxSearchItemListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSearchItemListFilter_KeyDown);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.buttonSearchItemListPageListFirst);
-            this.panel3.Controls.Add(this.buttonSearchItemListPageListPrevious);
-            this.panel3.Controls.Add(this.buttonSearchItemListPageListNext);
-            this.panel3.Controls.Add(this.buttonSearchItemListPageListLast);
-            this.panel3.Controls.Add(this.textBoxSearchItemListPageNumber);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 487);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1082, 53);
-            this.panel3.TabIndex = 19;
-            // 
-            // buttonSearchItemListPageListFirst
-            // 
-            this.buttonSearchItemListPageListFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonSearchItemListPageListFirst.Enabled = false;
-            this.buttonSearchItemListPageListFirst.FlatAppearance.BorderSize = 0;
-            this.buttonSearchItemListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchItemListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonSearchItemListPageListFirst.Location = new System.Drawing.Point(12, 9);
-            this.buttonSearchItemListPageListFirst.Name = "buttonSearchItemListPageListFirst";
-            this.buttonSearchItemListPageListFirst.Size = new System.Drawing.Size(82, 32);
-            this.buttonSearchItemListPageListFirst.TabIndex = 13;
-            this.buttonSearchItemListPageListFirst.TabStop = false;
-            this.buttonSearchItemListPageListFirst.Text = "First";
-            this.buttonSearchItemListPageListFirst.UseVisualStyleBackColor = false;
-            this.buttonSearchItemListPageListFirst.Click += new System.EventHandler(this.buttonSearchItemListPageListFirst_Click);
-            // 
-            // buttonSearchItemListPageListPrevious
-            // 
-            this.buttonSearchItemListPageListPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonSearchItemListPageListPrevious.Enabled = false;
-            this.buttonSearchItemListPageListPrevious.FlatAppearance.BorderSize = 0;
-            this.buttonSearchItemListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchItemListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonSearchItemListPageListPrevious.Location = new System.Drawing.Point(100, 9);
-            this.buttonSearchItemListPageListPrevious.Name = "buttonSearchItemListPageListPrevious";
-            this.buttonSearchItemListPageListPrevious.Size = new System.Drawing.Size(82, 32);
-            this.buttonSearchItemListPageListPrevious.TabIndex = 14;
-            this.buttonSearchItemListPageListPrevious.TabStop = false;
-            this.buttonSearchItemListPageListPrevious.Text = "Previous";
-            this.buttonSearchItemListPageListPrevious.UseVisualStyleBackColor = false;
-            this.buttonSearchItemListPageListPrevious.Click += new System.EventHandler(this.buttonSearchItemListPageListPrevious_Click);
-            // 
-            // buttonSearchItemListPageListNext
-            // 
-            this.buttonSearchItemListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonSearchItemListPageListNext.FlatAppearance.BorderSize = 0;
-            this.buttonSearchItemListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchItemListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonSearchItemListPageListNext.Location = new System.Drawing.Point(263, 9);
-            this.buttonSearchItemListPageListNext.Name = "buttonSearchItemListPageListNext";
-            this.buttonSearchItemListPageListNext.Size = new System.Drawing.Size(82, 32);
-            this.buttonSearchItemListPageListNext.TabIndex = 15;
-            this.buttonSearchItemListPageListNext.TabStop = false;
-            this.buttonSearchItemListPageListNext.Text = "Next";
-            this.buttonSearchItemListPageListNext.UseVisualStyleBackColor = false;
-            this.buttonSearchItemListPageListNext.Click += new System.EventHandler(this.buttonSearchItemListPageListNext_Click);
-            // 
-            // buttonSearchItemListPageListLast
-            // 
-            this.buttonSearchItemListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonSearchItemListPageListLast.FlatAppearance.BorderSize = 0;
-            this.buttonSearchItemListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchItemListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonSearchItemListPageListLast.Location = new System.Drawing.Point(348, 9);
-            this.buttonSearchItemListPageListLast.Name = "buttonSearchItemListPageListLast";
-            this.buttonSearchItemListPageListLast.Size = new System.Drawing.Size(82, 32);
-            this.buttonSearchItemListPageListLast.TabIndex = 16;
-            this.buttonSearchItemListPageListLast.TabStop = false;
-            this.buttonSearchItemListPageListLast.Text = "Last";
-            this.buttonSearchItemListPageListLast.UseVisualStyleBackColor = false;
-            this.buttonSearchItemListPageListLast.Click += new System.EventHandler(this.buttonSearchItemListPageListLast_Click);
-            // 
-            // textBoxSearchItemListPageNumber
-            // 
-            this.textBoxSearchItemListPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxSearchItemListPageNumber.BackColor = System.Drawing.Color.White;
-            this.textBoxSearchItemListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxSearchItemListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxSearchItemListPageNumber.Location = new System.Drawing.Point(188, 14);
-            this.textBoxSearchItemListPageNumber.Name = "textBoxSearchItemListPageNumber";
-            this.textBoxSearchItemListPageNumber.ReadOnly = true;
-            this.textBoxSearchItemListPageNumber.Size = new System.Drawing.Size(69, 20);
-            this.textBoxSearchItemListPageNumber.TabIndex = 17;
-            this.textBoxSearchItemListPageNumber.TabStop = false;
-            this.textBoxSearchItemListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.textBoxSearchItemListFilter);
-            this.panel2.Controls.Add(this.dataGridViewSearchItemList);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 63);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1082, 540);
-            this.panel2.TabIndex = 10;
-            // 
-            // TrnSearchItemForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1082, 603);
+            this.ClientSize = new System.Drawing.Size(866, 482);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "TrnSearchItemForm";
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "TrnStockCountSearchItemForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Search Item";
             this.panel1.ResumeLayout(false);
@@ -432,6 +454,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSearchItemListBarCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSearchItemListDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSearchItemListGenericName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSearchItemListCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSearchItemListOutTaxId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSearchItemListOutTax;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSearchItemListOutTaxRate;

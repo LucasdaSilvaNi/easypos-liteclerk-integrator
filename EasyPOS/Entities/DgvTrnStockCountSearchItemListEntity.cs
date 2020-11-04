@@ -12,6 +12,7 @@ namespace EasyPOS.Entities
         public string ColumnSearchItemListBarCode { get; set; }
         public string ColumnSearchItemListDescription { get; set; }
         public string ColumnSearchItemListGenericName { get; set; }
+        public string ColumnSearchItemListCost { get; set; }
         public int ColumnSearchItemListOutTaxId { get; set; }
         public string ColumnSearchItemListOutTax { get; set; }
         public string ColumnSearchItemListOutTaxRate { get; set; }

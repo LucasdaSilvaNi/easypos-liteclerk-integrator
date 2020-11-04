@@ -30,7 +30,7 @@ namespace EasyPOS.Controllers
                                       UnitId = d.UnitId,
                                       Unit = d.MstUnit.Unit,
                                       Quantity = d.Quantity,
-                                      Cost = d.Cost,
+                                      Cost = d.MstItem.Cost,
                                       Amount = d.Amount
                                   };
 
@@ -53,6 +53,7 @@ namespace EasyPOS.Controllers
                             BarCode = d.BarCode,
                             ItemDescription = d.ItemDescription,
                             GenericName = d.GenericName,
+                            Cost = d.Cost,
                             OutTaxId = d.OutTaxId,
                             OutTax = d.MstTax1.Tax,
                             OutTaxRate = d.MstTax1.Rate,
@@ -79,6 +80,7 @@ namespace EasyPOS.Controllers
                            BarCode = d.BarCode,
                            ItemDescription = d.ItemDescription,
                            GenericName = d.GenericName,
+                           Cost = d.Cost,
                            OutTaxId = d.OutTaxId,
                            OutTax = d.MstTax1.Tax,
                            OutTaxRate = d.MstTax1.Rate,
