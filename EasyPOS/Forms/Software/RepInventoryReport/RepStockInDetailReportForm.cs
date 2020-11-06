@@ -220,15 +220,15 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                             String[] data = {stockInDetail.ColumnStockInDate,
                               stockInDetail.ColumnStockInNumber,
                               stockInDetail.ColumnManualStockInNumber,
-                              stockInDetail.ColumnRemarks,
+                              stockInDetail.ColumnRemarks.Replace("," , " "),
                               stockInDetail.ColumnIsReturn.ToString(),
                               stockInDetail.ColumnItem.Replace("," , " "),
-                              stockInDetail.ColumnUnit,
+                              stockInDetail.ColumnUnit.Replace("," , " "),
                               stockInDetail.ColumnQuantity.Replace("," , ""),
                               stockInDetail.ColumnCost.Replace("," , ""),
                               stockInDetail.ColumnAmount.Replace("," , ""),
-                              stockInDetail.ColumnExpiryDate,
-                              stockInDetail.ColumnLotNumber,
+                              stockInDetail.ColumnExpiryDate.Replace("," , " "),
+                              stockInDetail.ColumnLotNumber.Replace("," , " "),
                               stockInDetail.ColumnSellingPrice.Replace("," , "")
                             };
 

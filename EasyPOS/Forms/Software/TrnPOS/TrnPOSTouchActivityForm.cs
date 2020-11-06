@@ -287,7 +287,32 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     }
                 }
             }
-            
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonBillOut_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Boolean isLocked = trnSalesEntity.IsLocked;
+
+                if (isLocked != true)
+                {
+                    MessageBox.Show("Not locked.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    Int32 salesId = Convert.ToInt32(trnSalesEntity.Id);
+                    Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
+                    Int32 collectionId = trnPOSSalesController.GetCollectionId(trnSalesEntity.Id);
+                    new TrnPOSBillOutForm(salesId);
+                    Close();
+                }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -1562,7 +1562,7 @@ namespace EasyPOS.Controllers
                             Decimal discountAmount = objSalesLine.Price * (discount.FirstOrDefault().DiscountRate / 100);
                             Decimal netPrice = objSalesLine.Price - discountAmount;
                             Decimal amount = netPrice * negativeQuantity;
-                            Decimal taxAmount = amount * (item.FirstOrDefault().MstTax1.Rate / 100);
+                            Decimal taxAmount = amount / (1 + (item.FirstOrDefault().MstTax1.Rate / 100)) * (item.FirstOrDefault().MstTax1.Rate / 100);
 
                             newSalesLines.Add(new Data.TrnSalesLine
                             {

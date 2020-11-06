@@ -88,6 +88,7 @@ namespace EasyPOS.Modules
                 EnableEasyShopIntegration = currentSettings.EnableEasyShopIntegration,
                 PromptLoginSales = currentSettings.PromptLoginSales,
                 PrinterType = currentSettings.PrinterType,
+                SwipeLogin = currentSettings.SwipeLogin
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);
@@ -148,7 +149,8 @@ namespace EasyPOS.Modules
                 IsLoginDate = currentSettings.IsLoginDate,
                 EnableEasyShopIntegration = objSysCurrentEntity.EnableEasyShopIntegration,
                 PromptLoginSales = objSysCurrentEntity.PromptLoginSales,
-                PrinterType = objSysCurrentEntity.PrinterType
+                PrinterType = objSysCurrentEntity.PrinterType,
+                SwipeLogin = objSysCurrentEntity.SwipeLogin
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newSysCurrentEntities);
@@ -210,7 +212,8 @@ namespace EasyPOS.Modules
                 IsLoginDate = currentSettings.IsLoginDate,
                 EnableEasyShopIntegration = currentSettings.EnableEasyShopIntegration,
                 PromptLoginSales = currentSettings.PromptLoginSales,
-                PrinterType = currentSettings.PrinterType
+                PrinterType = currentSettings.PrinterType,
+                SwipeLogin = currentSettings.SwipeLogin
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);

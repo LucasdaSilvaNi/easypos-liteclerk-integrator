@@ -67,7 +67,7 @@ namespace EasyPOS.Controllers
                             PreparedByUserName = d.MstUser.FullName,
                             Amount = d.Amount,
                             EntryDateTime = d.EntryDateTime.ToShortTimeString()
-                            
+
                         };
 
             return sales.OrderByDescending(d => d.Id).ToList();
@@ -291,6 +291,23 @@ namespace EasyPOS.Controllers
                              };
 
             return salesLines.ToList();
+        }
+        // ====================
+        // Customer List Report
+        // ====================
+        public List<Entities.RepSalesCustomerListReportEntity> GetCustomerListReport()
+        {
+            var customer = from d in db.MstCustomers
+                           select new Entities.RepSalesCustomerListReportEntity
+                           {
+                               Id = d.Id,
+                               CustomerCode = d.CustomerCode,
+                               Customer = d.Customer,
+                               ContactNumber = d.ContactNumber,
+                               Address = d.Address
+                           };
+
+            return customer.ToList();
         }
     }
 }

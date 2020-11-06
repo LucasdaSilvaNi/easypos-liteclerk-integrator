@@ -240,7 +240,7 @@
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.labelSupport);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 252);
+            this.panel2.Location = new System.Drawing.Point(0, 265);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(463, 46);
@@ -308,7 +308,7 @@
             this.panel4.Location = new System.Drawing.Point(0, 111);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(463, 143);
+            this.panel4.Size = new System.Drawing.Size(463, 156);
             this.panel4.TabIndex = 12;
             // 
             // textBoxUserCardNumber
@@ -329,7 +329,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(463, 298);
+            this.ClientSize = new System.Drawing.Size(463, 311);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);

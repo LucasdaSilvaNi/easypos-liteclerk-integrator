@@ -42,18 +42,20 @@ namespace EasyPOS.Controllers
                                  d.SalesId,
                                  d.TrnSale.ManualInvoiceNumber,
                                  d.MstItem.BarCode,
-                                 d.MstItem.ItemDescription,
+                                 d.MstItem.Alias,
                                  d.MstItem.MstUnit.Unit,
-                                 d.IsPrepared
+                                 d.IsPrepared,
+                                 d.Preparation
                              } into g
                              select new Entities.SysKitchenItemEntity
                              {
                                  SalesId = g.Key.SalesId,
                                  OrderNumber = g.Key.ManualInvoiceNumber,
                                  BarCode = g.Key.BarCode,
-                                 ItemDescription = g.Key.ItemDescription,
+                                 Alias = g.Key.Alias,
                                  Unit = g.Key.Unit,
                                  IsPrepared = g.Key.IsPrepared,
+                                 Preparation = g.Key.Preparation,
                                  Quantity = g.Sum(d => d.Quantity)
                              };
 
@@ -104,18 +106,20 @@ namespace EasyPOS.Controllers
                                  d.SalesId,
                                  d.TrnSale.ManualInvoiceNumber,
                                  d.MstItem.BarCode,
-                                 d.MstItem.ItemDescription,
+                                 d.MstItem.Alias,
                                  d.MstItem.MstUnit.Unit,
-                                 d.IsPrepared
+                                 d.IsPrepared,
+                                 d.Preparation
                              } into g
                              select new Entities.SysKitchenItemEntity
                              {
                                  SalesId = g.Key.SalesId,
                                  OrderNumber = g.Key.ManualInvoiceNumber,
                                  BarCode = g.Key.BarCode,
-                                 ItemDescription = g.Key.ItemDescription,
+                                 Alias = g.Key.Alias,
                                  Unit = g.Key.Unit,
                                  IsPrepared = g.Key.IsPrepared,
+                                 Preparation = g.Key.Preparation,
                                  Quantity = g.Sum(d => d.Quantity)
                              };
 

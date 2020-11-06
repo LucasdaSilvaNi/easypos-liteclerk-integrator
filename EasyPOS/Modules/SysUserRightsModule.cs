@@ -56,6 +56,34 @@ namespace EasyPOS.Modules
             }
         }
 
+        public void OverrideUserRights(Int32 overrideUserId, String formName)
+        {
+            var userForms = from d in db.MstUserForms
+                            where d.UserId == overrideUserId
+                            && d.SysForm.Form.Equals(formName)
+                            select new Entities.SysUserRightsEntity
+                            {
+                                CanDelete = d.CanDelete,
+                                CanAdd = d.CanAdd,
+                                CanLock = d.CanLock,
+                                CanUnlock = d.CanUnlock,
+                                CanPrint = d.CanPrint,
+                                CanPreview = d.CanPreview,
+                                CanEdit = d.CanEdit,
+                                CanTender = d.CanTender,
+                                CanDiscount = d.CanDiscount,
+                                CanView = d.CanView,
+                                CanSplit = d.CanSplit,
+                                CanCancel = d.CanCancel,
+                                CanReturn = d.CanReturn
+                            };
+
+            if (userForms.Any())
+            {
+                sysUserRightsEntity = userForms.FirstOrDefault();
+            }
+        }
+
         // ===============
         // Get User Rights
         // ===============

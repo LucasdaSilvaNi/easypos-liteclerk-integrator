@@ -16,7 +16,7 @@ namespace EasyPOS.Controllers
         // =====
         // Login
         // =====
-        public String[] Login(String userCardNumber, String username, String password, String loginDate, Boolean isLoginDate)
+        public String[] Login(String userCardNumber, String username, String password, String loginDate, Boolean isLoginDate, Boolean isOverride)
         {
             try
             {
@@ -28,7 +28,10 @@ namespace EasyPOS.Controllers
 
                 if (currentUser.Any())
                 {
-                    Modules.SysCurrentModule.UpdateCurrentSettingsLogin(currentUser.FirstOrDefault().Id, currentUser.FirstOrDefault().UserName, loginDate, isLoginDate);
+                    if (isOverride == false)
+                    {
+                        Modules.SysCurrentModule.UpdateCurrentSettingsLogin(currentUser.FirstOrDefault().Id, currentUser.FirstOrDefault().UserName, loginDate, isLoginDate);
+                    }
                     return new String[] { "", currentUser.FirstOrDefault().Id.ToString() };
                 }
                 else

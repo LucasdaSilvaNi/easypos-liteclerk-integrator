@@ -53,7 +53,7 @@ namespace EasyPOS.Entities
         public Boolean IsLoginDate { get; set; }
         public Boolean EnableEasyShopIntegration { get; set; }
         public Boolean PromptLoginSales { get; set; }
-
         public String PrinterType { get; set; }
+        public Boolean SwipeLogin { get; set; }
     }
 }

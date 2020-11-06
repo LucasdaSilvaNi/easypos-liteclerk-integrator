@@ -137,11 +137,12 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.checkBoxEnableEasyShopIntegration = new System.Windows.Forms.CheckBox();
-            this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
             this.comboBoxPrinterType = new System.Windows.Forms.ComboBox();
             this.label45 = new System.Windows.Forms.Label();
+            this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
+            this.checkBoxSwipeLogin = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -440,6 +441,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel5.Controls.Add(this.checkBoxSwipeLogin);
             this.panel5.Controls.Add(this.checkBoxPromptLoginSales);
             this.panel5.Controls.Add(this.comboBoxCollectionReport);
             this.panel5.Controls.Add(this.comboBoxPOSType);
@@ -1477,12 +1479,6 @@
             this.checkBoxEnableEasyShopIntegration.Text = "Enable";
             this.checkBoxEnableEasyShopIntegration.UseVisualStyleBackColor = true;
             // 
-            // backgroundWorkerEasyfisIntegration
-            // 
-            this.backgroundWorkerEasyfisIntegration.WorkerReportsProgress = true;
-            this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
-            this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
-            // 
             // tabPage7
             // 
             this.tabPage7.Controls.Add(this.panel9);
@@ -1526,6 +1522,25 @@
             this.label45.Size = new System.Drawing.Size(85, 19);
             this.label45.TabIndex = 79;
             this.label45.Text = "Printer Type:";
+            // 
+            // backgroundWorkerEasyfisIntegration
+            // 
+            this.backgroundWorkerEasyfisIntegration.WorkerReportsProgress = true;
+            this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
+            this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
+            // 
+            // checkBoxSwipeLogin
+            // 
+            this.checkBoxSwipeLogin.AutoSize = true;
+            this.checkBoxSwipeLogin.Enabled = false;
+            this.checkBoxSwipeLogin.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxSwipeLogin.Location = new System.Drawing.Point(668, 449);
+            this.checkBoxSwipeLogin.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxSwipeLogin.Name = "checkBoxSwipeLogin";
+            this.checkBoxSwipeLogin.Size = new System.Drawing.Size(101, 23);
+            this.checkBoxSwipeLogin.TabIndex = 81;
+            this.checkBoxSwipeLogin.Text = "Swipe Login";
+            this.checkBoxSwipeLogin.UseVisualStyleBackColor = true;
             // 
             // SysSettingsForm
             // 
@@ -1686,5 +1701,6 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.ComboBox comboBoxPrinterType;
         private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.CheckBox checkBoxSwipeLogin;
     }
 }

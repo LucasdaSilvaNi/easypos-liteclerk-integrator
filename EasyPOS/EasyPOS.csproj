@@ -349,6 +349,7 @@
     <Compile Include="Entities\MstItemInventoryEntity.cs" />
     <Compile Include="Entities\MstItemPriceEntity.cs" />
     <Compile Include="Entities\RepRemitanceReportCashInOutSummaryReportEntity.cs" />
+    <Compile Include="Entities\RepSalesCustomerListReportEntity.cs" />
     <Compile Include="Entities\RepSalesReportSalesReturnDetailReportEntity.cs" />
     <Compile Include="Entities\SysKitchenEntity.cs" />
     <Compile Include="Entities\MstPayTypeEntity.cs" />
@@ -587,6 +588,12 @@
     <Compile Include="Forms\Software\RepSalesReport\RepCollectionSummaryReport.Designer.cs">
       <DependentUpon>RepCollectionSummaryReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepCustomerListReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepCustomerListReportForm.Designer.cs">
+      <DependentUpon>RepCustomerListReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepSalesReturnDetailReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -646,6 +653,12 @@
     </Compile>
     <Compile Include="Forms\Software\TrnDisbursement\TrnRefundForm.Designer.cs">
       <DependentUpon>TrnRefundForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSBillOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSBillOutForm.Designer.cs">
+      <DependentUpon>TrnPOSBillOutForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnPOSSalesOrderReportForm.cs">
       <SubType>Form</SubType>
@@ -1200,6 +1213,9 @@
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepCollectionSummaryReport.resx">
       <DependentUpon>RepCollectionSummaryReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepCustomerListReportForm.resx">
+      <DependentUpon>RepCustomerListReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReturnDetailReportForm.resx">
       <DependentUpon>RepSalesReturnDetailReportForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1229,6 +1245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnDisbursement\TrnRefundForm.resx">
       <DependentUpon>TrnRefundForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSBillOutForm.resx">
+      <DependentUpon>TrnPOSBillOutForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSSalesOrderReportForm.resx">
       <DependentUpon>TrnPOSSalesOrderReportForm.cs</DependentUpon>

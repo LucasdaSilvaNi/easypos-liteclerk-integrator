@@ -49,6 +49,7 @@
             this.buttonEditOrder = new System.Windows.Forms.Button();
             this.imageListPOSTouchEditOrder = new System.Windows.Forms.ImageList(this.components);
             this.printDialogReprintOR = new System.Windows.Forms.PrintDialog();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -250,6 +251,7 @@
             this.buttonBillOut.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonBillOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonBillOut.UseVisualStyleBackColor = false;
+            this.buttonBillOut.Click += new System.EventHandler(this.buttonBillOut_Click);
             // 
             // buttonCancel
             // 
@@ -349,6 +351,10 @@
             // 
             this.printDialogReprintOR.UseEXDialog = true;
             // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
             // TrnPOSTouchActivityForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -394,5 +400,6 @@
         private System.Windows.Forms.Button buttonDeliver;
         private System.Windows.Forms.Button buttonReprint;
         private System.Windows.Forms.PrintDialog printDialogReprintOR;
+        private System.Windows.Forms.PrintDialog printDialog1;
     }
 }

@@ -170,10 +170,11 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
                             kitchenItemButtons[i].ForeColor = Color.Black;
                         }
 
-                        kitchenItemButtons[i].Text = "No. " + Number.ToString() + "\n"
+                        kitchenItemButtons[i].Text = "No. " + Number.ToString() + " "
                             + listKitchenItemPage[i].OrderNumber + "\n"
-                            + listKitchenItemPage[i].ItemDescription + "\n"
-                            + listKitchenItemPage[i].Quantity.ToString("#,##0.00") + " " + listKitchenItemPage[i].Unit;
+                            + listKitchenItemPage[i].Alias + "\n"
+                            + listKitchenItemPage[i].Quantity.ToString("#,##0.00") + " " + listKitchenItemPage[i].Unit + "\n"
+                            + listKitchenItemPage[i].Preparation;
 
                         Number += 1;
                     }
@@ -367,7 +368,7 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
                     foreach (var doneItem in doneItems)
                     {
                         dataGridViewDoneItemDisplay.Rows.Add(
-                            doneItem.OrderNumber + nl + doneItem.ItemDescription,
+                            doneItem.OrderNumber + nl + doneItem.Alias,
                             doneItem.Quantity.ToString("#,##0")
                         );
                     }

@@ -208,6 +208,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         dateTimePickerStartDate.Focus();
                         break;
+                    case "Customer List Report":
+                        break;
                 }
             }
             else
@@ -401,6 +403,27 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             break;
                         default:
                             MessageBox.Show("Please select a report.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            break;
+                        case "Customer List Report":
+                            sysUserRights = new Modules.SysUserRightsModule("RepSalesDetail");
+
+                            if (sysUserRights.GetUserRights() == null)
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                if (sysUserRights.GetUserRights().CanView == true)
+                                {
+                                    RepCustomerListReportForm repCustomerListReportForm = new RepCustomerListReportForm();
+                                    repCustomerListReportForm.ShowDialog();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
 
                             break;
                     }

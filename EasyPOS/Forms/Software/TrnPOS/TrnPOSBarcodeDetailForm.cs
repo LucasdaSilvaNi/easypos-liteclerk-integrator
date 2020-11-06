@@ -187,6 +187,170 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 GetSalesLineList();
             }
         }
+        private void buttonOverRide_Click(object sender, EventArgs e)
+        {
+                Account.SysLogin.SysLoginForm login = new Account.SysLogin.SysLoginForm(null, this, null, true);
+                login.ShowDialog();
+        }
+        public void OverrideSales(Int32 overrideUserId)
+        {
+            sysUserRights.OverrideUserRights(overrideUserId, "TrnSalesDetail");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (sysUserRights.GetUserRights().CanLock == true)
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        buttonLock.Enabled = false;
+                    }
+                    else
+                    {
+                        buttonLock.Enabled = true;
+                    }
+                }
+                else
+                {
+                    buttonLock.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanUnlock == true)
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        buttonUnlock.Enabled = true;
+                    }
+                    else
+                    {
+                        buttonUnlock.Enabled = false;
+                    }
+                }
+                else
+                {
+                    buttonUnlock.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanReturn == true)
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        buttonReturn.Enabled = false;
+                    }
+                    else
+                    {
+                        buttonReturn.Enabled = true;
+                    }
+                }
+                else
+                {
+                    buttonReturn.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanDiscount == true)
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        buttonDiscount.Enabled = false;
+                    }
+                    else
+                    {
+                        buttonDiscount.Enabled = true;
+                    }
+                }
+                else
+                {
+                    buttonDiscount.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanTender == true)
+                {
+                    buttonTender.Enabled = true;
+                }
+                else
+                {
+                    buttonTender.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanPrint == true)
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        buttonPrint.Enabled = true;
+                    }
+                    else
+                    {
+                        buttonPrint.Enabled = false;
+                    }
+                }
+                else
+                {
+                    buttonPrint.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanAdd == true)
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        buttonBarcode.Enabled = false;
+                        textBoxBarcode.Enabled = false;
+                        buttonSearchItem.Enabled = false;
+                        buttonDownload.Enabled = false;
+                    }
+                    else
+                    {
+                        buttonBarcode.Enabled = true;
+                        textBoxBarcode.Enabled = true;
+                        buttonSearchItem.Enabled = true;
+                        buttonDownload.Enabled = true;
+                    }
+                }
+                else
+                {
+                    buttonBarcode.Enabled = false;
+                    textBoxBarcode.Enabled = false;
+                    buttonSearchItem.Enabled = false;
+                    buttonDownload.Enabled = false;
+                }
+
+                if (sysUserRights.GetUserRights().CanEdit == true)
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        dataGridViewSalesLineList.Columns[0].Visible = false;
+                    }
+                    else
+                    {
+                        dataGridViewSalesLineList.Columns[0].Visible = true;
+                    }
+                }
+                else
+                {
+                    dataGridViewSalesLineList.Columns[0].Visible = true;
+                }
+
+                if (sysUserRights.GetUserRights().CanDelete == true)
+                {
+                    if (trnSalesEntity.IsLocked == true)
+                    {
+                        dataGridViewSalesLineList.Columns[1].Visible = false;
+                    }
+                    else
+                    {
+                        dataGridViewSalesLineList.Columns[1].Visible = true;
+                    }
+                }
+                else
+                {
+                    dataGridViewSalesLineList.Columns[1].Visible = false;
+                }
+
+                GetSalesDetail();
+                GetSalesLineList();
+            }
+        }
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
@@ -745,6 +909,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                         break;
                     }
+                case Keys.F11:
+                    {
+                        if (buttonOverRide.Enabled == true)
+                        {
+                            buttonOverRide.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
                 case Keys.Escape:
                     {
                         if (buttonClose.Enabled == true)
@@ -763,5 +937,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
     }
 }

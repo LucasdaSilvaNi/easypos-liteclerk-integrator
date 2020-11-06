@@ -290,7 +290,26 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 {
                     foreach (var salesReturnLine in salesReturnLines)
                     {
-                        salesReturnLineTotalAmount += salesReturnLine.Amount;
+                        if (salesReturnLine.MstTax.Code == "EXEMPTVAT")
+                        {
+                            if (salesReturnLine.MstItem.MstTax.Rate > 0)
+                            {
+                                salesReturnLineTotalAmount += (salesReturnLine.Price * salesReturnLine.Quantity) - ((salesReturnLine.Price * salesReturnLine.Quantity) / (1 + (salesReturnLine.MstItem.MstTax.Rate / 100)) * (salesReturnLine.MstItem.MstTax.Rate / 100));
+                                totalVATExemptSales -= (((salesReturnLine.Price * salesReturnLine.Quantity) - ((salesReturnLine.Price * salesReturnLine.Quantity) / (1 + (salesReturnLine.MstItem.MstTax.Rate / 100)) * (salesReturnLine.MstItem.MstTax.Rate / 100))) * -1);
+                            }
+                            else
+                            {
+                                salesReturnLineTotalAmount += salesReturnLine.Price * salesReturnLine.Quantity;
+                                totalVATExemptSales -= ((salesReturnLine.Price * salesReturnLine.Quantity) * -1);
+                            }
+                        }
+                        else
+                        {
+                            salesReturnLineTotalAmount += (salesReturnLine.Price * salesReturnLine.Quantity) - ((salesReturnLine.Price * salesReturnLine.Quantity) / (1 + (salesReturnLine.MstTax.Rate / 100)) * (salesReturnLine.MstTax.Rate / 100));
+                            totalVATSales -= (((salesReturnLine.Price * salesReturnLine.Quantity) - ((salesReturnLine.Price * salesReturnLine.Quantity) / (1 + (salesReturnLine.MstTax.Rate / 100)) * (salesReturnLine.MstTax.Rate / 100))) * -1);
+                        }
+
+                        totalVATAmount -= (salesReturnLine.TaxAmount * -1);
                     }
                 }
 
@@ -524,7 +543,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             // Sales Return
             // ============
             String totalSalesReturnLabel = "Sales Return";
-            String totalSalesReturnData = totalSalesReturn.ToString("#,##0.00");
+            String totalSalesReturnData = "(" + totalSalesReturn.ToString("#,##0.00") + ")";
             graphics.DrawString(totalSalesReturnLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             graphics.DrawString(totalSalesReturnData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(totalSalesReturnData, fontArial8Regular).Height;
@@ -559,7 +578,13 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                     y += graphics.MeasureString(collectionLineData, fontArial8Regular).Height;
 
                 }
+                Decimal totalRefund = dataSource.TotalRefund * declareRate;
 
+                String totalRefundLabel = "Refund";
+                String totalRefundData = "(" + totalRefund.ToString("#,##0.00") + ")";
+                graphics.DrawString(totalRefundLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalRefundData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalRefundData, fontArial8Regular).Height;
                 // ========
                 // 3rd Line
                 // ========

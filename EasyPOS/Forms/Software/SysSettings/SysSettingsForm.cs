@@ -461,6 +461,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxEnableEasyShopIntegration.Checked = Convert.ToBoolean(sysCurrent.EnableEasyShopIntegration);
                 checkBoxPromptLoginSales.Checked = Convert.ToBoolean(sysCurrent.PromptLoginSales);
                 comboBoxPrinterType.Text = sysCurrent.PrinterType;
+                checkBoxSwipeLogin.Checked = Convert.ToBoolean(sysCurrent.SwipeLogin);
             }
         }
 
@@ -525,7 +526,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 IsLoginDate = currentSettings.IsLoginDate,
                 EnableEasyShopIntegration = checkBoxEnableEasyShopIntegration.Checked,
                 PromptLoginSales = checkBoxPromptLoginSales.Checked,
-                PrinterType = comboBoxPrinterType.Text
+                PrinterType = comboBoxPrinterType.Text,
+                SwipeLogin = checkBoxSwipeLogin.Checked
             };
 
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);
@@ -571,6 +573,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxEnableEasyShopIntegration.Enabled = false;
                 checkBoxPromptLoginSales.Enabled = false;
                 comboBoxPrinterType.Enabled = false;
+                checkBoxSwipeLogin.Enabled = false;
             }
             else
             {
@@ -613,6 +616,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxIsTenderPrint.Enabled = true;
                 checkBoxIsBarcodeQuantityAlwaysOne.Enabled = true;
                 checkBoxWithCustomerDisplay.Enabled = true;
+                
 
                 if (checkBoxWithCustomerDisplay.Checked == true)
                 {
@@ -641,6 +645,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxEnableEasyShopIntegration.Enabled = true;
                 checkBoxPromptLoginSales.Enabled = true;
                 comboBoxPrinterType.Enabled = true;
+                checkBoxSwipeLogin.Enabled = true;
 
 
 

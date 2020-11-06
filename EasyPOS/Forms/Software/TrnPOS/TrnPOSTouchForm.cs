@@ -224,7 +224,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             if (Modules.SysCurrentModule.GetCurrentSettings().PromptLoginSales == true)
             {
-                Account.SysLogin.SysLoginForm login = new Account.SysLogin.SysLoginForm(null,this);
+                Account.SysLogin.SysLoginForm login = new Account.SysLogin.SysLoginForm(null, null, this, false);
                 login.ShowDialog();
             }
             else 
