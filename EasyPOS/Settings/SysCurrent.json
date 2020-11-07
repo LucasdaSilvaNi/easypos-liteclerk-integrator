@@ -19,7 +19,7 @@
   "CurrentSupport": "(032) 234-0787",
   "CurrentPeriodId": 1,
   "CurrentDate": "01/16/2020",
-  "TerminalId": 7,
+  "TerminalId": 1,
   "WalkinCustomerId": 5579,
   "DefaultDiscountId": 2,
   "ReturnSupplierId": 23,
@@ -43,7 +43,7 @@
   "AllowNegativeInventory": true,
   "IsLoginDate": true,
   "EnableEasyShopIntegration": false,
-  "PromptLoginSales": true,
+  "PromptLoginSales": false,
   "PrinterType": "Dot Matrix Printer",
   "SwipeLogin": false
 }

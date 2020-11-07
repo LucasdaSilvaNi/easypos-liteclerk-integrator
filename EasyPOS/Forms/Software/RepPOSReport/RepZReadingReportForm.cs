@@ -206,9 +206,9 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                             {
                                 if (salesLine.MstTax.Code == "EXEMPTVAT")
                                 {
-                                    if (salesLine.MstItem.MstTax.Rate > 0)
+                                    if (salesLine.MstItem.MstTax1.Rate > 0)
                                     {
-                                        salesLineTotalGrossSales += (salesLine.Price * salesLine.Quantity) - ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstItem.MstTax.Rate / 100)) * (salesLine.MstItem.MstTax.Rate / 100));
+                                        salesLineTotalGrossSales += (salesLine.Price * salesLine.Quantity) - ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstItem.MstTax1.Rate / 100)) * (salesLine.MstItem.MstTax1.Rate / 100));
                                     }
                                     else
                                     {
@@ -289,10 +289,10 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                     {
                         if (salesReturnLine.MstTax.Code == "EXEMPTVAT")
                         {
-                            if (salesReturnLine.MstItem.MstTax.Rate > 0)
+                            if (salesReturnLine.MstItem.MstTax1.Rate > 0)
                             {
-                                salesReturnLineTotalAmount += (salesReturnLine.Price * salesReturnLine.Quantity) - ((salesReturnLine.Price * salesReturnLine.Quantity) / (1 + (salesReturnLine.MstItem.MstTax.Rate / 100)) * (salesReturnLine.MstItem.MstTax.Rate / 100));
-                                totalVATExemptSales -= (((salesReturnLine.Price * salesReturnLine.Quantity) - ((salesReturnLine.Price * salesReturnLine.Quantity) / (1 + (salesReturnLine.MstItem.MstTax.Rate / 100)) * (salesReturnLine.MstItem.MstTax.Rate / 100))) * -1);
+                                salesReturnLineTotalAmount += (salesReturnLine.Price * salesReturnLine.Quantity) - ((salesReturnLine.Price * salesReturnLine.Quantity) / (1 + (salesReturnLine.MstItem.MstTax1.Rate / 100)) * (salesReturnLine.MstItem.MstTax1.Rate / 100));
+                                totalVATExemptSales -= (((salesReturnLine.Price * salesReturnLine.Quantity) - ((salesReturnLine.Price * salesReturnLine.Quantity) / (1 + (salesReturnLine.MstItem.MstTax1.Rate / 100)) * (salesReturnLine.MstItem.MstTax1.Rate / 100))) * -1);
                             }
                             else
                             {
@@ -386,7 +386,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             {
                 repZReadingReportEntity.GrossSalesTotalPreviousReading = grossSalesPreviousCollections.Sum(d => d.TrnSale.TrnSalesLines.Any() ?
                                                                          d.TrnSale.TrnSalesLines.Sum(s => s.MstTax.Code == "EXEMPTVAT" ?
-                                                                         s.MstItem.MstTax.Rate > 0 ? (s.Price * s.Quantity) - ((s.Price * s.Quantity) / (1 + (s.MstItem.MstTax.Rate / 100)) * (s.MstItem.MstTax.Rate / 100)) :
+                                                                         s.MstItem.MstTax1.Rate > 0 ? (s.Price * s.Quantity) - ((s.Price * s.Quantity) / (1 + (s.MstItem.MstTax1.Rate / 100)) * (s.MstItem.MstTax1.Rate / 100)) :
                                                                          (s.Quantity * s.Price) : (s.Quantity * s.Price) - ((s.Price * s.Quantity) / (1 + (s.MstTax.Rate / 100)) * (s.MstTax.Rate / 100))) : 0);
 
                 repZReadingReportEntity.GrossSalesRunningTotal = repZReadingReportEntity.TotalGrossSales + repZReadingReportEntity.GrossSalesTotalPreviousReading;
@@ -474,8 +474,13 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             // Company Name
             // ============
             String companyName = systemCurrent.CompanyName;
+            float adjustStringName = 1;
+            if (companyName.Length > 43)
+            {
+                adjustStringName = 2;
+            }
             graphics.DrawString(companyName, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += graphics.MeasureString(companyName, fontArial8Regular).Height;
+            y += graphics.MeasureString(companyName, fontArial8Regular).Height* adjustStringName;
 
             // ===============
             // Company Address

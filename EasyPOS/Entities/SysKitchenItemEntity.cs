@@ -16,5 +16,6 @@ namespace EasyPOS.Entities
         public Decimal Quantity { get; set; }
         public Boolean? IsPrepared { get; set; }
         public String Preparation { get; set; }
+        public String UpdateDateTime { get; set; }
     }
 }

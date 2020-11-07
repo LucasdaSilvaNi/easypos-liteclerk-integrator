@@ -172,6 +172,7 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
 
                         kitchenItemButtons[i].Text = "No. " + Number.ToString() + " "
                             + listKitchenItemPage[i].OrderNumber + "\n"
+                            + listKitchenItemPage[i].UpdateDateTime + "\n"
                             + listKitchenItemPage[i].Alias + "\n"
                             + listKitchenItemPage[i].Quantity.ToString("#,##0.00") + " " + listKitchenItemPage[i].Unit + "\n"
                             + listKitchenItemPage[i].Preparation;

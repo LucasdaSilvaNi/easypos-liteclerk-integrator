@@ -51,6 +51,10 @@
             this.comboBoxDiscount = new System.Windows.Forms.ComboBox();
             this.textBoxSeniorCitizenID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.textBoxPax = new System.Windows.Forms.TextBox();
+            this.textBoxDiscountedPax = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -132,6 +136,10 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.textBoxDiscountedPax);
+            this.panel2.Controls.Add(this.textBoxPax);
             this.panel2.Controls.Add(this.textBoxTotalSalesAmount);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label8);
@@ -152,7 +160,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 50);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(504, 274);
+            this.panel2.Size = new System.Drawing.Size(504, 347);
             this.panel2.TabIndex = 5;
             // 
             // textBoxTotalSalesAmount
@@ -251,7 +259,7 @@
             // textBoxSeniorCitizenAge
             // 
             this.textBoxSeniorCitizenAge.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxSeniorCitizenAge.Location = new System.Drawing.Point(150, 235);
+            this.textBoxSeniorCitizenAge.Location = new System.Drawing.Point(149, 235);
             this.textBoxSeniorCitizenAge.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSeniorCitizenAge.Name = "textBoxSeniorCitizenAge";
             this.textBoxSeniorCitizenAge.Size = new System.Drawing.Size(117, 29);
@@ -333,11 +341,57 @@
             this.label2.TabIndex = 34;
             this.label2.Text = "SC/PWD ID:";
             // 
+            // textBoxPax
+            // 
+            this.textBoxPax.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.textBoxPax.Location = new System.Drawing.Point(150, 268);
+            this.textBoxPax.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxPax.Name = "textBoxPax";
+            this.textBoxPax.Size = new System.Drawing.Size(117, 29);
+            this.textBoxPax.TabIndex = 49;
+            this.textBoxPax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxPax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPax_KeyPress);
+            this.textBoxPax.Leave += new System.EventHandler(this.textBoxPax_Leave);
+            // 
+            // textBoxDiscountedPax
+            // 
+            this.textBoxDiscountedPax.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.textBoxDiscountedPax.Location = new System.Drawing.Point(150, 301);
+            this.textBoxDiscountedPax.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxDiscountedPax.Name = "textBoxDiscountedPax";
+            this.textBoxDiscountedPax.Size = new System.Drawing.Size(117, 29);
+            this.textBoxDiscountedPax.TabIndex = 50;
+            this.textBoxDiscountedPax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxDiscountedPax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDiscountedPax_KeyPress);
+            this.textBoxDiscountedPax.Leave += new System.EventHandler(this.textBoxDiscountedPax_Leave);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label10.Location = new System.Drawing.Point(109, 271);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(36, 21);
+            this.label10.TabIndex = 51;
+            this.label10.Text = "Pax:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label11.Location = new System.Drawing.Point(28, 304);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(118, 21);
+            this.label11.TabIndex = 52;
+            this.label11.Text = "Discounted Pax:";
+            // 
             // TrnPOSDiscountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(504, 324);
+            this.ClientSize = new System.Drawing.Size(504, 397);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
@@ -381,5 +435,9 @@
         private System.Windows.Forms.ComboBox comboBoxItem;
         private System.Windows.Forms.TextBox textBoxTotalSalesAmount;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBoxDiscountedPax;
+        private System.Windows.Forms.TextBox textBoxPax;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
     }
 }

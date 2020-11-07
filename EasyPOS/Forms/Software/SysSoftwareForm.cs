@@ -977,7 +977,7 @@ namespace EasyPOS.Forms.Software
 
         private void SysSoftwareForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Account.SysLogin.SysLoginForm sysLogin = new Account.SysLogin.SysLoginForm(null, null, null ,false);
+            Account.SysLogin.SysLoginForm sysLogin = new Account.SysLogin.SysLoginForm(null, null, null, null, false); ;
             sysLogin.Show();
         }
 

@@ -162,7 +162,7 @@ namespace EasyPOS.Data
     #endregion
 		
 		public easyposdbDataContext() : 
-				base(global::EasyPOS.Properties.Settings.Default.easyposConnectionString, mappingSource)
+				base(global::EasyPOS.Properties.Settings.Default.easyposConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -763,7 +763,7 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Application", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Application", DbType="NVarChar(255)")]
 		public string Application
 		{
 			get
@@ -18336,6 +18336,8 @@ namespace EasyPOS.Data
 		
 		private string _PostCode;
 		
+		private System.Nullable<int> _DiscountedPax;
+		
 		private EntitySet<SysSalesLocked> _SysSalesLockeds;
 		
 		private EntitySet<TrnCollection> _TrnCollections;
@@ -18460,6 +18462,8 @@ namespace EasyPOS.Data
     partial void OnPaxChanged();
     partial void OnPostCodeChanging(string value);
     partial void OnPostCodeChanged();
+    partial void OnDiscountedPaxChanging(System.Nullable<int> value);
+    partial void OnDiscountedPaxChanged();
     #endregion
 		
 		public TrnSale()
@@ -19331,6 +19335,26 @@ namespace EasyPOS.Data
 					this._PostCode = value;
 					this.SendPropertyChanged("PostCode");
 					this.OnPostCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiscountedPax", DbType="Int")]
+		public System.Nullable<int> DiscountedPax
+		{
+			get
+			{
+				return this._DiscountedPax;
+			}
+			set
+			{
+				if ((this._DiscountedPax != value))
+				{
+					this.OnDiscountedPaxChanging(value);
+					this.SendPropertyChanging();
+					this._DiscountedPax = value;
+					this.SendPropertyChanged("DiscountedPax");
+					this.OnDiscountedPaxChanged();
 				}
 			}
 		}

@@ -1076,6 +1076,8 @@ namespace EasyPOS.Controllers
                     updateSales.SeniorCitizenAge = objSalesEntity.SeniorCitizenAge;
                     updateSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
                     updateSales.UpdateDateTime = DateTime.Now;
+                    updateSales.Pax = objSalesEntity.Pax;
+                    updateSales.DiscountedPax = objSalesEntity.DiscountedPax;
                     db.SubmitChanges();
 
                     Decimal discountRate = objSalesEntity.DiscountRate;
@@ -1101,34 +1103,53 @@ namespace EasyPOS.Controllers
                         foreach (var salesLine in salesLines)
                         {
                             Decimal quantity = salesLine.Quantity;
-                            Decimal price = salesLine.Price;
-                            Decimal taxRate = salesLine.TaxRate;
-                            Decimal priceVatExempt = 0;
-                            Decimal discountAmount = 0;
-                            Decimal taxAmount = 0;
+
+                            Decimal pax = Convert.ToDecimal(objSalesEntity.Pax != null ? objSalesEntity.Pax : 0);
+                            Decimal discountedPax = Convert.ToDecimal(objSalesEntity.DiscountedPax != null ? objSalesEntity.DiscountedPax : 0);
+                            Decimal withoutDiscountedPax = pax - discountedPax;
+
+                            Decimal pricePerPax = salesLine.Price / pax;
+                            Decimal pricePerPaxVatExempt = 0;
+                            Decimal discountAmountPerPax = 0;
+
                             Decimal netPrice = 0;
                             Decimal amount = 0;
 
+                            Decimal taxRate = salesLine.TaxRate;
+                            Decimal taxAmount = 0;
+
                             if (discount.FirstOrDefault().IsVatExempt == true)
                             {
-                                if (taxRate > 0)
+                                if (salesLine.MstItem.MstTax1.Rate > 0)
                                 {
-                                    priceVatExempt = price - (price / (1 + (taxRate / 100))) * (taxRate / 100);
+                                    Decimal VATAmountPerPax = (pricePerPax / (1 + (salesLine.MstItem.MstTax1.Rate / 100))) * (salesLine.MstItem.MstTax1.Rate / 100);
 
-                                    discountAmount = priceVatExempt * (discountRate / 100);
-                                    netPrice = priceVatExempt - discountAmount;
+                                    pricePerPaxVatExempt = pricePerPax - VATAmountPerPax;
+
+                                    discountAmountPerPax = pricePerPaxVatExempt * (discountRate / 100);
+
+                                    Decimal netPriceDiscountedPax = (pricePerPaxVatExempt - discountAmountPerPax) * discountedPax;
+                                    Decimal netPriceWithoutDiscountedPax = pricePerPax * withoutDiscountedPax;
+
+                                    netPrice = netPriceDiscountedPax + netPriceWithoutDiscountedPax;
+
                                     amount = netPrice * quantity;
                                 }
                                 else
                                 {
-                                    discountAmount = price * (discountRate / 100);
-                                    netPrice = price - discountAmount;
+                                    discountAmountPerPax = pricePerPax * (discountRate / 100);
+
+                                    Decimal netPriceDiscountedPax = (pricePerPax - discountAmountPerPax) * discountedPax;
+                                    Decimal netPriceWithoutDiscountedPax = pricePerPax * withoutDiscountedPax;
+
+                                    netPrice = netPriceDiscountedPax + netPriceWithoutDiscountedPax;
+
                                     amount = netPrice * quantity;
                                 }
 
                                 salesLine.DiscountId = discount.FirstOrDefault().Id;
                                 salesLine.DiscountRate = discountRate;
-                                salesLine.DiscountAmount = discountAmount;
+                                salesLine.DiscountAmount = discountAmountPerPax * discountedPax;
                                 salesLine.NetPrice = netPrice;
                                 salesLine.Amount = amount;
                                 salesLine.TaxId = 18;
@@ -1139,22 +1160,42 @@ namespace EasyPOS.Controllers
                             {
                                 if (taxRate > 0)
                                 {
-                                    discountAmount = price * (discountRate / 100);
-                                    netPrice = price - discountAmount;
+                                    discountAmountPerPax = pricePerPax * (discountRate / 100);
+
+                                    if (withoutDiscountedPax != 0)
+                                    {
+                                        netPrice = (pricePerPax - discountAmountPerPax) * withoutDiscountedPax;
+                                    }
+                                    else
+                                    {
+                                        netPrice = (pricePerPax - discountAmountPerPax);
+                                    }
+
                                     amount = netPrice * quantity;
+
                                     taxAmount = amount / (1 + (taxRate / 100)) * (taxRate / 100);
                                 }
                                 else
                                 {
-                                    discountAmount = price * (discountRate / 100);
-                                    netPrice = price - discountAmount;
+                                    discountAmountPerPax = pricePerPax * (discountRate / 100);
+
+                                    if (withoutDiscountedPax != 0)
+                                    {
+                                        netPrice = (pricePerPax - discountAmountPerPax) * withoutDiscountedPax;
+                                    }
+                                    else
+                                    {
+                                        netPrice = (pricePerPax - discountAmountPerPax);
+                                    }
+
                                     amount = netPrice * quantity;
+
                                     taxAmount = 0;
                                 }
 
                                 salesLine.DiscountId = discount.FirstOrDefault().Id;
                                 salesLine.DiscountRate = discountRate;
-                                salesLine.DiscountAmount = discountAmount;
+                                salesLine.DiscountAmount = discountAmountPerPax * withoutDiscountedPax;
                                 salesLine.NetPrice = netPrice;
                                 salesLine.Amount = amount;
                                 salesLine.TaxAmount = taxAmount;

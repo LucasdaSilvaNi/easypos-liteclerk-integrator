@@ -277,7 +277,7 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                 repRemitanceReportEntity.RemittedAmount = totalRemittedAmount;
             }
 
-            repRemitanceReportEntity.OverShortAmount = repRemitanceReportEntity.RemittedAmount - (repRemitanceReportEntity.CashCollectedAmount - (repRemitanceReportEntity.CashInAmount + repRemitanceReportEntity.CashOutAmount));
+            repRemitanceReportEntity.OverShortAmount = repRemitanceReportEntity.RemittedAmount - (repRemitanceReportEntity.CashCollectedAmount + (repRemitanceReportEntity.CashInAmount - repRemitanceReportEntity.CashOutAmount));
 
             remitanceReportEntity = repRemitanceReportEntity;
         }
@@ -484,39 +484,39 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             graphics.DrawString(disbursementAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(disbursementAmountLabel, fontArial8Bold).Height;
 
-            if (dataSource.Disbursements.Any())
-            {
-                foreach (var disbursement in dataSource.Disbursements)
-                {
-                    // ============
-                    // Disbursement
-                    // ============
-                    String disbursementLabel = disbursement.PayType;
-                    String disbursementData = disbursement.Amount.ToString("#,##0.00");
-                    graphics.DrawString(disbursementLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    graphics.DrawString(disbursementData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                    y += graphics.MeasureString(disbursementData, fontArial8Regular).Height;
-                }
-            }
-            else
-            {
-                // ============
-                // Disbursement
-                // ============
-                String disbursementLabel = "Cash";
-                String disbursementData = "0.00";
-                graphics.DrawString(disbursementLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(disbursementData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(disbursementData, fontArial8Regular).Height;
-            }
+            //if (dataSource.Disbursements.Any())
+            //{
+            //    foreach (var disbursement in dataSource.Disbursements)
+            //    {
+            //        // ============
+            //        // Disbursement
+            //        // ============
+            //        String disbursementLabel = disbursement.PayType;
+            //        String disbursementData = disbursement.Amount.ToString("#,##0.00");
+            //        graphics.DrawString(disbursementLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            //        graphics.DrawString(disbursementData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            //        y += graphics.MeasureString(disbursementData, fontArial8Regular).Height;
+            //    }
+            //}
+            //else
+            //{
+            //    // ============
+            //    // Disbursement
+            //    // ============
+            //    String disbursementLabel = "Cash";
+            //    String disbursementData = "0.00";
+            //    graphics.DrawString(disbursementLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            //    graphics.DrawString(disbursementData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            //    y += graphics.MeasureString(disbursementData, fontArial8Regular).Height;
+            //}
 
             // =======
             // Cash In
             // =======
             String disbursementTotalCashInLabel = "Cash In";
             String disbursementTotalCashInData = dataSource.CashInAmount.ToString("#,##0.00");
-            graphics.DrawString(disbursementTotalCashInLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            graphics.DrawString(disbursementTotalCashInData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            graphics.DrawString(disbursementTotalCashInLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(disbursementTotalCashInData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(disbursementTotalCashInData, fontArial8Bold).Height;
 
             // ========
@@ -524,8 +524,8 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             // ========
             String disbursementTotalCashOutLabel = "Cash Out";
             String disbursementTotalCashOutData = dataSource.CashOutAmount.ToString("#,##0.00");
-            graphics.DrawString(disbursementTotalCashOutLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            graphics.DrawString(disbursementTotalCashOutData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            graphics.DrawString(disbursementTotalCashOutLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(disbursementTotalCashOutData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
             y += graphics.MeasureString(disbursementTotalCashOutData, fontArial8Bold).Height;
 
             // ========

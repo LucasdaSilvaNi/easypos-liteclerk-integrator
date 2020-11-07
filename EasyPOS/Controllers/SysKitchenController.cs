@@ -45,7 +45,8 @@ namespace EasyPOS.Controllers
                                  d.MstItem.Alias,
                                  d.MstItem.MstUnit.Unit,
                                  d.IsPrepared,
-                                 d.Preparation
+                                 d.Preparation,
+                                 d.TrnSale.UpdateDateTime,
                              } into g
                              select new Entities.SysKitchenItemEntity
                              {
@@ -56,7 +57,8 @@ namespace EasyPOS.Controllers
                                  Unit = g.Key.Unit,
                                  IsPrepared = g.Key.IsPrepared,
                                  Preparation = g.Key.Preparation,
-                                 Quantity = g.Sum(d => d.Quantity)
+                                 Quantity = g.Sum(d => d.Quantity),
+                                 UpdateDateTime = g.Key.UpdateDateTime.ToString()
                              };
 
             return salesLines.ToList();
@@ -109,7 +111,9 @@ namespace EasyPOS.Controllers
                                  d.MstItem.Alias,
                                  d.MstItem.MstUnit.Unit,
                                  d.IsPrepared,
-                                 d.Preparation
+                                 d.Preparation,
+                                 d.TrnSale.UpdateDateTime
+
                              } into g
                              select new Entities.SysKitchenItemEntity
                              {
@@ -120,7 +124,8 @@ namespace EasyPOS.Controllers
                                  Unit = g.Key.Unit,
                                  IsPrepared = g.Key.IsPrepared,
                                  Preparation = g.Key.Preparation,
-                                 Quantity = g.Sum(d => d.Quantity)
+                                 Quantity = g.Sum(d => d.Quantity),
+                                 UpdateDateTime = g.Key.UpdateDateTime.ToString()
                              };
 
             return salesLines.ToList();

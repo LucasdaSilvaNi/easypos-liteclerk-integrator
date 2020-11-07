@@ -16,8 +16,9 @@ namespace EasyPOS.Forms.Account.SysLogin
         public TrnPOSBarcodeForm _trnPOSBarcodeForm;
         public TrnPOSBarcodeDetailForm _trnPOSBarcodeDetailForm;
         public TrnPOSTouchForm _trnPOSTouchForm;
+        public TrnPOSTouchDetailForm _trnPOSTouchDetailForm;
         public Boolean _isOverride = false;
-        public SysLoginForm(TrnPOSBarcodeForm trnPOSBarcodeForm, TrnPOSBarcodeDetailForm trnPOSBarcodeDetailForm, TrnPOSTouchForm trnPOSTouchForm, Boolean isOverride)
+        public SysLoginForm(TrnPOSBarcodeForm trnPOSBarcodeForm, TrnPOSBarcodeDetailForm trnPOSBarcodeDetailForm, TrnPOSTouchForm trnPOSTouchForm, TrnPOSTouchDetailForm trnPOSTouchDetailForm, Boolean isOverride)
         {
             InitializeComponent();
 
@@ -39,6 +40,7 @@ namespace EasyPOS.Forms.Account.SysLogin
             _trnPOSBarcodeForm = trnPOSBarcodeForm;
             _trnPOSBarcodeDetailForm = trnPOSBarcodeDetailForm;
             _trnPOSTouchForm = trnPOSTouchForm;
+            _trnPOSTouchDetailForm = trnPOSTouchDetailForm;
         }
         private void buttonClose_Click(object sender, EventArgs e)
         {
@@ -80,39 +82,54 @@ namespace EasyPOS.Forms.Account.SysLogin
         public void Login()
         {
             Controllers.SysLoginController sysLoginController = new Controllers.SysLoginController();
-            String[] login = sysLoginController.Login(textBoxUserCardNumber.Text,textBoxUsername.Text, textBoxPassword.Text, dateTimePickerLoginDate.Value.ToShortDateString(), radioButtonLoginDate.Checked, _isOverride);
+            String[] login = sysLoginController.Login(textBoxUserCardNumber.Text, textBoxUsername.Text, textBoxPassword.Text, dateTimePickerLoginDate.Value.ToShortDateString(), radioButtonLoginDate.Checked, _isOverride);
             if (login[1].Equals("0") == false)
             {
-                
-                if (Modules.SysCurrentModule.GetCurrentSettings().PromptLoginSales == false)
+                if (_isOverride == true)
                 {
-                    Software.SysSoftwareForm sysSoftwareForm = new Software.SysSoftwareForm();
-                    sysSoftwareForm.Show();
+                    if (_trnPOSTouchDetailForm != null)
+                    {
+                        _trnPOSTouchDetailForm.OverrideSales(Convert.ToInt32(login[1]));
+                    }
+
+                    if (_trnPOSBarcodeDetailForm != null)
+                    {
+                        _trnPOSBarcodeDetailForm.OverrideSales(Convert.ToInt32(login[1]));
+                    }
+
+                    Hide();
                 }
                 else
                 {
-                    Hide();
-
-                    if (CheckFormOpened("SysSoftwareForm") == false)
+                    if (Modules.SysCurrentModule.GetCurrentSettings().PromptLoginSales == false)
                     {
                         Software.SysSoftwareForm sysSoftwareForm = new Software.SysSoftwareForm();
                         sysSoftwareForm.Show();
+
+                        Hide();
                     }
                     else
                     {
-                        if (_trnPOSTouchForm != null)
-                        {
-                            _trnPOSTouchForm.NewWalkInSales();
-                        }
-                        if (_trnPOSBarcodeForm != null)
-                        {
-                            _trnPOSBarcodeForm.newSales();
-                        }
-                        if (_trnPOSBarcodeDetailForm != null)
-                        {
-                            _trnPOSBarcodeDetailForm.OverrideSales(Convert.ToInt32(login[1]));
-                        }
+                        Hide();
 
+                        if (CheckFormOpened("SysSoftwareForm") == false)
+                        {
+                            Software.SysSoftwareForm sysSoftwareForm = new Software.SysSoftwareForm();
+                            sysSoftwareForm.Show();
+                        }
+                        else
+                        {
+                            if (_trnPOSTouchForm != null)
+                            {
+                                _trnPOSTouchForm.NewWalkInSales();
+                            }
+
+                            if (_trnPOSBarcodeForm != null)
+                            {
+                                _trnPOSBarcodeForm.newSales();
+                            }
+
+                        }
                     }
                 }
             }
@@ -148,17 +165,21 @@ namespace EasyPOS.Forms.Account.SysLogin
 
         private void SysLoginForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (_trnPOSTouchForm != null || _trnPOSBarcodeDetailForm != null || _trnPOSBarcodeForm != null)
+            if (_isOverride == false)
             {
-                if (Modules.SysCurrentModule.GetCurrentSettings().PromptLoginSales == false)
+                if (_trnPOSTouchForm != null || _trnPOSTouchDetailForm != null || _trnPOSBarcodeForm != null || _trnPOSBarcodeDetailForm != null)
+                {
+                    if (Modules.SysCurrentModule.GetCurrentSettings().PromptLoginSales == false)
+                    {
+                        Environment.Exit(0);
+                    }
+                }
+                else
                 {
                     Environment.Exit(0);
                 }
             }
-            else
-            {
-                Environment.Exit(0);
-            }
+
         }
 
         private void radioButtonSystemDate_CheckedChanged(object sender, EventArgs e)

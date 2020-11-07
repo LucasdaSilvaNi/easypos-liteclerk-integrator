@@ -32,7 +32,7 @@ namespace EasyPOS.Controllers
                     {
                         Modules.SysCurrentModule.UpdateCurrentSettingsLogin(currentUser.FirstOrDefault().Id, currentUser.FirstOrDefault().UserName, loginDate, isLoginDate);
                     }
-                    return new String[] { "", currentUser.FirstOrDefault().Id.ToString() };
+                        return new String[] { "", currentUser.FirstOrDefault().Id.ToString() };
                 }
                 else
                 {

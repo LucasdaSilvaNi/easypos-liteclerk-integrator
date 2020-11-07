@@ -189,7 +189,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         }
         private void buttonOverRide_Click(object sender, EventArgs e)
         {
-                Account.SysLogin.SysLoginForm login = new Account.SysLogin.SysLoginForm(null, this, null, true);
+                Account.SysLogin.SysLoginForm login = new Account.SysLogin.SysLoginForm(null, this, null, null, true);
                 login.ShowDialog();
         }
         public void OverrideSales(Int32 overrideUserId)

@@ -61,6 +61,7 @@ namespace EasyPOS.Entities
         public String UpdatedUserName { get; set; }
         public String UpdateDateTime { get; set; }
         public Int32? Pax { get; set; }
+        public Int32? DiscountedPax { get; set; }
         public String PostCode { get; set; }
         public Decimal NumberOfItems { get; set; }
         public Decimal NumberOfItemsPrepared { get; set; }

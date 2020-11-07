@@ -73,15 +73,26 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // Company Name
             // ============
             String companyName = systemCurrent.CompanyName;
+            float adjustStringName = 1;
+            if (companyName.Length > 43)
+            {
+                adjustStringName = 2;
+            }
             graphics.DrawString(companyName, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += graphics.MeasureString(companyName, fontArial8Regular).Height;
+            y += graphics.MeasureString(companyName, fontArial8Regular).Height* adjustStringName;
 
             // ===============
             // Company Address
             // ===============
+
             String companyAddress = systemCurrent.Address;
+            float adjustStringAddress = 1;
+            if (companyAddress.Length > 43)
+            {
+                adjustStringAddress = 2;
+            }
             graphics.DrawString(companyAddress, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
+            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height* adjustStringAddress;
 
             // ==========
             // TIN Number

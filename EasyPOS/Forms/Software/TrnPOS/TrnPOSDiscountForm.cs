@@ -29,6 +29,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             textBoxTotalSalesAmount.Text = salesAmount.ToString("#,##0.00");
             textBoxDiscountRate.Text = "0";
             textBoxDiscountAmount.Text = "0.00";
+            textBoxPax.Text = "1";
+            textBoxDiscountedPax.Text = "1";
 
             GetSalesLine();
         }
@@ -112,6 +114,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             String seniorCitizenID = textBoxSeniorCitizenID.Text;
             String seniorCitizenName = textBoxSeniorCitizenName.Text;
             Int32 seniorCitizenAge = Convert.ToInt32(textBoxSeniorCitizenAge.Text);
+            Int32 pax = Convert.ToInt32(textBoxPax.Text);
+            Int32 discountedPax = Convert.ToInt32(textBoxDiscountedPax.Text);
 
             Entities.TrnSalesEntity salesEntity = new Entities.TrnSalesEntity()
             {
@@ -119,7 +123,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 DiscountRate = discountRate,
                 SeniorCitizenId = seniorCitizenID,
                 SeniorCitizenName = seniorCitizenName,
-                SeniorCitizenAge = seniorCitizenAge
+                SeniorCitizenAge = seniorCitizenAge,
+                Pax = pax,
+                DiscountedPax = discountedPax
             };
 
             Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();
@@ -390,6 +396,56 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void textBoxPax_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxPax_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBoxPax.Text))
+            {
+                textBoxPax.Text = "0";
+            }
+            else
+            {
+                textBoxPax.Text = Convert.ToDecimal(textBoxPax.Text).ToString("#,##0");
+            }
+        }
+
+        private void textBoxDiscountedPax_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxDiscountedPax_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBoxDiscountedPax.Text))
+            {
+                textBoxDiscountedPax.Text = "0";
+            }
+            else
+            {
+                textBoxDiscountedPax.Text = Convert.ToDecimal(textBoxDiscountedPax.Text).ToString("#,##0");
+            }
         }
     }
 }
