@@ -218,7 +218,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             }
                             else if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Delivery Receipt")
                             {
-                                new TrnPOSDeliveryReceiptReportForm("", StockWithdrawalReport(trnSalesEntity.Id), true, true);
+                                new TrnPOSDeliveryReceiptReportForm("", StockWithdrawalReport(trnSalesEntity.Id), true,false, true);
                             }
                             else
                             {

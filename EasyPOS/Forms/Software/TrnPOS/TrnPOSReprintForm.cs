@@ -46,7 +46,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             DialogResult cancelDialogResult = MessageBox.Show("Reprint Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (cancelDialogResult == DialogResult.Yes)
             {
-                new TrnPOSDeliveryReceiptReportForm("", StockWithdrawalReport(trnCollectionId), true, false);
+                new TrnPOSDeliveryReceiptReportForm("", StockWithdrawalReport(trnCollectionId), true, false, false);
                 MessageBox.Show("Generate PDF Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -56,7 +56,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             DialogResult cancelDialogResult = MessageBox.Show("Reprint Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (cancelDialogResult == DialogResult.Yes)
             {
-                new TrnPOSDeliveryReceiptReportForm("", StockWithdrawalReport(trnCollectionId), false, false);
+                new TrnPOSDeliveryReceiptReportForm("", StockWithdrawalReport(trnCollectionId), false,true, false);
                 MessageBox.Show("Generate PDF Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

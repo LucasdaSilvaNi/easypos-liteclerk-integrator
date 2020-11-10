@@ -89,9 +89,6 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             dateTimePickerStockInDate.Value = Convert.ToDateTime(trnStockInEntity.StockInDate);
             comboBoxSupplier.SelectedValue = trnStockInEntity.SupplierId;
             textBoxRemarks.Text = trnStockInEntity.Remarks;
-            checkBoxReturn.Checked = trnStockInEntity.IsReturn;
-            textBoxReturnORNumber.Text = trnStockInEntity.CollectionNumber;
-            textBoxReturnSalesNumber.Text = trnStockInEntity.SalesNumber;
             comboBoxPreparedBy.SelectedValue = trnStockInEntity.PreparedBy;
             comboBoxCheckedBy.SelectedValue = trnStockInEntity.CheckedBy;
             comboBoxApprovedBy.SelectedValue = trnStockInEntity.ApprovedBy;
@@ -145,7 +142,6 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             dateTimePickerStockInDate.Enabled = !isLocked;
             comboBoxSupplier.Enabled = !isLocked;
             textBoxRemarks.Enabled = !isLocked;
-            checkBoxReturn.Enabled = !isLocked;
             comboBoxCheckedBy.Enabled = !isLocked;
             comboBoxApprovedBy.Enabled = !isLocked;
 
@@ -164,7 +160,6 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                 StockInDate = dateTimePickerStockInDate.Value.Date.ToShortDateString(),
                 SupplierId = Convert.ToInt32(comboBoxSupplier.SelectedValue),
                 Remarks = textBoxRemarks.Text,
-                IsReturn = checkBoxReturn.Checked,
                 CheckedBy = Convert.ToInt32(comboBoxCheckedBy.SelectedValue),
                 ApprovedBy = Convert.ToInt32(comboBoxApprovedBy.SelectedValue)
             };

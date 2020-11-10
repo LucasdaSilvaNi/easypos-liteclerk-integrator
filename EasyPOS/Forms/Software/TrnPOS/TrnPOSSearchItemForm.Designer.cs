@@ -38,6 +38,7 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.dataGridViewSearchItemList = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.ColumnSearchItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSearchItemBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSearchItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,7 +52,6 @@
             this.ColumnSearchItemOnHandQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSearchItemIsInventory = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColumnSearchItemButtonPick = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchItemList)).BeginInit();
@@ -159,6 +159,17 @@
             this.dataGridViewSearchItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSearchItemList_CellClick);
             this.dataGridViewSearchItemList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewSearchItemList_KeyDown);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.textBoxFilter);
+            this.panel2.Controls.Add(this.dataGridViewSearchItemList);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 50);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(866, 392);
+            this.panel2.TabIndex = 7;
+            // 
             // ColumnSearchItemId
             // 
             this.ColumnSearchItemId.HeaderText = "Id";
@@ -186,6 +197,7 @@
             this.ColumnSearchItemGenericName.HeaderText = "Generic Name";
             this.ColumnSearchItemGenericName.Name = "ColumnSearchItemGenericName";
             this.ColumnSearchItemGenericName.ReadOnly = true;
+            this.ColumnSearchItemGenericName.Visible = false;
             // 
             // ColumnSearchItemOutTaxId
             // 
@@ -260,17 +272,6 @@
             this.ColumnSearchItemButtonPick.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ColumnSearchItemButtonPick.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.ColumnSearchItemButtonPick.Width = 70;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.textBoxFilter);
-            this.panel2.Controls.Add(this.dataGridViewSearchItemList);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 50);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(866, 392);
-            this.panel2.TabIndex = 7;
             // 
             // TrnPOSSearchItemForm
             // 

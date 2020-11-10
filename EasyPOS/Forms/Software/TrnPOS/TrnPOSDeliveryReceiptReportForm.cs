@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -17,12 +18,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
     public partial class TrnPOSDeliveryReceiptReportForm : Form
     {
         public Boolean isDeliveryReceipt;
+        public Boolean isWithdrawalReceipt;
         public Boolean isDirectPrint;
 
-        public TrnPOSDeliveryReceiptReportForm(String filePath, List<Entities.RepSalesReportCollectionSummaryReportEntity> collectionLists, Boolean filterIsDeliveryReceipt, Boolean filterIsDirectPrint)
+        public TrnPOSDeliveryReceiptReportForm(String filePath, List<Entities.RepSalesReportCollectionSummaryReportEntity> collectionLists, Boolean filterIsDeliveryReceipt, Boolean filterisWithdrawalReceipt, Boolean filterIsDirectPrint)
         {
             InitializeComponent();
             isDeliveryReceipt = filterIsDeliveryReceipt;
+            isWithdrawalReceipt = filterisWithdrawalReceipt;
             isDirectPrint = filterIsDirectPrint;
 
             PrintStockWithdrawalReport(collectionLists);
@@ -186,6 +189,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             Paragraph line = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0F, 100.0F, BaseColor.BLACK, Element.ALIGN_MIDDLE, 7F)));
 
             String documentTitle = systemCurrent.ORPrintTitle;
+            if(isDeliveryReceipt == false)
+            {
+                documentTitle = systemCurrent.WithdrawalPrintTitle;
+            }
             String deliveryDate = collection.FirstOrDefault().CollectionDate.ToShortDateString();
             String term = collection.FirstOrDefault().TrnSale.MstTerm.Term;
             String dueDate = collection.FirstOrDefault().CollectionDate.AddDays(Convert.ToDouble(collection.FirstOrDefault().TrnSale.MstTerm.NumberOfDays)).Date.ToShortDateString();
@@ -197,13 +204,24 @@ namespace EasyPOS.Forms.Software.TrnPOS
             String address = collection.FirstOrDefault().MstCustomer.Address;
 
             String ORFooter = systemCurrent.ReceiptFooter;
-
+            if (isDeliveryReceipt == false)
+            {
+                ORFooter = systemCurrent.WithdrawalFooter;
+            }
+            
             PdfPTable tableHeader = new PdfPTable(4);
             tableHeader.SetWidths(new float[] { 20f, 30f, 20f, 50f });
             tableHeader.DefaultCell.Border = 0;
             tableHeader.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
             tableHeader.LockedWidth = true;
-            tableHeader.AddCell(new PdfPCell(new Phrase(documentTitle, fontTimesNewRoman14Bold)) { Colspan = 3, Border = 0, Padding = 3f, PaddingBottom = 0f });
+            if (documentTitle.Length>15)
+            {
+                tableHeader.AddCell(new PdfPCell(new Phrase(documentTitle, fontTimesNewRoman11Bold)) { Colspan = 3, Border = 0, Padding = 3f, PaddingBottom = 0f });
+            }
+            else
+            {
+                tableHeader.AddCell(new PdfPCell(new Phrase(documentTitle, fontTimesNewRoman14Bold)) { Colspan = 3, Border = 0, Padding = 3f, PaddingBottom = 0f });
+            }
             tableHeader.AddCell(new PdfPCell(new Phrase("No.: " + collection.FirstOrDefault().CollectionNumber, fontTimesNewRoman11Bold)) { HorizontalAlignment = 2, Border = 0, PaddingRight = 3f, PaddingTop = 5f, PaddingBottom = 0f });
             tableHeader.AddCell(new PdfPCell(new Phrase(line)) { Border = 0, Colspan = 4, PaddingBottom = -5f, PaddingLeft = 0f, PaddingRight = 0f });
             tableHeader.AddCell(new PdfPCell(new Phrase("Date: ", fontTimesNewRoman10Bold)) { Border = 0, Padding = 1f });

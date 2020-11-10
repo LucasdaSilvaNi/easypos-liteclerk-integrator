@@ -39,6 +39,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.textBoxWithdrawalPrintTitle = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBoxWithdrawalFooter = new System.Windows.Forms.TextBox();
             this.textBoxCompanyName = new System.Windows.Forms.TextBox();
             this.textBoxInvoiceFooter = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -51,6 +55,7 @@
             this.textBoxReceiptFooter = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.checkBoxSwipeLogin = new System.Windows.Forms.CheckBox();
             this.checkBoxPromptLoginSales = new System.Windows.Forms.CheckBox();
             this.comboBoxCollectionReport = new System.Windows.Forms.ComboBox();
             this.comboBoxPOSType = new System.Windows.Forms.ComboBox();
@@ -142,7 +147,6 @@
             this.comboBoxPrinterType = new System.Windows.Forms.ComboBox();
             this.label45 = new System.Windows.Forms.Label();
             this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
-            this.checkBoxSwipeLogin = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -301,6 +305,10 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel6.Controls.Add(this.textBoxWithdrawalPrintTitle);
+            this.panel6.Controls.Add(this.label40);
+            this.panel6.Controls.Add(this.label3);
+            this.panel6.Controls.Add(this.textBoxWithdrawalFooter);
             this.panel6.Controls.Add(this.textBoxCompanyName);
             this.panel6.Controls.Add(this.textBoxInvoiceFooter);
             this.panel6.Controls.Add(this.label4);
@@ -316,6 +324,49 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1095, 472);
             this.panel6.TabIndex = 0;
+            // 
+            // textBoxWithdrawalPrintTitle
+            // 
+            this.textBoxWithdrawalPrintTitle.Enabled = false;
+            this.textBoxWithdrawalPrintTitle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxWithdrawalPrintTitle.Location = new System.Drawing.Point(738, 7);
+            this.textBoxWithdrawalPrintTitle.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxWithdrawalPrintTitle.Name = "textBoxWithdrawalPrintTitle";
+            this.textBoxWithdrawalPrintTitle.Size = new System.Drawing.Size(246, 26);
+            this.textBoxWithdrawalPrintTitle.TabIndex = 24;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Location = new System.Drawing.Point(591, 10);
+            this.label40.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(143, 19);
+            this.label40.TabIndex = 23;
+            this.label40.Text = "Withdrawal Print Title:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(591, 39);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 19);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Withdrawal Footer:";
+            // 
+            // textBoxWithdrawalFooter
+            // 
+            this.textBoxWithdrawalFooter.Enabled = false;
+            this.textBoxWithdrawalFooter.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxWithdrawalFooter.Location = new System.Drawing.Point(595, 60);
+            this.textBoxWithdrawalFooter.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxWithdrawalFooter.Multiline = true;
+            this.textBoxWithdrawalFooter.Name = "textBoxWithdrawalFooter";
+            this.textBoxWithdrawalFooter.Size = new System.Drawing.Size(443, 143);
+            this.textBoxWithdrawalFooter.TabIndex = 21;
             // 
             // textBoxCompanyName
             // 
@@ -491,6 +542,19 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1095, 472);
             this.panel5.TabIndex = 34;
+            // 
+            // checkBoxSwipeLogin
+            // 
+            this.checkBoxSwipeLogin.AutoSize = true;
+            this.checkBoxSwipeLogin.Enabled = false;
+            this.checkBoxSwipeLogin.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxSwipeLogin.Location = new System.Drawing.Point(668, 449);
+            this.checkBoxSwipeLogin.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxSwipeLogin.Name = "checkBoxSwipeLogin";
+            this.checkBoxSwipeLogin.Size = new System.Drawing.Size(101, 23);
+            this.checkBoxSwipeLogin.TabIndex = 81;
+            this.checkBoxSwipeLogin.Text = "Swipe Login";
+            this.checkBoxSwipeLogin.UseVisualStyleBackColor = true;
             // 
             // checkBoxPromptLoginSales
             // 
@@ -1529,19 +1593,6 @@
             this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
             this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
             // 
-            // checkBoxSwipeLogin
-            // 
-            this.checkBoxSwipeLogin.AutoSize = true;
-            this.checkBoxSwipeLogin.Enabled = false;
-            this.checkBoxSwipeLogin.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxSwipeLogin.Location = new System.Drawing.Point(668, 449);
-            this.checkBoxSwipeLogin.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxSwipeLogin.Name = "checkBoxSwipeLogin";
-            this.checkBoxSwipeLogin.Size = new System.Drawing.Size(101, 23);
-            this.checkBoxSwipeLogin.TabIndex = 81;
-            this.checkBoxSwipeLogin.Text = "Swipe Login";
-            this.checkBoxSwipeLogin.UseVisualStyleBackColor = true;
-            // 
             // SysSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1702,5 +1753,9 @@
         private System.Windows.Forms.ComboBox comboBoxPrinterType;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.CheckBox checkBoxSwipeLogin;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxWithdrawalFooter;
+        private System.Windows.Forms.TextBox textBoxWithdrawalPrintTitle;
+        private System.Windows.Forms.Label label40;
     }
 }

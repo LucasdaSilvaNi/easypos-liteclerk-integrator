@@ -50,6 +50,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         comboBoxItem.Visible = false;
                         dateTimePickerStartDate.Focus();
                         break;
+                    case "Item List Report":
+                        break;
                     case "Stock Card":
                         labelStartDate.Visible = true;
                         dateTimePickerStartDate.Visible = true;
@@ -94,6 +96,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         labelItem.Visible = false;
                         comboBoxItem.Visible = false;
                         break;
+                    
                 }
             }
             else
@@ -121,6 +124,25 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                             {
                                 RepInventoryReportForm repInventoryReportInventoryReport = new RepInventoryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
                                 repInventoryReportInventoryReport.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        break;
+                    case "Item List Report":
+                        sysUserRights = new Modules.SysUserRightsModule("RepInventoryItemList");
+                        if (sysUserRights.GetUserRights() == null)
+                        {
+                            MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            if (sysUserRights.GetUserRights().CanView == true)
+                            {
+                                RepInventoryItemListReportForm repInventoryListReportInventoryReport = new RepInventoryItemListReportForm();
+                                repInventoryListReportInventoryReport.ShowDialog();
                             }
                             else
                             {

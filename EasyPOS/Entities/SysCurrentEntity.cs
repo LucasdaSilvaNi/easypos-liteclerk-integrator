@@ -55,5 +55,7 @@ namespace EasyPOS.Entities
         public Boolean PromptLoginSales { get; set; }
         public String PrinterType { get; set; }
         public Boolean SwipeLogin { get; set; }
+        public String WithdrawalFooter { get; set; }
+        public String WithdrawalPrintTitle { get; set; }
     }
 }

@@ -295,10 +295,10 @@ namespace EasyPOS.Controllers
         // ====================
         // Customer List Report
         // ====================
-        public List<Entities.RepSalesCustomerListReportEntity> GetCustomerListReport()
+        public List<Entities.RepSalesReportCustomerListReportEntity> GetCustomerListReport()
         {
             var customer = from d in db.MstCustomers
-                           select new Entities.RepSalesCustomerListReportEntity
+                           select new Entities.RepSalesReportCustomerListReportEntity
                            {
                                Id = d.Id,
                                CustomerCode = d.CustomerCode,

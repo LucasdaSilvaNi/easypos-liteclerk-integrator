@@ -462,6 +462,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxPromptLoginSales.Checked = Convert.ToBoolean(sysCurrent.PromptLoginSales);
                 comboBoxPrinterType.Text = sysCurrent.PrinterType;
                 checkBoxSwipeLogin.Checked = Convert.ToBoolean(sysCurrent.SwipeLogin);
+                textBoxWithdrawalFooter.Text = sysCurrent.WithdrawalFooter;
+                textBoxWithdrawalPrintTitle.Text = sysCurrent.WithdrawalPrintTitle;
             }
         }
 
@@ -527,7 +529,9 @@ namespace EasyPOS.Forms.Software.SysSettings
                 EnableEasyShopIntegration = checkBoxEnableEasyShopIntegration.Checked,
                 PromptLoginSales = checkBoxPromptLoginSales.Checked,
                 PrinterType = comboBoxPrinterType.Text,
-                SwipeLogin = checkBoxSwipeLogin.Checked
+                SwipeLogin = checkBoxSwipeLogin.Checked,
+                WithdrawalFooter = textBoxWithdrawalFooter.Text,
+                WithdrawalPrintTitle = textBoxWithdrawalPrintTitle.Text
             };
 
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);
@@ -574,6 +578,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxPromptLoginSales.Enabled = false;
                 comboBoxPrinterType.Enabled = false;
                 checkBoxSwipeLogin.Enabled = false;
+                textBoxWithdrawalFooter.Enabled = false;
+                textBoxWithdrawalPrintTitle.Enabled = false;
             }
             else
             {
@@ -646,10 +652,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxPromptLoginSales.Enabled = true;
                 comboBoxPrinterType.Enabled = true;
                 checkBoxSwipeLogin.Enabled = true;
-
-
-
-
+                textBoxWithdrawalFooter.Enabled = true;
+                textBoxWithdrawalPrintTitle.Enabled = true;
             }
         }
 

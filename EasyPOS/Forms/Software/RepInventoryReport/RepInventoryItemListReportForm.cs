@@ -14,62 +14,56 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.RepInventoryReport
 {
-    public partial class RepStockCardForm : Form
+    public partial class RepInventoryItemListReportForm : Form
     {
-        public List<Entities.DgvRepInventoryStockCardListEntity> stockCardReportList;
-        public BindingSource dataStockCardReportListSource = new BindingSource();
-        public PagedList<Entities.DgvRepInventoryStockCardListEntity> pageList;
+        public List<Entities.DgvMstItemListEntity> itemList;
+        public BindingSource dataItemListSource = new BindingSource();
+        public PagedList<Entities.DgvMstItemListEntity> pageList;
         public Int32 pageNumber = 1;
         public Int32 pageSize = 50;
 
-        public DateTime startDate;
-        public DateTime endDate;
-        public Int32 itemId;
-
-        public RepStockCardForm(DateTime dateStart, DateTime dateEnd, Int32 filterItemId)
+        public RepInventoryItemListReportForm()
         {
             InitializeComponent();
-
-            startDate = dateStart;
-            endDate = dateEnd;
-            itemId = filterItemId;
-
-            GetStockCardReportDataSource("");
-            GetDataGridViewCollectionDetailReportSource();
+            GetInventoryListDataSource();
+            GetCustomerListDataGridSource();
         }
-
-        public List<Entities.DgvRepInventoryStockCardListEntity> GetStockCardReportListData(DateTime startDate, DateTime endDate, Int32 itemId, String filter)
+        public List<Entities.DgvMstItemListEntity> GetInventoryListReport()
         {
-            List<Entities.DgvRepInventoryStockCardListEntity> rowList = new List<Entities.DgvRepInventoryStockCardListEntity>();
+            List<Entities.DgvMstItemListEntity> rowList = new List<Entities.DgvMstItemListEntity>();
 
             Controllers.RepInventoryReportController repInvetoryReportController = new Controllers.RepInventoryReportController();
 
-            var stockCardReportList = repInvetoryReportController.StockCardReport(startDate, endDate, itemId, filter);
-            if (stockCardReportList.Any())
+            var inventoryListReport = repInvetoryReportController.GetInventoryListReport();
+            if (inventoryListReport.Any())
             {
-                var row = from d in stockCardReportList
-                          select new Entities.DgvRepInventoryStockCardListEntity
+                var row = from d in inventoryListReport
+                          select new Entities.DgvMstItemListEntity
                           {
-                              ColumnInventoryDate = d.InventoryDate,
-                              ColumnDocument = d.Document,
-                              ColumnBegQuantity = d.BeginningQuantity.ToString("#,##0.00"),
-                              ColumnInQuantity = d.InQuantity.ToString("#,##0.00"),
-                              ColumnOutQuantity = d.OutQuantity.ToString("#,##0.00"),
-                              ColumnEndingQuantity = d.EndingQuantity.ToString("#,##0.00"),
+                              ColumnItemListCode = d.ItemCode,
+                              ColumnItemListDescription = d.ItemDescription,
+                              ColumnItemListBarcode = d.BarCode,
+                              ColumnItemListUnit = d.Unit,
+                              ColumnItemListCategory = d.Category,
+                              ColumnItemListPrice = Convert.ToDecimal(d.Price).ToString("#,##0.00"),
+                              ColumnItemListCost = Convert.ToDecimal(d.Cost).ToString("#,##0.00"),
+                              ColumnItemListOnHandQuantity = Convert.ToDecimal(d.OnhandQuantity).ToString("#,##0.00"),
+                              ColumnItemListIsInventory = d.IsInventory,
+                              ColumnItemListIsLocked = d.IsLocked
                           };
 
                 rowList = row.ToList();
-            }
 
+            }
             return rowList;
         }
-
-        public void GetStockCardReportDataSource(String filter)
+        public void GetInventoryListDataSource()
         {
-            stockCardReportList = GetStockCardReportListData(startDate, endDate, itemId, filter);
-            if (stockCardReportList.Any())
+            itemList = GetInventoryListReport();
+            if (itemList.Any())
             {
-                pageList = new PagedList<Entities.DgvRepInventoryStockCardListEntity>(stockCardReportList, pageNumber, pageSize);
+
+                pageList = new PagedList<Entities.DgvMstItemListEntity>(itemList, pageNumber, pageSize);
 
                 if (pageList.PageCount == 1)
                 {
@@ -101,7 +95,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 }
 
                 textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
-                dataStockCardReportListSource.DataSource = pageList;
+                dataItemListSource.DataSource = pageList;
             }
             else
             {
@@ -110,20 +104,25 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 buttonPageListNext.Enabled = false;
                 buttonPageListLast.Enabled = false;
 
-                dataStockCardReportListSource.Clear();
+                dataItemListSource.Clear();
                 textBoxPageNumber.Text = "0 / 0";
             }
         }
 
-        public void GetDataGridViewCollectionDetailReportSource()
+        public void GetCustomerListDataGridSource()
         {
-            dataGridViewInventoryReport.DataSource = dataStockCardReportListSource;
+            dataGridViewItemListReport.DataSource = dataItemListSource;
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void buttonPageListFirst_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvRepInventoryStockCardListEntity>(stockCardReportList, 1, pageSize);
-            dataStockCardReportListSource.DataSource = pageList;
+            pageList = new PagedList<Entities.DgvMstItemListEntity>(itemList, 1, pageSize);
+            dataItemListSource.DataSource = pageList;
 
             buttonPageListFirst.Enabled = false;
             buttonPageListPrevious.Enabled = false;
@@ -138,8 +137,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
         {
             if (pageList.HasPreviousPage == true)
             {
-                pageList = new PagedList<Entities.DgvRepInventoryStockCardListEntity>(stockCardReportList, --pageNumber, pageSize);
-                dataStockCardReportListSource.DataSource = pageList;
+                pageList = new PagedList<Entities.DgvMstItemListEntity>(itemList, --pageNumber, pageSize);
+                dataItemListSource.DataSource = pageList;
             }
 
             buttonPageListNext.Enabled = true;
@@ -158,8 +157,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
         {
             if (pageList.HasNextPage == true)
             {
-                pageList = new PagedList<Entities.DgvRepInventoryStockCardListEntity>(stockCardReportList, ++pageNumber, pageSize);
-                dataStockCardReportListSource.DataSource = pageList;
+                pageList = new PagedList<Entities.DgvMstItemListEntity>(itemList, ++pageNumber, pageSize);
+                dataItemListSource.DataSource = pageList;
             }
 
             buttonPageListFirst.Enabled = true;
@@ -176,8 +175,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
 
         private void buttonPageListLast_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvRepInventoryStockCardListEntity>(stockCardReportList, pageList.PageCount, pageSize);
-            dataStockCardReportListSource.DataSource = pageList;
+            pageList = new PagedList<Entities.DgvMstItemListEntity>(itemList, pageList.PageCount, pageSize);
+            dataItemListSource.DataSource = pageList;
 
             buttonPageListFirst.Enabled = true;
             buttonPageListPrevious.Enabled = true;
@@ -186,19 +185,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
 
             pageNumber = pageList.PageCount;
             textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
-        }
 
-        private void buttonClose_OnClick(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void textBoxFilter_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                GetStockCardReportDataSource(textBoxFilter.Text);
-            }
         }
 
         private void buttonGenerateCSV_Click(object sender, EventArgs e)
@@ -209,45 +196,28 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 if (dialogResult == DialogResult.OK)
                 {
                     StringBuilder csv = new StringBuilder();
-                    String[] header = {
-                        "Document",
-                        "Date",
-                        "Beginning Quantity",
-                        "In Quantity",
-                        "Out Quantity",
-                        "Ending Quantity",
-
-                    };
-
+                    String[] header = { "Barcode", "Item Code", "Item Description", "Cost", "Price" };
                     csv.AppendLine(String.Join(",", header));
 
-                    if (stockCardReportList.Any())
+                    if (itemList.Any())
                     {
-                        Decimal totalEndingQty = 0;
-
-                        foreach (var stockCardReport in stockCardReportList)
+                        foreach (var item in itemList)
                         {
+                            String Barcode = "";
+                            if (item.ColumnItemListBarcode != null)
+                            {
+                                Barcode = item.ColumnItemListBarcode.Replace(",", "");
+                            }
+
                             String[] data = {
-                              stockCardReport.ColumnDocument,
-                              stockCardReport.ColumnInventoryDate.ToShortDateString(),
-                              stockCardReport.ColumnBegQuantity,
-                              stockCardReport.ColumnInQuantity,
-                              stockCardReport.ColumnOutQuantity,
-                              stockCardReport.ColumnEndingQuantity,
+                                Barcode,
+                                item.ColumnItemListDescription.Replace("," , ""),
+                                item.ColumnItemListUnit.Replace("," , ""),
+                                item.ColumnItemListCost.Replace("," , ""),
+                                item.ColumnItemListPrice.Replace("," , "")
                             };
                             csv.AppendLine(String.Join(",", data));
-
-                            totalEndingQty += Convert.ToDecimal(stockCardReport.ColumnEndingQuantity);
                         }
-                        String[] data1 = {
-                              "",
-                              "",
-                              "",
-                              "",
-                              "Total Ending Quantity:",
-                              totalEndingQty.ToString("#,##0.00")
-                            };
-                        csv.AppendLine(String.Join(",", data1));
                     }
 
                     String executingUser = WindowsIdentity.GetCurrent().Name;
@@ -257,7 +227,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                     securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
 
                     DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
-                    File.WriteAllText(createDirectorySTCSV.FullName + "\\StockCard_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\InventoryListReport_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
 
                     MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();

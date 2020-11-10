@@ -49,15 +49,9 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.comboBoxApprovedBy = new System.Windows.Forms.ComboBox();
             this.comboBoxCheckedBy = new System.Windows.Forms.ComboBox();
             this.comboBoxPreparedBy = new System.Windows.Forms.ComboBox();
-            this.textBoxReturnSalesNumber = new System.Windows.Forms.TextBox();
-            this.textBoxReturnORNumber = new System.Windows.Forms.TextBox();
-            this.checkBoxReturn = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -75,12 +69,6 @@
             this.buttonExport = new System.Windows.Forms.Button();
             this.buttonImport = new System.Windows.Forms.Button();
             this.dataGridViewStockInLineList = new System.Windows.Forms.DataGridView();
-            this.textBoxBarcode = new System.Windows.Forms.TextBox();
-            this.buttonBarcode = new System.Windows.Forms.Button();
-            this.buttonSearchItem = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.openFileDialogImportCSV = new System.Windows.Forms.OpenFileDialog();
-            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
             this.ColumnStockInLineListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnStockInLineListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnStockInLineListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -98,6 +86,12 @@
             this.ColumnStockInLineListAssetAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockInLineListAssetAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockInLineListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBoxBarcode = new System.Windows.Forms.TextBox();
+            this.buttonBarcode = new System.Windows.Forms.Button();
+            this.buttonSearchItem = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.openFileDialogImportCSV = new System.Windows.Forms.OpenFileDialog();
+            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -230,15 +224,9 @@
             this.panel3.Controls.Add(this.label13);
             this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.label11);
-            this.panel3.Controls.Add(this.label10);
-            this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.comboBoxApprovedBy);
             this.panel3.Controls.Add(this.comboBoxCheckedBy);
             this.panel3.Controls.Add(this.comboBoxPreparedBy);
-            this.panel3.Controls.Add(this.textBoxReturnSalesNumber);
-            this.panel3.Controls.Add(this.textBoxReturnORNumber);
-            this.panel3.Controls.Add(this.checkBoxReturn);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label4);
@@ -289,7 +277,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label13.Location = new System.Drawing.Point(477, 157);
+            this.label13.Location = new System.Drawing.Point(477, 69);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(91, 19);
@@ -300,7 +288,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label12.Location = new System.Drawing.Point(484, 128);
+            this.label12.Location = new System.Drawing.Point(484, 40);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(83, 19);
@@ -311,51 +299,18 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label11.Location = new System.Drawing.Point(481, 98);
+            this.label11.Location = new System.Drawing.Point(481, 10);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(86, 19);
             this.label11.TabIndex = 21;
             this.label11.Text = "Prepared by:";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label10.Location = new System.Drawing.Point(425, 69);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(141, 19);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "Return Sales Number:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label9.Location = new System.Drawing.Point(437, 40);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(130, 19);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "Return OR Number:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label8.Location = new System.Drawing.Point(513, 11);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(53, 19);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "Return:";
-            // 
             // comboBoxApprovedBy
             // 
             this.comboBoxApprovedBy.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxApprovedBy.FormattingEnabled = true;
-            this.comboBoxApprovedBy.Location = new System.Drawing.Point(570, 155);
+            this.comboBoxApprovedBy.Location = new System.Drawing.Point(570, 67);
             this.comboBoxApprovedBy.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxApprovedBy.Name = "comboBoxApprovedBy";
             this.comboBoxApprovedBy.Size = new System.Drawing.Size(231, 27);
@@ -365,7 +320,7 @@
             // 
             this.comboBoxCheckedBy.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxCheckedBy.FormattingEnabled = true;
-            this.comboBoxCheckedBy.Location = new System.Drawing.Point(570, 125);
+            this.comboBoxCheckedBy.Location = new System.Drawing.Point(570, 37);
             this.comboBoxCheckedBy.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxCheckedBy.Name = "comboBoxCheckedBy";
             this.comboBoxCheckedBy.Size = new System.Drawing.Size(231, 27);
@@ -376,43 +331,11 @@
             this.comboBoxPreparedBy.Enabled = false;
             this.comboBoxPreparedBy.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxPreparedBy.FormattingEnabled = true;
-            this.comboBoxPreparedBy.Location = new System.Drawing.Point(570, 96);
+            this.comboBoxPreparedBy.Location = new System.Drawing.Point(570, 8);
             this.comboBoxPreparedBy.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxPreparedBy.Name = "comboBoxPreparedBy";
             this.comboBoxPreparedBy.Size = new System.Drawing.Size(231, 27);
             this.comboBoxPreparedBy.TabIndex = 8;
-            // 
-            // textBoxReturnSalesNumber
-            // 
-            this.textBoxReturnSalesNumber.Enabled = false;
-            this.textBoxReturnSalesNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxReturnSalesNumber.Location = new System.Drawing.Point(570, 67);
-            this.textBoxReturnSalesNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxReturnSalesNumber.Name = "textBoxReturnSalesNumber";
-            this.textBoxReturnSalesNumber.Size = new System.Drawing.Size(231, 26);
-            this.textBoxReturnSalesNumber.TabIndex = 7;
-            // 
-            // textBoxReturnORNumber
-            // 
-            this.textBoxReturnORNumber.Enabled = false;
-            this.textBoxReturnORNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxReturnORNumber.Location = new System.Drawing.Point(570, 37);
-            this.textBoxReturnORNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxReturnORNumber.Name = "textBoxReturnORNumber";
-            this.textBoxReturnORNumber.Size = new System.Drawing.Size(231, 26);
-            this.textBoxReturnORNumber.TabIndex = 6;
-            // 
-            // checkBoxReturn
-            // 
-            this.checkBoxReturn.AutoSize = true;
-            this.checkBoxReturn.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxReturn.Location = new System.Drawing.Point(570, 10);
-            this.checkBoxReturn.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxReturn.Name = "checkBoxReturn";
-            this.checkBoxReturn.Size = new System.Drawing.Size(32, 23);
-            this.checkBoxReturn.TabIndex = 5;
-            this.checkBoxReturn.Text = " ";
-            this.checkBoxReturn.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -690,72 +613,6 @@
             this.dataGridViewStockInLineList.TabStop = false;
             this.dataGridViewStockInLineList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStockInLineList_CellClick);
             // 
-            // textBoxBarcode
-            // 
-            this.textBoxBarcode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxBarcode.Font = new System.Drawing.Font("Segoe UI Semibold", 13.3F, System.Drawing.FontStyle.Bold);
-            this.textBoxBarcode.Location = new System.Drawing.Point(181, 6);
-            this.textBoxBarcode.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxBarcode.Name = "textBoxBarcode";
-            this.textBoxBarcode.Size = new System.Drawing.Size(608, 31);
-            this.textBoxBarcode.TabIndex = 11;
-            this.textBoxBarcode.TabStop = false;
-            this.textBoxBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarcode_KeyDown);
-            // 
-            // buttonBarcode
-            // 
-            this.buttonBarcode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonBarcode.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
-            this.buttonBarcode.FlatAppearance.BorderSize = 0;
-            this.buttonBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBarcode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.buttonBarcode.ForeColor = System.Drawing.Color.White;
-            this.buttonBarcode.Location = new System.Drawing.Point(10, 5);
-            this.buttonBarcode.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonBarcode.Name = "buttonBarcode";
-            this.buttonBarcode.Size = new System.Drawing.Size(167, 32);
-            this.buttonBarcode.TabIndex = 9;
-            this.buttonBarcode.TabStop = false;
-            this.buttonBarcode.Text = "Barcode";
-            this.buttonBarcode.UseVisualStyleBackColor = false;
-            this.buttonBarcode.Click += new System.EventHandler(this.buttonBarcode_Click);
-            // 
-            // buttonSearchItem
-            // 
-            this.buttonSearchItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSearchItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonSearchItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
-            this.buttonSearchItem.FlatAppearance.BorderSize = 0;
-            this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
-            this.buttonSearchItem.Location = new System.Drawing.Point(941, 5);
-            this.buttonSearchItem.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonSearchItem.Name = "buttonSearchItem";
-            this.buttonSearchItem.Size = new System.Drawing.Size(146, 32);
-            this.buttonSearchItem.TabIndex = 8;
-            this.buttonSearchItem.TabStop = false;
-            this.buttonSearchItem.Text = "Search Item";
-            this.buttonSearchItem.UseVisualStyleBackColor = false;
-            this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.panel5);
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 50);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1096, 510);
-            this.panel2.TabIndex = 8;
-            // 
-            // openFileDialogImportCSV
-            // 
-            this.openFileDialogImportCSV.FileName = "openFileDialogImport";
-            // 
             // ColumnStockInLineListButtonEdit
             // 
             this.ColumnStockInLineListButtonEdit.DataPropertyName = "ColumnStockInLineListButtonEdit";
@@ -896,6 +753,72 @@
             this.ColumnStockInLineListPrice.Name = "ColumnStockInLineListPrice";
             this.ColumnStockInLineListPrice.ReadOnly = true;
             // 
+            // textBoxBarcode
+            // 
+            this.textBoxBarcode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxBarcode.Font = new System.Drawing.Font("Segoe UI Semibold", 13.3F, System.Drawing.FontStyle.Bold);
+            this.textBoxBarcode.Location = new System.Drawing.Point(181, 6);
+            this.textBoxBarcode.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxBarcode.Name = "textBoxBarcode";
+            this.textBoxBarcode.Size = new System.Drawing.Size(608, 31);
+            this.textBoxBarcode.TabIndex = 11;
+            this.textBoxBarcode.TabStop = false;
+            this.textBoxBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarcode_KeyDown);
+            // 
+            // buttonBarcode
+            // 
+            this.buttonBarcode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonBarcode.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
+            this.buttonBarcode.FlatAppearance.BorderSize = 0;
+            this.buttonBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBarcode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.buttonBarcode.ForeColor = System.Drawing.Color.White;
+            this.buttonBarcode.Location = new System.Drawing.Point(10, 5);
+            this.buttonBarcode.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonBarcode.Name = "buttonBarcode";
+            this.buttonBarcode.Size = new System.Drawing.Size(167, 32);
+            this.buttonBarcode.TabIndex = 9;
+            this.buttonBarcode.TabStop = false;
+            this.buttonBarcode.Text = "Barcode";
+            this.buttonBarcode.UseVisualStyleBackColor = false;
+            this.buttonBarcode.Click += new System.EventHandler(this.buttonBarcode_Click);
+            // 
+            // buttonSearchItem
+            // 
+            this.buttonSearchItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSearchItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonSearchItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
+            this.buttonSearchItem.FlatAppearance.BorderSize = 0;
+            this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
+            this.buttonSearchItem.Location = new System.Drawing.Point(941, 5);
+            this.buttonSearchItem.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSearchItem.Name = "buttonSearchItem";
+            this.buttonSearchItem.Size = new System.Drawing.Size(146, 32);
+            this.buttonSearchItem.TabIndex = 8;
+            this.buttonSearchItem.TabStop = false;
+            this.buttonSearchItem.Text = "Search Item";
+            this.buttonSearchItem.UseVisualStyleBackColor = false;
+            this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel5);
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 50);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1096, 510);
+            this.panel2.TabIndex = 8;
+            // 
+            // openFileDialogImportCSV
+            // 
+            this.openFileDialogImportCSV.FileName = "openFileDialogImport";
+            // 
             // TrnStockInDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -939,15 +862,9 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboBoxApprovedBy;
         private System.Windows.Forms.ComboBox comboBoxCheckedBy;
         private System.Windows.Forms.ComboBox comboBoxPreparedBy;
-        private System.Windows.Forms.TextBox textBoxReturnSalesNumber;
-        private System.Windows.Forms.TextBox textBoxReturnORNumber;
-        private System.Windows.Forms.CheckBox checkBoxReturn;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;

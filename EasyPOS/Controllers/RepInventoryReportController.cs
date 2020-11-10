@@ -297,7 +297,7 @@ namespace EasyPOS.Controllers
                                              BeginningQuantity = d.Quantity,
                                              InQuantity = 0,
                                              OutQuantity = 0,
-                                             EndingQuantity = 0
+                                             EndingQuantity = 0,
                                          };
 
             var beginningSoldInventories = from d in db.TrnSalesLines
@@ -314,7 +314,7 @@ namespace EasyPOS.Controllers
                                                BeginningQuantity = d.Quantity * -1,
                                                InQuantity = 0,
                                                OutQuantity = 0,
-                                               EndingQuantity = 0
+                                               EndingQuantity = 0,
                                            };
 
             List<Entities.RepInventoryReportStockCardEntity> beginningSoldComponentInventories = new List<Entities.RepInventoryReportStockCardEntity>();
@@ -347,7 +347,7 @@ namespace EasyPOS.Controllers
                                 BeginningQuantity = (itemComponent.Quantity * beginningSoldComponent.Quantity) * -1,
                                 InQuantity = 0,
                                 OutQuantity = 0,
-                                EndingQuantity = 0
+                                EndingQuantity = 0,
                             });
                         }
                     }
@@ -367,7 +367,7 @@ namespace EasyPOS.Controllers
                                               BeginningQuantity = d.Quantity * -1,
                                               InQuantity = 0,
                                               OutQuantity = 0,
-                                              EndingQuantity = 0
+                                              EndingQuantity = 0,
                                           };
 
             var unionBeginningInventories = beginningInInventories.ToList().Union(beginningSoldInventories.ToList()).Union(beginningSoldComponentInventories.ToList()).Union(beginningOutInventories.ToList());
@@ -386,7 +386,7 @@ namespace EasyPOS.Controllers
                                            BeginningQuantity = 0,
                                            InQuantity = d.Quantity,
                                            OutQuantity = 0,
-                                           EndingQuantity = d.Quantity
+                                           EndingQuantity = d.Quantity,
                                        };
 
             var currentSoldInventories = from d in db.TrnSalesLines
@@ -404,7 +404,7 @@ namespace EasyPOS.Controllers
                                              BeginningQuantity = 0,
                                              InQuantity = 0,
                                              OutQuantity = d.Quantity,
-                                             EndingQuantity = d.Quantity * -1
+                                             EndingQuantity = d.Quantity * -1,
                                          };
 
             List<Entities.RepInventoryReportStockCardEntity> currentSoldComponentInventories = new List<Entities.RepInventoryReportStockCardEntity>();
@@ -582,6 +582,29 @@ namespace EasyPOS.Controllers
                                         Amount = d.Amount
                                     };
             return stockCountDetails.OrderByDescending(d => d.Id).ToList();
+        }
+        // ====================
+        // Inventory List Report
+        // ====================
+        public List<Entities.MstItemEntity> GetInventoryListReport()
+        {
+            var item = from d in db.MstItems
+                           select new Entities.MstItemEntity
+                           {
+                               Id = d.Id,
+                               BarCode = d.BarCode,
+                               ItemCode = d.ItemCode,
+                               ItemDescription = d.ItemDescription,
+                               Unit = d.MstUnit.Unit,
+                               Category = d.Category,
+                               Cost = d.Cost,
+                               Price = d.Price,
+                               OnhandQuantity = d.OnhandQuantity,
+                               IsInventory = d.IsInventory,
+                               IsLocked = d.IsLocked
+                           };
+
+            return item.ToList();
         }
     }
 }
