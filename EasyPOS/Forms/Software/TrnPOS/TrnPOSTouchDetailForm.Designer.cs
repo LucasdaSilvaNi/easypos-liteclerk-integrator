@@ -146,6 +146,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonHideItems = new System.Windows.Forms.Button();
+            this.printDialogSelectPrinter = new System.Windows.Forms.PrintDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -1598,6 +1599,10 @@
             this.buttonHideItems.UseVisualStyleBackColor = false;
             this.buttonHideItems.Click += new System.EventHandler(this.buttonHideItems_Click);
             // 
+            // printDialogSelectPrinter
+            // 
+            this.printDialogSelectPrinter.UseEXDialog = true;
+            // 
             // TrnPOSTouchDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1737,5 +1742,6 @@
         private System.Windows.Forms.Button buttonOverRide;
         private System.Windows.Forms.Button buttonHideItems;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.PrintDialog printDialogSelectPrinter;
     }
 }
