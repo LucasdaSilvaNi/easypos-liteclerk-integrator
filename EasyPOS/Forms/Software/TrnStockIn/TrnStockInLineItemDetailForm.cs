@@ -242,7 +242,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
 
         private void textBoxStockInLinePrice_Leave(object sender, EventArgs e)
         {
-            textBoxStockInLinePrice.Text = Convert.ToDecimal(textBoxStockInLineCost.Text).ToString("#,##0.00");
+            textBoxStockInLinePrice.Text = Convert.ToDecimal(textBoxStockInLinePrice.Text).ToString("#,##0.00");
         }
 
         private void checkBoxIncludeExpiry_CheckedChanged(object sender, EventArgs e)

@@ -778,9 +778,19 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
             String xReadingFooter = systemCurrent.ZReadingFooter;
 
-            String xReadingEndLabel = "\n" + xReadingFooter + "\n \n\n\n\n\n\n\n\n\n\n.";
-            graphics.DrawString(xReadingEndLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += graphics.MeasureString(xReadingEndLabel, fontArial8Regular).Height;
+            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+            {
+                String xReadingEndLabel = "\n" + xReadingFooter + "\n \n\n\n\n\n\n\n\n\n\n.";
+                graphics.DrawString(xReadingEndLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                y += graphics.MeasureString(xReadingEndLabel, fontArial8Regular).Height;
+            }
+            else
+            {
+                String xReadingEndLabel = "\n" + xReadingFooter + "\n \n\n\n\n\n\n\n.";
+                graphics.DrawString(xReadingEndLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                y += graphics.MeasureString(xReadingEndLabel, fontArial8Regular).Height;
+            }
+                
         }
     }
 }

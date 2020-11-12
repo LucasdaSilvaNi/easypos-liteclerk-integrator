@@ -287,6 +287,28 @@ namespace EasyPOS.Controllers
                     lockStockIn.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
 
+                    var stockInLines = from d in db.TrnStockInLines
+                                       where d.StockInId == id
+                                       && d.Price != null
+                                       select d;
+
+                    if (stockInLines.Any())
+                    {
+                        foreach (var stockInLine in stockInLines)
+                        {
+                            var item = from d in db.MstItems
+                                       where d.Id == stockInLine.ItemId
+                                       select d;
+
+                            if (item.Any())
+                            {
+                                var updateItem = item.FirstOrDefault();
+                                updateItem.Price = Convert.ToDecimal(stockInLine.Price);
+                                db.SubmitChanges();
+                            }
+                        }
+                    }
+
                     Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
                     trnInventoryModule.UpdateStockInInventory(stockIn.FirstOrDefault().Id);
 
