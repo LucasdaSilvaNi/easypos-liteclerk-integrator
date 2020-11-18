@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SysKitchenDisplayForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -188,29 +188,29 @@
             this.dataGridViewDoneItemDisplay.AllowUserToDeleteRows = false;
             this.dataGridViewDoneItemDisplay.AllowUserToResizeColumns = false;
             this.dataGridViewDoneItemDisplay.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.dataGridViewDoneItemDisplay.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.dataGridViewDoneItemDisplay.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewDoneItemDisplay.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewDoneItemDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewDoneItemDisplay.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewDoneItemDisplay.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewDoneItemDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDoneItemDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewDoneItemDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDoneItemDisplay.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnDoneItems,
             this.ColumnQuantity});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewDoneItemDisplay.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDoneItemDisplay.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewDoneItemDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewDoneItemDisplay.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dataGridViewDoneItemDisplay.Location = new System.Drawing.Point(0, 0);
@@ -218,11 +218,11 @@
             this.dataGridViewDoneItemDisplay.Name = "dataGridViewDoneItemDisplay";
             this.dataGridViewDoneItemDisplay.ReadOnly = true;
             this.dataGridViewDoneItemDisplay.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewDoneItemDisplay.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDoneItemDisplay.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewDoneItemDisplay.RowHeadersVisible = false;
             this.dataGridViewDoneItemDisplay.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.SystemColors.ControlText;
             this.dataGridViewDoneItemDisplay.RowTemplate.Height = 45;
@@ -236,8 +236,8 @@
             // 
             this.ColumnDoneItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ColumnDoneItems.DataPropertyName = "ColumnDoneItems";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.ColumnDoneItems.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.ColumnDoneItems.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnDoneItems.HeaderText = "Done Items";
             this.ColumnDoneItems.Name = "ColumnDoneItems";
             this.ColumnDoneItems.ReadOnly = true;
@@ -307,7 +307,7 @@
             this.buttonKitchenItem5.BackColor = System.Drawing.SystemColors.Control;
             this.buttonKitchenItem5.FlatAppearance.BorderSize = 0;
             this.buttonKitchenItem5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKitchenItem5.Font = new System.Drawing.Font("Arial Narrow", 8.25F);
+            this.buttonKitchenItem5.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem5.ForeColor = System.Drawing.Color.Black;
             this.buttonKitchenItem5.Location = new System.Drawing.Point(711, 97);
             this.buttonKitchenItem5.Margin = new System.Windows.Forms.Padding(2);
@@ -321,7 +321,7 @@
             this.buttonKitchenItem10.BackColor = System.Drawing.SystemColors.Control;
             this.buttonKitchenItem10.FlatAppearance.BorderSize = 0;
             this.buttonKitchenItem10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKitchenItem10.Font = new System.Drawing.Font("Arial Narrow", 8.25F);
+            this.buttonKitchenItem10.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem10.ForeColor = System.Drawing.Color.Black;
             this.buttonKitchenItem10.Location = new System.Drawing.Point(711, 190);
             this.buttonKitchenItem10.Margin = new System.Windows.Forms.Padding(2);
@@ -335,7 +335,7 @@
             this.buttonKitchenItem15.BackColor = System.Drawing.SystemColors.Control;
             this.buttonKitchenItem15.FlatAppearance.BorderSize = 0;
             this.buttonKitchenItem15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKitchenItem15.Font = new System.Drawing.Font("Arial Narrow", 8.25F);
+            this.buttonKitchenItem15.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem15.ForeColor = System.Drawing.Color.Black;
             this.buttonKitchenItem15.Location = new System.Drawing.Point(711, 283);
             this.buttonKitchenItem15.Margin = new System.Windows.Forms.Padding(2);
@@ -349,7 +349,7 @@
             this.buttonKitchenItem20.BackColor = System.Drawing.SystemColors.Control;
             this.buttonKitchenItem20.FlatAppearance.BorderSize = 0;
             this.buttonKitchenItem20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKitchenItem20.Font = new System.Drawing.Font("Arial Narrow", 8.25F);
+            this.buttonKitchenItem20.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem20.ForeColor = System.Drawing.Color.Black;
             this.buttonKitchenItem20.Location = new System.Drawing.Point(711, 376);
             this.buttonKitchenItem20.Margin = new System.Windows.Forms.Padding(2);
@@ -435,7 +435,7 @@
             this.buttonKitchenItem4.BackColor = System.Drawing.SystemColors.Control;
             this.buttonKitchenItem4.FlatAppearance.BorderSize = 0;
             this.buttonKitchenItem4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKitchenItem4.Font = new System.Drawing.Font("Arial Narrow", 8.25F);
+            this.buttonKitchenItem4.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem4.ForeColor = System.Drawing.Color.Black;
             this.buttonKitchenItem4.Location = new System.Drawing.Point(555, 97);
             this.buttonKitchenItem4.Margin = new System.Windows.Forms.Padding(2);
@@ -449,7 +449,7 @@
             this.buttonKitchenItem9.BackColor = System.Drawing.SystemColors.Control;
             this.buttonKitchenItem9.FlatAppearance.BorderSize = 0;
             this.buttonKitchenItem9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKitchenItem9.Font = new System.Drawing.Font("Arial Narrow", 8.25F);
+            this.buttonKitchenItem9.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem9.ForeColor = System.Drawing.Color.Black;
             this.buttonKitchenItem9.Location = new System.Drawing.Point(555, 190);
             this.buttonKitchenItem9.Margin = new System.Windows.Forms.Padding(2);
@@ -463,7 +463,7 @@
             this.buttonKitchenItem14.BackColor = System.Drawing.SystemColors.Control;
             this.buttonKitchenItem14.FlatAppearance.BorderSize = 0;
             this.buttonKitchenItem14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKitchenItem14.Font = new System.Drawing.Font("Arial Narrow", 8.25F);
+            this.buttonKitchenItem14.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem14.ForeColor = System.Drawing.Color.Black;
             this.buttonKitchenItem14.Location = new System.Drawing.Point(555, 283);
             this.buttonKitchenItem14.Margin = new System.Windows.Forms.Padding(2);
@@ -477,7 +477,7 @@
             this.buttonKitchenItem19.BackColor = System.Drawing.SystemColors.Control;
             this.buttonKitchenItem19.FlatAppearance.BorderSize = 0;
             this.buttonKitchenItem19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKitchenItem19.Font = new System.Drawing.Font("Arial Narrow", 8.25F);
+            this.buttonKitchenItem19.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem19.ForeColor = System.Drawing.Color.Black;
             this.buttonKitchenItem19.Location = new System.Drawing.Point(555, 376);
             this.buttonKitchenItem19.Margin = new System.Windows.Forms.Padding(2);
@@ -491,7 +491,7 @@
             this.buttonKitchenItem1.BackColor = System.Drawing.SystemColors.Control;
             this.buttonKitchenItem1.FlatAppearance.BorderSize = 0;
             this.buttonKitchenItem1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKitchenItem1.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonKitchenItem1.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonKitchenItem1.ForeColor = System.Drawing.Color.Black;
             this.buttonKitchenItem1.Location = new System.Drawing.Point(84, 97);
             this.buttonKitchenItem1.Margin = new System.Windows.Forms.Padding(2);
@@ -505,7 +505,7 @@
             this.buttonKitchenItem2.BackColor = System.Drawing.SystemColors.Control;
             this.buttonKitchenItem2.FlatAppearance.BorderSize = 0;
             this.buttonKitchenItem2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKitchenItem2.Font = new System.Drawing.Font("Arial Narrow", 8.25F);
+            this.buttonKitchenItem2.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem2.ForeColor = System.Drawing.Color.Black;
             this.buttonKitchenItem2.Location = new System.Drawing.Point(241, 97);
             this.buttonKitchenItem2.Margin = new System.Windows.Forms.Padding(2);
@@ -519,7 +519,7 @@
             this.buttonKitchenItem3.BackColor = System.Drawing.SystemColors.Control;
             this.buttonKitchenItem3.FlatAppearance.BorderSize = 0;
             this.buttonKitchenItem3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKitchenItem3.Font = new System.Drawing.Font("Arial Narrow", 8.25F);
+            this.buttonKitchenItem3.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem3.ForeColor = System.Drawing.Color.Black;
             this.buttonKitchenItem3.Location = new System.Drawing.Point(398, 97);
             this.buttonKitchenItem3.Margin = new System.Windows.Forms.Padding(2);
@@ -533,7 +533,7 @@
             this.buttonKitchenItem6.BackColor = System.Drawing.SystemColors.Control;
             this.buttonKitchenItem6.FlatAppearance.BorderSize = 0;
             this.buttonKitchenItem6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKitchenItem6.Font = new System.Drawing.Font("Arial Narrow", 8.25F);
+            this.buttonKitchenItem6.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem6.ForeColor = System.Drawing.Color.Black;
             this.buttonKitchenItem6.Location = new System.Drawing.Point(84, 190);
             this.buttonKitchenItem6.Margin = new System.Windows.Forms.Padding(2);
@@ -547,7 +547,7 @@
             this.buttonKitchenItem7.BackColor = System.Drawing.SystemColors.Control;
             this.buttonKitchenItem7.FlatAppearance.BorderSize = 0;
             this.buttonKitchenItem7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKitchenItem7.Font = new System.Drawing.Font("Arial Narrow", 8.25F);
+            this.buttonKitchenItem7.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem7.ForeColor = System.Drawing.Color.Black;
             this.buttonKitchenItem7.Location = new System.Drawing.Point(241, 190);
             this.buttonKitchenItem7.Margin = new System.Windows.Forms.Padding(2);
@@ -561,7 +561,7 @@
             this.buttonKitchenItem8.BackColor = System.Drawing.SystemColors.Control;
             this.buttonKitchenItem8.FlatAppearance.BorderSize = 0;
             this.buttonKitchenItem8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKitchenItem8.Font = new System.Drawing.Font("Arial Narrow", 8.25F);
+            this.buttonKitchenItem8.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem8.ForeColor = System.Drawing.Color.Black;
             this.buttonKitchenItem8.Location = new System.Drawing.Point(398, 190);
             this.buttonKitchenItem8.Margin = new System.Windows.Forms.Padding(2);
@@ -575,7 +575,7 @@
             this.buttonKitchenItem11.BackColor = System.Drawing.SystemColors.Control;
             this.buttonKitchenItem11.FlatAppearance.BorderSize = 0;
             this.buttonKitchenItem11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKitchenItem11.Font = new System.Drawing.Font("Arial Narrow", 8.25F);
+            this.buttonKitchenItem11.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem11.ForeColor = System.Drawing.Color.Black;
             this.buttonKitchenItem11.Location = new System.Drawing.Point(84, 283);
             this.buttonKitchenItem11.Margin = new System.Windows.Forms.Padding(2);
@@ -589,7 +589,7 @@
             this.buttonKitchenItem12.BackColor = System.Drawing.SystemColors.Control;
             this.buttonKitchenItem12.FlatAppearance.BorderSize = 0;
             this.buttonKitchenItem12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKitchenItem12.Font = new System.Drawing.Font("Arial Narrow", 8.25F);
+            this.buttonKitchenItem12.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem12.ForeColor = System.Drawing.Color.Black;
             this.buttonKitchenItem12.Location = new System.Drawing.Point(241, 283);
             this.buttonKitchenItem12.Margin = new System.Windows.Forms.Padding(2);
@@ -603,7 +603,7 @@
             this.buttonKitchenItem13.BackColor = System.Drawing.SystemColors.Control;
             this.buttonKitchenItem13.FlatAppearance.BorderSize = 0;
             this.buttonKitchenItem13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKitchenItem13.Font = new System.Drawing.Font("Arial Narrow", 8.25F);
+            this.buttonKitchenItem13.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem13.ForeColor = System.Drawing.Color.Black;
             this.buttonKitchenItem13.Location = new System.Drawing.Point(398, 283);
             this.buttonKitchenItem13.Margin = new System.Windows.Forms.Padding(2);
@@ -617,7 +617,7 @@
             this.buttonKitchenItem16.BackColor = System.Drawing.SystemColors.Control;
             this.buttonKitchenItem16.FlatAppearance.BorderSize = 0;
             this.buttonKitchenItem16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKitchenItem16.Font = new System.Drawing.Font("Arial Narrow", 8.25F);
+            this.buttonKitchenItem16.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem16.ForeColor = System.Drawing.Color.Black;
             this.buttonKitchenItem16.Location = new System.Drawing.Point(84, 376);
             this.buttonKitchenItem16.Margin = new System.Windows.Forms.Padding(2);
@@ -631,7 +631,7 @@
             this.buttonKitchenItem17.BackColor = System.Drawing.SystemColors.Control;
             this.buttonKitchenItem17.FlatAppearance.BorderSize = 0;
             this.buttonKitchenItem17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKitchenItem17.Font = new System.Drawing.Font("Arial Narrow", 8.25F);
+            this.buttonKitchenItem17.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem17.ForeColor = System.Drawing.Color.Black;
             this.buttonKitchenItem17.Location = new System.Drawing.Point(241, 376);
             this.buttonKitchenItem17.Margin = new System.Windows.Forms.Padding(2);
@@ -645,7 +645,7 @@
             this.buttonKitchenItem18.BackColor = System.Drawing.SystemColors.Control;
             this.buttonKitchenItem18.FlatAppearance.BorderSize = 0;
             this.buttonKitchenItem18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKitchenItem18.Font = new System.Drawing.Font("Arial Narrow", 8.25F);
+            this.buttonKitchenItem18.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold);
             this.buttonKitchenItem18.ForeColor = System.Drawing.Color.Black;
             this.buttonKitchenItem18.Location = new System.Drawing.Point(398, 376);
             this.buttonKitchenItem18.Margin = new System.Windows.Forms.Padding(2);

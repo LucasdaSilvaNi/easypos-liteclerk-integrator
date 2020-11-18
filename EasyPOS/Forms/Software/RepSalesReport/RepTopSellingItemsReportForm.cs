@@ -223,7 +223,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                              salesDetail.ColumnItemCategory.Replace("," , " "),
                                              salesDetail.ColumnUnit,
                                              salesDetail.ColumnQuantity.Replace("," , ""),
-                                             salesDetail.ColumnPrice,
+                                             salesDetail.ColumnPrice.Replace(",", " "),
                                              salesDetail.ColumnAmount.Replace("," , ""),
                             };
 

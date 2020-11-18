@@ -137,7 +137,6 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
 
                 listKitchenItems = sysKitchenController.ListKitchenItems(kitchen, salesDate);
                 kitchenItemPages = listKitchenItems.Count();
-
                 for (int i = 0; i < kitchenItemNoOfButtons; i++)
                 {
                     kitchenItemToolTip.SetToolTip(kitchenItemButtons[i], "");
@@ -170,8 +169,8 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
                             kitchenItemButtons[i].ForeColor = Color.Black;
                         }
 
-                        kitchenItemButtons[i].Text = "No. " + Number.ToString() + " "
-                            + listKitchenItemPage[i].OrderNumber + "\n"
+                        kitchenItemButtons[i].Text = "No. " + Number.ToString() + " " + "("
+                            + listKitchenItemPage[i].OrderNumber + ")" + "\n"
                             + listKitchenItemPage[i].UpdateDateTime + "\n"
                             + listKitchenItemPage[i].Alias + "\n"
                             + listKitchenItemPage[i].Quantity.ToString("#,##0.00") + " " + listKitchenItemPage[i].Unit + "\n"

@@ -227,11 +227,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Account.SysLogin.SysLoginForm login = new Account.SysLogin.SysLoginForm(null, null, this, null, false);
                 login.ShowDialog();
             }
-            else 
+            else
             {
                 NewWalkInSales();
             }
-            
+
         }
 
         public void NewWalkInSales()
@@ -729,6 +729,18 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         MessageBox.Show(tenderAllSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+        }
+
+        private void buttonHideItems_Click(object sender, EventArgs e)
+        {
+            if (panelWalkIn.Visible == true)
+            {
+                panelWalkIn.Visible = false;
+            }
+            else
+            {
+                panelWalkIn.Visible = true;
             }
         }
     }

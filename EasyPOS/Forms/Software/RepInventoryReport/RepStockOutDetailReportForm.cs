@@ -212,7 +212,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                     {
                         foreach (var stockOutDetail in stockOutDetailReportList)
                         {
-                            String[] data = {stockOutDetail.ColumnStockOutDate.Replace("," , " "),
+                            String[] data = {stockOutDetail.ColumnStockOutDate,
                               stockOutDetail.ColumnStockOutNumber,
                               stockOutDetail.ColumnManualStockOutNumber,
                               stockOutDetail.ColumnRemarks.Replace("," , " "),

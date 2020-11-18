@@ -227,12 +227,12 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                         {
                             String[] data = {
                               stockInLine.ColumnStockInLineListItemBarcode,
-                              stockInLine.ColumnStockInLineListItemDescription,
+                              stockInLine.ColumnStockInLineListItemDescription.Replace(",", ""),
                               stockInLine.ColumnStockInLineListUnit,
-                              stockInLine.ColumnStockInLineListQuantity,
-                              stockInLine.ColumnStockInLineListCost,
-                              stockInLine.ColumnStockInLineListAmount,
-                              stockInLine.ColumnStockInLineListPrice.ToString(),
+                              stockInLine.ColumnStockInLineListQuantity.Replace(",", ""),
+                              stockInLine.ColumnStockInLineListCost.Replace(",", ""),
+                              stockInLine.ColumnStockInLineListAmount.Replace(",", ""),
+                              stockInLine.ColumnStockInLineListPrice.ToString().Replace(",", ""),
 
                             };
 

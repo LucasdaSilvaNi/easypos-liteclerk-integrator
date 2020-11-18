@@ -238,16 +238,16 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         foreach (var inventoryReport in inventoryReportList)
                         {
                             String[] data = {
-                              inventoryReport.ColumnItemDescription,
-                              inventoryReport.ColumnUnit,
-                              inventoryReport.ColumnBegQuantity,
-                              inventoryReport.ColumnInQuantity,
-                              inventoryReport.ColumnOutQuantity,
-                              inventoryReport.ColumnEndingQuantity,
-                              inventoryReport.ColumnStockCount,
-                              inventoryReport.ColumnVariance,
-                              inventoryReport.ColumnCost,
-                              inventoryReport.ColumnAmount
+                              inventoryReport.ColumnItemDescription.Replace(",", ""),
+                              inventoryReport.ColumnUnit.Replace(",", ""),
+                              inventoryReport.ColumnBegQuantity.Replace(",", ""),
+                              inventoryReport.ColumnInQuantity.Replace(",", ""),
+                              inventoryReport.ColumnOutQuantity.Replace(",", ""),
+                              inventoryReport.ColumnEndingQuantity.Replace(",", ""),
+                              inventoryReport.ColumnStockCount.Replace(",", ""),
+                              inventoryReport.ColumnVariance.Replace(",", ""),
+                              inventoryReport.ColumnCost.Replace(",", ""),
+                              inventoryReport.ColumnAmount.Replace(",", "")
                             };
 
                             csv.AppendLine(String.Join(",", data));

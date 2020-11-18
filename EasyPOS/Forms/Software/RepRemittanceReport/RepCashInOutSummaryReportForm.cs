@@ -216,11 +216,11 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         foreach (var disbursements in disbursementList)
                         {
                             String[] data = {
-                                disbursements.ColumnDisbursementDate,
-                                disbursements.ColumnDisbursementNumber,
-                                disbursements.ColumnDisbursementType,
-                                disbursements.ColumnPayType,
-                                disbursements.ColumnUser,
+                                disbursements.ColumnDisbursementDate.Replace(",", ""),
+                                disbursements.ColumnDisbursementNumber.Replace(",", ""),
+                                disbursements.ColumnDisbursementType.Replace(",", ""),
+                                disbursements.ColumnPayType.Replace(",", ""),
+                                disbursements.ColumnUser.Replace(",", ""),
                                 disbursements.ColumnAmount.Replace("," , ""),
                             };
 

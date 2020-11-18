@@ -212,12 +212,12 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         {
                             String[] data = {stockCountDetail.ColumnStockCountDate,
                               stockCountDetail.ColumnStockCountNumber,
-                              stockCountDetail.ColumnRemarks,
-                              stockCountDetail.ColumnItem,
-                              stockCountDetail.ColumnUnit,
-                              stockCountDetail.ColumnQuantity,
-                              stockCountDetail.ColumnCost,
-                              stockCountDetail.ColumnAmount
+                              stockCountDetail.ColumnRemarks.Replace(",", ""),
+                              stockCountDetail.ColumnItem.Replace(",", ""),
+                              stockCountDetail.ColumnUnit.Replace(",", ""),
+                              stockCountDetail.ColumnQuantity.Replace(",", ""),
+                              stockCountDetail.ColumnCost.Replace(",", ""),
+                              stockCountDetail.ColumnAmount.Replace(",", "")
                             };
 
                             csv.AppendLine(String.Join(",", data));

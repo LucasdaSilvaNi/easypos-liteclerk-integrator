@@ -536,11 +536,11 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                         {
                             String[] data = {
                               stockOutLine.ColumnStockOutLineListItemBarcode,
-                              stockOutLine.ColumnStockOutLineListItemDescription,
+                              stockOutLine.ColumnStockOutLineListItemDescription.Replace(",", ""),
                               stockOutLine.ColumnStockOutLineListUnit,
-                              stockOutLine.ColumnStockOutLineListQuantity,
-                              stockOutLine.ColumnStockOutLineListCost,
-                              stockOutLine.ColumnStockOutLineListAmount,
+                              stockOutLine.ColumnStockOutLineListQuantity.Replace(",", ""),
+                              stockOutLine.ColumnStockOutLineListCost.Replace(",", ""),
+                              stockOutLine.ColumnStockOutLineListAmount.Replace(",", ""),
                             };
 
                             csv.AppendLine(String.Join(",", data));

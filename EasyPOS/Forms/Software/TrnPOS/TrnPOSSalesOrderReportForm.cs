@@ -95,7 +95,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             float adjustStringName = 1;
             if (companyName.Length > 43)
             {
-                adjustStringName = 2;
+                adjustStringName = 3;
             }
 
             graphics.DrawString(companyName, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
@@ -110,7 +110,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             float adjuctHeight = 1;
             if (companyAddress.Length > 43)
             {
-                adjuctHeight = 2;
+                adjuctHeight = 3;
             }
 
             graphics.DrawString(companyAddress, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);

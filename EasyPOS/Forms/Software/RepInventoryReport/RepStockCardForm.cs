@@ -228,12 +228,12 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         foreach (var stockCardReport in stockCardReportList)
                         {
                             String[] data = {
-                              stockCardReport.ColumnDocument,
-                              stockCardReport.ColumnInventoryDate.ToShortDateString(),
-                              stockCardReport.ColumnBegQuantity,
-                              stockCardReport.ColumnInQuantity,
-                              stockCardReport.ColumnOutQuantity,
-                              stockCardReport.ColumnEndingQuantity,
+                              stockCardReport.ColumnDocument.Replace(",", ""),
+                              stockCardReport.ColumnInventoryDate.ToShortDateString().Replace(",", ""),
+                              stockCardReport.ColumnBegQuantity.Replace(",", ""),
+                              stockCardReport.ColumnInQuantity.Replace(",", ""),
+                              stockCardReport.ColumnOutQuantity.Replace(",", ""),
+                              stockCardReport.ColumnEndingQuantity.Replace(",", ""),
                             };
                             csv.AppendLine(String.Join(",", data));
 
@@ -245,7 +245,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                               "",
                               "",
                               "Total Ending Quantity:",
-                              totalEndingQty.ToString("#,##0.00")
+                              totalEndingQty.ToString("#,##0.00").Replace(",", "")
                             };
                         csv.AppendLine(String.Join(",", data1));
                     }
