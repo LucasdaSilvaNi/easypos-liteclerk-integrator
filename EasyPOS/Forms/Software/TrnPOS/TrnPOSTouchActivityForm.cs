@@ -39,6 +39,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 buttonSplitMergeBill.Enabled = false;
                 buttonTender.Enabled = false;
                 buttonDeliver.Enabled = false;
+                buttonDelete.Enabled = false;
             }
             else if (isLocked == true && isTendered == true && isCanclled == true)
             {
@@ -196,6 +197,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     }
                 case Keys.F6:
                     {
+                        if (buttonDelete.Enabled == true)
+                        {
+                            buttonDelete.PerformClick();
+                            Close();
+                        }
+
+                        break;
+                    }
+                case Keys.F7:
+                    {
                         if (buttonCancel.Enabled == true)
                         {
                             buttonCancel.PerformClick();
@@ -204,7 +215,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                         break;
                     }
-                case Keys.F7:
+                case Keys.F8:
                     {
                         if (buttonDeliver.Enabled == true)
                         {
@@ -214,7 +225,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                         break;
                     }
-                case Keys.F8:
+                case Keys.F9:
                     {
                         if (buttonPrintPartialBill.Enabled == true)
                         {
@@ -224,7 +235,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                         break;
                     }
-                case Keys.F9:
+                case Keys.F10:
                     {
                         if (buttonSplitMergeBill.Enabled == true)
                         {
@@ -316,6 +327,39 @@ namespace EasyPOS.Forms.Software.TrnPOS
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            Boolean isLocked = trnSalesEntity.IsLocked;
+            Boolean isTendered = trnSalesEntity.IsTendered;
+
+            if (isLocked == true)
+            {
+                MessageBox.Show("Already locked.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (isTendered == true)
+            {
+                MessageBox.Show("Already tendered.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                DialogResult deleteDialogResult = MessageBox.Show("Delete Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (deleteDialogResult == DialogResult.Yes)
+                {
+                    Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
+                    String[] deleteSales = trnPOSSalesController.DeleteSales(trnSalesEntity.Id);
+                    if (deleteSales[1].Equals("0") == false)
+                    {
+                        trnPOSTouchForm.UpdateSalesListGridDataSource();
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show(deleteSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
     }
