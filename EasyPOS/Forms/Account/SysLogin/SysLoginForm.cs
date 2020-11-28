@@ -24,6 +24,15 @@ namespace EasyPOS.Forms.Account.SysLogin
 
             _isOverride = isOverride;
 
+            if(Modules.SysCurrentModule.GetCurrentSettings().DateLogin == false)
+            {
+                radioButtonLoginDate.Enabled = false;
+            }
+            else
+            {
+                radioButtonLoginDate.Enabled = true;
+            }
+
             if (Modules.SysCurrentModule.GetCurrentSettings().SwipeLogin == false)
             {
                 textBoxUserCardNumber.Visible = false;

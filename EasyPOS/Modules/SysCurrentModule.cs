@@ -90,7 +90,8 @@ namespace EasyPOS.Modules
                 PrinterType = currentSettings.PrinterType,
                 SwipeLogin = currentSettings.SwipeLogin,
                 WithdrawalFooter = currentSettings.WithdrawalFooter,
-                WithdrawalPrintTitle = currentSettings.WithdrawalPrintTitle
+                WithdrawalPrintTitle = currentSettings.WithdrawalPrintTitle,
+                DateLogin = currentSettings.DateLogin
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);
@@ -154,7 +155,8 @@ namespace EasyPOS.Modules
                 PrinterType = objSysCurrentEntity.PrinterType,
                 SwipeLogin = objSysCurrentEntity.SwipeLogin,
                 WithdrawalFooter = objSysCurrentEntity.WithdrawalFooter,
-                WithdrawalPrintTitle = objSysCurrentEntity.WithdrawalPrintTitle
+                WithdrawalPrintTitle = objSysCurrentEntity.WithdrawalPrintTitle,
+                DateLogin = objSysCurrentEntity.DateLogin
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newSysCurrentEntities);
@@ -219,7 +221,8 @@ namespace EasyPOS.Modules
                 PrinterType = currentSettings.PrinterType,
                 SwipeLogin = currentSettings.SwipeLogin,
                 WithdrawalFooter = currentSettings.WithdrawalFooter,
-                WithdrawalPrintTitle = currentSettings.WithdrawalPrintTitle
+                WithdrawalPrintTitle = currentSettings.WithdrawalPrintTitle,
+                DateLogin = currentSettings.DateLogin
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);

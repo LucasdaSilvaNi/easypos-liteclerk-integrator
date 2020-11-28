@@ -47,5 +47,6 @@
   "EnableEasyShopIntegration": false,
   "PromptLoginSales": false,
   "PrinterType": "Dot Matrix Printer",
-  "SwipeLogin": false
+  "SwipeLogin": false,
+  "DateLogin": true
 }

@@ -147,6 +147,7 @@
             this.comboBoxPrinterType = new System.Windows.Forms.ComboBox();
             this.label45 = new System.Windows.Forms.Label();
             this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
+            this.checkBoxDateLogin = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -305,6 +306,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel6.Controls.Add(this.checkBoxDateLogin);
             this.panel6.Controls.Add(this.textBoxWithdrawalPrintTitle);
             this.panel6.Controls.Add(this.label40);
             this.panel6.Controls.Add(this.label3);
@@ -1593,6 +1595,19 @@
             this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
             this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
             // 
+            // checkBoxDateLogin
+            // 
+            this.checkBoxDateLogin.AutoSize = true;
+            this.checkBoxDateLogin.Enabled = false;
+            this.checkBoxDateLogin.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxDateLogin.Location = new System.Drawing.Point(595, 219);
+            this.checkBoxDateLogin.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxDateLogin.Name = "checkBoxDateLogin";
+            this.checkBoxDateLogin.Size = new System.Drawing.Size(95, 23);
+            this.checkBoxDateLogin.TabIndex = 28;
+            this.checkBoxDateLogin.Text = "Date Login";
+            this.checkBoxDateLogin.UseVisualStyleBackColor = true;
+            // 
             // SysSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1757,5 +1772,6 @@
         private System.Windows.Forms.TextBox textBoxWithdrawalFooter;
         private System.Windows.Forms.TextBox textBoxWithdrawalPrintTitle;
         private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.CheckBox checkBoxDateLogin;
     }
 }

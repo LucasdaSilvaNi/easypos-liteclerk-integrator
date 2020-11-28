@@ -112,6 +112,10 @@
             this.buttonItemGroupItemPrevious = new System.Windows.Forms.Button();
             this.buttonItemGroupPrevious = new System.Windows.Forms.Button();
             this.dataGridViewSalesLineList = new System.Windows.Forms.DataGridView();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonHideItems = new System.Windows.Forms.Button();
+            this.printDialogSelectPrinter = new System.Windows.Forms.PrintDialog();
             this.ColumnSalesLineEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnSalesLineDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnSalesLineId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -121,12 +125,12 @@
             this.ColumnSalesLineUnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLinePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineDiscountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineDiscountRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineDiscountAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineNetPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesLineQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineTaxId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -143,10 +147,6 @@
             this.ColumnSalesLinePrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLinePrice2LessTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLinePriceSplitPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.buttonHideItems = new System.Windows.Forms.Button();
-            this.printDialogSelectPrinter = new System.Windows.Forms.PrintDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -1293,12 +1293,12 @@
             this.ColumnSalesLineUnitId,
             this.ColumnSalesLineUnit,
             this.ColumnSalesLinePrice,
+            this.ColumnSalesLineQuantity,
             this.ColumnSalesLineDiscountId,
             this.ColumnSalesLineDiscount,
             this.ColumnSalesLineDiscountRate,
             this.ColumnSalesLineDiscountAmount,
             this.ColumnSalesLineNetPrice,
-            this.ColumnSalesLineQuantity,
             this.ColumnSalesLineAmount,
             this.ColumnSalesLineTaxId,
             this.ColumnSalesLineTax,
@@ -1327,6 +1327,51 @@
             this.dataGridViewSalesLineList.TabIndex = 24;
             this.dataGridViewSalesLineList.TabStop = false;
             this.dataGridViewSalesLineList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesLineList_CellClick);
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.panel3);
+            this.panel4.Controls.Add(this.panelItems);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 108);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1096, 453);
+            this.panel4.TabIndex = 25;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.textBoxBarcode);
+            this.panel3.Controls.Add(this.buttonHideItems);
+            this.panel3.Controls.Add(this.dataGridViewSalesLineList);
+            this.panel3.Controls.Add(this.buttonBarcode);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(662, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(434, 453);
+            this.panel3.TabIndex = 26;
+            // 
+            // buttonHideItems
+            // 
+            this.buttonHideItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonHideItems.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
+            this.buttonHideItems.FlatAppearance.BorderSize = 0;
+            this.buttonHideItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonHideItems.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.buttonHideItems.ForeColor = System.Drawing.Color.White;
+            this.buttonHideItems.Location = new System.Drawing.Point(4, 6);
+            this.buttonHideItems.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonHideItems.Name = "buttonHideItems";
+            this.buttonHideItems.Size = new System.Drawing.Size(37, 32);
+            this.buttonHideItems.TabIndex = 25;
+            this.buttonHideItems.TabStop = false;
+            this.buttonHideItems.Text = "=";
+            this.buttonHideItems.UseVisualStyleBackColor = false;
+            this.buttonHideItems.Click += new System.EventHandler(this.buttonHideItems_Click);
+            // 
+            // printDialogSelectPrinter
+            // 
+            this.printDialogSelectPrinter.UseEXDialog = true;
             // 
             // ColumnSalesLineEdit
             // 
@@ -1396,6 +1441,14 @@
             this.ColumnSalesLinePrice.Name = "ColumnSalesLinePrice";
             this.ColumnSalesLinePrice.ReadOnly = true;
             // 
+            // ColumnSalesLineQuantity
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineQuantity.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnSalesLineQuantity.HeaderText = "Quantity";
+            this.ColumnSalesLineQuantity.Name = "ColumnSalesLineQuantity";
+            this.ColumnSalesLineQuantity.ReadOnly = true;
+            // 
             // ColumnSalesLineDiscountId
             // 
             this.ColumnSalesLineDiscountId.HeaderText = "DiscountId";
@@ -1412,8 +1465,8 @@
             // 
             // ColumnSalesLineDiscountRate
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineDiscountRate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineDiscountRate.DefaultCellStyle = dataGridViewCellStyle4;
             this.ColumnSalesLineDiscountRate.HeaderText = "Discount %";
             this.ColumnSalesLineDiscountRate.Name = "ColumnSalesLineDiscountRate";
             this.ColumnSalesLineDiscountRate.ReadOnly = true;
@@ -1421,27 +1474,19 @@
             // 
             // ColumnSalesLineDiscountAmount
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineDiscountAmount.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineDiscountAmount.DefaultCellStyle = dataGridViewCellStyle5;
             this.ColumnSalesLineDiscountAmount.HeaderText = "Discount";
             this.ColumnSalesLineDiscountAmount.Name = "ColumnSalesLineDiscountAmount";
             this.ColumnSalesLineDiscountAmount.ReadOnly = true;
             // 
             // ColumnSalesLineNetPrice
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineNetPrice.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineNetPrice.DefaultCellStyle = dataGridViewCellStyle6;
             this.ColumnSalesLineNetPrice.HeaderText = "Net Price";
             this.ColumnSalesLineNetPrice.Name = "ColumnSalesLineNetPrice";
             this.ColumnSalesLineNetPrice.ReadOnly = true;
-            // 
-            // ColumnSalesLineQuantity
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineQuantity.DefaultCellStyle = dataGridViewCellStyle6;
-            this.ColumnSalesLineQuantity.HeaderText = "Quantity";
-            this.ColumnSalesLineQuantity.Name = "ColumnSalesLineQuantity";
-            this.ColumnSalesLineQuantity.ReadOnly = true;
             // 
             // ColumnSalesLineAmount
             // 
@@ -1558,51 +1603,6 @@
             this.ColumnSalesLinePriceSplitPercentage.ReadOnly = true;
             this.ColumnSalesLinePriceSplitPercentage.Visible = false;
             // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.panel3);
-            this.panel4.Controls.Add(this.panelItems);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 108);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1096, 453);
-            this.panel4.TabIndex = 25;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.textBoxBarcode);
-            this.panel3.Controls.Add(this.buttonHideItems);
-            this.panel3.Controls.Add(this.dataGridViewSalesLineList);
-            this.panel3.Controls.Add(this.buttonBarcode);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(662, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(434, 453);
-            this.panel3.TabIndex = 26;
-            // 
-            // buttonHideItems
-            // 
-            this.buttonHideItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonHideItems.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
-            this.buttonHideItems.FlatAppearance.BorderSize = 0;
-            this.buttonHideItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHideItems.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.buttonHideItems.ForeColor = System.Drawing.Color.White;
-            this.buttonHideItems.Location = new System.Drawing.Point(4, 6);
-            this.buttonHideItems.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonHideItems.Name = "buttonHideItems";
-            this.buttonHideItems.Size = new System.Drawing.Size(37, 32);
-            this.buttonHideItems.TabIndex = 25;
-            this.buttonHideItems.TabStop = false;
-            this.buttonHideItems.Text = "=";
-            this.buttonHideItems.UseVisualStyleBackColor = false;
-            this.buttonHideItems.Click += new System.EventHandler(this.buttonHideItems_Click);
-            // 
-            // printDialogSelectPrinter
-            // 
-            this.printDialogSelectPrinter.UseEXDialog = true;
-            // 
             // TrnPOSTouchDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1700,6 +1700,18 @@
         private System.Windows.Forms.ImageList imageListPOSTouchDetail;
         private System.Windows.Forms.Button buttonWalkIn;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonDownload;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelCustomerCode;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelRemarks;
+        private System.Windows.Forms.Button buttonReturn;
+        private System.Windows.Forms.Button buttonPrint;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button buttonOverRide;
+        private System.Windows.Forms.Button buttonHideItems;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.PrintDialog printDialogSelectPrinter;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnSalesLineEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnSalesLineDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineId;
@@ -1709,12 +1721,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineUnitId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineDiscountId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineDiscount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineDiscountRate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineDiscountAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineNetPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineTaxId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineTax;
@@ -1731,17 +1743,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2LessTax;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePriceSplitPercentage;
-        private System.Windows.Forms.Button buttonDownload;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label labelCustomerCode;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label labelRemarks;
-        private System.Windows.Forms.Button buttonReturn;
-        private System.Windows.Forms.Button buttonPrint;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button buttonOverRide;
-        private System.Windows.Forms.Button buttonHideItems;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.PrintDialog printDialogSelectPrinter;
     }
 }
