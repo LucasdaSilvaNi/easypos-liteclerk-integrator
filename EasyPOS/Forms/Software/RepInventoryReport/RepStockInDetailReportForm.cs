@@ -220,7 +220,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                             String[] data = {stockInDetail.ColumnStockInDate,
                               stockInDetail.ColumnStockInNumber,
                               stockInDetail.ColumnManualStockInNumber,
-                              stockInDetail.ColumnRemarks.Replace("," , " "),
+                              stockInDetail.ColumnRemarks.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
                               stockInDetail.ColumnIsReturn.ToString(),
                               stockInDetail.ColumnItem.Replace("," , " "),
                               stockInDetail.ColumnUnit.Replace("," , " "),

@@ -236,7 +236,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                 sales.ColumnCollectionNumber,
                                 customerCode,
                                 sales.ColumnCustomer.Replace("," , " "),
-                                sales.ColumnRemarks,
+                                sales.ColumnRemarks.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
                                 sales.ColumnPreparedByUserName,
                                 sales.ColumnAmount.Replace("," , "")
                             };

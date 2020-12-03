@@ -84,6 +84,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         dateTimePickerStartDate.Focus();
                         break;
+                    
                     case "Collection Summary Report":
                         labelStartDate.Visible = true;
                         dateTimePickerStartDate.Visible = true;
@@ -210,6 +211,24 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         break;
                     case "Customer List Report":
                         break;
+                    case "Net Sales Summary Report - Daily":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+
+                        dateTimePickerStartDate.Focus();
+                        break;
+                    case "Net Sales Summary Report - Monthly":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+
+                        dateTimePickerStartDate.Focus();
+                        break;
                 }
             }
             else
@@ -274,6 +293,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             }
 
                             break;
+                           
                         case "Collection Summary Report":
                             sysUserRights = new Modules.SysUserRightsModule("RepCollectionSummary");
 
@@ -425,6 +445,46 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                 }
                             }
 
+                            break;
+                        case "Net Sales Summary Report - Daily":
+                            sysUserRights = new Modules.SysUserRightsModule("RepSalesDetail");
+
+                            if (sysUserRights.GetUserRights() == null)
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                if (sysUserRights.GetUserRights().CanView == true)
+                                {
+                                    RepNetSalesSummaryReportForm repNetSalesSummaryReport = new RepNetSalesSummaryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                                    repNetSalesSummaryReport.ShowDialog();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            break;
+                        case "Net Sales Summary Report - Monthly":
+                            sysUserRights = new Modules.SysUserRightsModule("RepSalesDetail");
+
+                            if (sysUserRights.GetUserRights() == null)
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                if (sysUserRights.GetUserRights().CanView == true)
+                                {
+                                    RepNetSalesSummaryReportMonthlyForm repNetSalesSummaryMonthlyReport = new RepNetSalesSummaryReportMonthlyForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                                    repNetSalesSummaryMonthlyReport.ShowDialog();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
                             break;
                     }
                 }

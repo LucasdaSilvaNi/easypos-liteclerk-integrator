@@ -170,6 +170,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 graphics.DrawString(collectionDateText, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
                 y += graphics.MeasureString(collectionDateText, fontArial8Regular).Height;
 
+                String collectionTimeText = collections.FirstOrDefault().UpdateDateTime.ToString("H:mm:ss", CultureInfo.InvariantCulture);
+                graphics.DrawString(collectionTimeText, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                y += graphics.MeasureString(collectionTimeText, fontArial8Regular).Height;
+
                 if (trnIsReprinted)
                 {
                     graphics.DrawString("REPRINTED", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
@@ -293,7 +297,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             {
                                 X = x,
                                 Y = y,
-                                Size = new Size(150, ((int)graphics.MeasureString(itemData, fontArial8Regular, 150, StringFormat.GenericTypographic).Height))
+                                Size = new Size(150, ((int)graphics.MeasureString(itemData, fontArial8Regular, 150, StringFormat.GenericDefault).Height))
                             };
                             graphics.DrawString(itemData, fontArial8Regular, Brushes.Black, itemDataRectangle, drawFormatLeft);
                             if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")

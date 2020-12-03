@@ -37,6 +37,7 @@
             this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
             this.labelStartDate = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.listBoxSalesReport = new System.Windows.Forms.ListBox();
             this.dateTimePickerEndDate = new System.Windows.Forms.DateTimePicker();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@
             this.printDialogStockWithdrawalReport = new System.Windows.Forms.PrintDialog();
             this.folderBrowserDialogStockWithdrawalReport = new System.Windows.Forms.FolderBrowserDialog();
             this.folderBrowserDialogCollectionDetailReportFacepay = new System.Windows.Forms.FolderBrowserDialog();
-            this.listBoxSalesReport = new System.Windows.Forms.ListBox();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -153,6 +153,39 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(304, 495);
             this.panel2.TabIndex = 22;
+            // 
+            // listBoxSalesReport
+            // 
+            this.listBoxSalesReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxSalesReport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxSalesReport.FormattingEnabled = true;
+            this.listBoxSalesReport.ItemHeight = 19;
+            this.listBoxSalesReport.Items.AddRange(new object[] {
+            "Sales Summary Report",
+            "Sales Detail Report",
+            "",
+            "Collection Summary Report",
+            "Collection Detail Report",
+            "",
+            "Cancelled Summary Report",
+            "",
+            "Stock Withdrawal Report",
+            "Collection Detail Report (Facepay)",
+            "",
+            "Top Selling Items Report",
+            "",
+            "Sales Return Detail Report",
+            "",
+            "Customer List Report",
+            "",
+            "Net Sales Summary Report - Daily",
+            "Net Sales Summary Report - Monthly"});
+            this.listBoxSalesReport.Location = new System.Drawing.Point(0, 0);
+            this.listBoxSalesReport.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxSalesReport.Name = "listBoxSalesReport";
+            this.listBoxSalesReport.Size = new System.Drawing.Size(304, 495);
+            this.listBoxSalesReport.TabIndex = 4;
+            this.listBoxSalesReport.SelectedIndexChanged += new System.EventHandler(this.listBoxSalesReport_SelectedIndexChanged);
             // 
             // dateTimePickerEndDate
             // 
@@ -277,36 +310,6 @@
             // printDialogStockWithdrawalReport
             // 
             this.printDialogStockWithdrawalReport.UseEXDialog = true;
-            // 
-            // listBoxSalesReport
-            // 
-            this.listBoxSalesReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBoxSalesReport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxSalesReport.FormattingEnabled = true;
-            this.listBoxSalesReport.ItemHeight = 19;
-            this.listBoxSalesReport.Items.AddRange(new object[] {
-            "Sales Summary Report",
-            "Sales Detail Report",
-            "",
-            "Collection Summary Report",
-            "Collection Detail Report",
-            "",
-            "Cancelled Summary Report",
-            "",
-            "Stock Withdrawal Report",
-            "Collection Detail Report (Facepay)",
-            "",
-            "Top Selling Items Report",
-            "",
-            "Sales Return Detail Report",
-            "",
-            "Customer List Report"});
-            this.listBoxSalesReport.Location = new System.Drawing.Point(0, 0);
-            this.listBoxSalesReport.Margin = new System.Windows.Forms.Padding(2);
-            this.listBoxSalesReport.Name = "listBoxSalesReport";
-            this.listBoxSalesReport.Size = new System.Drawing.Size(304, 495);
-            this.listBoxSalesReport.TabIndex = 4;
-            this.listBoxSalesReport.SelectedIndexChanged += new System.EventHandler(this.listBoxSalesReport_SelectedIndexChanged);
             // 
             // RepSalesReportForm
             // 

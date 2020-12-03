@@ -31,7 +31,7 @@ namespace EasyPOS.Controllers
                                    UnitId = d.UnitId,
                                    Unit = d.MstUnit.Unit,
                                    Quantity = d.Quantity,
-                                   Cost = d.MstItem.Cost,
+                                   Cost = d.Cost,
                                    Amount = d.Amount,
                                    ExpiryDate = d.ExpiryDate != null ? Convert.ToDateTime(d.ExpiryDate).ToShortDateString() : "",
                                    LotNumber = d.LotNumber ?? "",

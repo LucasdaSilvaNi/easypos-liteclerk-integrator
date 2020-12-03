@@ -108,6 +108,63 @@ namespace EasyPOS.Controllers
 
             return salesLines.ToList();
         }
+        // ================================
+        // Net Sales Summary Report - Daily
+        // ================================
+        public List<Entities.RepNetSalesSummaryReportDailyEntity> GetNetSalesSummaryReportDaily(DateTime startDate, DateTime endDate)
+        {
+            var netSalesDaily = from d in db.TrnSalesLines
+                                where d.TrnSale.SalesDate >= startDate
+                                && d.TrnSale.SalesDate <= endDate
+                                && d.TrnSale.IsLocked == true
+                                && d.TrnSale.IsCancelled == false
+                                group d by new
+                                {
+                                    d.TrnSale.SalesDate
+                                } into g
+                                select new Entities.RepNetSalesSummaryReportDailyEntity
+                                {
+                                    Date = g.Key.SalesDate,
+                                    CustomerCount = g.GroupBy(x => x.TrnSale.Id).Count(),
+                                    Quantity = g.Sum(x => x.Quantity),
+                                    CostAmount = g.Sum(x => x.MstItem.Cost) * g.Sum(x => x.Quantity),
+                                    SalesAmount = g.Sum(x => x.Amount),
+                                    MarginAmount = g.Sum(x => x.Amount) - (g.Sum(x => x.MstItem.Cost) * g.Sum(x => x.Quantity)),
+                                    Percentage = ((g.Sum(x => x.Amount) - (g.Sum(x => x.MstItem.Cost) * g.Sum(x => x.Quantity))) / g.Sum(x => x.Amount)) * 100
+                                };
+
+            return netSalesDaily.OrderBy(d => d.Date).ToList();
+        }
+
+        // ==================================
+        // Net Sales Summary Report - Monthly
+        // ==================================
+        public List<Entities.RepNetSalesSummaryReportMonthlyEntity> GetNetSalesSummaryReportMonthly(DateTime startDate, DateTime endDate)
+        {
+            var netSalesDaily = from d in db.TrnSalesLines
+                                where d.TrnSale.SalesDate >= startDate
+                                && d.TrnSale.SalesDate <= endDate
+                                && d.TrnSale.IsLocked == true
+                                && d.TrnSale.IsCancelled == false
+                                group d by new
+                                {
+                                    d.TrnSale.SalesDate.Month,
+                                    d.TrnSale.SalesDate.Year
+                                } into g
+                                select new Entities.RepNetSalesSummaryReportMonthlyEntity
+                                {
+                                    Month = g.Key.Month,
+                                    Year = g.Key.Year,
+                                    CustomerCount = g.GroupBy(x => x.TrnSale.Id).Count(),
+                                    Quantity = g.Sum(x => x.Quantity),
+                                    CostAmount = g.Sum(x => x.MstItem.Cost) * g.Sum(x => x.Quantity),
+                                    SalesAmount = g.Sum(x => x.Amount),
+                                    MarginAmount = g.Sum(x => x.Amount) - (g.Sum(x => x.MstItem.Cost) * g.Sum(x => x.Quantity)),
+                                    Percentage = ((g.Sum(x => x.Amount) - (g.Sum(x => x.MstItem.Cost) * g.Sum(x => x.Quantity))) / g.Sum(x => x.Amount)) * 100
+                                };
+
+            return netSalesDaily.OrderBy(d => d.Month).ToList();
+        }
 
         // =========================
         // Collection Summary Report

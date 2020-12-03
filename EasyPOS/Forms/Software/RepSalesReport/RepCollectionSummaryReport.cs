@@ -223,17 +223,17 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             String customerCode = "";
                             if (collection.ColumnCustomerCode != null)
                             {
-                                customerCode = collection.ColumnCustomerCode.Replace(",", " ");
+                                customerCode = collection.ColumnCustomerCode.Replace(",", "");
                             }
 
                             String[] data = {collection.ColumnTerminal,
                                         collection.ColumnCollectionDate,
                                         collection.ColumnCollectionNumber,
                                         customerCode,
-                                        collection.ColumnCustomer.Replace("," , " "),
+                                        collection.ColumnCustomer.Replace("," , ""),
                                         collection.ColumnSalesNumber,
-                                        collection.ColumnRemarks.Replace(",", " "),
-                                        collection.ColumnPreparedBy.Replace(",", " "),
+                                        collection.ColumnRemarks.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
+                                        collection.ColumnPreparedBy.Replace(",", ""),
                                         collection.ColumnIsCancelled.ToString(),
                                         collection.ColumnAmount.Replace("," , ""),
                                         collection.ColumnEntryDateTime,

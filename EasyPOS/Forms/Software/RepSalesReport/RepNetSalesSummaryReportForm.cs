@@ -14,50 +14,57 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.RepSalesReport
 {
-    public partial class RepCustomerListReportForm : Form
+    public partial class RepNetSalesSummaryReportForm : Form
     {
-        public List<Entities.DgvMstCustomerListEntity> customerList;
-        public BindingSource dataCustomerListSource = new BindingSource();
-        public PagedList<Entities.DgvMstCustomerListEntity> pageList;
+        public List<Entities.DgvRepNetSalesSummaryReportDailyEntity> netSalesSummaryList;
+        public BindingSource dataNetSalesSummaryListSource = new BindingSource();
+        public PagedList<Entities.DgvRepNetSalesSummaryReportDailyEntity> pageList;
+
         public Int32 pageNumber = 1;
         public Int32 pageSize = 50;
 
-        public RepCustomerListReportForm()
+        public DateTime dateStart;
+        public DateTime dateEnd;
+
+        public RepNetSalesSummaryReportForm(DateTime startDate, DateTime endDate)
         {
+            dateStart = startDate;
+            dateEnd = endDate;
             InitializeComponent();
-            GetCustomerListDataSource();
-            GetCustomerListDataGridSource();
+            GetNetSalesSummaryDataSource();
+            GetNetSalesSummaryListDataGridSource();
         }
-        public List<Entities.DgvMstCustomerListEntity> GetCustomerListReport()
+
+        public List<Entities.DgvRepNetSalesSummaryReportDailyEntity> NetSalesSummaryList(DateTime startDate, DateTime endDate)
         {
-            List<Entities.DgvMstCustomerListEntity> rowList = new List<Entities.DgvMstCustomerListEntity>();
-
+            List<Entities.DgvRepNetSalesSummaryReportDailyEntity> rowList = new List<Entities.DgvRepNetSalesSummaryReportDailyEntity>();
             Controllers.RepSalesReportController repSalesDetailReportController = new Controllers.RepSalesReportController();
-
-            var customerListReport = repSalesDetailReportController.GetCustomerListReport();
-            if (customerListReport.Any())
+            var netSalesSummaryList = repSalesDetailReportController.GetNetSalesSummaryReportDaily(startDate, endDate);
+            if (netSalesSummaryList.Any())
             {
-                var row = from d in customerListReport
-                          select new Entities.DgvMstCustomerListEntity
+                var row = from d in netSalesSummaryList
+                          select new Entities.DgvRepNetSalesSummaryReportDailyEntity
                           {
-                              ColumnCustomerListCustomerCode = d.CustomerCode,
-                              ColumnCustomerListCustomer = d.Customer,
-                              ColumnCustomerListContactNumber = d.ContactNumber,
-                              ColumnCustomerListAddress = d.Address
+                              ColumnNetSalesSummaryDate = d.Date.ToShortDateString(),
+                              ColumnNetSalesSummaryCustomerCount = d.CustomerCount.ToString("#,##"),
+                              ColumnNetSalesSummaryQuantity = d.Quantity.ToString("#,##.00"),
+                              ColumnNetSalesSummaryCostAmount = d.CostAmount.ToString("#,##.00"),
+                              ColumnNetSalesSummarySalesAmount = d.SalesAmount.ToString("#,##.00"),
+                              ColumnNetSalesSummaryMarginAmount = d.MarginAmount.ToString("#,##.00"),
+                              ColumnNetSalesSummaryPercentage = d.Percentage.ToString("#,##.00")
                           };
 
-                rowList = row.ToList();
-
+                 rowList = row.ToList();
             }
             return rowList;
         }
-        public void GetCustomerListDataSource()
+        public void GetNetSalesSummaryDataSource()
         {
-            customerList = GetCustomerListReport();
-            if (customerList.Any())
+            netSalesSummaryList = NetSalesSummaryList(dateStart, dateEnd);
+            if (netSalesSummaryList.Any())
             {
 
-                pageList = new PagedList<Entities.DgvMstCustomerListEntity>(customerList, pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvRepNetSalesSummaryReportDailyEntity>(netSalesSummaryList, pageNumber, pageSize);
 
                 if (pageList.PageCount == 1)
                 {
@@ -89,7 +96,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 }
 
                 textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
-                dataCustomerListSource.DataSource = pageList;
+                dataNetSalesSummaryListSource.DataSource = pageList;
             }
             else
             {
@@ -98,16 +105,18 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 buttonPageListNext.Enabled = false;
                 buttonPageListLast.Enabled = false;
 
-                dataCustomerListSource.Clear();
+                dataNetSalesSummaryListSource.Clear();
                 textBoxPageNumber.Text = "0 / 0";
             }
         }
 
-        public void GetCustomerListDataGridSource()
+        public void GetNetSalesSummaryListDataGridSource()
         {
-            dataGridViewCustomerListReport.DataSource = dataCustomerListSource;
+            dataGridViewNetSalesSummaryReport.DataSource = dataNetSalesSummaryListSource;
 
         }
+
+       
         private void buttonClose_Click(object sender, EventArgs e)
         {
             Close();
@@ -115,8 +124,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
         private void buttonPageListFirst_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvMstCustomerListEntity>(customerList, 1, pageSize);
-            dataCustomerListSource.DataSource = pageList;
+            pageList = new PagedList<Entities.DgvRepNetSalesSummaryReportDailyEntity>(netSalesSummaryList, 1, pageSize);
+            dataNetSalesSummaryListSource.DataSource = pageList;
 
             buttonPageListFirst.Enabled = false;
             buttonPageListPrevious.Enabled = false;
@@ -126,13 +135,12 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             pageNumber = 1;
             textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
         }
-
         private void buttonPageListPrevious_Click(object sender, EventArgs e)
         {
             if (pageList.HasPreviousPage == true)
             {
-                pageList = new PagedList<Entities.DgvMstCustomerListEntity>(customerList, --pageNumber, pageSize);
-                dataCustomerListSource.DataSource = pageList;
+                pageList = new PagedList<Entities.DgvRepNetSalesSummaryReportDailyEntity>(netSalesSummaryList, --pageNumber, pageSize);
+                dataNetSalesSummaryListSource.DataSource = pageList;
             }
 
             buttonPageListNext.Enabled = true;
@@ -151,8 +159,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         {
             if (pageList.HasNextPage == true)
             {
-                pageList = new PagedList<Entities.DgvMstCustomerListEntity>(customerList, ++pageNumber, pageSize);
-                dataCustomerListSource.DataSource = pageList;
+                pageList = new PagedList<Entities.DgvRepNetSalesSummaryReportDailyEntity>(netSalesSummaryList, ++pageNumber, pageSize);
+                dataNetSalesSummaryListSource.DataSource = pageList;
             }
 
             buttonPageListFirst.Enabled = true;
@@ -169,16 +177,19 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
         private void buttonPageListLast_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvMstCustomerListEntity>(customerList, pageList.PageCount, pageSize);
-            dataCustomerListSource.DataSource = pageList;
+            {
+                pageList = new PagedList<Entities.DgvRepNetSalesSummaryReportDailyEntity>(netSalesSummaryList, pageList.PageCount, pageSize);
+                dataNetSalesSummaryListSource.DataSource = pageList;
 
-            buttonPageListFirst.Enabled = true;
-            buttonPageListPrevious.Enabled = true;
-            buttonPageListNext.Enabled = false;
-            buttonPageListLast.Enabled = false;
+                buttonPageListFirst.Enabled = true;
+                buttonPageListPrevious.Enabled = true;
+                buttonPageListNext.Enabled = false;
+                buttonPageListLast.Enabled = false;
 
-            pageNumber = pageList.PageCount;
-            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+                pageNumber = pageList.PageCount;
+                textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+            }
+
         }
 
         private void buttonGenerateCSV_Click(object sender, EventArgs e)
@@ -189,25 +200,24 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 if (dialogResult == DialogResult.OK)
                 {
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Customer Code", "Customer", "Contact Number", "Address"};
+                    String[] header = { "Date", "Customer Count", "Quantity", "Cost Amount", "Sales Amount", "Margin Amount", "%" };
                     csv.AppendLine(String.Join(",", header));
 
-                    if (customerList.Any())
+                    if (netSalesSummaryList.Any())
                     {
-                        foreach (var customer in customerList)
+                        foreach (var sales in netSalesSummaryList)
                         {
-                            String customerCode = "";
-                            if (customer.ColumnCustomerListCustomerCode != null)
-                            {
-                                customerCode = customer.ColumnCustomerListCustomerCode.Replace(",", "");
-                            }
-
                             String[] data = {
-                                customerCode,
-                                customer.ColumnCustomerListCustomer.Replace("," , ""),
-                                customer.ColumnCustomerListContactNumber.Replace("," , ""),
-                                customer.ColumnCustomerListAddress.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
+                                sales.ColumnNetSalesSummaryDate.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
+                                sales.ColumnNetSalesSummaryCustomerCount.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
+                                sales.ColumnNetSalesSummaryQuantity.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
+                                sales.ColumnNetSalesSummaryCostAmount.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
+                                sales.ColumnNetSalesSummarySalesAmount.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
+                                sales.ColumnNetSalesSummaryMarginAmount.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
+                                sales.ColumnNetSalesSummaryPercentage.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
+
                             };
+
                             csv.AppendLine(String.Join(",", data));
                         }
                     }
@@ -219,7 +229,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
 
                     DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
-                    File.WriteAllText(createDirectorySTCSV.FullName + "\\CustomerListReport_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\NetSalesSummaryReport_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
 
                     MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
@@ -231,4 +241,5 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             }
         }
     }
+       
 }

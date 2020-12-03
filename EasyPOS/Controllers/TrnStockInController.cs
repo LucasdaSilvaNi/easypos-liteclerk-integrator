@@ -303,6 +303,7 @@ namespace EasyPOS.Controllers
                             if (item.Any())
                             {
                                 var updateItem = item.FirstOrDefault();
+                                updateItem.Cost = Convert.ToDecimal(stockInLine.Cost);
                                 updateItem.Price = Convert.ToDecimal(stockInLine.Price);
                                 db.SubmitChanges();
                             }

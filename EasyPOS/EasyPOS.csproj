@@ -283,6 +283,8 @@
     <Compile Include="Entities\DgvMstItemGroupItemListEntity.cs" />
     <Compile Include="Entities\DgvMstItemGroupSearchItemListEntity.cs" />
     <Compile Include="Entities\DgvMstTableListEntity.cs" />
+    <Compile Include="Entities\DgvRepNetSalesSummaryReportDailyEntity.cs" />
+    <Compile Include="Entities\DgvRepNetSalesSummaryReportMonthlyEntity.cs" />
     <Compile Include="Entities\DgvRepRemittanceReportCashInOutSummaryReportListEntity.cs" />
     <Compile Include="Entities\DgvRepInventoryStockCardListEntity.cs" />
     <Compile Include="Entities\DgvRepSalesReportSalesReturnDetailReportListEntity.cs" />
@@ -348,6 +350,8 @@
     <Compile Include="Entities\MstItemGroupItemEntity.cs" />
     <Compile Include="Entities\MstItemInventoryEntity.cs" />
     <Compile Include="Entities\MstItemPriceEntity.cs" />
+    <Compile Include="Entities\RepNetSalesSummaryReportMonthlyEntity.cs" />
+    <Compile Include="Entities\RepNetSalesSummaryReportDailyEntity.cs" />
     <Compile Include="Entities\RepRemitanceReportCashInOutSummaryReportEntity.cs" />
     <Compile Include="Entities\RepSalesReportCustomerListReportEntity.cs" />
     <Compile Include="Entities\RepSalesReportSalesReturnDetailReportEntity.cs" />
@@ -599,6 +603,18 @@
     </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepCustomerListReportForm.Designer.cs">
       <DependentUpon>RepCustomerListReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepNetSalesSummaryReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepNetSalesSummaryReportForm.Designer.cs">
+      <DependentUpon>RepNetSalesSummaryReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepNetSalesSummaryReportMonthlyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepNetSalesSummaryReportMonthlyForm.Designer.cs">
+      <DependentUpon>RepNetSalesSummaryReportMonthlyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepSalesReturnDetailReportForm.cs">
       <SubType>Form</SubType>
@@ -1224,6 +1240,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepCustomerListReportForm.resx">
       <DependentUpon>RepCustomerListReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepNetSalesSummaryReportForm.resx">
+      <DependentUpon>RepNetSalesSummaryReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepNetSalesSummaryReportMonthlyForm.resx">
+      <DependentUpon>RepNetSalesSummaryReportMonthlyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesReturnDetailReportForm.resx">
       <DependentUpon>RepSalesReturnDetailReportForm.cs</DependentUpon>

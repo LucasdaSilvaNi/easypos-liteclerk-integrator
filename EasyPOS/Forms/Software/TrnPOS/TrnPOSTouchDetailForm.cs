@@ -998,17 +998,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
-            DialogResult printDialogResult = printDialogSelectPrinter.ShowDialog();
-            if (printDialogResult == DialogResult.OK)
+            if (trnSalesEntity.IsReturned == true)
             {
-                if (trnSalesEntity.IsReturned == true)
-                {
-                    new TrnPOSReturnReportForm(trnSalesEntity.Id);
-                }
-                else
-                {
-                    new TrnPOSSalesOrderReportForm(trnSalesEntity.Id);
-                }
+                new TrnPOSReturnReportForm(trnSalesEntity.Id);
+            }
+            else
+            {
+                new TrnPOSSalesOrderReportForm(trnSalesEntity.Id);
             }
         }
 
