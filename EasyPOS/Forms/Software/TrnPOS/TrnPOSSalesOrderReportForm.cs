@@ -306,17 +306,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Point forthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
                 graphics.DrawLine(blackPen, forththLineFirstPoint, forthLineSecondPoint);
 
-                String orderNumber = "\nOrder Number: \n\n " + salesLines.FirstOrDefault().TrnSale.SalesNumber;
-                graphics.DrawString(orderNumber, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                y += graphics.MeasureString(orderNumber, fontArial8Regular).Height;
-
-                // ========
-                // 5th Line
-                // ========
-                Point fifthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point fifthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, fifthLineFirstPoint, fifthLineSecondPoint);
-
                 // =======
                 // Cashier
                 // =======
@@ -329,11 +318,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 y += graphics.MeasureString(cashierUserData, fontArial8Regular).Height;
 
                 // ========
-                // 6th Line
+                // 5th Line
                 // ========
-                Point sixthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point sixthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, sixthLineFirstPoint, sixthLineSecondPoint);
+                Point fifthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point fifthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, fifthLineFirstPoint, fifthLineSecondPoint);
 
                 String salesInvoiceFooter = "\n" + systemCurrent.InvoiceFooter;
                 graphics.DrawString(salesInvoiceFooter, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);

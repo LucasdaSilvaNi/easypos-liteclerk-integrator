@@ -122,10 +122,10 @@
             this.ColumnSalesLineSalesId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesLineQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineUnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLinePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineDiscountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineDiscountRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -1290,10 +1290,10 @@
             this.ColumnSalesLineSalesId,
             this.ColumnSalesLineItemId,
             this.ColumnSalesLineItemDescription,
-            this.ColumnSalesLineQuantity,
             this.ColumnSalesLineUnitId,
             this.ColumnSalesLineUnit,
             this.ColumnSalesLinePrice,
+            this.ColumnSalesLineQuantity,
             this.ColumnSalesLineDiscountId,
             this.ColumnSalesLineDiscount,
             this.ColumnSalesLineDiscountRate,
@@ -1420,14 +1420,6 @@
             this.ColumnSalesLineItemDescription.ReadOnly = true;
             this.ColumnSalesLineItemDescription.Width = 200;
             // 
-            // ColumnSalesLineQuantity
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineQuantity.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnSalesLineQuantity.HeaderText = "Quantity";
-            this.ColumnSalesLineQuantity.Name = "ColumnSalesLineQuantity";
-            this.ColumnSalesLineQuantity.ReadOnly = true;
-            // 
             // ColumnSalesLineUnitId
             // 
             this.ColumnSalesLineUnitId.HeaderText = "UnitId";
@@ -1443,11 +1435,19 @@
             // 
             // ColumnSalesLinePrice
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLinePrice.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLinePrice.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnSalesLinePrice.HeaderText = "Price";
             this.ColumnSalesLinePrice.Name = "ColumnSalesLinePrice";
             this.ColumnSalesLinePrice.ReadOnly = true;
+            // 
+            // ColumnSalesLineQuantity
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineQuantity.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnSalesLineQuantity.HeaderText = "Quantity";
+            this.ColumnSalesLineQuantity.Name = "ColumnSalesLineQuantity";
+            this.ColumnSalesLineQuantity.ReadOnly = true;
             // 
             // ColumnSalesLineDiscountId
             // 
@@ -1718,10 +1718,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineSalesId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineItemId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineItemDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineUnitId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineDiscountId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineDiscount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineDiscountRate;

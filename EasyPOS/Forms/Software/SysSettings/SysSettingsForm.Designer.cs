@@ -39,12 +39,20 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.textBoxWithdrawalPrintTitle = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBoxWithdrawalFooter = new System.Windows.Forms.TextBox();
             this.textBoxCompanyName = new System.Windows.Forms.TextBox();
+            this.textBoxInvoiceFooter = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.textBoxAddress = new System.Windows.Forms.TextBox();
             this.textBoxContactNo = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.textBoxReceiptFooter = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.checkBoxSwipeLogin = new System.Windows.Forms.CheckBox();
@@ -53,18 +61,29 @@
             this.comboBoxPOSType = new System.Windows.Forms.ComboBox();
             this.checkBoxAllowNegativeInventory = new System.Windows.Forms.CheckBox();
             this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.checkBoxActivateAuditTrail = new System.Windows.Forms.CheckBox();
             this.label32 = new System.Windows.Forms.Label();
+            this.textBoxZReadingFooter = new System.Windows.Forms.TextBox();
             this.textBoxLicenseCode = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.comboBoxCurrentPeriod = new System.Windows.Forms.ComboBox();
+            this.textBoxCustomerDisplayIfCounterClosedMessage = new System.Windows.Forms.TextBox();
+            this.checkBoxWithCustomerDisplay = new System.Windows.Forms.CheckBox();
+            this.label37 = new System.Windows.Forms.Label();
             this.textBoxTenantOf = new System.Windows.Forms.TextBox();
+            this.textBoxCustomerDisplayFirstLineMessage = new System.Windows.Forms.TextBox();
             this.checkBoxIsBarcodeQuantityAlwaysOne = new System.Windows.Forms.CheckBox();
+            this.label38 = new System.Windows.Forms.Label();
             this.comboBoxWalkinCustomer = new System.Windows.Forms.ComboBox();
+            this.textBoxCustomerDisplayBaudRate = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
             this.comboBoxDefaultDiscount = new System.Windows.Forms.ComboBox();
             this.textBoxCurrentVersion = new System.Windows.Forms.TextBox();
             this.comboBoxReturnSupplier = new System.Windows.Forms.ComboBox();
@@ -77,6 +96,10 @@
             this.checkBoxIsTenderPrint = new System.Windows.Forms.CheckBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.textBoxORPrintTitle = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.textBoxCustomerDisplayPort = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
             this.textBoxTIN = new System.Windows.Forms.TextBox();
@@ -124,33 +147,7 @@
             this.comboBoxPrinterType = new System.Windows.Forms.ComboBox();
             this.label45 = new System.Windows.Forms.Label();
             this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
-            this.textBoxZReadingFooter = new System.Windows.Forms.TextBox();
-            this.label47 = new System.Windows.Forms.Label();
-            this.checkBoxHideSalesAmount = new System.Windows.Forms.CheckBox();
             this.checkBoxDateLogin = new System.Windows.Forms.CheckBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.textBoxORPrintTitle = new System.Windows.Forms.TextBox();
-            this.textBoxWithdrawalPrintTitle = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.textBoxWithdrawalFooter = new System.Windows.Forms.TextBox();
-            this.label35 = new System.Windows.Forms.Label();
-            this.textBoxReceiptFooter = new System.Windows.Forms.TextBox();
-            this.textBoxInvoiceFooter = new System.Windows.Forms.TextBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.textBoxCustomerDisplayPort = new System.Windows.Forms.TextBox();
-            this.label64 = new System.Windows.Forms.Label();
-            this.label56 = new System.Windows.Forms.Label();
-            this.textBoxCustomerDisplayBaudRate = new System.Windows.Forms.TextBox();
-            this.label54 = new System.Windows.Forms.Label();
-            this.textBoxCustomerDisplayFirstLineMessage = new System.Windows.Forms.TextBox();
-            this.label53 = new System.Windows.Forms.Label();
-            this.checkBoxWithCustomerDisplay = new System.Windows.Forms.CheckBox();
-            this.textBoxCustomerDisplayIfCounterClosedMessage = new System.Windows.Forms.TextBox();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.tabControl10 = new System.Windows.Forms.TabPage();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -170,8 +167,6 @@
             this.panel4.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.panel9.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.tabControl10.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -287,7 +282,6 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage7);
-            this.tabControl1.Controls.Add(this.tabControl10);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -312,17 +306,69 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel6.Controls.Add(this.checkBoxDateLogin);
+            this.panel6.Controls.Add(this.textBoxWithdrawalPrintTitle);
+            this.panel6.Controls.Add(this.label40);
+            this.panel6.Controls.Add(this.label3);
+            this.panel6.Controls.Add(this.textBoxWithdrawalFooter);
             this.panel6.Controls.Add(this.textBoxCompanyName);
+            this.panel6.Controls.Add(this.textBoxInvoiceFooter);
             this.panel6.Controls.Add(this.label4);
+            this.panel6.Controls.Add(this.label17);
+            this.panel6.Controls.Add(this.label16);
             this.panel6.Controls.Add(this.textBoxAddress);
             this.panel6.Controls.Add(this.textBoxContactNo);
             this.panel6.Controls.Add(this.label6);
             this.panel6.Controls.Add(this.label5);
+            this.panel6.Controls.Add(this.textBoxReceiptFooter);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(3, 3);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1095, 472);
             this.panel6.TabIndex = 0;
+            // 
+            // textBoxWithdrawalPrintTitle
+            // 
+            this.textBoxWithdrawalPrintTitle.Enabled = false;
+            this.textBoxWithdrawalPrintTitle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxWithdrawalPrintTitle.Location = new System.Drawing.Point(738, 7);
+            this.textBoxWithdrawalPrintTitle.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxWithdrawalPrintTitle.Name = "textBoxWithdrawalPrintTitle";
+            this.textBoxWithdrawalPrintTitle.Size = new System.Drawing.Size(246, 26);
+            this.textBoxWithdrawalPrintTitle.TabIndex = 24;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Location = new System.Drawing.Point(591, 10);
+            this.label40.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(143, 19);
+            this.label40.TabIndex = 23;
+            this.label40.Text = "Withdrawal Print Title:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(591, 39);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 19);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Withdrawal Footer:";
+            // 
+            // textBoxWithdrawalFooter
+            // 
+            this.textBoxWithdrawalFooter.Enabled = false;
+            this.textBoxWithdrawalFooter.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxWithdrawalFooter.Location = new System.Drawing.Point(595, 60);
+            this.textBoxWithdrawalFooter.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxWithdrawalFooter.Multiline = true;
+            this.textBoxWithdrawalFooter.Name = "textBoxWithdrawalFooter";
+            this.textBoxWithdrawalFooter.Size = new System.Drawing.Size(443, 143);
+            this.textBoxWithdrawalFooter.TabIndex = 21;
             // 
             // textBoxCompanyName
             // 
@@ -336,6 +382,17 @@
             this.textBoxCompanyName.Size = new System.Drawing.Size(443, 26);
             this.textBoxCompanyName.TabIndex = 0;
             // 
+            // textBoxInvoiceFooter
+            // 
+            this.textBoxInvoiceFooter.Enabled = false;
+            this.textBoxInvoiceFooter.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxInvoiceFooter.Location = new System.Drawing.Point(125, 294);
+            this.textBoxInvoiceFooter.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxInvoiceFooter.Multiline = true;
+            this.textBoxInvoiceFooter.Name = "textBoxInvoiceFooter";
+            this.textBoxInvoiceFooter.Size = new System.Drawing.Size(443, 142);
+            this.textBoxInvoiceFooter.TabIndex = 4;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -346,6 +403,28 @@
             this.label4.Size = new System.Drawing.Size(111, 19);
             this.label4.TabIndex = 0;
             this.label4.Text = "Company Name:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(20, 150);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(100, 19);
+            this.label17.TabIndex = 18;
+            this.label17.Text = "Receipt Footer:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(21, 297);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(99, 19);
+            this.label16.TabIndex = 20;
+            this.label16.Text = "Invoice Footer:";
             // 
             // textBoxAddress
             // 
@@ -390,6 +469,17 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "Address:";
             // 
+            // textBoxReceiptFooter
+            // 
+            this.textBoxReceiptFooter.Enabled = false;
+            this.textBoxReceiptFooter.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxReceiptFooter.Location = new System.Drawing.Point(125, 147);
+            this.textBoxReceiptFooter.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxReceiptFooter.Multiline = true;
+            this.textBoxReceiptFooter.Name = "textBoxReceiptFooter";
+            this.textBoxReceiptFooter.Size = new System.Drawing.Size(443, 143);
+            this.textBoxReceiptFooter.TabIndex = 3;
+            // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.panel5);
@@ -404,26 +494,35 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel5.Controls.Add(this.checkBoxHideSalesAmount);
-            this.panel5.Controls.Add(this.checkBoxDateLogin);
             this.panel5.Controls.Add(this.checkBoxSwipeLogin);
             this.panel5.Controls.Add(this.checkBoxPromptLoginSales);
             this.panel5.Controls.Add(this.comboBoxCollectionReport);
             this.panel5.Controls.Add(this.comboBoxPOSType);
             this.panel5.Controls.Add(this.checkBoxAllowNegativeInventory);
             this.panel5.Controls.Add(this.comboBoxTerminal);
+            this.panel5.Controls.Add(this.label31);
+            this.panel5.Controls.Add(this.label30);
             this.panel5.Controls.Add(this.label22);
             this.panel5.Controls.Add(this.checkBoxActivateAuditTrail);
             this.panel5.Controls.Add(this.label32);
+            this.panel5.Controls.Add(this.textBoxZReadingFooter);
             this.panel5.Controls.Add(this.textBoxLicenseCode);
+            this.panel5.Controls.Add(this.label35);
             this.panel5.Controls.Add(this.label18);
             this.panel5.Controls.Add(this.label21);
             this.panel5.Controls.Add(this.label36);
             this.panel5.Controls.Add(this.comboBoxCurrentPeriod);
+            this.panel5.Controls.Add(this.textBoxCustomerDisplayIfCounterClosedMessage);
+            this.panel5.Controls.Add(this.checkBoxWithCustomerDisplay);
+            this.panel5.Controls.Add(this.label37);
             this.panel5.Controls.Add(this.textBoxTenantOf);
+            this.panel5.Controls.Add(this.textBoxCustomerDisplayFirstLineMessage);
             this.panel5.Controls.Add(this.checkBoxIsBarcodeQuantityAlwaysOne);
+            this.panel5.Controls.Add(this.label38);
             this.panel5.Controls.Add(this.comboBoxWalkinCustomer);
+            this.panel5.Controls.Add(this.textBoxCustomerDisplayBaudRate);
             this.panel5.Controls.Add(this.label20);
+            this.panel5.Controls.Add(this.label39);
             this.panel5.Controls.Add(this.comboBoxDefaultDiscount);
             this.panel5.Controls.Add(this.textBoxCurrentVersion);
             this.panel5.Controls.Add(this.comboBoxReturnSupplier);
@@ -436,6 +535,10 @@
             this.panel5.Controls.Add(this.checkBoxIsTenderPrint);
             this.panel5.Controls.Add(this.label27);
             this.panel5.Controls.Add(this.label26);
+            this.panel5.Controls.Add(this.label33);
+            this.panel5.Controls.Add(this.textBoxORPrintTitle);
+            this.panel5.Controls.Add(this.label29);
+            this.panel5.Controls.Add(this.textBoxCustomerDisplayPort);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
@@ -447,7 +550,7 @@
             this.checkBoxSwipeLogin.AutoSize = true;
             this.checkBoxSwipeLogin.Enabled = false;
             this.checkBoxSwipeLogin.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxSwipeLogin.Location = new System.Drawing.Point(584, 141);
+            this.checkBoxSwipeLogin.Location = new System.Drawing.Point(668, 449);
             this.checkBoxSwipeLogin.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxSwipeLogin.Name = "checkBoxSwipeLogin";
             this.checkBoxSwipeLogin.Size = new System.Drawing.Size(101, 23);
@@ -459,7 +562,7 @@
             // 
             this.checkBoxPromptLoginSales.AutoSize = true;
             this.checkBoxPromptLoginSales.Enabled = false;
-            this.checkBoxPromptLoginSales.Location = new System.Drawing.Point(584, 118);
+            this.checkBoxPromptLoginSales.Location = new System.Drawing.Point(668, 426);
             this.checkBoxPromptLoginSales.Name = "checkBoxPromptLoginSales";
             this.checkBoxPromptLoginSales.Size = new System.Drawing.Size(146, 23);
             this.checkBoxPromptLoginSales.TabIndex = 80;
@@ -493,7 +596,7 @@
             this.checkBoxAllowNegativeInventory.AutoSize = true;
             this.checkBoxAllowNegativeInventory.Enabled = false;
             this.checkBoxAllowNegativeInventory.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxAllowNegativeInventory.Location = new System.Drawing.Point(584, 64);
+            this.checkBoxAllowNegativeInventory.Location = new System.Drawing.Point(138, 453);
             this.checkBoxAllowNegativeInventory.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxAllowNegativeInventory.Name = "checkBoxAllowNegativeInventory";
             this.checkBoxAllowNegativeInventory.Size = new System.Drawing.Size(182, 23);
@@ -512,6 +615,28 @@
             this.comboBoxTerminal.Size = new System.Drawing.Size(199, 27);
             this.comboBoxTerminal.TabIndex = 12;
             // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(499, 206);
+            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(165, 19);
+            this.label31.TabIndex = 77;
+            this.label31.Text = "Counter Closed Message:";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(539, 117);
+            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(125, 19);
+            this.label30.TabIndex = 76;
+            this.label30.Text = "First Line Message:";
+            // 
             // label22
             // 
             this.label22.AutoSize = true;
@@ -528,7 +653,7 @@
             this.checkBoxActivateAuditTrail.AutoSize = true;
             this.checkBoxActivateAuditTrail.Enabled = false;
             this.checkBoxActivateAuditTrail.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxActivateAuditTrail.Location = new System.Drawing.Point(584, 91);
+            this.checkBoxActivateAuditTrail.Location = new System.Drawing.Point(668, 399);
             this.checkBoxActivateAuditTrail.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxActivateAuditTrail.Name = "checkBoxActivateAuditTrail";
             this.checkBoxActivateAuditTrail.Size = new System.Drawing.Size(142, 23);
@@ -547,6 +672,17 @@
             this.label32.TabIndex = 79;
             this.label32.Text = "POS Type:";
             // 
+            // textBoxZReadingFooter
+            // 
+            this.textBoxZReadingFooter.Enabled = false;
+            this.textBoxZReadingFooter.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxZReadingFooter.Location = new System.Drawing.Point(668, 276);
+            this.textBoxZReadingFooter.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxZReadingFooter.Multiline = true;
+            this.textBoxZReadingFooter.Name = "textBoxZReadingFooter";
+            this.textBoxZReadingFooter.Size = new System.Drawing.Size(349, 118);
+            this.textBoxZReadingFooter.TabIndex = 26;
+            // 
             // textBoxLicenseCode
             // 
             this.textBoxLicenseCode.Enabled = false;
@@ -557,6 +693,17 @@
             this.textBoxLicenseCode.ReadOnly = true;
             this.textBoxLicenseCode.Size = new System.Drawing.Size(326, 26);
             this.textBoxLicenseCode.TabIndex = 6;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.Location = new System.Drawing.Point(508, 279);
+            this.label35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(156, 19);
+            this.label35.TabIndex = 60;
+            this.label35.Text = "Z and X Reading Footer:";
             // 
             // label18
             // 
@@ -602,6 +749,42 @@
             this.comboBoxCurrentPeriod.Size = new System.Drawing.Size(199, 27);
             this.comboBoxCurrentPeriod.TabIndex = 11;
             // 
+            // textBoxCustomerDisplayIfCounterClosedMessage
+            // 
+            this.textBoxCustomerDisplayIfCounterClosedMessage.Enabled = false;
+            this.textBoxCustomerDisplayIfCounterClosedMessage.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCustomerDisplayIfCounterClosedMessage.Location = new System.Drawing.Point(668, 184);
+            this.textBoxCustomerDisplayIfCounterClosedMessage.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxCustomerDisplayIfCounterClosedMessage.Multiline = true;
+            this.textBoxCustomerDisplayIfCounterClosedMessage.Name = "textBoxCustomerDisplayIfCounterClosedMessage";
+            this.textBoxCustomerDisplayIfCounterClosedMessage.Size = new System.Drawing.Size(349, 88);
+            this.textBoxCustomerDisplayIfCounterClosedMessage.TabIndex = 25;
+            // 
+            // checkBoxWithCustomerDisplay
+            // 
+            this.checkBoxWithCustomerDisplay.AutoSize = true;
+            this.checkBoxWithCustomerDisplay.Enabled = false;
+            this.checkBoxWithCustomerDisplay.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxWithCustomerDisplay.Location = new System.Drawing.Point(668, 8);
+            this.checkBoxWithCustomerDisplay.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxWithCustomerDisplay.Name = "checkBoxWithCustomerDisplay";
+            this.checkBoxWithCustomerDisplay.Size = new System.Drawing.Size(169, 23);
+            this.checkBoxWithCustomerDisplay.TabIndex = 21;
+            this.checkBoxWithCustomerDisplay.Text = "With Customer Display";
+            this.checkBoxWithCustomerDisplay.UseVisualStyleBackColor = true;
+            this.checkBoxWithCustomerDisplay.CheckedChanged += new System.EventHandler(this.checkBoxWithCustomerDisplay_CheckedChanged);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(535, 187);
+            this.label37.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(129, 19);
+            this.label37.TabIndex = 56;
+            this.label37.Text = "Customer Display If";
+            // 
             // textBoxTenantOf
             // 
             this.textBoxTenantOf.Enabled = false;
@@ -612,18 +795,40 @@
             this.textBoxTenantOf.Size = new System.Drawing.Size(199, 26);
             this.textBoxTenantOf.TabIndex = 7;
             // 
+            // textBoxCustomerDisplayFirstLineMessage
+            // 
+            this.textBoxCustomerDisplayFirstLineMessage.Enabled = false;
+            this.textBoxCustomerDisplayFirstLineMessage.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCustomerDisplayFirstLineMessage.Location = new System.Drawing.Point(668, 95);
+            this.textBoxCustomerDisplayFirstLineMessage.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxCustomerDisplayFirstLineMessage.Multiline = true;
+            this.textBoxCustomerDisplayFirstLineMessage.Name = "textBoxCustomerDisplayFirstLineMessage";
+            this.textBoxCustomerDisplayFirstLineMessage.Size = new System.Drawing.Size(349, 85);
+            this.textBoxCustomerDisplayFirstLineMessage.TabIndex = 24;
+            // 
             // checkBoxIsBarcodeQuantityAlwaysOne
             // 
             this.checkBoxIsBarcodeQuantityAlwaysOne.AutoSize = true;
             this.checkBoxIsBarcodeQuantityAlwaysOne.Enabled = false;
             this.checkBoxIsBarcodeQuantityAlwaysOne.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxIsBarcodeQuantityAlwaysOne.Location = new System.Drawing.Point(584, 37);
+            this.checkBoxIsBarcodeQuantityAlwaysOne.Location = new System.Drawing.Point(138, 426);
             this.checkBoxIsBarcodeQuantityAlwaysOne.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxIsBarcodeQuantityAlwaysOne.Name = "checkBoxIsBarcodeQuantityAlwaysOne";
             this.checkBoxIsBarcodeQuantityAlwaysOne.Size = new System.Drawing.Size(211, 23);
             this.checkBoxIsBarcodeQuantityAlwaysOne.TabIndex = 19;
             this.checkBoxIsBarcodeQuantityAlwaysOne.Text = "Barcode Quantity Always One";
             this.checkBoxIsBarcodeQuantityAlwaysOne.UseVisualStyleBackColor = true;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(547, 98);
+            this.label38.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(117, 19);
+            this.label38.TabIndex = 54;
+            this.label38.Text = "Customer Display";
             // 
             // comboBoxWalkinCustomer
             // 
@@ -636,6 +841,16 @@
             this.comboBoxWalkinCustomer.Size = new System.Drawing.Size(326, 27);
             this.comboBoxWalkinCustomer.TabIndex = 13;
             // 
+            // textBoxCustomerDisplayBaudRate
+            // 
+            this.textBoxCustomerDisplayBaudRate.Enabled = false;
+            this.textBoxCustomerDisplayBaudRate.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCustomerDisplayBaudRate.Location = new System.Drawing.Point(668, 66);
+            this.textBoxCustomerDisplayBaudRate.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxCustomerDisplayBaudRate.Name = "textBoxCustomerDisplayBaudRate";
+            this.textBoxCustomerDisplayBaudRate.Size = new System.Drawing.Size(199, 26);
+            this.textBoxCustomerDisplayBaudRate.TabIndex = 23;
+            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -646,6 +861,17 @@
             this.label20.Size = new System.Drawing.Size(108, 19);
             this.label20.TabIndex = 26;
             this.label20.Text = "Current Version:";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.Location = new System.Drawing.Point(478, 69);
+            this.label39.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(186, 19);
+            this.label39.TabIndex = 52;
+            this.label39.Text = "Customer Display Baud Rate:";
             // 
             // comboBoxDefaultDiscount
             // 
@@ -748,7 +974,7 @@
             this.checkBoxIsTenderPrint.AutoSize = true;
             this.checkBoxIsTenderPrint.Enabled = false;
             this.checkBoxIsTenderPrint.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxIsTenderPrint.Location = new System.Drawing.Point(584, 10);
+            this.checkBoxIsTenderPrint.Location = new System.Drawing.Point(138, 399);
             this.checkBoxIsTenderPrint.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxIsTenderPrint.Name = "checkBoxIsTenderPrint";
             this.checkBoxIsTenderPrint.Size = new System.Drawing.Size(102, 23);
@@ -777,6 +1003,48 @@
             this.label26.Size = new System.Drawing.Size(106, 19);
             this.label26.TabIndex = 38;
             this.label26.Text = "Return Supplier:";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(41, 371);
+            this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(93, 19);
+            this.label33.TabIndex = 40;
+            this.label33.Text = "OR Print Title:";
+            // 
+            // textBoxORPrintTitle
+            // 
+            this.textBoxORPrintTitle.Enabled = false;
+            this.textBoxORPrintTitle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxORPrintTitle.Location = new System.Drawing.Point(138, 368);
+            this.textBoxORPrintTitle.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxORPrintTitle.Name = "textBoxORPrintTitle";
+            this.textBoxORPrintTitle.Size = new System.Drawing.Size(326, 26);
+            this.textBoxORPrintTitle.TabIndex = 17;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(515, 39);
+            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(149, 19);
+            this.label29.TabIndex = 48;
+            this.label29.Text = "Customer Display Port:";
+            // 
+            // textBoxCustomerDisplayPort
+            // 
+            this.textBoxCustomerDisplayPort.Enabled = false;
+            this.textBoxCustomerDisplayPort.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCustomerDisplayPort.Location = new System.Drawing.Point(668, 36);
+            this.textBoxCustomerDisplayPort.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxCustomerDisplayPort.Name = "textBoxCustomerDisplayPort";
+            this.textBoxCustomerDisplayPort.Size = new System.Drawing.Size(199, 26);
+            this.textBoxCustomerDisplayPort.TabIndex = 22;
             // 
             // tabPage3
             // 
@@ -1291,18 +1559,6 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel9.Controls.Add(this.textBoxInvoiceFooter);
-            this.panel9.Controls.Add(this.label37);
-            this.panel9.Controls.Add(this.label35);
-            this.panel9.Controls.Add(this.textBoxReceiptFooter);
-            this.panel9.Controls.Add(this.label31);
-            this.panel9.Controls.Add(this.textBoxWithdrawalFooter);
-            this.panel9.Controls.Add(this.textBoxWithdrawalPrintTitle);
-            this.panel9.Controls.Add(this.label30);
-            this.panel9.Controls.Add(this.label29);
-            this.panel9.Controls.Add(this.textBoxORPrintTitle);
-            this.panel9.Controls.Add(this.textBoxZReadingFooter);
-            this.panel9.Controls.Add(this.label47);
             this.panel9.Controls.Add(this.comboBoxPrinterType);
             this.panel9.Controls.Add(this.label45);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1316,7 +1572,7 @@
             this.comboBoxPrinterType.Enabled = false;
             this.comboBoxPrinterType.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxPrinterType.FormattingEnabled = true;
-            this.comboBoxPrinterType.Location = new System.Drawing.Point(164, 6);
+            this.comboBoxPrinterType.Location = new System.Drawing.Point(138, 7);
             this.comboBoxPrinterType.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxPrinterType.Name = "comboBoxPrinterType";
             this.comboBoxPrinterType.Size = new System.Drawing.Size(199, 27);
@@ -1326,7 +1582,7 @@
             // 
             this.label45.AutoSize = true;
             this.label45.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(75, 9);
+            this.label45.Location = new System.Drawing.Point(49, 10);
             this.label45.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(85, 19);
@@ -1339,313 +1595,18 @@
             this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
             this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
             // 
-            // textBoxZReadingFooter
-            // 
-            this.textBoxZReadingFooter.Enabled = false;
-            this.textBoxZReadingFooter.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxZReadingFooter.Location = new System.Drawing.Point(717, 6);
-            this.textBoxZReadingFooter.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxZReadingFooter.Multiline = true;
-            this.textBoxZReadingFooter.Name = "textBoxZReadingFooter";
-            this.textBoxZReadingFooter.Size = new System.Drawing.Size(349, 118);
-            this.textBoxZReadingFooter.TabIndex = 80;
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label47.Location = new System.Drawing.Point(557, 9);
-            this.label47.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(156, 19);
-            this.label47.TabIndex = 81;
-            this.label47.Text = "Z and X Reading Footer:";
-            // 
-            // checkBoxHideSalesAmount
-            // 
-            this.checkBoxHideSalesAmount.AutoSize = true;
-            this.checkBoxHideSalesAmount.Enabled = false;
-            this.checkBoxHideSalesAmount.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxHideSalesAmount.Location = new System.Drawing.Point(584, 195);
-            this.checkBoxHideSalesAmount.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxHideSalesAmount.Name = "checkBoxHideSalesAmount";
-            this.checkBoxHideSalesAmount.Size = new System.Drawing.Size(144, 23);
-            this.checkBoxHideSalesAmount.TabIndex = 83;
-            this.checkBoxHideSalesAmount.Text = "Hide Sales Amount";
-            this.checkBoxHideSalesAmount.UseVisualStyleBackColor = true;
-            // 
             // checkBoxDateLogin
             // 
             this.checkBoxDateLogin.AutoSize = true;
             this.checkBoxDateLogin.Enabled = false;
             this.checkBoxDateLogin.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxDateLogin.Location = new System.Drawing.Point(584, 168);
+            this.checkBoxDateLogin.Location = new System.Drawing.Point(595, 219);
             this.checkBoxDateLogin.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxDateLogin.Name = "checkBoxDateLogin";
             this.checkBoxDateLogin.Size = new System.Drawing.Size(95, 23);
-            this.checkBoxDateLogin.TabIndex = 82;
+            this.checkBoxDateLogin.TabIndex = 28;
             this.checkBoxDateLogin.Text = "Date Login";
             this.checkBoxDateLogin.UseVisualStyleBackColor = true;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(67, 40);
-            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(93, 19);
-            this.label29.TabIndex = 83;
-            this.label29.Text = "OR Print Title:";
-            // 
-            // textBoxORPrintTitle
-            // 
-            this.textBoxORPrintTitle.Enabled = false;
-            this.textBoxORPrintTitle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxORPrintTitle.Location = new System.Drawing.Point(164, 37);
-            this.textBoxORPrintTitle.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxORPrintTitle.Name = "textBoxORPrintTitle";
-            this.textBoxORPrintTitle.Size = new System.Drawing.Size(326, 26);
-            this.textBoxORPrintTitle.TabIndex = 82;
-            // 
-            // textBoxWithdrawalPrintTitle
-            // 
-            this.textBoxWithdrawalPrintTitle.Enabled = false;
-            this.textBoxWithdrawalPrintTitle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxWithdrawalPrintTitle.Location = new System.Drawing.Point(164, 67);
-            this.textBoxWithdrawalPrintTitle.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxWithdrawalPrintTitle.Name = "textBoxWithdrawalPrintTitle";
-            this.textBoxWithdrawalPrintTitle.Size = new System.Drawing.Size(246, 26);
-            this.textBoxWithdrawalPrintTitle.TabIndex = 85;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(17, 72);
-            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(143, 19);
-            this.label30.TabIndex = 84;
-            this.label30.Text = "Withdrawal Print Title:";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(35, 97);
-            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(125, 19);
-            this.label31.TabIndex = 87;
-            this.label31.Text = "Withdrawal Footer:";
-            // 
-            // textBoxWithdrawalFooter
-            // 
-            this.textBoxWithdrawalFooter.Enabled = false;
-            this.textBoxWithdrawalFooter.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxWithdrawalFooter.Location = new System.Drawing.Point(164, 97);
-            this.textBoxWithdrawalFooter.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxWithdrawalFooter.Multiline = true;
-            this.textBoxWithdrawalFooter.Name = "textBoxWithdrawalFooter";
-            this.textBoxWithdrawalFooter.Size = new System.Drawing.Size(349, 118);
-            this.textBoxWithdrawalFooter.TabIndex = 86;
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.Location = new System.Drawing.Point(60, 222);
-            this.label35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(100, 19);
-            this.label35.TabIndex = 89;
-            this.label35.Text = "Receipt Footer:";
-            // 
-            // textBoxReceiptFooter
-            // 
-            this.textBoxReceiptFooter.Enabled = false;
-            this.textBoxReceiptFooter.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxReceiptFooter.Location = new System.Drawing.Point(165, 219);
-            this.textBoxReceiptFooter.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxReceiptFooter.Multiline = true;
-            this.textBoxReceiptFooter.Name = "textBoxReceiptFooter";
-            this.textBoxReceiptFooter.Size = new System.Drawing.Size(349, 118);
-            this.textBoxReceiptFooter.TabIndex = 88;
-            // 
-            // textBoxInvoiceFooter
-            // 
-            this.textBoxInvoiceFooter.Enabled = false;
-            this.textBoxInvoiceFooter.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxInvoiceFooter.Location = new System.Drawing.Point(165, 341);
-            this.textBoxInvoiceFooter.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxInvoiceFooter.Multiline = true;
-            this.textBoxInvoiceFooter.Name = "textBoxInvoiceFooter";
-            this.textBoxInvoiceFooter.Size = new System.Drawing.Size(349, 118);
-            this.textBoxInvoiceFooter.TabIndex = 90;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(61, 344);
-            this.label37.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(99, 19);
-            this.label37.TabIndex = 91;
-            this.label37.Text = "Invoice Footer:";
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel10.Controls.Add(this.label44);
-            this.panel10.Controls.Add(this.label46);
-            this.panel10.Controls.Add(this.textBoxCustomerDisplayIfCounterClosedMessage);
-            this.panel10.Controls.Add(this.checkBoxWithCustomerDisplay);
-            this.panel10.Controls.Add(this.label53);
-            this.panel10.Controls.Add(this.textBoxCustomerDisplayFirstLineMessage);
-            this.panel10.Controls.Add(this.label54);
-            this.panel10.Controls.Add(this.textBoxCustomerDisplayBaudRate);
-            this.panel10.Controls.Add(this.label56);
-            this.panel10.Controls.Add(this.label64);
-            this.panel10.Controls.Add(this.textBoxCustomerDisplayPort);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(3, 3);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(1095, 472);
-            this.panel10.TabIndex = 35;
-            // 
-            // textBoxCustomerDisplayPort
-            // 
-            this.textBoxCustomerDisplayPort.Enabled = false;
-            this.textBoxCustomerDisplayPort.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCustomerDisplayPort.Location = new System.Drawing.Point(194, 32);
-            this.textBoxCustomerDisplayPort.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxCustomerDisplayPort.Name = "textBoxCustomerDisplayPort";
-            this.textBoxCustomerDisplayPort.Size = new System.Drawing.Size(199, 26);
-            this.textBoxCustomerDisplayPort.TabIndex = 22;
-            // 
-            // label64
-            // 
-            this.label64.AutoSize = true;
-            this.label64.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label64.Location = new System.Drawing.Point(41, 35);
-            this.label64.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(149, 19);
-            this.label64.TabIndex = 48;
-            this.label64.Text = "Customer Display Port:";
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label56.Location = new System.Drawing.Point(4, 65);
-            this.label56.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(186, 19);
-            this.label56.TabIndex = 52;
-            this.label56.Text = "Customer Display Baud Rate:";
-            // 
-            // textBoxCustomerDisplayBaudRate
-            // 
-            this.textBoxCustomerDisplayBaudRate.Enabled = false;
-            this.textBoxCustomerDisplayBaudRate.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCustomerDisplayBaudRate.Location = new System.Drawing.Point(194, 62);
-            this.textBoxCustomerDisplayBaudRate.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxCustomerDisplayBaudRate.Name = "textBoxCustomerDisplayBaudRate";
-            this.textBoxCustomerDisplayBaudRate.Size = new System.Drawing.Size(199, 26);
-            this.textBoxCustomerDisplayBaudRate.TabIndex = 23;
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label54.Location = new System.Drawing.Point(73, 94);
-            this.label54.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(117, 19);
-            this.label54.TabIndex = 54;
-            this.label54.Text = "Customer Display";
-            // 
-            // textBoxCustomerDisplayFirstLineMessage
-            // 
-            this.textBoxCustomerDisplayFirstLineMessage.Enabled = false;
-            this.textBoxCustomerDisplayFirstLineMessage.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCustomerDisplayFirstLineMessage.Location = new System.Drawing.Point(194, 91);
-            this.textBoxCustomerDisplayFirstLineMessage.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxCustomerDisplayFirstLineMessage.Multiline = true;
-            this.textBoxCustomerDisplayFirstLineMessage.Name = "textBoxCustomerDisplayFirstLineMessage";
-            this.textBoxCustomerDisplayFirstLineMessage.Size = new System.Drawing.Size(349, 85);
-            this.textBoxCustomerDisplayFirstLineMessage.TabIndex = 24;
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label53.Location = new System.Drawing.Point(61, 183);
-            this.label53.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(129, 19);
-            this.label53.TabIndex = 56;
-            this.label53.Text = "Customer Display If";
-            // 
-            // checkBoxWithCustomerDisplay
-            // 
-            this.checkBoxWithCustomerDisplay.AutoSize = true;
-            this.checkBoxWithCustomerDisplay.Enabled = false;
-            this.checkBoxWithCustomerDisplay.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxWithCustomerDisplay.Location = new System.Drawing.Point(194, 4);
-            this.checkBoxWithCustomerDisplay.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxWithCustomerDisplay.Name = "checkBoxWithCustomerDisplay";
-            this.checkBoxWithCustomerDisplay.Size = new System.Drawing.Size(169, 23);
-            this.checkBoxWithCustomerDisplay.TabIndex = 21;
-            this.checkBoxWithCustomerDisplay.Text = "With Customer Display";
-            this.checkBoxWithCustomerDisplay.UseVisualStyleBackColor = true;
-            // 
-            // textBoxCustomerDisplayIfCounterClosedMessage
-            // 
-            this.textBoxCustomerDisplayIfCounterClosedMessage.Enabled = false;
-            this.textBoxCustomerDisplayIfCounterClosedMessage.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCustomerDisplayIfCounterClosedMessage.Location = new System.Drawing.Point(194, 180);
-            this.textBoxCustomerDisplayIfCounterClosedMessage.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxCustomerDisplayIfCounterClosedMessage.Multiline = true;
-            this.textBoxCustomerDisplayIfCounterClosedMessage.Name = "textBoxCustomerDisplayIfCounterClosedMessage";
-            this.textBoxCustomerDisplayIfCounterClosedMessage.Size = new System.Drawing.Size(349, 88);
-            this.textBoxCustomerDisplayIfCounterClosedMessage.TabIndex = 25;
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label46.Location = new System.Drawing.Point(65, 113);
-            this.label46.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(125, 19);
-            this.label46.TabIndex = 76;
-            this.label46.Text = "First Line Message:";
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(25, 202);
-            this.label44.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(165, 19);
-            this.label44.TabIndex = 77;
-            this.label44.Text = "Counter Closed Message:";
-            // 
-            // tabControl10
-            // 
-            this.tabControl10.Controls.Add(this.panel10);
-            this.tabControl10.Location = new System.Drawing.Point(4, 28);
-            this.tabControl10.Name = "tabControl10";
-            this.tabControl10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabControl10.Size = new System.Drawing.Size(1101, 478);
-            this.tabControl10.TabIndex = 7;
-            this.tabControl10.Text = "Customer Display Settings";
-            this.tabControl10.UseVisualStyleBackColor = true;
             // 
             // SysSettingsForm
             // 
@@ -1687,9 +1648,6 @@
             this.tabPage7.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
-            this.tabControl10.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1725,6 +1683,10 @@
         private System.Windows.Forms.TextBox textBoxCompanyName;
         private System.Windows.Forms.TextBox textBoxLicenseCode;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox textBoxInvoiceFooter;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textBoxReceiptFooter;
+        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBoxMachineNo;
         private System.Windows.Forms.Label label19;
@@ -1748,10 +1710,25 @@
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.TextBox textBoxEasypayAPIURL;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox textBoxZReadingFooter;
+        private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox textBoxCustomerDisplayIfCounterClosedMessage;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TextBox textBoxCustomerDisplayFirstLineMessage;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label39;
         private System.Windows.Forms.CheckBox checkBoxActivateAuditTrail;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.CheckBox checkBoxWithCustomerDisplay;
         private System.Windows.Forms.CheckBox checkBoxIsBarcodeQuantityAlwaysOne;
         private System.Windows.Forms.CheckBox checkBoxIsTenderPrint;
+        private System.Windows.Forms.TextBox textBoxCustomerDisplayBaudRate;
+        private System.Windows.Forms.TextBox textBoxCustomerDisplayPort;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox textBoxORPrintTitle;
+        private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
@@ -1791,32 +1768,10 @@
         private System.Windows.Forms.ComboBox comboBoxPrinterType;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.CheckBox checkBoxSwipeLogin;
-        private System.Windows.Forms.TextBox textBoxZReadingFooter;
-        private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.CheckBox checkBoxHideSalesAmount;
-        private System.Windows.Forms.CheckBox checkBoxDateLogin;
-        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxWithdrawalFooter;
         private System.Windows.Forms.TextBox textBoxWithdrawalPrintTitle;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox textBoxORPrintTitle;
-        private System.Windows.Forms.TextBox textBoxInvoiceFooter;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.TextBox textBoxReceiptFooter;
-        private System.Windows.Forms.TabPage tabControl10;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.TextBox textBoxCustomerDisplayIfCounterClosedMessage;
-        private System.Windows.Forms.CheckBox checkBoxWithCustomerDisplay;
-        private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.TextBox textBoxCustomerDisplayFirstLineMessage;
-        private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.TextBox textBoxCustomerDisplayBaudRate;
-        private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.Label label64;
-        private System.Windows.Forms.TextBox textBoxCustomerDisplayPort;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.CheckBox checkBoxDateLogin;
     }
 }
