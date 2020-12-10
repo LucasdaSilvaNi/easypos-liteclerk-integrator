@@ -95,7 +95,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             if (Modules.SysCurrentModule.GetCurrentSettings().PromptLoginSales == true)
             {
-                Account.SysLogin.SysLoginForm login = new Account.SysLogin.SysLoginForm(this,null, null, null, false);
+                Account.SysLogin.SysLoginForm login = new Account.SysLogin.SysLoginForm(this, null, null, null, false);
                 login.ShowDialog();
             }
             else
@@ -235,8 +235,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
                 var salesList = trnPOSSalesController.ListSales(salesDate, terminalId, filter);
+
                 if (salesList.Any())
                 {
+                    Boolean isHiddenValueSalesAmount = Modules.SysCurrentModule.GetCurrentSettings().HideSalesAmount;
                     var row = from d in salesList
                               select new Entities.DgvTrnSalesListEntity
                               {
@@ -250,7 +252,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                   ColumnCustomerCode = d.CustomerCode,
                                   ColumnCustomer = d.Customer,
                                   ColumnSalesAgent = d.SalesAgentUserName,
-                                  ColumnAmount = d.Amount.ToString("#,##0.00"),
+                                  ColumnAmount = isHiddenValueSalesAmount == true ? hideSalesAmmount(d.Amount.ToString("#,##0.00")) : d.Amount.ToString("#,##0.00"),
                                   ColumnIsLocked = d.IsLocked,
                                   ColumnIsTendered = d.IsTendered,
                                   ColumnIsCancelled = d.IsCancelled,
@@ -265,7 +267,21 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
 
                 return rowList;
+
             });
+        }
+
+        public string hideSalesAmmount(String value)
+        {
+
+            Decimal stringLength = value.Length;
+            String hiddenValue = "";
+
+            for (var i = 0; i < stringLength; i++)
+            {
+                hiddenValue += "*";
+            }
+            return hiddenValue;
         }
 
         public void CreateSalesListDataGrid()
@@ -384,6 +400,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 labelPreparedBy.Text = dataGridViewSalesList.Rows[rowIndex].Cells[dataGridViewSalesList.Columns["ColumnSalesAgent"].Index].Value.ToString();
 
                 Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
+
                 if (trnPOSSalesLineController.ListSalesLine(Convert.ToInt32(dataGridViewSalesList.Rows[rowIndex].Cells[dataGridViewSalesList.Columns["ColumnId"].Index].Value)).Any())
                 {
                     var groupedSalesLineItems = from d in trnPOSSalesLineController.ListSalesLine(Convert.ToInt32(dataGridViewSalesList.Rows[rowIndex].Cells[dataGridViewSalesList.Columns["ColumnId"].Index].Value))
@@ -410,11 +427,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     {
                         foreach (var salesLineItem in salesLineItemList)
                         {
+                            Boolean isHiddenValueSalesAmount = Modules.SysCurrentModule.GetCurrentSettings().HideSalesAmount;
+
                             dataGridViewSalesLineItemDisplay.Rows.Add(
                                 salesLineItem.Quantity.ToString("#,##0.00"),
                                 salesLineItem.ItemDescription + "   " + salesLineItem.Unit + Environment.NewLine + " @P" + salesLineItem.Price.ToString("#,##0.00") + " Less: " + salesLineItem.DiscountAmount.ToString("#,##0.00") + " - " + salesLineItem.Tax,
-                                salesLineItem.Amount.ToString("#,##0.00")
-                            );
+                                isHiddenValueSalesAmount == true ? hideSalesAmmount(salesLineItem.Amount.ToString("#,##0.00")) : salesLineItem.Amount.ToString("#,##0.00"));
                         }
                     }
                 }

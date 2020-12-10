@@ -473,7 +473,7 @@ namespace EasyPOS.Controllers
                                         };
 
             var unionCurrentInventories = currentInInventories.ToList().Union(currentSoldInventories.ToList()).Union(currentSoldComponentInventories.ToList()).Union(currentOutInventories.ToList());
-
+            
             if (unionBeginningInventories.ToList().Any())
             {
                 var groupBeginningInventories = from d in unionBeginningInventories.ToList()
@@ -491,7 +491,6 @@ namespace EasyPOS.Controllers
                                                     OutQuantity = g.Sum(s => s.OutQuantity),
                                                     EndingQuantity = g.Sum(s => s.BeginningQuantity)
                                                 };
-
                 var unionInventories = groupBeginningInventories.ToList().Union(unionCurrentInventories.ToList());
                 if (unionInventories.Any())
                 {
@@ -599,20 +598,20 @@ namespace EasyPOS.Controllers
         public List<Entities.MstItemEntity> GetInventoryListReport()
         {
             var item = from d in db.MstItems
-                           select new Entities.MstItemEntity
-                           {
-                               Id = d.Id,
-                               BarCode = d.BarCode,
-                               ItemCode = d.ItemCode,
-                               ItemDescription = d.ItemDescription,
-                               Unit = d.MstUnit.Unit,
-                               Category = d.Category,
-                               Cost = d.Cost,
-                               Price = d.Price,
-                               OnhandQuantity = d.OnhandQuantity,
-                               IsInventory = d.IsInventory,
-                               IsLocked = d.IsLocked
-                           };
+                       select new Entities.MstItemEntity
+                       {
+                           Id = d.Id,
+                           BarCode = d.BarCode,
+                           ItemCode = d.ItemCode,
+                           ItemDescription = d.ItemDescription,
+                           Unit = d.MstUnit.Unit,
+                           Category = d.Category,
+                           Cost = d.Cost,
+                           Price = d.Price,
+                           OnhandQuantity = d.OnhandQuantity,
+                           IsInventory = d.IsInventory,
+                           IsLocked = d.IsLocked
+                       };
 
             return item.ToList();
         }

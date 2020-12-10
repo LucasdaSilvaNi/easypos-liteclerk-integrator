@@ -523,6 +523,17 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Point tenthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
                 graphics.DrawLine(blackPen, tenthLineFirstPoint, tenthLineSecondPoint);
 
+                String orderNumber = "\nOrder Number: \n\n " + collections.FirstOrDefault().TrnSale.SalesNumber;
+                graphics.DrawString(orderNumber, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                y += graphics.MeasureString(orderNumber, fontArial8Regular).Height;
+
+                // =========
+                // 11th Line
+                // =========
+                Point eleventhLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point eleventhLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, eleventhLineFirstPoint, eleventhLineSecondPoint);
+
                 String receiptFooter = "\n" + systemCurrent.ReceiptFooter;
                 graphics.DrawString(receiptFooter, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
                 y += graphics.MeasureString(receiptFooter, fontArial8Regular).Height;
