@@ -1106,7 +1106,12 @@ namespace EasyPOS.Controllers
 
                             Decimal pax = Convert.ToDecimal(objSalesEntity.Pax != null ? objSalesEntity.Pax : 0);
                             Decimal discountedPax = Convert.ToDecimal(objSalesEntity.DiscountedPax != null ? objSalesEntity.DiscountedPax : 0);
-                            Decimal withoutDiscountedPax = pax - discountedPax;
+                            Decimal withoutDiscountedPax = 0;
+
+                            if (pax > discountedPax)
+                            {
+                                withoutDiscountedPax = pax - discountedPax;
+                            }
 
                             Decimal pricePerPax = salesLine.Price / pax;
                             Decimal pricePerPaxVatExempt = 0;
@@ -1195,7 +1200,7 @@ namespace EasyPOS.Controllers
 
                                 salesLine.DiscountId = discount.FirstOrDefault().Id;
                                 salesLine.DiscountRate = discountRate;
-                                salesLine.DiscountAmount = discountAmountPerPax * withoutDiscountedPax;
+                                salesLine.DiscountAmount = withoutDiscountedPax > 0 ? discountAmountPerPax * withoutDiscountedPax : discountAmountPerPax;
                                 salesLine.NetPrice = netPrice;
                                 salesLine.Amount = amount;
                                 salesLine.TaxAmount = taxAmount;

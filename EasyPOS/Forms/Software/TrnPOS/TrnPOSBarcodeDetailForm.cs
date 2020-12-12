@@ -460,6 +460,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     );
                 }
             }
+            
+
 
             textBoxTotalSalesAmount.Text = totalSalesAmount.ToString("#,##0.00");
             trnSalesEntity.Amount = totalSalesAmount;
@@ -545,7 +547,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(this, null, trnSalesLineEntity);
                 trnSalesDetailSalesItemDetailForm.ShowDialog();
             }
-
+           
             if (e.RowIndex > -1 && dataGridViewSalesLineList.CurrentCell.ColumnIndex == dataGridViewSalesLineList.Columns["ColumnSalesLineDelete"].Index)
             {
                 DialogResult deleteDialogResult = MessageBox.Show("Delete Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -655,101 +657,107 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             Decimal salesAmount = 0;
             List<Entities.TrnSalesLineEntity> listSalesLine = new List<Entities.TrnSalesLineEntity>();
-
-            foreach (DataGridViewRow row in dataGridViewSalesLineList.Rows)
+            if(Convert.ToDecimal(textBoxTotalSalesAmount.Text) > 0)
             {
-                Decimal price = Convert.ToDecimal(row.Cells[dataGridViewSalesLineList.Columns["ColumnSalesLinePrice"].Index].Value);
-                Decimal quantity = Convert.ToDecimal(row.Cells[dataGridViewSalesLineList.Columns["ColumnSalesLineQuantity"].Index].Value);
-
-                salesAmount += price * quantity;
-
-                Int32 ItemId = Convert.ToInt32(row.Cells[4].Value);
-                String ItemDescription = row.Cells[5].Value.ToString();
-                Decimal Price = Convert.ToDecimal(row.Cells[8].Value);
-                Decimal Quantity = Convert.ToDecimal(row.Cells[14].Value);
-
-                listSalesLine.Add(new Entities.TrnSalesLineEntity()
+                foreach (DataGridViewRow row in dataGridViewSalesLineList.Rows)
                 {
-                    Id = 0,
-                    SalesId = 0,
-                    ItemId = ItemId,
-                    ItemDescription = ItemDescription,
-                    UnitId = 0,
-                    Unit = "",
-                    Price = Price,
-                    DiscountId = 0,
-                    Discount = "",
-                    DiscountRate = 0,
-                    DiscountAmount = 0,
-                    NetPrice = 0,
-                    Quantity = Quantity,
-                    Amount = 0,
-                    TaxId = 0,
-                    Tax = "",
-                    TaxRate = 0,
-                    TaxAmount = 0,
-                    SalesAccountId = 159,
-                    AssetAccountId = 255,
-                    CostAccountId = 238,
-                    TaxAccountId = 87,
-                    SalesLineTimeStamp = DateTime.Now.Date.ToShortDateString(),
-                    UserId = 0,
-                    Preparation = "NA",
-                    Price1 = 0,
-                    Price2 = 0,
-                    Price2LessTax = 0,
-                    PriceSplitPercentage = 0
-                });
-            }
+                    Decimal price = Convert.ToDecimal(row.Cells[dataGridViewSalesLineList.Columns["ColumnSalesLinePrice"].Index].Value);
+                    Decimal quantity = Convert.ToDecimal(row.Cells[dataGridViewSalesLineList.Columns["ColumnSalesLineQuantity"].Index].Value);
 
-            if (listSalesLine.Any())
-            {
-                var groupedSalesLine = from d in listSalesLine.ToList()
-                                       group d by new
-                                       {
-                                           d.ItemId,
-                                           d.ItemDescription
-                                       } into g
-                                       select new Entities.TrnSalesLineEntity()
-                                       {
-                                           Id = 0,
-                                           SalesId = 0,
-                                           ItemId = g.Key.ItemId,
-                                           ItemDescription = g.Key.ItemDescription,
-                                           UnitId = 0,
-                                           Unit = "",
-                                           Price = 0,
-                                           DiscountId = 0,
-                                           Discount = "",
-                                           DiscountRate = 0,
-                                           DiscountAmount = 0,
-                                           NetPrice = 0,
-                                           Quantity = 1,
-                                           Amount = g.Sum(i => i.Price * i.Quantity),
-                                           TaxId = 0,
-                                           Tax = "",
-                                           TaxRate = 0,
-                                           TaxAmount = 0,
-                                           SalesAccountId = 159,
-                                           AssetAccountId = 255,
-                                           CostAccountId = 238,
-                                           TaxAccountId = 87,
-                                           SalesLineTimeStamp = DateTime.Now.Date.ToShortDateString(),
-                                           UserId = 0,
-                                           Preparation = "NA",
-                                           Price1 = 0,
-                                           Price2 = 0,
-                                           Price2LessTax = 0,
-                                           PriceSplitPercentage = 0
-                                       };
+                    salesAmount += price * quantity;
 
-                TrnPOSDiscountForm trnSalesDetailDiscountForm = new TrnPOSDiscountForm(this, null, salesAmount, groupedSalesLine.ToList());
-                trnSalesDetailDiscountForm.ShowDialog();
+                    Int32 ItemId = Convert.ToInt32(row.Cells[4].Value);
+                    String ItemDescription = row.Cells[5].Value.ToString();
+                    Decimal Price = Convert.ToDecimal(row.Cells[8].Value);
+                    Decimal Quantity = Convert.ToDecimal(row.Cells[14].Value);
+
+                    listSalesLine.Add(new Entities.TrnSalesLineEntity()
+                    {
+                        Id = 0,
+                        SalesId = 0,
+                        ItemId = ItemId,
+                        ItemDescription = ItemDescription,
+                        UnitId = 0,
+                        Unit = "",
+                        Price = Price,
+                        DiscountId = 0,
+                        Discount = "",
+                        DiscountRate = 0,
+                        DiscountAmount = 0,
+                        NetPrice = 0,
+                        Quantity = Quantity,
+                        Amount = 0,
+                        TaxId = 0,
+                        Tax = "",
+                        TaxRate = 0,
+                        TaxAmount = 0,
+                        SalesAccountId = 159,
+                        AssetAccountId = 255,
+                        CostAccountId = 238,
+                        TaxAccountId = 87,
+                        SalesLineTimeStamp = DateTime.Now.Date.ToShortDateString(),
+                        UserId = 0,
+                        Preparation = "NA",
+                        Price1 = 0,
+                        Price2 = 0,
+                        Price2LessTax = 0,
+                        PriceSplitPercentage = 0
+                    });
+                }
+
+                if (listSalesLine.Any())
+                {
+                    var groupedSalesLine = from d in listSalesLine.ToList()
+                                           group d by new
+                                           {
+                                               d.ItemId,
+                                               d.ItemDescription
+                                           } into g
+                                           select new Entities.TrnSalesLineEntity()
+                                           {
+                                               Id = 0,
+                                               SalesId = 0,
+                                               ItemId = g.Key.ItemId,
+                                               ItemDescription = g.Key.ItemDescription,
+                                               UnitId = 0,
+                                               Unit = "",
+                                               Price = 0,
+                                               DiscountId = 0,
+                                               Discount = "",
+                                               DiscountRate = 0,
+                                               DiscountAmount = 0,
+                                               NetPrice = 0,
+                                               Quantity = 1,
+                                               Amount = g.Sum(i => i.Price * i.Quantity),
+                                               TaxId = 0,
+                                               Tax = "",
+                                               TaxRate = 0,
+                                               TaxAmount = 0,
+                                               SalesAccountId = 159,
+                                               AssetAccountId = 255,
+                                               CostAccountId = 238,
+                                               TaxAccountId = 87,
+                                               SalesLineTimeStamp = DateTime.Now.Date.ToShortDateString(),
+                                               UserId = 0,
+                                               Preparation = "NA",
+                                               Price1 = 0,
+                                               Price2 = 0,
+                                               Price2LessTax = 0,
+                                               PriceSplitPercentage = 0
+                                           };
+
+                    TrnPOSDiscountForm trnSalesDetailDiscountForm = new TrnPOSDiscountForm(this, null, salesAmount, groupedSalesLine.ToList());
+                    trnSalesDetailDiscountForm.ShowDialog();
+                }
+                else
+                {
+                    TrnPOSDiscountForm trnSalesDetailDiscountForm = new TrnPOSDiscountForm(this, null, salesAmount, new List<Entities.TrnSalesLineEntity>());
+                    trnSalesDetailDiscountForm.ShowDialog();
+                }
             }
             else
             {
-                TrnPOSDiscountForm trnSalesDetailDiscountForm = new TrnPOSDiscountForm(this, null, salesAmount, new List<Entities.TrnSalesLineEntity>());
-                trnSalesDetailDiscountForm.ShowDialog();
+              MessageBox.Show("Cannot discount with empty sales.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
