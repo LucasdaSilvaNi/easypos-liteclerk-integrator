@@ -363,7 +363,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 textBoxSalesLineDiscountAmount.Text = Convert.ToDecimal(textBoxSalesLineDiscountAmount.Text).ToString();
             }
         }
-
         public void ComputeDiscountRate()
         {
             Decimal discountAmount = Convert.ToDecimal(textBoxSalesLineDiscountAmount.Text);

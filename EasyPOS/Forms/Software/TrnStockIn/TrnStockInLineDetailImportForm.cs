@@ -33,7 +33,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                 DialogResult openFileDialogImportCSVResult = openFileDialogImportCSV.ShowDialog();
                 if (openFileDialogImportCSVResult == DialogResult.OK)
                 {
-                  textBoxFileName.Text = openFileDialogImportCSV.FileName;
+                    textBoxFileName.Text = openFileDialogImportCSV.FileName;
 
                     string[] lines = File.ReadAllLines(textBoxFileName.Text);
                     if (lines.Length > 0)

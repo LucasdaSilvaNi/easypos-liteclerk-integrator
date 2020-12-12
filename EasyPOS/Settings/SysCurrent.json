@@ -48,6 +48,5 @@
   "PromptLoginSales": false,
   "PrinterType": "Dot Matrix Printer",
   "SwipeLogin": false,
-  "DateLogin": false,
-  "HideSalesAmount": false
+  "DateLogin": true
 }

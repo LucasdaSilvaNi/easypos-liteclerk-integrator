@@ -32,11 +32,6 @@ namespace EasyPOS.Forms.Software
             }
 
             String currentUserName = Modules.SysCurrentModule.GetCurrentSettings().CurrentUserName + "\t\t";
-            if (Modules.SysCurrentModule.GetCurrentSettings().PromptLoginSales == true)
-            {
-                currentUserName = Modules.SysCurrentModule.GetCurrentSettings().CurrentUserName + "\t\t";
-            }
-
             String currentTerminal = terminal;
 
             labelCurrentUser.Text = "Date: " + currentDate + "     User: " + currentUserName + "     Terminal: " + currentTerminal;
@@ -45,7 +40,7 @@ namespace EasyPOS.Forms.Software
             labelVersion.Text = "EasyPOS Version: " + Modules.SysCurrentModule.GetCurrentSettings().CurrentVersion;
             labelSupport.Text = "Support: Easyfis Corporation " + Modules.SysCurrentModule.GetCurrentSettings().CurrentSupport;
         }
-       
+
         public TabPage tabPageItemList = new TabPage { Name = "tabPageItemList", Text = "Setup - Item List" };
         public TabPage tabPageItemDetail = new TabPage { Name = "tabPageItemDetail", Text = "Setup - Item Detail" };
         public TabPage tabPageCustomerList = new TabPage { Name = "tabPageCustomerList", Text = "Setup - Customer List" };

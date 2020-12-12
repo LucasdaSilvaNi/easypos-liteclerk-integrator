@@ -465,7 +465,6 @@ namespace EasyPOS.Forms.Software.SysSettings
                 textBoxWithdrawalFooter.Text = sysCurrent.WithdrawalFooter;
                 textBoxWithdrawalPrintTitle.Text = sysCurrent.WithdrawalPrintTitle;
                 checkBoxDateLogin.Checked = Convert.ToBoolean(sysCurrent.DateLogin);
-                checkBoxHideSalesAmount.Checked = Convert.ToBoolean(sysCurrent.HideSalesAmount);
             }
         }
 
@@ -534,8 +533,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 SwipeLogin = checkBoxSwipeLogin.Checked,
                 WithdrawalFooter = textBoxWithdrawalFooter.Text,
                 WithdrawalPrintTitle = textBoxWithdrawalPrintTitle.Text,
-                DateLogin = checkBoxDateLogin.Checked,
-                HideSalesAmount = checkBoxHideSalesAmount.Checked
+                DateLogin = checkBoxDateLogin.Checked
             };
 
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);
@@ -585,7 +583,6 @@ namespace EasyPOS.Forms.Software.SysSettings
                 textBoxWithdrawalFooter.Enabled = false;
                 textBoxWithdrawalPrintTitle.Enabled = false;
                 checkBoxDateLogin.Enabled = false;
-                checkBoxHideSalesAmount.Enabled = false;
             }
             else
             {
@@ -661,7 +658,6 @@ namespace EasyPOS.Forms.Software.SysSettings
                 textBoxWithdrawalFooter.Enabled = true;
                 textBoxWithdrawalPrintTitle.Enabled = true;
                 checkBoxDateLogin.Enabled = true;
-                checkBoxHideSalesAmount.Enabled = true;
             }
         }
 
@@ -692,7 +688,5 @@ namespace EasyPOS.Forms.Software.SysSettings
                 textBoxCustomerDisplayIfCounterClosedMessage.Enabled = false;
             }
         }
-
-   
     }
 }

@@ -369,8 +369,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             switch (keyData)
             {
-                case Keys.Enter:
+                case Keys.F2:
                     {
+                        textBoxPax.Focus();
+
                         if (buttonSave.Enabled == true)
                         {
                             buttonSave.PerformClick();
@@ -446,6 +448,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 textBoxDiscountedPax.Text = Convert.ToDecimal(textBoxDiscountedPax.Text).ToString("#,##0");
             }
+        }
+
+        private void textBoxDiscountRate_KeyDown(object sender, KeyEventArgs e)
+        {
+            //ComputeDiscountAmount();
+        }
+
+        private void textBoxDiscountAmount_KeyDown(object sender, KeyEventArgs e)
+        {
+            //ComputeDiscountRate();
         }
     }
 }
