@@ -369,6 +369,7 @@
             // 
             this.ColumnAmount.DataPropertyName = "ColumnAmount";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.NullValue = null;
             this.ColumnAmount.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnAmount.HeaderText = "Amount";
             this.ColumnAmount.Name = "ColumnAmount";

@@ -131,6 +131,7 @@ namespace EasyPOS.Controllers
         // ==========
         public List<Entities.TrnSalesEntity> ListSales(DateTime dateTime, Int32 terminalId, String filter)
         {
+
             var sales = from d in db.TrnSales
                         where d.SalesDate == dateTime
                         && d.TerminalId == terminalId
