@@ -56,6 +56,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                               ColumnInQuantity = d.InQuantity.ToString("#,##0.00"),
                               ColumnOutQuantity = d.OutQuantity.ToString("#,##0.00"),
                               ColumnEndingQuantity = d.EndingQuantity.ToString("#,##0.00"),
+                              ColumnRunningQuantity = d.RunningQuantity.ToString("#,##0.00"),
                           };
 
                 rowList = row.ToList();

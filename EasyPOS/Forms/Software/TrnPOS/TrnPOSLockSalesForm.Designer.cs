@@ -65,7 +65,7 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(484, 50);
-            this.panel1.TabIndex = 4;
+            this.panel1.TabIndex = 20;
             // 
             // pictureBox1
             // 
@@ -102,7 +102,7 @@
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(109, 32);
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 9;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Esc - Close";
             this.buttonClose.UseVisualStyleBackColor = false;
@@ -121,7 +121,7 @@
             this.buttonSave.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(112, 32);
-            this.buttonSave.TabIndex = 1;
+            this.buttonSave.TabIndex = 8;
             this.buttonSave.TabStop = false;
             this.buttonSave.Text = "Ent - Lock";
             this.buttonSave.UseVisualStyleBackColor = false;
@@ -146,7 +146,7 @@
             this.comboBoxTenderSalesCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxTenderSalesCustomer.Name = "comboBoxTenderSalesCustomer";
             this.comboBoxTenderSalesCustomer.Size = new System.Drawing.Size(328, 29);
-            this.comboBoxTenderSalesCustomer.TabIndex = 17;
+            this.comboBoxTenderSalesCustomer.TabIndex = 3;
             this.comboBoxTenderSalesCustomer.TabStop = false;
             this.comboBoxTenderSalesCustomer.SelectedIndexChanged += new System.EventHandler(this.comboBoxTenderSalesCustomer_SelectedIndexChanged);
             // 
@@ -158,7 +158,7 @@
             this.textBoxTenderSalesRewardAvailable.Name = "textBoxTenderSalesRewardAvailable";
             this.textBoxTenderSalesRewardAvailable.ReadOnly = true;
             this.textBoxTenderSalesRewardAvailable.Size = new System.Drawing.Size(328, 29);
-            this.textBoxTenderSalesRewardAvailable.TabIndex = 15;
+            this.textBoxTenderSalesRewardAvailable.TabIndex = 4;
             this.textBoxTenderSalesRewardAvailable.TabStop = false;
             this.textBoxTenderSalesRewardAvailable.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -229,7 +229,7 @@
             this.textBoxCustomerCode2.Name = "textBoxCustomerCode2";
             this.textBoxCustomerCode2.ReadOnly = true;
             this.textBoxCustomerCode2.Size = new System.Drawing.Size(328, 29);
-            this.textBoxCustomerCode2.TabIndex = 26;
+            this.textBoxCustomerCode2.TabIndex = 2;
             this.textBoxCustomerCode2.TabStop = false;
             // 
             // comboBoxTenderSalesUsers
@@ -240,7 +240,7 @@
             this.comboBoxTenderSalesUsers.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxTenderSalesUsers.Name = "comboBoxTenderSalesUsers";
             this.comboBoxTenderSalesUsers.Size = new System.Drawing.Size(328, 29);
-            this.comboBoxTenderSalesUsers.TabIndex = 25;
+            this.comboBoxTenderSalesUsers.TabIndex = 7;
             this.comboBoxTenderSalesUsers.TabStop = false;
             // 
             // textBoxTenderSalesRemarks
@@ -251,7 +251,7 @@
             this.textBoxTenderSalesRemarks.Multiline = true;
             this.textBoxTenderSalesRemarks.Name = "textBoxTenderSalesRemarks";
             this.textBoxTenderSalesRemarks.Size = new System.Drawing.Size(328, 98);
-            this.textBoxTenderSalesRemarks.TabIndex = 22;
+            this.textBoxTenderSalesRemarks.TabIndex = 6;
             this.textBoxTenderSalesRemarks.TabStop = false;
             // 
             // comboBoxTenderSalesTerms
@@ -262,7 +262,7 @@
             this.comboBoxTenderSalesTerms.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxTenderSalesTerms.Name = "comboBoxTenderSalesTerms";
             this.comboBoxTenderSalesTerms.Size = new System.Drawing.Size(328, 29);
-            this.comboBoxTenderSalesTerms.TabIndex = 21;
+            this.comboBoxTenderSalesTerms.TabIndex = 5;
             this.comboBoxTenderSalesTerms.TabStop = false;
             // 
             // label3

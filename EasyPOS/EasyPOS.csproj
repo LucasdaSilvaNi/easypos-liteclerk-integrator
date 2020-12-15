@@ -283,6 +283,7 @@
     <Compile Include="Entities\DgvMstItemGroupItemListEntity.cs" />
     <Compile Include="Entities\DgvMstItemGroupSearchItemListEntity.cs" />
     <Compile Include="Entities\DgvMstTableListEntity.cs" />
+    <Compile Include="Entities\DGVRepHourlyTopSellingSalesReportEntities.cs" />
     <Compile Include="Entities\DgvRepNetSalesSummaryReportDailyEntity.cs" />
     <Compile Include="Entities\DgvRepNetSalesSummaryReportMonthlyEntity.cs" />
     <Compile Include="Entities\DgvRepRemittanceReportCashInOutSummaryReportListEntity.cs" />
@@ -603,6 +604,12 @@
     </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepCustomerListReportForm.Designer.cs">
       <DependentUpon>RepCustomerListReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepHourlyTopSellingSalesReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepHourlyTopSellingSalesReportForm.Designer.cs">
+      <DependentUpon>RepHourlyTopSellingSalesReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepNetSalesSummaryReportForm.cs">
       <SubType>Form</SubType>
@@ -1240,6 +1247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepCustomerListReportForm.resx">
       <DependentUpon>RepCustomerListReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepHourlyTopSellingSalesReportForm.resx">
+      <DependentUpon>RepHourlyTopSellingSalesReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepNetSalesSummaryReportForm.resx">
       <DependentUpon>RepNetSalesSummaryReportForm.cs</DependentUpon>

@@ -299,16 +299,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 graphics.DrawString(remarks, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 y += graphics.MeasureString(remarks, fontArial8Regular).Height;
 
-                // ========
-                // 4th Line
-                // ========
-                Point forththLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point forthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, forththLineFirstPoint, forthLineSecondPoint);
+                //// ========
+                //// 4th Line
+                //// ========
+                //Point forththLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                //Point forthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                //graphics.DrawLine(blackPen, forththLineFirstPoint, forthLineSecondPoint);
 
-                String orderNumber = "\nOrder Number: \n\n " + salesLines.FirstOrDefault().TrnSale.SalesNumber;
-                graphics.DrawString(orderNumber, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                y += graphics.MeasureString(orderNumber, fontArial8Regular).Height;
+                //String orderNumber = "\nOrder Number: \n\n " + salesLines.FirstOrDefault().TrnSale.SalesNumber;
+                //graphics.DrawString(orderNumber, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                //y += graphics.MeasureString(orderNumber, fontArial8Regular).Height;
 
                 // ========
                 // 5th Line

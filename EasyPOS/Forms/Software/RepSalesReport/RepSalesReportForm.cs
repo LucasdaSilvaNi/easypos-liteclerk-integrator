@@ -229,6 +229,15 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         dateTimePickerStartDate.Focus();
                         break;
+                    case "Hourly Top Selling Sales Report":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+
+                        dateTimePickerStartDate.Focus();
+                        break;
                 }
             }
             else
@@ -479,6 +488,26 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                 {
                                     RepNetSalesSummaryReportMonthlyForm repNetSalesSummaryMonthlyReport = new RepNetSalesSummaryReportMonthlyForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
                                     repNetSalesSummaryMonthlyReport.ShowDialog();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            break;
+                        case "Hourly Top Selling Sales Report":
+                            sysUserRights = new Modules.SysUserRightsModule("RepSalesDetail");
+
+                            if (sysUserRights.GetUserRights() == null)
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                if (sysUserRights.GetUserRights().CanView == true)
+                                {
+                                    RepHourlyTopSellingSalesReportForm repTopSalesSummaryMonthlyReport = new RepHourlyTopSellingSalesReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                                    repTopSalesSummaryMonthlyReport.ShowDialog();
                                 }
                                 else
                                 {

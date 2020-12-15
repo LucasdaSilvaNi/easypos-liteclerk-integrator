@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -365,6 +366,59 @@ namespace EasyPOS.Controllers
                            };
 
             return customer.ToList();
+        }
+
+        
+
+        // ===============================
+        // Hourly Top Selling Sales Report
+        // ===============================
+        public List<Entities.RepSalesReportTopSellingItemsReportEntity> GetTopHourlySalesSummaryReport(DateTime startDate, DateTime endDate)
+        {
+            var listSalesInvoices = from d in db.TrnSalesLines
+                                    where d.TrnSale.SalesDate >= startDate
+                                    && d.TrnSale.SalesDate <= endDate
+                                    && d.TrnSale.IsLocked == true
+                                    && d.TrnSale.IsCancelled == false
+                                    select new
+                                    {
+                                        Hour = d.TrnSale.UpdateDateTime.Hour,
+                                        ItemDescription = d.MstItem.ItemDescription,
+                                        ItemCategory = d.MstItem.Category,
+                                        Unit = d.MstUnit.Unit,
+                                        Price = d.Price,
+                                        Quantity = d.Quantity,
+                                        Amount = d.Amount
+                                    };
+
+            if (listSalesInvoices.Any())
+            {
+                var topSellingItems = from d in listSalesInvoices
+                                      group d by new
+                                      {
+                                          d.Hour,
+                                          d.ItemDescription,
+                                          d.ItemCategory,
+                                          d.Unit,
+                                          d.Price
+                                      } into g
+                                      select new Entities.RepSalesReportTopSellingItemsReportEntity
+                                      {
+                                          Hour = g.Key.Hour,
+                                          ItemDescription = g.Key.ItemDescription,
+                                          ItemCategory = g.Key.ItemCategory,
+                                          Quantity = g.Sum(d => d.Quantity),
+                                          Unit = g.Key.Unit,
+                                          Price = g.Key.Price,
+                                          Amount = g.Sum(d => d.Amount)
+                                      };
+
+                return topSellingItems.OrderBy(d => d.Hour).ThenByDescending(d => d.Quantity).ToList();
+            }
+            else
+            {
+                return new List<Entities.RepSalesReportTopSellingItemsReportEntity>();
+            }
         }
     }
 }

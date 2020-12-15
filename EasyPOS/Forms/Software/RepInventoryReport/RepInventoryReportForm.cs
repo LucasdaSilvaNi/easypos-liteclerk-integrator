@@ -49,6 +49,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 var row = from d in inventoryReportList
                           select new Entities.DgvRepInventoryInventoryReportListEntity
                           {
+                              ColumnBarCode = d.BarCode,
                               ColumnItemDescription = d.ItemDescription,
                               ColumnUnit = d.Unit,
                               ColumnBegQuantity = d.BeginningQuantity.ToString("#,##0.00"),
@@ -59,7 +60,6 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                               ColumnVariance = d.Variance.ToString("#,##0.00"),
                               ColumnCost = d.Cost.ToString("#,##0.00"),
                               ColumnAmount = d.Amount.ToString("#,##0.00")
-
                           };
 
                 totalAmount = inventoryReportList.Sum(d => d.Amount);

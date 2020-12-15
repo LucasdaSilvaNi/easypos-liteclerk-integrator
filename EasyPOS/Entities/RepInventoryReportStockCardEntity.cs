@@ -14,5 +14,6 @@ namespace EasyPOS.Entities
         public Decimal InQuantity { get; set; }
         public Decimal OutQuantity { get; set; }
         public Decimal EndingQuantity { get; set; }
+        public Decimal RunningQuantity { get; set; }
     }
 }

@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepStockCardForm));
             this.buttonPageListNext = new System.Windows.Forms.Button();
             this.buttonPageListPrevious = new System.Windows.Forms.Button();
@@ -56,6 +57,7 @@
             this.ColumnInQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnOutQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnEndingQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnRunningQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInventoryReport)).BeginInit();
@@ -70,7 +72,7 @@
             this.buttonPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPageListNext.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.buttonPageListNext.Location = new System.Drawing.Point(270, 7);
-            this.buttonPageListNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonPageListNext.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPageListNext.Name = "buttonPageListNext";
             this.buttonPageListNext.Size = new System.Drawing.Size(66, 26);
             this.buttonPageListNext.TabIndex = 10;
@@ -86,7 +88,7 @@
             this.buttonPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.buttonPageListPrevious.Location = new System.Drawing.Point(80, 7);
-            this.buttonPageListPrevious.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPageListPrevious.Name = "buttonPageListPrevious";
             this.buttonPageListPrevious.Size = new System.Drawing.Size(66, 26);
             this.buttonPageListPrevious.TabIndex = 9;
@@ -106,7 +108,7 @@
             this.panel4.Controls.Add(this.textBoxPageNumber);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 430);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1096, 42);
             this.panel4.TabIndex = 20;
@@ -117,7 +119,7 @@
             this.textBoxTotalAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxTotalAmount.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxTotalAmount.Location = new System.Drawing.Point(800, 11);
-            this.textBoxTotalAmount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxTotalAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTotalAmount.Name = "textBoxTotalAmount";
             this.textBoxTotalAmount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBoxTotalAmount.Size = new System.Drawing.Size(246, 19);
@@ -146,7 +148,7 @@
             this.buttonPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPageListFirst.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.buttonPageListFirst.Location = new System.Drawing.Point(10, 7);
-            this.buttonPageListFirst.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonPageListFirst.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPageListFirst.Name = "buttonPageListFirst";
             this.buttonPageListFirst.Size = new System.Drawing.Size(66, 26);
             this.buttonPageListFirst.TabIndex = 8;
@@ -161,7 +163,7 @@
             this.buttonPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPageListLast.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.buttonPageListLast.Location = new System.Drawing.Point(338, 7);
-            this.buttonPageListLast.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonPageListLast.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPageListLast.Name = "buttonPageListLast";
             this.buttonPageListLast.Size = new System.Drawing.Size(66, 26);
             this.buttonPageListLast.TabIndex = 11;
@@ -175,7 +177,7 @@
             this.textBoxPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxPageNumber.Location = new System.Drawing.Point(185, 11);
-            this.textBoxPageNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxPageNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxPageNumber.Name = "textBoxPageNumber";
             this.textBoxPageNumber.ReadOnly = true;
             this.textBoxPageNumber.Size = new System.Drawing.Size(55, 19);
@@ -189,7 +191,7 @@
             this.panel2.Controls.Add(this.dataGridViewInventoryReport);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 50);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1096, 472);
             this.panel2.TabIndex = 17;
@@ -199,7 +201,7 @@
             this.textBoxFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxFilter.Location = new System.Drawing.Point(10, 6);
-            this.textBoxFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxFilter.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxFilter.Name = "textBoxFilter";
             this.textBoxFilter.Size = new System.Drawing.Size(1076, 26);
             this.textBoxFilter.TabIndex = 21;
@@ -221,9 +223,10 @@
             this.ColumnBegQuantity,
             this.ColumnInQuantity,
             this.ColumnOutQuantity,
-            this.ColumnEndingQuantity});
+            this.ColumnEndingQuantity,
+            this.ColumnRunningQuantity});
             this.dataGridViewInventoryReport.Location = new System.Drawing.Point(10, 34);
-            this.dataGridViewInventoryReport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewInventoryReport.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewInventoryReport.MultiSelect = false;
             this.dataGridViewInventoryReport.Name = "dataGridViewInventoryReport";
             this.dataGridViewInventoryReport.ReadOnly = true;
@@ -361,6 +364,16 @@
             this.ColumnEndingQuantity.ReadOnly = true;
             this.ColumnEndingQuantity.Width = 120;
             // 
+            // ColumnRunningQuantity
+            // 
+            this.ColumnRunningQuantity.DataPropertyName = "ColumnRunningQuantity";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnRunningQuantity.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ColumnRunningQuantity.HeaderText = "Running Qty.";
+            this.ColumnRunningQuantity.Name = "ColumnRunningQuantity";
+            this.ColumnRunningQuantity.ReadOnly = true;
+            this.ColumnRunningQuantity.Width = 120;
+            // 
             // RepStockCardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -412,5 +425,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnInQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnOutQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnEndingQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRunningQuantity;
     }
 }

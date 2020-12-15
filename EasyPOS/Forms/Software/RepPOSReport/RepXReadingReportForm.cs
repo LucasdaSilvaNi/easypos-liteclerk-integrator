@@ -786,7 +786,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             }
             else
             {
-                String xReadingEndLabel = "\n" + xReadingFooter + "\n \n\n\n\n\n\n\n.";
+                String xReadingEndLabel = "\n" + xReadingFooter + "\n \n\n\n.";
                 graphics.DrawString(xReadingEndLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
                 y += graphics.MeasureString(xReadingEndLabel, fontArial8Regular).Height;
             }

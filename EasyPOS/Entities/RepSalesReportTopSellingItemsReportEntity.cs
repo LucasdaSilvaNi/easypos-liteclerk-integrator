@@ -8,6 +8,7 @@ namespace EasyPOS.Entities
 {
     public class RepSalesReportTopSellingItemsReportEntity
     {
+        public Int32 Hour { get; set; }
         public String ItemCode { get; set; }
         public String ItemDescription { get; set; }
         public String ItemCategory { get; set; }

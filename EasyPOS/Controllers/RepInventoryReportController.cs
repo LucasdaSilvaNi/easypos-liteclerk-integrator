@@ -308,6 +308,7 @@ namespace EasyPOS.Controllers
                                              InQuantity = 0,
                                              OutQuantity = 0,
                                              EndingQuantity = 0,
+                                             RunningQuantity = 0,
                                          };
 
             var beginningSoldInventories = from d in db.TrnSalesLines
@@ -325,6 +326,7 @@ namespace EasyPOS.Controllers
                                                InQuantity = 0,
                                                OutQuantity = 0,
                                                EndingQuantity = 0,
+                                               RunningQuantity = 0,
                                            };
 
             List<Entities.RepInventoryReportStockCardEntity> beginningSoldComponentInventories = new List<Entities.RepInventoryReportStockCardEntity>();
@@ -358,6 +360,7 @@ namespace EasyPOS.Controllers
                                 InQuantity = 0,
                                 OutQuantity = 0,
                                 EndingQuantity = 0,
+                                RunningQuantity = 0,
                             });
                         }
                     }
@@ -378,6 +381,7 @@ namespace EasyPOS.Controllers
                                               InQuantity = 0,
                                               OutQuantity = 0,
                                               EndingQuantity = 0,
+                                              RunningQuantity = 0,
                                           };
 
             var unionBeginningInventories = beginningInInventories.ToList().Union(beginningSoldInventories.ToList()).Union(beginningSoldComponentInventories.ToList()).Union(beginningOutInventories.ToList());
@@ -397,6 +401,7 @@ namespace EasyPOS.Controllers
                                            InQuantity = d.Quantity,
                                            OutQuantity = 0,
                                            EndingQuantity = d.Quantity,
+                                           RunningQuantity = 0,
                                        };
 
             var currentSoldInventories = from d in db.TrnSalesLines
@@ -415,6 +420,7 @@ namespace EasyPOS.Controllers
                                              InQuantity = 0,
                                              OutQuantity = d.Quantity,
                                              EndingQuantity = d.Quantity * -1,
+                                             RunningQuantity = 0,
                                          };
 
             List<Entities.RepInventoryReportStockCardEntity> currentSoldComponentInventories = new List<Entities.RepInventoryReportStockCardEntity>();
@@ -449,6 +455,7 @@ namespace EasyPOS.Controllers
                                 InQuantity = 0,
                                 OutQuantity = itemComponent.Quantity * currentSoldComponent.Quantity,
                                 EndingQuantity = (itemComponent.Quantity * currentSoldComponent.Quantity) * -1,
+                                RunningQuantity = 0
                             });
                         }
                     }
@@ -470,10 +477,11 @@ namespace EasyPOS.Controllers
                                             InQuantity = 0,
                                             OutQuantity = d.Quantity,
                                             EndingQuantity = d.Quantity * -1,
+                                            RunningQuantity = 0,
                                         };
 
             var unionCurrentInventories = currentInInventories.ToList().Union(currentSoldInventories.ToList()).Union(currentSoldComponentInventories.ToList()).Union(currentOutInventories.ToList());
-            
+
             if (unionBeginningInventories.ToList().Any())
             {
                 var groupBeginningInventories = from d in unionBeginningInventories.ToList()
@@ -489,12 +497,46 @@ namespace EasyPOS.Controllers
                                                     BeginningQuantity = g.Sum(s => s.BeginningQuantity),
                                                     InQuantity = g.Sum(s => s.InQuantity),
                                                     OutQuantity = g.Sum(s => s.OutQuantity),
-                                                    EndingQuantity = g.Sum(s => s.BeginningQuantity)
+                                                    EndingQuantity = g.Sum(s => s.BeginningQuantity),
+                                                    RunningQuantity = g.Sum(s => s.RunningQuantity)
                                                 };
                 var unionInventories = groupBeginningInventories.ToList().Union(unionCurrentInventories.ToList());
                 if (unionInventories.Any())
                 {
-                    return unionInventories.Where(d => d.Document.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.InventoryDate).ToList();
+                    var listUnionInventories = unionInventories.Where(d => d.Document.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.InventoryDate).ToList();
+
+                    List<Entities.RepInventoryReportStockCardEntity> runningBalanceInventories = new List<Entities.RepInventoryReportStockCardEntity>();
+                    if (listUnionInventories.Any())
+                    {
+                        Int32 countLoop = 0;
+                        Decimal runningQuantity = 0;
+
+                        foreach (var unionInventory in listUnionInventories)
+                        {
+                            if (countLoop == 0)
+                            {
+                                countLoop += 1;
+                                runningQuantity = unionInventory.EndingQuantity;
+                            }
+                            else
+                            {
+                                runningQuantity += unionInventory.EndingQuantity;
+                            }
+
+                            runningBalanceInventories.Add(new Entities.RepInventoryReportStockCardEntity()
+                            {
+                                Document = unionInventory.Document,
+                                InventoryDate = unionInventory.InventoryDate,
+                                BeginningQuantity = unionInventory.BeginningQuantity,
+                                InQuantity = unionInventory.InQuantity,
+                                OutQuantity = unionInventory.OutQuantity,
+                                EndingQuantity = unionInventory.EndingQuantity,
+                                RunningQuantity = runningQuantity
+                            });
+                        }
+                    }
+
+                    return runningBalanceInventories;
                 }
                 else
                 {
@@ -506,7 +548,40 @@ namespace EasyPOS.Controllers
                 var unionInventories = unionBeginningInventories.ToList().Union(unionCurrentInventories.ToList());
                 if (unionInventories.Any())
                 {
-                    return unionInventories.Where(d => d.Document.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.InventoryDate).ToList();
+                    var listUnionInventories = unionInventories.Where(d => d.Document.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.InventoryDate).ToList();
+
+                    List<Entities.RepInventoryReportStockCardEntity> runningBalanceInventories = new List<Entities.RepInventoryReportStockCardEntity>();
+                    if (listUnionInventories.Any())
+                    {
+                        Int32 countLoop = 0;
+                        Decimal runningQuantity = 0;
+
+                        foreach (var unionInventory in listUnionInventories)
+                        {
+                            if (countLoop == 0)
+                            {
+                                countLoop += 1;
+                                runningQuantity = unionInventory.EndingQuantity;
+                            }
+                            else
+                            {
+                                runningQuantity += unionInventory.EndingQuantity;
+                            }
+
+                            runningBalanceInventories.Add(new Entities.RepInventoryReportStockCardEntity()
+                            {
+                                Document = unionInventory.Document,
+                                InventoryDate = unionInventory.InventoryDate,
+                                BeginningQuantity = unionInventory.BeginningQuantity,
+                                InQuantity = unionInventory.InQuantity,
+                                OutQuantity = unionInventory.OutQuantity,
+                                EndingQuantity = unionInventory.EndingQuantity,
+                                RunningQuantity = runningQuantity
+                            });
+                        }
+                    }
+
+                    return runningBalanceInventories;
                 }
                 else
                 {

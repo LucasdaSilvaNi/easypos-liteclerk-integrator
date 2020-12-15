@@ -14,5 +14,6 @@ namespace EasyPOS.Entities
         public String ColumnInQuantity { get; set; }
         public String ColumnOutQuantity { get; set; }
         public String ColumnEndingQuantity { get; set; }
+        public String ColumnRunningQuantity { get; set; }
     }
 }
