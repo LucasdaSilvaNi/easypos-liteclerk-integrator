@@ -2503,5 +2503,12 @@ namespace EasyPOS.Controllers
 
             return sale.FirstOrDefault();
         }
+
+        // =================================
+        // Recompute Total Change for Tender
+        // =================================
+
     }
 }
+
+  

@@ -21,7 +21,8 @@ namespace EasyPOS.Forms.Software.MstItem
         public static Int32 pageSize = 50;
         public PagedList<Entities.DgvMstItemListEntity> itemListPageList = new PagedList<Entities.DgvMstItemListEntity>(itemListData, pageNumber, pageSize);
         public BindingSource itemListDataSource = new BindingSource();
-
+        public List<String> inventoryOption;
+        public List<String> lockOption;
         public MstItemListForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();
@@ -48,19 +49,38 @@ namespace EasyPOS.Forms.Software.MstItem
                 {
                     dataGridViewItemList.Columns[1].Visible = false;
                 }
+                inventoryOption = new List<String>
+                {
+                    "All",
+                    "Inventory",
+                    "Non-Inventory"
+                };
+                comboBoxIsInventory.DataSource = inventoryOption;
+
+                lockOption = new List<String>
+                {
+                    "All",
+                    "Locked",
+                    "Unlocked"
+                };
+                comboBoxIsLocked.DataSource = lockOption;
 
                 CreateItemListDataGridView();
+
             }
         }
 
         public void UpdateItemListDataSource()
         {
-            SetItemListDataSourceAsync();
+            String selectedIsInventory = Convert.ToString(comboBoxIsInventory.SelectedValue);
+            String selectedIsLocked = Convert.ToString(comboBoxIsLocked.SelectedValue);
+
+            SetItemListDataSourceAsync(selectedIsInventory, selectedIsLocked);
         }
 
-        public async void SetItemListDataSourceAsync()
+        public async void SetItemListDataSourceAsync(String isInventory, String isLocked)
         {
-            List<Entities.DgvMstItemListEntity> getItemListData = await GetItemListDataTask();
+            List<Entities.DgvMstItemListEntity> getItemListData = await GetItemListDataTask(isInventory, isLocked);
             if (getItemListData.Any())
             {
                 itemListData = getItemListData;
@@ -113,12 +133,11 @@ namespace EasyPOS.Forms.Software.MstItem
             }
         }
 
-        public Task<List<Entities.DgvMstItemListEntity>> GetItemListDataTask()
+        public Task<List<Entities.DgvMstItemListEntity>> GetItemListDataTask(String selectedIsInventory, String selectedIsLocked)
         {
             String filter = textBoxItemListFilter.Text;
             Controllers.MstItemController mstItemController = new Controllers.MstItemController();
-
-            List<Entities.MstItemEntity> listItem = mstItemController.ListItem(filter);
+            List<Entities.MstItemEntity> listItem = mstItemController.ListItem(filter, selectedIsInventory, selectedIsLocked);
             if (listItem.Any())
             {
                 var items = from d in listItem
@@ -132,10 +151,13 @@ namespace EasyPOS.Forms.Software.MstItem
                                 ColumnItemListBarcode = d.BarCode,
                                 ColumnItemListUnit = d.Unit,
                                 ColumnItemListCategory = d.Category,
+                                ColumnItemListCost = d.Cost.ToString("#,##0.00"),
                                 ColumnItemListPrice = d.Price.ToString("#,##0.00"),
                                 ColumnItemListOnHandQuantity = d.OnhandQuantity.ToString("#,##0"),
                                 ColumnItemListIsInventory = d.IsInventory,
-                                ColumnItemListIsLocked = d.IsLocked
+                                ColumnItemListIsLocked = d.IsLocked,
+                                ColumnSupplier = d.Supplier
+
                             };
 
                 return Task.FromResult(items.ToList());
@@ -257,7 +279,6 @@ namespace EasyPOS.Forms.Software.MstItem
                 UpdateItemListDataSource();
             }
         }
-
         private void buttonItemListPageListFirst_Click(object sender, EventArgs e)
         {
             itemListPageList = new PagedList<Entities.DgvMstItemListEntity>(itemListData, 1, pageSize);
@@ -324,6 +345,16 @@ namespace EasyPOS.Forms.Software.MstItem
 
             pageNumber = itemListPageList.PageCount;
             textBoxItemListPageNumber.Text = pageNumber + " / " + itemListPageList.PageCount;
+        }
+
+        private void comboBoxIsInventory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateItemListDataSource();
+        }
+
+        private void comboBoxIsLocked_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateItemListDataSource();
         }
     }
 }

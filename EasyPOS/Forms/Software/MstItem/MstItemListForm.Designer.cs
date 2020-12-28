@@ -37,6 +37,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.comboBoxIsLocked = new System.Windows.Forms.ComboBox();
+            this.comboBoxIsInventory = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonItemListPageListFirst = new System.Windows.Forms.Button();
             this.buttonItemListPageListPrevious = new System.Windows.Forms.Button();
@@ -44,6 +46,7 @@
             this.buttonItemListPageListLast = new System.Windows.Forms.Button();
             this.textBoxItemListPageNumber = new System.Windows.Forms.TextBox();
             this.dataGridViewItemList = new System.Windows.Forms.DataGridView();
+            this.textBoxItemListFilter = new System.Windows.Forms.TextBox();
             this.ColumnItemListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnItemListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnItemListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,10 +56,11 @@
             this.ColumnItemListUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemListCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemListCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemListOnHandQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemListIsInventory = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColumnItemListIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.textBoxItemListFilter = new System.Windows.Forms.TextBox();
+            this.ColumnSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -73,9 +77,10 @@
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAdd.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAdd.ForeColor = System.Drawing.Color.White;
-            this.buttonAdd.Location = new System.Drawing.Point(1206, 12);
+            this.buttonAdd.Location = new System.Drawing.Point(941, 10);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(88, 40);
+            this.buttonAdd.Size = new System.Drawing.Size(70, 32);
             this.buttonAdd.TabIndex = 0;
             this.buttonAdd.TabStop = false;
             this.buttonAdd.Text = "Add";
@@ -91,9 +96,10 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(1300, 12);
+            this.buttonClose.Location = new System.Drawing.Point(1016, 10);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(88, 40);
+            this.buttonClose.Size = new System.Drawing.Size(70, 32);
             this.buttonClose.TabIndex = 1;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
@@ -109,16 +115,18 @@
             this.panel1.Controls.Add(this.buttonAdd);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1400, 63);
+            this.panel1.Size = new System.Drawing.Size(1096, 50);
             this.panel1.TabIndex = 2;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Item;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
+            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -127,23 +135,46 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(63, 17);
+            this.label1.Location = new System.Drawing.Point(50, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 35);
+            this.label1.Size = new System.Drawing.Size(94, 28);
             this.label1.TabIndex = 2;
             this.label1.Text = "Item List";
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.comboBoxIsLocked);
+            this.panel2.Controls.Add(this.comboBoxIsInventory);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.dataGridViewItemList);
             this.panel2.Controls.Add(this.textBoxItemListFilter);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 63);
+            this.panel2.Location = new System.Drawing.Point(0, 50);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1400, 637);
+            this.panel2.Size = new System.Drawing.Size(1096, 510);
             this.panel2.TabIndex = 19;
+            // 
+            // comboBoxIsLocked
+            // 
+            this.comboBoxIsLocked.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxIsLocked.FormattingEnabled = true;
+            this.comboBoxIsLocked.Location = new System.Drawing.Point(966, 3);
+            this.comboBoxIsLocked.Name = "comboBoxIsLocked";
+            this.comboBoxIsLocked.Size = new System.Drawing.Size(121, 27);
+            this.comboBoxIsLocked.TabIndex = 19;
+            this.comboBoxIsLocked.SelectedIndexChanged += new System.EventHandler(this.comboBoxIsLocked_SelectedIndexChanged);
+            // 
+            // comboBoxIsInventory
+            // 
+            this.comboBoxIsInventory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxIsInventory.FormattingEnabled = true;
+            this.comboBoxIsInventory.Location = new System.Drawing.Point(807, 3);
+            this.comboBoxIsInventory.Name = "comboBoxIsInventory";
+            this.comboBoxIsInventory.Size = new System.Drawing.Size(153, 27);
+            this.comboBoxIsInventory.TabIndex = 18;
+            this.comboBoxIsInventory.SelectedIndexChanged += new System.EventHandler(this.comboBoxIsInventory_SelectedIndexChanged);
             // 
             // panel3
             // 
@@ -154,9 +185,10 @@
             this.panel3.Controls.Add(this.buttonItemListPageListLast);
             this.panel3.Controls.Add(this.textBoxItemListPageNumber);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 584);
+            this.panel3.Location = new System.Drawing.Point(0, 468);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1400, 53);
+            this.panel3.Size = new System.Drawing.Size(1096, 42);
             this.panel3.TabIndex = 18;
             // 
             // buttonItemListPageListFirst
@@ -166,9 +198,10 @@
             this.buttonItemListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonItemListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemListPageListFirst.Location = new System.Drawing.Point(12, 11);
+            this.buttonItemListPageListFirst.Location = new System.Drawing.Point(10, 9);
+            this.buttonItemListPageListFirst.Margin = new System.Windows.Forms.Padding(2);
             this.buttonItemListPageListFirst.Name = "buttonItemListPageListFirst";
-            this.buttonItemListPageListFirst.Size = new System.Drawing.Size(82, 32);
+            this.buttonItemListPageListFirst.Size = new System.Drawing.Size(66, 26);
             this.buttonItemListPageListFirst.TabIndex = 13;
             this.buttonItemListPageListFirst.TabStop = false;
             this.buttonItemListPageListFirst.Text = "First";
@@ -182,9 +215,10 @@
             this.buttonItemListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonItemListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemListPageListPrevious.Location = new System.Drawing.Point(100, 11);
+            this.buttonItemListPageListPrevious.Location = new System.Drawing.Point(80, 9);
+            this.buttonItemListPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.buttonItemListPageListPrevious.Name = "buttonItemListPageListPrevious";
-            this.buttonItemListPageListPrevious.Size = new System.Drawing.Size(82, 32);
+            this.buttonItemListPageListPrevious.Size = new System.Drawing.Size(66, 26);
             this.buttonItemListPageListPrevious.TabIndex = 14;
             this.buttonItemListPageListPrevious.TabStop = false;
             this.buttonItemListPageListPrevious.Text = "Previous";
@@ -197,9 +231,10 @@
             this.buttonItemListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonItemListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemListPageListNext.Location = new System.Drawing.Point(263, 11);
+            this.buttonItemListPageListNext.Location = new System.Drawing.Point(210, 9);
+            this.buttonItemListPageListNext.Margin = new System.Windows.Forms.Padding(2);
             this.buttonItemListPageListNext.Name = "buttonItemListPageListNext";
-            this.buttonItemListPageListNext.Size = new System.Drawing.Size(82, 32);
+            this.buttonItemListPageListNext.Size = new System.Drawing.Size(66, 26);
             this.buttonItemListPageListNext.TabIndex = 15;
             this.buttonItemListPageListNext.TabStop = false;
             this.buttonItemListPageListNext.Text = "Next";
@@ -212,9 +247,10 @@
             this.buttonItemListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonItemListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemListPageListLast.Location = new System.Drawing.Point(348, 11);
+            this.buttonItemListPageListLast.Location = new System.Drawing.Point(278, 9);
+            this.buttonItemListPageListLast.Margin = new System.Windows.Forms.Padding(2);
             this.buttonItemListPageListLast.Name = "buttonItemListPageListLast";
-            this.buttonItemListPageListLast.Size = new System.Drawing.Size(82, 32);
+            this.buttonItemListPageListLast.Size = new System.Drawing.Size(66, 26);
             this.buttonItemListPageListLast.TabIndex = 16;
             this.buttonItemListPageListLast.TabStop = false;
             this.buttonItemListPageListLast.Text = "Last";
@@ -227,10 +263,11 @@
             this.textBoxItemListPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxItemListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxItemListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxItemListPageNumber.Location = new System.Drawing.Point(188, 16);
+            this.textBoxItemListPageNumber.Location = new System.Drawing.Point(150, 13);
+            this.textBoxItemListPageNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxItemListPageNumber.Name = "textBoxItemListPageNumber";
             this.textBoxItemListPageNumber.ReadOnly = true;
-            this.textBoxItemListPageNumber.Size = new System.Drawing.Size(69, 20);
+            this.textBoxItemListPageNumber.Size = new System.Drawing.Size(55, 16);
             this.textBoxItemListPageNumber.TabIndex = 17;
             this.textBoxItemListPageNumber.TabStop = false;
             this.textBoxItemListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -255,18 +292,33 @@
             this.ColumnItemListUnit,
             this.ColumnItemListCategory,
             this.ColumnItemListPrice,
+            this.ColumnItemListCost,
             this.ColumnItemListOnHandQuantity,
             this.ColumnItemListIsInventory,
-            this.ColumnItemListIsLocked});
-            this.dataGridViewItemList.Location = new System.Drawing.Point(12, 42);
+            this.ColumnItemListIsLocked,
+            this.ColumnSupplier});
+            this.dataGridViewItemList.Location = new System.Drawing.Point(10, 34);
+            this.dataGridViewItemList.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewItemList.MultiSelect = false;
             this.dataGridViewItemList.Name = "dataGridViewItemList";
             this.dataGridViewItemList.ReadOnly = true;
             this.dataGridViewItemList.RowTemplate.Height = 24;
             this.dataGridViewItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewItemList.Size = new System.Drawing.Size(1376, 536);
+            this.dataGridViewItemList.Size = new System.Drawing.Size(1077, 429);
             this.dataGridViewItemList.TabIndex = 9;
             this.dataGridViewItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItemList_CellClick);
+            // 
+            // textBoxItemListFilter
+            // 
+            this.textBoxItemListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxItemListFilter.Location = new System.Drawing.Point(10, 4);
+            this.textBoxItemListFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxItemListFilter.Name = "textBoxItemListFilter";
+            this.textBoxItemListFilter.Size = new System.Drawing.Size(792, 26);
+            this.textBoxItemListFilter.TabIndex = 8;
+            this.textBoxItemListFilter.TabStop = false;
+            this.textBoxItemListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxItemListFilter_KeyDown);
             // 
             // ColumnItemListButtonEdit
             // 
@@ -343,6 +395,14 @@
             this.ColumnItemListPrice.Name = "ColumnItemListPrice";
             this.ColumnItemListPrice.ReadOnly = true;
             // 
+            // ColumnItemListCost
+            // 
+            this.ColumnItemListCost.DataPropertyName = "ColumnItemListCost";
+            this.ColumnItemListCost.HeaderText = "Cost";
+            this.ColumnItemListCost.Name = "ColumnItemListCost";
+            this.ColumnItemListCost.ReadOnly = true;
+            this.ColumnItemListCost.Visible = false;
+            // 
             // ColumnItemListOnHandQuantity
             // 
             this.ColumnItemListOnHandQuantity.DataPropertyName = "ColumnItemListOnHandQuantity";
@@ -368,29 +428,25 @@
             this.ColumnItemListIsLocked.ReadOnly = true;
             this.ColumnItemListIsLocked.Width = 35;
             // 
-            // textBoxItemListFilter
+            // ColumnSupplier
             // 
-            this.textBoxItemListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxItemListFilter.Location = new System.Drawing.Point(12, 6);
-            this.textBoxItemListFilter.Name = "textBoxItemListFilter";
-            this.textBoxItemListFilter.Size = new System.Drawing.Size(1376, 30);
-            this.textBoxItemListFilter.TabIndex = 8;
-            this.textBoxItemListFilter.TabStop = false;
-            this.textBoxItemListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxItemListFilter_KeyDown);
+            this.ColumnSupplier.DataPropertyName = "ColumnSupplier";
+            this.ColumnSupplier.HeaderText = "Default Supplier";
+            this.ColumnSupplier.Name = "ColumnSupplier";
+            this.ColumnSupplier.ReadOnly = true;
             // 
             // MstItemListForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1400, 700);
+            this.ClientSize = new System.Drawing.Size(1096, 560);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "MstItemListForm";
             this.Text = "Item List";
             this.panel1.ResumeLayout(false);
@@ -421,6 +477,8 @@
         private System.Windows.Forms.TextBox textBoxItemListPageNumber;
         private System.Windows.Forms.DataGridView dataGridViewItemList;
         private System.Windows.Forms.TextBox textBoxItemListFilter;
+        private System.Windows.Forms.ComboBox comboBoxIsLocked;
+        private System.Windows.Forms.ComboBox comboBoxIsInventory;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnItemListButtonEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnItemListButtonDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListId;
@@ -430,8 +488,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListOnHandQuantity;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnItemListIsInventory;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnItemListIsLocked;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSupplier;
     }
 }

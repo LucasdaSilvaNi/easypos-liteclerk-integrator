@@ -485,15 +485,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Int32 SalesId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[3].Value);
                 Int32 ItemId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[4].Value);
                 String ItemDescription = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[5].Value.ToString();
-                Int32 UnitId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[6].Value);
-                String Unit = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[7].Value.ToString();
-                Decimal Price = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[8].Value);
-                Int32 DiscountId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[9].Value);
-                String Discount = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[10].Value.ToString(); ;
-                Decimal DiscountRate = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[11].Value);
-                Decimal DiscountAmount = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[12].Value);
-                Decimal NetPrice = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[13].Value);
-                Decimal Quantity = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[14].Value);
+                Decimal Quantity = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[6].Value);
+                Int32 UnitId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[7].Value);
+                String Unit = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[8].Value.ToString();
+                Decimal Price = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[9].Value);
+                Int32 DiscountId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[10].Value);
+                String Discount = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[11].Value.ToString(); ;
+                Decimal DiscountRate = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[12].Value);
+                Decimal DiscountAmount = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[13].Value);
+                Decimal NetPrice = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[14].Value);
                 Decimal Amount = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[15].Value);
                 Int32 TaxId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[16].Value);
                 String Tax = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[17].Value.ToString();
@@ -657,7 +657,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             Decimal salesAmount = 0;
             List<Entities.TrnSalesLineEntity> listSalesLine = new List<Entities.TrnSalesLineEntity>();
-            if(Convert.ToDecimal(textBoxTotalSalesAmount.Text) > 0)
+            if (Convert.ToDecimal(textBoxTotalSalesAmount.Text) > 0)
             {
                 foreach (DataGridViewRow row in dataGridViewSalesLineList.Rows)
                 {
@@ -668,8 +668,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                     Int32 ItemId = Convert.ToInt32(row.Cells[4].Value);
                     String ItemDescription = row.Cells[5].Value.ToString();
-                    Decimal Price = Convert.ToDecimal(row.Cells[8].Value);
-                    Decimal Quantity = Convert.ToDecimal(row.Cells[14].Value);
+                    Decimal Price = Convert.ToDecimal(row.Cells[9].Value);
+                    Decimal Quantity = Convert.ToDecimal(row.Cells[6].Value);
 
                     listSalesLine.Add(new Entities.TrnSalesLineEntity()
                     {
@@ -754,12 +754,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     TrnPOSDiscountForm trnSalesDetailDiscountForm = new TrnPOSDiscountForm(this, null, salesAmount, new List<Entities.TrnSalesLineEntity>());
                     trnSalesDetailDiscountForm.ShowDialog();
                 }
-            }
+        }
             else
             {
               MessageBox.Show("Cannot discount with empty sales.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+}
 
         private void buttonDownload_Click(object sender, EventArgs e)
         {

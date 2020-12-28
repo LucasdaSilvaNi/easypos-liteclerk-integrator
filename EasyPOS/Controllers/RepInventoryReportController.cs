@@ -690,5 +690,27 @@ namespace EasyPOS.Controllers
 
             return item.ToList();
         }
+        // ==================
+        // Item Expiry Report
+        // ==================
+        public List<Entities.TrnStockInLineEntity> GetItemExpiryReport(DateTime startDate, DateTime endDate)
+        {
+            var item = from d in db.TrnStockInLines
+                       where d.ExpiryDate >= startDate.Date
+                       && d.ExpiryDate <= endDate.Date
+                       select new Entities.TrnStockInLineEntity
+                       {
+                           ItemDescription = d.MstItem.ItemDescription,
+                           Quantity = d.MstItem.OnhandQuantity,
+                           Unit = d.MstUnit.Unit,
+                           Cost = d.Cost,
+                           Price = d.Price,
+                           ExpiryDate = d.ExpiryDate.ToString(),
+                           LotNumber = d.LotNumber
+                          
+                       };
+
+            return item.ToList();
+        }
     }
 }

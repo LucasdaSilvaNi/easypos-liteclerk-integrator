@@ -379,7 +379,7 @@ namespace EasyPOS.Forms.Software.SysUtilities
             String filter = textBoxItemListFilter.Text;
             Controllers.MstItemController mstItemController = new Controllers.MstItemController();
 
-            List<Entities.MstItemEntity> listItem = mstItemController.ListItem(filter);
+            List<Entities.MstItemEntity> listItem = mstItemController.UtilitiesListItem(filter);
             if (listItem.Any())
             {
                 var items = from d in listItem

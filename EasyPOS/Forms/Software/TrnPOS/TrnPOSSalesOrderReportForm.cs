@@ -57,7 +57,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             StringFormat drawFormatCenter = new StringFormat { Alignment = StringAlignment.Center };
             StringFormat drawFormatLeft = new StringFormat { Alignment = StringAlignment.Near };
             StringFormat drawFormatRight = new StringFormat { Alignment = StringAlignment.Far };
-           
+
             float x, y;
             float width, height;
             if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
@@ -70,7 +70,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 x = 5; y = 5;
                 width = 260.0F; height = 0F;
             }
-            
+
             // ==============
             // Tools Settings
             // ==============
@@ -114,7 +114,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
 
             graphics.DrawString(companyAddress, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += (graphics.MeasureString(companyAddress, fontArial8Regular).Height* adjuctHeight);
+            y += (graphics.MeasureString(companyAddress, fontArial8Regular).Height * adjuctHeight);
 
             // ==========
             // TIN Number
@@ -350,7 +350,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 String space = "\n\n\n.";
                 graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             }
-                
+
         }
     }
 }

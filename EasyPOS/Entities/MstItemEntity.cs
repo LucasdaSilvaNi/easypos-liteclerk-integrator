@@ -25,6 +25,7 @@ namespace EasyPOS.Entities
         public Int32 UnitId { get; set; }
         public String Unit { get; set; }
         public Int32 DefaultSupplierId { get; set; }
+        public String Supplier { get; set; }
         public Decimal Cost { get; set; }
         public Decimal MarkUp { get; set; }
         public Decimal Price { get; set; }

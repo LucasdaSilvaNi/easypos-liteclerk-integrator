@@ -32,52 +32,235 @@ namespace EasyPOS.Controllers
         // ==========
         // List Items
         // ==========
-        public List<Entities.MstItemEntity> ListItem(String filter)
+        public List<Entities.MstItemEntity> ListItem(String filter, String selectedIsInventory, String selectedIsLocked)
         {
-            var items = from d in db.MstItems
-                        where d.ItemCode.Contains(filter)
-                        || d.ItemDescription.Contains(filter)
-                        || d.BarCode.Contains(filter)
-                        || d.Category.Contains(filter)
-                        || d.Alias.Contains(filter)
-                        || d.MstUnit.Unit.Contains(filter)
-                        select new Entities.MstItemEntity
-                        {
-                            Id = d.Id,
-                            ItemCode = d.ItemCode,
-                            BarCode = d.BarCode,
-                            ItemDescription = d.ItemDescription,
-                            Alias = d.Alias,
-                            GenericName = d.GenericName,
-                            Category = d.Category,
-                            SalesAccountId = d.SalesAccountId,
-                            AssetAccountId = d.AssetAccountId,
-                            CostAccountId = d.CostAccountId,
-                            InTaxId = d.InTaxId,
-                            OutTaxId = d.OutTaxId,
-                            UnitId = d.UnitId,
-                            Unit = d.MstUnit.Unit,
-                            DefaultSupplierId = d.DefaultSupplierId,
-                            Cost = d.Cost,
-                            MarkUp = d.MarkUp,
-                            Price = d.Price,
-                            ImagePath = d.ImagePath,
-                            ReorderQuantity = d.ReorderQuantity,
-                            OnhandQuantity = d.OnhandQuantity,
-                            IsInventory = d.IsInventory,
-                            ExpiryDate = d.ExpiryDate != null ? Convert.ToDateTime(d.ExpiryDate).ToShortDateString() : "",
-                            LotNumber = d.LotNumber,
-                            Remarks = d.Remarks,
-                            EntryUserId = d.EntryUserId,
-                            EntryDateTime = d.EntryDateTime.ToShortDateString(),
-                            UpdateUserId = d.UpdateUserId,
-                            UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
-                            IsLocked = d.IsLocked,
-                            DefaultKitchenReport = d.DefaultKitchenReport,
-                            IsPackage = d.IsPackage
-                        };
+            if (selectedIsInventory == "All" && selectedIsLocked != "All")
+            {
+                Boolean isLocked = true;
+                if (selectedIsLocked == "Unlocked")
+                {
+                    isLocked = false;
+                }
 
-            return items.OrderByDescending(d => d.Id).ToList();
+                var items = from d in db.MstItems
+                            where (d.ItemCode.Contains(filter)
+                            || d.ItemDescription.Contains(filter)
+                            || d.BarCode.Contains(filter)
+                            || d.Category.Contains(filter)
+                            || d.Alias.Contains(filter)
+                            || d.MstUnit.Unit.Contains(filter)
+                            || d.MstSupplier.Supplier.Contains(filter))
+                            && d.IsLocked == isLocked
+                            select new Entities.MstItemEntity
+                            {
+                                Id = d.Id,
+                                ItemCode = d.ItemCode,
+                                BarCode = d.BarCode,
+                                ItemDescription = d.ItemDescription,
+                                Alias = d.Alias,
+                                GenericName = d.GenericName,
+                                Category = d.Category,
+                                SalesAccountId = d.SalesAccountId,
+                                AssetAccountId = d.AssetAccountId,
+                                CostAccountId = d.CostAccountId,
+                                InTaxId = d.InTaxId,
+                                OutTaxId = d.OutTaxId,
+                                UnitId = d.UnitId,
+                                Unit = d.MstUnit.Unit,
+                                DefaultSupplierId = d.DefaultSupplierId,
+                                Supplier = d.MstSupplier.Supplier,
+                                Cost = d.Cost,
+                                MarkUp = d.MarkUp,
+                                Price = d.Price,
+                                ImagePath = d.ImagePath,
+                                ReorderQuantity = d.ReorderQuantity,
+                                OnhandQuantity = d.OnhandQuantity,
+                                IsInventory = d.IsInventory,
+                                ExpiryDate = d.ExpiryDate != null ? Convert.ToDateTime(d.ExpiryDate).ToShortDateString() : "",
+                                LotNumber = d.LotNumber,
+                                Remarks = d.Remarks,
+                                EntryUserId = d.EntryUserId,
+                                EntryDateTime = d.EntryDateTime.ToShortDateString(),
+                                UpdateUserId = d.UpdateUserId,
+                                UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
+                                IsLocked = d.IsLocked,
+                                DefaultKitchenReport = d.DefaultKitchenReport,
+                                IsPackage = d.IsPackage
+                            };
+
+                return items.OrderByDescending(d => d.Id).ToList();
+            }
+            else if (selectedIsLocked == "All" && selectedIsInventory != "All")
+            {
+                Boolean isInventory = true;
+                if (selectedIsInventory == "Non-Inventory")
+                {
+                    isInventory = false;
+                }
+
+                var items = from d in db.MstItems
+                            where (d.ItemCode.Contains(filter)
+                            || d.ItemDescription.Contains(filter)
+                            || d.BarCode.Contains(filter)
+                            || d.Category.Contains(filter)
+                            || d.Alias.Contains(filter)
+                            || d.MstUnit.Unit.Contains(filter)
+                            || d.MstSupplier.Supplier.Contains(filter))
+                            && d.IsInventory == isInventory
+                            select new Entities.MstItemEntity
+                            {
+                                Id = d.Id,
+                                ItemCode = d.ItemCode,
+                                BarCode = d.BarCode,
+                                ItemDescription = d.ItemDescription,
+                                Alias = d.Alias,
+                                GenericName = d.GenericName,
+                                Category = d.Category,
+                                SalesAccountId = d.SalesAccountId,
+                                AssetAccountId = d.AssetAccountId,
+                                CostAccountId = d.CostAccountId,
+                                InTaxId = d.InTaxId,
+                                OutTaxId = d.OutTaxId,
+                                UnitId = d.UnitId,
+                                Unit = d.MstUnit.Unit,
+                                DefaultSupplierId = d.DefaultSupplierId,
+                                Supplier = d.MstSupplier.Supplier,
+                                Cost = d.Cost,
+                                MarkUp = d.MarkUp,
+                                Price = d.Price,
+                                ImagePath = d.ImagePath,
+                                ReorderQuantity = d.ReorderQuantity,
+                                OnhandQuantity = d.OnhandQuantity,
+                                IsInventory = d.IsInventory,
+                                ExpiryDate = d.ExpiryDate != null ? Convert.ToDateTime(d.ExpiryDate).ToShortDateString() : "",
+                                LotNumber = d.LotNumber,
+                                Remarks = d.Remarks,
+                                EntryUserId = d.EntryUserId,
+                                EntryDateTime = d.EntryDateTime.ToShortDateString(),
+                                UpdateUserId = d.UpdateUserId,
+                                UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
+                                IsLocked = d.IsLocked,
+                                DefaultKitchenReport = d.DefaultKitchenReport,
+                                IsPackage = d.IsPackage
+                            };
+
+                return items.OrderByDescending(d => d.Id).ToList();
+            }
+            else if (selectedIsLocked == "All" && selectedIsInventory == "All")
+            {
+                var items = from d in db.MstItems
+                            where d.ItemCode.Contains(filter)
+                            || d.ItemDescription.Contains(filter)
+                            || d.BarCode.Contains(filter)
+                            || d.Category.Contains(filter)
+                            || d.Alias.Contains(filter)
+                            || d.MstUnit.Unit.Contains(filter)
+                            || d.MstSupplier.Supplier.Contains(filter)
+                            select new Entities.MstItemEntity
+                            {
+                                Id = d.Id,
+                                ItemCode = d.ItemCode,
+                                BarCode = d.BarCode,
+                                ItemDescription = d.ItemDescription,
+                                Alias = d.Alias,
+                                GenericName = d.GenericName,
+                                Category = d.Category,
+                                SalesAccountId = d.SalesAccountId,
+                                AssetAccountId = d.AssetAccountId,
+                                CostAccountId = d.CostAccountId,
+                                InTaxId = d.InTaxId,
+                                OutTaxId = d.OutTaxId,
+                                UnitId = d.UnitId,
+                                Unit = d.MstUnit.Unit,
+                                DefaultSupplierId = d.DefaultSupplierId,
+                                Supplier = d.MstSupplier.Supplier,
+                                Cost = d.Cost,
+                                MarkUp = d.MarkUp,
+                                Price = d.Price,
+                                ImagePath = d.ImagePath,
+                                ReorderQuantity = d.ReorderQuantity,
+                                OnhandQuantity = d.OnhandQuantity,
+                                IsInventory = d.IsInventory,
+                                ExpiryDate = d.ExpiryDate != null ? Convert.ToDateTime(d.ExpiryDate).ToShortDateString() : "",
+                                LotNumber = d.LotNumber,
+                                Remarks = d.Remarks,
+                                EntryUserId = d.EntryUserId,
+                                EntryDateTime = d.EntryDateTime.ToShortDateString(),
+                                UpdateUserId = d.UpdateUserId,
+                                UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
+                                IsLocked = d.IsLocked,
+                                DefaultKitchenReport = d.DefaultKitchenReport,
+                                IsPackage = d.IsPackage
+                            };
+
+                return items.OrderByDescending(d => d.Id).ToList();
+            }
+            else if (selectedIsLocked != "All" && selectedIsInventory != "All")
+            {
+                Boolean isInventory = true;
+                if (selectedIsInventory == "Non-Inventory")
+                {
+                    isInventory = false;
+                }
+                Boolean isLocked = true;
+                if (selectedIsLocked == "Unlocked")
+                {
+                    isLocked = false;
+                }
+
+                var items = from d in db.MstItems
+                            where (d.ItemCode.Contains(filter)
+                            || d.ItemDescription.Contains(filter)
+                            || d.BarCode.Contains(filter)
+                            || d.Category.Contains(filter)
+                            || d.Alias.Contains(filter)
+                            || d.MstUnit.Unit.Contains(filter)
+                            || d.MstSupplier.Supplier.Contains(filter))
+                            && d.IsInventory == isInventory
+                            && d.IsLocked == isLocked
+                            select new Entities.MstItemEntity
+                            {
+                                Id = d.Id,
+                                ItemCode = d.ItemCode,
+                                BarCode = d.BarCode,
+                                ItemDescription = d.ItemDescription,
+                                Alias = d.Alias,
+                                GenericName = d.GenericName,
+                                Category = d.Category,
+                                SalesAccountId = d.SalesAccountId,
+                                AssetAccountId = d.AssetAccountId,
+                                CostAccountId = d.CostAccountId,
+                                InTaxId = d.InTaxId,
+                                OutTaxId = d.OutTaxId,
+                                UnitId = d.UnitId,
+                                Unit = d.MstUnit.Unit,
+                                DefaultSupplierId = d.DefaultSupplierId,
+                                Supplier = d.MstSupplier.Supplier,
+                                Cost = d.Cost,
+                                MarkUp = d.MarkUp,
+                                Price = d.Price,
+                                ImagePath = d.ImagePath,
+                                ReorderQuantity = d.ReorderQuantity,
+                                OnhandQuantity = d.OnhandQuantity,
+                                IsInventory = d.IsInventory,
+                                ExpiryDate = d.ExpiryDate != null ? Convert.ToDateTime(d.ExpiryDate).ToShortDateString() : "",
+                                LotNumber = d.LotNumber,
+                                Remarks = d.Remarks,
+                                EntryUserId = d.EntryUserId,
+                                EntryDateTime = d.EntryDateTime.ToShortDateString(),
+                                UpdateUserId = d.UpdateUserId,
+                                UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
+                                IsLocked = d.IsLocked,
+                                DefaultKitchenReport = d.DefaultKitchenReport,
+                                IsPackage = d.IsPackage
+                            };
+
+                return items.OrderByDescending(d => d.Id).ToList();
+            }
+            else
+            {
+                return new List<Entities.MstItemEntity>();
+            }
         }
 
         // ===========
@@ -125,11 +308,62 @@ namespace EasyPOS.Controllers
 
             return item.FirstOrDefault();
         }
+        // ====================
+        // List Utilities Items
+        // ====================
+        public List<Entities.MstItemEntity> UtilitiesListItem(String filter)
+        {
+            var items = from d in db.MstItems
+                        where d.ItemCode.Contains(filter)
+                        || d.ItemDescription.Contains(filter)
+                        || d.BarCode.Contains(filter)
+                        || d.Category.Contains(filter)
+                        || d.Alias.Contains(filter)
+                        || d.MstUnit.Unit.Contains(filter)
+                        select new Entities.MstItemEntity
+                        {
+                            Id = d.Id,
+                            ItemCode = d.ItemCode,
+                            BarCode = d.BarCode,
+                            ItemDescription = d.ItemDescription,
+                            Alias = d.Alias,
+                            GenericName = d.GenericName,
+                            Category = d.Category,
+                            SalesAccountId = d.SalesAccountId,
+                            AssetAccountId = d.AssetAccountId,
+                            CostAccountId = d.CostAccountId,
+                            InTaxId = d.InTaxId,
+                            OutTaxId = d.OutTaxId,
+                            UnitId = d.UnitId,
+                            Unit = d.MstUnit.Unit,
+                            DefaultSupplierId = d.DefaultSupplierId,
+                            Supplier = d.MstSupplier.Supplier,
+                            Cost = d.Cost,
+                            MarkUp = d.MarkUp,
+                            Price = d.Price,
+                            ImagePath = d.ImagePath,
+                            ReorderQuantity = d.ReorderQuantity,
+                            OnhandQuantity = d.OnhandQuantity,
+                            IsInventory = d.IsInventory,
+                            ExpiryDate = d.ExpiryDate != null ? Convert.ToDateTime(d.ExpiryDate).ToShortDateString() : "",
+                            LotNumber = d.LotNumber,
+                            Remarks = d.Remarks,
+                            EntryUserId = d.EntryUserId,
+                            EntryDateTime = d.EntryDateTime.ToShortDateString(),
+                            UpdateUserId = d.UpdateUserId,
+                            UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
+                            IsLocked = d.IsLocked,
+                            DefaultKitchenReport = d.DefaultKitchenReport,
+                            IsPackage = d.IsPackage
+                        };
 
-        // ====================
-        // Dropdown List - Unit
-        // ====================
-        public List<Entities.MstUnitEntity> DropdownListItemUnit()
+            return items.OrderByDescending(d => d.Id).ToList();
+        }
+
+            // ====================
+            // Dropdown List - Unit
+            // ====================
+            public List<Entities.MstUnitEntity> DropdownListItemUnit()
         {
             var units = from d in db.MstUnits
                         select new Entities.MstUnitEntity

@@ -14,42 +14,43 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.RepInventoryReport
 {
-    public partial class RepInventoryItemListReportForm : Form
+    public partial class RepItemExpiryReportForm : Form
     {
-        public List<Entities.DgvMstItemListEntity> itemList;
+        public List<Entities.DgvItemExpiryEntity> itemList;
         public BindingSource dataItemListSource = new BindingSource();
-        public PagedList<Entities.DgvMstItemListEntity> pageList;
+        public PagedList<Entities.DgvItemExpiryEntity> pageList;
         public Int32 pageNumber = 1;
         public Int32 pageSize = 50;
 
-        public RepInventoryItemListReportForm()
+        public DateTime dateStart;
+        public DateTime dateEnd;
+        public RepItemExpiryReportForm(DateTime startDate, DateTime endDate)
         {
+            dateStart = startDate;
+            dateEnd = endDate;
             InitializeComponent();
             GetInventoryListDataSource();
-            GetItemListDataGridSource();
+            GetItemExpiryDataGridSource();
         }
-        public List<Entities.DgvMstItemListEntity> GetInventoryListReport()
+        public List<Entities.DgvItemExpiryEntity> GetInventoryListReport(DateTime startDate, DateTime endDate)
         {
-            List<Entities.DgvMstItemListEntity> rowList = new List<Entities.DgvMstItemListEntity>();
+            List<Entities.DgvItemExpiryEntity> rowList = new List<Entities.DgvItemExpiryEntity>();
 
             Controllers.RepInventoryReportController repInvetoryReportController = new Controllers.RepInventoryReportController();
 
-            var inventoryListReport = repInvetoryReportController.GetInventoryListReport();
+            var inventoryListReport = repInvetoryReportController.GetItemExpiryReport(startDate, endDate);
             if (inventoryListReport.Any())
             {
                 var row = from d in inventoryListReport
-                          select new Entities.DgvMstItemListEntity
+                          select new Entities.DgvItemExpiryEntity
                           {
-                              ColumnItemListCode = d.ItemCode,
-                              ColumnItemListDescription = d.ItemDescription,
-                              ColumnItemListBarcode = d.BarCode,
-                              ColumnItemListUnit = d.Unit,
-                              ColumnItemListCategory = d.Category,
-                              ColumnItemListPrice = Convert.ToDecimal(d.Price).ToString("#,##0.00"),
-                              ColumnItemListCost = Convert.ToDecimal(d.Cost).ToString("#,##0.00"),
-                              ColumnItemListOnHandQuantity = Convert.ToDecimal(d.OnhandQuantity).ToString("#,##0.00"),
-                              ColumnItemListIsInventory = d.IsInventory,
-                              ColumnItemListIsLocked = d.IsLocked
+                              ColumnItem = d.ItemDescription,
+                              ColumnOnHandQuantity = Convert.ToDecimal(d.Quantity).ToString("#,##0.00"),
+                              ColumnUnit = d.Unit,
+                              ColumnCost = Convert.ToDecimal(d.Cost).ToString("#,##0.00"),
+                              ColumnPrice = Convert.ToDecimal(d.Price).ToString("#,##0.00"),
+                              ColumnExpiryDate = d.ExpiryDate,
+                              ColumnLotNo = d.LotNumber
                           };
 
                 rowList = row.ToList();
@@ -59,11 +60,11 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
         }
         public void GetInventoryListDataSource()
         {
-            itemList = GetInventoryListReport();
+            itemList = GetInventoryListReport(dateStart, dateEnd);
             if (itemList.Any())
             {
 
-                pageList = new PagedList<Entities.DgvMstItemListEntity>(itemList, pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvItemExpiryEntity>(itemList, pageNumber, pageSize);
 
                 if (pageList.PageCount == 1)
                 {
@@ -108,12 +109,10 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 textBoxPageNumber.Text = "0 / 0";
             }
         }
-
-        public void GetItemListDataGridSource()
+        public void GetItemExpiryDataGridSource()
         {
-            dataGridViewItemListReport.DataSource = dataItemListSource;
+            dataGridViewItemExpiryReport.DataSource = dataItemListSource;
         }
-
         private void buttonClose_Click(object sender, EventArgs e)
         {
             Close();
@@ -121,7 +120,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
 
         private void buttonPageListFirst_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvMstItemListEntity>(itemList, 1, pageSize);
+            pageList = new PagedList<Entities.DgvItemExpiryEntity>(itemList, 1, pageSize);
             dataItemListSource.DataSource = pageList;
 
             buttonPageListFirst.Enabled = false;
@@ -137,7 +136,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
         {
             if (pageList.HasPreviousPage == true)
             {
-                pageList = new PagedList<Entities.DgvMstItemListEntity>(itemList, --pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvItemExpiryEntity>(itemList, --pageNumber, pageSize);
                 dataItemListSource.DataSource = pageList;
             }
 
@@ -157,7 +156,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
         {
             if (pageList.HasNextPage == true)
             {
-                pageList = new PagedList<Entities.DgvMstItemListEntity>(itemList, ++pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvItemExpiryEntity>(itemList, ++pageNumber, pageSize);
                 dataItemListSource.DataSource = pageList;
             }
 
@@ -175,7 +174,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
 
         private void buttonPageListLast_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvMstItemListEntity>(itemList, pageList.PageCount, pageSize);
+            pageList = new PagedList<Entities.DgvItemExpiryEntity>(itemList, pageList.PageCount, pageSize);
             dataItemListSource.DataSource = pageList;
 
             buttonPageListFirst.Enabled = true;
@@ -185,7 +184,6 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
 
             pageNumber = pageList.PageCount;
             textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
-
         }
 
         private void buttonGenerateCSV_Click(object sender, EventArgs e)
@@ -203,18 +201,25 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                     {
                         foreach (var item in itemList)
                         {
-                            String Barcode = "";
-                            if (item.ColumnItemListBarcode != null)
+                            String lotNo = "";
+                            if (item.ColumnLotNo != null)
                             {
-                                Barcode = item.ColumnItemListBarcode.Replace(",", "");
+                                lotNo = item.ColumnLotNo.Replace(",", "");
                             }
-
+                            String expiryDate = "";
+                            if (item.ColumnExpiryDate != null)
+                            {
+                                expiryDate = item.ColumnExpiryDate.ToString().Replace(",", "");
+                            }
                             String[] data = {
-                                Barcode,
-                                item.ColumnItemListDescription.Replace("," , ""),
-                                item.ColumnItemListUnit.Replace("," , ""),
-                                item.ColumnItemListCost.Replace("," , ""),
-                                item.ColumnItemListPrice.Replace("," , "")
+                                item.ColumnItem.Replace("," , ""),
+                                item.ColumnOnHandQuantity.Replace(",", ""),
+                                item.ColumnUnit.Replace("," , ""),
+                                item.ColumnCost.Replace("," , ""),
+                                item.ColumnPrice.Replace("," , ""),
+                                expiryDate,
+                                lotNo
+
                             };
                             csv.AppendLine(String.Join(",", data));
                         }
@@ -227,7 +232,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                     securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
 
                     DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
-                    File.WriteAllText(createDirectorySTCSV.FullName + "\\InventoryListReport_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\ItemExpiryReport_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
 
                     MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
@@ -236,6 +241,19 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void dataGridViewItemExpiryReport_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            for (Int32 i = 0; i < itemList.Count(); i++)
+            {
+                if (Convert.ToDateTime(itemList[i].ColumnExpiryDate) < DateTime.Today)
+                {
+                    dataGridViewItemExpiryReport.Rows[i].Cells[5].Style.BackColor = Color.Red;
+                    dataGridViewItemExpiryReport.Rows[i].Cells[5].Style.ForeColor = Color.White;
+                }
             }
         }
     }

@@ -44,6 +44,18 @@ namespace EasyPOS.Forms.Software.TrnStockIn
 
                 GetSupplierList();
             }
+
+            if (Modules.SysCurrentModule.GetCurrentSettings().HideStockInPriceAndCost == true)
+            {
+                ColumnStockInLineListCost.Visible = false;
+                ColumnStockInLineListPrice.Visible = false;
+            }
+            else
+            {
+                ColumnStockInLineListCost.Visible = true;
+                ColumnStockInLineListPrice.Visible = true;
+            }
+
         }
 
         public void GetSupplierList()

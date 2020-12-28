@@ -88,6 +88,13 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         comboBoxItem.Visible = false;
                         dateTimePickerStartDate.Focus();
                         break;
+                    case "Item Expiry Report":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+                        dateTimePickerStartDate.Focus();
+                        break;
                     default:
                         labelStartDate.Visible = false;
                         dateTimePickerStartDate.Visible = false;
@@ -210,6 +217,25 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                     case "Stock Count Detail Report":
                         RepStockCountDetailReportForm repInventoryReportStockCount = new RepStockCountDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
                         repInventoryReportStockCount.ShowDialog();
+                        break;
+                    case "Item Expiry Report":
+                        sysUserRights = new Modules.SysUserRightsModule("RepInventoryItemList");
+                        if (sysUserRights.GetUserRights() == null)
+                        {
+                            MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            if (sysUserRights.GetUserRights().CanView == true)
+                            {
+                                RepItemExpiryReportForm repItemExpiryReport = new RepItemExpiryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                                repItemExpiryReport.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
                         break;
                     default:
                         MessageBox.Show("Please select a report.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);

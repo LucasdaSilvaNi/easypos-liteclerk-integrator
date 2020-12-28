@@ -1,7 +1,7 @@
 ﻿
-namespace EasyPOS.Forms.Software.RepSalesReport
+namespace EasyPOS.Forms.Software.RepInventoryReport
 {
-    partial class RepHourlyTopSellingSalesReportForm
+    partial class RepItemExpiryReportForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,42 +31,38 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepHourlyTopSellingSalesReportForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepItemExpiryReportForm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonView = new System.Windows.Forms.Button();
+            this.buttonGenerateCSV = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.dataGridViewHourlyTopSellingSalesReport = new System.Windows.Forms.DataGridView();
-            this.ColumnHour = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewItemExpiryReport = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
             this.buttonPageListFirst = new System.Windows.Forms.Button();
             this.buttonPageListNext = new System.Windows.Forms.Button();
             this.buttonPageListLast = new System.Windows.Forms.Button();
             this.buttonPageListPrevious = new System.Windows.Forms.Button();
             this.textBoxPageNumber = new System.Windows.Forms.TextBox();
+            this.ColumnItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnOnHandQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnLotNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHourlyTopSellingSalesReport)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItemExpiryReport)).BeginInit();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.buttonView);
+            this.panel1.Controls.Add(this.buttonGenerateCSV);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.buttonClose);
@@ -75,26 +71,26 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1096, 50);
-            this.panel1.TabIndex = 13;
+            this.panel1.TabIndex = 17;
             // 
-            // buttonView
+            // buttonGenerateCSV
             // 
-            this.buttonView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonView.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonView.FlatAppearance.BorderSize = 0;
-            this.buttonView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonView.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonView.ForeColor = System.Drawing.Color.White;
-            this.buttonView.Location = new System.Drawing.Point(940, 9);
-            this.buttonView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.buttonView.Name = "buttonView";
-            this.buttonView.Size = new System.Drawing.Size(70, 32);
-            this.buttonView.TabIndex = 5;
-            this.buttonView.TabStop = false;
-            this.buttonView.Text = "CSV";
-            this.buttonView.UseVisualStyleBackColor = false;
-            this.buttonView.Click += new System.EventHandler(this.buttonView_Click);
+            this.buttonGenerateCSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonGenerateCSV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonGenerateCSV.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonGenerateCSV.FlatAppearance.BorderSize = 0;
+            this.buttonGenerateCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGenerateCSV.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonGenerateCSV.ForeColor = System.Drawing.Color.White;
+            this.buttonGenerateCSV.Location = new System.Drawing.Point(940, 9);
+            this.buttonGenerateCSV.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.buttonGenerateCSV.Name = "buttonGenerateCSV";
+            this.buttonGenerateCSV.Size = new System.Drawing.Size(70, 32);
+            this.buttonGenerateCSV.TabIndex = 5;
+            this.buttonGenerateCSV.TabStop = false;
+            this.buttonGenerateCSV.Text = "CSV";
+            this.buttonGenerateCSV.UseVisualStyleBackColor = false;
+            this.buttonGenerateCSV.Click += new System.EventHandler(this.buttonGenerateCSV_Click);
             // 
             // pictureBox1
             // 
@@ -114,9 +110,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.label1.Location = new System.Drawing.Point(57, 12);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(311, 28);
+            this.label1.Size = new System.Drawing.Size(192, 28);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Hourly Top Selling Sales Report";
+            this.label1.Text = "Item Expiry Report";
             // 
             // buttonClose
             // 
@@ -132,110 +128,39 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(70, 32);
             this.buttonClose.TabIndex = 1;
-            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
-            // dataGridViewHourlyTopSellingSalesReport
+            // dataGridViewItemExpiryReport
             // 
-            this.dataGridViewHourlyTopSellingSalesReport.AllowUserToAddRows = false;
-            this.dataGridViewHourlyTopSellingSalesReport.AllowUserToDeleteRows = false;
-            this.dataGridViewHourlyTopSellingSalesReport.AllowUserToResizeRows = false;
-            this.dataGridViewHourlyTopSellingSalesReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridViewItemExpiryReport.AllowUserToAddRows = false;
+            this.dataGridViewItemExpiryReport.AllowUserToDeleteRows = false;
+            this.dataGridViewItemExpiryReport.AllowUserToResizeRows = false;
+            this.dataGridViewItemExpiryReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewHourlyTopSellingSalesReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewHourlyTopSellingSalesReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewHourlyTopSellingSalesReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnHour,
-            this.ColumnNo,
-            this.ColumnCategory,
-            this.ColumnItemDescription,
-            this.ColumnQuantity,
+            this.dataGridViewItemExpiryReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewItemExpiryReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewItemExpiryReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnItem,
+            this.ColumnOnHandQuantity,
             this.ColumnUnit,
+            this.ColumnCost,
             this.ColumnPrice,
-            this.ColumnAmount});
-            this.dataGridViewHourlyTopSellingSalesReport.Location = new System.Drawing.Point(1, 44);
-            this.dataGridViewHourlyTopSellingSalesReport.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridViewHourlyTopSellingSalesReport.MultiSelect = false;
-            this.dataGridViewHourlyTopSellingSalesReport.Name = "dataGridViewHourlyTopSellingSalesReport";
-            this.dataGridViewHourlyTopSellingSalesReport.ReadOnly = true;
-            this.dataGridViewHourlyTopSellingSalesReport.RowTemplate.Height = 24;
-            this.dataGridViewHourlyTopSellingSalesReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewHourlyTopSellingSalesReport.ShowEditingIcon = false;
-            this.dataGridViewHourlyTopSellingSalesReport.Size = new System.Drawing.Size(1094, 434);
-            this.dataGridViewHourlyTopSellingSalesReport.TabIndex = 14;
-            // 
-            // ColumnHour
-            // 
-            this.ColumnHour.DataPropertyName = "ColumnHour";
-            this.ColumnHour.HeaderText = "Hour";
-            this.ColumnHour.Name = "ColumnHour";
-            this.ColumnHour.ReadOnly = true;
-            // 
-            // ColumnNo
-            // 
-            this.ColumnNo.DataPropertyName = "ColumnNo";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnNo.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColumnNo.HeaderText = "No";
-            this.ColumnNo.Name = "ColumnNo";
-            this.ColumnNo.ReadOnly = true;
-            // 
-            // ColumnCategory
-            // 
-            this.ColumnCategory.DataPropertyName = "ColumnCategory";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnCategory.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnCategory.HeaderText = "Category";
-            this.ColumnCategory.Name = "ColumnCategory";
-            this.ColumnCategory.ReadOnly = true;
-            // 
-            // ColumnItemDescription
-            // 
-            this.ColumnItemDescription.DataPropertyName = "ColumnItemDescription";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnItemDescription.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnItemDescription.FillWeight = 250F;
-            this.ColumnItemDescription.HeaderText = "Item Description";
-            this.ColumnItemDescription.Name = "ColumnItemDescription";
-            this.ColumnItemDescription.ReadOnly = true;
-            this.ColumnItemDescription.Width = 250;
-            // 
-            // ColumnQuantity
-            // 
-            this.ColumnQuantity.DataPropertyName = "ColumnQuantity";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnQuantity.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ColumnQuantity.HeaderText = "Quantity";
-            this.ColumnQuantity.Name = "ColumnQuantity";
-            this.ColumnQuantity.ReadOnly = true;
-            // 
-            // ColumnUnit
-            // 
-            this.ColumnUnit.DataPropertyName = "ColumnUnit";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnUnit.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ColumnUnit.HeaderText = "Unit";
-            this.ColumnUnit.Name = "ColumnUnit";
-            this.ColumnUnit.ReadOnly = true;
-            // 
-            // ColumnPrice
-            // 
-            this.ColumnPrice.DataPropertyName = "ColumnPrice";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnPrice.DefaultCellStyle = dataGridViewCellStyle6;
-            this.ColumnPrice.HeaderText = "Price";
-            this.ColumnPrice.Name = "ColumnPrice";
-            this.ColumnPrice.ReadOnly = true;
-            // 
-            // ColumnAmount
-            // 
-            this.ColumnAmount.DataPropertyName = "ColumnAmount";
-            this.ColumnAmount.HeaderText = "Amount";
-            this.ColumnAmount.Name = "ColumnAmount";
-            this.ColumnAmount.ReadOnly = true;
+            this.ColumnExpiryDate,
+            this.ColumnLotNo});
+            this.dataGridViewItemExpiryReport.Location = new System.Drawing.Point(0, 49);
+            this.dataGridViewItemExpiryReport.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewItemExpiryReport.MultiSelect = false;
+            this.dataGridViewItemExpiryReport.Name = "dataGridViewItemExpiryReport";
+            this.dataGridViewItemExpiryReport.ReadOnly = true;
+            this.dataGridViewItemExpiryReport.RowTemplate.Height = 24;
+            this.dataGridViewItemExpiryReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewItemExpiryReport.ShowEditingIcon = false;
+            this.dataGridViewItemExpiryReport.Size = new System.Drawing.Size(1094, 435);
+            this.dataGridViewItemExpiryReport.TabIndex = 18;
+            this.dataGridViewItemExpiryReport.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridViewItemExpiryReport_DataBindingComplete);
             // 
             // panel4
             // 
@@ -250,7 +175,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1096, 42);
-            this.panel4.TabIndex = 22;
+            this.panel4.TabIndex = 23;
             // 
             // buttonPageListFirst
             // 
@@ -267,7 +192,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.buttonPageListFirst.TabStop = false;
             this.buttonPageListFirst.Text = "First";
             this.buttonPageListFirst.UseVisualStyleBackColor = false;
-            this.buttonPageListFirst.Click += new System.EventHandler(this.buttonSalesListPageListFirst_Click);
+            this.buttonPageListFirst.Click += new System.EventHandler(this.buttonPageListFirst_Click);
             // 
             // buttonPageListNext
             // 
@@ -283,7 +208,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.buttonPageListNext.TabStop = false;
             this.buttonPageListNext.Text = "Next";
             this.buttonPageListNext.UseVisualStyleBackColor = false;
-            this.buttonPageListNext.Click += new System.EventHandler(this.buttonSalesListPageListNext_Click);
+            this.buttonPageListNext.Click += new System.EventHandler(this.buttonPageListNext_Click);
             // 
             // buttonPageListLast
             // 
@@ -299,7 +224,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.buttonPageListLast.TabStop = false;
             this.buttonPageListLast.Text = "Last";
             this.buttonPageListLast.UseVisualStyleBackColor = false;
-            this.buttonPageListLast.Click += new System.EventHandler(this.buttonSalesListPageListLast_Click);
+            this.buttonPageListLast.Click += new System.EventHandler(this.buttonPageListLast_Click);
             // 
             // buttonPageListPrevious
             // 
@@ -311,12 +236,12 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.buttonPageListPrevious.Location = new System.Drawing.Point(80, 8);
             this.buttonPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPageListPrevious.Name = "buttonPageListPrevious";
-            this.buttonPageListPrevious.Size = new System.Drawing.Size(70, 26);
+            this.buttonPageListPrevious.Size = new System.Drawing.Size(69, 26);
             this.buttonPageListPrevious.TabIndex = 9;
             this.buttonPageListPrevious.TabStop = false;
             this.buttonPageListPrevious.Text = "Previous";
             this.buttonPageListPrevious.UseVisualStyleBackColor = false;
-            this.buttonPageListPrevious.Click += new System.EventHandler(this.buttonSalesListPageListPrevious_Click);
+            this.buttonPageListPrevious.Click += new System.EventHandler(this.buttonPageListPrevious_Click);
             // 
             // textBoxPageNumber
             // 
@@ -332,25 +257,84 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.textBoxPageNumber.TabStop = false;
             this.textBoxPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // RepHourlyTopSellingSalesReportForm
+            // ColumnItem
+            // 
+            this.ColumnItem.DataPropertyName = "ColumnItem";
+            this.ColumnItem.HeaderText = "Item Description";
+            this.ColumnItem.Name = "ColumnItem";
+            this.ColumnItem.ReadOnly = true;
+            this.ColumnItem.Width = 200;
+            // 
+            // ColumnOnHandQuantity
+            // 
+            this.ColumnOnHandQuantity.DataPropertyName = "ColumnOnHandQuantity";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnOnHandQuantity.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColumnOnHandQuantity.HeaderText = "On hand Quantity";
+            this.ColumnOnHandQuantity.Name = "ColumnOnHandQuantity";
+            this.ColumnOnHandQuantity.ReadOnly = true;
+            this.ColumnOnHandQuantity.Width = 120;
+            // 
+            // ColumnUnit
+            // 
+            this.ColumnUnit.DataPropertyName = "ColumnUnit";
+            this.ColumnUnit.HeaderText = "Unit";
+            this.ColumnUnit.Name = "ColumnUnit";
+            this.ColumnUnit.ReadOnly = true;
+            // 
+            // ColumnCost
+            // 
+            this.ColumnCost.DataPropertyName = "ColumnCost";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnCost.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnCost.HeaderText = "Cost";
+            this.ColumnCost.Name = "ColumnCost";
+            this.ColumnCost.ReadOnly = true;
+            this.ColumnCost.Width = 120;
+            // 
+            // ColumnPrice
+            // 
+            this.ColumnPrice.DataPropertyName = "ColumnPrice";
+            this.ColumnPrice.HeaderText = "Price";
+            this.ColumnPrice.Name = "ColumnPrice";
+            this.ColumnPrice.ReadOnly = true;
+            this.ColumnPrice.Width = 120;
+            // 
+            // ColumnExpiryDate
+            // 
+            this.ColumnExpiryDate.DataPropertyName = "ColumnExpiryDate";
+            this.ColumnExpiryDate.HeaderText = "Expiry Date";
+            this.ColumnExpiryDate.Name = "ColumnExpiryDate";
+            this.ColumnExpiryDate.ReadOnly = true;
+            this.ColumnExpiryDate.Width = 120;
+            // 
+            // ColumnLotNo
+            // 
+            this.ColumnLotNo.DataPropertyName = "ColumnLotNo";
+            this.ColumnLotNo.HeaderText = "Lot No.";
+            this.ColumnLotNo.Name = "ColumnLotNo";
+            this.ColumnLotNo.ReadOnly = true;
+            this.ColumnLotNo.Width = 120;
+            // 
+            // RepItemExpiryReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1096, 522);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.dataGridViewHourlyTopSellingSalesReport);
+            this.Controls.Add(this.dataGridViewItemExpiryReport);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "RepHourlyTopSellingSalesReportForm";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "RepItemExpiryReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Hourly Top Selling Sales Report";
+            this.Text = "Item Expiry Report";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHourlyTopSellingSalesReport)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItemExpiryReport)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.ResumeLayout(false);
@@ -360,25 +344,25 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button buttonView;
+        private System.Windows.Forms.Button buttonGenerateCSV;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonClose;
-        private System.Windows.Forms.DataGridView dataGridViewHourlyTopSellingSalesReport;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnHour;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCategory;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAmount;
+        private System.Windows.Forms.DataGridView dataGridViewItemExpiryReport;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button buttonPageListFirst;
         private System.Windows.Forms.Button buttonPageListNext;
         private System.Windows.Forms.Button buttonPageListLast;
         private System.Windows.Forms.Button buttonPageListPrevious;
         private System.Windows.Forms.TextBox textBoxPageNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnOnHandQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnExpiryDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLotNo;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

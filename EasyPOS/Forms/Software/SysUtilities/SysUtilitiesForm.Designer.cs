@@ -107,9 +107,10 @@
             this.panel3.Controls.Add(this.buttonAuditTrailListPageListLast);
             this.panel3.Controls.Add(this.textBoxAuditTrailListPageNumber);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 542);
+            this.panel3.Location = new System.Drawing.Point(0, 432);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1386, 53);
+            this.panel3.Size = new System.Drawing.Size(1084, 42);
             this.panel3.TabIndex = 21;
             // 
             // buttonAuditTrailListPageListFirst
@@ -119,9 +120,10 @@
             this.buttonAuditTrailListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonAuditTrailListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAuditTrailListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonAuditTrailListPageListFirst.Location = new System.Drawing.Point(12, 11);
+            this.buttonAuditTrailListPageListFirst.Location = new System.Drawing.Point(10, 9);
+            this.buttonAuditTrailListPageListFirst.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAuditTrailListPageListFirst.Name = "buttonAuditTrailListPageListFirst";
-            this.buttonAuditTrailListPageListFirst.Size = new System.Drawing.Size(82, 32);
+            this.buttonAuditTrailListPageListFirst.Size = new System.Drawing.Size(66, 26);
             this.buttonAuditTrailListPageListFirst.TabIndex = 13;
             this.buttonAuditTrailListPageListFirst.TabStop = false;
             this.buttonAuditTrailListPageListFirst.Text = "First";
@@ -135,9 +137,10 @@
             this.buttonAuditTrailListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonAuditTrailListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAuditTrailListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonAuditTrailListPageListPrevious.Location = new System.Drawing.Point(100, 11);
+            this.buttonAuditTrailListPageListPrevious.Location = new System.Drawing.Point(80, 9);
+            this.buttonAuditTrailListPageListPrevious.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAuditTrailListPageListPrevious.Name = "buttonAuditTrailListPageListPrevious";
-            this.buttonAuditTrailListPageListPrevious.Size = new System.Drawing.Size(82, 32);
+            this.buttonAuditTrailListPageListPrevious.Size = new System.Drawing.Size(66, 26);
             this.buttonAuditTrailListPageListPrevious.TabIndex = 14;
             this.buttonAuditTrailListPageListPrevious.TabStop = false;
             this.buttonAuditTrailListPageListPrevious.Text = "Previous";
@@ -150,9 +153,10 @@
             this.buttonAuditTrailListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonAuditTrailListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAuditTrailListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonAuditTrailListPageListNext.Location = new System.Drawing.Point(263, 11);
+            this.buttonAuditTrailListPageListNext.Location = new System.Drawing.Point(210, 9);
+            this.buttonAuditTrailListPageListNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAuditTrailListPageListNext.Name = "buttonAuditTrailListPageListNext";
-            this.buttonAuditTrailListPageListNext.Size = new System.Drawing.Size(82, 32);
+            this.buttonAuditTrailListPageListNext.Size = new System.Drawing.Size(66, 26);
             this.buttonAuditTrailListPageListNext.TabIndex = 15;
             this.buttonAuditTrailListPageListNext.TabStop = false;
             this.buttonAuditTrailListPageListNext.Text = "Next";
@@ -165,9 +169,10 @@
             this.buttonAuditTrailListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonAuditTrailListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAuditTrailListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonAuditTrailListPageListLast.Location = new System.Drawing.Point(348, 11);
+            this.buttonAuditTrailListPageListLast.Location = new System.Drawing.Point(278, 9);
+            this.buttonAuditTrailListPageListLast.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAuditTrailListPageListLast.Name = "buttonAuditTrailListPageListLast";
-            this.buttonAuditTrailListPageListLast.Size = new System.Drawing.Size(82, 32);
+            this.buttonAuditTrailListPageListLast.Size = new System.Drawing.Size(66, 26);
             this.buttonAuditTrailListPageListLast.TabIndex = 16;
             this.buttonAuditTrailListPageListLast.TabStop = false;
             this.buttonAuditTrailListPageListLast.Text = "Last";
@@ -180,10 +185,11 @@
             this.textBoxAuditTrailListPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxAuditTrailListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxAuditTrailListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxAuditTrailListPageNumber.Location = new System.Drawing.Point(188, 16);
+            this.textBoxAuditTrailListPageNumber.Location = new System.Drawing.Point(150, 13);
+            this.textBoxAuditTrailListPageNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxAuditTrailListPageNumber.Name = "textBoxAuditTrailListPageNumber";
             this.textBoxAuditTrailListPageNumber.ReadOnly = true;
-            this.textBoxAuditTrailListPageNumber.Size = new System.Drawing.Size(69, 20);
+            this.textBoxAuditTrailListPageNumber.Size = new System.Drawing.Size(55, 16);
             this.textBoxAuditTrailListPageNumber.TabIndex = 17;
             this.textBoxAuditTrailListPageNumber.TabStop = false;
             this.textBoxAuditTrailListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -202,17 +208,19 @@
             this.panel2.Controls.Add(this.dataGridViewAuditTrailList);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1386, 595);
+            this.panel2.Size = new System.Drawing.Size(1084, 474);
             this.panel2.TabIndex = 9;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 7F);
-            this.label4.Location = new System.Drawing.Point(298, 6);
+            this.label4.Location = new System.Drawing.Point(238, 5);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 15);
+            this.label4.Size = new System.Drawing.Size(26, 12);
             this.label4.TabIndex = 25;
             this.label4.Text = "User:";
             // 
@@ -220,9 +228,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 7F);
-            this.label3.Location = new System.Drawing.Point(148, 6);
+            this.label3.Location = new System.Drawing.Point(118, 5);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 15);
+            this.label3.Size = new System.Drawing.Size(47, 12);
             this.label3.TabIndex = 24;
             this.label3.Text = "End Date:";
             // 
@@ -230,9 +239,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 7F);
-            this.label2.Location = new System.Drawing.Point(1, 6);
+            this.label2.Location = new System.Drawing.Point(1, 5);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 15);
+            this.label2.Size = new System.Drawing.Size(49, 12);
             this.label2.TabIndex = 23;
             this.label2.Text = "Start Date:";
             // 
@@ -245,10 +255,10 @@
             this.buttonView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonView.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonView.ForeColor = System.Drawing.Color.White;
-            this.buttonView.Location = new System.Drawing.Point(1293, 14);
-            this.buttonView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonView.Location = new System.Drawing.Point(1009, 11);
+            this.buttonView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonView.Name = "buttonView";
-            this.buttonView.Size = new System.Drawing.Size(88, 40);
+            this.buttonView.Size = new System.Drawing.Size(70, 32);
             this.buttonView.TabIndex = 22;
             this.buttonView.TabStop = false;
             this.buttonView.Text = "CSV";
@@ -258,27 +268,30 @@
             // comboBoxUserFilter
             // 
             this.comboBoxUserFilter.FormattingEnabled = true;
-            this.comboBoxUserFilter.Location = new System.Drawing.Point(298, 23);
+            this.comboBoxUserFilter.Location = new System.Drawing.Point(238, 18);
+            this.comboBoxUserFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxUserFilter.Name = "comboBoxUserFilter";
-            this.comboBoxUserFilter.Size = new System.Drawing.Size(264, 31);
+            this.comboBoxUserFilter.Size = new System.Drawing.Size(212, 27);
             this.comboBoxUserFilter.TabIndex = 2;
             this.comboBoxUserFilter.SelectedIndexChanged += new System.EventHandler(this.AuditTrailList_Filter);
             // 
             // dateTimePickerSysAuditTrailListEndDateFilter
             // 
             this.dateTimePickerSysAuditTrailListEndDateFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerSysAuditTrailListEndDateFilter.Location = new System.Drawing.Point(151, 24);
+            this.dateTimePickerSysAuditTrailListEndDateFilter.Location = new System.Drawing.Point(121, 19);
+            this.dateTimePickerSysAuditTrailListEndDateFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePickerSysAuditTrailListEndDateFilter.Name = "dateTimePickerSysAuditTrailListEndDateFilter";
-            this.dateTimePickerSysAuditTrailListEndDateFilter.Size = new System.Drawing.Size(141, 30);
+            this.dateTimePickerSysAuditTrailListEndDateFilter.Size = new System.Drawing.Size(114, 26);
             this.dateTimePickerSysAuditTrailListEndDateFilter.TabIndex = 1;
             this.dateTimePickerSysAuditTrailListEndDateFilter.ValueChanged += new System.EventHandler(this.dateTimePickerSysAuditTrailListEndDateFilter_ValueChanged);
             // 
             // dateTimePickerSysAuditTrailListStartDateFilter
             // 
             this.dateTimePickerSysAuditTrailListStartDateFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerSysAuditTrailListStartDateFilter.Location = new System.Drawing.Point(5, 24);
+            this.dateTimePickerSysAuditTrailListStartDateFilter.Location = new System.Drawing.Point(4, 19);
+            this.dateTimePickerSysAuditTrailListStartDateFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePickerSysAuditTrailListStartDateFilter.Name = "dateTimePickerSysAuditTrailListStartDateFilter";
-            this.dateTimePickerSysAuditTrailListStartDateFilter.Size = new System.Drawing.Size(141, 30);
+            this.dateTimePickerSysAuditTrailListStartDateFilter.Size = new System.Drawing.Size(114, 26);
             this.dateTimePickerSysAuditTrailListStartDateFilter.TabIndex = 0;
             this.dateTimePickerSysAuditTrailListStartDateFilter.ValueChanged += new System.EventHandler(this.dateTimePickerSysAuditTrailListStartDateFilter_ValueChanged);
             // 
@@ -302,13 +315,14 @@
             this.ColumnAuditTrailListRecordInformation,
             this.ColumnAuditTrailListFormInformation,
             this.ColumnAuditTrailListSpace});
-            this.dataGridViewAuditTrailList.Location = new System.Drawing.Point(5, 61);
+            this.dataGridViewAuditTrailList.Location = new System.Drawing.Point(4, 49);
+            this.dataGridViewAuditTrailList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridViewAuditTrailList.MultiSelect = false;
             this.dataGridViewAuditTrailList.Name = "dataGridViewAuditTrailList";
             this.dataGridViewAuditTrailList.ReadOnly = true;
             this.dataGridViewAuditTrailList.RowTemplate.Height = 24;
             this.dataGridViewAuditTrailList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewAuditTrailList.Size = new System.Drawing.Size(1376, 475);
+            this.dataGridViewAuditTrailList.Size = new System.Drawing.Size(1076, 378);
             this.dataGridViewAuditTrailList.TabIndex = 20;
             // 
             // ColumnAuditTrailListId
@@ -391,16 +405,18 @@
             this.panel1.Controls.Add(this.buttonClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1400, 63);
+            this.panel1.Size = new System.Drawing.Size(1096, 50);
             this.panel1.TabIndex = 8;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Utilities;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
+            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -409,10 +425,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(63, 17);
+            this.label1.Location = new System.Drawing.Point(50, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(197, 35);
+            this.label1.Size = new System.Drawing.Size(160, 28);
             this.label1.TabIndex = 2;
             this.label1.Text = "System Utilities";
             // 
@@ -425,9 +441,10 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(1300, 12);
+            this.buttonClose.Location = new System.Drawing.Point(1016, 10);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(88, 40);
+            this.buttonClose.Size = new System.Drawing.Size(70, 32);
             this.buttonClose.TabIndex = 20;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
@@ -439,19 +456,21 @@
             this.tabControlSystemTable.Controls.Add(this.tabPage1);
             this.tabControlSystemTable.Controls.Add(this.tabPageBarcodePrinting);
             this.tabControlSystemTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlSystemTable.Location = new System.Drawing.Point(0, 63);
+            this.tabControlSystemTable.Location = new System.Drawing.Point(0, 50);
+            this.tabControlSystemTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabControlSystemTable.Name = "tabControlSystemTable";
             this.tabControlSystemTable.SelectedIndex = 0;
-            this.tabControlSystemTable.Size = new System.Drawing.Size(1400, 637);
+            this.tabControlSystemTable.Size = new System.Drawing.Size(1096, 510);
             this.tabControlSystemTable.TabIndex = 10;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.panel9);
-            this.tabPage1.Location = new System.Drawing.Point(4, 32);
+            this.tabPage1.Location = new System.Drawing.Point(4, 28);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1392, 601);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Size = new System.Drawing.Size(1088, 478);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Audit Trail";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -460,18 +479,20 @@
             // 
             this.panel9.Controls.Add(this.panel2);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(3, 3);
+            this.panel9.Location = new System.Drawing.Point(2, 2);
+            this.panel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1386, 595);
+            this.panel9.Size = new System.Drawing.Size(1084, 474);
             this.panel9.TabIndex = 1;
             // 
             // tabPageBarcodePrinting
             // 
             this.tabPageBarcodePrinting.Controls.Add(this.panel4);
-            this.tabPageBarcodePrinting.Location = new System.Drawing.Point(4, 32);
+            this.tabPageBarcodePrinting.Location = new System.Drawing.Point(4, 28);
+            this.tabPageBarcodePrinting.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPageBarcodePrinting.Name = "tabPageBarcodePrinting";
-            this.tabPageBarcodePrinting.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageBarcodePrinting.Size = new System.Drawing.Size(1392, 601);
+            this.tabPageBarcodePrinting.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageBarcodePrinting.Size = new System.Drawing.Size(1088, 478);
             this.tabPageBarcodePrinting.TabIndex = 1;
             this.tabPageBarcodePrinting.Text = "Barcode Printing";
             this.tabPageBarcodePrinting.UseVisualStyleBackColor = true;
@@ -483,9 +504,10 @@
             this.panel4.Controls.Add(this.dataGridViewItemList);
             this.panel4.Controls.Add(this.textBoxItemListFilter);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Location = new System.Drawing.Point(2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1386, 595);
+            this.panel4.Size = new System.Drawing.Size(1084, 474);
             this.panel4.TabIndex = 20;
             // 
             // panel5
@@ -497,9 +519,10 @@
             this.panel5.Controls.Add(this.buttonItemListPageListLast);
             this.panel5.Controls.Add(this.textBoxItemListPageNumber);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(0, 542);
+            this.panel5.Location = new System.Drawing.Point(0, 432);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1386, 53);
+            this.panel5.Size = new System.Drawing.Size(1084, 42);
             this.panel5.TabIndex = 18;
             // 
             // buttonItemListPageListFirst
@@ -509,9 +532,10 @@
             this.buttonItemListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonItemListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemListPageListFirst.Location = new System.Drawing.Point(12, 11);
+            this.buttonItemListPageListFirst.Location = new System.Drawing.Point(10, 9);
+            this.buttonItemListPageListFirst.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonItemListPageListFirst.Name = "buttonItemListPageListFirst";
-            this.buttonItemListPageListFirst.Size = new System.Drawing.Size(82, 32);
+            this.buttonItemListPageListFirst.Size = new System.Drawing.Size(66, 26);
             this.buttonItemListPageListFirst.TabIndex = 13;
             this.buttonItemListPageListFirst.TabStop = false;
             this.buttonItemListPageListFirst.Text = "First";
@@ -525,9 +549,10 @@
             this.buttonItemListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonItemListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemListPageListPrevious.Location = new System.Drawing.Point(100, 11);
+            this.buttonItemListPageListPrevious.Location = new System.Drawing.Point(80, 9);
+            this.buttonItemListPageListPrevious.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonItemListPageListPrevious.Name = "buttonItemListPageListPrevious";
-            this.buttonItemListPageListPrevious.Size = new System.Drawing.Size(82, 32);
+            this.buttonItemListPageListPrevious.Size = new System.Drawing.Size(66, 26);
             this.buttonItemListPageListPrevious.TabIndex = 14;
             this.buttonItemListPageListPrevious.TabStop = false;
             this.buttonItemListPageListPrevious.Text = "Previous";
@@ -540,9 +565,10 @@
             this.buttonItemListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonItemListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemListPageListNext.Location = new System.Drawing.Point(263, 11);
+            this.buttonItemListPageListNext.Location = new System.Drawing.Point(210, 9);
+            this.buttonItemListPageListNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonItemListPageListNext.Name = "buttonItemListPageListNext";
-            this.buttonItemListPageListNext.Size = new System.Drawing.Size(82, 32);
+            this.buttonItemListPageListNext.Size = new System.Drawing.Size(66, 26);
             this.buttonItemListPageListNext.TabIndex = 15;
             this.buttonItemListPageListNext.TabStop = false;
             this.buttonItemListPageListNext.Text = "Next";
@@ -555,9 +581,10 @@
             this.buttonItemListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonItemListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemListPageListLast.Location = new System.Drawing.Point(348, 11);
+            this.buttonItemListPageListLast.Location = new System.Drawing.Point(278, 9);
+            this.buttonItemListPageListLast.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonItemListPageListLast.Name = "buttonItemListPageListLast";
-            this.buttonItemListPageListLast.Size = new System.Drawing.Size(82, 32);
+            this.buttonItemListPageListLast.Size = new System.Drawing.Size(66, 26);
             this.buttonItemListPageListLast.TabIndex = 16;
             this.buttonItemListPageListLast.TabStop = false;
             this.buttonItemListPageListLast.Text = "Last";
@@ -570,10 +597,11 @@
             this.textBoxItemListPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxItemListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxItemListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxItemListPageNumber.Location = new System.Drawing.Point(188, 16);
+            this.textBoxItemListPageNumber.Location = new System.Drawing.Point(150, 13);
+            this.textBoxItemListPageNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxItemListPageNumber.Name = "textBoxItemListPageNumber";
             this.textBoxItemListPageNumber.ReadOnly = true;
-            this.textBoxItemListPageNumber.Size = new System.Drawing.Size(69, 20);
+            this.textBoxItemListPageNumber.Size = new System.Drawing.Size(55, 16);
             this.textBoxItemListPageNumber.TabIndex = 17;
             this.textBoxItemListPageNumber.TabStop = false;
             this.textBoxItemListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -601,13 +629,14 @@
             this.ColumnItemListIsInventory,
             this.ColumnItemListIsLocked,
             this.ColumnItemListSpace});
-            this.dataGridViewItemList.Location = new System.Drawing.Point(5, 42);
+            this.dataGridViewItemList.Location = new System.Drawing.Point(4, 34);
+            this.dataGridViewItemList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridViewItemList.MultiSelect = false;
             this.dataGridViewItemList.Name = "dataGridViewItemList";
             this.dataGridViewItemList.ReadOnly = true;
             this.dataGridViewItemList.RowTemplate.Height = 24;
             this.dataGridViewItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewItemList.Size = new System.Drawing.Size(1376, 494);
+            this.dataGridViewItemList.Size = new System.Drawing.Size(1076, 393);
             this.dataGridViewItemList.TabIndex = 9;
             this.dataGridViewItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItemList_CellClick);
             // 
@@ -712,24 +741,25 @@
             // 
             this.textBoxItemListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxItemListFilter.Location = new System.Drawing.Point(5, 6);
+            this.textBoxItemListFilter.Location = new System.Drawing.Point(4, 5);
+            this.textBoxItemListFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxItemListFilter.Name = "textBoxItemListFilter";
-            this.textBoxItemListFilter.Size = new System.Drawing.Size(1376, 30);
+            this.textBoxItemListFilter.Size = new System.Drawing.Size(1077, 26);
             this.textBoxItemListFilter.TabIndex = 8;
             this.textBoxItemListFilter.TabStop = false;
             this.textBoxItemListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxItemListFilter_KeyDown);
             // 
             // SysUtilitiesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1400, 700);
+            this.ClientSize = new System.Drawing.Size(1096, 560);
             this.Controls.Add(this.tabControlSystemTable);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "SysUtilitiesForm";
             this.Text = "SysAuditTrailList";
             this.panel3.ResumeLayout(false);

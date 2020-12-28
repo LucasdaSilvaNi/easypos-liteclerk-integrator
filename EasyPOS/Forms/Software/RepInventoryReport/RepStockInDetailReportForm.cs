@@ -217,19 +217,56 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                     {
                         foreach (var stockInDetail in stockInDetailReportList)
                         {
-                            String[] data = {stockInDetail.ColumnStockInDate,
-                              stockInDetail.ColumnStockInNumber,
-                              stockInDetail.ColumnManualStockInNumber,
-                              stockInDetail.ColumnRemarks.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
-                              stockInDetail.ColumnIsReturn.ToString(),
-                              stockInDetail.ColumnItem.Replace("," , " "),
-                              stockInDetail.ColumnUnit.Replace("," , " "),
-                              stockInDetail.ColumnQuantity.Replace("," , ""),
-                              stockInDetail.ColumnCost.Replace("," , ""),
-                              stockInDetail.ColumnAmount.Replace("," , ""),
-                              stockInDetail.ColumnExpiryDate.Replace("," , " "),
-                              stockInDetail.ColumnLotNumber.Replace("," , " "),
-                              stockInDetail.ColumnSellingPrice.Replace("," , "")
+                            String manualStockInNumber = "";
+                            if (stockInDetail.ColumnManualStockInNumber != null)
+                            {
+                                manualStockInNumber = stockInDetail.ColumnManualStockInNumber;
+                            }
+
+                            String expiryDate = "";
+                            if (stockInDetail.ColumnExpiryDate != null)
+                            {
+                                expiryDate = stockInDetail.ColumnExpiryDate;
+                            }
+
+                            String lotNumber = "";
+                            if (stockInDetail.ColumnLotNumber != null)
+                            {
+                                lotNumber = stockInDetail.ColumnLotNumber;
+                            }
+
+                            String sellingPrice = "";
+                            if (stockInDetail.ColumnSellingPrice != null)
+                            {
+                                sellingPrice = stockInDetail.ColumnSellingPrice;
+                            }
+
+                            String amount = "";
+                            if (stockInDetail.ColumnAmount != null)
+                            {
+                                amount = stockInDetail.ColumnAmount;
+                            }
+
+                            String cost = "";
+                            if (stockInDetail.ColumnCost != null)
+                            {
+                                cost = stockInDetail.ColumnCost;
+                            }
+
+                            String[] data = {
+                                stockInDetail.ColumnStockInDate,
+                                stockInDetail.ColumnStockInNumber,
+                                manualStockInNumber.Replace("," , ""),
+                                stockInDetail.ColumnRemarks.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
+                                stockInDetail.ColumnIsReturn.ToString(),
+                                stockInDetail.ColumnItem.Replace("," , " "),
+                                stockInDetail.ColumnUnit.Replace("," , " "),
+                                stockInDetail.ColumnQuantity.Replace("," , ""),
+                                cost.Replace("," , ""),
+                                amount.Replace("," , ""),
+                                expiryDate.Replace("," , ""),
+                                lotNumber.Replace("," , ""),
+                                sellingPrice.Replace("," , "")
                             };
 
                             csv.AppendLine(String.Join(",", data));

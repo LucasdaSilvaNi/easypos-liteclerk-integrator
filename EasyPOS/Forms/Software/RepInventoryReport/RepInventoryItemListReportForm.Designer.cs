@@ -55,6 +55,7 @@
             this.ColumnItemListOnHandQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemListIsInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemListIsLocked = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItemListReport)).BeginInit();
@@ -158,7 +159,8 @@
             this.ColumnItemListPrice,
             this.ColumnItemListOnHandQuantity,
             this.ColumnItemListIsInventory,
-            this.ColumnItemListIsLocked});
+            this.ColumnItemListIsLocked,
+            this.ColumnSupplier});
             this.dataGridViewItemListReport.Location = new System.Drawing.Point(0, 49);
             this.dataGridViewItemListReport.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewItemListReport.MultiSelect = false;
@@ -365,6 +367,14 @@
             this.ColumnItemListIsLocked.ReadOnly = true;
             this.ColumnItemListIsLocked.Visible = false;
             // 
+            // ColumnSupplier
+            // 
+            this.ColumnSupplier.DataPropertyName = "ColumnSupplier";
+            this.ColumnSupplier.HeaderText = "Supplier";
+            this.ColumnSupplier.Name = "ColumnSupplier";
+            this.ColumnSupplier.ReadOnly = true;
+            this.ColumnSupplier.Visible = false;
+            // 
             // RepInventoryItemListReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -418,5 +428,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListOnHandQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListIsInventory;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListIsLocked;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSupplier;
     }
 }

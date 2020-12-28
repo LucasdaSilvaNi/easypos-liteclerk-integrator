@@ -279,6 +279,7 @@
     <Compile Include="EasyFISIntegration\Entities\EasyPOSTrnStockOutItem.cs" />
     <Compile Include="EasyFISIntegration\Entities\EasyPOSTrnStockTransfer.cs" />
     <Compile Include="EasyFISIntegration\Entities\EasyPOSTrnStockTransferItem.cs" />
+    <Compile Include="Entities\DgvItemExpiryEntity.cs" />
     <Compile Include="Entities\DgvMstDiscountingListEntity.cs" />
     <Compile Include="Entities\DgvMstItemGroupItemListEntity.cs" />
     <Compile Include="Entities\DgvMstItemGroupSearchItemListEntity.cs" />
@@ -532,6 +533,12 @@
     </Compile>
     <Compile Include="Forms\Software\RepInventoryReport\RepInventoryItemListReportForm.Designer.cs">
       <DependentUpon>RepInventoryItemListReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepInventoryReport\RepItemExpiryReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepInventoryReport\RepItemExpiryReportForm.Designer.cs">
+      <DependentUpon>RepItemExpiryReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\RepInventoryReport\RepStockCardForm.cs">
       <SubType>Form</SubType>
@@ -1214,6 +1221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepInventoryItemListReportForm.resx">
       <DependentUpon>RepInventoryItemListReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepItemExpiryReportForm.resx">
+      <DependentUpon>RepItemExpiryReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepStockCardForm.resx">
       <DependentUpon>RepStockCardForm.cs</DependentUpon>

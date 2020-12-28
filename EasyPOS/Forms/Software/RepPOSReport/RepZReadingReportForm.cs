@@ -217,7 +217,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                 }
                                 else
                                 {
-                                    salesLineTotalGrossSales += (salesLine.Price * salesLine.Quantity) - ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstTax.Rate / 100)) * (salesLine.MstTax.Rate / 100));
+                                    salesLineTotalGrossSales += (salesLine.Price * salesLine.Quantity) - ((salesLine.NetPrice * salesLine.Quantity) / (1 + (salesLine.MstTax.Rate / 100)) * (salesLine.MstTax.Rate / 100));
                                 }
 
                                 if (salesLine.MstDiscount.Discount != "Senior Citizen Discount" && salesLine.MstDiscount.Discount != "PWD")

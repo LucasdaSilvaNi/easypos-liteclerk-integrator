@@ -5,7 +5,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -120,7 +123,6 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
             if (salesDetailList.Any())
             {
-                Decimal totalAmount = 0;
                 Int32 number = 0;
 
                 List<Entities.DGVRepHourlyTopSellingSalesReportEntities> newTopSellingItemsReportList = new List<Entities.DGVRepHourlyTopSellingSalesReportEntities>();
@@ -271,6 +273,58 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         private void buttonClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void buttonView_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = folderBrowserDialogGenerateCSV.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    DateTime startDate = dateStart;
+                    DateTime endDate = dateEnd;
+
+                    StringBuilder csv = new StringBuilder();
+                    String[] header = { "No.", "Item Code", "Item Description", "Item Category", "Unit", "Quantity", "Price", "Amount" };
+                    csv.AppendLine(String.Join(",", header));
+
+                    if (topHourlySalesSummaryList.Any())
+                    {
+                        foreach (var salesDetail in topHourlySalesSummaryList)
+                        {
+                            String[] data = {
+                                             salesDetail.ColumnHour,
+                                             salesDetail.ColumnNo,
+                                             salesDetail.ColumnItemDescription.Replace("," , " "),
+                                             salesDetail.ColumnCategory.Replace("," , " "),
+                                             salesDetail.ColumnUnit,
+                                             salesDetail.ColumnQuantity.Replace("," , ""),
+                                             salesDetail.ColumnPrice.Replace(",", " "),
+                                             salesDetail.ColumnAmount.Replace("," , ""),
+                            };
+
+                            csv.AppendLine(String.Join(",", data));
+                        }
+                    }
+
+                    String executingUser = WindowsIdentity.GetCurrent().Name;
+
+                    DirectorySecurity securityRules = new DirectorySecurity();
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.Read, AccessControlType.Allow));
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
+
+                    DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\HourlyTopSellingItemsReport_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+
+                    MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

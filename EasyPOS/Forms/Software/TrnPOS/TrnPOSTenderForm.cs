@@ -150,7 +150,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
             }
         }
-
+        
         public void CreateCollection(Image facepayCapturedImage)
         {
             List<Entities.TrnCollectionLineEntity> listCollectionLine = new List<Entities.TrnCollectionLineEntity>();

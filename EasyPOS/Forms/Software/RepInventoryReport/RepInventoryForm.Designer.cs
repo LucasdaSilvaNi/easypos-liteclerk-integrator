@@ -65,7 +65,9 @@
             "",
             "Stock In Detail Report",
             "Stock Out Detail Report",
-            "Stock Count Detail Report"});
+            "Stock Count Detail Report",
+            "",
+            "Item Expiry Report"});
             this.listBoxInventoryReport.Location = new System.Drawing.Point(0, 0);
             this.listBoxInventoryReport.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxInventoryReport.Name = "listBoxInventoryReport";

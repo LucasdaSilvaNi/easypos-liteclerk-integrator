@@ -21,5 +21,6 @@ namespace EasyPOS.Entities
         public String ColumnItemListOnHandQuantity { get; set; }
         public Boolean ColumnItemListIsInventory { get; set; }
         public Boolean ColumnItemListIsLocked { get; set; }
+        public String ColumnSupplier { get; set; }
     }
 }
