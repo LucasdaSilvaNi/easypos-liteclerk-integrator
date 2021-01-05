@@ -679,7 +679,7 @@ namespace EasyPOS.Controllers
 
 
                     var lockCollection = collection.FirstOrDefault();
-                    lockCollection.ChangeAmount = collection.FirstOrDefault().TenderAmount - collection.FirstOrDefault().Amount;
+                    lockCollection.ChangeAmount = collection.FirstOrDefault().TenderAmount - salesAmount;
                     lockCollection.Amount = totalCollectionLineAmount - collection.FirstOrDefault().ChangeAmount;
                     lockCollection.IsLocked = true;
                     db.SubmitChanges();
