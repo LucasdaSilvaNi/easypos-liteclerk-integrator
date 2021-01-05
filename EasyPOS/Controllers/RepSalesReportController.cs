@@ -420,5 +420,39 @@ namespace EasyPOS.Controllers
                 return new List<Entities.RepSalesReportTopSellingItemsReportEntity>();
             }
         }
+        // ===================
+        // Unsold Items Report
+        // ===================
+        //public List<Entities.RepUnsoldItemEntity> UnsoldItemsReport(DateTime startDate, DateTime endDate)
+        //{
+        //    var listSalesInvoices = from d in db.TrnSalesLines
+        //                            where d.TrnSale.SalesDate >= startDate
+        //                            && d.TrnSale.SalesDate <= endDate
+        //                            && d.TrnSale.IsLocked == true
+        //                            && d.TrnSale.IsCancelled == false
+        //                            select new
+        //                            {
+        //                                BarCode = d.MstItem.BarCode,
+        //                                ItemDescription = d.MstItem.ItemDescription,
+        //                                ItemCategory = d.MstItem.Category,
+        //                                Unit = d.MstUnit.Unit,
+        //                                Price = d.Price,
+        //                                Quantity = d.Quantity,
+        //                                Amount = d.Amount
+        //                            };
+        //    if(listSalesInvoices.Any())
+        //    {
+        //        var listOfItems = from d in db.TrnSalesLines
+        //                          where d.MstItem.ItemDescription != listSalesInvoices.ToList()
+        //                          select new
+        //                          {
+
+        //                          }
+
+
+        //    }
+        //    return new List<Entities.RepUnsoldItemEntity>();
+        //}
     }
+
 }

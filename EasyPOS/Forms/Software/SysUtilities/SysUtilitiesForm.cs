@@ -38,6 +38,8 @@ namespace EasyPOS.Forms.Software.SysUtilities
             GetUserList();
             CreateItemListDataGridView();
         }
+        public List<Entities.MstItemEntity> itemList = new List<Entities.MstItemEntity>();
+        public List<Entities.MstCustomerEntity> CustomerList = new List<Entities.MstCustomerEntity>();
 
         public void UpdateAuditTrailListDataSource()
         {
@@ -274,7 +276,7 @@ namespace EasyPOS.Forms.Software.SysUtilities
                 DialogResult dialogResult = folderBrowserDialogGenerateCSV.ShowDialog();
                 if (dialogResult == DialogResult.OK)
                 {
-                    
+
 
                     StringBuilder csv = new StringBuilder();
                     String[] header = { "Date", "User", "Module", "Action Taken", "Old Value", "New Value" };
@@ -515,6 +517,202 @@ namespace EasyPOS.Forms.Software.SysUtilities
 
             itemListPageNumber = itemListPageList.PageCount;
             textBoxItemListPageNumber.Text = itemListPageNumber + " / " + itemListPageList.PageCount;
+        }
+        //==============================
+        //Upload Item Data Export Format
+        //==============================
+        private void buttonExport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = folderBrowserDialogGenerateCSV.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    StringBuilder csv = new StringBuilder();
+                    String[] header = {
+                        "Barcode",
+                        "Item Description",
+                        "Unit",
+                        "Cost",
+                        "Price"
+                    };
+
+                    csv.AppendLine(String.Join(",", header));
+
+                    String executingUser = WindowsIdentity.GetCurrent().Name;
+
+                    DirectorySecurity securityRules = new DirectorySecurity();
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.Read, AccessControlType.Allow));
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
+
+                    DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\ItemUploadFormat" + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+
+                    MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        //=========================
+        //Upload Data Export Format
+        //=========================
+        private void buttonOpenFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult openFileDialogImportCSVResult = openFileDialogImportCSV.ShowDialog();
+                if (openFileDialogImportCSVResult == DialogResult.OK)
+                {
+                    itemList = new List<Entities.MstItemEntity>();
+
+                    textBoxFileName.Text = openFileDialogImportCSV.FileName;
+
+                    string[] lines = File.ReadAllLines(textBoxFileName.Text);
+                    if (lines.Length > 0)
+                    {
+                        for (int i = 1; i < lines.Length; i++)
+                        {
+                            string[] dataWords = lines[i].Split(',');
+
+                            itemList.Add(new Entities.MstItemEntity()
+                            {
+                                BarCode = dataWords[0],
+                                ItemDescription = dataWords[1],
+                                Unit = dataWords[2],
+                                Cost = Convert.ToDecimal(dataWords[3]),
+                                Price = Convert.ToDecimal(dataWords[4]),
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonImport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Controllers.MstItemController mstItemController = new Controllers.MstItemController();
+                String[] addItem = mstItemController.ImportItem(itemList);
+                if (addItem[1].Equals("0") == false)
+                {
+                    MessageBox.Show("Upload Successfully");
+
+                }
+                else
+                {
+                    MessageBox.Show(addItem[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //==================================
+        //Upload Customer Data Export Format
+        //==================================
+        private void buttonExportCustomer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = folderBrowserDialogGenerateCSV.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    StringBuilder csv = new StringBuilder();
+                    String[] header = {
+                        "Code",
+                        "Customer",
+                        "Contact No.",
+                        "Address",
+                    };
+
+                    csv.AppendLine(String.Join(",", header));
+
+                    String executingUser = WindowsIdentity.GetCurrent().Name;
+
+                    DirectorySecurity securityRules = new DirectorySecurity();
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.Read, AccessControlType.Allow));
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
+
+                    DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\CustomerUploadFormat" + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+
+                    MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //=========================
+        //Upload Data Export Format
+        //=========================
+        private void buttonOpenCustomer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult openFileDialogImportCSVResult = openFileDialogImportCSV.ShowDialog();
+                if (openFileDialogImportCSVResult == DialogResult.OK)
+                {
+                    CustomerList = new List<Entities.MstCustomerEntity>();
+
+                    textBoxFileNameCustomer.Text = openFileDialogImportCSV.FileName;
+
+                    string[] lines = File.ReadAllLines(textBoxFileNameCustomer.Text);
+                    if (lines.Length > 0)
+                    {
+                        for (int i = 1; i < lines.Length; i++)
+                        {
+                            string[] dataWords = lines[i].Split(',');
+
+                            CustomerList.Add(new Entities.MstCustomerEntity()
+                            {
+                                CustomerCode = dataWords[0],
+                                Customer = dataWords[1],
+                                ContactNumber = dataWords[2],
+                                Address = dataWords[3],
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonCustomerImport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Controllers.MstCustomerController mstCustomerController = new Controllers.MstCustomerController();
+                String[] addCustomer = mstCustomerController.ImportCustomer(CustomerList);
+                if (addCustomer[1].Equals("0") == false)
+                {
+                    MessageBox.Show("Upload Successfully");
+
+                }
+                else
+                {
+                    MessageBox.Show(addCustomer[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -1609,7 +1609,6 @@ namespace EasyPOS.Controllers
                         if (item.Any())
                         {
                             Decimal negativeQuantity = objSalesLine.Quantity * -1;
-
                             Decimal discountAmount = objSalesLine.Price * (discount.FirstOrDefault().DiscountRate / 100);
                             Decimal netPrice = objSalesLine.Price - discountAmount;
                             Decimal amount = netPrice * negativeQuantity;

@@ -83,7 +83,26 @@
             this.ColumnItemListIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColumnItemListSpace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxItemListFilter = new System.Windows.Forms.TextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.buttonExport = new System.Windows.Forms.Button();
+            this.textBoxFileName = new System.Windows.Forms.TextBox();
+            this.buttonOpenFile = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.buttonImport = new System.Windows.Forms.Button();
             this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
+            this.openFileDialogImportCSV = new System.Windows.Forms.OpenFileDialog();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.buttonExportCustomer = new System.Windows.Forms.Button();
+            this.textBoxFileNameCustomer = new System.Windows.Forms.TextBox();
+            this.buttonOpenCustomer = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.buttonCustomerImport = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuditTrailList)).BeginInit();
@@ -96,6 +115,14 @@
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItemList)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -108,7 +135,7 @@
             this.panel3.Controls.Add(this.textBoxAuditTrailListPageNumber);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 432);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1084, 42);
             this.panel3.TabIndex = 21;
@@ -121,7 +148,7 @@
             this.buttonAuditTrailListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAuditTrailListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonAuditTrailListPageListFirst.Location = new System.Drawing.Point(10, 9);
-            this.buttonAuditTrailListPageListFirst.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonAuditTrailListPageListFirst.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAuditTrailListPageListFirst.Name = "buttonAuditTrailListPageListFirst";
             this.buttonAuditTrailListPageListFirst.Size = new System.Drawing.Size(66, 26);
             this.buttonAuditTrailListPageListFirst.TabIndex = 13;
@@ -138,7 +165,7 @@
             this.buttonAuditTrailListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAuditTrailListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonAuditTrailListPageListPrevious.Location = new System.Drawing.Point(80, 9);
-            this.buttonAuditTrailListPageListPrevious.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonAuditTrailListPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAuditTrailListPageListPrevious.Name = "buttonAuditTrailListPageListPrevious";
             this.buttonAuditTrailListPageListPrevious.Size = new System.Drawing.Size(66, 26);
             this.buttonAuditTrailListPageListPrevious.TabIndex = 14;
@@ -154,7 +181,7 @@
             this.buttonAuditTrailListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAuditTrailListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonAuditTrailListPageListNext.Location = new System.Drawing.Point(210, 9);
-            this.buttonAuditTrailListPageListNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonAuditTrailListPageListNext.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAuditTrailListPageListNext.Name = "buttonAuditTrailListPageListNext";
             this.buttonAuditTrailListPageListNext.Size = new System.Drawing.Size(66, 26);
             this.buttonAuditTrailListPageListNext.TabIndex = 15;
@@ -170,7 +197,7 @@
             this.buttonAuditTrailListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAuditTrailListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonAuditTrailListPageListLast.Location = new System.Drawing.Point(278, 9);
-            this.buttonAuditTrailListPageListLast.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonAuditTrailListPageListLast.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAuditTrailListPageListLast.Name = "buttonAuditTrailListPageListLast";
             this.buttonAuditTrailListPageListLast.Size = new System.Drawing.Size(66, 26);
             this.buttonAuditTrailListPageListLast.TabIndex = 16;
@@ -186,7 +213,7 @@
             this.textBoxAuditTrailListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxAuditTrailListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.textBoxAuditTrailListPageNumber.Location = new System.Drawing.Point(150, 13);
-            this.textBoxAuditTrailListPageNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxAuditTrailListPageNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxAuditTrailListPageNumber.Name = "textBoxAuditTrailListPageNumber";
             this.textBoxAuditTrailListPageNumber.ReadOnly = true;
             this.textBoxAuditTrailListPageNumber.Size = new System.Drawing.Size(55, 16);
@@ -208,7 +235,7 @@
             this.panel2.Controls.Add(this.dataGridViewAuditTrailList);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1084, 474);
             this.panel2.TabIndex = 9;
@@ -269,7 +296,7 @@
             // 
             this.comboBoxUserFilter.FormattingEnabled = true;
             this.comboBoxUserFilter.Location = new System.Drawing.Point(238, 18);
-            this.comboBoxUserFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxUserFilter.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxUserFilter.Name = "comboBoxUserFilter";
             this.comboBoxUserFilter.Size = new System.Drawing.Size(212, 27);
             this.comboBoxUserFilter.TabIndex = 2;
@@ -279,7 +306,7 @@
             // 
             this.dateTimePickerSysAuditTrailListEndDateFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerSysAuditTrailListEndDateFilter.Location = new System.Drawing.Point(121, 19);
-            this.dateTimePickerSysAuditTrailListEndDateFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerSysAuditTrailListEndDateFilter.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerSysAuditTrailListEndDateFilter.Name = "dateTimePickerSysAuditTrailListEndDateFilter";
             this.dateTimePickerSysAuditTrailListEndDateFilter.Size = new System.Drawing.Size(114, 26);
             this.dateTimePickerSysAuditTrailListEndDateFilter.TabIndex = 1;
@@ -289,7 +316,7 @@
             // 
             this.dateTimePickerSysAuditTrailListStartDateFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerSysAuditTrailListStartDateFilter.Location = new System.Drawing.Point(4, 19);
-            this.dateTimePickerSysAuditTrailListStartDateFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerSysAuditTrailListStartDateFilter.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerSysAuditTrailListStartDateFilter.Name = "dateTimePickerSysAuditTrailListStartDateFilter";
             this.dateTimePickerSysAuditTrailListStartDateFilter.Size = new System.Drawing.Size(114, 26);
             this.dateTimePickerSysAuditTrailListStartDateFilter.TabIndex = 0;
@@ -316,7 +343,7 @@
             this.ColumnAuditTrailListFormInformation,
             this.ColumnAuditTrailListSpace});
             this.dataGridViewAuditTrailList.Location = new System.Drawing.Point(4, 49);
-            this.dataGridViewAuditTrailList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewAuditTrailList.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewAuditTrailList.MultiSelect = false;
             this.dataGridViewAuditTrailList.Name = "dataGridViewAuditTrailList";
             this.dataGridViewAuditTrailList.ReadOnly = true;
@@ -405,7 +432,7 @@
             this.panel1.Controls.Add(this.buttonClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1096, 50);
             this.panel1.TabIndex = 8;
@@ -414,7 +441,7 @@
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Utilities;
             this.pictureBox1.Location = new System.Drawing.Point(10, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(38, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -442,7 +469,7 @@
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
             this.buttonClose.Location = new System.Drawing.Point(1016, 10);
-            this.buttonClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(70, 32);
             this.buttonClose.TabIndex = 20;
@@ -455,9 +482,11 @@
             // 
             this.tabControlSystemTable.Controls.Add(this.tabPage1);
             this.tabControlSystemTable.Controls.Add(this.tabPageBarcodePrinting);
+            this.tabControlSystemTable.Controls.Add(this.tabPage2);
+            this.tabControlSystemTable.Controls.Add(this.tabPage3);
             this.tabControlSystemTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlSystemTable.Location = new System.Drawing.Point(0, 50);
-            this.tabControlSystemTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControlSystemTable.Margin = new System.Windows.Forms.Padding(2);
             this.tabControlSystemTable.Name = "tabControlSystemTable";
             this.tabControlSystemTable.SelectedIndex = 0;
             this.tabControlSystemTable.Size = new System.Drawing.Size(1096, 510);
@@ -467,9 +496,9 @@
             // 
             this.tabPage1.Controls.Add(this.panel9);
             this.tabPage1.Location = new System.Drawing.Point(4, 28);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage1.Size = new System.Drawing.Size(1088, 478);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Audit Trail";
@@ -480,7 +509,7 @@
             this.panel9.Controls.Add(this.panel2);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(2, 2);
-            this.panel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel9.Margin = new System.Windows.Forms.Padding(2);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(1084, 474);
             this.panel9.TabIndex = 1;
@@ -489,9 +518,9 @@
             // 
             this.tabPageBarcodePrinting.Controls.Add(this.panel4);
             this.tabPageBarcodePrinting.Location = new System.Drawing.Point(4, 28);
-            this.tabPageBarcodePrinting.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageBarcodePrinting.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageBarcodePrinting.Name = "tabPageBarcodePrinting";
-            this.tabPageBarcodePrinting.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageBarcodePrinting.Padding = new System.Windows.Forms.Padding(2);
             this.tabPageBarcodePrinting.Size = new System.Drawing.Size(1088, 478);
             this.tabPageBarcodePrinting.TabIndex = 1;
             this.tabPageBarcodePrinting.Text = "Barcode Printing";
@@ -505,7 +534,7 @@
             this.panel4.Controls.Add(this.textBoxItemListFilter);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(2, 2);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1084, 474);
             this.panel4.TabIndex = 20;
@@ -520,7 +549,7 @@
             this.panel5.Controls.Add(this.textBoxItemListPageNumber);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(0, 432);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1084, 42);
             this.panel5.TabIndex = 18;
@@ -533,7 +562,7 @@
             this.buttonItemListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonItemListPageListFirst.Location = new System.Drawing.Point(10, 9);
-            this.buttonItemListPageListFirst.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonItemListPageListFirst.Margin = new System.Windows.Forms.Padding(2);
             this.buttonItemListPageListFirst.Name = "buttonItemListPageListFirst";
             this.buttonItemListPageListFirst.Size = new System.Drawing.Size(66, 26);
             this.buttonItemListPageListFirst.TabIndex = 13;
@@ -550,7 +579,7 @@
             this.buttonItemListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonItemListPageListPrevious.Location = new System.Drawing.Point(80, 9);
-            this.buttonItemListPageListPrevious.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonItemListPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.buttonItemListPageListPrevious.Name = "buttonItemListPageListPrevious";
             this.buttonItemListPageListPrevious.Size = new System.Drawing.Size(66, 26);
             this.buttonItemListPageListPrevious.TabIndex = 14;
@@ -566,7 +595,7 @@
             this.buttonItemListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonItemListPageListNext.Location = new System.Drawing.Point(210, 9);
-            this.buttonItemListPageListNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonItemListPageListNext.Margin = new System.Windows.Forms.Padding(2);
             this.buttonItemListPageListNext.Name = "buttonItemListPageListNext";
             this.buttonItemListPageListNext.Size = new System.Drawing.Size(66, 26);
             this.buttonItemListPageListNext.TabIndex = 15;
@@ -582,7 +611,7 @@
             this.buttonItemListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonItemListPageListLast.Location = new System.Drawing.Point(278, 9);
-            this.buttonItemListPageListLast.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonItemListPageListLast.Margin = new System.Windows.Forms.Padding(2);
             this.buttonItemListPageListLast.Name = "buttonItemListPageListLast";
             this.buttonItemListPageListLast.Size = new System.Drawing.Size(66, 26);
             this.buttonItemListPageListLast.TabIndex = 16;
@@ -598,7 +627,7 @@
             this.textBoxItemListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxItemListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.textBoxItemListPageNumber.Location = new System.Drawing.Point(150, 13);
-            this.textBoxItemListPageNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxItemListPageNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxItemListPageNumber.Name = "textBoxItemListPageNumber";
             this.textBoxItemListPageNumber.ReadOnly = true;
             this.textBoxItemListPageNumber.Size = new System.Drawing.Size(55, 16);
@@ -630,7 +659,7 @@
             this.ColumnItemListIsLocked,
             this.ColumnItemListSpace});
             this.dataGridViewItemList.Location = new System.Drawing.Point(4, 34);
-            this.dataGridViewItemList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewItemList.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewItemList.MultiSelect = false;
             this.dataGridViewItemList.Name = "dataGridViewItemList";
             this.dataGridViewItemList.ReadOnly = true;
@@ -742,12 +771,248 @@
             this.textBoxItemListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxItemListFilter.Location = new System.Drawing.Point(4, 5);
-            this.textBoxItemListFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxItemListFilter.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxItemListFilter.Name = "textBoxItemListFilter";
             this.textBoxItemListFilter.Size = new System.Drawing.Size(1077, 26);
             this.textBoxItemListFilter.TabIndex = 8;
             this.textBoxItemListFilter.TabStop = false;
             this.textBoxItemListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxItemListFilter_KeyDown);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.panel7);
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1088, 478);
+            this.tabPage2.TabIndex = 2;
+            this.tabPage2.Text = "Upload Item";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.LightGray;
+            this.panel7.Controls.Add(this.panel8);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Location = new System.Drawing.Point(3, 3);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(1082, 475);
+            this.panel7.TabIndex = 20;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.White;
+            this.panel8.Controls.Add(this.buttonExport);
+            this.panel8.Controls.Add(this.textBoxFileName);
+            this.panel8.Controls.Add(this.buttonOpenFile);
+            this.panel8.Controls.Add(this.pictureBox2);
+            this.panel8.Controls.Add(this.label5);
+            this.panel8.Controls.Add(this.buttonImport);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Margin = new System.Windows.Forms.Padding(2);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(1082, 50);
+            this.panel8.TabIndex = 30;
+            // 
+            // buttonExport
+            // 
+            this.buttonExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonExport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonExport.FlatAppearance.BorderSize = 0;
+            this.buttonExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExport.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExport.ForeColor = System.Drawing.Color.White;
+            this.buttonExport.Location = new System.Drawing.Point(1008, 10);
+            this.buttonExport.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonExport.Name = "buttonExport";
+            this.buttonExport.Size = new System.Drawing.Size(70, 32);
+            this.buttonExport.TabIndex = 33;
+            this.buttonExport.TabStop = false;
+            this.buttonExport.Text = "Export";
+            this.buttonExport.UseVisualStyleBackColor = false;
+            this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
+            // 
+            // textBoxFileName
+            // 
+            this.textBoxFileName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxFileName.Location = new System.Drawing.Point(462, 14);
+            this.textBoxFileName.Name = "textBoxFileName";
+            this.textBoxFileName.ReadOnly = true;
+            this.textBoxFileName.Size = new System.Drawing.Size(377, 26);
+            this.textBoxFileName.TabIndex = 32;
+            // 
+            // buttonOpenFile
+            // 
+            this.buttonOpenFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonOpenFile.Location = new System.Drawing.Point(844, 13);
+            this.buttonOpenFile.Name = "buttonOpenFile";
+            this.buttonOpenFile.Size = new System.Drawing.Size(70, 26);
+            this.buttonOpenFile.TabIndex = 31;
+            this.buttonOpenFile.Text = "Open";
+            this.buttonOpenFile.UseVisualStyleBackColor = true;
+            this.buttonOpenFile.Click += new System.EventHandler(this.buttonOpenFile_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::EasyPOS.Properties.Resources.Stock_In;
+            this.pictureBox2.Location = new System.Drawing.Point(11, 14);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(38, 32);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 30;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.label5.Location = new System.Drawing.Point(50, 14);
+            this.label5.Margin = new System.Windows.Forms.Padding(0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(77, 28);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Import";
+            // 
+            // buttonImport
+            // 
+            this.buttonImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonImport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonImport.FlatAppearance.BorderSize = 0;
+            this.buttonImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonImport.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonImport.ForeColor = System.Drawing.Color.White;
+            this.buttonImport.Location = new System.Drawing.Point(927, 10);
+            this.buttonImport.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonImport.Name = "buttonImport";
+            this.buttonImport.Size = new System.Drawing.Size(70, 32);
+            this.buttonImport.TabIndex = 0;
+            this.buttonImport.Text = "Import";
+            this.buttonImport.UseVisualStyleBackColor = false;
+            this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
+            // 
+            // openFileDialogImportCSV
+            // 
+            this.openFileDialogImportCSV.FileName = "openFileDialogImportCSV";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.panel6);
+            this.tabPage3.Location = new System.Drawing.Point(4, 28);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1088, 478);
+            this.tabPage3.TabIndex = 3;
+            this.tabPage3.Text = "Upload Customer";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.LightGray;
+            this.panel6.Controls.Add(this.panel10);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(3, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1082, 475);
+            this.panel6.TabIndex = 21;
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.White;
+            this.panel10.Controls.Add(this.buttonExportCustomer);
+            this.panel10.Controls.Add(this.textBoxFileNameCustomer);
+            this.panel10.Controls.Add(this.buttonOpenCustomer);
+            this.panel10.Controls.Add(this.pictureBox3);
+            this.panel10.Controls.Add(this.label6);
+            this.panel10.Controls.Add(this.buttonCustomerImport);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel10.Location = new System.Drawing.Point(0, 0);
+            this.panel10.Margin = new System.Windows.Forms.Padding(2);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(1082, 50);
+            this.panel10.TabIndex = 30;
+            // 
+            // buttonExportCustomer
+            // 
+            this.buttonExportCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonExportCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonExportCustomer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonExportCustomer.FlatAppearance.BorderSize = 0;
+            this.buttonExportCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportCustomer.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExportCustomer.ForeColor = System.Drawing.Color.White;
+            this.buttonExportCustomer.Location = new System.Drawing.Point(1008, 10);
+            this.buttonExportCustomer.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonExportCustomer.Name = "buttonExportCustomer";
+            this.buttonExportCustomer.Size = new System.Drawing.Size(70, 32);
+            this.buttonExportCustomer.TabIndex = 33;
+            this.buttonExportCustomer.TabStop = false;
+            this.buttonExportCustomer.Text = "Export";
+            this.buttonExportCustomer.UseVisualStyleBackColor = false;
+            this.buttonExportCustomer.Click += new System.EventHandler(this.buttonExportCustomer_Click);
+            // 
+            // textBoxFileNameCustomer
+            // 
+            this.textBoxFileNameCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxFileNameCustomer.Location = new System.Drawing.Point(462, 14);
+            this.textBoxFileNameCustomer.Name = "textBoxFileNameCustomer";
+            this.textBoxFileNameCustomer.ReadOnly = true;
+            this.textBoxFileNameCustomer.Size = new System.Drawing.Size(377, 26);
+            this.textBoxFileNameCustomer.TabIndex = 32;
+            // 
+            // buttonOpenCustomer
+            // 
+            this.buttonOpenCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonOpenCustomer.Location = new System.Drawing.Point(844, 13);
+            this.buttonOpenCustomer.Name = "buttonOpenCustomer";
+            this.buttonOpenCustomer.Size = new System.Drawing.Size(70, 26);
+            this.buttonOpenCustomer.TabIndex = 31;
+            this.buttonOpenCustomer.Text = "Open";
+            this.buttonOpenCustomer.UseVisualStyleBackColor = true;
+            this.buttonOpenCustomer.Click += new System.EventHandler(this.buttonOpenCustomer_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::EasyPOS.Properties.Resources.Stock_In;
+            this.pictureBox3.Location = new System.Drawing.Point(11, 14);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(38, 32);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 30;
+            this.pictureBox3.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(50, 14);
+            this.label6.Margin = new System.Windows.Forms.Padding(0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 28);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Import";
+            // 
+            // buttonCustomerImport
+            // 
+            this.buttonCustomerImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCustomerImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonCustomerImport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonCustomerImport.FlatAppearance.BorderSize = 0;
+            this.buttonCustomerImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCustomerImport.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCustomerImport.ForeColor = System.Drawing.Color.White;
+            this.buttonCustomerImport.Location = new System.Drawing.Point(927, 10);
+            this.buttonCustomerImport.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonCustomerImport.Name = "buttonCustomerImport";
+            this.buttonCustomerImport.Size = new System.Drawing.Size(70, 32);
+            this.buttonCustomerImport.TabIndex = 0;
+            this.buttonCustomerImport.Text = "Import";
+            this.buttonCustomerImport.UseVisualStyleBackColor = false;
+            this.buttonCustomerImport.Click += new System.EventHandler(this.buttonCustomerImport_Click);
             // 
             // SysUtilitiesForm
             // 
@@ -779,6 +1044,16 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItemList)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -839,5 +1114,24 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button buttonImport;
+        private System.Windows.Forms.TextBox textBoxFileName;
+        private System.Windows.Forms.Button buttonOpenFile;
+        private System.Windows.Forms.Button buttonExport;
+        private System.Windows.Forms.OpenFileDialog openFileDialogImportCSV;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Button buttonExportCustomer;
+        private System.Windows.Forms.TextBox textBoxFileNameCustomer;
+        private System.Windows.Forms.Button buttonOpenCustomer;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button buttonCustomerImport;
     }
 }
