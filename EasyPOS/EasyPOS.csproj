@@ -295,6 +295,7 @@
     <Compile Include="Entities\DgvMstItemGroupListEntity.cs" />
     <Compile Include="Entities\DgvMstItemComponentListEntity.cs" />
     <Compile Include="Entities\DgvSysDispatchStationSalesListEntity.cs" />
+    <Compile Include="Entities\DgvSysUtilitiesItemUpload.cs" />
     <Compile Include="Entities\DgvTrnPurchaseOrderLineListEntity.cs" />
     <Compile Include="Entities\DgvTrnPurchaseOrderListEntity.cs" />
     <Compile Include="Entities\DgvTrnPurchaseOrderSearchItemListEntity.cs" />
@@ -338,6 +339,7 @@
     <Compile Include="Entities\DgvMstUserRightsListEntity.cs" />
     <Compile Include="Entities\DgvMstUserListEntity.cs" />
     <Compile Include="Entities\DgvSysUtilitiesBarcodePrintingItemList.cs" />
+    <Compile Include="Entities\DgvRepUnsoldItemEntity.cs" />
     <Compile Include="Entities\EspCardDetailsEntity.cs" />
     <Compile Include="Entities\EspTokenEntity.cs" />
     <Compile Include="Entities\MobTrnSalesOrderEntity.cs" />
@@ -357,6 +359,7 @@
     <Compile Include="Entities\RepRemitanceReportCashInOutSummaryReportEntity.cs" />
     <Compile Include="Entities\RepSalesReportCustomerListReportEntity.cs" />
     <Compile Include="Entities\RepSalesReportSalesReturnDetailReportEntity.cs" />
+    <Compile Include="Entities\RepUnsoldItemEntity.cs" />
     <Compile Include="Entities\SysKitchenEntity.cs" />
     <Compile Include="Entities\MstPayTypeEntity.cs" />
     <Compile Include="Entities\MstPeriodEntity.cs" />
@@ -671,6 +674,12 @@
     </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepCollectionDetailFacepayReportForm.designer.cs">
       <DependentUpon>RepCollectionDetailFacepayReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepUnsoldItemReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepUnsoldItemReportForm.Designer.cs">
+      <DependentUpon>RepUnsoldItemReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\SysDispatchStation\SysDispatchStationForm.cs">
       <SubType>Form</SubType>
@@ -1287,6 +1296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepCollectionDetailFacepayReportForm.resx">
       <DependentUpon>RepCollectionDetailFacepayReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepUnsoldItemReportForm.resx">
+      <DependentUpon>RepUnsoldItemReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\SysDispatchStation\SysDispatchStationForm.resx">
       <DependentUpon>SysDispatchStationForm.cs</DependentUpon>

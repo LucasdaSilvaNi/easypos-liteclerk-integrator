@@ -475,7 +475,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
                         trnStockCountLineItemDetailForm.ShowDialog();
                     }
                     else
-                    {
+                {
                         MessageBox.Show("Item not found.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }

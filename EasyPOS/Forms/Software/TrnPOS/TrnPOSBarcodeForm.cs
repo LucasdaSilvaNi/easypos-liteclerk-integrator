@@ -513,7 +513,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonTender_Click(object sender, EventArgs e)
         {
-            if (dataGridViewSalesList.Rows.Count > 1)
+            if (dataGridViewSalesList.Rows.Count > 0)
             {
                 if (dataGridViewSalesList.CurrentCell.RowIndex != -1)
                 {

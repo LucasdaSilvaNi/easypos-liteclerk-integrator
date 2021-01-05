@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyPOS.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -373,5 +374,72 @@ namespace EasyPOS.Controllers
                 return new String[] { e.Message, "0" };
             }
         }
+
+        // ===============
+        // Import Customer
+        // ===============
+        public String[] ImportCustomer(List<MstCustomerEntity> objcustomerList)
+        {
+            try
+            {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+                var term = from d in db.MstTerms select d;
+                if (term.Any() == false)
+                {
+                    return new String[] { "Term not found.", "0" };
+                }
+
+                var account = from d in db.MstAccounts where d.Account == "Accounts Receivable - Sales" select d;
+                if (account.Any() == false)
+                {
+                    return new String[] { "Account not found.", "0" };
+                }
+                if (objcustomerList.Any())
+                {
+                    foreach(var obj in objcustomerList)
+                    {
+                        Data.MstCustomer newCustomer = new Data.MstCustomer()
+                        {
+                            Customer = obj.Customer,
+                            Address = obj.Address,
+                            ContactPerson = "",
+                            ContactNumber = obj.ContactNumber,
+                            CreditLimit = 0,
+                            TermId = term.FirstOrDefault().Id,
+                            TIN = "",
+                            WithReward = false,
+                            RewardNumber = null,
+                            RewardConversion = 0,
+                            AvailableReward = 0,
+                            AccountId = account.FirstOrDefault().Id,
+                            EntryUserId = currentUserLogin.FirstOrDefault().Id,
+                            EntryDateTime = DateTime.Today,
+                            UpdateUserId = currentUserLogin.FirstOrDefault().Id,
+                            UpdateDateTime = DateTime.Today,
+                            IsLocked = false,
+                            DefaultPriceDescription = null,
+                            CustomerCode = obj.CustomerCode
+                        };
+
+                        db.MstCustomers.InsertOnSubmit(newCustomer);
+                        db.SubmitChanges();
+                    }
+                    return new String[] { "", "1" };
+                }
+                else
+                {
+                    return new String[] { "Data source is empty.", "0" };
+                }
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+
     }
 }

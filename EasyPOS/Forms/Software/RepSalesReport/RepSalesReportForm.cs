@@ -238,6 +238,16 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         dateTimePickerStartDate.Focus();
                         break;
+
+                    case "Unsold Item Report":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+
+                        dateTimePickerStartDate.Focus();
+                        break;
                 }
             }
             else
@@ -508,6 +518,26 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                 {
                                     RepHourlyTopSellingSalesReportForm repTopSalesSummaryMonthlyReport = new RepHourlyTopSellingSalesReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
                                     repTopSalesSummaryMonthlyReport.ShowDialog();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            break;
+                        case "Unsold Item Report":
+                            sysUserRights = new Modules.SysUserRightsModule("RepSalesDetail");
+
+                            if (sysUserRights.GetUserRights() == null)
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                if (sysUserRights.GetUserRights().CanView == true)
+                                {
+                                    RepUnsoldItemReportForm repUnsoldItemReport = new RepUnsoldItemReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                                    repUnsoldItemReport.ShowDialog();
                                 }
                                 else
                                 {

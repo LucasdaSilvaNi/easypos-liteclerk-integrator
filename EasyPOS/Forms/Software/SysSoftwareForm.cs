@@ -1073,7 +1073,7 @@ namespace EasyPOS.Forms.Software
 
         private void utilitiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            AddTabPageUtilities();
         }
 
         private void pOSReportToolStripMenuItem_Click(object sender, EventArgs e)
