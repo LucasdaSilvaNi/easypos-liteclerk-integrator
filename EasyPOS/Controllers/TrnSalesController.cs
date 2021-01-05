@@ -675,7 +675,11 @@ namespace EasyPOS.Controllers
                         totalCollectionLineAmount = collectionLines.Sum(d => d.Amount);
                     }
 
+                    // change amount = tender amount - sales amount
+
+
                     var lockCollection = collection.FirstOrDefault();
+                    lockCollection.ChangeAmount = collection.FirstOrDefault().TenderAmount - collection.FirstOrDefault().Amount;
                     lockCollection.Amount = totalCollectionLineAmount - collection.FirstOrDefault().ChangeAmount;
                     lockCollection.IsLocked = true;
                     db.SubmitChanges();
@@ -2502,10 +2506,6 @@ namespace EasyPOS.Controllers
 
             return sale.FirstOrDefault();
         }
-
-        // =================================
-        // Recompute Total Change for Tender
-        // =================================
 
     }
 }
