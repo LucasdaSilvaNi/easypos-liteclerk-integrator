@@ -368,7 +368,7 @@ namespace EasyPOS.Controllers
             return customer.ToList();
         }
 
-        
+
 
         // ===============================
         // Hourly Top Selling Sales Report
@@ -423,36 +423,37 @@ namespace EasyPOS.Controllers
         // ===================
         // Unsold Items Report
         // ===================
-        //public List<Entities.RepUnsoldItemEntity> UnsoldItemsReport(DateTime startDate, DateTime endDate)
-        //{
-        //    var listSalesInvoices = from d in db.TrnSalesLines
-        //                            where d.TrnSale.SalesDate >= startDate
-        //                            && d.TrnSale.SalesDate <= endDate
-        //                            && d.TrnSale.IsLocked == true
-        //                            && d.TrnSale.IsCancelled == false
-        //                            select new
-        //                            {
-        //                                BarCode = d.MstItem.BarCode,
-        //                                ItemDescription = d.MstItem.ItemDescription,
-        //                                ItemCategory = d.MstItem.Category,
-        //                                Unit = d.MstUnit.Unit,
-        //                                Price = d.Price,
-        //                                Quantity = d.Quantity,
-        //                                Amount = d.Amount
-        //                            };
-        //    if(listSalesInvoices.Any())
-        //    {
-        //        var listOfItems = from d in db.TrnSalesLines
-        //                          where d.MstItem.ItemDescription != listSalesInvoices.ToList()
-        //                          select new
-        //                          {
+        public List<Entities.RepUnsoldItemEntity> UnsoldItemsReport(DateTime startDate, DateTime endDate)
+        {
+            List<Entities.RepUnsoldItemEntity> data = new List<Entities.RepUnsoldItemEntity>();
 
-        //                          }
+            var items = from d in db.MstItems select d;
+            if (items.Any())
+            {
+                foreach (var item in items)
+                {
+                    var salesLines = from d in db.TrnSalesLines
+                                     where d.ItemId == item.Id
+                                     && d.TrnSale.SalesDate >= startDate
+                                     && d.TrnSale.SalesDate <= endDate
+                                     select d;
 
+                    if (salesLines.Any() == false)
+                    {
+                        data.Add(new Entities.RepUnsoldItemEntity()
+                        {
+                            BarCode = item.BarCode,
+                            ItemDescription = item.ItemDescription,
+                            ItemCategory = item.Category,
+                            Unit = item.MstUnit.Unit,
+                            Price = item.Price,
+                            Cost = item.Cost
+                        });
+                    }
+                }
+            }
 
-        //    }
-        //    return new List<Entities.RepUnsoldItemEntity>();
-        //}
+            return data;
+        }
     }
-
 }

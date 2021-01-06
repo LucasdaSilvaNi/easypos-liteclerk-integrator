@@ -593,10 +593,13 @@ namespace EasyPOS.Controllers
         // ======================
         // Stock-In Detail Report
         // ======================
-        public List<Entities.RepInventoryReportStockInDetailReportEntity> StockInDetailReport(DateTime startDate, DateTime endDate)
+        public List<Entities.RepInventoryReportStockInDetailReportEntity> StockInDetailReport(string filter, DateTime startDate, DateTime endDate)
         {
             var stockInDetails = from d in db.TrnStockInLines
-                                 where d.TrnStockIn.IsLocked == true
+                                 where (d.TrnStockIn.StockInNumber.Contains(filter)
+                                 ||d.TrnStockIn.ManualStockInNumber.Contains(filter)
+                                 || d.MstUnit.Unit.Contains(filter))
+                                       && d.TrnStockIn.IsLocked == true
                                        && d.TrnStockIn.StockInDate >= startDate.Date
                                        && d.TrnStockIn.StockInDate <= endDate.Date
                                  select new Entities.RepInventoryReportStockInDetailReportEntity

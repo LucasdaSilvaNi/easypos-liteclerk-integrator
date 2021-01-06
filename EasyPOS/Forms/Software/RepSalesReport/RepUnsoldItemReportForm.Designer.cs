@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepUnsoldItemReportForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonClose = new System.Windows.Forms.Button();
@@ -38,25 +36,24 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridViewUnsoldItems = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
             this.buttonPageListFirst = new System.Windows.Forms.Button();
             this.buttonPageListNext = new System.Windows.Forms.Button();
             this.buttonPageListLast = new System.Windows.Forms.Button();
             this.buttonPageListPrevious = new System.Windows.Forms.Button();
             this.textBoxPageNumber = new System.Windows.Forms.TextBox();
+            this.dataGridViewUnsoldItems = new System.Windows.Forms.DataGridView();
             this.ColumnBarCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnsoldItems)).BeginInit();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnsoldItems)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -143,35 +140,6 @@
             this.panel2.Size = new System.Drawing.Size(1096, 472);
             this.panel2.TabIndex = 12;
             // 
-            // dataGridViewUnsoldItems
-            // 
-            this.dataGridViewUnsoldItems.AllowUserToAddRows = false;
-            this.dataGridViewUnsoldItems.AllowUserToDeleteRows = false;
-            this.dataGridViewUnsoldItems.AllowUserToResizeRows = false;
-            this.dataGridViewUnsoldItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewUnsoldItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewUnsoldItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewUnsoldItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnBarCode,
-            this.ColumnItemDescription,
-            this.ColumnItemCategory,
-            this.ColumnUnit,
-            this.ColumnQuantity,
-            this.ColumnPrice,
-            this.ColumnAmount});
-            this.dataGridViewUnsoldItems.Location = new System.Drawing.Point(0, 2);
-            this.dataGridViewUnsoldItems.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridViewUnsoldItems.MultiSelect = false;
-            this.dataGridViewUnsoldItems.Name = "dataGridViewUnsoldItems";
-            this.dataGridViewUnsoldItems.ReadOnly = true;
-            this.dataGridViewUnsoldItems.RowTemplate.Height = 24;
-            this.dataGridViewUnsoldItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewUnsoldItems.ShowEditingIcon = false;
-            this.dataGridViewUnsoldItems.Size = new System.Drawing.Size(1094, 431);
-            this.dataGridViewUnsoldItems.TabIndex = 0;
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
@@ -202,6 +170,7 @@
             this.buttonPageListFirst.TabStop = false;
             this.buttonPageListFirst.Text = "First";
             this.buttonPageListFirst.UseVisualStyleBackColor = false;
+            this.buttonPageListFirst.Click += new System.EventHandler(this.buttonPageListFirst_Click);
             // 
             // buttonPageListNext
             // 
@@ -217,6 +186,7 @@
             this.buttonPageListNext.TabStop = false;
             this.buttonPageListNext.Text = "Next";
             this.buttonPageListNext.UseVisualStyleBackColor = false;
+            this.buttonPageListNext.Click += new System.EventHandler(this.buttonPageListNext_Click);
             // 
             // buttonPageListLast
             // 
@@ -232,6 +202,7 @@
             this.buttonPageListLast.TabStop = false;
             this.buttonPageListLast.Text = "Last";
             this.buttonPageListLast.UseVisualStyleBackColor = false;
+            this.buttonPageListLast.Click += new System.EventHandler(this.buttonPageListLast_Click);
             // 
             // buttonPageListPrevious
             // 
@@ -243,11 +214,12 @@
             this.buttonPageListPrevious.Location = new System.Drawing.Point(80, 7);
             this.buttonPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPageListPrevious.Name = "buttonPageListPrevious";
-            this.buttonPageListPrevious.Size = new System.Drawing.Size(66, 26);
+            this.buttonPageListPrevious.Size = new System.Drawing.Size(70, 26);
             this.buttonPageListPrevious.TabIndex = 9;
             this.buttonPageListPrevious.TabStop = false;
             this.buttonPageListPrevious.Text = "Previous";
             this.buttonPageListPrevious.UseVisualStyleBackColor = false;
+            this.buttonPageListPrevious.Click += new System.EventHandler(this.buttonPageListPrevious_Click);
             // 
             // textBoxPageNumber
             // 
@@ -262,6 +234,34 @@
             this.textBoxPageNumber.TabIndex = 12;
             this.textBoxPageNumber.TabStop = false;
             this.textBoxPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // dataGridViewUnsoldItems
+            // 
+            this.dataGridViewUnsoldItems.AllowUserToAddRows = false;
+            this.dataGridViewUnsoldItems.AllowUserToDeleteRows = false;
+            this.dataGridViewUnsoldItems.AllowUserToResizeRows = false;
+            this.dataGridViewUnsoldItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewUnsoldItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewUnsoldItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewUnsoldItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnBarCode,
+            this.ColumnItemDescription,
+            this.ColumnItemCategory,
+            this.ColumnUnit,
+            this.ColumnCost,
+            this.ColumnPrice});
+            this.dataGridViewUnsoldItems.Location = new System.Drawing.Point(0, 2);
+            this.dataGridViewUnsoldItems.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewUnsoldItems.MultiSelect = false;
+            this.dataGridViewUnsoldItems.Name = "dataGridViewUnsoldItems";
+            this.dataGridViewUnsoldItems.ReadOnly = true;
+            this.dataGridViewUnsoldItems.RowTemplate.Height = 24;
+            this.dataGridViewUnsoldItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewUnsoldItems.ShowEditingIcon = false;
+            this.dataGridViewUnsoldItems.Size = new System.Drawing.Size(1094, 431);
+            this.dataGridViewUnsoldItems.TabIndex = 0;
             // 
             // ColumnBarCode
             // 
@@ -294,32 +294,21 @@
             this.ColumnUnit.Name = "ColumnUnit";
             this.ColumnUnit.ReadOnly = true;
             // 
-            // ColumnQuantity
+            // ColumnCost
             // 
-            this.ColumnQuantity.DataPropertyName = "ColumnQuantity";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnQuantity.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColumnQuantity.HeaderText = "Quantity";
-            this.ColumnQuantity.Name = "ColumnQuantity";
-            this.ColumnQuantity.ReadOnly = true;
+            this.ColumnCost.DataPropertyName = "ColumnCost";
+            this.ColumnCost.HeaderText = "Cost";
+            this.ColumnCost.Name = "ColumnCost";
+            this.ColumnCost.ReadOnly = true;
             // 
             // ColumnPrice
             // 
             this.ColumnPrice.DataPropertyName = "ColumnPrice";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnPrice.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnPrice.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColumnPrice.HeaderText = "Price";
             this.ColumnPrice.Name = "ColumnPrice";
             this.ColumnPrice.ReadOnly = true;
-            // 
-            // ColumnAmount
-            // 
-            this.ColumnAmount.DataPropertyName = "ColumnAmount";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnAmount.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnAmount.HeaderText = "Amount";
-            this.ColumnAmount.Name = "ColumnAmount";
-            this.ColumnAmount.ReadOnly = true;
             // 
             // RepUnsoldItemReportForm
             // 
@@ -338,9 +327,9 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnsoldItems)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnsoldItems)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -364,8 +353,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAmount;
     }
 }

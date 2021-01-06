@@ -827,5 +827,117 @@ namespace EasyPOS.Controllers
                 return new String[] { e.Message, "0" };
             }
         }
+        // ==================
+        // Update Item Price
+        // ==================
+        public String[] UpdateItemPrice(List<Entities.MstItemEntity> objitemList)
+        {
+            try
+            {
+                var currentUserLogin = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
+                if (currentUserLogin.Any() == false)
+                {
+                    return new String[] { "Current login user not found.", "0" };
+                }
+
+                if (objitemList.Any())
+                {
+                    var salesAccount = from d in db.MstAccounts where d.Account == "Sales" select d;
+                    if (salesAccount.Any() == false)
+                    {
+                        return new String[] { "Sales account not found.", "0" };
+                    }
+
+                    var assetsAccount = from d in db.MstAccounts where d.Account == "Inventory" select d;
+                    if (assetsAccount.Any() == false)
+                    {
+                        return new String[] { "Assets account not found.", "0" };
+                    }
+
+                    var costAccount = from d in db.MstAccounts where d.Account == "Cost of Sales" select d;
+                    if (costAccount.Any() == false)
+                    {
+                        return new String[] { "Cost account not found.", "0" };
+                    }
+
+                    var tax = from d in db.MstTaxes where d.Code == "VAT" select d;
+                    if (tax.Any() == false)
+                    {
+                        return new String[] { "Tax not found.", "0" };
+                    }
+
+                    var supplier = from d in db.MstSuppliers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().ReturnSupplierId) select d;
+                    if (supplier.Any() == false)
+                    {
+                        return new String[] { "Supplier not found.", "0" };
+                    }
+
+                    foreach (var obj in objitemList)
+                    {
+                        var item = from d in db.MstItems
+                                   select d;
+                        if (item.Any() == false)
+                        {
+                            return new String[] { "Item not found.", "0" };
+                        }
+
+                        var unit = from d in db.MstUnits
+                                   where d.Unit == obj.Unit
+                                   select d;
+
+                        if (unit.Any() == false)
+                        {
+                            return new String[] { "Unit not found.", "0" };
+                        }
+
+                        Data.MstItem newItem = new Data.MstItem()
+                        {
+                            ItemCode = item.FirstOrDefault().ItemCode,
+                            BarCode = obj.BarCode,
+                            ItemDescription = obj.ItemDescription,
+                            Alias = "NA",
+                            GenericName = "NA",
+                            Category = "NA",
+                            SalesAccountId = salesAccount.FirstOrDefault().Id,
+                            AssetAccountId = assetsAccount.FirstOrDefault().Id,
+                            CostAccountId = costAccount.FirstOrDefault().Id,
+                            InTaxId = tax.FirstOrDefault().Id,
+                            OutTaxId = tax.FirstOrDefault().Id,
+                            UnitId = unit.FirstOrDefault().Id,
+                            DefaultSupplierId = supplier.FirstOrDefault().Id,
+                            Cost = Convert.ToDecimal(obj.Cost),
+                            MarkUp = 0,
+                            Price = Convert.ToDecimal(obj.Price),
+                            ImagePath = "NA",
+                            ReorderQuantity = 0,
+                            OnhandQuantity = 0,
+                            IsInventory = true,
+                            ExpiryDate = null,
+                            LotNumber = "NA",
+                            Remarks = "NA",
+                            EntryUserId = currentUserLogin.FirstOrDefault().Id,
+                            EntryDateTime = DateTime.Today,
+                            UpdateUserId = currentUserLogin.FirstOrDefault().Id,
+                            UpdateDateTime = DateTime.Today,
+                            IsLocked = false,
+                            DefaultKitchenReport = "",
+                            IsPackage = false
+                        };
+                        db.SubmitChanges();
+                    }
+
+                    return new String[] { "", "1" };
+                }
+                else
+                {
+                    return new String[] { "Data source is empty.", "0" };
+                }
+            }
+
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
     }
 }

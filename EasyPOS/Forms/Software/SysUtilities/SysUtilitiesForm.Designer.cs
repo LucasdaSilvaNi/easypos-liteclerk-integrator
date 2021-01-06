@@ -92,8 +92,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.buttonImport = new System.Windows.Forms.Button();
-            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
-            this.openFileDialogImportCSV = new System.Windows.Forms.OpenFileDialog();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -103,6 +101,15 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.buttonCustomerImport = new System.Windows.Forms.Button();
+            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
+            this.openFileDialogImportCSV = new System.Windows.Forms.OpenFileDialog();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.textBoxUpdatePrice = new System.Windows.Forms.TextBox();
+            this.buttonOpenUpdatePrice = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.buttonUpdateExport = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuditTrailList)).BeginInit();
@@ -123,6 +130,8 @@
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -792,6 +801,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.LightGray;
+            this.panel7.Controls.Add(this.panel11);
             this.panel7.Controls.Add(this.panel8);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(3, 3);
@@ -872,9 +882,9 @@
             this.label5.Location = new System.Drawing.Point(50, 14);
             this.label5.Margin = new System.Windows.Forms.Padding(0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 28);
+            this.label5.Size = new System.Drawing.Size(126, 28);
             this.label5.TabIndex = 2;
-            this.label5.Text = "Import";
+            this.label5.Text = "Import Item";
             // 
             // buttonImport
             // 
@@ -893,10 +903,6 @@
             this.buttonImport.Text = "Import";
             this.buttonImport.UseVisualStyleBackColor = false;
             this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
-            // 
-            // openFileDialogImportCSV
-            // 
-            this.openFileDialogImportCSV.FileName = "openFileDialogImportCSV";
             // 
             // tabPage3
             // 
@@ -992,9 +998,9 @@
             this.label6.Location = new System.Drawing.Point(50, 14);
             this.label6.Margin = new System.Windows.Forms.Padding(0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 28);
+            this.label6.Size = new System.Drawing.Size(173, 28);
             this.label6.TabIndex = 2;
-            this.label6.Text = "Import";
+            this.label6.Text = "Import Customer";
             // 
             // buttonCustomerImport
             // 
@@ -1013,6 +1019,102 @@
             this.buttonCustomerImport.Text = "Import";
             this.buttonCustomerImport.UseVisualStyleBackColor = false;
             this.buttonCustomerImport.Click += new System.EventHandler(this.buttonCustomerImport_Click);
+            // 
+            // openFileDialogImportCSV
+            // 
+            this.openFileDialogImportCSV.FileName = "openFileDialogImportCSV";
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.Color.White;
+            this.panel11.Controls.Add(this.buttonUpdateExport);
+            this.panel11.Controls.Add(this.buttonOpenUpdatePrice);
+            this.panel11.Controls.Add(this.pictureBox4);
+            this.panel11.Controls.Add(this.label7);
+            this.panel11.Controls.Add(this.buttonUpdate);
+            this.panel11.Controls.Add(this.textBoxUpdatePrice);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel11.Location = new System.Drawing.Point(0, 50);
+            this.panel11.Margin = new System.Windows.Forms.Padding(2);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(1082, 50);
+            this.panel11.TabIndex = 31;
+            // 
+            // textBoxUpdatePrice
+            // 
+            this.textBoxUpdatePrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxUpdatePrice.Location = new System.Drawing.Point(462, 14);
+            this.textBoxUpdatePrice.Name = "textBoxUpdatePrice";
+            this.textBoxUpdatePrice.ReadOnly = true;
+            this.textBoxUpdatePrice.Size = new System.Drawing.Size(377, 26);
+            this.textBoxUpdatePrice.TabIndex = 32;
+            // 
+            // buttonOpenUpdatePrice
+            // 
+            this.buttonOpenUpdatePrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonOpenUpdatePrice.Location = new System.Drawing.Point(844, 13);
+            this.buttonOpenUpdatePrice.Name = "buttonOpenUpdatePrice";
+            this.buttonOpenUpdatePrice.Size = new System.Drawing.Size(70, 26);
+            this.buttonOpenUpdatePrice.TabIndex = 31;
+            this.buttonOpenUpdatePrice.Text = "Open";
+            this.buttonOpenUpdatePrice.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::EasyPOS.Properties.Resources.Stock_In;
+            this.pictureBox4.Location = new System.Drawing.Point(11, 14);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(38, 32);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 30;
+            this.pictureBox4.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.label7.Location = new System.Drawing.Point(50, 14);
+            this.label7.Margin = new System.Windows.Forms.Padding(0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(182, 28);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Update Item Price";
+            // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonUpdate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonUpdate.FlatAppearance.BorderSize = 0;
+            this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUpdate.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonUpdate.ForeColor = System.Drawing.Color.White;
+            this.buttonUpdate.Location = new System.Drawing.Point(927, 10);
+            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(70, 32);
+            this.buttonUpdate.TabIndex = 0;
+            this.buttonUpdate.Text = "Update";
+            this.buttonUpdate.UseVisualStyleBackColor = false;
+            // 
+            // buttonUpdateExport
+            // 
+            this.buttonUpdateExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonUpdateExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonUpdateExport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonUpdateExport.FlatAppearance.BorderSize = 0;
+            this.buttonUpdateExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUpdateExport.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonUpdateExport.ForeColor = System.Drawing.Color.White;
+            this.buttonUpdateExport.Location = new System.Drawing.Point(1008, 10);
+            this.buttonUpdateExport.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonUpdateExport.Name = "buttonUpdateExport";
+            this.buttonUpdateExport.Size = new System.Drawing.Size(70, 32);
+            this.buttonUpdateExport.TabIndex = 34;
+            this.buttonUpdateExport.TabStop = false;
+            this.buttonUpdateExport.Text = "Export";
+            this.buttonUpdateExport.UseVisualStyleBackColor = false;
             // 
             // SysUtilitiesForm
             // 
@@ -1054,6 +1156,9 @@
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1133,5 +1238,12 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button buttonCustomerImport;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Button buttonUpdateExport;
+        private System.Windows.Forms.Button buttonOpenUpdatePrice;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.TextBox textBoxUpdatePrice;
     }
 }

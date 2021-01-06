@@ -26,41 +26,165 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             dateStart = startDate;
             dateEnd = endDate;
             InitializeComponent();
+            GetUnsoldItemDataSource();
+            GetUnsoldItemListDataGridSource();
         }
-        //public List<Entities.DgvRepUnsoldItemEntity> GetUnsoldItemListData(DateTime startDate, DateTime endDate)
-        //{
-        //    List<Entities.DgvRepUnsoldItemEntity> rowList = new List<Entities.DgvRepUnsoldItemEntity>();
+        public List<Entities.DgvRepUnsoldItemEntity> GetUnsoldItemListData(DateTime startDate, DateTime endDate)
+        {
+            List<Entities.DgvRepUnsoldItemEntity> rowList = new List<Entities.DgvRepUnsoldItemEntity>();
 
-        //    Controllers.RepSalesReportController repUnsoldItemsReportController = new Controllers.RepSalesReportController();
+            Controllers.RepSalesReportController repUnsoldItemsReportController = new Controllers.RepSalesReportController();
 
-        //    var salesDetailList = repUnsoldItemsReportController.UnsoldItemsReport(startDate, endDate);
-        //    if (salesDetailList.Any())
-        //    {
-        //        List<Entities.DgvRepUnsoldItemEntity> newUnsoldItemsReportList = new List<Entities.DgvRepUnsoldItemEntity>();
-        //        foreach (var unsoldItemsReport in salesDetailList)
-        //        {
-        //            newUnsoldItemsReportList.Add(new Entities.DgvRepUnsoldItemEntity()
-        //            {
-        //                ColumnBarCode = unsoldItemsReport.BarCode,
-        //                ColumnItemDescription = unsoldItemsReport.ItemDescription,
-        //                ColumnItemCategory = unsoldItemsReport.ItemCategory,
-        //                ColumnUnit = unsoldItemsReport.Unit,
-        //                ColumnPrice = unsoldItemsReport.Price.ToString("#,##0.00"),
-        //                ColumnQuantity = unsoldItemsReport.Quantity.ToString("#,##0.00"),
-        //                ColumnAmount = unsoldItemsReport.Amount.ToString("#,##0.00")
-        //            });
+            var salesDetailList = repUnsoldItemsReportController.UnsoldItemsReport(startDate, endDate);
+            if (salesDetailList.Any())
+            {
+                List<Entities.DgvRepUnsoldItemEntity> newUnsoldItemsReportList = new List<Entities.DgvRepUnsoldItemEntity>();
+                foreach (var unsoldItemsReport in salesDetailList)
+                {
+                    newUnsoldItemsReportList.Add(new Entities.DgvRepUnsoldItemEntity()
+                    {
+                        ColumnBarCode = unsoldItemsReport.BarCode,
+                        ColumnItemDescription = unsoldItemsReport.ItemDescription,
+                        ColumnItemCategory = unsoldItemsReport.ItemCategory,
+                        ColumnUnit = unsoldItemsReport.Unit,
+                        ColumnPrice = unsoldItemsReport.Price.ToString("#,##0.00"),
+                        ColumnCost = unsoldItemsReport.Cost.ToString("#,##0.00"),
+                    });
 
-        //        }
+                }
 
-        //        rowList = newUnsoldItemsReportList.ToList();
-        //    }
+                rowList = newUnsoldItemsReportList.ToList();
+            }
 
-        //    return rowList;
-        //}
-        
-            private void buttonClose_Click(object sender, EventArgs e)
+            return rowList;
+        }
+        public void GetUnsoldItemDataSource()
+        {
+            salesDetailList = GetUnsoldItemListData(dateStart, dateEnd);
+            if (salesDetailList.Any())
+            {
+
+                pageList = new PagedList<Entities.DgvRepUnsoldItemEntity>(salesDetailList, pageNumber, pageSize);
+
+                if (pageList.PageCount == 1)
+                {
+                    buttonPageListFirst.Enabled = false;
+                    buttonPageListPrevious.Enabled = false;
+                    buttonPageListNext.Enabled = false;
+                    buttonPageListLast.Enabled = false;
+                }
+                else if (pageNumber == 1)
+                {
+                    buttonPageListFirst.Enabled = false;
+                    buttonPageListPrevious.Enabled = false;
+                    buttonPageListNext.Enabled = true;
+                    buttonPageListLast.Enabled = true;
+                }
+                else if (pageNumber == pageList.PageCount)
+                {
+                    buttonPageListFirst.Enabled = true;
+                    buttonPageListPrevious.Enabled = true;
+                    buttonPageListNext.Enabled = false;
+                    buttonPageListLast.Enabled = false;
+                }
+                else
+                {
+                    buttonPageListFirst.Enabled = true;
+                    buttonPageListPrevious.Enabled = true;
+                    buttonPageListNext.Enabled = true;
+                    buttonPageListLast.Enabled = true;
+                }
+
+                textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+                dataUnsoldItemSource.DataSource = pageList;
+            }
+            else
+            {
+                buttonPageListFirst.Enabled = false;
+                buttonPageListPrevious.Enabled = false;
+                buttonPageListNext.Enabled = false;
+                buttonPageListLast.Enabled = false;
+
+                dataUnsoldItemSource.Clear();
+                textBoxPageNumber.Text = "0 / 0";
+            }
+        }
+        public void GetUnsoldItemListDataGridSource()
+        {
+            dataGridViewUnsoldItems.DataSource = dataUnsoldItemSource;
+
+        }
+        private void buttonClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void buttonPageListFirst_Click(object sender, EventArgs e)
+        {
+            pageList = new PagedList<Entities.DgvRepUnsoldItemEntity>(salesDetailList, 1, pageSize);
+            dataUnsoldItemSource.DataSource = pageList;
+
+            buttonPageListFirst.Enabled = false;
+            buttonPageListPrevious.Enabled = false;
+            buttonPageListNext.Enabled = true;
+            buttonPageListLast.Enabled = true;
+
+            pageNumber = 1;
+            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+        }
+
+        private void buttonPageListPrevious_Click(object sender, EventArgs e)
+        {
+            if (pageList.HasPreviousPage == true)
+            {
+                pageList = new PagedList<Entities.DgvRepUnsoldItemEntity>(salesDetailList, --pageNumber, pageSize);
+                dataUnsoldItemSource.DataSource = pageList;
+            }
+
+            buttonPageListNext.Enabled = true;
+            buttonPageListLast.Enabled = true;
+
+            if (pageNumber == 1)
+            {
+                buttonPageListFirst.Enabled = false;
+                buttonPageListPrevious.Enabled = false;
+            }
+
+            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+        }
+
+        private void buttonPageListNext_Click(object sender, EventArgs e)
+        {
+            if (pageList.HasNextPage == true)
+            {
+                pageList = new PagedList<Entities.DgvRepUnsoldItemEntity>(salesDetailList, ++pageNumber, pageSize);
+                dataUnsoldItemSource.DataSource = pageList;
+            }
+
+            buttonPageListFirst.Enabled = true;
+            buttonPageListPrevious.Enabled = true;
+
+            if (pageNumber == pageList.PageCount)
+            {
+                buttonPageListNext.Enabled = false;
+                buttonPageListLast.Enabled = false;
+            }
+
+            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+        }
+
+        private void buttonPageListLast_Click(object sender, EventArgs e)
+        {
+            pageList = new PagedList<Entities.DgvRepUnsoldItemEntity>(salesDetailList, pageList.PageCount, pageSize);
+            dataUnsoldItemSource.DataSource = pageList;
+
+            buttonPageListFirst.Enabled = true;
+            buttonPageListPrevious.Enabled = true;
+            buttonPageListNext.Enabled = false;
+            buttonPageListLast.Enabled = false;
+
+            pageNumber = pageList.PageCount;
+            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
         }
     }
 }

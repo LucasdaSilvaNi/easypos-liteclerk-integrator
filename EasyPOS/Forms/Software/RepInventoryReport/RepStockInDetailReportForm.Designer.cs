@@ -48,7 +48,6 @@
             this.buttonPageListPrevious = new System.Windows.Forms.Button();
             this.textBoxPageNumber = new System.Windows.Forms.TextBox();
             this.dataGridViewStockInDetailReport = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.ColumnStockInDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockInNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnManualStockInNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +61,8 @@
             this.ColumnExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnLotNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSellingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.textBoxFilter = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -131,6 +132,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.textBoxFilter);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.dataGridViewStockInDetailReport);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -169,7 +171,6 @@
             this.textBoxTotalAmount.Size = new System.Drawing.Size(246, 19);
             this.textBoxTotalAmount.TabIndex = 15;
             this.textBoxTotalAmount.TabStop = false;
-            this.textBoxTotalAmount.Visible = false;
             this.textBoxTotalAmount.WordWrap = false;
             // 
             // label2
@@ -183,7 +184,6 @@
             this.label2.Size = new System.Drawing.Size(103, 19);
             this.label2.TabIndex = 13;
             this.label2.Text = "Total Amount:";
-            this.label2.Visible = false;
             // 
             // buttonPageListFirst
             // 
@@ -244,7 +244,7 @@
             this.buttonPageListPrevious.Location = new System.Drawing.Point(80, 7);
             this.buttonPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPageListPrevious.Name = "buttonPageListPrevious";
-            this.buttonPageListPrevious.Size = new System.Drawing.Size(66, 26);
+            this.buttonPageListPrevious.Size = new System.Drawing.Size(77, 26);
             this.buttonPageListPrevious.TabIndex = 9;
             this.buttonPageListPrevious.TabStop = false;
             this.buttonPageListPrevious.Text = "Previous";
@@ -289,7 +289,7 @@
             this.ColumnExpiryDate,
             this.ColumnLotNumber,
             this.ColumnSellingPrice});
-            this.dataGridViewStockInDetailReport.Location = new System.Drawing.Point(10, 5);
+            this.dataGridViewStockInDetailReport.Location = new System.Drawing.Point(2, 30);
             this.dataGridViewStockInDetailReport.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewStockInDetailReport.MultiSelect = false;
             this.dataGridViewStockInDetailReport.Name = "dataGridViewStockInDetailReport";
@@ -297,22 +297,8 @@
             this.dataGridViewStockInDetailReport.RowTemplate.Height = 24;
             this.dataGridViewStockInDetailReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewStockInDetailReport.ShowEditingIcon = false;
-            this.dataGridViewStockInDetailReport.Size = new System.Drawing.Size(1076, 422);
+            this.dataGridViewStockInDetailReport.Size = new System.Drawing.Size(1092, 396);
             this.dataGridViewStockInDetailReport.TabIndex = 0;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.buttonGenerateCSV);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.buttonClose);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1096, 50);
-            this.panel1.TabIndex = 18;
             // 
             // ColumnStockInDate
             // 
@@ -425,6 +411,31 @@
             this.ColumnSellingPrice.ReadOnly = true;
             this.ColumnSellingPrice.Width = 120;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.buttonGenerateCSV);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.buttonClose);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1096, 50);
+            this.panel1.TabIndex = 18;
+            // 
+            // textBoxFilter
+            // 
+            this.textBoxFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxFilter.Location = new System.Drawing.Point(0, 2);
+            this.textBoxFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxFilter.Name = "textBoxFilter";
+            this.textBoxFilter.Size = new System.Drawing.Size(1094, 26);
+            this.textBoxFilter.TabIndex = 22;
+            this.textBoxFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxFilter_KeyDown);
+            // 
             // RepStockInDetailReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -440,6 +451,7 @@
             this.Text = "Stock In Detail Report";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStockInDetailReport)).EndInit();
@@ -480,5 +492,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnExpiryDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLotNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSellingPrice;
+        private System.Windows.Forms.TextBox textBoxFilter;
     }
 }

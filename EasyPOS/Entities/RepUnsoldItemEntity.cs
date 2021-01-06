@@ -12,8 +12,7 @@ namespace EasyPOS.Entities
         public String ItemDescription { get; set; }
         public String ItemCategory { get; set; }
         public String Unit { get; set; }
-        public Decimal Quantity { get; set; }
         public Decimal Price { get; set; }
-        public Decimal Amount { get; set; }
+        public Decimal Cost { get; set; }
     }
 }

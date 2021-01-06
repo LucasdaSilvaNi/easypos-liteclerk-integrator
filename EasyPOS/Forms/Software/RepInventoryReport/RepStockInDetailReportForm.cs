@@ -38,11 +38,12 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
 
         public List<Entities.DgvRepInventoryStockInDetailReportListEntity> GetStockInDetailReportListData(DateTime startDate, DateTime endDate)
         {
+            String filter = textBoxFilter.Text;
             List<Entities.DgvRepInventoryStockInDetailReportListEntity> rowList = new List<Entities.DgvRepInventoryStockInDetailReportListEntity>();
 
             Controllers.RepInventoryReportController repInvetoryReportController = new Controllers.RepInventoryReportController();
 
-            var stockInDetailReportList = repInvetoryReportController.StockInDetailReport(startDate, endDate);
+            var stockInDetailReportList = repInvetoryReportController.StockInDetailReport(filter,startDate, endDate);
             if (stockInDetailReportList.OrderByDescending(d => d.Id).Any())
             {
                 Decimal totalAmount = 0;
@@ -289,6 +290,14 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void textBoxFilter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                GetStockInDetailDataSource();
             }
         }
     }

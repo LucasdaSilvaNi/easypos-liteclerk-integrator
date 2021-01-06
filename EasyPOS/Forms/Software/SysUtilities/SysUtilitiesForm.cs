@@ -714,5 +714,6 @@ namespace EasyPOS.Forms.Software.SysUtilities
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }
