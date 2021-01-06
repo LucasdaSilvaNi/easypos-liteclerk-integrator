@@ -47,9 +47,14 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 printDocumentZReadingReport.DefaultPageSettings.PaperSize = new PaperSize("Z Reading Report", 255, 1000);
                 ZReadingDataSource();
             }
-            else
+            else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Thermal Printer")
             {
                 printDocumentZReadingReport.DefaultPageSettings.PaperSize = new PaperSize("Z Reading Report", 270, 1000);
+                ZReadingDataSource();
+            }
+            else
+            {
+                printDocumentZReadingReport.DefaultPageSettings.PaperSize = new PaperSize("Z Reading Report", 320, 1000);
                 ZReadingDataSource();
             }
         }
@@ -447,10 +452,15 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 x = 5; y = 5;
                 width = 245.0F; height = 0F;
             }
-            else
+            else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Thermal Printer")
             {
                 x = 5; y = 5;
                 width = 260.0F; height = 0F;
+            }
+            else
+            {
+                x = 5; y = 5;
+                width = 315.0F; height = 0F;
             }
 
             // ==============
@@ -480,7 +490,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 adjustStringName = 3;
             }
             graphics.DrawString(companyName, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += graphics.MeasureString(companyName, fontArial8Regular).Height* adjustStringName;
+            y += graphics.MeasureString(companyName, fontArial8Regular).Height * adjustStringName;
 
             // ===============
             // Company Address
@@ -863,9 +873,15 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 graphics.DrawString(zReadingEndLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
                 y += graphics.MeasureString(zReadingEndLabel, fontArial8Regular).Height;
             }
-            else
+            else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Thermal Printer")
             {
                 String zReadingEndLabel = "\n" + zReadingFooter + "\n \n\n\n.";
+                graphics.DrawString(zReadingEndLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                y += graphics.MeasureString(zReadingEndLabel, fontArial8Regular).Height;
+            }
+            else
+            {
+                String zReadingEndLabel = "\n" + zReadingFooter + "\n \n\n\n\n.";
                 graphics.DrawString(zReadingEndLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
                 y += graphics.MeasureString(zReadingEndLabel, fontArial8Regular).Height;
             }

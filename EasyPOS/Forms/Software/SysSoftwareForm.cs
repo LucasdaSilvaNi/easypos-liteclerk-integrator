@@ -691,7 +691,7 @@ namespace EasyPOS.Forms.Software
         {
             tabPageSystemUtilities.Controls.Remove(sysUtilitiesListForm);
 
-            sysUtilitiesListForm = new SysUtilities.SysUtilitiesForm(this)
+            sysUtilitiesListForm = new SysUtilities.SysUtilitiesForm(this,null)
             {
                 TopLevel = false,
                 Visible = true,

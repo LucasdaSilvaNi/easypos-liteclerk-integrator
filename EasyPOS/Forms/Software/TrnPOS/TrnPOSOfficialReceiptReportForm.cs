@@ -36,9 +36,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 printDocumentOfficialReceipt.Print();
 
             }
-            else
+            else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Thermal Printer")
             {
                 printDocumentOfficialReceipt.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 270, 1000);
+                printDocumentOfficialReceipt.Print();
+            }
+            else
+            {
+                printDocumentOfficialReceipt.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 320, 1000);
                 printDocumentOfficialReceipt.Print();
             }
         }
@@ -74,13 +79,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 x = 5; y = 5;
                 width = 245.0F; height = 0F;
             }
-            else
+            else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Thermal Printer")
             {
                 x = 5; y = 5;
                 width = 260.0F; height = 0F;
             }
-                
-
+            else
+            {
+                x = 5; y = 5;
+                width = 315.0F; height = 0F;
+            }
 
             // ==============
             // Tools Settings
@@ -304,9 +312,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             { 
                                 graphics.DrawString(itemAmountData, fontArial8Regular, drawBrush, new RectangleF(x, y, 245.0F, height), drawFormatRight);
                             }
-                            else
+                            else if(Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Thermal Printer")
                             {
                                 graphics.DrawString(itemAmountData, fontArial8Regular, drawBrush, new RectangleF(x, y, 250.0F, height), drawFormatRight);
+                            }
+                            else
+                            {
+                                graphics.DrawString(itemAmountData, fontArial8Regular, drawBrush, new RectangleF(x, y, 290.0F, height), drawFormatRight);
                             }
                             y += itemDataRectangle.Size.Height + 3.0F;
                         }
@@ -543,9 +555,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 String space = "\n\n\n\n\n\n\n\n\n\n.";
                 graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             }
-            else
+            else if(Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Thermal Printer")
             {
                 String space = "\n\n\n.";
+                graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            }
+            else
+            {
+                String space = "\n\n\n\n.";
                 graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             }
         }

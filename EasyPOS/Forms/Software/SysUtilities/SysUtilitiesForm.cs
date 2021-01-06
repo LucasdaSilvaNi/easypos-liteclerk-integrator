@@ -29,11 +29,13 @@ namespace EasyPOS.Forms.Software.SysUtilities
         public static Int32 itemListPageSize = 50;
         public PagedList<Entities.DgvSysUtilitiesBarcodePrintingItemList> itemListPageList = new PagedList<Entities.DgvSysUtilitiesBarcodePrintingItemList>(itemListData, pageNumber, pageSize);
         public BindingSource itemListDataSource = new BindingSource();
-
-        public SysUtilitiesForm(SysSoftwareForm softwareForm)
+        public static List<Entities.DgvMstItemListEntity> itemLineData = new List<Entities.DgvMstItemListEntity >();
+        public RepInventoryReport.RepInventoryItemListReportForm _mstItemForm;
+        public SysUtilitiesForm(SysSoftwareForm softwareForm, RepInventoryReport.RepInventoryItemListReportForm mstItemListForm)
         {
             InitializeComponent();
             sysSoftwareForm = softwareForm;
+            _mstItemForm = mstItemListForm;
 
             GetUserList();
             CreateItemListDataGridView();
@@ -715,5 +717,118 @@ namespace EasyPOS.Forms.Software.SysUtilities
             }
         }
 
+        private void buttonUpdateExport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = folderBrowserDialogGenerateCSV.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    StringBuilder csv = new StringBuilder();
+                    String[] header = {
+                        "Barcode",
+                        "Item Description",
+                        "Unit",
+                        "Cost",
+                        "Price"
+                    };
+
+                    csv.AppendLine(String.Join(",", header));
+
+                    Controllers.RepInventoryReportController repInvetoryReportController = new Controllers.RepInventoryReportController();
+
+                    var inventoryListReport = repInvetoryReportController.GetInventoryListReport();
+
+                    if (inventoryListReport.Any())
+                    {
+                        foreach (var stockInLine in inventoryListReport)
+                        {
+                            String[] data = {
+                              stockInLine.BarCode,
+                              stockInLine.ItemDescription.Replace(",", ""),
+                              stockInLine.Unit,
+                              Convert.ToString(stockInLine.Cost).Replace(",", ""),
+                              Convert.ToString(stockInLine.Price).Replace(",", ""),
+                            };
+
+                            csv.AppendLine(String.Join(",", data));
+                        }
+                    }
+
+                    String executingUser = WindowsIdentity.GetCurrent().Name;
+
+                    DirectorySecurity securityRules = new DirectorySecurity();
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.Read, AccessControlType.Allow));
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
+
+                    DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\ItemUploadFormat" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+
+                    MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonOpenUpdatePrice_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult openFileDialogImportCSVResult = openFileDialogImportCSV.ShowDialog();
+                if (openFileDialogImportCSVResult == DialogResult.OK)
+                {
+                    itemList = new List<Entities.MstItemEntity>();
+
+                    textBoxUpdatePrice.Text = openFileDialogImportCSV.FileName;
+
+                    string[] lines = File.ReadAllLines(textBoxUpdatePrice.Text);
+                    if (lines.Length > 0)
+                    {
+                        for (int i = 1; i < lines.Length; i++)
+                        {
+                            string[] dataWords = lines[i].Split(',');
+
+                            itemList.Add(new Entities.MstItemEntity()
+                            {
+                                BarCode = dataWords[0],
+                                ItemDescription = dataWords[1],
+                                Unit = dataWords[2],
+                                Cost = Convert.ToDecimal(dataWords[3]),
+                                Price = Convert.ToDecimal(dataWords[4]),
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Controllers.MstItemController mstItemController = new Controllers.MstItemController();
+                String[] updateItemPrice = mstItemController.UpdateItemPrice(itemList);
+                if (updateItemPrice[1].Equals("0") == false)
+                {
+                    MessageBox.Show("Update Successfully");
+
+                }
+                else
+                {
+                    MessageBox.Show(updateItemPrice[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
