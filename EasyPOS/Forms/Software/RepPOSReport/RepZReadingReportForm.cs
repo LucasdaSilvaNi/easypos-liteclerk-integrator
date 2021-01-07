@@ -47,16 +47,12 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 printDocumentZReadingReport.DefaultPageSettings.PaperSize = new PaperSize("Z Reading Report", 255, 1000);
                 ZReadingDataSource();
             }
-            else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Thermal Printer")
+            else
             {
                 printDocumentZReadingReport.DefaultPageSettings.PaperSize = new PaperSize("Z Reading Report", 270, 1000);
                 ZReadingDataSource();
             }
-            else
-            {
-                printDocumentZReadingReport.DefaultPageSettings.PaperSize = new PaperSize("Z Reading Report", 320, 1000);
-                ZReadingDataSource();
-            }
+           
         }
 
         private void buttonPrint_Click(object sender, EventArgs e)
@@ -452,17 +448,11 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 x = 5; y = 5;
                 width = 245.0F; height = 0F;
             }
-            else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Thermal Printer")
+            else
             {
                 x = 5; y = 5;
                 width = 260.0F; height = 0F;
             }
-            else
-            {
-                x = 5; y = 5;
-                width = 315.0F; height = 0F;
-            }
-
             // ==============
             // Tools Settings
             // ==============
@@ -873,15 +863,9 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 graphics.DrawString(zReadingEndLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
                 y += graphics.MeasureString(zReadingEndLabel, fontArial8Regular).Height;
             }
-            else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Thermal Printer")
-            {
-                String zReadingEndLabel = "\n" + zReadingFooter + "\n \n\n\n.";
-                graphics.DrawString(zReadingEndLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                y += graphics.MeasureString(zReadingEndLabel, fontArial8Regular).Height;
-            }
             else
             {
-                String zReadingEndLabel = "\n" + zReadingFooter + "\n \n\n\n\n.";
+                String zReadingEndLabel = "\n" + zReadingFooter + "\n \n\n\n.";
                 graphics.DrawString(zReadingEndLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
                 y += graphics.MeasureString(zReadingEndLabel, fontArial8Regular).Height;
             }
