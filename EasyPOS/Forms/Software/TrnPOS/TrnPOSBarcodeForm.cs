@@ -32,13 +32,22 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             InitializeComponent();
             sysSoftwareForm = softwareForm;
-
+            if (Modules.SysCurrentModule.GetCurrentSettings().HideSalesAmount == true)
+            {
+                ColumnSalesLlineAmount.Visible = false;
+                ColumnAmount.Visible = false;
+            }
+            else
+            {
+                ColumnSalesLlineAmount.Visible = true;
+                ColumnAmount.Visible = true;
+            }
             String currentDate = DateTime.Today.ToShortDateString() + "\t\t";
             if (Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == true)
             {
                 currentDate = Modules.SysCurrentModule.GetCurrentSettings().CurrentDate + "\t\t";
             }
-
+            
             dateTimePickerSalesDate.Value = Convert.ToDateTime(currentDate);
 
             sysUserRights = new Modules.SysUserRightsModule("TrnSales");
@@ -252,7 +261,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                   ColumnCustomerCode = d.CustomerCode,
                                   ColumnCustomer = d.Customer,
                                   ColumnSalesAgent = d.SalesAgentUserName,
-                                  ColumnAmount = isHiddenValueSalesAmount == true ? hideSalesAmmount(d.Amount.ToString("#,##0.00")) : d.Amount.ToString("#,##0.00"),
+                                  //ColumnAmount = isHiddenValueSalesAmount == true ? hideSalesAmmount(d.Amount.ToString("#,##0.00")) : d.Amount.ToString("#,##0.00"),
+                                  ColumnAmount = d.Amount.ToString("#,##0.00"),
                                   ColumnIsLocked = d.IsLocked,
                                   ColumnIsTendered = d.IsTendered,
                                   ColumnIsCancelled = d.IsCancelled,
@@ -271,18 +281,18 @@ namespace EasyPOS.Forms.Software.TrnPOS
             });
         }
 
-        public string hideSalesAmmount(String value)
-        {
+        //public string hideSalesAmmount(String value)
+        //{
 
-            Decimal stringLength = value.Length;
-            String hiddenValue = "";
+        //    Decimal stringLength = value.Length;
+        //    String hiddenValue = "";
 
-            for (var i = 0; i < stringLength; i++)
-            {
-                hiddenValue += "*";
-            }
-            return hiddenValue;
-        }
+        //    for (var i = 0; i < stringLength; i++)
+        //    {
+        //        hiddenValue += "*";
+        //    }
+        //    return hiddenValue;
+        //}
 
         public void CreateSalesListDataGrid()
         {
@@ -427,13 +437,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     {
                         foreach (var salesLineItem in salesLineItemList)
                         {
-                            Boolean isHiddenValueSalesAmount = Modules.SysCurrentModule.GetCurrentSettings().HideSalesAmount;
+                            //Boolean isHiddenValueSalesAmount = Modules.SysCurrentModule.GetCurrentSettings().HideSalesAmount;
 
                             dataGridViewSalesLineItemDisplay.Rows.Add(
                                 salesLineItem.Quantity.ToString("#,##0.00"),
                                 salesLineItem.ItemDescription + "   " + salesLineItem.Unit + Environment.NewLine + " @P" + salesLineItem.Price.ToString("#,##0.00") + " Less: " + salesLineItem.DiscountAmount.ToString("#,##0.00") + " - " + salesLineItem.Tax,
-                                isHiddenValueSalesAmount == true ? hideSalesAmmount(salesLineItem.Amount.ToString("#,##0.00")) : salesLineItem.Amount.ToString("#,##0.00"));
-                        }
+                                //isHiddenValueSalesAmount == true ? hideSalesAmmount(salesLineItem.Amount.ToString("#,##0.00")) : salesLineItem.Amount.ToString("#,##0.00"));
+                                salesLineItem.Amount.ToString("#,##0.00"));
+                        };
                     }
                 }
             }

@@ -82,9 +82,6 @@
             this.labelTerminal = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridViewSalesLineItemDisplay = new System.Windows.Forms.DataGridView();
-            this.ColumnSalesLineItemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesLineItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesLlineAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateTimePickerSalesDate = new System.Windows.Forms.DateTimePicker();
             this.textBoxSalesListFilter = new System.Windows.Forms.TextBox();
             this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
@@ -99,6 +96,9 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBoxLastChange = new System.Windows.Forms.TextBox();
             this.labelLastChange = new System.Windows.Forms.Label();
+            this.ColumnSalesLineItemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLlineAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesList)).BeginInit();
@@ -666,32 +666,6 @@
             this.dataGridViewSalesLineItemDisplay.Size = new System.Drawing.Size(371, 322);
             this.dataGridViewSalesLineItemDisplay.TabIndex = 18;
             // 
-            // ColumnSalesLineItemQuantity
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.ColumnSalesLineItemQuantity.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ColumnSalesLineItemQuantity.HeaderText = "Qty.";
-            this.ColumnSalesLineItemQuantity.Name = "ColumnSalesLineItemQuantity";
-            this.ColumnSalesLineItemQuantity.ReadOnly = true;
-            this.ColumnSalesLineItemQuantity.Width = 90;
-            // 
-            // ColumnSalesLineItem
-            // 
-            this.ColumnSalesLineItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.ColumnSalesLineItem.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ColumnSalesLineItem.HeaderText = "Item";
-            this.ColumnSalesLineItem.Name = "ColumnSalesLineItem";
-            this.ColumnSalesLineItem.ReadOnly = true;
-            // 
-            // ColumnSalesLlineAmount
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.ColumnSalesLlineAmount.DefaultCellStyle = dataGridViewCellStyle6;
-            this.ColumnSalesLlineAmount.HeaderText = "Amount";
-            this.ColumnSalesLlineAmount.Name = "ColumnSalesLlineAmount";
-            this.ColumnSalesLlineAmount.ReadOnly = true;
-            // 
             // dateTimePickerSalesDate
             // 
             this.dateTimePickerSalesDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -888,6 +862,32 @@
             this.labelLastChange.TabIndex = 14;
             this.labelLastChange.Text = "Last Change:";
             // 
+            // ColumnSalesLineItemQuantity
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.ColumnSalesLineItemQuantity.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColumnSalesLineItemQuantity.HeaderText = "Qty.";
+            this.ColumnSalesLineItemQuantity.Name = "ColumnSalesLineItemQuantity";
+            this.ColumnSalesLineItemQuantity.ReadOnly = true;
+            this.ColumnSalesLineItemQuantity.Width = 90;
+            // 
+            // ColumnSalesLineItem
+            // 
+            this.ColumnSalesLineItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.ColumnSalesLineItem.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ColumnSalesLineItem.HeaderText = "Item";
+            this.ColumnSalesLineItem.Name = "ColumnSalesLineItem";
+            this.ColumnSalesLineItem.ReadOnly = true;
+            // 
+            // ColumnSalesLlineAmount
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.ColumnSalesLlineAmount.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ColumnSalesLlineAmount.HeaderText = "Amount";
+            this.ColumnSalesLlineAmount.Name = "ColumnSalesLlineAmount";
+            this.ColumnSalesLlineAmount.ReadOnly = true;
+            // 
             // TrnPOSBarcodeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -937,9 +937,6 @@
         private System.Windows.Forms.Label labelTerminal;
         private System.Windows.Forms.Label labelInvoiceNumber;
         private System.Windows.Forms.DataGridView dataGridViewSalesLineItemDisplay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineItemQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLlineAmount;
         private System.Windows.Forms.Button buttonTender;
         private System.Windows.Forms.Button buttonReprint;
         private System.Windows.Forms.Button buttonCancel;
@@ -979,5 +976,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnManualSalesNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDelivery;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpace;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineItemQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLlineAmount;
     }
 }
