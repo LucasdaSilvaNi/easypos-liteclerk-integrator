@@ -252,7 +252,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
                 {
                     X = x,
                     Y = y,
-                    Size = new Size(245, ((int)graphics.MeasureString(remarksValue, fontArial9Regular, 245, StringFormat.GenericTypographic).Height))
+                    Size = new Size(245, ((int)graphics.MeasureString(remarksValue, fontArial9Regular, 245, StringFormat.GenericDefault).Height))
                 };
                 graphics.DrawString(remarksValue, fontArial9Regular, Brushes.Black, remarksValuRectangle, drawFormatLeft);
                 y += remarksValuRectangle.Size.Height + 5.0F;

@@ -102,12 +102,6 @@
             this.buttonItemComponentListPageListLast = new System.Windows.Forms.Button();
             this.textBoxItemComponentListPageNumber = new System.Windows.Forms.TextBox();
             this.dataGridViewItemComponentList = new System.Windows.Forms.DataGridView();
-            this.buttonLock = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonClose = new System.Windows.Forms.Button();
-            this.buttonUnlock = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ColumnItemComponentButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnItemComponentButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnItemComponentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -122,6 +116,12 @@
             this.ColumnItemComponenAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemComponenIsPrinted = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColumnItemComponenOnHandQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonLock = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonClose = new System.Windows.Forms.Button();
+            this.buttonUnlock = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -548,7 +548,9 @@
             this.textBoxPrice.Size = new System.Drawing.Size(172, 26);
             this.textBoxPrice.TabIndex = 9;
             this.textBoxPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxPrice.TextChanged += new System.EventHandler(this.textBoxPrice_TextChanged);
             this.textBoxPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPrice_KeyPress);
+            this.textBoxPrice.Leave += new System.EventHandler(this.textBoxPrice_Leave);
             // 
             // label12
             // 
@@ -570,7 +572,9 @@
             this.textBoxMarkUp.Size = new System.Drawing.Size(172, 26);
             this.textBoxMarkUp.TabIndex = 8;
             this.textBoxMarkUp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxMarkUp.TextChanged += new System.EventHandler(this.textBoxMarkUp_TextChanged);
             this.textBoxMarkUp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMarkUp_KeyPress);
+            this.textBoxMarkUp.Leave += new System.EventHandler(this.textBoxMarkUp_Leave);
             // 
             // label13
             // 
@@ -1017,100 +1021,6 @@
             this.dataGridViewItemComponentList.TabIndex = 38;
             this.dataGridViewItemComponentList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItemComponentList_CellClick);
             // 
-            // buttonLock
-            // 
-            this.buttonLock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonLock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonLock.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonLock.FlatAppearance.BorderSize = 0;
-            this.buttonLock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLock.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonLock.ForeColor = System.Drawing.Color.White;
-            this.buttonLock.Location = new System.Drawing.Point(879, 10);
-            this.buttonLock.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonLock.Name = "buttonLock";
-            this.buttonLock.Size = new System.Drawing.Size(70, 32);
-            this.buttonLock.TabIndex = 20;
-            this.buttonLock.TabStop = false;
-            this.buttonLock.Text = "Lock";
-            this.buttonLock.UseVisualStyleBackColor = false;
-            this.buttonLock.Click += new System.EventHandler(this.buttonLock_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(50, 14);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 28);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Item Detail";
-            // 
-            // buttonClose
-            // 
-            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(79)))), ((int)(((byte)(28)))));
-            this.buttonClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(79)))), ((int)(((byte)(28)))));
-            this.buttonClose.FlatAppearance.BorderSize = 0;
-            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(1029, 10);
-            this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(70, 32);
-            this.buttonClose.TabIndex = 22;
-            this.buttonClose.TabStop = false;
-            this.buttonClose.Text = "Close";
-            this.buttonClose.UseVisualStyleBackColor = false;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
-            // 
-            // buttonUnlock
-            // 
-            this.buttonUnlock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonUnlock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonUnlock.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonUnlock.FlatAppearance.BorderSize = 0;
-            this.buttonUnlock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUnlock.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonUnlock.ForeColor = System.Drawing.Color.White;
-            this.buttonUnlock.Location = new System.Drawing.Point(954, 10);
-            this.buttonUnlock.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonUnlock.Name = "buttonUnlock";
-            this.buttonUnlock.Size = new System.Drawing.Size(70, 32);
-            this.buttonUnlock.TabIndex = 21;
-            this.buttonUnlock.TabStop = false;
-            this.buttonUnlock.Text = "Unlock";
-            this.buttonUnlock.UseVisualStyleBackColor = false;
-            this.buttonUnlock.Click += new System.EventHandler(this.buttonUnlock_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.buttonLock);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.buttonClose);
-            this.panel1.Controls.Add(this.buttonUnlock);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1109, 50);
-            this.panel1.TabIndex = 7;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Item;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
             // ColumnItemComponentButtonEdit
             // 
             this.ColumnItemComponentButtonEdit.DataPropertyName = "ColumnItemComponentButtonEdit";
@@ -1226,6 +1136,100 @@
             this.ColumnItemComponenOnHandQty.HeaderText = "Quantity";
             this.ColumnItemComponenOnHandQty.Name = "ColumnItemComponenOnHandQty";
             this.ColumnItemComponenOnHandQty.ReadOnly = true;
+            // 
+            // buttonLock
+            // 
+            this.buttonLock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonLock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonLock.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonLock.FlatAppearance.BorderSize = 0;
+            this.buttonLock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLock.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLock.ForeColor = System.Drawing.Color.White;
+            this.buttonLock.Location = new System.Drawing.Point(879, 10);
+            this.buttonLock.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonLock.Name = "buttonLock";
+            this.buttonLock.Size = new System.Drawing.Size(70, 32);
+            this.buttonLock.TabIndex = 20;
+            this.buttonLock.TabStop = false;
+            this.buttonLock.Text = "Lock";
+            this.buttonLock.UseVisualStyleBackColor = false;
+            this.buttonLock.Click += new System.EventHandler(this.buttonLock_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(50, 14);
+            this.label1.Margin = new System.Windows.Forms.Padding(0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 28);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Item Detail";
+            // 
+            // buttonClose
+            // 
+            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(79)))), ((int)(((byte)(28)))));
+            this.buttonClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(79)))), ((int)(((byte)(28)))));
+            this.buttonClose.FlatAppearance.BorderSize = 0;
+            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonClose.ForeColor = System.Drawing.Color.White;
+            this.buttonClose.Location = new System.Drawing.Point(1029, 10);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(70, 32);
+            this.buttonClose.TabIndex = 22;
+            this.buttonClose.TabStop = false;
+            this.buttonClose.Text = "Close";
+            this.buttonClose.UseVisualStyleBackColor = false;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            // 
+            // buttonUnlock
+            // 
+            this.buttonUnlock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonUnlock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonUnlock.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonUnlock.FlatAppearance.BorderSize = 0;
+            this.buttonUnlock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUnlock.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonUnlock.ForeColor = System.Drawing.Color.White;
+            this.buttonUnlock.Location = new System.Drawing.Point(954, 10);
+            this.buttonUnlock.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonUnlock.Name = "buttonUnlock";
+            this.buttonUnlock.Size = new System.Drawing.Size(70, 32);
+            this.buttonUnlock.TabIndex = 21;
+            this.buttonUnlock.TabStop = false;
+            this.buttonUnlock.Text = "Unlock";
+            this.buttonUnlock.UseVisualStyleBackColor = false;
+            this.buttonUnlock.Click += new System.EventHandler(this.buttonUnlock_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.buttonLock);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.buttonClose);
+            this.panel1.Controls.Add(this.buttonUnlock);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1109, 50);
+            this.panel1.TabIndex = 7;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Item;
+            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // MstItemDetailForm
             // 
