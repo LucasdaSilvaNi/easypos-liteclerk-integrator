@@ -60,5 +60,6 @@ namespace EasyPOS.Entities
         public Boolean DateLogin { get; set; }
         public Boolean HideSalesAmount { get; set; }
         public Boolean HideStockInPriceAndCost { get; set; }
+        public Boolean HideSalesItemDetail { get; set; }
     }
 }

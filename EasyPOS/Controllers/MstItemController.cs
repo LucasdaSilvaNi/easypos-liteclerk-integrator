@@ -88,7 +88,9 @@ namespace EasyPOS.Controllers
                                 IsPackage = d.IsPackage
                             };
 
-                return items.OrderByDescending(d => d.Id).ToList();
+                //return items.OrderByDescending(d => d.Id).ToList();
+                return items.OrderBy(d => d.ItemDescription).ToList();
+
             }
             else if (selectedIsLocked == "All" && selectedIsInventory != "All")
             {
@@ -144,7 +146,8 @@ namespace EasyPOS.Controllers
                                 IsPackage = d.IsPackage
                             };
 
-                return items.OrderByDescending(d => d.Id).ToList();
+                //return items.OrderByDescending(d => d.Id).ToList();
+                return items.OrderBy(d => d.ItemDescription).ToList();
             }
             else if (selectedIsLocked == "All" && selectedIsInventory == "All")
             {
@@ -193,7 +196,8 @@ namespace EasyPOS.Controllers
                                 IsPackage = d.IsPackage
                             };
 
-                return items.OrderByDescending(d => d.Id).ToList();
+                //return items.OrderByDescending(d => d.Id).ToList();
+                return items.OrderBy(d => d.ItemDescription).ToList();
             }
             else if (selectedIsLocked != "All" && selectedIsInventory != "All")
             {
@@ -255,7 +259,8 @@ namespace EasyPOS.Controllers
                                 IsPackage = d.IsPackage
                             };
 
-                return items.OrderByDescending(d => d.Id).ToList();
+                //return items.OrderByDescending(d => d.Id).ToList();
+                return items.OrderBy(d => d.ItemDescription).ToList();
             }
             else
             {

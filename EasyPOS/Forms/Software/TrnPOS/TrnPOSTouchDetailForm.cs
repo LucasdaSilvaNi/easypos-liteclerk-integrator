@@ -326,67 +326,79 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             try
             {
-                Button b = sender as Button;
-                String barcode = itemGroupItemToolTip.GetToolTip(b);
-
-                Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
-
-                Entities.MstItemEntity detailItem = trnPOSSalesLineController.DetailItem(barcode);
-                if (detailItem != null)
+                if (Modules.SysCurrentModule.GetCurrentSettings().HideSalesItemDetail == false)
                 {
-                    Int32 ItemId = detailItem.Id;
-                    Int32 SalesId = trnSalesEntity.Id;
-                    String ItemDescription = detailItem.ItemDescription;
-                    Int32 TaxId = detailItem.OutTaxId;
-                    String Tax = detailItem.OutTax;
-                    Decimal TaxRate = detailItem.OutTaxRate;
-                    Decimal TaxAmount = detailItem.Price / (1 + (TaxRate / 100)) * (TaxRate / 100);
-                    Int32 UnitId = detailItem.UnitId;
-                    String Unit = detailItem.Unit;
-                    Decimal Price = detailItem.Price;
-                    Int32 DiscountId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().DefaultDiscountId);
-                    Int32 UserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
+                    Button b = sender as Button;
+                    String barcode = itemGroupItemToolTip.GetToolTip(b);
 
-                    Entities.TrnSalesLineEntity trnSalesLineEntity = new Entities.TrnSalesLineEntity()
+                    Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
+
+                    Entities.MstItemEntity detailItem = trnPOSSalesLineController.DetailItem(barcode);
+                    if (detailItem != null)
                     {
-                        Id = 0,
-                        SalesId = SalesId,
-                        ItemId = ItemId,
-                        ItemDescription = ItemDescription,
-                        UnitId = UnitId,
-                        Unit = Unit,
-                        Price = Price,
-                        DiscountId = DiscountId,
-                        Discount = "",
-                        DiscountRate = 0,
-                        DiscountAmount = 0,
-                        NetPrice = Price,
-                        Quantity = 1,
-                        Amount = Price,
-                        TaxId = TaxId,
-                        Tax = Tax,
-                        TaxRate = TaxRate,
-                        TaxAmount = TaxAmount,
-                        SalesAccountId = 159,
-                        AssetAccountId = 255,
-                        CostAccountId = 238,
-                        TaxAccountId = 87,
-                        SalesLineTimeStamp = DateTime.Now.Date.ToShortDateString(),
-                        UserId = UserId,
-                        Preparation = "NA",
-                        Price1 = 0,
-                        Price2 = 0,
-                        Price2LessTax = 0,
-                        PriceSplitPercentage = 0
-                    };
+                        Int32 ItemId = detailItem.Id;
+                        Int32 SalesId = trnSalesEntity.Id;
+                        String ItemDescription = detailItem.ItemDescription;
+                        Int32 TaxId = detailItem.OutTaxId;
+                        String Tax = detailItem.OutTax;
+                        Decimal TaxRate = detailItem.OutTaxRate;
+                        Decimal TaxAmount = detailItem.Price / (1 + (TaxRate / 100)) * (TaxRate / 100);
+                        Int32 UnitId = detailItem.UnitId;
+                        String Unit = detailItem.Unit;
+                        Decimal Price = detailItem.Price;
+                        Int32 DiscountId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().DefaultDiscountId);
+                        Int32 UserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
 
-                    TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(null, this, trnSalesLineEntity);
-                    trnSalesDetailSalesItemDetailForm.ShowDialog();
+                        Entities.TrnSalesLineEntity trnSalesLineEntity = new Entities.TrnSalesLineEntity()
+                        {
+                            Id = 0,
+                            SalesId = SalesId,
+                            ItemId = ItemId,
+                            ItemDescription = ItemDescription,
+                            UnitId = UnitId,
+                            Unit = Unit,
+                            Price = Price,
+                            DiscountId = DiscountId,
+                            Discount = "",
+                            DiscountRate = 0,
+                            DiscountAmount = 0,
+                            NetPrice = Price,
+                            Quantity = 1,
+                            Amount = Price,
+                            TaxId = TaxId,
+                            Tax = Tax,
+                            TaxRate = TaxRate,
+                            TaxAmount = TaxAmount,
+                            SalesAccountId = 159,
+                            AssetAccountId = 255,
+                            CostAccountId = 238,
+                            TaxAccountId = 87,
+                            SalesLineTimeStamp = DateTime.Now.Date.ToShortDateString(),
+                            UserId = UserId,
+                            Preparation = "NA",
+                            Price1 = 0,
+                            Price2 = 0,
+                            Price2LessTax = 0,
+                            PriceSplitPercentage = 0
+                        };
+
+                        TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(null, this, trnSalesLineEntity);
+                        trnSalesDetailSalesItemDetailForm.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Item not found.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Item not found.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Button b = sender as Button;
+                    String barcode = itemGroupItemToolTip.GetToolTip(b);
+                    Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
+                    trnPOSSalesLineController.BarcodeSalesLine(trnSalesEntity.Id, barcode);
+                    GetSalesLineList();
                 }
+
 
                 //if (Modules.SysCurrentModule.GetCurrentSettings().IsBarcodeQuantityAlwaysOne == "True")
                 //{

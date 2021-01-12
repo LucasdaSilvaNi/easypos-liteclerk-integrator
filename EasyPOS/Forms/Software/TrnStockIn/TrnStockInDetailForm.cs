@@ -237,7 +237,9 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                     {
                         foreach (var stockInLine in stockInLineData)
                         {
+                            //string barcode = stockInLine.ColumnStockInLineListItemBarcode;
                             String[] data = {
+                              //barcode = "(\""+barcode+"\")".Replace(",",""),
                               stockInLine.ColumnStockInLineListItemBarcode,
                               stockInLine.ColumnStockInLineListItemDescription.Replace(",", ""),
                               stockInLine.ColumnStockInLineListUnit,

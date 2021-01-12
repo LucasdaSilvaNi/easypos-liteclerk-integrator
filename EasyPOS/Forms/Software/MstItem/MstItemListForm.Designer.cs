@@ -368,7 +368,7 @@
             this.ColumnItemListBarcode.HeaderText = "Barcode";
             this.ColumnItemListBarcode.Name = "ColumnItemListBarcode";
             this.ColumnItemListBarcode.ReadOnly = true;
-            this.ColumnItemListBarcode.Width = 200;
+            this.ColumnItemListBarcode.Width = 150;
             // 
             // ColumnItemListUnit
             // 
@@ -384,7 +384,7 @@
             this.ColumnItemListCategory.HeaderText = "Category";
             this.ColumnItemListCategory.Name = "ColumnItemListCategory";
             this.ColumnItemListCategory.ReadOnly = true;
-            this.ColumnItemListCategory.Width = 250;
+            this.ColumnItemListCategory.Width = 180;
             // 
             // ColumnItemListPrice
             // 

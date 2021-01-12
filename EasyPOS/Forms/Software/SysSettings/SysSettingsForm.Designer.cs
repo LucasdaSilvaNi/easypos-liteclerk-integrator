@@ -47,6 +47,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.checkBoxStockInPriceAndCost = new System.Windows.Forms.CheckBox();
             this.checkBoxHideSalesAmount = new System.Windows.Forms.CheckBox();
             this.checkBoxDateLogin = new System.Windows.Forms.CheckBox();
             this.checkBoxSwipeLogin = new System.Windows.Forms.CheckBox();
@@ -151,7 +152,7 @@
             this.label64 = new System.Windows.Forms.Label();
             this.textBoxCustomerDisplayPort = new System.Windows.Forms.TextBox();
             this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
-            this.checkBoxStockInPriceAndCost = new System.Windows.Forms.CheckBox();
+            this.checkBoxHideTouchSalesItemDetail = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -405,6 +406,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel5.Controls.Add(this.checkBoxHideTouchSalesItemDetail);
             this.panel5.Controls.Add(this.checkBoxStockInPriceAndCost);
             this.panel5.Controls.Add(this.checkBoxHideSalesAmount);
             this.panel5.Controls.Add(this.checkBoxDateLogin);
@@ -443,6 +445,19 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1095, 472);
             this.panel5.TabIndex = 34;
+            // 
+            // checkBoxStockInPriceAndCost
+            // 
+            this.checkBoxStockInPriceAndCost.AutoSize = true;
+            this.checkBoxStockInPriceAndCost.Enabled = false;
+            this.checkBoxStockInPriceAndCost.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxStockInPriceAndCost.Location = new System.Drawing.Point(582, 222);
+            this.checkBoxStockInPriceAndCost.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxStockInPriceAndCost.Name = "checkBoxStockInPriceAndCost";
+            this.checkBoxStockInPriceAndCost.Size = new System.Drawing.Size(203, 23);
+            this.checkBoxStockInPriceAndCost.TabIndex = 84;
+            this.checkBoxStockInPriceAndCost.Text = "Hide Stock-In Price and Cost";
+            this.checkBoxStockInPriceAndCost.UseVisualStyleBackColor = true;
             // 
             // checkBoxHideSalesAmount
             // 
@@ -1649,18 +1664,18 @@
             this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
             this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
             // 
-            // checkBoxStockInPriceAndCost
+            // checkBoxHideTouchSalesItemDetail
             // 
-            this.checkBoxStockInPriceAndCost.AutoSize = true;
-            this.checkBoxStockInPriceAndCost.Enabled = false;
-            this.checkBoxStockInPriceAndCost.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxStockInPriceAndCost.Location = new System.Drawing.Point(582, 222);
-            this.checkBoxStockInPriceAndCost.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxStockInPriceAndCost.Name = "checkBoxStockInPriceAndCost";
-            this.checkBoxStockInPriceAndCost.Size = new System.Drawing.Size(203, 23);
-            this.checkBoxStockInPriceAndCost.TabIndex = 84;
-            this.checkBoxStockInPriceAndCost.Text = "Hide Stock-In Price and Cost";
-            this.checkBoxStockInPriceAndCost.UseVisualStyleBackColor = true;
+            this.checkBoxHideTouchSalesItemDetail.AutoSize = true;
+            this.checkBoxHideTouchSalesItemDetail.Enabled = false;
+            this.checkBoxHideTouchSalesItemDetail.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxHideTouchSalesItemDetail.Location = new System.Drawing.Point(582, 249);
+            this.checkBoxHideTouchSalesItemDetail.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxHideTouchSalesItemDetail.Name = "checkBoxHideTouchSalesItemDetail";
+            this.checkBoxHideTouchSalesItemDetail.Size = new System.Drawing.Size(201, 23);
+            this.checkBoxHideTouchSalesItemDetail.TabIndex = 85;
+            this.checkBoxHideTouchSalesItemDetail.Text = "Hide Touch Sales Item Detail";
+            this.checkBoxHideTouchSalesItemDetail.UseVisualStyleBackColor = true;
             // 
             // SysSettingsForm
             // 
@@ -1834,5 +1849,6 @@
         private System.Windows.Forms.Label label64;
         private System.Windows.Forms.TextBox textBoxCustomerDisplayPort;
         private System.Windows.Forms.CheckBox checkBoxStockInPriceAndCost;
+        private System.Windows.Forms.CheckBox checkBoxHideTouchSalesItemDetail;
     }
 }

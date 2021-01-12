@@ -50,5 +50,6 @@
   "SwipeLogin": false,
   "DateLogin": false,
   "HideSalesAmount": false,
-  "HideStockInPriceAndCost": false
+  "HideStockInPriceAndCost": false,
+  "HideSalesItemDetail": false 
 }

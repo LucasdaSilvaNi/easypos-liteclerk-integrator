@@ -93,7 +93,8 @@ namespace EasyPOS.Modules
                 WithdrawalPrintTitle = currentSettings.WithdrawalPrintTitle,
                 DateLogin = currentSettings.DateLogin,
                 HideSalesAmount = currentSettings.HideSalesAmount,
-                HideStockInPriceAndCost = currentSettings.HideStockInPriceAndCost
+                HideStockInPriceAndCost = currentSettings.HideStockInPriceAndCost,
+                HideSalesItemDetail = currentSettings.HideSalesItemDetail
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);
@@ -160,7 +161,8 @@ namespace EasyPOS.Modules
                 WithdrawalPrintTitle = objSysCurrentEntity.WithdrawalPrintTitle,
                 DateLogin = objSysCurrentEntity.DateLogin,
                 HideSalesAmount = objSysCurrentEntity.HideSalesAmount,
-                HideStockInPriceAndCost = objSysCurrentEntity.HideStockInPriceAndCost
+                HideStockInPriceAndCost = objSysCurrentEntity.HideStockInPriceAndCost,
+                HideSalesItemDetail = objSysCurrentEntity.HideSalesItemDetail
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newSysCurrentEntities);
@@ -228,7 +230,8 @@ namespace EasyPOS.Modules
                 WithdrawalPrintTitle = currentSettings.WithdrawalPrintTitle,
                 DateLogin = currentSettings.DateLogin,
                 HideSalesAmount = currentSettings.HideSalesAmount,
-                HideStockInPriceAndCost = currentSettings.HideStockInPriceAndCost
+                HideStockInPriceAndCost = currentSettings.HideStockInPriceAndCost,
+                HideSalesItemDetail = currentSettings.HideSalesItemDetail
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);
