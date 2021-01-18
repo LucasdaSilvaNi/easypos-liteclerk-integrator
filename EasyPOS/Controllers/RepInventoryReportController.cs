@@ -676,6 +676,8 @@ namespace EasyPOS.Controllers
         public List<Entities.MstItemEntity> GetInventoryListReport()
         {
             var item = from d in db.MstItems
+                       where d.IsInventory == true
+                       && d.IsLocked == true
                        select new Entities.MstItemEntity
                        {
                            Id = d.Id,

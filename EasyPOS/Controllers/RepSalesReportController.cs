@@ -128,10 +128,10 @@ namespace EasyPOS.Controllers
                                     Date = g.Key.SalesDate,
                                     CustomerCount = g.GroupBy(x => x.TrnSale.Id).Count(),
                                     Quantity = g.Sum(x => x.Quantity),
-                                    CostAmount = g.Sum(x => x.MstItem.Cost) * g.Sum(x => x.Quantity),
+                                    CostAmount = g.Sum(x => x.MstItem.Cost* x.Quantity),
                                     SalesAmount = g.Sum(x => x.Amount),
-                                    MarginAmount = g.Sum(x => x.Amount) - (g.Sum(x => x.MstItem.Cost) * g.Sum(x => x.Quantity)),
-                                    Percentage = ((g.Sum(x => x.Amount) - (g.Sum(x => x.MstItem.Cost) * g.Sum(x => x.Quantity))) / g.Sum(x => x.Amount)) * 100
+                                    MarginAmount = g.Sum(x => x.Amount) - g.Sum(x => x.MstItem.Cost * x.Quantity),
+                                    Percentage = ((g.Sum(x => x.Amount) - g.Sum(x => x.MstItem.Cost * x.Quantity)) / g.Sum(x => x.Amount)) * 100
                                 };
 
             return netSalesDaily.OrderBy(d => d.Date).ToList();
@@ -158,10 +158,10 @@ namespace EasyPOS.Controllers
                                     Year = g.Key.Year,
                                     CustomerCount = g.GroupBy(x => x.TrnSale.Id).Count(),
                                     Quantity = g.Sum(x => x.Quantity),
-                                    CostAmount = g.Sum(x => x.MstItem.Cost) * g.Sum(x => x.Quantity),
+                                    CostAmount = g.Sum(x => x.MstItem.Cost * x.Quantity),
                                     SalesAmount = g.Sum(x => x.Amount),
-                                    MarginAmount = g.Sum(x => x.Amount) - (g.Sum(x => x.MstItem.Cost) * g.Sum(x => x.Quantity)),
-                                    Percentage = ((g.Sum(x => x.Amount) - (g.Sum(x => x.MstItem.Cost) * g.Sum(x => x.Quantity))) / g.Sum(x => x.Amount)) * 100
+                                    MarginAmount = g.Sum(x => x.Amount) - g.Sum(x => x.MstItem.Cost * x.Quantity),
+                                    Percentage = ((g.Sum(x => x.Amount) - g.Sum(x => x.MstItem.Cost * x.Quantity)) / g.Sum(x => x.Amount)) * 100
                                 };
 
             return netSalesDaily.OrderBy(d => d.Month).ToList();

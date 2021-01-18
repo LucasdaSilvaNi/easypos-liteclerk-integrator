@@ -535,7 +535,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                         foreach (var stockOutLine in stockOutLineData)
                         {
                             String[] data = {
-                              stockOutLine.ColumnStockOutLineListItemBarcode,
+                              "="+"\""+stockOutLine.ColumnStockOutLineListItemBarcode+"\"",
                               stockOutLine.ColumnStockOutLineListItemDescription.Replace(",", ""),
                               stockOutLine.ColumnStockOutLineListUnit,
                               stockOutLine.ColumnStockOutLineListQuantity.Replace(",", ""),

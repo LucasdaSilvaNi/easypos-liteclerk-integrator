@@ -49,6 +49,7 @@
             this.ColumnUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -106,6 +107,7 @@
             this.buttonGenerateCSV.TabStop = false;
             this.buttonGenerateCSV.Text = "CSV";
             this.buttonGenerateCSV.UseVisualStyleBackColor = false;
+            this.buttonGenerateCSV.Click += new System.EventHandler(this.buttonGenerateCSV_Click);
             // 
             // pictureBox1
             // 
@@ -355,5 +357,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrice;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
     }
 }

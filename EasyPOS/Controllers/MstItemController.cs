@@ -88,8 +88,8 @@ namespace EasyPOS.Controllers
                                 IsPackage = d.IsPackage
                             };
 
-                //return items.OrderByDescending(d => d.Id).ToList();
-                return items.OrderBy(d => d.ItemDescription).ToList();
+                return items.OrderByDescending(d => d.Id).ToList();
+                //return items.OrderBy(d => d.ItemDescription).ToList();
 
             }
             else if (selectedIsLocked == "All" && selectedIsInventory != "All")
@@ -146,8 +146,8 @@ namespace EasyPOS.Controllers
                                 IsPackage = d.IsPackage
                             };
 
-                //return items.OrderByDescending(d => d.Id).ToList();
-                return items.OrderBy(d => d.ItemDescription).ToList();
+                return items.OrderByDescending(d => d.Id).ToList();
+                //return items.OrderBy(d => d.ItemDescription).ToList();
             }
             else if (selectedIsLocked == "All" && selectedIsInventory == "All")
             {
@@ -196,8 +196,8 @@ namespace EasyPOS.Controllers
                                 IsPackage = d.IsPackage
                             };
 
-                //return items.OrderByDescending(d => d.Id).ToList();
-                return items.OrderBy(d => d.ItemDescription).ToList();
+                return items.OrderByDescending(d => d.Id).ToList();
+                //return items.OrderBy(d => d.ItemDescription).ToList();
             }
             else if (selectedIsLocked != "All" && selectedIsInventory != "All")
             {
@@ -259,8 +259,8 @@ namespace EasyPOS.Controllers
                                 IsPackage = d.IsPackage
                             };
 
-                //return items.OrderByDescending(d => d.Id).ToList();
-                return items.OrderBy(d => d.ItemDescription).ToList();
+                return items.OrderByDescending(d => d.Id).ToList();
+                //return items.OrderBy(d => d.ItemDescription).ToList();
             }
             else
             {
@@ -810,7 +810,7 @@ namespace EasyPOS.Controllers
                             EntryDateTime = DateTime.Today,
                             UpdateUserId = currentUserLogin.FirstOrDefault().Id,
                             UpdateDateTime = DateTime.Today,
-                            IsLocked = false,
+                            IsLocked = true,
                             DefaultKitchenReport = "",
                             IsPackage = false
                         };

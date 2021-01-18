@@ -219,6 +219,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 {
                     StringBuilder csv = new StringBuilder();
                     String[] header = {
+                        "Barcode",
                         "Item Description",
                         "Unit",
                         "Beginning Quantity",
@@ -238,6 +239,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         foreach (var inventoryReport in inventoryReportList)
                         {
                             String[] data = {
+                              inventoryReport.ColumnBarCode,
                               inventoryReport.ColumnItemDescription.Replace(",", ""),
                               inventoryReport.ColumnUnit.Replace(",", ""),
                               inventoryReport.ColumnBegQuantity.Replace(",", ""),

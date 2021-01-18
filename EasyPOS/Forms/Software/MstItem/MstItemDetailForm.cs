@@ -868,89 +868,70 @@ namespace EasyPOS.Forms.Software.MstItem
         }
         private void ComputePriceMarkUp()
         {
-            try
-            {
-                if (String.IsNullOrEmpty(textBoxMarkUp.Text) == false && String.IsNullOrEmpty(textBoxPrice.Text) == false)
-                {
+            //try
+            //{
+            //    if (String.IsNullOrEmpty(textBoxMarkUp.Text) == false && String.IsNullOrEmpty(textBoxPrice.Text) == false)
+            //    {
 
-                    Decimal MarkUp = Convert.ToDecimal(textBoxMarkUp.Text);
-                    Decimal Cost = Convert.ToDecimal(textBoxCost.Text);
-                    Decimal Price = Convert.ToDecimal(textBoxPrice.Text);
-                    Decimal newPrice = Cost + (Cost * (MarkUp / 100));
+            //        Decimal MarkUp = Convert.ToDecimal(textBoxMarkUp.Text);
+            //        Decimal Cost = Convert.ToDecimal(textBoxCost.Text);
+            //        Decimal Price = Convert.ToDecimal(textBoxPrice.Text);
+            //        Decimal newPrice = Cost + (Cost * (MarkUp / 100));
 
-                    textBoxPrice.Text = newPrice.ToString("#,##0.00");
-                }
+            //        textBoxPrice.Text = newPrice.ToString("#,##0.00");
+            //    }
                 
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //catch (Exception e)
+            //{
+            //    MessageBox.Show(e.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
         private void ComputeMarkUpPrice()
         {
-            try
-            {
-                if (String.IsNullOrEmpty(textBoxMarkUp.Text) == false && String.IsNullOrEmpty(textBoxPrice.Text) == false)
-                {
-                    Decimal Cost = Convert.ToDecimal(textBoxCost.Text);
-                    Decimal Price = Convert.ToDecimal(textBoxPrice.Text);
-                    Decimal newMarkUp = ((Price - Cost) / Cost) * 100;
+            //try
+            //{
+            //    if (String.IsNullOrEmpty(textBoxMarkUp.Text) == false && String.IsNullOrEmpty(textBoxPrice.Text) == false)
+            //    {
+            //        Decimal Cost = Convert.ToDecimal(textBoxCost.Text);
+            //        Decimal Price = Convert.ToDecimal(textBoxPrice.Text);
+            //        Decimal newMarkUp = ((Price - Cost) / Cost) * 100;
 
-                    textBoxMarkUp.Text = newMarkUp.ToString("#,##0.00");
-                }
+            //        textBoxMarkUp.Text = newMarkUp.ToString("#,##0.00");
+            //    }
 
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //catch (Exception e)
+            //{
+            //    MessageBox.Show(e.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void textBoxMarkUp_Leave(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(textBoxMarkUp.Text))
-            {
-                textBoxMarkUp.Text = "0.00";
-            }
-            else
-            {
-                ComputePriceMarkUp();
-                textBoxMarkUp.Text = Convert.ToDecimal(textBoxMarkUp.Text).ToString();
-            }
-        }
-
-        private void textBoxPrice_Leave(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(textBoxPrice.Text))
-            {
-                textBoxPrice.Text = "0.00";
-            }
-            else
-            {
-                ComputeMarkUpPrice();
-                textBoxPrice.Text = Convert.ToDecimal(textBoxPrice.Text).ToString();
-            }
-        }
-
-        private void textBoxPrice_TextChanged(object sender, EventArgs e)
-        {
-            //if (String.IsNullOrEmpty(textBoxPrice.Text))
-            //{
-            //    textBoxPrice.Text = "0.00";
-            //}
-            //ComputeMarkUpPrice();
-
-        }
-
-        private void textBoxMarkUp_TextChanged(object sender, EventArgs e)
         {
             //if (String.IsNullOrEmpty(textBoxMarkUp.Text))
             //{
             //    textBoxMarkUp.Text = "0.00";
             //}
-
-            //ComputePriceMarkUp();
+            //else
+            //{
+            //    ComputePriceMarkUp();
+            //    textBoxMarkUp.Text = Convert.ToDecimal(textBoxMarkUp.Text).ToString();
+            //}
         }
+
+        private void textBoxPrice_Leave(object sender, EventArgs e)
+        {
+            //if (String.IsNullOrEmpty(textBoxPrice.Text))
+            //{
+            //    textBoxPrice.Text = "0.00";
+            //}
+            //else
+            //{
+            //    ComputeMarkUpPrice();
+            //    textBoxPrice.Text = Convert.ToDecimal(textBoxPrice.Text).ToString();
+            //}
+        }
+
     }
 }

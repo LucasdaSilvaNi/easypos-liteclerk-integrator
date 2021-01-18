@@ -29,7 +29,7 @@ namespace EasyPOS.Forms.Software.SysUtilities
         public static Int32 itemListPageSize = 50;
         public PagedList<Entities.DgvSysUtilitiesBarcodePrintingItemList> itemListPageList = new PagedList<Entities.DgvSysUtilitiesBarcodePrintingItemList>(itemListData, pageNumber, pageSize);
         public BindingSource itemListDataSource = new BindingSource();
-        public static List<Entities.DgvMstItemListEntity> itemLineData = new List<Entities.DgvMstItemListEntity >();
+        public static List<Entities.DgvMstItemListEntity> itemLineData = new List<Entities.DgvMstItemListEntity>();
         public RepInventoryReport.RepInventoryItemListReportForm _mstItemForm;
         public SysUtilitiesForm(SysSoftwareForm softwareForm, RepInventoryReport.RepInventoryItemListReportForm mstItemListForm)
         {
@@ -739,12 +739,16 @@ namespace EasyPOS.Forms.Software.SysUtilities
 
                     var inventoryListReport = repInvetoryReportController.GetInventoryListReport();
 
+
+                    //dog + "cat"
                     if (inventoryListReport.Any())
                     {
                         foreach (var stockInLine in inventoryListReport)
                         {
+                            
                             String[] data = {
-                              stockInLine.BarCode,
+                              //"\""+stockInLine.BarCode.ToString()+"\"",
+                              "="+"\""+stockInLine.BarCode+"\"",
                               stockInLine.ItemDescription.Replace(",", ""),
                               stockInLine.Unit,
                               Convert.ToString(stockInLine.Cost).Replace(",", ""),
@@ -762,7 +766,7 @@ namespace EasyPOS.Forms.Software.SysUtilities
                     securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
 
                     DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
-                    File.WriteAllText(createDirectorySTCSV.FullName + "\\ItemUploadFormat" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\ExportedItem" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
 
                     MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

@@ -240,7 +240,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                             //string barcode = stockInLine.ColumnStockInLineListItemBarcode;
                             String[] data = {
                               //barcode = "(\""+barcode+"\")".Replace(",",""),
-                              stockInLine.ColumnStockInLineListItemBarcode,
+                               "="+"\""+stockInLine.ColumnStockInLineListItemBarcode+"\"",
                               stockInLine.ColumnStockInLineListItemDescription.Replace(",", ""),
                               stockInLine.ColumnStockInLineListUnit,
                               stockInLine.ColumnStockInLineListQuantity.Replace(",", ""),
@@ -594,6 +594,67 @@ namespace EasyPOS.Forms.Software.TrnStockIn
         {
             TrnStockInLineDetailImportForm stockInDetailImportForm = new TrnStockInLineDetailImportForm(this);
             stockInDetailImportForm.ShowDialog();
+        }
+
+        private void buttonExportAllItems_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = folderBrowserDialogGenerateCSV.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    StringBuilder csv = new StringBuilder();
+                    String[] header = {
+                        "Barcode",
+                        "Item Description",
+                        "Unit",
+                        "Quantity",
+                        "Cost",
+                        "Amount",
+                        "Price"
+                    };
+
+                    csv.AppendLine(String.Join(",", header));
+
+                    Controllers.RepInventoryReportController repInvetoryReportController = new Controllers.RepInventoryReportController();
+                    var inventoryListReport = repInvetoryReportController.GetInventoryListReport();
+
+                    if (inventoryListReport.Any())
+                    {
+                        foreach (var stockInLine in inventoryListReport)
+                        {
+                            //string barcode = stockInLine.ColumnStockInLineListItemBarcode;
+                            String[] data = {
+                              //barcode = "(\""+barcode+"\")".Replace(",",""),
+                               "="+"\""+stockInLine.BarCode+"\"",
+                              stockInLine.ItemDescription.Replace(",", ""),
+                              stockInLine.Unit,
+                              "0",
+                              Convert.ToString(stockInLine.Cost),
+                              "0",
+                              Convert.ToString(stockInLine.Price)
+                            };
+
+                            csv.AppendLine(String.Join(",", data));
+                        }
+                    }
+
+                    String executingUser = WindowsIdentity.GetCurrent().Name;
+
+                    DirectorySecurity securityRules = new DirectorySecurity();
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.Read, AccessControlType.Allow));
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
+
+                    DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\StockInAllItems_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+
+                    MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

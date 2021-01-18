@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -185,6 +188,56 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
             pageNumber = pageList.PageCount;
             textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+        }
+
+        private void buttonGenerateCSV_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = folderBrowserDialogGenerateCSV.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    DateTime startDate = dateStart;
+                    DateTime endDate = dateEnd;
+
+                    StringBuilder csv = new StringBuilder();
+                    String[] header = { "BarCode", "Item Description", "Category", "Unit", "Cost", "Price" };
+                    csv.AppendLine(String.Join(",", header));
+
+                    if (salesDetailList.Any())
+                    {
+                        foreach (var salesDetail in salesDetailList)
+                        {
+                            String[] data = {
+                                             salesDetail.ColumnBarCode,
+                                             salesDetail.ColumnItemDescription.Replace("," , " "),
+                                             salesDetail.ColumnItemCategory.Replace("," , " "),
+                                             salesDetail.ColumnUnit,
+                                             salesDetail.ColumnCost.Replace("," , ""),
+                                             salesDetail.ColumnPrice.Replace(",", " "),
+                            };
+
+                            csv.AppendLine(String.Join(",", data));
+                        }
+                    }
+
+                    String executingUser = WindowsIdentity.GetCurrent().Name;
+
+                    DirectorySecurity securityRules = new DirectorySecurity();
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.Read, AccessControlType.Allow));
+                    securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
+
+                    DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\TopSellingItemsReport_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+
+                    MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -548,7 +548,6 @@
             this.textBoxPrice.Size = new System.Drawing.Size(172, 26);
             this.textBoxPrice.TabIndex = 9;
             this.textBoxPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxPrice.TextChanged += new System.EventHandler(this.textBoxPrice_TextChanged);
             this.textBoxPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPrice_KeyPress);
             this.textBoxPrice.Leave += new System.EventHandler(this.textBoxPrice_Leave);
             // 
@@ -572,7 +571,6 @@
             this.textBoxMarkUp.Size = new System.Drawing.Size(172, 26);
             this.textBoxMarkUp.TabIndex = 8;
             this.textBoxMarkUp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxMarkUp.TextChanged += new System.EventHandler(this.textBoxMarkUp_TextChanged);
             this.textBoxMarkUp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMarkUp_KeyPress);
             this.textBoxMarkUp.Leave += new System.EventHandler(this.textBoxMarkUp_Leave);
             // 
