@@ -47,6 +47,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.checkBoxHideItemListItemCode = new System.Windows.Forms.CheckBox();
+            this.checkBoxHideItemListBarcode = new System.Windows.Forms.CheckBox();
+            this.checkBoxHideTouchSalesItemDetail = new System.Windows.Forms.CheckBox();
             this.checkBoxStockInPriceAndCost = new System.Windows.Forms.CheckBox();
             this.checkBoxHideSalesAmount = new System.Windows.Forms.CheckBox();
             this.checkBoxDateLogin = new System.Windows.Forms.CheckBox();
@@ -152,7 +155,6 @@
             this.label64 = new System.Windows.Forms.Label();
             this.textBoxCustomerDisplayPort = new System.Windows.Forms.TextBox();
             this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
-            this.checkBoxHideTouchSalesItemDetail = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -406,6 +408,8 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel5.Controls.Add(this.checkBoxHideItemListItemCode);
+            this.panel5.Controls.Add(this.checkBoxHideItemListBarcode);
             this.panel5.Controls.Add(this.checkBoxHideTouchSalesItemDetail);
             this.panel5.Controls.Add(this.checkBoxStockInPriceAndCost);
             this.panel5.Controls.Add(this.checkBoxHideSalesAmount);
@@ -445,6 +449,45 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1095, 472);
             this.panel5.TabIndex = 34;
+            // 
+            // checkBoxHideItemListItemCode
+            // 
+            this.checkBoxHideItemListItemCode.AutoSize = true;
+            this.checkBoxHideItemListItemCode.Enabled = false;
+            this.checkBoxHideItemListItemCode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxHideItemListItemCode.Location = new System.Drawing.Point(582, 302);
+            this.checkBoxHideItemListItemCode.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxHideItemListItemCode.Name = "checkBoxHideItemListItemCode";
+            this.checkBoxHideItemListItemCode.Size = new System.Drawing.Size(181, 23);
+            this.checkBoxHideItemListItemCode.TabIndex = 87;
+            this.checkBoxHideItemListItemCode.Text = "Hide Item List Item Code";
+            this.checkBoxHideItemListItemCode.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxHideItemListBarcode
+            // 
+            this.checkBoxHideItemListBarcode.AutoSize = true;
+            this.checkBoxHideItemListBarcode.Enabled = false;
+            this.checkBoxHideItemListBarcode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxHideItemListBarcode.Location = new System.Drawing.Point(582, 275);
+            this.checkBoxHideItemListBarcode.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxHideItemListBarcode.Name = "checkBoxHideItemListBarcode";
+            this.checkBoxHideItemListBarcode.Size = new System.Drawing.Size(166, 23);
+            this.checkBoxHideItemListBarcode.TabIndex = 86;
+            this.checkBoxHideItemListBarcode.Text = "Hide Item List Barcode";
+            this.checkBoxHideItemListBarcode.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxHideTouchSalesItemDetail
+            // 
+            this.checkBoxHideTouchSalesItemDetail.AutoSize = true;
+            this.checkBoxHideTouchSalesItemDetail.Enabled = false;
+            this.checkBoxHideTouchSalesItemDetail.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxHideTouchSalesItemDetail.Location = new System.Drawing.Point(582, 249);
+            this.checkBoxHideTouchSalesItemDetail.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxHideTouchSalesItemDetail.Name = "checkBoxHideTouchSalesItemDetail";
+            this.checkBoxHideTouchSalesItemDetail.Size = new System.Drawing.Size(201, 23);
+            this.checkBoxHideTouchSalesItemDetail.TabIndex = 85;
+            this.checkBoxHideTouchSalesItemDetail.Text = "Hide Touch Sales Item Detail";
+            this.checkBoxHideTouchSalesItemDetail.UseVisualStyleBackColor = true;
             // 
             // checkBoxStockInPriceAndCost
             // 
@@ -1664,19 +1707,6 @@
             this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
             this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
             // 
-            // checkBoxHideTouchSalesItemDetail
-            // 
-            this.checkBoxHideTouchSalesItemDetail.AutoSize = true;
-            this.checkBoxHideTouchSalesItemDetail.Enabled = false;
-            this.checkBoxHideTouchSalesItemDetail.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxHideTouchSalesItemDetail.Location = new System.Drawing.Point(582, 249);
-            this.checkBoxHideTouchSalesItemDetail.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxHideTouchSalesItemDetail.Name = "checkBoxHideTouchSalesItemDetail";
-            this.checkBoxHideTouchSalesItemDetail.Size = new System.Drawing.Size(201, 23);
-            this.checkBoxHideTouchSalesItemDetail.TabIndex = 85;
-            this.checkBoxHideTouchSalesItemDetail.Text = "Hide Touch Sales Item Detail";
-            this.checkBoxHideTouchSalesItemDetail.UseVisualStyleBackColor = true;
-            // 
             // SysSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1850,5 +1880,7 @@
         private System.Windows.Forms.TextBox textBoxCustomerDisplayPort;
         private System.Windows.Forms.CheckBox checkBoxStockInPriceAndCost;
         private System.Windows.Forms.CheckBox checkBoxHideTouchSalesItemDetail;
+        private System.Windows.Forms.CheckBox checkBoxHideItemListItemCode;
+        private System.Windows.Forms.CheckBox checkBoxHideItemListBarcode;
     }
 }

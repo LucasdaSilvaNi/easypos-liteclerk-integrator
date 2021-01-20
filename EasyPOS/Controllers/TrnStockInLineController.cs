@@ -20,7 +20,7 @@ namespace EasyPOS.Controllers
         public List<Entities.TrnStockInLineEntity> ListStockInLine(Int32 stockInId)
         {
             var stockInLines = from d in db.TrnStockInLines
-                               where d.StockInId == stockInId
+                               
                                select new Entities.TrnStockInLineEntity
                                {
                                    Id = d.Id,
@@ -40,7 +40,8 @@ namespace EasyPOS.Controllers
                                    Price = d.Price
                                };
 
-            return stockInLines.OrderByDescending(d => d.Id).ToList();
+            //return stockInLines.OrderByDescending(d => d.Id).ToList();
+            return stockInLines.Where(d => d.StockInId == stockInId).ToList();
         }
 
         // ================

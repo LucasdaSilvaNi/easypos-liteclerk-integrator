@@ -468,6 +468,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxHideSalesAmount.Checked = Convert.ToBoolean(sysCurrent.HideSalesAmount);
                 checkBoxStockInPriceAndCost.Checked = Convert.ToBoolean(sysCurrent.HideStockInPriceAndCost);
                 checkBoxHideTouchSalesItemDetail.Checked = Convert.ToBoolean(sysCurrent.HideSalesItemDetail);
+                checkBoxHideItemListBarcode.Checked = Convert.ToBoolean(sysCurrent.HideItemListBarcode);
+                checkBoxHideItemListItemCode.Checked = Convert.ToBoolean(sysCurrent.HideItemListItemCode);
             }
         }
 
@@ -539,10 +541,11 @@ namespace EasyPOS.Forms.Software.SysSettings
                 DateLogin = checkBoxDateLogin.Checked,
                 HideSalesAmount = checkBoxHideSalesAmount.Checked,
                 HideStockInPriceAndCost = checkBoxStockInPriceAndCost.Checked,
-                HideSalesItemDetail = checkBoxHideTouchSalesItemDetail.Checked
-                
+                HideSalesItemDetail = checkBoxHideTouchSalesItemDetail.Checked,
+                HideItemListBarcode = checkBoxHideItemListBarcode.Checked,
+                HideItemListItemCode = checkBoxHideItemListItemCode.Checked
             };
-
+            
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);
             if (saveSysCurrent[1].Equals("0") == false)
             {
@@ -593,6 +596,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxHideSalesAmount.Enabled = false;
                 checkBoxStockInPriceAndCost.Enabled = false;
                 checkBoxHideTouchSalesItemDetail.Enabled = false;
+                checkBoxHideItemListBarcode.Enabled = false;
+                checkBoxHideItemListItemCode.Enabled = false;
             }
             else
             {
@@ -671,6 +676,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxHideSalesAmount.Enabled = true;
                 checkBoxStockInPriceAndCost.Enabled = true;
                 checkBoxHideTouchSalesItemDetail.Enabled = true;
+                checkBoxHideItemListBarcode.Enabled = true;
+                checkBoxHideItemListItemCode.Enabled = true;
             }
         }
 
@@ -702,6 +709,5 @@ namespace EasyPOS.Forms.Software.SysSettings
             }
         }
 
-   
     }
 }

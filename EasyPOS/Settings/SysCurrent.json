@@ -51,5 +51,7 @@
   "DateLogin": false,
   "HideSalesAmount": false,
   "HideStockInPriceAndCost": false,
-  "HideSalesItemDetail": false 
+  "HideSalesItemDetail": false,
+  "HideSalesItemListBarcode": false,
+  "HideSalesItemListItemCode": false
 }

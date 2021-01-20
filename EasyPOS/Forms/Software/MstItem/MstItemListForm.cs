@@ -64,6 +64,22 @@ namespace EasyPOS.Forms.Software.MstItem
                     "Unlocked"
                 };
                 comboBoxIsLocked.DataSource = lockOption;
+                if (Modules.SysCurrentModule.GetCurrentSettings().HideItemListBarcode == true)
+                {
+                    ColumnItemListBarcode.Visible = false;
+                }
+                else
+                {
+                    ColumnItemListBarcode.Visible = true;
+                }
+                if (Modules.SysCurrentModule.GetCurrentSettings().HideItemListItemCode == true)
+                {
+                    ColumnItemListCode.Visible = false;
+                }
+                else
+                {
+                    ColumnItemListCode.Visible = true;
+                }
 
                 CreateItemListDataGridView();
 

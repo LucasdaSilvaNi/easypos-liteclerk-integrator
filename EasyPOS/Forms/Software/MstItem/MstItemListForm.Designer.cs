@@ -325,31 +325,34 @@
             this.ColumnItemListButtonEdit.DataPropertyName = "ColumnItemListButtonEdit";
             this.ColumnItemListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ColumnItemListButtonEdit.HeaderText = "";
+            this.ColumnItemListButtonEdit.MinimumWidth = 100;
             this.ColumnItemListButtonEdit.Name = "ColumnItemListButtonEdit";
             this.ColumnItemListButtonEdit.ReadOnly = true;
-            this.ColumnItemListButtonEdit.Width = 70;
             // 
             // ColumnItemListButtonDelete
             // 
             this.ColumnItemListButtonDelete.DataPropertyName = "ColumnItemListButtonDelete";
             this.ColumnItemListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ColumnItemListButtonDelete.HeaderText = "";
+            this.ColumnItemListButtonDelete.MinimumWidth = 100;
             this.ColumnItemListButtonDelete.Name = "ColumnItemListButtonDelete";
             this.ColumnItemListButtonDelete.ReadOnly = true;
-            this.ColumnItemListButtonDelete.Width = 70;
             // 
             // ColumnItemListId
             // 
             this.ColumnItemListId.DataPropertyName = "ColumnItemListId";
             this.ColumnItemListId.HeaderText = "Id";
+            this.ColumnItemListId.MinimumWidth = 50;
             this.ColumnItemListId.Name = "ColumnItemListId";
             this.ColumnItemListId.ReadOnly = true;
             this.ColumnItemListId.Visible = false;
+            this.ColumnItemListId.Width = 50;
             // 
             // ColumnItemListCode
             // 
             this.ColumnItemListCode.DataPropertyName = "ColumnItemListCode";
             this.ColumnItemListCode.HeaderText = "Item Code";
+            this.ColumnItemListCode.MinimumWidth = 150;
             this.ColumnItemListCode.Name = "ColumnItemListCode";
             this.ColumnItemListCode.ReadOnly = true;
             this.ColumnItemListCode.Width = 150;
@@ -358,6 +361,7 @@
             // 
             this.ColumnItemListDescription.DataPropertyName = "ColumnItemListDescription";
             this.ColumnItemListDescription.HeaderText = "Item Description";
+            this.ColumnItemListDescription.MinimumWidth = 250;
             this.ColumnItemListDescription.Name = "ColumnItemListDescription";
             this.ColumnItemListDescription.ReadOnly = true;
             this.ColumnItemListDescription.Width = 250;
@@ -366,6 +370,7 @@
             // 
             this.ColumnItemListBarcode.DataPropertyName = "ColumnItemListBarcode";
             this.ColumnItemListBarcode.HeaderText = "Barcode";
+            this.ColumnItemListBarcode.MinimumWidth = 150;
             this.ColumnItemListBarcode.Name = "ColumnItemListBarcode";
             this.ColumnItemListBarcode.ReadOnly = true;
             this.ColumnItemListBarcode.Width = 150;
@@ -374,17 +379,18 @@
             // 
             this.ColumnItemListUnit.DataPropertyName = "ColumnItemListUnit";
             this.ColumnItemListUnit.HeaderText = "Unit";
+            this.ColumnItemListUnit.MinimumWidth = 100;
             this.ColumnItemListUnit.Name = "ColumnItemListUnit";
             this.ColumnItemListUnit.ReadOnly = true;
-            this.ColumnItemListUnit.Width = 70;
             // 
             // ColumnItemListCategory
             // 
             this.ColumnItemListCategory.DataPropertyName = "ColumnItemListCategory";
             this.ColumnItemListCategory.HeaderText = "Category";
+            this.ColumnItemListCategory.MinimumWidth = 150;
             this.ColumnItemListCategory.Name = "ColumnItemListCategory";
             this.ColumnItemListCategory.ReadOnly = true;
-            this.ColumnItemListCategory.Width = 180;
+            this.ColumnItemListCategory.Width = 150;
             // 
             // ColumnItemListPrice
             // 
@@ -392,6 +398,7 @@
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnItemListPrice.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColumnItemListPrice.HeaderText = "Price";
+            this.ColumnItemListPrice.MinimumWidth = 100;
             this.ColumnItemListPrice.Name = "ColumnItemListPrice";
             this.ColumnItemListPrice.ReadOnly = true;
             // 
@@ -399,6 +406,7 @@
             // 
             this.ColumnItemListCost.DataPropertyName = "ColumnItemListCost";
             this.ColumnItemListCost.HeaderText = "Cost";
+            this.ColumnItemListCost.MinimumWidth = 100;
             this.ColumnItemListCost.Name = "ColumnItemListCost";
             this.ColumnItemListCost.ReadOnly = true;
             this.ColumnItemListCost.Visible = false;
@@ -409,6 +417,7 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnItemListOnHandQuantity.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnItemListOnHandQuantity.HeaderText = "Qty.";
+            this.ColumnItemListOnHandQuantity.MinimumWidth = 100;
             this.ColumnItemListOnHandQuantity.Name = "ColumnItemListOnHandQuantity";
             this.ColumnItemListOnHandQuantity.ReadOnly = true;
             // 
@@ -416,17 +425,19 @@
             // 
             this.ColumnItemListIsInventory.DataPropertyName = "ColumnItemListIsInventory";
             this.ColumnItemListIsInventory.HeaderText = "I";
+            this.ColumnItemListIsInventory.MinimumWidth = 50;
             this.ColumnItemListIsInventory.Name = "ColumnItemListIsInventory";
             this.ColumnItemListIsInventory.ReadOnly = true;
-            this.ColumnItemListIsInventory.Width = 35;
+            this.ColumnItemListIsInventory.Width = 50;
             // 
             // ColumnItemListIsLocked
             // 
             this.ColumnItemListIsLocked.DataPropertyName = "ColumnItemListIsLocked";
             this.ColumnItemListIsLocked.HeaderText = "L";
+            this.ColumnItemListIsLocked.MinimumWidth = 50;
             this.ColumnItemListIsLocked.Name = "ColumnItemListIsLocked";
             this.ColumnItemListIsLocked.ReadOnly = true;
-            this.ColumnItemListIsLocked.Width = 35;
+            this.ColumnItemListIsLocked.Width = 50;
             // 
             // ColumnSupplier
             // 
@@ -434,6 +445,7 @@
             this.ColumnSupplier.HeaderText = "Default Supplier";
             this.ColumnSupplier.Name = "ColumnSupplier";
             this.ColumnSupplier.ReadOnly = true;
+            this.ColumnSupplier.Width = 120;
             // 
             // MstItemListForm
             // 

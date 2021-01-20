@@ -94,7 +94,9 @@ namespace EasyPOS.Modules
                 DateLogin = currentSettings.DateLogin,
                 HideSalesAmount = currentSettings.HideSalesAmount,
                 HideStockInPriceAndCost = currentSettings.HideStockInPriceAndCost,
-                HideSalesItemDetail = currentSettings.HideSalesItemDetail
+                HideSalesItemDetail = currentSettings.HideSalesItemDetail,
+                HideItemListBarcode = currentSettings.HideItemListBarcode,
+                HideItemListItemCode = currentSettings.HideItemListItemCode,
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);
@@ -162,7 +164,9 @@ namespace EasyPOS.Modules
                 DateLogin = objSysCurrentEntity.DateLogin,
                 HideSalesAmount = objSysCurrentEntity.HideSalesAmount,
                 HideStockInPriceAndCost = objSysCurrentEntity.HideStockInPriceAndCost,
-                HideSalesItemDetail = objSysCurrentEntity.HideSalesItemDetail
+                HideSalesItemDetail = objSysCurrentEntity.HideSalesItemDetail,
+                HideItemListBarcode = objSysCurrentEntity.HideItemListBarcode,
+                HideItemListItemCode = objSysCurrentEntity.HideItemListItemCode,
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newSysCurrentEntities);
@@ -231,7 +235,9 @@ namespace EasyPOS.Modules
                 DateLogin = currentSettings.DateLogin,
                 HideSalesAmount = currentSettings.HideSalesAmount,
                 HideStockInPriceAndCost = currentSettings.HideStockInPriceAndCost,
-                HideSalesItemDetail = currentSettings.HideSalesItemDetail
+                HideSalesItemDetail = currentSettings.HideSalesItemDetail,
+                HideItemListBarcode = currentSettings.HideItemListBarcode,
+                HideItemListItemCode = currentSettings.HideItemListItemCode,
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);
