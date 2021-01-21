@@ -108,44 +108,36 @@ namespace EasyPOS.Forms.Software.MstCustomer
 
         private void buttonLock_Click(object sender, EventArgs e)
         {
-            if (sysUserRights.GetUserRights() == null)
+            Controllers.MstCustomerController mstCustomerController = new Controllers.MstCustomerController();
+
+            Entities.MstCustomerEntity newCustomerEntity = new Entities.MstCustomerEntity()
             {
-                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomerCode = textBoxCustomerCode.Text,
+                Customer = textBoxCustomer.Text,
+                Address = textBoxAddress.Text,
+                ContactPerson = textBoxContactPerson.Text,
+                ContactNumber = textBoxContactNumber.Text,
+                CreditLimit = Convert.ToDecimal(textBoxCreditLimit.Text),
+                TermId = Convert.ToInt32(comboBoxTerm.SelectedValue),
+                TIN = textBoxTIN.Text,
+                WithReward = checkBoxWithReward.Checked,
+                RewardNumber = textBoxRewardNumber.Text,
+                RewardConversion = Convert.ToDecimal(textBoxRewardConversion.Text),
+                AvailableReward = Convert.ToDecimal(textBoxAvailableReward.Text),
+                DefaultPriceDescription = textBoxDefaultPrice.Text,
+            };
+
+            String[] lockCustomer = mstCustomerController.LockCustomer(mstCustomerEntity.Id, newCustomerEntity);
+            if (lockCustomer[1].Equals("0") == false)
+            {
+                UpdateComponents(true);
+                mstCustomerListForm.UpdateCustomerListDataSource();
             }
             else
             {
-                Controllers.MstCustomerController mstCustomerController = new Controllers.MstCustomerController();
-
-                Entities.MstCustomerEntity newCustomerEntity = new Entities.MstCustomerEntity()
-                {
-                    CustomerCode = textBoxCustomerCode.Text,
-                    Customer = textBoxCustomer.Text,
-                    Address = textBoxAddress.Text,
-                    ContactPerson = textBoxContactPerson.Text,
-                    ContactNumber = textBoxContactNumber.Text,
-                    CreditLimit = Convert.ToDecimal(textBoxCreditLimit.Text),
-                    TermId = Convert.ToInt32(comboBoxTerm.SelectedValue),
-                    TIN = textBoxTIN.Text,
-                    WithReward = checkBoxWithReward.Checked,
-                    RewardNumber = textBoxRewardNumber.Text,
-                    RewardConversion = Convert.ToDecimal(textBoxRewardConversion.Text),
-                    AvailableReward = Convert.ToDecimal(textBoxAvailableReward.Text),
-                    DefaultPriceDescription = textBoxDefaultPrice.Text,
-                };
-
-                String[] lockCustomer = mstCustomerController.LockCustomer(mstCustomerEntity.Id, newCustomerEntity);
-                if (lockCustomer[1].Equals("0") == false)
-                {
-                    UpdateComponents(true);
-                    mstCustomerListForm.UpdateCustomerListDataSource();
-                }
-                else
-                {
-                    UpdateComponents(false);
-                    MessageBox.Show(lockCustomer[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                UpdateComponents(false);
+                MessageBox.Show(lockCustomer[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void buttonUnlock_Click(object sender, EventArgs e)

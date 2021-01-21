@@ -165,12 +165,7 @@ namespace EasyPOS.Forms.Software.MstCustomer
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (sysUserRights.GetUserRights() == null)
-            {
-                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
+           
                 Controllers.MstCustomerController mstCustomerController = new Controllers.MstCustomerController();
                 String[] addCustomer = mstCustomerController.AddCustomer();
                 if (addCustomer[1].Equals("0") == false)
@@ -182,8 +177,6 @@ namespace EasyPOS.Forms.Software.MstCustomer
                 {
                     MessageBox.Show(addCustomer[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
