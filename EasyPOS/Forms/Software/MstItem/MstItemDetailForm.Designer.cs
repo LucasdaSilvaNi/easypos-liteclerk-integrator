@@ -295,6 +295,8 @@
             // 
             // comboBoxSalesVAT
             // 
+            this.comboBoxSalesVAT.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxSalesVAT.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxSalesVAT.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxSalesVAT.FormattingEnabled = true;
             this.comboBoxSalesVAT.Location = new System.Drawing.Point(507, 36);
@@ -344,6 +346,8 @@
             // 
             // comboBoxDefaultSupplier
             // 
+            this.comboBoxDefaultSupplier.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxDefaultSupplier.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxDefaultSupplier.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxDefaultSupplier.FormattingEnabled = true;
             this.comboBoxDefaultSupplier.Location = new System.Drawing.Point(150, 241);
@@ -397,6 +401,8 @@
             // 
             // comboBoxUnit
             // 
+            this.comboBoxUnit.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxUnit.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxUnit.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxUnit.FormattingEnabled = true;
             this.comboBoxUnit.Location = new System.Drawing.Point(150, 212);

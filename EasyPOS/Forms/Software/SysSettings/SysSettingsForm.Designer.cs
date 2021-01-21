@@ -497,9 +497,9 @@
             this.checkBoxStockInPriceAndCost.Location = new System.Drawing.Point(582, 222);
             this.checkBoxStockInPriceAndCost.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxStockInPriceAndCost.Name = "checkBoxStockInPriceAndCost";
-            this.checkBoxStockInPriceAndCost.Size = new System.Drawing.Size(203, 23);
+            this.checkBoxStockInPriceAndCost.Size = new System.Drawing.Size(219, 23);
             this.checkBoxStockInPriceAndCost.TabIndex = 84;
-            this.checkBoxStockInPriceAndCost.Text = "Hide Stock-In Price and Cost";
+            this.checkBoxStockInPriceAndCost.Text = "Disable Stock-In Price and Cost";
             this.checkBoxStockInPriceAndCost.UseVisualStyleBackColor = true;
             // 
             // checkBoxHideSalesAmount

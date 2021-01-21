@@ -108,52 +108,67 @@ namespace EasyPOS.Forms.Software.MstCustomer
 
         private void buttonLock_Click(object sender, EventArgs e)
         {
-            Controllers.MstCustomerController mstCustomerController = new Controllers.MstCustomerController();
-
-            Entities.MstCustomerEntity newCustomerEntity = new Entities.MstCustomerEntity()
+            if (sysUserRights.GetUserRights() == null)
             {
-                CustomerCode = textBoxCustomerCode.Text,
-                Customer = textBoxCustomer.Text,
-                Address = textBoxAddress.Text,
-                ContactPerson = textBoxContactPerson.Text,
-                ContactNumber = textBoxContactNumber.Text,
-                CreditLimit = Convert.ToDecimal(textBoxCreditLimit.Text),
-                TermId = Convert.ToInt32(comboBoxTerm.SelectedValue),
-                TIN = textBoxTIN.Text,
-                WithReward = checkBoxWithReward.Checked,
-                RewardNumber = textBoxRewardNumber.Text,
-                RewardConversion = Convert.ToDecimal(textBoxRewardConversion.Text),
-                AvailableReward = Convert.ToDecimal(textBoxAvailableReward.Text),
-                DefaultPriceDescription = textBoxDefaultPrice.Text,
-            };
-
-            String[] lockCustomer = mstCustomerController.LockCustomer(mstCustomerEntity.Id, newCustomerEntity);
-            if (lockCustomer[1].Equals("0") == false)
-            {
-                UpdateComponents(true);
-                mstCustomerListForm.UpdateCustomerListDataSource();
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                UpdateComponents(false);
-                MessageBox.Show(lockCustomer[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Controllers.MstCustomerController mstCustomerController = new Controllers.MstCustomerController();
+
+                Entities.MstCustomerEntity newCustomerEntity = new Entities.MstCustomerEntity()
+                {
+                    CustomerCode = textBoxCustomerCode.Text,
+                    Customer = textBoxCustomer.Text,
+                    Address = textBoxAddress.Text,
+                    ContactPerson = textBoxContactPerson.Text,
+                    ContactNumber = textBoxContactNumber.Text,
+                    CreditLimit = Convert.ToDecimal(textBoxCreditLimit.Text),
+                    TermId = Convert.ToInt32(comboBoxTerm.SelectedValue),
+                    TIN = textBoxTIN.Text,
+                    WithReward = checkBoxWithReward.Checked,
+                    RewardNumber = textBoxRewardNumber.Text,
+                    RewardConversion = Convert.ToDecimal(textBoxRewardConversion.Text),
+                    AvailableReward = Convert.ToDecimal(textBoxAvailableReward.Text),
+                    DefaultPriceDescription = textBoxDefaultPrice.Text,
+                };
+
+                String[] lockCustomer = mstCustomerController.LockCustomer(mstCustomerEntity.Id, newCustomerEntity);
+                if (lockCustomer[1].Equals("0") == false)
+                {
+                    UpdateComponents(true);
+                    mstCustomerListForm.UpdateCustomerListDataSource();
+                }
+                else
+                {
+                    UpdateComponents(false);
+                    MessageBox.Show(lockCustomer[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+
         }
 
         private void buttonUnlock_Click(object sender, EventArgs e)
         {
-            Controllers.MstCustomerController mstCustomerController = new Controllers.MstCustomerController();
-
-            String[] unlockCustomer = mstCustomerController.UnlockCustomer(mstCustomerEntity.Id);
-            if (unlockCustomer[1].Equals("0") == false)
+            if (sysUserRights.GetUserRights() == null)
             {
-                UpdateComponents(false);
-                mstCustomerListForm.UpdateCustomerListDataSource();
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                UpdateComponents(true);
-                MessageBox.Show(unlockCustomer[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Controllers.MstCustomerController mstCustomerController = new Controllers.MstCustomerController();
+
+                String[] unlockCustomer = mstCustomerController.UnlockCustomer(mstCustomerEntity.Id);
+                if (unlockCustomer[1].Equals("0") == false)
+                {
+                    UpdateComponents(false);
+                    mstCustomerListForm.UpdateCustomerListDataSource();
+                }
+                else
+                {
+                    UpdateComponents(true);
+                    MessageBox.Show(unlockCustomer[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

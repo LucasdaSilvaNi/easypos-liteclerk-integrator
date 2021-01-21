@@ -29,6 +29,17 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             trnStockInDetailForm = stockInDetailForm;
             trnStockInEntity = stockInEntity;
 
+            if (Modules.SysCurrentModule.GetCurrentSettings().HideItemListBarcode == true)
+            {
+                ColumnSearchItemListBarCode.Visible = false;
+                ColumnSearchItemListBarCode.Visible = false;
+            }
+            else
+            {
+                ColumnSearchItemListBarCode.Visible = true;
+                ColumnSearchItemListBarCode.Visible = true;
+            }
+
             CreateSearchItemListDataGridView();
             textBoxSearchItemListFilter.Focus();
         }

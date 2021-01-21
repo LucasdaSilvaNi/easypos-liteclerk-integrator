@@ -23,6 +23,7 @@ namespace EasyPOS.Forms.Software.MstItem
         public BindingSource itemListDataSource = new BindingSource();
         public List<String> inventoryOption;
         public List<String> lockOption;
+        public List<String> supplierOption;
         public MstItemListForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();
@@ -85,7 +86,6 @@ namespace EasyPOS.Forms.Software.MstItem
 
             }
         }
-
         public void UpdateItemListDataSource()
         {
             String selectedIsInventory = Convert.ToString(comboBoxIsInventory.SelectedValue);
