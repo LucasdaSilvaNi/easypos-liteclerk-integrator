@@ -165,17 +165,25 @@ namespace EasyPOS.Forms.Software.MstCustomer
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            Controllers.MstCustomerController mstCustomerController = new Controllers.MstCustomerController();
-            String[] addCustomer = mstCustomerController.AddCustomer();
-            if (addCustomer[1].Equals("0") == false)
+            if (sysUserRights.GetUserRights() == null)
             {
-                sysSoftwareForm.AddTabPageCustomerDetail(this, mstCustomerController.DetailCustomer(Convert.ToInt32(addCustomer[1])));
-                UpdateCustomerListDataSource();
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show(addCustomer[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Controllers.MstCustomerController mstCustomerController = new Controllers.MstCustomerController();
+                String[] addCustomer = mstCustomerController.AddCustomer();
+                if (addCustomer[1].Equals("0") == false)
+                {
+                    sysSoftwareForm.AddTabPageCustomerDetail(this, mstCustomerController.DetailCustomer(Convert.ToInt32(addCustomer[1])));
+                    UpdateCustomerListDataSource();
+                }
+                else
+                {
+                    MessageBox.Show(addCustomer[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

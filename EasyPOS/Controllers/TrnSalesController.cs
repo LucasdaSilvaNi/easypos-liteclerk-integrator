@@ -139,7 +139,8 @@ namespace EasyPOS.Controllers
                         || d.MstCustomer.CustomerCode.Contains(filter)
                         || d.MstCustomer.Customer.Contains(filter)
                         || d.MstUser5.UserName.Contains(filter)
-                        || d.Remarks.Contains(filter))
+                        || d.Remarks.Contains(filter)
+                        || d.CollectionNumber.Contains(filter))
                         select new Entities.TrnSalesEntity
                         {
                             Id = d.Id,

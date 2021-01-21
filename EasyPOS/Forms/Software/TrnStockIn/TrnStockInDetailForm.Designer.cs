@@ -66,6 +66,7 @@
             this.buttonStockInLineListPageListLast = new System.Windows.Forms.Button();
             this.textBoxStockInLineListPageNumber = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.buttonExportAllItems = new System.Windows.Forms.Button();
             this.buttonExport = new System.Windows.Forms.Button();
             this.buttonImport = new System.Windows.Forms.Button();
             this.dataGridViewStockInLineList = new System.Windows.Forms.DataGridView();
@@ -92,7 +93,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.openFileDialogImportCSV = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
-            this.buttonExportAllItems = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -384,6 +384,8 @@
             // 
             // comboBoxSupplier
             // 
+            this.comboBoxSupplier.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxSupplier.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxSupplier.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxSupplier.FormattingEnabled = true;
             this.comboBoxSupplier.Location = new System.Drawing.Point(181, 66);
@@ -525,6 +527,25 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1096, 273);
             this.panel5.TabIndex = 26;
+            // 
+            // buttonExportAllItems
+            // 
+            this.buttonExportAllItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonExportAllItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonExportAllItems.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonExportAllItems.FlatAppearance.BorderSize = 0;
+            this.buttonExportAllItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportAllItems.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExportAllItems.ForeColor = System.Drawing.Color.White;
+            this.buttonExportAllItems.Location = new System.Drawing.Point(810, 5);
+            this.buttonExportAllItems.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonExportAllItems.Name = "buttonExportAllItems";
+            this.buttonExportAllItems.Size = new System.Drawing.Size(126, 32);
+            this.buttonExportAllItems.TabIndex = 26;
+            this.buttonExportAllItems.TabStop = false;
+            this.buttonExportAllItems.Text = "Export All Items";
+            this.buttonExportAllItems.UseVisualStyleBackColor = false;
+            this.buttonExportAllItems.Click += new System.EventHandler(this.buttonExportAllItems_Click);
             // 
             // buttonExport
             // 
@@ -820,25 +841,6 @@
             // openFileDialogImportCSV
             // 
             this.openFileDialogImportCSV.FileName = "openFileDialogImport";
-            // 
-            // buttonExportAllItems
-            // 
-            this.buttonExportAllItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonExportAllItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonExportAllItems.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonExportAllItems.FlatAppearance.BorderSize = 0;
-            this.buttonExportAllItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonExportAllItems.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonExportAllItems.ForeColor = System.Drawing.Color.White;
-            this.buttonExportAllItems.Location = new System.Drawing.Point(810, 5);
-            this.buttonExportAllItems.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonExportAllItems.Name = "buttonExportAllItems";
-            this.buttonExportAllItems.Size = new System.Drawing.Size(126, 32);
-            this.buttonExportAllItems.TabIndex = 26;
-            this.buttonExportAllItems.TabStop = false;
-            this.buttonExportAllItems.Text = "Export All Items";
-            this.buttonExportAllItems.UseVisualStyleBackColor = false;
-            this.buttonExportAllItems.Click += new System.EventHandler(this.buttonExportAllItems_Click);
             // 
             // TrnStockInDetailForm
             // 

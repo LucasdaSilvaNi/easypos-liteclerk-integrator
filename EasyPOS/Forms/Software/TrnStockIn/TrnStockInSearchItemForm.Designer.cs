@@ -313,7 +313,7 @@
             this.ColumnSearchItemListBarCode.HeaderText = "Barcode";
             this.ColumnSearchItemListBarCode.Name = "ColumnSearchItemListBarCode";
             this.ColumnSearchItemListBarCode.ReadOnly = true;
-            this.ColumnSearchItemListBarCode.Width = 150;
+            this.ColumnSearchItemListBarCode.Width = 130;
             // 
             // ColumnSearchItemListDescription
             // 
@@ -388,14 +388,13 @@
             // 
             // ColumnSearchItemListOnhandQuantity
             // 
-            this.ColumnSearchItemListOnhandQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ColumnSearchItemListOnhandQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.ColumnSearchItemListOnhandQuantity.DataPropertyName = "ColumnSearchItemListOnhandQuantity";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnSearchItemListOnhandQuantity.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnSearchItemListOnhandQuantity.HeaderText = "On Hand Qty.";
             this.ColumnSearchItemListOnhandQuantity.Name = "ColumnSearchItemListOnhandQuantity";
             this.ColumnSearchItemListOnhandQuantity.ReadOnly = true;
-            this.ColumnSearchItemListOnhandQuantity.Width = 120;
             // 
             // ColumnSearchItemListButtonPick
             // 

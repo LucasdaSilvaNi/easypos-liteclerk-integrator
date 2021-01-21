@@ -46,7 +46,6 @@
             this.buttonItemListPageListLast = new System.Windows.Forms.Button();
             this.textBoxItemListPageNumber = new System.Windows.Forms.TextBox();
             this.dataGridViewItemList = new System.Windows.Forms.DataGridView();
-            this.textBoxItemListFilter = new System.Windows.Forms.TextBox();
             this.ColumnItemListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnItemListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnItemListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,6 +60,7 @@
             this.ColumnItemListIsInventory = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColumnItemListIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColumnSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBoxItemListFilter = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -160,7 +160,7 @@
             // 
             this.comboBoxIsLocked.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxIsLocked.FormattingEnabled = true;
-            this.comboBoxIsLocked.Location = new System.Drawing.Point(966, 3);
+            this.comboBoxIsLocked.Location = new System.Drawing.Point(965, 4);
             this.comboBoxIsLocked.Name = "comboBoxIsLocked";
             this.comboBoxIsLocked.Size = new System.Drawing.Size(121, 27);
             this.comboBoxIsLocked.TabIndex = 19;
@@ -170,7 +170,7 @@
             // 
             this.comboBoxIsInventory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxIsInventory.FormattingEnabled = true;
-            this.comboBoxIsInventory.Location = new System.Drawing.Point(807, 3);
+            this.comboBoxIsInventory.Location = new System.Drawing.Point(807, 4);
             this.comboBoxIsInventory.Name = "comboBoxIsInventory";
             this.comboBoxIsInventory.Size = new System.Drawing.Size(153, 27);
             this.comboBoxIsInventory.TabIndex = 18;
@@ -308,18 +308,6 @@
             this.dataGridViewItemList.TabIndex = 9;
             this.dataGridViewItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItemList_CellClick);
             // 
-            // textBoxItemListFilter
-            // 
-            this.textBoxItemListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxItemListFilter.Location = new System.Drawing.Point(10, 4);
-            this.textBoxItemListFilter.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxItemListFilter.Name = "textBoxItemListFilter";
-            this.textBoxItemListFilter.Size = new System.Drawing.Size(792, 26);
-            this.textBoxItemListFilter.TabIndex = 8;
-            this.textBoxItemListFilter.TabStop = false;
-            this.textBoxItemListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxItemListFilter_KeyDown);
-            // 
             // ColumnItemListButtonEdit
             // 
             this.ColumnItemListButtonEdit.DataPropertyName = "ColumnItemListButtonEdit";
@@ -446,6 +434,18 @@
             this.ColumnSupplier.Name = "ColumnSupplier";
             this.ColumnSupplier.ReadOnly = true;
             this.ColumnSupplier.Width = 120;
+            // 
+            // textBoxItemListFilter
+            // 
+            this.textBoxItemListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxItemListFilter.Location = new System.Drawing.Point(10, 4);
+            this.textBoxItemListFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxItemListFilter.Name = "textBoxItemListFilter";
+            this.textBoxItemListFilter.Size = new System.Drawing.Size(791, 26);
+            this.textBoxItemListFilter.TabIndex = 8;
+            this.textBoxItemListFilter.TabStop = false;
+            this.textBoxItemListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxItemListFilter_KeyDown);
             // 
             // MstItemListForm
             // 
