@@ -63,6 +63,7 @@ namespace EasyPOS.Entities
         public Boolean HideSalesItemDetail { get; set; }
         public Boolean HideItemListBarcode { get; set; }
         public Boolean HideItemListItemCode { get; set; }
+        public Boolean AllowCancelPreviousSales { get; set; }
 
     }
 }

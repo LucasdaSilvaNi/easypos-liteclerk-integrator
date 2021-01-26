@@ -155,6 +155,7 @@
             this.label64 = new System.Windows.Forms.Label();
             this.textBoxCustomerDisplayPort = new System.Windows.Forms.TextBox();
             this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
+            this.checkBoxAllowCancelPreviousSales = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -408,6 +409,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel5.Controls.Add(this.checkBoxAllowCancelPreviousSales);
             this.panel5.Controls.Add(this.checkBoxHideItemListItemCode);
             this.panel5.Controls.Add(this.checkBoxHideItemListBarcode);
             this.panel5.Controls.Add(this.checkBoxHideTouchSalesItemDetail);
@@ -1707,6 +1709,19 @@
             this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
             this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
             // 
+            // checkBoxAllowCancelPreviousSales
+            // 
+            this.checkBoxAllowCancelPreviousSales.AutoSize = true;
+            this.checkBoxAllowCancelPreviousSales.Enabled = false;
+            this.checkBoxAllowCancelPreviousSales.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxAllowCancelPreviousSales.Location = new System.Drawing.Point(582, 329);
+            this.checkBoxAllowCancelPreviousSales.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxAllowCancelPreviousSales.Name = "checkBoxAllowCancelPreviousSales";
+            this.checkBoxAllowCancelPreviousSales.Size = new System.Drawing.Size(195, 23);
+            this.checkBoxAllowCancelPreviousSales.TabIndex = 88;
+            this.checkBoxAllowCancelPreviousSales.Text = "Allow Cancel Previous Sales";
+            this.checkBoxAllowCancelPreviousSales.UseVisualStyleBackColor = true;
+            // 
             // SysSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1882,5 +1897,6 @@
         private System.Windows.Forms.CheckBox checkBoxHideTouchSalesItemDetail;
         private System.Windows.Forms.CheckBox checkBoxHideItemListItemCode;
         private System.Windows.Forms.CheckBox checkBoxHideItemListBarcode;
+        private System.Windows.Forms.CheckBox checkBoxAllowCancelPreviousSales;
     }
 }

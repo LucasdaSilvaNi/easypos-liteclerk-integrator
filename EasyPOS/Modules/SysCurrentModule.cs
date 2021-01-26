@@ -97,6 +97,7 @@ namespace EasyPOS.Modules
                 HideSalesItemDetail = currentSettings.HideSalesItemDetail,
                 HideItemListBarcode = currentSettings.HideItemListBarcode,
                 HideItemListItemCode = currentSettings.HideItemListItemCode,
+                AllowCancelPreviousSales = currentSettings.AllowCancelPreviousSales
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);
@@ -167,6 +168,7 @@ namespace EasyPOS.Modules
                 HideSalesItemDetail = objSysCurrentEntity.HideSalesItemDetail,
                 HideItemListBarcode = objSysCurrentEntity.HideItemListBarcode,
                 HideItemListItemCode = objSysCurrentEntity.HideItemListItemCode,
+                AllowCancelPreviousSales = objSysCurrentEntity.AllowCancelPreviousSales
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newSysCurrentEntities);
@@ -238,6 +240,7 @@ namespace EasyPOS.Modules
                 HideSalesItemDetail = currentSettings.HideSalesItemDetail,
                 HideItemListBarcode = currentSettings.HideItemListBarcode,
                 HideItemListItemCode = currentSettings.HideItemListItemCode,
+                AllowCancelPreviousSales = currentSettings.AllowCancelPreviousSales
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);
