@@ -47,7 +47,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 currentDate = Modules.SysCurrentModule.GetCurrentSettings().CurrentDate + "\t\t";
             }
-            
+
             dateTimePickerSalesDate.Value = Convert.ToDateTime(currentDate);
 
             sysUserRights = new Modules.SysUserRightsModule("TrnSales");
@@ -452,8 +452,62 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            if(Modules.SysCurrentModule.GetCurrentSettings().HideSalesAmount == false)
+            if (Modules.SysCurrentModule.GetCurrentSettings().AllowCancelPreviousSales == true)
+            {
+                if (dataGridViewSalesList.Rows.Count > 1)
                 {
+                    if (dataGridViewSalesList.CurrentCell.RowIndex != -1)
+                    {
+                        Boolean isCanclled = Convert.ToBoolean(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnIsCancelled"].Index].Value);
+                        Boolean isTendered = Convert.ToBoolean(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnIsTendered"].Index].Value);
+
+                        if (isCanclled == true)
+                        {
+                            MessageBox.Show("Already Cancelled.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            if (isTendered == true)
+                            {
+                                TrnPOSCancelRemarksForm trnSalesListCancelRemarksForm = new TrnPOSCancelRemarksForm(sysSoftwareForm, this, null, Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[2].Value));
+                                trnSalesListCancelRemarksForm.ShowDialog();
+
+                                if (continueCancel)
+                                {
+                                    DialogResult cancelDialogResult = MessageBox.Show("Cancel Transaction? ", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                    if (cancelDialogResult == DialogResult.Yes)
+                                    {
+                                        Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
+
+                                        String[] cancelSales = trnPOSSalesController.CancelSales(Convert.ToInt32(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnId"].Index].Value), cancelRemarks);
+                                        if (cancelSales[1].Equals("0") == false)
+                                        {
+                                            String collectionNumber = dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnRececiptInvoiceNumber"].Index].Value.ToString();
+                                            MessageBox.Show(collectionNumber + " is successfully cancelled.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                            UpdateSalesListGridDataSource();
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show(cancelSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select sales.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Sales empty.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
                 if (dataGridViewSalesList.Rows.Count > 1)
                 {
                     if (dataGridViewSalesList.CurrentCell.RowIndex != -1)
@@ -513,6 +567,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     MessageBox.Show("Sales empty.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
         }
 
         public void SetCancelRemarks(String remarks)
@@ -585,7 +640,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 {
                     MessageBox.Show("Cannot tender zero amount.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
+
             }
             else
             {

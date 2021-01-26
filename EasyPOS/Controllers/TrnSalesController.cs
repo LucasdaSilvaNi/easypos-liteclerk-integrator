@@ -1294,6 +1294,42 @@ namespace EasyPOS.Controllers
                 return false;
             }
         }
+        // ===================================
+        // Allow Cancel Collection Previous Date
+        // ===================================
+        public Boolean AllowCancelCollection(Int32 salesId)
+        {
+            var collection = from d in db.TrnCollections
+                             where d.SalesId == salesId
+                             select d;
+
+            if (collection.Any())
+            {
+                var lastCollection = from d in db.TrnCollections.OrderByDescending(d => d.Id)
+                                     where d.IsLocked == true
+                                     select d;
+
+                if (lastCollection.Any())
+                {
+                    if (lastCollection.FirstOrDefault().CollectionDate.Date == collection.FirstOrDefault().CollectionDate)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         // ==========
         // Lock Sales
