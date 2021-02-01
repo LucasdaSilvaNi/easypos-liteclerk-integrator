@@ -1271,7 +1271,10 @@ namespace EasyPOS.Controllers
             {
                 var lastCollection = from d in db.TrnCollections.OrderByDescending(d => d.Id)
                                      where d.IsLocked == true
+                                     //&& d.CollectionDate == DateTime.Today
                                      select d;
+
+               
 
                 if (lastCollection.Any())
                 {

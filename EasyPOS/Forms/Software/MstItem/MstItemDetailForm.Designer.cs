@@ -331,9 +331,9 @@
             this.label19.Location = new System.Drawing.Point(430, 38);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(72, 19);
+            this.label19.Size = new System.Drawing.Size(69, 19);
             this.label19.TabIndex = 4;
-            this.label19.Text = "Salels VAT:";
+            this.label19.Text = "Sales VAT:";
             // 
             // textBoxLotNumber
             // 
