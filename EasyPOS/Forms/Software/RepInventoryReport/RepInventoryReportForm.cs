@@ -241,8 +241,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         foreach (var inventoryReport in inventoryReportList)
                         {
                             String[] data = {
-                              inventoryReport.ColumnItemCode,
-                              inventoryReport.ColumnBarCode,
+                              "=" + "\"" + inventoryReport.ColumnItemCode +"\"",
+                              "=" + "\"" + inventoryReport.ColumnBarCode +"\"",
                               inventoryReport.ColumnItemDescription.Replace(",", ""),
                               inventoryReport.ColumnUnit.Replace(",", ""),
                               inventoryReport.ColumnBegQuantity.Replace(",", ""),

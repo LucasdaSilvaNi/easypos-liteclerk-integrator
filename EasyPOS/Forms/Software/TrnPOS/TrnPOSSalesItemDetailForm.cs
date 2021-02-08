@@ -16,13 +16,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public TrnPOSTouchDetailForm trnPOSTouchDetailForm;
         public Entities.TrnSalesLineEntity trnSalesLineEntity;
         public Entities.TrnSalesEntity trnSalesEntity;
+        public TrnPOSSearchItemForm trnPOSSearchItemForm;
 
-        public TrnPOSSalesItemDetailForm(TrnPOSBarcodeDetailForm salesDetailForm, TrnPOSTouchDetailForm POSTouchDetailForm, Entities.TrnSalesLineEntity salesLineEntity)
+        public TrnPOSSalesItemDetailForm(TrnPOSBarcodeDetailForm salesDetailForm, TrnPOSTouchDetailForm POSTouchDetailForm, Entities.TrnSalesLineEntity salesLineEntity, TrnPOSSearchItemForm posSearchItemForm)
         {
             InitializeComponent();
 
             trnSalesDetailForm = salesDetailForm;
             trnPOSTouchDetailForm = POSTouchDetailForm;
+            trnPOSSearchItemForm = posSearchItemForm;
+
 
             trnSalesLineEntity = salesLineEntity;
 
@@ -187,7 +190,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         trnPOSTouchDetailForm.GetSalesLineList();
                         trnPOSTouchDetailForm.UpdatePOSTouchSalesListDataSource();
                     }
-
+                    if(trnPOSSearchItemForm != null)
+                    {
+                        trnPOSSearchItemForm.resetCursor();
+                    }
                     Close();
                 }
                 else

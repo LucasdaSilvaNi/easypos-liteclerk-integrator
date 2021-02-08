@@ -54,7 +54,6 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             this.ColumnCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnLotNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItemExpiryReport)).BeginInit();
@@ -152,8 +151,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             this.ColumnUnit,
             this.ColumnCost,
             this.ColumnPrice,
-            this.ColumnExpiryDate,
-            this.ColumnLotNo});
+            this.ColumnExpiryDate});
             this.dataGridViewItemExpiryReport.Location = new System.Drawing.Point(0, 49);
             this.dataGridViewItemExpiryReport.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewItemExpiryReport.MultiSelect = false;
@@ -326,14 +324,6 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             this.ColumnExpiryDate.ReadOnly = true;
             this.ColumnExpiryDate.Width = 120;
             // 
-            // ColumnLotNo
-            // 
-            this.ColumnLotNo.DataPropertyName = "ColumnLotNo";
-            this.ColumnLotNo.HeaderText = "Lot No.";
-            this.ColumnLotNo.Name = "ColumnLotNo";
-            this.ColumnLotNo.ReadOnly = true;
-            this.ColumnLotNo.Width = 120;
-            // 
             // RepItemExpiryReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -383,6 +373,5 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnExpiryDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLotNo;
     }
 }

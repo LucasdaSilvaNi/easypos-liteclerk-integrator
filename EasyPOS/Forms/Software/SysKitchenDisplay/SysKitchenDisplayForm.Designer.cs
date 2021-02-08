@@ -36,6 +36,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SysKitchenDisplayForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBoxSINumber = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
@@ -77,7 +78,6 @@
             this.buttonKitchenItemPrevious = new System.Windows.Forms.Button();
             this.buttonKitchenPagePrevious = new System.Windows.Forms.Button();
             this.dateTimePickerSalesDate = new System.Windows.Forms.DateTimePicker();
-            this.comboBoxSINumber = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -99,6 +99,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1096, 50);
             this.panel1.TabIndex = 4;
+            // 
+            // comboBoxSINumber
+            // 
+            this.comboBoxSINumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxSINumber.FormattingEnabled = true;
+            this.comboBoxSINumber.Location = new System.Drawing.Point(823, 14);
+            this.comboBoxSINumber.Name = "comboBoxSINumber";
+            this.comboBoxSINumber.Size = new System.Drawing.Size(188, 27);
+            this.comboBoxSINumber.TabIndex = 16;
+            this.comboBoxSINumber.SelectedIndexChanged += new System.EventHandler(this.comboBoxSINumber_SelectedIndexChanged);
             // 
             // pictureBox1
             // 
@@ -730,15 +740,6 @@
             this.dateTimePickerSalesDate.Size = new System.Drawing.Size(123, 29);
             this.dateTimePickerSalesDate.TabIndex = 9;
             this.dateTimePickerSalesDate.ValueChanged += new System.EventHandler(this.dateTimePickerSalesDate_ValueChanged);
-            // 
-            // comboBoxSINumber
-            // 
-            this.comboBoxSINumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxSINumber.FormattingEnabled = true;
-            this.comboBoxSINumber.Location = new System.Drawing.Point(823, 14);
-            this.comboBoxSINumber.Name = "comboBoxSINumber";
-            this.comboBoxSINumber.Size = new System.Drawing.Size(188, 27);
-            this.comboBoxSINumber.TabIndex = 16;
             // 
             // SysKitchenDisplayForm
             // 

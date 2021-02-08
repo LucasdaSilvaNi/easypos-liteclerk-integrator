@@ -257,6 +257,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                             }
 
                             String[] data = {
+                                "="+"\""+stockInDetail.ColumnItemListCode+"\"",
+                                "="+"\""+stockInDetail.ColumnItemListBarcode+"\"",
                                 stockInDetail.ColumnStockInDate,
                                 stockInDetail.ColumnStockInNumber,
                                 manualStockInNumber.Replace("," , ""),

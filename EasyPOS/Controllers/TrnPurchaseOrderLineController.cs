@@ -29,7 +29,7 @@ namespace EasyPOS.Controllers
                                    UnitId = d.UnitId,
                                    Unit = d.MstUnit.Unit,
                                    Quantity = d.Quantity,
-                                   Cost = d.Cost,
+                                   Cost = d.MstItem.Cost,
                                    Amount = d.Amount,
                                    
                                };

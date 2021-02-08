@@ -16,6 +16,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public TrnPOSTouchDetailForm trnPOSTouchDetailForm;
         public Entities.TrnSalesEntity trnSalesEntity;
 
+
         public TrnPOSSearchItemForm(TrnPOSBarcodeDetailForm salesDetailForm, TrnPOSTouchDetailForm POSTouchDetailForm, Entities.TrnSalesEntity salesEntity)
         {
             InitializeComponent();
@@ -29,7 +30,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             GetSearchItemList();
         }
+        public void resetCursor()
+        {
+            textBoxFilter.TabIndex = 0;
 
+            textBoxFilter.Focus();
+            textBoxFilter.SelectAll();
+
+            GetSearchItemList();
+        }
         private void buttonClose_Click(object sender, EventArgs e)
         {
             Close();
@@ -132,8 +141,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     Price2LessTax = 0,
                     PriceSplitPercentage = 0
                 };
-                TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(trnSalesDetailForm, trnPOSTouchDetailForm, trnSalesLineEntity);
+                TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(trnSalesDetailForm, trnPOSTouchDetailForm, trnSalesLineEntity,this);
                 trnSalesDetailSalesItemDetailForm.ShowDialog();
+
+                resetCursor();
             }
         }
 
@@ -196,10 +207,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     Price2LessTax = 0,
                     PriceSplitPercentage = 0
                 };
-                TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(trnSalesDetailForm, trnPOSTouchDetailForm, trnSalesLineEntity);
+                TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(trnSalesDetailForm, trnPOSTouchDetailForm, trnSalesLineEntity,this);
                 trnSalesDetailSalesItemDetailForm.ShowDialog();
 
-
+                resetCursor();
             }
         }
 

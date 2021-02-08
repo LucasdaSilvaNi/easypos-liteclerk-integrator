@@ -52,7 +52,6 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                               ColumnCost = Convert.ToDecimal(d.Cost).ToString("#,##0.00"),
                               ColumnPrice = Convert.ToDecimal(d.Price).ToString("#,##0.00"),
                               ColumnExpiryDate = d.ExpiryDate,
-                              ColumnLotNo = d.LotNumber
                           };
 
                 rowList = row.ToList();
@@ -203,25 +202,19 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                     {
                         foreach (var item in itemList)
                         {
-                            String lotNo = "";
-                            if (item.ColumnLotNo != null)
-                            {
-                                lotNo = item.ColumnLotNo.Replace(",", "");
-                            }
                             String expiryDate = "";
                             if (item.ColumnExpiryDate != null)
                             {
                                 expiryDate = item.ColumnExpiryDate.ToString().Replace(",", "");
                             }
                             String[] data = {
+                               "="+"\""+ item.ColumnItemListCode +"\"",
+                               "="+"\""+ item.ColumnItemListBarcode +"\"",
                                 item.ColumnItem.Replace("," , ""),
-                                item.ColumnOnHandQuantity.Replace(",", ""),
                                 item.ColumnUnit.Replace("," , ""),
                                 item.ColumnCost.Replace("," , ""),
                                 item.ColumnPrice.Replace("," , ""),
                                 expiryDate,
-                                lotNo
-
                             };
                             csv.AppendLine(String.Join(",", data));
                         }

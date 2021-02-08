@@ -37,6 +37,8 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
         private int kitchenItemPage = 1;
         Button[] kitchenItemButtons;
 
+        public Int32 orderNumberSelectedValue = 0;
+
         public SysKitchenDisplayForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();
@@ -124,6 +126,9 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
                 comboBoxSINumber.DataSource = newSalesList;
                 comboBoxSINumber.ValueMember = "SalesId";
                 comboBoxSINumber.DisplayMember = "OrderNumber";
+
+                FillKitchenItem(kitchen);
+                GetDoneItems();
             }
         }
         private void FillKitchen()
@@ -146,10 +151,7 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
 
                 selectedKitchen = listKitchenPage[0].Kitchen;
 
-
-                FillKitchenItem(selectedKitchen);
-
-                GetDoneItems();
+                GetorderNumberList(selectedKitchen);
             }
             catch (Exception ex)
             {
@@ -164,7 +166,9 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
                 DateTime salesDate = dateTimePickerSalesDate.Value.Date;
                 Controllers.SysKitchenController sysKitchenController = new Controllers.SysKitchenController();
 
-                listKitchenItems = sysKitchenController.ListKitchenItems(kitchen, salesDate);
+                Int32 salesId = orderNumberSelectedValue;
+               
+                listKitchenItems = sysKitchenController.ListKitchenItems(kitchen, salesDate, salesId);
                 kitchenItemPages = listKitchenItems.Count();
                 for (int i = 0; i < kitchenItemNoOfButtons; i++)
                 {
@@ -408,13 +412,18 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
         private void dateTimePickerSalesDate_ValueChanged(object sender, EventArgs e)
         {
             GetorderNumberList(selectedKitchen);
-            FillKitchenItem(selectedKitchen);
-            GetDoneItems();
         }
 
         private void comboBoxSINumber_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GetorderNumberList(selectedKitchen);
+            ComboBox cmb = (ComboBox)sender;
+            int selectedIndex = cmb.SelectedIndex;
+            int selectedValue = (int)cmb.SelectedValue;
+
+            orderNumberSelectedValue = selectedValue;
+
+            FillKitchenItem(selectedKitchen);
+            GetDoneItems();
         }
     }
 }

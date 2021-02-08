@@ -196,7 +196,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 if (dialogResult == DialogResult.OK)
                 {
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Item Code", "Barcode", "Item Description", "Cost", "Price" };
+                    String[] header = { "Item Code", "Barcode", "Item Description","Unit", "Cost", "Price" };
                     csv.AppendLine(String.Join(",", header));
 
                     if (itemList.Any())
@@ -210,7 +210,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                             }
 
                             String[] data = {
-                                Barcode,
+                                "="+"\""+item.ColumnItemListCode + "\"",
+                                "="+"\""+Barcode+"\"",
                                 item.ColumnItemListDescription.Replace("," , ""),
                                 item.ColumnItemListUnit.Replace("," , ""),
                                 item.ColumnItemListCost.Replace("," , ""),

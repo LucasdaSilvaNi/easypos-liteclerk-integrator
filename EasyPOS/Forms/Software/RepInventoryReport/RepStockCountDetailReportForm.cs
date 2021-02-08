@@ -212,7 +212,10 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                     {
                         foreach (var stockCountDetail in stockCountDetailReportList)
                         {
-                            String[] data = {stockCountDetail.ColumnStockCountDate,
+                            String[] data = {
+                              "="+"\""+stockCountDetail.ColumnItemListCode+"\"",
+                              "="+"\""+stockCountDetail.ColumnItemListBarcode+"\"",
+                              stockCountDetail.ColumnStockCountDate,
                               stockCountDetail.ColumnStockCountNumber,
                               stockCountDetail.ColumnRemarks.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
                               stockCountDetail.ColumnItem.Replace(",", ""),

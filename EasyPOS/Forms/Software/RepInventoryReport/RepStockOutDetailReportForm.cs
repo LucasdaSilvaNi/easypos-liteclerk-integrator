@@ -207,14 +207,17 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 if (dialogResult == DialogResult.OK)
                 {
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Item Code", "Barcode", "StockOutDate", "StockOutNumber", "ManualStockOutNumber", "Remarks", "Item", "Unit", "Quantity", "Cost", "Amount"};
+                    String[] header = { "Item Code", "Barcode", "StockOutDate", "StockOutNumber", "ManualStockOutNumber", "Remarks", "Item", "Unit", "Quantity", "Cost", "Amount" };
                     csv.AppendLine(String.Join(",", header));
 
                     if (stockOutDetailReportList.Any())
                     {
                         foreach (var stockOutDetail in stockOutDetailReportList)
                         {
-                            String[] data = {stockOutDetail.ColumnStockOutDate,
+                            String[] data = {
+                              "="+"\""+stockOutDetail.ColumnItemListCode+"\"",
+                              "="+"\""+stockOutDetail.ColumnItemListBarcode+"\"",
+                              stockOutDetail.ColumnStockOutDate,
                               stockOutDetail.ColumnStockOutNumber,
                               stockOutDetail.ColumnManualStockOutNumber,
                               stockOutDetail.ColumnRemarks.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),

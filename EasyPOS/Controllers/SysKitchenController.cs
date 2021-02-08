@@ -51,40 +51,79 @@ namespace EasyPOS.Controllers
                                 };
             return OrderedNumber.ToList();
         }
-        public List<Entities.SysKitchenItemEntity> ListKitchenItems(String kitchen, DateTime salesDate)
+        public List<Entities.SysKitchenItemEntity> ListKitchenItems(String kitchen, DateTime salesDate, Int32 salesId)
         {
-            var salesLines = from d in db.TrnSalesLines
-                             where d.IsPrepared == false
-                             && d.MstItem.DefaultKitchenReport == kitchen
-                             && d.TrnSale.SalesDate == salesDate
-                             && d.TrnSale.IsLocked == true
-                             && d.TrnSale.IsCancelled == false
-                             && d.TrnSale.IsDispatched == false
-                             group d by new
-                             {
-                                 d.SalesId,
-                                 d.TrnSale.ManualInvoiceNumber,
-                                 d.MstItem.BarCode,
-                                 d.MstItem.Alias,
-                                 d.MstItem.MstUnit.Unit,
-                                 d.IsPrepared,
-                                 d.Preparation,
-                                 d.TrnSale.UpdateDateTime,
-                             } into g
-                             select new Entities.SysKitchenItemEntity
-                             {
-                                 SalesId = g.Key.SalesId,
-                                 OrderNumber = g.Key.ManualInvoiceNumber,
-                                 BarCode = g.Key.BarCode,
-                                 Alias = g.Key.Alias,
-                                 Unit = g.Key.Unit,
-                                 IsPrepared = g.Key.IsPrepared,
-                                 Preparation = g.Key.Preparation,
-                                 Quantity = g.Sum(d => d.Quantity),
-                                 UpdateDateTime = g.Key.UpdateDateTime.ToString()
-                             };
+            if(salesId == 0)
+            {
+                var salesLines = from d in db.TrnSalesLines
+                                 where d.IsPrepared == false
+                                 && d.MstItem.DefaultKitchenReport == kitchen
+                                 && d.TrnSale.SalesDate == salesDate
+                                 && d.TrnSale.IsLocked == true
+                                 && d.TrnSale.IsCancelled == false
+                                 && d.TrnSale.IsDispatched == false
+                                 group d by new
+                                 {
+                                     d.SalesId,
+                                     d.TrnSale.ManualInvoiceNumber,
+                                     d.MstItem.BarCode,
+                                     d.MstItem.Alias,
+                                     d.MstItem.MstUnit.Unit,
+                                     d.IsPrepared,
+                                     d.Preparation,
+                                     d.TrnSale.UpdateDateTime,
+                                 } into g
+                                 select new Entities.SysKitchenItemEntity
+                                 {
+                                     SalesId = g.Key.SalesId,
+                                     OrderNumber = g.Key.ManualInvoiceNumber,
+                                     BarCode = g.Key.BarCode,
+                                     Alias = g.Key.Alias,
+                                     Unit = g.Key.Unit,
+                                     IsPrepared = g.Key.IsPrepared,
+                                     Preparation = g.Key.Preparation,
+                                     Quantity = g.Sum(d => d.Quantity),
+                                     UpdateDateTime = g.Key.UpdateDateTime.ToString()
+                                 };
 
-            return salesLines.ToList();
+                return salesLines.ToList();
+            }
+            else
+            {
+                var salesLines = from d in db.TrnSalesLines
+                                 where d.IsPrepared == false
+                                 && d.MstItem.DefaultKitchenReport == kitchen
+                                 && d.TrnSale.SalesDate == salesDate
+                                 && d.TrnSale.IsLocked == true
+                                 && d.TrnSale.IsCancelled == false
+                                 && d.TrnSale.IsDispatched == false
+                                 && d.SalesId == salesId
+                                 group d by new
+                                 {
+                                     d.SalesId,
+                                     d.TrnSale.ManualInvoiceNumber,
+                                     d.MstItem.BarCode,
+                                     d.MstItem.Alias,
+                                     d.MstItem.MstUnit.Unit,
+                                     d.IsPrepared,
+                                     d.Preparation,
+                                     d.TrnSale.UpdateDateTime,
+                                 } into g
+                                 select new Entities.SysKitchenItemEntity
+                                 {
+                                     SalesId = g.Key.SalesId,
+                                     OrderNumber = g.Key.ManualInvoiceNumber,
+                                     BarCode = g.Key.BarCode,
+                                     Alias = g.Key.Alias,
+                                     Unit = g.Key.Unit,
+                                     IsPrepared = g.Key.IsPrepared,
+                                     Preparation = g.Key.Preparation,
+                                     Quantity = g.Sum(d => d.Quantity),
+                                     UpdateDateTime = g.Key.UpdateDateTime.ToString()
+                                 };
+
+                return salesLines.ToList();
+            }
         }
 
         public String[] DonePrepareItem(Int32 salesId, String itemBarcode)

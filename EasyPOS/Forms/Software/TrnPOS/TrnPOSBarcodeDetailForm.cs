@@ -544,7 +544,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     PriceSplitPercentage = PriceSplitPercentage,
                 };
 
-                TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(this, null, trnSalesLineEntity);
+                TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(this, null, trnSalesLineEntity,null);
                 trnSalesDetailSalesItemDetailForm.ShowDialog();
             }
            
@@ -629,7 +629,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             PriceSplitPercentage = 0
                         };
 
-                        TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(this, null, trnSalesLineEntity);
+                        TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(this, null, trnSalesLineEntity,null);
                         trnSalesDetailSalesItemDetailForm.ShowDialog();
                     }
                     else

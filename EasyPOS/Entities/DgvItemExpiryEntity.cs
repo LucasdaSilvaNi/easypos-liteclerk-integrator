@@ -16,7 +16,6 @@ namespace EasyPOS.Entities
         public String ColumnCost { get; set; }
         public String ColumnPrice { get; set; }
         public String ColumnExpiryDate { get; set; }
-        public String ColumnLotNo { get; set; }
 
     }
 }
