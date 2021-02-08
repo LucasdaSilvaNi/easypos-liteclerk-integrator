@@ -48,6 +48,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 var row = from d in stockCountDetailReportList
                           select new Entities.DgvRepInventoryStockCountDetailReportListEntity
                           {
+                              ColumnItemListCode = d.ItemCode,
+                              ColumnItemListBarcode = d.BarCode,
                               ColumnStockCountDate = d.StockCountDate,
                               ColumnStockCountNumber = d.StockCountNumber,
                               ColumnRemarks = d.Remarks,
@@ -203,7 +205,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 if (dialogResult == DialogResult.OK)
                 {
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "StockCountDate", "StockCountNumber", "Remarks", "Item", "Unit", "Quantity", "Cost", "Amount" };
+                    String[] header = { "Item Code", "Barcode", "StockCountDate", "StockCountNumber", "Remarks", "Item", "Unit", "Quantity", "Cost", "Amount" };
                     csv.AppendLine(String.Join(",", header));
 
                     if (stockCountDetailReportList.Any())

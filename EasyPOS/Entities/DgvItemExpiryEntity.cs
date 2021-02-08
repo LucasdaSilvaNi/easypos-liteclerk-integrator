@@ -8,6 +8,8 @@ namespace EasyPOS.Entities
 {
     public class DgvItemExpiryEntity
     {
+        public String ColumnItemListCode { get; set; }
+        public String ColumnItemListBarcode { get; set; }
         public String ColumnItem { get; set; }
         public String ColumnOnHandQuantity { get; set; }
         public String ColumnUnit { get; set; }

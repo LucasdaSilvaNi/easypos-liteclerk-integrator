@@ -9,6 +9,8 @@ namespace EasyPOS.Entities
     public class RepInventoryReportStockOutDetailEntity
     {
         public Int32 Id { get; set; }
+        public String ItemCode { get; set; }
+        public String BarCode { get; set; }
         public String StockOutDate { get; set; }
         public String StockOutNumber { get; set; }
         public String ManualStockOutNumber { get; set; }

@@ -41,8 +41,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                           select new Entities.DgvMstItemListEntity
                           {
                               ColumnItemListCode = d.ItemCode,
-                              ColumnItemListDescription = d.ItemDescription,
                               ColumnItemListBarcode = d.BarCode,
+                              ColumnItemListDescription = d.ItemDescription,
                               ColumnItemListUnit = d.Unit,
                               ColumnItemListCategory = d.Category,
                               ColumnItemListPrice = Convert.ToDecimal(d.Price).ToString("#,##0.00"),
@@ -196,7 +196,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 if (dialogResult == DialogResult.OK)
                 {
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Barcode", "Item Code", "Item Description", "Cost", "Price" };
+                    String[] header = { "Item Code", "Barcode", "Item Description", "Cost", "Price" };
                     csv.AppendLine(String.Join(",", header));
 
                     if (itemList.Any())

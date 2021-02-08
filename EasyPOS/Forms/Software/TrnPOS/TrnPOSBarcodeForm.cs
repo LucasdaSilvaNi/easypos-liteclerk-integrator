@@ -28,6 +28,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public String cancelRemarks = "";
         public Boolean continueCancel = false;
 
+        public List<String> lockOption;
+
+
+
         public TrnPOSBarcodeForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();
@@ -86,9 +90,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 {
                     dataGridViewSalesList.Columns[1].Visible = false;
                 }
+                lockOption = new List<String>
+                {
+                    "All",
+                    "Locked",
+                };
+                comboBoxLockOption.DataSource = lockOption;
 
                 GetTerminalList();
                 timerRefreshSalesListGrid.Start();
+                
             }
 
             Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
@@ -171,16 +182,18 @@ namespace EasyPOS.Forms.Software.TrnPOS
             DateTime salesDate = dateTimePickerSalesDate.Value.Date;
             Int32 terminalId = Convert.ToInt32(comboBoxTerminal.SelectedValue);
             String filter = textBoxSalesListFilter.Text;
+            String selectedIsLocked = Convert.ToString(comboBoxLockOption.SelectedValue);
 
-            GetSalesListDataAsync(salesDate, terminalId, filter);
+
+            GetSalesListDataAsync(salesDate, terminalId, filter, selectedIsLocked);
 
             Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
             textBoxLastChange.Text = trnPOSSalesController.GetLastChange(Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId)).ToString("#,##0.00");
         }
 
-        public async void GetSalesListDataAsync(DateTime salesDate, Int32 terminalId, String filter)
+        public async void GetSalesListDataAsync(DateTime salesDate, Int32 terminalId, String filter, String isLocked)
         {
-            salesList = await GetSalesListDataTask(salesDate, terminalId, filter);
+            salesList = await GetSalesListDataTask(salesDate, terminalId, filter, isLocked);
             if (salesList.Any())
             {
                 dataGridViewSalesList.BeginInvoke((MethodInvoker)delegate ()
@@ -236,14 +249,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
         }
 
-        public async Task<List<Entities.DgvTrnSalesListEntity>> GetSalesListDataTask(DateTime salesDate, Int32 terminalId, String filter)
+        public async Task<List<Entities.DgvTrnSalesListEntity>> GetSalesListDataTask(DateTime salesDate, Int32 terminalId, String filter, String selectedIsLocked)
         {
             return await Task.Factory.StartNew(() =>
             {
                 List<Entities.DgvTrnSalesListEntity> rowList = new List<Entities.DgvTrnSalesListEntity>();
 
                 Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-                var salesList = trnPOSSalesController.ListSales(salesDate, terminalId, filter);
+                var salesList = trnPOSSalesController.ListSales(salesDate, terminalId, filter, selectedIsLocked);
 
                 if (salesList.Any())
                 {
@@ -862,6 +875,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
         private void dataGridViewSalesList_SelectionChanged(object sender, EventArgs e)
         {
             CurrentSelectedCell(dataGridViewSalesList.CurrentCell.RowIndex);
+        }
+
+        private void comboBoxLockOption_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateSalesListGridDataSource();
         }
     }
 }

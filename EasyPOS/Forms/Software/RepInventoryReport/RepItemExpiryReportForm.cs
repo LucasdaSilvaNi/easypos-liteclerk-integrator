@@ -44,6 +44,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 var row = from d in inventoryListReport
                           select new Entities.DgvItemExpiryEntity
                           {
+                              ColumnItemListCode = d.ItemCode,
+                              ColumnItemListBarcode = d.BarCode,
                               ColumnItem = d.ItemDescription,
                               ColumnOnHandQuantity = Convert.ToDecimal(d.Quantity).ToString("#,##0.00"),
                               ColumnUnit = d.Unit,
@@ -194,7 +196,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 if (dialogResult == DialogResult.OK)
                 {
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Barcode", "Item Code", "Item Description", "Cost", "Price" };
+                    String[] header = { "Item Code", "Barcode", "Item Description", "Cost", "Price", "ExpiryDate" };
                     csv.AppendLine(String.Join(",", header));
 
                     if (itemList.Any())
@@ -251,8 +253,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             {
                 if (Convert.ToDateTime(itemList[i].ColumnExpiryDate) < DateTime.Today)
                 {
-                    dataGridViewItemExpiryReport.Rows[i].Cells[5].Style.BackColor = Color.Red;
-                    dataGridViewItemExpiryReport.Rows[i].Cells[5].Style.ForeColor = Color.White;
+                    dataGridViewItemExpiryReport.Rows[i].Cells[7].Style.BackColor = Color.Red;
+                    dataGridViewItemExpiryReport.Rows[i].Cells[7].Style.ForeColor = Color.White;
                 }
             }
         }

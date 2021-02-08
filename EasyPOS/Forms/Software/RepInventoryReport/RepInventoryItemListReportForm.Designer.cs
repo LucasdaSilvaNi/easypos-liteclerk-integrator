@@ -45,8 +45,8 @@
             this.ColumnItemListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnItemListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnItemListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnItemListBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemListCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemListBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemListDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemListUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemListCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -150,8 +150,8 @@
             this.ColumnItemListButtonEdit,
             this.ColumnItemListButtonDelete,
             this.ColumnItemListId,
-            this.ColumnItemListBarcode,
             this.ColumnItemListCode,
+            this.ColumnItemListBarcode,
             this.ColumnItemListDescription,
             this.ColumnItemListUnit,
             this.ColumnItemListCategory,
@@ -291,20 +291,19 @@
             this.ColumnItemListId.ReadOnly = true;
             this.ColumnItemListId.Visible = false;
             // 
-            // ColumnItemListBarcode
-            // 
-            this.ColumnItemListBarcode.DataPropertyName = "ColumnItemListBarcode";
-            this.ColumnItemListBarcode.HeaderText = "Barcode";
-            this.ColumnItemListBarcode.Name = "ColumnItemListBarcode";
-            this.ColumnItemListBarcode.ReadOnly = true;
-            // 
             // ColumnItemListCode
             // 
             this.ColumnItemListCode.DataPropertyName = "ColumnItemListCode";
             this.ColumnItemListCode.HeaderText = "Item Code";
             this.ColumnItemListCode.Name = "ColumnItemListCode";
             this.ColumnItemListCode.ReadOnly = true;
-            this.ColumnItemListCode.Visible = false;
+            // 
+            // ColumnItemListBarcode
+            // 
+            this.ColumnItemListBarcode.DataPropertyName = "ColumnItemListBarcode";
+            this.ColumnItemListBarcode.HeaderText = "Barcode";
+            this.ColumnItemListBarcode.Name = "ColumnItemListBarcode";
+            this.ColumnItemListBarcode.ReadOnly = true;
             // 
             // ColumnItemListDescription
             // 
@@ -418,8 +417,8 @@
         private System.Windows.Forms.DataGridViewButtonColumn ColumnItemListButtonEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnItemListButtonDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListBarcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListBarcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListCategory;

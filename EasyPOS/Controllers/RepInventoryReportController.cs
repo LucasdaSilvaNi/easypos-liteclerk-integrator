@@ -30,7 +30,7 @@ namespace EasyPOS.Controllers
 
             return items.OrderBy(d => d.ItemDescription).ToList();
         }
-
+         
         // ================
         // Inventory Report
         // ================
@@ -47,6 +47,7 @@ namespace EasyPOS.Controllers
                                              Document = "Beg",
                                              Id = "Beg-In-" + d.Id,
                                              InventoryDate = d.TrnStockIn.StockInDate,
+                                             ItemCode = d.MstItem.ItemCode,
                                              BarCode = d.MstItem.BarCode,
                                              ItemDescription = d.MstItem.ItemDescription,
                                              BeginningQuantity = d.Quantity,
@@ -69,6 +70,7 @@ namespace EasyPOS.Controllers
                                                Document = "Beg",
                                                Id = "Beg-Sold-" + d.Id,
                                                InventoryDate = d.TrnSale.SalesDate,
+                                               ItemCode = d.MstItem.ItemCode,
                                                BarCode = d.MstItem.BarCode,
                                                ItemDescription = d.MstItem.ItemDescription,
                                                BeginningQuantity = d.Quantity * -1,
@@ -105,6 +107,7 @@ namespace EasyPOS.Controllers
                                 Document = "Beg",
                                 Id = "Beg-Sold-Component" + itemComponent.Id,
                                 InventoryDate = beginningSoldComponent.TrnSale.SalesDate,
+                                ItemCode = itemComponent.MstItem1.ItemCode,
                                 BarCode = itemComponent.MstItem1.BarCode,
                                 ItemDescription = itemComponent.MstItem1.ItemDescription,
                                 BeginningQuantity = (itemComponent.Quantity * beginningSoldComponent.Quantity) * -1,
@@ -130,6 +133,7 @@ namespace EasyPOS.Controllers
                                               Document = "Beg",
                                               Id = "Beg-Out-" + d.Id,
                                               InventoryDate = d.TrnStockOut.StockOutDate,
+                                              ItemCode = d.MstItem.ItemCode,
                                               BarCode = d.MstItem.BarCode,
                                               ItemDescription = d.MstItem.ItemDescription,
                                               BeginningQuantity = d.Quantity * -1,
@@ -154,6 +158,7 @@ namespace EasyPOS.Controllers
                                            Document = "Cur",
                                            Id = "Cur-In-" + d.Id,
                                            InventoryDate = d.TrnStockIn.StockInDate,
+                                           ItemCode = d.MstItem.ItemCode,
                                            BarCode = d.MstItem.BarCode,
                                            ItemDescription = d.MstItem.ItemDescription,
                                            BeginningQuantity = 0,
@@ -177,6 +182,7 @@ namespace EasyPOS.Controllers
                                              Document = "Cur",
                                              Id = "Cur-Sold-" + d.Id,
                                              InventoryDate = d.TrnSale.SalesDate,
+                                             ItemCode = d.MstItem.ItemCode,
                                              BarCode = d.MstItem.BarCode,
                                              ItemDescription = d.MstItem.ItemDescription,
                                              BeginningQuantity = 0,
@@ -214,6 +220,7 @@ namespace EasyPOS.Controllers
                                 Document = "Cur",
                                 Id = "Cur-Sold-Component" + itemComponent.Id,
                                 InventoryDate = currentSoldComponent.TrnSale.SalesDate,
+                                ItemCode = itemComponent.MstItem1.ItemCode,
                                 BarCode = itemComponent.MstItem1.BarCode,
                                 ItemDescription = itemComponent.MstItem1.ItemDescription,
                                 BeginningQuantity = 0,
@@ -240,6 +247,7 @@ namespace EasyPOS.Controllers
                                             Document = "Cur",
                                             Id = "Cur-Out-" + d.Id,
                                             InventoryDate = d.TrnStockOut.StockOutDate,
+                                            ItemCode = d.MstItem.ItemCode,
                                             BarCode = d.MstItem.BarCode,
                                             ItemDescription = d.MstItem.ItemDescription,
                                             BeginningQuantity = 0,
@@ -259,6 +267,7 @@ namespace EasyPOS.Controllers
                 var inventories = from d in unionInventories
                                   group d by new
                                   {
+                                      d.ItemCode,
                                       d.BarCode,
                                       d.ItemDescription,
                                       d.Unit,
@@ -266,6 +275,7 @@ namespace EasyPOS.Controllers
                                   } into g
                                   select new Entities.RepInventoryReportEntity
                                   {
+                                      ItemCode = g.Key.ItemCode,
                                       BarCode = g.Key.BarCode,
                                       ItemDescription = g.Key.ItemDescription,
                                       Unit = g.Key.Unit,
@@ -605,6 +615,8 @@ namespace EasyPOS.Controllers
                                  select new Entities.RepInventoryReportStockInDetailReportEntity
                                  {
                                      Id = d.Id,
+                                     ItemCode = d.MstItem.ItemCode,
+                                     BarCode = d.MstItem.BarCode,
                                      StockInDate = d.TrnStockIn.StockInDate.ToShortDateString(),
                                      StockInNumber = d.TrnStockIn.StockInNumber,
                                      ManualStockInNumber = d.TrnStockIn.ManualStockInNumber,
@@ -635,6 +647,8 @@ namespace EasyPOS.Controllers
                                   select new Entities.RepInventoryReportStockOutDetailEntity
                                   {
                                       Id = d.Id,
+                                      ItemCode = d.MstItem.ItemCode,
+                                      BarCode = d.MstItem.BarCode,
                                       StockOutDate = d.TrnStockOut.StockOutDate.ToShortDateString(),
                                       StockOutNumber = d.TrnStockOut.StockOutNumber,
                                       ManualStockOutNumber = d.TrnStockOut.ManualStockOutNumber,
@@ -659,6 +673,8 @@ namespace EasyPOS.Controllers
                                     select new Entities.RepInventoryReportStockCountDetailReportEntity
                                     {
                                         Id = d.Id,
+                                        ItemCode = d.MstItem.ItemCode,
+                                        BarCode = d.MstItem.BarCode,
                                         StockCountDate = d.TrnStockCount.StockCountDate.ToShortDateString(),
                                         StockCountNumber = d.TrnStockCount.StockCountNumber,
                                         Remarks = d.TrnStockCount.Remarks,
@@ -681,8 +697,8 @@ namespace EasyPOS.Controllers
                        select new Entities.MstItemEntity
                        {
                            Id = d.Id,
-                           BarCode = d.BarCode,
                            ItemCode = d.ItemCode,
+                           BarCode = d.BarCode,
                            ItemDescription = d.ItemDescription,
                            Unit = d.MstUnit.Unit,
                            Category = d.Category,
@@ -705,6 +721,8 @@ namespace EasyPOS.Controllers
                        && d.ExpiryDate <= endDate.Date
                        select new Entities.TrnStockInLineEntity
                        {
+                           ItemCode = d.MstItem.ItemCode,
+                           BarCode = d.MstItem.BarCode,
                            ItemDescription = d.MstItem.ItemDescription,
                            Quantity = d.MstItem.OnhandQuantity,
                            Unit = d.MstUnit.Unit,

@@ -8,6 +8,8 @@ namespace EasyPOS.Entities
 {
     public class DgvRepInventoryStockOutDetailReportListEntity
     {
+        public String ColumnItemListCode { get; set; }
+        public String ColumnItemListBarcode { get; set; }
         public String ColumnStockOutDate { get; set; }
         public String ColumnStockOutNumber { get; set; }
         public String ColumnManualStockOutNumber { get; set; }

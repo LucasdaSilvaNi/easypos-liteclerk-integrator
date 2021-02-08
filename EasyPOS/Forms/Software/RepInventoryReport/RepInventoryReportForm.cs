@@ -49,6 +49,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 var row = from d in inventoryReportList
                           select new Entities.DgvRepInventoryInventoryReportListEntity
                           {
+                              ColumnItemCode = d.ItemCode,
                               ColumnBarCode = d.BarCode,
                               ColumnItemDescription = d.ItemDescription,
                               ColumnUnit = d.Unit,
@@ -219,6 +220,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 {
                     StringBuilder csv = new StringBuilder();
                     String[] header = {
+                        "Item Code",
                         "Barcode",
                         "Item Description",
                         "Unit",
@@ -239,6 +241,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         foreach (var inventoryReport in inventoryReportList)
                         {
                             String[] data = {
+                              inventoryReport.ColumnItemCode,
                               inventoryReport.ColumnBarCode,
                               inventoryReport.ColumnItemDescription.Replace(",", ""),
                               inventoryReport.ColumnUnit.Replace(",", ""),

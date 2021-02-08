@@ -129,76 +129,150 @@ namespace EasyPOS.Controllers
         // ==========
         // List Sales 
         // ==========
-        public List<Entities.TrnSalesEntity> ListSales(DateTime dateTime, Int32 terminalId, String filter)
+        public List<Entities.TrnSalesEntity> ListSales(DateTime dateTime, Int32 terminalId, String filter, String selectedIsLocked)
         {
+            if (selectedIsLocked == "All")
+            {
+                var sales = from d in db.TrnSales
+                            where d.SalesDate == dateTime
+                            && d.TerminalId == terminalId
+                            && (d.SalesNumber.Contains(filter)
+                            || d.MstCustomer.CustomerCode.Contains(filter)
+                            || d.MstCustomer.Customer.Contains(filter)
+                            || d.MstUser5.UserName.Contains(filter)
+                            || d.Remarks.Contains(filter)
+                            || d.CollectionNumber.Contains(filter))
+                            select new Entities.TrnSalesEntity
+                            {
+                                Id = d.Id,
+                                PeriodId = d.PeriodId,
+                                Period = d.MstPeriod.Period,
+                                SalesDate = d.SalesDate.ToShortDateString(),
+                                SalesNumber = d.SalesNumber,
+                                ManualInvoiceNumber = d.ManualInvoiceNumber,
+                                CollectionNumber = d.CollectionNumber,
+                                Amount = d.Amount,
+                                TableId = d.TableId,
+                                Table = d.TableId != null ? d.MstTable.TableCode : "",
+                                TableStatus = d.TableStatus,
+                                CustomerId = d.CustomerId,
+                                CustomerCode = d.MstCustomer.CustomerCode,
+                                Customer = d.MstCustomer.Customer,
+                                CustomerAddress = d.MstCustomer.Address,
+                                AccountId = d.AccountId,
+                                TermId = d.TermId,
+                                Term = d.MstTerm.Term,
+                                DiscountId = d.DiscountId,
+                                SeniorCitizenId = d.SeniorCitizenId,
+                                SeniorCitizenName = d.SeniorCitizenName,
+                                SeniorCitizenAge = d.SeniorCitizenAge,
+                                Remarks = d.Remarks,
+                                SalesAgent = d.SalesAgent,
+                                SalesAgentUserName = d.SalesAgent != null ? d.MstUser5.UserName : "",
+                                TerminalId = d.TerminalId,
+                                Terminal = d.MstTerminal.Terminal,
+                                DeliveryId = d.DeliveryId,
+                                DeliveryDriver = d.DeliveryDriver,
+                                PreparedBy = d.PreparedBy,
+                                PreparedByUserName = d.MstUser.FullName,
+                                CheckedBy = d.CheckedBy,
+                                CheckedByUserName = d.MstUser1.FullName,
+                                ApprovedBy = d.ApprovedBy,
+                                ApprovedByUserName = d.MstUser2.FullName,
+                                IsLocked = d.IsLocked,
+                                IsTendered = d.IsTendered,
+                                IsCancelled = d.IsCancelled,
+                                IsDispatched = d.IsDispatched,
+                                IsReturned = d.IsReturned,
+                                ReturnApplication = d.ReturnApplication,
+                                PaidAmount = d.PaidAmount,
+                                CreditAmount = d.CreditAmount,
+                                DebitAmount = d.DebitAmount,
+                                BalanceAmount = d.BalanceAmount,
+                                EntryUserId = d.EntryUserId,
+                                EntryUserName = d.MstUser3.FullName,
+                                EntryDateTime = d.EntryDateTime.ToShortDateString(),
+                                UpdateUserId = d.UpdateUserId,
+                                UpdatedUserName = d.MstUser4.FullName,
+                                UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
+                                Pax = d.Pax,
+                                PostCode = d.PostCode
+                            };
+                return sales.OrderByDescending(d => d.Id).ToList();
+            }
+            else
+            {
+                Boolean isLocked = true;
+                
+                var sales = from d in db.TrnSales
+                            where d.SalesDate == dateTime
+                            && d.TerminalId == terminalId
+                            && d.IsLocked == isLocked
+                            && (d.SalesNumber.Contains(filter)
+                            || d.MstCustomer.CustomerCode.Contains(filter)
+                            || d.MstCustomer.Customer.Contains(filter)
+                            || d.MstUser5.UserName.Contains(filter)
+                            || d.Remarks.Contains(filter)
+                            || d.CollectionNumber.Contains(filter))
 
-            var sales = from d in db.TrnSales
-                        where d.SalesDate == dateTime
-                        && d.TerminalId == terminalId
-                        && (d.SalesNumber.Contains(filter)
-                        || d.MstCustomer.CustomerCode.Contains(filter)
-                        || d.MstCustomer.Customer.Contains(filter)
-                        || d.MstUser5.UserName.Contains(filter)
-                        || d.Remarks.Contains(filter)
-                        || d.CollectionNumber.Contains(filter))
-                        select new Entities.TrnSalesEntity
-                        {
-                            Id = d.Id,
-                            PeriodId = d.PeriodId,
-                            Period = d.MstPeriod.Period,
-                            SalesDate = d.SalesDate.ToShortDateString(),
-                            SalesNumber = d.SalesNumber,
-                            ManualInvoiceNumber = d.ManualInvoiceNumber,
-                            CollectionNumber = d.CollectionNumber,
-                            Amount = d.Amount,
-                            TableId = d.TableId,
-                            Table = d.TableId != null ? d.MstTable.TableCode : "",
-                            TableStatus = d.TableStatus,
-                            CustomerId = d.CustomerId,
-                            CustomerCode = d.MstCustomer.CustomerCode,
-                            Customer = d.MstCustomer.Customer,
-                            CustomerAddress = d.MstCustomer.Address,
-                            AccountId = d.AccountId,
-                            TermId = d.TermId,
-                            Term = d.MstTerm.Term,
-                            DiscountId = d.DiscountId,
-                            SeniorCitizenId = d.SeniorCitizenId,
-                            SeniorCitizenName = d.SeniorCitizenName,
-                            SeniorCitizenAge = d.SeniorCitizenAge,
-                            Remarks = d.Remarks,
-                            SalesAgent = d.SalesAgent,
-                            SalesAgentUserName = d.SalesAgent != null ? d.MstUser5.UserName : "",
-                            TerminalId = d.TerminalId,
-                            Terminal = d.MstTerminal.Terminal,
-                            DeliveryId = d.DeliveryId,
-                            DeliveryDriver = d.DeliveryDriver,
-                            PreparedBy = d.PreparedBy,
-                            PreparedByUserName = d.MstUser.FullName,
-                            CheckedBy = d.CheckedBy,
-                            CheckedByUserName = d.MstUser1.FullName,
-                            ApprovedBy = d.ApprovedBy,
-                            ApprovedByUserName = d.MstUser2.FullName,
-                            IsLocked = d.IsLocked,
-                            IsTendered = d.IsTendered,
-                            IsCancelled = d.IsCancelled,
-                            IsDispatched = d.IsDispatched,
-                            IsReturned = d.IsReturned,
-                            ReturnApplication = d.ReturnApplication,
-                            PaidAmount = d.PaidAmount,
-                            CreditAmount = d.CreditAmount,
-                            DebitAmount = d.DebitAmount,
-                            BalanceAmount = d.BalanceAmount,
-                            EntryUserId = d.EntryUserId,
-                            EntryUserName = d.MstUser3.FullName,
-                            EntryDateTime = d.EntryDateTime.ToShortDateString(),
-                            UpdateUserId = d.UpdateUserId,
-                            UpdatedUserName = d.MstUser4.FullName,
-                            UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
-                            Pax = d.Pax,
-                            PostCode = d.PostCode
-                        };
-
-            return sales.OrderByDescending(d => d.Id).ToList();
+                            select new Entities.TrnSalesEntity
+                            {
+                                Id = d.Id,
+                                PeriodId = d.PeriodId,
+                                Period = d.MstPeriod.Period,
+                                SalesDate = d.SalesDate.ToShortDateString(),
+                                SalesNumber = d.SalesNumber,
+                                ManualInvoiceNumber = d.ManualInvoiceNumber,
+                                CollectionNumber = d.CollectionNumber,
+                                Amount = d.Amount,
+                                TableId = d.TableId,
+                                Table = d.TableId != null ? d.MstTable.TableCode : "",
+                                TableStatus = d.TableStatus,
+                                CustomerId = d.CustomerId,
+                                CustomerCode = d.MstCustomer.CustomerCode,
+                                Customer = d.MstCustomer.Customer,
+                                CustomerAddress = d.MstCustomer.Address,
+                                AccountId = d.AccountId,
+                                TermId = d.TermId,
+                                Term = d.MstTerm.Term,
+                                DiscountId = d.DiscountId,
+                                SeniorCitizenId = d.SeniorCitizenId,
+                                SeniorCitizenName = d.SeniorCitizenName,
+                                SeniorCitizenAge = d.SeniorCitizenAge,
+                                Remarks = d.Remarks,
+                                SalesAgent = d.SalesAgent,
+                                SalesAgentUserName = d.SalesAgent != null ? d.MstUser5.UserName : "",
+                                TerminalId = d.TerminalId,
+                                Terminal = d.MstTerminal.Terminal,
+                                DeliveryId = d.DeliveryId,
+                                DeliveryDriver = d.DeliveryDriver,
+                                PreparedBy = d.PreparedBy,
+                                PreparedByUserName = d.MstUser.FullName,
+                                CheckedBy = d.CheckedBy,
+                                CheckedByUserName = d.MstUser1.FullName,
+                                ApprovedBy = d.ApprovedBy,
+                                ApprovedByUserName = d.MstUser2.FullName,
+                                IsLocked = d.IsLocked,
+                                IsTendered = d.IsTendered,
+                                IsCancelled = d.IsCancelled,
+                                IsDispatched = d.IsDispatched,
+                                IsReturned = d.IsReturned,
+                                ReturnApplication = d.ReturnApplication,
+                                PaidAmount = d.PaidAmount,
+                                CreditAmount = d.CreditAmount,
+                                DebitAmount = d.DebitAmount,
+                                BalanceAmount = d.BalanceAmount,
+                                EntryUserId = d.EntryUserId,
+                                EntryUserName = d.MstUser3.FullName,
+                                EntryDateTime = d.EntryDateTime.ToShortDateString(),
+                                UpdateUserId = d.UpdateUserId,
+                                UpdatedUserName = d.MstUser4.FullName,
+                                UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
+                                Pax = d.Pax,
+                                PostCode = d.PostCode
+                            };
+                return sales.OrderByDescending(d => d.Id).ToList();
+            }
         }
 
         // ============
@@ -1274,7 +1348,7 @@ namespace EasyPOS.Controllers
                                      //&& d.CollectionDate == DateTime.Today
                                      select d;
 
-               
+
 
                 if (lastCollection.Any())
                 {
@@ -2550,4 +2624,3 @@ namespace EasyPOS.Controllers
     }
 }
 
-  

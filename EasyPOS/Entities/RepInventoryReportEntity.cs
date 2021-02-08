@@ -11,6 +11,7 @@ namespace EasyPOS.Entities
         public String Document { get; set; }
         public String Id { get; set; }
         public DateTime InventoryDate { get; set; }
+        public String ItemCode { get; set; }
         public String BarCode { get; set; }
         public String ItemDescription { get; set; }
         public String Unit { get; set; }
