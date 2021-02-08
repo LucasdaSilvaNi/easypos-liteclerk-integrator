@@ -15,6 +15,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
     {
         TrnPOSBarcodeDetailForm trnPOSBarcodeDetailForm;
         TrnPOSTouchDetailForm trnPOSTouchDetailForm;
+        TrnPOSBarcodeForm trnPOSBarcode;
 
         public static Int32 pageNumber = 1;
         public static Int32 pageSize = 50;

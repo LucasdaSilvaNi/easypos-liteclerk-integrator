@@ -95,10 +95,37 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
             Controllers.SysKitchenController sysKitchenController = new Controllers.SysKitchenController();
             listKitchens = sysKitchenController.ListKitchen();
             kitchenPages = listKitchens.Count();
-
             FillKitchen();
         }
 
+        public void GetorderNumberList(String kitchen)
+        {
+            DateTime salesDate = dateTimePickerSalesDate.Value.Date;
+
+            Controllers.SysKitchenController sysKitchenController = new Controllers.SysKitchenController();
+            if (sysKitchenController.DropdownListOrderNumber(kitchen, salesDate).Any())
+            {
+                List<SysKitchenItemEntity> newSalesList = new List<SysKitchenItemEntity>();
+                newSalesList.Add(new SysKitchenItemEntity
+                {
+                    SalesId = 0,
+                    OrderNumber = "ALL"
+                });
+
+                foreach (var obj in sysKitchenController.DropdownListOrderNumber(kitchen, salesDate))
+                {
+                    newSalesList.Add(new SysKitchenItemEntity
+                    {
+                        SalesId = obj.SalesId,
+                        OrderNumber = obj.OrderNumber
+                    });
+                };
+
+                comboBoxSINumber.DataSource = newSalesList;
+                comboBoxSINumber.ValueMember = "SalesId";
+                comboBoxSINumber.DisplayMember = "OrderNumber";
+            }
+        }
         private void FillKitchen()
         {
             try
@@ -119,7 +146,9 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
 
                 selectedKitchen = listKitchenPage[0].Kitchen;
 
+
                 FillKitchenItem(selectedKitchen);
+
                 GetDoneItems();
             }
             catch (Exception ex)
@@ -378,8 +407,14 @@ namespace EasyPOS.Forms.Software.SysKitchenDisplay
 
         private void dateTimePickerSalesDate_ValueChanged(object sender, EventArgs e)
         {
+            GetorderNumberList(selectedKitchen);
             FillKitchenItem(selectedKitchen);
             GetDoneItems();
+        }
+
+        private void comboBoxSINumber_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetorderNumberList(selectedKitchen);
         }
     }
 }

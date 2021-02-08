@@ -58,10 +58,13 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                               ColumnCustomerCode = d.CustomerCode,
                               ColumnCustomer = d.Customer,
                               ColumnItemCode = d.ItemCode,
+                              ColumnBarCode = d.BarCode,
                               ColumnItemDescription = d.ItemDescription,
                               ColumnItemCategory = d.ItemCategory,
                               ColumnUnit = d.Unit,
+                              ColumnCost = d.Cost.ToString("#,##0.00"),
                               ColumnPrice = d.Price.ToString("#,##0.00"),
+                              ColumnCostAmount = d.CostAmount.ToString("#,##0.00"),
                               ColumnDiscountAmount = d.DiscountAmount.ToString("#,##0.00"),
                               ColumnNetPrice = d.NetPrice.ToString("#,##0.00"),
                               ColumnQuantity = d.Quantity.ToString("#,##0.00"),
@@ -218,7 +221,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     DateTime endDate = dateEnd;
 
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Terminal", "Date", "Sales Number", "Customer Code", "Customer", "Item Code", "Item Description", "Item Category", "Unit", "Price", "Discount", "Net Price", "Quantity", "Amount", "Tax", "Tax Rate", "Tax Amount" };
+                    String[] header = { "Terminal", "Date", "Sales Number", "Customer Code", "Customer", "Item Code", "Barcode", "Item Description", "Item Category", "Unit", "Cost", "Price", "CostAmount", "Discount", "Net Price", "Quantity", "Amount", "Tax", "Tax Rate", "Tax Amount" };
                     csv.AppendLine(String.Join(",", header));
 
                     if (salesDetailList.Any())
@@ -238,10 +241,13 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                 customerCode,
                                 salesDetail.ColumnCustomer.Replace("," , ""),
                                 salesDetail.ColumnItemCode.Replace("," , ""),
+                                salesDetail.ColumnBarCode.Replace("," , ""),
                                 salesDetail.ColumnItemDescription.Replace("," , ""),
                                 salesDetail.ColumnItemCategory.Replace("," , ""),
                                 salesDetail.ColumnUnit.Replace("," , ""),
+                                salesDetail.ColumnCost.Replace("," , ""),
                                 salesDetail.ColumnPrice.Replace("," , ""),
+                                salesDetail.ColumnCostAmount.Replace("," , ""),
                                 salesDetail.ColumnDiscountAmount.Replace("," , ""),
                                 salesDetail.ColumnNetPrice.Replace("," , ""),
                                 salesDetail.ColumnQuantity.Replace("," , ""),

@@ -15,6 +15,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public TrnPOSBarcodeDetailForm trnSalesDetailForm;
         public TrnPOSTouchDetailForm trnPOSTouchDetailForm;
         public Entities.TrnSalesLineEntity trnSalesLineEntity;
+        public Entities.TrnSalesEntity trnSalesEntity;
 
         public TrnPOSSalesItemDetailForm(TrnPOSBarcodeDetailForm salesDetailForm, TrnPOSTouchDetailForm POSTouchDetailForm, Entities.TrnSalesLineEntity salesLineEntity)
         {
@@ -217,10 +218,31 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
             }
         }
+        //private bool CheckFormOpened(string name)
+        //{
+        //    FormCollection fc = Application.OpenForms;
 
+        //    foreach (Form frm in fc)
+        //    {
+        //        if (frm.Name == name)
+        //        {
+        //            return true;
+        //        }
+        //    }
+
+        //    return false;
+        //}
         private void buttonSave_Click(object sender, EventArgs e)
         {
             SaveSalesLine();
+            //if (CheckFormOpened("TrnPOSSearchItemForm") == true)
+            //{
+            //    TrnPOSSearchItemForm trnSalesDetailSearchItemForm = new TrnPOSSearchItemForm(null, null, trnSalesEntity);
+            //    trnSalesDetailSearchItemForm.Close();
+            //}
+
+            //TrnPOSSearchItemForm trnSalesDetailSearchItemForms = new TrnPOSSearchItemForm(null, null, trnSalesEntity);
+            //trnSalesDetailSearchItemForms.ShowDialog();
         }
 
         private void comboBoxSalesLineDiscount_SelectedIndexChanged(object sender, EventArgs e)

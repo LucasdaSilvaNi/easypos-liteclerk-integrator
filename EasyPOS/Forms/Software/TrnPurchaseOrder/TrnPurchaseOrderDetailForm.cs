@@ -484,7 +484,34 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
             }
         }
 
-        
+        private void buttonStockIn_Click(object sender, EventArgs e)
+        {
+            DialogResult cancelDialogResult = MessageBox.Show("Add Stock-In?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (cancelDialogResult == DialogResult.Yes)
+            {
+                Controllers.TrnPurchaseOrderController trnPurchaseOrderController = new Controllers.TrnPurchaseOrderController();
+                String[] postPurchaseOrder = trnPurchaseOrderController.PostStockIn(trnPurchaseOrderEntity.Id);
+
+                if (postPurchaseOrder[1].Equals("0") == false)
+                {
+                    UpdateComponents(true);
+
+                    var trnStockInListForm = new TrnStockIn.TrnStockInListForm(sysSoftwareForm)
+                    {
+                        TopLevel = false,
+                        Visible = true,
+                        Dock = DockStyle.Fill
+                    };
+
+                    Controllers.TrnStockInController trnStockInController = new Controllers.TrnStockInController();
+                    sysSoftwareForm.AddTabPageStockInDetail(trnStockInListForm, trnStockInController.DetailStockIn(Convert.ToInt32(postPurchaseOrder[1])));
+                }
+                else
+                {
+                    MessageBox.Show(postPurchaseOrder[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
     
 }

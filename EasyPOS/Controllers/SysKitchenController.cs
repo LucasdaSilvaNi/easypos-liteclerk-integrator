@@ -27,11 +27,34 @@ namespace EasyPOS.Controllers
 
             return kitchens;
         }
-
+        // ==========================
+        // Dropdown List Order Number
+        // ==========================
+        public List<Entities.SysKitchenItemEntity> DropdownListOrderNumber(String kitchen, DateTime salesDate)
+        {
+            var OrderedNumber = from d in db.TrnSalesLines
+                                where d.IsPrepared == false
+                               && d.MstItem.DefaultKitchenReport == kitchen
+                               && d.TrnSale.SalesDate == salesDate
+                               && d.TrnSale.IsLocked == true
+                               && d.TrnSale.IsCancelled == false
+                               && d.TrnSale.IsDispatched == false
+                                group d by new
+                                {
+                                    d.SalesId,
+                                    d.TrnSale.ManualInvoiceNumber,
+                                } into g
+                                select new Entities.SysKitchenItemEntity
+                                {
+                                    SalesId = g.Key.SalesId,
+                                    OrderNumber = g.Key.ManualInvoiceNumber,
+                                };
+            return OrderedNumber.ToList();
+        }
         public List<Entities.SysKitchenItemEntity> ListKitchenItems(String kitchen, DateTime salesDate)
         {
             var salesLines = from d in db.TrnSalesLines
-                             where d.IsPrepared == false 
+                             where d.IsPrepared == false
                              && d.MstItem.DefaultKitchenReport == kitchen
                              && d.TrnSale.SalesDate == salesDate
                              && d.TrnSale.IsLocked == true

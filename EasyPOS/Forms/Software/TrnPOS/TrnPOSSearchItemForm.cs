@@ -77,7 +77,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 GetSearchItemList();
             }
         }
-
+        
         private void dataGridViewSearchItemList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridViewSearchItemList.CurrentCell.ColumnIndex == dataGridViewSearchItemList.Columns["ColumnSearchItemButtonPick"].Index)
@@ -132,7 +132,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     Price2LessTax = 0,
                     PriceSplitPercentage = 0
                 };
-
                 TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(trnSalesDetailForm, trnPOSTouchDetailForm, trnSalesLineEntity);
                 trnSalesDetailSalesItemDetailForm.ShowDialog();
             }
@@ -197,9 +196,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     Price2LessTax = 0,
                     PriceSplitPercentage = 0
                 };
-
                 TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(trnSalesDetailForm, trnPOSTouchDetailForm, trnSalesLineEntity);
                 trnSalesDetailSalesItemDetailForm.ShowDialog();
+
+
             }
         }
 

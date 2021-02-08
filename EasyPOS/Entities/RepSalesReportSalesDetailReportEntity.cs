@@ -17,11 +17,14 @@ namespace EasyPOS.Entities
         public String Customer { get; set; }
         public Int32 ItemId { get; set; }
         public String ItemDescription { get; set; }
+        public String BarCode { get; set; }
         public String ItemCode { get; set; }
         public String ItemCategory { get; set; }
         public Int32 UnitId { get; set; }
         public String Unit { get; set; }
+        public Decimal Cost { get; set; }
         public Decimal Price { get; set; }
+        public Decimal CostAmount { get; set; }
         public Int32 DiscountId { get; set; }
         public String Discount { get; set; }
         public Decimal DiscountRate { get; set; }

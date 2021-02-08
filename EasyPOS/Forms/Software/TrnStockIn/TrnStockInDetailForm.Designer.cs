@@ -232,9 +232,9 @@
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.comboBoxSupplier);
             this.panel3.Controls.Add(this.dateTimePickerStockInDate);
             this.panel3.Controls.Add(this.textBoxStockInNumber);
+            this.panel3.Controls.Add(this.comboBoxSupplier);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);

@@ -534,9 +534,22 @@ namespace EasyPOS.Forms.Software.SysUtilities
                     String[] header = {
                         "Barcode",
                         "Item Description",
+                        "Alias",
+                        "Category",
                         "Unit",
+                        "Default Supplier",
                         "Cost",
-                        "Price"
+                        "Mark Up",
+                        "Price",
+                        "Stock Level Quantity",
+                        "On-hand Quantity",
+                        "IsInventory",
+                        "Generic Name",
+                        "Sales VAT",
+                        "Remarks",
+                        "Package",
+                        "Expiry Date",
+                        "Lot Number",
                     };
 
                     csv.AppendLine(String.Join(",", header));
@@ -583,9 +596,22 @@ namespace EasyPOS.Forms.Software.SysUtilities
                             {
                                 BarCode = dataWords[0],
                                 ItemDescription = dataWords[1],
-                                Unit = dataWords[2],
-                                Cost = Convert.ToDecimal(dataWords[3]),
-                                Price = Convert.ToDecimal(dataWords[4]),
+                                Alias = dataWords[2],
+                                Category = dataWords[3],
+                                Unit = dataWords[4],
+                                Supplier = dataWords[5],
+                                Cost = Convert.ToDecimal(dataWords[6]),
+                                MarkUp = Convert.ToDecimal(dataWords[7]),
+                                Price = Convert.ToDecimal(dataWords[8]),
+                                ReorderQuantity = Convert.ToDecimal(dataWords[9]),
+                                OnhandQuantity = Convert.ToDecimal(dataWords[10]),
+                                IsInventory = Convert.ToBoolean(dataWords[11]),
+                                GenericName = dataWords[12],
+                                OutTax = dataWords[13],
+                                Remarks = dataWords[14],
+                                IsPackage = Convert.ToBoolean(dataWords[15]),
+                                ExpiryDate = dataWords[16],
+                                LotNumber = dataWords[17],
                             });
                         }
                     }

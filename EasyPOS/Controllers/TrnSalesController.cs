@@ -1632,6 +1632,15 @@ namespace EasyPOS.Controllers
                     return new String[] { "Sales not found.", "0" };
                 }
 
+                //var checkSalesIfReturn = from d in db.TrnSales
+                //                         where d.IsLocked == true
+                //                         && d.IsReturned == true
+                //                         select d;
+                //if (checkSalesIfReturn.Any())
+                //{
+                //    return new String[] { "Already returned.", "0" };
+                //}
+
                 Decimal totalAmount = 0;
 
                 List<Data.TrnSalesLine> newSalesLines = new List<Data.TrnSalesLine>();
@@ -2543,8 +2552,6 @@ namespace EasyPOS.Controllers
 
             return sale.FirstOrDefault();
         }
-
     }
 }
 
-  

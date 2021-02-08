@@ -14,10 +14,13 @@ namespace EasyPOS.Entities
         public String ColumnCustomerCode { get; set; }
         public String ColumnCustomer { get; set; }
         public String ColumnItemCode { get; set; }
+        public String ColumnBarCode { get; set; }
         public String ColumnItemDescription { get; set; }
         public String ColumnItemCategory { get; set; }
         public String ColumnUnit { get; set; }
+        public String ColumnCost { get; set; }
         public String ColumnPrice { get; set; }
+        public String ColumnCostAmount { get; set; }
         public String ColumnDiscountAmount { get; set; }
         public String ColumnNetPrice { get; set; }
         public String ColumnQuantity { get; set; }

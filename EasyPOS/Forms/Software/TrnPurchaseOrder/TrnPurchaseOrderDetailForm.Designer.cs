@@ -76,6 +76,7 @@
             this.buttonBarcode = new System.Windows.Forms.Button();
             this.textBoxBarcode = new System.Windows.Forms.TextBox();
             this.buttonSearchItem = new System.Windows.Forms.Button();
+            this.buttonStockIn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Forms.SuspendLayout();
@@ -86,6 +87,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.buttonStockIn);
             this.panel1.Controls.Add(this.buttonPrint);
             this.panel1.Controls.Add(this.buttonLock);
             this.panel1.Controls.Add(this.buttonUnlock);
@@ -655,6 +657,25 @@
             this.buttonSearchItem.UseVisualStyleBackColor = false;
             this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
             // 
+            // buttonStockIn
+            // 
+            this.buttonStockIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonStockIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonStockIn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonStockIn.FlatAppearance.BorderSize = 0;
+            this.buttonStockIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStockIn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonStockIn.ForeColor = System.Drawing.Color.White;
+            this.buttonStockIn.Location = new System.Drawing.Point(713, 10);
+            this.buttonStockIn.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonStockIn.Name = "buttonStockIn";
+            this.buttonStockIn.Size = new System.Drawing.Size(77, 32);
+            this.buttonStockIn.TabIndex = 25;
+            this.buttonStockIn.TabStop = false;
+            this.buttonStockIn.Text = "Stock-In";
+            this.buttonStockIn.UseVisualStyleBackColor = false;
+            this.buttonStockIn.Click += new System.EventHandler(this.buttonStockIn_Click);
+            // 
             // TrnPurchaseOrderDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -733,5 +754,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPurchaseOrderLineListQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPurchaseOrderLineListCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPurchaseOrderLineListAmount;
+        private System.Windows.Forms.Button buttonStockIn;
     }
 }
