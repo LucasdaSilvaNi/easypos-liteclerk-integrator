@@ -9,6 +9,8 @@ namespace EasyPOS.Entities
     public class TrnStockInLineEntity
     {
         public Int32 Id { get; set; }
+        public String ItemCode { get; set; }
+        public String BarCode { get; set; }
         public Int32 StockInId { get; set; }
         public Int32 ItemId { get; set; }
         public String ItemBarcode { get; set; }

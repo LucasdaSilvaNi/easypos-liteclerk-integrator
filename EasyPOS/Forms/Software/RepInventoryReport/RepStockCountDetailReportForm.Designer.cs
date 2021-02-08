@@ -43,6 +43,13 @@
             this.buttonPageListPrevious = new System.Windows.Forms.Button();
             this.textBoxPageNumber = new System.Windows.Forms.TextBox();
             this.dataGridViewStockCountDetailReport = new System.Windows.Forms.DataGridView();
+            this.buttonGenerateCSV = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonClose = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.ColumnItemListCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemListBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockOutDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockOutNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,11 +58,6 @@
             this.ColumnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonGenerateCSV = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonClose = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStockCountDetailReport)).BeginInit();
@@ -210,6 +212,8 @@
             this.dataGridViewStockCountDetailReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewStockCountDetailReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewStockCountDetailReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnItemListCode,
+            this.ColumnItemListBarcode,
             this.ColumnStockOutDate,
             this.ColumnStockOutNumber,
             this.ColumnRemarks,
@@ -228,75 +232,6 @@
             this.dataGridViewStockCountDetailReport.ShowEditingIcon = false;
             this.dataGridViewStockCountDetailReport.Size = new System.Drawing.Size(1076, 422);
             this.dataGridViewStockCountDetailReport.TabIndex = 0;
-            // 
-            // ColumnStockOutDate
-            // 
-            this.ColumnStockOutDate.DataPropertyName = "ColumnStockCountDate";
-            this.ColumnStockOutDate.HeaderText = "Stock Count Date";
-            this.ColumnStockOutDate.Name = "ColumnStockOutDate";
-            this.ColumnStockOutDate.ReadOnly = true;
-            this.ColumnStockOutDate.Width = 120;
-            // 
-            // ColumnStockOutNumber
-            // 
-            this.ColumnStockOutNumber.DataPropertyName = "ColumnStockCountNumber";
-            this.ColumnStockOutNumber.HeaderText = "Stock Count No.";
-            this.ColumnStockOutNumber.Name = "ColumnStockOutNumber";
-            this.ColumnStockOutNumber.ReadOnly = true;
-            this.ColumnStockOutNumber.Width = 120;
-            // 
-            // ColumnRemarks
-            // 
-            this.ColumnRemarks.DataPropertyName = "ColumnRemarks";
-            this.ColumnRemarks.HeaderText = "Remarks";
-            this.ColumnRemarks.Name = "ColumnRemarks";
-            this.ColumnRemarks.ReadOnly = true;
-            this.ColumnRemarks.Width = 120;
-            // 
-            // ColumnItem
-            // 
-            this.ColumnItem.DataPropertyName = "ColumnItem";
-            this.ColumnItem.HeaderText = "Item Description";
-            this.ColumnItem.Name = "ColumnItem";
-            this.ColumnItem.ReadOnly = true;
-            this.ColumnItem.Width = 200;
-            // 
-            // ColumnUnit
-            // 
-            this.ColumnUnit.DataPropertyName = "ColumnUnit";
-            this.ColumnUnit.HeaderText = "Unit";
-            this.ColumnUnit.Name = "ColumnUnit";
-            this.ColumnUnit.ReadOnly = true;
-            // 
-            // ColumnQuantity
-            // 
-            this.ColumnQuantity.DataPropertyName = "ColumnQuantity";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnQuantity.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColumnQuantity.HeaderText = "Quantity";
-            this.ColumnQuantity.Name = "ColumnQuantity";
-            this.ColumnQuantity.ReadOnly = true;
-            this.ColumnQuantity.Width = 120;
-            // 
-            // ColumnCost
-            // 
-            this.ColumnCost.DataPropertyName = "ColumnCost";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnCost.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnCost.HeaderText = "Cost";
-            this.ColumnCost.Name = "ColumnCost";
-            this.ColumnCost.ReadOnly = true;
-            this.ColumnCost.Width = 120;
-            // 
-            // ColumnAmount
-            // 
-            this.ColumnAmount.DataPropertyName = "ColumnAmount";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnAmount.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnAmount.HeaderText = "Amount";
-            this.ColumnAmount.Name = "ColumnAmount";
-            this.ColumnAmount.ReadOnly = true;
-            this.ColumnAmount.Width = 120;
             // 
             // buttonGenerateCSV
             // 
@@ -372,6 +307,89 @@
             this.panel1.Size = new System.Drawing.Size(1096, 50);
             this.panel1.TabIndex = 22;
             // 
+            // ColumnItemListCode
+            // 
+            this.ColumnItemListCode.DataPropertyName = "ColumnItemListCode";
+            this.ColumnItemListCode.HeaderText = "Item Code";
+            this.ColumnItemListCode.Name = "ColumnItemListCode";
+            this.ColumnItemListCode.ReadOnly = true;
+            // 
+            // ColumnItemListBarcode
+            // 
+            this.ColumnItemListBarcode.DataPropertyName = "ColumnItemListBarcode";
+            this.ColumnItemListBarcode.HeaderText = "Barcode";
+            this.ColumnItemListBarcode.Name = "ColumnItemListBarcode";
+            this.ColumnItemListBarcode.ReadOnly = true;
+            // 
+            // ColumnStockOutDate
+            // 
+            this.ColumnStockOutDate.DataPropertyName = "ColumnStockCountDate";
+            this.ColumnStockOutDate.HeaderText = "Stock Count Date";
+            this.ColumnStockOutDate.Name = "ColumnStockOutDate";
+            this.ColumnStockOutDate.ReadOnly = true;
+            this.ColumnStockOutDate.Width = 120;
+            // 
+            // ColumnStockOutNumber
+            // 
+            this.ColumnStockOutNumber.DataPropertyName = "ColumnStockCountNumber";
+            this.ColumnStockOutNumber.HeaderText = "Stock Count No.";
+            this.ColumnStockOutNumber.Name = "ColumnStockOutNumber";
+            this.ColumnStockOutNumber.ReadOnly = true;
+            this.ColumnStockOutNumber.Width = 120;
+            // 
+            // ColumnRemarks
+            // 
+            this.ColumnRemarks.DataPropertyName = "ColumnRemarks";
+            this.ColumnRemarks.HeaderText = "Remarks";
+            this.ColumnRemarks.Name = "ColumnRemarks";
+            this.ColumnRemarks.ReadOnly = true;
+            this.ColumnRemarks.Width = 120;
+            // 
+            // ColumnItem
+            // 
+            this.ColumnItem.DataPropertyName = "ColumnItem";
+            this.ColumnItem.HeaderText = "Item Description";
+            this.ColumnItem.Name = "ColumnItem";
+            this.ColumnItem.ReadOnly = true;
+            this.ColumnItem.Width = 200;
+            // 
+            // ColumnUnit
+            // 
+            this.ColumnUnit.DataPropertyName = "ColumnUnit";
+            this.ColumnUnit.HeaderText = "Unit";
+            this.ColumnUnit.Name = "ColumnUnit";
+            this.ColumnUnit.ReadOnly = true;
+            // 
+            // ColumnQuantity
+            // 
+            this.ColumnQuantity.DataPropertyName = "ColumnQuantity";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnQuantity.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColumnQuantity.HeaderText = "Quantity";
+            this.ColumnQuantity.Name = "ColumnQuantity";
+            this.ColumnQuantity.ReadOnly = true;
+            this.ColumnQuantity.Width = 120;
+            // 
+            // ColumnCost
+            // 
+            this.ColumnCost.DataPropertyName = "ColumnCost";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnCost.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnCost.HeaderText = "Cost";
+            this.ColumnCost.Name = "ColumnCost";
+            this.ColumnCost.ReadOnly = true;
+            this.ColumnCost.Width = 120;
+            // 
+            // ColumnAmount
+            // 
+            this.ColumnAmount.DataPropertyName = "ColumnAmount";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnAmount.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnAmount.HeaderText = "Amount";
+            this.ColumnAmount.Name = "ColumnAmount";
+            this.ColumnAmount.ReadOnly = true;
+            this.ColumnAmount.Width = 120;
+            // 
             // RepStockCountDetailReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -414,6 +432,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListBarcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRemarks;

@@ -659,8 +659,16 @@ namespace EasyPOS.Forms.Software.SysUtilities
                     String[] header = {
                         "Code",
                         "Customer",
-                        "Contact No.",
                         "Address",
+                        "Contact Person",
+                        "Contact No.",
+                        "Credit Limit",
+                        "Term",
+                        "TIN",
+                        "With Reward",
+                        "Reward No.",
+                        "Reward Conversion",
+                        "Default Price",
                     };
 
                     csv.AppendLine(String.Join(",", header));
@@ -708,8 +716,16 @@ namespace EasyPOS.Forms.Software.SysUtilities
                             {
                                 CustomerCode = dataWords[0],
                                 Customer = dataWords[1],
-                                ContactNumber = dataWords[2],
-                                Address = dataWords[3],
+                                Address = dataWords[2],
+                                ContactPerson = dataWords[3],
+                                ContactNumber = dataWords[4],
+                                CreditLimit = Convert.ToDecimal(dataWords[5]) ,
+                                Term = dataWords[6],
+                                TIN = dataWords[7],
+                                WithReward = Convert.ToBoolean(dataWords[8]),
+                                RewardNumber = dataWords[9],
+                                RewardConversion = Convert.ToDecimal(dataWords[10]),
+                                DefaultPriceDescription = dataWords[11],
                             });
                         }
                     }

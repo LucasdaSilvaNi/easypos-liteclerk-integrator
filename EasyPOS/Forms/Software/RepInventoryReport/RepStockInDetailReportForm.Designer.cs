@@ -39,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBoxTotalAmount = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,6 +49,9 @@
             this.buttonPageListPrevious = new System.Windows.Forms.Button();
             this.textBoxPageNumber = new System.Windows.Forms.TextBox();
             this.dataGridViewStockInDetailReport = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.ColumnItemListCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemListBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockInDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockInNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnManualStockInNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,8 +65,6 @@
             this.ColumnExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnLotNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSellingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.textBoxFilter = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -141,6 +143,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1096, 472);
             this.panel2.TabIndex = 19;
+            // 
+            // textBoxFilter
+            // 
+            this.textBoxFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxFilter.Location = new System.Drawing.Point(0, 2);
+            this.textBoxFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxFilter.Name = "textBoxFilter";
+            this.textBoxFilter.Size = new System.Drawing.Size(1094, 26);
+            this.textBoxFilter.TabIndex = 22;
+            this.textBoxFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxFilter_KeyDown);
             // 
             // panel4
             // 
@@ -276,6 +289,8 @@
             this.dataGridViewStockInDetailReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewStockInDetailReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewStockInDetailReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnItemListCode,
+            this.ColumnItemListBarcode,
             this.ColumnStockInDate,
             this.ColumnStockInNumber,
             this.ColumnManualStockInNumber,
@@ -299,6 +314,34 @@
             this.dataGridViewStockInDetailReport.ShowEditingIcon = false;
             this.dataGridViewStockInDetailReport.Size = new System.Drawing.Size(1092, 396);
             this.dataGridViewStockInDetailReport.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.buttonGenerateCSV);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.buttonClose);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1096, 50);
+            this.panel1.TabIndex = 18;
+            // 
+            // ColumnItemListCode
+            // 
+            this.ColumnItemListCode.DataPropertyName = "ColumnItemListCode";
+            this.ColumnItemListCode.HeaderText = "Item Code";
+            this.ColumnItemListCode.Name = "ColumnItemListCode";
+            this.ColumnItemListCode.ReadOnly = true;
+            // 
+            // ColumnItemListBarcode
+            // 
+            this.ColumnItemListBarcode.DataPropertyName = "ColumnItemListBarcode";
+            this.ColumnItemListBarcode.HeaderText = "Barcode";
+            this.ColumnItemListBarcode.Name = "ColumnItemListBarcode";
+            this.ColumnItemListBarcode.ReadOnly = true;
             // 
             // ColumnStockInDate
             // 
@@ -411,31 +454,6 @@
             this.ColumnSellingPrice.ReadOnly = true;
             this.ColumnSellingPrice.Width = 120;
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.buttonGenerateCSV);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.buttonClose);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1096, 50);
-            this.panel1.TabIndex = 18;
-            // 
-            // textBoxFilter
-            // 
-            this.textBoxFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxFilter.Location = new System.Drawing.Point(0, 2);
-            this.textBoxFilter.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxFilter.Name = "textBoxFilter";
-            this.textBoxFilter.Size = new System.Drawing.Size(1094, 26);
-            this.textBoxFilter.TabIndex = 22;
-            this.textBoxFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxFilter_KeyDown);
-            // 
             // RepStockInDetailReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -479,6 +497,9 @@
         private System.Windows.Forms.TextBox textBoxPageNumber;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridViewStockInDetailReport;
+        private System.Windows.Forms.TextBox textBoxFilter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListBarcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockInDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockInNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnManualStockInNumber;
@@ -492,6 +513,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnExpiryDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLotNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSellingPrice;
-        private System.Windows.Forms.TextBox textBoxFilter;
     }
 }

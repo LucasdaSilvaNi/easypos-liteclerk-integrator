@@ -48,6 +48,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewStockOutDetailReport = new System.Windows.Forms.DataGridView();
             this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
+            this.ColumnItemListCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemListBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockOutDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockOutNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnManualStockOutNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -285,6 +287,8 @@
             this.dataGridViewStockOutDetailReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewStockOutDetailReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewStockOutDetailReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnItemListCode,
+            this.ColumnItemListBarcode,
             this.ColumnStockOutDate,
             this.ColumnStockOutNumber,
             this.ColumnManualStockOutNumber,
@@ -304,6 +308,20 @@
             this.dataGridViewStockOutDetailReport.ShowEditingIcon = false;
             this.dataGridViewStockOutDetailReport.Size = new System.Drawing.Size(1076, 423);
             this.dataGridViewStockOutDetailReport.TabIndex = 0;
+            // 
+            // ColumnItemListCode
+            // 
+            this.ColumnItemListCode.DataPropertyName = "ColumnItemListCode";
+            this.ColumnItemListCode.HeaderText = "Item Code";
+            this.ColumnItemListCode.Name = "ColumnItemListCode";
+            this.ColumnItemListCode.ReadOnly = true;
+            // 
+            // ColumnItemListBarcode
+            // 
+            this.ColumnItemListBarcode.DataPropertyName = "ColumnItemListBarcode";
+            this.ColumnItemListBarcode.HeaderText = "Barcode";
+            this.ColumnItemListBarcode.Name = "ColumnItemListBarcode";
+            this.ColumnItemListBarcode.ReadOnly = true;
             // 
             // ColumnStockOutDate
             // 
@@ -424,6 +442,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridViewStockOutDetailReport;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListBarcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnManualStockOutNumber;

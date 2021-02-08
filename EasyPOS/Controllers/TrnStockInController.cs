@@ -115,7 +115,8 @@ namespace EasyPOS.Controllers
                                 Supplier = d.Supplier
                             };
 
-            return suppliers.ToList();
+            //return suppliers.ToList();
+            return suppliers.OrderBy(d => d.Supplier).ToList();
         }
 
         // ====================

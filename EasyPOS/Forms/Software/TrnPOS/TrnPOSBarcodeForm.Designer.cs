@@ -82,6 +82,9 @@
             this.labelTerminal = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridViewSalesLineItemDisplay = new System.Windows.Forms.DataGridView();
+            this.ColumnSalesLineItemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLlineAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateTimePickerSalesDate = new System.Windows.Forms.DateTimePicker();
             this.textBoxSalesListFilter = new System.Windows.Forms.TextBox();
             this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
@@ -96,9 +99,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBoxLastChange = new System.Windows.Forms.TextBox();
             this.labelLastChange = new System.Windows.Forms.Label();
-            this.ColumnSalesLineItemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesLineItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesLlineAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboBoxLockOption = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesList)).BeginInit();
@@ -666,6 +667,32 @@
             this.dataGridViewSalesLineItemDisplay.Size = new System.Drawing.Size(371, 322);
             this.dataGridViewSalesLineItemDisplay.TabIndex = 18;
             // 
+            // ColumnSalesLineItemQuantity
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.ColumnSalesLineItemQuantity.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColumnSalesLineItemQuantity.HeaderText = "Qty.";
+            this.ColumnSalesLineItemQuantity.Name = "ColumnSalesLineItemQuantity";
+            this.ColumnSalesLineItemQuantity.ReadOnly = true;
+            this.ColumnSalesLineItemQuantity.Width = 90;
+            // 
+            // ColumnSalesLineItem
+            // 
+            this.ColumnSalesLineItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.ColumnSalesLineItem.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ColumnSalesLineItem.HeaderText = "Item";
+            this.ColumnSalesLineItem.Name = "ColumnSalesLineItem";
+            this.ColumnSalesLineItem.ReadOnly = true;
+            // 
+            // ColumnSalesLlineAmount
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.ColumnSalesLlineAmount.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ColumnSalesLlineAmount.HeaderText = "Amount";
+            this.ColumnSalesLlineAmount.Name = "ColumnSalesLlineAmount";
+            this.ColumnSalesLlineAmount.ReadOnly = true;
+            // 
             // dateTimePickerSalesDate
             // 
             this.dateTimePickerSalesDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -683,7 +710,7 @@
             this.textBoxSalesListFilter.Location = new System.Drawing.Point(278, 5);
             this.textBoxSalesListFilter.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesListFilter.Name = "textBoxSalesListFilter";
-            this.textBoxSalesListFilter.Size = new System.Drawing.Size(428, 26);
+            this.textBoxSalesListFilter.Size = new System.Drawing.Size(342, 26);
             this.textBoxSalesListFilter.TabIndex = 0;
             this.textBoxSalesListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSalesListFilter_KeyDown);
             // 
@@ -800,6 +827,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
+            this.panel3.Controls.Add(this.comboBoxLockOption);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.dataGridViewSalesLineItemDisplay);
             this.panel3.Controls.Add(this.panel2);
@@ -862,31 +890,17 @@
             this.labelLastChange.TabIndex = 14;
             this.labelLastChange.Text = "Last Change:";
             // 
-            // ColumnSalesLineItemQuantity
+            // comboBoxLockOption
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.ColumnSalesLineItemQuantity.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ColumnSalesLineItemQuantity.HeaderText = "Qty.";
-            this.ColumnSalesLineItemQuantity.Name = "ColumnSalesLineItemQuantity";
-            this.ColumnSalesLineItemQuantity.ReadOnly = true;
-            this.ColumnSalesLineItemQuantity.Width = 90;
-            // 
-            // ColumnSalesLineItem
-            // 
-            this.ColumnSalesLineItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.ColumnSalesLineItem.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ColumnSalesLineItem.HeaderText = "Item";
-            this.ColumnSalesLineItem.Name = "ColumnSalesLineItem";
-            this.ColumnSalesLineItem.ReadOnly = true;
-            // 
-            // ColumnSalesLlineAmount
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.ColumnSalesLlineAmount.DefaultCellStyle = dataGridViewCellStyle6;
-            this.ColumnSalesLlineAmount.HeaderText = "Amount";
-            this.ColumnSalesLlineAmount.Name = "ColumnSalesLlineAmount";
-            this.ColumnSalesLlineAmount.ReadOnly = true;
+            this.comboBoxLockOption.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxLockOption.Font = new System.Drawing.Font("Segoe UI", 9.8F);
+            this.comboBoxLockOption.FormattingEnabled = true;
+            this.comboBoxLockOption.Location = new System.Drawing.Point(624, 5);
+            this.comboBoxLockOption.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxLockOption.Name = "comboBoxLockOption";
+            this.comboBoxLockOption.Size = new System.Drawing.Size(82, 25);
+            this.comboBoxLockOption.TabIndex = 20;
+            this.comboBoxLockOption.SelectedIndexChanged += new System.EventHandler(this.comboBoxLockOption_SelectedIndexChanged);
             // 
             // TrnPOSBarcodeForm
             // 
@@ -979,5 +993,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineItemQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLlineAmount;
+        private System.Windows.Forms.ComboBox comboBoxLockOption;
     }
 }

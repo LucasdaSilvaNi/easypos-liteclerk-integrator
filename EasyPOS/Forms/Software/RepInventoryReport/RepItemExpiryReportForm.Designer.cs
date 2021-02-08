@@ -44,6 +44,10 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             this.buttonPageListLast = new System.Windows.Forms.Button();
             this.buttonPageListPrevious = new System.Windows.Forms.Button();
             this.textBoxPageNumber = new System.Windows.Forms.TextBox();
+            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.ColumnItemListCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemListBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnOnHandQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,8 +55,6 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnLotNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItemExpiryReport)).BeginInit();
@@ -143,6 +145,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             this.dataGridViewItemExpiryReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewItemExpiryReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewItemExpiryReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnItemListCode,
+            this.ColumnItemListBarcode,
             this.ColumnItem,
             this.ColumnOnHandQuantity,
             this.ColumnUnit,
@@ -257,6 +261,20 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             this.textBoxPageNumber.TabStop = false;
             this.textBoxPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // ColumnItemListCode
+            // 
+            this.ColumnItemListCode.DataPropertyName = "ColumnItemListCode";
+            this.ColumnItemListCode.HeaderText = "Item Code";
+            this.ColumnItemListCode.Name = "ColumnItemListCode";
+            this.ColumnItemListCode.ReadOnly = true;
+            // 
+            // ColumnItemListBarcode
+            // 
+            this.ColumnItemListBarcode.DataPropertyName = "ColumnItemListBarcode";
+            this.ColumnItemListBarcode.HeaderText = "Barcode";
+            this.ColumnItemListBarcode.Name = "ColumnItemListBarcode";
+            this.ColumnItemListBarcode.ReadOnly = true;
+            // 
             // ColumnItem
             // 
             this.ColumnItem.DataPropertyName = "ColumnItem";
@@ -327,7 +345,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RepItemExpiryReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Item Expiry Report";
@@ -355,6 +373,10 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
         private System.Windows.Forms.Button buttonPageListLast;
         private System.Windows.Forms.Button buttonPageListPrevious;
         private System.Windows.Forms.TextBox textBoxPageNumber;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListBarcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnOnHandQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnit;
@@ -362,7 +384,5 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnExpiryDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLotNo;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

@@ -54,6 +54,7 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ColumnItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnBarCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -225,6 +226,7 @@
             this.dataGridViewInventoryReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewInventoryReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewInventoryReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnItemCode,
             this.ColumnBarCode,
             this.ColumnItemDescription,
             this.ColumnUnit,
@@ -319,6 +321,13 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1096, 50);
             this.panel1.TabIndex = 16;
+            // 
+            // ColumnItemCode
+            // 
+            this.ColumnItemCode.DataPropertyName = "ColumnItemCode";
+            this.ColumnItemCode.HeaderText = "Item Code";
+            this.ColumnItemCode.Name = "ColumnItemCode";
+            this.ColumnItemCode.ReadOnly = true;
             // 
             // ColumnBarCode
             // 
@@ -467,6 +476,7 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox textBoxFilter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBarCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnit;
