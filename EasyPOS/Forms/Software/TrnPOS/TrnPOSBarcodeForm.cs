@@ -180,7 +180,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public void UpdateSalesListGridDataSource()
         {
             DateTime salesDate = dateTimePickerSalesDate.Value.Date;
-             Int32 terminalId = Convert.ToInt32(comboBoxTerminal.SelectedValue);
+            Int32 terminalId = Convert.ToInt32(comboBoxTerminal.SelectedValue);
             String filter = textBoxSalesListFilter.Text;
             String selectedIsLocked = Convert.ToString(comboBoxLockOption.SelectedValue);
 
