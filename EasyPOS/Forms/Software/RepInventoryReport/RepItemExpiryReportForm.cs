@@ -195,7 +195,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 if (dialogResult == DialogResult.OK)
                 {
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Item Code", "Barcode", "Item Description", "Cost", "Price", "ExpiryDate" };
+                    String[] header = { "Item Code", "Barcode", "Item Description","Unit", "Cost", "Price", "ExpiryDate" };
                     csv.AppendLine(String.Join(",", header));
 
                     if (itemList.Any())

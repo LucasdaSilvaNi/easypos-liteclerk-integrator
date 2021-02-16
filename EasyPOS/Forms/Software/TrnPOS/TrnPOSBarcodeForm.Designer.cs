@@ -96,10 +96,10 @@
             this.textBoxPageNumber = new System.Windows.Forms.TextBox();
             this.buttonAutoRefresh = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.comboBoxLockOption = new System.Windows.Forms.ComboBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBoxLastChange = new System.Windows.Forms.TextBox();
             this.labelLastChange = new System.Windows.Forms.Label();
-            this.comboBoxLockOption = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesList)).BeginInit();
@@ -842,6 +842,18 @@
             this.panel3.Size = new System.Drawing.Size(1096, 510);
             this.panel3.TabIndex = 14;
             // 
+            // comboBoxLockOption
+            // 
+            this.comboBoxLockOption.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxLockOption.Font = new System.Drawing.Font("Segoe UI", 9.8F);
+            this.comboBoxLockOption.FormattingEnabled = true;
+            this.comboBoxLockOption.Location = new System.Drawing.Point(624, 5);
+            this.comboBoxLockOption.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxLockOption.Name = "comboBoxLockOption";
+            this.comboBoxLockOption.Size = new System.Drawing.Size(82, 25);
+            this.comboBoxLockOption.TabIndex = 20;
+            this.comboBoxLockOption.SelectedIndexChanged += new System.EventHandler(this.comboBoxLockOption_SelectedIndexChanged);
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
@@ -889,18 +901,6 @@
             this.labelLastChange.Size = new System.Drawing.Size(98, 20);
             this.labelLastChange.TabIndex = 14;
             this.labelLastChange.Text = "Last Change:";
-            // 
-            // comboBoxLockOption
-            // 
-            this.comboBoxLockOption.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxLockOption.Font = new System.Drawing.Font("Segoe UI", 9.8F);
-            this.comboBoxLockOption.FormattingEnabled = true;
-            this.comboBoxLockOption.Location = new System.Drawing.Point(624, 5);
-            this.comboBoxLockOption.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxLockOption.Name = "comboBoxLockOption";
-            this.comboBoxLockOption.Size = new System.Drawing.Size(82, 25);
-            this.comboBoxLockOption.TabIndex = 20;
-            this.comboBoxLockOption.SelectedIndexChanged += new System.EventHandler(this.comboBoxLockOption_SelectedIndexChanged);
             // 
             // TrnPOSBarcodeForm
             // 
