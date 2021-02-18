@@ -20,7 +20,12 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             InitializeComponent();
             sysSoftwareForm = softwareForm;
 
+
+            checkBoxFilter.Visible = false;
+            labelFilter.Visible = false;
             GetItemList();
+            HideComboBox();
+
         }
 
         public void GetItemList()
@@ -28,37 +33,78 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             Controllers.RepInventoryReportController repInventoryReportController = new Controllers.RepInventoryReportController();
             if (repInventoryReportController.DropdownListItem().Any())
             {
-                comboBoxItem.DataSource = repInventoryReportController.DropdownListItem();
+                List<Entities.MstItemEntity> newItemList = new List<Entities.MstItemEntity>();
+                newItemList.Add(new Entities.MstItemEntity
+                {
+                    Id = 0,
+                    ItemDescription = "ALL"
+                });
+
+                foreach (var obj in repInventoryReportController.DropdownListItem())
+                {
+                    newItemList.Add(new Entities.MstItemEntity
+                    {
+                        Id = obj.Id,
+                        ItemDescription = obj.ItemDescription
+                    });
+                };
+
+                comboBoxItem.DataSource = newItemList;
                 comboBoxItem.ValueMember = "Id";
                 comboBoxItem.DisplayMember = "ItemDescription";
             }
+            if (repInventoryReportController.DropdownListItemCategory().Any())
+            {
+                List<Entities.MstItemEntity> newItemList = new List<Entities.MstItemEntity>();
+                newItemList.Add(new Entities.MstItemEntity
+                {
+                    Id = 0,
+                    Category = "ALL"
+                });
+
+                foreach (var obj in repInventoryReportController.DropdownListItemCategory())
+                {
+                    newItemList.Add(new Entities.MstItemEntity
+                    {
+                        Id = obj.Id,
+                        Category = obj.Category
+                    });
+                };
+                comboBoxCategory.DataSource = newItemList;
+                comboBoxCategory.ValueMember = "Category";
+                comboBoxCategory.DisplayMember = "Category";
+            }
         }
 
-        private void listBoxSalesReport_SelectedIndexChanged(object sender, EventArgs e)
+           
+    private void listBoxSalesReport_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxInventoryReport.SelectedItem != null)
             {
                 String selectedItem = listBoxInventoryReport.SelectedItem.ToString();
+                
                 switch (selectedItem)
                 {
                     case "Inventory Report":
                         labelStartDate.Visible = true;
                         dateTimePickerStartDate.Visible = true;
                         labelEndDate.Visible = true;
+                        checkBoxFilter.Visible = true;
+                        labelFilter.Visible = true;
                         dateTimePickerEndDate.Visible = true;
-                        labelItem.Visible = false;
-                        comboBoxItem.Visible = false;
                         dateTimePickerStartDate.Focus();
                         break;
                     case "Item List Report":
+                        checkBoxFilter.Visible = false;
+                        labelFilter.Visible = false;
                         break;
                     case "Stock Card":
                         labelStartDate.Visible = true;
                         dateTimePickerStartDate.Visible = true;
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
-                        labelItem.Visible = true;
-                        comboBoxItem.Visible = true;
+                        checkBoxFilter.Visible = true;
+                        labelFilter.Visible = true;
                         dateTimePickerStartDate.Focus();
                         break;
                     case "Stock In Detail Report":
@@ -66,8 +112,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         dateTimePickerStartDate.Visible = true;
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
-                        labelItem.Visible = false;
-                        comboBoxItem.Visible = false;
+                        checkBoxFilter.Visible = false;
+                        labelFilter.Visible = false;
                         dateTimePickerStartDate.Focus();
                         break;
                     case "Stock Out Detail Report":
@@ -75,8 +121,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         dateTimePickerStartDate.Visible = true;
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
-                        labelItem.Visible = false;
-                        comboBoxItem.Visible = false;
+                        checkBoxFilter.Visible = false;
+                        labelFilter.Visible = false;
                         dateTimePickerStartDate.Focus();
                         break;
                     case "Stock Count Detail Report":
@@ -84,8 +130,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         dateTimePickerStartDate.Visible = true;
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
-                        labelItem.Visible = false;
-                        comboBoxItem.Visible = false;
+                        checkBoxFilter.Visible = false;
+                        labelFilter.Visible = false;
                         dateTimePickerStartDate.Focus();
                         break;
                     case "Item Expiry Report":
@@ -93,6 +139,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         dateTimePickerStartDate.Visible = true;
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
+                        checkBoxFilter.Visible = false;
+                        labelFilter.Visible = false;
                         dateTimePickerStartDate.Focus();
                         break;
                     default:
@@ -100,8 +148,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         dateTimePickerStartDate.Visible = false;
                         labelEndDate.Visible = false;
                         dateTimePickerEndDate.Visible = false;
-                        labelItem.Visible = false;
-                        comboBoxItem.Visible = false;
+                        checkBoxFilter.Visible = false;
+                        labelFilter.Visible = false;
                         break;
                     
                 }
@@ -129,7 +177,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         {
                             if (sysUserRights.GetUserRights().CanView == true)
                             {
-                                RepInventoryReportForm repInventoryReportInventoryReport = new RepInventoryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                                RepInventoryReportForm repInventoryReportInventoryReport = new RepInventoryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToString(comboBoxCategory.SelectedValue), Convert.ToString(comboBoxItem.SelectedValue));
                                 repInventoryReportInventoryReport.ShowDialog();
                             }
                             else
@@ -167,7 +215,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         {
                             if (sysUserRights.GetUserRights().CanView == true)
                             {
-                                RepStockCardForm repStockCardForm = new RepStockCardForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxItem.SelectedValue));
+                                RepStockCardForm repStockCardForm = new RepStockCardForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxItem.SelectedValue), Convert.ToString(comboBoxCategory.SelectedValue));
                                 repStockCardForm.ShowDialog();
                             }
                             else
@@ -252,6 +300,24 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
         private void buttonClose_OnClick(object sender, EventArgs e)
         {
             sysSoftwareForm.RemoveTabPage();
+        }
+
+        private void checkBoxFilter_CheckedChanged(object sender, EventArgs e)
+        {
+            HideComboBox();
+        }
+        public void HideComboBox()
+        {
+            if(checkBoxFilter.Checked == true)
+            {
+                comboBoxItem.Visible = true;
+                comboBoxCategory.Visible = true;
+            }
+            else
+            {
+                comboBoxItem.Visible = false;
+                comboBoxCategory.Visible = false;
+            }
         }
     }
 }

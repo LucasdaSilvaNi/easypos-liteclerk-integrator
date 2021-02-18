@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepInventoryForm));
             this.listBoxInventoryReport = new System.Windows.Forms.ListBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.comboBoxCategory = new System.Windows.Forms.ComboBox();
+            this.labelCategory = new System.Windows.Forms.Label();
             this.comboBoxItem = new System.Windows.Forms.ComboBox();
             this.labelItem = new System.Windows.Forms.Label();
             this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
@@ -45,6 +47,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
+            this.labelFilter = new System.Windows.Forms.Label();
+            this.checkBoxFilter = new System.Windows.Forms.CheckBox();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -77,6 +81,10 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.checkBoxFilter);
+            this.panel4.Controls.Add(this.labelFilter);
+            this.panel4.Controls.Add(this.comboBoxCategory);
+            this.panel4.Controls.Add(this.labelCategory);
             this.panel4.Controls.Add(this.comboBoxItem);
             this.panel4.Controls.Add(this.labelItem);
             this.panel4.Controls.Add(this.dateTimePickerStartDate);
@@ -92,12 +100,36 @@
             this.panel4.Size = new System.Drawing.Size(1096, 510);
             this.panel4.TabIndex = 10;
             // 
+            // comboBoxCategory
+            // 
+            this.comboBoxCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxCategory.FormattingEnabled = true;
+            this.comboBoxCategory.Location = new System.Drawing.Point(403, 160);
+            this.comboBoxCategory.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxCategory.Name = "comboBoxCategory";
+            this.comboBoxCategory.Size = new System.Drawing.Size(336, 27);
+            this.comboBoxCategory.TabIndex = 26;
+            this.comboBoxCategory.Visible = false;
+            // 
+            // labelCategory
+            // 
+            this.labelCategory.AutoSize = true;
+            this.labelCategory.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.labelCategory.Location = new System.Drawing.Point(331, 163);
+            this.labelCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelCategory.Name = "labelCategory";
+            this.labelCategory.Size = new System.Drawing.Size(68, 19);
+            this.labelCategory.TabIndex = 27;
+            this.labelCategory.Text = "Category:";
+            this.labelCategory.Visible = false;
+            // 
             // comboBoxItem
             // 
             this.comboBoxItem.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxItem.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxItem.FormattingEnabled = true;
-            this.comboBoxItem.Location = new System.Drawing.Point(403, 104);
+            this.comboBoxItem.Location = new System.Drawing.Point(403, 130);
             this.comboBoxItem.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxItem.Name = "comboBoxItem";
             this.comboBoxItem.Size = new System.Drawing.Size(336, 27);
@@ -108,7 +140,7 @@
             // 
             this.labelItem.AutoSize = true;
             this.labelItem.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelItem.Location = new System.Drawing.Point(358, 106);
+            this.labelItem.Location = new System.Drawing.Point(358, 132);
             this.labelItem.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelItem.Name = "labelItem";
             this.labelItem.Size = new System.Drawing.Size(40, 19);
@@ -271,6 +303,25 @@
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_OnClick);
             // 
+            // labelFilter
+            // 
+            this.labelFilter.AutoSize = true;
+            this.labelFilter.Location = new System.Drawing.Point(362, 109);
+            this.labelFilter.Name = "labelFilter";
+            this.labelFilter.Size = new System.Drawing.Size(42, 19);
+            this.labelFilter.TabIndex = 28;
+            this.labelFilter.Text = "Filter:";
+            // 
+            // checkBoxFilter
+            // 
+            this.checkBoxFilter.AutoSize = true;
+            this.checkBoxFilter.Location = new System.Drawing.Point(403, 112);
+            this.checkBoxFilter.Name = "checkBoxFilter";
+            this.checkBoxFilter.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxFilter.TabIndex = 29;
+            this.checkBoxFilter.UseVisualStyleBackColor = true;
+            this.checkBoxFilter.CheckedChanged += new System.EventHandler(this.checkBoxFilter_CheckedChanged);
+            // 
             // RepInventoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -314,5 +365,9 @@
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.ComboBox comboBoxItem;
         private System.Windows.Forms.Label labelItem;
+        private System.Windows.Forms.ComboBox comboBoxCategory;
+        private System.Windows.Forms.Label labelCategory;
+        private System.Windows.Forms.CheckBox checkBoxFilter;
+        private System.Windows.Forms.Label labelFilter;
     }
 }

@@ -24,25 +24,29 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
 
         public DateTime startDate;
         public DateTime endDate;
+        public String category;
+        public String itemId;
 
-        public RepInventoryReportForm(DateTime dateStart, DateTime dateEnd)
+        public RepInventoryReportForm(DateTime dateStart, DateTime dateEnd, String filterItemCategory, String itemIds)
         {
             InitializeComponent();
 
             startDate = dateStart;
             endDate = dateEnd;
+            category = filterItemCategory;
+            itemId = itemIds;
 
             GetInventoryReportDataSource("");
             GetDataGridViewCollectionDetailReportSource();
         }
 
-        public List<Entities.DgvRepInventoryInventoryReportListEntity> GetInventoryReportListData(DateTime startDate, DateTime endDate, String filter)
+        public List<Entities.DgvRepInventoryInventoryReportListEntity> GetInventoryReportListData(DateTime startDate, DateTime endDate, String category, String filter, String itemId)
         {
             List<Entities.DgvRepInventoryInventoryReportListEntity> rowList = new List<Entities.DgvRepInventoryInventoryReportListEntity>();
 
             Controllers.RepInventoryReportController repInvetoryReportController = new Controllers.RepInventoryReportController();
 
-            var inventoryReportList = repInvetoryReportController.InventoryReport(startDate, endDate, filter);
+            var inventoryReportList = repInvetoryReportController.InventoryReport(startDate, endDate, category, filter, itemId);
             if (inventoryReportList.Any())
             {
                 Decimal totalAmount = 0;
@@ -75,7 +79,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
 
         public void GetInventoryReportDataSource(String filter)
         {
-            inventoryReportList = GetInventoryReportListData(startDate, endDate, filter);
+            inventoryReportList = GetInventoryReportListData(startDate, endDate, category, filter, itemId);
             if (inventoryReportList.Any())
             {
 
