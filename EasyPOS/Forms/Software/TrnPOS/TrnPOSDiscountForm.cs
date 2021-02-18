@@ -31,6 +31,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             textBoxDiscountAmount.Text = "0.00";
             textBoxPax.Text = "1";
             textBoxDiscountedPax.Text = "1";
+            
 
             GetSalesLine();
         }
@@ -125,7 +126,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 SeniorCitizenName = seniorCitizenName,
                 SeniorCitizenAge = seniorCitizenAge,
                 Pax = pax,
-                DiscountedPax = discountedPax
+                DiscountedPax = discountedPax,
             };
 
             Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();

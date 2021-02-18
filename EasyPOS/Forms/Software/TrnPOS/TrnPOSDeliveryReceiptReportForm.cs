@@ -84,9 +84,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                         if (isDeliveryReceipt == true)
                         {
-                            colspan = 6;
-                            numberOfColumns = 6;
-                            widths = new float[] { 50f, 20f, 25f, 25f, 30f, 30f };
+                            colspan = 5;
+                            numberOfColumns = 5;
+                            widths = new float[] { 70f, 20f, 30f, 30f, 30f };
                         }
 
                         PdfPTable tableItem = new PdfPTable(numberOfColumns);
@@ -97,20 +97,44 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                         if (collection.FirstOrDefault().TrnSale.TrnSalesLines.Any())
                         {
-                            foreach (var salesItem in collection.FirstOrDefault().TrnSale.TrnSalesLines)
+                            if(isDeliveryReceipt == false)
                             {
-                                tableItem.AddCell(new PdfPCell(new Phrase(salesItem.MstItem.ItemDescription, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                                tableItem.AddCell(new PdfPCell(new Phrase(salesItem.Quantity.ToString("#,##0.00"), fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f, HorizontalAlignment = 2 });
-                                tableItem.AddCell(new PdfPCell(new Phrase(salesItem.MstItem.MstUnit.Unit, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-
-                                if (isDeliveryReceipt == true)
+                                foreach (var salesItem in collection.FirstOrDefault().TrnSale.TrnSalesLines)
                                 {
+                                    tableItem.AddCell(new PdfPCell(new Phrase(salesItem.MstItem.ItemDescription, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                                    tableItem.AddCell(new PdfPCell(new Phrase(salesItem.Quantity.ToString("#,##0.00"), fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f, HorizontalAlignment = 2 });
+                                    tableItem.AddCell(new PdfPCell(new Phrase(salesItem.MstItem.MstUnit.Unit, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+
+                                    totalAmount += salesItem.Amount;
+                                }
+                            }
+                            
+                            else
+                            {
+                                foreach (var salesItem in collection.FirstOrDefault().TrnSale.TrnSalesLines)
+                                {
+                                    if (salesItem.MstDiscount.Discount == "Zero Discount")
+                                    {
+                                        tableItem.AddCell(new PdfPCell(new Phrase(salesItem.MstItem.ItemDescription, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                                    }
+                                    else
+                                    {
+                                        if(salesItem.MstDiscount.Discount == "Variable Discount")
+                                        {
+                                            tableItem.AddCell(new PdfPCell(new Phrase(salesItem.MstItem.ItemDescription + " - " + salesItem.Preparation, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                                        }
+                                        else
+                                        {
+                                            tableItem.AddCell(new PdfPCell(new Phrase(salesItem.MstItem.ItemDescription + " - " + salesItem.MstDiscount.Discount, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                                        }
+                                    }
+                                    tableItem.AddCell(new PdfPCell(new Phrase(salesItem.Quantity.ToString("#,##0.00"), fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f, HorizontalAlignment = 2 });
+                                    tableItem.AddCell(new PdfPCell(new Phrase(salesItem.MstItem.MstUnit.Unit, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
                                     tableItem.AddCell(new PdfPCell(new Phrase(salesItem.Price.ToString("#,##0.00"), fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f, HorizontalAlignment = 2 });
                                     tableItem.AddCell(new PdfPCell(new Phrase(salesItem.Amount.ToString("#,##0.00"), fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f, HorizontalAlignment = 2 });
-                                    tableItem.AddCell(new PdfPCell(new Phrase(salesItem.DiscountAmount.ToString("#,##0.00"), fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f, HorizontalAlignment = 2 });
-                                }
 
-                                totalAmount += salesItem.Amount;
+                                    totalAmount += salesItem.Amount;
+                                }
                             }
                         }
 
@@ -249,9 +273,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             if (isDeliveryReceipt == true)
             {
-                colspan = 6;
-                numberOfColumns = 6;
-                widths = new float[] { 50f, 20f, 25f, 25f, 30f, 30f };
+                colspan = 5;
+                numberOfColumns = 5;
+                widths = new float[] { 70f, 20f, 30f, 30f, 30f };
             }
 
             PdfPTable tableItem = new PdfPTable(numberOfColumns);

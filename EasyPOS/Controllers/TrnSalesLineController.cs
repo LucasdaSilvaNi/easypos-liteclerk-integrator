@@ -682,7 +682,7 @@ namespace EasyPOS.Controllers
                                 }
 
                                 Int32 discountId = 0;
-
+   
                                 var discount = from d in db.MstDiscounts where d.Discount == salesOrderItem.Discount select d;
                                 if (discount.Any() == false)
                                 {
