@@ -114,6 +114,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                                 ColumnSearchItemListUnitId = d.UnitId,
                                 ColumnSearchItemListUnit = d.Unit,
                                 ColumnSearchItemListPrice = d.Price.ToString("#,##0.00"),
+                                ColumnSearchItemListCost = d.Cost.ToString("#,##0.00"),
                                 ColumnSearchItemListOnhandQuantity = d.OnhandQuantity.ToString("#,##0.00"),
                                 ColumnSearchItemListButtonPick = "Pick"
                             };
@@ -130,9 +131,9 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
         {
             UpdateSearchItemListDataSource();
 
-            dataGridViewSearchItemList.Columns[11].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
-            dataGridViewSearchItemList.Columns[11].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
-            dataGridViewSearchItemList.Columns[11].DefaultCellStyle.ForeColor = Color.White;
+            dataGridViewSearchItemList.Columns[12].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewSearchItemList.Columns[12].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewSearchItemList.Columns[12].DefaultCellStyle.ForeColor = Color.White;
 
             dataGridViewSearchItemList.DataSource = searchItemListDataSource;
         }
@@ -152,7 +153,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                 var itemDescription = dataGridViewSearchItemList.Rows[e.RowIndex].Cells[dataGridViewSearchItemList.Columns["ColumnSearchItemListDescription"].Index].Value.ToString();
                 var unitId = Convert.ToInt32(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[dataGridViewSearchItemList.Columns["ColumnSearchItemListUnitId"].Index].Value);
                 var unit = dataGridViewSearchItemList.Rows[e.RowIndex].Cells[dataGridViewSearchItemList.Columns["ColumnSearchItemListUnit"].Index].Value.ToString();
-                var price = Convert.ToDecimal(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[dataGridViewSearchItemList.Columns["ColumnSearchItemListPrice"].Index].Value);
+                var cost = Convert.ToDecimal(dataGridViewSearchItemList.Rows[e.RowIndex].Cells[dataGridViewSearchItemList.Columns["ColumnSearchItemListCost"].Index].Value);
 
                 Entities.TrnPurchaseOrderLineEntity trnPurchaseOrderLineEntity = new Entities.TrnPurchaseOrderLineEntity()
                 {
@@ -163,7 +164,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                     UnitId = unitId,
                     Unit = unit,
                     Quantity = 1,
-                    Cost = 0,
+                    Cost = cost,
                     Amount = 0,
                 };
 

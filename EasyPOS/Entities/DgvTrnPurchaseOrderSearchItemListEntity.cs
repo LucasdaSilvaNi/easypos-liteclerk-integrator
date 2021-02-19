@@ -18,7 +18,9 @@ namespace EasyPOS.Entities
         public Int32 ColumnSearchItemListUnitId { get; set; }
         public String ColumnSearchItemListUnit { get; set; }
         public String ColumnSearchItemListPrice { get; set; }
+        public String ColumnSearchItemListCost { get; set; }
         public String ColumnSearchItemListOnhandQuantity { get; set; }
         public String ColumnSearchItemListButtonPick { get; set; }
+
     }
 }
