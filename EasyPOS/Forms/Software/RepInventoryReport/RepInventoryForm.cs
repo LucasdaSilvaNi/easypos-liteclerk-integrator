@@ -177,7 +177,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         {
                             if (sysUserRights.GetUserRights().CanView == true)
                             {
-                                RepInventoryReportForm repInventoryReportInventoryReport = new RepInventoryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToString(comboBoxCategory.SelectedValue), Convert.ToString(comboBoxItem.SelectedValue));
+                                RepInventoryReportForm repInventoryReportInventoryReport = new RepInventoryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToString(comboBoxCategory.SelectedValue), Convert.ToInt32(comboBoxItem.SelectedValue));
                                 repInventoryReportInventoryReport.ShowDialog();
                             }
                             else

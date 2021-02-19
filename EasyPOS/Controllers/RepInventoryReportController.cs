@@ -48,9 +48,9 @@ namespace EasyPOS.Controllers
         // ================
         // Inventory Report
         // ================
-        public List<Entities.RepInventoryReportEntity> InventoryReport(DateTime startDate, DateTime endDate, String category, String filter, String itemDescription)
+        public List<Entities.RepInventoryReportEntity> InventoryReport(DateTime startDate, DateTime endDate, String category, String filter, Int32 itemId)
         {
-            if (itemDescription == "ALL" &&category == "ALL" )
+            if (itemId == 0 &&category == "ALL" )
             {
                 List<Entities.RepInventoryReportEntity> newRepInventoryReportEntity = new List<Entities.RepInventoryReportEntity>();
                 var beginningInInventories = from d in db.TrnStockInLines
@@ -312,14 +312,14 @@ namespace EasyPOS.Controllers
                     return new List<Entities.RepInventoryReportEntity>();
                 }
             }
-            else if (category != "ALL" && itemDescription != "ALL")
+            else if (category != "ALL" && itemId != 0)
             {
                 List<Entities.RepInventoryReportEntity> newRepInventoryReportEntity = new List<Entities.RepInventoryReportEntity>();
                 var beginningInInventories = from d in db.TrnStockInLines
                                              where d.TrnStockIn.IsLocked == true
                                              && d.TrnStockIn.StockInDate < startDate.Date
                                              && d.MstItem.Category == category
-                                             && d.MstItem.ItemDescription == itemDescription
+                                             && d.MstItem.Id == itemId
                                              && d.MstItem.IsInventory == true
                                              && d.MstItem.IsLocked == true
                                              select new Entities.RepInventoryReportEntity
@@ -344,7 +344,7 @@ namespace EasyPOS.Controllers
                                                && d.TrnSale.IsCancelled == false
                                                && d.TrnSale.SalesDate < startDate.Date
                                                && d.MstItem.Category == category
-                                               && d.MstItem.ItemDescription == itemDescription
+                                               && d.MstItem.Id == itemId
                                                && d.MstItem.IsInventory == true
                                                && d.MstItem.IsLocked == true
                                                select new Entities.RepInventoryReportEntity
@@ -371,7 +371,7 @@ namespace EasyPOS.Controllers
                                               && d.TrnSale.IsCancelled == false
                                               && d.TrnSale.SalesDate < startDate.Date
                                               && d.MstItem.Category == category
-                                              && d.MstItem.ItemDescription == itemDescription
+                                              && d.MstItem.Id == itemId
                                               && d.MstItem.IsInventory == false
                                               && d.MstItem.MstItemComponents.Any() == true
                                               && d.MstItem.IsLocked == true
@@ -411,7 +411,7 @@ namespace EasyPOS.Controllers
                                               where d.TrnStockOut.IsLocked == true
                                               && d.TrnStockOut.StockOutDate < startDate.Date
                                               && d.MstItem.Category == category
-                                              && d.MstItem.ItemDescription == itemDescription
+                                              && d.MstItem.Id == itemId
                                               && d.MstItem.IsInventory == true
                                               && d.MstItem.IsLocked == true
                                               select new Entities.RepInventoryReportEntity
@@ -438,7 +438,7 @@ namespace EasyPOS.Controllers
                                            && d.TrnStockIn.StockInDate >= startDate.Date
                                            && d.TrnStockIn.StockInDate <= endDate.Date
                                            && d.MstItem.Category == category
-                                           && d.MstItem.ItemDescription == itemDescription
+                                           && d.MstItem.Id == itemId
                                            && d.MstItem.IsInventory == true
                                            && d.MstItem.IsLocked == true
                                            select new Entities.RepInventoryReportEntity
@@ -464,7 +464,7 @@ namespace EasyPOS.Controllers
                                              && d.TrnSale.SalesDate >= startDate.Date
                                              && d.TrnSale.SalesDate <= endDate.Date
                                              && d.MstItem.Category == category
-                                             && d.MstItem.ItemDescription == itemDescription
+                                             && d.MstItem.Id == itemId
                                              && d.MstItem.IsInventory == true
                                              && d.MstItem.IsLocked == true
                                              select new Entities.RepInventoryReportEntity
@@ -492,7 +492,7 @@ namespace EasyPOS.Controllers
                                             && d.TrnSale.SalesDate >= startDate.Date
                                             && d.TrnSale.SalesDate <= endDate.Date
                                             && d.MstItem.Category == category
-                                            && d.MstItem.ItemDescription == itemDescription
+                                            && d.MstItem.Id == itemId
                                             && d.MstItem.IsInventory == false
                                             && d.MstItem.MstItemComponents.Any() == true
                                             && d.MstItem.IsLocked == true
@@ -533,7 +533,7 @@ namespace EasyPOS.Controllers
                                             && d.TrnStockOut.StockOutDate >= startDate.Date
                                             && d.TrnStockOut.StockOutDate <= endDate.Date
                                             && d.MstItem.Category == category
-                                            && d.MstItem.ItemDescription == itemDescription
+                                            && d.MstItem.Id == itemId
                                             && d.MstItem.IsInventory == true
                                             && d.MstItem.IsLocked == true
                                             select new Entities.RepInventoryReportEntity
@@ -590,13 +590,13 @@ namespace EasyPOS.Controllers
                     return new List<Entities.RepInventoryReportEntity>();
                 }
             }
-            else if (category == "ALL" && itemDescription != "ALL")
+            else if (category == "ALL" && itemId != 0)
             {
                 List<Entities.RepInventoryReportEntity> newRepInventoryReportEntity = new List<Entities.RepInventoryReportEntity>();
                 var beginningInInventories = from d in db.TrnStockInLines
                                              where d.TrnStockIn.IsLocked == true
                                              && d.TrnStockIn.StockInDate < startDate.Date
-                                             && d.MstItem.ItemDescription == itemDescription
+                                             && d.MstItem.Id == itemId
                                              && d.MstItem.IsInventory == true
                                              && d.MstItem.IsLocked == true
                                              select new Entities.RepInventoryReportEntity
@@ -620,7 +620,7 @@ namespace EasyPOS.Controllers
                                                where d.TrnSale.IsLocked == true
                                                && d.TrnSale.IsCancelled == false
                                                && d.TrnSale.SalesDate < startDate.Date
-                                              && d.MstItem.ItemDescription == itemDescription
+                                              && d.MstItem.Id == itemId
                                                && d.MstItem.IsInventory == true
                                                && d.MstItem.IsLocked == true
                                                select new Entities.RepInventoryReportEntity
@@ -646,7 +646,7 @@ namespace EasyPOS.Controllers
                                               where d.TrnSale.IsLocked == true
                                               && d.TrnSale.IsCancelled == false
                                               && d.TrnSale.SalesDate < startDate.Date
-                                              && d.MstItem.ItemDescription == itemDescription
+                                              && d.MstItem.Id == itemId
                                               && d.MstItem.IsInventory == false
                                               && d.MstItem.MstItemComponents.Any() == true
                                               && d.MstItem.IsLocked == true
@@ -685,7 +685,7 @@ namespace EasyPOS.Controllers
                 var beginningOutInventories = from d in db.TrnStockOutLines
                                               where d.TrnStockOut.IsLocked == true
                                               && d.TrnStockOut.StockOutDate < startDate.Date
-                                              && d.MstItem.ItemDescription == itemDescription
+                                              && d.MstItem.Id == itemId
                                               && d.MstItem.IsInventory == true
                                               && d.MstItem.IsLocked == true
                                               select new Entities.RepInventoryReportEntity
@@ -711,7 +711,7 @@ namespace EasyPOS.Controllers
                                            where d.TrnStockIn.IsLocked == true
                                            && d.TrnStockIn.StockInDate >= startDate.Date
                                            && d.TrnStockIn.StockInDate <= endDate.Date
-                                           && d.MstItem.ItemDescription == itemDescription
+                                           && d.MstItem.Id == itemId
                                            && d.MstItem.IsInventory == true
                                            && d.MstItem.IsLocked == true
                                            select new Entities.RepInventoryReportEntity
@@ -736,7 +736,7 @@ namespace EasyPOS.Controllers
                                              && d.TrnSale.IsCancelled == false
                                              && d.TrnSale.SalesDate >= startDate.Date
                                              && d.TrnSale.SalesDate <= endDate.Date
-                                             && d.MstItem.ItemDescription == itemDescription
+                                             && d.MstItem.Id == itemId
                                              && d.MstItem.IsInventory == true
                                              && d.MstItem.IsLocked == true
                                              select new Entities.RepInventoryReportEntity
@@ -763,7 +763,7 @@ namespace EasyPOS.Controllers
                                             && d.TrnSale.IsCancelled == false
                                             && d.TrnSale.SalesDate >= startDate.Date
                                             && d.TrnSale.SalesDate <= endDate.Date
-                                            && d.MstItem.ItemDescription == itemDescription
+                                            && d.MstItem.Id == itemId
                                             && d.MstItem.IsInventory == false
                                             && d.MstItem.MstItemComponents.Any() == true
                                             && d.MstItem.IsLocked == true
@@ -803,7 +803,7 @@ namespace EasyPOS.Controllers
                                             where d.TrnStockOut.IsLocked == true
                                             && d.TrnStockOut.StockOutDate >= startDate.Date
                                             && d.TrnStockOut.StockOutDate <= endDate.Date
-                                            && d.MstItem.ItemDescription == itemDescription
+                                            && d.MstItem.Id == itemId
                                             && d.MstItem.IsInventory == true
                                             && d.MstItem.IsLocked == true
                                             select new Entities.RepInventoryReportEntity
@@ -860,7 +860,7 @@ namespace EasyPOS.Controllers
                     return new List<Entities.RepInventoryReportEntity>();
                 }
             }
-            else if (category != "ALL" && itemDescription == "ALL")
+            else if (category != "ALL" && itemId == 0)
             {
                 List<Entities.RepInventoryReportEntity> newRepInventoryReportEntity = new List<Entities.RepInventoryReportEntity>();
                 var beginningInInventories = from d in db.TrnStockInLines

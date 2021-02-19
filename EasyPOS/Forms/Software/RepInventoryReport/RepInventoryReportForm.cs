@@ -25,9 +25,9 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
         public DateTime startDate;
         public DateTime endDate;
         public String category;
-        public String itemId;
+        public Int32 itemId;
 
-        public RepInventoryReportForm(DateTime dateStart, DateTime dateEnd, String filterItemCategory, String itemIds)
+        public RepInventoryReportForm(DateTime dateStart, DateTime dateEnd, String filterItemCategory, Int32 itemIds)
         {
             InitializeComponent();
 
@@ -40,7 +40,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             GetDataGridViewCollectionDetailReportSource();
         }
 
-        public List<Entities.DgvRepInventoryInventoryReportListEntity> GetInventoryReportListData(DateTime startDate, DateTime endDate, String category, String filter, String itemId)
+        public List<Entities.DgvRepInventoryInventoryReportListEntity> GetInventoryReportListData(DateTime startDate, DateTime endDate, String category, String filter, Int32 itemId)
         {
             List<Entities.DgvRepInventoryInventoryReportListEntity> rowList = new List<Entities.DgvRepInventoryInventoryReportListEntity>();
 
