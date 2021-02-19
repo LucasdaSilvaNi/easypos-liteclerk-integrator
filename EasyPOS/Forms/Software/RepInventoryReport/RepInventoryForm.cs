@@ -103,8 +103,10 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         dateTimePickerStartDate.Visible = true;
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
-                        checkBoxFilter.Visible = true;
-                        labelFilter.Visible = true;
+                        checkBoxFilter.Visible = false;
+                        labelFilter.Visible = false;
+                        comboBoxItem.Visible = true;
+                        labelItem.Visible = true;
                         dateTimePickerStartDate.Focus();
                         break;
                     case "Stock In Detail Report":
@@ -215,7 +217,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         {
                             if (sysUserRights.GetUserRights().CanView == true)
                             {
-                                RepStockCardForm repStockCardForm = new RepStockCardForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxItem.SelectedValue), Convert.ToString(comboBoxCategory.SelectedValue));
+                                RepStockCardForm repStockCardForm = new RepStockCardForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxItem.SelectedValue)/*, Convert.ToString(comboBoxCategory.SelectedValue)*/);
                                 repStockCardForm.ShowDialog();
                             }
                             else
@@ -310,8 +312,10 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
         {
             if(checkBoxFilter.Checked == true)
             {
+                
+                comboBoxCategory.Visible = false;
                 comboBoxItem.Visible = true;
-                comboBoxCategory.Visible = true;
+               
             }
             else
             {

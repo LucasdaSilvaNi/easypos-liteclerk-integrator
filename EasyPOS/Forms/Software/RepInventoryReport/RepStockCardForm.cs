@@ -25,28 +25,28 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
         public DateTime startDate;
         public DateTime endDate;
         public Int32 itemId;
-        public String category;
+        //public String category;
 
-        public RepStockCardForm(DateTime dateStart, DateTime dateEnd, Int32 filterItemId, String categoryFilter)
+        public RepStockCardForm(DateTime dateStart, DateTime dateEnd, Int32 filterItemId/*, String categoryFilter*/)
         {
             InitializeComponent();
 
             startDate = dateStart;
             endDate = dateEnd;
             itemId = filterItemId;
-            category = categoryFilter;
+            //category = categoryFilter;
 
             GetStockCardReportDataSource("");
             GetDataGridViewCollectionDetailReportSource();
         }
 
-        public List<Entities.DgvRepInventoryStockCardListEntity> GetStockCardReportListData(DateTime startDate, DateTime endDate, Int32 itemId, String filter, String category)
+        public List<Entities.DgvRepInventoryStockCardListEntity> GetStockCardReportListData(DateTime startDate, DateTime endDate, Int32 itemId, String filter/*, String category*/)
         {
             List<Entities.DgvRepInventoryStockCardListEntity> rowList = new List<Entities.DgvRepInventoryStockCardListEntity>();
 
             Controllers.RepInventoryReportController repInvetoryReportController = new Controllers.RepInventoryReportController();
 
-            var stockCardReportList = repInvetoryReportController.StockCardReport(startDate, endDate, itemId, filter, category);
+            var stockCardReportList = repInvetoryReportController.StockCardReport(startDate, endDate, itemId, filter/*, category*/);
             if (stockCardReportList.Any())
             {
                 var row = from d in stockCardReportList
@@ -69,7 +69,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
 
         public void GetStockCardReportDataSource(String filter)
         {
-            stockCardReportList = GetStockCardReportListData(startDate, endDate, itemId, filter, category);
+            stockCardReportList = GetStockCardReportListData(startDate, endDate, itemId, filter/*, category*/);
             if (stockCardReportList.Any())
             {
                 pageList = new PagedList<Entities.DgvRepInventoryStockCardListEntity>(stockCardReportList, pageNumber, pageSize);
