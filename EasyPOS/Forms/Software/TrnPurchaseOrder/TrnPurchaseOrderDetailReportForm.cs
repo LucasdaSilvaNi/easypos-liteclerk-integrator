@@ -147,6 +147,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                               select d;
 
                 String companyName = systemCurrent.CompanyName;
+                String address = systemCurrent.Address;
                 String documentTitle = "Purchase Order";
 
                 String purchaseOrderNumber = purchaseOrder.FirstOrDefault().PurchaseOrderNumber;
@@ -159,6 +160,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                 tableHeader.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
 
                 tableHeader.AddCell(new PdfPCell(new Phrase(companyName, fontTimesNewRoman14Bold)) { Colspan = 2, Border = PdfPCell.BOTTOM_BORDER, Padding = 3f, PaddingBottom = 5f });
+                tableHeader.AddCell(new PdfPCell(new Phrase(address, fontTimesNewRoman14Bold)) { Colspan = 2, Border = PdfPCell.BOTTOM_BORDER, Padding = 3f, PaddingBottom = 5f });
                 tableHeader.AddCell(new PdfPCell(new Phrase(documentTitle, fontTimesNewRoman14Bold)) { HorizontalAlignment = 2, Colspan = 2, Border = PdfPCell.BOTTOM_BORDER, Padding = 3f, PaddingBottom = 5f });
 
                 tableHeader.AddCell(new PdfPCell(new Phrase("PO No.: ", fontTimesNewRoman11Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });

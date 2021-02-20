@@ -47,6 +47,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.checkBoxAllowCancelPreviousSales = new System.Windows.Forms.CheckBox();
             this.checkBoxHideItemListItemCode = new System.Windows.Forms.CheckBox();
             this.checkBoxHideItemListBarcode = new System.Windows.Forms.CheckBox();
             this.checkBoxHideTouchSalesItemDetail = new System.Windows.Forms.CheckBox();
@@ -155,7 +156,7 @@
             this.label64 = new System.Windows.Forms.Label();
             this.textBoxCustomerDisplayPort = new System.Windows.Forms.TextBox();
             this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
-            this.checkBoxAllowCancelPreviousSales = new System.Windows.Forms.CheckBox();
+            this.checkBoxAutoSales = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -409,6 +410,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel5.Controls.Add(this.checkBoxAutoSales);
             this.panel5.Controls.Add(this.checkBoxAllowCancelPreviousSales);
             this.panel5.Controls.Add(this.checkBoxHideItemListItemCode);
             this.panel5.Controls.Add(this.checkBoxHideItemListBarcode);
@@ -451,6 +453,19 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1095, 472);
             this.panel5.TabIndex = 34;
+            // 
+            // checkBoxAllowCancelPreviousSales
+            // 
+            this.checkBoxAllowCancelPreviousSales.AutoSize = true;
+            this.checkBoxAllowCancelPreviousSales.Enabled = false;
+            this.checkBoxAllowCancelPreviousSales.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxAllowCancelPreviousSales.Location = new System.Drawing.Point(582, 329);
+            this.checkBoxAllowCancelPreviousSales.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxAllowCancelPreviousSales.Name = "checkBoxAllowCancelPreviousSales";
+            this.checkBoxAllowCancelPreviousSales.Size = new System.Drawing.Size(195, 23);
+            this.checkBoxAllowCancelPreviousSales.TabIndex = 88;
+            this.checkBoxAllowCancelPreviousSales.Text = "Allow Cancel Previous Sales";
+            this.checkBoxAllowCancelPreviousSales.UseVisualStyleBackColor = true;
             // 
             // checkBoxHideItemListItemCode
             // 
@@ -1709,18 +1724,18 @@
             this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
             this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
             // 
-            // checkBoxAllowCancelPreviousSales
+            // checkBoxAutoSales
             // 
-            this.checkBoxAllowCancelPreviousSales.AutoSize = true;
-            this.checkBoxAllowCancelPreviousSales.Enabled = false;
-            this.checkBoxAllowCancelPreviousSales.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxAllowCancelPreviousSales.Location = new System.Drawing.Point(582, 329);
-            this.checkBoxAllowCancelPreviousSales.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxAllowCancelPreviousSales.Name = "checkBoxAllowCancelPreviousSales";
-            this.checkBoxAllowCancelPreviousSales.Size = new System.Drawing.Size(195, 23);
-            this.checkBoxAllowCancelPreviousSales.TabIndex = 88;
-            this.checkBoxAllowCancelPreviousSales.Text = "Allow Cancel Previous Sales";
-            this.checkBoxAllowCancelPreviousSales.UseVisualStyleBackColor = true;
+            this.checkBoxAutoSales.AutoSize = true;
+            this.checkBoxAutoSales.Enabled = false;
+            this.checkBoxAutoSales.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxAutoSales.Location = new System.Drawing.Point(582, 356);
+            this.checkBoxAutoSales.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxAutoSales.Name = "checkBoxAutoSales";
+            this.checkBoxAutoSales.Size = new System.Drawing.Size(181, 23);
+            this.checkBoxAutoSales.TabIndex = 89;
+            this.checkBoxAutoSales.Text = "Auto Sales Upon Locking";
+            this.checkBoxAutoSales.UseVisualStyleBackColor = true;
             // 
             // SysSettingsForm
             // 
@@ -1898,5 +1913,6 @@
         private System.Windows.Forms.CheckBox checkBoxHideItemListItemCode;
         private System.Windows.Forms.CheckBox checkBoxHideItemListBarcode;
         private System.Windows.Forms.CheckBox checkBoxAllowCancelPreviousSales;
+        private System.Windows.Forms.CheckBox checkBoxAutoSales;
     }
 }

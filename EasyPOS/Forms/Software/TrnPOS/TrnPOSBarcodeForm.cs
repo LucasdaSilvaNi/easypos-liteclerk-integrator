@@ -124,6 +124,19 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
         }
 
+        public void buttonAutoSales()
+        {
+            if (Modules.SysCurrentModule.GetCurrentSettings().PromptLoginSales == true)
+            {
+                Account.SysLogin.SysLoginForm login = new Account.SysLogin.SysLoginForm(this, null, null, null, false);
+                login.ShowDialog();
+            }
+            else
+            {
+                newSales();
+            }
+        }
+
         public void newSales()
         {
             Int32 customerId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().WalkinCustomerId);

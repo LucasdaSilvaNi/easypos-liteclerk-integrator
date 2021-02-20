@@ -471,6 +471,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxHideItemListBarcode.Checked = Convert.ToBoolean(sysCurrent.HideItemListBarcode);
                 checkBoxHideItemListItemCode.Checked = Convert.ToBoolean(sysCurrent.HideItemListItemCode);
                 checkBoxAllowCancelPreviousSales.Checked = Convert.ToBoolean(sysCurrent.AllowCancelPreviousSales);
+                checkBoxAutoSales.Checked = Convert.ToBoolean(sysCurrent.LockAutoSales);
             }
         }
 
@@ -546,7 +547,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 HideItemListBarcode = checkBoxHideItemListBarcode.Checked,
                 HideItemListItemCode = checkBoxHideItemListItemCode.Checked,
                 AllowCancelPreviousSales = checkBoxAllowCancelPreviousSales.Checked,
-            };
+                LockAutoSales = checkBoxAutoSales.Checked
+        };
             
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);
             if (saveSysCurrent[1].Equals("0") == false)
@@ -601,6 +603,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxHideItemListBarcode.Enabled = false;
                 checkBoxHideItemListItemCode.Enabled = false;
                 checkBoxAllowCancelPreviousSales.Enabled = false;
+                checkBoxAutoSales.Enabled = false;
             }
             else
             {
@@ -682,6 +685,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxHideItemListBarcode.Enabled = true;
                 checkBoxHideItemListItemCode.Enabled = true;
                 checkBoxAllowCancelPreviousSales.Enabled = true;
+                checkBoxAutoSales.Enabled = true;
             }
         }
 
@@ -712,6 +716,5 @@ namespace EasyPOS.Forms.Software.SysSettings
                 textBoxCustomerDisplayIfCounterClosedMessage.Enabled = false;
             }
         }
-
     }
 }

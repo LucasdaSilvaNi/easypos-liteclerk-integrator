@@ -790,11 +790,43 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             trnSalesListForm.UpdateSalesListGridDataSource();
         }
+        private bool CheckFormOpened(string name)
+        {
+            FormCollection fc = Application.OpenForms;
 
+            foreach (Form frm in fc)
+            {
+                if (frm.Name == name)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
         private void buttonLock_Click(object sender, EventArgs e)
         {
-            TrnPOSLockSalesForm trnPOSLockSalesForm = new TrnPOSLockSalesForm(this, null, trnSalesEntity);
-            trnPOSLockSalesForm.ShowDialog();
+            if (Modules.SysCurrentModule.GetCurrentSettings().LockAutoSales == false)
+            {
+                TrnPOSLockSalesForm trnPOSLockSalesForm = new TrnPOSLockSalesForm(this, null, trnSalesEntity);
+                trnPOSLockSalesForm.ShowDialog();
+            }
+            else
+            {
+                TrnPOSLockSalesForm trnPOSLockSalesForm = new TrnPOSLockSalesForm(this, null, trnSalesEntity);
+                trnPOSLockSalesForm.ShowDialog();
+
+                if (CheckFormOpened("SysSoftwareForm") == false)
+                {
+                    SysSoftwareForm sysSoftwareForm = new Software.SysSoftwareForm();
+                    sysSoftwareForm.Show();
+                }
+                else
+                {
+                    trnSalesListForm.buttonAutoSales();
+                }
+            }
+            
         }
 
         private void buttonUnlock_Click(object sender, EventArgs e)
