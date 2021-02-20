@@ -149,6 +149,7 @@
             this.textBoxPurchaseOrderLineAmount.TabIndex = 3;
             this.textBoxPurchaseOrderLineAmount.TabStop = false;
             this.textBoxPurchaseOrderLineAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxPurchaseOrderLineAmount.TextChanged += new System.EventHandler(this.textBoxPurchaseOrderLineAmount_TextChanged);
             // 
             // label9
             // 

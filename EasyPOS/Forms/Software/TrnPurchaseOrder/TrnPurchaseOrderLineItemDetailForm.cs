@@ -173,5 +173,9 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
             ComputeAmount();
         }
 
+        private void textBoxPurchaseOrderLineAmount_TextChanged(object sender, EventArgs e)
+        {
+            ComputeAmount();
+        }
     }
 }
