@@ -417,6 +417,12 @@
     <Compile Include="Forms\License\SysLincense\SysLicenseForm.Designer.cs">
       <DependentUpon>SysLicenseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\80mmReport\RepInventoryReport80mmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\80mmReport\RepInventoryReport80mmForm.Designer.cs">
+      <DependentUpon>RepInventoryReport80mmForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\MstCustomer\MstCustomerDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1176,6 +1182,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\License\SysLincense\SysLicenseForm.resx">
       <DependentUpon>SysLicenseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\80mmReport\RepInventoryReport80mmForm.resx">
+      <DependentUpon>RepInventoryReport80mmForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\MstCustomer\MstCustomerDetailForm.resx">
       <DependentUpon>MstCustomerDetailForm.cs</DependentUpon>

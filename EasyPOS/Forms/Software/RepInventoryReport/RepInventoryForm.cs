@@ -168,6 +168,18 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         labelItem.Visible = false;
                         dateTimePickerStartDate.Focus();
                         break;
+                    case "80mm Inventory Report":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+                        checkBoxFilter.Visible = true;
+                        labelFilter.Visible = true;
+                        comboBoxItem.Visible = false;
+                        labelItem.Visible = false;
+                        checkBoxFilter.Checked = false;
+                        dateTimePickerStartDate.Focus();
+                        break;
                     default:
                         labelStartDate.Visible = false;
                         dateTimePickerStartDate.Visible = false;
@@ -310,6 +322,25 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                             }
                             else
                             {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        break;
+                    case "80mm Inventory Report":
+                        sysUserRights = new Modules.SysUserRightsModule("RepRestaurantInventory");
+                        if (sysUserRights.GetUserRights() == null)
+                        {
+                            MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            if (sysUserRights.GetUserRights().CanView == true)
+                            {
+                                _80mm_Report.RepInventoryReport80mmForm repInventoryReportInventoryReport = new _80mm_Report.RepInventoryReport80mmForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToString(comboBoxCategory.SelectedValue), Convert.ToInt32(comboBoxItem.SelectedValue));
+                            }
+                            else
+                            {
+                                
                                 MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }

@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepInventoryForm));
             this.listBoxInventoryReport = new System.Windows.Forms.ListBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.checkBoxFilter = new System.Windows.Forms.CheckBox();
+            this.labelFilter = new System.Windows.Forms.Label();
             this.comboBoxCategory = new System.Windows.Forms.ComboBox();
             this.labelCategory = new System.Windows.Forms.Label();
             this.comboBoxItem = new System.Windows.Forms.ComboBox();
@@ -47,8 +49,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.labelFilter = new System.Windows.Forms.Label();
-            this.checkBoxFilter = new System.Windows.Forms.CheckBox();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -71,7 +71,9 @@
             "Stock Out Detail Report",
             "Stock Count Detail Report",
             "",
-            "Item Expiry Report"});
+            "Item Expiry Report",
+            "",
+            "80mm Inventory Report"});
             this.listBoxInventoryReport.Location = new System.Drawing.Point(0, 0);
             this.listBoxInventoryReport.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxInventoryReport.Name = "listBoxInventoryReport";
@@ -99,6 +101,25 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1096, 510);
             this.panel4.TabIndex = 10;
+            // 
+            // checkBoxFilter
+            // 
+            this.checkBoxFilter.AutoSize = true;
+            this.checkBoxFilter.Location = new System.Drawing.Point(403, 112);
+            this.checkBoxFilter.Name = "checkBoxFilter";
+            this.checkBoxFilter.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxFilter.TabIndex = 29;
+            this.checkBoxFilter.UseVisualStyleBackColor = true;
+            this.checkBoxFilter.CheckedChanged += new System.EventHandler(this.checkBoxFilter_CheckedChanged);
+            // 
+            // labelFilter
+            // 
+            this.labelFilter.AutoSize = true;
+            this.labelFilter.Location = new System.Drawing.Point(362, 109);
+            this.labelFilter.Name = "labelFilter";
+            this.labelFilter.Size = new System.Drawing.Size(42, 19);
+            this.labelFilter.TabIndex = 28;
+            this.labelFilter.Text = "Filter:";
             // 
             // comboBoxCategory
             // 
@@ -302,25 +323,6 @@
             this.buttonClose.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_OnClick);
-            // 
-            // labelFilter
-            // 
-            this.labelFilter.AutoSize = true;
-            this.labelFilter.Location = new System.Drawing.Point(362, 109);
-            this.labelFilter.Name = "labelFilter";
-            this.labelFilter.Size = new System.Drawing.Size(42, 19);
-            this.labelFilter.TabIndex = 28;
-            this.labelFilter.Text = "Filter:";
-            // 
-            // checkBoxFilter
-            // 
-            this.checkBoxFilter.AutoSize = true;
-            this.checkBoxFilter.Location = new System.Drawing.Point(403, 112);
-            this.checkBoxFilter.Name = "checkBoxFilter";
-            this.checkBoxFilter.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxFilter.TabIndex = 29;
-            this.checkBoxFilter.UseVisualStyleBackColor = true;
-            this.checkBoxFilter.CheckedChanged += new System.EventHandler(this.checkBoxFilter_CheckedChanged);
             // 
             // RepInventoryForm
             // 
