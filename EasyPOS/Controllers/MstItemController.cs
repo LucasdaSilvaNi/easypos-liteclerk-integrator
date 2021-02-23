@@ -28,7 +28,7 @@ namespace EasyPOS.Controllers
 
             return result;
         }
-
+         
         // ==========
         // List Items
         // ==========

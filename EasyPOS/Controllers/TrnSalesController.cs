@@ -543,19 +543,19 @@ namespace EasyPOS.Controllers
                             {
                                 negativeInventoryItem = salesLine.Key.ItemDescription;
 
-                                if (salesLine.Key.OnhandQuantity <= 0)
+                                if (salesLine.Key.OnhandQuantity < 0)
                                 {
                                     isNegativeInventory = true;
                                     break;
                                 }
-                                else
-                                {
-                                    if (salesLine.Key.OnhandQuantity < salesLine.Sum(d => d.Quantity))
-                                    {
-                                        isNegativeInventory = true;
-                                        break;
-                                    }
-                                }
+                                //else
+                                //{
+                                //    if (salesLine.Key.OnhandQuantity <= salesLine.Sum(d => d.Quantity))
+                                //    {
+                                //        isNegativeInventory = true;
+                                //        break;
+                                //    }
+                                //}
                             }
                         }
 

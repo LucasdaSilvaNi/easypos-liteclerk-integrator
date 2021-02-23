@@ -27,7 +27,6 @@ namespace EasyPOS.Forms.Software.MstCustomer
             InitializeComponent();
             sysSoftwareForm = softwareForm;
 
-
             sysUserRights = new Modules.SysUserRightsModule("MstCustomer");
             if (sysUserRights.GetUserRights() == null)
             {
