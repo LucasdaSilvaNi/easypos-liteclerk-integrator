@@ -13,6 +13,7 @@ namespace EasyPOS.Entities
         public Int32 ColumnDiscountListId { get; set; }
         public String ColumnDiscountListDiscount { get; set; }
         public String ColumnDiscountListDiscountRate { get; set; }
+        public String ColumnDiscountListDiscountAmount { get; set; }
         public Boolean ColumnDiscountListIsLocked { get; set; }
     }
 }

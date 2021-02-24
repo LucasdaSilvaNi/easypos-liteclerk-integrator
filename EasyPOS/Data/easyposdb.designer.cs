@@ -2718,6 +2718,8 @@ namespace EasyPOS.Data
 		
 		private bool _IsLocked;
 		
+		private decimal _DiscountAmount;
+		
 		private EntitySet<MstDiscountItem> _MstDiscountItems;
 		
 		private EntitySet<TrnSale> _TrnSales;
@@ -2778,6 +2780,8 @@ namespace EasyPOS.Data
     partial void OnUpdateDateTimeChanged();
     partial void OnIsLockedChanging(bool value);
     partial void OnIsLockedChanged();
+    partial void OnDiscountAmountChanging(decimal value);
+    partial void OnDiscountAmountChanged();
     #endregion
 		
 		public MstDiscount()
@@ -3254,6 +3258,26 @@ namespace EasyPOS.Data
 					this._IsLocked = value;
 					this.SendPropertyChanged("IsLocked");
 					this.OnIsLockedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiscountAmount", DbType="Decimal(18,5) NOT NULL")]
+		public decimal DiscountAmount
+		{
+			get
+			{
+				return this._DiscountAmount;
+			}
+			set
+			{
+				if ((this._DiscountAmount != value))
+				{
+					this.OnDiscountAmountChanging(value);
+					this.SendPropertyChanging();
+					this._DiscountAmount = value;
+					this.SendPropertyChanged("DiscountAmount");
+					this.OnDiscountAmountChanged();
 				}
 			}
 		}

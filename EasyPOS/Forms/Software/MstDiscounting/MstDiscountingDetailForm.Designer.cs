@@ -39,6 +39,8 @@
             this.buttonStockInLineListPageListLast = new System.Windows.Forms.Button();
             this.textBoxStockInLineListPageNumber = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.textBoxDiscountAmount = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.dateTimePickerTimeEnd = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerTimeStart = new System.Windows.Forms.DateTimePicker();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -85,7 +87,7 @@
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Discounting;
             this.pictureBox1.Location = new System.Drawing.Point(10, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(38, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -97,7 +99,7 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 50);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1109, 510);
             this.panel2.TabIndex = 8;
@@ -108,7 +110,7 @@
             this.panel3.Controls.Add(this.panel7);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1109, 510);
             this.panel3.TabIndex = 9;
@@ -123,7 +125,7 @@
             this.panel4.Controls.Add(this.textBoxStockInLineListPageNumber);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 468);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1109, 42);
             this.panel4.TabIndex = 25;
@@ -136,7 +138,7 @@
             this.buttonStockInLineListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockInLineListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonStockInLineListPageListFirst.Location = new System.Drawing.Point(10, 9);
-            this.buttonStockInLineListPageListFirst.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonStockInLineListPageListFirst.Margin = new System.Windows.Forms.Padding(2);
             this.buttonStockInLineListPageListFirst.Name = "buttonStockInLineListPageListFirst";
             this.buttonStockInLineListPageListFirst.Size = new System.Drawing.Size(66, 26);
             this.buttonStockInLineListPageListFirst.TabIndex = 23;
@@ -152,7 +154,7 @@
             this.buttonStockInLineListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockInLineListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonStockInLineListPageListPrevious.Location = new System.Drawing.Point(80, 9);
-            this.buttonStockInLineListPageListPrevious.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonStockInLineListPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.buttonStockInLineListPageListPrevious.Name = "buttonStockInLineListPageListPrevious";
             this.buttonStockInLineListPageListPrevious.Size = new System.Drawing.Size(66, 26);
             this.buttonStockInLineListPageListPrevious.TabIndex = 24;
@@ -167,7 +169,7 @@
             this.buttonStockInLineListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockInLineListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonStockInLineListPageListNext.Location = new System.Drawing.Point(210, 9);
-            this.buttonStockInLineListPageListNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonStockInLineListPageListNext.Margin = new System.Windows.Forms.Padding(2);
             this.buttonStockInLineListPageListNext.Name = "buttonStockInLineListPageListNext";
             this.buttonStockInLineListPageListNext.Size = new System.Drawing.Size(66, 26);
             this.buttonStockInLineListPageListNext.TabIndex = 26;
@@ -182,7 +184,7 @@
             this.buttonStockInLineListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStockInLineListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonStockInLineListPageListLast.Location = new System.Drawing.Point(278, 9);
-            this.buttonStockInLineListPageListLast.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonStockInLineListPageListLast.Margin = new System.Windows.Forms.Padding(2);
             this.buttonStockInLineListPageListLast.Name = "buttonStockInLineListPageListLast";
             this.buttonStockInLineListPageListLast.Size = new System.Drawing.Size(66, 26);
             this.buttonStockInLineListPageListLast.TabIndex = 26;
@@ -197,7 +199,7 @@
             this.textBoxStockInLineListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxStockInLineListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.textBoxStockInLineListPageNumber.Location = new System.Drawing.Point(150, 13);
-            this.textBoxStockInLineListPageNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxStockInLineListPageNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxStockInLineListPageNumber.Name = "textBoxStockInLineListPageNumber";
             this.textBoxStockInLineListPageNumber.ReadOnly = true;
             this.textBoxStockInLineListPageNumber.Size = new System.Drawing.Size(55, 16);
@@ -208,6 +210,8 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel7.Controls.Add(this.textBoxDiscountAmount);
+            this.panel7.Controls.Add(this.label12);
             this.panel7.Controls.Add(this.dateTimePickerTimeEnd);
             this.panel7.Controls.Add(this.dateTimePickerTimeStart);
             this.panel7.Controls.Add(this.panel5);
@@ -231,11 +235,34 @@
             this.panel7.Controls.Add(this.textBoxDiscount);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
-            this.panel7.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.panel7.Padding = new System.Windows.Forms.Padding(8);
             this.panel7.Size = new System.Drawing.Size(1109, 187);
             this.panel7.TabIndex = 0;
+            // 
+            // textBoxDiscountAmount
+            // 
+            this.textBoxDiscountAmount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxDiscountAmount.Location = new System.Drawing.Point(123, 68);
+            this.textBoxDiscountAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxDiscountAmount.Name = "textBoxDiscountAmount";
+            this.textBoxDiscountAmount.Size = new System.Drawing.Size(158, 26);
+            this.textBoxDiscountAmount.TabIndex = 47;
+            this.textBoxDiscountAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxDiscountAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDiscountAmount_KeyPress);
+            this.textBoxDiscountAmount.Leave += new System.EventHandler(this.textBoxDiscountAmount_Leave);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label12.Location = new System.Drawing.Point(2, 71);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(120, 19);
+            this.label12.TabIndex = 48;
+            this.label12.Text = "Discount Amount:";
             // 
             // dateTimePickerTimeEnd
             // 
@@ -243,7 +270,7 @@
             this.dateTimePickerTimeEnd.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.dateTimePickerTimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerTimeEnd.Location = new System.Drawing.Point(712, 149);
-            this.dateTimePickerTimeEnd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerTimeEnd.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerTimeEnd.Name = "dateTimePickerTimeEnd";
             this.dateTimePickerTimeEnd.Size = new System.Drawing.Size(104, 26);
             this.dateTimePickerTimeEnd.TabIndex = 17;
@@ -254,7 +281,7 @@
             this.dateTimePickerTimeStart.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.dateTimePickerTimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerTimeStart.Location = new System.Drawing.Point(712, 119);
-            this.dateTimePickerTimeStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerTimeStart.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerTimeStart.Name = "dateTimePickerTimeStart";
             this.dateTimePickerTimeStart.Size = new System.Drawing.Size(104, 26);
             this.dateTimePickerTimeStart.TabIndex = 16;
@@ -270,7 +297,7 @@
             this.panel5.Controls.Add(this.checkBoxSat);
             this.panel5.Controls.Add(this.checkBoxSun);
             this.panel5.Location = new System.Drawing.Point(231, 119);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(399, 54);
             this.panel5.TabIndex = 46;
@@ -280,7 +307,7 @@
             this.checkBoxMon.AutoSize = true;
             this.checkBoxMon.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.checkBoxMon.Location = new System.Drawing.Point(17, 15);
-            this.checkBoxMon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxMon.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxMon.Name = "checkBoxMon";
             this.checkBoxMon.Size = new System.Drawing.Size(57, 23);
             this.checkBoxMon.TabIndex = 7;
@@ -292,7 +319,7 @@
             this.checkBoxWed.AutoSize = true;
             this.checkBoxWed.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.checkBoxWed.Location = new System.Drawing.Point(128, 15);
-            this.checkBoxWed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxWed.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxWed.Name = "checkBoxWed";
             this.checkBoxWed.Size = new System.Drawing.Size(55, 23);
             this.checkBoxWed.TabIndex = 9;
@@ -304,7 +331,7 @@
             this.checkBoxTue.AutoSize = true;
             this.checkBoxTue.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.checkBoxTue.Location = new System.Drawing.Point(75, 15);
-            this.checkBoxTue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxTue.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxTue.Name = "checkBoxTue";
             this.checkBoxTue.Size = new System.Drawing.Size(50, 23);
             this.checkBoxTue.TabIndex = 8;
@@ -316,7 +343,7 @@
             this.checkBoxThu.AutoSize = true;
             this.checkBoxThu.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.checkBoxThu.Location = new System.Drawing.Point(186, 15);
-            this.checkBoxThu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxThu.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxThu.Name = "checkBoxThu";
             this.checkBoxThu.Size = new System.Drawing.Size(51, 23);
             this.checkBoxThu.TabIndex = 10;
@@ -328,7 +355,7 @@
             this.checkBoxFri.AutoSize = true;
             this.checkBoxFri.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.checkBoxFri.Location = new System.Drawing.Point(239, 15);
-            this.checkBoxFri.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxFri.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxFri.Name = "checkBoxFri";
             this.checkBoxFri.Size = new System.Drawing.Size(43, 23);
             this.checkBoxFri.TabIndex = 11;
@@ -340,7 +367,7 @@
             this.checkBoxSat.AutoSize = true;
             this.checkBoxSat.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.checkBoxSat.Location = new System.Drawing.Point(284, 15);
-            this.checkBoxSat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxSat.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxSat.Name = "checkBoxSat";
             this.checkBoxSat.Size = new System.Drawing.Size(47, 23);
             this.checkBoxSat.TabIndex = 12;
@@ -352,7 +379,7 @@
             this.checkBoxSun.AutoSize = true;
             this.checkBoxSun.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.checkBoxSun.Location = new System.Drawing.Point(334, 15);
-            this.checkBoxSun.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxSun.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxSun.Name = "checkBoxSun";
             this.checkBoxSun.Size = new System.Drawing.Size(51, 23);
             this.checkBoxSun.TabIndex = 13;
@@ -385,7 +412,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label9.Location = new System.Drawing.Point(635, 94);
+            this.label9.Location = new System.Drawing.Point(634, 96);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(107, 19);
@@ -396,8 +423,8 @@
             // 
             this.checkBoxTimeScheduled.AutoSize = true;
             this.checkBoxTimeScheduled.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxTimeScheduled.Location = new System.Drawing.Point(747, 93);
-            this.checkBoxTimeScheduled.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxTimeScheduled.Location = new System.Drawing.Point(746, 95);
+            this.checkBoxTimeScheduled.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxTimeScheduled.Name = "checkBoxTimeScheduled";
             this.checkBoxTimeScheduled.Size = new System.Drawing.Size(32, 23);
             this.checkBoxTimeScheduled.TabIndex = 14;
@@ -409,7 +436,7 @@
             // 
             this.textBoxDiscountRate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxDiscountRate.Location = new System.Drawing.Point(123, 38);
-            this.textBoxDiscountRate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxDiscountRate.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxDiscountRate.Name = "textBoxDiscountRate";
             this.textBoxDiscountRate.Size = new System.Drawing.Size(158, 26);
             this.textBoxDiscountRate.TabIndex = 1;
@@ -421,7 +448,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label7.Location = new System.Drawing.Point(227, 94);
+            this.label7.Location = new System.Drawing.Point(386, 96);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(102, 19);
@@ -432,8 +459,8 @@
             // 
             this.checkBoxDaySchedule.AutoSize = true;
             this.checkBoxDaySchedule.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxDaySchedule.Location = new System.Drawing.Point(334, 93);
-            this.checkBoxDaySchedule.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxDaySchedule.Location = new System.Drawing.Point(493, 95);
+            this.checkBoxDaySchedule.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxDaySchedule.Name = "checkBoxDaySchedule";
             this.checkBoxDaySchedule.Size = new System.Drawing.Size(32, 23);
             this.checkBoxDaySchedule.TabIndex = 6;
@@ -457,7 +484,7 @@
             this.dateTimePickerDateEnd.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.dateTimePickerDateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDateEnd.Location = new System.Drawing.Point(123, 149);
-            this.dateTimePickerDateEnd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerDateEnd.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerDateEnd.Name = "dateTimePickerDateEnd";
             this.dateTimePickerDateEnd.Size = new System.Drawing.Size(104, 26);
             this.dateTimePickerDateEnd.TabIndex = 5;
@@ -478,7 +505,7 @@
             this.dateTimePickerDateStart.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.dateTimePickerDateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDateStart.Location = new System.Drawing.Point(123, 119);
-            this.dateTimePickerDateStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerDateStart.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerDateStart.Name = "dateTimePickerDateStart";
             this.dateTimePickerDateStart.Size = new System.Drawing.Size(104, 26);
             this.dateTimePickerDateStart.TabIndex = 4;
@@ -487,7 +514,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label3.Location = new System.Drawing.Point(11, 94);
+            this.label3.Location = new System.Drawing.Point(183, 97);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 19);
@@ -498,8 +525,8 @@
             // 
             this.checkBoxDateScheduled.AutoSize = true;
             this.checkBoxDateScheduled.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxDateScheduled.Location = new System.Drawing.Point(123, 93);
-            this.checkBoxDateScheduled.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxDateScheduled.Location = new System.Drawing.Point(295, 96);
+            this.checkBoxDateScheduled.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxDateScheduled.Name = "checkBoxDateScheduled";
             this.checkBoxDateScheduled.Size = new System.Drawing.Size(32, 23);
             this.checkBoxDateScheduled.TabIndex = 3;
@@ -511,7 +538,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label8.Location = new System.Drawing.Point(34, 67);
+            this.label8.Location = new System.Drawing.Point(49, 98);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(84, 19);
@@ -522,8 +549,8 @@
             // 
             this.checkBoxVATExempt.AutoSize = true;
             this.checkBoxVATExempt.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.checkBoxVATExempt.Location = new System.Drawing.Point(123, 66);
-            this.checkBoxVATExempt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxVATExempt.Location = new System.Drawing.Point(138, 97);
+            this.checkBoxVATExempt.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxVATExempt.Name = "checkBoxVATExempt";
             this.checkBoxVATExempt.Size = new System.Drawing.Size(32, 23);
             this.checkBoxVATExempt.TabIndex = 2;
@@ -534,7 +561,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label4.Location = new System.Drawing.Point(22, 40);
+            this.label4.Location = new System.Drawing.Point(24, 40);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(97, 19);
@@ -545,7 +572,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label2.Location = new System.Drawing.Point(53, 12);
+            this.label2.Location = new System.Drawing.Point(55, 12);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 19);
@@ -558,7 +585,7 @@
             this.textBoxDiscount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxDiscount.HideSelection = false;
             this.textBoxDiscount.Location = new System.Drawing.Point(123, 9);
-            this.textBoxDiscount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxDiscount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxDiscount.Name = "textBoxDiscount";
             this.textBoxDiscount.Size = new System.Drawing.Size(222, 26);
             this.textBoxDiscount.TabIndex = 0;
@@ -573,7 +600,7 @@
             this.buttonLock.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLock.ForeColor = System.Drawing.Color.White;
             this.buttonLock.Location = new System.Drawing.Point(879, 10);
-            this.buttonLock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonLock.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLock.Name = "buttonLock";
             this.buttonLock.Size = new System.Drawing.Size(70, 32);
             this.buttonLock.TabIndex = 20;
@@ -603,7 +630,7 @@
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
             this.buttonClose.Location = new System.Drawing.Point(1029, 10);
-            this.buttonClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(70, 32);
             this.buttonClose.TabIndex = 22;
@@ -622,7 +649,7 @@
             this.buttonUnlock.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonUnlock.ForeColor = System.Drawing.Color.White;
             this.buttonUnlock.Location = new System.Drawing.Point(954, 10);
-            this.buttonUnlock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonUnlock.Margin = new System.Windows.Forms.Padding(2);
             this.buttonUnlock.Name = "buttonUnlock";
             this.buttonUnlock.Size = new System.Drawing.Size(70, 32);
             this.buttonUnlock.TabIndex = 21;
@@ -641,7 +668,7 @@
             this.panel1.Controls.Add(this.buttonUnlock);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1109, 50);
             this.panel1.TabIndex = 7;
@@ -718,5 +745,7 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.DateTimePicker dateTimePickerTimeEnd;
         private System.Windows.Forms.DateTimePicker dateTimePickerTimeStart;
+        private System.Windows.Forms.TextBox textBoxDiscountAmount;
+        private System.Windows.Forms.Label label12;
     }
 }

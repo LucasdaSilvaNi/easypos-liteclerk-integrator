@@ -28,6 +28,7 @@ namespace EasyPOS.Entities
         public String Term { get; set; }
         public Int32? DiscountId { get; set; }
         public Decimal DiscountRate { get; set; }
+        public Decimal DiscountAmount { get; set; }
         public String SeniorCitizenId { get; set; }
         public String SeniorCitizenName { get; set; }
         public Int32? SeniorCitizenAge { get; set; }

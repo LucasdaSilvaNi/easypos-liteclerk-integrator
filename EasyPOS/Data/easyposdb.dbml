@@ -113,6 +113,7 @@
       <Column Name="UpdateUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="UpdateDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="IsLocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DiscountAmount" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
       <Association Name="MstDiscount_MstDiscountItem" Member="MstDiscountItems" ThisKey="Id" OtherKey="DiscountId" Type="MstDiscountItem" />
       <Association Name="MstDiscount_TrnSale" Member="TrnSales" ThisKey="Id" OtherKey="DiscountId" Type="TrnSale" />
       <Association Name="MstDiscount_TrnSalesLine" Member="TrnSalesLines" ThisKey="Id" OtherKey="DiscountId" Type="TrnSalesLine" />

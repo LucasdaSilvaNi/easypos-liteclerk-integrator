@@ -41,6 +41,7 @@ namespace EasyPOS.Controllers
                                 Id = d.Id,
                                 Discount = d.Discount,
                                 DiscountRate = d.DiscountRate,
+                                DiscountAmount = d.DiscountAmount,
                                 IsVatExempt = d.IsVatExempt,
                                 IsDateScheduled = d.IsDateScheduled,
                                 DateStart = d.DateStart != null ? Convert.ToDateTime(d.DateStart).ToShortDateString() : "",
@@ -80,6 +81,7 @@ namespace EasyPOS.Controllers
                                Id = d.Id,
                                Discount = d.Discount,
                                DiscountRate = d.DiscountRate,
+                               DiscountAmount = d.DiscountAmount,
                                IsVatExempt = d.IsVatExempt,
                                IsDateScheduled = d.IsDateScheduled,
                                DateStart = d.DateStart != null ? Convert.ToDateTime(d.DateStart).ToShortDateString() : "",
@@ -124,6 +126,7 @@ namespace EasyPOS.Controllers
                 {
                     Discount = "",
                     DiscountRate = 0,
+                    DiscountAmount = 0,
                     IsVatExempt = false,
                     IsDateScheduled = false,
                     DateStart = null,
@@ -223,6 +226,7 @@ namespace EasyPOS.Controllers
                     var lockDiscount = discount.FirstOrDefault();
                     lockDiscount.Discount = objDiscount.Discount;
                     lockDiscount.DiscountRate = objDiscount.DiscountRate;
+                    lockDiscount.DiscountAmount = objDiscount.DiscountAmount;
                     lockDiscount.IsVatExempt = objDiscount.IsVatExempt;
                     lockDiscount.IsDateScheduled = objDiscount.IsDateScheduled;
                     lockDiscount.DateStart = dateStart;

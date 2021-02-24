@@ -11,6 +11,7 @@ namespace EasyPOS.Entities
         public Int32 Id { get; set; }
         public String Discount { get; set; }
         public Decimal DiscountRate { get; set; }
+        public Decimal DiscountAmount { get; set; }
         public Boolean IsVatExempt { get; set; }
         public Boolean IsDateScheduled { get; set; }
         public String DateStart { get; set; }

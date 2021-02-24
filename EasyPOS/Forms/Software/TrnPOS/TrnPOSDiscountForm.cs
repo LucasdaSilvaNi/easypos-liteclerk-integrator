@@ -31,7 +31,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             textBoxDiscountAmount.Text = "0.00";
             textBoxPax.Text = "1";
             textBoxDiscountedPax.Text = "1";
-            
+
 
             GetSalesLine();
         }
@@ -112,6 +112,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             Int32 discountId = Convert.ToInt32(comboBoxDiscount.SelectedValue);
             Decimal discountRate = Convert.ToDecimal(textBoxDiscountRate.Text);
+            Decimal discountAmount = Convert.ToDecimal(textBoxDiscountAmount.Text);
             String seniorCitizenID = textBoxSeniorCitizenID.Text;
             String seniorCitizenName = textBoxSeniorCitizenName.Text;
             Int32 seniorCitizenAge = Convert.ToInt32(textBoxSeniorCitizenAge.Text);
@@ -122,6 +123,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 DiscountId = discountId,
                 DiscountRate = discountRate,
+                DiscountAmount = discountAmount,
                 SeniorCitizenId = seniorCitizenID,
                 SeniorCitizenName = seniorCitizenName,
                 SeniorCitizenAge = seniorCitizenAge,
@@ -199,12 +201,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
             var selectedItemDiscount = (Entities.MstDiscountEntity)comboBoxDiscount.SelectedItem;
             if (selectedItemDiscount != null)
             {
+
                 textBoxDiscountRate.Text = selectedItemDiscount.DiscountRate.ToString("#,##0.00");
+                textBoxDiscountAmount.Text = selectedItemDiscount.DiscountAmount.ToString("#,##0.00");
 
                 if (selectedItemDiscount.Id == 3)
                 {
                     textBoxDiscountRate.Enabled = true;
                     textBoxDiscountAmount.Enabled = true;
+                    
                 }
                 else
                 {
@@ -230,6 +235,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
 
                 ComputeDiscountAmount();
+                ComputeDiscountRate();
             }
         }
 
@@ -301,7 +307,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             Decimal discountAmount = Convert.ToDecimal(textBoxDiscountAmount.Text);
             Decimal discountRate = (discountAmount / Convert.ToDecimal(textBoxTotalSalesAmount.Text)) * 100;
-            textBoxDiscountRate.Text = discountRate.ToString();
+            textBoxDiscountRate.Text = discountRate.ToString("#,##0.00");
         }
 
         public void ComputeDiscountAmount()

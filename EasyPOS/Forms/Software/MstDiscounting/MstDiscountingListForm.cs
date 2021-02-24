@@ -130,6 +130,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
                                     ColumnDiscountListId = d.Id,
                                     ColumnDiscountListDiscount = d.Discount,
                                     ColumnDiscountListDiscountRate = d.DiscountRate.ToString("#,##0.00"),
+                                    ColumnDiscountListDiscountAmount = d.DiscountAmount.ToString("#,##0.00"),
                                     ColumnDiscountListIsLocked = d.IsLocked
                                 };
 

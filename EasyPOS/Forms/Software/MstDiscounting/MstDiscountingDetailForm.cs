@@ -42,6 +42,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
         {
             textBoxDiscount.Text = mstDiscountEntity.Discount;
             textBoxDiscountRate.Text = mstDiscountEntity.DiscountRate.ToString("#,##0.00");
+            textBoxDiscountAmount.Text = mstDiscountEntity.DiscountAmount.ToString("#,##0.00");
             checkBoxVATExempt.Checked = mstDiscountEntity.IsVatExempt;
 
             checkBoxDateScheduled.Checked = mstDiscountEntity.IsDateScheduled;
@@ -115,6 +116,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
 
             textBoxDiscount.Enabled = !isLocked;
             textBoxDiscountRate.Enabled = !isLocked;
+            textBoxDiscountAmount.Enabled = !isLocked;
             checkBoxVATExempt.Enabled = !isLocked;
             textBoxDiscount.Focus();
 
@@ -173,6 +175,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
             {
                 Discount = textBoxDiscount.Text,
                 DiscountRate = Convert.ToDecimal(textBoxDiscountRate.Text),
+                DiscountAmount = Convert.ToDecimal(textBoxDiscountAmount.Text),
                 IsVatExempt = checkBoxVATExempt.Checked,
                 IsDateScheduled = checkBoxDateScheduled.Checked,
                 DateStart = checkBoxDateScheduled.Checked == true ? Convert.ToDateTime(dateTimePickerDateStart.Value).ToShortDateString() : "",
@@ -313,6 +316,36 @@ namespace EasyPOS.Forms.Software.MstDiscounting
             {
                 dateTimePickerTimeStart.Enabled = false;
                 dateTimePickerTimeEnd.Enabled = false;
+            }
+        }
+
+        private void textBoxDiscountAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '-') && ((sender as TextBox).Text.IndexOf('-') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxDiscountAmount_Leave(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBoxDiscountRate.Text) == true)
+            {
+                textBoxDiscountAmount.Text = Convert.ToDecimal(0).ToString("#,##0.00");
+            }
+            else
+            {
+                textBoxDiscountAmount.Text = Convert.ToDecimal(textBoxDiscountAmount.Text).ToString("#,##0.00");
             }
         }
     }
