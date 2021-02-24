@@ -34,6 +34,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             }
 
             GetCustomerList();
+            
         }
 
         public void GetCustomerList()
@@ -46,7 +47,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 comboBoxCustomer.DisplayMember = "Customer";
             }
         }
-
+        
         private void listBoxSalesReport_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxSalesReport.SelectedItem != null)
@@ -68,6 +69,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         comboBoxCustomer.Visible = false;
 
                         dateTimePickerStartDate.Focus();
+                        buttonView.Text = "View";
+
                         break;
                     case "Sales Detail Report":
                         labelStartDate.Visible = true;
@@ -83,8 +86,25 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         comboBoxCustomer.Visible = false;
 
                         dateTimePickerStartDate.Focus();
+                        buttonView.Text = "View";
+
                         break;
-                    
+                    case "80mm Sales Summary Report":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+
+                        labelTerminal.Visible = true;
+                        comboBoxTerminal.Visible = true;
+
+                        labelCustomer.Visible = false;
+                        comboBoxCustomer.Visible = false;
+
+                        dateTimePickerStartDate.Focus();
+                        buttonView.Text = "Print";
+                        break;
                     case "Collection Summary Report":
                         labelStartDate.Visible = true;
                         dateTimePickerStartDate.Visible = true;
@@ -99,6 +119,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         comboBoxCustomer.Visible = false;
 
                         dateTimePickerStartDate.Focus();
+                        buttonView.Text = "View";
+
                         break;
                     case "Collection Detail Report":
                         labelStartDate.Visible = true;
@@ -114,6 +136,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         comboBoxCustomer.Visible = false;
 
                         dateTimePickerStartDate.Focus();
+                        buttonView.Text = "View";
+
                         break;
                     case "Cancelled Summary Report":
                         labelStartDate.Visible = true;
@@ -129,6 +153,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         comboBoxCustomer.Visible = false;
 
                         dateTimePickerStartDate.Focus();
+                        buttonView.Text = "View";
+
                         break;
                     case "Stock Withdrawal Report":
                         labelStartDate.Visible = true;
@@ -144,6 +170,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         comboBoxCustomer.Visible = true;
 
                         dateTimePickerStartDate.Focus();
+                        buttonView.Text = "View";
 
                         break;
                     case "Collection Detail Report (Facepay)":
@@ -160,6 +187,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         comboBoxCustomer.Visible = false;
 
                         dateTimePickerStartDate.Focus();
+                        buttonView.Text = "View";
 
                         break;
                     case "Top Selling Items Report":
@@ -176,7 +204,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         comboBoxCustomer.Visible = false;
 
                         dateTimePickerStartDate.Focus();
-
+                        buttonView.Text = "View";
                         break;
                     case "Sales Return Detail Report":
                         labelStartDate.Visible = true;
@@ -192,7 +220,51 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         comboBoxCustomer.Visible = false;
 
                         dateTimePickerStartDate.Focus();
+                        buttonView.Text = "View";
+                        break;
+                    case "Customer List Report":
+                        buttonView.Text = "View";
+                        break;
+                    case "Net Sales Summary Report - Daily":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
 
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+
+                        dateTimePickerStartDate.Focus();
+                        buttonView.Text = "View";
+                        break;
+                    case "Net Sales Summary Report - Monthly":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+
+                        dateTimePickerStartDate.Focus();
+                        buttonView.Text = "View";
+                        break;
+                    case "Hourly Top Selling Sales Report":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+
+                        dateTimePickerStartDate.Focus();
+                        buttonView.Text = "View";
+                        break;
+
+                    case "Unsold Item Report":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+
+                        dateTimePickerStartDate.Focus();
+                        buttonView.Text = "View";
                         break;
                     default:
                         labelStartDate.Visible = false;
@@ -208,45 +280,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         comboBoxCustomer.Visible = false;
 
                         dateTimePickerStartDate.Focus();
-                        break;
-                    case "Customer List Report":
-                        break;
-                    case "Net Sales Summary Report - Daily":
-                        labelStartDate.Visible = true;
-                        dateTimePickerStartDate.Visible = true;
 
-                        labelEndDate.Visible = true;
-                        dateTimePickerEndDate.Visible = true;
-
-                        dateTimePickerStartDate.Focus();
-                        break;
-                    case "Net Sales Summary Report - Monthly":
-                        labelStartDate.Visible = true;
-                        dateTimePickerStartDate.Visible = true;
-
-                        labelEndDate.Visible = true;
-                        dateTimePickerEndDate.Visible = true;
-
-                        dateTimePickerStartDate.Focus();
-                        break;
-                    case "Hourly Top Selling Sales Report":
-                        labelStartDate.Visible = true;
-                        dateTimePickerStartDate.Visible = true;
-
-                        labelEndDate.Visible = true;
-                        dateTimePickerEndDate.Visible = true;
-
-                        dateTimePickerStartDate.Focus();
-                        break;
-
-                    case "Unsold Item Report":
-                        labelStartDate.Visible = true;
-                        dateTimePickerStartDate.Visible = true;
-
-                        labelEndDate.Visible = true;
-                        dateTimePickerEndDate.Visible = true;
-
-                        dateTimePickerStartDate.Focus();
+                        buttonView.Text = "View";
                         break;
                 }
             }
@@ -312,7 +347,27 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             }
 
                             break;
-                           
+                        case "80mm Sales Summary Report":
+                            sysUserRights = new Modules.SysUserRightsModule("RepSalesSummary");
+
+                            if (sysUserRights.GetUserRights() == null)
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                if (sysUserRights.GetUserRights().CanView == true)
+                                {
+                                    _80mmReport.RepSalesSummaryReport80mmForm repSalesSummaryReport80MmForm = new _80mmReport.RepSalesSummaryReport80mmForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+
+                            break;
+
                         case "Collection Summary Report":
                             sysUserRights = new Modules.SysUserRightsModule("RepCollectionSummary");
 

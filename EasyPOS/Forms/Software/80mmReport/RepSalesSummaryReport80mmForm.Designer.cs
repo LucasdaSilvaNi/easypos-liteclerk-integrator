@@ -1,7 +1,7 @@
 ﻿
-namespace EasyPOS.Forms.Software._80mm_Report
+namespace EasyPOS.Forms.Software._80mmReport
 {
-    partial class RepInventoryReport80mmForm
+    partial class RepSalesSummaryReport80mmForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,29 +29,31 @@ namespace EasyPOS.Forms.Software._80mm_Report
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepInventoryReport80mmForm));
-            this.printDocument80mm = new System.Drawing.Printing.PrintDocument();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepSalesSummaryReport80mmForm));
+            this.printDocumentSalesSummaryReport = new System.Drawing.Printing.PrintDocument();
             this.SuspendLayout();
             // 
-            // printDocument80mm
+            // printDocumentSalesSummaryReport
             // 
-            this.printDocument80mm.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument80mm_PrintPage);
+            this.printDocumentSalesSummaryReport.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentSalesSummaryReport_PrintPage);
             // 
-            // RepInventoryReport80mmForm
+            // RepSalesSummaryReport80mmForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(341, 89);
             this.ControlBox = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "RepInventoryReport80mmForm";
-            this.Text = "InventoryReport80Form";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "RepSalesSummaryReport80mmForm";
+            this.Text = "80mm Sales Summary Report";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Drawing.Printing.PrintDocument printDocument80mm;
+        private System.Drawing.Printing.PrintDocument printDocumentSalesSummaryReport;
     }
 }

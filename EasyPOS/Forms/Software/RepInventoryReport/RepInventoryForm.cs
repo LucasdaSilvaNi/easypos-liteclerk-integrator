@@ -96,12 +96,16 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         labelItem.Visible = false;
                         checkBoxFilter.Checked = false;
                         dateTimePickerStartDate.Focus();
+                        buttonView.Text = "View";
+
                         break;
                     case "Item List Report":
                         checkBoxFilter.Visible = false;
                         labelFilter.Visible = false;
                         comboBoxItem.Visible = false;
                         labelItem.Visible = false;
+                        buttonView.Text = "View";
+
                         break;
                     case "Stock Card":
                         labelStartDate.Visible = true;
@@ -115,6 +119,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         comboBoxCategory.Visible = false;
                         labelCategory.Visible = false;
                         dateTimePickerStartDate.Focus();
+                        buttonView.Text = "View";
+
                         break;
                     case "Stock In Detail Report":
                         labelStartDate.Visible = true;
@@ -128,6 +134,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         comboBoxItem.Visible = false;
                         labelItem.Visible = false;
                         dateTimePickerStartDate.Focus();
+                        buttonView.Text = "View";
+
                         break;
                     case "Stock Out Detail Report":
                         labelStartDate.Visible = true;
@@ -141,6 +149,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         comboBoxItem.Visible = false;
                         labelItem.Visible = false;
                         dateTimePickerStartDate.Focus();
+                        buttonView.Text = "View";
+
                         break;
                     case "Stock Count Detail Report":
                         labelStartDate.Visible = true;
@@ -154,6 +164,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         comboBoxItem.Visible = false;
                         labelItem.Visible = false;
                         dateTimePickerStartDate.Focus();
+                        buttonView.Text = "View";
+
                         break;
                     case "Item Expiry Report":
                         labelStartDate.Visible = true;
@@ -167,6 +179,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         comboBoxItem.Visible = false;
                         labelItem.Visible = false;
                         dateTimePickerStartDate.Focus();
+                        buttonView.Text = "View";
+
                         break;
                     case "80mm Inventory Report":
                         labelStartDate.Visible = true;
@@ -179,6 +193,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         labelItem.Visible = false;
                         checkBoxFilter.Checked = false;
                         dateTimePickerStartDate.Focus();
+                        buttonView.Text = "Print";
                         break;
                     default:
                         labelStartDate.Visible = false;
@@ -191,6 +206,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         labelCategory.Visible = false;
                         comboBoxItem.Visible = false;
                         labelItem.Visible = false;
+                        buttonView.Text = "View";
+
                         break;
                     
                 }

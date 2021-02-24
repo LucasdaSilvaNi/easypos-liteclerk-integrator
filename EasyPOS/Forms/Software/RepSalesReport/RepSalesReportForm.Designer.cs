@@ -163,6 +163,7 @@
             this.listBoxSalesReport.Items.AddRange(new object[] {
             "Sales Summary Report",
             "Sales Detail Report",
+            "80mm Sales Summary Report",
             "",
             "Collection Summary Report",
             "Collection Detail Report",
