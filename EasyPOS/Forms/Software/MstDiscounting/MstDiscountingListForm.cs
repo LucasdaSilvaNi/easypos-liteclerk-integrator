@@ -192,7 +192,16 @@ namespace EasyPOS.Forms.Software.MstDiscounting
             if (e.RowIndex > -1 && dataGridViewDiscountList.CurrentCell.ColumnIndex == dataGridViewDiscountList.Columns["ColumnDiscountListButtonEdit"].Index)
             {
                 Controllers.MstDiscountController mstDiscountController = new Controllers.MstDiscountController();
-                sysSoftwareForm.AddTabPageDiscountingDetail(this, mstDiscountController.DetailDiscount(Convert.ToInt32(dataGridViewDiscountList.Rows[e.RowIndex].Cells[2].Value)));
+
+                var discountDetail = new Modules.SysUserRightsModule("MstDiscountDetail");
+                if (discountDetail.GetUserRights() == null)
+                {
+                    MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    sysSoftwareForm.AddTabPageDiscountingDetail(this, mstDiscountController.DetailDiscount(Convert.ToInt32(dataGridViewDiscountList.Rows[e.RowIndex].Cells[2].Value)));
+                }
             }
 
             if (e.RowIndex > -1 && dataGridViewDiscountList.CurrentCell.ColumnIndex == dataGridViewDiscountList.Columns["ColumnDiscountListButtonDelete"].Index)
