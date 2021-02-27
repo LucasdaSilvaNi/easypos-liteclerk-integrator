@@ -164,6 +164,7 @@
             "Sales Summary Report",
             "Sales Detail Report",
             "80mm Sales Summary Report",
+            "80mm Sales Detail Report",
             "",
             "Collection Summary Report",
             "Collection Detail Report",
