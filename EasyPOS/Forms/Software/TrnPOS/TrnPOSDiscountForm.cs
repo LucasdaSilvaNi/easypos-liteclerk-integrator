@@ -204,6 +204,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 if (selectedItemDiscount.DiscountRate == 0)
                 {
                     textBoxDiscountAmount.Text = selectedItemDiscount.DiscountAmount.ToString("#,##0.00");
+                    textBoxDiscountRate.Enabled = false;
+                    textBoxDiscountAmount.Enabled = false;
                 }
 
                 if (selectedItemDiscount.DiscountAmount == 0)
