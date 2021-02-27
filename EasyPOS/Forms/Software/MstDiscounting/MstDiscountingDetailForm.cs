@@ -38,6 +38,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
             }
         }
 
+
         public void GetDiscountDetail()
         {
             textBoxDiscount.Text = mstDiscountEntity.Discount;
@@ -167,42 +168,55 @@ namespace EasyPOS.Forms.Software.MstDiscounting
             }
         }
 
+
         private void buttonLock_Click(object sender, EventArgs e)
         {
-            Controllers.MstDiscountController mstDiscountController = new Controllers.MstDiscountController();
-
-            Entities.MstDiscountEntity newDiscountEntity = new Entities.MstDiscountEntity()
+            if (mstDiscountEntity.DiscountRate != 0 && mstDiscountEntity.DiscountAmount != 0)
             {
-                Discount = textBoxDiscount.Text,
-                DiscountRate = Convert.ToDecimal(textBoxDiscountRate.Text),
-                DiscountAmount = Convert.ToDecimal(textBoxDiscountAmount.Text),
-                IsVatExempt = checkBoxVATExempt.Checked,
-                IsDateScheduled = checkBoxDateScheduled.Checked,
-                DateStart = checkBoxDateScheduled.Checked == true ? Convert.ToDateTime(dateTimePickerDateStart.Value).ToShortDateString() : "",
-                DateEnd = checkBoxDateScheduled.Checked == true ? Convert.ToDateTime(dateTimePickerDateEnd.Value).ToShortDateString() : "",
-                IsTimeScheduled = checkBoxTimeScheduled.Checked,
-                TimeStart = checkBoxTimeScheduled.Checked == true ? Convert.ToDateTime(dateTimePickerTimeStart.Value).ToShortTimeString() : "",
-                TimeEnd = checkBoxTimeScheduled.Checked == true ? Convert.ToDateTime(dateTimePickerTimeEnd.Value).ToShortTimeString() : "",
-                IsDayScheduled = checkBoxDaySchedule.Checked,
-                DayMon = checkBoxDaySchedule.Checked == true ? checkBoxMon.Checked : false,
-                DayTue = checkBoxDaySchedule.Checked == true ? checkBoxTue.Checked : false,
-                DayWed = checkBoxDaySchedule.Checked == true ? checkBoxWed.Checked : false,
-                DayThu = checkBoxDaySchedule.Checked == true ? checkBoxThu.Checked : false,
-                DayFri = checkBoxDaySchedule.Checked == true ? checkBoxFri.Checked : false,
-                DaySat = checkBoxDaySchedule.Checked == true ? checkBoxSat.Checked : false,
-                DaySun = checkBoxDaySchedule.Checked == true ? checkBoxSun.Checked : false
-            };
-
-            String[] lockDiscount = mstDiscountController.LockDiscount(mstDiscountEntity.Id, newDiscountEntity);
-            if (lockDiscount[1].Equals("0") == false)
-            {
-                UpdateComponents(true);
-                mstDiscountListForm.UpdateDiscountListDataSource();
+                MessageBox.Show("Please choose between discount rate or discount amount", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                UpdateComponents(false);
-                MessageBox.Show(lockDiscount[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Controllers.MstDiscountController mstDiscountController = new Controllers.MstDiscountController();
+
+                Entities.MstDiscountEntity newDiscountEntity = new Entities.MstDiscountEntity()
+                {
+                    Discount = textBoxDiscount.Text,
+                    DiscountRate = Convert.ToDecimal(textBoxDiscountRate.Text),
+                    DiscountAmount = Convert.ToDecimal(textBoxDiscountAmount.Text),
+                    IsVatExempt = checkBoxVATExempt.Checked,
+                    IsDateScheduled = checkBoxDateScheduled.Checked,
+                    DateStart = checkBoxDateScheduled.Checked == true ? Convert.ToDateTime(dateTimePickerDateStart.Value).ToShortDateString() : "",
+                    DateEnd = checkBoxDateScheduled.Checked == true ? Convert.ToDateTime(dateTimePickerDateEnd.Value).ToShortDateString() : "",
+                    IsTimeScheduled = checkBoxTimeScheduled.Checked,
+                    TimeStart = checkBoxTimeScheduled.Checked == true ? Convert.ToDateTime(dateTimePickerTimeStart.Value).ToShortTimeString() : "",
+                    TimeEnd = checkBoxTimeScheduled.Checked == true ? Convert.ToDateTime(dateTimePickerTimeEnd.Value).ToShortTimeString() : "",
+                    IsDayScheduled = checkBoxDaySchedule.Checked,
+                    DayMon = checkBoxDaySchedule.Checked == true ? checkBoxMon.Checked : false,
+                    DayTue = checkBoxDaySchedule.Checked == true ? checkBoxTue.Checked : false,
+                    DayWed = checkBoxDaySchedule.Checked == true ? checkBoxWed.Checked : false,
+                    DayThu = checkBoxDaySchedule.Checked == true ? checkBoxThu.Checked : false,
+                    DayFri = checkBoxDaySchedule.Checked == true ? checkBoxFri.Checked : false,
+                    DaySat = checkBoxDaySchedule.Checked == true ? checkBoxSat.Checked : false,
+                    DaySun = checkBoxDaySchedule.Checked == true ? checkBoxSun.Checked : false
+                };
+
+                String[] lockDiscount = mstDiscountController.LockDiscount(mstDiscountEntity.Id, newDiscountEntity);
+
+                if (lockDiscount[1].Equals("0") == false)
+                {
+
+
+                    UpdateComponents(true);
+                    mstDiscountListForm.UpdateDiscountListDataSource();
+
+
+                }
+                else
+                {
+                    UpdateComponents(false);
+                    MessageBox.Show(lockDiscount[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

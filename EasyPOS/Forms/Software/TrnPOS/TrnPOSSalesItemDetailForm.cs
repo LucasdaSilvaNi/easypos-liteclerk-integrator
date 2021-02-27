@@ -273,13 +273,22 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 {
                     textBoxSalesLineDiscountRate.ReadOnly = true;
                     textBoxSalesLineDiscountAmount.ReadOnly = true;
-
-                    textBoxSalesLineDiscountRate.Text = selectedItemDiscount.DiscountRate.ToString("#,##0.00");
-                    textBoxSalesLineDiscountAmount.Text = selectedItemDiscount.DiscountAmount.ToString("#,##0.00");
+                    if(selectedItemDiscount.DiscountRate == 0)
+                    {
+                        textBoxSalesLineDiscountAmount.Text = selectedItemDiscount.DiscountAmount.ToString("#,##0.00");
+                    }
+                    if (selectedItemDiscount.DiscountAmount == 0)
+                    {
+                        textBoxSalesLineDiscountRate.Text = selectedItemDiscount.DiscountRate.ToString("#,##0.00");
+                    }
                 }
-
+                if (selectedItemDiscount.DiscountRate == 0)
+                {
+                    textBoxSalesLineDiscountAmount.Text = selectedItemDiscount.DiscountAmount.ToString("#,##0.00");
+                    ComputeDiscountRate();
+                }
+                
                 ComputeAmount();
-                ComputeDiscountRate();
 
             }
         }
@@ -406,7 +415,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Decimal amount = quantity * price;
 
                 Decimal discountRate = (discountAmount / amount) * 100;
-                textBoxSalesLineDiscountRate.Text = discountRate.ToString("#,##0.00+");
+                textBoxSalesLineDiscountRate.Text = discountRate.ToString("#,##0.00");
                 ComputeAmount();
             }
             else

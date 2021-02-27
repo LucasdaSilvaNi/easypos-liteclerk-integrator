@@ -201,15 +201,23 @@ namespace EasyPOS.Forms.Software.TrnPOS
             var selectedItemDiscount = (Entities.MstDiscountEntity)comboBoxDiscount.SelectedItem;
             if (selectedItemDiscount != null)
             {
+                if (selectedItemDiscount.DiscountRate == 0)
+                {
+                    textBoxDiscountAmount.Text = selectedItemDiscount.DiscountAmount.ToString("#,##0.00");
+                    textBoxDiscountRate.Enabled = false;
+                    textBoxDiscountAmount.Enabled = false;
+                }
 
-                textBoxDiscountRate.Text = selectedItemDiscount.DiscountRate.ToString("#,##0.00");
-                textBoxDiscountAmount.Text = selectedItemDiscount.DiscountAmount.ToString("#,##0.00");
+                if (selectedItemDiscount.DiscountAmount == 0)
+                {
+                    textBoxDiscountRate.Text = selectedItemDiscount.DiscountRate.ToString("#,##0.00");
+                }
 
                 if (selectedItemDiscount.Id == 3)
                 {
                     textBoxDiscountRate.Enabled = true;
                     textBoxDiscountAmount.Enabled = true;
-                    
+
                 }
                 else
                 {
@@ -234,8 +242,17 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     textBoxSeniorCitizenAge.Text = "0";
                 }
 
-                ComputeDiscountAmount();
-                ComputeDiscountRate();
+                if (selectedItemDiscount.DiscountRate == 0)
+                {
+                    textBoxDiscountAmount.Text = selectedItemDiscount.DiscountAmount.ToString("#,##0.00");
+                    ComputeDiscountRate();
+                }
+
+                if (selectedItemDiscount.DiscountAmount == 0)
+                {
+                    textBoxDiscountRate.Text = selectedItemDiscount.DiscountRate.ToString("#,##0.00");
+                    ComputeDiscountAmount();
+                }
             }
         }
 

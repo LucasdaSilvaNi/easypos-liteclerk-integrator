@@ -97,7 +97,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                         if (collection.FirstOrDefault().TrnSale.TrnSalesLines.Any())
                         {
-                            if(isDeliveryReceipt == false)
+                            if (isDeliveryReceipt == false)
                             {
                                 foreach (var salesItem in collection.FirstOrDefault().TrnSale.TrnSalesLines)
                                 {
@@ -108,7 +108,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                     totalAmount += salesItem.Amount;
                                 }
                             }
-                            
+
                             else
                             {
                                 foreach (var salesItem in collection.FirstOrDefault().TrnSale.TrnSalesLines)
@@ -119,14 +119,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                     }
                                     else
                                     {
-                                        if(salesItem.MstDiscount.Discount == "Variable Discount")
-                                        {
-                                            tableItem.AddCell(new PdfPCell(new Phrase(salesItem.MstItem.ItemDescription + " - " + salesItem.Preparation, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                                        }
-                                        else
-                                        {
-                                            tableItem.AddCell(new PdfPCell(new Phrase(salesItem.MstItem.ItemDescription + " - " + salesItem.MstDiscount.Discount, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                                        }
+                                        tableItem.AddCell(new PdfPCell(new Phrase(salesItem.MstItem.ItemDescription + " - " + salesItem.MstDiscount.Discount, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
                                     }
                                     tableItem.AddCell(new PdfPCell(new Phrase(salesItem.Quantity.ToString("#,##0.00"), fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f, HorizontalAlignment = 2 });
                                     tableItem.AddCell(new PdfPCell(new Phrase(salesItem.MstItem.MstUnit.Unit, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
@@ -214,7 +207,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             Paragraph line = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0F, 100.0F, BaseColor.BLACK, Element.ALIGN_MIDDLE, 7F)));
 
             String documentTitle = systemCurrent.ORPrintTitle;
-            if(isDeliveryReceipt == false)
+            if (isDeliveryReceipt == false)
             {
                 documentTitle = systemCurrent.WithdrawalPrintTitle;
             }
@@ -233,13 +226,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 ORFooter = systemCurrent.WithdrawalFooter;
             }
-            
+
             PdfPTable tableHeader = new PdfPTable(4);
             tableHeader.SetWidths(new float[] { 20f, 30f, 20f, 50f });
             tableHeader.DefaultCell.Border = 0;
             tableHeader.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
             tableHeader.LockedWidth = true;
-            if (documentTitle.Length>15)
+            if (documentTitle.Length > 15)
             {
                 tableHeader.AddCell(new PdfPCell(new Phrase(documentTitle, fontTimesNewRoman11Bold)) { Colspan = 3, Border = 0, Padding = 3f, PaddingBottom = 0f });
             }
