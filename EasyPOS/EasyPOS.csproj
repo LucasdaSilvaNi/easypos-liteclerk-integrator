@@ -417,11 +417,23 @@
     <Compile Include="Forms\License\SysLincense\SysLicenseForm.Designer.cs">
       <DependentUpon>SysLicenseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\80mmReport\RepCollectionDetailReport80mmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\80mmReport\RepCollectionDetailReport80mmForm.Designer.cs">
+      <DependentUpon>RepCollectionDetailReport80mmForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\80mmReport\RepSalesDetailReport80mmForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Software\80mmReport\RepSalesDetailReport80mmForm.Designer.cs">
       <DependentUpon>RepSalesDetailReport80mmForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\80mmReport\RepSalesStatusReport80mmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\80mmReport\RepSalesStatusReport80mmForm.Designer.cs">
+      <DependentUpon>RepSalesStatusReport80mmForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\80mmReport\RepSalesSummaryReport80mmForm.cs">
       <SubType>Form</SubType>
@@ -1195,11 +1207,17 @@
     <EmbeddedResource Include="Forms\License\SysLincense\SysLicenseForm.resx">
       <DependentUpon>SysLicenseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\80mmReport\RepCollectionDetailReport80mmForm.resx">
+      <DependentUpon>RepCollectionDetailReport80mmForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\80mmReport\RepInventoryReport80mmForm.resx">
       <DependentUpon>RepInventoryReport80mmForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\80mmReport\RepSalesDetailReport80mmForm.resx">
       <DependentUpon>RepSalesDetailReport80mmForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\80mmReport\RepSalesStatusReport80mmForm.resx">
+      <DependentUpon>RepSalesStatusReport80mmForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\80mmReport\RepSalesSummaryReport80mmForm.resx">
       <DependentUpon>RepSalesSummaryReport80mmForm.cs</DependentUpon>

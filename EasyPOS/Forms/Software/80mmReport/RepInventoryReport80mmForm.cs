@@ -429,6 +429,16 @@ namespace EasyPOS.Forms.Software._80mm_Report
                             y += itemDataRectangle.Size.Height + adjustStringName + 3.0F;
                         }
                     }
+                    if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+                    {
+                        String space = "\n\n\n\n\n\n\n\n\n\n.";
+                        graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    }
+                    else
+                    {
+                        String space = "\n\n\n.";
+                        graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    }
                 }
                 else
                 {
@@ -775,6 +785,16 @@ namespace EasyPOS.Forms.Software._80mm_Report
                             y += itemDataRectangle.Size.Height + adjustStringName + 3.0F;
                         }
                     }
+                    if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+                    {
+                        String space = "\n\n\n\n\n\n\n\n\n\n.";
+                        graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    }
+                    else
+                    {
+                        String space = "\n\n\n.";
+                        graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    }
                 }
                 else
                 {
@@ -1113,6 +1133,16 @@ namespace EasyPOS.Forms.Software._80mm_Report
                             y += itemDataRectangle.Size.Height + adjustStringName + 3.0F;
                         }
                     }
+                    if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+                    {
+                        String space = "\n\n\n\n\n\n\n\n\n\n.";
+                        graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    }
+                    else
+                    {
+                        String space = "\n\n\n.";
+                        graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    }
                 }
                 else
                 {
@@ -1450,7 +1480,16 @@ namespace EasyPOS.Forms.Software._80mm_Report
                             y += itemDataRectangle.Size.Height + adjustStringName + 3.0F;
                         }
                     }
-
+                    if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+                    {
+                        String space = "\n\n\n\n\n\n\n\n\n\n.";
+                        graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    }
+                    else
+                    {
+                        String space = "\n\n\n.";
+                        graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    }
                 }
                 else
                 {

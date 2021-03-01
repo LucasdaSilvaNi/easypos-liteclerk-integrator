@@ -210,7 +210,19 @@ namespace EasyPOS.Forms.Software._80mmReport
             String totalNumberOfItemsQuantity = "\n" + totalNumberOfSales.ToString();
             graphics.DrawString(totalNumberOfItemsQuantity, fontArial8Regular, drawBrush, new RectangleF(x, y+1, width, height), drawFormatLeft);
             graphics.DrawString(totalSalesAmount, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-           
+
+            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+            {
+                printDocumentSalesSummaryReport.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 255, 3000);
+                printDocumentSalesSummaryReport.Print();
+
+            }
+            else
+            {
+                printDocumentSalesSummaryReport.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 270, 3000);
+                printDocumentSalesSummaryReport.Print();
+            }
         }
+
     }
 }

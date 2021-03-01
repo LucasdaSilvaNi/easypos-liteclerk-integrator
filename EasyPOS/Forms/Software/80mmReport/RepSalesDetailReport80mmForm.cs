@@ -51,6 +51,7 @@ namespace EasyPOS.Forms.Software._80mmReport
             Font fontArial11Bold = new Font("Arial", 11, FontStyle.Bold);
             Font fontArial11Regular = new Font("Arial", 11, FontStyle.Regular);
             Font fontArial8Bold = new Font("Arial", 8, FontStyle.Bold);
+            Font fontArial9Bold = new Font("Arial", 9, FontStyle.Bold);
             Font fontArial8Regular = new Font("Arial", 8, FontStyle.Regular);
             Font fontArial10Bold = new Font("Arial", 10, FontStyle.Bold);
 
@@ -170,14 +171,15 @@ namespace EasyPOS.Forms.Software._80mmReport
                                 RectangleF itemDataRectangle = new RectangleF
                                 {
                                     X = x,
-                                    Y = y + 16,
-                                    Size = new Size(240, ((int)graphics.MeasureString(Category + salesData + salesQuantityUnit, fontArial8Regular, 200, StringFormat.GenericDefault).Height))
+                                    Y = y,
+                                    Size = new Size(240, ((int)graphics.MeasureString(Category + salesData + salesQuantityUnit, fontArial8Regular, 150, StringFormat.GenericDefault).Height))
                                 };
                                 itemTotal += subItemTotal;
                                 // List of items
                                 graphics.DrawString("\n" + salesData + salesQuantityUnit, fontArial8Regular, Brushes.Black, new RectangleF(x, y+5, 180, height), drawFormatLeft);
+                                graphics.DrawString("\n" + subItemTotal.ToString("#,##0.00"), fontArial8Regular, Brushes.Black, new RectangleF(x, y+ 20, width, height), drawFormatRight);
                                 y += itemDataRectangle.Size.Height;
-                                graphics.DrawString("\n" + subItemTotal.ToString("#,##0.00"), fontArial8Regular, Brushes.Black, itemDataRectangle, drawFormatRight);
+                                
                             }
                             totalItemAmount += itemTotal;
                             categorySubTotal = (0 * itemTotal) + itemTotal;
@@ -191,9 +193,9 @@ namespace EasyPOS.Forms.Software._80mmReport
                         graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
 
                         String amountLabel = "\nSub Total";
-                        graphics.DrawString(amountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y + 18, width, height), drawFormatLeft);
-                        graphics.DrawString(categorySubTotal.ToString("#,##0.00"), fontArial8Bold, drawBrush, new RectangleF(x, y + 31, width, height), drawFormatRight);
-                        y += 25;
+                        graphics.DrawString(amountLabel, fontArial9Bold, drawBrush, new RectangleF(x, y + 18, width, height), drawFormatLeft);
+                        graphics.DrawString(categorySubTotal.ToString("#,##0.00"), fontArial9Bold, drawBrush, new RectangleF(x, y + 31, width, height), drawFormatRight);
+                        y += 30;
                     }
                     // ========
                     // 4th Line
@@ -204,11 +206,19 @@ namespace EasyPOS.Forms.Software._80mmReport
 
                     String totalSalesAmounts = "\n" + totalItemAmount.ToString("#,##0.00");
                     String amountLabesl = "\n Total";
-                    graphics.DrawString(amountLabesl, fontArial8Regular, drawBrush, new RectangleF(x, y + 6, width, height), drawFormatLeft);
-                    graphics.DrawString(totalSalesAmounts, fontArial8Regular, drawBrush, new RectangleF(x, y+5, width, height), drawFormatRight);
+                    graphics.DrawString(amountLabesl, fontArial9Bold, drawBrush, new RectangleF(x, y + 6, width, height), drawFormatLeft);
+                    graphics.DrawString(totalSalesAmounts, fontArial9Bold, drawBrush, new RectangleF(x, y+5, width, height), drawFormatRight);
                 }
-
-
+                if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+                {
+                    String space = "\n\n\n\n\n\n\n\n\n\n.";
+                    graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                }
+                else
+                {
+                    String space = "\n\n\n.";
+                    graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                }
             }
 
         }
