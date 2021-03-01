@@ -155,7 +155,7 @@ namespace EasyPOS.Forms.Software._80mmReport
                                     select d;
                         // Label Category
                         String Category = category;
-                        graphics.DrawString(Category + "\n", fontArial10Bold, Brushes.Black, new RectangleF(x, y + 5, 240, 150), drawFormatLeft);
+                        graphics.DrawString(Category + "\n", fontArial10Bold, Brushes.Black, new RectangleF(x, y + 15, 240, 150), drawFormatLeft);
                         if (items.Any())
                         {
                             Decimal itemTotal = 0;
@@ -163,19 +163,19 @@ namespace EasyPOS.Forms.Software._80mmReport
 
                             foreach (var item in items)
                             {
-                                subItemTotal = item.Amount * item.Quantity;
+                                subItemTotal = item.Amount;
                                 String salesData = "\n"+item.MstItem.BarCode + " - " + item.MstItem.ItemDescription;
                                 String salesQuantityUnit = "\n" + "                         " +item.Quantity.ToString("#,##0.00") + item.MstUnit.Unit;
 
                                 RectangleF itemDataRectangle = new RectangleF
                                 {
                                     X = x,
-                                    Y = y + 13,
+                                    Y = y + 16,
                                     Size = new Size(240, ((int)graphics.MeasureString(Category + salesData + salesQuantityUnit, fontArial8Regular, 200, StringFormat.GenericDefault).Height))
                                 };
                                 itemTotal += subItemTotal;
                                 // List of items
-                                graphics.DrawString("\n" + salesData + salesQuantityUnit, fontArial8Regular, Brushes.Black, new RectangleF(x, y, 180, height), drawFormatLeft);
+                                graphics.DrawString("\n" + salesData + salesQuantityUnit, fontArial8Regular, Brushes.Black, new RectangleF(x, y+5, 180, height), drawFormatLeft);
                                 y += itemDataRectangle.Size.Height;
                                 graphics.DrawString("\n" + subItemTotal.ToString("#,##0.00"), fontArial8Regular, Brushes.Black, itemDataRectangle, drawFormatRight);
                             }
@@ -186,26 +186,26 @@ namespace EasyPOS.Forms.Software._80mmReport
                         // ========
                         // 3rd Line
                         // ========
-                        Point thirdLineFirstPoint = new Point(0, Convert.ToInt32(y) + 12);
-                        Point thirdLineSecondPoint = new Point(500, Convert.ToInt32(y) + 12);
+                        Point thirdLineFirstPoint = new Point(0, Convert.ToInt32(y) + 30);
+                        Point thirdLineSecondPoint = new Point(500, Convert.ToInt32(y) + 30);
                         graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
 
                         String amountLabel = "\nSub Total";
-                        graphics.DrawString(amountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y + 1, width, height), drawFormatLeft);
-                        graphics.DrawString(categorySubTotal.ToString("#,##0.00"), fontArial8Bold, drawBrush, new RectangleF(x, y + 14, width, height), drawFormatRight);
+                        graphics.DrawString(amountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y + 18, width, height), drawFormatLeft);
+                        graphics.DrawString(categorySubTotal.ToString("#,##0.00"), fontArial8Bold, drawBrush, new RectangleF(x, y + 31, width, height), drawFormatRight);
                         y += 25;
                     }
                     // ========
                     // 4th Line
                     // ========
-                    Point fourthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 12);
-                    Point fourthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 12);
+                    Point fourthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 17);
+                    Point fourthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 17);
                     graphics.DrawLine(blackPen, fourthLineFirstPoint, fourthLineSecondPoint);
 
                     String totalSalesAmounts = "\n" + totalItemAmount.ToString("#,##0.00");
                     String amountLabesl = "\n Total";
-                    graphics.DrawString(amountLabesl, fontArial8Regular, drawBrush, new RectangleF(x, y + 1, width, height), drawFormatLeft);
-                    graphics.DrawString(totalSalesAmounts, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                    graphics.DrawString(amountLabesl, fontArial8Regular, drawBrush, new RectangleF(x, y + 6, width, height), drawFormatLeft);
+                    graphics.DrawString(totalSalesAmounts, fontArial8Regular, drawBrush, new RectangleF(x, y+5, width, height), drawFormatRight);
                 }
 
 
