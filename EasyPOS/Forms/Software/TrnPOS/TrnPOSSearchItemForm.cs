@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,12 +11,18 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.TrnPOS
 {
+    
     public partial class TrnPOSSearchItemForm : Form
     {
         public TrnPOSBarcodeDetailForm trnSalesDetailForm;
         public TrnPOSTouchDetailForm trnPOSTouchDetailForm;
         public Entities.TrnSalesEntity trnSalesEntity;
+        public List<Entities.DgvTrnSalesSearchItemListEntity> searchItemList;
+        public PagedList<Entities.DgvTrnSalesSearchItemListEntity> pageList;
+        public BindingSource dataSearchItemListSource = new BindingSource();
 
+        public Int32 pageNumber = 1;
+        public Int32 pageSize = 50;
 
         public TrnPOSSearchItemForm(TrnPOSBarcodeDetailForm salesDetailForm, TrnPOSTouchDetailForm POSTouchDetailForm, Entities.TrnSalesEntity salesEntity)
         {
@@ -28,7 +35,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             dataGridViewSearchItemList.Focus();
 
-            GetSearchItemList();
+            GetListSearchItemDataSource("");
+            GetDataGridViewListSearchItemSource();
         }
         public void resetCursor()
         {
@@ -37,53 +45,145 @@ namespace EasyPOS.Forms.Software.TrnPOS
             textBoxFilter.Focus();
             textBoxFilter.SelectAll();
 
-            GetSearchItemList();
+            GetListSearchItemDataSource(textBoxFilter.Text);
         }
         private void buttonClose_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        public void GetSearchItemList()
+        //public void GetSearchItemList()
+        //{
+        //    dataGridViewSearchItemList.Rows.Clear();
+        //    dataGridViewSearchItemList.Refresh();
+
+        //    Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
+
+        //    var itemList = trnPOSSalesLineController.ListSearchItem(textBoxFilter.Text);
+        //    if (itemList.Any())
+        //    {
+        //        dataGridViewSearchItemList.Columns[12].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
+        //        dataGridViewSearchItemList.Columns[12].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
+        //        dataGridViewSearchItemList.Columns[12].DefaultCellStyle.ForeColor = Color.White;
+
+        //        foreach (var objItemList in itemList)
+        //        {
+        //            dataGridViewSearchItemList.Rows.Add(
+        //                objItemList.Id,
+        //                objItemList.BarCode,
+        //                objItemList.ItemDescription,
+        //                objItemList.GenericName,
+        //                objItemList.OutTaxId,
+        //                objItemList.OutTax,
+        //                objItemList.OutTaxRate.ToString("#,##0.00"),
+        //                objItemList.UnitId,
+        //                objItemList.Unit,
+        //                objItemList.Price.ToString("#,##0.00"),
+        //                objItemList.OnhandQuantity.ToString("#,##0.00"),
+        //                objItemList.IsInventory,
+        //                "Pick"
+        //            );
+        //        }
+        //    }
+        //}
+
+        public List<Entities.DgvTrnSalesSearchItemListEntity> GetSearchItemList(String filter)
         {
-            dataGridViewSearchItemList.Rows.Clear();
-            dataGridViewSearchItemList.Refresh();
+            List<Entities.DgvTrnSalesSearchItemListEntity> rowList = new List<Entities.DgvTrnSalesSearchItemListEntity>();
 
             Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
 
-            var itemList = trnPOSSalesLineController.ListSearchItem(textBoxFilter.Text);
+            var itemList = trnPOSSalesLineController.ListSearchItem(filter);
             if (itemList.Any())
             {
                 dataGridViewSearchItemList.Columns[12].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
                 dataGridViewSearchItemList.Columns[12].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
                 dataGridViewSearchItemList.Columns[12].DefaultCellStyle.ForeColor = Color.White;
+                var row = from d in itemList
+                          select new Entities.DgvTrnSalesSearchItemListEntity
+                          {
+                              ColumnSearchItemId = d.Id,
+                              ColumnSearchItemBarcode = d.BarCode,
+                              ColumnSearchItemDescription = d.ItemDescription,
+                              ColumnSearchItemGenericName = d.GenericName,
+                              ColumnSearchItemOutTaxId = d.OutTaxId,
+                              ColumnSearchItemOutTax = d.OutTax,
+                              ColumnSearchItemOutTaxRate = d.OutTaxRate.ToString("#,##0.00"),
+                              ColumnSearchItemUnitId = d.UnitId,
+                              ColumnSearchItemUnit = d.Unit,
+                              ColumnSearchItemPrice = d.Price.ToString("#,##0.00"),
+                              ColumnSearchItemOnHandQuantity = d.OnhandQuantity.ToString("#,##0.00"),
+                              ColumnSearchItemIsInventory = d.IsInventory,
+                              ColumnSearchItemButtonPick = "Pick"
+                          };
 
-                foreach (var objItemList in itemList)
+                rowList = row.ToList();
+            }
+
+            return rowList;
+        }
+
+        public void GetListSearchItemDataSource(String filter)
+        {
+            searchItemList = GetSearchItemList(filter);
+            if (searchItemList.Any())
+            {
+                pageList = new PagedList<Entities.DgvTrnSalesSearchItemListEntity>(searchItemList, pageNumber, pageSize);
+
+                if (pageList.PageCount == 1)
                 {
-                    dataGridViewSearchItemList.Rows.Add(
-                        objItemList.Id,
-                        objItemList.BarCode,
-                        objItemList.ItemDescription,
-                        objItemList.GenericName,
-                        objItemList.OutTaxId,
-                        objItemList.OutTax,
-                        objItemList.OutTaxRate.ToString("#,##0.00"),
-                        objItemList.UnitId,
-                        objItemList.Unit,
-                        objItemList.Price.ToString("#,##0.00"),
-                        objItemList.OnhandQuantity.ToString("#,##0.00"),
-                        objItemList.IsInventory,
-                        "Pick"
-                    );
+                    buttonPageListFirst.Enabled = false;
+                    buttonPageListPrevious.Enabled = false;
+                    buttonPageListNext.Enabled = false;
+                    buttonPageListLast.Enabled = false;
                 }
+                else if (pageNumber == 1)
+                {
+                    buttonPageListFirst.Enabled = false;
+                    buttonPageListPrevious.Enabled = false;
+                    buttonPageListNext.Enabled = true;
+                    buttonPageListLast.Enabled = true;
+                }
+                else if (pageNumber == pageList.PageCount)
+                {
+                    buttonPageListFirst.Enabled = true;
+                    buttonPageListPrevious.Enabled = true;
+                    buttonPageListNext.Enabled = false;
+                    buttonPageListLast.Enabled = false;
+                }
+                else
+                {
+                    buttonPageListFirst.Enabled = true;
+                    buttonPageListPrevious.Enabled = true;
+                    buttonPageListNext.Enabled = true;
+                    buttonPageListLast.Enabled = true;
+                }
+
+                textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+                dataSearchItemListSource.DataSource = pageList;
+            }
+            else
+            {
+                buttonPageListFirst.Enabled = false;
+                buttonPageListPrevious.Enabled = false;
+                buttonPageListNext.Enabled = false;
+                buttonPageListLast.Enabled = false;
+
+                dataSearchItemListSource.Clear();
+                textBoxPageNumber.Text = "0 / 0";
             }
         }
+        public void GetDataGridViewListSearchItemSource()
+        {
+            dataGridViewSearchItemList.DataSource = dataSearchItemListSource;
+        }
+
 
         private void textBoxFilter_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                GetSearchItemList();
+                GetListSearchItemDataSource(textBoxFilter.Text);
             }
         }
         
@@ -144,7 +244,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(trnSalesDetailForm, trnPOSTouchDetailForm, trnSalesLineEntity,this);
                 trnSalesDetailSalesItemDetailForm.ShowDialog();
 
-                resetCursor();
             }
         }
 
@@ -230,6 +329,74 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void buttonPageListFirst_Click(object sender, EventArgs e)
+        {
+            pageList = new PagedList<Entities.DgvTrnSalesSearchItemListEntity>(searchItemList, 1, pageSize);
+            dataSearchItemListSource.DataSource = pageList;
+
+            buttonPageListFirst.Enabled = false;
+            buttonPageListPrevious.Enabled = false;
+            buttonPageListNext.Enabled = true;
+            buttonPageListLast.Enabled = true;
+
+            pageNumber = 1;
+            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+        }
+
+        private void buttonPageListPrevious_Click(object sender, EventArgs e)
+        {
+            if (pageList.HasPreviousPage == true)
+            {
+                pageList = new PagedList<Entities.DgvTrnSalesSearchItemListEntity>(searchItemList, --pageNumber, pageSize);
+                dataSearchItemListSource.DataSource = pageList;
+            }
+
+            buttonPageListNext.Enabled = true;
+            buttonPageListLast.Enabled = true;
+
+            if (pageNumber == 1)
+            {
+                buttonPageListFirst.Enabled = false;
+                buttonPageListPrevious.Enabled = false;
+            }
+
+            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+        }
+
+        private void buttonPageListNext_Click(object sender, EventArgs e)
+        {
+            if (pageList.HasNextPage == true)
+            {
+                pageList = new PagedList<Entities.DgvTrnSalesSearchItemListEntity>(searchItemList, ++pageNumber, pageSize);
+                dataSearchItemListSource.DataSource = pageList;
+            }
+
+            buttonPageListFirst.Enabled = true;
+            buttonPageListPrevious.Enabled = true;
+
+            if (pageNumber == pageList.PageCount)
+            {
+                buttonPageListNext.Enabled = false;
+                buttonPageListLast.Enabled = false;
+            }
+
+            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
+        }
+
+        private void buttonPageListLast_Click(object sender, EventArgs e)
+        {
+            pageList = new PagedList<Entities.DgvTrnSalesSearchItemListEntity>(searchItemList, pageList.PageCount, pageSize);
+            dataSearchItemListSource.DataSource = pageList;
+
+            buttonPageListFirst.Enabled = true;
+            buttonPageListPrevious.Enabled = true;
+            buttonPageListNext.Enabled = false;
+            buttonPageListLast.Enabled = false;
+
+            pageNumber = pageList.PageCount;
+            textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
         }
     }
 }

@@ -39,8 +39,6 @@
             this.buttonStockInLineListPageListLast = new System.Windows.Forms.Button();
             this.textBoxStockInLineListPageNumber = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.textBoxDiscountAmount = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.dateTimePickerTimeEnd = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerTimeStart = new System.Windows.Forms.DateTimePicker();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -210,8 +208,6 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel7.Controls.Add(this.textBoxDiscountAmount);
-            this.panel7.Controls.Add(this.label12);
             this.panel7.Controls.Add(this.dateTimePickerTimeEnd);
             this.panel7.Controls.Add(this.dateTimePickerTimeStart);
             this.panel7.Controls.Add(this.panel5);
@@ -240,29 +236,6 @@
             this.panel7.Padding = new System.Windows.Forms.Padding(8);
             this.panel7.Size = new System.Drawing.Size(1109, 187);
             this.panel7.TabIndex = 0;
-            // 
-            // textBoxDiscountAmount
-            // 
-            this.textBoxDiscountAmount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxDiscountAmount.Location = new System.Drawing.Point(123, 68);
-            this.textBoxDiscountAmount.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxDiscountAmount.Name = "textBoxDiscountAmount";
-            this.textBoxDiscountAmount.Size = new System.Drawing.Size(158, 26);
-            this.textBoxDiscountAmount.TabIndex = 47;
-            this.textBoxDiscountAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxDiscountAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDiscountAmount_KeyPress);
-            this.textBoxDiscountAmount.Leave += new System.EventHandler(this.textBoxDiscountAmount_Leave);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label12.Location = new System.Drawing.Point(2, 71);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(120, 19);
-            this.label12.TabIndex = 48;
-            this.label12.Text = "Discount Amount:";
             // 
             // dateTimePickerTimeEnd
             // 
@@ -745,7 +718,5 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.DateTimePicker dateTimePickerTimeEnd;
         private System.Windows.Forms.DateTimePicker dateTimePickerTimeStart;
-        private System.Windows.Forms.TextBox textBoxDiscountAmount;
-        private System.Windows.Forms.Label label12;
     }
 }

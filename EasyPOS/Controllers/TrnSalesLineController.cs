@@ -186,7 +186,6 @@ namespace EasyPOS.Controllers
                                 Id = d.Id,
                                 Discount = d.Discount,
                                 DiscountRate = d.DiscountRate,
-                                DiscountAmount = d.DiscountAmount
                             };
 
             return discounts.ToList();
