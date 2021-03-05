@@ -49,7 +49,6 @@
             this.ColumnDiscountListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDiscountListDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDiscountListDiscountRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDiscountListDiscountAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDiscountListIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -256,7 +255,6 @@
             this.ColumnDiscountListId,
             this.ColumnDiscountListDiscount,
             this.ColumnDiscountListDiscountRate,
-            this.ColumnDiscountListDiscountAmount,
             this.ColumnDiscountListIsLocked});
             this.dataGridViewDiscountList.Location = new System.Drawing.Point(10, 34);
             this.dataGridViewDiscountList.Margin = new System.Windows.Forms.Padding(2);
@@ -323,13 +321,6 @@
             this.ColumnDiscountListDiscountRate.Name = "ColumnDiscountListDiscountRate";
             this.ColumnDiscountListDiscountRate.ReadOnly = true;
             // 
-            // ColumnDiscountListDiscountAmount
-            // 
-            this.ColumnDiscountListDiscountAmount.DataPropertyName = "ColumnDiscountListDiscountAmount";
-            this.ColumnDiscountListDiscountAmount.HeaderText = "Discount Amount";
-            this.ColumnDiscountListDiscountAmount.Name = "ColumnDiscountListDiscountAmount";
-            this.ColumnDiscountListDiscountAmount.ReadOnly = true;
-            // 
             // ColumnDiscountListIsLocked
             // 
             this.ColumnDiscountListIsLocked.DataPropertyName = "ColumnDiscountListIsLocked";
@@ -383,7 +374,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDiscountListId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDiscountListDiscount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDiscountListDiscountRate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDiscountListDiscountAmount;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnDiscountListIsLocked;
     }
 }
