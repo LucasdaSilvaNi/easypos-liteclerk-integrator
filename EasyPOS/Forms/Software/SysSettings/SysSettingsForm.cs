@@ -16,6 +16,8 @@ namespace EasyPOS.Forms.Software.SysSettings
     public partial class SysSettingsForm : Form
     {
         public SysSoftwareForm sysSoftwareForm;
+        private Modules.SysUserRightsModule sysUserRights;
+
 
         public Boolean isIntegrationStarted = false;
         public Int32 logMessageCount = 0;
@@ -26,9 +28,17 @@ namespace EasyPOS.Forms.Software.SysSettings
         {
             InitializeComponent();
             sysSoftwareForm = softwareForm;
+            sysUserRights = new Modules.SysUserRightsModule("SysSettings");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                getSettings();
+                GetComboBoxDropDownList();
+            }
 
-            getSettings();
-            GetComboBoxDropDownList();
         }
 
         public void getSettings()
@@ -343,6 +353,24 @@ namespace EasyPOS.Forms.Software.SysSettings
         // ==========
         public void GetComboBoxDropDownList()
         {
+            if (sysUserRights.GetUserRights().CanLock == false)
+            {
+                buttonLock.Enabled = false;
+            }
+            else
+            {
+                buttonLock.Enabled = true;
+            }
+
+            if (sysUserRights.GetUserRights().CanUnlock == false)
+            {
+                buttonUnlock.Enabled = false;
+            }
+            else
+            {
+                buttonUnlock.Enabled = true;
+            }
+
             Controllers.SysCurrentController sysSettingsController = new Controllers.SysCurrentController();
 
             var terminals = sysSettingsController.DropDownTerminalList();

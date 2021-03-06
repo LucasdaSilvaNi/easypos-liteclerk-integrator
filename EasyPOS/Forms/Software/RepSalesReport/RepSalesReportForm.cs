@@ -396,7 +396,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                             break;
                         case "80mm Sales Summary Report":
-                            sysUserRights = new Modules.SysUserRightsModule("RepSalesSummary");
+                            sysUserRights = new Modules.SysUserRightsModule("RepRestaurantSalesSummary");
 
                             if (sysUserRights.GetUserRights() == null)
                             {
@@ -416,7 +416,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                             break;
                         case "80mm Sales Detail Report":
-                            sysUserRights = new Modules.SysUserRightsModule("RepSalesSummary");
+                            sysUserRights = new Modules.SysUserRightsModule("RepRestaurantSalesDetail");
 
                             if (sysUserRights.GetUserRights() == null)
                             {
@@ -437,7 +437,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             break;
 
                         case "80mm Sales Status Report":
-                            sysUserRights = new Modules.SysUserRightsModule("RepSalesSummary");
+                            sysUserRights = new Modules.SysUserRightsModule("RepSalesStatus");
 
                             if (sysUserRights.GetUserRights() == null)
                             {
