@@ -23,11 +23,11 @@ namespace EasyPOS.Forms.Software._80mmReport
             dateStart = startDate;
             dateEnd = endDate;
             filterTerminalId = terminalId;
+
             if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
             {
                 printDocumentSalesSummaryReport.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 255, 3000);
                 printDocumentSalesSummaryReport.Print();
-
             }
             else
             {
@@ -36,7 +36,7 @@ namespace EasyPOS.Forms.Software._80mmReport
             }
         }
 
-        private void printDocumentSalesSummaryReport_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        private void printDocumentSalesSummaryReport_PrintPage(object sender, PrintPageEventArgs e)
         {
             // ============
             // Data Context
@@ -178,14 +178,14 @@ namespace EasyPOS.Forms.Software._80mmReport
                                     g.Key.EntryDateTime,
 
                                 };
-                
+
 
                 foreach (var salesList in sales.ToList())
                 {
                     totalNumberOfSales += 1;
                     totalAmount += salesList.Amount;
                     String salesData = salesList.SalesDate + salesList.SalesNumber + salesList.Amount.ToString("#,##0.00");
-                    
+
                     RectangleF itemDataRectangle = new RectangleF
                     {
                         X = x,
@@ -193,9 +193,9 @@ namespace EasyPOS.Forms.Software._80mmReport
 
                         Size = new Size(240, ((int)graphics.MeasureString(salesData, fontArial8Regular, 240, StringFormat.GenericDefault).Height))
                     };
-                    graphics.DrawString("\n"+salesList.SalesDate.ToShortDateString() + "\n", fontArial8Regular, drawBrush, new RectangleF(x, y, 120, height), drawFormatLeft);
-                    graphics.DrawString("\n"+salesList.SalesNumber + "\n", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                    graphics.DrawString("\n"+salesList.Amount.ToString("#,##0.00") + "\n", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                    graphics.DrawString("\n" + salesList.SalesDate.ToShortDateString() + "\n", fontArial8Regular, drawBrush, new RectangleF(x, y, 120, height), drawFormatLeft);
+                    graphics.DrawString("\n" + salesList.SalesNumber + "\n", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    graphics.DrawString("\n" + salesList.Amount.ToString("#,##0.00") + "\n", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                     y += itemDataRectangle.Size.Height + 3.0F;
                 }
             }
@@ -208,21 +208,19 @@ namespace EasyPOS.Forms.Software._80mmReport
 
             String totalSalesAmount = "\n" + totalAmount.ToString("#,##0.00");
             String totalNumberOfItemsQuantity = "\n" + totalNumberOfSales.ToString();
-            graphics.DrawString(totalNumberOfItemsQuantity, fontArial8Regular, drawBrush, new RectangleF(x, y+1, width, height), drawFormatLeft);
+            graphics.DrawString(totalNumberOfItemsQuantity, fontArial8Regular, drawBrush, new RectangleF(x, y + 1, width, height), drawFormatLeft);
             graphics.DrawString(totalSalesAmount, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
 
             if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
             {
-                printDocumentSalesSummaryReport.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 255, 3000);
-                printDocumentSalesSummaryReport.Print();
-
+                String space = "\n\n\n\n\n\n\n\n\n\n.";
+                graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             }
             else
             {
-                printDocumentSalesSummaryReport.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 270, 3000);
-                printDocumentSalesSummaryReport.Print();
+                String space = "\n\n\n.";
+                graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             }
         }
-
     }
 }

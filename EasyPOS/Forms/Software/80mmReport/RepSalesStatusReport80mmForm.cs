@@ -182,7 +182,17 @@ namespace EasyPOS.Forms.Software._80mmReport
                 String totalSalesAmount = "\n" + totalAmount.ToString("#,##0.00");
                 graphics.DrawString(totalSalesAmount, fontArial8Bold, drawBrush, new RectangleF(x, y + 3, width, height), drawFormatRight);
             }
-           
+            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+            {
+                String space = "\n\n\n\n\n\n\n\n\n\n.";
+                graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            }
+            else
+            {
+                String space = "\n\n\n.";
+                graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            }
         }
+
     }
 }
