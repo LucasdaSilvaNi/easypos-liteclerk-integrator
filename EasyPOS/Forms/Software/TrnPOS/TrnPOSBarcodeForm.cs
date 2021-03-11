@@ -480,7 +480,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             if (Modules.SysCurrentModule.GetCurrentSettings().AllowCancelPreviousSales == true)
             {
-                if (dataGridViewSalesList.Rows.Count > 1)
+                if (dataGridViewSalesList.Rows.Count != -1)
                 {
                     if (dataGridViewSalesList.CurrentCell.RowIndex != -1)
                     {

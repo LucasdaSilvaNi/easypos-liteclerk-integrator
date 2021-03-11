@@ -56,9 +56,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBoxSupplier = new System.Windows.Forms.ComboBox();
             this.dateTimePickerStockInDate = new System.Windows.Forms.DateTimePicker();
             this.textBoxStockInNumber = new System.Windows.Forms.TextBox();
+            this.comboBoxSupplier = new System.Windows.Forms.ComboBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.buttonStockInLineListPageListFirst = new System.Windows.Forms.Button();
             this.buttonStockInLineListPageListPrevious = new System.Windows.Forms.Button();
@@ -382,18 +382,6 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Stock-In Number:";
             // 
-            // comboBoxSupplier
-            // 
-            this.comboBoxSupplier.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBoxSupplier.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBoxSupplier.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBoxSupplier.FormattingEnabled = true;
-            this.comboBoxSupplier.Location = new System.Drawing.Point(181, 66);
-            this.comboBoxSupplier.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxSupplier.Name = "comboBoxSupplier";
-            this.comboBoxSupplier.Size = new System.Drawing.Size(239, 27);
-            this.comboBoxSupplier.TabIndex = 2;
-            // 
             // dateTimePickerStockInDate
             // 
             this.dateTimePickerStockInDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
@@ -414,6 +402,18 @@
             this.textBoxStockInNumber.Size = new System.Drawing.Size(158, 26);
             this.textBoxStockInNumber.TabIndex = 0;
             this.textBoxStockInNumber.TabStop = false;
+            // 
+            // comboBoxSupplier
+            // 
+            this.comboBoxSupplier.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.comboBoxSupplier.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxSupplier.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxSupplier.FormattingEnabled = true;
+            this.comboBoxSupplier.Location = new System.Drawing.Point(181, 66);
+            this.comboBoxSupplier.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxSupplier.Name = "comboBoxSupplier";
+            this.comboBoxSupplier.Size = new System.Drawing.Size(239, 27);
+            this.comboBoxSupplier.TabIndex = 2;
             // 
             // panel4
             // 
