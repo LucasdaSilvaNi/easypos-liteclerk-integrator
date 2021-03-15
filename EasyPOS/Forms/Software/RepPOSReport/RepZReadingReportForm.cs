@@ -52,7 +52,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 printDocumentZReadingReport.DefaultPageSettings.PaperSize = new PaperSize("Z Reading Report", 270, 1000);
                 ZReadingDataSource();
             }
-           
+
         }
 
         private void buttonPrint_Click(object sender, EventArgs e)
@@ -421,9 +421,23 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
         private void printDocumentZReadingReport_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+            Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
+            Decimal declareRate = 0;
             var dataSource = zReadingReportEntity;
-            Decimal declareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
+            var SysDeclareRate = from d in db.SysDeclareRates
+                                 where d.Date == filterDate
+                                 select d;
+            if (SysDeclareRate.FirstOrDefault()?.Date == null)
+            {
+                declareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
+            }
+            else
+            {
+                declareRate = Convert.ToDecimal(SysDeclareRate.FirstOrDefault()?.DeclareRate);
+            }
 
+
+            //Decimal declareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
             // =============
             // Font Settings
             // =============

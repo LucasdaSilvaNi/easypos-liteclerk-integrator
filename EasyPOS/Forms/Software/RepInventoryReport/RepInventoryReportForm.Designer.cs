@@ -65,6 +65,7 @@
             this.ColumnStockCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnVariance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -237,6 +238,7 @@
             this.ColumnStockCount,
             this.ColumnVariance,
             this.ColumnCost,
+            this.ColumnItemPrice,
             this.ColumnAmount});
             this.dataGridViewInventoryReport.Location = new System.Drawing.Point(10, 34);
             this.dataGridViewInventoryReport.Margin = new System.Windows.Forms.Padding(2);
@@ -421,6 +423,13 @@
             this.ColumnCost.ReadOnly = true;
             this.ColumnCost.Width = 120;
             // 
+            // ColumnItemPrice
+            // 
+            this.ColumnItemPrice.DataPropertyName = "ColumnItemPrice";
+            this.ColumnItemPrice.HeaderText = "Price";
+            this.ColumnItemPrice.Name = "ColumnItemPrice";
+            this.ColumnItemPrice.ReadOnly = true;
+            // 
             // ColumnAmount
             // 
             this.ColumnAmount.DataPropertyName = "ColumnAmount";
@@ -487,6 +496,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnVariance;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAmount;
     }
 }

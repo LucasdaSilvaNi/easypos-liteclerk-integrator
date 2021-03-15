@@ -64,6 +64,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                               ColumnStockCount = d.CountQuantity.ToString("#,##0.00"),
                               ColumnVariance = d.Variance.ToString("#,##0.00"),
                               ColumnCost = d.Cost.ToString("#,##0.00"),
+                              ColumnItemPrice = d.Price.ToString("#,##0.00"),
                               ColumnAmount = d.Amount.ToString("#,##0.00")
                           };
 
@@ -235,6 +236,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         "Count Quantity",
                         "Variance Quantity",
                         "Cost",
+                        "Price",
                         "Amount"
                     };
 
@@ -256,6 +258,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                               inventoryReport.ColumnStockCount.Replace(",", ""),
                               inventoryReport.ColumnVariance.Replace(",", ""),
                               inventoryReport.ColumnCost.Replace(",", ""),
+                              inventoryReport.ColumnItemPrice.Replace(",", ""),
                               inventoryReport.ColumnAmount.Replace(",", "")
                             };
 

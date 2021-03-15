@@ -72,6 +72,7 @@ namespace EasyPOS.Controllers
                                                  EndingQuantity = 0,
                                                  Unit = d.MstUnit.Unit,
                                                  Cost = d.MstItem.Cost,
+                                                 Price = d.MstItem.Price,
                                                  Amount = 0
                                              };
 
@@ -95,6 +96,7 @@ namespace EasyPOS.Controllers
                                                    EndingQuantity = 0,
                                                    Unit = d.MstUnit.Unit,
                                                    Cost = d.MstItem.Cost,
+                                                   Price = d.MstItem.Price,
                                                    Amount = 0
                                                };
 
@@ -132,6 +134,7 @@ namespace EasyPOS.Controllers
                                     EndingQuantity = 0,
                                     Unit = itemComponent.MstItem1.MstUnit.Unit,
                                     Cost = itemComponent.MstItem1.Cost,
+                                    Price = itemComponent.MstItem1.Price,
                                     Amount = 0
                                 });
                             }
@@ -158,6 +161,7 @@ namespace EasyPOS.Controllers
                                                   EndingQuantity = 0,
                                                   Unit = d.MstUnit.Unit,
                                                   Cost = d.MstItem.Cost,
+                                                  Price = d.MstItem.Price,
                                                   Amount = 0
                                               };
 
@@ -183,6 +187,7 @@ namespace EasyPOS.Controllers
                                                EndingQuantity = 0,
                                                Unit = d.MstUnit.Unit,
                                                Cost = d.MstItem.Cost,
+                                               Price = d.MstItem.Price,
                                                Amount = 0
                                            };
 
@@ -207,6 +212,7 @@ namespace EasyPOS.Controllers
                                                  EndingQuantity = 0,
                                                  Unit = d.MstUnit.Unit,
                                                  Cost = d.MstItem.Cost,
+                                                 Price = d.MstItem.Price,
                                                  Amount = 0
                                              };
 
@@ -245,6 +251,7 @@ namespace EasyPOS.Controllers
                                     EndingQuantity = 0,
                                     Unit = itemComponent.MstItem1.MstUnit.Unit,
                                     Cost = itemComponent.MstItem1.Cost,
+                                    Price = itemComponent.MstItem1.Price,
                                     Amount = 0
                                 });
                             }
@@ -272,6 +279,7 @@ namespace EasyPOS.Controllers
                                                 EndingQuantity = 0,
                                                 Unit = d.MstUnit.Unit,
                                                 Cost = d.MstItem.Cost,
+                                                Price = d.MstItem.Price,
                                                 Amount = 0
                                             };
 
@@ -287,7 +295,8 @@ namespace EasyPOS.Controllers
                                           d.BarCode,
                                           d.ItemDescription,
                                           d.Unit,
-                                          d.Cost
+                                          d.Cost,
+                                          d.Price
                                       } into g
                                       select new Entities.RepInventoryReportEntity
                                       {
@@ -302,6 +311,7 @@ namespace EasyPOS.Controllers
                                           CountQuantity = 0,
                                           Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
                                           Cost = g.Key.Cost,
+                                          Price = g.Key.Price,
                                           Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
                                       };
 
@@ -336,6 +346,7 @@ namespace EasyPOS.Controllers
                                                  EndingQuantity = 0,
                                                  Unit = d.MstUnit.Unit,
                                                  Cost = d.MstItem.Cost,
+                                                 Price = d.MstItem.Price,
                                                  Amount = 0
                                              };
 
@@ -361,6 +372,7 @@ namespace EasyPOS.Controllers
                                                    EndingQuantity = 0,
                                                    Unit = d.MstUnit.Unit,
                                                    Cost = d.MstItem.Cost,
+                                                   Price = d.MstItem.Price,
                                                    Amount = 0
                                                };
 
@@ -400,6 +412,7 @@ namespace EasyPOS.Controllers
                                     EndingQuantity = 0,
                                     Unit = itemComponent.MstItem1.MstUnit.Unit,
                                     Cost = itemComponent.MstItem1.Cost,
+                                    Price = itemComponent.MstItem1.Price,
                                     Amount = 0
                                 });
                             }
@@ -428,6 +441,7 @@ namespace EasyPOS.Controllers
                                                   EndingQuantity = 0,
                                                   Unit = d.MstUnit.Unit,
                                                   Cost = d.MstItem.Cost,
+                                                  Price = d.MstItem.Price,
                                                   Amount = 0
                                               };
 
@@ -455,6 +469,7 @@ namespace EasyPOS.Controllers
                                                EndingQuantity = 0,
                                                Unit = d.MstUnit.Unit,
                                                Cost = d.MstItem.Cost,
+                                               Price = d.MstItem.Price,
                                                Amount = 0
                                            };
 
@@ -481,6 +496,7 @@ namespace EasyPOS.Controllers
                                                  EndingQuantity = 0,
                                                  Unit = d.MstUnit.Unit,
                                                  Cost = d.MstItem.Cost,
+                                                 Price = d.MstItem.Price,
                                                  Amount = 0
                                              };
 
@@ -521,6 +537,7 @@ namespace EasyPOS.Controllers
                                     EndingQuantity = 0,
                                     Unit = itemComponent.MstItem1.MstUnit.Unit,
                                     Cost = itemComponent.MstItem1.Cost,
+                                    Price = itemComponent.MstItem1.Price,
                                     Amount = 0
                                 });
                             }
@@ -550,6 +567,7 @@ namespace EasyPOS.Controllers
                                                 EndingQuantity = 0,
                                                 Unit = d.MstUnit.Unit,
                                                 Cost = d.MstItem.Cost,
+                                                Price = d.MstItem.Price,
                                                 Amount = 0
                                             };
 
@@ -565,7 +583,8 @@ namespace EasyPOS.Controllers
                                           d.BarCode,
                                           d.ItemDescription,
                                           d.Unit,
-                                          d.Cost
+                                          d.Cost,
+                                          d.Price
                                       } into g
                                       select new Entities.RepInventoryReportEntity
                                       {
@@ -580,6 +599,7 @@ namespace EasyPOS.Controllers
                                           CountQuantity = 0,
                                           Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
                                           Cost = g.Key.Cost,
+                                          Price = g.Key.Price,
                                           Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
                                       };
 
@@ -613,6 +633,7 @@ namespace EasyPOS.Controllers
                                                  EndingQuantity = 0,
                                                  Unit = d.MstUnit.Unit,
                                                  Cost = d.MstItem.Cost,
+                                                 Price = d.MstItem.Price,
                                                  Amount = 0
                                              };
 
@@ -637,6 +658,7 @@ namespace EasyPOS.Controllers
                                                    EndingQuantity = 0,
                                                    Unit = d.MstUnit.Unit,
                                                    Cost = d.MstItem.Cost,
+                                                   Price = d.MstItem.Price,
                                                    Amount = 0
                                                };
 
@@ -675,6 +697,7 @@ namespace EasyPOS.Controllers
                                     EndingQuantity = 0,
                                     Unit = itemComponent.MstItem1.MstUnit.Unit,
                                     Cost = itemComponent.MstItem1.Cost,
+                                    Price = itemComponent.MstItem1.Price,
                                     Amount = 0
                                 });
                             }
@@ -702,6 +725,7 @@ namespace EasyPOS.Controllers
                                                   EndingQuantity = 0,
                                                   Unit = d.MstUnit.Unit,
                                                   Cost = d.MstItem.Cost,
+                                                  Price = d.MstItem.Price,
                                                   Amount = 0
                                               };
 
@@ -728,6 +752,7 @@ namespace EasyPOS.Controllers
                                                EndingQuantity = 0,
                                                Unit = d.MstUnit.Unit,
                                                Cost = d.MstItem.Cost,
+                                               Price = d.MstItem.Price,
                                                Amount = 0
                                            };
 
@@ -753,6 +778,7 @@ namespace EasyPOS.Controllers
                                                  EndingQuantity = 0,
                                                  Unit = d.MstUnit.Unit,
                                                  Cost = d.MstItem.Cost,
+                                                 Price = d.MstItem.Price,
                                                  Amount = 0
                                              };
 
@@ -792,6 +818,7 @@ namespace EasyPOS.Controllers
                                     EndingQuantity = 0,
                                     Unit = itemComponent.MstItem1.MstUnit.Unit,
                                     Cost = itemComponent.MstItem1.Cost,
+                                    Price = itemComponent.MstItem1.Price,
                                     Amount = 0
                                 });
                             }
@@ -820,6 +847,7 @@ namespace EasyPOS.Controllers
                                                 EndingQuantity = 0,
                                                 Unit = d.MstUnit.Unit,
                                                 Cost = d.MstItem.Cost,
+                                                Price = d.MstItem.Price,
                                                 Amount = 0
                                             };
 
@@ -835,7 +863,8 @@ namespace EasyPOS.Controllers
                                           d.BarCode,
                                           d.ItemDescription,
                                           d.Unit,
-                                          d.Cost
+                                          d.Cost,
+                                          d.Price
                                       } into g
                                       select new Entities.RepInventoryReportEntity
                                       {
@@ -850,6 +879,7 @@ namespace EasyPOS.Controllers
                                           CountQuantity = 0,
                                           Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
                                           Cost = g.Key.Cost,
+                                          Price = g.Key.Price,
                                           Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
                                       };
 
@@ -883,6 +913,7 @@ namespace EasyPOS.Controllers
                                                  EndingQuantity = 0,
                                                  Unit = d.MstUnit.Unit,
                                                  Cost = d.MstItem.Cost,
+                                                 Price = d.MstItem.Price,
                                                  Amount = 0
                                              };
 
@@ -907,6 +938,7 @@ namespace EasyPOS.Controllers
                                                    EndingQuantity = 0,
                                                    Unit = d.MstUnit.Unit,
                                                    Cost = d.MstItem.Cost,
+                                                   Price = d.MstItem.Price,
                                                    Amount = 0
                                                };
 
@@ -945,6 +977,7 @@ namespace EasyPOS.Controllers
                                     EndingQuantity = 0,
                                     Unit = itemComponent.MstItem1.MstUnit.Unit,
                                     Cost = itemComponent.MstItem1.Cost,
+                                    Price = itemComponent.MstItem1.Price,
                                     Amount = 0
                                 });
                             }
@@ -972,6 +1005,7 @@ namespace EasyPOS.Controllers
                                                   EndingQuantity = 0,
                                                   Unit = d.MstUnit.Unit,
                                                   Cost = d.MstItem.Cost,
+                                                  Price = d.MstItem.Price,
                                                   Amount = 0
                                               };
 
@@ -998,6 +1032,7 @@ namespace EasyPOS.Controllers
                                                EndingQuantity = 0,
                                                Unit = d.MstUnit.Unit,
                                                Cost = d.MstItem.Cost,
+                                               Price = d.MstItem.Price,
                                                Amount = 0
                                            };
 
@@ -1023,6 +1058,7 @@ namespace EasyPOS.Controllers
                                                  EndingQuantity = 0,
                                                  Unit = d.MstUnit.Unit,
                                                  Cost = d.MstItem.Cost,
+                                                 Price = d.MstItem.Price,
                                                  Amount = 0
                                              };
 
@@ -1062,6 +1098,7 @@ namespace EasyPOS.Controllers
                                     EndingQuantity = 0,
                                     Unit = itemComponent.MstItem1.MstUnit.Unit,
                                     Cost = itemComponent.MstItem1.Cost,
+                                    Price = itemComponent.MstItem1.Price,
                                     Amount = 0
                                 });
                             }
@@ -1090,6 +1127,7 @@ namespace EasyPOS.Controllers
                                                 EndingQuantity = 0,
                                                 Unit = d.MstUnit.Unit,
                                                 Cost = d.MstItem.Cost,
+                                                Price = d.MstItem.Price,
                                                 Amount = 0
                                             };
 
@@ -1105,7 +1143,8 @@ namespace EasyPOS.Controllers
                                           d.BarCode,
                                           d.ItemDescription,
                                           d.Unit,
-                                          d.Cost
+                                          d.Cost,
+                                          d.Price
                                       } into g
                                       select new Entities.RepInventoryReportEntity
                                       {
@@ -1120,6 +1159,7 @@ namespace EasyPOS.Controllers
                                           CountQuantity = 0,
                                           Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
                                           Cost = g.Key.Cost,
+                                          Price =g.Key.Price,
                                           Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
                                       };
 

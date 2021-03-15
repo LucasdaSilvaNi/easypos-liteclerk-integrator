@@ -23,6 +23,7 @@ namespace EasyPOS.Entities
         public Decimal CountQuantity { get; set; }
         public Decimal Variance { get; set; }
         public Decimal Cost { get; set; }
+        public Decimal Price { get; set; }
         public Decimal Amount { get; set; }
     }
 }
