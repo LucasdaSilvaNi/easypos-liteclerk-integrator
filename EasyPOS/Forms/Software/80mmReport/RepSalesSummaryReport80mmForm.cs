@@ -17,6 +17,8 @@ namespace EasyPOS.Forms.Software._80mmReport
         public DateTime dateStart;
         public DateTime dateEnd;
         public Int32 filterTerminalId;
+        private SysSoftwareForm softwareForm;
+
         public RepSalesSummaryReport80mmForm(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
             InitializeComponent();
@@ -38,10 +40,10 @@ namespace EasyPOS.Forms.Software._80mmReport
 
         private void printDocumentSalesSummaryReport_PrintPage(object sender, PrintPageEventArgs e)
         {
-            // ============
-            // Data Context
-            // ============
-            Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
+                // ============
+                // Data Context
+                // ============
+                Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
 
             // =============
             // Font Settings

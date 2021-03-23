@@ -302,7 +302,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         }
                         break;
                     case "Stock Out Detail Report":
-                        sysUserRights = new Modules.SysUserRightsModule("RepInventoryStockInDetail");
+                        sysUserRights = new Modules.SysUserRightsModule("RepInventoryStockOutDetail");
                         if (sysUserRights.GetUserRights() == null)
                         {
                             MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -321,11 +321,27 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         }
                         break;
                     case "Stock Count Detail Report":
-                        RepStockCountDetailReportForm repInventoryReportStockCount = new RepStockCountDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
-                        repInventoryReportStockCount.ShowDialog();
+                        sysUserRights = new Modules.SysUserRightsModule("RepInventoryStockCountDetail");
+                        if (sysUserRights.GetUserRights() == null)
+                        {
+                            MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            if (sysUserRights.GetUserRights().CanView == true)
+                            {
+                                RepStockCountDetailReportForm repInventoryReportStockCount = new RepStockCountDetailReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                                repInventoryReportStockCount.ShowDialog();
+                            }
+                            else
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                       
                         break;
                     case "Item Expiry Report":
-                        sysUserRights = new Modules.SysUserRightsModule("RepInventoryItemList");
+                        sysUserRights = new Modules.SysUserRightsModule("RepInventoryItemExpiry");
                         if (sysUserRights.GetUserRights() == null)
                         {
                             MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -351,7 +367,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         }
                         else
                         {
-                            if (sysUserRights.GetUserRights().CanView == true)
+                            if (sysUserRights.GetUserRights().CanPrint == true)
                             {
                                 _80mm_Report.RepInventoryReport80mmForm repInventoryReportInventoryReport = new _80mm_Report.RepInventoryReport80mmForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToString(comboBoxCategory.SelectedValue), Convert.ToInt32(comboBoxItem.SelectedValue));
                             }

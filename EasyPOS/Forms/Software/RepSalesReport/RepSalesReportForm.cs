@@ -404,7 +404,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             }
                             else
                             {
-                                if (sysUserRights.GetUserRights().CanView == true)
+                                if (sysUserRights.GetUserRights().CanPrint == true)
                                 {
                                     _80mmReport.RepSalesSummaryReport80mmForm repSalesSummaryReport80MmForm = new _80mmReport.RepSalesSummaryReport80mmForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
                                 }
@@ -424,7 +424,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             }
                             else
                             {
-                                if (sysUserRights.GetUserRights().CanView == true)
+                                if (sysUserRights.GetUserRights().CanPrint == true)
                                 {
                                     _80mmReport.RepSalesDetailReport80mmForm repSalesDetailReport80MmForm = new _80mmReport.RepSalesDetailReport80mmForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
                                 }
@@ -437,7 +437,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             break;
 
                         case "80mm Sales Status Report":
-                            sysUserRights = new Modules.SysUserRightsModule("RepSalesStatus");
+                            sysUserRights = new Modules.SysUserRightsModule("RepRestaurantSalesStatus");
 
                             if (sysUserRights.GetUserRights() == null)
                             {
@@ -445,7 +445,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             }
                             else
                             {
-                                if (sysUserRights.GetUserRights().CanView == true)
+                                if (sysUserRights.GetUserRights().CanPrint == true)
                                 {
                                     _80mmReport.RepSalesStatusReport80mmForm repSalesStatusReport80MmForm = new _80mmReport.RepSalesStatusReport80mmForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
                                 }
@@ -521,7 +521,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                             break;
                         case "80mm Collection Detail Report":
-                            sysUserRights = new Modules.SysUserRightsModule("RepSalesSummary");
+                            sysUserRights = new Modules.SysUserRightsModule("RepCollectionDetail");
 
                             if (sysUserRights.GetUserRights() == null)
                             {
@@ -529,7 +529,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             }
                             else
                             {
-                                if (sysUserRights.GetUserRights().CanView == true)
+                                if (sysUserRights.GetUserRights().CanPrint == true)
                                 {
                                     _80mmReport.RepCollectionDetailReport80mmForm repCollectionDetailReport80MmForm = new _80mmReport.RepCollectionDetailReport80mmForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
                                 }
@@ -541,7 +541,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                             break;
                         case "Stock Withdrawal Report":
-
+                            sysUserRights = new Modules.SysUserRightsModule("RepCollectionDetail");
                             String printFilePath = "";
                             DialogResult folderBrowserDialoResult = folderBrowserDialogStockWithdrawalReport.ShowDialog();
 
