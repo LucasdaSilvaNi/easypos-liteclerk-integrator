@@ -32,13 +32,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
             if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
             {
-                printDocumentOfficialReceipt.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 255, 3000);
+                printDocumentOfficialReceipt.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 255, 38500);
                 printDocumentOfficialReceipt.Print();
 
             }
             else
             {
-                printDocumentOfficialReceipt.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 270, 3000);
+                printDocumentOfficialReceipt.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 270, 38500);
                 printDocumentOfficialReceipt.Print();
             }
         }

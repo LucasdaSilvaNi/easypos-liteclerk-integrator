@@ -15,23 +15,23 @@ namespace EasyPOS.Forms.Software._80mmReport
     public partial class RepSalesDetailReport80mmForm : Form
     {
         public DateTime dateStart;
-        public DateTime dateEnd;
+        //public DateTime dateEnd;
         public Int32 filterTerminalId;
-        public RepSalesDetailReport80mmForm(DateTime startDate, DateTime endDate, Int32 terminalId)
+        public RepSalesDetailReport80mmForm(DateTime startDate, /*DateTime endDate,*/ Int32 terminalId)
         {
             InitializeComponent();
             dateStart = startDate;
-            dateEnd = endDate;
+            //dateEnd = endDate;
             filterTerminalId = terminalId;
             if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
             {
-                printDocumentSalesDetailReport.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 255, 3000);
+                printDocumentSalesDetailReport.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 255, 38500);
                 printDocumentSalesDetailReport.Print();
 
             }
             else
             {
-                printDocumentSalesDetailReport.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 270, 3000);
+                printDocumentSalesDetailReport.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 270, 38500);
                 printDocumentSalesDetailReport.Print();
             }
         }
@@ -102,7 +102,7 @@ namespace EasyPOS.Forms.Software._80mmReport
             // ==================
             // Date Range Header
             // ==================
-            String RangeDateText = "FROM" + " " + dateStart.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture) + " " + "TO" + " " + dateEnd.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture);
+            String RangeDateText = "FROM" + " " + dateStart.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture)/* + " " + "TO" + " " + dateEnd.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture)*/;
             graphics.DrawString(RangeDateText, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             y += graphics.MeasureString(RangeDateText, fontArial8Regular).Height;
 
@@ -134,7 +134,7 @@ namespace EasyPOS.Forms.Software._80mmReport
 
             var salesLineItem = from s in db.TrnSalesLines
                                 where s.TrnSale.SalesDate >= dateStart
-                                 && s.TrnSale.SalesDate <= dateEnd
+                                 //&& s.TrnSale.SalesDate <= dateEnd
                                  && s.TrnSale.TerminalId == filterTerminalId
                                  && s.TrnSale.IsLocked == true
                                  && s.TrnSale.IsCancelled == false

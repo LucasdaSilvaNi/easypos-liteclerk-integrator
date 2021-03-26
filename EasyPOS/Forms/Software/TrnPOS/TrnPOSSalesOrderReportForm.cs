@@ -23,13 +23,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
             {
-                printDocumentReturnReport.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 255, 3000);
+                printDocumentReturnReport.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 255, 38500);
                 printDocumentReturnReport.Print();
 
             }
             else
             {
-                printDocumentReturnReport.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 270, 3000);
+                printDocumentReturnReport.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 270, 38500);
                 printDocumentReturnReport.Print();
             }
         }

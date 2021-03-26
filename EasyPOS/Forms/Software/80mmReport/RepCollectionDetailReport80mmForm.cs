@@ -15,23 +15,23 @@ namespace EasyPOS.Forms.Software._80mmReport
     public partial class RepCollectionDetailReport80mmForm : Form
     {
         public DateTime dateStart;
-        public DateTime dateEnd;
+        //public DateTime dateEnd;
         public Int32 filterTerminalId;
-        public RepCollectionDetailReport80mmForm(DateTime startDate, DateTime endDate, Int32 terminalId)
+        public RepCollectionDetailReport80mmForm(DateTime startDate, /*DateTime endDate,*/ Int32 terminalId)
         {
             InitializeComponent();
             dateStart = startDate;
-            dateEnd = endDate;
+            //dateEnd = endDate;
             filterTerminalId = terminalId;
             if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
             {
-                printDocument80mm.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 255, 3000);
+                printDocument80mm.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 255, 38500);
                 printDocument80mm.Print();
 
             }
             else
             {
-                printDocument80mm.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 270, 3000);
+                printDocument80mm.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 270, 38500);
                 printDocument80mm.Print();
             }
         }
@@ -102,7 +102,7 @@ namespace EasyPOS.Forms.Software._80mmReport
             // ==================
             // Date Range Header
             // ==================
-            String RangeDateText = "FROM" + " " + dateStart.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture) + " " + "TO" + " " + dateEnd.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture);
+            String RangeDateText = "FROM" + " " + dateStart.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture)/* + " " + "TO" + " " + dateEnd.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture)*/;
             graphics.DrawString(RangeDateText, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             y += graphics.MeasureString(RangeDateText, fontArial8Regular).Height;
 
@@ -147,7 +147,7 @@ namespace EasyPOS.Forms.Software._80mmReport
 
             var collectionLines = from s in db.TrnCollectionLines
                                 where s.TrnCollection.CollectionDate >= dateStart
-                                 && s.TrnCollection.CollectionDate <= dateEnd
+                                 //&& s.TrnCollection.CollectionDate <= dateEnd
                                  && s.TrnCollection.TerminalId == filterTerminalId
                                  && s.TrnCollection.IsLocked == true
                                 select s;
@@ -197,21 +197,8 @@ namespace EasyPOS.Forms.Software._80mmReport
                             subCollectionTotal = (0 * CollectionTotal) + CollectionTotal;
                             subCollectionCount = (0 * CollectionCount) + CollectionCount;
                             totalCollectionCount += CollectionCount;
-                            // ========
-                            // 3rd Line
-                            // ========
-                            Point thirdLineFirstPoint = new Point(0, Convert.ToInt32(y) + 30);
-                            Point thirdLineSecondPoint = new Point(500, Convert.ToInt32(y) + 30);
-                            graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
-
-
-                            graphics.DrawString(subCollectionCount.ToString(), fontArial9Bold, drawBrush, new RectangleF(x, y + 30, width, height), drawFormatLeft);
-                            graphics.DrawString(subCollectionTotal.ToString("#,##0.00"), fontArial9Bold, drawBrush, new RectangleF(x, y + 31, width, height), drawFormatRight);
-                            y += 30;
 
                         }
-                       
-
                     }
                     // ========
                     // 4th Line
