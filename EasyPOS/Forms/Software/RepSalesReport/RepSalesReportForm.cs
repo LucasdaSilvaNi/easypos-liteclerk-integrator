@@ -34,7 +34,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             }
 
             GetCustomerList();
-            
+
         }
 
         public void GetCustomerList()
@@ -47,7 +47,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 comboBoxCustomer.DisplayMember = "Customer";
             }
         }
-        
+
         private void listBoxSalesReport_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxSalesReport.SelectedItem != null)
@@ -314,6 +314,24 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = "View";
                         break;
+                    case "Cost Of Sales Report":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+
+                        labelTerminal.Visible = true;
+                        comboBoxTerminal.Visible = true;
+
+                        labelCustomer.Visible = false;
+                        comboBoxCustomer.Visible = false;
+
+                        dateTimePickerStartDate.Focus();
+                        buttonView.Text = "View";
+
+                        break;
+
                     default:
                         labelStartDate.Visible = false;
                         dateTimePickerStartDate.Visible = false;
@@ -374,6 +392,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             }
 
                             break;
+
                         case "Sales Detail Report":
                             sysUserRights = new Modules.SysUserRightsModule("RepSalesDetail");
 
@@ -559,7 +578,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                     if (repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxCustomer.SelectedValue)).Any())
                                     {
                                         var collectionList = repSalesReportController.StockWithdrawalReport(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToInt32(comboBoxCustomer.SelectedValue));
-                                        new Software.TrnPOS.TrnPOSDeliveryReceiptReportForm(printFilePath + "\\", collectionList, false,false, false);
+                                        new Software.TrnPOS.TrnPOSDeliveryReceiptReportForm(printFilePath + "\\", collectionList, false, false, false);
 
                                         MessageBox.Show("Generate PDF Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
@@ -689,6 +708,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                 }
                             }
                             break;
+
                         case "Unsold Item Report":
                             sysUserRights = new Modules.SysUserRightsModule("RepSalesDetail");
 
@@ -702,6 +722,26 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                 {
                                     RepUnsoldItemReportForm repUnsoldItemReport = new RepUnsoldItemReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
                                     repUnsoldItemReport.ShowDialog();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            break;
+                        case "Cost Of Sales Report":
+                            sysUserRights = new Modules.SysUserRightsModule("RepSalesDetail");
+
+                            if (sysUserRights.GetUserRights() == null)
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                if (sysUserRights.GetUserRights().CanView == true)
+                                {
+                                    RepCostOfSaleReportForm repCostOfSaleReportForm = new RepCostOfSaleReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
+                                    repCostOfSaleReportForm.ShowDialog();
                                 }
                                 else
                                 {
