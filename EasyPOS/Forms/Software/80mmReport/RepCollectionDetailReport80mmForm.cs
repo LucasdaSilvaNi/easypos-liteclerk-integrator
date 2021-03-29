@@ -15,13 +15,13 @@ namespace EasyPOS.Forms.Software._80mmReport
     public partial class RepCollectionDetailReport80mmForm : Form
     {
         public DateTime dateStart;
-        //public DateTime dateEnd;
+        public DateTime dateEnd;
         public Int32 filterTerminalId;
-        public RepCollectionDetailReport80mmForm(DateTime startDate, /*DateTime endDate,*/ Int32 terminalId)
+        public RepCollectionDetailReport80mmForm(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
             InitializeComponent();
             dateStart = startDate;
-            //dateEnd = endDate;
+            dateEnd = endDate;
             filterTerminalId = terminalId;
             if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
             {
@@ -102,7 +102,7 @@ namespace EasyPOS.Forms.Software._80mmReport
             // ==================
             // Date Range Header
             // ==================
-            String RangeDateText = "FROM" + " " + dateStart.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture)/* + " " + "TO" + " " + dateEnd.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture)*/;
+            String RangeDateText = "FROM" + " " + dateStart.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture) + " " + "TO" + " " + dateEnd.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture);
             graphics.DrawString(RangeDateText, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
             y += graphics.MeasureString(RangeDateText, fontArial8Regular).Height;
 
@@ -147,7 +147,7 @@ namespace EasyPOS.Forms.Software._80mmReport
 
             var collectionLines = from s in db.TrnCollectionLines
                                 where s.TrnCollection.CollectionDate >= dateStart
-                                 //&& s.TrnCollection.CollectionDate <= dateEnd
+                                 && s.TrnCollection.CollectionDate <= dateEnd
                                  && s.TrnCollection.TerminalId == filterTerminalId
                                  && s.TrnCollection.IsLocked == true
                                 select s;

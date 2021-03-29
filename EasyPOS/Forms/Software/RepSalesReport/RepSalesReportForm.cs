@@ -109,8 +109,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         labelStartDate.Visible = true;
                         dateTimePickerStartDate.Visible = true;
 
-                        //labelEndDate.Visible = true;
-                        //dateTimePickerEndDate.Visible = true;
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
 
                         labelTerminal.Visible = true;
                         comboBoxTerminal.Visible = true;
@@ -175,8 +175,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         labelStartDate.Visible = true;
                         dateTimePickerStartDate.Visible = true;
 
-                        //labelEndDate.Visible = true;
-                        //dateTimePickerEndDate.Visible = true;
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
 
                         labelTerminal.Visible = true;
                         comboBoxTerminal.Visible = true;
@@ -426,7 +426,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             {
                                 if (sysUserRights.GetUserRights().CanPrint == true)
                                 {
-                                    _80mmReport.RepSalesDetailReport80mmForm repSalesDetailReport80MmForm = new _80mmReport.RepSalesDetailReport80mmForm(dateTimePickerStartDate.Value.Date,/* dateTimePickerEndDate.Value.Date,*/ Convert.ToInt32(comboBoxTerminal.SelectedValue));
+                                    _80mmReport.RepSalesDetailReport80mmForm repSalesDetailReport80MmForm = new _80mmReport.RepSalesDetailReport80mmForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
                                 }
                                 else
                                 {
@@ -531,7 +531,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             {
                                 if (sysUserRights.GetUserRights().CanPrint == true)
                                 {
-                                    _80mmReport.RepCollectionDetailReport80mmForm repCollectionDetailReport80MmForm = new _80mmReport.RepCollectionDetailReport80mmForm(dateTimePickerStartDate.Value.Date, /*dateTimePickerEndDate.Value.Date,*/ Convert.ToInt32(comboBoxTerminal.SelectedValue));
+                                    _80mmReport.RepCollectionDetailReport80mmForm repCollectionDetailReport80MmForm = new _80mmReport.RepCollectionDetailReport80mmForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
                                 }
                                 else
                                 {
