@@ -475,6 +475,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
 
             Modules.SysSerialPortModule.WriteSeralPortMessage(line1, line2);
+            Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
+            textBoxChange.Text = trnPOSSalesController.GetLastChange(Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId)).ToString("#,##0.00");
         }
 
         private void dataGridViewSalesLineList_CellClick(object sender, DataGridViewCellEventArgs e)

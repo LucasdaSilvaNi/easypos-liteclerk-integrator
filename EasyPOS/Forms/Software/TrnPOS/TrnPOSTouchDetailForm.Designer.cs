@@ -30,15 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSTouchDetailForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonOverRide = new System.Windows.Forms.Button();
             this.buttonPrint = new System.Windows.Forms.Button();
@@ -112,10 +112,6 @@
             this.buttonItemGroupItemPrevious = new System.Windows.Forms.Button();
             this.buttonItemGroupPrevious = new System.Windows.Forms.Button();
             this.dataGridViewSalesLineList = new System.Windows.Forms.DataGridView();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.buttonHideItems = new System.Windows.Forms.Button();
-            this.printDialogSelectPrinter = new System.Windows.Forms.PrintDialog();
             this.ColumnSalesLineEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnSalesLineDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnSalesLineId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -147,6 +143,14 @@
             this.ColumnSalesLinePrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLinePrice2LessTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLinePriceSplitPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonHideItems = new System.Windows.Forms.Button();
+            this.printDialogSelectPrinter = new System.Windows.Forms.PrintDialog();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.textBoxLastChange = new System.Windows.Forms.TextBox();
+            this.labelLastChange = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -155,6 +159,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesLineList)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -1274,14 +1280,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewSalesLineList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSalesLineList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSalesLineList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewSalesLineList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSalesLineList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnSalesLineEdit,
@@ -1323,55 +1329,10 @@
             this.dataGridViewSalesLineList.RowHeadersVisible = false;
             this.dataGridViewSalesLineList.RowTemplate.Height = 24;
             this.dataGridViewSalesLineList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSalesLineList.Size = new System.Drawing.Size(426, 405);
+            this.dataGridViewSalesLineList.Size = new System.Drawing.Size(426, 354);
             this.dataGridViewSalesLineList.TabIndex = 24;
             this.dataGridViewSalesLineList.TabStop = false;
             this.dataGridViewSalesLineList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesLineList_CellClick);
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.panel3);
-            this.panel4.Controls.Add(this.panelItems);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 108);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1096, 453);
-            this.panel4.TabIndex = 25;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.textBoxBarcode);
-            this.panel3.Controls.Add(this.buttonHideItems);
-            this.panel3.Controls.Add(this.dataGridViewSalesLineList);
-            this.panel3.Controls.Add(this.buttonBarcode);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(662, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(434, 453);
-            this.panel3.TabIndex = 26;
-            // 
-            // buttonHideItems
-            // 
-            this.buttonHideItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonHideItems.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
-            this.buttonHideItems.FlatAppearance.BorderSize = 0;
-            this.buttonHideItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHideItems.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.buttonHideItems.ForeColor = System.Drawing.Color.White;
-            this.buttonHideItems.Location = new System.Drawing.Point(4, 6);
-            this.buttonHideItems.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonHideItems.Name = "buttonHideItems";
-            this.buttonHideItems.Size = new System.Drawing.Size(37, 32);
-            this.buttonHideItems.TabIndex = 25;
-            this.buttonHideItems.TabStop = false;
-            this.buttonHideItems.Text = "=";
-            this.buttonHideItems.UseVisualStyleBackColor = false;
-            this.buttonHideItems.Click += new System.EventHandler(this.buttonHideItems_Click);
-            // 
-            // printDialogSelectPrinter
-            // 
-            this.printDialogSelectPrinter.UseEXDialog = true;
             // 
             // ColumnSalesLineEdit
             // 
@@ -1422,8 +1383,8 @@
             // 
             // ColumnSalesLineQuantity
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineQuantity.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineQuantity.DefaultCellStyle = dataGridViewCellStyle11;
             this.ColumnSalesLineQuantity.HeaderText = "Quantity";
             this.ColumnSalesLineQuantity.Name = "ColumnSalesLineQuantity";
             this.ColumnSalesLineQuantity.ReadOnly = true;
@@ -1443,8 +1404,8 @@
             // 
             // ColumnSalesLinePrice
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLinePrice.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLinePrice.DefaultCellStyle = dataGridViewCellStyle12;
             this.ColumnSalesLinePrice.HeaderText = "Price";
             this.ColumnSalesLinePrice.Name = "ColumnSalesLinePrice";
             this.ColumnSalesLinePrice.ReadOnly = true;
@@ -1465,8 +1426,8 @@
             // 
             // ColumnSalesLineDiscountRate
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineDiscountRate.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineDiscountRate.DefaultCellStyle = dataGridViewCellStyle13;
             this.ColumnSalesLineDiscountRate.HeaderText = "Discount %";
             this.ColumnSalesLineDiscountRate.Name = "ColumnSalesLineDiscountRate";
             this.ColumnSalesLineDiscountRate.ReadOnly = true;
@@ -1474,24 +1435,24 @@
             // 
             // ColumnSalesLineDiscountAmount
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineDiscountAmount.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineDiscountAmount.DefaultCellStyle = dataGridViewCellStyle14;
             this.ColumnSalesLineDiscountAmount.HeaderText = "Discount";
             this.ColumnSalesLineDiscountAmount.Name = "ColumnSalesLineDiscountAmount";
             this.ColumnSalesLineDiscountAmount.ReadOnly = true;
             // 
             // ColumnSalesLineNetPrice
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineNetPrice.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineNetPrice.DefaultCellStyle = dataGridViewCellStyle15;
             this.ColumnSalesLineNetPrice.HeaderText = "Net Price";
             this.ColumnSalesLineNetPrice.Name = "ColumnSalesLineNetPrice";
             this.ColumnSalesLineNetPrice.ReadOnly = true;
             // 
             // ColumnSalesLineAmount
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineAmount.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineAmount.DefaultCellStyle = dataGridViewCellStyle16;
             this.ColumnSalesLineAmount.HeaderText = "Amount";
             this.ColumnSalesLineAmount.Name = "ColumnSalesLineAmount";
             this.ColumnSalesLineAmount.ReadOnly = true;
@@ -1512,16 +1473,16 @@
             // 
             // ColumnSalesLineTaxRate
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineTaxRate.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineTaxRate.DefaultCellStyle = dataGridViewCellStyle17;
             this.ColumnSalesLineTaxRate.HeaderText = "Tax %";
             this.ColumnSalesLineTaxRate.Name = "ColumnSalesLineTaxRate";
             this.ColumnSalesLineTaxRate.ReadOnly = true;
             // 
             // ColumnSalesLineTaxAmount
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineTaxAmount.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineTaxAmount.DefaultCellStyle = dataGridViewCellStyle18;
             this.ColumnSalesLineTaxAmount.HeaderText = "Tax";
             this.ColumnSalesLineTaxAmount.Name = "ColumnSalesLineTaxAmount";
             this.ColumnSalesLineTaxAmount.ReadOnly = true;
@@ -1603,6 +1564,104 @@
             this.ColumnSalesLinePriceSplitPercentage.ReadOnly = true;
             this.ColumnSalesLinePriceSplitPercentage.Visible = false;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.panel3);
+            this.panel4.Controls.Add(this.panelItems);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 108);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1096, 453);
+            this.panel4.TabIndex = 25;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.panel6);
+            this.panel3.Controls.Add(this.textBoxBarcode);
+            this.panel3.Controls.Add(this.buttonHideItems);
+            this.panel3.Controls.Add(this.dataGridViewSalesLineList);
+            this.panel3.Controls.Add(this.buttonBarcode);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(662, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(434, 453);
+            this.panel3.TabIndex = 26;
+            // 
+            // buttonHideItems
+            // 
+            this.buttonHideItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonHideItems.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
+            this.buttonHideItems.FlatAppearance.BorderSize = 0;
+            this.buttonHideItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonHideItems.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.buttonHideItems.ForeColor = System.Drawing.Color.White;
+            this.buttonHideItems.Location = new System.Drawing.Point(4, 6);
+            this.buttonHideItems.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonHideItems.Name = "buttonHideItems";
+            this.buttonHideItems.Size = new System.Drawing.Size(37, 32);
+            this.buttonHideItems.TabIndex = 25;
+            this.buttonHideItems.TabStop = false;
+            this.buttonHideItems.Text = "=";
+            this.buttonHideItems.UseVisualStyleBackColor = false;
+            this.buttonHideItems.Click += new System.EventHandler(this.buttonHideItems_Click);
+            // 
+            // printDialogSelectPrinter
+            // 
+            this.printDialogSelectPrinter.UseEXDialog = true;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.panel8);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(0, 401);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(434, 52);
+            this.panel6.TabIndex = 26;
+            // 
+            // panel8
+            // 
+            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel8.BackColor = System.Drawing.Color.White;
+            this.panel8.Controls.Add(this.textBoxLastChange);
+            this.panel8.Controls.Add(this.labelLastChange);
+            this.panel8.Location = new System.Drawing.Point(4, 5);
+            this.panel8.Margin = new System.Windows.Forms.Padding(2);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(426, 42);
+            this.panel8.TabIndex = 58;
+            // 
+            // textBoxLastChange
+            // 
+            this.textBoxLastChange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxLastChange.BackColor = System.Drawing.Color.White;
+            this.textBoxLastChange.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxLastChange.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.textBoxLastChange.ForeColor = System.Drawing.Color.Black;
+            this.textBoxLastChange.Location = new System.Drawing.Point(124, 6);
+            this.textBoxLastChange.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxLastChange.Name = "textBoxLastChange";
+            this.textBoxLastChange.ReadOnly = true;
+            this.textBoxLastChange.Size = new System.Drawing.Size(292, 27);
+            this.textBoxLastChange.TabIndex = 17;
+            this.textBoxLastChange.Text = "0.00";
+            this.textBoxLastChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // labelLastChange
+            // 
+            this.labelLastChange.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelLastChange.AutoSize = true;
+            this.labelLastChange.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.labelLastChange.ForeColor = System.Drawing.Color.Black;
+            this.labelLastChange.Location = new System.Drawing.Point(10, 11);
+            this.labelLastChange.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelLastChange.Name = "labelLastChange";
+            this.labelLastChange.Size = new System.Drawing.Size(98, 20);
+            this.labelLastChange.TabIndex = 16;
+            this.labelLastChange.Text = "Last Change:";
+            // 
             // TrnPOSTouchDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1629,6 +1688,9 @@
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1743,5 +1805,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2LessTax;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePriceSplitPercentage;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.TextBox textBoxLastChange;
+        private System.Windows.Forms.Label labelLastChange;
     }
 }
