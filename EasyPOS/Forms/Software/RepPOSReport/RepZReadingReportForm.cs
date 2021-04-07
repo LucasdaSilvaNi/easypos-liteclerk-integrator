@@ -425,7 +425,6 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             Decimal declareRate = 0;
             var dataSource = zReadingReportEntity;
             var SysDeclareRate = from d in db.SysDeclareRates
-                                 where d.Date == filterDate
                                  select d;
             if (SysDeclareRate.FirstOrDefault()?.Date == null)
             {
