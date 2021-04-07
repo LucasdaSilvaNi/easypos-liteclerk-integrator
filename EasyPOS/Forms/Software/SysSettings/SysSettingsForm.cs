@@ -353,23 +353,23 @@ namespace EasyPOS.Forms.Software.SysSettings
         // ==========
         public void GetComboBoxDropDownList()
         {
-            if (sysUserRights.GetUserRights().CanLock == false)
-            {
-                buttonLock.Enabled = false;
-            }
-            else
-            {
-                buttonLock.Enabled = true;
-            }
+            //if (sysUserRights.GetUserRights().CanLock == false)
+            //{
+            //    buttonLock.Enabled = false;
+            //}
+            //else
+            //{
+            //    buttonLock.Enabled = true;
+            //}
 
-            if (sysUserRights.GetUserRights().CanUnlock == false)
-            {
-                buttonUnlock.Enabled = false;
-            }
-            else
-            {
-                buttonUnlock.Enabled = true;
-            }
+            //if (sysUserRights.GetUserRights().CanUnlock == false)
+            //{
+            //    buttonUnlock.Enabled = false;
+            //}
+            //else
+            //{
+            //    buttonUnlock.Enabled = true;
+            //}
 
             Controllers.SysCurrentController sysSettingsController = new Controllers.SysCurrentController();
 
