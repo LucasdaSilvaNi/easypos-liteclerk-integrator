@@ -397,8 +397,19 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
         private void printDocumentXReadingReport_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+            Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
             var dataSource = xReadingReportEntity;
-            Decimal declareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
+            Decimal declareRate = 0;
+            var SysDeclareRate = from d in db.SysDeclareRates
+                                 select d;
+            if (SysDeclareRate.FirstOrDefault()?.Date == null)
+            {
+                declareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
+            }
+            else
+            {
+                declareRate = Convert.ToDecimal(SysDeclareRate.FirstOrDefault()?.DeclareRate);
+            }
 
             // =============
             // Font Settings
