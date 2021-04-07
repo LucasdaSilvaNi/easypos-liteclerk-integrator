@@ -18,7 +18,7 @@ namespace EasyPOS.Forms.Software.MstItem
 
         public static List<Entities.DgvMstItemListEntity> itemListData = new List<Entities.DgvMstItemListEntity>();
         public static Int32 pageNumber = 1;
-        public static Int32 pageSize = 50;
+        public static Int32 pageSize = 17;
         public PagedList<Entities.DgvMstItemListEntity> itemListPageList = new PagedList<Entities.DgvMstItemListEntity>(itemListData, pageNumber, pageSize);
         public BindingSource itemListDataSource = new BindingSource();
         public List<String> inventoryOption;
