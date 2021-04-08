@@ -46,6 +46,7 @@
             this.buttonItemListPageListLast = new System.Windows.Forms.Button();
             this.textBoxItemListPageNumber = new System.Windows.Forms.TextBox();
             this.dataGridViewItemList = new System.Windows.Forms.DataGridView();
+            this.textBoxItemListFilter = new System.Windows.Forms.TextBox();
             this.ColumnItemListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnItemListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnItemListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,13 +55,12 @@
             this.ColumnItemListBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemListUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemListCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemListCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemListOnHandQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnItemListIsInventory = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColumnItemListIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBoxItemListFilter = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -291,12 +291,12 @@
             this.ColumnItemListBarcode,
             this.ColumnItemListUnit,
             this.ColumnItemListCategory,
+            this.ColumnSupplier,
             this.ColumnItemListPrice,
             this.ColumnItemListCost,
             this.ColumnItemListOnHandQuantity,
             this.ColumnItemListIsInventory,
-            this.ColumnItemListIsLocked,
-            this.ColumnSupplier});
+            this.ColumnItemListIsLocked});
             this.dataGridViewItemList.Location = new System.Drawing.Point(10, 34);
             this.dataGridViewItemList.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewItemList.MultiSelect = false;
@@ -307,6 +307,18 @@
             this.dataGridViewItemList.Size = new System.Drawing.Size(1077, 429);
             this.dataGridViewItemList.TabIndex = 9;
             this.dataGridViewItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItemList_CellClick);
+            // 
+            // textBoxItemListFilter
+            // 
+            this.textBoxItemListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxItemListFilter.Location = new System.Drawing.Point(10, 4);
+            this.textBoxItemListFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxItemListFilter.Name = "textBoxItemListFilter";
+            this.textBoxItemListFilter.Size = new System.Drawing.Size(791, 26);
+            this.textBoxItemListFilter.TabIndex = 8;
+            this.textBoxItemListFilter.TabStop = false;
+            this.textBoxItemListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxItemListFilter_KeyDown);
             // 
             // ColumnItemListButtonEdit
             // 
@@ -380,6 +392,14 @@
             this.ColumnItemListCategory.ReadOnly = true;
             this.ColumnItemListCategory.Width = 150;
             // 
+            // ColumnSupplier
+            // 
+            this.ColumnSupplier.DataPropertyName = "ColumnSupplier";
+            this.ColumnSupplier.HeaderText = "Default Supplier";
+            this.ColumnSupplier.Name = "ColumnSupplier";
+            this.ColumnSupplier.ReadOnly = true;
+            this.ColumnSupplier.Width = 120;
+            // 
             // ColumnItemListPrice
             // 
             this.ColumnItemListPrice.DataPropertyName = "ColumnItemListPrice";
@@ -426,26 +446,6 @@
             this.ColumnItemListIsLocked.Name = "ColumnItemListIsLocked";
             this.ColumnItemListIsLocked.ReadOnly = true;
             this.ColumnItemListIsLocked.Width = 50;
-            // 
-            // ColumnSupplier
-            // 
-            this.ColumnSupplier.DataPropertyName = "ColumnSupplier";
-            this.ColumnSupplier.HeaderText = "Default Supplier";
-            this.ColumnSupplier.Name = "ColumnSupplier";
-            this.ColumnSupplier.ReadOnly = true;
-            this.ColumnSupplier.Width = 120;
-            // 
-            // textBoxItemListFilter
-            // 
-            this.textBoxItemListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxItemListFilter.Location = new System.Drawing.Point(10, 4);
-            this.textBoxItemListFilter.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxItemListFilter.Name = "textBoxItemListFilter";
-            this.textBoxItemListFilter.Size = new System.Drawing.Size(791, 26);
-            this.textBoxItemListFilter.TabIndex = 8;
-            this.textBoxItemListFilter.TabStop = false;
-            this.textBoxItemListFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxItemListFilter_KeyDown);
             // 
             // MstItemListForm
             // 
@@ -499,11 +499,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListBarcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListCategory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSupplier;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemListOnHandQuantity;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnItemListIsInventory;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnItemListIsLocked;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSupplier;
     }
 }

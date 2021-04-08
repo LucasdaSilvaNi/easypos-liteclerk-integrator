@@ -88,8 +88,34 @@ namespace EasyPOS.Forms.Software.MstItem
                 comboBoxSalesVAT.ValueMember = "Id";
                 comboBoxSalesVAT.DisplayMember = "Tax";
 
-                GetItemDetail();
+                GetCategoryList();
             }
+        }
+        public void GetCategoryList()
+        {
+            Controllers.MstItemController mstItemController = new Controllers.MstItemController();
+            if (mstItemController.DropdownListItemCategory().Any())
+            {
+                List<Entities.MstItemEntity> newItemList = new List<Entities.MstItemEntity>();
+
+                foreach (var obj in mstItemController.DropdownListItemCategory())
+                {
+                    newItemList.Add(new Entities.MstItemEntity
+                    {
+                        Category = obj.Category
+                    });
+                };
+                comboBoxCategory.DataSource = newItemList;
+                comboBoxCategory.ValueMember = "Category";
+                comboBoxCategory.DisplayMember = "Category";
+            }
+            //if (mstItemController.DropdownListItemCategory(mstItemEntity.Id).Any())
+            //{
+            //    comboBoxCategory.DataSource = mstItemController.DropdownListItemCategory(mstItemEntity.Id);
+            //    comboBoxCategory.ValueMember = "Id";
+            //    comboBoxCategory.DisplayMember = "Category";
+            //}
+            GetItemDetail();
         }
 
         public void GetItemDetail()
@@ -100,7 +126,7 @@ namespace EasyPOS.Forms.Software.MstItem
             textBoxBarcode.Text = mstItemEntity.BarCode;
             textBoxDescription.Text = mstItemEntity.ItemDescription;
             textBoxAlias.Text = mstItemEntity.Alias;
-            textBoxCategory.Text = mstItemEntity.Category;
+            comboBoxCategory.Text = mstItemEntity.Category;
             comboBoxUnit.SelectedValue = mstItemEntity.UnitId;
             comboBoxDefaultSupplier.SelectedValue = mstItemEntity.DefaultSupplierId;
             textBoxCost.Text = mstItemEntity.Cost.ToString("#,##0.00");
@@ -151,7 +177,7 @@ namespace EasyPOS.Forms.Software.MstItem
             textBoxBarcode.Enabled = !isLocked;
             textBoxDescription.Enabled = !isLocked;
             textBoxAlias.Enabled = !isLocked;
-            textBoxCategory.Enabled = !isLocked;
+            comboBoxCategory.Enabled = !isLocked;
             comboBoxUnit.Enabled = !isLocked;
             comboBoxDefaultSupplier.Enabled = !isLocked;
             textBoxCost.Enabled = !isLocked;
@@ -222,7 +248,7 @@ namespace EasyPOS.Forms.Software.MstItem
                 ItemDescription = textBoxDescription.Text,
                 Alias = textBoxAlias.Text,
                 GenericName = textBoxGenericName.Text,
-                Category = textBoxCategory.Text,
+                Category = comboBoxCategory.Text,
                 OutTaxId = Convert.ToInt32(comboBoxSalesVAT.SelectedValue),
                 UnitId = Convert.ToInt32(comboBoxUnit.SelectedValue),
                 DefaultSupplierId = Convert.ToInt32(comboBoxDefaultSupplier.SelectedValue),

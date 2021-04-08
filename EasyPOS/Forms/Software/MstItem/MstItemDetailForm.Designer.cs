@@ -73,7 +73,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.textBoxCost = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBoxCategory = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -122,6 +121,7 @@
             this.buttonUnlock = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.comboBoxCategory = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -246,6 +246,7 @@
             // 
             this.panel3.AutoScroll = true;
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel3.Controls.Add(this.comboBoxCategory);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.comboBoxSalesVAT);
             this.panel3.Controls.Add(this.textBoxBarcode);
@@ -281,7 +282,6 @@
             this.panel3.Controls.Add(this.label13);
             this.panel3.Controls.Add(this.textBoxCost);
             this.panel3.Controls.Add(this.label14);
-            this.panel3.Controls.Add(this.textBoxCategory);
             this.panel3.Controls.Add(this.label15);
             this.panel3.Controls.Add(this.label16);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -612,15 +612,6 @@
             this.label14.Size = new System.Drawing.Size(71, 19);
             this.label14.TabIndex = 16;
             this.label14.Text = "Inventory:";
-            // 
-            // textBoxCategory
-            // 
-            this.textBoxCategory.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxCategory.Location = new System.Drawing.Point(150, 183);
-            this.textBoxCategory.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxCategory.Name = "textBoxCategory";
-            this.textBoxCategory.Size = new System.Drawing.Size(250, 26);
-            this.textBoxCategory.TabIndex = 4;
             // 
             // label15
             // 
@@ -1235,6 +1226,18 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // comboBoxCategory
+            // 
+            this.comboBoxCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.comboBoxCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxCategory.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxCategory.FormattingEnabled = true;
+            this.comboBoxCategory.Location = new System.Drawing.Point(150, 182);
+            this.comboBoxCategory.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxCategory.Name = "comboBoxCategory";
+            this.comboBoxCategory.Size = new System.Drawing.Size(250, 27);
+            this.comboBoxCategory.TabIndex = 21;
+            // 
             // MstItemDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1309,7 +1312,6 @@
         private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.TextBox textBoxMarkUp;
         private System.Windows.Forms.TextBox textBoxCost;
-        private System.Windows.Forms.TextBox textBoxCategory;
         private System.Windows.Forms.TextBox textBoxLotNumber;
         private System.Windows.Forms.TextBox textBoxGenericName;
         private System.Windows.Forms.Label label19;
@@ -1359,5 +1361,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemComponenAmount;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnItemComponenIsPrinted;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemComponenOnHandQty;
+        private System.Windows.Forms.ComboBox comboBoxCategory;
     }
 }

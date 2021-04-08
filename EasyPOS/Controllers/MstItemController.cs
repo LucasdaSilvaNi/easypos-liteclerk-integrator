@@ -410,6 +410,24 @@ namespace EasyPOS.Controllers
 
             return taxes.ToList();
         }
+        // ===================
+        // Dropdown List - Category
+        // ===================
+        public List<Entities.MstItemEntity> DropdownListItemCategory()
+        {
+            var categories = from d in db.MstItems
+                             group d by new
+                           {
+                               d.Category
+                           }
+                           into g
+                           select new Entities.MstItemEntity
+                           {
+                               Category = g.Key.Category
+                           };
+
+            return categories.ToList();
+        }
 
         // ========
         // Add Item
