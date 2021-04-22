@@ -326,6 +326,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                                         totalPWDDiscount -
                                                         totalSalesReturn;
 
+                Decimal totalCollectionPerPayType = 0;
                 foreach (var collectionLine in currentCollectionLines)
                 {
                     Decimal amount = collectionLine.TotalAmount;
@@ -339,9 +340,10 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                         PayType = collectionLine.PayType,
                         Amount = amount
                     });
+                    totalCollectionPerPayType += amount;
                 }
 
-                repXReadingReportEntity.TotalCollection = currentCollections.Sum(d => d.Amount) - repXReadingReportEntity.TotalRefund;
+                repXReadingReportEntity.TotalCollection = totalCollectionPerPayType - repXReadingReportEntity.TotalRefund;
                 repXReadingReportEntity.TotalVATSales = totalVATSales;
                 repXReadingReportEntity.TotalVATAmount = totalVATAmount;
                 repXReadingReportEntity.TotalNonVAT = totalNonVATSales;
@@ -401,14 +403,15 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             var dataSource = xReadingReportEntity;
             Decimal declareRate = 0;
             var SysDeclareRate = from d in db.SysDeclareRates
+                                 where d.Date == filterDate
                                  select d;
-            if (SysDeclareRate.FirstOrDefault()?.Date == null)
+            if (SysDeclareRate.Any())
             {
-                declareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
+                declareRate = SysDeclareRate.FirstOrDefault().DeclareRate;
             }
             else
             {
-                declareRate = Convert.ToDecimal(SysDeclareRate.FirstOrDefault()?.DeclareRate);
+                declareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
             }
 
             // =============

@@ -318,11 +318,14 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 repZReadingReportEntity.TotalSeniorDiscount = totalSeniorCitizenDiscount;
                 repZReadingReportEntity.TotalPWDDiscount = totalPWDDiscount;
                 repZReadingReportEntity.TotalSalesReturn = totalSalesReturn;
+
                 repZReadingReportEntity.TotalNetSales = totalGrossSales -
                                                         totalRegularDiscount -
                                                         totalSeniorCitizenDiscount -
                                                         totalPWDDiscount -
                                                         totalSalesReturn;
+
+                Decimal totalCollectionPerPayType = 0;
 
                 foreach (var collectionLine in currentCollectionLines)
                 {
@@ -337,9 +340,11 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                         PayType = collectionLine.PayType,
                         Amount = amount
                     });
+
+                    totalCollectionPerPayType += amount;
                 }
 
-                repZReadingReportEntity.TotalCollection = currentCollections.Sum(d => d.Amount) - repZReadingReportEntity.TotalRefund;
+                repZReadingReportEntity.TotalCollection = totalCollectionPerPayType - repZReadingReportEntity.TotalRefund;
                 repZReadingReportEntity.TotalVATSales = totalVATSales;
                 repZReadingReportEntity.TotalVATAmount = totalVATAmount;
                 repZReadingReportEntity.TotalNonVAT = totalNonVATSales;
@@ -385,10 +390,39 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
             if (grossSalesPreviousCollections.Any())
             {
-                repZReadingReportEntity.GrossSalesTotalPreviousReading = grossSalesPreviousCollections.Sum(d => d.TrnSale.TrnSalesLines.Any() ?
-                                                                         d.TrnSale.TrnSalesLines.Sum(s => s.MstTax.Code == "EXEMPTVAT" ?
-                                                                         s.MstItem.MstTax1.Rate > 0 ? (s.Price * s.Quantity) - ((s.Price * s.Quantity) / (1 + (s.MstItem.MstTax1.Rate / 100)) * (s.MstItem.MstTax1.Rate / 100)) :
-                                                                         (s.Quantity * s.Price) : (s.Quantity * s.Price) - ((s.Price * s.Quantity) / (1 + (s.MstTax.Rate / 100)) * (s.MstTax.Rate / 100))) : 0);
+                foreach (var grossSalesPreviousCollection in grossSalesPreviousCollections)
+                {
+                    var sales = from d in db.TrnSales
+                                where d.Id == grossSalesPreviousCollection.SalesId
+                                select d;
+
+                    if (sales.Any())
+                    {
+                        var salesLines = sales.FirstOrDefault().TrnSalesLines.Where(d => d.Quantity > 0 && d.TrnSale.IsReturned == false);
+
+                        if (salesLines.Any())
+                        {
+                            foreach (var salesLine in salesLines)
+                            {
+                                if (salesLine.MstTax.Code == "EXEMPTVAT")
+                                {
+                                    if (salesLine.MstItem.MstTax1.Rate > 0)
+                                    {
+                                        repZReadingReportEntity.GrossSalesTotalPreviousReading += (salesLine.Price * salesLine.Quantity) - ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstItem.MstTax1.Rate / 100)) * (salesLine.MstItem.MstTax1.Rate / 100));
+                                    }
+                                    else
+                                    {
+                                        repZReadingReportEntity.GrossSalesTotalPreviousReading += salesLine.Price * salesLine.Quantity;
+                                    }
+                                }
+                                else
+                                {
+                                    repZReadingReportEntity.GrossSalesTotalPreviousReading += (salesLine.Price * salesLine.Quantity) - ((salesLine.NetPrice * salesLine.Quantity) / (1 + (salesLine.MstTax.Rate / 100)) * (salesLine.MstTax.Rate / 100));
+                                }
+                            }
+                        }
+                    }
+                }
 
                 repZReadingReportEntity.GrossSalesRunningTotal = repZReadingReportEntity.TotalGrossSales + repZReadingReportEntity.GrossSalesTotalPreviousReading;
             }
@@ -402,7 +436,77 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
             if (netSalesPreviousCollections.Any())
             {
-                repZReadingReportEntity.NetSalesTotalPreviousReading = repZReadingReportEntity.GrossSalesTotalPreviousReading - netSalesPreviousCollections.Sum(s => s.TrnSale.TrnSalesLines.Any() ? s.TrnSale.TrnSalesLines.Sum(d => d.DiscountAmount * d.Quantity) : 0);
+                Decimal totalRegularDiscount = 0;
+                Decimal totalSeniorDiscount = 0;
+                Decimal totalPWDDiscount = 0;
+                Decimal totalSalesReturn = 0;
+
+                foreach (var grossSalesPreviousCollection in grossSalesPreviousCollections)
+                {
+                    var sales = from d in db.TrnSales
+                                where d.Id == grossSalesPreviousCollection.SalesId
+                                select d;
+
+                    if (sales.Any())
+                    {
+                        var salesLines = sales.FirstOrDefault().TrnSalesLines.Where(d => d.Quantity > 0 && d.TrnSale.IsReturned == false);
+
+                        foreach (var salesLine in salesLines)
+                        {
+                            if (salesLine.MstDiscount.Discount != "Senior Citizen Discount" && salesLine.MstDiscount.Discount != "PWD")
+                            {
+                                totalRegularDiscount += salesLine.DiscountAmount * salesLine.Quantity;
+                            }
+
+                            if (salesLine.MstDiscount.Discount == "Senior Citizen Discount")
+                            {
+                                totalSeniorDiscount += salesLine.DiscountAmount * salesLine.Quantity;
+                            }
+
+                            if (salesLine.MstDiscount.Discount == "PWD")
+                            {
+                                totalPWDDiscount += salesLine.DiscountAmount * salesLine.Quantity;
+                            }
+
+                        }
+                    }
+                }
+
+                Decimal totalReturn = 0;
+
+                var previousSalesReturnLines = from d in db.TrnSalesLines
+                                               where d.Quantity < 0
+                                               && d.TrnSale.SalesDate < filterDate
+                                               && d.TrnSale.IsLocked == true
+                                               && d.TrnSale.IsCancelled == false
+                                               && d.TrnSale.IsReturned == true
+                                               select d;
+
+                if (previousSalesReturnLines.Any())
+                {
+                    foreach (var salesReturnLine in previousSalesReturnLines)
+                    {
+                        if (salesReturnLine.MstTax.Code == "EXEMPTVAT")
+                        {
+                            if (salesReturnLine.MstItem.MstTax1.Rate > 0)
+                            {
+                                totalReturn += (salesReturnLine.Price * salesReturnLine.Quantity) - ((salesReturnLine.Price * salesReturnLine.Quantity) / (1 + (salesReturnLine.MstItem.MstTax1.Rate / 100)) * (salesReturnLine.MstItem.MstTax1.Rate / 100));
+                            }
+                            else
+                            {
+                                totalReturn += salesReturnLine.Price * salesReturnLine.Quantity;
+                            }
+                        }
+                        else
+                        {
+                            totalReturn += (salesReturnLine.Price * salesReturnLine.Quantity) - ((salesReturnLine.Price * salesReturnLine.Quantity) / (1 + (salesReturnLine.MstTax.Rate / 100)) * (salesReturnLine.MstTax.Rate / 100));
+                        }
+                    }
+                }
+
+                totalSalesReturn += totalReturn * -1;
+
+                repZReadingReportEntity.NetSalesTotalPreviousReading = repZReadingReportEntity.GrossSalesTotalPreviousReading - totalRegularDiscount - totalSeniorDiscount - totalPWDDiscount - totalSalesReturn;
                 repZReadingReportEntity.NetSalesRunningTotal = repZReadingReportEntity.TotalNetSales + repZReadingReportEntity.NetSalesTotalPreviousReading;
             }
 
@@ -425,15 +529,25 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             Decimal declareRate = 0;
             var dataSource = zReadingReportEntity;
             var SysDeclareRate = from d in db.SysDeclareRates
+                                 where d.Date == filterDate
                                  select d;
-            if (SysDeclareRate.FirstOrDefault()?.Date == null)
+            if (SysDeclareRate.Any())
             {
-                declareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
+                declareRate = SysDeclareRate.FirstOrDefault().DeclareRate;
             }
             else
             {
-                declareRate = Convert.ToDecimal(SysDeclareRate.FirstOrDefault()?.DeclareRate);
+                declareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
             }
+
+            //if (SysDeclareRate.FirstOrDefault()?.Date == null)
+            //{
+            //    declareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
+            //}
+            //else
+            //{
+            //    declareRate = Convert.ToDecimal(SysDeclareRate.FirstOrDefault()?.DeclareRate);
+            //}
 
 
             //Decimal declareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;

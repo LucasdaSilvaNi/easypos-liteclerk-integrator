@@ -44,6 +44,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.comboBoxCategory = new System.Windows.Forms.ComboBox();
             this.comboBoxSalesVAT = new System.Windows.Forms.ComboBox();
             this.textBoxGenericName = new System.Windows.Forms.TextBox();
             this.dateTimePickerExpiryDate = new System.Windows.Forms.DateTimePicker();
@@ -121,7 +122,6 @@
             this.buttonUnlock = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.comboBoxCategory = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -293,6 +293,21 @@
             this.panel3.Size = new System.Drawing.Size(1095, 472);
             this.panel3.TabIndex = 38;
             // 
+            // comboBoxCategory
+            // 
+            this.comboBoxCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.comboBoxCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxCategory.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxCategory.FormattingEnabled = true;
+            this.comboBoxCategory.IntegralHeight = false;
+            this.comboBoxCategory.ItemHeight = 19;
+            this.comboBoxCategory.Location = new System.Drawing.Point(150, 182);
+            this.comboBoxCategory.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxCategory.MaxDropDownItems = 10;
+            this.comboBoxCategory.Name = "comboBoxCategory";
+            this.comboBoxCategory.Size = new System.Drawing.Size(250, 27);
+            this.comboBoxCategory.TabIndex = 21;
+            // 
             // comboBoxSalesVAT
             // 
             this.comboBoxSalesVAT.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
@@ -350,8 +365,11 @@
             this.comboBoxDefaultSupplier.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxDefaultSupplier.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxDefaultSupplier.FormattingEnabled = true;
+            this.comboBoxDefaultSupplier.IntegralHeight = false;
+            this.comboBoxDefaultSupplier.ItemHeight = 19;
             this.comboBoxDefaultSupplier.Location = new System.Drawing.Point(150, 241);
             this.comboBoxDefaultSupplier.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxDefaultSupplier.MaxDropDownItems = 10;
             this.comboBoxDefaultSupplier.Name = "comboBoxDefaultSupplier";
             this.comboBoxDefaultSupplier.Size = new System.Drawing.Size(250, 27);
             this.comboBoxDefaultSupplier.TabIndex = 6;
@@ -1225,18 +1243,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
-            // 
-            // comboBoxCategory
-            // 
-            this.comboBoxCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.comboBoxCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBoxCategory.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBoxCategory.FormattingEnabled = true;
-            this.comboBoxCategory.Location = new System.Drawing.Point(150, 182);
-            this.comboBoxCategory.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxCategory.Name = "comboBoxCategory";
-            this.comboBoxCategory.Size = new System.Drawing.Size(250, 27);
-            this.comboBoxCategory.TabIndex = 21;
             // 
             // MstItemDetailForm
             // 
