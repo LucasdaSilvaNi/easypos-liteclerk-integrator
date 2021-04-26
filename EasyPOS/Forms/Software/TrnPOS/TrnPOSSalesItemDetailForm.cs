@@ -190,7 +190,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         trnPOSTouchDetailForm.GetSalesLineList();
                         trnPOSTouchDetailForm.UpdatePOSTouchSalesListDataSource();
                     }
-                    if(trnPOSSearchItemForm != null)
+                    if (trnPOSSearchItemForm != null)
                     {
                         trnPOSSearchItemForm.resetCursor();
                     }
@@ -273,7 +273,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 {
                     textBoxSalesLineDiscountRate.ReadOnly = true;
                     textBoxSalesLineDiscountAmount.ReadOnly = true;
-                    if(selectedItemDiscount.DiscountRate == 0)
+                    if (selectedItemDiscount.DiscountRate == 0)
                     {
                         textBoxSalesLineDiscountAmount.Text = selectedItemDiscount.DiscountAmount.ToString("#,##0.00");
                     }
@@ -287,7 +287,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     textBoxSalesLineDiscountAmount.Text = selectedItemDiscount.DiscountAmount.ToString("#,##0.00");
                     ComputeDiscountRate();
                 }
-                
+
                 ComputeAmount();
 
             }
@@ -324,7 +324,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     textBoxSalesLineAmount.Text = amount.ToString("#,##0.00");
                     textBoxSalesLineVATAmount.Text = taxAmount.ToString("#,##0.00");
                 }
-               
+
             }
             catch (Exception ex)
             {
@@ -358,6 +358,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
         private void textBoxSalesLineQuantity_Leave(object sender, EventArgs e)
         {
             textBoxSalesLineQuantity.Text = Convert.ToDecimal(textBoxSalesLineQuantity.Text).ToString("#,##0.00");
+
+            
+            ComputeAmount();
         }
 
         private void textBoxSalesLineQuantity_KeyDown(object sender, KeyEventArgs e)
@@ -459,6 +462,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     {
                         if (buttonSave.Enabled == true)
                         {
+                            Controllers.MstItemPriceController priceCotroller = new Controllers.MstItemPriceController();
+                            if (Modules.SysCurrentModule.GetCurrentSettings().IsTriggeredQuantity == true)
+                            {
+                                if (priceCotroller.TriggeredItemPrice(trnSalesLineEntity.ItemId, Convert.ToDecimal(textBoxSalesLineQuantity.Text)).Any())
+                                {
+                                    textBoxSalesLinePrice.Text = priceCotroller.TriggeredItemPrice(trnSalesLineEntity.ItemId, Convert.ToDecimal(textBoxSalesLineQuantity.Text)).FirstOrDefault().Price.ToString("#,##0.00");
+                                }
+                            }
+                            ComputeAmount();
                             buttonSave.PerformClick();
                             Close();
                         }

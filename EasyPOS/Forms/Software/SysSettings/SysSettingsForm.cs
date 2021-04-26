@@ -435,6 +435,7 @@ namespace EasyPOS.Forms.Software.SysSettings
             {
                 "Dot Matrix Printer",
                 "Thermal Printer",
+                "58mm Printer"
             };
 
             comboBoxPrinterType.DataSource = printerType;
@@ -500,6 +501,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxHideItemListItemCode.Checked = Convert.ToBoolean(sysCurrent.HideItemListItemCode);
                 checkBoxAllowCancelPreviousSales.Checked = Convert.ToBoolean(sysCurrent.AllowCancelPreviousSales);
                 checkBoxAutoSales.Checked = Convert.ToBoolean(sysCurrent.LockAutoSales);
+                checkBoxIsTriggered.Checked = Convert.ToBoolean(sysCurrent.IsTriggeredQuantity);
             }
         }
 
@@ -575,8 +577,9 @@ namespace EasyPOS.Forms.Software.SysSettings
                 HideItemListBarcode = checkBoxHideItemListBarcode.Checked,
                 HideItemListItemCode = checkBoxHideItemListItemCode.Checked,
                 AllowCancelPreviousSales = checkBoxAllowCancelPreviousSales.Checked,
-                LockAutoSales = checkBoxAutoSales.Checked
-        };
+                LockAutoSales = checkBoxAutoSales.Checked,
+                IsTriggeredQuantity = checkBoxIsTriggered.Checked
+            };
             
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);
             if (saveSysCurrent[1].Equals("0") == false)
@@ -632,6 +635,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxHideItemListItemCode.Enabled = false;
                 checkBoxAllowCancelPreviousSales.Enabled = false;
                 checkBoxAutoSales.Enabled = false;
+                checkBoxIsTriggered.Enabled = false;
             }
             else
             {
@@ -714,6 +718,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxHideItemListItemCode.Enabled = true;
                 checkBoxAllowCancelPreviousSales.Enabled = true;
                 checkBoxAutoSales.Enabled = true;
+                checkBoxIsTriggered.Enabled = true;
             }
         }
 
