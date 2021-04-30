@@ -27,14 +27,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 printDocumentReturnReport.Print();
 
             }
-            else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Thermal Printer")
-            {
-                printDocumentReturnReport.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 270, 1000);
-                printDocumentReturnReport.Print();
-            }
             else
             {
-                printDocumentReturnReport.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 175, 1000);
+                printDocumentReturnReport.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 270, 1000);
                 printDocumentReturnReport.Print();
             }
         }
@@ -55,8 +50,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
             Font fontArial11Regular = new Font("Arial", 11, FontStyle.Regular);
             Font fontArial8Bold = new Font("Arial", 8, FontStyle.Bold);
             Font fontArial8Regular = new Font("Arial", 8, FontStyle.Regular);
-            Font fontArial7Bold = new Font("Arial", 7, FontStyle.Bold);
-            Font fontArial7Regular = new Font("Arial", 7, FontStyle.Regular);
 
             // ==================
             // Alignment Settings
@@ -72,15 +65,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 x = 5; y = 5;
                 width = 245.0F; height = 0F;
             }
-            else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Thermal Printer")
-            {
-                x = 5; y = 5;
-                width = 260.0F; height = 0F;
-            }
             else
             {
                 x = 5; y = 5;
-                width = 170.0F; height = 0F;
+                width = 260.0F; height = 0F;
             }
 
             // ==============
@@ -180,288 +168,149 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Point firstLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
                 Point firstLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
                 graphics.DrawLine(blackPen, firstLineFirstPoint, firstLineSecondPoint);
-                if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
+
+                // ==========
+                // Sales Line
+                // ==========
+                Decimal totalAmount = 0;
+                Decimal totalNumberOfItems = 0;
+
+                String itemLabel = "\nITEM";
+                String amountLabel = "\nAMOUNT";
+                graphics.DrawString(itemLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(amountLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(itemLabel, fontArial8Regular).Height + 5.0F;
+
+                var salesLines = from d in db.TrnSalesLines where d.SalesId == trnSalesId select d;
+                if (salesLines.Any())
                 {
-                    // ==========
-                    // Sales Line
-                    // ==========
-                    Decimal totalAmount = 0;
-                    Decimal totalNumberOfItems = 0;
+                    var salesLineGroupbyItem = from s in salesLines
+                                               group s by new
+                                               {
+                                                   s.SalesId,
+                                                   s.ItemId,
+                                                   s.MstItem,
+                                                   s.UnitId,
+                                                   s.MstUnit,
+                                                   s.NetPrice,
+                                                   s.Price,
+                                                   s.TaxId,
+                                                   s.MstTax,
+                                                   s.DiscountId,
+                                                   s.DiscountRate,
+                                                   s.SalesAccountId,
+                                                   s.AssetAccountId,
+                                                   s.CostAccountId,
+                                                   s.TaxAccountId,
+                                                   s.SalesLineTimeStamp,
+                                                   s.UserId,
+                                                   s.Preparation,
+                                                   s.Price1,
+                                                   s.Price2,
+                                                   s.Price2LessTax,
+                                                   s.PriceSplitPercentage
+                                               } into g
+                                               select new
+                                               {
+                                                   g.Key.ItemId,
+                                                   g.Key.MstItem,
+                                                   g.Key.MstItem.ItemDescription,
+                                                   g.Key.MstUnit.Unit,
+                                                   g.Key.Price,
+                                                   g.Key.NetPrice,
+                                                   g.Key.DiscountId,
+                                                   g.Key.DiscountRate,
+                                                   g.Key.TaxId,
+                                                   g.Key.MstTax,
+                                                   g.Key.MstTax.Tax,
+                                                   Amount = g.Sum(a => a.Amount),
+                                                   Quantity = g.Sum(a => a.Quantity),
+                                                   DiscountAmount = g.Sum(a => a.DiscountAmount * a.Quantity),
+                                                   TaxAmount = g.Sum(a => a.TaxAmount)
+                                               };
 
-                    String itemLabel = "\nITEM";
-                    String amountLabel = "\nAMOUNT";
-                    graphics.DrawString(itemLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    graphics.DrawString(amountLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                    y += graphics.MeasureString(itemLabel, fontArial7Regular).Height + 5.0F;
-
-                    var salesLines = from d in db.TrnSalesLines where d.SalesId == trnSalesId select d;
-                    if (salesLines.Any())
+                    if (salesLineGroupbyItem.Any())
                     {
-                        var salesLineGroupbyItem = from s in salesLines
-                                                   group s by new
-                                                   {
-                                                       s.SalesId,
-                                                       s.ItemId,
-                                                       s.MstItem,
-                                                       s.UnitId,
-                                                       s.MstUnit,
-                                                       s.NetPrice,
-                                                       s.Price,
-                                                       s.TaxId,
-                                                       s.MstTax,
-                                                       s.DiscountId,
-                                                       s.DiscountRate,
-                                                       s.SalesAccountId,
-                                                       s.AssetAccountId,
-                                                       s.CostAccountId,
-                                                       s.TaxAccountId,
-                                                       s.SalesLineTimeStamp,
-                                                       s.UserId,
-                                                       s.Preparation,
-                                                       s.Price1,
-                                                       s.Price2,
-                                                       s.Price2LessTax,
-                                                       s.PriceSplitPercentage
-                                                   } into g
-                                                   select new
-                                                   {
-                                                       g.Key.ItemId,
-                                                       g.Key.MstItem,
-                                                       g.Key.MstItem.ItemDescription,
-                                                       g.Key.MstUnit.Unit,
-                                                       g.Key.Price,
-                                                       g.Key.NetPrice,
-                                                       g.Key.DiscountId,
-                                                       g.Key.DiscountRate,
-                                                       g.Key.TaxId,
-                                                       g.Key.MstTax,
-                                                       g.Key.MstTax.Tax,
-                                                       Amount = g.Sum(a => a.Amount),
-                                                       Quantity = g.Sum(a => a.Quantity),
-                                                       DiscountAmount = g.Sum(a => a.DiscountAmount * a.Quantity),
-                                                       TaxAmount = g.Sum(a => a.TaxAmount)
-                                                   };
-
-                        if (salesLineGroupbyItem.Any())
+                        foreach (var salesLine in salesLineGroupbyItem.ToList())
                         {
-                            foreach (var salesLine in salesLineGroupbyItem.ToList())
+                            totalNumberOfItems += 1;
+
+                            totalAmount += salesLine.Amount;
+
+                            String itemData = salesLine.ItemDescription + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
+                            String itemAmountData = (salesLine.Amount + salesLine.DiscountAmount).ToString("#,##0.00");
+                            RectangleF itemDataRectangle = new RectangleF
                             {
-                                totalNumberOfItems += 1;
-
-                                totalAmount += salesLine.Amount;
-
-                                String itemData = salesLine.ItemDescription + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
-                                String itemAmountData = (salesLine.Amount + salesLine.DiscountAmount).ToString("#,##0.00");
-                                RectangleF itemDataRectangle = new RectangleF
-                                {
-                                    X = x,
-                                    Y = y,
-                                    Size = new Size(150, ((int)graphics.MeasureString(itemData, fontArial7Regular, 150, StringFormat.GenericTypographic).Height))
-                                };
-                                graphics.DrawString(itemData, fontArial7Regular, Brushes.Black, itemDataRectangle, drawFormatLeft);
-                                graphics.DrawString(itemAmountData, fontArial7Regular, drawBrush, new RectangleF(x, y, 170.0F, height), drawFormatRight);
-                                y += itemDataRectangle.Size.Height + 3.0F;
-                            }
+                                X = x,
+                                Y = y,
+                                Size = new Size(150, ((int)graphics.MeasureString(itemData, fontArial8Regular, 150, StringFormat.GenericTypographic).Height))
+                            };
+                            graphics.DrawString(itemData, fontArial8Regular, Brushes.Black, itemDataRectangle, drawFormatLeft);
+                            graphics.DrawString(itemAmountData, fontArial8Regular, drawBrush, new RectangleF(x, y, 245.0F, height), drawFormatRight);
+                            y += itemDataRectangle.Size.Height + 3.0F;
                         }
                     }
-
-                    // ========
-                    // 2nd Line
-                    // ========
-                    Point secondLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                    Point secondLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                    graphics.DrawLine(blackPen, secondLineFirstPoint, secondLineSecondPoint);
-
-                    // ============
-                    // Total Amount
-                    // ============
-                    String totalSalesLabel = "\nTotal Amount";
-                    String totalSalesAmount = "\n" + totalAmount.ToString("#,##0.00");
-                    graphics.DrawString(totalSalesLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    graphics.DrawString(totalSalesAmount, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                    y += graphics.MeasureString(totalSalesAmount, fontArial7Regular).Height;
-
-                    String totalNumberOfItemsLabel = "Total No. of Item(s)";
-                    String totalNumberOfItemsQuantity = totalNumberOfItems.ToString("#,##0.00");
-                    graphics.DrawString(totalNumberOfItemsLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    graphics.DrawString(totalNumberOfItemsQuantity, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                    y += graphics.MeasureString(totalNumberOfItemsQuantity, fontArial7Regular).Height;
-
-                    // ========
-                    // 3rd Line
-                    // ========
-                    Point thirdLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                    Point thirdLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                    graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
-
-                    // =======
-                    // Cashier
-                    // =======
-                    String cashier = sales.FirstOrDefault().MstUser5.UserName;
-
-                    String cashierLabel = "\nCashier";
-                    String cashierUserData = "\n" + cashier;
-                    graphics.DrawString(cashierLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    graphics.DrawString(cashierUserData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                    y += graphics.MeasureString(cashierUserData, fontArial7Regular).Height;
-
-                    // ========
-                    // 4th Line
-                    // ========
-                    Point forthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                    Point forthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                    graphics.DrawLine(blackPen, forthLineFirstPoint, forthLineSecondPoint);
-                }
-                else
-                {
-                    // ==========
-                    // Sales Line
-                    // ==========
-                    Decimal totalAmount = 0;
-                    Decimal totalNumberOfItems = 0;
-
-                    String itemLabel = "\nITEM";
-                    String amountLabel = "\nAMOUNT";
-                    graphics.DrawString(itemLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    graphics.DrawString(amountLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                    y += graphics.MeasureString(itemLabel, fontArial8Regular).Height + 5.0F;
-
-                    var salesLines = from d in db.TrnSalesLines where d.SalesId == trnSalesId select d;
-                    if (salesLines.Any())
-                    {
-                        var salesLineGroupbyItem = from s in salesLines
-                                                   group s by new
-                                                   {
-                                                       s.SalesId,
-                                                       s.ItemId,
-                                                       s.MstItem,
-                                                       s.UnitId,
-                                                       s.MstUnit,
-                                                       s.NetPrice,
-                                                       s.Price,
-                                                       s.TaxId,
-                                                       s.MstTax,
-                                                       s.DiscountId,
-                                                       s.DiscountRate,
-                                                       s.SalesAccountId,
-                                                       s.AssetAccountId,
-                                                       s.CostAccountId,
-                                                       s.TaxAccountId,
-                                                       s.SalesLineTimeStamp,
-                                                       s.UserId,
-                                                       s.Preparation,
-                                                       s.Price1,
-                                                       s.Price2,
-                                                       s.Price2LessTax,
-                                                       s.PriceSplitPercentage
-                                                   } into g
-                                                   select new
-                                                   {
-                                                       g.Key.ItemId,
-                                                       g.Key.MstItem,
-                                                       g.Key.MstItem.ItemDescription,
-                                                       g.Key.MstUnit.Unit,
-                                                       g.Key.Price,
-                                                       g.Key.NetPrice,
-                                                       g.Key.DiscountId,
-                                                       g.Key.DiscountRate,
-                                                       g.Key.TaxId,
-                                                       g.Key.MstTax,
-                                                       g.Key.MstTax.Tax,
-                                                       Amount = g.Sum(a => a.Amount),
-                                                       Quantity = g.Sum(a => a.Quantity),
-                                                       DiscountAmount = g.Sum(a => a.DiscountAmount * a.Quantity),
-                                                       TaxAmount = g.Sum(a => a.TaxAmount)
-                                                   };
-
-                        if (salesLineGroupbyItem.Any())
-                        {
-                            foreach (var salesLine in salesLineGroupbyItem.ToList())
-                            {
-                                totalNumberOfItems += 1;
-
-                                totalAmount += salesLine.Amount;
-
-                                String itemData = salesLine.ItemDescription + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
-                                String itemAmountData = (salesLine.Amount + salesLine.DiscountAmount).ToString("#,##0.00");
-                                RectangleF itemDataRectangle = new RectangleF
-                                {
-                                    X = x,
-                                    Y = y,
-                                    Size = new Size(150, ((int)graphics.MeasureString(itemData, fontArial8Regular, 150, StringFormat.GenericTypographic).Height))
-                                };
-                                graphics.DrawString(itemData, fontArial8Regular, Brushes.Black, itemDataRectangle, drawFormatLeft);
-                                graphics.DrawString(itemAmountData, fontArial8Regular, drawBrush, new RectangleF(x, y, 245.0F, height), drawFormatRight);
-                                y += itemDataRectangle.Size.Height + 3.0F;
-                            }
-                        }
-                    }
-
-                    // ========
-                    // 2nd Line
-                    // ========
-                    Point secondLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                    Point secondLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                    graphics.DrawLine(blackPen, secondLineFirstPoint, secondLineSecondPoint);
-
-                    // ============
-                    // Total Amount
-                    // ============
-                    String totalSalesLabel = "\nTotal Amount";
-                    String totalSalesAmount = "\n" + totalAmount.ToString("#,##0.00");
-                    graphics.DrawString(totalSalesLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    graphics.DrawString(totalSalesAmount, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                    y += graphics.MeasureString(totalSalesAmount, fontArial8Regular).Height;
-
-                    String totalNumberOfItemsLabel = "Total No. of Item(s)";
-                    String totalNumberOfItemsQuantity = totalNumberOfItems.ToString("#,##0.00");
-                    graphics.DrawString(totalNumberOfItemsLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    graphics.DrawString(totalNumberOfItemsQuantity, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                    y += graphics.MeasureString(totalNumberOfItemsQuantity, fontArial8Regular).Height;
-
-                    // ========
-                    // 3rd Line
-                    // ========
-                    Point thirdLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                    Point thirdLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                    graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
-
-                    // =======
-                    // Cashier
-                    // =======
-                    String cashier = sales.FirstOrDefault().MstUser5.UserName;
-
-                    String cashierLabel = "\nCashier";
-                    String cashierUserData = "\n" + cashier;
-                    graphics.DrawString(cashierLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    graphics.DrawString(cashierUserData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                    y += graphics.MeasureString(cashierUserData, fontArial8Regular).Height;
-
-                    // ========
-                    // 4th Line
-                    // ========
-                    Point forthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                    Point forthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                    graphics.DrawLine(blackPen, forthLineFirstPoint, forthLineSecondPoint);
                 }
 
-                if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
-                {
-                    String space = "\n\n\n\n\n\n\n\n\n\n.";
-                    graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                }
-                else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Thermal Printer")
-                {
-                    String space = "\n\n\n.";
-                    graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                }
-                else
-                {
-                    String space = "\n.";
-                    graphics.DrawString(space, fontArial7Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                }
+                // ========
+                // 2nd Line
+                // ========
+                Point secondLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point secondLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, secondLineFirstPoint, secondLineSecondPoint);
+
+                // ============
+                // Total Amount
+                // ============
+                String totalSalesLabel = "\nTotal Amount";
+                String totalSalesAmount = "\n" + totalAmount.ToString("#,##0.00");
+                graphics.DrawString(totalSalesLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalSalesAmount, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalSalesAmount, fontArial8Regular).Height;
+
+                String totalNumberOfItemsLabel = "Total No. of Item(s)";
+                String totalNumberOfItemsQuantity = totalNumberOfItems.ToString("#,##0.00");
+                graphics.DrawString(totalNumberOfItemsLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalNumberOfItemsQuantity, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalNumberOfItemsQuantity, fontArial8Regular).Height;
+
+                // ========
+                // 3rd Line
+                // ========
+                Point thirdLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point thirdLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
+
+                // =======
+                // Cashier
+                // =======
+                String cashier = sales.FirstOrDefault().MstUser5.UserName;
+
+                String cashierLabel = "\nCashier";
+                String cashierUserData = "\n" + cashier;
+                graphics.DrawString(cashierLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(cashierUserData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(cashierUserData, fontArial8Regular).Height;
+
+                // ========
+                // 4th Line
+                // ========
+                Point forthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point forthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, forthLineFirstPoint, forthLineSecondPoint);
             }
 
+            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
+            {
+                String space = "\n\n\n\n\n\n\n\n\n\n.";
+                graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            }
+            else
+            {
+                String space = "\n\n\n.";
+                graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            }
+           
         }
     }
 }
