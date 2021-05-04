@@ -56,14 +56,9 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                 printDocumentRemittanceReport.DefaultPageSettings.PaperSize = new PaperSize("Remittance Report", 255, 1000);
                 RemittanceReportDataSource();
             }
-            else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Thermal Printer")
-            {
-                printDocumentRemittanceReport.DefaultPageSettings.PaperSize = new PaperSize("Remittance Report", 270, 1000);
-                RemittanceReportDataSource();
-            }
             else
             {
-                printDocumentRemittanceReport.DefaultPageSettings.PaperSize = new PaperSize("Remittance Report", 175, 1000);
+                printDocumentRemittanceReport.DefaultPageSettings.PaperSize = new PaperSize("Remittance Report", 270, 1000);
                 RemittanceReportDataSource();
             }
         }
@@ -300,8 +295,6 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             Font fontArial11Regular = new Font("Arial", 11, FontStyle.Regular);
             Font fontArial8Bold = new Font("Arial", 8, FontStyle.Bold);
             Font fontArial8Regular = new Font("Arial", 8, FontStyle.Regular);
-            Font fontArial7Bold = new Font("Arial", 7, FontStyle.Bold);
-            Font fontArial7Regular = new Font("Arial", 7, FontStyle.Regular);
 
             // ==================
             // Alignment Settings
@@ -317,15 +310,10 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
                 x = 5; y = 5;
                 width = 245.0F; height = 0F;
             }
-            else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Thermal Printer")
-            {
-                x = 5; y = 5;
-                width = 260.0F; height = 0F;
-            }
             else
             {
                 x = 5; y = 5;
-                width = 170.0F; height = 0F;
+                width = 260.0F; height = 0F;
             }
 
             // ==============
@@ -407,831 +395,416 @@ namespace EasyPOS.Forms.Software.RepRemittanceReport
             Point secondLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
             Point secondLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
             graphics.DrawLine(blackPen, secondLineFirstPoint, secondLineSecondPoint);
-            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType =="58mm Printer")
+
+            // ================
+            // Collection Title
+            // ================
+            String collectionTitle = "\nCollection";
+            graphics.DrawString(collectionTitle, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            y += graphics.MeasureString(collectionTitle, fontArial8Bold).Height;
+
+            // ========
+            // 3rd Line
+            // ========
+            Point thirdLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            Point thirdLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
+
+            // ==============================
+            // Collection Pay Type and Amount
+            // ==============================
+            String collectionPayTypeLabel = "\nPay Type";
+            String collectionAmountLabel = "\nReceived Amount";
+            graphics.DrawString(collectionPayTypeLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(collectionAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(collectionAmountLabel, fontArial8Bold).Height;
+
+            if (dataSource.CollectionLines.Any())
             {
-                // ================
-                // Collection Title
-                // ================
-                String collectionTitle = "\nCollection";
-                graphics.DrawString(collectionTitle, fontArial7Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                y += graphics.MeasureString(collectionTitle, fontArial7Bold).Height;
-
-                // ========
-                // 3rd Line
-                // ========
-                Point thirdLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point thirdLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
-
-                // ==============================
-                // Collection Pay Type and Amount
-                // ==============================
-                String collectionPayTypeLabel = "\nPay Type";
-                String collectionAmountLabel = "\nReceived Amount";
-                graphics.DrawString(collectionPayTypeLabel, fontArial7Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(collectionAmountLabel, fontArial7Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(collectionAmountLabel, fontArial7Bold).Height;
-
-                if (dataSource.CollectionLines.Any())
-                {
-                    foreach (var collectionLine in dataSource.CollectionLines)
-                    {
-                        // ================
-                        // Collection Lines
-                        // ================
-                        String collectionLineLabel = collectionLine.PayType;
-                        String collectionLineData = collectionLine.Amount.ToString("#,##0.00");
-                        graphics.DrawString(collectionLineLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                        graphics.DrawString(collectionLineData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                        y += graphics.MeasureString(collectionLineData, fontArial7Regular).Height;
-                    }
-                }
-                else
+                foreach (var collectionLine in dataSource.CollectionLines)
                 {
                     // ================
                     // Collection Lines
                     // ================
-                    String collectionLineLabel = "Cash";
-                    String collectionLineData = "0.00";
-                    graphics.DrawString(collectionLineLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    graphics.DrawString(collectionLineData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                    y += graphics.MeasureString(collectionLineData, fontArial7Regular).Height;
-                }
-
-                // ================
-                // Collection Lines
-                // ================
-                String totalCollectionLineLabel = "Total Collection";
-                String totalCollectionLineData = dataSource.TotalCollection.ToString("#,##0.00");
-                graphics.DrawString(totalCollectionLineLabel, fontArial7Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalCollectionLineData, fontArial7Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalCollectionLineData, fontArial7Bold).Height;
-
-                // =========
-                // 4rth Line
-                // =========
-                Point forthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point forthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, forthLineFirstPoint, forthLineSecondPoint);
-
-                // ==================
-                // Disbursement Title
-                // ==================
-                String disbursementTitle = "\nCash In/Out";
-                graphics.DrawString(disbursementTitle, fontArial7Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                y += graphics.MeasureString(disbursementTitle, fontArial7Bold).Height;
-
-                // ========
-                // 5th Line
-                // ========
-                Point fifthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point fifthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, fifthLineFirstPoint, fifthLineSecondPoint);
-
-                // ================================
-                // Disbursement Pay Type and Amount
-                // ================================
-                String disbursementPayTypeLabel = "\nPay Type";
-                String disbursementAmountLabel = "\nAmount";
-                graphics.DrawString(disbursementPayTypeLabel, fontArial7Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(disbursementAmountLabel, fontArial7Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(disbursementAmountLabel, fontArial7Bold).Height;
-
-                //if (dataSource.Disbursements.Any())
-                //{
-                //    foreach (var disbursement in dataSource.Disbursements)
-                //    {
-                //        // ============
-                //        // Disbursement
-                //        // ============
-                //        String disbursementLabel = disbursement.PayType;
-                //        String disbursementData = disbursement.Amount.ToString("#,##0.00");
-                //        graphics.DrawString(disbursementLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                //        graphics.DrawString(disbursementData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                //        y += graphics.MeasureString(disbursementData, fontArial8Regular).Height;
-                //    }
-                //}
-                //else
-                //{
-                //    // ============
-                //    // Disbursement
-                //    // ============
-                //    String disbursementLabel = "Cash";
-                //    String disbursementData = "0.00";
-                //    graphics.DrawString(disbursementLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                //    graphics.DrawString(disbursementData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                //    y += graphics.MeasureString(disbursementData, fontArial8Regular).Height;
-                //}
-
-                // =======
-                // Cash In
-                // =======
-                String disbursementTotalCashInLabel = "Cash In";
-                String disbursementTotalCashInData = dataSource.CashInAmount.ToString("#,##0.00");
-                graphics.DrawString(disbursementTotalCashInLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(disbursementTotalCashInData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(disbursementTotalCashInData, fontArial7Bold).Height;
-
-                // ========
-                // Cash Out
-                // ========
-                String disbursementTotalCashOutLabel = "Cash Out";
-                String disbursementTotalCashOutData = dataSource.CashOutAmount.ToString("#,##0.00");
-                graphics.DrawString(disbursementTotalCashOutLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(disbursementTotalCashOutData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(disbursementTotalCashOutData, fontArial7Bold).Height;
-
-                // ========
-                // 6th Line
-                // ========
-                Point sixthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point sixthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, sixthLineFirstPoint, sixthLineSecondPoint);
-
-                // ===================
-                // Disbursement Number
-                // ===================
-                String disbursementNumberLabel = "\nCash In/Out Number";
-                String disbursementNumberData = "\n" + dataSource.DisbursementNumber;
-                graphics.DrawString(disbursementNumberLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(disbursementNumberData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(disbursementNumberData, fontArial7Regular).Height;
-
-                // =================
-                // Disbursement Date
-                // =================
-                String disbursementDateLabel = "Cash In/Out Date";
-                String disbursementDateData = dataSource.RemittanceDate;
-                graphics.DrawString(disbursementDateLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(disbursementDateData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(disbursementDateData, fontArial7Regular).Height;
-
-                // =================
-                // Disbursement Type
-                // =================
-                String disbursementTypeLabel = "Cash In/Out Type";
-                String disbursementTypeData = dataSource.DisbursementType;
-                graphics.DrawString(disbursementTypeLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(disbursementTypeData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(disbursementTypeData, fontArial7Regular).Height;
-
-                // ========
-                // Pay Type
-                // ========
-                String payTypeLabel = "Pay Type";
-                String payTypeData = dataSource.PayType;
-                graphics.DrawString(payTypeLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(payTypeData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(payTypeData, fontArial7Regular).Height;
-
-                // ========
-                // 7th Line
-                // ========
-                Point seventhLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point seventhLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, seventhLineFirstPoint, seventhLineSecondPoint);
-
-                // =========================
-                // Amount Denomination Title
-                // =========================
-                String amountDenominationTitle = "\nAmount Denomination";
-                graphics.DrawString(amountDenominationTitle, fontArial7Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                y += graphics.MeasureString(amountDenominationTitle, fontArial7Bold).Height;
-
-                // ========
-                // 8th Line
-                // ========
-                Point eightLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point eightLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, eightLineFirstPoint, eightLineSecondPoint);
-
-                // ==================
-                // Decimal Conversion
-                // ==================
-                Decimal amount1000 = Convert.ToDecimal(dataSource.Amount1000);
-                Decimal amount500 = Convert.ToDecimal(dataSource.Amount500);
-                Decimal amount200 = Convert.ToDecimal(dataSource.Amount200);
-                Decimal amount100 = Convert.ToDecimal(dataSource.Amount100);
-                Decimal amount50 = Convert.ToDecimal(dataSource.Amount50);
-                Decimal amount20 = Convert.ToDecimal(dataSource.Amount20);
-                Decimal amount10 = Convert.ToDecimal(dataSource.Amount10);
-                Decimal amount5 = Convert.ToDecimal(dataSource.Amount5);
-                Decimal amount1 = Convert.ToDecimal(dataSource.Amount1);
-                Decimal amount025 = Convert.ToDecimal(dataSource.Amount025);
-                Decimal amount010 = Convert.ToDecimal(dataSource.Amount010);
-                Decimal amount005 = Convert.ToDecimal(dataSource.Amount005);
-                Decimal amount001 = Convert.ToDecimal(dataSource.Amount001);
-                Decimal remittedAmount = Convert.ToDecimal(dataSource.RemittedAmount);
-                Decimal cashCollectedAmount = Convert.ToDecimal(dataSource.CashCollectedAmount);
-                Decimal cashInAmount = Convert.ToDecimal(dataSource.CashInAmount);
-                Decimal cashOutAmount = Convert.ToDecimal(dataSource.CashOutAmount);
-                Decimal overShortAmount = Convert.ToDecimal(dataSource.OverShortAmount);
-
-                // ==========
-                // Amount1000
-                // ==========
-                String amount1000Label = "\nAmount 1,000.00 x " + amount1000.ToString("#,##0");
-                String amount1000Data = "\n" + Convert.ToDecimal(amount1000 * 1000).ToString("#,##0.00");
-                graphics.DrawString(amount1000Label, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount1000Data, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount1000Data, fontArial7Regular).Height;
-
-                // ==========
-                // Amount500
-                // ==========
-                String amount500Label = "Amount 500.00 x " + amount500.ToString("#,##0");
-                String amount500Data = Convert.ToDecimal(amount500 * 500).ToString("#,##0.00");
-                graphics.DrawString(amount500Label, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount500Data, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount500Data, fontArial7Regular).Height;
-
-                // =========
-                // Amount200
-                // =========
-                String amount200Label = "Amount 200.00 x " + amount200.ToString("#,##0");
-                String amount200Data = Convert.ToDecimal(amount200 * 200).ToString("#,##0.00");
-                graphics.DrawString(amount200Label, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount200Data, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount200Data, fontArial7Regular).Height;
-
-                // =========
-                // Amount100
-                // =========
-                String amount100Label = "Amount 100.00 x " + amount100.ToString("#,##0");
-                String amount100Data = Convert.ToDecimal(amount100 * 100).ToString("#,##0.00");
-                graphics.DrawString(amount100Label, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount100Data, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount100Data, fontArial7Regular).Height;
-
-                // ========
-                // Amount50
-                // ========
-                String amount50Label = "Amount 50.00 x " + amount50.ToString("#,##0");
-                String amount50Data = Convert.ToDecimal(amount50 * 50).ToString("#,##0.00");
-                graphics.DrawString(amount50Label, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount50Data, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount50Data, fontArial7Regular).Height;
-
-                // ========
-                // Amount20
-                // ========
-                String amount20Label = "Amount 20.00 x " + amount20.ToString("#,##0");
-                String amount20Data = Convert.ToDecimal(amount20 * 20).ToString("#,##0.00");
-                graphics.DrawString(amount20Label, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount20Data, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount20Data, fontArial7Regular).Height;
-
-                // ========
-                // Amount10
-                // ========
-                String amount10Label = "Amount 10.00 x " + amount10.ToString("#,##0");
-                String amount10Data = Convert.ToDecimal(amount10 * 10).ToString("#,##0.00");
-                graphics.DrawString(amount10Label, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount10Data, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount10Data, fontArial7Regular).Height;
-
-                // ========
-                // Amount 5
-                // ========
-                String amount5Label = "Amount 5.00 x " + amount5.ToString("#,##0");
-                String amount5Data = Convert.ToDecimal(amount5 * 5).ToString("#,##0.00");
-                graphics.DrawString(amount5Label, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount5Data, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount5Data, fontArial7Regular).Height;
-
-                // ========
-                // Amount 1
-                // ========
-                String amount1Label = "Amount 1.00 x " + amount1.ToString("#,##0");
-                String amount1Data = Convert.ToDecimal(amount1 * 1).ToString("#,##0");
-                graphics.DrawString(amount1Label, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount1Data, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount1Data, fontArial7Regular).Height;
-
-                // ==========
-                // Amount 025
-                // ==========
-                String amount025Label = "Amount 0.25 x " + amount025.ToString("#,##0");
-                String amount025Data = Convert.ToDecimal(amount1 * 0.25m).ToString("#,##0.00");
-                graphics.DrawString(amount025Label, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount025Data, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount025Data, fontArial7Regular).Height;
-
-                // ==========
-                // Amount 010
-                // ==========
-                String amount010Label = "Amount 0.10 x " + amount010.ToString("#,##0");
-                String amount010Data = amount010.ToString("#,##0.00");
-                graphics.DrawString(amount010Label, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount010Data, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount010Data, fontArial7Regular).Height;
-
-                // ==========
-                // Amount 005
-                // ==========
-                String amount005Label = "Amount 0.05 x " + amount005.ToString("#,##0");
-                String amount005Data = Convert.ToDecimal(amount1 * 0.05m).ToString("#,##0.00");
-                graphics.DrawString(amount005Label, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount005Data, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount005Data, fontArial7Regular).Height;
-
-                // ==========
-                // Amount 001
-                // ==========
-                String amount001Label = "Amount 0.01 x " + amount001.ToString("#,##0");
-                String amount001Data = Convert.ToDecimal(amount1 * 0.01m).ToString("#,##0.00");
-                graphics.DrawString(amount001Label, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount001Data, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount001Data, fontArial7Regular).Height;
-
-                // ========
-                // 9th Line
-                // ========
-                Point ninethLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point ninethLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, ninethLineFirstPoint, ninethLineSecondPoint);
-
-                // ===============
-                // Remitted Amount
-                // ===============
-                String remittedAmountLabel = "\nRemitted Cash";
-                String remittedAmountData = "\n" + remittedAmount.ToString("#,##0.00");
-                graphics.DrawString(remittedAmountLabel, fontArial7Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(remittedAmountData, fontArial7Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(remittedAmountData, fontArial7Bold).Height;
-
-                // ================
-                // Collected Amount
-                // ================
-                String cashCollectedAmountLabel = "Cash Collected";
-                String cashCollectedAmountData = cashCollectedAmount.ToString("#,##0.00");
-                graphics.DrawString(cashCollectedAmountLabel, fontArial7Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(cashCollectedAmountData, fontArial7Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(cashCollectedAmountData, fontArial7Bold).Height;
-
-                // ================
-                // Cash In - Amount
-                // ================
-                String cashInAmountLabel = "Cash In";
-                String cashInAmountData = cashInAmount.ToString("#,##0.00");
-                graphics.DrawString(cashInAmountLabel, fontArial7Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(cashInAmountData, fontArial7Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(cashInAmountData, fontArial7Bold).Height;
-
-                // =================
-                // Cash Out - Amount
-                // =================
-                String cashInOutAmountLabel = "Cash Out";
-                String cashInOutAmountData = cashOutAmount.ToString("#,##0.00");
-                graphics.DrawString(cashInOutAmountLabel, fontArial7Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(cashInOutAmountData, fontArial7Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(cashInOutAmountData, fontArial7Bold).Height;
-
-                // ====================
-                // Over or Short Amount
-                // ====================
-                String overShortAmountLabel = "";
-                if (overShortAmount > 0)
-                {
-                    overShortAmountLabel = "Over";
-                }
-                else if (overShortAmount < 0)
-                {
-                    overShortAmountLabel = "Short";
-                }
-                else
-                {
-                    overShortAmountLabel = "";
-                }
-
-                if (String.IsNullOrEmpty(overShortAmountLabel) == false)
-                {
-                    String overShortAmountData = overShortAmount.ToString("#,##0.00");
-                    graphics.DrawString(overShortAmountLabel, fontArial7Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    graphics.DrawString(overShortAmountData, fontArial7Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                    y += graphics.MeasureString(overShortAmountData, fontArial7Bold).Height;
-                }
-
-                // =========
-                // 13th Line
-                // =========
-                Point thirheenthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point thirtheenthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, thirheenthLineFirstPoint, thirtheenthLineSecondPoint);
-            }
-            else
-            {
-                // ================
-                // Collection Title
-                // ================
-                String collectionTitle = "\nCollection";
-                graphics.DrawString(collectionTitle, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                y += graphics.MeasureString(collectionTitle, fontArial8Bold).Height;
-
-                // ========
-                // 3rd Line
-                // ========
-                Point thirdLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point thirdLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
-
-                // ==============================
-                // Collection Pay Type and Amount
-                // ==============================
-                String collectionPayTypeLabel = "\nPay Type";
-                String collectionAmountLabel = "\nReceived Amount";
-                graphics.DrawString(collectionPayTypeLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(collectionAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(collectionAmountLabel, fontArial8Bold).Height;
-
-                if (dataSource.CollectionLines.Any())
-                {
-                    foreach (var collectionLine in dataSource.CollectionLines)
-                    {
-                        // ================
-                        // Collection Lines
-                        // ================
-                        String collectionLineLabel = collectionLine.PayType;
-                        String collectionLineData = collectionLine.Amount.ToString("#,##0.00");
-                        graphics.DrawString(collectionLineLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                        graphics.DrawString(collectionLineData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                        y += graphics.MeasureString(collectionLineData, fontArial8Regular).Height;
-                    }
-                }
-                else
-                {
-                    // ================
-                    // Collection Lines
-                    // ================
-                    String collectionLineLabel = "Cash";
-                    String collectionLineData = "0.00";
+                    String collectionLineLabel = collectionLine.PayType;
+                    String collectionLineData = collectionLine.Amount.ToString("#,##0.00");
                     graphics.DrawString(collectionLineLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                     graphics.DrawString(collectionLineData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                     y += graphics.MeasureString(collectionLineData, fontArial8Regular).Height;
                 }
-
+            }
+            else
+            {
                 // ================
                 // Collection Lines
                 // ================
-                String totalCollectionLineLabel = "Total Collection";
-                String totalCollectionLineData = dataSource.TotalCollection.ToString("#,##0.00");
-                graphics.DrawString(totalCollectionLineLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalCollectionLineData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalCollectionLineData, fontArial8Bold).Height;
-
-                // =========
-                // 4rth Line
-                // =========
-                Point forthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point forthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, forthLineFirstPoint, forthLineSecondPoint);
-
-                // ==================
-                // Disbursement Title
-                // ==================
-                String disbursementTitle = "\nCash In/Out";
-                graphics.DrawString(disbursementTitle, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                y += graphics.MeasureString(disbursementTitle, fontArial8Bold).Height;
-
-                // ========
-                // 5th Line
-                // ========
-                Point fifthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point fifthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, fifthLineFirstPoint, fifthLineSecondPoint);
-
-                // ================================
-                // Disbursement Pay Type and Amount
-                // ================================
-                String disbursementPayTypeLabel = "\nPay Type";
-                String disbursementAmountLabel = "\nAmount";
-                graphics.DrawString(disbursementPayTypeLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(disbursementAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(disbursementAmountLabel, fontArial8Bold).Height;
-
-                //if (dataSource.Disbursements.Any())
-                //{
-                //    foreach (var disbursement in dataSource.Disbursements)
-                //    {
-                //        // ============
-                //        // Disbursement
-                //        // ============
-                //        String disbursementLabel = disbursement.PayType;
-                //        String disbursementData = disbursement.Amount.ToString("#,##0.00");
-                //        graphics.DrawString(disbursementLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                //        graphics.DrawString(disbursementData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                //        y += graphics.MeasureString(disbursementData, fontArial8Regular).Height;
-                //    }
-                //}
-                //else
-                //{
-                //    // ============
-                //    // Disbursement
-                //    // ============
-                //    String disbursementLabel = "Cash";
-                //    String disbursementData = "0.00";
-                //    graphics.DrawString(disbursementLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                //    graphics.DrawString(disbursementData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                //    y += graphics.MeasureString(disbursementData, fontArial8Regular).Height;
-                //}
-
-                // =======
-                // Cash In
-                // =======
-                String disbursementTotalCashInLabel = "Cash In";
-                String disbursementTotalCashInData = dataSource.CashInAmount.ToString("#,##0.00");
-                graphics.DrawString(disbursementTotalCashInLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(disbursementTotalCashInData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(disbursementTotalCashInData, fontArial8Bold).Height;
-
-                // ========
-                // Cash Out
-                // ========
-                String disbursementTotalCashOutLabel = "Cash Out";
-                String disbursementTotalCashOutData = dataSource.CashOutAmount.ToString("#,##0.00");
-                graphics.DrawString(disbursementTotalCashOutLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(disbursementTotalCashOutData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(disbursementTotalCashOutData, fontArial8Bold).Height;
-
-                // ========
-                // 6th Line
-                // ========
-                Point sixthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point sixthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, sixthLineFirstPoint, sixthLineSecondPoint);
-
-                // ===================
-                // Disbursement Number
-                // ===================
-                String disbursementNumberLabel = "\nCash In/Out Number";
-                String disbursementNumberData = "\n" + dataSource.DisbursementNumber;
-                graphics.DrawString(disbursementNumberLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(disbursementNumberData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(disbursementNumberData, fontArial8Regular).Height;
-
-                // =================
-                // Disbursement Date
-                // =================
-                String disbursementDateLabel = "Cash In/Out Date";
-                String disbursementDateData = dataSource.RemittanceDate;
-                graphics.DrawString(disbursementDateLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(disbursementDateData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(disbursementDateData, fontArial8Regular).Height;
-
-                // =================
-                // Disbursement Type
-                // =================
-                String disbursementTypeLabel = "Cash In/Out Type";
-                String disbursementTypeData = dataSource.DisbursementType;
-                graphics.DrawString(disbursementTypeLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(disbursementTypeData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(disbursementTypeData, fontArial8Regular).Height;
-
-                // ========
-                // Pay Type
-                // ========
-                String payTypeLabel = "Pay Type";
-                String payTypeData = dataSource.PayType;
-                graphics.DrawString(payTypeLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(payTypeData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(payTypeData, fontArial8Regular).Height;
-
-                // ========
-                // 7th Line
-                // ========
-                Point seventhLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point seventhLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, seventhLineFirstPoint, seventhLineSecondPoint);
-
-                // =========================
-                // Amount Denomination Title
-                // =========================
-                String amountDenominationTitle = "\nAmount Denomination";
-                graphics.DrawString(amountDenominationTitle, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                y += graphics.MeasureString(amountDenominationTitle, fontArial8Bold).Height;
-
-                // ========
-                // 8th Line
-                // ========
-                Point eightLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point eightLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, eightLineFirstPoint, eightLineSecondPoint);
-
-                // ==================
-                // Decimal Conversion
-                // ==================
-                Decimal amount1000 = Convert.ToDecimal(dataSource.Amount1000);
-                Decimal amount500 = Convert.ToDecimal(dataSource.Amount500);
-                Decimal amount200 = Convert.ToDecimal(dataSource.Amount200);
-                Decimal amount100 = Convert.ToDecimal(dataSource.Amount100);
-                Decimal amount50 = Convert.ToDecimal(dataSource.Amount50);
-                Decimal amount20 = Convert.ToDecimal(dataSource.Amount20);
-                Decimal amount10 = Convert.ToDecimal(dataSource.Amount10);
-                Decimal amount5 = Convert.ToDecimal(dataSource.Amount5);
-                Decimal amount1 = Convert.ToDecimal(dataSource.Amount1);
-                Decimal amount025 = Convert.ToDecimal(dataSource.Amount025);
-                Decimal amount010 = Convert.ToDecimal(dataSource.Amount010);
-                Decimal amount005 = Convert.ToDecimal(dataSource.Amount005);
-                Decimal amount001 = Convert.ToDecimal(dataSource.Amount001);
-                Decimal remittedAmount = Convert.ToDecimal(dataSource.RemittedAmount);
-                Decimal cashCollectedAmount = Convert.ToDecimal(dataSource.CashCollectedAmount);
-                Decimal cashInAmount = Convert.ToDecimal(dataSource.CashInAmount);
-                Decimal cashOutAmount = Convert.ToDecimal(dataSource.CashOutAmount);
-                Decimal overShortAmount = Convert.ToDecimal(dataSource.OverShortAmount);
-
-                // ==========
-                // Amount1000
-                // ==========
-                String amount1000Label = "\nAmount 1,000.00 x " + amount1000.ToString("#,##0");
-                String amount1000Data = "\n" + Convert.ToDecimal(amount1000 * 1000).ToString("#,##0.00");
-                graphics.DrawString(amount1000Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount1000Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount1000Data, fontArial8Regular).Height;
-
-                // ==========
-                // Amount500
-                // ==========
-                String amount500Label = "Amount 500.00 x " + amount500.ToString("#,##0");
-                String amount500Data = Convert.ToDecimal(amount500 * 500).ToString("#,##0.00");
-                graphics.DrawString(amount500Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount500Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount500Data, fontArial8Regular).Height;
-
-                // =========
-                // Amount200
-                // =========
-                String amount200Label = "Amount 200.00 x " + amount200.ToString("#,##0");
-                String amount200Data = Convert.ToDecimal(amount200 * 200).ToString("#,##0.00");
-                graphics.DrawString(amount200Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount200Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount200Data, fontArial8Regular).Height;
-
-                // =========
-                // Amount100
-                // =========
-                String amount100Label = "Amount 100.00 x " + amount100.ToString("#,##0");
-                String amount100Data = Convert.ToDecimal(amount100 * 100).ToString("#,##0.00");
-                graphics.DrawString(amount100Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount100Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount100Data, fontArial8Regular).Height;
-
-                // ========
-                // Amount50
-                // ========
-                String amount50Label = "Amount 50.00 x " + amount50.ToString("#,##0");
-                String amount50Data = Convert.ToDecimal(amount50 * 50).ToString("#,##0.00");
-                graphics.DrawString(amount50Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount50Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount50Data, fontArial8Regular).Height;
-
-                // ========
-                // Amount20
-                // ========
-                String amount20Label = "Amount 20.00 x " + amount20.ToString("#,##0");
-                String amount20Data = Convert.ToDecimal(amount20 * 20).ToString("#,##0.00");
-                graphics.DrawString(amount20Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount20Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount20Data, fontArial8Regular).Height;
-
-                // ========
-                // Amount10
-                // ========
-                String amount10Label = "Amount 10.00 x " + amount10.ToString("#,##0");
-                String amount10Data = Convert.ToDecimal(amount10 * 10).ToString("#,##0.00");
-                graphics.DrawString(amount10Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount10Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount10Data, fontArial8Regular).Height;
-
-                // ========
-                // Amount 5
-                // ========
-                String amount5Label = "Amount 5.00 x " + amount5.ToString("#,##0");
-                String amount5Data = Convert.ToDecimal(amount5 * 5).ToString("#,##0.00");
-                graphics.DrawString(amount5Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount5Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount5Data, fontArial8Regular).Height;
-
-                // ========
-                // Amount 1
-                // ========
-                String amount1Label = "Amount 1.00 x " + amount1.ToString("#,##0");
-                String amount1Data = Convert.ToDecimal(amount1 * 1).ToString("#,##0");
-                graphics.DrawString(amount1Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount1Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount1Data, fontArial8Regular).Height;
-
-                // ==========
-                // Amount 025
-                // ==========
-                String amount025Label = "Amount 0.25 x " + amount025.ToString("#,##0");
-                String amount025Data = Convert.ToDecimal(amount1 * 0.25m).ToString("#,##0.00");
-                graphics.DrawString(amount025Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount025Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount025Data, fontArial8Regular).Height;
-
-                // ==========
-                // Amount 010
-                // ==========
-                String amount010Label = "Amount 0.10 x " + amount010.ToString("#,##0");
-                String amount010Data = amount010.ToString("#,##0.00");
-                graphics.DrawString(amount010Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount010Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount010Data, fontArial8Regular).Height;
-
-                // ==========
-                // Amount 005
-                // ==========
-                String amount005Label = "Amount 0.05 x " + amount005.ToString("#,##0");
-                String amount005Data = Convert.ToDecimal(amount1 * 0.05m).ToString("#,##0.00");
-                graphics.DrawString(amount005Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount005Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount005Data, fontArial8Regular).Height;
-
-                // ==========
-                // Amount 001
-                // ==========
-                String amount001Label = "Amount 0.01 x " + amount001.ToString("#,##0");
-                String amount001Data = Convert.ToDecimal(amount1 * 0.01m).ToString("#,##0.00");
-                graphics.DrawString(amount001Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(amount001Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(amount001Data, fontArial8Regular).Height;
-
-                // ========
-                // 9th Line
-                // ========
-                Point ninethLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point ninethLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, ninethLineFirstPoint, ninethLineSecondPoint);
-
-                // ===============
-                // Remitted Amount
-                // ===============
-                String remittedAmountLabel = "\nRemitted Cash";
-                String remittedAmountData = "\n" + remittedAmount.ToString("#,##0.00");
-                graphics.DrawString(remittedAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(remittedAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(remittedAmountData, fontArial8Bold).Height;
-
-                // ================
-                // Collected Amount
-                // ================
-                String cashCollectedAmountLabel = "Cash Collected";
-                String cashCollectedAmountData = cashCollectedAmount.ToString("#,##0.00");
-                graphics.DrawString(cashCollectedAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(cashCollectedAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(cashCollectedAmountData, fontArial8Bold).Height;
-
-                // ================
-                // Cash In - Amount
-                // ================
-                String cashInAmountLabel = "Cash In";
-                String cashInAmountData = cashInAmount.ToString("#,##0.00");
-                graphics.DrawString(cashInAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(cashInAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(cashInAmountData, fontArial8Bold).Height;
-
-                // =================
-                // Cash Out - Amount
-                // =================
-                String cashInOutAmountLabel = "Cash Out";
-                String cashInOutAmountData = cashOutAmount.ToString("#,##0.00");
-                graphics.DrawString(cashInOutAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(cashInOutAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(cashInOutAmountData, fontArial8Bold).Height;
-
-                // ====================
-                // Over or Short Amount
-                // ====================
-                String overShortAmountLabel = "";
-                if (overShortAmount > 0)
-                {
-                    overShortAmountLabel = "Over";
-                }
-                else if (overShortAmount < 0)
-                {
-                    overShortAmountLabel = "Short";
-                }
-                else
-                {
-                    overShortAmountLabel = "";
-                }
-
-                if (String.IsNullOrEmpty(overShortAmountLabel) == false)
-                {
-                    String overShortAmountData = overShortAmount.ToString("#,##0.00");
-                    graphics.DrawString(overShortAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    graphics.DrawString(overShortAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                    y += graphics.MeasureString(overShortAmountData, fontArial8Bold).Height;
-                }
-
-                // =========
-                // 13th Line
-                // =========
-                Point thirheenthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point thirtheenthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, thirheenthLineFirstPoint, thirtheenthLineSecondPoint);
+                String collectionLineLabel = "Cash";
+                String collectionLineData = "0.00";
+                graphics.DrawString(collectionLineLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(collectionLineData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(collectionLineData, fontArial8Regular).Height;
             }
-            
+
+            // ================
+            // Collection Lines
+            // ================
+            String totalCollectionLineLabel = "Total Collection";
+            String totalCollectionLineData = dataSource.TotalCollection.ToString("#,##0.00");
+            graphics.DrawString(totalCollectionLineLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(totalCollectionLineData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(totalCollectionLineData, fontArial8Bold).Height;
+
+            // =========
+            // 4rth Line
+            // =========
+            Point forthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            Point forthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            graphics.DrawLine(blackPen, forthLineFirstPoint, forthLineSecondPoint);
+
+            // ==================
+            // Disbursement Title
+            // ==================
+            String disbursementTitle = "\nCash In/Out";
+            graphics.DrawString(disbursementTitle, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            y += graphics.MeasureString(disbursementTitle, fontArial8Bold).Height;
+
+            // ========
+            // 5th Line
+            // ========
+            Point fifthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            Point fifthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            graphics.DrawLine(blackPen, fifthLineFirstPoint, fifthLineSecondPoint);
+
+            // ================================
+            // Disbursement Pay Type and Amount
+            // ================================
+            String disbursementPayTypeLabel = "\nPay Type";
+            String disbursementAmountLabel = "\nAmount";
+            graphics.DrawString(disbursementPayTypeLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(disbursementAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(disbursementAmountLabel, fontArial8Bold).Height;
+
+            //if (dataSource.Disbursements.Any())
+            //{
+            //    foreach (var disbursement in dataSource.Disbursements)
+            //    {
+            //        // ============
+            //        // Disbursement
+            //        // ============
+            //        String disbursementLabel = disbursement.PayType;
+            //        String disbursementData = disbursement.Amount.ToString("#,##0.00");
+            //        graphics.DrawString(disbursementLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            //        graphics.DrawString(disbursementData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            //        y += graphics.MeasureString(disbursementData, fontArial8Regular).Height;
+            //    }
+            //}
+            //else
+            //{
+            //    // ============
+            //    // Disbursement
+            //    // ============
+            //    String disbursementLabel = "Cash";
+            //    String disbursementData = "0.00";
+            //    graphics.DrawString(disbursementLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            //    graphics.DrawString(disbursementData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            //    y += graphics.MeasureString(disbursementData, fontArial8Regular).Height;
+            //}
+
+            // =======
+            // Cash In
+            // =======
+            String disbursementTotalCashInLabel = "Cash In";
+            String disbursementTotalCashInData = dataSource.CashInAmount.ToString("#,##0.00");
+            graphics.DrawString(disbursementTotalCashInLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(disbursementTotalCashInData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(disbursementTotalCashInData, fontArial8Bold).Height;
+
+            // ========
+            // Cash Out
+            // ========
+            String disbursementTotalCashOutLabel = "Cash Out";
+            String disbursementTotalCashOutData = dataSource.CashOutAmount.ToString("#,##0.00");
+            graphics.DrawString(disbursementTotalCashOutLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(disbursementTotalCashOutData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(disbursementTotalCashOutData, fontArial8Bold).Height;
+
+            // ========
+            // 6th Line
+            // ========
+            Point sixthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            Point sixthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            graphics.DrawLine(blackPen, sixthLineFirstPoint, sixthLineSecondPoint);
+
+            // ===================
+            // Disbursement Number
+            // ===================
+            String disbursementNumberLabel = "\nCash In/Out Number";
+            String disbursementNumberData = "\n" + dataSource.DisbursementNumber;
+            graphics.DrawString(disbursementNumberLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(disbursementNumberData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(disbursementNumberData, fontArial8Regular).Height;
+
+            // =================
+            // Disbursement Date
+            // =================
+            String disbursementDateLabel = "Cash In/Out Date";
+            String disbursementDateData = dataSource.RemittanceDate;
+            graphics.DrawString(disbursementDateLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(disbursementDateData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(disbursementDateData, fontArial8Regular).Height;
+
+            // =================
+            // Disbursement Type
+            // =================
+            String disbursementTypeLabel = "Cash In/Out Type";
+            String disbursementTypeData = dataSource.DisbursementType;
+            graphics.DrawString(disbursementTypeLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(disbursementTypeData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(disbursementTypeData, fontArial8Regular).Height;
+
+            // ========
+            // Pay Type
+            // ========
+            String payTypeLabel = "Pay Type";
+            String payTypeData = dataSource.PayType;
+            graphics.DrawString(payTypeLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(payTypeData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(payTypeData, fontArial8Regular).Height;
+
+            // ========
+            // 7th Line
+            // ========
+            Point seventhLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            Point seventhLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            graphics.DrawLine(blackPen, seventhLineFirstPoint, seventhLineSecondPoint);
+
+            // =========================
+            // Amount Denomination Title
+            // =========================
+            String amountDenominationTitle = "\nAmount Denomination";
+            graphics.DrawString(amountDenominationTitle, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            y += graphics.MeasureString(amountDenominationTitle, fontArial8Bold).Height;
+
+            // ========
+            // 8th Line
+            // ========
+            Point eightLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            Point eightLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            graphics.DrawLine(blackPen, eightLineFirstPoint, eightLineSecondPoint);
+
+            // ==================
+            // Decimal Conversion
+            // ==================
+            Decimal amount1000 = Convert.ToDecimal(dataSource.Amount1000);
+            Decimal amount500 = Convert.ToDecimal(dataSource.Amount500);
+            Decimal amount200 = Convert.ToDecimal(dataSource.Amount200);
+            Decimal amount100 = Convert.ToDecimal(dataSource.Amount100);
+            Decimal amount50 = Convert.ToDecimal(dataSource.Amount50);
+            Decimal amount20 = Convert.ToDecimal(dataSource.Amount20);
+            Decimal amount10 = Convert.ToDecimal(dataSource.Amount10);
+            Decimal amount5 = Convert.ToDecimal(dataSource.Amount5);
+            Decimal amount1 = Convert.ToDecimal(dataSource.Amount1);
+            Decimal amount025 = Convert.ToDecimal(dataSource.Amount025);
+            Decimal amount010 = Convert.ToDecimal(dataSource.Amount010);
+            Decimal amount005 = Convert.ToDecimal(dataSource.Amount005);
+            Decimal amount001 = Convert.ToDecimal(dataSource.Amount001);
+            Decimal remittedAmount = Convert.ToDecimal(dataSource.RemittedAmount);
+            Decimal cashCollectedAmount = Convert.ToDecimal(dataSource.CashCollectedAmount);
+            Decimal cashInAmount = Convert.ToDecimal(dataSource.CashInAmount);
+            Decimal cashOutAmount = Convert.ToDecimal(dataSource.CashOutAmount);
+            Decimal overShortAmount = Convert.ToDecimal(dataSource.OverShortAmount);
+
+            // ==========
+            // Amount1000
+            // ==========
+            String amount1000Label = "\nAmount 1,000.00 x " + amount1000.ToString("#,##0");
+            String amount1000Data = "\n" + Convert.ToDecimal(amount1000 * 1000).ToString("#,##0.00");
+            graphics.DrawString(amount1000Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(amount1000Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(amount1000Data, fontArial8Regular).Height;
+
+            // ==========
+            // Amount500
+            // ==========
+            String amount500Label = "Amount 500.00 x " + amount500.ToString("#,##0");
+            String amount500Data = Convert.ToDecimal(amount500 * 500).ToString("#,##0.00");
+            graphics.DrawString(amount500Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(amount500Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(amount500Data, fontArial8Regular).Height;
+
+            // =========
+            // Amount200
+            // =========
+            String amount200Label = "Amount 200.00 x " + amount200.ToString("#,##0");
+            String amount200Data = Convert.ToDecimal(amount200 * 200).ToString("#,##0.00");
+            graphics.DrawString(amount200Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(amount200Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(amount200Data, fontArial8Regular).Height;
+
+            // =========
+            // Amount100
+            // =========
+            String amount100Label = "Amount 100.00 x " + amount100.ToString("#,##0");
+            String amount100Data = Convert.ToDecimal(amount100 * 100).ToString("#,##0.00");
+            graphics.DrawString(amount100Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(amount100Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(amount100Data, fontArial8Regular).Height;
+
+            // ========
+            // Amount50
+            // ========
+            String amount50Label = "Amount 50.00 x " + amount50.ToString("#,##0");
+            String amount50Data = Convert.ToDecimal(amount50 * 50).ToString("#,##0.00");
+            graphics.DrawString(amount50Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(amount50Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(amount50Data, fontArial8Regular).Height;
+
+            // ========
+            // Amount20
+            // ========
+            String amount20Label = "Amount 20.00 x " + amount20.ToString("#,##0");
+            String amount20Data = Convert.ToDecimal(amount20 * 20).ToString("#,##0.00");
+            graphics.DrawString(amount20Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(amount20Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(amount20Data, fontArial8Regular).Height;
+
+            // ========
+            // Amount10
+            // ========
+            String amount10Label = "Amount 10.00 x " + amount10.ToString("#,##0");
+            String amount10Data = Convert.ToDecimal(amount10 * 10).ToString("#,##0.00");
+            graphics.DrawString(amount10Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(amount10Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(amount10Data, fontArial8Regular).Height;
+
+            // ========
+            // Amount 5
+            // ========
+            String amount5Label = "Amount 5.00 x " + amount5.ToString("#,##0");
+            String amount5Data = Convert.ToDecimal(amount5 * 5).ToString("#,##0.00");
+            graphics.DrawString(amount5Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(amount5Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(amount5Data, fontArial8Regular).Height;
+
+            // ========
+            // Amount 1
+            // ========
+            String amount1Label = "Amount 1.00 x " + amount1.ToString("#,##0");
+            String amount1Data = Convert.ToDecimal(amount1 * 1).ToString("#,##0");
+            graphics.DrawString(amount1Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(amount1Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(amount1Data, fontArial8Regular).Height;
+
+            // ==========
+            // Amount 025
+            // ==========
+            String amount025Label = "Amount 0.25 x " + amount025.ToString("#,##0");
+            String amount025Data = Convert.ToDecimal(amount1 * 0.25m).ToString("#,##0.00");
+            graphics.DrawString(amount025Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(amount025Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(amount025Data, fontArial8Regular).Height;
+
+            // ==========
+            // Amount 010
+            // ==========
+            String amount010Label = "Amount 0.10 x " + amount010.ToString("#,##0");
+            String amount010Data = amount010.ToString("#,##0.00");
+            graphics.DrawString(amount010Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(amount010Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(amount010Data, fontArial8Regular).Height;
+
+            // ==========
+            // Amount 005
+            // ==========
+            String amount005Label = "Amount 0.05 x " + amount005.ToString("#,##0");
+            String amount005Data = Convert.ToDecimal(amount1 * 0.05m).ToString("#,##0.00");
+            graphics.DrawString(amount005Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(amount005Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(amount005Data, fontArial8Regular).Height;
+
+            // ==========
+            // Amount 001
+            // ==========
+            String amount001Label = "Amount 0.01 x " + amount001.ToString("#,##0");
+            String amount001Data = Convert.ToDecimal(amount1 * 0.01m).ToString("#,##0.00");
+            graphics.DrawString(amount001Label, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(amount001Data, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(amount001Data, fontArial8Regular).Height;
+
+            // ========
+            // 9th Line
+            // ========
+            Point ninethLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            Point ninethLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            graphics.DrawLine(blackPen, ninethLineFirstPoint, ninethLineSecondPoint);
+
+            // ===============
+            // Remitted Amount
+            // ===============
+            String remittedAmountLabel = "\nRemitted Cash";
+            String remittedAmountData = "\n" + remittedAmount.ToString("#,##0.00");
+            graphics.DrawString(remittedAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(remittedAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(remittedAmountData, fontArial8Bold).Height;
+
+            // ================
+            // Collected Amount
+            // ================
+            String cashCollectedAmountLabel = "Cash Collected";
+            String cashCollectedAmountData = cashCollectedAmount.ToString("#,##0.00");
+            graphics.DrawString(cashCollectedAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(cashCollectedAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(cashCollectedAmountData, fontArial8Bold).Height;
+
+            // ================
+            // Cash In - Amount
+            // ================
+            String cashInAmountLabel = "Cash In";
+            String cashInAmountData = cashInAmount.ToString("#,##0.00");
+            graphics.DrawString(cashInAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(cashInAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(cashInAmountData, fontArial8Bold).Height;
+
+            // =================
+            // Cash Out - Amount
+            // =================
+            String cashInOutAmountLabel = "Cash Out";
+            String cashInOutAmountData = cashOutAmount.ToString("#,##0.00");
+            graphics.DrawString(cashInOutAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+            graphics.DrawString(cashInOutAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+            y += graphics.MeasureString(cashInOutAmountData, fontArial8Bold).Height;
+
+            // ====================
+            // Over or Short Amount
+            // ====================
+            String overShortAmountLabel = "";
+            if (overShortAmount > 0)
+            {
+                overShortAmountLabel = "Over";
+            }
+            else if (overShortAmount < 0)
+            {
+                overShortAmountLabel = "Short";
+            }
+            else
+            {
+                overShortAmountLabel = "";
+            }
+
+            if (String.IsNullOrEmpty(overShortAmountLabel) == false)
+            {
+                String overShortAmountData = overShortAmount.ToString("#,##0.00");
+                graphics.DrawString(overShortAmountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(overShortAmountData, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(overShortAmountData, fontArial8Bold).Height;
+            }
+
+            // =========
+            // 13th Line
+            // =========
+            Point thirheenthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+            Point thirtheenthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+            graphics.DrawLine(blackPen, thirheenthLineFirstPoint, thirtheenthLineSecondPoint);
         }
     }
 }
