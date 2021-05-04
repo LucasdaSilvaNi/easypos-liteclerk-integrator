@@ -445,7 +445,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 x = 5; y = 5;
                 width = 245.0F; height = 0F;
             }
-            else if(Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Thermal Printer")
+            else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Thermal Printer")
             {
                 x = 5; y = 5;
                 width = 260.0F; height = 0F;
@@ -482,7 +482,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 adjustStringName = 3;
             }
             graphics.DrawString(companyName, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += graphics.MeasureString(companyName, fontArial8Regular).Height* adjustStringName;
+            y += graphics.MeasureString(companyName, fontArial8Regular).Height * adjustStringName;
 
             // ===============
             // Company Address
@@ -523,7 +523,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             // 1st Line
             // ========
             Point firstLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-            Point firstLineSecondPoint = new Point(400, Convert.ToInt32(y) + 5);
+            Point firstLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
             graphics.DrawLine(blackPen, firstLineFirstPoint, firstLineSecondPoint);
 
             Decimal totalGrossSales = dataSource.TotalGrossSales * declareRate;
@@ -532,488 +532,571 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             Decimal totalPWDDiscount = dataSource.TotalPWDDiscount * declareRate;
             Decimal totalSalesReturn = dataSource.TotalSalesReturn * declareRate;
             Decimal totalNetSales = dataSource.TotalNetSales * declareRate;
-
-            // ===========
-            // Gross Sales
-            // ===========
-            String totalGrossSalesLabel = "\nGross Sales (Net of VAT)";
-            String totalGrossSalesData = "\n" + totalGrossSales.ToString("#,##0.00");
             if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
             {
+                // ===========
+                // Gross Sales
+                // ===========
+                String totalGrossSalesLabel = "\nGross Sales (Net of VAT)";
+                String totalGrossSalesData = "\n" + totalGrossSales.ToString("#,##0.00");
                 graphics.DrawString(totalGrossSalesLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(totalGrossSalesData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(totalGrossSalesData, fontArial7Regular).Height;
-            }
-            else
-            {
-                graphics.DrawString(totalGrossSalesLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalGrossSalesData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalGrossSalesData, fontArial8Regular).Height;
-            }
-           
 
-            // ================
-            // Regular Discount
-            // ================
-            String totalRegularDiscountLabel = "Regular Discount";
-            String totalRegularDiscountData = totalRegularDiscount.ToString("#,##0.00");
-            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
-            {
+
+                // ================
+                // Regular Discount
+                // ================
+                String totalRegularDiscountLabel = "Regular Discount";
+                String totalRegularDiscountData = totalRegularDiscount.ToString("#,##0.00");
                 graphics.DrawString(totalRegularDiscountLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(totalRegularDiscountData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(totalRegularDiscountData, fontArial7Regular).Height;
-            }
-            else
-            {
-                graphics.DrawString(totalRegularDiscountLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalRegularDiscountData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalRegularDiscountData, fontArial8Regular).Height;
-            }
 
-            // ===============
-            // Senior Discount
-            // ===============
-            String totalSeniorDiscountLabel = "Senior Discount";
-            String totalSeniorDiscountData = totalSeniorDiscount.ToString("#,##0.00");
-            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
-            {
+                // ===============
+                // Senior Discount
+                // ===============
+                String totalSeniorDiscountLabel = "Senior Discount";
+                String totalSeniorDiscountData = totalSeniorDiscount.ToString("#,##0.00");
                 graphics.DrawString(totalSeniorDiscountLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(totalSeniorDiscountData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(totalSeniorDiscountData, fontArial7Regular).Height;
-            }
-            else
-            {
-                graphics.DrawString(totalSeniorDiscountLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalSeniorDiscountData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalSeniorDiscountData, fontArial8Regular).Height;
-            }
-            
 
-            // ============
-            // PWD Discount
-            // ============
-            String totalPWDDiscountLabel = "PWD Discount";
-            String totalPWDDiscountData = totalPWDDiscount.ToString("#,##0.00");
-            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
-            {
+
+                // ============
+                // PWD Discount
+                // ============
+                String totalPWDDiscountLabel = "PWD Discount";
+                String totalPWDDiscountData = totalPWDDiscount.ToString("#,##0.00");
                 graphics.DrawString(totalPWDDiscountLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(totalPWDDiscountData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(totalPWDDiscountData, fontArial7Regular).Height;
-            }
-            else
-            {
-                graphics.DrawString(totalPWDDiscountLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalPWDDiscountData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalPWDDiscountData, fontArial8Regular).Height;
-            }
-            
 
-            // ============
-            // Sales Return
-            // ============
-            String totalSalesReturnLabel = "Sales Return";
-            String totalSalesReturnData = "(" + totalSalesReturn.ToString("#,##0.00") + ")";
-            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
-            {
+
+                // ============
+                // Sales Return
+                // ============
+                String totalSalesReturnLabel = "Sales Return";
+                String totalSalesReturnData = "(" + totalSalesReturn.ToString("#,##0.00") + ")";
                 graphics.DrawString(totalSalesReturnLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(totalSalesReturnData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(totalSalesReturnData, fontArial7Regular).Height;
-            }
-            else
-            {
-                graphics.DrawString(totalSalesReturnLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalSalesReturnData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalSalesReturnData, fontArial8Regular).Height;
-            }
-            
 
-            // =========
-            // Net Sales
-            // =========
-            String totalNetSalesLabel = "Net Sales\n\n";
-            String totalNetSalesData = totalNetSales.ToString("#,##0.00") + "\n\n";
-            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
-            {
+
+                // =========
+                // Net Sales
+                // =========
+                String totalNetSalesLabel = "Net Sales\n\n";
+                String totalNetSalesData = totalNetSales.ToString("#,##0.00") + "\n\n";
                 graphics.DrawString(totalNetSalesLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(totalNetSalesData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(totalNetSalesData, fontArial7Regular).Height;
-            }
-            else
-            {
-                graphics.DrawString(totalNetSalesLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalNetSalesData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalNetSalesData, fontArial8Regular).Height;
-            }
-            
 
-            // ========
-            // 2nd Line
-            // ========
-            Point secondLineFirstPoint = new Point(0, Convert.ToInt32(y) - 7);
-            Point secondLineSecondPoint = new Point(400, Convert.ToInt32(y) - 7);
-            graphics.DrawLine(blackPen, secondLineFirstPoint, secondLineSecondPoint);
 
-            if (dataSource.CollectionLines.Any())
-            {
-                foreach (var collectionLine in dataSource.CollectionLines)
+                // ========
+                // 2nd Line
+                // ========
+                Point secondLineFirstPoint = new Point(0, Convert.ToInt32(y) - 7);
+                Point secondLineSecondPoint = new Point(500, Convert.ToInt32(y) - 7);
+                graphics.DrawLine(blackPen, secondLineFirstPoint, secondLineSecondPoint);
+
+                if (dataSource.CollectionLines.Any())
                 {
-                    // ================
-                    // Collection Lines
-                    // ================
-                    String collectionLineLabel = collectionLine.PayType;
-                    String collectionLineData = (collectionLine.Amount * declareRate).ToString("#,##0.00");
-                    if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
+                    foreach (var collectionLine in dataSource.CollectionLines)
                     {
+                        // ================
+                        // Collection Lines
+                        // ================
+                        String collectionLineLabel = collectionLine.PayType;
+                        String collectionLineData = (collectionLine.Amount * declareRate).ToString("#,##0.00");
                         graphics.DrawString(collectionLineLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                         graphics.DrawString(collectionLineData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                         y += graphics.MeasureString(collectionLineData, fontArial7Regular).Height;
                     }
-                    else
+                    Decimal totalRefund = dataSource.TotalRefund * declareRate;
+
+                    String totalRefundLabel = "Refund";
+                    String totalRefundData = "(" + totalRefund.ToString("#,##0.00") + ")";
+                    graphics.DrawString(totalRefundLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                    graphics.DrawString(totalRefundData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                    y += graphics.MeasureString(totalRefundData, fontArial7Regular).Height;
+
+                    // ========
+                    // 3rd Line
+                    // ========
+                    Point thirdLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                    Point thirdLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                    graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
+                }
+
+                Decimal totalCollection = dataSource.TotalCollection * declareRate;
+
+                // ================
+                // Total Collection
+                // ================
+                if (dataSource.CollectionLines.Any())
+                {
+                    String totalCollectionLabel = "\nTotal Collection";
+                    String totalCollectionData = "\n" + totalCollection.ToString("#,##0.00");
+                    graphics.DrawString(totalCollectionLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                    graphics.DrawString(totalCollectionData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                    y += graphics.MeasureString(totalCollectionData, fontArial7Regular).Height;
+
+                }
+                else
+                {
+                    String totalCollectionLabel = "Total Collection";
+                    String totalCollectionData = totalCollection.ToString("#,##0.00");
+                    graphics.DrawString(totalCollectionLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                    graphics.DrawString(totalCollectionData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                    y += graphics.MeasureString(totalCollectionData, fontArial7Regular).Height;
+                }
+
+                // ========
+                // 4th Line
+                // ========
+                Point forthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point forthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, forthLineFirstPoint, forthLineSecondPoint);
+
+                Decimal totalVATSales = dataSource.TotalVATSales * declareRate;
+                Decimal totalVATAmount = dataSource.TotalVATAmount * declareRate;
+                Decimal totalNonVAT = dataSource.TotalNonVAT * declareRate;
+                Decimal totalVATExclusive = dataSource.TotalVATExclusive * declareRate;
+                Decimal totalVATExempt = dataSource.TotalVATExempt * declareRate;
+                Decimal totalVATZeroRated = dataSource.TotalVATZeroRated * declareRate;
+
+                String vatSalesLabel = "\nVAT Sales";
+                String totalVatSalesData = "\n" + totalVATSales.ToString("#,##0.00");
+                graphics.DrawString(vatSalesLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalVatSalesData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalVatSalesData, fontArial7Regular).Height;
+
+                String totalVATAmountLabel = "VAT Amount";
+                String totalVATAmountData = totalVATAmount.ToString("#,##0.00");
+                graphics.DrawString(totalVATAmountLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalVATAmountData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalVATAmountData, fontArial7Regular).Height;
+
+                String totalNonVATLabel = "Non-VAT";
+                String totalNonVATAmount = totalNonVAT.ToString("#,##0.00");
+                graphics.DrawString(totalNonVATLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalNonVATAmount, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalNonVATAmount, fontArial7Regular).Height;
+
+
+                //String totalVATExclusiveLabel = "VAT Exclusive";
+                //String totalVATExclusiveData = totalVATExclusive.ToString("#,##0.00");
+                //graphics.DrawString(totalVATExclusiveLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                //graphics.DrawString(totalVATExclusiveData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                //y += graphics.MeasureString(totalVATExclusiveData, fontArial8Regular).Height;
+
+                String totalVATExemptLabel = "VAT Exempt";
+                String totalVATExemptData = totalVATExempt.ToString("#,##0.00");
+                graphics.DrawString(totalVATExemptLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalVATExemptData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalVATExemptData, fontArial7Regular).Height;
+
+                String totalVATZeroRatedLabel = "VAT Zero Rated";
+                String totalVatZeroRatedData = totalVATZeroRated.ToString("#,##0.00");
+                graphics.DrawString(totalVATZeroRatedLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalVatZeroRatedData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalVatZeroRatedData, fontArial7Regular).Height;
+
+                // ========
+                // 5th Line
+                // ========
+                Point fifthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point fifthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, fifthLineFirstPoint, fifthLineSecondPoint);
+
+                String counterIdStart = dataSource.CounterIdStart;
+                String counterIdEnd = dataSource.CounterIdEnd;
+
+                String startCounterIdLabel = "\nCounter ID Start";
+                String startCounterIdData = "\n" + counterIdStart;
+                graphics.DrawString(startCounterIdLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(startCounterIdData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(startCounterIdData, fontArial7Regular).Height;
+
+
+                String endCounterIdLabel = "Counter ID End";
+                String endCounterIdData = counterIdEnd;
+                graphics.DrawString(endCounterIdLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(endCounterIdData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(endCounterIdData, fontArial7Regular).Height;
+
+
+                // ========
+                // 6th Line
+                // ========
+                Point sixthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point sixthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, sixthLineFirstPoint, sixthLineSecondPoint);
+
+                Decimal totalCancelledTrnsactionCount = dataSource.TotalCancelledTrnsactionCount;
+                Decimal totalCancelledAmount = dataSource.TotalCancelledAmount * declareRate;
+
+                String totalCancelledTrnsactionCountLabel = "\nCancelled Tx.";
+                String totalCancelledTrnsactionCountData = "\n" + totalCancelledTrnsactionCount.ToString("#,##0");
+                graphics.DrawString(totalCancelledTrnsactionCountLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalCancelledTrnsactionCountData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalCancelledTrnsactionCountData, fontArial7Regular).Height;
+
+                String totalCancelledAmountLabel = "Cancelled Amount";
+                String totalCancelledAmountData = totalCancelledAmount.ToString("#,##0.00");
+                graphics.DrawString(totalCancelledAmountLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalCancelledAmountData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalCancelledAmountData, fontArial7Regular).Height;
+
+                // ========
+                // 7th Line
+                // ========
+                Point seventhLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point seventhLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, seventhLineFirstPoint, seventhLineSecondPoint);
+
+                Decimal totalNumberOfTransactions = dataSource.TotalNumberOfTransactions;
+                Decimal totalNumberOfSKU = dataSource.TotalNumberOfSKU;
+                Decimal totalQuantity = dataSource.TotalQuantity;
+
+                String totalNumberOfTransactionsLabel = "\nNo. of Transactions";
+                String totalNumberOfTransactionsData = "\n" + totalNumberOfTransactions.ToString("#,##0");
+                graphics.DrawString(totalNumberOfTransactionsLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalNumberOfTransactionsData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalNumberOfTransactionsData, fontArial7Regular).Height;
+
+
+                String totalNumberOfSKULabel = "No. of SKU";
+                String totalNumberOfSKUData = totalNumberOfSKU.ToString("#,##0");
+                graphics.DrawString(totalNumberOfSKULabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalNumberOfSKUData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalNumberOfSKUData, fontArial7Regular).Height;
+
+
+                String totalQuantityLabel = "Total Quantity";
+                String totalQuantityData = totalQuantity.ToString("#,##0.00");
+                graphics.DrawString(totalQuantityLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalQuantityData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalQuantityData, fontArial7Regular).Height;
+
+
+                // ========
+                // 8th Line
+                // ========
+                Point eightLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point eightLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, eightLineFirstPoint, eightLineSecondPoint);
+
+                //Decimal totalPreviousReading = dataSource.TotalPreviousReading;
+                //Decimal runningTotal = dataSource.RunningTotal;
+
+                //String totalPreviousReadingLabel = "\nPrevious Reading";
+                //String totalPreviousReadingData = "\n" + totalPreviousReading.ToString("#,##0.00");
+                //graphics.DrawString(totalPreviousReadingLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                //graphics.DrawString(totalPreviousReadingData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                //y += graphics.MeasureString(totalPreviousReadingData, fontArial8Regular).Height;
+
+                //graphics.DrawString("Net Sales", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                //graphics.DrawString(totalNetSales.ToString("#,##0.00"), fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                //y += graphics.MeasureString(totalNetSales.ToString("#,##0.00"), fontArial8Regular).Height;
+
+                //String runningTotalLabel = "Running Total";
+                //String runningTotalData = runningTotal.ToString("#,##0.00");
+                //graphics.DrawString(runningTotalLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                //graphics.DrawString(runningTotalData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                //y += graphics.MeasureString(runningTotalData, fontArial8Regular).Height;
+
+                //// ========
+                //// 9th Line
+                //// ========
+                //Point ninethLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                //Point ninethLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                //graphics.DrawLine(blackPen, ninethLineFirstPoint, ninethLineSecondPoint);
+            }
+            else
+            {
+                // ===========
+                // Gross Sales
+                // ===========
+                String totalGrossSalesLabel = "\nGross Sales (Net of VAT)";
+                String totalGrossSalesData = "\n" + totalGrossSales.ToString("#,##0.00");
+                graphics.DrawString(totalGrossSalesLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalGrossSalesData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalGrossSalesData, fontArial8Regular).Height;
+
+
+                // ================
+                // Regular Discount
+                // ================
+                String totalRegularDiscountLabel = "Regular Discount";
+                String totalRegularDiscountData = totalRegularDiscount.ToString("#,##0.00");
+                graphics.DrawString(totalRegularDiscountLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalRegularDiscountData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalRegularDiscountData, fontArial8Regular).Height;
+
+                // ===============
+                // Senior Discount
+                // ===============
+                String totalSeniorDiscountLabel = "Senior Discount";
+                String totalSeniorDiscountData = totalSeniorDiscount.ToString("#,##0.00");
+                graphics.DrawString(totalSeniorDiscountLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalSeniorDiscountData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalSeniorDiscountData, fontArial8Regular).Height;
+
+
+                // ============
+                // PWD Discount
+                // ============
+                String totalPWDDiscountLabel = "PWD Discount";
+                String totalPWDDiscountData = totalPWDDiscount.ToString("#,##0.00");
+                graphics.DrawString(totalPWDDiscountLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalPWDDiscountData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalPWDDiscountData, fontArial8Regular).Height;
+
+
+                // ============
+                // Sales Return
+                // ============
+                String totalSalesReturnLabel = "Sales Return";
+                String totalSalesReturnData = "(" + totalSalesReturn.ToString("#,##0.00") + ")";
+                graphics.DrawString(totalSalesReturnLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalSalesReturnData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalSalesReturnData, fontArial8Regular).Height;
+
+
+                // =========
+                // Net Sales
+                // =========
+                String totalNetSalesLabel = "Net Sales\n\n";
+                String totalNetSalesData = totalNetSales.ToString("#,##0.00") + "\n\n";
+                graphics.DrawString(totalNetSalesLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                graphics.DrawString(totalNetSalesData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(totalNetSalesData, fontArial8Regular).Height;
+
+
+                // ========
+                // 2nd Line
+                // ========
+                Point secondLineFirstPoint = new Point(0, Convert.ToInt32(y) - 7);
+                Point secondLineSecondPoint = new Point(500, Convert.ToInt32(y) - 7);
+                graphics.DrawLine(blackPen, secondLineFirstPoint, secondLineSecondPoint);
+
+                if (dataSource.CollectionLines.Any())
+                {
+                    foreach (var collectionLine in dataSource.CollectionLines)
                     {
+                        // ================
+                        // Collection Lines
+                        // ================
+                        String collectionLineLabel = collectionLine.PayType;
+                        String collectionLineData = (collectionLine.Amount * declareRate).ToString("#,##0.00");
                         graphics.DrawString(collectionLineLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                         graphics.DrawString(collectionLineData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                         y += graphics.MeasureString(collectionLineData, fontArial8Regular).Height;
                     }
-                    
+                    Decimal totalRefund = dataSource.TotalRefund * declareRate;
 
-                }
-                Decimal totalRefund = dataSource.TotalRefund * declareRate;
-
-                String totalRefundLabel = "Refund";
-                String totalRefundData = "(" + totalRefund.ToString("#,##0.00") + ")";
-                if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
-                {
-                    graphics.DrawString(totalRefundLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    graphics.DrawString(totalRefundData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                    y += graphics.MeasureString(totalRefundData, fontArial7Regular).Height;
-                }
-                else
-                {
+                    String totalRefundLabel = "Refund";
+                    String totalRefundData = "(" + totalRefund.ToString("#,##0.00") + ")";
                     graphics.DrawString(totalRefundLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                     graphics.DrawString(totalRefundData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                     y += graphics.MeasureString(totalRefundData, fontArial8Regular).Height;
+
+                    // ========
+                    // 3rd Line
+                    // ========
+                    Point thirdLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                    Point thirdLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                    graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
                 }
-                
-                // ========
-                // 3rd Line
-                // ========
-                Point thirdLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                Point thirdLineSecondPoint = new Point(400, Convert.ToInt32(y) + 5);
-                graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
-            }
 
-            Decimal totalCollection = dataSource.TotalCollection * declareRate;
+                Decimal totalCollection = dataSource.TotalCollection * declareRate;
 
-            // ================
-            // Total Collection
-            // ================
-            if (dataSource.CollectionLines.Any())
-            {
-                String totalCollectionLabel = "\nTotal Collection";
-                String totalCollectionData = "\n" + totalCollection.ToString("#,##0.00");
-                if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
+                // ================
+                // Total Collection
+                // ================
+                if (dataSource.CollectionLines.Any())
                 {
-                    graphics.DrawString(totalCollectionLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    graphics.DrawString(totalCollectionData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                    y += graphics.MeasureString(totalCollectionData, fontArial7Regular).Height;
+                    String totalCollectionLabel = "\nTotal Collection";
+                    String totalCollectionData = "\n" + totalCollection.ToString("#,##0.00");
+                    graphics.DrawString(totalCollectionLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                    graphics.DrawString(totalCollectionData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                    y += graphics.MeasureString(totalCollectionData, fontArial8Regular).Height;
+
                 }
                 else
                 {
+                    String totalCollectionLabel = "Total Collection";
+                    String totalCollectionData = totalCollection.ToString("#,##0.00");
                     graphics.DrawString(totalCollectionLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                     graphics.DrawString(totalCollectionData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                     y += graphics.MeasureString(totalCollectionData, fontArial8Regular).Height;
                 }
-                
-            }
-            else
-            {
-                String totalCollectionLabel = "Total Collection";
-                String totalCollectionData = totalCollection.ToString("#,##0.00");
-                if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
-                {
-                    graphics.DrawString(totalCollectionLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    graphics.DrawString(totalCollectionData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                    y += graphics.MeasureString(totalCollectionData, fontArial7Regular).Height;
-                }
-                else
-                {
-                    graphics.DrawString(totalCollectionLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    graphics.DrawString(totalCollectionData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                    y += graphics.MeasureString(totalCollectionData, fontArial8Regular).Height;
-                }
-                
-            }
 
-            // ========
-            // 4th Line
-            // ========
-            Point forthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-            Point forthLineSecondPoint = new Point(400, Convert.ToInt32(y) + 5);
-            graphics.DrawLine(blackPen, forthLineFirstPoint, forthLineSecondPoint);
+                // ========
+                // 4th Line
+                // ========
+                Point forthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point forthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, forthLineFirstPoint, forthLineSecondPoint);
 
-            Decimal totalVATSales = dataSource.TotalVATSales * declareRate;
-            Decimal totalVATAmount = dataSource.TotalVATAmount * declareRate;
-            Decimal totalNonVAT = dataSource.TotalNonVAT * declareRate;
-            Decimal totalVATExclusive = dataSource.TotalVATExclusive * declareRate;
-            Decimal totalVATExempt = dataSource.TotalVATExempt * declareRate;
-            Decimal totalVATZeroRated = dataSource.TotalVATZeroRated * declareRate;
+                Decimal totalVATSales = dataSource.TotalVATSales * declareRate;
+                Decimal totalVATAmount = dataSource.TotalVATAmount * declareRate;
+                Decimal totalNonVAT = dataSource.TotalNonVAT * declareRate;
+                Decimal totalVATExclusive = dataSource.TotalVATExclusive * declareRate;
+                Decimal totalVATExempt = dataSource.TotalVATExempt * declareRate;
+                Decimal totalVATZeroRated = dataSource.TotalVATZeroRated * declareRate;
 
-            String vatSalesLabel = "\nVAT Sales";
-            String totalVatSalesData = "\n" + totalVATSales.ToString("#,##0.00");
-            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
-            {
-                graphics.DrawString(vatSalesLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalVatSalesData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalVatSalesData, fontArial7Regular).Height;
-            }
-            else
-            {
+                String vatSalesLabel = "\nVAT Sales";
+                String totalVatSalesData = "\n" + totalVATSales.ToString("#,##0.00");
                 graphics.DrawString(vatSalesLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(totalVatSalesData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(totalVatSalesData, fontArial8Regular).Height;
-            }
 
-            String totalVATAmountLabel = "VAT Amount";
-            String totalVATAmountData = totalVATAmount.ToString("#,##0.00");
-            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
-            {
-                graphics.DrawString(totalVATAmountLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalVATAmountData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalVATAmountData, fontArial7Regular).Height;
-            }
-            else
-            {
+                String totalVATAmountLabel = "VAT Amount";
+                String totalVATAmountData = totalVATAmount.ToString("#,##0.00");
                 graphics.DrawString(totalVATAmountLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(totalVATAmountData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(totalVATAmountData, fontArial8Regular).Height;
-            }
 
-            String totalNonVATLabel = "Non-VAT";
-            String totalNonVATAmount = totalNonVAT.ToString("#,##0.00");
-            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
-            {
-                graphics.DrawString(totalNonVATLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalNonVATAmount, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalNonVATAmount, fontArial7Regular).Height;
-            }
-            else
-            {
+                String totalNonVATLabel = "Non-VAT";
+                String totalNonVATAmount = totalNonVAT.ToString("#,##0.00");
                 graphics.DrawString(totalNonVATLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(totalNonVATAmount, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(totalNonVATAmount, fontArial8Regular).Height;
-            }
-            
 
-            //String totalVATExclusiveLabel = "VAT Exclusive";
-            //String totalVATExclusiveData = totalVATExclusive.ToString("#,##0.00");
-            //graphics.DrawString(totalVATExclusiveLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            //graphics.DrawString(totalVATExclusiveData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-            //y += graphics.MeasureString(totalVATExclusiveData, fontArial8Regular).Height;
 
-            String totalVATExemptLabel = "VAT Exempt";
-            String totalVATExemptData = totalVATExempt.ToString("#,##0.00");
-            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
-            {
-                graphics.DrawString(totalVATExemptLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalVATExemptData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalVATExemptData, fontArial7Regular).Height;
-            }
-            else
-            {
+                //String totalVATExclusiveLabel = "VAT Exclusive";
+                //String totalVATExclusiveData = totalVATExclusive.ToString("#,##0.00");
+                //graphics.DrawString(totalVATExclusiveLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                //graphics.DrawString(totalVATExclusiveData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                //y += graphics.MeasureString(totalVATExclusiveData, fontArial8Regular).Height;
+
+                String totalVATExemptLabel = "VAT Exempt";
+                String totalVATExemptData = totalVATExempt.ToString("#,##0.00");
                 graphics.DrawString(totalVATExemptLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(totalVATExemptData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(totalVATExemptData, fontArial8Regular).Height;
-            }
 
-            String totalVATZeroRatedLabel = "VAT Zero Rated";
-            String totalVatZeroRatedData = totalVATZeroRated.ToString("#,##0.00");
-            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
-            {
-                graphics.DrawString(totalVATZeroRatedLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalVatZeroRatedData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalVatZeroRatedData, fontArial7Regular).Height;
-            }
-            else
-            {
+                String totalVATZeroRatedLabel = "VAT Zero Rated";
+                String totalVatZeroRatedData = totalVATZeroRated.ToString("#,##0.00");
                 graphics.DrawString(totalVATZeroRatedLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(totalVatZeroRatedData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(totalVatZeroRatedData, fontArial8Regular).Height;
-            }
 
-            // ========
-            // 5th Line
-            // ========
-            Point fifthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-            Point fifthLineSecondPoint = new Point(400, Convert.ToInt32(y) + 5);
-            graphics.DrawLine(blackPen, fifthLineFirstPoint, fifthLineSecondPoint);
+                // ========
+                // 5th Line
+                // ========
+                Point fifthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point fifthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, fifthLineFirstPoint, fifthLineSecondPoint);
 
-            String counterIdStart = dataSource.CounterIdStart;
-            String counterIdEnd = dataSource.CounterIdEnd;
+                String counterIdStart = dataSource.CounterIdStart;
+                String counterIdEnd = dataSource.CounterIdEnd;
 
-            String startCounterIdLabel = "\nCounter ID Start";
-            String startCounterIdData = "\n" + counterIdStart;
-            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
-            {
-                graphics.DrawString(startCounterIdLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(startCounterIdData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(startCounterIdData, fontArial7Regular).Height;
-            }
-            else
-            {
+                String startCounterIdLabel = "\nCounter ID Start";
+                String startCounterIdData = "\n" + counterIdStart;
                 graphics.DrawString(startCounterIdLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(startCounterIdData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(startCounterIdData, fontArial8Regular).Height;
-            }
-            
 
-            String endCounterIdLabel = "Counter ID End";
-            String endCounterIdData = counterIdEnd;
-            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
-            {
-                graphics.DrawString(endCounterIdLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(endCounterIdData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(endCounterIdData, fontArial7Regular).Height;
-            }
-            else
-            {
+
+                String endCounterIdLabel = "Counter ID End";
+                String endCounterIdData = counterIdEnd;
                 graphics.DrawString(endCounterIdLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(endCounterIdData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(endCounterIdData, fontArial8Regular).Height;
-            }
-            
 
-            // ========
-            // 6th Line
-            // ========
-            Point sixthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-            Point sixthLineSecondPoint = new Point(400, Convert.ToInt32(y) + 5);
-            graphics.DrawLine(blackPen, sixthLineFirstPoint, sixthLineSecondPoint);
 
-            Decimal totalCancelledTrnsactionCount = dataSource.TotalCancelledTrnsactionCount;
-            Decimal totalCancelledAmount = dataSource.TotalCancelledAmount * declareRate;
+                // ========
+                // 6th Line
+                // ========
+                Point sixthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point sixthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, sixthLineFirstPoint, sixthLineSecondPoint);
 
-            String totalCancelledTrnsactionCountLabel = "\nCancelled Tx.";
-            String totalCancelledTrnsactionCountData = "\n" + totalCancelledTrnsactionCount.ToString("#,##0");
-            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
-            {
-                graphics.DrawString(totalCancelledTrnsactionCountLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalCancelledTrnsactionCountData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalCancelledTrnsactionCountData, fontArial7Regular).Height;
-            }
-            else
-            {
+                Decimal totalCancelledTrnsactionCount = dataSource.TotalCancelledTrnsactionCount;
+                Decimal totalCancelledAmount = dataSource.TotalCancelledAmount * declareRate;
+
+                String totalCancelledTrnsactionCountLabel = "\nCancelled Tx.";
+                String totalCancelledTrnsactionCountData = "\n" + totalCancelledTrnsactionCount.ToString("#,##0");
                 graphics.DrawString(totalCancelledTrnsactionCountLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(totalCancelledTrnsactionCountData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(totalCancelledTrnsactionCountData, fontArial8Regular).Height;
-            }
 
-            String totalCancelledAmountLabel = "Cancelled Amount";
-            String totalCancelledAmountData = totalCancelledAmount.ToString("#,##0.00");
-            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
-            {
-                graphics.DrawString(totalCancelledAmountLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalCancelledAmountData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalCancelledAmountData, fontArial7Regular).Height;
-            }
-            else
-            {
+                String totalCancelledAmountLabel = "Cancelled Amount";
+                String totalCancelledAmountData = totalCancelledAmount.ToString("#,##0.00");
                 graphics.DrawString(totalCancelledAmountLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(totalCancelledAmountData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(totalCancelledAmountData, fontArial8Regular).Height;
-            }
-            
 
-            // ========
-            // 7th Line
-            // ========
-            Point seventhLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-            Point seventhLineSecondPoint = new Point(400, Convert.ToInt32(y) + 5);
-            graphics.DrawLine(blackPen, seventhLineFirstPoint, seventhLineSecondPoint);
+                // ========
+                // 7th Line
+                // ========
+                Point seventhLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point seventhLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, seventhLineFirstPoint, seventhLineSecondPoint);
 
-            Decimal totalNumberOfTransactions = dataSource.TotalNumberOfTransactions;
-            Decimal totalNumberOfSKU = dataSource.TotalNumberOfSKU;
-            Decimal totalQuantity = dataSource.TotalQuantity;
+                Decimal totalNumberOfTransactions = dataSource.TotalNumberOfTransactions;
+                Decimal totalNumberOfSKU = dataSource.TotalNumberOfSKU;
+                Decimal totalQuantity = dataSource.TotalQuantity;
 
-            String totalNumberOfTransactionsLabel = "\nNo. of Transactions";
-            String totalNumberOfTransactionsData = "\n" + totalNumberOfTransactions.ToString("#,##0");
-            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
-            {
-                graphics.DrawString(totalNumberOfTransactionsLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalNumberOfTransactionsData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalNumberOfTransactionsData, fontArial7Regular).Height;
-            }
-            else
-            {
+                String totalNumberOfTransactionsLabel = "\nNo. of Transactions";
+                String totalNumberOfTransactionsData = "\n" + totalNumberOfTransactions.ToString("#,##0");
                 graphics.DrawString(totalNumberOfTransactionsLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(totalNumberOfTransactionsData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(totalNumberOfTransactionsData, fontArial8Regular).Height;
-            }
-            
 
-            String totalNumberOfSKULabel = "No. of SKU";
-            String totalNumberOfSKUData = totalNumberOfSKU.ToString("#,##0");
-            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
-            {
-                graphics.DrawString(totalNumberOfSKULabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalNumberOfSKUData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalNumberOfSKUData, fontArial7Regular).Height;
-            }
-            else
-            {
+
+                String totalNumberOfSKULabel = "No. of SKU";
+                String totalNumberOfSKUData = totalNumberOfSKU.ToString("#,##0");
                 graphics.DrawString(totalNumberOfSKULabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(totalNumberOfSKUData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(totalNumberOfSKUData, fontArial8Regular).Height;
-            }
-            
 
-            String totalQuantityLabel = "Total Quantity";
-            String totalQuantityData = totalQuantity.ToString("#,##0.00");
-            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer")
-            {
-                graphics.DrawString(totalQuantityLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalQuantityData, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalQuantityData, fontArial7Regular).Height;
-            }
-            else
-            {
+
+                String totalQuantityLabel = "Total Quantity";
+                String totalQuantityData = totalQuantity.ToString("#,##0.00");
                 graphics.DrawString(totalQuantityLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(totalQuantityData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(totalQuantityData, fontArial8Regular).Height;
+
+
+                // ========
+                // 8th Line
+                // ========
+                Point eightLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point eightLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, eightLineFirstPoint, eightLineSecondPoint);
+
+                //Decimal totalPreviousReading = dataSource.TotalPreviousReading;
+                //Decimal runningTotal = dataSource.RunningTotal;
+
+                //String totalPreviousReadingLabel = "\nPrevious Reading";
+                //String totalPreviousReadingData = "\n" + totalPreviousReading.ToString("#,##0.00");
+                //graphics.DrawString(totalPreviousReadingLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                //graphics.DrawString(totalPreviousReadingData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                //y += graphics.MeasureString(totalPreviousReadingData, fontArial8Regular).Height;
+
+                //graphics.DrawString("Net Sales", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                //graphics.DrawString(totalNetSales.ToString("#,##0.00"), fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                //y += graphics.MeasureString(totalNetSales.ToString("#,##0.00"), fontArial8Regular).Height;
+
+                //String runningTotalLabel = "Running Total";
+                //String runningTotalData = runningTotal.ToString("#,##0.00");
+                //graphics.DrawString(runningTotalLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                //graphics.DrawString(runningTotalData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                //y += graphics.MeasureString(runningTotalData, fontArial8Regular).Height;
+
+                //// ========
+                //// 9th Line
+                //// ========
+                //Point ninethLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                //Point ninethLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                //graphics.DrawLine(blackPen, ninethLineFirstPoint, ninethLineSecondPoint);
             }
-            
 
-            // ========
-            // 8th Line
-            // ========
-            Point eightLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-            Point eightLineSecondPoint = new Point(400, Convert.ToInt32(y) + 5);
-            graphics.DrawLine(blackPen, eightLineFirstPoint, eightLineSecondPoint);
-
-            //Decimal totalPreviousReading = dataSource.TotalPreviousReading;
-            //Decimal runningTotal = dataSource.RunningTotal;
-
-            //String totalPreviousReadingLabel = "\nPrevious Reading";
-            //String totalPreviousReadingData = "\n" + totalPreviousReading.ToString("#,##0.00");
-            //graphics.DrawString(totalPreviousReadingLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            //graphics.DrawString(totalPreviousReadingData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-            //y += graphics.MeasureString(totalPreviousReadingData, fontArial8Regular).Height;
-
-            //graphics.DrawString("Net Sales", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            //graphics.DrawString(totalNetSales.ToString("#,##0.00"), fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-            //y += graphics.MeasureString(totalNetSales.ToString("#,##0.00"), fontArial8Regular).Height;
-
-            //String runningTotalLabel = "Running Total";
-            //String runningTotalData = runningTotal.ToString("#,##0.00");
-            //graphics.DrawString(runningTotalLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-            //graphics.DrawString(runningTotalData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-            //y += graphics.MeasureString(runningTotalData, fontArial8Regular).Height;
-
-            //// ========
-            //// 9th Line
-            //// ========
-            //Point ninethLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-            //Point ninethLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-            //graphics.DrawLine(blackPen, ninethLineFirstPoint, ninethLineSecondPoint);
 
             String xReadingFooter = systemCurrent.ZReadingFooter;
 
@@ -1023,13 +1106,19 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 graphics.DrawString(xReadingEndLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
                 y += graphics.MeasureString(xReadingEndLabel, fontArial8Regular).Height;
             }
-            else 
+            else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Thermal Printer")
             {
                 String xReadingEndLabel = "\n" + xReadingFooter + "\n \n\n\n.";
                 graphics.DrawString(xReadingEndLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
                 y += graphics.MeasureString(xReadingEndLabel, fontArial8Regular).Height;
             }
-                
+            else
+            {
+                String xReadingEndLabel = "\n" + xReadingFooter + "\n.";
+                graphics.DrawString(xReadingEndLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                y += graphics.MeasureString(xReadingEndLabel, fontArial7Regular).Height;
+            }
+
         }
     }
 }

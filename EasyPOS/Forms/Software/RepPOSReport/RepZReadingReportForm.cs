@@ -392,13 +392,11 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             {
                 foreach (var grossSalesPreviousCollection in grossSalesPreviousCollections)
                 {
-                    var sales = from d in db.TrnSales
-                                where d.Id == grossSalesPreviousCollection.SalesId
-                                select d;
+                    var sales = grossSalesPreviousCollection.TrnSale;
 
-                    if (sales.Any())
+                    if (sales != null)
                     {
-                        var salesLines = sales.FirstOrDefault().TrnSalesLines.Where(d => d.Quantity > 0 && d.TrnSale.IsReturned == false);
+                        var salesLines = sales.TrnSalesLines.Where(d => d.Quantity > 0 && d.TrnSale.IsReturned == false);
 
                         if (salesLines.Any())
                         {
@@ -443,13 +441,11 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                 foreach (var grossSalesPreviousCollection in grossSalesPreviousCollections)
                 {
-                    var sales = from d in db.TrnSales
-                                where d.Id == grossSalesPreviousCollection.SalesId
-                                select d;
+                    var sales = grossSalesPreviousCollection.TrnSale;
 
-                    if (sales.Any())
+                    if (sales != null)
                     {
-                        var salesLines = sales.FirstOrDefault().TrnSalesLines.Where(d => d.Quantity > 0 && d.TrnSale.IsReturned == false);
+                        var salesLines = sales.TrnSalesLines.Where(d => d.Quantity > 0 && d.TrnSale.IsReturned == false);
 
                         foreach (var salesLine in salesLines)
                         {
