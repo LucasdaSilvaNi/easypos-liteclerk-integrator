@@ -166,6 +166,9 @@ namespace EasyPOS.Forms.Software.SysUtilities
             Font fontArial7Regular = new Font("Arial", 7, FontStyle.Regular);
             Font fontArial8Bold = new Font("Arial", 8, FontStyle.Bold);
             Font fontArial8Regular = new Font("Arial", 8, FontStyle.Regular);
+            Font fontCalibri6Bold = new Font("Calibri", 6, FontStyle.Bold);
+            Font fontCalibri8Bold = new Font("Calibri", 8, FontStyle.Bold);
+
 
             // ==================
             // Alignment Settings
@@ -174,79 +177,85 @@ namespace EasyPOS.Forms.Software.SysUtilities
             StringFormat drawFormatLeft = new StringFormat { Alignment = StringAlignment.Near };
             StringFormat drawFormatRight = new StringFormat { Alignment = StringAlignment.Far };
 
+           
             String company = Modules.SysCurrentModule.GetCurrentSettings().CompanyName;
             String itemAlias = itemEntity.Alias;
             String barcodeNumber = itemEntity.BarCode;
             Code128BarcodeDraw barcode = BarcodeDrawFactory.Code128WithChecksum;
             Image image = barcode.Draw(itemEntity.BarCode, 35);
             String itemPrice = "P " + itemEntity.Price.ToString("#,##0.00");
+            float AdjustStringItemDescription = 1;
+            if (itemAlias.Length > 25)
+            {
+                AdjustStringItemDescription = 3;
+            }
 
             switch (columns)
             {
                 case 1:
-                    graphics.DrawString(company, fontArial6Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                    y += graphics.MeasureString(company, fontArial6Bold).Height;
+                    graphics.DrawString(company, fontCalibri6Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(company, fontCalibri6Bold).Height;
 
-                    graphics.DrawString(itemAlias, fontArial6Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                    y += graphics.MeasureString(itemAlias, fontArial6Bold).Height;
+                    graphics.DrawString(itemAlias, fontCalibri6Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(itemAlias, fontCalibri6Bold).Height* AdjustStringItemDescription;
 
                     graphics.DrawImage(image, new RectangleF(x, y, 107, 40));
                     y += image.Height + 7;
 
-                    graphics.DrawString(barcodeNumber, fontArial6Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                    y += graphics.MeasureString(barcodeNumber, fontArial6Bold).Height;
+                    graphics.DrawString(barcodeNumber, fontCalibri6Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(barcodeNumber, fontCalibri6Bold).Height;
 
-                    graphics.DrawString(itemPrice, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                    y += graphics.MeasureString(itemPrice, fontArial8Bold).Height;
+                    graphics.DrawString(itemPrice, fontCalibri8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(itemPrice, fontCalibri8Bold).Height;
 
                     break;
                 case 2:
-                    graphics.DrawString(company, fontArial6Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                    graphics.DrawString(company, fontArial6Bold, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
-                    y += graphics.MeasureString(company, fontArial6Bold).Height;
+                    graphics.DrawString(company, fontCalibri6Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    graphics.DrawString(company, fontCalibri6Bold, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(company, fontCalibri6Bold).Height;
 
-                    graphics.DrawString(itemAlias, fontArial6Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                    graphics.DrawString(itemAlias, fontArial6Bold, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
-                    y += graphics.MeasureString(itemAlias, fontArial6Bold).Height;
+                    graphics.DrawString(itemAlias, fontCalibri6Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    graphics.DrawString(itemAlias, fontCalibri6Bold, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(itemAlias, fontCalibri6Bold).Height* AdjustStringItemDescription;
 
                     graphics.DrawImage(image, new RectangleF(x, y, 107, 40));
                     graphics.DrawImage(image, new RectangleF(x + 15 + 107, y, 107, 40));
                     y += image.Height + 7;
 
-                    graphics.DrawString(barcodeNumber, fontArial6Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                    graphics.DrawString(barcodeNumber, fontArial6Bold, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
-                    y += graphics.MeasureString(barcodeNumber, fontArial6Bold).Height;
+                    graphics.DrawString(barcodeNumber, fontCalibri6Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    graphics.DrawString(barcodeNumber, fontCalibri6Bold, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(barcodeNumber, fontCalibri6Bold).Height;
 
-                    graphics.DrawString(itemPrice, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                    graphics.DrawString(itemPrice, fontArial8Bold, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
-                    y += graphics.MeasureString(itemPrice, fontArial8Bold).Height;
+                    graphics.DrawString(itemPrice, fontCalibri8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    graphics.DrawString(itemPrice, fontCalibri8Bold, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(itemPrice, fontCalibri8Bold).Height;
 
                     break;
                 case 3:
-                    graphics.DrawString(company, fontArial6Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                    graphics.DrawString(company, fontArial6Bold, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
-                    graphics.DrawString(company, fontArial6Bold, drawBrush, new RectangleF(x + 15 + width + width, y, width, height), drawFormatCenter);
-                    y += graphics.MeasureString(company, fontArial6Bold).Height;
+                    graphics.DrawString(company, fontCalibri6Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    graphics.DrawString(company, fontCalibri6Bold, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
+                    graphics.DrawString(company, fontCalibri6Bold, drawBrush, new RectangleF(x + 15 + width + width, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(company, fontCalibri6Bold).Height;
 
-                    graphics.DrawString(itemAlias, fontArial6Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                    graphics.DrawString(itemAlias, fontArial6Bold, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
-                    graphics.DrawString(itemAlias, fontArial6Bold, drawBrush, new RectangleF(x + 15 + width + width, y, width, height), drawFormatCenter);
-                    y += graphics.MeasureString(itemAlias, fontArial6Bold).Height;
+                    graphics.DrawString(itemAlias, fontCalibri6Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    graphics.DrawString(itemAlias, fontCalibri6Bold, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
+                    graphics.DrawString(itemAlias, fontCalibri6Bold, drawBrush, new RectangleF(x + 15 + width + width, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(itemAlias, fontCalibri6Bold).Height* AdjustStringItemDescription;
 
                     graphics.DrawImage(image, new RectangleF(x, y, 107, 40));
                     graphics.DrawImage(image, new RectangleF(x + 15 + 107, y, 107, 40));
                     graphics.DrawImage(image, new RectangleF(x + 30 + 214, y, 107, 40));
                     y += image.Height + 7;
 
-                    graphics.DrawString(barcodeNumber, fontArial6Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                    graphics.DrawString(barcodeNumber, fontArial6Bold, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
-                    graphics.DrawString(barcodeNumber, fontArial6Bold, drawBrush, new RectangleF(x + 15 + width + width, y, width, height), drawFormatCenter);
-                    y += graphics.MeasureString(barcodeNumber, fontArial6Bold).Height;
+                    graphics.DrawString(barcodeNumber, fontCalibri6Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    graphics.DrawString(barcodeNumber, fontCalibri6Bold, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
+                    graphics.DrawString(barcodeNumber, fontCalibri6Bold, drawBrush, new RectangleF(x + 15 + width + width, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(barcodeNumber, fontCalibri6Bold).Height;
 
-                    graphics.DrawString(itemPrice, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                    graphics.DrawString(itemPrice, fontArial8Bold, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
-                    graphics.DrawString(itemPrice, fontArial8Bold, drawBrush, new RectangleF(x + 15 + width + width, y, width, height), drawFormatCenter);
-                    y += graphics.MeasureString(itemPrice, fontArial8Bold).Height;
+                    graphics.DrawString(itemPrice, fontCalibri8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    graphics.DrawString(itemPrice, fontCalibri8Bold, drawBrush, new RectangleF(x + 7 + width, y, width, height), drawFormatCenter);
+                    graphics.DrawString(itemPrice, fontCalibri8Bold, drawBrush, new RectangleF(x + 15 + width + width, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(itemPrice, fontCalibri8Bold).Height;
 
                     break;
                 default:

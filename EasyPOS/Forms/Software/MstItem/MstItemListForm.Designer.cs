@@ -325,18 +325,20 @@
             this.ColumnItemListButtonEdit.DataPropertyName = "ColumnItemListButtonEdit";
             this.ColumnItemListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ColumnItemListButtonEdit.HeaderText = "";
-            this.ColumnItemListButtonEdit.MinimumWidth = 100;
+            this.ColumnItemListButtonEdit.MinimumWidth = 70;
             this.ColumnItemListButtonEdit.Name = "ColumnItemListButtonEdit";
             this.ColumnItemListButtonEdit.ReadOnly = true;
+            this.ColumnItemListButtonEdit.Width = 70;
             // 
             // ColumnItemListButtonDelete
             // 
             this.ColumnItemListButtonDelete.DataPropertyName = "ColumnItemListButtonDelete";
             this.ColumnItemListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ColumnItemListButtonDelete.HeaderText = "";
-            this.ColumnItemListButtonDelete.MinimumWidth = 100;
+            this.ColumnItemListButtonDelete.MinimumWidth = 70;
             this.ColumnItemListButtonDelete.Name = "ColumnItemListButtonDelete";
             this.ColumnItemListButtonDelete.ReadOnly = true;
+            this.ColumnItemListButtonDelete.Width = 70;
             // 
             // ColumnItemListId
             // 
@@ -352,45 +354,46 @@
             // 
             this.ColumnItemListCode.DataPropertyName = "ColumnItemListCode";
             this.ColumnItemListCode.HeaderText = "Item Code";
-            this.ColumnItemListCode.MinimumWidth = 150;
+            this.ColumnItemListCode.MinimumWidth = 113;
             this.ColumnItemListCode.Name = "ColumnItemListCode";
             this.ColumnItemListCode.ReadOnly = true;
-            this.ColumnItemListCode.Width = 150;
+            this.ColumnItemListCode.Width = 113;
             // 
             // ColumnItemListDescription
             // 
             this.ColumnItemListDescription.DataPropertyName = "ColumnItemListDescription";
             this.ColumnItemListDescription.HeaderText = "Item Description";
-            this.ColumnItemListDescription.MinimumWidth = 250;
+            this.ColumnItemListDescription.MinimumWidth = 300;
             this.ColumnItemListDescription.Name = "ColumnItemListDescription";
             this.ColumnItemListDescription.ReadOnly = true;
-            this.ColumnItemListDescription.Width = 250;
+            this.ColumnItemListDescription.Width = 300;
             // 
             // ColumnItemListBarcode
             // 
             this.ColumnItemListBarcode.DataPropertyName = "ColumnItemListBarcode";
             this.ColumnItemListBarcode.HeaderText = "Barcode";
-            this.ColumnItemListBarcode.MinimumWidth = 150;
+            this.ColumnItemListBarcode.MinimumWidth = 113;
             this.ColumnItemListBarcode.Name = "ColumnItemListBarcode";
             this.ColumnItemListBarcode.ReadOnly = true;
-            this.ColumnItemListBarcode.Width = 150;
+            this.ColumnItemListBarcode.Width = 113;
             // 
             // ColumnItemListUnit
             // 
             this.ColumnItemListUnit.DataPropertyName = "ColumnItemListUnit";
             this.ColumnItemListUnit.HeaderText = "Unit";
-            this.ColumnItemListUnit.MinimumWidth = 100;
+            this.ColumnItemListUnit.MinimumWidth = 70;
             this.ColumnItemListUnit.Name = "ColumnItemListUnit";
             this.ColumnItemListUnit.ReadOnly = true;
+            this.ColumnItemListUnit.Width = 70;
             // 
             // ColumnItemListCategory
             // 
             this.ColumnItemListCategory.DataPropertyName = "ColumnItemListCategory";
             this.ColumnItemListCategory.HeaderText = "Category";
-            this.ColumnItemListCategory.MinimumWidth = 150;
+            this.ColumnItemListCategory.MinimumWidth = 140;
             this.ColumnItemListCategory.Name = "ColumnItemListCategory";
             this.ColumnItemListCategory.ReadOnly = true;
-            this.ColumnItemListCategory.Width = 150;
+            this.ColumnItemListCategory.Width = 140;
             // 
             // ColumnSupplier
             // 

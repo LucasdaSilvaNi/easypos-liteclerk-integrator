@@ -291,6 +291,7 @@ namespace EasyPOS.Controllers
                     var stockInLines = from d in db.TrnStockInLines
                                        where d.StockInId == id
                                        && d.Price != null
+                                       && d.TrnStockIn.SupplierId != null
                                        select d;
 
                     if (stockInLines.Any())
@@ -306,6 +307,7 @@ namespace EasyPOS.Controllers
                                 var updateItem = item.FirstOrDefault();
                                 updateItem.Cost = Convert.ToDecimal(stockInLine.Cost);
                                 updateItem.Price = Convert.ToDecimal(stockInLine.Price);
+                                updateItem.DefaultSupplierId = stockInLine.TrnStockIn.SupplierId;
                                 db.SubmitChanges();
                             }
                         }

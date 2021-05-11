@@ -133,7 +133,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             float adjustStringAddress = 1;
             if (companyAddress.Length > 43)
             {
-                adjustStringAddress = 3;
+                adjustStringAddress = 4;
             }
 
             graphics.DrawString(companyAddress, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
@@ -149,9 +149,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // =============
             // Serial Number
             // =============
+            float adjustStringSerialNo = 1;
+            if (companyAddress.Length > 43)
+            {
+                adjustStringSerialNo = 3;
+            }
             String serialNo = systemCurrent.SerialNo;
             graphics.DrawString("SN: " + serialNo, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
+            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height * adjustStringSerialNo;
 
             // ==============
             // Machine Number

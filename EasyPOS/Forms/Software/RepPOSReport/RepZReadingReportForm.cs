@@ -218,7 +218,14 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                 }
                                 else
                                 {
-                                    salesLineTotalGrossSales += (salesLine.Price * salesLine.Quantity) - ((salesLine.NetPrice * salesLine.Quantity) / (1 + (salesLine.MstTax.Rate / 100)) * (salesLine.MstTax.Rate / 100));
+                                    if (salesLine.MstTax.Rate > 0)
+                                    {
+                                        salesLineTotalGrossSales += (salesLine.Price * salesLine.Quantity) - ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstTax.Rate / 100)) * (salesLine.MstTax.Rate / 100));
+                                    }
+                                    else
+                                    {
+                                        salesLineTotalGrossSales += salesLine.Price * salesLine.Quantity;
+                                    }
                                 }
 
                                 if (salesLine.MstDiscount.Discount != "Senior Citizen Discount" && salesLine.MstDiscount.Discount != "PWD")
@@ -327,12 +334,27 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                 Decimal totalCollectionPerPayType = 0;
 
+                Decimal nonCashAmount = 0;
+                foreach (var collectionLine in currentCollectionLines)
+                {
+                    if (collectionLine.PayTypeCode.Equals("CASH") == false)
+                    {
+                        nonCashAmount += collectionLine.TotalAmount;
+                    }
+                }
+
+                Decimal changeAmount = 0;
+                foreach (var collectionLine in currentCollectionLines)
+                {
+                    changeAmount += collectionLine.TotalChangeAmount;
+                }
+
                 foreach (var collectionLine in currentCollectionLines)
                 {
                     Decimal amount = collectionLine.TotalAmount;
-                    if (collectionLine.PayTypeCode.Equals("CASH"))
+                    if (collectionLine.PayTypeCode.Equals("CASH") == true)
                     {
-                        amount = collectionLine.TotalAmount - collectionLine.TotalChangeAmount;
+                        amount = collectionLine.TotalAmount - changeAmount;
                     }
 
                     repZReadingReportEntity.CollectionLines.Add(new Entities.TrnCollectionLineEntity()
@@ -345,6 +367,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 }
 
                 repZReadingReportEntity.TotalCollection = totalCollectionPerPayType - repZReadingReportEntity.TotalRefund;
+                //repZReadingReportEntity.TotalCollection = currentCollections.Sum(d => d.Amount) - repZReadingReportEntity.TotalRefund;
                 repZReadingReportEntity.TotalVATSales = totalVATSales;
                 repZReadingReportEntity.TotalVATAmount = totalVATAmount;
                 repZReadingReportEntity.TotalNonVAT = totalNonVATSales;
@@ -390,6 +413,11 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
             if (grossSalesPreviousCollections.Any())
             {
+                //repZReadingReportEntity.GrossSalesTotalPreviousReading = grossSalesPreviousCollections.Sum(d => d.TrnSale.TrnSalesLines.Any() ?
+                //                                                         d.TrnSale.TrnSalesLines.Sum(s => s.MstTax.Code == "EXEMPTVAT" ?
+                //                                                         s.MstItem.MstTax1.Rate > 0 ? (s.Price * s.Quantity) - ((s.Price * s.Quantity) / (1 + (s.MstItem.MstTax1.Rate / 100)) * (s.MstItem.MstTax1.Rate / 100)) :
+                //                                                         (s.Quantity * s.Price) : (s.Quantity * s.Price) - ((s.Price * s.Quantity) / (1 + (s.MstTax.Rate / 100)) * (s.MstTax.Rate / 100))) : 0);
+
                 foreach (var grossSalesPreviousCollection in grossSalesPreviousCollections)
                 {
                     var sales = grossSalesPreviousCollection.TrnSale;
@@ -434,6 +462,8 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
             if (netSalesPreviousCollections.Any())
             {
+                //repZReadingReportEntity.NetSalesTotalPreviousReading = repZReadingReportEntity.GrossSalesTotalPreviousReading - netSalesPreviousCollections.Sum(s => s.TrnSale.TrnSalesLines.Any() ? s.TrnSale.TrnSalesLines.Sum(d => d.DiscountAmount * d.Quantity) : 0);
+
                 Decimal totalRegularDiscount = 0;
                 Decimal totalSeniorDiscount = 0;
                 Decimal totalPWDDiscount = 0;
@@ -522,31 +552,44 @@ namespace EasyPOS.Forms.Software.RepPOSReport
         private void printDocumentZReadingReport_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
-            Decimal declareRate = 0;
+
             var dataSource = zReadingReportEntity;
-            var SysDeclareRate = from d in db.SysDeclareRates
-                                 where d.Date == filterDate
-                                 select d;
-            if (SysDeclareRate.Any())
+
+            Decimal currentDeclareRate = 0;
+
+            var currentSysDeclareRate = from d in db.SysDeclareRates
+                                        where d.Date == filterDate
+                                        select d;
+
+            if (currentSysDeclareRate.Any())
             {
-                declareRate = SysDeclareRate.FirstOrDefault().DeclareRate;
+
+                currentDeclareRate = currentSysDeclareRate.FirstOrDefault().DeclareRate;
             }
             else
             {
-                declareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
+                currentDeclareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
             }
 
-            //if (SysDeclareRate.FirstOrDefault()?.Date == null)
-            //{
-            //    declareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
-            //}
-            //else
-            //{
-            //    declareRate = Convert.ToDecimal(SysDeclareRate.FirstOrDefault()?.DeclareRate);
-            //}
+            Decimal previousDeclareRate = 0;
+
+            var previousSysDeclareRate = from d in db.SysDeclareRates
+                                         where d.Date < filterDate
+                                         orderby d.Id descending
+                                         select d;
+            foreach (var declareRate in previousSysDeclareRate)
+            {
+                if (declareRate != null)
+                {
+                    previousDeclareRate = declareRate.DeclareRate;
+                }
+                else
+                {
+                    previousDeclareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
+                }
+            }
 
 
-            //Decimal declareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
             // =============
             // Font Settings
             // =============
@@ -668,12 +711,12 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             Point firstLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
             graphics.DrawLine(blackPen, firstLineFirstPoint, firstLineSecondPoint);
 
-            Decimal totalGrossSales = dataSource.TotalGrossSales * declareRate;
-            Decimal totalRegularDiscount = dataSource.TotalRegularDiscount * declareRate;
-            Decimal totalSeniorDiscount = dataSource.TotalSeniorDiscount * declareRate;
-            Decimal totalPWDDiscount = dataSource.TotalPWDDiscount * declareRate;
-            Decimal totalSalesReturn = dataSource.TotalSalesReturn * declareRate;
-            Decimal totalNetSales = dataSource.TotalNetSales * declareRate;
+            Decimal totalGrossSales = dataSource.TotalGrossSales * currentDeclareRate;
+            Decimal totalRegularDiscount = dataSource.TotalRegularDiscount * currentDeclareRate;
+            Decimal totalSeniorDiscount = dataSource.TotalSeniorDiscount * currentDeclareRate;
+            Decimal totalPWDDiscount = dataSource.TotalPWDDiscount * currentDeclareRate;
+            Decimal totalSalesReturn = dataSource.TotalSalesReturn * currentDeclareRate;
+            Decimal totalNetSales = dataSource.TotalNetSales * currentDeclareRate;
 
             // ===========
             // Gross Sales
@@ -744,13 +787,13 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                     // Collection Lines
                     // ================
                     String collectionLineLabel = collectionLine.PayType;
-                    String collectionLineData = (collectionLine.Amount * declareRate).ToString("#,##0.00");
+                    String collectionLineData = (collectionLine.Amount * currentDeclareRate).ToString("#,##0.00");
                     graphics.DrawString(collectionLineLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                     graphics.DrawString(collectionLineData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                     y += graphics.MeasureString(collectionLineData, fontArial8Regular).Height;
                 }
 
-                Decimal totalRefund = dataSource.TotalRefund * declareRate;
+                Decimal totalRefund = dataSource.TotalRefund * currentDeclareRate;
 
                 String totalRefundLabel = "Refund";
                 String totalRefundData = "(" + totalRefund.ToString("#,##0.00") + ")";
@@ -773,7 +816,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             Point thirdLineSecondPoint2 = new Point(500, Convert.ToInt32(y) + 5);
             graphics.DrawLine(blackPen, thirdLineFirstPoint2, thirdLineSecondPoint2);
 
-            Decimal totalCollection = dataSource.TotalCollection * declareRate;
+            Decimal totalCollection = dataSource.TotalCollection * currentDeclareRate;
 
             String totalCollectionLabel = "\nTotal Collection";
             String totalCollectionData = "\n" + totalCollection.ToString("#,##0.00");
@@ -788,12 +831,12 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             Point forthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
             graphics.DrawLine(blackPen, forthLineFirstPoint, forthLineSecondPoint);
 
-            Decimal totalVATSales = dataSource.TotalVATSales * declareRate;
-            Decimal totalVATAmount = dataSource.TotalVATAmount * declareRate;
-            Decimal totalNonVAT = dataSource.TotalNonVAT * declareRate;
-            Decimal totalVATExclusive = dataSource.TotalVATExclusive * declareRate;
-            Decimal totalVATExempt = dataSource.TotalVATExempt * declareRate;
-            Decimal totalVATZeroRated = dataSource.TotalVATZeroRated * declareRate;
+            Decimal totalVATSales = dataSource.TotalVATSales * currentDeclareRate;
+            Decimal totalVATAmount = dataSource.TotalVATAmount * currentDeclareRate;
+            Decimal totalNonVAT = dataSource.TotalNonVAT * currentDeclareRate;
+            Decimal totalVATExclusive = dataSource.TotalVATExclusive * currentDeclareRate;
+            Decimal totalVATExempt = dataSource.TotalVATExempt * currentDeclareRate;
+            Decimal totalVATZeroRated = dataSource.TotalVATZeroRated * currentDeclareRate;
 
             String vatSalesLabel = "\nVAT Sales";
             String totalVatSalesData = "\n" + totalVATSales.ToString("#,##0.00");
@@ -855,7 +898,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             graphics.DrawLine(blackPen, sixthLineFirstPoint, sixthLineSecondPoint);
 
             Decimal totalCancelledTrnsactionCount = dataSource.TotalCancelledTrnsactionCount;
-            Decimal totalCancelledAmount = dataSource.TotalCancelledAmount * declareRate;
+            Decimal totalCancelledAmount = dataSource.TotalCancelledAmount * currentDeclareRate;
 
             String totalCancelledTrnsactionCountLabel = "\nCancelled Tx.";
             String totalCancelledTrnsactionCountData = "\n" + totalCancelledTrnsactionCount.ToString("#,##0");
@@ -908,8 +951,8 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             graphics.DrawString("\nAccumulated Gross Sales (Net of VAT)", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             y += graphics.MeasureString("\nAccumulated Gross Sales (Net of VAT)", fontArial8Regular).Height;
 
-            Decimal grossSalesTotalPreviousReading = dataSource.GrossSalesTotalPreviousReading * declareRate;
-            Decimal grossSalesRunningTotal = dataSource.GrossSalesRunningTotal * declareRate;
+            Decimal grossSalesTotalPreviousReading = dataSource.GrossSalesTotalPreviousReading * previousDeclareRate;
+            Decimal grossSalesRunningTotal = dataSource.GrossSalesRunningTotal * currentDeclareRate;
 
             String grossSalesTotalPreviousReadingLabel = "\nPrevious Reading";
             String grossSalesTotalPreviousReadingData = "\n" + grossSalesTotalPreviousReading.ToString("#,##0.00");
@@ -937,8 +980,8 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             graphics.DrawString("\nAccumulated Net Sales", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             y += graphics.MeasureString("\nAccumulated Net Sales", fontArial8Regular).Height;
 
-            Decimal netSalesTotalPreviousReading = dataSource.NetSalesTotalPreviousReading * declareRate;
-            Decimal netSalesRunningTotal = dataSource.NetSalesRunningTotal * declareRate;
+            Decimal netSalesTotalPreviousReading = dataSource.NetSalesTotalPreviousReading * currentDeclareRate;
+            Decimal netSalesRunningTotal = dataSource.NetSalesRunningTotal * currentDeclareRate;
 
             String netSalesTotalPreviousReadingLabel = "\nPrevious Reading";
             String netSalesTotalPreviousReadingData = "\n" + netSalesTotalPreviousReading.ToString("#,##0.00");
