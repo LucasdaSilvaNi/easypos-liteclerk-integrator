@@ -41,7 +41,7 @@ namespace EasyPOS.Controllers
                                 Customer = d.Customer
                             };
 
-            return customers.ToList();
+            return customers.OrderBy(d => d.Id).ToList();
         }
 
         // ====================
@@ -266,22 +266,43 @@ namespace EasyPOS.Controllers
         // =======================
         public List<Entities.RepSalesReportCollectionSummaryReportEntity> StockWithdrawalReport(DateTime startDate, DateTime endDate, Int32 terminalId, Int32 customerId)
         {
-            var stockWithdrawalReports = from d in db.TrnCollections.OrderByDescending(d => d.Id)
-                                         where d.CollectionDate >= startDate
-                                         && d.CollectionDate <= endDate
-                                         && d.TerminalId == terminalId
-                                         && d.CustomerId == customerId
-                                         && d.IsLocked == true
-                                         && d.IsCancelled == false
-                                         && d.SalesId != null
-                                         select new Entities.RepSalesReportCollectionSummaryReportEntity
-                                         {
-                                             Id = d.Id,
-                                             SalesId = d.SalesId,
-                                             CollectionNumber = d.CollectionNumber
-                                         };
+            if(customerId == 0)
+            {
+                var stockWithdrawalReports = from d in db.TrnCollections.OrderByDescending(d => d.Id)
+                                             where d.CollectionDate >= startDate
+                                             && d.CollectionDate <= endDate
+                                             && d.TerminalId == terminalId
+                                             && d.IsLocked == true
+                                             && d.IsCancelled == false
+                                             && d.SalesId != null
+                                             select new Entities.RepSalesReportCollectionSummaryReportEntity
+                                             {
+                                                 Id = d.Id,
+                                                 SalesId = d.SalesId,
+                                                 CollectionNumber = d.CollectionNumber
+                                             };
 
-            return stockWithdrawalReports.ToList();
+                return stockWithdrawalReports.ToList();
+            }
+            else
+            {
+                var stockWithdrawalReports = from d in db.TrnCollections.OrderByDescending(d => d.Id)
+                                             where d.CollectionDate >= startDate
+                                             && d.CollectionDate <= endDate
+                                             && d.TerminalId == terminalId
+                                             && d.CustomerId == customerId
+                                             && d.IsLocked == true
+                                             && d.IsCancelled == false
+                                             && d.SalesId != null
+                                             select new Entities.RepSalesReportCollectionSummaryReportEntity
+                                             {
+                                                 Id = d.Id,
+                                                 SalesId = d.SalesId,
+                                                 CollectionNumber = d.CollectionNumber
+                                             };
+
+                return stockWithdrawalReports.ToList();
+            }
         }
 
         // ========================
@@ -457,6 +478,38 @@ namespace EasyPOS.Controllers
             }
 
             return data;
+        }
+        // ===========================
+        // Sales Summary Reward Report
+        // ===========================
+        public List<Entities.MstCustomerEntity> GetSalesSummaryRewardListData(Int32 filterCustomer)
+        {
+            if (filterCustomer==0)
+            {
+                var customer = from d in db.MstCustomers
+                               select new Entities.MstCustomerEntity
+                               {
+                                   Customer = d.Customer,
+                                   RewardNumber = d.RewardNumber,
+                                   AvailableReward = d.AvailableReward
+                               };
+
+                return customer.ToList();
+            }
+            else
+            {
+                var customer = from d in db.MstCustomers
+                               where d.Id == filterCustomer
+                               select new Entities.MstCustomerEntity
+                               {
+                                   Customer = d.Customer,
+                                   RewardNumber = d.RewardNumber,
+                                   AvailableReward = d.AvailableReward
+                               };
+
+                return customer.ToList();
+            }
+            
         }
     }
 }

@@ -295,26 +295,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 {
                     foreach (var salesReturnLine in salesReturnLines)
                     {
-                        if (salesReturnLine.MstTax.Code == "EXEMPTVAT")
-                        {
-                            if (salesReturnLine.MstItem.MstTax1.Rate > 0)
-                            {
-                                salesReturnLineTotalAmount += (salesReturnLine.Price * salesReturnLine.Quantity) - ((salesReturnLine.Price * salesReturnLine.Quantity) / (1 + (salesReturnLine.MstItem.MstTax1.Rate / 100)) * (salesReturnLine.MstItem.MstTax1.Rate / 100));
-                                totalVATExemptSales -= (((salesReturnLine.Price * salesReturnLine.Quantity) - ((salesReturnLine.Price * salesReturnLine.Quantity) / (1 + (salesReturnLine.MstItem.MstTax1.Rate / 100)) * (salesReturnLine.MstItem.MstTax1.Rate / 100))) * -1);
-                            }
-                            else
-                            {
-                                salesReturnLineTotalAmount += salesReturnLine.Price * salesReturnLine.Quantity;
-                                totalVATExemptSales -= ((salesReturnLine.Price * salesReturnLine.Quantity) * -1);
-                            }
-                        }
-                        else
-                        {
-                            salesReturnLineTotalAmount += (salesReturnLine.Price * salesReturnLine.Quantity) - ((salesReturnLine.Price * salesReturnLine.Quantity) / (1 + (salesReturnLine.MstTax.Rate / 100)) * (salesReturnLine.MstTax.Rate / 100));
-                            totalVATSales -= (((salesReturnLine.Price * salesReturnLine.Quantity) - ((salesReturnLine.Price * salesReturnLine.Quantity) / (1 + (salesReturnLine.MstTax.Rate / 100)) * (salesReturnLine.MstTax.Rate / 100))) * -1);
-                        }
-
-                        totalVATAmount -= (salesReturnLine.TaxAmount * -1);
+                        salesReturnLineTotalAmount += salesReturnLine.Amount;
                     }
                 }
 
@@ -512,21 +493,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 {
                     foreach (var salesReturnLine in previousSalesReturnLines)
                     {
-                        if (salesReturnLine.MstTax.Code == "EXEMPTVAT")
-                        {
-                            if (salesReturnLine.MstItem.MstTax1.Rate > 0)
-                            {
-                                totalReturn += (salesReturnLine.Price * salesReturnLine.Quantity) - ((salesReturnLine.Price * salesReturnLine.Quantity) / (1 + (salesReturnLine.MstItem.MstTax1.Rate / 100)) * (salesReturnLine.MstItem.MstTax1.Rate / 100));
-                            }
-                            else
-                            {
-                                totalReturn += salesReturnLine.Price * salesReturnLine.Quantity;
-                            }
-                        }
-                        else
-                        {
-                            totalReturn += (salesReturnLine.Price * salesReturnLine.Quantity) - ((salesReturnLine.Price * salesReturnLine.Quantity) / (1 + (salesReturnLine.MstTax.Rate / 100)) * (salesReturnLine.MstTax.Rate / 100));
-                        }
+                        totalReturn += salesReturnLine.Amount;
                     }
                 }
 

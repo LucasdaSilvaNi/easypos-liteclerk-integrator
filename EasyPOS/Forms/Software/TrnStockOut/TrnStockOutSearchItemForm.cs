@@ -167,7 +167,8 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                     Unit = unit,
                     Quantity = 1,
                     Cost = cost,
-                    Amount = 0,
+                    Amount = cost,
+                    Price = price,
                     AssetAccountId = 0,
                     AssetAccount = ""
                 };

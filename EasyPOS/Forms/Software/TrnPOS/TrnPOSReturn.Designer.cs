@@ -56,6 +56,8 @@
             this.ColumnReturnUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnReturnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnReturnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnReturnDiscountAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnReturnNetPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnReturnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnReturnPickItem = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnReturnUnpickItem = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -310,6 +312,8 @@
             this.ColumnReturnUnit,
             this.ColumnReturnPrice,
             this.ColumnReturnQuantity,
+            this.ColumnReturnDiscountAmount,
+            this.ColumnReturnNetPrice,
             this.ColumnReturnAmount,
             this.ColumnReturnPickItem,
             this.ColumnReturnUnpickItem,
@@ -367,6 +371,18 @@
             this.ColumnReturnQuantity.HeaderText = "Quantity";
             this.ColumnReturnQuantity.Name = "ColumnReturnQuantity";
             this.ColumnReturnQuantity.ReadOnly = true;
+            // 
+            // ColumnReturnDiscountAmount
+            // 
+            this.ColumnReturnDiscountAmount.DataPropertyName = "ColumnReturnDiscountAmount";
+            this.ColumnReturnDiscountAmount.HeaderText = "Discount";
+            this.ColumnReturnDiscountAmount.Name = "ColumnReturnDiscountAmount";
+            // 
+            // ColumnReturnNetPrice
+            // 
+            this.ColumnReturnNetPrice.DataPropertyName = "ColumnReturnNetPrice";
+            this.ColumnReturnNetPrice.HeaderText = "Net Price";
+            this.ColumnReturnNetPrice.Name = "ColumnReturnNetPrice";
             // 
             // ColumnReturnAmount
             // 
@@ -455,6 +471,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnReturnUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnReturnPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnReturnQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnReturnDiscountAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnReturnNetPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnReturnAmount;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnReturnPickItem;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnReturnUnpickItem;

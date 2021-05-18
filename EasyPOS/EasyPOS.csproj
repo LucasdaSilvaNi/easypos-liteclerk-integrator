@@ -307,6 +307,7 @@
     <Compile Include="Entities\DgvMstTableGroupListEntity.cs" />
     <Compile Include="Entities\DgvMstItemGroupListEntity.cs" />
     <Compile Include="Entities\DgvMstItemComponentListEntity.cs" />
+    <Compile Include="Entities\DgvSalesSummaryRewardReportEntity.cs" />
     <Compile Include="Entities\DgvSysDispatchStationSalesListEntity.cs" />
     <Compile Include="Entities\DgvSysUtilitiesItemUpload.cs" />
     <Compile Include="Entities\DgvTrnPurchaseOrderLineListEntity.cs" />
@@ -729,6 +730,12 @@
     </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepUnsoldItemReportForm.Designer.cs">
       <DependentUpon>RepUnsoldItemReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesSummaryRewardReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesSummaryRewardReportForm.Designer.cs">
+      <DependentUpon>RepSalesSummaryRewardReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\SysDispatchStation\SysDispatchStationForm.cs">
       <SubType>Form</SubType>
@@ -1366,6 +1373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepUnsoldItemReportForm.resx">
       <DependentUpon>RepUnsoldItemReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesSummaryRewardReportForm.resx">
+      <DependentUpon>RepSalesSummaryRewardReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\SysDispatchStation\SysDispatchStationForm.resx">
       <DependentUpon>SysDispatchStationForm.cs</DependentUpon>

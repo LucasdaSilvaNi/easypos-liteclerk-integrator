@@ -45,7 +45,8 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                                 Unit = dataWords[2],
                                 Quantity = Convert.ToDecimal(dataWords[3]),
                                 Cost = Convert.ToDecimal(dataWords[4]),
-                                Amount = Convert.ToDecimal(dataWords[5]),
+                                Price = Convert.ToDecimal(dataWords[5]),
+                                Amount = Convert.ToDecimal(dataWords[6])
                             });
                         }
                     }

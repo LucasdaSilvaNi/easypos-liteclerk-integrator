@@ -84,6 +84,7 @@
             this.ColumnStockOutLineListUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockOutLineListQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockOutLineListCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockOutLineListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockOutLineListAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockOutLineListAssetAccountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockOutLineListAssetAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -306,6 +307,7 @@
             this.ColumnStockOutLineListUnit,
             this.ColumnStockOutLineListQuantity,
             this.ColumnStockOutLineListCost,
+            this.ColumnStockOutLineListPrice,
             this.ColumnStockOutLineListAmount,
             this.ColumnStockOutLineListAssetAccountId,
             this.ColumnStockOutLineListAssetAccount});
@@ -757,6 +759,13 @@
             this.ColumnStockOutLineListCost.Name = "ColumnStockOutLineListCost";
             this.ColumnStockOutLineListCost.ReadOnly = true;
             // 
+            // ColumnStockOutLineListPrice
+            // 
+            this.ColumnStockOutLineListPrice.DataPropertyName = "ColumnStockOutLineListPrice";
+            this.ColumnStockOutLineListPrice.HeaderText = "Price";
+            this.ColumnStockOutLineListPrice.Name = "ColumnStockOutLineListPrice";
+            this.ColumnStockOutLineListPrice.ReadOnly = true;
+            // 
             // ColumnStockOutLineListAmount
             // 
             this.ColumnStockOutLineListAmount.DataPropertyName = "ColumnStockOutLineListAmount";
@@ -862,6 +871,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutLineListUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutLineListQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutLineListCost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutLineListPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutLineListAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutLineListAssetAccountId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockOutLineListAssetAccount;

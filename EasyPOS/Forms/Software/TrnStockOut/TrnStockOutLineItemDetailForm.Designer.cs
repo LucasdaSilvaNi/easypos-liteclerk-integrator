@@ -40,10 +40,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxStockOutLineCost = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.textBoxStockOutLineItemDescription = new System.Windows.Forms.TextBox();
             this.textBoxStockOutLineQuantity = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxStockOutLineUnit = new System.Windows.Forms.TextBox();
-            this.textBoxStockOutLineItemDescription = new System.Windows.Forms.TextBox();
+            this.textBoxStockOutLinePrice = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -58,7 +60,7 @@
             this.panel1.Controls.Add(this.buttonSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(549, 50);
             this.panel1.TabIndex = 8;
@@ -67,7 +69,7 @@
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Stock_Out;
             this.pictureBox1.Location = new System.Drawing.Point(10, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(38, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -95,7 +97,7 @@
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
             this.buttonClose.Location = new System.Drawing.Point(469, 10);
-            this.buttonClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(70, 32);
             this.buttonClose.TabIndex = 1;
@@ -113,7 +115,7 @@
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
             this.buttonSave.Location = new System.Drawing.Point(394, 10);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(70, 32);
             this.buttonSave.TabIndex = 0;
@@ -123,6 +125,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.textBoxStockOutLinePrice);
+            this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.textBoxStockOutLineAmount);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label4);
@@ -134,16 +138,16 @@
             this.panel2.Controls.Add(this.textBoxStockOutLineUnit);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 50);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(549, 153);
+            this.panel2.Size = new System.Drawing.Size(549, 185);
             this.panel2.TabIndex = 9;
             // 
             // textBoxStockOutLineAmount
             // 
             this.textBoxStockOutLineAmount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxStockOutLineAmount.Location = new System.Drawing.Point(78, 122);
-            this.textBoxStockOutLineAmount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxStockOutLineAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxStockOutLineAmount.Name = "textBoxStockOutLineAmount";
             this.textBoxStockOutLineAmount.ReadOnly = true;
             this.textBoxStockOutLineAmount.Size = new System.Drawing.Size(142, 26);
@@ -177,7 +181,7 @@
             // 
             this.textBoxStockOutLineCost.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxStockOutLineCost.Location = new System.Drawing.Point(78, 93);
-            this.textBoxStockOutLineCost.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxStockOutLineCost.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxStockOutLineCost.Name = "textBoxStockOutLineCost";
             this.textBoxStockOutLineCost.Size = new System.Drawing.Size(142, 26);
             this.textBoxStockOutLineCost.TabIndex = 2;
@@ -197,13 +201,29 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "Quantity:";
             // 
+            // textBoxStockOutLineItemDescription
+            // 
+            this.textBoxStockOutLineItemDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxStockOutLineItemDescription.BackColor = System.Drawing.Color.White;
+            this.textBoxStockOutLineItemDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxStockOutLineItemDescription.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.textBoxStockOutLineItemDescription.Location = new System.Drawing.Point(10, 5);
+            this.textBoxStockOutLineItemDescription.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxStockOutLineItemDescription.Name = "textBoxStockOutLineItemDescription";
+            this.textBoxStockOutLineItemDescription.ReadOnly = true;
+            this.textBoxStockOutLineItemDescription.Size = new System.Drawing.Size(530, 25);
+            this.textBoxStockOutLineItemDescription.TabIndex = 12;
+            this.textBoxStockOutLineItemDescription.TabStop = false;
+            this.textBoxStockOutLineItemDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // textBoxStockOutLineQuantity
             // 
             this.textBoxStockOutLineQuantity.AcceptsTab = true;
             this.textBoxStockOutLineQuantity.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxStockOutLineQuantity.HideSelection = false;
             this.textBoxStockOutLineQuantity.Location = new System.Drawing.Point(78, 35);
-            this.textBoxStockOutLineQuantity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxStockOutLineQuantity.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxStockOutLineQuantity.Name = "textBoxStockOutLineQuantity";
             this.textBoxStockOutLineQuantity.Size = new System.Drawing.Size(142, 26);
             this.textBoxStockOutLineQuantity.TabIndex = 0;
@@ -227,39 +247,46 @@
             // 
             this.textBoxStockOutLineUnit.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxStockOutLineUnit.Location = new System.Drawing.Point(78, 64);
-            this.textBoxStockOutLineUnit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxStockOutLineUnit.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxStockOutLineUnit.Name = "textBoxStockOutLineUnit";
             this.textBoxStockOutLineUnit.ReadOnly = true;
             this.textBoxStockOutLineUnit.Size = new System.Drawing.Size(94, 26);
             this.textBoxStockOutLineUnit.TabIndex = 1;
             this.textBoxStockOutLineUnit.TabStop = false;
             // 
-            // textBoxStockOutLineItemDescription
+            // textBoxStockOutLinePrice
             // 
-            this.textBoxStockOutLineItemDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxStockOutLineItemDescription.BackColor = System.Drawing.Color.White;
-            this.textBoxStockOutLineItemDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxStockOutLineItemDescription.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.textBoxStockOutLineItemDescription.Location = new System.Drawing.Point(10, 5);
-            this.textBoxStockOutLineItemDescription.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxStockOutLineItemDescription.Name = "textBoxStockOutLineItemDescription";
-            this.textBoxStockOutLineItemDescription.ReadOnly = true;
-            this.textBoxStockOutLineItemDescription.Size = new System.Drawing.Size(530, 25);
-            this.textBoxStockOutLineItemDescription.TabIndex = 12;
-            this.textBoxStockOutLineItemDescription.TabStop = false;
-            this.textBoxStockOutLineItemDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxStockOutLinePrice.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxStockOutLinePrice.Location = new System.Drawing.Point(78, 151);
+            this.textBoxStockOutLinePrice.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxStockOutLinePrice.Name = "textBoxStockOutLinePrice";
+            this.textBoxStockOutLinePrice.ReadOnly = true;
+            this.textBoxStockOutLinePrice.Size = new System.Drawing.Size(142, 26);
+            this.textBoxStockOutLinePrice.TabIndex = 24;
+            this.textBoxStockOutLinePrice.TabStop = false;
+            this.textBoxStockOutLinePrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label5.Location = new System.Drawing.Point(33, 153);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 19);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "Price:";
             // 
             // TrnStockOutLineItemDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(549, 203);
+            this.ClientSize = new System.Drawing.Size(549, 235);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "TrnStockOutLineItemDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -290,5 +317,7 @@
         private System.Windows.Forms.TextBox textBoxStockOutLineAmount;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBoxStockOutLineItemDescription;
+        private System.Windows.Forms.TextBox textBoxStockOutLinePrice;
+        private System.Windows.Forms.Label label5;
     }
 }

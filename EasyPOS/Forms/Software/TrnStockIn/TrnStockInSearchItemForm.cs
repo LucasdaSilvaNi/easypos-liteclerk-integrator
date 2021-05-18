@@ -177,7 +177,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                     Unit = unit,
                     Quantity = 1,
                     Cost = cost,
-                    Amount = 0,
+                    Amount = cost,
                     ExpiryDate = "",
                     LotNumber = "",
                     AssetAccountId = 0,

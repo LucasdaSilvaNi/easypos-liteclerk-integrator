@@ -31,6 +31,7 @@ namespace EasyPOS.Controllers
                                     Unit = d.MstUnit.Unit,
                                     Quantity = d.Quantity,
                                     Cost = d.MstItem.Cost,
+                                    Price = d.MstItem.Price,
                                     Amount = d.Amount,
                                     AssetAccountId = d.AssetAccountId,
                                     AssetAccount = d.MstAccount.Account
@@ -154,7 +155,8 @@ namespace EasyPOS.Controllers
                     Quantity = objStockOutLine.Quantity,
                     Cost = objStockOutLine.Cost,
                     Amount = objStockOutLine.Amount,
-                    AssetAccountId = item.FirstOrDefault().AssetAccountId
+                    AssetAccountId = item.FirstOrDefault().AssetAccountId,
+                   
                 };
 
                 db.TrnStockOutLines.InsertOnSubmit(newStockOutLine);

@@ -181,7 +181,7 @@
             "Sales Return Detail Report",
             "",
             "Customer List Report",
-            "",
+            "Sales Summary Reward Report",
             "Net Sales Summary Report - Daily",
             "Net Sales Summary Report - Monthly",
             "",

@@ -42,7 +42,23 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             Controllers.RepSalesReportController repSalesReportController = new Controllers.RepSalesReportController();
             if (repSalesReportController.DropdownListCustomer().Any())
             {
-                comboBoxCustomer.DataSource = repSalesReportController.DropdownListCustomer();
+                List<Entities.MstCustomerEntity> newCustomerList = new List<Entities.MstCustomerEntity>();
+                newCustomerList.Add(new Entities.MstCustomerEntity
+                {
+                    Id = 0,
+                    Customer = "ALL"
+                });
+
+                foreach (var obj in repSalesReportController.DropdownListCustomer())
+                {
+                    newCustomerList.Add(new Entities.MstCustomerEntity
+                    {
+                        Id = obj.Id,
+                        Customer = obj.Customer
+                    });
+                };
+
+                comboBoxCustomer.DataSource = newCustomerList;
                 comboBoxCustomer.ValueMember = "Id";
                 comboBoxCustomer.DisplayMember = "Customer";
             }
@@ -273,6 +289,20 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     case "Customer List Report":
                         buttonView.Text = "View";
                         break;
+                    case "Sales Summary Reward Report":
+                        labelStartDate.Visible = false;
+                        dateTimePickerStartDate.Visible = false;
+
+                        labelEndDate.Visible = false;
+                        dateTimePickerEndDate.Visible = false;
+
+                        labelTerminal.Visible = false;
+                        comboBoxTerminal.Visible = false;
+
+                        labelCustomer.Visible = true;
+                        comboBoxCustomer.Visible = true;
+                        buttonView.Text = "View";
+                        break;
                     case "Net Sales Summary Report - Daily":
                         labelStartDate.Visible = true;
                         dateTimePickerStartDate.Visible = true;
@@ -281,6 +311,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         dateTimePickerEndDate.Visible = true;
 
                         dateTimePickerStartDate.Focus();
+
+                        labelCustomer.Visible = false;
+                        comboBoxCustomer.Visible = false;
                         buttonView.Text = "View";
                         break;
                     case "Net Sales Summary Report - Monthly":
@@ -290,6 +323,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
 
+                        labelCustomer.Visible = false;
+                        comboBoxCustomer.Visible = false;
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = "View";
                         break;
@@ -299,6 +334,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
+
+                        labelCustomer.Visible = false;
+                        comboBoxCustomer.Visible = false;
 
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = "View";
@@ -310,6 +348,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         labelEndDate.Visible = true;
                         dateTimePickerEndDate.Visible = true;
+
+                        labelCustomer.Visible = false;
+                        comboBoxCustomer.Visible = false;
 
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = "View";
@@ -647,6 +688,26 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                 }
                             }
 
+                            break;
+                        case "Sales Summary Reward Report":
+                            sysUserRights = new Modules.SysUserRightsModule("RepSalesDetail");
+
+                            if (sysUserRights.GetUserRights() == null)
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                if (sysUserRights.GetUserRights().CanView == true)
+                                {
+                                    RepSalesSummaryRewardReportForm repSalesSummaryRewardReportForm = new RepSalesSummaryRewardReportForm(Convert.ToInt32(comboBoxCustomer.SelectedValue));
+                                    repSalesSummaryRewardReportForm.ShowDialog();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
                             break;
                         case "Net Sales Summary Report - Daily":
                             sysUserRights = new Modules.SysUserRightsModule("RepSalesDetail");
