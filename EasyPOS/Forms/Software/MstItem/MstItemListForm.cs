@@ -130,7 +130,7 @@ namespace EasyPOS.Forms.Software.MstItem
                     buttonItemListPageListNext.Enabled = true;
                     buttonItemListPageListLast.Enabled = true;
                 }
-
+                moveToFirstPage();
                 textBoxItemListPageNumber.Text = pageNumber + " / " + itemListPageList.PageCount;
                 itemListDataSource.DataSource = itemListPageList;
             }
@@ -295,7 +295,7 @@ namespace EasyPOS.Forms.Software.MstItem
                 UpdateItemListDataSource();
             }
         }
-        private void buttonItemListPageListFirst_Click(object sender, EventArgs e)
+        public void moveToFirstPage()
         {
             itemListPageList = new PagedList<Entities.DgvMstItemListEntity>(itemListData, 1, pageSize);
             itemListDataSource.DataSource = itemListPageList;
@@ -307,6 +307,10 @@ namespace EasyPOS.Forms.Software.MstItem
 
             pageNumber = 1;
             textBoxItemListPageNumber.Text = pageNumber + " / " + itemListPageList.PageCount;
+        }
+        private void buttonItemListPageListFirst_Click(object sender, EventArgs e)
+        {
+            moveToFirstPage();
         }
 
         private void buttonItemListPageListPrevious_Click(object sender, EventArgs e)
