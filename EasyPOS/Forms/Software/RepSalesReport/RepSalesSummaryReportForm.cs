@@ -25,26 +25,30 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         public DateTime dateStart;
         public DateTime dateEnd;
         public Int32 filterTerminalId;
+        public Int32 filterCustomerId;
+        public Int32 filterSalesAgentId;
 
-        public RepSalesSummaryReportForm(DateTime startDate, DateTime endDate, Int32 terminalId)
+        public RepSalesSummaryReportForm(DateTime startDate, DateTime endDate, Int32 terminalId, Int32 CustomerId, Int32 SalesAgentId)
         {
             InitializeComponent();
 
             dateStart = startDate;
             dateEnd = endDate;
             filterTerminalId = terminalId;
+            filterCustomerId = CustomerId;
+            filterSalesAgentId = SalesAgentId;
 
             GetSalesSummaryListDataSource();
             CreateSalesSummaryListDataGrid();
         }
 
-        public List<Entities.DgvRepSalesReportSalesSummaryReportListEntity> GetSalesSummaryListData(DateTime startDate, DateTime endDate, Int32 terminalId)
+        public List<Entities.DgvRepSalesReportSalesSummaryReportListEntity> GetSalesSummaryListData(DateTime startDate, DateTime endDate, Int32 terminalId, Int32 CustomerId, Int32 SalesAgentId)
         {
             List<Entities.DgvRepSalesReportSalesSummaryReportListEntity> rowList = new List<Entities.DgvRepSalesReportSalesSummaryReportListEntity>();
 
             Controllers.RepSalesReportController repSalesSummaryReportController = new Controllers.RepSalesReportController();
 
-            var salesList = repSalesSummaryReportController.SalesSummaryReport(startDate, endDate, terminalId);
+            var salesList = repSalesSummaryReportController.SalesSummaryReport(startDate, endDate, terminalId, CustomerId, SalesAgentId);
             if (salesList.Any())
             {
                 Decimal totalAmount = 0;
@@ -75,7 +79,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
         public void GetSalesSummaryListDataSource()
         {
-            salesList = GetSalesSummaryListData(dateStart, dateEnd, filterTerminalId);
+            salesList = GetSalesSummaryListData(dateStart, dateEnd, filterTerminalId, filterCustomerId, filterSalesAgentId);
             if (salesList.Any())
             {
 

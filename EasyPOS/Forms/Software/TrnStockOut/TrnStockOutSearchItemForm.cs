@@ -28,10 +28,19 @@ namespace EasyPOS.Forms.Software.TrnStockOut
 
             trnStockOutDetailForm = stockOutDetailForm;
             trnStockOutEntity = stockOutEntity;
+            if (Modules.SysCurrentModule.GetCurrentSettings().HideItemListBarcode == true)
+            {
+                ColumnSearchItemListBarCode.Visible = false;
+            }
+            else
+            {
+                ColumnSearchItemListBarCode.Visible = true;
+            }
 
             CreateSearchItemListDataGridView();
             textBoxSearchItemListFilter.Focus();
             textBoxSearchItemListFilter.SelectAll();
+            
         }
 
         public void UpdateSearchItemListDataSource()

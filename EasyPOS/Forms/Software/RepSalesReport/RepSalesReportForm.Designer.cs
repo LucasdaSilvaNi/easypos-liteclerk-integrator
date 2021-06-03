@@ -50,6 +50,8 @@
             this.printDialogStockWithdrawalReport = new System.Windows.Forms.PrintDialog();
             this.folderBrowserDialogStockWithdrawalReport = new System.Windows.Forms.FolderBrowserDialog();
             this.folderBrowserDialogCollectionDetailReportFacepay = new System.Windows.Forms.FolderBrowserDialog();
+            this.comboBoxSalesAgent = new System.Windows.Forms.ComboBox();
+            this.labelAgent = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -59,6 +61,8 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.comboBoxSalesAgent);
+            this.panel4.Controls.Add(this.labelAgent);
             this.panel4.Controls.Add(this.comboBoxCustomer);
             this.panel4.Controls.Add(this.labelCustomer);
             this.panel4.Controls.Add(this.comboBoxTerminal);
@@ -321,6 +325,28 @@
             // 
             this.printDialogStockWithdrawalReport.UseEXDialog = true;
             // 
+            // comboBoxSalesAgent
+            // 
+            this.comboBoxSalesAgent.FormattingEnabled = true;
+            this.comboBoxSalesAgent.Location = new System.Drawing.Point(403, 164);
+            this.comboBoxSalesAgent.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxSalesAgent.Name = "comboBoxSalesAgent";
+            this.comboBoxSalesAgent.Size = new System.Drawing.Size(336, 27);
+            this.comboBoxSalesAgent.TabIndex = 28;
+            this.comboBoxSalesAgent.Visible = false;
+            // 
+            // labelAgent
+            // 
+            this.labelAgent.AutoSize = true;
+            this.labelAgent.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.labelAgent.Location = new System.Drawing.Point(318, 167);
+            this.labelAgent.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelAgent.Name = "labelAgent";
+            this.labelAgent.Size = new System.Drawing.Size(83, 19);
+            this.labelAgent.TabIndex = 29;
+            this.labelAgent.Text = "Sales Agent:";
+            this.labelAgent.Visible = false;
+            // 
             // RepSalesReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -369,5 +395,7 @@
         private System.Windows.Forms.Label labelCustomer;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogCollectionDetailReportFacepay;
         private System.Windows.Forms.ListBox listBoxSalesReport;
+        private System.Windows.Forms.ComboBox comboBoxSalesAgent;
+        private System.Windows.Forms.Label labelAgent;
     }
 }

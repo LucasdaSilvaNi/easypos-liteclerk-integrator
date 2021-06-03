@@ -137,7 +137,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewSearchItemList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewSearchItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSearchItemList.ColumnHeadersHeight = 27;
             this.dataGridViewSearchItemList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnSearchItemListId,
             this.ColumnSearchItemListBarCode,
@@ -405,7 +405,6 @@
             this.ColumnSearchItemListButtonPick.ReadOnly = true;
             this.ColumnSearchItemListButtonPick.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ColumnSearchItemListButtonPick.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColumnSearchItemListButtonPick.Width = 70;
             // 
             // TrnStockInSearchItemForm
             // 
