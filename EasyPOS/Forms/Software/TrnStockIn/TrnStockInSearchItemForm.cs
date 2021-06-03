@@ -272,5 +272,10 @@ namespace EasyPOS.Forms.Software.TrnStockIn
         {
             Close();
         }
+
+        private void dataGridViewSearchItemList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
