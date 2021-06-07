@@ -14,72 +14,51 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.RepSalesReport
 {
-    public partial class RepCostOfSaleReportForm : Form
+    public partial class RepSalesSummaryRewardReportForm : Form
     {
-        public List<Entities.DgvRepSalesCostOfSalesReportEntity> salesDetailList;
-        public BindingSource dataSalesDatailListSource = new BindingSource();
-        public PagedList<Entities.DgvRepSalesCostOfSalesReportEntity> pageList;
+        public List<Entities.DgvSalesSummaryRewardReportEntity> customerList;
+        public BindingSource dataCustomerListSource = new BindingSource();
+        public PagedList<Entities.DgvSalesSummaryRewardReportEntity> pageList;
         public Int32 pageNumber = 1;
         public Int32 pageSize = 50;
-
-        public DateTime dateStart;
-        public DateTime dateEnd;
-        public Int32 filterTerminalId;
-        public Int32 filterCustomerId;
-        public Int32 filterSalesAgentId;
-        public RepCostOfSaleReportForm(DateTime startDate, DateTime endDate, Int32 terminalId, Int32 CustomerId, Int32 SalesAgentId)
+        public Int32 filterCustomer;
+        public RepSalesSummaryRewardReportForm(Int32 filter)
         {
             InitializeComponent();
-            dateStart = startDate;
-            dateEnd = endDate;
-            filterTerminalId = terminalId;
-            filterCustomerId = CustomerId;
-            filterSalesAgentId = SalesAgentId;
+            filterCustomer = filter;
 
-            GetSalesDetailListDataSource();
-            GetSalesDetailListDataGridSource();
+            GetCustomerListDataSource();
+            GetCustomerListDataGridSource();
         }
-
-        public List<Entities.DgvRepSalesCostOfSalesReportEntity> GetSalesDetailListData(DateTime startDate, DateTime endDate, Int32 terminalId, Int32 CustomerId, Int32 SalesAgentId)
+        public List<Entities.DgvSalesSummaryRewardReportEntity> GetSalesSummaryRewardListData(Int32 filter)
         {
-            List<Entities.DgvRepSalesCostOfSalesReportEntity> rowList = new List<Entities.DgvRepSalesCostOfSalesReportEntity>();
+            List<Entities.DgvSalesSummaryRewardReportEntity> rowList = new List<Entities.DgvSalesSummaryRewardReportEntity>();
+            Controllers.RepSalesReportController repSalesReportController = new Controllers.RepSalesReportController();
 
-            Controllers.RepSalesReportController repSalesDetailReportController = new Controllers.RepSalesReportController();
-
-            var salesDetailList = repSalesDetailReportController.SalesDetailReport(startDate, endDate, terminalId, CustomerId, SalesAgentId);
-            if (salesDetailList.OrderByDescending(d => d.Id).Any())
+            var customerListReport = repSalesReportController.GetSalesSummaryRewardListData(filter);
+            if (customerListReport.Any())
             {
-                Decimal totalCost = 0;
-
-                var row = from d in salesDetailList
-                          select new Entities.DgvRepSalesCostOfSalesReportEntity
+                var row = from d in customerListReport
+                          select new Entities.DgvSalesSummaryRewardReportEntity
                           {
-                              ColumnTerminal = d.Terminal,
-                              ColumnDate = d.Date,
-                              ColumnSalesNumber = d.SalesNumber,
-                              ColumnBarCode = d.BarCode,
-                              ColumnItemDescription = d.ItemDescription,
-                              ColumnQuantity = d.Quantity.ToString("#,##0.00"),
-                              ColumnCost = d.Cost.ToString("#,##0.00"),
-                              ColumnCostAmount = d.CostAmount.ToString("#,##0.00"),
+                              ColumnCustomer = d.Customer,
+                              ColumnRewardNo = d.RewardNumber,
+                              ColumnAvailableReward = d.AvailableReward.ToString("#,##0.00")
                           };
-
-                totalCost = salesDetailList.Sum(d => d.Cost);
-
-                textBoxTotalCost.Text = totalCost.ToString("#,##0.00");
 
                 rowList = row.ToList();
 
             }
             return rowList;
+
         }
-        public void GetSalesDetailListDataSource()
+        public void GetCustomerListDataSource()
         {
-            salesDetailList = GetSalesDetailListData(dateStart, dateEnd, filterTerminalId, filterCustomerId, filterSalesAgentId);
-            if (salesDetailList.Any())
+            customerList = GetSalesSummaryRewardListData(filterCustomer);
+            if (customerList.Any())
             {
 
-                pageList = new PagedList<Entities.DgvRepSalesCostOfSalesReportEntity>(salesDetailList, pageNumber, pageSize);
+                pageList = new PagedList<Entities.DgvSalesSummaryRewardReportEntity>(customerList, pageNumber, pageSize);
 
                 if (pageList.PageCount == 1)
                 {
@@ -111,7 +90,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 }
 
                 textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
-                dataSalesDatailListSource.DataSource = pageList;
+                dataCustomerListSource.DataSource = pageList;
             }
             else
             {
@@ -120,19 +99,25 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 buttonPageListNext.Enabled = false;
                 buttonPageListLast.Enabled = false;
 
-                dataSalesDatailListSource.Clear();
+                dataCustomerListSource.Clear();
                 textBoxPageNumber.Text = "0 / 0";
             }
         }
-        public void GetSalesDetailListDataGridSource()
+        public void GetCustomerListDataGridSource()
         {
-            dataGridViewCostOfSalesReport.DataSource = dataSalesDatailListSource;
+            dataGridViewSalesSummaryRewardReport.DataSource = dataCustomerListSource;
 
         }
-        private void buttonSalesListPageListFirst_Click(object sender, EventArgs e)
+
+        private void buttonClose_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvRepSalesCostOfSalesReportEntity>(salesDetailList, 1, pageSize);
-            dataSalesDatailListSource.DataSource = pageList;
+            Close();
+        }
+
+        private void buttonPageListFirst_Click(object sender, EventArgs e)
+        {
+            pageList = new PagedList<Entities.DgvSalesSummaryRewardReportEntity>(customerList, 1, pageSize);
+            dataCustomerListSource.DataSource = pageList;
 
             buttonPageListFirst.Enabled = false;
             buttonPageListPrevious.Enabled = false;
@@ -142,12 +127,13 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             pageNumber = 1;
             textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
         }
-        private void buttonSalesListPageListPrevious_Click(object sender, EventArgs e)
+
+        private void buttonPageListPrevious_Click(object sender, EventArgs e)
         {
             if (pageList.HasPreviousPage == true)
             {
-                pageList = new PagedList<Entities.DgvRepSalesCostOfSalesReportEntity>(salesDetailList, --pageNumber, pageSize);
-                dataSalesDatailListSource.DataSource = pageList;
+                pageList = new PagedList<Entities.DgvSalesSummaryRewardReportEntity>(customerList, --pageNumber, pageSize);
+                dataCustomerListSource.DataSource = pageList;
             }
 
             buttonPageListNext.Enabled = true;
@@ -162,12 +148,12 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
         }
 
-        private void buttonSalesListPageListNext_Click(object sender, EventArgs e)
+        private void buttonPageListNext_Click(object sender, EventArgs e)
         {
             if (pageList.HasNextPage == true)
             {
-                pageList = new PagedList<Entities.DgvRepSalesCostOfSalesReportEntity>(salesDetailList, ++pageNumber, pageSize);
-                dataSalesDatailListSource.DataSource = pageList;
+                pageList = new PagedList<Entities.DgvSalesSummaryRewardReportEntity>(customerList, ++pageNumber, pageSize);
+                dataCustomerListSource.DataSource = pageList;
             }
 
             buttonPageListFirst.Enabled = true;
@@ -181,10 +167,11 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
             textBoxPageNumber.Text = pageNumber + " / " + pageList.PageCount;
         }
-        private void buttonSalesListPageListLast_Click(object sender, EventArgs e)
+
+        private void buttonPageListLast_Click(object sender, EventArgs e)
         {
-            pageList = new PagedList<Entities.DgvRepSalesCostOfSalesReportEntity>(salesDetailList, pageList.PageCount, pageSize);
-            dataSalesDatailListSource.DataSource = pageList;
+            pageList = new PagedList<Entities.DgvSalesSummaryRewardReportEntity>(customerList, pageList.PageCount, pageSize);
+            dataCustomerListSource.DataSource = pageList;
 
             buttonPageListFirst.Enabled = true;
             buttonPageListPrevious.Enabled = true;
@@ -202,27 +189,19 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 DialogResult dialogResult = folderBrowserDialogGenerateCSV.ShowDialog();
                 if (dialogResult == DialogResult.OK)
                 {
-                    DateTime startDate = dateStart;
-                    DateTime endDate = dateEnd;
-
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Terminal", "Date", "Sales Number", "Barcode", "Item Description", "Quantity", "Cost", "CostAmount"};
+                    String[] header = { "Customer", "Reward Number", "Available Reward" };
                     csv.AppendLine(String.Join(",", header));
 
-                    if (salesDetailList.Any())
+                    if (customerList.Any())
                     {
-                        foreach (var salesDetail in salesDetailList)
+                        foreach (var customer in customerList)
                         {
-                           
+
                             String[] data = {
-                                salesDetail.ColumnTerminal,
-                                salesDetail.ColumnDate,
-                               "="+"\""+salesDetail.ColumnSalesNumber+"\"",
-                               "="+"\""+salesDetail.ColumnBarCode.Replace("," , "")+"\"",
-                                salesDetail.ColumnItemDescription.Replace("," , ""),
-                                salesDetail.ColumnQuantity.Replace("," , ""),
-                                salesDetail.ColumnCost.Replace("," , ""),
-                                salesDetail.ColumnCostAmount.Replace("," , ""),
+                                customer.ColumnCustomer.Replace("," , ""),
+                                customer.ColumnRewardNo.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
+                                customer.ColumnAvailableReward.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
                             };
                             csv.AppendLine(String.Join(",", data));
                         }
@@ -235,7 +214,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
 
                     DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
-                    File.WriteAllText(createDirectorySTCSV.FullName + "\\CostOfSalesReport_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\SalesSummaryRewardReport_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
 
                     MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
@@ -246,10 +225,6 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void buttonClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
     }
+
 }

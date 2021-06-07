@@ -28,15 +28,12 @@ namespace EasyPOS.Forms.Software.TrnStockIn
 
             trnStockInDetailForm = stockInDetailForm;
             trnStockInEntity = stockInEntity;
-
             if (Modules.SysCurrentModule.GetCurrentSettings().HideItemListBarcode == true)
             {
-                ColumnSearchItemListBarCode.Visible = false;
                 ColumnSearchItemListBarCode.Visible = false;
             }
             else
             {
-                ColumnSearchItemListBarCode.Visible = true;
                 ColumnSearchItemListBarCode.Visible = true;
             }
 
@@ -177,7 +174,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                     Unit = unit,
                     Quantity = 1,
                     Cost = cost,
-                    Amount = 0,
+                    Amount = cost,
                     ExpiryDate = "",
                     LotNumber = "",
                     AssetAccountId = 0,

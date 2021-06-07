@@ -20,5 +20,6 @@ namespace EasyPOS.Entities
         public Decimal Amount { get; set; }
         public Int32 AssetAccountId { get; set; }
         public String AssetAccount { get; set; }
+        public Decimal Price { get; set; }
     }
 }

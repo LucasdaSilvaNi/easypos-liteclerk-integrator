@@ -35,6 +35,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
             textBoxStockOutLineUnit.Text = trnStockOutLineEntity.Unit;
             textBoxStockOutLineCost.Text = trnStockOutLineEntity.Cost.ToString("#,##0.00");
             textBoxStockOutLineAmount.Text = trnStockOutLineEntity.Amount.ToString("#,##0.00");
+            textBoxStockOutLinePrice.Text = trnStockOutLineEntity.Price.ToString("#,##0.00");
         }
 
         public void ComputeAmount()
@@ -74,6 +75,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
             var amount = Convert.ToDecimal(textBoxStockOutLineAmount.Text);
             var assetAccountId = trnStockOutLineEntity.AssetAccountId;
             var assetAccount = trnStockOutLineEntity.AssetAccount;
+            var price = trnStockOutLineEntity.Price;
 
             Entities.TrnStockOutLineEntity newStockOutLineEntity = new Entities.TrnStockOutLineEntity()
             {
@@ -87,7 +89,8 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                 Cost = cost,
                 Amount = amount,
                 AssetAccountId = assetAccountId,
-                AssetAccount = assetAccount
+                AssetAccount = assetAccount,
+                Price = price
             };
 
             Controllers.TrnStockOutLineController trnPOSStockOutLineController = new Controllers.TrnStockOutLineController();

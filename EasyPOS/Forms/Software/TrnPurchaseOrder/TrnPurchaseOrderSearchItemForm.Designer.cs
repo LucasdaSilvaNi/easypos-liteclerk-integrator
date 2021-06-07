@@ -313,7 +313,6 @@
             this.ColumnSearchItemListBarCode.HeaderText = "Barcode";
             this.ColumnSearchItemListBarCode.Name = "ColumnSearchItemListBarCode";
             this.ColumnSearchItemListBarCode.ReadOnly = true;
-            this.ColumnSearchItemListBarCode.Width = 150;
             // 
             // ColumnSearchItemListDescription
             // 

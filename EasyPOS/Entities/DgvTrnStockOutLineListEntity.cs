@@ -22,5 +22,6 @@ namespace EasyPOS.Entities
         public String ColumnStockOutLineListAmount { get; set; }
         public Int32 ColumnStockOutLineListAssetAccountId { get; set; }
         public String ColumnStockOutLineListAssetAccount { get; set; }
+        public String ColumnStockOutLineListPrice { get; set; }
     }
 }

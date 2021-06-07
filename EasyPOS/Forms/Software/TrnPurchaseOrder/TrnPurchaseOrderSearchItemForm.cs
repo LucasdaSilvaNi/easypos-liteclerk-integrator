@@ -28,9 +28,18 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
 
             trnPurchaseOrderDetailForm = purchaseOrderDetailForm;
             trnPurchaseOrderEntity = purchaseOrderEntity;
-
+            if (Modules.SysCurrentModule.GetCurrentSettings().HideItemListBarcode == true)
+            {
+                ColumnSearchItemListBarCode.Visible = false;
+            }
+            else
+            {
+                ColumnSearchItemListBarCode.Visible = true;
+            }
             CreateSearchItemListDataGridView();
             textBoxSearchItemListFilter.Focus();
+            
+            
         }
 
         public void UpdateSearchItemListDataSource()

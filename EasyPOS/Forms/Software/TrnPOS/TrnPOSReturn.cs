@@ -118,6 +118,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                        ColumnReturnItemDescription = d.ItemDescription,
                                        ColumnReturnUnit = d.Unit,
                                        ColumnReturnPrice = d.Price.ToString("#,##0.00"),
+                                       ColumnReturnDiscountAmount = d.DiscountAmount.ToString("#,##0.00"),
+                                       ColumnReturnNetPrice = d.NetPrice.ToString("#,##0.00"),
                                        ColumnReturnQuantity = d.Quantity.ToString("#,##0.00"),
                                        ColumnReturnAmount = d.Amount.ToString("#,##0.00"),
                                        ColumnReturnPickItem = "Pick",
@@ -137,13 +139,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             UpdateReturnDataSource();
 
-            dataGridViewReturnItems.Columns[6].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
-            dataGridViewReturnItems.Columns[6].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
-            dataGridViewReturnItems.Columns[6].DefaultCellStyle.ForeColor = Color.White;
+            dataGridViewReturnItems.Columns[8].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewReturnItems.Columns[8].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
+            dataGridViewReturnItems.Columns[8].DefaultCellStyle.ForeColor = Color.White;
 
-            dataGridViewReturnItems.Columns[7].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#F34F1C");
-            dataGridViewReturnItems.Columns[7].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#F34F1C");
-            dataGridViewReturnItems.Columns[7].DefaultCellStyle.ForeColor = Color.White;
+            dataGridViewReturnItems.Columns[9].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#F34F1C");
+            dataGridViewReturnItems.Columns[9].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#F34F1C");
+            dataGridViewReturnItems.Columns[9].DefaultCellStyle.ForeColor = Color.White;
 
             dataGridViewReturnItems.DataSource = returnDataSource;
         }
@@ -265,10 +267,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         Price = Convert.ToDecimal(row.Cells["ColumnReturnPrice"].Value),
                         DiscountId = 0,
                         DiscountRate = 0,
-                        DiscountAmount = 0,
-                        NetPrice = 0,
+                        DiscountAmount = Convert.ToDecimal(row.Cells["ColumnReturnDiscountAmount"].Value),
+                        NetPrice = Convert.ToDecimal(row.Cells["ColumnReturnNetPrice"].Value),
                         Quantity = Convert.ToDecimal(row.Cells["ColumnReturnReturnQuantity"].Value),
-                        Amount = 0,
+                        Amount = Convert.ToDecimal(row.Cells["ColumnReturnAmount"].Value),
                         TaxId = 0,
                         TaxRate = 0,
                         TaxAmount = 0,

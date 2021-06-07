@@ -33,10 +33,20 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             trnSalesEntity = salesEntity;
 
+            if (Modules.SysCurrentModule.GetCurrentSettings().HideItemListBarcode == true)
+            {
+                ColumnSearchItemBarcode.Visible = false;
+            }
+            else
+            {
+                ColumnSearchItemBarcode.Visible = true;
+            }
+
             dataGridViewSearchItemList.Focus();
 
             GetListSearchItemDataSource("");
             GetDataGridViewListSearchItemSource();
+            
         }
         public void resetCursor()
         {

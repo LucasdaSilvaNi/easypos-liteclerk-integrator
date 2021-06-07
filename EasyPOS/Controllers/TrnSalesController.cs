@@ -203,7 +203,7 @@ namespace EasyPOS.Controllers
             else
             {
                 Boolean isLocked = true;
-                
+
                 var sales = from d in db.TrnSales
                             where d.SalesDate == dateTime
                             && d.TerminalId == terminalId
@@ -644,6 +644,52 @@ namespace EasyPOS.Controllers
                     currentDate = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().CurrentDate);
                 }
 
+
+                if (objCollection.CollectionLines.Any())
+                {
+                    foreach (var collectionLine in objCollection.CollectionLines)
+                    {
+                        var payType = from d in db.MstPayTypes
+                                      where d.Id == collectionLine.PayTypeId
+                                      select d;
+
+                        if (payType.Any())
+                        {
+                            if (payType.FirstOrDefault().PayTypeCode == "REWARDS")
+                            {
+                                if (currentSales.FirstOrDefault().MstCustomer.AvailableReward < collectionLine.Amount)
+                                {
+                                    return new String[] { "Invalid reward", "0" };
+                                }
+                                else
+                                {
+                                    if (currentSales.FirstOrDefault().MstCustomer.WithReward == true)
+                                    {
+                                        Decimal rewardConversion = currentSales.FirstOrDefault().MstCustomer.RewardConversion;
+                                        if (rewardConversion != 0)
+                                        {
+                                            var customer = from d in db.MstCustomers
+                                                           where d.Id == currentSales.FirstOrDefault().CustomerId
+                                                           select d;
+
+                                            if (customer.Any())
+                                            {
+                                                Decimal existingReward = customer.FirstOrDefault().AvailableReward;
+
+                                                var updateRewards = customer.FirstOrDefault();
+                                                updateRewards.AvailableReward = existingReward - collectionLine.Amount;
+                                                db.SubmitChanges();
+                                            }
+                                        }
+                                    }
+                                }
+
+                                break;
+                            }
+                        }
+                    }
+                }
+
                 Data.TrnCollection newCollection = new Data.TrnCollection
                 {
                     PeriodId = currentSales.FirstOrDefault().PeriodId,
@@ -752,7 +798,6 @@ namespace EasyPOS.Controllers
 
                     // change amount = tender amount - sales amount
 
-
                     var lockCollection = collection.FirstOrDefault();
                     lockCollection.ChangeAmount = collection.FirstOrDefault().TenderAmount - salesAmount;
                     lockCollection.Amount = totalCollectionLineAmount - collection.FirstOrDefault().ChangeAmount;
@@ -790,6 +835,27 @@ namespace EasyPOS.Controllers
                 };
                 Modules.SysAuditTrailModule.InsertAuditTrail(newAuditTrail3);
 
+                if (currentSales.FirstOrDefault().MstCustomer.WithReward == true)
+                {
+                    Decimal rewardConversion = currentSales.FirstOrDefault().MstCustomer.RewardConversion;
+                    if (rewardConversion != 0)
+                    {
+                        var customer = from d in db.MstCustomers
+                                       where d.Id == currentSales.FirstOrDefault().CustomerId
+                                       select d;
+
+                        if (customer.Any())
+                        {
+                            Decimal availableReward = currentSales.FirstOrDefault().Amount / rewardConversion;
+                            Decimal existingReward = customer.FirstOrDefault().AvailableReward;
+
+                            var updateRewards = customer.FirstOrDefault();
+                            updateRewards.AvailableReward = existingReward + availableReward;
+                            db.SubmitChanges();
+                        }
+                    }
+                }
+
                 if (Modules.SysCurrentModule.GetCurrentSettings().EnableEasyShopIntegration == true)
                 {
                     EasyShopAlreadyPaid(currentSales.FirstOrDefault().ManualInvoiceNumber);
@@ -818,7 +884,8 @@ namespace EasyPOS.Controllers
                                 CustomerCode = d.CustomerCode,
                                 ContactNumber = d.ContactNumber,
                                 ContactPerson = d.ContactPerson,
-                                Address = d.Address
+                                Address = d.Address,
+                                AvailableReward = d.AvailableReward
                             };
 
             return customers.OrderBy(d => d.Customer).ToList();
@@ -1200,7 +1267,6 @@ namespace EasyPOS.Controllers
                             Decimal netPrice = 0;
                             Decimal amount = 0;
 
-                            Decimal taxRate = salesLine.TaxRate;
                             Decimal taxAmount = 0;
 
                             if (discount.FirstOrDefault().IsVatExempt == true)
@@ -1243,6 +1309,8 @@ namespace EasyPOS.Controllers
                             }
                             else
                             {
+                                Decimal taxRate = salesLine.TaxRate;
+
                                 if (taxRate > 0)
                                 {
                                     discountAmountPerPax = pricePerPax * (discountRate / 100);
@@ -1624,6 +1692,8 @@ namespace EasyPOS.Controllers
                                      d.MstItem.ItemDescription,
                                      d.MstItem.MstUnit.Unit,
                                      d.Price,
+                                     d.DiscountAmount,
+                                     d.NetPrice,
                                  } into g
                                  select new Entities.TrnSalesLineEntity
                                  {
@@ -1631,8 +1701,10 @@ namespace EasyPOS.Controllers
                                      ItemDescription = g.Key.ItemDescription,
                                      Unit = g.Key.Unit,
                                      Price = g.Key.Price,
+                                     DiscountAmount = g.Key.DiscountAmount,
+                                     NetPrice = g.Key.NetPrice,
                                      Quantity = g.Sum(s => s.Quantity),
-                                     Amount = g.Sum(s => s.Amount)
+                                     Amount = g.Key.NetPrice * g.Sum(s => s.Quantity)
                                  };
 
                 return salesLines.ToList();
@@ -1731,12 +1803,6 @@ namespace EasyPOS.Controllers
 
                         if (item.Any())
                         {
-                            Decimal negativeQuantity = objSalesLine.Quantity * -1;
-                            Decimal discountAmount = objSalesLine.Price * (discount.FirstOrDefault().DiscountRate / 100);
-                            Decimal netPrice = objSalesLine.Price - discountAmount;
-                            Decimal amount = netPrice * negativeQuantity;
-                            Decimal taxAmount = amount / (1 + (item.FirstOrDefault().MstTax1.Rate / 100)) * (item.FirstOrDefault().MstTax1.Rate / 100);
-
                             newSalesLines.Add(new Data.TrnSalesLine
                             {
                                 SalesId = currentSalesId,
@@ -1745,13 +1811,13 @@ namespace EasyPOS.Controllers
                                 Price = objSalesLine.Price,
                                 DiscountId = discount.FirstOrDefault().Id,
                                 DiscountRate = discount.FirstOrDefault().DiscountRate,
-                                DiscountAmount = discountAmount,
-                                NetPrice = netPrice,
-                                Quantity = negativeQuantity,
-                                Amount = amount,
+                                DiscountAmount = objSalesLine.DiscountAmount,
+                                NetPrice = objSalesLine.NetPrice,
+                                Quantity = objSalesLine.Quantity * -1,
+                                Amount = objSalesLine.Amount * -1,
                                 TaxId = item.FirstOrDefault().OutTaxId,
-                                TaxRate = item.FirstOrDefault().MstTax1.Rate,
-                                TaxAmount = taxAmount,
+                                TaxRate = 0,
+                                TaxAmount = 0,
                                 SalesAccountId = 159,
                                 AssetAccountId = 255,
                                 CostAccountId = 238,
@@ -1766,7 +1832,7 @@ namespace EasyPOS.Controllers
                                 PriceSplitPercentage = 0,
                             });
 
-                            totalAmount += amount;
+                            totalAmount += objSalesLine.Amount * -1;
                         }
                     }
 

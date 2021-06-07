@@ -58,7 +58,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                 if (purchaseOrderLines.Any())
                 {
                     PdfPTable tableItem = new PdfPTable(5);
-                    tableItem.SetWidths(new float[] { 70f, 30f, 30f, 30f, 30f });
+                    tableItem.SetWidths(new float[] { 90f, 20f, 20f, 30f, 30f });
                     tableItem.WidthPercentage = 100;
 
                     Decimal totalAmount = 0;
@@ -66,8 +66,8 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                     foreach (var PurchaseOrderLines in purchaseOrderLines)
                     {
                         tableItem.AddCell(new PdfPCell(new Phrase(PurchaseOrderLines.MstItem.ItemDescription, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableItem.AddCell(new PdfPCell(new Phrase(PurchaseOrderLines.Quantity.ToString("#,##0.00"), fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f, HorizontalAlignment = 2 });
-                        tableItem.AddCell(new PdfPCell(new Phrase(PurchaseOrderLines.MstItem.MstUnit.Unit, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                        tableItem.AddCell(new PdfPCell(new Phrase(PurchaseOrderLines.Quantity.ToString("#,##0.00"), fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 8f, PaddingTop = 3f, PaddingBottom = 0f, HorizontalAlignment = 2 });
+                        tableItem.AddCell(new PdfPCell(new Phrase(PurchaseOrderLines.MstItem.MstUnit.Unit, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 8f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
                         tableItem.AddCell(new PdfPCell(new Phrase(PurchaseOrderLines.Cost.ToString("#,##0.00"), fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f, HorizontalAlignment = 2 });
                         tableItem.AddCell(new PdfPCell(new Phrase(PurchaseOrderLines.Amount.ToString("#,##0.00"), fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f, HorizontalAlignment = 2 });
 
@@ -159,9 +159,10 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                 tableHeader.SetWidths(new float[] { 20f, 30f, 20f, 50f });
                 tableHeader.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
 
-                tableHeader.AddCell(new PdfPCell(new Phrase(companyName + "\n" + address, fontTimesNewRoman14Bold)) { Colspan = 2, Border = PdfPCell.BOTTOM_BORDER, Padding = 3f, PaddingBottom = 5f });
-                tableHeader.AddCell(new PdfPCell(new Phrase(documentTitle + "\n", fontTimesNewRoman14Bold)) { HorizontalAlignment = 2, Colspan = 2, Border = PdfPCell.BOTTOM_BORDER, Padding = 3f, PaddingBottom = 5f });
-
+                tableHeader.AddCell(new PdfPCell(new Phrase(companyName + "\n", fontTimesNewRoman14Bold)) { Colspan = 2, Border = 0, Padding = 3f, PaddingBottom = 0f });               
+                tableHeader.AddCell(new PdfPCell(new Phrase(documentTitle + "\n", fontTimesNewRoman14Bold)) { HorizontalAlignment = 2, Colspan = 2, Border = 0, Padding = 3f, PaddingBottom = 0f });
+                tableHeader.AddCell(new PdfPCell(new Phrase(address + "\n", fontTimesNewRoman11)) { Colspan = 4, Border = PdfPCell.BOTTOM_BORDER, Padding = 3f, PaddingBottom = 3f });
+                
                 tableHeader.AddCell(new PdfPCell(new Phrase("PO No.: ", fontTimesNewRoman11Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
                 tableHeader.AddCell(new PdfPCell(new Phrase(purchaseOrderNumber, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
 
@@ -174,7 +175,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                 tableHeader.AddCell(new PdfPCell(new Phrase(remarks, fontTimesNewRoman11)) { Colspan = 3, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
 
                 PdfPTable tableItem = new PdfPTable(5);
-                tableItem.SetWidths(new float[] { 70f, 30f, 30f, 30f, 30f });
+                tableItem.SetWidths(new float[] { 90f, 20f, 20f, 30f, 30f });
                 tableItem.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
                 tableItem.AddCell(new PdfPCell(new Phrase(" ", fontTimesNewRoman11Bold)) { Border = 0, Colspan = 5, PaddingTop = -8f });
                 tableItem.AddCell(new PdfPCell(new Phrase("Item Description", fontTimesNewRoman11Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
