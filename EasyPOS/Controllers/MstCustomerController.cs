@@ -45,7 +45,8 @@ namespace EasyPOS.Controllers
                                 UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
                                 IsLocked = d.IsLocked,
                                 DefaultPriceDescription = d.DefaultPriceDescription,
-                                CustomerCode = d.CustomerCode
+                                CustomerCode = d.CustomerCode,
+                                BusinessStyle = d.BusinessStyle
                             };
 
             return customers.OrderByDescending(d => d.Id).ToList();
@@ -79,7 +80,8 @@ namespace EasyPOS.Controllers
                                UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
                                IsLocked = d.IsLocked,
                                DefaultPriceDescription = d.DefaultPriceDescription,
-                               CustomerCode = d.CustomerCode
+                               CustomerCode = d.CustomerCode,
+                               BusinessStyle = d.BusinessStyle
                            };
 
             return customer.FirstOrDefault();
@@ -145,7 +147,8 @@ namespace EasyPOS.Controllers
                     UpdateDateTime = DateTime.Today,
                     IsLocked = false,
                     DefaultPriceDescription = null,
-                    CustomerCode = null
+                    CustomerCode = null,
+                    BusinessStyle = ""
                 };
 
                 db.MstCustomers.InsertOnSubmit(newCustomer);
@@ -231,6 +234,7 @@ namespace EasyPOS.Controllers
                     lockCustomer.IsLocked = true;
                     lockCustomer.DefaultPriceDescription = objCustomer.DefaultPriceDescription;
                     lockCustomer.CustomerCode = objCustomer.CustomerCode;
+                    lockCustomer.BusinessStyle = objCustomer.BusinessStyle;
                     db.SubmitChanges();
 
                     String newObject = Modules.SysAuditTrailModule.GetObjectString(customer.FirstOrDefault());
@@ -422,7 +426,8 @@ namespace EasyPOS.Controllers
                             UpdateDateTime = DateTime.Today,
                             IsLocked = false,
                             DefaultPriceDescription = null,
-                            CustomerCode = obj.CustomerCode
+                            CustomerCode = obj.CustomerCode,
+                            BusinessStyle = obj.BusinessStyle
                         };
 
                         db.MstCustomers.InsertOnSubmit(newCustomer);

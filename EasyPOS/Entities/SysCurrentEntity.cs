@@ -65,6 +65,8 @@ namespace EasyPOS.Entities
         public Boolean HideItemListItemCode { get; set; }
         public Boolean AllowCancelPreviousSales { get; set; }
         public Boolean LockAutoSales { get; set; }
+        public Boolean ShowCustomerInfo { get; set; }
+        public Boolean ChoosePrinter { get; set; }
 
     }
 }

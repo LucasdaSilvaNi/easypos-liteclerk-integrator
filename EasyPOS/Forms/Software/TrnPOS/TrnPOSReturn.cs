@@ -125,6 +125,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                        ColumnReturnPickItem = "Pick",
                                        ColumnReturnUnpickItem = "Unpick",
                                        ColumnReturnReturnQuantity = "0.00",
+                                       ColumnReturnTaxId = d.TaxId,
+                                       ColumnReturnTaxRate = d.TaxRate.ToString("#,##0.00"),
+                                       ColumnReturnTaxAmount = d.TaxAmount.ToString("#,##0.00")
                                    };
 
                 return Task.FromResult(returnItemss.ToList());
@@ -271,9 +274,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         NetPrice = Convert.ToDecimal(row.Cells["ColumnReturnNetPrice"].Value),
                         Quantity = Convert.ToDecimal(row.Cells["ColumnReturnReturnQuantity"].Value),
                         Amount = Convert.ToDecimal(row.Cells["ColumnReturnAmount"].Value),
-                        TaxId = 0,
-                        TaxRate = 0,
-                        TaxAmount = 0,
+                        TaxId = Convert.ToInt32(row.Cells["ColumnReturnTaxId"].Value),
+                        TaxRate = Convert.ToDecimal(row.Cells["ColumnReturnTaxRate"].Value),
+                        TaxAmount = Convert.ToDecimal(row.Cells["ColumnReturnTaxAmount"].Value),
                         SalesAccountId = 159,
                         AssetAccountId = 255,
                         CostAccountId = 238,

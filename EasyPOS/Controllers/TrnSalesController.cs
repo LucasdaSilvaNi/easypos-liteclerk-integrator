@@ -1694,6 +1694,10 @@ namespace EasyPOS.Controllers
                                      d.Price,
                                      d.DiscountAmount,
                                      d.NetPrice,
+                                     d.TaxId,
+                                     d.MstTax.Rate,
+                                     d.TaxAmount
+
                                  } into g
                                  select new Entities.TrnSalesLineEntity
                                  {
@@ -1704,7 +1708,10 @@ namespace EasyPOS.Controllers
                                      DiscountAmount = g.Key.DiscountAmount,
                                      NetPrice = g.Key.NetPrice,
                                      Quantity = g.Sum(s => s.Quantity),
-                                     Amount = g.Key.NetPrice * g.Sum(s => s.Quantity)
+                                     Amount = g.Key.NetPrice * g.Sum(s => s.Quantity),
+                                     TaxId = g.Key.TaxId,
+                                     TaxRate = g.Key.Rate,
+                                     TaxAmount = g.Key.TaxAmount * -1
                                  };
 
                 return salesLines.ToList();
@@ -1815,9 +1822,9 @@ namespace EasyPOS.Controllers
                                 NetPrice = objSalesLine.NetPrice,
                                 Quantity = objSalesLine.Quantity * -1,
                                 Amount = objSalesLine.Amount * -1,
-                                TaxId = item.FirstOrDefault().OutTaxId,
-                                TaxRate = 0,
-                                TaxAmount = 0,
+                                TaxId = objSalesLine.TaxId,
+                                TaxRate = objSalesLine.TaxRate,
+                                TaxAmount = objSalesLine.TaxAmount,
                                 SalesAccountId = 159,
                                 AssetAccountId = 255,
                                 CostAccountId = 238,
