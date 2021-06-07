@@ -672,6 +672,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     String ItemDescription = row.Cells[5].Value.ToString();
                     Decimal Price = Convert.ToDecimal(row.Cells[9].Value);
                     Decimal Quantity = Convert.ToDecimal(row.Cells[6].Value);
+                   
 
                     listSalesLine.Add(new Entities.TrnSalesLineEntity()
                     {
@@ -847,13 +848,36 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
-            if (trnSalesEntity.IsReturned == true)
+            if (Modules.SysCurrentModule.GetCurrentSettings().ChoosePrinter == true)
             {
-                new TrnPOSReturnReportForm(trnSalesEntity.Id);
+                DialogResult SalesOrderDialogResult = MessageBox.Show("Choose Printer?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (SalesOrderDialogResult == DialogResult.Yes)
+                {
+                    DialogResult printDialogResult = printDialogSalesOrder.ShowDialog();
+                    if (printDialogResult == DialogResult.OK)
+                    {
+                        if (trnSalesEntity.IsReturned == true)
+                        {
+                            new TrnPOSReturnReportForm(trnSalesEntity.Id);
+                        }
+                        else
+                        {
+                            new TrnPOSSalesOrderReportForm(trnSalesEntity.Id);
+                        }
+                        Close();
+                    }
+                }
             }
             else
             {
-                new TrnPOSSalesOrderReportForm(trnSalesEntity.Id);
+                if (trnSalesEntity.IsReturned == true)
+                {
+                    new TrnPOSReturnReportForm(trnSalesEntity.Id);
+                }
+                else
+                {
+                    new TrnPOSSalesOrderReportForm(trnSalesEntity.Id);
+                }
             }
         }
 

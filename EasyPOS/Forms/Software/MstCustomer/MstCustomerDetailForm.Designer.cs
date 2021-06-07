@@ -36,10 +36,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBoxDefaultPrice = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.textBoxAvailableReward = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.textBoxRewardConversion = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -62,6 +60,10 @@
             this.textBoxCustomer = new System.Windows.Forms.TextBox();
             this.textBoxCustomerCode = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBoxDefaultPrice = new System.Windows.Forms.TextBox();
+            this.textBoxBusinessStyle = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -164,6 +166,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel2.Controls.Add(this.textBoxBusinessStyle);
+            this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.textBoxDefaultPrice);
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.textBoxAvailableReward);
@@ -198,15 +202,6 @@
             this.panel2.Size = new System.Drawing.Size(1109, 510);
             this.panel2.TabIndex = 6;
             // 
-            // textBoxDefaultPrice
-            // 
-            this.textBoxDefaultPrice.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxDefaultPrice.Location = new System.Drawing.Point(143, 410);
-            this.textBoxDefaultPrice.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxDefaultPrice.Name = "textBoxDefaultPrice";
-            this.textBoxDefaultPrice.Size = new System.Drawing.Size(172, 26);
-            this.textBoxDefaultPrice.TabIndex = 12;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -229,17 +224,6 @@
             this.textBoxAvailableReward.TabIndex = 11;
             this.textBoxAvailableReward.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxAvailableReward.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAvailableReward_KeyPress);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label12.Location = new System.Drawing.Point(50, 413);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(89, 19);
-            this.label12.TabIndex = 46;
-            this.label12.Text = "Default Price:";
             // 
             // label11
             // 
@@ -470,6 +454,46 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Customer Code:";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label12.Location = new System.Drawing.Point(50, 413);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(89, 19);
+            this.label12.TabIndex = 46;
+            this.label12.Text = "Default Price:";
+            // 
+            // textBoxDefaultPrice
+            // 
+            this.textBoxDefaultPrice.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxDefaultPrice.Location = new System.Drawing.Point(143, 410);
+            this.textBoxDefaultPrice.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxDefaultPrice.Name = "textBoxDefaultPrice";
+            this.textBoxDefaultPrice.Size = new System.Drawing.Size(172, 26);
+            this.textBoxDefaultPrice.TabIndex = 12;
+            // 
+            // textBoxBusinessStyle
+            // 
+            this.textBoxBusinessStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxBusinessStyle.Location = new System.Drawing.Point(143, 439);
+            this.textBoxBusinessStyle.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxBusinessStyle.Name = "textBoxBusinessStyle";
+            this.textBoxBusinessStyle.Size = new System.Drawing.Size(172, 26);
+            this.textBoxBusinessStyle.TabIndex = 49;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label15.Location = new System.Drawing.Point(44, 442);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(97, 19);
+            this.label15.TabIndex = 50;
+            this.label15.Text = "Business Style:";
+            // 
             // MstCustomerDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -522,9 +546,11 @@
         private System.Windows.Forms.TextBox textBoxRewardNumber;
         private System.Windows.Forms.CheckBox checkBoxWithReward;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBoxAvailableReward;
+        private System.Windows.Forms.TextBox textBoxBusinessStyle;
+        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBoxDefaultPrice;
+        private System.Windows.Forms.Label label12;
     }
 }

@@ -105,6 +105,9 @@ namespace EasyPOS.Data
     partial void InsertSysAuditTrail(SysAuditTrail instance);
     partial void UpdateSysAuditTrail(SysAuditTrail instance);
     partial void DeleteSysAuditTrail(SysAuditTrail instance);
+    partial void InsertSysDeclareRate(SysDeclareRate instance);
+    partial void UpdateSysDeclareRate(SysDeclareRate instance);
+    partial void DeleteSysDeclareRate(SysDeclareRate instance);
     partial void InsertSysForm(SysForm instance);
     partial void UpdateSysForm(SysForm instance);
     partial void DeleteSysForm(SysForm instance);
@@ -159,9 +162,6 @@ namespace EasyPOS.Data
     partial void InsertTrnStockOut(TrnStockOut instance);
     partial void UpdateTrnStockOut(TrnStockOut instance);
     partial void DeleteTrnStockOut(TrnStockOut instance);
-    partial void InsertSysDeclareRate(SysDeclareRate instance);
-    partial void UpdateSysDeclareRate(SysDeclareRate instance);
-    partial void DeleteSysDeclareRate(SysDeclareRate instance);
     #endregion
 		
 		public easyposdbDataContext() : 
@@ -394,6 +394,14 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		public System.Data.Linq.Table<SysDeclareRate> SysDeclareRates
+		{
+			get
+			{
+				return this.GetTable<SysDeclareRate>();
+			}
+		}
+		
 		public System.Data.Linq.Table<SysForm> SysForms
 		{
 			get
@@ -535,14 +543,6 @@ namespace EasyPOS.Data
 			get
 			{
 				return this.GetTable<TrnStockOut>();
-			}
-		}
-		
-		public System.Data.Linq.Table<SysDeclareRate> SysDeclareRates
-		{
-			get
-			{
-				return this.GetTable<SysDeclareRate>();
 			}
 		}
 	}
@@ -1985,6 +1985,8 @@ namespace EasyPOS.Data
 		
 		private string _CustomerCode;
 		
+		private string _BusinessStyle;
+		
 		private EntitySet<TrnCollection> _TrnCollections;
 		
 		private EntitySet<TrnSale> _TrnSales;
@@ -2041,6 +2043,8 @@ namespace EasyPOS.Data
     partial void OnDefaultPriceDescriptionChanged();
     partial void OnCustomerCodeChanging(string value);
     partial void OnCustomerCodeChanged();
+    partial void OnBusinessStyleChanging(string value);
+    partial void OnBusinessStyleChanged();
     #endregion
 		
 		public MstCustomer()
@@ -2466,6 +2470,26 @@ namespace EasyPOS.Data
 					this._CustomerCode = value;
 					this.SendPropertyChanged("CustomerCode");
 					this.OnCustomerCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BusinessStyle", DbType="NVarChar(255)")]
+		public string BusinessStyle
+		{
+			get
+			{
+				return this._BusinessStyle;
+			}
+			set
+			{
+				if ((this._BusinessStyle != value))
+				{
+					this.OnBusinessStyleChanging(value);
+					this.SendPropertyChanging();
+					this._BusinessStyle = value;
+					this.SendPropertyChanged("BusinessStyle");
+					this.OnBusinessStyleChanged();
 				}
 			}
 		}
@@ -12147,6 +12171,116 @@ namespace EasyPOS.Data
 						this._UserId = default(int);
 					}
 					this.SendPropertyChanged("MstUser");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SysDeclareRate")]
+	public partial class SysDeclareRate : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Id;
+		
+		private System.Nullable<System.DateTime> _Date;
+		
+		private decimal _DeclareRate;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(string value);
+    partial void OnIdChanged();
+    partial void OnDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateChanged();
+    partial void OnDeclareRateChanging(decimal value);
+    partial void OnDeclareRateChanged();
+    #endregion
+		
+		public SysDeclareRate()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="NChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
+		public System.Nullable<System.DateTime> Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeclareRate", DbType="Decimal(18,2) NOT NULL")]
+		public decimal DeclareRate
+		{
+			get
+			{
+				return this._DeclareRate;
+			}
+			set
+			{
+				if ((this._DeclareRate != value))
+				{
+					this.OnDeclareRateChanging(value);
+					this.SendPropertyChanging();
+					this._DeclareRate = value;
+					this.SendPropertyChanged("DeclareRate");
+					this.OnDeclareRateChanged();
 				}
 			}
 		}
@@ -24618,116 +24752,6 @@ namespace EasyPOS.Data
 		{
 			this.SendPropertyChanging();
 			entity.TrnStockOut = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SysDeclareRate")]
-	public partial class SysDeclareRate : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private System.Nullable<System.DateTime> _Date;
-		
-		private decimal _DeclareRate;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateChanged();
-    partial void OnDeclareRateChanging(decimal value);
-    partial void OnDeclareRateChanged();
-    #endregion
-		
-		public SysDeclareRate()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public System.Nullable<System.DateTime> Date
-		{
-			get
-			{
-				return this._Date;
-			}
-			set
-			{
-				if ((this._Date != value))
-				{
-					this.OnDateChanging(value);
-					this.SendPropertyChanging();
-					this._Date = value;
-					this.SendPropertyChanged("Date");
-					this.OnDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeclareRate", DbType="Decimal(18,2) NOT NULL")]
-		public decimal DeclareRate
-		{
-			get
-			{
-				return this._DeclareRate;
-			}
-			set
-			{
-				if ((this._DeclareRate != value))
-				{
-					this.OnDeclareRateChanging(value);
-					this.SendPropertyChanging();
-					this._DeclareRate = value;
-					this.SendPropertyChanged("DeclareRate");
-					this.OnDeclareRateChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 }

@@ -62,6 +62,9 @@
             this.ColumnReturnPickItem = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnReturnUnpickItem = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnReturnReturnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnReturnTaxId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnReturnTaxRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnReturnTaxAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -317,7 +320,10 @@
             this.ColumnReturnAmount,
             this.ColumnReturnPickItem,
             this.ColumnReturnUnpickItem,
-            this.ColumnReturnReturnQuantity});
+            this.ColumnReturnReturnQuantity,
+            this.ColumnReturnTaxId,
+            this.ColumnReturnTaxRate,
+            this.ColumnReturnTaxAmount});
             this.dataGridViewReturnItems.Location = new System.Drawing.Point(10, 70);
             this.dataGridViewReturnItems.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewReturnItems.MultiSelect = false;
@@ -420,6 +426,27 @@
             this.ColumnReturnReturnQuantity.ReadOnly = true;
             this.ColumnReturnReturnQuantity.Width = 150;
             // 
+            // ColumnReturnTaxId
+            // 
+            this.ColumnReturnTaxId.DataPropertyName = "ColumnReturnTaxId";
+            this.ColumnReturnTaxId.HeaderText = "Tax Id";
+            this.ColumnReturnTaxId.Name = "ColumnReturnTaxId";
+            this.ColumnReturnTaxId.Visible = false;
+            // 
+            // ColumnReturnTaxRate
+            // 
+            this.ColumnReturnTaxRate.DataPropertyName = "ColumnReturnTaxRate";
+            this.ColumnReturnTaxRate.HeaderText = "Tax Rate";
+            this.ColumnReturnTaxRate.Name = "ColumnReturnTaxRate";
+            this.ColumnReturnTaxRate.Visible = false;
+            // 
+            // ColumnReturnTaxAmount
+            // 
+            this.ColumnReturnTaxAmount.DataPropertyName = "ColumnReturnTaxAmount";
+            this.ColumnReturnTaxAmount.HeaderText = "Tax Amount";
+            this.ColumnReturnTaxAmount.Name = "ColumnReturnTaxAmount";
+            this.ColumnReturnTaxAmount.Visible = false;
+            // 
             // TrnPOSReturn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -477,5 +504,8 @@
         private System.Windows.Forms.DataGridViewButtonColumn ColumnReturnPickItem;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnReturnUnpickItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnReturnReturnQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnReturnTaxId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnReturnTaxRate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnReturnTaxAmount;
     }
 }

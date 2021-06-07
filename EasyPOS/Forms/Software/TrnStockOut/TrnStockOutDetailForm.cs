@@ -286,8 +286,8 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                                 ColumnStockOutLineListUnit = d.Unit,
                                 ColumnStockOutLineListQuantity = d.Quantity.ToString("#,##0.00"),
                                 ColumnStockOutLineListCost = d.Cost.ToString("#,##0.00"),
-                                ColumnStockOutLineListPrice = d.Price.ToString("#,##0.00"),
                                 ColumnStockOutLineListAmount = d.Amount.ToString("#,##0.00"),
+                                ColumnStockOutLineListPrice = d.Price.ToString("#,##0.00"),
                                 ColumnStockOutLineListAssetAccountId = d.AssetAccountId,
                                 ColumnStockOutLineListAssetAccount = d.AssetAccount
                             };
@@ -526,8 +526,8 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                         "Unit",
                         "Quantity",
                         "Cost",
+                        "Amount",
                         "Price",
-                        "Amount"
                     };
 
                     csv.AppendLine(String.Join(",", header));
@@ -542,8 +542,8 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                               stockOutLine.ColumnStockOutLineListUnit,
                               stockOutLine.ColumnStockOutLineListQuantity.Replace(",", ""),
                               stockOutLine.ColumnStockOutLineListCost.Replace(",", ""),
-                              stockOutLine.ColumnStockOutLineListPrice.Replace(",", ""),
                               stockOutLine.ColumnStockOutLineListAmount.Replace(",", ""),
+                              stockOutLine.ColumnStockOutLineListPrice.Replace(",", ""),
                             };
 
                             csv.AppendLine(String.Join(",", data));

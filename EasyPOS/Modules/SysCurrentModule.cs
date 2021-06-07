@@ -98,7 +98,9 @@ namespace EasyPOS.Modules
                 HideItemListBarcode = currentSettings.HideItemListBarcode,
                 HideItemListItemCode = currentSettings.HideItemListItemCode,
                 AllowCancelPreviousSales = currentSettings.AllowCancelPreviousSales,
-                LockAutoSales = currentSettings.LockAutoSales
+                LockAutoSales = currentSettings.LockAutoSales,
+                ShowCustomerInfo = currentSettings.ShowCustomerInfo,
+                ChoosePrinter = currentSettings.ChoosePrinter
                 
             };
 
@@ -171,7 +173,9 @@ namespace EasyPOS.Modules
                 HideItemListBarcode = objSysCurrentEntity.HideItemListBarcode,
                 HideItemListItemCode = objSysCurrentEntity.HideItemListItemCode,
                 AllowCancelPreviousSales = objSysCurrentEntity.AllowCancelPreviousSales,
-                LockAutoSales = objSysCurrentEntity.LockAutoSales
+                LockAutoSales = objSysCurrentEntity.LockAutoSales,
+                ShowCustomerInfo = objSysCurrentEntity.ShowCustomerInfo,
+                ChoosePrinter = objSysCurrentEntity.ChoosePrinter
 
             };
 
@@ -245,7 +249,9 @@ namespace EasyPOS.Modules
                 HideItemListBarcode = currentSettings.HideItemListBarcode,
                 HideItemListItemCode = currentSettings.HideItemListItemCode,
                 AllowCancelPreviousSales = currentSettings.AllowCancelPreviousSales,
-                LockAutoSales = currentSettings.LockAutoSales
+                LockAutoSales = currentSettings.LockAutoSales,
+                ShowCustomerInfo = currentSettings.ShowCustomerInfo,
+                ChoosePrinter = currentSettings.ChoosePrinter
 
             };
 

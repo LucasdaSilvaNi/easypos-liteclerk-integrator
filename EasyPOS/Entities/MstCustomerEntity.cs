@@ -32,5 +32,6 @@ namespace EasyPOS.Entities
         public Boolean IsLocked { get; set; }
         public String DefaultPriceDescription { get; set; }
         public String CustomerCode { get; set; }
+        public String BusinessStyle { get; set; }
     }
 }

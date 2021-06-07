@@ -131,50 +131,20 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                      && d.SalesId != null
                                      select d;
 
-            var currentCollectionLines = from d in db.TrnCollectionLines
-                                         where d.TrnCollection.TerminalId == filterTerminalId
-                                         && d.TrnCollection.CollectionDate == filterDate
-                                         && d.TrnCollection.IsLocked == true
-                                         && d.TrnCollection.IsCancelled == false
-                                         && d.TrnCollection.TrnSale.IsReturned == false
-                                         group d by new
-                                         {
-                                             d.MstPayType.PayTypeCode,
-                                             d.MstPayType.PayType,
-                                         } into g
-                                         select new
-                                         {
-                                             g.Key.PayTypeCode,
-                                             g.Key.PayType,
-                                             TotalAmount = g.Sum(s => s.Amount),
-                                             TotalChangeAmount = g.Sum(s => s.TrnCollection.ChangeAmount)
-                                         };
-
-            if (currentCollections.Any() && currentCollectionLines.ToList().Any())
+            if (currentCollections.Any())
             {
-                var disbursmenet = from d in db.TrnDisbursements
-                                   where d.TerminalId == filterTerminalId
-                                   && d.DisbursementDate == filterDate
-                                   && d.IsLocked == true
-                                   && d.IsRefund == true
-                                   && d.RefundSalesId != null
-                                   select d;
-
-                if (disbursmenet.Any())
-                {
-                    repZReadingReportEntity.TotalRefund = disbursmenet.Sum(d => d.Amount);
-                }
-
                 Decimal totalGrossSales = 0;
                 Decimal totalRegularDiscount = 0;
                 Decimal totalSeniorCitizenDiscount = 0;
                 Decimal totalPWDDiscount = 0;
                 Decimal totalSalesReturn = 0;
+
                 Decimal totalVATSales = 0;
                 Decimal totalVATAmount = 0;
                 Decimal totalNonVATSales = 0;
                 Decimal totalVATExemptSales = 0;
                 Decimal totalVATZeroRatedSales = 0;
+
                 Decimal totalNoOfSKUs = 0;
                 Decimal totalQUantity = 0;
 
@@ -182,21 +152,27 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 {
                     var sales = from d in db.TrnSales
                                 where d.Id == currentCollection.SalesId
+                                && d.IsLocked == true
+                                && d.IsCancelled == false
+                                && d.IsReturned == false
                                 select d;
 
                     if (sales.Any())
                     {
-                        var salesLines = sales.FirstOrDefault().TrnSalesLines.Where(d => d.Quantity > 0 && d.TrnSale.IsReturned == false);
-
                         Decimal salesLineTotalGrossSales = 0;
                         Decimal salesLineTotalRegularDiscount = 0;
                         Decimal salesLineTotalSeniorCitizenDiscount = 0;
                         Decimal salesLineTotalPWDDiscount = 0;
+
                         Decimal salesLineTotalVATSales = 0;
                         Decimal salesLineTotalVATAmount = 0;
                         Decimal salesLineTotalNonVATSales = 0;
                         Decimal salesLineTotalVATExemptSales = 0;
                         Decimal salesLineTotalVATZeroRatedSales = 0;
+
+                        var salesLines = from d in sales.FirstOrDefault().TrnSalesLines
+                                         where d.Quantity > 0
+                                         select d;
 
                         if (salesLines.Any())
                         {
@@ -220,7 +196,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                 {
                                     if (salesLine.MstTax.Rate > 0)
                                     {
-                                        salesLineTotalGrossSales += (salesLine.Price * salesLine.Quantity) - ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstTax.Rate / 100)) * (salesLine.MstTax.Rate / 100));
+                                        salesLineTotalGrossSales += (salesLine.Price * salesLine.Quantity) - salesLine.TaxAmount;
                                     }
                                     else
                                     {
@@ -248,7 +224,14 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                     salesLineTotalVATSales += salesLine.Amount - (salesLine.Amount / (1 + (salesLine.MstTax.Rate / 100)) * (salesLine.MstTax.Rate / 100));
                                 }
 
-                                salesLineTotalVATAmount += salesLine.TaxAmount;
+                                if (salesLine.MstTax.Code == "EXEMPTVAT")
+                                {
+                                    salesLineTotalVATAmount += ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstItem.MstTax1.Rate / 100)) * (salesLine.MstItem.MstTax1.Rate / 100));
+                                }
+                                else
+                                {
+                                    salesLineTotalVATAmount += salesLine.TaxAmount;
+                                }
 
                                 if (salesLine.MstTax.Code.Equals("NONVAT"))
                                 {
@@ -257,7 +240,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                                 if (salesLine.MstTax.Code.Equals("EXEMPTVAT"))
                                 {
-                                    salesLineTotalVATExemptSales += salesLine.Amount;
+                                    salesLineTotalVATExemptSales += ((salesLine.Price * salesLine.Quantity) - ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstItem.MstTax1.Rate / 100)) * (salesLine.MstItem.MstTax1.Rate / 100))) - salesLineTotalSeniorCitizenDiscount - salesLineTotalPWDDiscount;
                                 }
 
                                 if (salesLine.MstTax.Code.Equals("ZEROVAT"))
@@ -271,6 +254,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                         totalRegularDiscount += salesLineTotalRegularDiscount;
                         totalSeniorCitizenDiscount += salesLineTotalSeniorCitizenDiscount;
                         totalPWDDiscount += salesLineTotalPWDDiscount;
+
                         totalVATSales += salesLineTotalVATSales;
                         totalVATAmount += salesLineTotalVATAmount;
                         totalNonVATSales += salesLineTotalNonVATSales;
@@ -279,9 +263,11 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                     }
                 }
 
-                totalVATSales -= repZReadingReportEntity.TotalRefund;
+                Decimal VATSalesReturn = 0;
+                Decimal VATAmountSalesReturn = 0;
 
-                Decimal salesReturnLineTotalAmount = 0;
+                Decimal VATExemptSalesReturn = 0;
+                Decimal VATAmountExemptSalesReturn = 0;
 
                 var salesReturnLines = from d in db.TrnSalesLines
                                        where d.Quantity < 0
@@ -295,35 +281,92 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 {
                     foreach (var salesReturnLine in salesReturnLines)
                     {
-                        salesReturnLineTotalAmount += salesReturnLine.Amount;
+                        if (salesReturnLine.MstTax.Code.Equals("VAT"))
+                        {
+                            VATSalesReturn += salesReturnLine.Amount + (salesReturnLine.TaxAmount * -1);
+                            VATAmountSalesReturn += salesReturnLine.TaxAmount * -1;
+                        }
+
+                        if (salesReturnLine.MstTax.Code.Equals("EXEMPTVAT"))
+                        {
+                            VATExemptSalesReturn += salesReturnLine.Amount;
+
+                            if (salesReturnLine.MstTax.Code == "EXEMPTVAT")
+                            {
+                                VATAmountExemptSalesReturn += ((salesReturnLine.Price * (salesReturnLine.Quantity * -1)) / (1 + (salesReturnLine.MstItem.MstTax1.Rate / 100)) * (salesReturnLine.MstItem.MstTax1.Rate / 100)) * -1;
+                            }
+                            else
+                            {
+                                VATAmountExemptSalesReturn += salesReturnLine.TaxAmount;
+                            }
+                        }
+
+                        totalSalesReturn += (VATSalesReturn + VATExemptSalesReturn);
                     }
                 }
-
-                totalSalesReturn += salesReturnLineTotalAmount * -1;
 
                 repZReadingReportEntity.TotalGrossSales = totalGrossSales;
                 repZReadingReportEntity.TotalRegularDiscount = totalRegularDiscount;
                 repZReadingReportEntity.TotalSeniorDiscount = totalSeniorCitizenDiscount;
                 repZReadingReportEntity.TotalPWDDiscount = totalPWDDiscount;
                 repZReadingReportEntity.TotalSalesReturn = totalSalesReturn;
-
                 repZReadingReportEntity.TotalNetSales = totalGrossSales -
                                                         totalRegularDiscount -
                                                         totalSeniorCitizenDiscount -
                                                         totalPWDDiscount -
-                                                        totalSalesReturn;
+                                                        (totalSalesReturn * -1);
 
-                Decimal totalCollectionPerPayType = 0;
+                repZReadingReportEntity.TotalVATSales = totalVATSales - (VATSalesReturn * -1);
+                repZReadingReportEntity.TotalVATAmount = totalVATAmount - VATAmountSalesReturn - VATAmountExemptSalesReturn;
+                repZReadingReportEntity.TotalNonVAT = totalNonVATSales;
+                repZReadingReportEntity.TotalVATExempt = totalVATExemptSales - (VATExemptSalesReturn * -1);
+                repZReadingReportEntity.TotalVATZeroRated = totalVATZeroRatedSales;
 
-                Decimal nonCashAmount = 0;
-                foreach (var collectionLine in currentCollectionLines)
-                {
-                    if (collectionLine.PayTypeCode.Equals("CASH") == false)
-                    {
-                        nonCashAmount += collectionLine.TotalAmount;
-                    }
-                }
+                repZReadingReportEntity.TotalNumberOfSKU = totalNoOfSKUs;
+                repZReadingReportEntity.TotalQuantity = totalQUantity;
+            }
 
+            var disbursmenet = from d in db.TrnDisbursements
+                               where d.TerminalId == filterTerminalId
+                               && d.DisbursementDate == filterDate
+                               && d.IsLocked == true
+                               && d.IsRefund == true
+                               && d.RefundSalesId != null
+                               select d;
+
+            if (disbursmenet.Any())
+            {
+                repZReadingReportEntity.TotalRefund = disbursmenet.Sum(d => d.Amount);
+            }
+
+            var currentCollectionLines = from d in db.TrnCollectionLines
+                                         where d.TrnCollection.TerminalId == filterTerminalId
+                                         && d.TrnCollection.CollectionDate == filterDate
+                                         && d.TrnCollection.IsLocked == true
+                                         && d.TrnCollection.IsCancelled == false
+                                         && d.TrnCollection.TrnSale.IsReturned == false
+                                         group d by new
+                                         {
+                                             d.MstPayType.PayTypeCode,
+                                             d.MstPayType.PayType,
+                                         } into g
+                                         select new
+                                         {
+                                             g.Key.PayTypeCode,
+                                             g.Key.PayType,
+                                             TotalAmount = g.Sum(s => s.Amount),
+                                             TotalChangeAmount = g.Sum(s => s.TrnCollection.ChangeAmount)
+                                         };
+
+            Decimal totalCollectionAmount = 0;
+
+            if (currentCollectionLines.ToList().Any())
+            {
+                // =========================
+                // COLLECTION LINE PAY TYPES
+                // =========================
+
+                // Compute the CASH
                 Decimal changeAmount = 0;
                 foreach (var collectionLine in currentCollectionLines)
                 {
@@ -344,31 +387,23 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                         Amount = amount
                     });
 
-                    totalCollectionPerPayType += amount;
+                    totalCollectionAmount += amount;
                 }
+            }
 
-                repZReadingReportEntity.TotalCollection = totalCollectionPerPayType - repZReadingReportEntity.TotalRefund;
-                //repZReadingReportEntity.TotalCollection = currentCollections.Sum(d => d.Amount) - repZReadingReportEntity.TotalRefund;
-                repZReadingReportEntity.TotalVATSales = totalVATSales;
-                repZReadingReportEntity.TotalVATAmount = totalVATAmount;
-                repZReadingReportEntity.TotalNonVAT = totalNonVATSales;
-                repZReadingReportEntity.TotalVATExempt = totalVATExemptSales;
+            repZReadingReportEntity.TotalCollection = totalCollectionAmount - repZReadingReportEntity.TotalRefund;
 
-                var counterCollections = from d in db.TrnCollections
-                                         where d.TerminalId == filterTerminalId
-                                         && d.CollectionDate == filterDate
-                                         && d.IsLocked == true
-                                         select d;
+            var counterCollections = from d in db.TrnCollections
+                                     where d.TerminalId == filterTerminalId
+                                     && d.CollectionDate == filterDate
+                                     && d.IsLocked == true
+                                     select d;
 
-                if (counterCollections.Any())
-                {
-                    repZReadingReportEntity.CounterIdStart = counterCollections.OrderBy(d => d.Id).FirstOrDefault().CollectionNumber;
-                    repZReadingReportEntity.CounterIdEnd = counterCollections.OrderByDescending(d => d.Id).FirstOrDefault().CollectionNumber;
-                }
-
-                repZReadingReportEntity.TotalNumberOfTransactions = currentCollections.Count();
-                repZReadingReportEntity.TotalNumberOfSKU = totalNoOfSKUs;
-                repZReadingReportEntity.TotalQuantity = totalQUantity;
+            if (counterCollections.Any())
+            {
+                repZReadingReportEntity.CounterIdStart = counterCollections.OrderBy(d => d.Id).FirstOrDefault().CollectionNumber;
+                repZReadingReportEntity.CounterIdEnd = counterCollections.OrderByDescending(d => d.Id).FirstOrDefault().CollectionNumber;
+                repZReadingReportEntity.TotalNumberOfTransactions = counterCollections.Count();
             }
 
             var currentCancelledCollections = from d in db.TrnCollections
@@ -394,11 +429,6 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
             if (grossSalesPreviousCollections.Any())
             {
-                //repZReadingReportEntity.GrossSalesTotalPreviousReading = grossSalesPreviousCollections.Sum(d => d.TrnSale.TrnSalesLines.Any() ?
-                //                                                         d.TrnSale.TrnSalesLines.Sum(s => s.MstTax.Code == "EXEMPTVAT" ?
-                //                                                         s.MstItem.MstTax1.Rate > 0 ? (s.Price * s.Quantity) - ((s.Price * s.Quantity) / (1 + (s.MstItem.MstTax1.Rate / 100)) * (s.MstItem.MstTax1.Rate / 100)) :
-                //                                                         (s.Quantity * s.Price) : (s.Quantity * s.Price) - ((s.Price * s.Quantity) / (1 + (s.MstTax.Rate / 100)) * (s.MstTax.Rate / 100))) : 0);
-
                 foreach (var grossSalesPreviousCollection in grossSalesPreviousCollections)
                 {
                     var sales = grossSalesPreviousCollection.TrnSale;
@@ -443,8 +473,6 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
             if (netSalesPreviousCollections.Any())
             {
-                //repZReadingReportEntity.NetSalesTotalPreviousReading = repZReadingReportEntity.GrossSalesTotalPreviousReading - netSalesPreviousCollections.Sum(s => s.TrnSale.TrnSalesLines.Any() ? s.TrnSale.TrnSalesLines.Sum(d => d.DiscountAmount * d.Quantity) : 0);
-
                 Decimal totalRegularDiscount = 0;
                 Decimal totalSeniorDiscount = 0;
                 Decimal totalPWDDiscount = 0;

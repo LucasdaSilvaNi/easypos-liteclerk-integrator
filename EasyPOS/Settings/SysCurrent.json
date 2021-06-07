@@ -42,7 +42,7 @@
   "ActivateAuditTrail": true,
   "FacepayImagePath": "D:\\Facepay",
   "POSType": "POS Barcode",
-  "AllowNegativeInventory": false,
+  "AllowNegativeInventory": true,
   "IsLoginDate": true,
   "EnableEasyShopIntegration": false,
   "PromptLoginSales": false,
@@ -54,5 +54,7 @@
   "HideSalesItemDetail": false,
   "HideSalesItemListBarcode": false,
   "HideSalesItemListItemCode": false,
-  "LockAutoSales": false
+  "LockAutoSales": false,
+  "ShowCustomerInfo": false,
+  "ChoosePrinter": false
 }

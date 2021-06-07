@@ -500,6 +500,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxHideItemListItemCode.Checked = Convert.ToBoolean(sysCurrent.HideItemListItemCode);
                 checkBoxAllowCancelPreviousSales.Checked = Convert.ToBoolean(sysCurrent.AllowCancelPreviousSales);
                 checkBoxAutoSales.Checked = Convert.ToBoolean(sysCurrent.LockAutoSales);
+                checkBoxShowCustomerInfo.Checked = Convert.ToBoolean(sysCurrent.ShowCustomerInfo);
+                checkBoxChoosePrinter.Checked = Convert.ToBoolean(sysCurrent.ChoosePrinter);
             }
         }
 
@@ -575,8 +577,11 @@ namespace EasyPOS.Forms.Software.SysSettings
                 HideItemListBarcode = checkBoxHideItemListBarcode.Checked,
                 HideItemListItemCode = checkBoxHideItemListItemCode.Checked,
                 AllowCancelPreviousSales = checkBoxAllowCancelPreviousSales.Checked,
-                LockAutoSales = checkBoxAutoSales.Checked
-        };
+                LockAutoSales = checkBoxAutoSales.Checked,
+                ShowCustomerInfo = checkBoxShowCustomerInfo.Checked,
+                ChoosePrinter = checkBoxChoosePrinter.Checked
+
+            };
             
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);
             if (saveSysCurrent[1].Equals("0") == false)
@@ -632,6 +637,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxHideItemListItemCode.Enabled = false;
                 checkBoxAllowCancelPreviousSales.Enabled = false;
                 checkBoxAutoSales.Enabled = false;
+                checkBoxShowCustomerInfo.Enabled = false;
+                checkBoxChoosePrinter.Enabled = false;
             }
             else
             {
@@ -714,6 +721,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxHideItemListItemCode.Enabled = true;
                 checkBoxAllowCancelPreviousSales.Enabled = true;
                 checkBoxAutoSales.Enabled = true;
+                checkBoxShowCustomerInfo.Enabled = true;
+                checkBoxChoosePrinter.Enabled = true;
             }
         }
 

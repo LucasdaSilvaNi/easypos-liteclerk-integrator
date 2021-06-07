@@ -69,6 +69,7 @@ namespace EasyPOS.Forms.Software.MstCustomer
             textBoxRewardConversion.Text = mstCustomerEntity.RewardConversion.ToString("#,##0.00");
             textBoxAvailableReward.Text = mstCustomerEntity.AvailableReward.ToString("#,##0.00");
             textBoxDefaultPrice.Text = mstCustomerEntity.DefaultPriceDescription;
+            textBoxBusinessStyle.Text = mstCustomerEntity.BusinessStyle;
         }
 
         public void UpdateComponents(Boolean isLocked)
@@ -104,6 +105,7 @@ namespace EasyPOS.Forms.Software.MstCustomer
             textBoxRewardConversion.Enabled = !isLocked;
             textBoxDefaultPrice.Enabled = !isLocked;
             textBoxCustomerCode.Focus();
+            textBoxBusinessStyle.Enabled = !isLocked;
         }
 
         private void buttonLock_Click(object sender, EventArgs e)
@@ -125,6 +127,7 @@ namespace EasyPOS.Forms.Software.MstCustomer
                 RewardConversion = Convert.ToDecimal(textBoxRewardConversion.Text),
                 AvailableReward = Convert.ToDecimal(textBoxAvailableReward.Text),
                 DefaultPriceDescription = textBoxDefaultPrice.Text,
+                BusinessStyle = textBoxBusinessStyle.Text
             };
 
             String[] lockCustomer = mstCustomerController.LockCustomer(mstCustomerEntity.Id, newCustomerEntity);
