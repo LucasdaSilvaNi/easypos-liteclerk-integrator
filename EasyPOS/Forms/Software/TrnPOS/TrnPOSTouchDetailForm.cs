@@ -1012,13 +1012,35 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
-            if (trnSalesEntity.IsReturned == true)
+            if (Modules.SysCurrentModule.GetCurrentSettings().ChoosePrinter == true)
             {
-                new TrnPOSReturnReportForm(trnSalesEntity.Id);
+                DialogResult SalesOrderDialogResult = MessageBox.Show("Choose Printer?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (SalesOrderDialogResult == DialogResult.Yes)
+                {
+                    DialogResult printDialogResult = printDialogSelectPrinter.ShowDialog();
+                    if (printDialogResult == DialogResult.OK)
+                    {
+                        if (trnSalesEntity.IsReturned == true)
+                        {
+                            new TrnPOSReturnReportForm(trnSalesEntity.Id);
+                        }
+                        else
+                        {
+                            new TrnPOSSalesOrderReportForm(trnSalesEntity.Id);
+                        }
+                    }
+                }
             }
             else
             {
-                new TrnPOSSalesOrderReportForm(trnSalesEntity.Id);
+                if (trnSalesEntity.IsReturned == true)
+                {
+                    new TrnPOSReturnReportForm(trnSalesEntity.Id);
+                }
+                else
+                {
+                    new TrnPOSSalesOrderReportForm(trnSalesEntity.Id);
+                }
             }
         }
 

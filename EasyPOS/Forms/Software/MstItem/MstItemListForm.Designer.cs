@@ -363,19 +363,18 @@
             // 
             this.ColumnItemListDescription.DataPropertyName = "ColumnItemListDescription";
             this.ColumnItemListDescription.HeaderText = "Item Description";
-            this.ColumnItemListDescription.MinimumWidth = 135;
+            this.ColumnItemListDescription.MinimumWidth = 200;
             this.ColumnItemListDescription.Name = "ColumnItemListDescription";
             this.ColumnItemListDescription.ReadOnly = true;
-            this.ColumnItemListDescription.Width = 135;
+            this.ColumnItemListDescription.Width = 200;
             // 
             // ColumnItemListBarcode
             // 
             this.ColumnItemListBarcode.DataPropertyName = "ColumnItemListBarcode";
             this.ColumnItemListBarcode.HeaderText = "Barcode";
-            this.ColumnItemListBarcode.MinimumWidth = 70;
+            this.ColumnItemListBarcode.MinimumWidth = 100;
             this.ColumnItemListBarcode.Name = "ColumnItemListBarcode";
             this.ColumnItemListBarcode.ReadOnly = true;
-            this.ColumnItemListBarcode.Width = 70;
             // 
             // ColumnItemListUnit
             // 
@@ -390,19 +389,18 @@
             // 
             this.ColumnItemListCategory.DataPropertyName = "ColumnItemListCategory";
             this.ColumnItemListCategory.HeaderText = "Category";
-            this.ColumnItemListCategory.MinimumWidth = 75;
+            this.ColumnItemListCategory.MinimumWidth = 100;
             this.ColumnItemListCategory.Name = "ColumnItemListCategory";
             this.ColumnItemListCategory.ReadOnly = true;
-            this.ColumnItemListCategory.Width = 75;
             // 
             // ColumnSupplier
             // 
             this.ColumnSupplier.DataPropertyName = "ColumnSupplier";
             this.ColumnSupplier.HeaderText = "Default Supplier";
-            this.ColumnSupplier.MinimumWidth = 140;
+            this.ColumnSupplier.MinimumWidth = 200;
             this.ColumnSupplier.Name = "ColumnSupplier";
             this.ColumnSupplier.ReadOnly = true;
-            this.ColumnSupplier.Width = 140;
+            this.ColumnSupplier.Width = 200;
             // 
             // ColumnItemListPrice
             // 
@@ -410,10 +408,10 @@
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnItemListPrice.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColumnItemListPrice.HeaderText = "Price";
-            this.ColumnItemListPrice.MinimumWidth = 50;
+            this.ColumnItemListPrice.MinimumWidth = 75;
             this.ColumnItemListPrice.Name = "ColumnItemListPrice";
             this.ColumnItemListPrice.ReadOnly = true;
-            this.ColumnItemListPrice.Width = 50;
+            this.ColumnItemListPrice.Width = 75;
             // 
             // ColumnItemListCost
             // 
