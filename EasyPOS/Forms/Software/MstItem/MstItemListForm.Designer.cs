@@ -307,6 +307,7 @@
             this.dataGridViewItemList.Size = new System.Drawing.Size(1077, 429);
             this.dataGridViewItemList.TabIndex = 9;
             this.dataGridViewItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItemList_CellClick);
+            this.dataGridViewItemList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItemList_CellContentClick);
             // 
             // textBoxItemListFilter
             // 
@@ -354,54 +355,52 @@
             // 
             this.ColumnItemListCode.DataPropertyName = "ColumnItemListCode";
             this.ColumnItemListCode.HeaderText = "Item Code";
-            this.ColumnItemListCode.MinimumWidth = 113;
+            this.ColumnItemListCode.MinimumWidth = 100;
             this.ColumnItemListCode.Name = "ColumnItemListCode";
             this.ColumnItemListCode.ReadOnly = true;
-            this.ColumnItemListCode.Width = 113;
             // 
             // ColumnItemListDescription
             // 
             this.ColumnItemListDescription.DataPropertyName = "ColumnItemListDescription";
             this.ColumnItemListDescription.HeaderText = "Item Description";
-            this.ColumnItemListDescription.MinimumWidth = 300;
+            this.ColumnItemListDescription.MinimumWidth = 200;
             this.ColumnItemListDescription.Name = "ColumnItemListDescription";
             this.ColumnItemListDescription.ReadOnly = true;
-            this.ColumnItemListDescription.Width = 300;
+            this.ColumnItemListDescription.Width = 200;
             // 
             // ColumnItemListBarcode
             // 
             this.ColumnItemListBarcode.DataPropertyName = "ColumnItemListBarcode";
             this.ColumnItemListBarcode.HeaderText = "Barcode";
-            this.ColumnItemListBarcode.MinimumWidth = 113;
+            this.ColumnItemListBarcode.MinimumWidth = 100;
             this.ColumnItemListBarcode.Name = "ColumnItemListBarcode";
             this.ColumnItemListBarcode.ReadOnly = true;
-            this.ColumnItemListBarcode.Width = 113;
             // 
             // ColumnItemListUnit
             // 
             this.ColumnItemListUnit.DataPropertyName = "ColumnItemListUnit";
             this.ColumnItemListUnit.HeaderText = "Unit";
-            this.ColumnItemListUnit.MinimumWidth = 70;
+            this.ColumnItemListUnit.MinimumWidth = 45;
             this.ColumnItemListUnit.Name = "ColumnItemListUnit";
             this.ColumnItemListUnit.ReadOnly = true;
-            this.ColumnItemListUnit.Width = 70;
+            this.ColumnItemListUnit.Width = 45;
             // 
             // ColumnItemListCategory
             // 
             this.ColumnItemListCategory.DataPropertyName = "ColumnItemListCategory";
             this.ColumnItemListCategory.HeaderText = "Category";
-            this.ColumnItemListCategory.MinimumWidth = 140;
+            this.ColumnItemListCategory.MinimumWidth = 100;
             this.ColumnItemListCategory.Name = "ColumnItemListCategory";
             this.ColumnItemListCategory.ReadOnly = true;
-            this.ColumnItemListCategory.Width = 140;
             // 
             // ColumnSupplier
             // 
             this.ColumnSupplier.DataPropertyName = "ColumnSupplier";
             this.ColumnSupplier.HeaderText = "Default Supplier";
+            this.ColumnSupplier.MinimumWidth = 200;
             this.ColumnSupplier.Name = "ColumnSupplier";
             this.ColumnSupplier.ReadOnly = true;
-            this.ColumnSupplier.Width = 120;
+            this.ColumnSupplier.Width = 200;
             // 
             // ColumnItemListPrice
             // 
@@ -409,9 +408,10 @@
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnItemListPrice.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColumnItemListPrice.HeaderText = "Price";
-            this.ColumnItemListPrice.MinimumWidth = 100;
+            this.ColumnItemListPrice.MinimumWidth = 75;
             this.ColumnItemListPrice.Name = "ColumnItemListPrice";
             this.ColumnItemListPrice.ReadOnly = true;
+            this.ColumnItemListPrice.Width = 75;
             // 
             // ColumnItemListCost
             // 
@@ -428,27 +428,28 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnItemListOnHandQuantity.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnItemListOnHandQuantity.HeaderText = "Qty.";
-            this.ColumnItemListOnHandQuantity.MinimumWidth = 100;
+            this.ColumnItemListOnHandQuantity.MinimumWidth = 45;
             this.ColumnItemListOnHandQuantity.Name = "ColumnItemListOnHandQuantity";
             this.ColumnItemListOnHandQuantity.ReadOnly = true;
+            this.ColumnItemListOnHandQuantity.Width = 45;
             // 
             // ColumnItemListIsInventory
             // 
             this.ColumnItemListIsInventory.DataPropertyName = "ColumnItemListIsInventory";
             this.ColumnItemListIsInventory.HeaderText = "I";
-            this.ColumnItemListIsInventory.MinimumWidth = 50;
+            this.ColumnItemListIsInventory.MinimumWidth = 20;
             this.ColumnItemListIsInventory.Name = "ColumnItemListIsInventory";
             this.ColumnItemListIsInventory.ReadOnly = true;
-            this.ColumnItemListIsInventory.Width = 50;
+            this.ColumnItemListIsInventory.Width = 20;
             // 
             // ColumnItemListIsLocked
             // 
             this.ColumnItemListIsLocked.DataPropertyName = "ColumnItemListIsLocked";
             this.ColumnItemListIsLocked.HeaderText = "L";
-            this.ColumnItemListIsLocked.MinimumWidth = 50;
+            this.ColumnItemListIsLocked.MinimumWidth = 20;
             this.ColumnItemListIsLocked.Name = "ColumnItemListIsLocked";
             this.ColumnItemListIsLocked.ReadOnly = true;
-            this.ColumnItemListIsLocked.Width = 50;
+            this.ColumnItemListIsLocked.Width = 20;
             // 
             // MstItemListForm
             // 

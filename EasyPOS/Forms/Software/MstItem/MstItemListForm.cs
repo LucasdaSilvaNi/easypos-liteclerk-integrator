@@ -376,5 +376,10 @@ namespace EasyPOS.Forms.Software.MstItem
         {
             UpdateItemListDataSource();
         }
+
+        private void dataGridViewItemList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
