@@ -459,6 +459,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     {
                         if (buttonSave.Enabled == true)
                         {
+                            Controllers.MstItemPriceController priceCotroller = new Controllers.MstItemPriceController();
+                            if (Modules.SysCurrentModule.GetCurrentSettings().IsTriggeredQuantity == true)
+                            {
+                                if (priceCotroller.TriggeredItemPrice(trnSalesLineEntity.ItemId, Convert.ToDecimal(textBoxSalesLineQuantity.Text)).Any())
+                                {
+                                    textBoxSalesLinePrice.Text = priceCotroller.TriggeredItemPrice(trnSalesLineEntity.ItemId, Convert.ToDecimal(textBoxSalesLineQuantity.Text)).FirstOrDefault().Price.ToString("#,##0.00");
+                                }
+                            }
+                            ComputeAmount();
                             buttonSave.PerformClick();
                             Close();
                         }

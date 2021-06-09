@@ -49,11 +49,11 @@ namespace EasyPOS.Controllers
         public List<Entities.MstUserEntity> DropdownListAgent()
         {
             var salesAgent = from d in db.MstUsers
-                            select new Entities.MstUserEntity
-                            {
-                                Id = d.Id,
-                                FullName = d.FullName
-                            };
+                             select new Entities.MstUserEntity
+                             {
+                                 Id = d.Id,
+                                 FullName = d.FullName
+                             };
 
             return salesAgent.OrderBy(d => d.Id).ToList();
         }
@@ -63,7 +63,7 @@ namespace EasyPOS.Controllers
         // ====================
         public List<Entities.RepSalesReportSalesSummaryReportEntity> SalesSummaryReport(DateTime startDate, DateTime endDate, Int32 terminalId, Int32 CustomerId, Int32 SalesAgentId)
         {
-            if(CustomerId == 0 && SalesAgentId == 0)
+            if (CustomerId == 0 && SalesAgentId == 0)
             {
                 var sales = from d in db.TrnSales.OrderByDescending(d => d.Id)
                             where d.SalesDate >= startDate
@@ -172,7 +172,7 @@ namespace EasyPOS.Controllers
                 return sales.OrderByDescending(d => d.Id).ToList();
             }
         }
-            
+
 
         // ===================
         // Sales Detail Report
@@ -324,7 +324,7 @@ namespace EasyPOS.Controllers
                 return salesLines.ToList();
             }
         }
-            
+
         // ================================
         // Net Sales Summary Report - Daily
         // ================================
@@ -344,7 +344,7 @@ namespace EasyPOS.Controllers
                                     Date = g.Key.SalesDate,
                                     CustomerCount = g.GroupBy(x => x.TrnSale.Id).Count(),
                                     Quantity = g.Sum(x => x.Quantity),
-                                    CostAmount = g.Sum(x => x.MstItem.Cost* x.Quantity),
+                                    CostAmount = g.Sum(x => x.MstItem.Cost * x.Quantity),
                                     SalesAmount = g.Sum(x => x.Amount),
                                     MarginAmount = g.Sum(x => x.Amount) - g.Sum(x => x.MstItem.Cost * x.Quantity),
                                     Percentage = ((g.Sum(x => x.Amount) - g.Sum(x => x.MstItem.Cost * x.Quantity)) / g.Sum(x => x.Amount)) * 100
@@ -479,7 +479,7 @@ namespace EasyPOS.Controllers
         // =======================
         public List<Entities.RepSalesReportCollectionSummaryReportEntity> StockWithdrawalReport(DateTime startDate, DateTime endDate, Int32 terminalId, Int32 customerId)
         {
-            if(customerId == 0)
+            if (customerId == 0)
             {
                 var stockWithdrawalReports = from d in db.TrnCollections.OrderByDescending(d => d.Id)
                                              where d.CollectionDate >= startDate
@@ -692,37 +692,80 @@ namespace EasyPOS.Controllers
 
             return data;
         }
+
+        public Decimal ClaimRewards(Int32 customerId)
+        {
+            try
+            {
+                Decimal rewards = 0;
+
+                var collectionLines = from d in db.TrnCollectionLines
+                                      where d.TrnCollection.CustomerId == customerId
+                                      && d.MstPayType.PayTypeCode == "REWARDS"
+                                      select d;
+
+                if (collectionLines.Any())
+                {
+                    rewards = collectionLines.Sum(d => d.Amount);
+                }
+
+                return rewards;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
         // ===========================
         // Sales Summary Reward Report
         // ===========================
         public List<Entities.MstCustomerEntity> GetSalesSummaryRewardListData(Int32 filterCustomer)
         {
-            if (filterCustomer==0)
+            if (filterCustomer == 0)
             {
-                var customer = from d in db.MstCustomers
-                               select new Entities.MstCustomerEntity
-                               {
-                                   Customer = d.Customer,
-                                   RewardNumber = d.RewardNumber,
-                                   AvailableReward = d.AvailableReward
-                               };
+                List<Entities.MstCustomerEntity> data = new List<Entities.MstCustomerEntity>();
 
-                return customer.ToList();
+                var collection = from d in db.TrnCollections
+                                 group d by new
+                                 {
+                                     CustomerId = d.CustomerId,
+                                     Customer = d.MstCustomer.Customer,
+                                     RewardNumber = d.MstCustomer.RewardNumber,
+                                     AvailableReward = d.MstCustomer.AvailableReward,
+                                 } into g
+                                 select new Entities.MstCustomerEntity
+                                 {
+                                     Customer = g.Key.Customer,
+                                     RewardNumber = g.Key.RewardNumber,
+                                     AvailableReward = g.Key.AvailableReward,
+                                     TotalClaimRewards = ClaimRewards(g.Key.CustomerId)
+                                 };
+
+                return collection.ToList();
             }
             else
             {
-                var customer = from d in db.MstCustomers
-                               where d.Id == filterCustomer
-                               select new Entities.MstCustomerEntity
-                               {
-                                   Customer = d.Customer,
-                                   RewardNumber = d.RewardNumber,
-                                   AvailableReward = d.AvailableReward
-                               };
+                var collection = from d in db.TrnCollections
+                                 where d.CustomerId == filterCustomer
+                                 group d by new
+                                 {
+                                     CustomerId = d.CustomerId,
+                                     Customer = d.MstCustomer.Customer,
+                                     RewardNumber = d.MstCustomer.RewardNumber,
+                                     AvailableReward = d.MstCustomer.AvailableReward,
+                                 } into g
+                                 select new Entities.MstCustomerEntity
+                                 {
+                                     Customer = g.Key.Customer,
+                                     RewardNumber = g.Key.RewardNumber,
+                                     AvailableReward = g.Key.AvailableReward,
+                                     TotalClaimRewards = ClaimRewards(g.Key.CustomerId)
+                                 };
 
-                return customer.ToList();
+                return collection.ToList();
             }
-            
+
         }
     }
 }

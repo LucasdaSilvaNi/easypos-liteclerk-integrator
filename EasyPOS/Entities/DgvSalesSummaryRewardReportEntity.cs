@@ -11,5 +11,6 @@ namespace EasyPOS.Entities
         public String ColumnCustomer { get; set; }
         public String ColumnRewardNo { get; set; }
         public String ColumnAvailableReward { get; set; }
+        public String ColumnTotalClaimReward { get; set; }
     }
 }

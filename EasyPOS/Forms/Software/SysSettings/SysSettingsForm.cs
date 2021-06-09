@@ -502,6 +502,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxAutoSales.Checked = Convert.ToBoolean(sysCurrent.LockAutoSales);
                 checkBoxShowCustomerInfo.Checked = Convert.ToBoolean(sysCurrent.ShowCustomerInfo);
                 checkBoxChoosePrinter.Checked = Convert.ToBoolean(sysCurrent.ChoosePrinter);
+                checkBoxIsTriggeredQuantity.Checked = Convert.ToBoolean(sysCurrent.IsTriggeredQuantity);
             }
         }
 
@@ -579,9 +580,10 @@ namespace EasyPOS.Forms.Software.SysSettings
                 AllowCancelPreviousSales = checkBoxAllowCancelPreviousSales.Checked,
                 LockAutoSales = checkBoxAutoSales.Checked,
                 ShowCustomerInfo = checkBoxShowCustomerInfo.Checked,
-                ChoosePrinter = checkBoxChoosePrinter.Checked
+                ChoosePrinter = checkBoxChoosePrinter.Checked,
+                IsTriggeredQuantity = checkBoxIsTriggeredQuantity.Checked
 
-            };
+        };
             
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);
             if (saveSysCurrent[1].Equals("0") == false)
@@ -639,6 +641,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxAutoSales.Enabled = false;
                 checkBoxShowCustomerInfo.Enabled = false;
                 checkBoxChoosePrinter.Enabled = false;
+                checkBoxIsTriggeredQuantity.Enabled = false;
             }
             else
             {
@@ -723,6 +726,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxAutoSales.Enabled = true;
                 checkBoxShowCustomerInfo.Enabled = true;
                 checkBoxChoosePrinter.Enabled = true;
+                checkBoxIsTriggeredQuantity.Enabled = true;
             }
         }
 

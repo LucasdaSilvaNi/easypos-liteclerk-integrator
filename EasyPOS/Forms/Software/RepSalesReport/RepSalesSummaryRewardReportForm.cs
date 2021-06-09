@@ -43,7 +43,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                           {
                               ColumnCustomer = d.Customer,
                               ColumnRewardNo = d.RewardNumber,
-                              ColumnAvailableReward = d.AvailableReward.ToString("#,##0.00")
+                              ColumnAvailableReward = d.AvailableReward.ToString("#,##0.00"),
+                              ColumnTotalClaimReward = d.TotalClaimRewards != null ? Convert.ToDecimal(d.TotalClaimRewards).ToString("#,##0.00") : "0.00"
                           };
 
                 rowList = row.ToList();
@@ -190,7 +191,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 if (dialogResult == DialogResult.OK)
                 {
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Customer", "Reward Number", "Available Reward" };
+                    String[] header = { "Customer", "Reward Number", "Available Reward", "Total Claim Reward"};
                     csv.AppendLine(String.Join(",", header));
 
                     if (customerList.Any())
@@ -202,6 +203,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                 customer.ColumnCustomer.Replace("," , ""),
                                 customer.ColumnRewardNo.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
                                 customer.ColumnAvailableReward.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty),
+                                customer.ColumnTotalClaimReward.Replace(",", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty).Replace("\r", String.Empty)
                             };
                             csv.AppendLine(String.Join(",", data));
                         }

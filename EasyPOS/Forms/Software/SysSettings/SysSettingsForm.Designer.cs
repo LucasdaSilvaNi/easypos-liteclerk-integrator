@@ -47,6 +47,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.checkBoxChoosePrinter = new System.Windows.Forms.CheckBox();
             this.checkBoxShowCustomerInfo = new System.Windows.Forms.CheckBox();
             this.checkBoxAutoSales = new System.Windows.Forms.CheckBox();
             this.checkBoxAllowCancelPreviousSales = new System.Windows.Forms.CheckBox();
@@ -158,7 +159,7 @@
             this.label64 = new System.Windows.Forms.Label();
             this.textBoxCustomerDisplayPort = new System.Windows.Forms.TextBox();
             this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
-            this.checkBoxChoosePrinter = new System.Windows.Forms.CheckBox();
+            this.checkBoxIsTriggeredQuantity = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -412,6 +413,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel5.Controls.Add(this.checkBoxIsTriggeredQuantity);
             this.panel5.Controls.Add(this.checkBoxChoosePrinter);
             this.panel5.Controls.Add(this.checkBoxShowCustomerInfo);
             this.panel5.Controls.Add(this.checkBoxAutoSales);
@@ -457,6 +459,19 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1095, 472);
             this.panel5.TabIndex = 34;
+            // 
+            // checkBoxChoosePrinter
+            // 
+            this.checkBoxChoosePrinter.AutoSize = true;
+            this.checkBoxChoosePrinter.Enabled = false;
+            this.checkBoxChoosePrinter.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChoosePrinter.Location = new System.Drawing.Point(582, 410);
+            this.checkBoxChoosePrinter.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxChoosePrinter.Name = "checkBoxChoosePrinter";
+            this.checkBoxChoosePrinter.Size = new System.Drawing.Size(225, 23);
+            this.checkBoxChoosePrinter.TabIndex = 91;
+            this.checkBoxChoosePrinter.Text = "Sales Detail Print Choose Printer";
+            this.checkBoxChoosePrinter.UseVisualStyleBackColor = true;
             // 
             // checkBoxShowCustomerInfo
             // 
@@ -1754,18 +1769,18 @@
             this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
             this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
             // 
-            // checkBoxChoosePrinter
+            // checkBoxIsTriggeredQuantity
             // 
-            this.checkBoxChoosePrinter.AutoSize = true;
-            this.checkBoxChoosePrinter.Enabled = false;
-            this.checkBoxChoosePrinter.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChoosePrinter.Location = new System.Drawing.Point(582, 410);
-            this.checkBoxChoosePrinter.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxChoosePrinter.Name = "checkBoxChoosePrinter";
-            this.checkBoxChoosePrinter.Size = new System.Drawing.Size(225, 23);
-            this.checkBoxChoosePrinter.TabIndex = 91;
-            this.checkBoxChoosePrinter.Text = "Sales Detail Print Choose Printer";
-            this.checkBoxChoosePrinter.UseVisualStyleBackColor = true;
+            this.checkBoxIsTriggeredQuantity.AutoSize = true;
+            this.checkBoxIsTriggeredQuantity.Enabled = false;
+            this.checkBoxIsTriggeredQuantity.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxIsTriggeredQuantity.Location = new System.Drawing.Point(582, 437);
+            this.checkBoxIsTriggeredQuantity.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxIsTriggeredQuantity.Name = "checkBoxIsTriggeredQuantity";
+            this.checkBoxIsTriggeredQuantity.Size = new System.Drawing.Size(143, 23);
+            this.checkBoxIsTriggeredQuantity.TabIndex = 92;
+            this.checkBoxIsTriggeredQuantity.Text = "Triggered Quantity";
+            this.checkBoxIsTriggeredQuantity.UseVisualStyleBackColor = true;
             // 
             // SysSettingsForm
             // 
@@ -1946,5 +1961,6 @@
         private System.Windows.Forms.CheckBox checkBoxAutoSales;
         private System.Windows.Forms.CheckBox checkBoxShowCustomerInfo;
         private System.Windows.Forms.CheckBox checkBoxChoosePrinter;
+        private System.Windows.Forms.CheckBox checkBoxIsTriggeredQuantity;
     }
 }

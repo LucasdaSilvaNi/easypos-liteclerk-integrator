@@ -56,5 +56,6 @@
   "HideSalesItemListItemCode": false,
   "LockAutoSales": false,
   "ShowCustomerInfo": false,
-  "ChoosePrinter": false
+  "ChoosePrinter": false,
+  "IsTriggeredQuantity": false
 }

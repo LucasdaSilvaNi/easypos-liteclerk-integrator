@@ -46,6 +46,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.ColumnCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnRewardNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAvailableReward = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTotalClaimReward = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesSummaryRewardReport)).BeginInit();
@@ -139,7 +140,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.dataGridViewSalesSummaryRewardReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnCustomer,
             this.ColumnRewardNo,
-            this.ColumnAvailableReward});
+            this.ColumnAvailableReward,
+            this.ColumnTotalClaimReward});
             this.dataGridViewSalesSummaryRewardReport.Location = new System.Drawing.Point(0, 52);
             this.dataGridViewSalesSummaryRewardReport.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewSalesSummaryRewardReport.MultiSelect = false;
@@ -269,7 +271,14 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.ColumnAvailableReward.Name = "ColumnAvailableReward";
             this.ColumnAvailableReward.ReadOnly = true;
             // 
-            // SalesSummaryRewardReportForm
+            // ColumnTotalClaimReward
+            // 
+            this.ColumnTotalClaimReward.DataPropertyName = "ColumnTotalClaimReward";
+            this.ColumnTotalClaimReward.HeaderText = "Total Claim Reward";
+            this.ColumnTotalClaimReward.Name = "ColumnTotalClaimReward";
+            this.ColumnTotalClaimReward.ReadOnly = true;
+            // 
+            // RepSalesSummaryRewardReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -280,7 +289,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "SalesSummaryRewardReportForm";
+            this.Name = "RepSalesSummaryRewardReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SalesSummaryRewardReportForm";
             this.panel1.ResumeLayout(false);
@@ -311,5 +320,6 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCustomer;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRewardNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAvailableReward;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTotalClaimReward;
     }
 }

@@ -30,6 +30,24 @@ namespace EasyPOS.Controllers
 
             return itemPrices.OrderByDescending(d => d.Id).ToList();
         }
+        // ===============
+        // Triggered Item Price
+        // ===============
+        public List<Entities.MstItemPriceEntity> TriggeredItemPrice(Int32 itemId, Decimal quantity)
+        {
+            var itemPrices = from d in db.MstItemPrices
+                             where d.ItemId == itemId
+                             && d.TriggerQuantity == quantity
+                             select new Entities.MstItemPriceEntity
+                             {
+                                 Id = d.Id,
+                                 PriceDescription = d.PriceDescription,
+                                 Price = d.Price,
+                                 TriggerQuantity = d.TriggerQuantity
+                             };
+
+            return itemPrices.OrderByDescending(d => d.Id).ToList();
+        }
 
         // ==============
         // Add Item Price

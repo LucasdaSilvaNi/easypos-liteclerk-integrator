@@ -100,7 +100,8 @@ namespace EasyPOS.Modules
                 AllowCancelPreviousSales = currentSettings.AllowCancelPreviousSales,
                 LockAutoSales = currentSettings.LockAutoSales,
                 ShowCustomerInfo = currentSettings.ShowCustomerInfo,
-                ChoosePrinter = currentSettings.ChoosePrinter
+                ChoosePrinter = currentSettings.ChoosePrinter,
+                IsTriggeredQuantity = currentSettings.IsTriggeredQuantity
                 
             };
 
@@ -175,7 +176,8 @@ namespace EasyPOS.Modules
                 AllowCancelPreviousSales = objSysCurrentEntity.AllowCancelPreviousSales,
                 LockAutoSales = objSysCurrentEntity.LockAutoSales,
                 ShowCustomerInfo = objSysCurrentEntity.ShowCustomerInfo,
-                ChoosePrinter = objSysCurrentEntity.ChoosePrinter
+                ChoosePrinter = objSysCurrentEntity.ChoosePrinter,
+                IsTriggeredQuantity = objSysCurrentEntity.IsTriggeredQuantity
 
             };
 
@@ -251,7 +253,8 @@ namespace EasyPOS.Modules
                 AllowCancelPreviousSales = currentSettings.AllowCancelPreviousSales,
                 LockAutoSales = currentSettings.LockAutoSales,
                 ShowCustomerInfo = currentSettings.ShowCustomerInfo,
-                ChoosePrinter = currentSettings.ChoosePrinter
+                ChoosePrinter = currentSettings.ChoosePrinter,
+                IsTriggeredQuantity = currentSettings.IsTriggeredQuantity
 
             };
 

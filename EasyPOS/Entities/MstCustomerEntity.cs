@@ -33,5 +33,6 @@ namespace EasyPOS.Entities
         public String DefaultPriceDescription { get; set; }
         public String CustomerCode { get; set; }
         public String BusinessStyle { get; set; }
+        public Decimal? TotalClaimRewards { get; set; }
     }
 }
