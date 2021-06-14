@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
@@ -59,11 +60,10 @@
             this.buttonPurchaseOrderListPageListNext = new System.Windows.Forms.Button();
             this.buttonPurchaseOrderListPageListLast = new System.Windows.Forms.Button();
             this.textBoxPurchaseOrderListPageNumber = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPurchaseOrderList)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -79,6 +79,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1080, 50);
             this.panel1.TabIndex = 7;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.PurchaseOrder;
+            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -137,6 +148,7 @@
             this.dateTimePickerPurchaseOrderListFilter.Name = "dateTimePickerPurchaseOrderListFilter";
             this.dateTimePickerPurchaseOrderListFilter.Size = new System.Drawing.Size(114, 26);
             this.dateTimePickerPurchaseOrderListFilter.TabIndex = 8;
+            this.dateTimePickerPurchaseOrderListFilter.ValueChanged += new System.EventHandler(this.dateTimePickerPurchaseOrderListFilter_ValueChanged);
             // 
             // textBoxPurchaseOrderListFilter
             // 
@@ -421,17 +433,6 @@
             this.textBoxPurchaseOrderListPageNumber.TabIndex = 17;
             this.textBoxPurchaseOrderListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.PurchaseOrder;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
             // TrnPurchaseOrderListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -453,10 +454,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPurchaseOrderList)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

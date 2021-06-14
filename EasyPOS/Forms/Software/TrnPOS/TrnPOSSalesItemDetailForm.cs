@@ -29,6 +29,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             trnSalesLineEntity = salesLineEntity;
 
+            if (Modules.SysCurrentModule.GetCurrentSettings().EnableEditPrice == false)
+            {
+                textBoxSalesLinePrice.ReadOnly = true;
+            }
+            else
+            {
+                textBoxSalesLinePrice.ReadOnly = false;
+            }
+
             GetDiscountList();
 
             textBoxSalesLineQuantity.Focus();

@@ -3741,6 +3741,10 @@ namespace EasyPOS.Data
 		
 		private bool _IsPackage;
 		
+		private decimal _cValue;
+		
+		private System.Nullable<int> _ChildItemId;
+		
 		private EntitySet<TrnStockOutLine> _TrnStockOutLines;
 		
 		private EntitySet<MstDiscountItem> _MstDiscountItems;
@@ -3853,6 +3857,10 @@ namespace EasyPOS.Data
     partial void OnDefaultKitchenReportChanged();
     partial void OnIsPackageChanging(bool value);
     partial void OnIsPackageChanged();
+    partial void OncValueChanging(decimal value);
+    partial void OncValueChanged();
+    partial void OnChildItemIdChanging(System.Nullable<int> value);
+    partial void OnChildItemIdChanged();
     #endregion
 		
 		public MstItem()
@@ -4535,6 +4543,46 @@ namespace EasyPOS.Data
 					this._IsPackage = value;
 					this.SendPropertyChanged("IsPackage");
 					this.OnIsPackageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cValue", DbType="Decimal(18,5) NOT NULL")]
+		public decimal cValue
+		{
+			get
+			{
+				return this._cValue;
+			}
+			set
+			{
+				if ((this._cValue != value))
+				{
+					this.OncValueChanging(value);
+					this.SendPropertyChanging();
+					this._cValue = value;
+					this.SendPropertyChanged("cValue");
+					this.OncValueChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChildItemId", DbType="Int")]
+		public System.Nullable<int> ChildItemId
+		{
+			get
+			{
+				return this._ChildItemId;
+			}
+			set
+			{
+				if ((this._ChildItemId != value))
+				{
+					this.OnChildItemIdChanging(value);
+					this.SendPropertyChanging();
+					this._ChildItemId = value;
+					this.SendPropertyChanged("ChildItemId");
+					this.OnChildItemIdChanged();
 				}
 			}
 		}
@@ -17367,6 +17415,8 @@ namespace EasyPOS.Data
 		
 		private System.Nullable<int> _RequestedBy;
 		
+		private string _Status;
+		
 		private EntitySet<TrnPurchaseOrderLine> _TrnPurchaseOrderLines;
 		
 		private EntityRef<MstPeriod> _MstPeriod;
@@ -17419,6 +17469,8 @@ namespace EasyPOS.Data
     partial void OnUpdateDateTimeChanged();
     partial void OnRequestedByChanging(System.Nullable<int> value);
     partial void OnRequestedByChanged();
+    partial void OnStatusChanging(string value);
+    partial void OnStatusChanged();
     #endregion
 		
 		public TrnPurchaseOrder()
@@ -17778,6 +17830,26 @@ namespace EasyPOS.Data
 					this._RequestedBy = value;
 					this.SendPropertyChanged("RequestedBy");
 					this.OnRequestedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(50)")]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
 				}
 			}
 		}

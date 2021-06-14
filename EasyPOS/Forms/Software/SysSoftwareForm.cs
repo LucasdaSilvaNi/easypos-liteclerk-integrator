@@ -81,6 +81,9 @@ namespace EasyPOS.Forms.Software
         public TabPage tabPageDispatchStation = new TabPage { Name = "tabPageDispatchStation", Text = "Dispatch Station" };
         public TabPage tabPagePurchaseOrderList = new TabPage { Name = "tabPagePurchaseOrderList", Text = "Purchase Order List" };
         public TabPage tabPagePurchaseOrderDetail = new TabPage { Name = "tabPagePurchaseOrderDetail", Text = "Purchase Order Detail" };
+        public TabPage tabPageCollectionList = new TabPage { Name = "tabPageCollectionList", Text = "Collection List" };
+        public TabPage tabPageCollectionDetail = new TabPage { Name = "tabPageCollectionDetail", Text = "Collection Detail" };
+
 
 
 
@@ -119,6 +122,9 @@ namespace EasyPOS.Forms.Software
         public SysDispatchStation.SysDispatchStationForm sysDispatchStationForm = null;
         public TrnPurchaseOrder.TrnPurchaseOrderListForm trnPurchaseOrderListForm = null;
         public TrnPurchaseOrder.TrnPurchaseOrderDetailForm trnPurchaseOrderDetailForm = null;
+
+        public TrnCollection.TrnCollectionListForm trnCollectionListForm = null;
+        public TrnCollection.TrnCollectionDetailForm trnCollectionDetailForm = null;
 
         public void InitializeDefaultForm()
         {
@@ -973,6 +979,52 @@ namespace EasyPOS.Forms.Software
                 tabControlSoftware.SelectTab(tabPagePurchaseOrderDetail);
             }
         }
+        public void AddTabPageCollectionList()
+        {
+            tabPageCollectionList.Controls.Remove(trnCollectionListForm);
+
+            trnCollectionListForm = new TrnCollection.TrnCollectionListForm(this)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageCollectionList.Controls.Add(trnCollectionListForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageCollectionList) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageCollectionList);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageCollectionList);
+                tabControlSoftware.SelectTab(tabPageCollectionList);
+            }
+        }
+        public void AddTabPageCollectionDetail(TrnCollection.TrnCollectionListForm collectionListForm, Entities.TrnCollectionEntity collectionEntity)
+        {
+            tabPageCollectionDetail.Controls.Remove(trnCollectionDetailForm);
+
+            trnCollectionDetailForm = new TrnCollection.TrnCollectionDetailForm(this, collectionListForm, collectionEntity)
+            {
+                TopLevel = false,
+                Visible = true,
+                Dock = DockStyle.Fill
+            };
+
+            tabPageCollectionDetail.Controls.Add(trnCollectionDetailForm);
+
+            if (tabControlSoftware.TabPages.Contains(tabPageCollectionDetail) == true)
+            {
+                tabControlSoftware.SelectTab(tabPageCollectionDetail);
+            }
+            else
+            {
+                tabControlSoftware.TabPages.Add(tabPageCollectionDetail);
+                tabControlSoftware.SelectTab(tabPageCollectionDetail);
+            }
+        }
 
         public void RemoveTabPage()
         {
@@ -1124,6 +1176,11 @@ namespace EasyPOS.Forms.Software
         private void purchaseOrderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddTabPagePurchaseOrderList();
+        }
+
+        private void collectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTabPageCollectionList();
         }
     }
 }

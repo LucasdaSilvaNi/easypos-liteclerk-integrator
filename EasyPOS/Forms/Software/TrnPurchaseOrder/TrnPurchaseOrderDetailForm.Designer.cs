@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonStockIn = new System.Windows.Forms.Button();
             this.buttonPrint = new System.Windows.Forms.Button();
             this.buttonLock = new System.Windows.Forms.Button();
             this.buttonUnlock = new System.Windows.Forms.Button();
@@ -76,7 +77,8 @@
             this.buttonBarcode = new System.Windows.Forms.Button();
             this.textBoxBarcode = new System.Windows.Forms.TextBox();
             this.buttonSearchItem = new System.Windows.Forms.Button();
-            this.buttonStockIn = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBoxStatus = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Forms.SuspendLayout();
@@ -101,6 +103,25 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1096, 50);
             this.panel1.TabIndex = 8;
+            // 
+            // buttonStockIn
+            // 
+            this.buttonStockIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonStockIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonStockIn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonStockIn.FlatAppearance.BorderSize = 0;
+            this.buttonStockIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStockIn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonStockIn.ForeColor = System.Drawing.Color.White;
+            this.buttonStockIn.Location = new System.Drawing.Point(713, 10);
+            this.buttonStockIn.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonStockIn.Name = "buttonStockIn";
+            this.buttonStockIn.Size = new System.Drawing.Size(77, 32);
+            this.buttonStockIn.TabIndex = 25;
+            this.buttonStockIn.TabStop = false;
+            this.buttonStockIn.Text = "Stock-In";
+            this.buttonStockIn.UseVisualStyleBackColor = false;
+            this.buttonStockIn.Click += new System.EventHandler(this.buttonStockIn_Click);
             // 
             // buttonPrint
             // 
@@ -203,6 +224,8 @@
             // Forms
             // 
             this.Forms.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Forms.Controls.Add(this.label3);
+            this.Forms.Controls.Add(this.comboBoxStatus);
             this.Forms.Controls.Add(this.textBoxRemarks);
             this.Forms.Controls.Add(this.label13);
             this.Forms.Controls.Add(this.label12);
@@ -239,7 +262,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label13.Location = new System.Drawing.Point(472, 69);
+            this.label13.Location = new System.Drawing.Point(472, 66);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(91, 19);
@@ -657,24 +680,26 @@
             this.buttonSearchItem.UseVisualStyleBackColor = false;
             this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
             // 
-            // buttonStockIn
+            // label3
             // 
-            this.buttonStockIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonStockIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonStockIn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonStockIn.FlatAppearance.BorderSize = 0;
-            this.buttonStockIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStockIn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonStockIn.ForeColor = System.Drawing.Color.White;
-            this.buttonStockIn.Location = new System.Drawing.Point(713, 10);
-            this.buttonStockIn.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonStockIn.Name = "buttonStockIn";
-            this.buttonStockIn.Size = new System.Drawing.Size(77, 32);
-            this.buttonStockIn.TabIndex = 25;
-            this.buttonStockIn.TabStop = false;
-            this.buttonStockIn.Text = "Stock-In";
-            this.buttonStockIn.UseVisualStyleBackColor = false;
-            this.buttonStockIn.Click += new System.EventHandler(this.buttonStockIn_Click);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label3.Location = new System.Drawing.Point(513, 97);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 19);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Status:";
+            // 
+            // comboBoxStatus
+            // 
+            this.comboBoxStatus.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxStatus.FormattingEnabled = true;
+            this.comboBoxStatus.Location = new System.Drawing.Point(570, 94);
+            this.comboBoxStatus.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxStatus.Name = "comboBoxStatus";
+            this.comboBoxStatus.Size = new System.Drawing.Size(231, 27);
+            this.comboBoxStatus.TabIndex = 24;
             // 
             // TrnPurchaseOrderDetailForm
             // 
@@ -755,5 +780,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPurchaseOrderLineListCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPurchaseOrderLineListAmount;
         private System.Windows.Forms.Button buttonStockIn;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBoxStatus;
     }
 }

@@ -240,5 +240,11 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                 }
             }
         }
+
+        private void dateTimePickerPurchaseOrderListFilter_ValueChanged(object sender, EventArgs e)
+        {
+            pageNumber = 1;
+            UpdatePurchaseOrderListDataSource();
+        }
     }
 }

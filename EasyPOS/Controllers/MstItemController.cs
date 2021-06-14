@@ -308,7 +308,9 @@ namespace EasyPOS.Controllers
                            UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
                            IsLocked = d.IsLocked,
                            DefaultKitchenReport = d.DefaultKitchenReport,
-                           IsPackage = d.IsPackage
+                           IsPackage = d.IsPackage,
+                           cValue = d.cValue,
+                           ChildItemId = d.ChildItemId
                        };
 
             return item.FirstOrDefault();
@@ -359,7 +361,9 @@ namespace EasyPOS.Controllers
                             UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
                             IsLocked = d.IsLocked,
                             DefaultKitchenReport = d.DefaultKitchenReport,
-                            IsPackage = d.IsPackage
+                            IsPackage = d.IsPackage,
+                            cValue = d.cValue,
+                            ChildItemId = d.ChildItemId
                         };
 
             return items.OrderByDescending(d => d.Id).ToList();
@@ -427,6 +431,37 @@ namespace EasyPOS.Controllers
                            };
 
             return categories.ToList();
+        }
+        // ========================
+        // Dropdown List - Item List
+        // ========================
+        public List<Entities.MstItemEntity> DropdownListItemList()
+        {
+            var itemList = from d in db.MstItems
+                            select new Entities.MstItemEntity
+                            {
+                                Id = d.Id,
+                                ItemDescription = d.ItemDescription
+                            };
+
+    
+            return itemList.OrderBy(d => d.ItemDescription).ToList();
+        }
+        // ========================
+        // Dropdown List - Get Child Item
+        // ========================
+        public List<Entities.MstItemEntity> DropdownListChildItemList(Int32 currentItemId)
+        {
+            var itemList = from d in db.MstItems
+                           where d.Id != currentItemId
+                           select new Entities.MstItemEntity
+                           {
+                               Id = d.Id,
+                               ItemDescription = d.ItemDescription
+                           };
+
+
+            return itemList.OrderBy(d => d.ItemDescription).ToList();
         }
 
         // ========
@@ -517,7 +552,9 @@ namespace EasyPOS.Controllers
                     UpdateDateTime = DateTime.Today,
                     IsLocked = false,
                     DefaultKitchenReport = "",
-                    IsPackage = false
+                    IsPackage = false,
+                    cValue = 0,
+                    ChildItemId = null
                 };
 
                 db.MstItems.InsertOnSubmit(newItem);
@@ -588,6 +625,8 @@ namespace EasyPOS.Controllers
                     lockItem.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
                     lockItem.UpdateDateTime = DateTime.Today;
                     lockItem.IsLocked = true;
+                    lockItem.cValue = objItem.cValue;
+                    lockItem.ChildItemId = objItem.ChildItemId;
                     db.SubmitChanges();
 
                     String newObject = Modules.SysAuditTrailModule.GetObjectString(item.FirstOrDefault());
@@ -831,7 +870,9 @@ namespace EasyPOS.Controllers
                             UpdateDateTime = DateTime.Today,
                             IsLocked = true,
                             DefaultKitchenReport = "",
-                            IsPackage = false
+                            IsPackage = false,
+                            ChildItemId = null,
+                            cValue = 0
                         };
 
                         db.MstItems.InsertOnSubmit(newItem);

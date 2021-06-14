@@ -38,9 +38,18 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                 trnPurchaseOrderListForm = purchaseOrderListForm;
                 trnPurchaseOrderEntity = purchaseOrderEntity;
 
-                GetSupplierList();
+                GetStatus();
             }
 
+        }
+        public void GetStatus()
+        {
+            List<String> statuses = new List<String>();
+            statuses.Add("NEW");
+            statuses.Add("RECEIVED");
+            comboBoxStatus.DataSource = statuses;
+
+            GetSupplierList();
         }
         public void GetSupplierList()
         {
@@ -85,6 +94,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
             comboBoxPreparedBy.SelectedValue = trnPurchaseOrderEntity.PreparedBy;
             comboBoxCheckedBy.SelectedValue = trnPurchaseOrderEntity.CheckedBy;
             comboBoxApprovedBy.SelectedValue = trnPurchaseOrderEntity.ApprovedBy;
+            comboBoxStatus.Text = trnPurchaseOrderEntity.Status;
 
             CreatePurchaseOrderLineListDataGridView();
         }
@@ -133,8 +143,10 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
             dateTimePickerPurchaseOrderDate.Enabled = !isLocked;
             comboBoxSupplier.Enabled = !isLocked;
             textBoxRemarks.Enabled = !isLocked;
+            comboBoxPreparedBy.Enabled = !isLocked;
             comboBoxCheckedBy.Enabled = !isLocked;
             comboBoxApprovedBy.Enabled = !isLocked;
+            comboBoxStatus.Enabled = !isLocked;
 
             dataGridViewPurchaseOrderLineList.Columns[0].Visible = !isLocked;
             dataGridViewPurchaseOrderLineList.Columns[1].Visible = !isLocked;
@@ -150,8 +162,10 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                 PurchaseOrderDate = dateTimePickerPurchaseOrderDate.Value.Date.ToShortDateString(),
                 SupplierId = Convert.ToInt32(comboBoxSupplier.SelectedValue),
                 Remarks = textBoxRemarks.Text,
+                PreparedBy = Convert.ToInt32(comboBoxPreparedBy.SelectedValue),
                 CheckedBy = Convert.ToInt32(comboBoxCheckedBy.SelectedValue),
-                ApprovedBy = Convert.ToInt32(comboBoxApprovedBy.SelectedValue)
+                ApprovedBy = Convert.ToInt32(comboBoxApprovedBy.SelectedValue),
+                Status = comboBoxStatus.Text
             };
 
             String[] lockPurchaseOrder = trnPurchaseOrderController.LockPurcherOrder(trnPurchaseOrderEntity.Id, newPurchaseOrderEntity);

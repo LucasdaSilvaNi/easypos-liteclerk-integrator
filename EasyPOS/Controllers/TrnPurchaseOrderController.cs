@@ -85,7 +85,8 @@ namespace EasyPOS.Controllers
                                     EntryDateTime = d.EntryDateTime.ToShortDateString(),
                                     UpdateUser = d.MstUser1.FullName,
                                     UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
-                                    RequestedBy = d.RequestedBy
+                                    RequestedBy = d.RequestedBy,
+                                    Status = d.Status
                                 };
             return purchaseOrder.FirstOrDefault();
         }
@@ -103,6 +104,7 @@ namespace EasyPOS.Controllers
 
             return suppliers.ToList();
         }
+       
 
         // ====================
         // Dropdown List - User
@@ -495,6 +497,10 @@ namespace EasyPOS.Controllers
 
                     Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
                     trnInventoryModule.UpdateStockInInventory(newStockIn.Id);
+
+                    var updatePO = PurchaseOrder.FirstOrDefault();
+                    updatePO.Status = "RECEIVED";
+                    db.SubmitChanges();
 
                     return new String[] { "", newStockIn.Id.ToString() };
                 }

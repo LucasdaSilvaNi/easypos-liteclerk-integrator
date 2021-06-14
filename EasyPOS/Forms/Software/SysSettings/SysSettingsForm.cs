@@ -503,6 +503,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxShowCustomerInfo.Checked = Convert.ToBoolean(sysCurrent.ShowCustomerInfo);
                 checkBoxChoosePrinter.Checked = Convert.ToBoolean(sysCurrent.ChoosePrinter);
                 checkBoxIsTriggeredQuantity.Checked = Convert.ToBoolean(sysCurrent.IsTriggeredQuantity);
+                checkBoxEnableEditPrice.Checked = Convert.ToBoolean(sysCurrent.EnableEditPrice);
             }
         }
 
@@ -581,9 +582,11 @@ namespace EasyPOS.Forms.Software.SysSettings
                 LockAutoSales = checkBoxAutoSales.Checked,
                 ShowCustomerInfo = checkBoxShowCustomerInfo.Checked,
                 ChoosePrinter = checkBoxChoosePrinter.Checked,
-                IsTriggeredQuantity = checkBoxIsTriggeredQuantity.Checked
+                IsTriggeredQuantity = checkBoxIsTriggeredQuantity.Checked,
+                EnableEditPrice = checkBoxEnableEditPrice.Checked
 
-        };
+
+            };
             
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);
             if (saveSysCurrent[1].Equals("0") == false)
@@ -642,6 +645,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxShowCustomerInfo.Enabled = false;
                 checkBoxChoosePrinter.Enabled = false;
                 checkBoxIsTriggeredQuantity.Enabled = false;
+                checkBoxEnableEditPrice.Enabled = false;
             }
             else
             {
@@ -727,6 +731,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxShowCustomerInfo.Enabled = true;
                 checkBoxChoosePrinter.Enabled = true;
                 checkBoxIsTriggeredQuantity.Enabled = true;
+                checkBoxEnableEditPrice.Enabled = true;
             }
         }
 

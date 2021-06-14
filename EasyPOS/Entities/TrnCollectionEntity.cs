@@ -15,6 +15,7 @@ namespace EasyPOS.Entities
         public String CollectionNumber { get; set; }
         public Int32 TerminalId { get; set; }
         public String Terminal { get; set; }
+        public String CancelledCollectionNumber { get; set; }
         public String ManualORNumber { get; set; }
         public Int32 CustomerId { get; set; }
         public String CustomerCode { get; set; }

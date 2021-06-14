@@ -45,5 +45,7 @@ namespace EasyPOS.Entities
         public Boolean IsLocked { get; set; }
         public String DefaultKitchenReport { get; set; }
         public Boolean IsPackage { get; set; }
+        public Int32? ChildItemId { get; set; }
+        public Decimal cValue { get; set; }
     }
 }

@@ -28,5 +28,6 @@ namespace EasyPOS.Entities
         public String UpdateUser { get; set; }
         public String UpdateDateTime { get; set; }
         public Int32? RequestedBy { get; set; }
+        public String Status { get; set; }
     }
 }

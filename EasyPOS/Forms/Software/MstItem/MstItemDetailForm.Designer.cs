@@ -122,6 +122,10 @@
             this.buttonUnlock = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textBoxConversionValue = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.comboBoxChildItem = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -246,6 +250,10 @@
             // 
             this.panel3.AutoScroll = true;
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel3.Controls.Add(this.comboBoxChildItem);
+            this.panel3.Controls.Add(this.label22);
+            this.panel3.Controls.Add(this.textBoxConversionValue);
+            this.panel3.Controls.Add(this.label21);
             this.panel3.Controls.Add(this.comboBoxCategory);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.comboBoxSalesVAT);
@@ -367,11 +375,11 @@
             this.comboBoxDefaultSupplier.FormattingEnabled = true;
             this.comboBoxDefaultSupplier.IntegralHeight = false;
             this.comboBoxDefaultSupplier.ItemHeight = 19;
-            this.comboBoxDefaultSupplier.Location = new System.Drawing.Point(150, 241);
+            this.comboBoxDefaultSupplier.Location = new System.Drawing.Point(149, 241);
             this.comboBoxDefaultSupplier.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxDefaultSupplier.MaxDropDownItems = 10;
             this.comboBoxDefaultSupplier.Name = "comboBoxDefaultSupplier";
-            this.comboBoxDefaultSupplier.Size = new System.Drawing.Size(250, 27);
+            this.comboBoxDefaultSupplier.Size = new System.Drawing.Size(173, 27);
             this.comboBoxDefaultSupplier.TabIndex = 6;
             // 
             // label20
@@ -1244,6 +1252,54 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // textBoxConversionValue
+            // 
+            this.textBoxConversionValue.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxConversionValue.Location = new System.Drawing.Point(507, 243);
+            this.textBoxConversionValue.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxConversionValue.Name = "textBoxConversionValue";
+            this.textBoxConversionValue.Size = new System.Drawing.Size(250, 26);
+            this.textBoxConversionValue.TabIndex = 22;
+            this.textBoxConversionValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxConversionValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxConversionValue_KeyPress);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label21.Location = new System.Drawing.Point(386, 245);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(118, 19);
+            this.label21.TabIndex = 23;
+            this.label21.Text = "Conversion Value:";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label22.Location = new System.Drawing.Point(422, 275);
+            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(75, 19);
+            this.label22.TabIndex = 25;
+            this.label22.Text = "Child Item:";
+            // 
+            // comboBoxChildItem
+            // 
+            this.comboBoxChildItem.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.comboBoxChildItem.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxChildItem.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxChildItem.FormattingEnabled = true;
+            this.comboBoxChildItem.IntegralHeight = false;
+            this.comboBoxChildItem.ItemHeight = 19;
+            this.comboBoxChildItem.Location = new System.Drawing.Point(507, 273);
+            this.comboBoxChildItem.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxChildItem.MaxDropDownItems = 10;
+            this.comboBoxChildItem.Name = "comboBoxChildItem";
+            this.comboBoxChildItem.Size = new System.Drawing.Size(250, 27);
+            this.comboBoxChildItem.TabIndex = 26;
+            // 
             // MstItemDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1368,5 +1424,9 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnItemComponenIsPrinted;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnItemComponenOnHandQty;
         private System.Windows.Forms.ComboBox comboBoxCategory;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox textBoxConversionValue;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.ComboBox comboBoxChildItem;
     }
 }

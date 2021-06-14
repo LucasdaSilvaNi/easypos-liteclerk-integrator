@@ -101,8 +101,9 @@ namespace EasyPOS.Modules
                 LockAutoSales = currentSettings.LockAutoSales,
                 ShowCustomerInfo = currentSettings.ShowCustomerInfo,
                 ChoosePrinter = currentSettings.ChoosePrinter,
-                IsTriggeredQuantity = currentSettings.IsTriggeredQuantity
-                
+                IsTriggeredQuantity = currentSettings.IsTriggeredQuantity,
+                EnableEditPrice = currentSettings.EnableEditPrice
+
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);
@@ -177,7 +178,8 @@ namespace EasyPOS.Modules
                 LockAutoSales = objSysCurrentEntity.LockAutoSales,
                 ShowCustomerInfo = objSysCurrentEntity.ShowCustomerInfo,
                 ChoosePrinter = objSysCurrentEntity.ChoosePrinter,
-                IsTriggeredQuantity = objSysCurrentEntity.IsTriggeredQuantity
+                IsTriggeredQuantity = objSysCurrentEntity.IsTriggeredQuantity,
+                EnableEditPrice = objSysCurrentEntity.EnableEditPrice
 
             };
 
@@ -254,7 +256,8 @@ namespace EasyPOS.Modules
                 LockAutoSales = currentSettings.LockAutoSales,
                 ShowCustomerInfo = currentSettings.ShowCustomerInfo,
                 ChoosePrinter = currentSettings.ChoosePrinter,
-                IsTriggeredQuantity = currentSettings.IsTriggeredQuantity
+                IsTriggeredQuantity = currentSettings.IsTriggeredQuantity,
+                EnableEditPrice = currentSettings.EnableEditPrice
 
             };
 

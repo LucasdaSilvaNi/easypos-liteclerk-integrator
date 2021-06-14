@@ -47,7 +47,7 @@ namespace EasyPOS.Forms.Software.MstItem
                 mstItemListForm = itemListForm;
                 mstItemEntity = itemEntity;
 
-                GetUnitList();
+                GetItemList();
                 textBoxBarcode.Focus();
             }
         }
@@ -67,7 +67,7 @@ namespace EasyPOS.Forms.Software.MstItem
 
         public void GetSupplierList()
         {
-            
+
             Controllers.MstItemController mstItemController = new Controllers.MstItemController();
             if (mstItemController.DropdownListItemSupplier().Any())
             {
@@ -117,6 +117,35 @@ namespace EasyPOS.Forms.Software.MstItem
             //}
             GetItemDetail();
         }
+        public void GetItemList()
+        {
+            Controllers.MstItemController mstItemController = new Controllers.MstItemController();
+            if (mstItemController.DropdownListChildItemList(mstItemEntity.Id).Any())
+            {
+                List<Entities.MstItemEntity> itemList = new List<Entities.MstItemEntity>();
+
+                itemList.Add(new Entities.MstItemEntity()
+                {
+                    Id = 0,
+                    ItemDescription = ""
+                });
+
+                foreach (var childItem in mstItemController.DropdownListChildItemList(mstItemEntity.Id))
+                {
+                    itemList.Add(new Entities.MstItemEntity()
+                    {
+                        Id = childItem.Id,
+                        ItemDescription = childItem.ItemDescription
+                    });
+                }
+
+                comboBoxChildItem.DataSource = itemList;
+                comboBoxChildItem.ValueMember = "Id";
+                comboBoxChildItem.DisplayMember = "ItemDescription";
+
+            }
+            GetUnitList();
+        }
 
         public void GetItemDetail()
         {
@@ -148,6 +177,8 @@ namespace EasyPOS.Forms.Software.MstItem
             textBoxRemarks.Text = mstItemEntity.Remarks;
             textBoxGenericName.Text = mstItemEntity.GenericName;
             comboBoxSalesVAT.SelectedValue = mstItemEntity.OutTaxId;
+            comboBoxChildItem.SelectedValue = mstItemEntity.ChildItemId != null ? mstItemEntity.ChildItemId : 0;
+            textBoxConversionValue.Text = mstItemEntity.cValue.ToString("#,##0.00");
 
             CreateItemPriceListDataGridView();
 
@@ -200,6 +231,9 @@ namespace EasyPOS.Forms.Software.MstItem
             textBoxRemarks.Enabled = !isLocked;
             textBoxGenericName.Enabled = !isLocked;
             comboBoxSalesVAT.Enabled = !isLocked;
+            comboBoxChildItem.Enabled = !isLocked;
+            textBoxConversionValue.Enabled = !isLocked;
+
             textBoxBarcode.Focus();
 
             if (sysUserRights.GetUserRights().CanAdd == false)
@@ -239,45 +273,54 @@ namespace EasyPOS.Forms.Software.MstItem
 
         private void buttonLock_Click(object sender, EventArgs e)
         {
-            Controllers.MstItemController mstItemController = new Controllers.MstItemController();
-
-            Entities.MstItemEntity newItemEntity = new Entities.MstItemEntity()
+            try
             {
-                ItemCode = textBoxItemCode.Text,
-                BarCode = textBoxBarcode.Text,
-                ItemDescription = textBoxDescription.Text,
-                Alias = textBoxAlias.Text,
-                GenericName = textBoxGenericName.Text,
-                Category = comboBoxCategory.Text,
-                OutTaxId = Convert.ToInt32(comboBoxSalesVAT.SelectedValue),
-                UnitId = Convert.ToInt32(comboBoxUnit.SelectedValue),
-                DefaultSupplierId = Convert.ToInt32(comboBoxDefaultSupplier.SelectedValue),
-                Cost = Convert.ToDecimal(textBoxCost.Text),
-                MarkUp = Convert.ToDecimal(textBoxMarkUp.Text),
-                Price = Convert.ToDecimal(textBoxPrice.Text),
-                ReorderQuantity = Convert.ToDecimal(textBoxStockLevelQuantity.Text),
-                OnhandQuantity = Convert.ToDecimal(textBoxOnHandQuantity.Text),
-                IsInventory = checkBoxIsInventory.Checked,
-                IsPackage = checkBoxIsPackage.Checked,
-                ExpiryDate = Convert.ToDateTime(dateTimePickerExpiryDate.Value).ToShortDateString(),
-                LotNumber = textBoxLotNumber.Text,
-                Remarks = textBoxRemarks.Text
-            };
+                Controllers.MstItemController mstItemController = new Controllers.MstItemController();
 
-            String[] lockItem = mstItemController.LockItem(mstItemEntity.Id, newItemEntity);
-            if (lockItem[1].Equals("0") == false)
-            {
-                mstItemEntity.IsLocked = true;
+                Entities.MstItemEntity newItemEntity = new Entities.MstItemEntity()
+                {
+                    ItemCode = textBoxItemCode.Text,
+                    BarCode = textBoxBarcode.Text,
+                    ItemDescription = textBoxDescription.Text,
+                    Alias = textBoxAlias.Text,
+                    GenericName = textBoxGenericName.Text,
+                    Category = comboBoxCategory.Text,
+                    OutTaxId = Convert.ToInt32(comboBoxSalesVAT.SelectedValue),
+                    UnitId = Convert.ToInt32(comboBoxUnit.SelectedValue),
+                    DefaultSupplierId = Convert.ToInt32(comboBoxDefaultSupplier.SelectedValue),
+                    Cost = Convert.ToDecimal(textBoxCost.Text),
+                    MarkUp = Convert.ToDecimal(textBoxMarkUp.Text),
+                    Price = Convert.ToDecimal(textBoxPrice.Text),
+                    ReorderQuantity = Convert.ToDecimal(textBoxStockLevelQuantity.Text),
+                    OnhandQuantity = Convert.ToDecimal(textBoxOnHandQuantity.Text),
+                    IsInventory = checkBoxIsInventory.Checked,
+                    IsPackage = checkBoxIsPackage.Checked,
+                    ExpiryDate = Convert.ToDateTime(dateTimePickerExpiryDate.Value).ToShortDateString(),
+                    LotNumber = textBoxLotNumber.Text,
+                    Remarks = textBoxRemarks.Text,
+                    ChildItemId = Convert.ToInt32(comboBoxChildItem.SelectedValue),
+                    cValue = Convert.ToDecimal(textBoxConversionValue.Text)
+                };
 
-                UpdateComponents(true);
-                mstItemListForm.UpdateItemListDataSource();
+                String[] lockItem = mstItemController.LockItem(mstItemEntity.Id, newItemEntity);
+                if (lockItem[1].Equals("0") == false)
+                {
+                    mstItemEntity.IsLocked = true;
+
+                    UpdateComponents(true);
+                    mstItemListForm.UpdateItemListDataSource();
+                }
+                else
+                {
+                    mstItemEntity.IsLocked = false;
+
+                    UpdateComponents(false);
+                    MessageBox.Show(lockItem[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                mstItemEntity.IsLocked = false;
-
-                UpdateComponents(false);
-                MessageBox.Show(lockItem[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -960,5 +1003,17 @@ namespace EasyPOS.Forms.Software.MstItem
             }
         }
 
+        private void textBoxConversionValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
