@@ -189,8 +189,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
         }
         private void buttonOverRide_Click(object sender, EventArgs e)
         {
-                Account.SysLogin.SysLoginForm login = new Account.SysLogin.SysLoginForm(null, this, null, null, true);
-                login.ShowDialog();
+            Account.SysLogin.SysLoginForm login = new Account.SysLogin.SysLoginForm(null, this, null, null, true);
+            login.ShowDialog();
         }
         public void OverrideSales(Int32 overrideUserId)
         {
@@ -460,7 +460,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     );
                 }
             }
-            
+
 
 
             textBoxTotalSalesAmount.Text = totalSalesAmount.ToString("#,##0.00");
@@ -546,10 +546,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     PriceSplitPercentage = PriceSplitPercentage,
                 };
 
-                TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(this, null, trnSalesLineEntity,null);
+                TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(this, null, trnSalesLineEntity, null);
                 trnSalesDetailSalesItemDetailForm.ShowDialog();
             }
-           
+
             if (e.RowIndex > -1 && dataGridViewSalesLineList.CurrentCell.ColumnIndex == dataGridViewSalesLineList.Columns["ColumnSalesLineDelete"].Index)
             {
                 DialogResult deleteDialogResult = MessageBox.Show("Delete Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -631,7 +631,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             PriceSplitPercentage = 0
                         };
 
-                        TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(this, null, trnSalesLineEntity,null);
+                        TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(this, null, trnSalesLineEntity, null);
                         trnSalesDetailSalesItemDetailForm.ShowDialog();
                     }
                     else
@@ -672,7 +672,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     String ItemDescription = row.Cells[5].Value.ToString();
                     Decimal Price = Convert.ToDecimal(row.Cells[9].Value);
                     Decimal Quantity = Convert.ToDecimal(row.Cells[6].Value);
-                   
+
 
                     listSalesLine.Add(new Entities.TrnSalesLineEntity()
                     {
@@ -757,12 +757,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     TrnPOSDiscountForm trnSalesDetailDiscountForm = new TrnPOSDiscountForm(this, null, salesAmount, new List<Entities.TrnSalesLineEntity>());
                     trnSalesDetailDiscountForm.ShowDialog();
                 }
-        }
+            }
             else
             {
-              MessageBox.Show("Cannot discount with empty sales.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cannot discount with empty sales.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-}
+        }
 
         private void buttonDownload_Click(object sender, EventArgs e)
         {
@@ -829,7 +829,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     trnSalesListForm.buttonAutoSales();
                 }
             }
-            
+
         }
 
         private void buttonUnlock_Click(object sender, EventArgs e)
@@ -1003,5 +1003,84 @@ namespace EasyPOS.Forms.Software.TrnPOS
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
+        private void dataGridViewSalesLineList_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dataGridViewSalesLineList.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    Int32 Id = Convert.ToInt32(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[2].Value);
+                    Int32 SalesId = Convert.ToInt32(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[3].Value);
+                    Int32 ItemId = Convert.ToInt32(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[4].Value);
+                    String ItemDescription = dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[5].Value.ToString();
+                    Decimal Quantity = Convert.ToDecimal(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[6].Value);
+                    Int32 UnitId = Convert.ToInt32(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[7].Value);
+                    String Unit = dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[8].Value.ToString();
+                    Decimal Price = Convert.ToDecimal(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[9].Value);
+                    Int32 DiscountId = Convert.ToInt32(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[10].Value);
+                    String Discount = dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[11].Value.ToString(); ;
+                    Decimal DiscountRate = Convert.ToDecimal(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[12].Value);
+                    Decimal DiscountAmount = Convert.ToDecimal(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[13].Value);
+                    Decimal NetPrice = Convert.ToDecimal(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[14].Value);
+                    Decimal Amount = Convert.ToDecimal(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[15].Value);
+                    Int32 TaxId = Convert.ToInt32(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[16].Value);
+                    String Tax = dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[17].Value.ToString();
+                    Decimal TaxRate = Convert.ToDecimal(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[18].Value);
+                    Decimal TaxAmount = Convert.ToDecimal(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[19].Value);
+                    Int32 SalesAccountId = Convert.ToInt32(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[20].Value);
+                    Int32 AssetAccountId = Convert.ToInt32(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[21].Value);
+                    Int32 CostAccountId = Convert.ToInt32(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[22].Value);
+                    Int32 TaxAccountId = Convert.ToInt32(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[23].Value);
+                    String SalesLineTimeStamp = dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[24].Value.ToString();
+                    Int32 UserId = Convert.ToInt32(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[25].Value);
+                    String Preparation = dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[26].Value.ToString();
+                    Decimal Price1 = Convert.ToDecimal(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[27].Value);
+                    Decimal Price2 = Convert.ToDecimal(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[28].Value);
+                    Decimal Price2LessTax = Convert.ToDecimal(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[29].Value);
+                    Decimal PriceSplitPercentage = Convert.ToDecimal(dataGridViewSalesLineList.Rows[dataGridViewSalesLineList.CurrentCell.RowIndex].Cells[30].Value);
+
+                    Entities.TrnSalesLineEntity trnSalesLineEntity = new Entities.TrnSalesLineEntity()
+                    {
+                        Id = Id,
+                        SalesId = SalesId,
+                        ItemId = ItemId,
+                        ItemDescription = ItemDescription,
+                        UnitId = UnitId,
+                        Unit = Unit,
+                        Price = Price,
+                        DiscountId = DiscountId,
+                        Discount = Discount,
+                        DiscountRate = DiscountRate,
+                        DiscountAmount = DiscountAmount,
+                        NetPrice = NetPrice,
+                        Quantity = Quantity,
+                        Amount = Amount,
+                        TaxId = TaxId,
+                        Tax = Tax,
+                        TaxRate = TaxRate,
+                        TaxAmount = TaxAmount,
+                        SalesAccountId = SalesAccountId,
+                        AssetAccountId = AssetAccountId,
+                        CostAccountId = CostAccountId,
+                        TaxAccountId = TaxAccountId,
+                        SalesLineTimeStamp = SalesLineTimeStamp,
+                        UserId = UserId,
+                        Preparation = Preparation,
+                        Price1 = Price1,
+                        Price2 = Price2,
+                        Price2LessTax = Price2LessTax,
+                        PriceSplitPercentage = PriceSplitPercentage,
+                    };
+
+                    TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(this, null, trnSalesLineEntity, null);
+                    trnSalesDetailSalesItemDetailForm.ShowDialog();
+                }
+            }
+        }
     }
 }
