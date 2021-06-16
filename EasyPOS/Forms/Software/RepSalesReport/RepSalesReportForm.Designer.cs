@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepSalesReportForm));
             this.panel4 = new System.Windows.Forms.Panel();
+            this.comboBoxSalesAgent = new System.Windows.Forms.ComboBox();
+            this.labelAgent = new System.Windows.Forms.Label();
             this.comboBoxCustomer = new System.Windows.Forms.ComboBox();
             this.labelCustomer = new System.Windows.Forms.Label();
             this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
@@ -50,8 +52,8 @@
             this.printDialogStockWithdrawalReport = new System.Windows.Forms.PrintDialog();
             this.folderBrowserDialogStockWithdrawalReport = new System.Windows.Forms.FolderBrowserDialog();
             this.folderBrowserDialogCollectionDetailReportFacepay = new System.Windows.Forms.FolderBrowserDialog();
-            this.comboBoxSalesAgent = new System.Windows.Forms.ComboBox();
-            this.labelAgent = new System.Windows.Forms.Label();
+            this.dateTimePickerDateAsOf = new System.Windows.Forms.DateTimePicker();
+            this.labelDateAsOf = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -61,6 +63,8 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.dateTimePickerDateAsOf);
+            this.panel4.Controls.Add(this.labelDateAsOf);
             this.panel4.Controls.Add(this.comboBoxSalesAgent);
             this.panel4.Controls.Add(this.labelAgent);
             this.panel4.Controls.Add(this.comboBoxCustomer);
@@ -79,6 +83,28 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1096, 510);
             this.panel4.TabIndex = 8;
+            // 
+            // comboBoxSalesAgent
+            // 
+            this.comboBoxSalesAgent.FormattingEnabled = true;
+            this.comboBoxSalesAgent.Location = new System.Drawing.Point(403, 164);
+            this.comboBoxSalesAgent.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxSalesAgent.Name = "comboBoxSalesAgent";
+            this.comboBoxSalesAgent.Size = new System.Drawing.Size(336, 27);
+            this.comboBoxSalesAgent.TabIndex = 28;
+            this.comboBoxSalesAgent.Visible = false;
+            // 
+            // labelAgent
+            // 
+            this.labelAgent.AutoSize = true;
+            this.labelAgent.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.labelAgent.Location = new System.Drawing.Point(318, 167);
+            this.labelAgent.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelAgent.Name = "labelAgent";
+            this.labelAgent.Size = new System.Drawing.Size(83, 19);
+            this.labelAgent.TabIndex = 29;
+            this.labelAgent.Text = "Sales Agent:";
+            this.labelAgent.Visible = false;
             // 
             // comboBoxCustomer
             // 
@@ -167,33 +193,33 @@
             this.listBoxSalesReport.Items.AddRange(new object[] {
             "Sales Summary Report",
             "Sales Detail Report",
-            "80mm Sales Summary Report",
-            "80mm Sales Detail Report",
-            "80mm Sales Status Report",
+            "Sales Return Detail Report",
             "",
             "Collection Summary Report",
             "Collection Detail Report",
+            "Collection Detail Report (Facepay)",
+            "",
+            "80mm Sales Summary Report",
+            "80mm Sales Detail Report",
+            "80mm Sales Status Report",
             "80mm Collection Detail Report",
             "",
             "Cancelled Summary Report",
-            "",
             "Stock Withdrawal Report",
-            "Collection Detail Report (Facepay)",
+            "",
+            "Sales Summary Reward Report",
+            "",
+            "Net Sales Summary Report - Monthly",
+            "Net Sales Summary Report - Daily",
             "",
             "Top Selling Items Report",
-            "",
-            "Sales Return Detail Report",
-            "",
-            "Customer List Report",
-            "Sales Summary Reward Report",
-            "Net Sales Summary Report - Daily",
-            "Net Sales Summary Report - Monthly",
-            "",
             "Hourly Top Selling Sales Report",
             "",
+            "Customer List Report",
             "Unsold Item Report",
+            "Cost Of Sales Report",
             "",
-            "Cost Of Sales Report"});
+            "Accounts Receivable"});
             this.listBoxSalesReport.Location = new System.Drawing.Point(0, 0);
             this.listBoxSalesReport.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxSalesReport.Name = "listBoxSalesReport";
@@ -325,27 +351,27 @@
             // 
             this.printDialogStockWithdrawalReport.UseEXDialog = true;
             // 
-            // comboBoxSalesAgent
+            // dateTimePickerDateAsOf
             // 
-            this.comboBoxSalesAgent.FormattingEnabled = true;
-            this.comboBoxSalesAgent.Location = new System.Drawing.Point(403, 164);
-            this.comboBoxSalesAgent.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxSalesAgent.Name = "comboBoxSalesAgent";
-            this.comboBoxSalesAgent.Size = new System.Drawing.Size(336, 27);
-            this.comboBoxSalesAgent.TabIndex = 28;
-            this.comboBoxSalesAgent.Visible = false;
+            this.dateTimePickerDateAsOf.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerDateAsOf.Location = new System.Drawing.Point(403, 195);
+            this.dateTimePickerDateAsOf.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePickerDateAsOf.Name = "dateTimePickerDateAsOf";
+            this.dateTimePickerDateAsOf.Size = new System.Drawing.Size(177, 26);
+            this.dateTimePickerDateAsOf.TabIndex = 30;
+            this.dateTimePickerDateAsOf.Visible = false;
             // 
-            // labelAgent
+            // labelDateAsOf
             // 
-            this.labelAgent.AutoSize = true;
-            this.labelAgent.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.labelAgent.Location = new System.Drawing.Point(318, 167);
-            this.labelAgent.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelAgent.Name = "labelAgent";
-            this.labelAgent.Size = new System.Drawing.Size(83, 19);
-            this.labelAgent.TabIndex = 29;
-            this.labelAgent.Text = "Sales Agent:";
-            this.labelAgent.Visible = false;
+            this.labelDateAsOf.AutoSize = true;
+            this.labelDateAsOf.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.labelDateAsOf.Location = new System.Drawing.Point(325, 198);
+            this.labelDateAsOf.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelDateAsOf.Name = "labelDateAsOf";
+            this.labelDateAsOf.Size = new System.Drawing.Size(74, 19);
+            this.labelDateAsOf.TabIndex = 31;
+            this.labelDateAsOf.Text = "Date as of:";
+            this.labelDateAsOf.Visible = false;
             // 
             // RepSalesReportForm
             // 
@@ -397,5 +423,7 @@
         private System.Windows.Forms.ListBox listBoxSalesReport;
         private System.Windows.Forms.ComboBox comboBoxSalesAgent;
         private System.Windows.Forms.Label labelAgent;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDateAsOf;
+        private System.Windows.Forms.Label labelDateAsOf;
     }
 }
