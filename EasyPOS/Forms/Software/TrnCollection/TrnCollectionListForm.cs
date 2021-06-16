@@ -255,9 +255,5 @@ namespace EasyPOS.Forms.Software.TrnCollection
             sysSoftwareForm.RemoveTabPage();
         }
 
-        private void dataGridViewCollectionList_CellClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

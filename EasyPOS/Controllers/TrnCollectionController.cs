@@ -501,7 +501,7 @@ namespace EasyPOS.Controllers
                     lockCollection.ManualORNumber = objCollection.ManualORNumber;
                     lockCollection.TerminalId = objCollection.TerminalId;
                     lockCollection.CustomerId = objCollection.CustomerId;
-                    lockCollection.SalesId = Convert.ToInt32(objCollection.SalesNumber);
+                    lockCollection.TrnSale.SalesNumber = objCollection.SalesNumber;
                     lockCollection.SalesBalanceAmount = objCollection.SalesBalanceAmount;
                     lockCollection.Amount = objCollection.Amount;
                     lockCollection.Remarks = objCollection.Remarks;
