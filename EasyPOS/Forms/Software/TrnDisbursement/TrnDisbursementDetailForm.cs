@@ -206,7 +206,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
 
             Entities.TrnDisbursementEntity newDisbursementEntity = new Entities.TrnDisbursementEntity()
             {
-                PeriodId = Convert.ToInt32(comboBoxTerminal.SelectedValue),
+                PeriodId = 1,
                 DisbursementDate = dateTimePickerRemittanceDate.Value.Date.ToShortDateString(),
                 DisbursementType = comboBoxRemittanceType.Text,
                 AccountId = Convert.ToInt32(comboBoxAccount.SelectedValue),

@@ -80,9 +80,9 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                 Unit = unit,
                 Quantity = quantity,
                 Cost = cost,
-                Amount = amount,
-
+                Amount = amount
             };
+
             Controllers.TrnPurchaseOrderLineController trnPOSPurchaseOrderLineController = new Controllers.TrnPurchaseOrderLineController();
             if (newPurchaseOrderLineEntity.Id == 0)
             {

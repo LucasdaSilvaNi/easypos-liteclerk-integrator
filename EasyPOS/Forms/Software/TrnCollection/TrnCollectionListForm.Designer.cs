@@ -29,12 +29,24 @@ namespace EasyPOS.Forms.Software.TrnCollection
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.dataGridViewCollectionList = new System.Windows.Forms.DataGridView();
+            this.textBoxCollectionListFilter = new System.Windows.Forms.TextBox();
+            this.dateTimePickerCollectionListFilter = new System.Windows.Forms.DateTimePicker();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonCollectionListPageListFirst = new System.Windows.Forms.Button();
+            this.buttonCollectionListPageListPrevious = new System.Windows.Forms.Button();
+            this.buttonCollectionListPageListNext = new System.Windows.Forms.Button();
+            this.buttonCollectionListPageListLast = new System.Windows.Forms.Button();
+            this.textBoxCollectionListPageNumber = new System.Windows.Forms.TextBox();
             this.ColumnCollectionListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnCollectionListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnCollectionListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,14 +74,6 @@ namespace EasyPOS.Forms.Software.TrnCollection
             this.ColumnCollectionListEntryDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCollectionListUpdateUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCollectionListUpdateDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBoxCollectionListFilter = new System.Windows.Forms.TextBox();
-            this.dateTimePickerCollectionListFilter = new System.Windows.Forms.DateTimePicker();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.buttonCollectionListPageListFirst = new System.Windows.Forms.Button();
-            this.buttonCollectionListPageListPrevious = new System.Windows.Forms.Button();
-            this.buttonCollectionListPageListNext = new System.Windows.Forms.Button();
-            this.buttonCollectionListPageListLast = new System.Windows.Forms.Button();
-            this.textBoxCollectionListPageNumber = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCollectionList)).BeginInit();
@@ -188,16 +192,123 @@ namespace EasyPOS.Forms.Software.TrnCollection
             this.ColumnCollectionListEntryDateTime,
             this.ColumnCollectionListUpdateUserId,
             this.ColumnCollectionListUpdateDateTime});
-            this.dataGridViewCollectionList.Location = new System.Drawing.Point(0, 78);
+            this.dataGridViewCollectionList.Location = new System.Drawing.Point(10, 84);
             this.dataGridViewCollectionList.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewCollectionList.MultiSelect = false;
             this.dataGridViewCollectionList.Name = "dataGridViewCollectionList";
             this.dataGridViewCollectionList.ReadOnly = true;
             this.dataGridViewCollectionList.RowTemplate.Height = 24;
             this.dataGridViewCollectionList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCollectionList.Size = new System.Drawing.Size(1080, 416);
+            this.dataGridViewCollectionList.Size = new System.Drawing.Size(1059, 410);
             this.dataGridViewCollectionList.TabIndex = 24;
             this.dataGridViewCollectionList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCollectionList_CellClick);
+            // 
+            // textBoxCollectionListFilter
+            // 
+            this.textBoxCollectionListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxCollectionListFilter.Location = new System.Drawing.Point(137, 54);
+            this.textBoxCollectionListFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxCollectionListFilter.Name = "textBoxCollectionListFilter";
+            this.textBoxCollectionListFilter.Size = new System.Drawing.Size(932, 26);
+            this.textBoxCollectionListFilter.TabIndex = 23;
+            // 
+            // dateTimePickerCollectionListFilter
+            // 
+            this.dateTimePickerCollectionListFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerCollectionListFilter.Location = new System.Drawing.Point(10, 54);
+            this.dateTimePickerCollectionListFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePickerCollectionListFilter.Name = "dateTimePickerCollectionListFilter";
+            this.dateTimePickerCollectionListFilter.Size = new System.Drawing.Size(123, 26);
+            this.dateTimePickerCollectionListFilter.TabIndex = 22;
+            this.dateTimePickerCollectionListFilter.ValueChanged += new System.EventHandler(this.dateTimePickerCollectionListFilter_ValueChanged);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.buttonCollectionListPageListFirst);
+            this.panel3.Controls.Add(this.buttonCollectionListPageListPrevious);
+            this.panel3.Controls.Add(this.buttonCollectionListPageListNext);
+            this.panel3.Controls.Add(this.buttonCollectionListPageListLast);
+            this.panel3.Controls.Add(this.textBoxCollectionListPageNumber);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 498);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1080, 46);
+            this.panel3.TabIndex = 25;
+            // 
+            // buttonCollectionListPageListFirst
+            // 
+            this.buttonCollectionListPageListFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonCollectionListPageListFirst.Enabled = false;
+            this.buttonCollectionListPageListFirst.FlatAppearance.BorderSize = 0;
+            this.buttonCollectionListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCollectionListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonCollectionListPageListFirst.Location = new System.Drawing.Point(10, 13);
+            this.buttonCollectionListPageListFirst.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonCollectionListPageListFirst.Name = "buttonCollectionListPageListFirst";
+            this.buttonCollectionListPageListFirst.Size = new System.Drawing.Size(66, 26);
+            this.buttonCollectionListPageListFirst.TabIndex = 13;
+            this.buttonCollectionListPageListFirst.Text = "First";
+            this.buttonCollectionListPageListFirst.UseVisualStyleBackColor = false;
+            // 
+            // buttonCollectionListPageListPrevious
+            // 
+            this.buttonCollectionListPageListPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonCollectionListPageListPrevious.Enabled = false;
+            this.buttonCollectionListPageListPrevious.FlatAppearance.BorderSize = 0;
+            this.buttonCollectionListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCollectionListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonCollectionListPageListPrevious.Location = new System.Drawing.Point(80, 13);
+            this.buttonCollectionListPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonCollectionListPageListPrevious.Name = "buttonCollectionListPageListPrevious";
+            this.buttonCollectionListPageListPrevious.Size = new System.Drawing.Size(66, 26);
+            this.buttonCollectionListPageListPrevious.TabIndex = 14;
+            this.buttonCollectionListPageListPrevious.Text = "Previous";
+            this.buttonCollectionListPageListPrevious.UseVisualStyleBackColor = false;
+            // 
+            // buttonCollectionListPageListNext
+            // 
+            this.buttonCollectionListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonCollectionListPageListNext.FlatAppearance.BorderSize = 0;
+            this.buttonCollectionListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCollectionListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonCollectionListPageListNext.Location = new System.Drawing.Point(210, 13);
+            this.buttonCollectionListPageListNext.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonCollectionListPageListNext.Name = "buttonCollectionListPageListNext";
+            this.buttonCollectionListPageListNext.Size = new System.Drawing.Size(66, 26);
+            this.buttonCollectionListPageListNext.TabIndex = 15;
+            this.buttonCollectionListPageListNext.Text = "Next";
+            this.buttonCollectionListPageListNext.UseVisualStyleBackColor = false;
+            // 
+            // buttonCollectionListPageListLast
+            // 
+            this.buttonCollectionListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonCollectionListPageListLast.FlatAppearance.BorderSize = 0;
+            this.buttonCollectionListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCollectionListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonCollectionListPageListLast.Location = new System.Drawing.Point(278, 13);
+            this.buttonCollectionListPageListLast.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonCollectionListPageListLast.Name = "buttonCollectionListPageListLast";
+            this.buttonCollectionListPageListLast.Size = new System.Drawing.Size(66, 26);
+            this.buttonCollectionListPageListLast.TabIndex = 16;
+            this.buttonCollectionListPageListLast.Text = "Last";
+            this.buttonCollectionListPageListLast.UseVisualStyleBackColor = false;
+            // 
+            // textBoxCollectionListPageNumber
+            // 
+            this.textBoxCollectionListPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBoxCollectionListPageNumber.BackColor = System.Drawing.Color.White;
+            this.textBoxCollectionListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxCollectionListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textBoxCollectionListPageNumber.Location = new System.Drawing.Point(150, 17);
+            this.textBoxCollectionListPageNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxCollectionListPageNumber.Name = "textBoxCollectionListPageNumber";
+            this.textBoxCollectionListPageNumber.ReadOnly = true;
+            this.textBoxCollectionListPageNumber.Size = new System.Drawing.Size(55, 16);
+            this.textBoxCollectionListPageNumber.TabIndex = 17;
+            this.textBoxCollectionListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ColumnCollectionListButtonEdit
             // 
@@ -305,6 +416,8 @@ namespace EasyPOS.Forms.Software.TrnCollection
             // ColumnCollectionListSalesId
             // 
             this.ColumnCollectionListSalesId.DataPropertyName = "ColumnCollectionListSalesId";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnCollectionListSalesId.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColumnCollectionListSalesId.HeaderText = "Sales Id";
             this.ColumnCollectionListSalesId.Name = "ColumnCollectionListSalesId";
             this.ColumnCollectionListSalesId.ReadOnly = true;
@@ -320,6 +433,8 @@ namespace EasyPOS.Forms.Software.TrnCollection
             // ColumnCollectionListAmount
             // 
             this.ColumnCollectionListAmount.DataPropertyName = "ColumnCollectionListAmount";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnCollectionListAmount.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnCollectionListAmount.HeaderText = "Amount";
             this.ColumnCollectionListAmount.Name = "ColumnCollectionListAmount";
             this.ColumnCollectionListAmount.ReadOnly = true;
@@ -328,6 +443,8 @@ namespace EasyPOS.Forms.Software.TrnCollection
             // ColumnCollectionListTenderAmount
             // 
             this.ColumnCollectionListTenderAmount.DataPropertyName = "ColumnCollectionListTenderAmount";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnCollectionListTenderAmount.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnCollectionListTenderAmount.HeaderText = "Tender Amount";
             this.ColumnCollectionListTenderAmount.Name = "ColumnCollectionListTenderAmount";
             this.ColumnCollectionListTenderAmount.ReadOnly = true;
@@ -335,6 +452,8 @@ namespace EasyPOS.Forms.Software.TrnCollection
             // ColumnCollectionListChangeAmount
             // 
             this.ColumnCollectionListChangeAmount.DataPropertyName = "ColumnCollectionListChangeAmount";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnCollectionListChangeAmount.DefaultCellStyle = dataGridViewCellStyle4;
             this.ColumnCollectionListChangeAmount.HeaderText = "Change Amount";
             this.ColumnCollectionListChangeAmount.Name = "ColumnCollectionListChangeAmount";
             this.ColumnCollectionListChangeAmount.ReadOnly = true;
@@ -412,113 +531,6 @@ namespace EasyPOS.Forms.Software.TrnCollection
             this.ColumnCollectionListUpdateDateTime.Name = "ColumnCollectionListUpdateDateTime";
             this.ColumnCollectionListUpdateDateTime.ReadOnly = true;
             this.ColumnCollectionListUpdateDateTime.Visible = false;
-            // 
-            // textBoxCollectionListFilter
-            // 
-            this.textBoxCollectionListFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxCollectionListFilter.Location = new System.Drawing.Point(129, 50);
-            this.textBoxCollectionListFilter.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxCollectionListFilter.Name = "textBoxCollectionListFilter";
-            this.textBoxCollectionListFilter.Size = new System.Drawing.Size(951, 26);
-            this.textBoxCollectionListFilter.TabIndex = 23;
-            // 
-            // dateTimePickerCollectionListFilter
-            // 
-            this.dateTimePickerCollectionListFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerCollectionListFilter.Location = new System.Drawing.Point(2, 50);
-            this.dateTimePickerCollectionListFilter.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePickerCollectionListFilter.Name = "dateTimePickerCollectionListFilter";
-            this.dateTimePickerCollectionListFilter.Size = new System.Drawing.Size(123, 26);
-            this.dateTimePickerCollectionListFilter.TabIndex = 22;
-            this.dateTimePickerCollectionListFilter.ValueChanged += new System.EventHandler(this.dateTimePickerCollectionListFilter_ValueChanged);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.buttonCollectionListPageListFirst);
-            this.panel3.Controls.Add(this.buttonCollectionListPageListPrevious);
-            this.panel3.Controls.Add(this.buttonCollectionListPageListNext);
-            this.panel3.Controls.Add(this.buttonCollectionListPageListLast);
-            this.panel3.Controls.Add(this.textBoxCollectionListPageNumber);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 498);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1080, 46);
-            this.panel3.TabIndex = 25;
-            // 
-            // buttonCollectionListPageListFirst
-            // 
-            this.buttonCollectionListPageListFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonCollectionListPageListFirst.Enabled = false;
-            this.buttonCollectionListPageListFirst.FlatAppearance.BorderSize = 0;
-            this.buttonCollectionListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCollectionListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonCollectionListPageListFirst.Location = new System.Drawing.Point(10, 13);
-            this.buttonCollectionListPageListFirst.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonCollectionListPageListFirst.Name = "buttonCollectionListPageListFirst";
-            this.buttonCollectionListPageListFirst.Size = new System.Drawing.Size(66, 26);
-            this.buttonCollectionListPageListFirst.TabIndex = 13;
-            this.buttonCollectionListPageListFirst.Text = "First";
-            this.buttonCollectionListPageListFirst.UseVisualStyleBackColor = false;
-            // 
-            // buttonCollectionListPageListPrevious
-            // 
-            this.buttonCollectionListPageListPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonCollectionListPageListPrevious.Enabled = false;
-            this.buttonCollectionListPageListPrevious.FlatAppearance.BorderSize = 0;
-            this.buttonCollectionListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCollectionListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonCollectionListPageListPrevious.Location = new System.Drawing.Point(80, 13);
-            this.buttonCollectionListPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonCollectionListPageListPrevious.Name = "buttonCollectionListPageListPrevious";
-            this.buttonCollectionListPageListPrevious.Size = new System.Drawing.Size(66, 26);
-            this.buttonCollectionListPageListPrevious.TabIndex = 14;
-            this.buttonCollectionListPageListPrevious.Text = "Previous";
-            this.buttonCollectionListPageListPrevious.UseVisualStyleBackColor = false;
-            // 
-            // buttonCollectionListPageListNext
-            // 
-            this.buttonCollectionListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonCollectionListPageListNext.FlatAppearance.BorderSize = 0;
-            this.buttonCollectionListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCollectionListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonCollectionListPageListNext.Location = new System.Drawing.Point(210, 13);
-            this.buttonCollectionListPageListNext.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonCollectionListPageListNext.Name = "buttonCollectionListPageListNext";
-            this.buttonCollectionListPageListNext.Size = new System.Drawing.Size(66, 26);
-            this.buttonCollectionListPageListNext.TabIndex = 15;
-            this.buttonCollectionListPageListNext.Text = "Next";
-            this.buttonCollectionListPageListNext.UseVisualStyleBackColor = false;
-            // 
-            // buttonCollectionListPageListLast
-            // 
-            this.buttonCollectionListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonCollectionListPageListLast.FlatAppearance.BorderSize = 0;
-            this.buttonCollectionListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCollectionListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonCollectionListPageListLast.Location = new System.Drawing.Point(278, 13);
-            this.buttonCollectionListPageListLast.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonCollectionListPageListLast.Name = "buttonCollectionListPageListLast";
-            this.buttonCollectionListPageListLast.Size = new System.Drawing.Size(66, 26);
-            this.buttonCollectionListPageListLast.TabIndex = 16;
-            this.buttonCollectionListPageListLast.Text = "Last";
-            this.buttonCollectionListPageListLast.UseVisualStyleBackColor = false;
-            // 
-            // textBoxCollectionListPageNumber
-            // 
-            this.textBoxCollectionListPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxCollectionListPageNumber.BackColor = System.Drawing.Color.White;
-            this.textBoxCollectionListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxCollectionListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxCollectionListPageNumber.Location = new System.Drawing.Point(150, 17);
-            this.textBoxCollectionListPageNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxCollectionListPageNumber.Name = "textBoxCollectionListPageNumber";
-            this.textBoxCollectionListPageNumber.ReadOnly = true;
-            this.textBoxCollectionListPageNumber.Size = new System.Drawing.Size(55, 16);
-            this.textBoxCollectionListPageNumber.TabIndex = 17;
-            this.textBoxCollectionListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TrnCollectionListForm
             // 

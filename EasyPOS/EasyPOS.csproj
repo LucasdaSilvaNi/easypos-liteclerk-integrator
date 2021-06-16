@@ -759,11 +759,11 @@
     <Compile Include="Forms\Software\TrnCollection\TrnCollectionDetailForm.Designer.cs">
       <DependentUpon>TrnCollectionDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Software\TrnCollection\TrnCollectionLineListForm.cs">
+    <Compile Include="Forms\Software\TrnCollection\TrnCollectionLineDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Software\TrnCollection\TrnCollectionLineListForm.Designer.cs">
-      <DependentUpon>TrnCollectionLineListForm.cs</DependentUpon>
+    <Compile Include="Forms\Software\TrnCollection\TrnCollectionLineDetailForm.Designer.cs">
+      <DependentUpon>TrnCollectionLineDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\TrnCollection\TrnCollectionListForm.cs">
       <SubType>Form</SubType>
@@ -1408,8 +1408,8 @@
     <EmbeddedResource Include="Forms\Software\TrnCollection\TrnCollectionDetailForm.resx">
       <DependentUpon>TrnCollectionDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Software\TrnCollection\TrnCollectionLineListForm.resx">
-      <DependentUpon>TrnCollectionLineListForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Software\TrnCollection\TrnCollectionLineDetailForm.resx">
+      <DependentUpon>TrnCollectionLineDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnCollection\TrnCollectionListForm.resx">
       <DependentUpon>TrnCollectionListForm.cs</DependentUpon>

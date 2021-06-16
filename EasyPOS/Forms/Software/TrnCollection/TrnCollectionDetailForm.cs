@@ -23,9 +23,11 @@ namespace EasyPOS.Forms.Software.TrnCollection
         public static Int32 CollectionLinePageSize = 50;
         public PagedList<Entities.DgvTrnCollectionLineListEntity> collectionLinePageList = new PagedList<Entities.DgvTrnCollectionLineListEntity>(collectionLineData, CollectionLinePageNumber, CollectionLinePageSize);
         public BindingSource collectionLineDataSource = new BindingSource();
-        public TrnCollectionDetailForm(SysSoftwareForm softwareForm, TrnCollectionListForm CollectionListForm, Entities.TrnCollectionEntity CollectionEntity)
+        public TrnCollectionDetailForm(SysSoftwareForm softwareForm, TrnCollectionListForm collectionListForm, Entities.TrnCollectionEntity collectionEntity)
         {
             InitializeComponent();
+            sysSoftwareForm = softwareForm;
+
             sysUserRights = new Modules.SysUserRightsModule("TrnCollectionDetail");
             if (sysUserRights.GetUserRights() == null)
             {
@@ -33,47 +35,14 @@ namespace EasyPOS.Forms.Software.TrnCollection
             }
             else
             {
-                trnCollectionListForm = CollectionListForm;
-                trnCollectionEntity = CollectionEntity;
+                trnCollectionListForm = collectionListForm;
+                trnCollectionEntity = collectionEntity;
 
-                GetCollectionNumber();
+                GetTerminal();
             }
         }
-        public void GetCollectionNumber()
-        {
-            Controllers.TrnCollectionController trnCollectionController = new Controllers.TrnCollectionController();
-            if (trnCollectionController.DropdownListCollectionNumber().Any())
-            {
-                comboBoxCollectionNumber.DataSource = trnCollectionController.DropdownListCollectionNumber();
-                comboBoxCollectionNumber.DisplayMember = "CollectionNumber";
 
-                GetPeriodId();
-            }
-        }
-        public void GetPeriodId()
-        {
-            Controllers.TrnCollectionController trnCollectionController = new Controllers.TrnCollectionController();
-            if (trnCollectionController.DropdownListCollectionPeriodId().Any())
-            {
-                comboBoxPeriodId.DataSource = trnCollectionController.DropdownListCollectionPeriodId();
-                comboBoxPeriodId.ValueMember = "Id";
-                comboBoxPeriodId.DisplayMember = "Period";
-
-                GetManualORNumber();
-            }
-        }
-        public void GetManualORNumber()
-        {
-            Controllers.TrnCollectionController trnCollectionController = new Controllers.TrnCollectionController();
-            if (trnCollectionController.DropdownListCollectionManualORNumber().Any())
-            {
-                comboBoxManualORNumber.DataSource = trnCollectionController.DropdownListCollectionManualORNumber();
-                comboBoxManualORNumber.DisplayMember = "ManualORNumber";
-
-                GetTerminalId();
-            }
-        }
-        public void GetTerminalId()
+        public void GetTerminal()
         {
             Controllers.TrnCollectionController trnCollectionController = new Controllers.TrnCollectionController();
             if (trnCollectionController.DropdownListCollectionTerminalId().Any())
@@ -94,42 +63,23 @@ namespace EasyPOS.Forms.Software.TrnCollection
                 comboBoxCustomer.ValueMember = "Id";
                 comboBoxCustomer.DisplayMember = "Customer";
 
-                GetSalesNumber();
+                GetSalesNumber(trnCollectionEntity.CustomerId, trnCollectionEntity.TerminalId);
             }
         }
-        public void GetSalesNumber()
-        {
-            Controllers.TrnCollectionController trnCollectionController = new Controllers.TrnCollectionController();
-            if (trnCollectionController.DropdownListCollectionSalesNumber().Any())
-            {
-                comboBoxSalesNumber.DataSource = trnCollectionController.DropdownListCollectionSalesNumber();
-                comboBoxSalesNumber.DisplayMember = "SalesNumber";
-                
-                GetSalesBalanceAmount();
-            }
-        }
-        public void GetSalesBalanceAmount()
-        {
-            Controllers.TrnCollectionController trnCollectionController = new Controllers.TrnCollectionController();
-            if (trnCollectionController.DropdownListCollectionSalesBalanceAmount().Any())
-            {
-                comboBoxSalesBalance.DataSource = trnCollectionController.DropdownListCollectionSalesBalanceAmount();
-                comboBoxSalesBalance.DisplayMember = "BalanceAmount";
 
-                GetSalesAmount();
-            }
-        }
-        public void GetSalesAmount()
+        public void GetSalesNumber(Int32 customerId, Int32 terminalId)
         {
             Controllers.TrnCollectionController trnCollectionController = new Controllers.TrnCollectionController();
-            if (trnCollectionController.DropdownListCollectionSalesAmount().Any())
+            if (trnCollectionController.DropdownListCollectionSalesNumberByCustomer(customerId, terminalId).Any())
             {
-                comboBoxAmount.DataSource = trnCollectionController.DropdownListCollectionSalesAmount();
-                comboBoxAmount.DisplayMember = "Amount";
+                comboBoxSalesNumber.DataSource = trnCollectionController.DropdownListCollectionSalesNumberByCustomer(customerId, terminalId);
+                comboBoxSalesNumber.ValueMember = "Id";
+                comboBoxSalesNumber.DisplayMember = "SalesNumber";
 
                 GetUserList();
             }
         }
+
         public void GetUserList()
         {
             Controllers.TrnCollectionController trnCollectionController = new Controllers.TrnCollectionController();
@@ -154,15 +104,14 @@ namespace EasyPOS.Forms.Software.TrnCollection
         {
             UpdateComponents(trnCollectionEntity.IsLocked);
 
-            comboBoxCollectionNumber.SelectedText = trnCollectionEntity.CollectionNumber;
-            comboBoxPeriodId.SelectedValue = trnCollectionEntity.PeriodId;
+            textBoxCollectionNumber.Text = trnCollectionEntity.CollectionNumber;
             dateTimePickerCollectionDate.Value = Convert.ToDateTime(trnCollectionEntity.CollectionDate);
-            comboBoxManualORNumber.SelectedText = trnCollectionEntity.ManualORNumber;
+            textBoxManualORNumber.Text = trnCollectionEntity.ManualORNumber;
             comboBoxTerminal.SelectedValue = trnCollectionEntity.TerminalId;
             comboBoxCustomer.SelectedValue = trnCollectionEntity.CustomerId;
             comboBoxSalesNumber.SelectedText = trnCollectionEntity.SalesNumber;
-            comboBoxSalesBalance.SelectedText = trnCollectionEntity.SalesBalanceAmount.ToString();
-            comboBoxAmount.SelectedText = trnCollectionEntity.Amount.ToString();
+            textBoxSalesBalance.Text = trnCollectionEntity.SalesBalanceAmount.ToString("#,#00.00");
+            textBoxTotalCollectionLineAmount.Text = trnCollectionEntity.Amount.ToString("#,#00.00");
             textBoxRemarks.Text = trnCollectionEntity.Remarks;
             comboBoxPreparedBy.SelectedValue = trnCollectionEntity.PreparedBy;
             comboBoxCheckedBy.SelectedValue = trnCollectionEntity.CheckedBy;
@@ -170,6 +119,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
 
             CreateCollectionLineListDataGridView();
         }
+
         public void UpdateComponents(Boolean isLocked)
         {
             if (sysUserRights.GetUserRights().CanLock == false)
@@ -200,13 +150,12 @@ namespace EasyPOS.Forms.Software.TrnCollection
             }
 
             dateTimePickerCollectionDate.Enabled = !isLocked;
-            comboBoxPeriodId.Enabled = !isLocked;
-            comboBoxManualORNumber.Enabled = !isLocked;
+            textBoxManualORNumber.Enabled = !isLocked;
             comboBoxTerminal.Enabled = !isLocked;
             comboBoxCustomer.Enabled = !isLocked;
             comboBoxSalesNumber.Enabled = !isLocked;
-            comboBoxSalesBalance.Enabled = !isLocked;
-            comboBoxAmount.Enabled = !isLocked;
+            textBoxSalesBalance.Enabled = !isLocked;
+            textBoxTotalCollectionLineAmount.Enabled = !isLocked;
             textBoxRemarks.Enabled = !isLocked;
             comboBoxPreparedBy.Enabled = !isLocked;
             comboBoxCheckedBy.Enabled = !isLocked;
@@ -225,15 +174,15 @@ namespace EasyPOS.Forms.Software.TrnCollection
 
                 Entities.TrnCollectionEntity newCollectionEntity = new Entities.TrnCollectionEntity()
                 {
-
-                    PeriodId = Convert.ToInt32(comboBoxPeriodId.SelectedValue),
+                    PeriodId = 1,
                     CollectionDate = dateTimePickerCollectionDate.Value.Date.ToShortDateString(),
-                    ManualORNumber = comboBoxManualORNumber.Text,
+                    ManualORNumber = textBoxManualORNumber.Text,
                     TerminalId = Convert.ToInt32(comboBoxTerminal.SelectedValue),
                     CustomerId = Convert.ToInt32(comboBoxCustomer.SelectedValue),
+                    SalesId = Convert.ToInt32(comboBoxSalesNumber.SelectedValue),
                     SalesNumber = comboBoxSalesNumber.Text,
-                    SalesBalanceAmount = Convert.ToDecimal(comboBoxSalesBalance.Text),
-                    Amount = Convert.ToDecimal(comboBoxAmount.Text),
+                    SalesBalanceAmount = Convert.ToDecimal(textBoxSalesBalance.Text),
+                    Amount = Convert.ToDecimal(textBoxTotalCollectionLineAmount.Text),
                     Remarks = textBoxRemarks.Text,
                     PreparedBy = Convert.ToInt32(comboBoxPreparedBy.SelectedValue),
                     CheckedBy = Convert.ToInt32(comboBoxCheckedBy.SelectedValue),
@@ -251,11 +200,11 @@ namespace EasyPOS.Forms.Software.TrnCollection
                     MessageBox.Show(lockCollection[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         private void buttonUnlock_Click(object sender, EventArgs e)
@@ -277,6 +226,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
         {
             SetCollectionLineListDataSourceAsync();
         }
+
         public async void SetCollectionLineListDataSourceAsync()
         {
             List<Entities.DgvTrnCollectionLineListEntity> getCollectionLineListData = await GetCollectionLineListDataTask();
@@ -345,8 +295,9 @@ namespace EasyPOS.Forms.Software.TrnCollection
                                 ColumnCollectionLineListButtonDelete = "Delete",
                                 ColumnCollectionLineListId = d.Id,
                                 ColumnCollectionLineListCollectionId = d.CollectionId,
-                                ColumnCollectionLineListAmount = d.Amount.ToString("#,##0.00"),
+                                ColumnCollectionLineListPayTypeId = d.PayTypeId,
                                 ColumnCollectionLineListPayType = d.PayType,
+                                ColumnCollectionLineListAmount = d.Amount.ToString("#,##0.00"),
                                 ColumnCollectionLineListCheckNumber = d.CheckNumber,
                                 ColumnCollectionLineListCheckDate = d.CheckDate,
                                 ColumnCollectionLineListCheckBank = d.CheckBank,
@@ -361,20 +312,25 @@ namespace EasyPOS.Forms.Software.TrnCollection
                                 ColumnCollectionLineListAccountId = d.AccountId.ToString(),
                                 ColumnCollectionLineListCreditCardReferenceNumber = d.CreditCardReferenceNumber,
                                 ColumnCollectionLineListCreditCardHolderName = d.CreditCardHolderName,
-                                ColumnCollectionLineListCreditCardExpiry = d.CreditCardExpiry,
-
+                                ColumnCollectionLineListCreditCardExpiry = d.CreditCardExpiry
                             };
+
+                Decimal amount = listCollectionLine.Sum(d => d.Amount);
+                textBoxTotalCollectionLineAmount.Text = amount.ToString("#,##0.00");
 
                 return Task.FromResult(items.ToList());
             }
             else
             {
+                textBoxTotalCollectionLineAmount.Text = "0.00";
                 return Task.FromResult(new List<Entities.DgvTrnCollectionLineListEntity>());
             }
         }
         public void CreateCollectionLineListDataGridView()
         {
             UpdateCollectionListDataSource();
+
+            dataGridViewCollectionLineList.AutoGenerateColumns = false;
 
             dataGridViewCollectionLineList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewCollectionLineList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -400,27 +356,35 @@ namespace EasyPOS.Forms.Software.TrnCollection
 
             if (e.RowIndex > -1 && dataGridViewCollectionLineList.CurrentCell.ColumnIndex == dataGridViewCollectionLineList.Columns["ColumnCollectionLineListButtonEdit"].Index)
             {
+                String checkDate = "";
+
+                if (dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListCheckDate"].Index].Value != null)
+                {
+                    checkDate = dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListCheckDate"].Index].Value.ToString();
+                }
+
                 var id = Convert.ToInt32(dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListId"].Index].Value);
                 var collectionId = Convert.ToInt32(dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListCollectionId"].Index].Value);
                 var amount = Convert.ToDecimal(dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListAmount"].Index].Value);
-                var paytype = dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListPayType"].Index].Value.ToString();
+                var payTypeId = dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListPayTypeId"].Index].Value.ToString();
                 var checkNumber = dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListCheckNumber"].Index].Value.ToString();
-                var checkDate = dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListCheckDate"].Index].Value.ToString();
                 var checkBank = dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListCheckBank"].Index].Value.ToString();
                 var verificationCode = dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListCreditCardVerificationCode"].Index].Value.ToString();
                 var creditCardNumber = dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListCreditCardNumber"].Index].Value.ToString();
+                var creditCardHolderName = dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListCreditCardHolderName"].Index].Value.ToString();
+                var creditCardReferenceNumber = dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListCreditCardReferenceNumber"].Index].Value.ToString();
+                var creditCardExpiry = dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListCreditCardExpiry"].Index].Value.ToString();
                 var creditCardType = dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListCreditCardType"].Index].Value.ToString();
                 var creditCardBank = dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListCreditCardBank"].Index].Value.ToString();
                 var giftCertificateNumber = dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListGiftCertificateNumber"].Index].Value.ToString();
                 var otherInformation = dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListOtherInformation"].Index].Value.ToString();
-                var stockInId = Convert.ToInt32(dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListStockInId"].Index].Value);
-                var accountId = Convert.ToInt32(dataGridViewCollectionLineList.Rows[e.RowIndex].Cells[dataGridViewCollectionLineList.Columns["ColumnCollectionLineListAccountId"].Index].Value);
+
                 Entities.TrnCollectionLineEntity trnCollectionLineEntity = new Entities.TrnCollectionLineEntity()
                 {
                     Id = id,
                     CollectionId = collectionId,
                     Amount = amount,
-                    PayType = paytype,
+                    PayTypeId = Convert.ToInt32(payTypeId),
                     CheckNumber = checkNumber,
                     CheckDate = checkDate,
                     CheckBank = checkBank,
@@ -430,13 +394,15 @@ namespace EasyPOS.Forms.Software.TrnCollection
                     CreditCardBank = creditCardBank,
                     GiftCertificateNumber = giftCertificateNumber,
                     OtherInformation = otherInformation,
-                    StockInId = stockInId,
-                    AccountId = accountId
+                    CreditCardHolderName = creditCardHolderName,
+                    CreditCardReferenceNumber = creditCardReferenceNumber,
+                    CreditCardExpiry = creditCardExpiry
                 };
 
-                //TrnCollectionLineDetailForm trnPurchaseOrderDetailPurchaseOrderLineItemDetailForm = new TrnCollectionLineDetailForm(this, trnCollectionLineEntity);
-                //trnPurchaseOrderDetailPurchaseOrderLineItemDetailForm.ShowDialog();
+                TrnCollectionLineDetailForm trnCollectionLineDetailForm = new TrnCollectionLineDetailForm(this, trnCollectionLineEntity);
+                trnCollectionLineDetailForm.ShowDialog();
             }
+
             if (e.RowIndex > -1 && dataGridViewCollectionLineList.CurrentCell.ColumnIndex == dataGridViewCollectionLineList.Columns["ColumnCollectionLineListButtonDelete"].Index)
             {
                 DialogResult deleteDialogResult = MessageBox.Show("Delete Collection?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -527,6 +493,81 @@ namespace EasyPOS.Forms.Software.TrnCollection
             textBoxCollectionLineListPageNumber.Text = CollectionLinePageNumber + " / " + collectionLinePageList.PageCount;
         }
 
-        
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            sysSoftwareForm.RemoveTabPage();
+        }
+
+        private void comboBoxCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxCustomer.SelectedItem == null)
+            {
+                return;
+            }
+
+            var selectedItemCustomer = (Entities.MstCustomerEntity)comboBoxCustomer.SelectedItem;
+            if (selectedItemCustomer != null)
+            {
+                comboBoxSalesNumber.Text = "";
+                comboBoxSalesNumber.DataSource = new List<Entities.TrnSalesEntity>();
+
+                trnCollectionEntity.SalesId = null;
+                textBoxSalesBalance.Text = "0.00";
+
+                Int32 terminalId = Convert.ToInt32(comboBoxTerminal.SelectedValue);
+                Int32 customerId = selectedItemCustomer.Id;
+
+                Controllers.TrnCollectionController trnCollectionController = new Controllers.TrnCollectionController();
+                if (trnCollectionController.DropdownListCollectionSalesNumberByCustomer(customerId, terminalId).Any())
+                {
+                    comboBoxSalesNumber.DataSource = trnCollectionController.DropdownListCollectionSalesNumberByCustomer(customerId, terminalId);
+                    comboBoxSalesNumber.Text = trnCollectionController.DropdownListCollectionSalesNumberByCustomer(customerId, terminalId).FirstOrDefault().SalesNumber;
+                }
+            }
+        }
+
+        private void buttonAddCollectionLine_Click(object sender, EventArgs e)
+        {
+            Entities.TrnCollectionLineEntity trnCollectionLineEntity = new Entities.TrnCollectionLineEntity()
+            {
+                Id = 0,
+                CollectionId = trnCollectionEntity.Id,
+                Amount = 0,
+                PayTypeId = 1,
+                CheckNumber = "",
+                CheckDate = "",
+                CheckBank = "",
+                CreditCardVerificationCode = "",
+                CreditCardNumber = "",
+                CreditCardType = "",
+                CreditCardBank = "",
+                GiftCertificateNumber = "",
+                OtherInformation = "",
+                CreditCardHolderName = "",
+                CreditCardReferenceNumber = "",
+                CreditCardExpiry = ""
+            };
+
+            TrnCollectionLineDetailForm trnCollectionLineDetailForm = new TrnCollectionLineDetailForm(this, trnCollectionLineEntity);
+            trnCollectionLineDetailForm.ShowDialog();
+        }
+
+        private void comboBoxSalesNumber_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxSalesNumber.SelectedItem == null)
+            {
+                return;
+            }
+
+            var selectedSalesNumber = (Entities.TrnSalesEntity)comboBoxSalesNumber.SelectedItem;
+            if (selectedSalesNumber != null)
+            {
+                textBoxSalesBalance.Text = selectedSalesNumber.BalanceAmount.ToString("#,##0.00");
+            }
+            else
+            {
+                textBoxSalesBalance.Text = "0.00";
+            }
+        }
     }
 }

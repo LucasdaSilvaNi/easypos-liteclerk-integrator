@@ -30,10 +30,10 @@ namespace EasyPOS.Controllers
         public List<Entities.TrnCollectionEntity> DropdownListCollectionNumber()
         {
             var collection = from d in db.TrnCollections
-                        select new Entities.TrnCollectionEntity
-                        {
-                            CollectionNumber = d.CollectionNumber
-                        };
+                             select new Entities.TrnCollectionEntity
+                             {
+                                 CollectionNumber = d.CollectionNumber
+                             };
 
             return collection.ToList();
         }
@@ -44,11 +44,11 @@ namespace EasyPOS.Controllers
         public List<Entities.MstPeriodEntity> DropdownListCollectionPeriodId()
         {
             var period = from d in db.MstPeriods
-                             select new Entities.MstPeriodEntity
-                             {
-                                 Id = d.Id,
-                                 Period = d.Period
-                             };
+                         select new Entities.MstPeriodEntity
+                         {
+                             Id = d.Id,
+                             Period = d.Period
+                         };
 
             return period.ToList();
         }
@@ -58,10 +58,10 @@ namespace EasyPOS.Controllers
         public List<Entities.TrnCollectionEntity> DropdownListCollectionManualORNumber()
         {
             var ManualORNumber = from d in db.TrnCollections
-                             select new Entities.TrnCollectionEntity
-                             {
-                                 ManualORNumber = d.ManualORNumber
-                             };
+                                 select new Entities.TrnCollectionEntity
+                                 {
+                                     ManualORNumber = d.ManualORNumber
+                                 };
 
             return ManualORNumber.ToList();
         }
@@ -71,11 +71,11 @@ namespace EasyPOS.Controllers
         public List<Entities.MstTerminalEntity> DropdownListCollectionTerminalId()
         {
             var Terminal = from d in db.MstTerminals
-                             select new Entities.MstTerminalEntity
-                             {
-                                 Id = d.Id,
-                                 Terminal = d.Terminal
-                             };
+                           select new Entities.MstTerminalEntity
+                           {
+                               Id = d.Id,
+                               Terminal = d.Terminal
+                           };
 
             return Terminal.ToList();
         }
@@ -93,29 +93,38 @@ namespace EasyPOS.Controllers
 
             return customer.ToList();
         }
-        // ================================
+
+        // ==========================
         // Dropdown List Sales Number
-        // ================================
-        public List<Entities.TrnSalesEntity> DropdownListCollectionSalesNumber()
+        // ==========================
+        public List<Entities.TrnSalesEntity> DropdownListCollectionSalesNumberByCustomer(Int32 customerId, Int32 terminalId)
         {
             var salesNumber = from d in db.TrnSales
-                           select new Entities.TrnSalesEntity
-                           {
-                               SalesNumber = d.SalesNumber
-                           };
+                              where d.CustomerId == customerId
+                              && d.TerminalId == terminalId
+                              && d.IsLocked == true
+                              select new Entities.TrnSalesEntity
+                              {
+                                  Id = d.Id,
+                                  SalesNumber = d.SalesNumber,
+                                  Amount = d.Amount,
+                                  PaidAmount = d.PaidAmount,
+                                  BalanceAmount = d.BalanceAmount
+                              };
 
             return salesNumber.ToList();
         }
+
         // ================================
         // Dropdown List Sales Number
         // ================================
         public List<Entities.TrnSalesEntity> DropdownListCollectionSalesBalanceAmount()
         {
             var salesBalance = from d in db.TrnSales
-                              select new Entities.TrnSalesEntity
-                              {
-                                  BalanceAmount = d.BalanceAmount
-                              };
+                               select new Entities.TrnSalesEntity
+                               {
+                                   BalanceAmount = d.BalanceAmount
+                               };
 
             return salesBalance.ToList();
         }
@@ -125,10 +134,10 @@ namespace EasyPOS.Controllers
         public List<Entities.TrnSalesEntity> DropdownListCollectionSalesAmount()
         {
             var Amount = from d in db.TrnSales
-                               select new Entities.TrnSalesEntity
-                               {
-                                   Amount = d.Amount
-                               };
+                         select new Entities.TrnSalesEntity
+                         {
+                             Amount = d.Amount
+                         };
 
             return Amount.ToList();
         }
@@ -397,8 +406,8 @@ namespace EasyPOS.Controllers
                 }
 
                 var period = from d in db.MstPeriods
-                               where d.Id == objCollection.PeriodId
-                               select d;
+                             where d.Id == objCollection.PeriodId
+                             select d;
 
                 if (period.Any() == false)
                 {
@@ -406,15 +415,15 @@ namespace EasyPOS.Controllers
                 }
 
                 var manualORNumber = from d in db.TrnCollections
-                                       where d.ManualORNumber == objCollection.ManualORNumber
-                                       select d;
+                                     where d.ManualORNumber == objCollection.ManualORNumber
+                                     select d;
                 if (manualORNumber.Any() == false)
                 {
                     return new String[] { "Manual OR Number not found.", "0" };
                 }
                 var terminal = from d in db.MstTerminals
-                                     where d.Id == Convert.ToInt32(objCollection.TerminalId)
-                                     select d;
+                               where d.Id == Convert.ToInt32(objCollection.TerminalId)
+                               select d;
                 if (terminal.Any() == false)
                 {
                     return new String[] { "Terminal Id not found.", "0" };
@@ -437,16 +446,16 @@ namespace EasyPOS.Controllers
                     return new String[] { "Sales Number not found.", "0" };
                 }
                 var salesBalanceAmount = from d in db.TrnSales
-                                  where d.BalanceAmount == objCollection.SalesBalanceAmount
-                                  select d;
+                                         where d.BalanceAmount == objCollection.SalesBalanceAmount
+                                         select d;
 
                 if (salesBalanceAmount.Any() == false)
                 {
                     return new String[] { "Sales Balance Amount not found.", "0" };
                 }
                 var amount = from d in db.TrnSales
-                                  where d.Amount == objCollection.Amount
-                                  select d;
+                             where d.Amount == objCollection.Amount
+                             select d;
 
                 if (amount.Any() == false)
                 {
@@ -454,15 +463,15 @@ namespace EasyPOS.Controllers
                 }
 
                 var preparedByUser = from d in db.MstUsers
-                                    where d.Id == objCollection.PreparedBy
-                                    && d.IsLocked == true
-                                    select d;
+                                     where d.Id == objCollection.PreparedBy
+                                     && d.IsLocked == true
+                                     select d;
 
                 if (preparedByUser.Any() == false)
                 {
                     return new String[] { "Prepared by user not found.", "0" };
                 }
-                    var checkedByUser = from d in db.MstUsers
+                var checkedByUser = from d in db.MstUsers
                                     where d.Id == objCollection.CheckedBy
                                     && d.IsLocked == true
                                     select d;
@@ -483,8 +492,8 @@ namespace EasyPOS.Controllers
                 }
 
                 var collection = from d in db.TrnCollections
-                                    where d.Id == id
-                                    select d;
+                                 where d.Id == id
+                                 select d;
 
                 if (collection.Any())
                 {
@@ -513,6 +522,31 @@ namespace EasyPOS.Controllers
                     lockCollection.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
                     lockCollection.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
+
+                    if (objCollection.SalesId != null)
+                    {
+                        var sales = from d in db.TrnSales
+                                    where d.Id == objCollection.SalesId
+                                    select d;
+
+                        if (sales.Any())
+                        {
+                            Decimal totalCollectionLineAmount = 0;
+
+                            var collectionLines = from d in db.TrnCollectionLines
+                                                  where d.CollectionId == objCollection.Id
+                                                  select d;
+
+                            if (collectionLines.Any())
+                            {
+                                totalCollectionLineAmount = collectionLines.Sum(d => d.Amount);
+                            }
+
+                            var updateSales = sales.FirstOrDefault();
+                            updateSales.BalanceAmount = sales.FirstOrDefault().Amount - totalCollectionLineAmount;
+                            db.SubmitChanges();
+                        }
+                    }
 
                     String newObject = Modules.SysAuditTrailModule.GetObjectString(collection.FirstOrDefault());
 
@@ -554,8 +588,8 @@ namespace EasyPOS.Controllers
                 }
 
                 var collection = from d in db.TrnCollections
-                                    where d.Id == id
-                                    select d;
+                                 where d.Id == id
+                                 select d;
 
                 if (collection.Any())
                 {

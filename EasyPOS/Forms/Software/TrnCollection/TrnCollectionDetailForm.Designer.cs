@@ -30,10 +30,11 @@ namespace EasyPOS.Forms.Software.TrnCollection
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel4 = new System.Windows.Forms.Panel();
             this.buttonCollectionLineListPageListFirst = new System.Windows.Forms.Button();
             this.buttonCollectionLineListPageListPrevious = new System.Windows.Forms.Button();
@@ -45,14 +46,14 @@ namespace EasyPOS.Forms.Software.TrnCollection
             this.ColumnCollectionLineListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnCollectionLineListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCollectionLineListCollectionId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCollectionLineListAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCollectionLineListPayTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCollectionLineListPayType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCollectionLineListCheckNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCollectionLineListAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCollectionLineListCheckNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCollectionLineListCheckDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCollectionLineListCheckBank = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCollectionLineListVerification = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCollectionLineListCreditCardNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCollectionLineListCreditCardVerificationCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCollectionLineListCreditCardNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCollectionLineListCreditCardType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCollectionLineListCreditCardBank = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCollectionLineListGiftCertificateNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,18 +72,16 @@ namespace EasyPOS.Forms.Software.TrnCollection
             this.buttonPrint = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Forms = new System.Windows.Forms.Panel();
-            this.comboBoxAmount = new System.Windows.Forms.ComboBox();
+            this.textBoxSalesBalance = new System.Windows.Forms.TextBox();
+            this.textBoxTotalCollectionLineAmount = new System.Windows.Forms.TextBox();
+            this.textBoxManualORNumber = new System.Windows.Forms.TextBox();
+            this.textBoxCollectionNumber = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.comboBoxSalesBalance = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxPeriodId = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.comboBoxTerminal = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBoxManualORNumber = new System.Windows.Forms.ComboBox();
             this.comboBoxSalesNumber = new System.Windows.Forms.ComboBox();
-            this.comboBoxCollectionNumber = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBoxCustomer = new System.Windows.Forms.ComboBox();
@@ -97,6 +96,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePickerCollectionDate = new System.Windows.Forms.DateTimePicker();
+            this.buttonAddCollectionLine = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCollectionLineList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -222,14 +222,14 @@ namespace EasyPOS.Forms.Software.TrnCollection
             this.ColumnCollectionLineListButtonDelete,
             this.ColumnCollectionLineListId,
             this.ColumnCollectionLineListCollectionId,
-            this.ColumnCollectionLineListAmount,
             this.ColumnCollectionLineListPayTypeId,
             this.ColumnCollectionLineListPayType,
-            this.ColumnCollectionLineListCheckNo,
+            this.ColumnCollectionLineListAmount,
+            this.ColumnCollectionLineListCheckNumber,
             this.ColumnCollectionLineListCheckDate,
             this.ColumnCollectionLineListCheckBank,
-            this.ColumnCollectionLineListVerification,
-            this.ColumnCollectionLineListCreditCardNo,
+            this.ColumnCollectionLineListCreditCardVerificationCode,
+            this.ColumnCollectionLineListCreditCardNumber,
             this.ColumnCollectionLineListCreditCardType,
             this.ColumnCollectionLineListCreditCardBank,
             this.ColumnCollectionLineListGiftCertificateNumber,
@@ -240,16 +240,16 @@ namespace EasyPOS.Forms.Software.TrnCollection
             this.ColumnCollectionLineListCreditCardReferenceNumber,
             this.ColumnCollectionLineListCreditCardHolderName,
             this.ColumnCollectionLineListCreditCardExpiry});
-            this.dataGridViewCollectionLineList.Location = new System.Drawing.Point(0, 225);
+            this.dataGridViewCollectionLineList.Location = new System.Drawing.Point(10, 256);
             this.dataGridViewCollectionLineList.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewCollectionLineList.Name = "dataGridViewCollectionLineList";
             this.dataGridViewCollectionLineList.ReadOnly = true;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.dataGridViewCollectionLineList.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.dataGridViewCollectionLineList.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewCollectionLineList.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.dataGridViewCollectionLineList.RowTemplate.Height = 24;
             this.dataGridViewCollectionLineList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCollectionLineList.Size = new System.Drawing.Size(1075, 289);
+            this.dataGridViewCollectionLineList.Size = new System.Drawing.Size(1076, 258);
             this.dataGridViewCollectionLineList.TabIndex = 42;
             this.dataGridViewCollectionLineList.TabStop = false;
             this.dataGridViewCollectionLineList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCollectionLineList_CellClick);
@@ -288,14 +288,6 @@ namespace EasyPOS.Forms.Software.TrnCollection
             this.ColumnCollectionLineListCollectionId.ReadOnly = true;
             this.ColumnCollectionLineListCollectionId.Visible = false;
             // 
-            // ColumnCollectionLineListAmount
-            // 
-            this.ColumnCollectionLineListAmount.DataPropertyName = "ColumnCollectionLineListAmount";
-            this.ColumnCollectionLineListAmount.HeaderText = "Amount";
-            this.ColumnCollectionLineListAmount.Name = "ColumnCollectionLineListAmount";
-            this.ColumnCollectionLineListAmount.ReadOnly = true;
-            this.ColumnCollectionLineListAmount.Visible = false;
-            // 
             // ColumnCollectionLineListPayTypeId
             // 
             this.ColumnCollectionLineListPayTypeId.DataPropertyName = "ColumnCollectionLineListPayTypeId";
@@ -311,13 +303,21 @@ namespace EasyPOS.Forms.Software.TrnCollection
             this.ColumnCollectionLineListPayType.Name = "ColumnCollectionLineListPayType";
             this.ColumnCollectionLineListPayType.ReadOnly = true;
             // 
-            // ColumnCollectionLineListCheckNo
+            // ColumnCollectionLineListAmount
             // 
-            this.ColumnCollectionLineListCheckNo.DataPropertyName = "ColumnCollectionLineListCheckNo";
-            this.ColumnCollectionLineListCheckNo.HeaderText = "Check No.";
-            this.ColumnCollectionLineListCheckNo.Name = "ColumnCollectionLineListCheckNo";
-            this.ColumnCollectionLineListCheckNo.ReadOnly = true;
-            this.ColumnCollectionLineListCheckNo.Visible = false;
+            this.ColumnCollectionLineListAmount.DataPropertyName = "ColumnCollectionLineListAmount";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnCollectionLineListAmount.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnCollectionLineListAmount.HeaderText = "Amount";
+            this.ColumnCollectionLineListAmount.Name = "ColumnCollectionLineListAmount";
+            this.ColumnCollectionLineListAmount.ReadOnly = true;
+            // 
+            // ColumnCollectionLineListCheckNumber
+            // 
+            this.ColumnCollectionLineListCheckNumber.DataPropertyName = "ColumnCollectionLineListCheckNumber";
+            this.ColumnCollectionLineListCheckNumber.HeaderText = "Check No.";
+            this.ColumnCollectionLineListCheckNumber.Name = "ColumnCollectionLineListCheckNumber";
+            this.ColumnCollectionLineListCheckNumber.ReadOnly = true;
             // 
             // ColumnCollectionLineListCheckDate
             // 
@@ -329,29 +329,29 @@ namespace EasyPOS.Forms.Software.TrnCollection
             // ColumnCollectionLineListCheckBank
             // 
             this.ColumnCollectionLineListCheckBank.DataPropertyName = "ColumnCollectionLineListCheckBank";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnCollectionLineListCheckBank.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnCollectionLineListCheckBank.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnCollectionLineListCheckBank.HeaderText = "Check Bank";
             this.ColumnCollectionLineListCheckBank.Name = "ColumnCollectionLineListCheckBank";
             this.ColumnCollectionLineListCheckBank.ReadOnly = true;
             // 
-            // ColumnCollectionLineListVerification
+            // ColumnCollectionLineListCreditCardVerificationCode
             // 
-            this.ColumnCollectionLineListVerification.DataPropertyName = "ColumnCollectionLineListVerification";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnCollectionLineListVerification.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnCollectionLineListVerification.HeaderText = "Verification";
-            this.ColumnCollectionLineListVerification.Name = "ColumnCollectionLineListVerification";
-            this.ColumnCollectionLineListVerification.ReadOnly = true;
-            // 
-            // ColumnCollectionLineListCreditCardNo
-            // 
-            this.ColumnCollectionLineListCreditCardNo.DataPropertyName = "ColumnCollectionLineListCreditCardNo";
+            this.ColumnCollectionLineListCreditCardVerificationCode.DataPropertyName = "ColumnCollectionLineListCreditCardVerificationCode";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnCollectionLineListCreditCardNo.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ColumnCollectionLineListCreditCardNo.HeaderText = "Credit Card No.";
-            this.ColumnCollectionLineListCreditCardNo.Name = "ColumnCollectionLineListCreditCardNo";
-            this.ColumnCollectionLineListCreditCardNo.ReadOnly = true;
+            this.ColumnCollectionLineListCreditCardVerificationCode.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColumnCollectionLineListCreditCardVerificationCode.HeaderText = "Verification";
+            this.ColumnCollectionLineListCreditCardVerificationCode.Name = "ColumnCollectionLineListCreditCardVerificationCode";
+            this.ColumnCollectionLineListCreditCardVerificationCode.ReadOnly = true;
+            // 
+            // ColumnCollectionLineListCreditCardNumber
+            // 
+            this.ColumnCollectionLineListCreditCardNumber.DataPropertyName = "ColumnCollectionLineListCreditCardNumber";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnCollectionLineListCreditCardNumber.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ColumnCollectionLineListCreditCardNumber.HeaderText = "Credit Card No.";
+            this.ColumnCollectionLineListCreditCardNumber.Name = "ColumnCollectionLineListCreditCardNumber";
+            this.ColumnCollectionLineListCreditCardNumber.ReadOnly = true;
             // 
             // ColumnCollectionLineListCreditCardType
             // 
@@ -395,6 +395,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
             this.ColumnCollectionLineListStockInId.HeaderText = "StockIn Id";
             this.ColumnCollectionLineListStockInId.Name = "ColumnCollectionLineListStockInId";
             this.ColumnCollectionLineListStockInId.ReadOnly = true;
+            this.ColumnCollectionLineListStockInId.Visible = false;
             // 
             // ColumnCollectionLineListAccountId
             // 
@@ -402,6 +403,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
             this.ColumnCollectionLineListAccountId.HeaderText = "Account Id";
             this.ColumnCollectionLineListAccountId.Name = "ColumnCollectionLineListAccountId";
             this.ColumnCollectionLineListAccountId.ReadOnly = true;
+            this.ColumnCollectionLineListAccountId.Visible = false;
             // 
             // ColumnCollectionLineListCreditCardReferenceNumber
             // 
@@ -444,6 +446,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // label1
             // 
@@ -532,7 +535,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.buttonClose);
-            this.panel1.Cursor = System.Windows.Forms.Cursors.SizeAll;
+            this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
@@ -543,18 +546,16 @@ namespace EasyPOS.Forms.Software.TrnCollection
             // Forms
             // 
             this.Forms.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Forms.Controls.Add(this.comboBoxAmount);
+            this.Forms.Controls.Add(this.textBoxSalesBalance);
+            this.Forms.Controls.Add(this.textBoxTotalCollectionLineAmount);
+            this.Forms.Controls.Add(this.textBoxManualORNumber);
+            this.Forms.Controls.Add(this.textBoxCollectionNumber);
             this.Forms.Controls.Add(this.label14);
-            this.Forms.Controls.Add(this.comboBoxSalesBalance);
             this.Forms.Controls.Add(this.label5);
-            this.Forms.Controls.Add(this.comboBoxPeriodId);
-            this.Forms.Controls.Add(this.label10);
             this.Forms.Controls.Add(this.label9);
             this.Forms.Controls.Add(this.comboBoxTerminal);
             this.Forms.Controls.Add(this.label8);
-            this.Forms.Controls.Add(this.comboBoxManualORNumber);
             this.Forms.Controls.Add(this.comboBoxSalesNumber);
-            this.Forms.Controls.Add(this.comboBoxCollectionNumber);
             this.Forms.Controls.Add(this.label3);
             this.Forms.Controls.Add(this.label6);
             this.Forms.Controls.Add(this.comboBoxCustomer);
@@ -574,77 +575,89 @@ namespace EasyPOS.Forms.Software.TrnCollection
             this.Forms.Margin = new System.Windows.Forms.Padding(2);
             this.Forms.Name = "Forms";
             this.Forms.Padding = new System.Windows.Forms.Padding(8);
-            this.Forms.Size = new System.Drawing.Size(1096, 177);
+            this.Forms.Size = new System.Drawing.Size(1096, 166);
             this.Forms.TabIndex = 46;
             // 
-            // comboBoxAmount
+            // textBoxSalesBalance
             // 
-            this.comboBoxAmount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBoxAmount.FormattingEnabled = true;
-            this.comboBoxAmount.Location = new System.Drawing.Point(517, 67);
-            this.comboBoxAmount.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxAmount.Name = "comboBoxAmount";
-            this.comboBoxAmount.Size = new System.Drawing.Size(239, 27);
-            this.comboBoxAmount.TabIndex = 41;
+            this.textBoxSalesBalance.AcceptsTab = true;
+            this.textBoxSalesBalance.Enabled = false;
+            this.textBoxSalesBalance.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxSalesBalance.HideSelection = false;
+            this.textBoxSalesBalance.Location = new System.Drawing.Point(489, 38);
+            this.textBoxSalesBalance.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxSalesBalance.Name = "textBoxSalesBalance";
+            this.textBoxSalesBalance.ReadOnly = true;
+            this.textBoxSalesBalance.Size = new System.Drawing.Size(197, 26);
+            this.textBoxSalesBalance.TabIndex = 45;
+            this.textBoxSalesBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBoxTotalCollectionLineAmount
+            // 
+            this.textBoxTotalCollectionLineAmount.AcceptsTab = true;
+            this.textBoxTotalCollectionLineAmount.Enabled = false;
+            this.textBoxTotalCollectionLineAmount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxTotalCollectionLineAmount.HideSelection = false;
+            this.textBoxTotalCollectionLineAmount.Location = new System.Drawing.Point(489, 69);
+            this.textBoxTotalCollectionLineAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxTotalCollectionLineAmount.Name = "textBoxTotalCollectionLineAmount";
+            this.textBoxTotalCollectionLineAmount.ReadOnly = true;
+            this.textBoxTotalCollectionLineAmount.Size = new System.Drawing.Size(197, 26);
+            this.textBoxTotalCollectionLineAmount.TabIndex = 44;
+            this.textBoxTotalCollectionLineAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBoxManualORNumber
+            // 
+            this.textBoxManualORNumber.AcceptsTab = true;
+            this.textBoxManualORNumber.Enabled = false;
+            this.textBoxManualORNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxManualORNumber.HideSelection = false;
+            this.textBoxManualORNumber.Location = new System.Drawing.Point(146, 69);
+            this.textBoxManualORNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxManualORNumber.Name = "textBoxManualORNumber";
+            this.textBoxManualORNumber.Size = new System.Drawing.Size(240, 26);
+            this.textBoxManualORNumber.TabIndex = 43;
+            // 
+            // textBoxCollectionNumber
+            // 
+            this.textBoxCollectionNumber.AcceptsTab = true;
+            this.textBoxCollectionNumber.Enabled = false;
+            this.textBoxCollectionNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxCollectionNumber.HideSelection = false;
+            this.textBoxCollectionNumber.Location = new System.Drawing.Point(147, 8);
+            this.textBoxCollectionNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxCollectionNumber.Name = "textBoxCollectionNumber";
+            this.textBoxCollectionNumber.ReadOnly = true;
+            this.textBoxCollectionNumber.Size = new System.Drawing.Size(197, 26);
+            this.textBoxCollectionNumber.TabIndex = 42;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label14.Location = new System.Drawing.Point(453, 71);
+            this.label14.Location = new System.Drawing.Point(425, 73);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(62, 19);
             this.label14.TabIndex = 40;
             this.label14.Text = "Amount:";
             // 
-            // comboBoxSalesBalance
-            // 
-            this.comboBoxSalesBalance.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBoxSalesBalance.FormattingEnabled = true;
-            this.comboBoxSalesBalance.Location = new System.Drawing.Point(517, 37);
-            this.comboBoxSalesBalance.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxSalesBalance.Name = "comboBoxSalesBalance";
-            this.comboBoxSalesBalance.Size = new System.Drawing.Size(239, 27);
-            this.comboBoxSalesBalance.TabIndex = 39;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label5.Location = new System.Drawing.Point(424, 41);
+            this.label5.Location = new System.Drawing.Point(396, 42);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(92, 19);
             this.label5.TabIndex = 38;
             this.label5.Text = "Sales Balance:";
             // 
-            // comboBoxPeriodId
-            // 
-            this.comboBoxPeriodId.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBoxPeriodId.FormattingEnabled = true;
-            this.comboBoxPeriodId.Location = new System.Drawing.Point(181, 32);
-            this.comboBoxPeriodId.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxPeriodId.Name = "comboBoxPeriodId";
-            this.comboBoxPeriodId.Size = new System.Drawing.Size(239, 27);
-            this.comboBoxPeriodId.TabIndex = 37;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label10.Location = new System.Drawing.Point(112, 35);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(66, 19);
-            this.label10.TabIndex = 36;
-            this.label10.Text = "Period Id:";
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label9.Location = new System.Drawing.Point(115, 118);
+            this.label9.Location = new System.Drawing.Point(81, 102);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(63, 19);
@@ -653,61 +666,42 @@ namespace EasyPOS.Forms.Software.TrnCollection
             // 
             // comboBoxTerminal
             // 
+            this.comboBoxTerminal.Enabled = false;
             this.comboBoxTerminal.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxTerminal.FormattingEnabled = true;
-            this.comboBoxTerminal.Location = new System.Drawing.Point(181, 115);
+            this.comboBoxTerminal.Location = new System.Drawing.Point(147, 99);
             this.comboBoxTerminal.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxTerminal.Name = "comboBoxTerminal";
-            this.comboBoxTerminal.Size = new System.Drawing.Size(239, 27);
+            this.comboBoxTerminal.Size = new System.Drawing.Size(163, 27);
             this.comboBoxTerminal.TabIndex = 34;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label8.Location = new System.Drawing.Point(43, 92);
+            this.label8.Location = new System.Drawing.Point(9, 74);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(135, 19);
             this.label8.TabIndex = 33;
             this.label8.Text = "Manual OR Number:";
             // 
-            // comboBoxManualORNumber
-            // 
-            this.comboBoxManualORNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBoxManualORNumber.FormattingEnabled = true;
-            this.comboBoxManualORNumber.Location = new System.Drawing.Point(180, 86);
-            this.comboBoxManualORNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxManualORNumber.Name = "comboBoxManualORNumber";
-            this.comboBoxManualORNumber.Size = new System.Drawing.Size(239, 27);
-            this.comboBoxManualORNumber.TabIndex = 32;
-            // 
             // comboBoxSalesNumber
             // 
             this.comboBoxSalesNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxSalesNumber.FormattingEnabled = true;
-            this.comboBoxSalesNumber.Location = new System.Drawing.Point(517, 6);
+            this.comboBoxSalesNumber.Location = new System.Drawing.Point(489, 7);
             this.comboBoxSalesNumber.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxSalesNumber.Name = "comboBoxSalesNumber";
             this.comboBoxSalesNumber.Size = new System.Drawing.Size(239, 27);
             this.comboBoxSalesNumber.TabIndex = 31;
-            // 
-            // comboBoxCollectionNumber
-            // 
-            this.comboBoxCollectionNumber.Enabled = false;
-            this.comboBoxCollectionNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.comboBoxCollectionNumber.FormattingEnabled = true;
-            this.comboBoxCollectionNumber.Location = new System.Drawing.Point(180, 4);
-            this.comboBoxCollectionNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxCollectionNumber.Name = "comboBoxCollectionNumber";
-            this.comboBoxCollectionNumber.Size = new System.Drawing.Size(239, 27);
-            this.comboBoxCollectionNumber.TabIndex = 30;
+            this.comboBoxSalesNumber.SelectedIndexChanged += new System.EventHandler(this.comboBoxSalesNumber_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label3.Location = new System.Drawing.Point(419, 10);
+            this.label3.Location = new System.Drawing.Point(391, 11);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(96, 19);
@@ -718,7 +712,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label6.Location = new System.Drawing.Point(106, 148);
+            this.label6.Location = new System.Drawing.Point(72, 134);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 19);
@@ -729,27 +723,28 @@ namespace EasyPOS.Forms.Software.TrnCollection
             // 
             this.comboBoxCustomer.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxCustomer.FormattingEnabled = true;
-            this.comboBoxCustomer.Location = new System.Drawing.Point(181, 144);
+            this.comboBoxCustomer.Location = new System.Drawing.Point(147, 130);
             this.comboBoxCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxCustomer.Name = "comboBoxCustomer";
             this.comboBoxCustomer.Size = new System.Drawing.Size(239, 27);
             this.comboBoxCustomer.TabIndex = 26;
+            this.comboBoxCustomer.SelectedIndexChanged += new System.EventHandler(this.comboBoxCustomer_SelectedIndexChanged);
             // 
             // textBoxRemarks
             // 
             this.textBoxRemarks.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxRemarks.Location = new System.Drawing.Point(517, 100);
+            this.textBoxRemarks.Location = new System.Drawing.Point(489, 100);
             this.textBoxRemarks.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxRemarks.Multiline = true;
             this.textBoxRemarks.Name = "textBoxRemarks";
-            this.textBoxRemarks.Size = new System.Drawing.Size(236, 67);
+            this.textBoxRemarks.Size = new System.Drawing.Size(239, 57);
             this.textBoxRemarks.TabIndex = 4;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label13.Location = new System.Drawing.Point(760, 66);
+            this.label13.Location = new System.Drawing.Point(732, 73);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(91, 19);
@@ -760,7 +755,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label12.Location = new System.Drawing.Point(768, 40);
+            this.label12.Location = new System.Drawing.Point(740, 46);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(83, 19);
@@ -771,7 +766,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label11.Location = new System.Drawing.Point(765, 11);
+            this.label11.Location = new System.Drawing.Point(737, 15);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(86, 19);
@@ -782,7 +777,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
             // 
             this.comboBoxApprovedBy.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxApprovedBy.FormattingEnabled = true;
-            this.comboBoxApprovedBy.Location = new System.Drawing.Point(858, 63);
+            this.comboBoxApprovedBy.Location = new System.Drawing.Point(830, 70);
             this.comboBoxApprovedBy.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxApprovedBy.Name = "comboBoxApprovedBy";
             this.comboBoxApprovedBy.Size = new System.Drawing.Size(231, 27);
@@ -792,7 +787,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
             // 
             this.comboBoxCheckedBy.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxCheckedBy.FormattingEnabled = true;
-            this.comboBoxCheckedBy.Location = new System.Drawing.Point(858, 33);
+            this.comboBoxCheckedBy.Location = new System.Drawing.Point(830, 39);
             this.comboBoxCheckedBy.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxCheckedBy.Name = "comboBoxCheckedBy";
             this.comboBoxCheckedBy.Size = new System.Drawing.Size(231, 27);
@@ -803,7 +798,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
             this.comboBoxPreparedBy.Enabled = false;
             this.comboBoxPreparedBy.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxPreparedBy.FormattingEnabled = true;
-            this.comboBoxPreparedBy.Location = new System.Drawing.Point(858, 4);
+            this.comboBoxPreparedBy.Location = new System.Drawing.Point(830, 8);
             this.comboBoxPreparedBy.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxPreparedBy.Name = "comboBoxPreparedBy";
             this.comboBoxPreparedBy.Size = new System.Drawing.Size(231, 27);
@@ -813,7 +808,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label7.Location = new System.Drawing.Point(451, 115);
+            this.label7.Location = new System.Drawing.Point(423, 103);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(64, 19);
@@ -824,7 +819,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label4.Location = new System.Drawing.Point(73, 62);
+            this.label4.Location = new System.Drawing.Point(39, 41);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(105, 19);
@@ -835,7 +830,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label2.Location = new System.Drawing.Point(52, 9);
+            this.label2.Location = new System.Drawing.Point(20, 12);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(126, 19);
@@ -846,11 +841,30 @@ namespace EasyPOS.Forms.Software.TrnCollection
             // 
             this.dateTimePickerCollectionDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.dateTimePickerCollectionDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerCollectionDate.Location = new System.Drawing.Point(181, 59);
+            this.dateTimePickerCollectionDate.Location = new System.Drawing.Point(147, 38);
             this.dateTimePickerCollectionDate.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerCollectionDate.Name = "dateTimePickerCollectionDate";
-            this.dateTimePickerCollectionDate.Size = new System.Drawing.Size(114, 26);
+            this.dateTimePickerCollectionDate.Size = new System.Drawing.Size(128, 26);
             this.dateTimePickerCollectionDate.TabIndex = 1;
+            // 
+            // buttonAddCollectionLine
+            // 
+            this.buttonAddCollectionLine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAddCollectionLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonAddCollectionLine.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
+            this.buttonAddCollectionLine.FlatAppearance.BorderSize = 0;
+            this.buttonAddCollectionLine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddCollectionLine.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.buttonAddCollectionLine.ForeColor = System.Drawing.Color.White;
+            this.buttonAddCollectionLine.Location = new System.Drawing.Point(1016, 220);
+            this.buttonAddCollectionLine.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAddCollectionLine.Name = "buttonAddCollectionLine";
+            this.buttonAddCollectionLine.Size = new System.Drawing.Size(70, 32);
+            this.buttonAddCollectionLine.TabIndex = 47;
+            this.buttonAddCollectionLine.TabStop = false;
+            this.buttonAddCollectionLine.Text = "Add";
+            this.buttonAddCollectionLine.UseVisualStyleBackColor = false;
+            this.buttonAddCollectionLine.Click += new System.EventHandler(this.buttonAddCollectionLine_Click);
             // 
             // TrnCollectionDetailForm
             // 
@@ -858,6 +872,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1096, 560);
             this.ControlBox = false;
+            this.Controls.Add(this.buttonAddCollectionLine);
             this.Controls.Add(this.Forms);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.dataGridViewCollectionLineList);
@@ -896,18 +911,12 @@ namespace EasyPOS.Forms.Software.TrnCollection
         private System.Windows.Forms.Button buttonPrint;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel Forms;
-        private System.Windows.Forms.ComboBox comboBoxAmount;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox comboBoxSalesBalance;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBoxPeriodId;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox comboBoxTerminal;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBoxManualORNumber;
         private System.Windows.Forms.ComboBox comboBoxSalesNumber;
-        private System.Windows.Forms.ComboBox comboBoxCollectionNumber;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBoxCustomer;
@@ -922,18 +931,23 @@ namespace EasyPOS.Forms.Software.TrnCollection
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateTimePickerCollectionDate;
+        private System.Windows.Forms.Button buttonAddCollectionLine;
+        private System.Windows.Forms.TextBox textBoxCollectionNumber;
+        private System.Windows.Forms.TextBox textBoxManualORNumber;
+        private System.Windows.Forms.TextBox textBoxSalesBalance;
+        private System.Windows.Forms.TextBox textBoxTotalCollectionLineAmount;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnCollectionLineListButtonEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnCollectionLineListButtonDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionLineListId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionLineListCollectionId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionLineListAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionLineListPayTypeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionLineListPayType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionLineListCheckNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionLineListAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionLineListCheckNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionLineListCheckDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionLineListCheckBank;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionLineListVerification;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionLineListCreditCardNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionLineListCreditCardVerificationCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionLineListCreditCardNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionLineListCreditCardType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionLineListCreditCardBank;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionLineListGiftCertificateNumber;
