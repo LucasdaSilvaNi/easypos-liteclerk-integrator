@@ -825,6 +825,8 @@ namespace EasyPOS.Controllers
                         where d.SalesDate <= Convert.ToDateTime(dateAsOf)
                         && d.BalanceAmount > 0
                         && d.IsLocked == true
+                        && d.IsTendered == false
+                        && d.IsCancelled == false
                         select d;
 
             if (sales.Any())

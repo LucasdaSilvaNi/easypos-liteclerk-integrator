@@ -75,9 +75,9 @@ namespace EasyPOS.Forms.Software.TrnCollection
                 comboBoxSalesNumber.DataSource = trnCollectionController.DropdownListCollectionSalesNumberByCustomer(customerId, terminalId);
                 comboBoxSalesNumber.ValueMember = "Id";
                 comboBoxSalesNumber.DisplayMember = "SalesNumber";
-
-                GetUserList();
             }
+
+            GetUserList();
         }
 
         public void GetUserList()
@@ -100,6 +100,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
                 GetCollectionDetail();
             }
         }
+
         public void GetCollectionDetail()
         {
             UpdateComponents(trnCollectionEntity.IsLocked);
@@ -174,6 +175,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
 
                 Entities.TrnCollectionEntity newCollectionEntity = new Entities.TrnCollectionEntity()
                 {
+                    Id = trnCollectionEntity.Id,
                     PeriodId = 1,
                     CollectionDate = dateTimePickerCollectionDate.Value.Date.ToShortDateString(),
                     ManualORNumber = textBoxManualORNumber.Text,
@@ -521,6 +523,9 @@ namespace EasyPOS.Forms.Software.TrnCollection
                 if (trnCollectionController.DropdownListCollectionSalesNumberByCustomer(customerId, terminalId).Any())
                 {
                     comboBoxSalesNumber.DataSource = trnCollectionController.DropdownListCollectionSalesNumberByCustomer(customerId, terminalId);
+                    comboBoxSalesNumber.ValueMember = "Id";
+                    comboBoxSalesNumber.DisplayMember = "SalesNumber";
+
                     comboBoxSalesNumber.Text = trnCollectionController.DropdownListCollectionSalesNumberByCustomer(customerId, terminalId).FirstOrDefault().SalesNumber;
                 }
             }

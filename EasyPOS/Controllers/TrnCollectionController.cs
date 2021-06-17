@@ -202,7 +202,6 @@ namespace EasyPOS.Controllers
                               where d.Id == id
                               select new Entities.TrnCollectionEntity
                               {
-
                                   Id = d.Id,
                                   PeriodId = d.PeriodId,
                                   CollectionDate = d.CollectionDate.ToShortDateString(),
@@ -437,29 +436,16 @@ namespace EasyPOS.Controllers
                     return new String[] { "Customer Id not found.", "0" };
                 }
 
-                var salesNumber = from d in db.TrnSales
-                                  where d.SalesNumber == objCollection.SalesNumber
-                                  select d;
-
-                if (salesNumber.Any() == false)
+                if (objCollection.SalesId != null)
                 {
-                    return new String[] { "Sales Number not found.", "0" };
-                }
-                var salesBalanceAmount = from d in db.TrnSales
-                                         where d.BalanceAmount == objCollection.SalesBalanceAmount
-                                         select d;
+                    var salesNumber = from d in db.TrnSales
+                                      where d.Id == objCollection.SalesId
+                                      select d;
 
-                if (salesBalanceAmount.Any() == false)
-                {
-                    return new String[] { "Sales Balance Amount not found.", "0" };
-                }
-                var amount = from d in db.TrnSales
-                             where d.Amount == objCollection.Amount
-                             select d;
-
-                if (amount.Any() == false)
-                {
-                    return new String[] { "Amount not found.", "0" };
+                    if (salesNumber.Any() == false)
+                    {
+                        return new String[] { "Sales Number not found.", "0" };
+                    }
                 }
 
                 var preparedByUser = from d in db.MstUsers

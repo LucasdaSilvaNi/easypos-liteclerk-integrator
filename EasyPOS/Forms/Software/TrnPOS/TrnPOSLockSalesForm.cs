@@ -106,7 +106,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 CustomerId = Convert.ToInt32(comboBoxTenderSalesCustomer.SelectedValue),
                 TermId = Convert.ToInt32(comboBoxTenderSalesTerms.SelectedValue),
                 Remarks = textBoxTenderSalesRemarks.Text,
-                SalesAgent = Convert.ToInt32(comboBoxTenderSalesUsers.SelectedValue)
+                SalesAgent = Convert.ToInt32(comboBoxTenderSalesUsers.SelectedValue),
+                Amount = trnSalesEntity.Amount
             };
 
             Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();

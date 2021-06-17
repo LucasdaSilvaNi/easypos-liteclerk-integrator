@@ -1532,6 +1532,7 @@ namespace EasyPOS.Controllers
                     lockSales.Remarks = objSales.Remarks;
                     lockSales.SalesAgent = objSales.SalesAgent;
                     lockSales.IsLocked = true;
+                    lockSales.BalanceAmount = objSales.Amount;
                     lockSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
                     lockSales.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
