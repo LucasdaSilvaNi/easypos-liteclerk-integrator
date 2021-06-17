@@ -574,5 +574,10 @@ namespace EasyPOS.Forms.Software.TrnCollection
                 textBoxSalesBalance.Text = "0.00";
             }
         }
+
+        private void buttonPrint_Click(object sender, EventArgs e)
+        {
+            new TrnCollectionDetailReportForm(trnCollectionEntity.Id);
+        }
     }
 }

@@ -525,6 +525,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
             this.buttonPrint.TabStop = false;
             this.buttonPrint.Text = "Print";
             this.buttonPrint.UseVisualStyleBackColor = false;
+            this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
             // 
             // panel1
             // 
