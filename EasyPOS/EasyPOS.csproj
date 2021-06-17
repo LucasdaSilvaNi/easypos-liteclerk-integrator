@@ -766,6 +766,12 @@
     <Compile Include="Forms\Software\TrnCollection\TrnCollectionDetailForm.Designer.cs">
       <DependentUpon>TrnCollectionDetailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnCollection\TrnCollectionDetailReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnCollection\TrnCollectionDetailReportForm.Designer.cs">
+      <DependentUpon>TrnCollectionDetailReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnCollection\TrnCollectionLineDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1417,6 +1423,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnCollection\TrnCollectionDetailForm.resx">
       <DependentUpon>TrnCollectionDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnCollection\TrnCollectionDetailReportForm.resx">
+      <DependentUpon>TrnCollectionDetailReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnCollection\TrnCollectionLineDetailForm.resx">
       <DependentUpon>TrnCollectionLineDetailForm.cs</DependentUpon>
