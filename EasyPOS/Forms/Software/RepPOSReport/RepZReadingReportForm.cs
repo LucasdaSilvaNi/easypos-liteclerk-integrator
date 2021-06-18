@@ -558,8 +558,10 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
             if (currentSysDeclareRate.Any())
             {
-
-                currentDeclareRate = currentSysDeclareRate.FirstOrDefault().DeclareRate;
+                if (currentSysDeclareRate.FirstOrDefault().DeclareRate != null)
+                {
+                    currentDeclareRate = Convert.ToDecimal(currentSysDeclareRate.FirstOrDefault().DeclareRate);
+                }
             }
             else
             {
@@ -576,7 +578,10 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             {
                 if (declareRate != null)
                 {
-                    previousDeclareRate = declareRate.DeclareRate;
+                    if (previousSysDeclareRate.FirstOrDefault().DeclareRate != null)
+                    {
+                        previousDeclareRate = Convert.ToDecimal(previousSysDeclareRate.FirstOrDefault().DeclareRate);
+                    }
                 }
                 else
                 {

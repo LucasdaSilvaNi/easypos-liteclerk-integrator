@@ -411,7 +411,10 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                  select d;
             if (SysDeclareRate.Any())
             {
-                declareRate = SysDeclareRate.FirstOrDefault().DeclareRate;
+                if (SysDeclareRate.FirstOrDefault().DeclareRate != null)
+                {
+                    declareRate = Convert.ToDecimal(SysDeclareRate.FirstOrDefault().DeclareRate);
+                }
             }
             else
             {
