@@ -413,16 +413,10 @@ namespace EasyPOS.Controllers
                     return new String[] { "Period not found.", "0" };
                 }
 
-                var manualORNumber = from d in db.TrnCollections
-                                     where d.ManualORNumber == objCollection.ManualORNumber
-                                     select d;
-                if (manualORNumber.Any() == false)
-                {
-                    return new String[] { "Manual OR Number not found.", "0" };
-                }
                 var terminal = from d in db.MstTerminals
                                where d.Id == Convert.ToInt32(objCollection.TerminalId)
                                select d;
+
                 if (terminal.Any() == false)
                 {
                     return new String[] { "Terminal Id not found.", "0" };
@@ -509,30 +503,7 @@ namespace EasyPOS.Controllers
                     lockCollection.UpdateDateTime = DateTime.Now;
                     db.SubmitChanges();
 
-                    if (objCollection.SalesId != null)
-                    {
-                        var sales = from d in db.TrnSales
-                                    where d.Id == objCollection.SalesId
-                                    select d;
-
-                        if (sales.Any())
-                        {
-                            Decimal totalCollectionLineAmount = 0;
-
-                            var collectionLines = from d in db.TrnCollectionLines
-                                                  where d.CollectionId == objCollection.Id
-                                                  select d;
-
-                            if (collectionLines.Any())
-                            {
-                                totalCollectionLineAmount = collectionLines.Sum(d => d.Amount);
-                            }
-
-                            var updateSales = sales.FirstOrDefault();
-                            updateSales.BalanceAmount = sales.FirstOrDefault().Amount - totalCollectionLineAmount;
-                            db.SubmitChanges();
-                        }
-                    }
+                    UpdateAccountsReceivable(objCollection.SalesId);
 
                     String newObject = Modules.SysAuditTrailModule.GetObjectString(collection.FirstOrDefault());
 
@@ -560,6 +531,36 @@ namespace EasyPOS.Controllers
             }
         }
 
+        public void UpdateAccountsReceivable(Int32? salesId)
+        {
+            if (salesId != null)
+            {
+                var sales = from d in db.TrnSales
+                            where d.Id == salesId
+                            select d;
+
+                if (sales.Any())
+                {
+                    Decimal totalCollectionLineAmount = 0;
+
+                    var collectionLines = from d in db.TrnCollectionLines
+                                          where d.TrnCollection.SalesId == salesId
+                                          && d.TrnCollection.IsLocked == true
+                                          select d;
+
+                    if (collectionLines.Any())
+                    {
+                        totalCollectionLineAmount = collectionLines.Sum(d => d.Amount);
+                    }
+
+                    var updateSales = sales.FirstOrDefault();
+                    updateSales.PaidAmount = totalCollectionLineAmount;
+                    updateSales.BalanceAmount = sales.FirstOrDefault().Amount - totalCollectionLineAmount;
+                    db.SubmitChanges();
+                }
+            }
+        }
+
         // =================
         // Unlock Collection
         // =================
@@ -583,6 +584,8 @@ namespace EasyPOS.Controllers
                     {
                         return new String[] { "Already unlocked.", "0" };
                     }
+
+                    UpdateAccountsReceivable(collection.FirstOrDefault().SalesId);
 
                     String oldObject = Modules.SysAuditTrailModule.GetObjectString(collection.FirstOrDefault());
 

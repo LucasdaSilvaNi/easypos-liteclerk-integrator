@@ -123,7 +123,7 @@
             this.buttonSave.Size = new System.Drawing.Size(112, 32);
             this.buttonSave.TabIndex = 1;
             this.buttonSave.TabStop = false;
-            this.buttonSave.Text = "Ent - OK";
+            this.buttonSave.Text = "F2 - OK";
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
@@ -149,6 +149,7 @@
             this.comboBoxTenderSalesCustomer.TabIndex = 17;
             this.comboBoxTenderSalesCustomer.TabStop = false;
             this.comboBoxTenderSalesCustomer.SelectedIndexChanged += new System.EventHandler(this.comboBoxTenderSalesCustomer_SelectedIndexChanged);
+            this.comboBoxTenderSalesCustomer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBoxTenderSalesCustomer_KeyDown);
             // 
             // textBoxTenderSalesRewardAvailable
             // 

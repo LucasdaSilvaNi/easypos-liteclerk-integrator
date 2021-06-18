@@ -176,7 +176,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             switch (keyData)
             {
-                case Keys.Enter:
+                case Keys.F2:
                     {
                         if (buttonSave.Enabled == true)
                         {
@@ -203,6 +203,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void comboBoxTenderSalesCustomer_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                String inputString = comboBoxTenderSalesCustomer.Text;
+                comboBoxTenderSalesCustomer.SelectedIndex = comboBoxTenderSalesCustomer.FindString(inputString);
+            }
         }
     }
 }

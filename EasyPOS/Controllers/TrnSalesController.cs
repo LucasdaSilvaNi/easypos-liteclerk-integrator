@@ -1526,6 +1526,36 @@ namespace EasyPOS.Controllers
                         }
                     }
 
+                    var customerSales = from d in db.TrnSales
+                                        where d.CustomerId == objSales.CustomerId
+                                        select d;
+
+                    if (customerSales.Any())
+                    {
+                        Decimal customerTerms = customerSales.FirstOrDefault().MstCustomer.MstTerm.NumberOfDays;
+
+                        var previousSales = from d in customerSales
+                                            where d.SalesDate < sales.FirstOrDefault().SalesDate
+                                            && d.BalanceAmount > 0
+                                            select d;
+
+                        if (previousSales.Any())
+                        {
+                            if (customerTerms != 0)
+                            {
+                                var start_sales_date = previousSales.OrderBy(d => d.SalesDate).FirstOrDefault().SalesDate;
+                                var end_sales_date = sales.FirstOrDefault().SalesDate;
+
+                                var totalDays = (end_sales_date - start_sales_date).TotalDays;
+
+                                if (Convert.ToDecimal(totalDays) > customerTerms)
+                                {
+                                    return new String[] { "Please settle the previous balance first.", "0" };
+                                }
+                            }
+                        }
+                    }
+
                     var lockSales = sales.FirstOrDefault();
                     lockSales.CustomerId = objSales.CustomerId;
                     lockSales.TermId = objSales.TermId;

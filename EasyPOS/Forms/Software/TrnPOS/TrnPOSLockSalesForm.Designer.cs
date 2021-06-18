@@ -123,7 +123,7 @@
             this.buttonSave.Size = new System.Drawing.Size(112, 32);
             this.buttonSave.TabIndex = 8;
             this.buttonSave.TabStop = false;
-            this.buttonSave.Text = "Ent - Lock";
+            this.buttonSave.Text = "F2 - Lock";
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
@@ -140,6 +140,7 @@
             // 
             // comboBoxTenderSalesCustomer
             // 
+            this.comboBoxTenderSalesCustomer.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.comboBoxTenderSalesCustomer.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.comboBoxTenderSalesCustomer.FormattingEnabled = true;
             this.comboBoxTenderSalesCustomer.Location = new System.Drawing.Point(146, 73);
@@ -149,6 +150,7 @@
             this.comboBoxTenderSalesCustomer.TabIndex = 3;
             this.comboBoxTenderSalesCustomer.TabStop = false;
             this.comboBoxTenderSalesCustomer.SelectedIndexChanged += new System.EventHandler(this.comboBoxTenderSalesCustomer_SelectedIndexChanged);
+            this.comboBoxTenderSalesCustomer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBoxTenderSalesCustomer_KeyDown);
             // 
             // textBoxTenderSalesRewardAvailable
             // 

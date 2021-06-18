@@ -43,7 +43,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             var salesList = repAccountsReceivableSummaryReportController.AccountsReceivableSummaryReport(dateAsOf);
             if (salesList.Any())
             {
-                //Decimal totalAmount = 0;
+                Decimal totalBalance = 0;
 
                 var row = from d in salesList
                           select new Entities.DgvRepSalesReportAccountsReceivableSummaryReportListEntity
@@ -63,6 +63,13 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                           };
 
                 rowList = row.ToList();
+
+                totalBalance = row.Sum(d => Convert.ToDecimal(d.ColumnBalanceAmount));
+                textBoxTotalAmount.Text = totalBalance.ToString("#,##0.00");
+            }
+            else
+            {
+                textBoxTotalAmount.Text = "0.00";
             }
 
             return rowList;
@@ -247,6 +254,11 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void buttonPrint_Click(object sender, EventArgs e)
+        {
+            new RepAccountsReceivableReportPDFForm(dateAsOf);
         }
     }
 }
