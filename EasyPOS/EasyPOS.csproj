@@ -592,6 +592,12 @@
     <Compile Include="Forms\Software\RepInventoryReport\RepItemExpiryReportForm.Designer.cs">
       <DependentUpon>RepItemExpiryReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportPDFForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryReportPDFForm.Designer.cs">
+      <DependentUpon>RepInventoryReportPDFForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\RepInventoryReport\RepStockCardForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -645,6 +651,18 @@
     </Compile>
     <Compile Include="Forms\Software\RepRemittanceReport\RepCashInOutSummaryReportForm.Designer.cs">
       <DependentUpon>RepCashInOutSummaryReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesDetailReportPDFForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesDetailReportPDFForm.Designer.cs">
+      <DependentUpon>RepSalesDetailReportPDFForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesSummaryReportPDFForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesSummaryReportPDFForm.Designer.cs">
+      <DependentUpon>RepSalesSummaryReportPDFForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepCollectionDetailReportForm.cs">
       <SubType>Form</SubType>
@@ -1346,6 +1364,9 @@
     <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepItemExpiryReportForm.resx">
       <DependentUpon>RepItemExpiryReportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepInventoryReportPDFForm.resx">
+      <DependentUpon>RepInventoryReportPDFForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepStockCardForm.resx">
       <DependentUpon>RepStockCardForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1369,6 +1390,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepRemittanceReport\RepCashInOutSummaryReportForm.resx">
       <DependentUpon>RepCashInOutSummaryReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesDetailReportPDFForm.resx">
+      <DependentUpon>RepSalesDetailReportPDFForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesSummaryReportPDFForm.resx">
+      <DependentUpon>RepSalesSummaryReportPDFForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepCollectionDetailReportForm.resx">
       <DependentUpon>RepCollectionDetailReportForm.cs</DependentUpon>
