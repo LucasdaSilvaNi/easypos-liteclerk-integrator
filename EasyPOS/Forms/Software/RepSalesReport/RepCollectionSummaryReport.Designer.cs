@@ -33,7 +33,6 @@
             this.textBoxPageNumber = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonView = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -45,7 +44,6 @@
             this.buttonPageListLast = new System.Windows.Forms.Button();
             this.buttonPageListPrevious = new System.Windows.Forms.Button();
             this.dataGridViewCollectionReport = new System.Windows.Forms.DataGridView();
-            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
             this.ColumnTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCollectionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCollectionNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,11 +55,14 @@
             this.ColumnIsCancelled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnEntryDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.buttonPrint = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCollectionReport)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxPageNumber
@@ -70,7 +71,7 @@
             this.textBoxPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxPageNumber.Location = new System.Drawing.Point(185, 11);
-            this.textBoxPageNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxPageNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxPageNumber.Name = "textBoxPageNumber";
             this.textBoxPageNumber.ReadOnly = true;
             this.textBoxPageNumber.Size = new System.Drawing.Size(55, 19);
@@ -81,6 +82,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.buttonPrint);
             this.panel1.Controls.Add(this.buttonView);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
@@ -110,17 +112,6 @@
             this.buttonView.Text = "CSV";
             this.buttonView.UseVisualStyleBackColor = false;
             this.buttonView.Click += new System.EventHandler(this.buttonGenerateCSV_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Reports;
-            this.pictureBox1.Location = new System.Drawing.Point(11, 6);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(36, 38);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -158,7 +149,7 @@
             this.panel2.Controls.Add(this.dataGridViewCollectionReport);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1096, 522);
             this.panel2.TabIndex = 13;
@@ -175,7 +166,7 @@
             this.panel4.Controls.Add(this.textBoxPageNumber);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 480);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1096, 42);
             this.panel4.TabIndex = 20;
@@ -186,7 +177,7 @@
             this.textBoxTotalAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxTotalAmount.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxTotalAmount.Location = new System.Drawing.Point(800, 11);
-            this.textBoxTotalAmount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxTotalAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTotalAmount.Name = "textBoxTotalAmount";
             this.textBoxTotalAmount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBoxTotalAmount.Size = new System.Drawing.Size(246, 19);
@@ -213,7 +204,7 @@
             this.buttonPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPageListFirst.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.buttonPageListFirst.Location = new System.Drawing.Point(10, 7);
-            this.buttonPageListFirst.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonPageListFirst.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPageListFirst.Name = "buttonPageListFirst";
             this.buttonPageListFirst.Size = new System.Drawing.Size(66, 26);
             this.buttonPageListFirst.TabIndex = 8;
@@ -229,7 +220,7 @@
             this.buttonPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPageListNext.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.buttonPageListNext.Location = new System.Drawing.Point(270, 7);
-            this.buttonPageListNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonPageListNext.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPageListNext.Name = "buttonPageListNext";
             this.buttonPageListNext.Size = new System.Drawing.Size(66, 26);
             this.buttonPageListNext.TabIndex = 10;
@@ -245,7 +236,7 @@
             this.buttonPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPageListLast.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.buttonPageListLast.Location = new System.Drawing.Point(338, 7);
-            this.buttonPageListLast.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonPageListLast.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPageListLast.Name = "buttonPageListLast";
             this.buttonPageListLast.Size = new System.Drawing.Size(66, 26);
             this.buttonPageListLast.TabIndex = 11;
@@ -262,7 +253,7 @@
             this.buttonPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.buttonPageListPrevious.Location = new System.Drawing.Point(80, 7);
-            this.buttonPageListPrevious.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPageListPrevious.Name = "buttonPageListPrevious";
             this.buttonPageListPrevious.Size = new System.Drawing.Size(66, 26);
             this.buttonPageListPrevious.TabIndex = 9;
@@ -294,7 +285,7 @@
             this.ColumnAmount,
             this.ColumnEntryDateTime});
             this.dataGridViewCollectionReport.Location = new System.Drawing.Point(10, 56);
-            this.dataGridViewCollectionReport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewCollectionReport.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewCollectionReport.MultiSelect = false;
             this.dataGridViewCollectionReport.Name = "dataGridViewCollectionReport";
             this.dataGridViewCollectionReport.ReadOnly = true;
@@ -390,6 +381,36 @@
             this.ColumnEntryDateTime.Name = "ColumnEntryDateTime";
             this.ColumnEntryDateTime.ReadOnly = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.Reports;
+            this.pictureBox1.Location = new System.Drawing.Point(11, 6);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(36, 38);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // buttonPrint
+            // 
+            this.buttonPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonPrint.FlatAppearance.BorderSize = 0;
+            this.buttonPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPrint.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPrint.ForeColor = System.Drawing.Color.White;
+            this.buttonPrint.Location = new System.Drawing.Point(864, 9);
+            this.buttonPrint.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonPrint.Name = "buttonPrint";
+            this.buttonPrint.Size = new System.Drawing.Size(70, 32);
+            this.buttonPrint.TabIndex = 27;
+            this.buttonPrint.TabStop = false;
+            this.buttonPrint.Text = "Print";
+            this.buttonPrint.UseVisualStyleBackColor = false;
+            this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
+            // 
             // RepCollectionSummaryReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -406,11 +427,11 @@
             this.Text = "Collection Summary Report";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCollectionReport)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -444,5 +465,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnIsCancelled;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnEntryDateTime;
+        private System.Windows.Forms.Button buttonPrint;
     }
 }
