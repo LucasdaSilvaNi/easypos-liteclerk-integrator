@@ -23,7 +23,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             InitializeComponent();
 
             dateAsOf = _dateAsOf;
-            PrintPurchaseOrderDetailReport();
+            PrintReport();
         }
 
         public Decimal ComputeAge(Int32 Age, Int32 Elapsed, Decimal Amount)
@@ -73,7 +73,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             return returnValue;
         }
 
-        public void PrintPurchaseOrderDetailReport()
+        public void PrintReport()
         {
             try
             {
@@ -86,7 +86,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                 Paragraph line = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.5F, 100.0F, BaseColor.DARK_GRAY, Element.ALIGN_MIDDLE, 10F)));
 
-                var fileName = "PurchaseOrderDetailReport" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                var fileName = "AccountsReceivableReport" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
                 var currentUser = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
 
                 var systemCurrent = Modules.SysCurrentModule.GetCurrentSettings();
@@ -95,7 +95,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 document.SetMargins(30f, 30f, 100f, 30f);
 
                 PdfWriter pdfWriter = PdfWriter.GetInstance(document, new FileStream(fileName, FileMode.Create));
-                pdfWriter.PageEvent = new PurchaseOrderDetailReportHeaderFooter(dateAsOf);
+                pdfWriter.PageEvent = new ConfigureHeaderFooter(dateAsOf);
 
                 document.Open();
 
@@ -222,12 +222,12 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             }
         }
 
-        class PurchaseOrderDetailReportHeaderFooter : PdfPageEventHelper
+        class ConfigureHeaderFooter : PdfPageEventHelper
         {
             public DateTime dateAsOf = DateTime.Today;
             public Data.easyposdbDataContext db;
 
-            public PurchaseOrderDetailReportHeaderFooter(DateTime _dateAsOf)
+            public ConfigureHeaderFooter(DateTime _dateAsOf)
             {
                 dateAsOf = _dateAsOf;
                 db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
@@ -254,7 +254,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 tableHeader.AddCell(new PdfPCell(new Phrase("Date as of: " + dateAsOf.ToShortDateString() + "\n", fontTimesNewRoman10)) { Colspan = 4, Border = 0, Padding = 3f, PaddingBottom = -5f });
 
                 PdfPTable tableLines = new PdfPTable(12);
-                tableLines.SetWidths(new float[] { 100f, 70f, 50f,60f, 60f, 60f, 50f, 60f, 60f, 60f, 60f, 60f });
+                tableLines.SetWidths(new float[] { 100f, 70f, 50f, 60f, 60f, 60f, 50f, 60f, 60f, 60f, 60f, 60f });
                 tableLines.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
                 tableLines.AddCell(new PdfPCell(new Phrase(" \n", fontTimesNewRoman10Bold)) { Border = 0, Colspan = 12, PaddingBottom = 5f });
                 tableLines.AddCell(new PdfPCell(new Phrase("Customer", fontTimesNewRoman10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });

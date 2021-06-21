@@ -261,5 +261,10 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void buttonPrint_Click(object sender, EventArgs e)
+        {
+            new RepCollectionSummaryReportPDFForm(dateStart, dateEnd, idTerminal);
+        }
     }
 }

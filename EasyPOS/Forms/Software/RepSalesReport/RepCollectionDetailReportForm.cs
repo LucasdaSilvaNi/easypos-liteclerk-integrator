@@ -305,5 +305,10 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         {
             Close();
         }
+
+        private void buttonPrint_Click(object sender, EventArgs e)
+        {
+            new RepCollectionDetailReportPDFForm(dateStart, dateEnd, idTerminal);
+        }
     }
 }
