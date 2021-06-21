@@ -22,15 +22,13 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         public Int32 filterCustomerId;
         public Int32 filterSalesAgentId;
 
-        public RepSalesDetailReportPDFForm(DateTime startDate, DateTime endDate, Int32 terminalId, Int32 CustomerId, Int32 SalesAgentId)
+        public RepSalesDetailReportPDFForm(DateTime startDate, DateTime endDate, Int32 terminalId)
         {
             InitializeComponent();
 
             dateStart = startDate;
             dateEnd = endDate;
             filterTerminalId = terminalId;
-            filterCustomerId = CustomerId;
-            filterSalesAgentId = SalesAgentId;
 
             PrintReport();
         }
@@ -57,7 +55,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 document.SetMargins(30f, 30f, 100f, 30f);
 
                 PdfWriter pdfWriter = PdfWriter.GetInstance(document, new FileStream(fileName, FileMode.Create));
-                pdfWriter.PageEvent = new ConfigureHeaderFooter(dateStart, dateEnd, filterTerminalId, filterCustomerId, filterSalesAgentId);
+                pdfWriter.PageEvent = new ConfigureHeaderFooter(dateStart, dateEnd, filterTerminalId);
 
                 document.Open();
 
@@ -144,13 +142,11 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
             public Data.easyposdbDataContext db;
 
-            public ConfigureHeaderFooter(DateTime startDate, DateTime endDate, Int32 terminalId, Int32 CustomerId, Int32 SalesAgentId)
+            public ConfigureHeaderFooter(DateTime startDate, DateTime endDate, Int32 terminalId)
             {
                 dateStart = startDate;
                 dateEnd = endDate;
                 filterTerminalId = terminalId;
-                filterCustomerId = CustomerId;
-                filterSalesAgentId = SalesAgentId;
 
                 db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
             }

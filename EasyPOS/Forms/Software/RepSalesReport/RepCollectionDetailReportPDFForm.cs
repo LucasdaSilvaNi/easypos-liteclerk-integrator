@@ -42,7 +42,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                 Paragraph line = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.5F, 100.0F, BaseColor.DARK_GRAY, Element.ALIGN_MIDDLE, 10F)));
 
-                var fileName = "SalesSummaryReport" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                var fileName = "CollectionDetailReport" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
                 var currentUser = from d in db.MstUsers where d.Id == Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId) select d;
 
                 var systemCurrent = Modules.SysCurrentModule.GetCurrentSettings();
@@ -60,8 +60,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                 if (collectionList.Any())
                 {
-                    PdfPTable tableLines = new PdfPTable(11);
-                    tableLines.SetWidths(new float[] { 50f, 70f, 50f, 60f, 80f, 70f, 100f, 70f, 60f, 60f, 70f });
+                    PdfPTable tableLines = new PdfPTable(12);
+                    tableLines.SetWidths(new float[] { 50f, 60f, 75f, 65f, 55f, 70f, 70f, 50f, 70f, 70f, 70f, 90f });
                     tableLines.WidthPercentage = 100;
 
                     Decimal totalAmount = 0;
@@ -84,8 +84,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         totalAmount += Convert.ToDecimal(collection.Amount);
                     }
 
-                    tableLines.AddCell(new PdfPCell(new Phrase(line)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = -5f, Colspan = 10 });
-                    tableLines.AddCell(new PdfPCell(new Phrase("Total: ", fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, Colspan = 8, HorizontalAlignment = 2 });
+                    tableLines.AddCell(new PdfPCell(new Phrase(line)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = -5f, Colspan = 12 });
+                    tableLines.AddCell(new PdfPCell(new Phrase("Total: ", fontTimesNewRoman10Bold)) { Border =0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, Colspan = 10, HorizontalAlignment = 2 });
                     tableLines.AddCell(new PdfPCell(new Phrase(totalAmount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
                     tableLines.AddCell(new PdfPCell(new Phrase(" ", fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
 
@@ -144,7 +144,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 var systemCurrent = Modules.SysCurrentModule.GetCurrentSettings();
 
                 String companyName = systemCurrent.CompanyName;
-                String documentTitle = "Collection Summary Report";
+                String documentTitle = "Collection Detail Report";
 
                 PdfPTable tableHeader = new PdfPTable(4);
                 tableHeader.SetWidths(new float[] { 20f, 30f, 20f, 50f });
@@ -153,8 +153,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 tableHeader.AddCell(new PdfPCell(new Phrase(documentTitle, fontTimesNewRoman14Bold)) { HorizontalAlignment = 2, Colspan = 2, Border = 0, Padding = 3f, PaddingBottom = 3f });
                 tableHeader.AddCell(new PdfPCell(new Phrase("From : " + dateStart.ToShortDateString() + " To: " + dateEnd.ToShortDateString() + "\n", fontTimesNewRoman10)) { Colspan = 4, Border = 0, Padding = 3f, PaddingBottom = -5f });
 
-                PdfPTable tableLines = new PdfPTable(11);
-                tableLines.SetWidths(new float[] { 50f, 70f, 50f, 60f, 80f, 70f, 100f, 70f, 60f, 60f, 70f });
+                PdfPTable tableLines = new PdfPTable(12);
+                tableLines.SetWidths(new float[] { 50f, 60f, 75f, 65f, 55f, 70f, 70f, 50f, 70f, 70f, 70f, 90f });
                 tableLines.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
                 tableLines.AddCell(new PdfPCell(new Phrase(" \n", fontTimesNewRoman10Bold)) { Border = 0, Colspan = 12, PaddingBottom = 5f });
                 tableLines.AddCell(new PdfPCell(new Phrase("Terminal", fontTimesNewRoman10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
