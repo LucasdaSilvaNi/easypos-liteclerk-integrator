@@ -290,7 +290,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
-            new RepSalesDetailReportPDFForm(dateStart, dateEnd, filterTerminalId, filterCustomerId, filterSalesAgentId);
+            new RepSalesDetailReportPDFForm(dateStart, dateEnd, filterTerminalId);
         }
     }
 }
