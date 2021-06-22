@@ -572,23 +572,19 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
             var previousSysDeclareRate = from d in db.SysDeclareRates
                                          where d.Date < filterDate
-                                         orderby d.Id descending
                                          select d;
-            foreach (var declareRate in previousSysDeclareRate)
+
+            if (previousSysDeclareRate.ToList().OrderByDescending(d => d.Id).Any())
             {
-                if (declareRate != null)
+                if (previousSysDeclareRate.FirstOrDefault().DeclareRate != null)
                 {
-                    if (previousSysDeclareRate.FirstOrDefault().DeclareRate != null)
-                    {
-                        previousDeclareRate = Convert.ToDecimal(previousSysDeclareRate.FirstOrDefault().DeclareRate);
-                    }
+                    currentDeclareRate = Convert.ToDecimal(previousSysDeclareRate.FirstOrDefault().DeclareRate);
                 }
                 else
                 {
                     previousDeclareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
                 }
             }
-
 
             // =============
             // Font Settings
