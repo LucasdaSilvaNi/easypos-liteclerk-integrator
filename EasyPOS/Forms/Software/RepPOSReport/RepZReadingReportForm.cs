@@ -419,6 +419,24 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 repZReadingReportEntity.TotalCancelledAmount = currentCancelledCollections.Sum(d => d.Amount);
             }
 
+            Decimal previousDeclareRate = 0;
+
+            var previousSysDeclareRate = from d in db.SysDeclareRates
+                                         where d.Date == DateTime.Today.AddDays(-1)
+                                         select d;
+
+            if (previousSysDeclareRate.Any())
+            {
+                if (previousSysDeclareRate.FirstOrDefault().DeclareRate != null)
+                {
+                    previousDeclareRate = Convert.ToDecimal(previousSysDeclareRate.FirstOrDefault().DeclareRate);
+                }
+                else
+                {
+                    previousDeclareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
+                }
+            }
+
             var grossSalesPreviousCollections = from d in db.TrnCollections
                                                 where d.TerminalId == filterTerminalId
                                                 && d.CollectionDate < filterDate
@@ -449,7 +467,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                     }
                                     else
                                     {
-                                        repZReadingReportEntity.GrossSalesTotalPreviousReading += salesLine.Price * salesLine.Quantity;
+                                        repZReadingReportEntity.GrossSalesTotalPreviousReading += (salesLine.Price * salesLine.Quantity);
                                     }
                                 }
                                 else
@@ -461,7 +479,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                     }
                 }
 
-                repZReadingReportEntity.GrossSalesRunningTotal = repZReadingReportEntity.TotalGrossSales + repZReadingReportEntity.GrossSalesTotalPreviousReading;
+                repZReadingReportEntity.GrossSalesRunningTotal = repZReadingReportEntity.TotalGrossSales + (repZReadingReportEntity.GrossSalesTotalPreviousReading * previousDeclareRate);
             }
 
             var netSalesPreviousCollections = from d in db.TrnCollections
@@ -527,7 +545,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                 totalSalesReturn += totalReturn * -1;
 
-                repZReadingReportEntity.NetSalesTotalPreviousReading = repZReadingReportEntity.GrossSalesTotalPreviousReading - totalRegularDiscount - totalSeniorDiscount - totalPWDDiscount - totalSalesReturn;
+                repZReadingReportEntity.NetSalesTotalPreviousReading = (repZReadingReportEntity.GrossSalesTotalPreviousReading * previousDeclareRate) - totalRegularDiscount - totalSeniorDiscount - totalPWDDiscount - totalSalesReturn;
                 repZReadingReportEntity.NetSalesRunningTotal = repZReadingReportEntity.TotalNetSales + repZReadingReportEntity.NetSalesTotalPreviousReading;
             }
 
@@ -571,14 +589,14 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             Decimal previousDeclareRate = 0;
 
             var previousSysDeclareRate = from d in db.SysDeclareRates
-                                         where d.Date < filterDate
+                                         where d.Date == DateTime.Today.AddDays(-1)
                                          select d;
 
-            if (previousSysDeclareRate.ToList().OrderByDescending(d => d.Id).Any())
+            if (previousSysDeclareRate.Any())
             {
                 if (previousSysDeclareRate.FirstOrDefault().DeclareRate != null)
                 {
-                    currentDeclareRate = Convert.ToDecimal(previousSysDeclareRate.FirstOrDefault().DeclareRate);
+                    previousDeclareRate = Convert.ToDecimal(previousSysDeclareRate.FirstOrDefault().DeclareRate);
                 }
                 else
                 {
