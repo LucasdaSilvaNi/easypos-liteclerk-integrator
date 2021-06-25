@@ -746,7 +746,6 @@ namespace EasyPOS.Forms.Software.SysUtilities
                 if (addCustomer[1].Equals("0") == false)
                 {
                     MessageBox.Show("Upload Successfully");
-
                 }
                 else
                 {
