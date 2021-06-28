@@ -123,18 +123,18 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 filterTerminal = terminal.FirstOrDefault().Terminal;
             }
 
-            var currentCollections = from d in db.TrnCollections
-                                     where d.TerminalId == filterTerminalId
-                                     && d.CollectionDate == filterDate
-                                     && d.IsLocked == true
-                                     && d.IsCancelled == false
-                                     && d.SalesId != null
-                                     && d.TrnSale.IsLocked == true
-                                     && d.TrnSale.IsCancelled == false
-                                     && d.TrnSale.IsReturned == false
-                                     select d;
+            var currentCollectionsQuery = from d in db.TrnCollections
+                                          where d.TerminalId == filterTerminalId
+                                          && d.CollectionDate == filterDate
+                                          && d.IsLocked == true
+                                          && d.IsCancelled == false
+                                          && d.SalesId != null
+                                          && d.TrnSale.IsLocked == true
+                                          && d.TrnSale.IsCancelled == false
+                                          && d.TrnSale.IsReturned == false
+                                          select d;
 
-            if (currentCollections.Any())
+            if (currentCollectionsQuery.Any())
             {
                 Decimal totalGrossSales = 0;
                 Decimal totalRegularDiscount = 0;
@@ -151,9 +151,11 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 Decimal totalNoOfSKUs = 0;
                 Decimal totalQUantity = 0;
 
+                var currentCollections = currentCollectionsQuery.ToArray();
+
                 for (Int32 i = 0; i < currentCollections.Count(); i++)
                 {
-                    var currentCollection = currentCollections.ToArray()[i];
+                    var currentCollection = currentCollections[i];
 
                     Decimal salesLineTotalGrossSales = 0;
                     Decimal salesLineTotalRegularDiscount = 0;
@@ -166,18 +168,20 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                     Decimal salesLineTotalVATExemptSales = 0;
                     Decimal salesLineTotalVATZeroRatedSales = 0;
 
-                    var salesLines = from d in currentCollection.TrnSale.TrnSalesLines
-                                     where d.Quantity > 0
-                                     select d;
+                    var salesLinesQuery = from d in currentCollection.TrnSale.TrnSalesLines
+                                          where d.Quantity > 0
+                                          select d;
 
-                    if (salesLines.Any())
+                    if (salesLinesQuery.Any())
                     {
-                        totalNoOfSKUs += salesLines.Count();
-                        totalQUantity += salesLines.Sum(d => d.Quantity);
+                        totalNoOfSKUs += salesLinesQuery.Count();
+                        totalQUantity += salesLinesQuery.Sum(d => d.Quantity);
+
+                        var salesLines = salesLinesQuery.ToArray();
 
                         for (Int32 j = 0; j < salesLines.Count(); j++)
                         {
-                            var salesLine = salesLines.ToArray()[j];
+                            var salesLine = salesLines[j];
 
                             if (salesLine.MstTax.Code == "EXEMPTVAT")
                             {
@@ -266,19 +270,21 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 Decimal VATExemptSalesReturn = 0;
                 Decimal VATAmountExemptSalesReturn = 0;
 
-                var salesReturnLines = from d in db.TrnSalesLines
-                                       where d.Quantity < 0
-                                       && d.TrnSale.SalesDate == filterDate
-                                       && d.TrnSale.IsLocked == true
-                                       && d.TrnSale.IsCancelled == false
-                                       && d.TrnSale.IsReturned == true
-                                       select d;
+                var salesReturnLinesQuery = from d in db.TrnSalesLines
+                                            where d.Quantity < 0
+                                            && d.TrnSale.SalesDate == filterDate
+                                            && d.TrnSale.IsLocked == true
+                                            && d.TrnSale.IsCancelled == false
+                                            && d.TrnSale.IsReturned == true
+                                            select d;
 
-                if (salesReturnLines.Any())
+                if (salesReturnLinesQuery.Any())
                 {
+                    var salesReturnLines = salesReturnLinesQuery.ToArray();
+
                     for (Int32 i = 0; i < salesReturnLines.Count(); i++)
                     {
-                        var salesReturnLine = salesReturnLines.ToArray()[i];
+                        var salesReturnLine = salesReturnLines[i];
 
                         if (salesReturnLine.MstTax.Code.Equals("VAT"))
                         {
@@ -338,45 +344,47 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 repZReadingReportEntity.TotalRefund = disbursmenet.Sum(d => d.Amount);
             }
 
-            var currentCollectionLines = from d in db.TrnCollectionLines
-                                         where d.TrnCollection.TerminalId == filterTerminalId
-                                         && d.TrnCollection.CollectionDate == filterDate
-                                         && d.TrnCollection.IsLocked == true
-                                         && d.TrnCollection.IsCancelled == false
-                                         && d.TrnCollection.TrnSale.IsReturned == false
-                                         group d by new
-                                         {
-                                             d.MstPayType.PayTypeCode,
-                                             d.MstPayType.PayType,
-                                         } into g
-                                         select new
-                                         {
-                                             g.Key.PayTypeCode,
-                                             g.Key.PayType,
-                                             TotalAmount = g.Sum(s => s.Amount),
-                                             TotalChangeAmount = g.Sum(s => s.TrnCollection.ChangeAmount)
-                                         };
+            var currentCollectionLinesQuery = from d in db.TrnCollectionLines
+                                              where d.TrnCollection.TerminalId == filterTerminalId
+                                              && d.TrnCollection.CollectionDate == filterDate
+                                              && d.TrnCollection.IsLocked == true
+                                              && d.TrnCollection.IsCancelled == false
+                                              && d.TrnCollection.TrnSale.IsReturned == false
+                                              group d by new
+                                              {
+                                                  d.MstPayType.PayTypeCode,
+                                                  d.MstPayType.PayType,
+                                              } into g
+                                              select new
+                                              {
+                                                  g.Key.PayTypeCode,
+                                                  g.Key.PayType,
+                                                  TotalAmount = g.Sum(s => s.Amount),
+                                                  TotalChangeAmount = g.Sum(s => s.TrnCollection.ChangeAmount)
+                                              };
 
             Decimal totalCollectionAmount = 0;
 
-            if (currentCollectionLines.ToList().Any())
+            if (currentCollectionLinesQuery.ToList().Any())
             {
                 // =========================
                 // COLLECTION LINE PAY TYPES
                 // =========================
 
+                var currentCollectionLines = currentCollectionLinesQuery.ToArray();
+
                 // Compute the CASH
                 Decimal changeAmount = 0;
                 for (Int32 i = 0; i < currentCollectionLines.Count(); i++)
                 {
-                    var collectionLine = currentCollectionLines.ToArray()[i];
+                    var collectionLine = currentCollectionLines[i];
 
                     changeAmount += collectionLine.TotalChangeAmount;
                 }
 
                 for (Int32 i = 0; i < currentCollectionLines.Count(); i++)
                 {
-                    var collectionLine = currentCollectionLines.ToArray()[i];
+                    var collectionLine = currentCollectionLines[i];
 
                     Decimal amount = collectionLine.TotalAmount;
                     if (collectionLine.PayTypeCode.Equals("CASH") == true)
@@ -450,37 +458,41 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             Decimal totalAccumulatedPWDDiscount = 0;
             Decimal totalAccumulatedSalesReturn = 0;
 
-            var previousCollections = from d in db.TrnCollections
-                                      where d.TerminalId == filterTerminalId
-                                      && d.CollectionDate < filterDate
-                                      && d.IsLocked == true
-                                      && d.IsCancelled == false
-                                      && d.SalesId != null
-                                      && d.TrnSale.IsLocked == true
-                                      && d.TrnSale.IsCancelled == false
-                                      && d.TrnSale.IsReturned == false
-                                      select d;
+            var previousCollectionsQuery = from d in db.TrnCollections
+                                           where d.TerminalId == filterTerminalId
+                                           && d.CollectionDate < filterDate
+                                           && d.IsLocked == true
+                                           && d.IsCancelled == false
+                                           && d.SalesId != null
+                                           && d.TrnSale.IsLocked == true
+                                           && d.TrnSale.IsCancelled == false
+                                           && d.TrnSale.IsReturned == false
+                                           select d;
 
-            if (previousCollections.Any())
+            if (previousCollectionsQuery.Any())
             {
+                var previousCollections = previousCollectionsQuery.ToArray();
+
                 for (Int32 i = 0; i < previousCollections.Count(); i++)
                 {
-                    var previousCollection = previousCollections.ToArray()[i];
+                    var previousCollection = previousCollections[i];
 
                     Decimal salesLineTotalGrossSales = 0;
                     Decimal salesLineTotalRegularDiscount = 0;
                     Decimal salesLineTotalSeniorCitizenDiscount = 0;
                     Decimal salesLineTotalPWDDiscount = 0;
 
-                    var salesLines = from d in previousCollection.TrnSale.TrnSalesLines
-                                     where d.Quantity > 0
-                                     select d;
+                    var salesLinesQuery = from d in previousCollection.TrnSale.TrnSalesLines
+                                          where d.Quantity > 0
+                                          select d;
 
-                    if (salesLines.Any())
+                    if (salesLinesQuery.Any())
                     {
+                        var salesLines = salesLinesQuery.ToArray();
+
                         for (Int32 j = 0; j < salesLines.Count(); j++)
                         {
-                            var salesLine = salesLines.ToArray()[j];
+                            var salesLine = salesLines[j];
 
                             if (salesLine.MstTax.Code == "EXEMPTVAT")
                             {
@@ -559,19 +571,21 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 Decimal VATExemptSalesReturn = 0;
                 Decimal VATAmountExemptSalesReturn = 0;
 
-                var previousSalesReturnLines = from d in db.TrnSalesLines
-                                               where d.Quantity < 0
-                                               && d.TrnSale.SalesDate < filterDate
-                                               && d.TrnSale.IsLocked == true
-                                               && d.TrnSale.IsCancelled == false
-                                               && d.TrnSale.IsReturned == true
-                                               select d;
+                var previousSalesReturnLinesQuery = from d in db.TrnSalesLines
+                                                    where d.Quantity < 0
+                                                    && d.TrnSale.SalesDate < filterDate
+                                                    && d.TrnSale.IsLocked == true
+                                                    && d.TrnSale.IsCancelled == false
+                                                    && d.TrnSale.IsReturned == true
+                                                    select d;
 
-                if (previousSalesReturnLines.Any())
+                if (previousSalesReturnLinesQuery.Any())
                 {
+                    var previousSalesReturnLines = previousSalesReturnLinesQuery.ToArray();
+
                     for (Int32 i = 0; i < previousSalesReturnLines.Count(); i++)
                     {
-                        var salesReturnLine = previousSalesReturnLines.ToArray()[i];
+                        var salesReturnLine = previousSalesReturnLines[i];
 
                         Decimal previousDeclareRate = 0;
 
@@ -856,9 +870,11 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
             if (dataSource.CollectionLines.Any())
             {
-                for (Int32 i = 0; i < dataSource.CollectionLines.Count(); i++)
+                var previousSalesReturnLines = dataSource.CollectionLines.ToArray();
+
+                for (Int32 i = 0; i < previousSalesReturnLines.Count(); i++)
                 {
-                    var collectionLine = dataSource.CollectionLines.ToArray()[i];
+                    var collectionLine = previousSalesReturnLines[i];
 
                     // ================
                     // Collection Lines
