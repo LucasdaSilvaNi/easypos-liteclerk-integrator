@@ -151,8 +151,10 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 Decimal totalNoOfSKUs = 0;
                 Decimal totalQUantity = 0;
 
-                foreach (var currentCollection in currentCollections)
+                for (Int32 i = 0; i < currentCollections.Count(); i++)
                 {
+                    var currentCollection = currentCollections.ToArray()[i];
+
                     Decimal salesLineTotalGrossSales = 0;
                     Decimal salesLineTotalRegularDiscount = 0;
                     Decimal salesLineTotalSeniorCitizenDiscount = 0;
@@ -173,8 +175,10 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                         totalNoOfSKUs += salesLines.Count();
                         totalQUantity += salesLines.Sum(d => d.Quantity);
 
-                        foreach (var salesLine in salesLines)
+                        for (Int32 j = 0; j < salesLines.Count(); j++)
                         {
+                            var salesLine = salesLines.ToArray()[j];
+
                             if (salesLine.MstTax.Code == "EXEMPTVAT")
                             {
                                 if (salesLine.MstItem.MstTax1.Rate > 0)
@@ -272,8 +276,10 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                 if (salesReturnLines.Any())
                 {
-                    foreach (var salesReturnLine in salesReturnLines)
+                    for (Int32 i = 0; i < salesReturnLines.Count(); i++)
                     {
+                        var salesReturnLine = salesReturnLines.ToArray()[i];
+
                         if (salesReturnLine.MstTax.Code.Equals("VAT"))
                         {
                             VATSalesReturn += salesReturnLine.Amount;
@@ -361,13 +367,17 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                 // Compute the CASH
                 Decimal changeAmount = 0;
-                foreach (var collectionLine in currentCollectionLines)
+                for (Int32 i = 0; i < currentCollectionLines.Count(); i++)
                 {
+                    var collectionLine = currentCollectionLines.ToArray()[i];
+
                     changeAmount += collectionLine.TotalChangeAmount;
                 }
 
-                foreach (var collectionLine in currentCollectionLines)
+                for (Int32 i = 0; i < currentCollectionLines.Count(); i++)
                 {
+                    var collectionLine = currentCollectionLines.ToArray()[i];
+
                     Decimal amount = collectionLine.TotalAmount;
                     if (collectionLine.PayTypeCode.Equals("CASH") == true)
                     {
@@ -453,8 +463,10 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
             if (previousCollections.Any())
             {
-                foreach (var previousCollection in previousCollections)
+                for (Int32 i = 0; i < previousCollections.Count(); i++)
                 {
+                    var previousCollection = previousCollections.ToArray()[i];
+
                     Decimal salesLineTotalGrossSales = 0;
                     Decimal salesLineTotalRegularDiscount = 0;
                     Decimal salesLineTotalSeniorCitizenDiscount = 0;
@@ -466,8 +478,10 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                     if (salesLines.Any())
                     {
-                        foreach (var salesLine in salesLines)
+                        for (Int32 j = 0; j < salesLines.Count(); j++)
                         {
+                            var salesLine = salesLines.ToArray()[j];
+
                             if (salesLine.MstTax.Code == "EXEMPTVAT")
                             {
                                 if (salesLine.MstItem.MstTax1.Rate > 0)
@@ -555,8 +569,10 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                 if (previousSalesReturnLines.Any())
                 {
-                    foreach (var salesReturnLine in previousSalesReturnLines)
+                    for (Int32 i = 0; i < previousSalesReturnLines.Count(); i++)
                     {
+                        var salesReturnLine = previousSalesReturnLines.ToArray()[i];
+
                         Decimal previousDeclareRate = 0;
 
                         if (previousDeclareRates.Any())
@@ -840,8 +856,10 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
             if (dataSource.CollectionLines.Any())
             {
-                foreach (var collectionLine in dataSource.CollectionLines)
+                for (Int32 i = 0; i < dataSource.CollectionLines.Count(); i++)
                 {
+                    var collectionLine = dataSource.CollectionLines.ToArray()[i];
+
                     // ================
                     // Collection Lines
                     // ================
