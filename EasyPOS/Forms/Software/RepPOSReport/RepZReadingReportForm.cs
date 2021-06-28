@@ -283,7 +283,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                     {
                         if (salesReturnLine.MstTax.Code.Equals("VAT"))
                         {
-                            VATSalesReturn += salesReturnLine.Amount + (salesReturnLine.TaxAmount * -1);
+                            VATSalesReturn += salesReturnLine.Amount;
                             VATAmountSalesReturn += salesReturnLine.TaxAmount * -1;
                         }
 
@@ -300,9 +300,9 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                 VATAmountExemptSalesReturn += salesReturnLine.TaxAmount;
                             }
                         }
-
-                        totalSalesReturn += (VATSalesReturn + VATExemptSalesReturn);
                     }
+
+                    totalSalesReturn += (VATSalesReturn + VATExemptSalesReturn);
                 }
 
                 repZReadingReportEntity.TotalGrossSales = totalGrossSales;
@@ -419,28 +419,6 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 repZReadingReportEntity.TotalCancelledAmount = currentCancelledCollections.Sum(d => d.Amount);
             }
 
-            Decimal previousDeclareRate = 0;
-
-            var previousSysDeclareRate = from d in db.SysDeclareRates
-                                         where d.Date == DateTime.Today.AddDays(-1)
-                                         select d;
-
-            if (previousSysDeclareRate.ToList().OrderByDescending(d => d.Id).Any())
-            {
-                if (previousSysDeclareRate.FirstOrDefault().DeclareRate != null)
-                {
-                    previousDeclareRate = Convert.ToDecimal(previousSysDeclareRate.FirstOrDefault().DeclareRate);
-                }
-                else
-                {
-                    previousDeclareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
-                }
-            }
-            else
-            {
-                previousDeclareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
-            }
-
             Decimal currentDeclareRate = 0;
 
             var currentSysDeclareRate = from d in db.SysDeclareRates
@@ -459,6 +437,10 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 currentDeclareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
             }
 
+            var previousDeclareRates = from d in db.SysDeclareRates
+                                       where d.Date < filterDate
+                                       select d;
+
             Decimal totalAccumulatedGrossSales = 0;
             Decimal totalAccumulatedRegularDiscount = 0;
             Decimal totalAccumulatedSeniorCitizenDiscount = 0;
@@ -471,79 +453,97 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                       && d.IsLocked == true
                                       && d.IsCancelled == false
                                       && d.SalesId != null
+                                      && d.TrnSale.IsLocked == true
+                                      && d.TrnSale.IsCancelled == false
+                                      && d.TrnSale.IsReturned == false
                                       select d;
 
             if (previousCollections.Any())
             {
                 foreach (var previousCollection in previousCollections)
                 {
-                    var sales = from d in db.TrnSales
-                                where d.Id == previousCollection.SalesId
-                                && d.IsLocked == true
-                                && d.IsCancelled == false
-                                && d.IsReturned == false
-                                select d;
+                    Decimal salesLineTotalGrossSales = 0;
+                    Decimal salesLineTotalRegularDiscount = 0;
+                    Decimal salesLineTotalSeniorCitizenDiscount = 0;
+                    Decimal salesLineTotalPWDDiscount = 0;
 
-                    if (sales.Any())
+                    var salesLines = from d in previousCollection.TrnSale.TrnSalesLines
+                                     where d.Quantity > 0
+                                     select d;
+
+                    if (salesLines.Any())
                     {
-                        Decimal salesLineTotalGrossSales = 0;
-                        Decimal salesLineTotalRegularDiscount = 0;
-                        Decimal salesLineTotalSeniorCitizenDiscount = 0;
-                        Decimal salesLineTotalPWDDiscount = 0;
-
-                        var salesLines = from d in sales.FirstOrDefault().TrnSalesLines
-                                         where d.Quantity > 0
-                                         select d;
-
-                        if (salesLines.Any())
+                        foreach (var salesLine in salesLines)
                         {
-                            foreach (var salesLine in salesLines)
+                            if (salesLine.MstTax.Code == "EXEMPTVAT")
                             {
-                                if (salesLine.MstTax.Code == "EXEMPTVAT")
+                                if (salesLine.MstItem.MstTax1.Rate > 0)
                                 {
-                                    if (salesLine.MstItem.MstTax1.Rate > 0)
-                                    {
-                                        salesLineTotalGrossSales += (salesLine.Price * salesLine.Quantity) - ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstItem.MstTax1.Rate / 100)) * (salesLine.MstItem.MstTax1.Rate / 100));
-                                    }
-                                    else
-                                    {
-                                        salesLineTotalGrossSales += salesLine.Price * salesLine.Quantity;
-                                    }
+                                    salesLineTotalGrossSales += (salesLine.Price * salesLine.Quantity) - ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstItem.MstTax1.Rate / 100)) * (salesLine.MstItem.MstTax1.Rate / 100));
                                 }
                                 else
                                 {
-                                    if (salesLine.MstTax.Rate > 0)
-                                    {
-                                        salesLineTotalGrossSales += (salesLine.Price * salesLine.Quantity) - salesLine.TaxAmount;
-                                    }
-                                    else
-                                    {
-                                        salesLineTotalGrossSales += salesLine.Price * salesLine.Quantity;
-                                    }
-                                }
-
-                                if (salesLine.MstDiscount.Discount != "Senior Citizen Discount" && salesLine.MstDiscount.Discount != "PWD")
-                                {
-                                    salesLineTotalRegularDiscount += salesLine.DiscountAmount * salesLine.Quantity;
-                                }
-
-                                if (salesLine.MstDiscount.Discount == "Senior Citizen Discount")
-                                {
-                                    salesLineTotalSeniorCitizenDiscount += salesLine.DiscountAmount * salesLine.Quantity;
-                                }
-
-                                if (salesLine.MstDiscount.Discount == "PWD")
-                                {
-                                    salesLineTotalPWDDiscount += salesLine.DiscountAmount * salesLine.Quantity;
+                                    salesLineTotalGrossSales += salesLine.Price * salesLine.Quantity;
                                 }
                             }
-                        }
+                            else
+                            {
+                                if (salesLine.MstTax.Rate > 0)
+                                {
+                                    salesLineTotalGrossSales += (salesLine.Price * salesLine.Quantity) - salesLine.TaxAmount;
+                                }
+                                else
+                                {
+                                    salesLineTotalGrossSales += salesLine.Price * salesLine.Quantity;
+                                }
+                            }
 
-                        totalAccumulatedGrossSales += salesLineTotalGrossSales;
-                        totalAccumulatedRegularDiscount += salesLineTotalRegularDiscount;
-                        totalAccumulatedSeniorCitizenDiscount += salesLineTotalSeniorCitizenDiscount;
-                        totalAccumulatedPWDDiscount += salesLineTotalPWDDiscount;
+                            if (salesLine.MstDiscount.Discount != "Senior Citizen Discount" && salesLine.MstDiscount.Discount != "PWD")
+                            {
+                                salesLineTotalRegularDiscount += salesLine.DiscountAmount * salesLine.Quantity;
+                            }
+
+                            if (salesLine.MstDiscount.Discount == "Senior Citizen Discount")
+                            {
+                                salesLineTotalSeniorCitizenDiscount += salesLine.DiscountAmount * salesLine.Quantity;
+                            }
+
+                            if (salesLine.MstDiscount.Discount == "PWD")
+                            {
+                                salesLineTotalPWDDiscount += salesLine.DiscountAmount * salesLine.Quantity;
+                            }
+                        }
                     }
+
+                    Decimal previousDeclareRate = 0;
+
+                    if (previousDeclareRates.Any())
+                    {
+                        var previousSysDeclareRate = from d in previousDeclareRates
+                                                     where d.Date == previousCollection.TrnSale.SalesDate
+                                                     select d;
+
+                        if (previousSysDeclareRate.Any())
+                        {
+                            if (previousSysDeclareRate.FirstOrDefault().DeclareRate != null)
+                            {
+                                previousDeclareRate = Convert.ToDecimal(previousSysDeclareRate.FirstOrDefault().DeclareRate);
+                            }
+                            else
+                            {
+                                previousDeclareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
+                            }
+                        }
+                        else
+                        {
+                            previousDeclareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
+                        }
+                    }
+
+                    totalAccumulatedGrossSales += salesLineTotalGrossSales * previousDeclareRate;
+                    totalAccumulatedRegularDiscount += salesLineTotalRegularDiscount * previousDeclareRate;
+                    totalAccumulatedSeniorCitizenDiscount += salesLineTotalSeniorCitizenDiscount * previousDeclareRate;
+                    totalAccumulatedPWDDiscount += salesLineTotalPWDDiscount * previousDeclareRate;
                 }
 
                 Decimal VATSalesReturn = 0;
@@ -564,34 +564,59 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 {
                     foreach (var salesReturnLine in previousSalesReturnLines)
                     {
+                        Decimal previousDeclareRate = 0;
+
+                        if (previousDeclareRates.Any())
+                        {
+                            var previousSysDeclareRate = from d in previousDeclareRates
+                                                         where d.Date == salesReturnLine.TrnSale.SalesDate
+                                                         select d;
+
+                            if (previousSysDeclareRate.Any())
+                            {
+                                if (previousSysDeclareRate.FirstOrDefault().DeclareRate != null)
+                                {
+                                    previousDeclareRate = Convert.ToDecimal(previousSysDeclareRate.FirstOrDefault().DeclareRate);
+                                }
+                                else
+                                {
+                                    previousDeclareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
+                                }
+                            }
+                            else
+                            {
+                                previousDeclareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
+                            }
+                        }
+
                         if (salesReturnLine.MstTax.Code.Equals("VAT"))
                         {
-                            VATSalesReturn += salesReturnLine.Amount + (salesReturnLine.TaxAmount * -1);
-                            VATAmountSalesReturn += salesReturnLine.TaxAmount * -1;
+                            VATSalesReturn += salesReturnLine.Amount * previousDeclareRate;
+                            VATAmountSalesReturn += (salesReturnLine.TaxAmount * -1) * previousDeclareRate;
                         }
 
                         if (salesReturnLine.MstTax.Code.Equals("EXEMPTVAT"))
                         {
-                            VATExemptSalesReturn += salesReturnLine.Amount;
+                            VATExemptSalesReturn += salesReturnLine.Amount * previousDeclareRate;
 
                             if (salesReturnLine.MstTax.Code == "EXEMPTVAT")
                             {
-                                VATAmountExemptSalesReturn += ((salesReturnLine.Price * (salesReturnLine.Quantity * -1)) / (1 + (salesReturnLine.MstItem.MstTax1.Rate / 100)) * (salesReturnLine.MstItem.MstTax1.Rate / 100)) * -1;
+                                VATAmountExemptSalesReturn += (((salesReturnLine.Price * (salesReturnLine.Quantity * -1)) / (1 + (salesReturnLine.MstItem.MstTax1.Rate / 100)) * (salesReturnLine.MstItem.MstTax1.Rate / 100)) * -1) * previousDeclareRate;
                             }
                             else
                             {
-                                VATAmountExemptSalesReturn += salesReturnLine.TaxAmount;
+                                VATAmountExemptSalesReturn += salesReturnLine.TaxAmount * previousDeclareRate;
                             }
                         }
-
-                        totalAccumulatedSalesReturn += (VATSalesReturn + VATExemptSalesReturn);
                     }
+
+                    totalAccumulatedSalesReturn += (VATSalesReturn + VATExemptSalesReturn);
                 }
             }
 
-            repZReadingReportEntity.GrossSalesTotalPreviousReading = totalAccumulatedGrossSales * previousDeclareRate;
+            repZReadingReportEntity.GrossSalesTotalPreviousReading = totalAccumulatedGrossSales;
             repZReadingReportEntity.GrossSalesRunningTotal = (repZReadingReportEntity.TotalGrossSales * currentDeclareRate) + repZReadingReportEntity.GrossSalesTotalPreviousReading;
-            repZReadingReportEntity.NetSalesTotalPreviousReading = repZReadingReportEntity.GrossSalesTotalPreviousReading - (totalAccumulatedRegularDiscount * previousDeclareRate) - (totalAccumulatedSeniorCitizenDiscount * previousDeclareRate) - (totalAccumulatedPWDDiscount * previousDeclareRate) - ((totalAccumulatedSalesReturn * -1) * previousDeclareRate);
+            repZReadingReportEntity.NetSalesTotalPreviousReading = repZReadingReportEntity.GrossSalesTotalPreviousReading - totalAccumulatedRegularDiscount - totalAccumulatedSeniorCitizenDiscount - totalAccumulatedPWDDiscount - (totalAccumulatedSalesReturn * -1);
             repZReadingReportEntity.NetSalesRunningTotal = (repZReadingReportEntity.TotalNetSales * currentDeclareRate) + repZReadingReportEntity.NetSalesTotalPreviousReading;
 
             var firstCollection = from d in db.TrnCollections
@@ -629,28 +654,6 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             else
             {
                 currentDeclareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
-            }
-
-            Decimal previousDeclareRate = 0;
-
-            var previousSysDeclareRate = from d in db.SysDeclareRates
-                                         where d.Date == DateTime.Today.AddDays(-1)
-                                         select d;
-
-            if (previousSysDeclareRate.ToList().OrderByDescending(d => d.Id).Any())
-            {
-                if (previousSysDeclareRate.FirstOrDefault().DeclareRate != null)
-                {
-                    previousDeclareRate = Convert.ToDecimal(previousSysDeclareRate.FirstOrDefault().DeclareRate);
-                }
-                else
-                {
-                    previousDeclareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
-                }
-            }
-            else
-            {
-                previousDeclareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
             }
 
             // =============

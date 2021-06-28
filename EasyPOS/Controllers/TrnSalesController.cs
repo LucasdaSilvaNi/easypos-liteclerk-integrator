@@ -1852,7 +1852,7 @@ namespace EasyPOS.Controllers
                                 DiscountAmount = objSalesLine.DiscountAmount,
                                 NetPrice = objSalesLine.NetPrice,
                                 Quantity = objSalesLine.Quantity * -1,
-                                Amount = objSalesLine.Amount * -1,
+                                Amount = (objSalesLine.Price * objSalesLine.Quantity) * -1,
                                 TaxId = objSalesLine.TaxId,
                                 TaxRate = objSalesLine.TaxRate,
                                 TaxAmount = objSalesLine.TaxAmount,
