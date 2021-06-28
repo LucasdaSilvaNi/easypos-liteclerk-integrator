@@ -129,6 +129,9 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                      && d.IsLocked == true
                                      && d.IsCancelled == false
                                      && d.SalesId != null
+                                     && d.TrnSale.IsLocked == true
+                                     && d.TrnSale.IsCancelled == false
+                                     && d.TrnSale.IsReturned == false
                                      select d;
 
             if (currentCollections.Any())
@@ -150,117 +153,107 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                 foreach (var currentCollection in currentCollections)
                 {
-                    var sales = from d in db.TrnSales
-                                where d.Id == currentCollection.SalesId
-                                && d.IsLocked == true
-                                && d.IsCancelled == false
-                                && d.IsReturned == false
-                                select d;
+                    Decimal salesLineTotalGrossSales = 0;
+                    Decimal salesLineTotalRegularDiscount = 0;
+                    Decimal salesLineTotalSeniorCitizenDiscount = 0;
+                    Decimal salesLineTotalPWDDiscount = 0;
 
-                    if (sales.Any())
+                    Decimal salesLineTotalVATSales = 0;
+                    Decimal salesLineTotalVATAmount = 0;
+                    Decimal salesLineTotalNonVATSales = 0;
+                    Decimal salesLineTotalVATExemptSales = 0;
+                    Decimal salesLineTotalVATZeroRatedSales = 0;
+
+                    var salesLines = from d in currentCollection.TrnSale.TrnSalesLines
+                                     where d.Quantity > 0
+                                     select d;
+
+                    if (salesLines.Any())
                     {
-                        Decimal salesLineTotalGrossSales = 0;
-                        Decimal salesLineTotalRegularDiscount = 0;
-                        Decimal salesLineTotalSeniorCitizenDiscount = 0;
-                        Decimal salesLineTotalPWDDiscount = 0;
+                        totalNoOfSKUs += salesLines.Count();
+                        totalQUantity += salesLines.Sum(d => d.Quantity);
 
-                        Decimal salesLineTotalVATSales = 0;
-                        Decimal salesLineTotalVATAmount = 0;
-                        Decimal salesLineTotalNonVATSales = 0;
-                        Decimal salesLineTotalVATExemptSales = 0;
-                        Decimal salesLineTotalVATZeroRatedSales = 0;
-
-                        var salesLines = from d in sales.FirstOrDefault().TrnSalesLines
-                                         where d.Quantity > 0
-                                         select d;
-
-                        if (salesLines.Any())
+                        foreach (var salesLine in salesLines)
                         {
-                            totalNoOfSKUs += salesLines.Count();
-                            totalQUantity += salesLines.Sum(d => d.Quantity);
-
-                            foreach (var salesLine in salesLines)
+                            if (salesLine.MstTax.Code == "EXEMPTVAT")
                             {
-                                if (salesLine.MstTax.Code == "EXEMPTVAT")
+                                if (salesLine.MstItem.MstTax1.Rate > 0)
                                 {
-                                    if (salesLine.MstItem.MstTax1.Rate > 0)
-                                    {
-                                        salesLineTotalGrossSales += (salesLine.Price * salesLine.Quantity) - ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstItem.MstTax1.Rate / 100)) * (salesLine.MstItem.MstTax1.Rate / 100));
-                                    }
-                                    else
-                                    {
-                                        salesLineTotalGrossSales += salesLine.Price * salesLine.Quantity;
-                                    }
+                                    salesLineTotalGrossSales += (salesLine.Price * salesLine.Quantity) - ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstItem.MstTax1.Rate / 100)) * (salesLine.MstItem.MstTax1.Rate / 100));
                                 }
                                 else
                                 {
-                                    if (salesLine.MstTax.Rate > 0)
-                                    {
-                                        salesLineTotalGrossSales += (salesLine.Price * salesLine.Quantity) - salesLine.TaxAmount;
-                                    }
-                                    else
-                                    {
-                                        salesLineTotalGrossSales += salesLine.Price * salesLine.Quantity;
-                                    }
-                                }
-
-                                if (salesLine.MstDiscount.Discount != "Senior Citizen Discount" && salesLine.MstDiscount.Discount != "PWD")
-                                {
-                                    salesLineTotalRegularDiscount += salesLine.DiscountAmount * salesLine.Quantity;
-                                }
-
-                                if (salesLine.MstDiscount.Discount == "Senior Citizen Discount")
-                                {
-                                    salesLineTotalSeniorCitizenDiscount += salesLine.DiscountAmount * salesLine.Quantity;
-                                }
-
-                                if (salesLine.MstDiscount.Discount == "PWD")
-                                {
-                                    salesLineTotalPWDDiscount += salesLine.DiscountAmount * salesLine.Quantity;
-                                }
-
-                                if (salesLine.MstTax.Code.Equals("VAT"))
-                                {
-                                    salesLineTotalVATSales += salesLine.Amount - (salesLine.Amount / (1 + (salesLine.MstTax.Rate / 100)) * (salesLine.MstTax.Rate / 100));
-                                }
-
-                                if (salesLine.MstTax.Code == "EXEMPTVAT")
-                                {
-                                    salesLineTotalVATAmount += ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstItem.MstTax1.Rate / 100)) * (salesLine.MstItem.MstTax1.Rate / 100));
-                                }
-                                else
-                                {
-                                    salesLineTotalVATAmount += salesLine.TaxAmount;
-                                }
-
-                                if (salesLine.MstTax.Code.Equals("NONVAT"))
-                                {
-                                    salesLineTotalNonVATSales += salesLine.Amount;
-                                }
-
-                                if (salesLine.MstTax.Code.Equals("EXEMPTVAT"))
-                                {
-                                    salesLineTotalVATExemptSales += ((salesLine.Price * salesLine.Quantity) - ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstItem.MstTax1.Rate / 100)) * (salesLine.MstItem.MstTax1.Rate / 100))) - salesLineTotalSeniorCitizenDiscount - salesLineTotalPWDDiscount;
-                                }
-
-                                if (salesLine.MstTax.Code.Equals("ZEROVAT"))
-                                {
-                                    salesLineTotalVATZeroRatedSales += salesLine.Amount;
+                                    salesLineTotalGrossSales += salesLine.Price * salesLine.Quantity;
                                 }
                             }
+                            else
+                            {
+                                if (salesLine.MstTax.Rate > 0)
+                                {
+                                    salesLineTotalGrossSales += (salesLine.Price * salesLine.Quantity) - salesLine.TaxAmount;
+                                }
+                                else
+                                {
+                                    salesLineTotalGrossSales += salesLine.Price * salesLine.Quantity;
+                                }
+                            }
+
+                            if (salesLine.MstDiscount.Discount != "Senior Citizen Discount" && salesLine.MstDiscount.Discount != "PWD")
+                            {
+                                salesLineTotalRegularDiscount += salesLine.DiscountAmount * salesLine.Quantity;
+                            }
+
+                            if (salesLine.MstDiscount.Discount == "Senior Citizen Discount")
+                            {
+                                salesLineTotalSeniorCitizenDiscount += salesLine.DiscountAmount * salesLine.Quantity;
+                            }
+
+                            if (salesLine.MstDiscount.Discount == "PWD")
+                            {
+                                salesLineTotalPWDDiscount += salesLine.DiscountAmount * salesLine.Quantity;
+                            }
+
+                            if (salesLine.MstTax.Code.Equals("VAT"))
+                            {
+                                salesLineTotalVATSales += salesLine.Amount - (salesLine.Amount / (1 + (salesLine.MstTax.Rate / 100)) * (salesLine.MstTax.Rate / 100));
+                            }
+
+                            if (salesLine.MstTax.Code == "EXEMPTVAT")
+                            {
+                                salesLineTotalVATAmount += ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstItem.MstTax1.Rate / 100)) * (salesLine.MstItem.MstTax1.Rate / 100));
+                            }
+                            else
+                            {
+                                salesLineTotalVATAmount += salesLine.TaxAmount;
+                            }
+
+                            if (salesLine.MstTax.Code.Equals("NONVAT"))
+                            {
+                                salesLineTotalNonVATSales += salesLine.Amount;
+                            }
+
+                            if (salesLine.MstTax.Code.Equals("EXEMPTVAT"))
+                            {
+                                salesLineTotalVATExemptSales += ((salesLine.Price * salesLine.Quantity) - ((salesLine.Price * salesLine.Quantity) / (1 + (salesLine.MstItem.MstTax1.Rate / 100)) * (salesLine.MstItem.MstTax1.Rate / 100))) - salesLineTotalSeniorCitizenDiscount - salesLineTotalPWDDiscount;
+                            }
+
+                            if (salesLine.MstTax.Code.Equals("ZEROVAT"))
+                            {
+                                salesLineTotalVATZeroRatedSales += salesLine.Amount;
+                            }
                         }
-
-                        totalGrossSales += salesLineTotalGrossSales;
-                        totalRegularDiscount += salesLineTotalRegularDiscount;
-                        totalSeniorCitizenDiscount += salesLineTotalSeniorCitizenDiscount;
-                        totalPWDDiscount += salesLineTotalPWDDiscount;
-
-                        totalVATSales += salesLineTotalVATSales;
-                        totalVATAmount += salesLineTotalVATAmount;
-                        totalNonVATSales += salesLineTotalNonVATSales;
-                        totalVATExemptSales += salesLineTotalVATExemptSales;
-                        totalVATZeroRatedSales += salesLineTotalVATZeroRatedSales;
                     }
+
+                    totalGrossSales += salesLineTotalGrossSales;
+                    totalRegularDiscount += salesLineTotalRegularDiscount;
+                    totalSeniorCitizenDiscount += salesLineTotalSeniorCitizenDiscount;
+                    totalPWDDiscount += salesLineTotalPWDDiscount;
+
+                    totalVATSales += salesLineTotalVATSales;
+                    totalVATAmount += salesLineTotalVATAmount;
+                    totalNonVATSales += salesLineTotalNonVATSales;
+                    totalVATExemptSales += salesLineTotalVATExemptSales;
+                    totalVATZeroRatedSales += salesLineTotalVATZeroRatedSales;
                 }
 
                 Decimal VATSalesReturn = 0;
