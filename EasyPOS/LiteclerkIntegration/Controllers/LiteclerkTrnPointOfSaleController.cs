@@ -42,9 +42,12 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
             {
                 var sales = from d in posdb.TrnSales
                             where d.IsLocked == true
-                            && d.IsTendered == true
+                            && d.TrnCollections.Where(c =>
+                                c.IsLocked == true &&
+                                c.IsCancelled == false &&
+                                c.SalesId != null
+                            ).Any() == true
                             && d.IsCancelled == false
-                            && d.IsReturned == false
                             && d.PostCode == null
                             select d;
 
@@ -58,11 +61,11 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
                             BranchCode = branchCode,
                             TerminalCode = salesLine.TrnSale.MstTerminal.Terminal,
                             POSDate = salesLine.TrnSale.SalesDate.ToShortDateString(),
-                            POSNumber = salesLine.TrnSale.CollectionNumber,
+                            POSNumber = salesLine.TrnSale.TrnCollections.FirstOrDefault().CollectionNumber,
                             OrderNumber = salesLine.TrnSale.SalesNumber,
                             CustomerCode = salesLine.TrnSale.MstCustomer.CustomerCode,
                             ItemCode = salesLine.MstItem.BarCode,
-                            Particulars = salesLine.TrnSale.Remarks,
+                            Particulars = "OR: " + salesLine.TrnSale.TrnCollections.FirstOrDefault().CollectionNumber,
                             Quantity = salesLine.Quantity,
                             Price = salesLine.Price,
                             Discount = salesLine.DiscountAmount,
@@ -81,7 +84,7 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
                     sysSettingsForm.logMessages("Sending Sales...\r\n\n");
                     sysSettingsForm.logMessages("Sales Number: " + sales.FirstOrDefault().SalesNumber + "\r\n\n");
                     sysSettingsForm.logMessages("Sales Date: " + sales.FirstOrDefault().SalesDate.ToShortDateString() + "\r\n\n");
-                    sysSettingsForm.logMessages("OR Number: " + sales.FirstOrDefault().CollectionNumber + "\r\n\n");
+                    sysSettingsForm.logMessages("OR Number: " + sales.FirstOrDefault().TrnCollections.FirstOrDefault().CollectionNumber + "\r\n\n");
                     sysSettingsForm.logMessages("Amount: " + sales.FirstOrDefault().Amount.ToString("#,##0.00") + "\r\n\n");
 
                     SendSales(apiUrlHost, json, sales.FirstOrDefault().Id);
