@@ -42,7 +42,7 @@ namespace EasyPOS.Forms.Software
             labelCurrentUser.Text = "Date: " + currentDate + "     User: " + currentUserName + "     Terminal: " + currentTerminal;
             panelSidebarMenu.Visible = false;
 
-            labelVersion.Text = "EasyPOS Version: " + Modules.SysCurrentModule.GetCurrentSettings().CurrentVersion;
+            //labelVersion.Text = "EasyPOS Version: " + Modules.SysCurrentModule.GetCurrentSettings().CurrentVersion;
             labelSupport.Text = "Support: Easyfis Corporation " + Modules.SysCurrentModule.GetCurrentSettings().CurrentSupport;
         }
        
@@ -128,14 +128,14 @@ namespace EasyPOS.Forms.Software
 
         public void InitializeDefaultForm()
         {
-            SysMenu.SysMenuForm sysMenuForm = new SysMenu.SysMenuForm(this)
+            SysSettings.SysSettingsForm sysSettingsForm = new SysSettings.SysSettingsForm(this)
             {
                 TopLevel = false,
                 Visible = true,
                 Dock = DockStyle.Fill
             };
 
-            tabPageSysMenu.Controls.Add(sysMenuForm);
+            tabPageSysMenu.Controls.Add(sysSettingsForm);
         }
 
         public void AddTabPageRemittanceReports()

@@ -240,7 +240,7 @@
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.labelSupport);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 265);
+            this.panel2.Location = new System.Drawing.Point(0, 307);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(463, 46);
@@ -256,9 +256,9 @@
             this.labelVersion.Location = new System.Drawing.Point(67, 8);
             this.labelVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(172, 15);
+            this.labelVersion.Size = new System.Drawing.Size(238, 15);
             this.labelVersion.TabIndex = 9;
-            this.labelVersion.Text = "Easy POS Version: 1.20200518";
+            this.labelVersion.Text = "Liteclerk Integration Version: 1.20210630";
             // 
             // pictureBox2
             // 
@@ -296,6 +296,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(463, 75);
             this.panel3.TabIndex = 22;
+            this.panel3.Visible = false;
             // 
             // panel4
             // 
@@ -308,7 +309,7 @@
             this.panel4.Location = new System.Drawing.Point(0, 111);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(463, 156);
+            this.panel4.Size = new System.Drawing.Size(463, 192);
             this.panel4.TabIndex = 12;
             // 
             // textBoxUserCardNumber
@@ -329,7 +330,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(463, 311);
+            this.ClientSize = new System.Drawing.Size(463, 353);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);

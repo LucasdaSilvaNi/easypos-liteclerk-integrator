@@ -39,6 +39,13 @@ namespace EasyPOS.Forms.Software.SysSettings
                 GetComboBoxDropDownList();
             }
 
+            tabControl1.TabPages.Remove(tabPage1);
+            tabControl1.TabPages.Remove(tabPage3);
+            tabControl1.TabPages.Remove(tabPage4);
+            tabControl1.TabPages.Remove(tabPage5);
+            tabControl1.TabPages.Remove(tabPage6);
+            tabControl1.TabPages.Remove(tabPage7);
+            tabControl1.TabPages.Remove(tabControl10);
         }
 
         public void getSettings()
