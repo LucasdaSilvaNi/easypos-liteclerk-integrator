@@ -127,7 +127,7 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
                     List<Entities.LiteclerkTrnPointOfSale> POSSales = new JavaScriptSerializer().Deserialize<List<Entities.LiteclerkTrnPointOfSale>>(json);
                     streamWriter.Write(new JavaScriptSerializer().Serialize(POSSales));
                 }
-
+                 
                 // ================
                 // Process Response
                 // ================
