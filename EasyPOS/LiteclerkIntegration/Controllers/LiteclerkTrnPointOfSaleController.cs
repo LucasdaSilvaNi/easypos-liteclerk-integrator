@@ -65,7 +65,7 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
                             OrderNumber = salesLine.TrnSale.SalesNumber,
                             CustomerCode = salesLine.TrnSale.MstCustomer.CustomerCode,
                             ItemCode = salesLine.MstItem.BarCode,
-                            Particulars = "OR: " + salesLine.TrnSale.TrnCollections.FirstOrDefault().CollectionNumber,
+                            Particulars = "OR: " + salesLine.TrnSale.TrnCollections.FirstOrDefault().CollectionNumber + ", Sales Agent: " + salesLine.TrnSale.MstUser5.UserName,
                             Quantity = salesLine.Quantity,
                             Price = salesLine.Price,
                             Discount = salesLine.DiscountAmount,
@@ -73,7 +73,7 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
                             Amount = salesLine.Amount,
                             TaxCode = salesLine.MstTax.Code,
                             TaxAmount = salesLine.TaxAmount,
-                            CashierUserCode = salesLine.TrnSale.MstUser5.UserName,
+                            CashierUserCode = salesLine.TrnSale.MstUser.UserName,
                             TimeStamp = DateTime.Now.ToString("MMMM dd, yyyy hh:mm tt"),
                             PostCode = ""
                         });
