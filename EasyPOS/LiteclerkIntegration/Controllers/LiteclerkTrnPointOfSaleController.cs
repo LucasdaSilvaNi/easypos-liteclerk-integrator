@@ -40,55 +40,104 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
         {
             try
             {
-                var sales = from d in posdb.TrnSales
-                            where d.IsLocked == true
-                            && d.TrnCollections.Where(c =>
-                                c.IsLocked == true &&
-                                c.IsCancelled == false &&
-                                c.SalesId != null
-                            ).Any() == true
-                            && d.IsCancelled == false
-                            && d.PostCode == null
-                            select d;
+                var unpostedSales = from d in posdb.TrnSales
+                                    where d.IsLocked == true
+                                    && d.IsCancelled == false
+                                    && d.PostCode == null
+                                    select d;
 
-                if (sales.Any())
+                if (unpostedSales.Any())
                 {
-                    List<Entities.LiteclerkTrnPointOfSale> listPOSSales = new List<Entities.LiteclerkTrnPointOfSale>();
-                    foreach (var salesLine in sales.FirstOrDefault().TrnSalesLines)
+                    foreach (var unpostedSale in unpostedSales)
                     {
-                        listPOSSales.Add(new Entities.LiteclerkTrnPointOfSale()
+                        if (unpostedSale.TrnCollections.Where(c => c.IsLocked == true && c.IsCancelled == false).Any())
                         {
-                            BranchCode = branchCode,
-                            TerminalCode = salesLine.TrnSale.MstTerminal.Terminal,
-                            POSDate = salesLine.TrnSale.SalesDate.ToShortDateString(),
-                            POSNumber = salesLine.TrnSale.TrnCollections.FirstOrDefault().CollectionNumber,
-                            OrderNumber = salesLine.TrnSale.SalesNumber,
-                            CustomerCode = salesLine.TrnSale.MstCustomer.CustomerCode,
-                            ItemCode = salesLine.MstItem.BarCode,
-                            Particulars = "OR: " + salesLine.TrnSale.TrnCollections.FirstOrDefault().CollectionNumber + ", Sales Agent: " + salesLine.TrnSale.MstUser5.UserName,
-                            Quantity = salesLine.Quantity,
-                            Price = salesLine.Price,
-                            Discount = salesLine.DiscountAmount,
-                            NetPrice = salesLine.NetPrice,
-                            Amount = salesLine.Amount,
-                            TaxCode = salesLine.MstTax.Code,
-                            TaxAmount = salesLine.TaxAmount,
-                            CashierUserCode = salesLine.TrnSale.MstUser.UserName,
-                            TimeStamp = DateTime.Now.ToString("MMMM dd, yyyy hh:mm tt"),
-                            PostCode = ""
-                        });
+                            Int32 salesId = unpostedSale.Id;
+
+                            List<Entities.LiteclerkTrnPointOfSale> listPOSSales = new List<Entities.LiteclerkTrnPointOfSale>();
+                            foreach (var salesLine in unpostedSale.TrnSalesLines)
+                            {
+                                listPOSSales.Add(new Entities.LiteclerkTrnPointOfSale()
+                                {
+                                    BranchCode = branchCode,
+                                    TerminalCode = salesLine.TrnSale.MstTerminal.Terminal,
+                                    POSDate = salesLine.TrnSale.SalesDate.ToShortDateString(),
+                                    POSNumber = salesLine.TrnSale.TrnCollections.FirstOrDefault().CollectionNumber,
+                                    OrderNumber = salesLine.TrnSale.SalesNumber,
+                                    CustomerCode = salesLine.TrnSale.MstCustomer.CustomerCode,
+                                    ItemCode = salesLine.MstItem.BarCode,
+                                    Particulars = "OR: " + salesLine.TrnSale.TrnCollections.FirstOrDefault().CollectionNumber + ", Sales Agent: " + salesLine.TrnSale.MstUser5.UserName,
+                                    Quantity = salesLine.Quantity,
+                                    Price = salesLine.Price,
+                                    Discount = salesLine.DiscountAmount,
+                                    NetPrice = salesLine.NetPrice,
+                                    Amount = salesLine.Amount,
+                                    TaxCode = salesLine.MstTax.Code,
+                                    TaxAmount = salesLine.TaxAmount,
+                                    CashierUserCode = salesLine.TrnSale.MstUser.UserName,
+                                    TimeStamp = DateTime.Now.ToString("MMMM dd, yyyy hh:mm tt"),
+                                    PostCode = ""
+                                });
+                            }
+
+                            String json = new JavaScriptSerializer().Serialize(listPOSSales);
+
+                            sysSettingsForm.logMessages("Sending Sales...\r\n\n");
+                            sysSettingsForm.logMessages("Sales Number: " + unpostedSale.SalesNumber + "\r\n\n");
+                            sysSettingsForm.logMessages("Sales Date: " + unpostedSale.SalesDate.ToShortDateString() + "\r\n\n");
+                            sysSettingsForm.logMessages("OR Number: " + unpostedSale.TrnCollections.FirstOrDefault().CollectionNumber + "\r\n\n");
+                            sysSettingsForm.logMessages("Amount: " + unpostedSale.Amount.ToString("#,##0.00") + "\r\n\n");
+
+                            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+                            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://" + apiUrlHost + "/api/EasyPOSTrnPointOfSaleAPI/add");
+                            httpWebRequest.ContentType = "application/json";
+                            httpWebRequest.Method = "POST";
+                            httpWebRequest.Accept = "*/*";
+
+                            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                            {
+                                List<Entities.LiteclerkTrnPointOfSale> POSSales = new JavaScriptSerializer().Deserialize<List<Entities.LiteclerkTrnPointOfSale>>(json);
+                                streamWriter.Write(new JavaScriptSerializer().Serialize(POSSales));
+                            }
+
+                            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                            {
+                                var result = streamReader.ReadToEnd();
+                                if (result != null)
+                                {
+                                    var sales = from d in posdb.TrnSales
+                                                where d.Id == salesId
+                                                select d;
+
+                                    if (sales.Any())
+                                    {
+                                        var updateSales = sales.FirstOrDefault();
+                                        updateSales.PostCode = result.Replace("\"", "");
+                                        posdb.SubmitChanges();
+                                    }
+
+                                    sysSettingsForm.logMessages("Send Succesful!" + "\r\n\n");
+                                    sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
+                                    sysSettingsForm.logMessages("\r\n\n");
+                                }
+                            }
+
+                            break;
+                        }
                     }
-
-                    String json = new JavaScriptSerializer().Serialize(listPOSSales);
-
-                    sysSettingsForm.logMessages("Sending Sales...\r\n\n");
-                    sysSettingsForm.logMessages("Sales Number: " + sales.FirstOrDefault().SalesNumber + "\r\n\n");
-                    sysSettingsForm.logMessages("Sales Date: " + sales.FirstOrDefault().SalesDate.ToShortDateString() + "\r\n\n");
-                    sysSettingsForm.logMessages("OR Number: " + sales.FirstOrDefault().TrnCollections.FirstOrDefault().CollectionNumber + "\r\n\n");
-                    sysSettingsForm.logMessages("Amount: " + sales.FirstOrDefault().Amount.ToString("#,##0.00") + "\r\n\n");
-
-                    SendSales(apiUrlHost, json, sales.FirstOrDefault().Id);
                 }
+
+                return Task.FromResult("");
+            }
+            catch (WebException we)
+            {
+                var resp = new StreamReader(we.Response.GetResponseStream()).ReadToEnd();
+
+                sysSettingsForm.logMessages(resp.Replace("\"", "") + "\r\n\n");
+                sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
+                sysSettingsForm.logMessages("\r\n\n");
 
                 return Task.FromResult("");
             }
@@ -99,68 +148,6 @@ namespace EasyPOS.LiteclerkIntegration.Controllers
                 sysSettingsForm.logMessages("\r\n\n");
 
                 return Task.FromResult("");
-            }
-        }
-
-        // ==========
-        // Send Sales
-        // ==========
-        public void SendSales(String apiUrlHost, String json, Int32 salesId)
-        {
-            try
-            {
-                ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-
-                // ============
-                // Http Request
-                // ============
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://" + apiUrlHost + "/api/EasyPOSTrnPointOfSaleAPI/add");
-                httpWebRequest.ContentType = "application/json";
-                httpWebRequest.Method = "POST";
-                httpWebRequest.Accept = "*/*";
-
-                // ====
-                // Data
-                // ====
-                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-                {
-                    List<Entities.LiteclerkTrnPointOfSale> POSSales = new JavaScriptSerializer().Deserialize<List<Entities.LiteclerkTrnPointOfSale>>(json);
-                    streamWriter.Write(new JavaScriptSerializer().Serialize(POSSales));
-                }
-                 
-                // ================
-                // Process Response
-                // ================
-                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-                {
-                    var result = streamReader.ReadToEnd();
-                    if (result != null)
-                    {
-                        var sales = from d in posdb.TrnSales
-                                    where d.Id == salesId
-                                    select d;
-
-                        if (sales.Any())
-                        {
-                            var updateSales = sales.FirstOrDefault();
-                            updateSales.PostCode = result.Replace("\"", "");
-                            posdb.SubmitChanges();
-                        }
-
-                        sysSettingsForm.logMessages("Send Succesful!" + "\r\n\n");
-                        sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
-                        sysSettingsForm.logMessages("\r\n\n");
-                    }
-                }
-            }
-            catch (WebException we)
-            {
-                var resp = new StreamReader(we.Response.GetResponseStream()).ReadToEnd();
-
-                sysSettingsForm.logMessages(resp.Replace("\"", "") + "\r\n\n");
-                sysSettingsForm.logMessages("Time Stamp: " + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt") + "\r\n\n");
-                sysSettingsForm.logMessages("\r\n\n");
             }
         }
     }
