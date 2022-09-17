@@ -115,7 +115,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             if (Modules.SysCurrentModule.GetCurrentSettings().PromptLoginSales == true)
             {
-                Account.SysLogin.SysLoginForm login = new Account.SysLogin.SysLoginForm(this, null, null, null, false);
+                Account.SysLogin.SysLoginForm login = new Account.SysLogin.SysLoginForm(this, null, null);
                 login.ShowDialog();
             }
             else
@@ -128,7 +128,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             if (Modules.SysCurrentModule.GetCurrentSettings().PromptLoginSales == true)
             {
-                Account.SysLogin.SysLoginForm login = new Account.SysLogin.SysLoginForm(this, null, null, null, false);
+                Account.SysLogin.SysLoginForm login = new Account.SysLogin.SysLoginForm(this, null, null);
                 login.ShowDialog();
             }
             else

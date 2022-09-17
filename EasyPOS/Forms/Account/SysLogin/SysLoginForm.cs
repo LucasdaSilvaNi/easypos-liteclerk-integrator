@@ -1,12 +1,6 @@
 ﻿using EasyPOS.Forms.Software.TrnPOS;
+using EasyPOS.Interfaces.Forms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Account.SysLogin
@@ -14,17 +8,16 @@ namespace EasyPOS.Forms.Account.SysLogin
     public partial class SysLoginForm : Form
     {
         public TrnPOSBarcodeForm _trnPOSBarcodeForm;
-        public TrnPOSBarcodeDetailForm _trnPOSBarcodeDetailForm;
+        private IOverrideSales _trnPOSFormWithOverrideSales;
         public TrnPOSTouchForm _trnPOSTouchForm;
-        public TrnPOSTouchDetailForm _trnPOSTouchDetailForm;
-        public Boolean _isOverride = false;
-        public SysLoginForm(TrnPOSBarcodeForm trnPOSBarcodeForm, TrnPOSBarcodeDetailForm trnPOSBarcodeDetailForm, TrnPOSTouchForm trnPOSTouchForm, TrnPOSTouchDetailForm trnPOSTouchDetailForm, Boolean isOverride)
+
+        public Boolean _isOverride { get { return _trnPOSFormWithOverrideSales != null; } }
+
+        public SysLoginForm(TrnPOSBarcodeForm trnPOSBarcodeForm, IOverrideSales trnPOSFormWithOverrideSales, TrnPOSTouchForm trnPOSTouchForm)
         {
             InitializeComponent();
 
-            _isOverride = isOverride;
-
-            if(Modules.SysCurrentModule.GetCurrentSettings().DateLogin == false)
+            if (Modules.SysCurrentModule.GetCurrentSettings().DateLogin == false)
             {
                 radioButtonLoginDate.Enabled = false;
             }
@@ -47,9 +40,8 @@ namespace EasyPOS.Forms.Account.SysLogin
             labelSupport.Text = "Support: Easyfis Corporation " + Modules.SysCurrentModule.GetCurrentSettings().CurrentSupport;
 
             _trnPOSBarcodeForm = trnPOSBarcodeForm;
-            _trnPOSBarcodeDetailForm = trnPOSBarcodeDetailForm;
             _trnPOSTouchForm = trnPOSTouchForm;
-            _trnPOSTouchDetailForm = trnPOSTouchDetailForm;
+            _trnPOSFormWithOverrideSales = trnPOSFormWithOverrideSales;
         }
         private void buttonClose_Click(object sender, EventArgs e)
         {
@@ -96,15 +88,7 @@ namespace EasyPOS.Forms.Account.SysLogin
             {
                 if (_isOverride == true)
                 {
-                    if (_trnPOSTouchDetailForm != null)
-                    {
-                        _trnPOSTouchDetailForm.OverrideSales(Convert.ToInt32(login[1]));
-                    }
-
-                    if (_trnPOSBarcodeDetailForm != null)
-                    {
-                        _trnPOSBarcodeDetailForm.OverrideSales(Convert.ToInt32(login[1]));
-                    }
+                    _trnPOSFormWithOverrideSales.OverrideSales(Convert.ToInt32(login[1]));
 
                     Hide();
                 }
@@ -176,7 +160,7 @@ namespace EasyPOS.Forms.Account.SysLogin
         {
             if (_isOverride == false)
             {
-                if (_trnPOSTouchForm != null || _trnPOSTouchDetailForm != null || _trnPOSBarcodeForm != null || _trnPOSBarcodeDetailForm != null)
+                if (_trnPOSTouchForm != null || _trnPOSBarcodeForm != null)
                 {
                     if (Modules.SysCurrentModule.GetCurrentSettings().PromptLoginSales == false)
                     {

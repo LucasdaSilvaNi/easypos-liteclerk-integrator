@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.License.SysLicense
@@ -45,7 +38,7 @@ namespace EasyPOS.Forms.License.SysLicense
 
                     Hide();
 
-                    Account.SysLogin.SysLoginForm sysLoginForm = new Account.SysLogin.SysLoginForm(null,null,null,null,false);
+                    Account.SysLogin.SysLoginForm sysLoginForm = new Account.SysLogin.SysLoginForm(null, null, null);
                     sysLoginForm.Show();
                 }
                 else
